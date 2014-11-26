@@ -1,0 +1,162 @@
+<?php
+/**
+ * Native（原生）支付-模式二-demo
+ * ====================================================
+ * 商户生成订单，先调用统一支付接口获取到code_url，
+ * 此URL直接生成二维码，用户扫码后调起支付。
+ *
+ */
+//include_once("../WxPayPubHelper/WxPayPubHelper.php");
+
+//使用统一支付接口
+$orderId = (int)$this->getRequest()->getParam('orderid');
+if (!$orderId) {
+    $session = Mage::getSingleton('checkout/session');
+    $_order = Mage::getModel('sales/order');
+
+    $_order->loadByIncrementId($session->getLastRealOrderId());
+    $orderId = $session->getLastRealOrderId();
+} else {
+    $_order = Mage::getModel('sales/order')->load($orderId);
+}
+if (!$_order->getId()) {
+    echo '订单错误，请联系我们';
+    exit();
+}
+if ($_order->getStatus() == "alipay_wait_seller_send_goods") {
+    echo "亲 " . $_order->getIncrementId() . " 已付款成功！";
+    return;
+}
+$realOrderId = $_order->getIncrementId();
+$unifiedOrder = Mage::getModel('weixinpay/unifiedorderpub');
+//$unifiedOrder = new UnifiedOrder_pub();
+
+//设置统一支付接口参数
+//设置必填参数
+//appid已填,商户无需重复填写
+//mch_id已填,商户无需重复填写
+//noncestr已填,商户无需重复填写
+//spbill_create_ip已填,商户无需重复填写
+//sign已填,商户无需重复填写
+$shopName = Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("shop_name");
+$unifiedOrder->setParameter("body", $shopName); //商品描述
+//自定义订单号，此处仅作举例
+$timeStamp = time();
+//$out_trade_no = CosmoCommerce_Weixinpay_Model_Wxpaypubconfig::APPID."_"."$realOrderId"."_"."$timeStamp";
+$out_trade_no = "$realOrderId" . "_" . "$timeStamp";
+$totalFee = $_order->getGrandTotal() * 100;
+$unifiedOrder->setParameter("out_trade_no", "$out_trade_no"); //商户订单号
+$unifiedOrder->setParameter("total_fee", $totalFee); //总金额
+$unifiedOrder->setParameter("notify_url", $unifiedOrder->getNotifyUrl()); //通知地址
+$unifiedOrder->setParameter("trade_type", "NATIVE"); //交易类型
+
+//获取统一支付接口结果
+$unifiedOrderResult = $unifiedOrder->getResult();
+
+//商户根据实际情况设置相应的处理流程
+if ($unifiedOrderResult["return_code"] == "FAIL") {
+    //商户自行增加处理流程
+    echo "通信出错：" . $unifiedOrderResult['return_msg'] . "<br>";
+} elseif ($unifiedOrderResult["result_code"] == "FAIL") {
+    //商户自行增加处理流程
+    echo "错误代码：" . $unifiedOrderResult['err_code'] . "<br>";
+    echo "错误代码描述：" . $unifiedOrderResult['err_code_des'] . "<br>";
+} elseif ($unifiedOrderResult["code_url"] != NULL) {
+    //从统一支付接口获取到code_url
+    $code_url = $unifiedOrderResult["code_url"];
+    //商户自行增加处理流程
+    //......
+
+    $weixinImageSrc = $this->getSkinUrl("images/weixin/logo_pay.png");
+    ?>
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>微信安全支付</title>
+    </head>
+    <body>
+    <div class="header pngFix">
+        <h1 class="pay_logo">
+            <a class="index_access" href="/">
+                <img title="微信支付" alt="微信支付标志" src="<?php echo $weixinImageSrc; ?>" class="pngFix">
+            </a>
+        </h1>
+    </div>
+    <div align="center" id="qrcode" style="padding:20px;">
+    </div>
+    <div align="center">
+        <div class="msg_default_box"><i class="icon60_qr pngFix"></i>
+
+            <p>请使用微信扫描<br>二维码以完成支付</p>
+        </div>
+        <div class="msg_box">
+            <i class="icon60_qr pngFix"></i>
+
+            <p><strong>付款成功</strong><br/><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>">查看订单</a></p>
+        </div>
+    </div>
+
+    <div class="area second">
+        <div class="pay_bill shopping">
+            <div class="area_bd"><h3 class="pay_money"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?></h3>
+
+                <div class="pay_bill_unit no_extra">
+                    <dl>
+                        <dt><?php echo $shopName; ?></dt>
+                    </dl>
+                    <div class="pay_bill_info"><p><label>交易单号</label><span class="pay_bill_value"><?php echo($_order->getRealOrderId()) ?></span>
+                        </p>
+
+                        <p><label>创建时间</label><span class="pay_bill_value"><?php echo date("Y-m-d H:i:s",strtotime($_order->getCreatedAt())+8*60*60);  ?></span></p></div>
+                </div>
+                <!--            <div class="pay_bill_unit no_extra">              <dl>                <dt></dt>                <dd></dd>              </dl>              <div class="pay_bill_info">                <p><label>交易单号</label><span class="pay_bill_value"></span></p>                <p><label>创建时间</label><span class="pay_bill_value"></span></p>              </div>            </div>            -->
+            </div>
+        </div>
+    </div>
+    </body>
+    <script>
+        if (<?php echo $unifiedOrderResult["code_url"] != NULL; ?>) {
+            var url = "<?php echo $code_url;?>";
+            //参数1表示图像大小，取值范围1-10；参数2表示质量，取值范围'L','M','Q','H'
+            var qr = qrcode(10, 'M');
+            qr.addData(url);
+            qr.make();
+            var wording = document.createElement('p');
+            //wording.innerHTML = "请使用微信扫描二维码完成支付";
+            var code = document.createElement('DIV');
+            code.innerHTML = qr.createImgTag();
+            var element = document.getElementById("qrcode");
+            element.appendChild(wording);
+            element.appendChild(code);
+        }
+        var i = 0;
+        jQuery(function () {
+            window.code = 400;
+            var qrcodeChangeInternal = setInterval(changeQrcode, 1 * 1000);
+
+            function changeQrcode() {
+                i++;
+                if(i<3600){
+                    jQuery.getScript('<?php echo $this->getUrl('weixinpay/payment/js',array('order_id'=>$_order->getId()));?>');
+                    switch (window.code) {
+                        case 400:
+                        case 408:
+                            break;
+                        case 300:
+                            //付款成功，需要显示付款成功的标签
+                            jQuery(".msg_box").show();
+                            jQuery(".msg_default_box").hide();
+                            clearInterval(qrcodeChangeInternal);
+                            break;
+                    }
+                }else{
+                    clearInterval(qrcodeChangeInternal);
+                }
+
+            }
+
+        });
+    </script>
+    </html>
+<?php } ?>

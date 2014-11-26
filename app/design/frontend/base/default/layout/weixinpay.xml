@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+    <weixinpay_payment_pay>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="setTitle"><title>订单支付</title></action>
+            <!--<action method="addCss"><stylesheet>opcheckout/css/jquery-ui.css</stylesheet></action>-->
+            <action method="addItem"><type>skin_js</type><script>js/weixin/qrcode.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>js/weixin/jquery.js</script></action>
+            <action method="addCss"><stylesheet>css/weixin/weixin.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="weixinpay/pay" name="payment" as="payment"  before="*" template="weixinpay/payment.phtml" >
+                <block type="weixinpay/redirect" name="redirect" as="redirect"  before="*"  />
+            </block>
+        </reference>
+    </weixinpay_payment_pay>
+    
+</layout> 

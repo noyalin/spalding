@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.form-quick-contact {background:#f8f8f8 url(../images/bg-form.jpg) no-repeat;width:578px;border:1px solid #c5c5c5;padding-left:45px;font-size:12px;text-align:left;}
+.form-quick-contact .response {display:block; padding-top:20px;}
+.form-quick-contact .title{margin-top:30px; padding-bottom:20px;}
+.form-quick-contact .title h1{color:#0A263C; font-weight:800; padding-left:60px; font-size:2em;}
+.form-quick-contact .radio{color:#5e8096; font-weight:bold; font-family:arial,helvetica,sans-serif; font-size:13px; padding-bottom:20px;}
+.form-quick-contact .radio .radio-box{width:135px; float:left;}
+.form-quick-contact .radio .radio-check{}
+.form-quick-contact .text{padding:0;float:left;width:90px;line-height:20px;  font-size:13px;}
+.form-quick-contact .input{float:left;width:300px;line-height:20px;}
+.form-quick-contact .text .info-txt{width:100px;padding-bottom:12px;color:#666666;vertical-align:middle;}
+.form-quick-contact .input .textbox{margin-bottom:12px;width:250px;border:1px solid #B6B6B6;}
+.form-quick-contact .capcha .textbox{width:60px;border:1px solid #B6B6B6;}
+.form-quick-contact .capcha .label{float:left;}
+.form-quick-contact #security_image{margin-left:5px;margin-top:1px;}
+.form-quick-contact .capcha{padding-top:10px;color:#5e8096;font-weight:bold;font-family:arial,helvetica,sans-serif;margin-bottom:10px}
+.form-quick-contact .hm_content{color:#5e8096;font-weight:bold;font-family:arial,helvetica,sans-serif;margin-bottom:10px}
+.form-quick-contact .text-area textarea {border:1px solid #B6B6B6; width: 530px;}
+.form-quick-contact .submit {text-align:right;padding:10px 0 10px 10px;}
+.form-quick-contact .submit input{vertical-align: top;}
+.form-quick-contact .submit a{}
+.form-quick-contact .submit a img{border:none}
+

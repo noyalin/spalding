@@ -1,0 +1,21 @@
+.wp_block_link {
+    position:absolute;
+    top:0;
+    left: 0;
+    width:100%;
+    height:100%;
+    z-index: 7777777!important;
+    background: #000;
+    opacity: 0;
+    -moz-opacity: 0; /* older Gecko-based browsers */
+    filter:alpha(opacity=0); /* For IE6&7 */
+}
+
+.wp_block_html {
+    position: relative;
+    width:100%;
+    height:100%;
+}
+.category-clider {
+    margin-bottom: 10px;
+}

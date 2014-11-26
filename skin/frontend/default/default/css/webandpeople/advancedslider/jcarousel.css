@@ -1,0 +1,139 @@
+/**
+ *  Horizontal
+ */
+.jcarousel-skin {
+    border: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0 5px;
+    width: 980px;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:0) {
+    .jcarousel-skin {
+        height: 146px;
+        overflow: hidden;
+    }
+}
+
+#slider-block .category-products {
+    background: transparent none !important;
+}
+
+.jcarousel-clip-horizontal {
+    width: 950px;
+    margin: 0px 20px 15px 16px;
+    padding: 0px 0px 0px 0px;
+    overflow: hidden;
+}
+
+li.jcarousel-item {
+    width: 102px !important;
+    padding: 0px 0px 0px 0px;
+    margin-right: 4px;
+    text-align: center;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:0) {
+    li.jcarousel-item {
+        height: 150px;
+    }
+}
+
+.jcarousel-item img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ababab;
+}
+
+.jcarousel-item img:hover {
+    border: 1px solid #c6c6c6;
+}
+
+li.jcarousel-item h2.product-name {
+    width: 100px !important;
+    /*height: 50px !important;*/
+    font-size: 11px !important;
+    text-align: center;
+    padding: 2px 0px 0px 0px !important;
+    margin: 0px 0px 0px 0px !important;
+    top: 100px;
+    text-transform: none;
+}
+
+li.jcarousel-item h2.product-name a:link,
+li.jcarousel-item h2.product-name a:visited {
+    color: #2d3739;
+    width: 100px !important;
+    display: block;
+    font-weight: normal;
+}
+
+li.jcarousel-item a:hover {
+    opacity: 1 !important;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100) !important;
+}
+
+li.jcarousel-item h2.product-name a:hover {
+    color: #000000 !important;
+}
+/*buttons*/
+.jcarousel-next-horizontal {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 15px;
+    height: 102px;
+    cursor: pointer;
+    background: #ababab url(../images/next-horizontal.png) no-repeat 50% 50%;
+}
+
+.jcarousel-next-horizontal:hover {
+    opacity: 0.9;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+
+.jcarousel-next-horizontal:active {
+    opacity: 0.9;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+
+.jcarousel-next-disabled-horizontal,
+.jcarousel-next-disabled-horizontal:hover,
+.jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    opacity: 0.9;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+
+.jcarousel-prev-horizontal {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 15px;
+    height: 102px;
+    cursor: pointer;
+    background: #ababab url(../images/prev-horizontal.png) no-repeat 50% 50%;
+}
+
+.jcarousel-prev-horizontal:hover {
+    opacity: 0.9;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+
+.jcarousel-prev-horizontal:active {
+    opacity: 0.9;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+
+.jcarousel-prev-disabled-horizontal,
+.jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-prev-disabled-horizontal:active,
+.jcarousel-next-disabled-horizontal,
+.jcarousel-next-disabled-horizontal:hover,
+.jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background: transparent;
+    opacity: 1;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+}

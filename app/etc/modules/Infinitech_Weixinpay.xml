@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinitech_Weixinpay>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Infinitech_Weixinpay>
+    </modules>
+</config>
