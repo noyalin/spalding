@@ -53,6 +53,39 @@
                     <input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
                 </div>
             </li>
+            <li>
+                <table>
+                    <tr>
+                        <td class="infoLabel"><label for="billing:region_id" class="required"><span class="rStar">*</span>所在地区</label></td>
+                        <td class="infoInput">
+                            <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                            </select>
+                            <script type="text/javascript">
+                                $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                            </script>
+                            <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
+
+                            <select id="city_id"  name="city_id" title="市" class="validate-select">
+                                <option value="">请选择</option>
+                            </select>
+                            <input type="text" id="city" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  style="display:none;" />
+
+                            <select id="district_id"  name="district_id" title="区" class="validate-select">
+                                <option value="">请选择</option>
+                            </select>
+                            <input type="text" id="district" name="district" value="<?php echo $this->escapeHtml($this->getAddress()->getDistrict()) ?>"  style="display:none;" />
+                            <script type="text/javascript">
+                                $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                                $('city_id').update("<?php echo $this->getCityList($this->getAddress()->getRegionId())  ?>");
+                                $('district_id').update("<?php echo $this->getDistrictList($this->getAddress()->getCityId())  ?>");
+                                $('city_id').value = "<?php echo $this->getAddress()->getCityId() ?>";
+                                $('district_id').value = "<?php echo $this->getAddress()->getDistrictId() ?>";
+                            </script>
+                        </td>
+                    </tr>
+                </table>
+            </li>
             <li class="fields">
                 <div class="field">
                     <label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
@@ -162,4 +195,52 @@
     var dataForm = new VarienForm('form-validate', true);
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
+</script>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#region_id').change(
+            function(){
+                var id = this.value;
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
+                    data: {id:id},
+                    success: function(data, textStatus){
+                        jQuery('#city_id').html(data);
+                    },
+                    //  dataType: "json",
+                    error: function(){
+                        // alert('error');
+                    }
+                });
+            }
+        );
+        jQuery('#city_id').change(
+            function(){
+                var id = this.value;
+                var text = jQuery('#city_id option:selected').text();
+                jQuery('#city').val(text);
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
+                    data: {id:id},
+                    success: function(data, textStatus){
+                        jQuery('#district_id').html(data);
+                    },
+                    //  dataType: "json",
+                    error: function(){
+//                                                alert('error');
+                    }
+                });
+            }
+        );
+        jQuery('#district_id').change(
+            function(){
+                var id = this.value;
+                var text = jQuery('#district_id option:selected').text();
+                jQuery('#district').val(text);
+
+            }
+        );
+    });
 </script>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+	<Devicom_Checkout>
+	    <version>0.1</version>
+	</Devicom_Checkout>
+    </modules>
+    <frontend>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <Devicom_Checkout before="Mage_Checkout">Devicom_Checkout</Devicom_Checkout>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+        <secure_url>
+            <checkout_cart>/checkout/cart</checkout_cart>
+            <checkout_onepage>/checkout/onepage</checkout_onepage>
+            <checkout_multishipping>/checkout/multishipping</checkout_multishipping>
+        </secure_url>
+    </frontend>
+    <global>
+	<models>
+	    <checkout>
+	      <rewrite>
+		 <cart>Devicom_Checkout_Model_Cart</cart>
+	      </rewrite>
+	   </checkout>
+	</models>
+    </global>
+</config>
