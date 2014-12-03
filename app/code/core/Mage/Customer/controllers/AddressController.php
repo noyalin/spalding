@@ -105,6 +105,7 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
         // Save data
         if ($this->getRequest()->isPost()) {
             $customer = $this->_getSession()->getCustomer();
+            $params = $this->getRequest()->getParams();
             /* @var $address Mage_Customer_Model_Address */
             $address  = Mage::getModel('customer/address');
             $addressId = $this->getRequest()->getParam('id');
@@ -112,6 +113,15 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                 $existsAddress = $customer->getAddressById($addressId);
                 if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
                     $address->setId($existsAddress->getId());
+                    $existsAddress->setRegionId($params['region_id']);
+                    $existsAddress->setCityId($params['city_id']);
+                    $existsAddress->setCity($params['city']);
+                    $existsAddress->setDistrictId($params['district_id']);
+                    $existsAddress->setDistrict($params['district']);
+                    $existsAddress->save();
+                    $this->_getSession()->addSuccess($this->__('The address has been saved.'));
+                    $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
+                    return;
                 }
             }
 
@@ -121,6 +131,8 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
             $addressForm = Mage::getModel('customer/form');
             $addressForm->setFormCode('customer_address_edit')
                 ->setEntity($address);
+
+
             $addressData    = $addressForm->extractData($this->getRequest());
             $addressErrors  = $addressForm->validateData($addressData);
             if ($addressErrors !== true) {

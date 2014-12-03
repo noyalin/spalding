@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Devicom_Customer>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Devicom_Customer>
+    </modules>
+</config>
