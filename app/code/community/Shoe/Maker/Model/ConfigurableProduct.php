@@ -390,10 +390,10 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setPriceHistory( $valueArr['priceHistory'] );
         $product->setStatus( $valueArr['status'] ); // 1 or 2
 
-        $product->setProductNorm( $this->getAttributeOptionId('product_norm',$valueArr['productNorm']) );//规格
+        $product->setProductNorm( $this->getAttributeProductNorm('product_norm',$valueArr['productNorm']) );//规格
         $product->setProductSide( $this->getAttributeOptionId('product_side',$valueArr['productSide']) );//场地
         $product->setProductCatena( $this->getAttributeOptionId('product_catena',$valueArr['productCatena']) );//系列
-        $product->setProductMaterial( $this->getAttributeOptionId('product_material',$valueArr['productMaterial']) );//材质 多选
+        $product->setProductMaterial( $this->getProductMaterialOptionId($valueArr['productMaterial']) );//材质 多选
 
     }
 
@@ -660,5 +660,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             $product->delete();
         }
     }
+
+
 
 }

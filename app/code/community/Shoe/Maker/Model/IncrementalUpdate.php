@@ -187,6 +187,41 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
         }
         return $productSizeOptionId;
     }
+
+    //取得篮球规格
+    function getAttributeProductNorm($attribute,$valueNeed){
+        $productSizeOptionId = null;
+        $attributeProductSize = Mage::getModel('eav/config')->getAttribute('catalog_product', $attribute);
+        $optionsProductSize = $attributeProductSize->getSource()->getAllOptions(true, true);
+        foreach($optionsProductSize as $key => $eachOption){
+            if(empty($eachOption['value'])){
+                continue;
+            }
+            $valueNeed =  str_replace("#","",$valueNeed);
+            if(strstr($eachOption['label'],$valueNeed) ){
+                $productSizeOptionId = $eachOption['value'];
+                mage :: log(" option id ".$productSizeOptionId);
+                break;
+            }
+        }
+        return $productSizeOptionId;
+    }
+    //取得篮球材质
+    public function getProductMaterialOptionId($value){
+        mage :: log($value);
+        $arr = explode(",",$value);
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_material");
+        $options = $attribute->getSource()->getAllOptions(true, true);
+        $selectedArr = array();
+        mage :: log($options);
+        foreach($options as $key => $eachValue){
+            if(empty($eachValue['value'])) continue;
+            if(in_array($eachValue['label'],$arr)){
+                $selectedArr[] = $eachValue['value'];
+            }
+        }
+        return implode(",",$selectedArr);
+    }
     function getAttributeOptionId($attribute,$valueNeed){
         $productSizeOptionId = null;
         $attributeProductSize = Mage::getModel('eav/config')->getAttribute('catalog_product', $attribute);
