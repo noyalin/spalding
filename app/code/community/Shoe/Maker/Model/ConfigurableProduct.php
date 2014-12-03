@@ -587,6 +587,19 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $isInStock = 1; // 0 out of stock, 1 in stock
         $valueArr['isInStock'] =$isInStock ;
 
+        $CNMagentoNorm = $entity->CNMagentoNorm;//规格
+        $valueArr['productNorm '] =$CNMagentoNorm ;
+
+        $CNMagentoSide = $entity->CNMagentoSide;//场地
+        $valueArr['productSide'] =$CNMagentoSide ;
+
+        $CNMagentoCatena = $entity->CNMagentoCatena;//系列
+        $valueArr['productCatena   '] =$CNMagentoCatena ;
+
+        $MaterialFabric = $entity->MaterialFabric;//材质
+        $valueArr['productMaterial'] =$MaterialFabric ;
+
+
         return $valueArr;
     }
 
