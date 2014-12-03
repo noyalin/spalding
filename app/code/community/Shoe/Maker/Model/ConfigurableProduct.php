@@ -389,7 +389,12 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setPopularity( $valueArr['popularity'] );
         $product->setPriceHistory( $valueArr['priceHistory'] );
         $product->setStatus( $valueArr['status'] ); // 1 or 2
-        $product->setMaterialFabric( $this->getAttributeOptionId('material_fabric',$valueArr['materialFabric']) );
+
+        $product->setProductNorm( $this->getAttributeOptionId('product_norm',$valueArr['productNorm']) );//规格
+        $product->setProductSide( $this->getAttributeOptionId('product_side',$valueArr['productSide']) );//场地
+        $product->setProductCatena( $this->getAttributeOptionId('product_catena',$valueArr['productCatena']) );//系列
+        $product->setProductMaterial( $this->getAttributeOptionId('product_material',$valueArr['productMaterial']) );//材质 多选
+
     }
 
     public function saveOtherStore($product,$valueArr){
@@ -588,13 +593,13 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $valueArr['isInStock'] =$isInStock ;
 
         $CNMagentoNorm = $entity->CNMagentoNorm;//规格
-        $valueArr['productNorm '] =$CNMagentoNorm ;
+        $valueArr['productNorm'] =$CNMagentoNorm ;
 
         $CNMagentoSide = $entity->CNMagentoSide;//场地
         $valueArr['productSide'] =$CNMagentoSide ;
 
         $CNMagentoCatena = $entity->CNMagentoCatena;//系列
-        $valueArr['productCatena   '] =$CNMagentoCatena ;
+        $valueArr['productCatena'] =$CNMagentoCatena ;
 
         $MaterialFabric = $entity->MaterialFabric;//材质
         $valueArr['productMaterial'] =$MaterialFabric ;
