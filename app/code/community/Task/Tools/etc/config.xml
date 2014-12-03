@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Task_Tools>
+            <version>1.0.0</version>
+        </Task_Tools>
+    </modules>
+    <frontend>
+        <routers>
+            <!-- the <helloworld> tagname appears to be arbitrary, but by
+            convention is should match the frontName tag below-->
+            <tools>
+                <use>standard</use>
+                <args>
+                    <module>Task_Tools</module>
+                    <frontName>tools</frontName>
+                </args>
+            </tools>
+        </routers>
+    </frontend>
+    <phpunit>
+        <suite>
+            <modules>
+                <Task_Tools />
+            </modules>
+        </suite>
+    </phpunit>
+
+</config>

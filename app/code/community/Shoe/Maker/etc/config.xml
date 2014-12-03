@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Shoe_Maker>
+            <version>1.0.0</version>
+        </Shoe_Maker>
+    </modules>
+
+    <phpunit>
+        <suite>
+            <modules>
+                <Shoe_Maker />
+            </modules>
+        </suite>
+    </phpunit>
+
+</config>

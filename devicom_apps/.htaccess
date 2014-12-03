@@ -1,0 +1,11 @@
+#<Limit GET POST PUT>
+#order deny,allow
+#deny from all
+#allow from 74.212.242.42
+#</Limit>
+#
+#<Limit POST>
+#order deny,allow
+#deny from all
+#allow from 74.212.242.42
+#</Limit>
