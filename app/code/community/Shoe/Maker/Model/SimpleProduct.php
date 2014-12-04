@@ -85,6 +85,11 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         $specialShippingGroup = $configurableProduct->getSpecialShippingGroup();
         $eligibleForRewards = $configurableProduct->getRewardPoints();
         $price = $configurableProduct->getPrice();
+
+        //取得configurable product 规格
+        $productNorm = $configurableProduct->getProductNorm();
+        $labelProductNorm = $this->getProductNormLabel($productNorm);
+
         $status = 1; // 1 enabled, 2 disabled
         //Set attributes
         $product->setStoreId($storeId);
@@ -108,9 +113,9 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         foreach ($options as $option => $item) {
             if(!$item['label'])
                 continue;
-            $fullLabelArray = explode(',', $item['label']);
-            $subLabelArray = explode(' ', $fullLabelArray[0]);
-                if ($subLabelArray[1] == $eursize) {
+//            $fullLabelArray = explode(',', $item['label']);
+//            $subLabelArray = explode(' ', $fullLabelArray[0]);
+                if ($item['label']== $labelProductNorm) {
                     $fullLabel = $item['label'];
                     $optionAttributeId = $item['value'];
                     $optionSortOrder = $i;
@@ -399,6 +404,18 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
                 }
             }
         }
+    }
+
+    public function getProductNormLabel($optionId){
+            $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_norm");
+            $options = $attribute->getSource()->getAllOptions(true, true);
+            $selectedArr = array();
+            foreach($options as $key => $eachValue){
+                if($eachValue['value'] == $optionId){
+                    return $eachValue['label'];
+                }
+            }
+        return null;
     }
 
 }
