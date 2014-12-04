@@ -1,0 +1,195 @@
+#custommenu {
+	position: relative;
+	font-size: 12px;
+	padding: 0px 0px 0px 0px;
+	width: 100%;
+	height: 40px;
+}
+/*IE7 fix*/
+*:first-child+html #custommenu {
+	z-index: 998;
+}
+div.menu {
+	float: left;
+	padding: 2px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	height: 38px;
+	_width: 0px; /*IE6*/
+	_padding: 0px 0px 0px 0px;
+	_background: none;
+}
+div.menu a:link, div.menu a:visited {
+	display: block;
+	height: 38px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+div.menu a span {
+	display: block;
+	height: 28px;
+	padding-right: 0px;
+	padding-top: 10px;
+}
+div.menu a span:hover {
+	cursor: pointer;
+}
+div.wp-custom-menu-popup {
+	position: absolute;
+	z-index: 1000;
+	display: none;
+	text-align: left;
+	padding: 0px 0px 10px 0px;
+	border-top: 0;
+	width: 100%;
+}
+div.menu a, div.wp-custom-menu-popup a {
+	text-decoration: none;
+	display:block;
+	cursor: pointer;
+	_height: 0;
+	height: auto;
+	line-height:13px;
+}
+div.level1 {
+	margin-bottom: 5px;
+}
+div.level2 {
+	margin-bottom: 5px;
+}
+div.level3 {
+	margin-bottom: 5px;
+	padding: 5px;
+}
+div.block2 {
+	display: block;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+div.block2 p {
+	margin-bottom: 3px;
+	line-height: 120%;
+	color: #000;
+	font-size: 11px;
+}
+div.block2 p a {
+	display: inline;
+}
+div.block2 a img {
+	opacity: .9;
+	filter: alpha(opacity=90);
+}
+div.block2 a:hover img {
+	opacity: 1;
+	filter: alpha(opacity=100);
+-webkit-transition: all .2s ease-in-out;
+-moz-transition: all .2s ease-in-out;
+-ms-transition: all .2s ease-in-out;
+transition: all .2s ease-in-out;
+}
+div.wp-custom-menu-popup hr {
+	margin: 0px 0px 3px 0px;
+}
+/*** COLUMN WIDTH ***/
+div.column {
+	float: left;
+	width: 18%; /* for 5 columns*/
+	padding: 0px 1%;
+	margin: 0px 0px 0px 0px;
+}
+/*** end COLUMN WIDTH ***/
+div.itemSubMenu {
+	margin-left: 0px;
+}
+.clearBoth {
+	clear:both;
+	height: 0;
+	overflow: hidden;
+}
+a.level1:link, a.level1:visited {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px 10px;
+	border-radius: 2px;
+}
+a.level2:link, a.level2:visited {
+	padding: 3px 10px;
+	border-radius: 2px;
+}
+div.level1 {
+	margin-bottom: 5px;
+}
+/*BG*/
+#custommenu {
+	border-radius: 7px 7px 0px 0px;
+}
+div.wp-custom-menu-popup {
+	background: #f1f1f1;
+	box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.3);
+	padding: 20px 0px 20px 0px;
+}
+div.menu a:hover {
+	background: #0069a1;
+}
+div.menu a, div.wp-custom-menu-popup a {
+ -webkit-transition: all .2s ease-in-out;
+-moz-transition: all .2s ease-in-out;
+-ms-transition: all .2s ease-in-out;
+transition: all .2s ease-in-out;
+}
+div.menu.active a {
+	background: #f1f1f1 !important;
+	color: #000 !important;
+	border-radius: 2px 2px 0px 0px;
+}
+div.level3 {
+	background: #fff;
+}
+/*FONTS*/
+div.menu {
+	font-weight: normal;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: Tahoma;
+}
+a.level1:link, a.level1:visited {
+	text-transform: none;
+	font-weight: normal;
+	font-size: 16px;
+}
+a.level2:link, a.level2:visited {
+	font-weight: normal;
+	font-size: 12px;
+}
+a.level3:link, a.level3:visited {
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 100%;
+	margin-bottom: 0px;
+}
+/*COLOR*/
+div.menu a:link, div.menu a:visited, div.menu a:hover, div.menu.active a {
+	color: #fff;
+}
+div.menu a:hover {
+	color: #fff;
+}
+a.level3:link, a.level3:visited {
+	color: #333333;
+}
+a.level3:hover {
+	color: #0069a1;
+}
+a.level2:link, a.level2:visited {
+	color: #000;
+}
+a.level1:link, a.level1:visited {
+	color: #0086b2;/*background: #fff;*/
+}
+a.level1:hover, div.wp-custom-menu-popup a.act {
+	color: #fff !important;
+	background: #1795D8;
+}
+a.level2:hover {
+	color: #fff;
+	background: #1795D8;
+}

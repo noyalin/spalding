@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/skin.css</stylesheet></action>
+        </reference>
+        <reference name="header">
+            <remove name="top.links" />
+            <block type="page/template_links" name="top.links.custom" as="topLinksCustom"/>
+        </reference>
+        <!-- Mage_Customer -->
+        <reference name="top.links.custom">
+            <block type="checkout/links" name="checkout_cart_link">
+                <action method="addCartLink"></action>
+            </block>
+            <action method="addLink" translate="label title" module="customer"><label>My Account</label><url helper="customer/getAccountUrl"/><title>My Account</title><prepare/><urlParams/><position>130</position></action>
+            <block type="wishlist/links" name="wishlist_link"/>
+            <action method="addLinkBlock"><blockName>wishlist_link</blockName></action>
+        </reference>
+
+        <reference name="right">
+            <block type="cms/block" name="cms_right_info_block" before="-">
+                <action method="setBlockId"><block_id>right_info_block</block_id></action>
+            </block>
+            <block type="newsletter/subscribe" name="right.newsletter" template="newsletter/subscribe.phtml"/>
+
+            <remove name="paypal.partner.right.logo"/>
+            <remove name="right.permanent.callout"/>
+
+        </reference>
+        <reference name="left">
+            <block type="cms/block" name="cms_left_info_block" after="left.poll">
+                <action method="setBlockId"><block_id>left_info_block</block_id></action>
+            </block>
+            <remove name="right.newsletter" />
+
+            <remove name="left.permanent.callout" />
+            <remove name="left.newsletter" />
+        </reference>
+        <reference name="header">
+            <block type="cms/block" name="quick-access-links">
+                <action method="setBlockId"><block_id>quick-access-links</block_id></action>
+            </block>
+            <block type="cms/block" name="header_phone_block" before="quick-access-links">
+                <action method="setBlockId"><block_id>header_phone_block</block_id></action>
+            </block>
+            <block type="cms/block" name="search_block_content" before="">
+                <action method="setBlockId"><block_id>search_block_content</block_id></action>
+            </block>
+            <block type="page/switch" name="store_switcher_header" as="store_switcher_header" template="page/switch/stores.phtml"/>
+            <remove name="top.links" />
+        </reference>
+        <reference name="footer">
+            <remove name="store_switcher" />
+            <remove name="copyright.blog.footer" />
+        </reference>
+
+        <!--Begin cart top-bar -->
+        <reference name="left">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+        </reference>
+        <reference name="right">
+            <action method="unsetChild"><alias>cart_sidebar</alias></action>
+            <action method="insert"><blockName>cart_sidebar</blockName><siblingname></siblingname><after></after></action>
+        </reference>
+        <reference name="header">
+            <block type="checkout/cart_sidebar" name="cart_sidebar_top" template="checkout/cart/sidebar-top.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+            </block>
+        </reference>
+        <!--End cart top-bar -->
+    </default>
+    <customer_logged_in>
+        <reference name="top.links.custom">
+            <action method="addLink" translate="label title" module="customer"><label>Log Out</label><url helper="customer/getLogoutUrl"/><title>Log Out</title><prepare/><urlParams/><position>100</position></action>
+        </reference>
+    </customer_logged_in>
+
+    <customer_logged_out>
+        <reference name="top.links.custom">
+            <action method="addLink" translate="label title" module="customer"><label>Log In</label><url helper="customer/getLoginUrl"/><title>Log In</title><prepare/><urlParams/><position>100</position></action>
+            <action method="addLink" translate="label title" module="customer"><label>Register</label><url helper="customer/getRegisterUrl"/><title>Register</title><prepare/><urlParams/><position>120</position></action>
+        </reference>
+    </customer_logged_out>
+
+    <cms_index_index>
+        <reference name="footer">
+            <action method="unsetData"><key>cache_lifetime</key></action>
+            <action method="unsetData"><key>cache_tags</key></action>
+            <block type="core/template" name="designby_link" as="designby_link" template="page/html/designby.phtml" after="-" />
+        </reference>
+    </cms_index_index>
+</layout>
