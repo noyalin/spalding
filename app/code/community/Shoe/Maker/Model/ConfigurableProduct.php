@@ -552,7 +552,11 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         if ((string) $entity->Status == 2) { //  1 online, 2 offline
             $defaultCategory = (string) $entity->CategoryIds;
         } else {
-            $defaultCategory = (string) $entity->PrimaryCategoryId;
+            if($attributeSetName == 'ball'){
+                $defaultCategory = "6,10";//篮球规格 和 系列 -
+            }else{
+                $defaultCategory = (string) $entity->PrimaryCategoryId;
+            }
         }
         $valueArr['defaultCategory'] =$defaultCategory;
 
