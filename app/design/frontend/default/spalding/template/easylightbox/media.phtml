@@ -46,7 +46,7 @@
     onclick="return false;"
 >
 <!--    <img src="--><?php //echo $this->helper('catalog/image')->init($_product, 'image')->resize($mainImageSize[0], $mainImageSize[1]); ?><!--" alt="--><?php //echo $this->htmlEscape($_product->getImageLabel());?><!--"-->
-    <img id="mainImage" src="http://image.sneakerhead.com/is/image/sneakerhead/<?php echo $urlKey;  ?>-1?$270$" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
+    <img id="mainImage" src="http://image.sneakerhead.com/is/image/sneakerhead/<?php echo $urlKey;  ?>-1?$270$" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1" data-zoom-image="http://img04.taobaocdn.com/imgextra/i4/1792368114/TB2zLHBbXXXXXa5XXXXXXXXXXXX_!!1792368114.jpg"/>
 </a>
 
 
@@ -123,4 +123,5 @@ if (Prototype.Browser.IE) {
         initLightbox();
     });
 }
+jQuery('#mainImage').elevateZoom();
 </script>
