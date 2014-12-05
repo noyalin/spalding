@@ -214,7 +214,6 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
         $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_material");
         $options = $attribute->getSource()->getAllOptions(true, true);
         $selectedArr = array();
-        mage :: log($options);
         foreach($options as $key => $eachValue){
             if(empty($eachValue['value'])) continue;
             if(in_array($eachValue['label'],$arr)){
@@ -229,7 +228,6 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
         $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_material_others");
         $options = $attribute->getSource()->getAllOptions(true, true);
         $selectedArr = array();
-        mage :: log($options);
         foreach($options as $key => $eachValue){
             if(empty($eachValue['value'])) continue;
             if(in_array($eachValue['label'],$arr)){
