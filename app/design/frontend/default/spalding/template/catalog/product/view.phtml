@@ -123,6 +123,29 @@
             <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
         <?php endif;?>
     </form>
+
+
+        <div id="detailPixWrap">
+            <a rel="productGallery [gallery]" href="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/<?php echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?>-1"><img id="mainImage" src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/<?php echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?>-1" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/></a>
+            <div class="detailArrowPrev">
+                <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>
+            </div>
+            <div class="detailImageReelWindow">
+                <div class="detailImageReel">
+                    <div id="detailProductGallery">
+                        <?php $imageCount = floor($_product->getImageCount()) ?>
+                        <?php $i = 0 ?>
+                        <?php while ($i++ < $imageCount) : ?>
+                            <div><a rel="productGallery [gallery]" href="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/<?php echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?>-<?php echo $i ?>" onMouseOver="javascript:sku=<?php echo $i ?>;"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/<?php echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?>-<?php echo $i ?>" alt=""/></a></div>
+                        <?php endwhile ?>
+                    </div>
+                </div>
+            </div>
+            <div class="detailArrowNext">
+                <a class="detailArrowNextBtn" href="javascript:void(0)"></a>
+            </div>
+            <div id="detailPixIconWrap"></div>
+        </div>
     <script type="text/javascript">
     //<![CDATA[
             var productAddToCartForm = new VarienForm('product_addtocart_form');
