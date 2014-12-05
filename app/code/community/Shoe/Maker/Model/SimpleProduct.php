@@ -90,6 +90,7 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         $productNorm = $configurableProduct->getProductNorm();
         $labelProductNorm = $this->getProductNormLabel($productNorm);
 
+
         $status = 1; // 1 enabled, 2 disabled
         //Set attributes
         $product->setStoreId($storeId);
@@ -102,7 +103,12 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
         $attributeSetModel->load($configurableProduct->getAttributeSetId());
         $attributeSetName = $attributeSetModel->getAttributeSetName();
-
+        //如果是篮球 使用product_material
+        if($attributeSetName == 'ball'){
+            $labelProductNorm = $this->getProductNormLabel($productNorm);
+        }else{
+            $labelProductNorm = $eursize;
+        }
         // Set size attribute option
         $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', $attributeSetName);
         $options = $attribute->getSource()->getAllOptions(true, true);
@@ -110,6 +116,8 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         $fullLabel = null;
         $sizeFound = null; // used to prevent exception when adding related product to configurable when attribute not available
         $i = 0;
+//        mage :: log($attributeSetName . " atttribute set name ");
+//        mage :: log($labelProductNorm);
         foreach ($options as $option => $item) {
             if(!$item['label'])
                 continue;
@@ -175,14 +183,14 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
             ('" . $sku . "', '" . substr($sku, 0, -(strlen($size) + 1)) . "', " .
                 $configurableProduct->getId() . ", " .
                 $configurableProduct->getPrice() . ", " .
-                $configurableProduct->getFinalPrice() . ", " .
+                111 . ", " .
                 $product->getId() . ", '" .
                 $attributeSetName . "', '" .
                 $categoryIds . "', " .
                 $optionSortOrder . ", " .
                 $optionAttributeId . ", '" .
                 addslashes($fullLabel) . "', '0')
-    ON DUPLICATE KEY UPDATE `parent_sku` = '" . substr($sku, 0, -(strlen($size) + 1)) . "', `parent_product_id` = " . $configurableProduct->getId() . ", `base_price` = " . $configurableProduct->getFinalPrice() . ", `old_price` = " . $configurableProduct->getPrice() . ", `product_id` = " . $product->getId() . ", `attribute_set_name` = '" . $attributeSetName . "', `category_ids` = '" . $categoryIds . "', `sort_order` = " . $optionSortOrder . ", `option_id` = '" . $optionAttributeId . "', `label` = '" . addslashes($fullLabel) . "', `qty` = '0'";
+    ON DUPLICATE KEY UPDATE `parent_sku` = '" . substr($sku, 0, -(strlen($size) + 1)) . "', `parent_product_id` = " . $configurableProduct->getId() . ", `base_price` = " . 11 . ", `old_price` = " . $configurableProduct->getPrice() . ", `product_id` = " . $product->getId() . ", `attribute_set_name` = '" . $attributeSetName . "', `category_ids` = '" . $categoryIds . "', `sort_order` = " . $optionSortOrder . ", `option_id` = '" . $optionAttributeId . "', `label` = '" . addslashes($fullLabel) . "', `qty` = '0'";
             $results = $writeConnection->query($query);
             $this->transactionLogHandle("    ->ADDED       : Inventory    : " . $sku);
             unset($product);

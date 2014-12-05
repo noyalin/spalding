@@ -210,9 +210,23 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
     }
     //取得篮球材质
     public function getProductMaterialOptionId($value){
-        mage :: log($value);
         $arr = explode(",",$value);
         $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_material");
+        $options = $attribute->getSource()->getAllOptions(true, true);
+        $selectedArr = array();
+        mage :: log($options);
+        foreach($options as $key => $eachValue){
+            if(empty($eachValue['value'])) continue;
+            if(in_array($eachValue['label'],$arr)){
+                $selectedArr[] = $eachValue['value'];
+            }
+        }
+        return implode(",",$selectedArr);
+    }
+    //取得包和衣服材质
+    public function getProductMaterialOthersOptionId($value){
+        $arr = explode(",",$value);
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_material_others");
         $options = $attribute->getSource()->getAllOptions(true, true);
         $selectedArr = array();
         mage :: log($options);

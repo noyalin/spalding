@@ -393,7 +393,14 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setProductNorm( $this->getAttributeProductNorm('product_norm',$valueArr['productNorm']) );//规格
         $product->setProductSide( $this->getAttributeOptionId('product_side',$valueArr['productSide']) );//场地
         $product->setProductCatena( $this->getAttributeOptionId('product_catena',$valueArr['productCatena']) );//系列
-        $product->setProductMaterial( $this->getProductMaterialOptionId($valueArr['productMaterial']) );//材质 多选
+
+        //如果是篮球 使用product_material
+        if($valueArr['attributeSetName'] == 'ball'){
+            $product->setProductMaterial( $this->getProductMaterialOptionId($valueArr['productMaterial']) );//材质 多选
+        }else{
+            $product->setProductMaterial( $this->getProductMaterialOthersOptionId($valueArr['productMaterial']) );//衣服 包的材质 多选
+        }
+
 
     }
 
