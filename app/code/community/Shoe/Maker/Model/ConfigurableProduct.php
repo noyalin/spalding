@@ -104,7 +104,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                             //Set size
                             $arr = explode('-', $sku);
                             $size = end($arr);
-                            $eursize = $product->getEursize();
+                            $eursize = $size;
                             //Set variables to supplied values
                             $storeId = $configurableProduct->getStore()->getId();
                             $websiteIds = $configurableProduct->getWebSiteIds();
@@ -129,12 +129,19 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                             //$product->setCategoryIds($categoryIds);
                             $product->setTypeId($typeId); //simple or configurable
                             $product->setAttributeSetId($attributeSetId);
+                            //取得configurable product 规格
+                            $productNorm = $configurableProduct->getProductNorm();
 
                             //Get attribute set name
                             $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
                             $attributeSetModel->load($configurableProduct->getAttributeSetId());
                             $attributeSetName = $attributeSetModel->getAttributeSetName();
-
+                            //如果是篮球 使用product_material
+                            if($attributeSetName == 'ball'){
+                                $labelProductNorm = $this->getProductNormLabel($productNorm);
+                            }else{
+                                $labelProductNorm = $eursize;
+                            }
                             // Set size attribute option
                             $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', $attributeSetName);
                             $options = $attribute->getSource()->getAllOptions(true, true);
@@ -146,32 +153,14 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                                 if(!$item['value']){
                                     continue;
                                 }
-                                $fullLabelArray = explode(',', $item['label']);
-                                $subLabelArray = explode(' ', $fullLabelArray[0]);
-                                if ($attributeSetName == 'onesize' || $attributeSetName == 'apparelsize') {
-                                    if (strtoupper($item['label']) == strtoupper($size) || str_replace(' ', '', strtoupper($item['label'])) == strtoupper($size)) {
-                                        $optionAttributeId = $item['value'];
-                                        $optionSortOrder = $i;
-                                        $sizeFound = 1;
-                                        break;
-                                    }
-                                }else if($attributeSetName == 'unisexcommon'){
-                                    if($fullLabelArray[0] == $eursize){
-                                        $optionAttributeId = $item['value'];
-                                        $optionSortOrder = $i;
-                                        $sizeFound = 1;
-                                        break;
-                                    }
-                                } else {
-                                    if(!$subLabelArray[1]){
-                                        $this->transactionLogHandle($item['label']." subLabelArray  undefined attributeSetName " . $attributeSetName."    eursize $eursize".print_r($subLabelArray,true));
-                                    }
-                                    if ($subLabelArray[1] == $eursize) {
-                                        $optionAttributeId = $item['value'];
-                                        $optionSortOrder = $i;
-                                        $sizeFound = 1;
-                                        break;
-                                    }
+//                                $fullLabelArray = explode(',', $item['label']);
+//                                $subLabelArray = explode(' ', $fullLabelArray[0]);
+                                if ($item['label']== $labelProductNorm) {
+                                    $fullLabel = $item['label'];
+                                    $optionAttributeId = $item['value'];
+                                    $optionSortOrder = $i;
+                                    $sizeFound = 1;
+                                    break;
                                 }
                                 $i++;
                             }
@@ -212,6 +201,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                                 unset($product);
                             } else {
                                 // Send email
+
                                 $message = "Incremental Update: " . $this->filename . "\r\n\r\nThe specified size was not found for simple product " . $sku . ". This indicates that either a new size needs to be added to the attribute set or the size was entered in Item Manager incorrectly.";
                                 $this->sendNotification('Size not found', $message);
 

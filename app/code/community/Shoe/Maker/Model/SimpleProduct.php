@@ -116,8 +116,6 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         $fullLabel = null;
         $sizeFound = null; // used to prevent exception when adding related product to configurable when attribute not available
         $i = 0;
-//        mage :: log($attributeSetName . " atttribute set name ");
-//        mage :: log($labelProductNorm);
         foreach ($options as $option => $item) {
             if(!$item['label'])
                 continue;
@@ -414,16 +412,6 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         }
     }
 
-    public function getProductNormLabel($optionId){
-            $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_norm");
-            $options = $attribute->getSource()->getAllOptions(true, true);
-            $selectedArr = array();
-            foreach($options as $key => $eachValue){
-                if($eachValue['value'] == $optionId){
-                    return $eachValue['label'];
-                }
-            }
-        return null;
-    }
+
 
 }

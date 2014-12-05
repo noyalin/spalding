@@ -192,6 +192,8 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
 
     //取得篮球规格
     function getAttributeProductNorm($attribute,$valueNeed){
+        if(!trim($valueNeed))
+            return null;
         $productSizeOptionId = null;
         $attributeProductSize = Mage::getModel('eav/config')->getAttribute('catalog_product', $attribute);
         $optionsProductSize = $attributeProductSize->getSource()->getAllOptions(true, true);
@@ -202,7 +204,6 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
             $valueNeed =  str_replace("#","",$valueNeed);
             if(strstr($eachOption['label'],$valueNeed) ){
                 $productSizeOptionId = $eachOption['value'];
-                mage :: log(" option id ".$productSizeOptionId);
                 break;
             }
         }
@@ -237,6 +238,8 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
         return implode(",",$selectedArr);
     }
     function getAttributeOptionId($attribute,$valueNeed){
+        if(!$valueNeed)
+            return null;
         $productSizeOptionId = null;
         $attributeProductSize = Mage::getModel('eav/config')->getAttribute('catalog_product', $attribute);
         $optionsProductSize = $attributeProductSize->getSource()->getAllOptions(true, true);
@@ -250,5 +253,16 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
             }
         }
         return $productSizeOptionId;
+    }
+    public function getProductNormLabel($optionId){
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', "product_norm");
+        $options = $attribute->getSource()->getAllOptions(true, true);
+        $selectedArr = array();
+        foreach($options as $key => $eachValue){
+            if($eachValue['value'] == $optionId){
+                return $eachValue['label'];
+            }
+        }
+        return null;
     }
 }
