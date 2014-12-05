@@ -34,6 +34,17 @@
 <?php
     $_helper = $this->helper('catalog/output');
     $_product = $this->getProduct();
+    $_productAvailableColors = Mage::getModel('catalog/product')->getCollection()
+        ->addAttributeToFilter(array(array('attribute' => 'model', 'eq' => $_product->getModel())))
+        ->addAttributeToFilter('visibility', 4);
+
+    $_productAvailableColorsCollection = array();
+    foreach ($_productAvailableColors as $_productAvailableColor) {
+        $productData = $_productAvailableColor->getData();
+        if (array_key_exists('is_salable', $productData)) {
+            $_productAvailableColorsCollection[] = $_productAvailableColor;
+        }
+    }
 ?>
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
@@ -93,7 +104,19 @@
         <div class="product-img-box">
             <?php echo $this->getChildHtml('media') ?>
         </div>
-
+        <h2>可选颜色:</h2>
+        <div id="detailAvailColor">
+            <?php
+            $i = 0;
+            foreach ($_productAvailableColorsCollection as $productColor) {
+                if ($i++ < 5) {
+                    $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
+                    $productUrl = Mage::getUrl($_productColor->getUrlKey());
+                    echo '<a href="http://localhost/spalding/products/fragrances/women-s/' . $_productColor->getUrlKey().".html". '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="' . $_helper->productAttribute($_productColor, $_productColor->getName(), 'name') . '" width="84" height="84"/></a>';
+                }
+            }
+            ?>
+        </div>
         <div class="clearer"></div>
         <?php if ($_product->isSaleable() && $this->hasOptions()):?>
             <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
