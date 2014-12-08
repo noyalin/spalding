@@ -790,7 +790,7 @@ IWD.OPC.Billing = {
 		pushBilingToShipping:function(clearShippingForm){
 			//pull country
 			var valueCountry = $j('#billing-new-address-form select[name="billing[country_id]"]').val();
-			$j('#opc-address-form-shipping  select[name="shipping[country_id]"] [value="' + valueCountry + '"]').prop("selected", true);	
+			$j('#opc-address-form-shipping  select[name="shipping[country_id]"] [value="' + valueCountry + '"]').prop("selected", true);
 			shippingRegionUpdater.update();
 			
 			
@@ -993,7 +993,7 @@ IWD.OPC.Shipping = {
 		validateShippingMethod: function(){			
 			var shippingChecked = false;
 			$j('#opc-co-shipping-method-form input').each(function(){				
-				if ($j(this).prop('checked')){							
+				if ($j(this).prop('checked')){
 					shippingChecked =  true;
 				}
 			});
