@@ -1,0 +1,300 @@
+/*COPYRIGHT(C)UCWEB 2013.*/
+/*通用CSS样式表.*/
+/*2013.05.24*/
+
+/** @NAME:CSS RESET
+		@TYPE:公共
+		@EXPLAIN:组件设定（Module Setting：ms-）
+						 粒子设定（Granule Reset：gr-）
+	*/
+	
+/*通用全局设定*/
+html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,label {margin:0;padding:0;}
+
+input,select,textarea{font-size:100%;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:500;}
+
+fieldset,img {border:0;}
+a img{border:0;}
+abbr,acronym{border:0;font-variant:normal;}
+
+table{border-collapse:collapse;border-spacing:0;}
+th{text-align:inherit;}
+
+iframe{display:block;}
+
+del {text-decoration:line-through;}
+ol,ul,li {list-style:none;}
+caption,th {text-align:left;}
+ins,a {text-decoration:none;}
+
+q:before,q:after {content:'';}
+sub,sup {font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup {top:-0.5em;}
+sub {bottom:-0.25em;}
+
+body{/*background:#fff;font-family:Arial,Helvetica,sans-serif;*/font-family:Arial,宋体,黑体;line-height:20px;}
+.en_ff{ font-family:Impact,Arial,"\5FAE\8F6F\96C5\9ED1",微软雅黑;}
+.cn_ff{font-family:Arial,Verdana, sans-serif , 宋体,  "Microsoft Yahei",微软雅黑;}
+.tf{font-family:"\5FAE\8F6F\96C5\9ED1",微软雅黑,"Microsoft Yahei",雅黑\9,Arial;}
+
+
+/*重设 HTML5 标签*/
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
+
+/*组件设定-MODULE SETTING*/
+/**显示状态**/
+.ms-none{display:none;}
+.ms-block{display:block;}
+.ms-inblock{display:inline-block;}	
+
+/**清除浮动**/
+.ms-cf:before, .ms-cf:after {content:"";display:table;}
+.ms-cf:after {clear:both;}
+.ms-cf {zoom:1;}
+
+.cl{clear:left;}
+.cr{clear:right;}
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.clearfix { display: inline-table; zoom:1;}
+*html .clearfix { height: 1%;}
+.clearfix { display: block; }
+
+/*
+ * 清理元素
+ * @class clear
+ * @desc	清理浮动元素,当浮动换行时后面元素不希望浮动，添加此属性，防止IE BUG
+ */
+.clear{clear:both; height:0px; width:100%; font-size:1px; line-height:0px; visibility:hidden; overflow:hidden;}
+
+
+/**浮动**/
+.ms-fl{float:left;}
+.ms-fr{float:right;}
+
+/**定位**/
+.ms-pa{position:absolute;}
+.ms-pr{position:relative;}
+.ms-pf{position:fixed!important;}
+
+
+.zoom{zoom:1;}
+.z99{z-index:99;}
+.z1{z-index:1;}
+.hidden{ visibility:hidden;}
+.ofh{overflow:hidden;}
+
+
+.t10{top:10px;}
+.t20{top:20px;}
+.t30{top:30px;}
+.t40{top:40px;}
+.t50{top:50px;}
+
+.b10{bottom:10px;}
+.b20{bottom:20px;}
+.b30{bottom:30px;}
+.b40{bottom:40px;}
+.b50{bottom:50px;}
+
+.l10{left:10px;}
+.l22{left:22px;}
+.l30{left:30px;}
+.l40{left:40px;}
+.l50{left:50px;}
+
+.r10{right:10px;}
+.r22{right:22px;}
+.r30{right:30px;}
+.r40{right:40px;}
+.r50{right:50px;}
+
+
+
+
+/* 边距 */
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+.mt30{margin-top:30px;}
+.mt40{margin-top:40px;}
+.mt50{margin-top:50px;}
+
+.mb10{margin-bottom:10px;}
+.mb20{margin-bottom:20px;}
+.mb30{margin-bottom:30px;}
+.mb40{margin-bottom:40px;}
+.mb50{margin-bottom:50px;}
+
+.ml10{margin-left:10px;}
+.ml20{margin-left:20px;}
+.ml30{margin-left:30px;}
+.ml40{margin-left:40px;}
+.ml50{margin-left:50px;}
+
+.mr10{margin-right:10px;}
+.mr20{margin-right:20px;}
+.mr30{margin-right:30px;}
+.mr40{margin-right:40px;}
+.mr50{margin-right:50px;}
+
+
+/**文本定位**/
+.ms-tl{text-align:left}
+.ms-tc{text-align:center}
+.ms-tr{text-align:right}
+
+/**文本**/
+.f12{ font-size:12px;}
+.f13{ font-size:13px;}
+.f14{ font-size:14px;}
+.f16{ font-size:16px;}
+.f18{ font-size:18px;}
+.f20{ font-size:20px;}
+.f22{ font-size:22px;}
+.f24{ font-size:24px;}
+.f26{ font-size:26px;}
+.f30{ font-size:30px;}
+.f36{ font-size:36px;}
+.f40{ font-size:40px;}
+.f46{ font-size:46px;}
+.f50{ font-size:50px;}
+.fb{ font-weight:bold;}
+.fn{ font-weight:normal;}
+
+.unl{text-decoration:underline;}
+.no_unl{text-decoration:none;}
+
+.lh14{line-height:14px;}
+.lh18{line-height:18px;}
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.lh1_3{line-height:1.3em;}
+.lh1_4{line-height:1.4em;}
+.lh1_5{line-height:1.5em;}
+.lh1_6{line-height:1.6em;}
+.lh1_8{line-height:1.8em;}
+.lh2_0{line-height:2.0em;}
+.lh2_2{line-height:2.2em;}
+
+.c_green{color:#66ad1e;}
+.c_gray{color:#ababab;}
+.c_999{color:#999999;}
+.c_666{color:#666666;}
+.c_black{color:#333333;}
+.c_white{color:#FFF;}
+.c_red{color:#EC2000;}
+.c_pink{color:#ff7f7a;}
+.c_blue{color:#3d88d5;}
+
+
+
+
+
+/**换行**/
+.ms-noWrap{white-space:nowrap;overflow:hidden;}
+.ms-wrap{overflow:hidden;word-wrap:break-word;word-break:break-all;}
+
+/**边框**/
+.ms-noBor{border:none!important}
+
+
+/*图片圆角*/
+.borderRadius_5{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+.borderRadius_3{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+
+/*投影*/
+.tsha{text-shadow:0 1px 1px #ccc;}
+.bsha{box-shadow:0 1px 1px #ccc;}
+
+
+/*背景色*/
+.bc_999{background:#999;}
+.bc_333{background:#333;}
+.bc_666{background:#666;}
+.bc_f2{background:#f2f2f2;}
+
+
+/*
+* 定义H系列标签
+* @overlay HN
+* @desc 覆盖H系列标签默认属性
+*/
+h1{ font-size:24px;}
+h2{ font-size:20px;}
+h3{ font-size:18px;}
+h4{ font-size:16px;}
+h5{ font-size:14px;}
+h6{ font-size:12px;}
+
+
+/*
+* 定义间距,上下2个DIV间距
+* @Pro 使用DIVH开头.
+* @desc 上下DIV有间距时使用,尽量不使用margin/padding值,防止不同浏览器出现BUG,
+*	 使用下面属性可兼容大多浏览器.
+*/
+.DivH5,.DivH10,.DivH15,.DivH20,.DivH25,.DivH30,DivH1,.DivH40{width:100%;overflow:hidden;}
+.DivH1{ height:1px;}
+.DivH5{height:5px;}
+.DivH10{height:10px;}
+.DivH15{height:15px;}
+.DivH20{height:20px;}
+.DivH25{height:25px;}
+.DivH30{height:30px;}
+.DivH40{height:40px;}
+
+/*
+*inputs文本框
+*textarea
+*/
+.inputText_50{width:50px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_100{width:100px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_150{width:150px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_200{width:200px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_250{width:250px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_300{width:300px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_350{width:350px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_400{width:400px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_450{width:450px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_500{width:500px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_550{width:550px; padding:3px 5px; font-size:12px; color:#666; }
+.inputText_600{width:600px; padding:3px 5px; font-size:12px; color:#666; }
+
+
+.textArea_200{width:200px; height:150px; max-width:200px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_250{width:250px; height:150px; max-width:250px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_300{width:300px; height:150px; max-width:300px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_350{width:350px; height:150px; max-width:350px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_400{width:400px; height:150px; max-width:400px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_450{width:450px; height:150px; max-width:450px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_500{width:500px; height:150px; max-width:500px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_550{width:550px; height:150px; max-width:550px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+.textArea_600{width:600px; height:150px; max-width:600px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
+
+
+/* 备注 */
+/*在终极页面中调用该通用样式时,应该注意显示效果的不同,因为后台上传信息时编辑器里面样式并没有调用本默认样式表.
+ *
+ *所以在编辑器中标签会有默认的属性,用户在添加信息时,这些信息都是附带默认样式的.
+ *如果用我们在终极页面也调用本默认CSS文件的话,许多标签如:p,td,li......标签默认样式都被取消,因此显示效不同.
+ *
+ *解决办法:
+ *	在终极页面显示内容区域还原这些标签的默认属性.
+ *
+ */
+  
+ /*
+ ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,tr{ margin:auto; padding:inherit;}
+ input,select{ font-size:inherit;}
+ img{border: inherit;}
+ ul,li{margin:auto; padding:inherit;}
+ li{list-style-type:disc;}
+ */
+
+
+/* @END 
+	------------------------------------------------------------------------------**/	
