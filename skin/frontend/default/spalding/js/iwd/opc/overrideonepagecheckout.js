@@ -52,6 +52,7 @@ function isEmpty (s) {
 function checkAddressForm(){
     var flag = true;
     var firstnameJQ = jQuery("#firstname");
+
     if (isEmpty(firstnameJQ.val())){
         jQuery("#firstname_error").html("收货人姓名不能为空");
         firstnameJQ.addClass("error");
@@ -94,7 +95,8 @@ function checkAddressForm(){
         streetJQ.addClass("error");
         flag = false;
     }
-    var phoneJQ = jQuery("#telephone");
+    var phoneJQ = jQuery("#telephone1");
+    alert(phoneJQ.val());
     if (isEmpty(phoneJQ.val())){
         jQuery("#phone_error").html("电话不能为空");
         phoneJQ.addClass("error");
