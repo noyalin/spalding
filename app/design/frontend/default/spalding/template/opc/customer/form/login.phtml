@@ -78,6 +78,18 @@
                         </li>
                         <?php echo $this->getChildHtml('persistent.remember.me'); ?>
                     </ul>
+                    <table>
+                    <tr>
+                        <td>
+                            <div class="other_account">
+                                <span>联合登录：</span>
+                                <a  target="_blank" title="使用QQ登录" class="qq" href="<?php echo $this->getUrl('sns/qq/login'); ?>"><i></i>QQ登录</a>
+                                <a  target="_blank" title="使用支付宝登录" class="alipay" href="<?php echo $this->getUrl('sns/alipay/login'); ?>">
+                                    <i></i>支付宝登录</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </table>
                     <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
                     <p class="required"><?php echo $this->__('* Required Fields') ?></p>
                 </div>

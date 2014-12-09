@@ -47,10 +47,10 @@ class CosmoCommerce_Sns_AlipayController extends Mage_Core_Controller_Front_Acti
                 ->addAttributeToFilter('alipay_user_id',$userId)->load()->getFirstItem();
             if(!$customer->getId()){
                 $customer->setEmail("Sneakerhead_".$userId."@sneakerhead.com");
-                $lastname='lastname';
+                //$lastname='lastname';
                 $customer->setFirstname($_GET['real_name']);
                 //$customer->setAvatar($profile_image_url);
-                $customer->setLastname($lastname);
+                //$customer->setLastname($lastname);
                 $customer->setAlipayUserId($userId);
                 //$customer->setLocation($location);
                 //$customer->setProvince($province);
