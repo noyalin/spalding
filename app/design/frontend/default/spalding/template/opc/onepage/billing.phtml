@@ -5,7 +5,7 @@
             <i class="add">&nbsp;</i>
         </a>
     </div>
-    <div id="dialog_new_address" title="新增收货地址" style="background-color: #000000">
+    <div id="dialog_new_address" title="新增收货地址" style="background-color: #000000;display:none;">
         <!--    <form method="post" action="" name="addressForm" id="addressForm">-->
         <div class="new_address">
             <table cellspacing="0" cellpadding="0" border="0" width="100%">
@@ -402,7 +402,7 @@
             jQuery( "#dialog_new_address" ).dialog( "open" );
         });
         jQuery( ".ds_dialog_no" ).click(function() {
-            jQuery( "#dialog" ).dialog( "close" );
+            jQuery( "#dialog_new_address" ).dialog( "close" );
         });
     });
     /*
