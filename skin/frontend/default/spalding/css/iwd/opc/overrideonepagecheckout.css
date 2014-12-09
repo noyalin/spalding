@@ -4,7 +4,7 @@
     padding-bottom: 2px;
 }
 .step_title .index {
-    background: url("../images/cart_new.png") no-repeat scroll 0 -24px #476DB9;
+    background: url("images/cart_new.png") no-repeat scroll 0 -24px #476DB9;
     color: #FFFFFF;
     font: 20px/30px Arial;
     height: 30px;
@@ -155,7 +155,7 @@ ol, ul {
     display: block;
 }
 .step_radio .arrow {
-    background: url("../images/cart_new.png") no-repeat scroll -72px -25px rgba(0, 0, 0, 0);
+    background: url("images/cart_new.png") no-repeat scroll -72px -25px rgba(0, 0, 0, 0);
     bottom: 0;
     display: none;
     height: 28px;
@@ -247,42 +247,42 @@ button, input, select, textarea {
 }
 .pay_online
 {
-    background:url(../images/pay_online_normal.png) no-repeat;
+    background:url(images/pay_online_normal.png) no-repeat;
     width: 125px;
     height: 42px;
     border:1px solid #8e8e8e;
 }
 .pay_online:hover
 {
-    background:url(../images/pay_online_color.png) no-repeat;
+    background:url(images/pay_online_color.png) no-repeat;
     width: 125px;
     height: 42px;
     border:1px solid #fd5419;
 }
 .pay_online.selected
 {
-    background:url(../images/pay_online_color.png) no-repeat;
+    background:url(images/pay_online_color.png) no-repeat;
     width: 125px;
     height: 42px;
     border:1px solid #fd5419;
 }
 .pay_offline
 {
-    background:url(../images/pay_offline_normal.png) no-repeat;
+    background:url(images/pay_offline_normal.png) no-repeat;
     width: 125px;
     height: 42px;
     border:1px solid #8e8e8e;
 }
 .pay_offline:hover
 {
-    background:url(../images/pay_offline_color.png) no-repeat;
+    background:url(images/pay_offline_color.png) no-repeat;
     width: 125px;
     height: 42px;
     border:1px solid #fd5419;
 }
 .pay_offline.selected
 {
-    background:url(../images/pay_offline_color.png) no-repeat;
+    background:url(images/pay_offline_color.png) no-repeat;
     width: 125px;
     height: 42px;
     border:1px solid #fd5419;
@@ -306,7 +306,7 @@ button, input, select, textarea {
 }
 .shiptype
 {
-    /*background:url(../images/checkbox_normal.png) no-repeat;*/
+    /*background:url(images/checkbox_normal.png) no-repeat;*/
     width: 15px;
     height: 15px;
     padding-top: 6px;
@@ -370,13 +370,13 @@ td.products.right
     float: left;
 }
 .ds_dialog_yes{
-    background:url(../images/btnok.png) no-repeat;
+    background:url(images/btnok.png) no-repeat;
     width: 118px;
     height:32px;
     cursor: pointer;
 }
 .ds_dialog_no{
-    background:url(../images/btncancel.png) no-repeat;
+    background:url(images/btncancel.png) no-repeat;
     width: 118px;
     height:32px;
     cursor: pointer;
