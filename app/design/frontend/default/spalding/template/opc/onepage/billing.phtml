@@ -5,6 +5,141 @@
             <i class="add">&nbsp;</i>
         </a>
     </div>
+    <div id="dialog" title="新增收货地址" style="background-color: #000000">
+        <!--    <form method="post" action="" name="addressForm" id="addressForm">-->
+        <div class="new_address">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tbody>
+                <?php //echo $this->getNameBlockHtml() ?>
+                <tr>
+                    <th><label for="firstname" class="required"><span class="rStar">*</span>收货人:</label></th>
+                    <td>
+                        <input type="hidden" value="addressid" id="addressid">
+                        <input type="text" title="收货人" name="firstname" id="firstname" value="" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?>" required/>
+                        <em class="error_em" id="firstname_error"></em>
+                        <input type="text" title="收货人" name="lastname" id="lastname" value="lastname" style="display:none"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><label for="billing:region_id" class="required"><span class="rStar">*</span>所在地区</label></th>
+                    <td>
+                        <select  title="所在省市" id="region_id" required >
+                            <option value="">请选择</option>
+                            <option value="485" title="北京市">北京市</option><option value="486" title="天津市">天津市</option><option value="487" title="河北省">河北省</option><option value="488" title="山西省">山西省</option><option value="489" title="内蒙古">内蒙古</option><option value="490" title="辽宁省">辽宁省</option><option value="491" title="吉林省">吉林省</option><option value="492" title="黑龙江">黑龙江</option><option value="493" title="上海市">上海市</option><option value="494" title="江苏省">江苏省</option><option value="495" title="浙江省">浙江省</option><option value="496" title="安徽省">安徽省</option><option value="497" title="福建省">福建省</option><option value="498" title="江西省">江西省</option><option value="499" title="山东省">山东省</option><option value="500" title="河南省">河南省</option><option value="501" title="湖北省">湖北省</option><option value="502" title="湖南省">湖南省</option><option value="503" title="广东省">广东省</option><option value="504" title="广  西">广  西</option><option value="505" title="海南省">海南省</option><option value="506" title="重庆市">重庆市</option><option value="507" title="四川省">四川省</option><option value="508" title="贵州省">贵州省</option><option value="509" title="云南省">云南省</option><option value="510" title="西  藏">西  藏</option><option value="511" title="陕西省">陕西省</option><option value="512" title="甘肃省">甘肃省</option><option value="513" title="青海省">青海省</option><option value="514" title="宁  夏">宁  夏</option><option value="515" title="新  疆">新  疆</option><option value="516" title="台湾省">台湾省</option><option value="517" title="香  港">香  港</option><option value="518" title="澳  门">澳  门</option></select>
+                        <script type="text/javascript">
+                        </script>
+                        <input type="text" id="region" name="region" value=""  style="display: none" title="<?php echo $this->__('State/Province') ?>" />
+
+                        <select id="city_id"  name="city_id" title="市" class="validate-select" required>
+                            <option value="">请选择</option>
+                        </select>
+                        <input type="text" id="city" name="city" value=""  style="display:none;" />
+
+                        <select id="district_id"  name="district_id" title="区" class="validate-select" required>
+                            <option value="">请选择</option>
+                        </select>
+                        <input type="text" id="district" name="district" value=""  style="display:none;" />
+                        <em class="error_em" id="address_error"></em>
+                    </td>
+                </tr>
+                <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+                <tr>
+                    <th><label for="street_1" class="required"><span class="rStar">*</span>街道地址</label></th>
+                    <td>
+                        <input type="text" name="street[]" value="" title="街道地址" id="street_1" class="input-text" size="80" style="width: 600px;"/>
+                        <em class="error_em" id="street_error"></em>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="postcode" class="required"><span class="rStar">*</span>邮编</label></th>
+                    <td class="infoInput">
+                        <input type="text" name="postcode" value=""  id="postcode" />
+                        <em class="error_em" id="postcode_error"></em>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="telephone" class="required"><span class="rStar">*</span>手机</label></th>
+                    <td class="infoInput">
+                        <input type="text" name="telephone" value=""   id="telephone" />
+                        <em class="error_em" id="phone_error"></em>
+                    </td>
+                </tr>
+                <tr>
+                    <!--                --><?php //if($this->canSetAsDefaultBilling()): ?>
+                    <!--                    <td class="infoLabel defaultCheck"><label for="primary_billing">--><?php //echo $this->__('Use as my default billing address') ?><!--</label></td>-->
+                    <!--                    <td class="infoCheck"><input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox" /></td>-->
+                    <!--                --><?php //else: ?>
+                    <!--                    <td><input type="hidden" name="default_billing" value="1" /></td>-->
+                    <!--                --><?php //endif; ?>
+                </tr>
+                <tr style="display: none">
+                    <!--                --><?php //if($this->canSetAsDefaultShipping()): ?>
+                    <!--                    <td class="infoLabel  defaultCheck"><label for="primary_shipping">--><?php //echo $this->__('Use as my default shipping address') ?><!--</label></td>-->
+                    <!--                    <td class="infoCheck"><input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox" /></td>-->
+                    <!--                --><?php //else: ?>
+                    <!--                    <td><input type="hidden" name="default_shipping" value="1" /></td>-->
+                    <!--                --><?php //endif; ?>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <div class="ds_dialog_buttons" style="display: block;">
+                            <button class="ds_dialog_yes"></button> &nbsp; &nbsp; <button class="ds_dialog_no"></button></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            jQuery(document).ready(function(){
+//            jQuery("#addressForm").validate();
+                jQuery('#region_id').change(
+                    function(){
+                        var id = this.value;
+                        jQuery('#region').val(id);
+                        jQuery.ajax({
+                            type: 'POST',
+                            url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
+                            data: {id:id},
+                            success: function(data, textStatus){
+                                jQuery('#city_id').html(data);
+                            },
+                            error: function(){
+                            }
+                        });
+                    }
+                );
+                jQuery('#city_id').change(
+                    function(){
+                        var id = this.value;
+                        var text = jQuery('#city_id option:selected').text();
+                        jQuery('#city').val(text);
+                        jQuery.ajax({
+                            type: 'POST',
+                            url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
+                            data: {id:id},
+                            success: function(data, textStatus){
+                                jQuery('#district_id').html(data);
+                            },
+                            //  dataType: "json",
+                            error: function(){
+//                                                alert('error');
+                            }
+                        });
+                    }
+                );
+                jQuery('#district_id').change(
+                    function(){
+                        var id = this.value;
+                        var text = jQuery('#district_id option:selected').text();
+                        jQuery('#district').val(text);
+
+                    }
+                );
+            });
+        </script>
+        <!--    </form>-->
+    </div>
     <ul class="form-list">
     <?php if ($this->customerHasAddresses()): ?>
         <li class="wide">
@@ -195,4 +330,137 @@
 //<![CDATA[
     var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
 //]]>
+</script>
+<script>
+    jQuery(function($){
+        var doc = $(document);
+        $('#contentWrap').delegate('div.step_radio label', 'click', function(e){
+            jQuery('.step_radio').removeClass("selected");
+            jQuery(this).parent().addClass("selected");
+        });
+    });
+
+    jQuery(document).ready(function(){
+        jQuery('.ds_dialog_yes').click(function(event){
+            flag = checkAddressForm();
+            if(!flag){
+                return;
+            }
+            var addressId = jQuery("#addressid").val();
+            var firstName = jQuery("#firstname").val();
+            var street = jQuery("#street_1").val();
+            var postcode = jQuery("#postcode").val();
+            var telephone = jQuery("#telephone").val();
+            var region = jQuery("#region").val();
+            var city = jQuery("#city").val();
+            var district = jQuery("#district").val();
+            var city_id = jQuery('#city_id option:selected').val();
+            var district_id = jQuery('#district_id option:selected').val();
+            if(firstName != '' && street != '' && district_id!='' && city_id!='' && telephone != ''){
+                jQuery.ajax({
+                    type: 'POST',
+                    //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+                    url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customer/address/formPostAjax/',
+                    data:{
+                        address_id:addressId,
+                        firstName:firstName,
+                        street:street,
+                        city: city,
+                        region_id:region,
+                        postcode:postcode,
+                        telephone:telephone,
+                        district:district,
+                        district_id:district_id,
+                        city_id:city_id
+                    },
+                    success: function(data){
+                        var id = data;
+                        jQuery("#billing_address_id_hidden").val(id);
+                        jQuery( "#dialog" ).dialog( "close" );
+                        getAddress(id);
+                    },
+                    error: function(e){}
+                });
+            }
+
+        });
+        jQuery( "#dialog" ).dialog({
+            autoOpen: false,
+            width:800,
+            modal: true,
+            show: {
+                effect: "fade",
+                duration: 300
+            },
+            hide: {
+                effect: "fade",
+                duration: 300
+            },
+            closeText:'×'
+        });
+        jQuery( "#add_new_address_button" ).click(function() {
+            alert('a');
+//            jQuery(".new_address #addressid").val("");
+            jQuery( "#dialog" ).dialog(  );
+        });
+        jQuery( ".ds_dialog_no" ).click(function() {
+            jQuery( "#dialog" ).dialog( "close" );
+        });
+    });
+    /*
+     {"entity_id":"52","entity_type_id":"2","attribute_set_id":"0","increment_id":null,"parent_id":"16","created_at":"2014-08-13T11:18:29+08:00","updated_at":"2014-08-13 11:28:50","is_active":"1",
+     "firstname":"davis","lastname":"lastname","city":"\u5317\u4eac\u5e02",
+     "country_id":"CN","region":"\u5317\u4eac\u5e02","postcode":"mmm","telephone":"nnn",
+     "district":"\u897f\u57ce\u533a","region_id":"0","district_id":"110102","city_id":"110100","street":"fffff"}
+     */
+    function modifyAddress(id){
+        jQuery.ajax({
+            type: 'POST',
+            //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customer/address/getAddressInfo/',
+            data:{
+                id:id
+            },
+            success: function(data){
+                var dataObj = eval("("+data+")");
+                jQuery( "#dialog" ).dialog( "open" );
+                jQuery(".ui-dialog-title").html("修改收货地址");
+                jQuery(".new_address #firstname").val(dataObj.firstname);
+                jQuery(".new_address #addressid").val(dataObj.entity_id);
+                jQuery(".new_address #street_1").val(dataObj.street);
+                jQuery(".new_address #postcode").val(dataObj.postcode);
+                jQuery(".new_address #telephone").val(dataObj.telephone);
+                jQuery(".new_address #city").val(dataObj.city);
+                jQuery(".new_address #region").val(dataObj.region_id);
+                jQuery(".new_address #district").val(dataObj.district);
+                jQuery('.new_address #region_id ').val(dataObj.region_id);
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
+                    data: {id:dataObj.region_id},
+                    success: function(data, textStatus){
+                        jQuery('#city_id').html(data);
+                        jQuery('.new_address #city_id ').val(dataObj.city_id);
+                    },
+                    error: function(){
+                    }
+                });
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
+                    data: {id:dataObj.city_id},
+                    success: function(data, textStatus){
+                        jQuery('#district_id').html(data);
+                        jQuery('.new_address #district_id ').val(dataObj.district_id);
+                    },
+                    error: function(){
+                    }
+                });
+
+            },
+            error: function(e){}
+        });
+    }
 </script>

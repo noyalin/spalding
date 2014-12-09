@@ -1,0 +1,453 @@
+.step_title {
+    color: #ffffff;
+    height: 35px;
+    padding-bottom: 2px;
+}
+.step_title .index {
+    background: url("../images/cart_new.png") no-repeat scroll 0 -24px #476DB9;
+    color: #FFFFFF;
+    font: 20px/30px Arial;
+    height: 30px;
+    margin-left: -36px;
+    position: absolute;
+    text-indent: 9px;
+    width: 30px;
+}
+.step_title h3 {
+    background: none repeat scroll 0 0 ;
+    font-size: 16px;
+    font-weight: normal;
+    height: 30px;
+    line-height: 30px;
+}
+
+.cart_inner .title {
+    background: none repeat scroll 0 0 #000000;
+    border-radius: 3px 3px 0 0;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #395CA1;
+}
+.cart_inner .title h2 {
+    font-size: 16px;
+    font-weight: normal;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 20px;
+    color: #FFFFFF;
+}
+
+.cart_inner .funs {
+    margin-bottom: 20px;
+}
+.cart_inner .funs {
+    top: 2px;
+}
+.cart_inner .funs {
+    font-size: 0;
+    height: 0;
+    position: relative;
+}
+
+.cart_inner .funs ul {
+    position: absolute;
+    right: 20px;
+    top: -35px;
+}
+ol, ul {
+    list-style: none outside none;
+}
+.cart_inner .funs li {
+    float: left;
+    padding-left: 10px;
+}
+.cart_inner .funs .btn {
+    background-position: 0 -480px;
+    font-size: 12px;
+}
+.btn {
+    border-width: 0;
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 30px;
+    text-shadow: 0 -1px 0 #367D10;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.cart_inner .funs .btn span {
+    background-position: 100% -480px;
+}
+.btn span {
+    background-position: 100% 0;
+    cursor: pointer;
+    padding-right: 15px;
+    vertical-align: top;
+}
+.btn, .btn span, .btn i {
+    background: url("images/btn_hor.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    vertical-align: middle;
+    width: 128px;
+}
+.cart_inner .funs .btn {
+    font-size: 12px;
+}
+.one_step {
+    margin: 0 20px 20px;
+}
+.addr_step .step_main {
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+.one_step .step_main {
+    padding-top: 10px;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix:before, .clearfix:after {
+    content: "â€‹";
+    display: block;
+    height: 0;
+}
+.step_radio_wrap {
+    padding-bottom: 2px;
+}
+
+.one_step .step_radio.selected {
+    background-color:#FD5419;
+}
+.addr_step .step_radio {
+    margin-right: 20px;
+    padding: 10px;
+    width: 880px;
+}
+.step_radio {
+    background: none repeat scroll 0 0 ;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    margin: 0 30px 15px 0;
+    position: relative;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.addr_step .step_radio label {
+    display: block;
+    width: 730px;
+    word-break: break-all;
+    word-wrap: break-word;
+    float: left;
+    padding-left:8px;
+}
+.step_radio label {
+    cursor: pointer;
+    float: left;
+}
+.addr_step .step_radio .addr_tel {
+    display: block;
+    height: 3em;
+    overflow: hidden;
+}
+
+.one_step .step_radio.selected .arrow {
+    display: block;
+}
+.step_radio .arrow {
+    background: url("../images/cart_new.png") no-repeat scroll -72px -25px rgba(0, 0, 0, 0);
+    bottom: 0;
+    display: none;
+    height: 28px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    width: 28px;
+}
+i, cite, em, address {
+    font-style: normal;
+}
+.ds_dialog_border {
+    color: #333333;
+    font: 12px/1.5 "Microsoft Yahei",Arial;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+.new_address th label, .new_address th em {
+    display: inline-block;
+    line-height: 30px;
+    vertical-align: top;
+}
+.new_address th {
+    font-weight: normal;
+    text-align: right;
+    width: 100px;
+}
+.new_address th em {
+    color: #FF6600;
+    margin-right: 5px;
+}
+
+.new_address td select {
+    background: none repeat scroll 0 0 #252525;
+    border: 1px solid #3E3E3E;
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 35px;
+    margin: 0;
+    outline: medium none;
+    padding: 5px 15px;
+    width: 140px;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+
+.new_address td input {
+    background: none repeat scroll 0 0 #252525;
+    border: 1px solid #3E3E3E;
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 30px;
+    margin: 0;
+    outline: medium none;
+    padding: 5px 15px;
+    width: 350px;
+}
+.new_address td {
+    padding-left: 0;
+    width: 552px;
+}
+.new_address th, .new_address td {
+    padding: 5px;
+    vertical-align: top;
+    text-align:left;
+}
+.new_address input.error, .new_address textarea.error, .new_address select.error {
+    border: 1px solid #FF0000;
+}
+.new_address {
+    padding: 20px 10px;
+    color:#ffffff;
+    font-size: 12px;
+}
+.new_address td .error_em {
+    color: #FF0000;
+}
+.new_address td em {
+    display: inline-block;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+.pay_online
+{
+    background:url(../images/pay_online_normal.png) no-repeat;
+    width: 125px;
+    height: 42px;
+    border:1px solid #8e8e8e;
+}
+.pay_online:hover
+{
+    background:url(../images/pay_online_color.png) no-repeat;
+    width: 125px;
+    height: 42px;
+    border:1px solid #fd5419;
+}
+.pay_online.selected
+{
+    background:url(../images/pay_online_color.png) no-repeat;
+    width: 125px;
+    height: 42px;
+    border:1px solid #fd5419;
+}
+.pay_offline
+{
+    background:url(../images/pay_offline_normal.png) no-repeat;
+    width: 125px;
+    height: 42px;
+    border:1px solid #8e8e8e;
+}
+.pay_offline:hover
+{
+    background:url(../images/pay_offline_color.png) no-repeat;
+    width: 125px;
+    height: 42px;
+    border:1px solid #fd5419;
+}
+.pay_offline.selected
+{
+    background:url(../images/pay_offline_color.png) no-repeat;
+    width: 125px;
+    height: 42px;
+    border:1px solid #fd5419;
+}
+.ship
+{
+    background-color:#403f3f;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+.ship:hover
+{
+    background-color:#fd5419;
+}
+.ship.selected
+{
+    background-color:#fd5419;
+}
+.shipment-methods{
+    line-height:30px;
+}
+.shiptype
+{
+    /*background:url(../images/checkbox_normal.png) no-repeat;*/
+    width: 15px;
+    height: 15px;
+    padding-top: 6px;
+
+}
+table.products
+{
+    border: 2px #000000 solid;
+}
+
+tr.products:hover
+{
+    background-color:#fd5419;
+}
+
+th.products
+{
+    background-color: #000000;
+    border: 2px #000000 solid;
+
+    line-height:26px;
+
+    text-align:center;
+}
+
+td.products.leftline
+{
+    border-left: 2px #000000 solid;
+}
+td.products
+{
+    border-bottom: 2px #000000 solid;
+    height:95px;
+
+    text-align:center;
+}
+td.products.left
+{
+    text-align:left;
+}
+td.products.right
+{
+    text-align:right;
+}
+.layer01
+{
+    color:#ffffff;
+}
+.layer02
+{
+    color:#999898;
+}
+#add_new_address_button
+{
+    width:128px;
+}
+.step_radio input {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    float: left;
+}
+.ds_dialog_yes{
+    background:url(../images/btnok.png) no-repeat;
+    width: 118px;
+    height:32px;
+    cursor: pointer;
+}
+.ds_dialog_no{
+    background:url(../images/btncancel.png) no-repeat;
+    width: 118px;
+    height:32px;
+    cursor: pointer;
+}
+#opcheckout-order-label{
+    font-size:14px;
+    cursor:pointer;
+}
+.crossline{
+    width: 880px;
+    height:2px;
+    background-color: #000000;
+    margin-left:20px;
+    width: 930px;
+}
+.ui-dialog-titlebar{
+    margin: 0;
+    padding: 0;
+}
+.ui-dialog-titlebar {
+    background: none repeat scroll 0 0 #000000;
+    border-bottom: 1px solid #FD5419;
+    height: 34px;
+}
+
+form {
+    display: inline;
+}
+.ds_dialog_active .ds_dialog_title h3 {
+    color: #FFFFFF;
+}
+.ui-dialog-title {
+    color: #ffffff;
+    cursor: default;
+    font-size: 16px;
+    font-weight: normal;
+    height: 29px;
+    line-height: 34px;
+    padding: 0 30px 0 16px;
+    white-space: nowrap;
+}
+.ui-dialog-titlebar-close {
+    height: 24px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    width: 24px;
+}
+.ui-dialog-titlebar-close span {
+    color: #FFFFFF;
+    display: block;
+    font: 26px/24px Arial,Helvetica;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 #395BA1;
+}
+.ui-state-hover span{
+    color:#FF0000;
+    cursor: pointer;
+}
+.step_radio .btns{
+    float: right;
+}
+.btns a{
+    color:#ffffff;
+}
+#checkout-payment-method-load  span{
+    float:left;
+    padding: 8px;
+}
+#checkout-payment-method-load  label{
+    float:left;
+}

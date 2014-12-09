@@ -25,7 +25,9 @@
             <action method="removeItem"><type>skin_js</type><name>js/jquery.js</name><params /></action>
             <action method="removeItem"><type>skin_js</type><name>js/jquery.fancybox-1.3.4.pack.js</name><params /></action>
             <action method="removeItem"><type>skin_js</type><name>js/em_quickshop.js</name><params /></action>
-            <action method="addJs" ifconfig="iwdall/default/jquery"><script>iwd/all/jquery-1.10.2.min.js</script></action>
+            <!--<action method="addJs" ifconfig="iwdall/default/jquery"><script>iwd/all/jquery-1.10.2.min.js</script></action>-->
+            <action method="addJs" ifconfig="iwdall/default/jquery"><script>iwd/all/jquery-1.10.2.js</script></action>
+            <!--<action method="addItem"><type>skin_js</type><name>js/jquery.js</name></action>-->
         	<action method="addItem"><type>skin_js</type><name>js/iwd/opc/checkout.js</name></action>
         	<action method="addItem"><type>skin_js</type><name>js/iwd/opc/extend.js</name></action>
         	<action method="addJs"><file>mage/directpost.js</file></action>        
@@ -34,6 +36,7 @@
 			<action method="addItem"><type>skin_js</type><name>js/iwd/opc/overrideonepagecheckout.js</name></action>
             <action method="addCss"><stylesheet>css/iwd/opc/opc.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/iwd/opc/overrideonepagecheckout.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery_ui.js</name></action>
 		</reference>
         
         <reference name="content">
