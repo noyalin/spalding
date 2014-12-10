@@ -24,34 +24,34 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<!--<div class="header-container">-->
-<!--    <div class="header">-->
-<!--        --><?php //if ($this->getIsHomePage()):?>
-<!--        <h2 class="logo"><strong>--><?php //echo $this->getLogoAlt() ?><!--</strong><a href="--><?php //echo $this->getUrl('') ?><!--" title="--><?php //echo $this->getLogoAlt() ?><!--" class="logo"><img src="--><?php //echo $this->getLogoSrc() ?><!--" alt="--><?php //echo $this->getLogoAlt() ?><!--" /></a></h2>-->
-<!--        --><?php //else:?>
-<!--        <a href="--><?php //echo $this->getUrl('') ?><!--" title="--><?php //echo $this->getLogoAlt() ?><!--" class="logo"><strong>--><?php //echo $this->getLogoAlt() ?><!--</strong><img src="--><?php //echo $this->getLogoSrc() ?><!--" alt="--><?php //echo $this->getLogoAlt() ?><!--" /></a>-->
-<!--        --><?php //endif?>
-<!--        -->
-<!--        <div class="quick-access">-->
-<!--		--><?php //echo $this->getChildHtml('cart_sidebar_top'); ?>
-<!--            --><?php //echo $this->getChildHtml('header_phone_block'); ?>
-<!--            <p class="welcome-msg">--><?php //echo $this->getWelcome()?><!--</p>-->
-<!--            --><?php //echo $this->getChildHtml('topLinksCustom') ?>
-<!--            <div class="switchers">-->
-<!--                --><?php //echo $this->getChildHtml('store_switcher_header') ?>
-<!--                --><?php //echo $this->getChildHtml('store_language') ?>
-<!--            </div>-->
-<!--        </div>-->
-<!--        --><?php //echo $this->getChildHtml('topContainer'); ?>
-<!--    </div>-->
-<!--</div>-->
-<?php //echo $this->getChildHtml('topMenu') ?>
-<!--<div class="search-block">-->
-<!--    --><?php //echo $this->getChildHtml('topSearch') ?>
-<!--	<div class="search_block_content">--><?php //echo $this->getChildHtml('search_block_content'); ?><!--</div>-->
-<!--	<div class="sp"></div>-->
-<!--</div>-->
-<!--<div class="home_page_header_block">--><?php //echo $this->getChildHtml('home_page_header_block'); ?><!--</div>-->
+<div class="header-container">
+    <div class="header">
+        <?php if ($this->getIsHomePage()):?>
+        <h2 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h2>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
 
-<?php echo $this->getChildHtml('spalding_top_header'); ?>
-<?php echo $this->getChildHtml('home_page_header_block'); ?>
+        <div class="quick-access">
+		<?php echo $this->getChildHtml('cart_sidebar_top'); ?>
+            <?php echo $this->getChildHtml('header_phone_block'); ?>
+            <p class="welcome-msg"><?php echo $this->getWelcome()?></p>
+            <?php echo $this->getChildHtml('topLinksCustom') ?>
+            <div class="switchers">
+                <?php echo $this->getChildHtml('store_switcher_header') ?>
+                <?php echo $this->getChildHtml('store_language') ?>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+    </div>
+</div>
+<?php echo $this->getChildHtml('topMenu') ?>
+<div class="search-block">
+    <?php echo $this->getChildHtml('topSearch') ?>
+	<div class="search_block_content"><?php echo $this->getChildHtml('search_block_content'); ?></div>
+	<div class="sp"></div>
+</div>
+<div class="home_page_header_block"><?php echo $this->getChildHtml('home_page_header_block'); ?></div>
+
+<?php //echo $this->getChildHtml('spalding_top_header'); ?>
+<?php //echo $this->getChildHtml('home_page_header_block'); ?>

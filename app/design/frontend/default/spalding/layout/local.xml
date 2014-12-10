@@ -2,9 +2,9 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <action method="addCss"><stylesheet>css/skin.css</stylesheet></action>
-            <action method="addCss"><stylesheet>css/basic.css</stylesheet></action>
-            <action method="addCss"><stylesheet>css/spalding.css</stylesheet></action>
+            <!--<action method="addCss"><stylesheet>css/skin.css</stylesheet></action>-->
+            <!--<action method="addCss"><stylesheet>css/basic.css</stylesheet></action>-->
+            <!--<action method="addCss"><stylesheet>css/spalding.css</stylesheet></action>-->
         </reference>
         <reference name="header">
             <remove name="top.links" />
