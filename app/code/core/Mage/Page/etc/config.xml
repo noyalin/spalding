@@ -49,6 +49,12 @@
                     <template>page/empty.phtml</template>
                     <layout_handle>page_empty</layout_handle>
                 </empty>
+                <homepage module="page" translate="label">
+                    <label>homepage</label>
+                    <template>page/homepage.phtml</template>
+                    <layout_handle>page_homepage</layout_handle>
+                    <is_default>1</is_default>
+                </homepage>
                 <one_column module="page" translate="label">
                     <label>1 column</label>
                     <template>page/1column.phtml</template>
