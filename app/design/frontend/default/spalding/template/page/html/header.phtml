@@ -31,7 +31,7 @@
             $current_url = Mage::helper('core/url')->getCurrentUrl();
             if(!strstr($current_url,'customer/account/login/')){
                 ?>
-                <div class="header_logo"><img src='<?php echo $this->getSkinUrl("images/20141208001.jpg") ?>'></div>
+                <div class="header_logo"><img src='<?php echo $this->getSkinUrl("images/home/20141208001.jpg") ?>'></div>
             <?php
             }
             ?>
@@ -56,7 +56,7 @@
                         <a href="#">斯伯丁商城</a>
                         <a href="#">产品我科技</a>
                         <a href="#">新闻与媒体</a>
-                        <span class="searchBtn"><img src="../images/20141208001.png" alt=""></span>
+                        <span class="searchBtn"><img src='<?php echo $this->getSkinUrl("images/home/20141208001.png") ?>' alt=""></span>
                     </div>
                 <?php
                 }
@@ -66,7 +66,7 @@
         </div>
         <div class="dropDown_search" id="dropDown_search">
             <div class="dropDownBg"></div>
-            <div class="dropClose"><img src="../images/20141209010.png" alt=""></div>
+            <div class="dropClose"><img src='<?php echo $this->getSkinUrl("images/home/20141209010.png") ?>' alt=""></div>
             <div class="dropDownWrap clearfix">
                 <div class="dropDownWrapLeft ms-fl"></div>
                 <div class="dropDownLine ms-fl"></div>
@@ -102,3 +102,26 @@
 
 <?php //echo $this->getChildHtml('spalding_top_header'); ?>
 <?php //echo $this->getChildHtml('home_page_header_block'); ?>
+<script>
+    jQuery(function(){
+        setTimeout(function(){
+            var sliderH = jQuery('.spalding_index_slider img').height();
+            //alert(sliderH);
+            jQuery('#focus').css("height",sliderH);
+            //jQuery('.footer').css("display","block")
+        },100);
+
+        jQuery('.searchBtn').mouseover(function(){
+            jQuery(this).parents().find('.dropDown_search').slideDown();
+        });
+
+        jQuery('.dropDownBg').on("click",function(){
+            jQuery(this).parent('.dropDown_search').slideUp();
+        });
+        jQuery('.dropClose').on("click",function(){
+            jQuery(this).parent('.dropDown_search').slideUp();
+        });
+
+    });
+
+</script>
