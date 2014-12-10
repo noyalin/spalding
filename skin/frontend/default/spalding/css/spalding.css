@@ -24,21 +24,21 @@
 	position: absolute;
 }
 
-.headerWrap .header_nav_funs{
+.header_nav_funs{
 	font-size: 12px;
 	margin-top:5px;
 	text-align: right;
 	color:#999;
 }
-.headerWrap .header_nav_funs a{
+.header_nav_funs a{
 	color:#999;
 }
 
-.headerWrap .header_nav_funs a:hover{
+.header_nav_funs a:hover{
 	color:#fff;
 }
 
-.headerWrap .header_nav_funs span{
+.header_nav_funs span{
 	display: inline-block;
 	color:#e8a902;
 	background: url(../images/20141208002.png) left center no-repeat;
@@ -368,27 +368,152 @@
 /*底部 e*/
 
 
+/*登陆*/
+.spaldingBg{
+	width:100%;
+	height:100%;
+	position: fixed;
+	z-index: -1;
+	top:0;
+}
+
+.spaldingBg .spaldingBgImg{
+	position: relative;
+	width:1130px;
+	margin:0 auto;
+}
+
+.spaldingBg .spaldingBgImg img{
+	width: 100%;
+	height:100%;
+}
+
+.spaldingLogin{
+	position: relative;
+}
+
+.spaldingLogin .loginBox{
+	width:1130px;
+	margin:0 auto;
+}
+.loginBox .loginBoxWrap{
+	width:270px;
+	float: right;
+	margin-right: 140px;
+}
+
+.loginMain{
+	margin-top:145px;
+}
+
+.loginMain .login_backHome{
+	font-size: 12px;
+	background: url(../images/20141209011.png) left center no-repeat;
+	text-indent: 20px;
+}
+.loginMain .login_backHome a{
+	color:#fff;
+}
+
+.loginMain .login_backHome a:hover{
+	color:#999;
+}
+
+.loginMain .loginWel{
+	margin:15px 0 25px;
+}
+
+.loginMain p{
+	font-size: 12px;
+}
+
+.loginMain p a{
+	color:#fff;
+}
+
+.loginMain p a:hover{
+	color:#999;
+}
+.loginMain input{
+	margin-top:10px;
+	margin-bottom:20px;
+	width:260px;
+	height:20px;
+	padding:3px 5px;
+	border-radius: 3px;
+	font-size: 14px;
+	color:#666;
+}
+
+.loginSub .loginSubBtn{
+	width:120px;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color:#000;
+	border-radius: 4px;
+	background: #fdb905;
+}
+
+.loginSub .loginSubNoAccount{
+	width: 150px;
+	height:40px;
+	font-size: 12px;
+	text-align: right;
+}
+
+.loginSub .loginSubNoAccount a{
+	color:#fdb905;
+}
 
 
+.loginOther{
+	margin-top:20px;
+	font-size: 12px;
+	padding-bottom:5px;
+	margin-bottom:20px;
+	border-bottom:1px solid #999;
+}
 
+.loginOther span{
+	display: inline-block;
+	height:16px;
+	line-height: 16px;
+	margin-left:35px;
+}
 
+.loginOther span img{
+	vertical-align: middle;
+}
 
+.getAccont{
+	width:100px;
+	text-align: center;
+	padding:3px 10px;
+	font-size: 14px;
+	color:#000;
+	background:#ffb900;
+	border-radius: 4px;
+}
 
+.getAccont img{
+	vertical-align: middle;
+}
 
+.loginCode{
+	text-align: center;
+	font-size: 12px;
+	margin-top:30px;
+}
 
+.loginCode span{
+	margin:0 5px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.loginBottom{
+	font-size: 12px;
+	line-height: 1.4em;
+	margin:40px 0 20px;
+}
