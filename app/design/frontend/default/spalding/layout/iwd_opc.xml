@@ -116,6 +116,12 @@
     </customer_account_index>
 
     <customer_account_login>
+        <reference name="root">
+            <remove name="footer" />
+            <action method="setTemplate">
+                <template>page/loginpage.phtml</template>
+            </action>
+        </reference>
     	<reference name="head">           
             <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>    	
         </reference>

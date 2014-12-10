@@ -154,19 +154,19 @@
 .spalding_plateWrap .plateBox_01{
 	width:255px;
 	height:190px;
-	background: url(../images/20141209004.png) left bottom no-repeat;
+	background: url(../images/homepage/20141209004.png) left bottom no-repeat;
 }
 
 .spalding_plateWrap .plateBox_02{
 	width:255px;
 	height:190px;
-	background: url(../images/20141209005.png) left bottom no-repeat;
+	background: url(../images/homepage/20141209005.png) left bottom no-repeat;
 }
 
 .spalding_plateWrap .plateBox_03{
 	width:255px;
 	height:190px;
-	background: url(../images/20141209006.png) left bottom no-repeat;
+	background: url(../images/homepage/20141209006.png) left bottom no-repeat;
 }
 
 .spalding_plateWrap .plateBox_03 ul{
@@ -174,7 +174,7 @@
 	margin-left:20px;
 }
 
-.spalding_plateWrap .plateBox_03 ul li{background: url(../images/20141209009.png) left center no-repeat;
+.spalding_plateWrap .plateBox_03 ul li{background: url(../images/homepage/20141209009.png) left center no-repeat;
 	width:220px;
 	height:26px;
 	line-height: 26px;
@@ -182,7 +182,7 @@
 	text-indent: 20px;
 	font-size: 12px;
 }
-.spalding_plateWrap .plateBox_03 ul li:hover{background: url(../images/20141209008.png) left center no-repeat;
+.spalding_plateWrap .plateBox_03 ul li:hover{background: url(../images/homepage/20141209008.png) left center no-repeat;
 }
 
 .spalding_plateWrap .plateBox_03 ul li a{

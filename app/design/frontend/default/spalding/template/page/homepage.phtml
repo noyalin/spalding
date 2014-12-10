@@ -34,19 +34,71 @@
 <head>
 <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
-<?php echo $this->getChildHtml('after_body_start') ?>
-<?php echo $this->getChildHtml('header') ?>
-<div class="wrapper">
-    <?php echo $this->getChildHtml('global_notices') ?>
-    <div class="page">
+<body style="background:#000; margin-top:-15px;">
+<?php //echo $this->getChildHtml('after_body_start') ?>
+<?php //echo $this->getChildHtml('header') ?>
+<!-- 顶部 header s -->
+<div class="header">
+    <div class="headerWrap clearfix">
+        <div class="header_logo"><img src='<?php echo $this->getSkinUrl("images/20141208001.jpg") ?>'></div>
+        <div class="header_nav ms-fr">
+            <div class="header_nav_funs">
+                <a href="#">登录</a>&nbsp;|&nbsp;
+                <a href="#">注册</a>&nbsp;|&nbsp;
+                <a href="#">用户中心</a>&nbsp;|&nbsp;
+                <a href="#">我的订单</a>
+                <span>购物车<i><img src="../images/20141208003.png" alt=""></i></span>
+            </div>
+            <div class="header_nav_wrap">
+                <a href="#">首页</a>
+                <a href="#">关于斯伯丁</a>
+                <a href="#">斯伯丁商城</a>
+                <a href="#">产品我科技</a>
+                <a href="#">新闻与媒体</a>
+                <span class="searchBtn"><img src="../images/20141208001.png" alt=""></span>
+            </div>
+        </div>
+    </div>
+    <div class="dropDown_search" id="dropDown_search">
+        <div class="dropDownBg"></div>
+        <div class="dropClose"><img src="../images/20141209010.png" alt=""></div>
+        <div class="dropDownWrap clearfix">
+            <div class="dropDownWrapLeft ms-fl"></div>
+            <div class="dropDownLine ms-fl"></div>
+            <div class="dropDownWrapRig ms-fl"></div>
+        </div>
 
-        <?php echo $this->getChildHtml('content') ?>
-        <?php echo $this->getChildHtml('footer') ?>
-        <?php echo $this->getChildHtml('global_cookie_notice') ?>
-        <?php echo $this->getChildHtml('before_body_end') ?>
     </div>
 </div>
-<?php echo $this->getAbsoluteFooter() ?>
+<?php
+echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_background')->toHtml();
+?>
+<div class="spalding_index_plate">
+    <div class="spalding_plateWrap clearfix">
+        <div class="plateBox plateBox_01"></div>
+        <div class="plateBox plateBox_02"></div>
+        <div class="plateBox plateBox_03">
+            <ul>
+                <li><a href="#">2014年斯伯丁上海全民线下活动</a></li>
+                <li><a href="#">2014年斯伯丁上海全民线下活动</a></li>
+                <li><a href="#">2014年斯伯丁上海全民线下活动年斯伯丁上海全民线下活动</a></li>
+                <li><a href="#">2014年斯伯丁上海全民线下活动</a></li>
+            </ul>
+        </div>
+        <div class="plateBox plateBox_tf ms-fl"><a href="#"><img src='<?php echo $this->getSkinUrl("images/homepage/20141209007.png") ?>'></a></div>
+    </div>
+</div>
+<!-- 顶部 header e -->
+<div class="wrapper">
+<!--    --><?php //echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+
+<!--        --><?php //echo $this->getChildHtml('content') ?>
+        <?php echo $this->getChildHtml('footer') ?>
+<!--        --><?php //echo $this->getChildHtml('global_cookie_notice') ?>
+<!--        --><?php //echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<?php //echo $this->getAbsoluteFooter() ?>
 </body>
 </html>
