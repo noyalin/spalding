@@ -117,6 +117,7 @@
 
     <customer_account_login>
         <reference name="root">
+            <remove name="footer" />
             <action method="setTemplate">
                 <template>page/loginpage.phtml</template>
             </action>
