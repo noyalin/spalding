@@ -1,6 +1,6 @@
 /* Top Shopping Cart */
 .top-cart { float:right;/* width:360px; */ position:relative; padding-left:7px; font:11px/1.35 Arial,Helvetica,sans-serif}
-.top-cart .block-title { white-space:nowrap; /* _width:242px; min-width:242px; */ cursor:pointer; background:#fff url(../images/btngouwuche.png) 1px 3px no-repeat; color:#f97720; font-weight:bold; font-size:11px; text-transform:uppercase; padding:5px 0 0 18px; line-height:18px; height:18px;background-color: #121212; }
+.top-cart .block-title { white-space:nowrap; /* _width:242px; min-width:242px; */ cursor:pointer; background:#fff url(../images/20141208002.png) 1px 3px no-repeat; color:#f97720; font-weight:bold; font-size:11px; text-transform:uppercase; padding:5px 0 0 18px; line-height:18px; height:18px;background-color: #121212; }
 .top-cart .block-title strong { display:block; padding-right:10px; background:url(../images/bkg_header-panel.gif) 100% -71px no-repeat; font-size:11px; color:#F97720; font-weight:bold; text-decoration:none; }
 .top-cart .block-title.expanded { background-position:0 3px !important; }
 .top-cart .block-title.expanded strong { background-position:100% -126px !important; color:#d33911; }
