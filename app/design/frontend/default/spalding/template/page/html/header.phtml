@@ -24,9 +24,18 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
     <div class="header">
         <div class="headerWrap clearfix">
-            <div class="header_logo"><img src='<?php echo $this->getSkinUrl("images/20141208001.jpg") ?>'></div>
+            <?php
+            $current_url = Mage::helper('core/url')->getCurrentUrl();
+            if(!strstr($current_url,'customer/account/login/')){
+                ?>
+                <div class="header_logo"><img src='<?php echo $this->getSkinUrl("images/20141208001.jpg") ?>'></div>
+            <?php
+            }
+            ?>
+
             <div class="header_nav ms-fr">
                 <div class="header_nav_funs">
                     <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
@@ -36,14 +45,23 @@
                     <?php echo $this->getChildHtml('cart_sidebar_top') ?>
 <!--                    <span>购物车<i><img src="../images/20141208003.png" alt=""></i></span>-->
                 </div>
-                <div class="header_nav_wrap">
-                    <a href="#">首页</a>
-                    <a href="#">关于斯伯丁</a>
-                    <a href="#">斯伯丁商城</a>
-                    <a href="#">产品我科技</a>
-                    <a href="#">新闻与媒体</a>
-                    <span class="searchBtn"><img src="../images/20141208001.png" alt=""></span>
-                </div>
+                <?php
+
+
+                if(!strstr($current_url,'customer/account/login/')){
+                    ?>
+                    <div class="header_nav_wrap">
+                        <a href="#">首页</a>
+                        <a href="#">关于斯伯丁</a>
+                        <a href="#">斯伯丁商城</a>
+                        <a href="#">产品我科技</a>
+                        <a href="#">新闻与媒体</a>
+                        <span class="searchBtn"><img src="../images/20141208001.png" alt=""></span>
+                    </div>
+                <?php
+                }
+                ?>
+
             </div>
         </div>
         <div class="dropDown_search" id="dropDown_search">
