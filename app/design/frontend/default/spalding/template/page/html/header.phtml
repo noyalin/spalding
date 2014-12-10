@@ -72,7 +72,13 @@
             <div class="dropDownBg"></div>
             <div class="dropClose"><img src='<?php echo $this->getSkinUrl("images/home/20141209010.png") ?>' alt=""></div>
             <div class="dropDownWrap clearfix">
-                <div class="dropDownWrapLeft ms-fl"></div>
+                <div class="dropDownWrapLeft ms-fl">
+                    <div class="search-block">
+                        <?php echo $this->getChildHtml('topAdvancedSearch') ?>
+                        <!--                        <div class="search_block_content">--><?php //echo $this->getChildHtml('search_block_content'); ?><!--</div>-->
+                        <div class="sp"></div>
+                    </div>
+                </div>
                 <div class="dropDownLine ms-fl"></div>
                 <div class="dropDownWrapRig ms-fl">
                     <div class="search-block">
