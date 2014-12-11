@@ -9,37 +9,35 @@
         $html = $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->toHtml();
     }
 ?>
+<div class="bodyBg"><img src='<?php echo $this->getSkinUrl("images/20141210002.jpg") ?>' alt=""></div>
 
 <div class="account-create">
-    <div class="page-title">
-        <h1><?php echo $this->__('Create an Account') ?></h1>
-    </div>
-    <?php echo $this->getChildHtml('form_fields_before')?>
-    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-    <?php echo $this->getChildHtml('paypalauth.register'); ?>
+<!--    <div class="page-title">-->
+<!--        <h1>--><?php //echo $this->__('Create an Account') ?><!--</h1>-->
+<!--    </div>-->
+<!--    --><?php //echo $this->getChildHtml('form_fields_before')?>
+<!--    --><?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<!--    --><?php //echo $this->getChildHtml('paypalauth.register'); ?>
+    <div style="height:110px; z-index:-2;"></div>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
-        <div class="fieldset">
+        <div class="spaldingMain">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
             <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
-            <h2 class="legend"><?php echo $this->__('Personal Information') ?></h2>
-            <ul class="form-list">
-                <li class="fields">
-                    <?php echo $html ?>
-                </li>
-                <li>
-                    <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
-                    <div class="input-box">
-                        <input type="text" name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
-                    </div>
-                </li>
-                <?php if ($this->isNewsletterEnabled()): ?>
-                <li class="control">
-                    <div class="input-box">
-                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                    </div>
-                    <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
-                </li>
-                <?php endif ?>
+            <div class="regTit">
+                注册新用户
+                <span class="ms-fr">我已经注册了，现在就&nbsp;<a href="login.html">登录</a></span>
+                <div class="clear"></div>
+            </div>
+                    <label for="email_address" class="required">
+                        <div class="regBox clearfix">
+                            <span class="regBoxTit ms-fl">创建理想登录名 *</span>
+			                <span class="regBoxWrap ms-fl">
+                                    <input type="text" id="firstname" name="firstname" value="" title="收件人姓名" maxlength="255" class="regBoxInp input-text required-entry">
+				            <span class="regBoxWrapSn">例如：张三，zhangsan，zhang,shan。使用（汉字、字母、下划线等字符），数字不能第一个字符出现</span>
+			                </span>
+                        </div>
+                    </label>
+
             <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
             <?php if ($_dob->isEnabled()): ?>
                 <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
@@ -52,110 +50,59 @@
             <?php if ($_gender->isEnabled()): ?>
                 <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
             <?php endif ?>
-            </ul>
-        </div>
-    <?php if($this->getShowAddressFields()): ?>
-        <div class="fieldset">
-            <input type="hidden" name="create_address" value="1" />
-            <h2 class="legend"><?php echo $this->__('Address Information') ?></h2>
-            <ul class="form-list">
-                <li class="fields">
-                    <div class="field">
-                        <label for="company"><?php echo $this->__('Company') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="company" id="company" value="<?php echo $this->htmlEscape($this->getFormData()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="input-text" />
-                        </div>
+
+
+                    <div class="regBox clearfix">
+<!--                        <label for="password" class="required"><em>*</em>--><?php //echo $this->__('Password') ?><!--</label>-->
+                        <span class="regBoxTit ms-fl">设定登录密码 *</span>
+                        <span class="regBoxWrap ms-fl">
+                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="regBoxInp input-text required-entry validate-password" />
+                        </span>
                     </div>
-                    <div class="field">
-                        <label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="telephone" id="telephone" value="<?php echo $this->htmlEscape($this->getFormData()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text required-entry" />
-                        </div>
+                    <div class="regBox clearfix">
+<!--                        <label for="confirmation" class="required"><em>*</em>--><?php //echo $this->__('Confirm Password') ?><!--</label>-->
+                        <span class="regBoxTit ms-fl">请再次输入密码 *</span>
+                        <span class="regBoxWrap ms-fl">
+                            <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" />
+                        </span>
                     </div>
-                </li>
-                <li class="wide">
-                    <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
-                    <div class="input-box">
-                        <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getFormData()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text required-entry" />
-                    </div>
-                </li>
-            <?php for ($_i=2, $_n=$this->helper('customer/address')->getStreetLines(); $_i<=$_n; $_i++): ?>
-                <li class="wide">
-                    <div class="input-box">
-                        <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getFormData()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i?>" class="input-text" />
-                    </div>
-                </li>
-            <?php endfor ?>
-                <li class="fields">
-                    <div class="field">
-                        <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="city" value="<?php echo $this->htmlEscape($this->getFormData()->getCity()) ?>" title="<?php echo $this->__('City') ?>" class="input-text required-entry" id="city" />
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label for="region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
-                        <div class="input-box">
-                            <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
-                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
-                            </select>
-                            <script type="text/javascript">
-                            //<![CDATA[
-                                $('region_id').setAttribute('defaultValue', "<?php echo $this->getFormData()->getRegionId() ?>");
-                            //]]>
-                            </script>
-                            <input type="text" id="region" name="region" value="<?php echo $this->htmlEscape($this->getRegion()) ?>" title="<?php echo $this->__('State/Province') ?>" class="input-text" style="display:none;" />
-                        </div>
-                    </div>
-                </li>
-                <li class="fields">
-                    <div class="field">
-                        <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="postcode" value="<?php echo $this->htmlEscape($this->getFormData()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international required-entry" />
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
-                        <div class="input-box">
-                            <?php echo $this->getCountryHtmlSelect() ?>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <input type="hidden" name="default_billing" value="1" />
-            <input type="hidden" name="default_shipping" value="1" />
-        </div>
-    <?php endif; ?>
-        <div class="fieldset">
-            <h2 class="legend"><?php echo $this->__('Login Information') ?></h2>
-            <ul class="form-list">
-                <li class="fields">
-                    <div class="field">
-                        <label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
-                        <div class="input-box">
-                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
-                        <div class="input-box">
-                            <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
-                        </div>
-                    </div>
-                </li>
                 <?php echo $this->getChildHtml('persistent.remember.me'); ?>
-            </ul>
             <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
-        </div>
-        <div class="buttons-set">
-            <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-            <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
-            <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
-        </div>
+
+            <div class="regBox clearfix">
+                <span class="regBoxTit ms-fl">电子邮件E-mail *</span>
+			<span class="regBoxWrap ms-fl">
+<!--				<input type="text" class="regBoxInp"><br>-->
+                <input type="text" name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" /><br>
+				<span class="regBoxWrapSn">您必须提供一个正确电子邮箱地址，否则账号无法激活</span>
+			</span>
+            </div>
+            <div class="regBox clearfix">
+                <span class="regBoxTit ms-fl">服务条款</span>
+			<span class="regBoxWrap ms-fl">
+				<span class="regBoxWrapSn">请检查以上您输入的个人账户信息（内容可以随意更改）,并阅读以下服务条款。</span>
+				<div class="regRuls">本协议是您与斯伯丁中国商城网站（简称“本站”，网址：www.SPALDINGCHINA.com）所有者（以下简称为“斯伯丁中国商城”）之间就斯伯丁商城网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击“同意以下协议，提交”按钮后，本协议即构成对双方有约束力的法律文件。第1条 本站服务条款的确认和接纳1.1	本站的各项电子服务的所有权和运作权归斯伯丁中国有限公司所有。用户同意所有协议是您与斯伯丁中国商城网站（简称“本站”，网址：www.SPALDINGCHINA.com）所有者（以下简称为“斯伯丁中国商城”）之间就斯伯丁商城网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击“同意以下协议，提交”按钮后，本协议即构成对双方有约束力的法律文件。第1条 本站服务条款的确认和接纳1.1	本站的各项电子服务的所有权和运作权归斯伯丁中国有限公司所有。用户同意所有</div>
+				<span class="regBoxWrapSn" style="margin:10px 0;">点击下面的“我接受”，及表示您同意接受上面的<font style="color:#666;text-decoration:underline;">条款</font>。</span><br>
+                <?php if ($this->isNewsletterEnabled()): ?>
+                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                        <span class="regBoxWrapSn">发送注册信息到我的注册邮箱？</span><br>
+<!--                    <label for="is_subscribed">--><?php //echo $this->__('Sign Up for Newsletter') ?><!--</label>-->
+                <?php endif ?>
+                <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button">我接受,并注册</button><br>
+				<span>* 为必填项</span>
+			</span>
+            </div>
+
+
+<!--        <div class="buttons-set">-->
+<!--            <p class="required">--><?php //echo $this->__('* Required Fields') ?><!--</p>-->
+<!--            <p class="back-link"><a href="--><?php //echo $this->escapeUrl($this->getBackUrl()) ?><!--" class="back-link"><small>&laquo; </small>--><?php //echo $this->__('Back') ?><!--</a></p>-->
+<!--            <button type="submit" title="--><?php //echo $this->__('Submit') ?><!--" class="button"><span><span>--><?php //echo $this->__('Submit') ?><!--</span></span></button>-->
+<!--        </div>-->
         <?php if ($isContextCheckout): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
+        </div>
     </form>
     <script type="text/javascript">
     //<![CDATA[
@@ -164,5 +111,28 @@
         new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
         <?php endif; ?>
     //]]>
+    </script>
+    <script>
+        $(function(){
+            setTimeout(function(){
+                var sliderH = $('.spalding_index_slider img').height();
+                //alert(sliderH);
+                $('#focus').css("height",sliderH);
+                //$('.footer').css("display","block")
+            },100);
+
+            $('.searchBtn').mouseover(function(){
+                $(this).parents().find('.dropDown_search').slideDown();
+            });
+
+            $('.dropDownBg').on("click",function(){
+                $(this).parent('.dropDown_search').slideUp();
+            });
+            $('.dropClose').on("click",function(){
+                $(this).parent('.dropDown_search').slideUp();
+            });
+
+        });
+
     </script>
 </div>

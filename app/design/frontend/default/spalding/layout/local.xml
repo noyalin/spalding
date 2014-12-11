@@ -2,7 +2,9 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <action method="addCss"><stylesheet>css/skin.css</stylesheet></action>
+            <!--<action method="addCss"><stylesheet>css/skin.css</stylesheet></action>-->
+            <!--<action method="addCss"><stylesheet>css/basic.css</stylesheet></action>-->
+            <!--<action method="addCss"><stylesheet>css/spalding.css</stylesheet></action>-->
         </reference>
         <reference name="header">
             <remove name="top.links" />
@@ -64,7 +66,8 @@
             <action method="insert"><blockName>cart_sidebar</blockName><siblingname></siblingname><after></after></action>
         </reference>
         <reference name="header">
-            <block type="checkout/cart_sidebar" name="cart_sidebar_top" template="checkout/cart/sidebar-top.phtml" before="-">
+            <!--<block type="checkout/cart_sidebar" name="cart_sidebar_top" template="checkout/cart/sidebar-top.phtml" before="-">-->
+            <block type="checkout/cart_sidebar" name="cart_sidebar_top" template="checkout/cart/cartheader.phtml" before="-">
                 <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
                 <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
                 <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
