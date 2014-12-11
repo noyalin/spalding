@@ -395,7 +395,7 @@ IWD.OPC = {
 			IWD.OPC.Checkout.unlockPlaceOrder();				
 			
 			IWD.OPC.Plugin.dispatch('responseSaveOrder', response);
-		},
+		}
 		
 		
 };
@@ -845,7 +845,7 @@ IWD.OPC.Billing = {
 					IWD.OPC.Billing.bill_need_update = false;		
 					IWD.OPC.Checkout.xhr = $j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/saveBilling',form, IWD.OPC.Checkout.prepareAddressResponse,'json');
 			}, 500);
-		},
+		}
 		
 };
 
@@ -1077,7 +1077,7 @@ IWD.OPC.Comment = {
 				}
 			});
 			
-		},		
+		}
 };
 
 IWD.OPC.Agreement ={
