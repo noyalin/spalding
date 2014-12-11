@@ -31,7 +31,11 @@
             $current_url = Mage::helper('core/url')->getCurrentUrl();
             if(!strstr($current_url,'customer/account/login/')){
                 ?>
-                <div class="header_logo"><img src='<?php echo $this->getSkinUrl("images/home/20141208001.jpg") ?>'></div>
+                <div class="header_logo">
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                        <img src='<?php echo $this->getSkinUrl("images/20141208001.jpg") ?>'>
+                    </a>
+                </div>
             <?php
             }
             ?>
@@ -56,7 +60,7 @@
                         <a href="#">斯伯丁商城</a>
                         <a href="#">产品我科技</a>
                         <a href="#">新闻与媒体</a>
-                        <span class="searchBtn"><img src='<?php echo $this->getSkinUrl("images/home/20141208001.png") ?>' alt=""></span>
+                        <span class="searchBtn"><img src='<?php echo $this->getSkinUrl("images/20141208001.png") ?>' alt=""></span>
                     </div>
                 <?php
                 }
@@ -66,11 +70,23 @@
         </div>
         <div class="dropDown_search" id="dropDown_search">
             <div class="dropDownBg"></div>
-            <div class="dropClose"><img src='<?php echo $this->getSkinUrl("images/home/20141209010.png") ?>' alt=""></div>
+            <div class="dropClose"><img src='<?php echo $this->getSkinUrl("images/20141209010.png") ?>' alt=""></div>
             <div class="dropDownWrap clearfix">
-                <div class="dropDownWrapLeft ms-fl"></div>
+                <div class="dropDownWrapLeft ms-fl">
+                    <div class="search-block">
+                        <?php echo $this->getChildHtml('topAdvancedSearch') ?>
+                        <!--                        <div class="search_block_content">--><?php //echo $this->getChildHtml('search_block_content'); ?><!--</div>-->
+                        <div class="sp"></div>
+                    </div>
+                </div>
                 <div class="dropDownLine ms-fl"></div>
-                <div class="dropDownWrapRig ms-fl"></div>
+                <div class="dropDownWrapRig ms-fl">
+                    <div class="search-block">
+                        <?php echo $this->getChildHtml('topSearch') ?>
+<!--                        <div class="search_block_content">--><?php //echo $this->getChildHtml('search_block_content'); ?><!--</div>-->
+                        <div class="sp"></div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -93,11 +109,7 @@
 <!--        --><?php //echo $this->getChildHtml('topContainer'); ?>
     </div>
 <?php //echo $this->getChildHtml('topMenu') ?>
-<!--<div class="search-block">-->
-<!--    --><?php //echo $this->getChildHtml('topSearch') ?>
-<!--	<div class="search_block_content">--><?php //echo $this->getChildHtml('search_block_content'); ?><!--</div>-->
-<!--	<div class="sp"></div>-->
-<!--</div>-->
+
 <!--<div class="home_page_header_block">--><?php //echo $this->getChildHtml('home_page_header_block'); ?><!--</div>-->
 
 <?php //echo $this->getChildHtml('spalding_top_header'); ?>
