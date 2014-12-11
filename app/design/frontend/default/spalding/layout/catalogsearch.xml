@@ -31,6 +31,8 @@
     <default>
         <reference name="header">
             <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+            <block type="catalogsearch/advanced_form" name="topAdvancedSearch" as="topAdvancedSearch" template="catalogsearch/advanced/form.phtml"/>
+
         </reference>
         <reference name="footer_links">
             <action method="addLink" translate="label title" module="catalogsearch" ifconfig="catalog/seo/search_terms">

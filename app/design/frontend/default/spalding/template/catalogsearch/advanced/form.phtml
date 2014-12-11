@@ -41,7 +41,7 @@
         <h2 class="legend"><?php echo $this->__('Search Settings') ?></h2>
         <ul class="form-list" id="advanced-search-list">
             <?php foreach ($this->getSearchableAttributes() as $_attribute): ?>
-            <?php $_code = $_attribute->getAttributeCode();echo $_code." aaaaaaaaaaaaaaa"; ?>
+            <?php $_code = $_attribute->getAttributeCode();echo $_code; ?>
             <li>
                 <label for="<?php echo $_code ?>"><?php echo $this->getAttributeLabel($_attribute) ?></label>
                 <?php switch($this->getAttributeInputType($_attribute)):
