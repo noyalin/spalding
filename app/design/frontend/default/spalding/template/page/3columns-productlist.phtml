@@ -1,0 +1,231 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body>
+<div class="bodyBg">
+    <?php
+    echo "<img src='".$this->getSkinUrl('images/20141210002.jpg')."'>";
+    ?>
+</div>
+<?php echo $this->getChildHtml('header') ?>
+
+<div style="height:110px; z-index:-2;"></div>
+<!-- 主框架 s -->
+<div class="spaldingMain clearfix">
+<!-- 左侧导航 s -->
+<div class="block block-layered-nav ms-fl">
+    <div class="block-title">
+        <img src="<?php echo $this->getSkinUrl('images/product_leftNav_topLogo.jpg') ?>" alt="">
+    </div>
+
+    <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+</div>
+<!-- 右侧 图片轮放 & 产品列表 s -->
+<!-- <div class="product_right ms-fl">
+
+
+</div> -->
+<!--    --><?php //echo $this->getChildHtml('content') ?>
+
+<div class="col-main ms-fl">
+        <div class="purduct_rig_slide"><img src="../images/product_slideImg.jpg" alt=""></div>
+    <div class="category-products">
+        <div class="toolbar clearfix">
+            <div class="pager ms-fr">
+                <div class="limiter">
+                    <span class="pageNow"><a href="#">1</a></span>
+                    <span><a href="#">2</a></span>
+                    <span><a href="#">3</a></span>
+                    <span><a href="#">4</a></span>
+                </div>
+            </div>
+            <div class="sorter ms-fl">
+                <div class="sort-by">
+                    <label>排序方式</label>
+                    <select>
+                        <option value="" selected="selected">价格从高到低</option>
+                        <option value="">价格从低到高</option>
+                        <option value="">销量从高到低</option>
+                        <option value="">销量从低到高</option>
+                        <option value="">浏览从高到低</option>
+                        <option value="">浏览从低到高</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="proListFunLine"></div>
+        <ul class="products-grid first last odd clearfix">
+            <li class="item first">
+                <div class="img-over">
+                    <div class="img-over-sn">
+                        <h3>NBA热火队队徽球</h3>
+                        <p>74-00000</p>
+                        <h3>￥199</h3>
+                    </div>
+                    <div class="products-buyNow"><button>立即购买</button></div>
+
+                </div>
+                <a href="javascript" title="" class="product-image">
+                    <img src="../images/product_ball.jpg" width="210" height="210" alt="" />
+                </a>
+
+                <h2 class="product-name"><a href="#" title="">SPALDING<br>NBA涂鸦系列橡胶室外篮球73-722y</a></h2>
+                <div class="short-description"></div>
+                <div class="price-box">
+                    <!-- <span class="price-label">Our Price:</span>  -->
+                    <span class="regular-price" id="product-price-23"> <span class="price">US$1,000.00</span> </span>
+                </div>
+
+            </li>
+            <li class="item">
+                <div class="img-over">
+                    <div class="img-over-sn">
+                        <h3>NBA热火队队徽球</h3>
+                        <p>74-00000</p>
+                        <h3>￥199</h3>
+                    </div>
+                    <div class="products-buyNow"><button>立即购买</button></div>
+
+                </div>
+                <a href="#" title="" class="product-image">
+                    <img src="../images/product_ball.jpg" width="210" height="210" alt="" />
+                </a>
+                <h2 class="product-name"><a href="#" title="">SPALDING<br>73-840y 男子</a></h2>
+                <div class="short-description"></div>
+                <div class="price-box">
+                    <!-- <span class="price-label">Our Price:</span>  -->
+                    <span class="regular-price" id="product-price-24"> <span class="price">US$1,000.00</span> </span>
+                </div>
+                <div class="sp"></div>
+            </li>
+            <li class="item first">
+                <div class="img-over">
+                    <div class="img-over-sn">
+                        <h3>NBA热火队队徽球</h3>
+                        <p>74-00000</p>
+                        <h3>￥199</h3>
+                    </div>
+                    <div class="products-buyNow"><button>立即购买</button></div>
+
+                </div>
+                <a href="#" title="" class="product-image">
+                    <img src="../images/product_ball.jpg" width="210" height="210" alt="" />
+                </a>
+                <h2 class="product-name"><a href="#" title="">SPALDING<br>NBA涂鸦系列橡胶室外篮球73-722y</a></h2>
+                <div class="short-description"></div>
+                <div class="price-box">
+                    <!-- <span class="price-label">Our Price:</span>  -->
+                    <span class="regular-price" id="product-price-23"> <span class="price">US$1,000.00</span> </span>
+                </div>
+                <div class="sp"></div>
+            </li>
+            <div class="proListLine"></div>
+            <li class="item">
+                <div class="img-over">
+                    <div class="img-over-sn">
+                        <h3>NBA热火队队徽球</h3>
+                        <p>74-00000</p>
+                        <h3>￥199</h3>
+                    </div>
+                    <div class="products-buyNow"><button>立即购买</button></div>
+
+                </div>
+                <a href="#" title="" class="product-image">
+                    <img src="../images/product_ball.jpg" width="210" height="210" alt="" />
+                </a>
+                <h2 class="product-name"><a href="#" title="">SPALDING<br>NBA涂鸦系列橡胶室外篮球73-722y</a></h2>
+                <div class="short-description"></div>
+                <div class="price-box">
+                    <!-- <span class="price-label">Our Price:</span>  -->
+                    <span class="regular-price" id="product-price-23"> <span class="price">US$1,000.00</span> </span>
+                </div>
+                <div class="sp"></div>
+            </li>
+            <li class="item">
+                <div class="img-over">
+                    <div class="img-over-sn">
+                        <h3>NBA热火队队徽球</h3>
+                        <p>74-00000</p>
+                        <h3>￥199</h3>
+                    </div>
+                    <div class="products-buyNow"><button>立即购买</button></div>
+
+                </div>
+                <a href="#" title="" class="product-image">
+                    <img src="../images/product_ball.jpg" width="210" height="210" alt="" />
+                </a>
+                <h2 class="product-name"><a href="#" title="">SPALDING<br>NBA涂鸦系列橡胶室外篮球73-722y</a></h2>
+                <div class="short-description"></div>
+                <div class="price-box">
+                    <!-- <span class="price-label">Our Price:</span>  -->
+                    <span class="regular-price" id="product-price-23"> <span class="price">US$1,000.00</span> </span>
+                </div>
+                <div class="sp"></div>
+            </li>
+            <li class="item">
+                <div class="img-over">
+                    <div class="img-over-sn">
+                        <h3>NBA热火队队徽球</h3>
+                        <p>74-00000</p>
+                        <h3>￥199</h3>
+                    </div>
+                    <div class="products-buyNow"><button>立即购买</button></div>
+
+                </div>
+                <a href="#" title="" class="product-image">
+                    <img src="../images/product_ball.jpg" width="210" height="210" alt="" />
+                </a>
+                <h2 class="product-name"><a href="#" title="">SPALDING<br>NBA涂鸦系列橡胶室外篮球73-722y</a></h2>
+                <div class="short-description"></div>
+                <div class="price-box">
+                    <!-- <span class="price-label">Our Price:</span>  -->
+                    <span class="regular-price" id="product-price-23"> <span class="price">US$1,000.00</span> </span>
+                </div>
+                <div class="sp"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 右侧 图片轮放 & 产品列表 e -->
+
+</div>
+<!-- 主框架 e -->
+<div style="width:100%;height:30px;"></div><!-- 底部充高 -->
+</div>
+<!-- 底部 bottom e -->
+</body>
+</html>
