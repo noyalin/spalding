@@ -33,7 +33,12 @@
                 ?>
                 <div class="header_logo">
                     <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
-                        <img src='<?php echo $this->getSkinUrl("images/20141208001.jpg") ?>'>
+                        <?php if ($this->getIsHomePage()){
+                            echo "<img src='".$this->getSkinUrl("images/20141208001.jpg")."'/>";
+                        }else{
+                            echo "<img src='".$this->getSkinUrl("images/20141210001.jpg")."'/>";
+                        }
+                        ?>
                     </a>
                 </div>
             <?php
@@ -42,8 +47,22 @@
 
             <div class="header_nav ms-fr">
                 <div class="header_nav_funs">
-                    <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
-                    <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
+                    <?php
+                    if(Mage::getSingleton('customer/session')->isLoggedIn()){
+                        $customerName = Mage::helper('customer')->getCustomerName();
+                        echo "欢迎 $customerName";
+
+                    ?>
+                        <a href="<?php echo $this->getUrl('customer/account/logout/', array('_secure'=>true)) ?>">注销</a>&nbsp;|&nbsp;
+                    <?php
+                    }else{
+                        ?>
+                        <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
+                        <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
+                    <?php
+                    }
+                    ?>
+
                     <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">用户中心</a>&nbsp;|&nbsp;
                     <a href="<?php echo $this->getUrl('sales/guest/form/', array('_secure'=>true)) ?>">我的订单</a>
                     <?php echo $this->getChildHtml('cart_sidebar_top') ?>
