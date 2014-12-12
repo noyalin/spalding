@@ -22,6 +22,7 @@
 
 .headerWrap .header_logo{
 	position: absolute;
+	z-index: 999;
 }
 
 .header_nav_funs{
@@ -75,7 +76,7 @@
 .dropDown_search{
 	display: none;
 	position: relative;
-	width:1060px;
+	width:970px;
 	height:242px;
 	margin:0 auto;
 	z-index: 10;
@@ -103,7 +104,7 @@
 }
 
 .dropDownWrap .dropDownWrapLeft{
-	width:590px;
+	width:540px;
 	height:242px;
 }
 
@@ -111,8 +112,8 @@
 	font-size: 18px;
 	font-weight: bold;
 	color:#ffb900;
-	margin-top:10px;
-	margin-left:50px;
+	margin-top:60px;
+	margin-left:265px;
 }
 .dropDownWrap .dropDownLine{
 	width:1px;
@@ -123,7 +124,7 @@
 }
 
 .dropDownWrap .dropDownWrapRig{
-	width:469px;
+	width:430px;
 	height:242px;
 	background: #121111;
 }
@@ -132,7 +133,7 @@
 	font-size: 18px;
 	font-weight: bold;
 	color:#ffb900;
-	margin-top:65px;
+	margin-top:60px;
 	margin-left:25px;
 }
 .dropDownWrap .dropDownWrapRig p{
@@ -155,7 +156,7 @@
 }
 
 .dropDownWrap .dropDownWrapRig button{
-	width:165px;
+	width:170px;
 	height: 33px;
 	line-height: 33px;
 	font-size: 18px;
@@ -164,8 +165,21 @@
 	border:0;
 	background: #ffb900;
 	margin-top:10px;
-	margin-left:228px;
 	cursor: pointer;
+}
+
+.dropDownWrapRig span{
+	width:170px;
+	height: 33px;
+	text-align: center;
+	line-height: 33px;
+	color:#fff;
+	background: #222222;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left:25px;
+	margin-top:10px;
+	margin-right:23px;
 }
 
 .search_select{
@@ -173,7 +187,8 @@
 	width:220px;
 	float: left;
 	margin-top:10px;
-	margin-left:50px;
+	margin-left:20px;
+	margin-right: 10px;
 }
 
 .search_selectBox{
