@@ -33,7 +33,7 @@
 ?>
 <?php if($this->getCollection()->getSize()): ?>
 <div class="toolbar clearfix">
-    <div class="pager">
+    <div class="pager ms-fr">
         <p class="amount">
             <?php if($this->getLastPageNum()>1): ?>
                 <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
@@ -58,7 +58,7 @@
     </div>
 
     <?php if( $this->isExpanded() ): ?>
-    <div class="sorter">
+    <div class="sorter  ms-fl">
         <?php if( $this->isEnabledViewSwitcher() ): ?>
         <p class="view-mode">
             <?php $_modes = $this->getModes(); ?>
