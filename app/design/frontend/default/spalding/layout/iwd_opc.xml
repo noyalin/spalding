@@ -35,8 +35,9 @@
 			<action method="addItem"><type>skin_js</type><name>js/opcheckout.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/iwd/opc/lipp.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/iwd/opc/overrideonepagecheckout.js</name></action>
-            <action method="addCss"><stylesheet>css/iwd/opc/opc.css</stylesheet></action>
+            <!--<action method="addCss"><stylesheet>css/iwd/opc/opc.css</stylesheet></action>-->
             <action method="addCss"><stylesheet>css/iwd/opc/overrideonepagecheckout.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/iwd/opc/cartCheckout.css</stylesheet></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery_ui.js</name></action>
 		</reference>
         

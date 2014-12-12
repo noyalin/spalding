@@ -1,5 +1,7 @@
 <?php
 list($options,$addressId) = $this->getAddressesArray('billing');
+mage :: log($options);
+mage :: log($addressId);
 ?>
 <div id="co-billing-form">
     <h3><?php echo $this->__('Name & Address')?></h3>
@@ -8,6 +10,40 @@ list($options,$addressId) = $this->getAddressesArray('billing');
             <i class="add">&nbsp;</i>
         </a>
     </div>
+<!-- new format s-->
+
+    <div class="one_step addr_step">
+        <div class="step_title"><
+            h3><em class="index">1</em>选择收货地址</h3></div>
+        <div id="addressUl" class="step_main">
+            <div class="clearfix step_radio_wrap">
+                <?php foreach( $options as $eacAddr){
+                    $addrValueId = $eacAddr['value'];
+                    $addrLabel = $eacAddr['label'];
+                    $billingId = "billing_address_id_".$addrValueId;
+                    ?>
+                    <div class="step_radio">
+                        <input type="radio" value="<?php echo $addrValueId?>"  id="<?php echo $billingId?>"  name="billing_address_id">
+                        <label for="<?php echo $billingId?>">
+                            <span class="city_name">
+                                <?php echo $addrLabel?>
+                            </span>
+                        </label>
+                        <div class="btns">
+                            <a class="btn edit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
+                            <a class="btn set_def" onclick="saveAddressDefault(<?php echo $addrValueId?>)" href="javascript:;"><span>设为默认</span></a>
+                        </div>
+                        <i class="arrow"></i>
+                    </div>
+                <?php } ?>
+            </div>
+            <div class="add_addr"><a class="btn" href="javascript:;"><i class="add"></i><span>新增收货地址</span></a></div>
+        </div>
+    </div>
+
+
+    <!-- new format e -->
+
 
     <div id="dialog_new_address" title="新增收货地址" style="background-color: #000000;display:none;">
         <!--    <form method="post" action="" name="addressForm" id="addressForm">-->
