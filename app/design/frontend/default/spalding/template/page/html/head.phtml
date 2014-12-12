@@ -39,6 +39,11 @@
 	var SKIN_URL = '<?php echo $this->helper('core/js')->getJsSkinUrl('') ?>';
 //]]>
 </script>
+
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
 <script>
     jQuery(function(){
         setTimeout(function(){
@@ -59,9 +64,11 @@
             jQuery(this).parent('.dropDown_search').slideUp();
         });
 
+
+
         //搜索选择下拉框
-        $(".search_selected").bind("click",function(){
-            var selectUl = $(this).next('ul');
+        jQuery(".search_selected").bind("click",function(){
+            var selectUl = jQuery(this).next('ul');
             if(selectUl.is(":visible")){
                 selectUl.css("display","none");
             }else{
@@ -69,15 +76,10 @@
             }
         });
 
-        $('.scarch_select_option>li').click(function(){
-            $(this).parent().siblings('.search_selected').html("<span>" + $(this).html() + "</span>");
-            $(this).parent('ul').css("display","none");
+        jQuery('.scarch_select_option>li').click(function(){
+            jQuery(this).parent().siblings('.search_selected').html("<span>" + jQuery(this).html() + "</span>");
+            jQuery(this).parent('ul').css("display","none");
         });
 
     });
-
 </script>
-<?php echo $this->getCssJsHtml() ?>
-<?php echo $this->getChildHtml() ?>
-<?php echo $this->helper('core/js')->getTranslatorScript() ?>
-<?php echo $this->getIncludes() ?>
