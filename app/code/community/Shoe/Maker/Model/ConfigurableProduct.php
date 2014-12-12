@@ -358,6 +358,16 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setPromotionTag( $valueArr['promotionTag'] );
         $product->setCanonical( $valueArr['canonical'] );
         $product->setUrlKey( $valueArr['urlKey'] );
+        //根据URLKEY取得所有的图片
+        $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount']);
+        //保存图片
+        $skuImage =$valueArr['sku'];
+        $urlKeyImage = $valueArr['urlKey']."-1.jpg";
+        $product->setImage("/$skuImage/$urlKeyImage");
+        $product->setSmallImage("/$skuImage/$urlKeyImage");
+        $product->setThumbnail("/$skuImage/$urlKeyImage");
+
+
         $product->setSpecialShippingGroup( $valueArr['specialShippingGroup'] ); // 0, 1 or 2
         if ( $valueArr['eligibleForRewards'] == '0') {
             $product->setRewardPoints('0'); //
@@ -394,6 +404,51 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 
     }
 
+    public function getAllImagesByUrlkey($sku,$urlKey,$count){
+        $dir = Mage::getBaseDir()."/media/catalog/product/";
+        for($i=1;$i<=$count;$i++){
+            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
+            $needDir = $dir.$sku."/";
+            if(!file_exists($needDir)){
+                mkdir($needDir);
+            }
+            $filename = $needDir."$urlKey-$i.jpg";
+            if(file_exists($filename)){
+                continue;
+            }
+            mage :: log($filename);
+            $return = $this->grabImage($url,$filename);
+            if($return){
+                // means save succcess, save database
+            }else{
+                //重新获取
+            }
+        }
+    }
+    function grabImage($url,$filename="") {
+        if($url==""):return false;endif;
+
+        if($filename=="") {
+            $filename=date("dMYHis").'jpg';
+        }
+
+        ob_start();
+        readfile($url);
+        $img = ob_get_contents();
+        ob_end_clean();
+        $size = strlen($img);
+        if($img && $size){
+            $fp2=@fopen($filename, "a");
+            fwrite($fp2,$img);
+            fclose($fp2);
+            return $filename;
+        }else{
+            return null;
+        }
+
+
+
+    }
     public function saveOtherStore($product,$valueArr){
         $sku =  $valueArr['sku'];
         $websites = $valueArr['websites'];
