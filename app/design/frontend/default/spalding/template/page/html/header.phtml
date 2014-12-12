@@ -94,12 +94,12 @@
 
                 jQuery('.scarch_select_option>li').click(function(){
                    var args = jQuery(this).attr("param") + jQuery(this).val();
-                   window.open('http://localhost/spalding/products.html?' + args);
+                   window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>products.html?' + args);
 //                    alert(jQuery(this).html()+jQuery(this).val()+jQuery(this).attr("param"))
                 });
             });
             function searchClick(){
-                window.open('http://localhost/spalding/catalogsearch/result/?q=' + jQuery("#inputSearchVal").val());
+                window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>catalogsearch/result/?q=' + jQuery("#inputSearchVal").val());
 //                alert(args);
             }
             </script>
@@ -178,7 +178,8 @@
                 <div class="dropDownWrapRig ms-fl">
                     <h2>按产品名称/货号搜索</h2>
                     <p>请输入一款产品的型号或产品名称:</p>
-                    <input type="text" class="scarchInp" id="inputSearchVal">searchClick
+                    <input type="text" class="scarchInp" id="inputSearchVal">
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl()?>products/accessories.html"><span>全部配件</span></a>
                     <button onclick=searchClick()>搜索</button>
 <!--                    <button onclick="window.open('http://localhost/spalding/catalogsearch/advanced/result/?'.$searchArgs)">搜索</button>-->
                 </div>
