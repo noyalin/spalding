@@ -39,6 +39,44 @@
 	var SKIN_URL = '<?php echo $this->helper('core/js')->getJsSkinUrl('') ?>';
 //]]>
 </script>
+<script>
+    jQuery(function(){
+        setTimeout(function(){
+            var sliderH = jQuery('.spalding_index_slider img').height();
+            //alert(sliderH);
+            jQuery('#focus').css("height",sliderH);
+            //jQuery('.footer').css("display","block")
+        },100);
+
+        jQuery('.searchBtn').mouseover(function(){
+            jQuery(this).parents().find('.dropDown_search').slideDown();
+        });
+
+        jQuery('.dropDownBg').on("click",function(){
+            jQuery(this).parent('.dropDown_search').slideUp();
+        });
+        jQuery('.dropClose').on("click",function(){
+            jQuery(this).parent('.dropDown_search').slideUp();
+        });
+
+        //搜索选择下拉框
+        $(".search_selected").bind("click",function(){
+            var selectUl = $(this).next('ul');
+            if(selectUl.is(":visible")){
+                selectUl.css("display","none");
+            }else{
+                selectUl.css("display","block");
+            }
+        });
+
+        $('.scarch_select_option>li').click(function(){
+            $(this).parent().siblings('.search_selected').html("<span>" + $(this).html() + "</span>");
+            $(this).parent('ul').css("display","none");
+        });
+
+    });
+
+</script>
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>

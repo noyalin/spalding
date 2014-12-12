@@ -25,6 +25,7 @@
  */
 ?>
 
+
     <div class="header">
         <div class="headerWrap clearfix">
             <?php
@@ -68,45 +69,101 @@
 
             </div>
         </div>
+<!--                        --><?php //echo $this->getChildHtml('topAdvancedSearch') ?>
         <div class="dropDown_search" id="dropDown_search">
             <div class="dropDownBg"></div>
             <div class="dropClose"><img src='<?php echo $this->getSkinUrl("images/20141209010.png") ?>' alt=""></div>
             <div class="dropDownWrap clearfix">
                 <div class="dropDownWrapLeft ms-fl">
-                    <div class="search-block">
-                        <?php echo $this->getChildHtml('topAdvancedSearch') ?>
-                        <!--                        <div class="search_block_content">--><?php //echo $this->getChildHtml('search_block_content'); ?><!--</div>-->
-                        <div class="sp"></div>
+                    <h2>按条件搜索</h2>
+                    <div class="search_select">
+                        <p>篮球系列</p>
+                        <div class="search_selectBox">
+                            <div class="search_selected clearfix">
+                                <span class="ms-fl">请选择</span>
+                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
+                            </div>
+                            <ul class="scarch_select_option">
+                                <li>篮球系列11111</li>
+                                <li>篮球系列222</li>
+                                <li>篮球系列33333</li>
+                                <li>篮球系列4444</li>
+                            </ul>
+                        </div>
                     </div>
+                    <div class="search_select">
+                        <p>篮球场地分类</p>
+                        <div class="search_selectBox">
+                            <div class="search_selected clearfix">
+                                <span class="ms-fl">请选择</span>
+                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
+                            </div>
+                            <ul class="scarch_select_option">
+                                <li>篮球系列11111</li>
+                                <li>篮球系列222</li>
+                                <li>篮球系列33333</li>
+                                <li>篮球系列4444</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="search_select">
+                        <p>篮球材质</p>
+                        <div class="search_selectBox">
+                            <div class="search_selected clearfix">
+                                <span class="ms-fl">请选择</span>
+                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
+                            </div>
+                            <ul class="scarch_select_option">
+                                <li>篮球系列11111</li>
+                                <li>篮球系列222</li>
+                                <li>篮球系列33333</li>
+                                <li>篮球系列4444</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="search_select">
+                        <p>篮球装备&配件</p>
+                        <div class="search_selectBox">
+                            <div class="search_selected clearfix">
+                                <span class="ms-fl">请选择</span>
+                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
+                            </div>
+                            <ul class="scarch_select_option">
+                                <li>篮球系列11111</li>
+                                <li>篮球系列222</li>
+                                <li>篮球系列33333</li>
+                                <li>篮球系列4444</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="search_select">
+                        <p>篮球型号</p>
+                        <div class="search_selectBox">
+                            <div class="search_selected clearfix">
+                                <span class="ms-fl">请选择</span>
+                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
+                            </div>
+                            <ul class="scarch_select_option">
+                                <li>篮球系列11111</li>
+                                <li>篮球系列222</li>
+                                <li>篮球系列33333</li>
+                                <li>篮球系列4444</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
                 </div>
                 <div class="dropDownLine ms-fl"></div>
                 <div class="dropDownWrapRig ms-fl">
-                    <div class="search-block">
-                        <?php echo $this->getChildHtml('topSearch') ?>
-<!--                        <div class="search_block_content">--><?php //echo $this->getChildHtml('search_block_content'); ?><!--</div>-->
-                        <div class="sp"></div>
-                    </div>
+                    <h2>按产品名称/货号搜索</h2>
+                    <p>请输入一款产品的型号或产品名称:</p>
+                    <input type="text" class="scarchInp">
+                    <button>搜索</button>
                 </div>
             </div>
 
         </div>
     </div>
-<!--        --><?php //if ($this->getIsHomePage()):?>
-<!--        <h2 class="logo">-->
-<!--            <strong>--><?php //echo $this->getLogoAlt() ?><!--</strong><a href="--><?php //echo $this->getUrl('') ?><!--" title="--><?php //echo $this->getLogoAlt() ?><!--" class="logo"><img src="--><?php //echo $this->getLogoSrc() ?><!--" alt="--><?php //echo $this->getLogoAlt() ?><!--" /></a></h2>-->
-<!--        --><?php //else:?>
-<!--        <a href="--><?php //echo $this->getUrl('') ?><!--" title="--><?php //echo $this->getLogoAlt() ?><!--" class="logo"><strong>--><?php //echo $this->getLogoAlt() ?><!--</strong><img src="--><?php //echo $this->getLogoSrc() ?><!--" alt="--><?php //echo $this->getLogoAlt() ?><!--" /></a>-->
-<!--        --><?php //endif?>
-
-<!--        <div class="quick-access">-->
-<!--		--><?php //echo $this->getChildHtml('cart_sidebar_top'); ?>
-<!--            --><?php //echo $this->getChildHtml('topLinksCustom') ?>
-<!--            <div class="switchers">-->
-<!--                --><?php //echo $this->getChildHtml('store_switcher_header') ?>
-<!--                --><?php //echo $this->getChildHtml('store_language') ?>
-<!--            </div>-->
-<!--        </div>-->
-<!--        --><?php //echo $this->getChildHtml('topContainer'); ?>
     </div>
 <?php //echo $this->getChildHtml('topMenu') ?>
 
@@ -114,26 +171,3 @@
 
 <?php //echo $this->getChildHtml('spalding_top_header'); ?>
 <?php //echo $this->getChildHtml('home_page_header_block'); ?>
-<script>
-    jQuery(function(){
-        setTimeout(function(){
-            var sliderH = jQuery('.spalding_index_slider img').height();
-            //alert(sliderH);
-            jQuery('#focus').css("height",sliderH);
-            //jQuery('.footer').css("display","block")
-        },100);
-
-        jQuery('.searchBtn').mouseover(function(){
-            jQuery(this).parents().find('.dropDown_search').slideDown();
-        });
-
-        jQuery('.dropDownBg').on("click",function(){
-            jQuery(this).parent('.dropDown_search').slideUp();
-        });
-        jQuery('.dropClose').on("click",function(){
-            jQuery(this).parent('.dropDown_search').slideUp();
-        });
-
-    });
-
-</script>
