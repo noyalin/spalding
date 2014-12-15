@@ -443,7 +443,9 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
     public function getAllImagesByUrlkey($sku,$urlKey,$count){
         $dir = Mage::getBaseDir()."/media/catalog/product/";
         for($i=1;$i<=$count;$i++){
-            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
+//            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
+            $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$imagemoban='."$urlKey-$i";
+//            mage :: log($url);
             $needDir = $dir.$sku."/";
             if(!file_exists($needDir)){
                 mkdir($needDir);
