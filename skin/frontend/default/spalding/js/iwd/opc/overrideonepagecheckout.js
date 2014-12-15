@@ -96,7 +96,6 @@ function checkAddressForm(){
         flag = false;
     }
     var phoneJQ = jQuery("#telephone1");
-    alert(phoneJQ.val());
     if (isEmpty(phoneJQ.val())){
         jQuery("#phone_error").html("电话不能为空");
         phoneJQ.addClass("error");

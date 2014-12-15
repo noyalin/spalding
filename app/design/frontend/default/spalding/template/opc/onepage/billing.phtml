@@ -1,3 +1,11 @@
+<style type="text/css">
+    .checkoutNewAddress input.error, .new_address textarea.error, .new_address select.error {
+        border: 1px solid #FF0000;
+    }
+    .checkoutNewAddress .error_em {
+        color: #FF0000;
+    }
+</style>
 <?php
 list($options,$addressId) = $this->getAddressesArray('billing');
 mage :: log($options);
@@ -43,17 +51,19 @@ mage :: log($addressId);
         </div>
     </div>
 
-    <div class="checkoutNewAddress clearfix">
+    <div class="checkoutNewAddress clearfix" style="display: block">
         <div class="checkoutSmallTitle">新增收货地址</div>
 
         <div class="checkoutNewAddressContent">
             <div class="checkoutNewAddressContentItem clearfix">
                 <div class="checkoutNewAddressContentItemLeft">
-                    收货人姓名
+                    <label for="firstname" class="required"><span class="rStar">*</span>收货人姓名:</label>
                     &nbsp;&nbsp;*
                 </div>
                 <div class="checkoutNewAddressContentItemRight">
-                    <input type="text" class="regBoxInp"><br>
+                    <input type="hidden" value="addressid" id="addressid">
+                    <input type="text" title="收货人" name="firstname" id="firstname" value="" class="regBoxInp input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?>" required/>
+                    <em class="error_em" id="firstname_error"></em>
                 </div>
             </div>
 
@@ -63,15 +73,23 @@ mage :: log($addressId);
                     &nbsp;&nbsp;*
                 </div>
                 <div class="checkoutNewAddressContentItemRight">
-                    <select>
-                        <option>请选择地区、省份</option>
+                    <select  title="所在省市" id="region_id" required >
+                        <option value="">请选择</option>
+                        <option value="485" title="北京市">北京市</option><option value="486" title="天津市">天津市</option><option value="487" title="河北省">河北省</option><option value="488" title="山西省">山西省</option><option value="489" title="内蒙古">内蒙古</option><option value="490" title="辽宁省">辽宁省</option><option value="491" title="吉林省">吉林省</option><option value="492" title="黑龙江">黑龙江</option><option value="493" title="上海市">上海市</option><option value="494" title="江苏省">江苏省</option><option value="495" title="浙江省">浙江省</option><option value="496" title="安徽省">安徽省</option><option value="497" title="福建省">福建省</option><option value="498" title="江西省">江西省</option><option value="499" title="山东省">山东省</option><option value="500" title="河南省">河南省</option><option value="501" title="湖北省">湖北省</option><option value="502" title="湖南省">湖南省</option><option value="503" title="广东省">广东省</option><option value="504" title="广  西">广  西</option><option value="505" title="海南省">海南省</option><option value="506" title="重庆市">重庆市</option><option value="507" title="四川省">四川省</option><option value="508" title="贵州省">贵州省</option><option value="509" title="云南省">云南省</option><option value="510" title="西  藏">西  藏</option><option value="511" title="陕西省">陕西省</option><option value="512" title="甘肃省">甘肃省</option><option value="513" title="青海省">青海省</option><option value="514" title="宁  夏">宁  夏</option><option value="515" title="新  疆">新  疆</option><option value="516" title="台湾省">台湾省</option><option value="517" title="香  港">香  港</option><option value="518" title="澳  门">澳  门</option></select>
+                    <script type="text/javascript">
+                    </script>
+                    <input type="text" id="region" name="region" value=""  style="display: none" title="<?php echo $this->__('State/Province') ?>" />
+
+                    <select id="city_id"  name="city_id" title="市" class="validate-select" required>
+                        <option value="">请选择</option>
                     </select>
-                    <select>
-                        <option>--请选择--</option>
+                    <input type="text" id="city" name="city" value=""  style="display:none;" />
+
+                    <select id="district_id"  name="district_id" title="区" class="validate-select" required>
+                        <option value="">请选择</option>
                     </select>
-                    <select>
-                        <option>--请选择--</option>
-                    </select>
+                    <input type="text" id="district" name="district" value=""  style="display:none;" />
+                    <em class="error_em" id="address_error"></em>
                     <br>
                 </div>
             </div>
@@ -82,7 +100,9 @@ mage :: log($addressId);
                     &nbsp;&nbsp;*
                 </div>
                 <div class="checkoutNewAddressContentItemRight">
-                    <textarea rows="2"></textarea><br>
+<!--                    <textarea rows="2"></textarea><br>-->
+                    <input type="text" name="street[]" value="" title="街道地址" id="street_1" class="regBoxInp input-text" size="80" style="width: 600px;"/>
+                    <em class="error_em" id="street_error"></em>
                 </div>
             </div>
 
@@ -92,7 +112,8 @@ mage :: log($addressId);
                     &nbsp;&nbsp;*
                 </div>
                 <div class="checkoutNewAddressContentItemRight">
-                    <input type="text" class="regBoxInp"><br>
+                    <input type="text" name="postcode" value=""  id="postcode" />
+                    <em class="error_em" id="postcode_error"></em>
                 </div>
             </div>
 
@@ -102,7 +123,8 @@ mage :: log($addressId);
                     &nbsp;&nbsp;*
                 </div>
                 <div class="checkoutNewAddressContentItemRight">
-                    <input type="text" class="regBoxInp"><br>
+                    <input type="text" name="telephone" value=""   id="telephone1"  class="regBoxInp"/>
+                    <em class="error_em" id="phone_error"></em>
                 </div>
             </div>
 
@@ -118,7 +140,7 @@ mage :: log($addressId);
 
             <div class="checkoutNewAddressContentItem clearfix">
                 <div class="checkoutNewAddressContentItemSave add_addr">
-                    <a href="javascript:;" class="btn" muse_scanned="true">
+                    <a href="javascript:;" class="btn ds_dialog_yes" muse_scanned="true" id="4">
                         <i class="add"></i>
                         <span>保存</span>
                     </a>
@@ -131,93 +153,6 @@ mage :: log($addressId);
         </div>
     </div>
     <!-- new format e -->
-
-
-    <div id="dialog_new_address" title="新增收货地址" style="background-color: #000000;display:none;">
-        <!--    <form method="post" action="" name="addressForm" id="addressForm">-->
-        <div class="new_address">
-            <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                <tbody>
-                <?php //echo $this->getNameBlockHtml() ?>
-                <tr>
-                    <th><label for="firstname" class="required"><span class="rStar">*</span>收货人:</label></th>
-                    <td>
-                        <input type="hidden" value="addressid" id="addressid">
-                        <input type="text" title="收货人" name="firstname" id="firstname" value="" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?>" required/>
-                        <em class="error_em" id="firstname_error"></em>
-                        <input type="text" title="收货人" name="lastname" id="lastname" value="lastname" style="display:none"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th><label for="billing:region_id" class="required"><span class="rStar">*</span>所在地区</label></th>
-                    <td>
-                        <select  title="所在省市" id="region_id" required >
-                            <option value="">请选择</option>
-                            <option value="485" title="北京市">北京市</option><option value="486" title="天津市">天津市</option><option value="487" title="河北省">河北省</option><option value="488" title="山西省">山西省</option><option value="489" title="内蒙古">内蒙古</option><option value="490" title="辽宁省">辽宁省</option><option value="491" title="吉林省">吉林省</option><option value="492" title="黑龙江">黑龙江</option><option value="493" title="上海市">上海市</option><option value="494" title="江苏省">江苏省</option><option value="495" title="浙江省">浙江省</option><option value="496" title="安徽省">安徽省</option><option value="497" title="福建省">福建省</option><option value="498" title="江西省">江西省</option><option value="499" title="山东省">山东省</option><option value="500" title="河南省">河南省</option><option value="501" title="湖北省">湖北省</option><option value="502" title="湖南省">湖南省</option><option value="503" title="广东省">广东省</option><option value="504" title="广  西">广  西</option><option value="505" title="海南省">海南省</option><option value="506" title="重庆市">重庆市</option><option value="507" title="四川省">四川省</option><option value="508" title="贵州省">贵州省</option><option value="509" title="云南省">云南省</option><option value="510" title="西  藏">西  藏</option><option value="511" title="陕西省">陕西省</option><option value="512" title="甘肃省">甘肃省</option><option value="513" title="青海省">青海省</option><option value="514" title="宁  夏">宁  夏</option><option value="515" title="新  疆">新  疆</option><option value="516" title="台湾省">台湾省</option><option value="517" title="香  港">香  港</option><option value="518" title="澳  门">澳  门</option></select>
-                        <script type="text/javascript">
-                        </script>
-                        <input type="text" id="region" name="region" value=""  style="display: none" title="<?php echo $this->__('State/Province') ?>" />
-
-                        <select id="city_id"  name="city_id" title="市" class="validate-select" required>
-                            <option value="">请选择</option>
-                        </select>
-                        <input type="text" id="city" name="city" value=""  style="display:none;" />
-
-                        <select id="district_id"  name="district_id" title="区" class="validate-select" required>
-                            <option value="">请选择</option>
-                        </select>
-                        <input type="text" id="district" name="district" value=""  style="display:none;" />
-                        <em class="error_em" id="address_error"></em>
-                    </td>
-                </tr>
-                <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
-                <tr>
-                    <th><label for="street_1" class="required"><span class="rStar">*</span>街道地址</label></th>
-                    <td>
-                        <input type="text" name="street[]" value="" title="街道地址" id="street_1" class="input-text" size="80" style="width: 600px;"/>
-                        <em class="error_em" id="street_error"></em>
-                    </td>
-                </tr>
-                <tr>
-                    <th><label for="postcode" class="required"><span class="rStar">*</span>邮编</label></th>
-                    <td class="infoInput">
-                        <input type="text" name="postcode" value=""  id="postcode" />
-                        <em class="error_em" id="postcode_error"></em>
-                    </td>
-                </tr>
-                <tr>
-                    <th><label for="telephone" class="required"><span class="rStar">*</span>手机</label></th>
-                    <td class="infoInput">
-                        <input type="text" name="telephone" value=""   id="telephone1" />
-                        <em class="error_em" id="phone_error"></em>
-                    </td>
-                </tr>
-                <tr>
-                    <!--                --><?php //if($this->canSetAsDefaultBilling()): ?>
-                    <!--                    <td class="infoLabel defaultCheck"><label for="primary_billing">--><?php //echo $this->__('Use as my default billing address') ?><!--</label></td>-->
-                    <!--                    <td class="infoCheck"><input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox" /></td>-->
-                    <!--                --><?php //else: ?>
-                    <!--                    <td><input type="hidden" name="default_billing" value="1" /></td>-->
-                    <!--                --><?php //endif; ?>
-                </tr>
-                <tr style="display: none">
-                    <!--                --><?php //if($this->canSetAsDefaultShipping()): ?>
-                    <!--                    <td class="infoLabel  defaultCheck"><label for="primary_shipping">--><?php //echo $this->__('Use as my default shipping address') ?><!--</label></td>-->
-                    <!--                    <td class="infoCheck"><input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox" /></td>-->
-                    <!--                --><?php //else: ?>
-                    <!--                    <td><input type="hidden" name="default_shipping" value="1" /></td>-->
-                    <!--                --><?php //endif; ?>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align:center">
-                        <div class="ds_dialog_buttons" style="display: block;">
-                            <button class="ds_dialog_yes"></button> &nbsp; &nbsp; <button class="ds_dialog_no"></button></div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
         <script>
             jQuery(document).ready(function(){
 //            jQuery("#addressForm").validate();
