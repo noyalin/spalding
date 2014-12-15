@@ -13,8 +13,10 @@ mage :: log($addressId);
 <!-- new format s-->
 
     <div class="one_step addr_step">
-        <div class="step_title"><
-            h3><em class="index">1</em>选择收货地址</h3></div>
+        <div class="checkoutSubTitleMain">
+            <span class="checkoutSubTitleBall"></span>
+            <span class="checkoutSubTitleText">选择收货地址</span>
+        </div>
         <div id="addressUl" class="step_main">
             <div class="clearfix step_radio_wrap">
                 <?php foreach( $options as $eacAddr){
@@ -41,7 +43,93 @@ mage :: log($addressId);
         </div>
     </div>
 
+    <div class="checkoutNewAddress clearfix">
+        <div class="checkoutSmallTitle">新增收货地址</div>
 
+        <div class="checkoutNewAddressContent">
+            <div class="checkoutNewAddressContentItem clearfix">
+                <div class="checkoutNewAddressContentItemLeft">
+                    收货人姓名
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutNewAddressContentItemRight">
+                    <input type="text" class="regBoxInp"><br>
+                </div>
+            </div>
+
+            <div class="checkoutNewAddressContentItem clearfix">
+                <div class="checkoutNewAddressContentItemLeft">
+                    所在地区
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutNewAddressContentItemRight">
+                    <select>
+                        <option>请选择地区、省份</option>
+                    </select>
+                    <select>
+                        <option>--请选择--</option>
+                    </select>
+                    <select>
+                        <option>--请选择--</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+
+            <div class="checkoutNewAddressContentItem clearfix">
+                <div class="checkoutNewAddressContentItemLeft">
+                    街道地址
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutNewAddressContentItemRight">
+                    <textarea rows="2"></textarea><br>
+                </div>
+            </div>
+
+            <div class="checkoutNewAddressContentItem clearfix">
+                <div class="checkoutNewAddressContentItemLeft">
+                    邮政编码
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutNewAddressContentItemRight">
+                    <input type="text" class="regBoxInp"><br>
+                </div>
+            </div>
+
+            <div class="checkoutNewAddressContentItem clearfix">
+                <div class="checkoutNewAddressContentItemLeft">
+                    手机号码
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutNewAddressContentItemRight">
+                    <input type="text" class="regBoxInp"><br>
+                </div>
+            </div>
+
+            <div class="checkoutNewAddressContentItem clearfix">
+                <div class="checkoutNewAddressContentItemLeft">
+                    设置默认
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutNewAddressContentItemRight">
+                    <input type="checkbox"><br>
+                </div>
+            </div>
+
+            <div class="checkoutNewAddressContentItem clearfix">
+                <div class="checkoutNewAddressContentItemSave add_addr">
+                    <a href="javascript:;" class="btn" muse_scanned="true">
+                        <i class="add"></i>
+                        <span>保存</span>
+                    </a>
+                    <br /><br />
+                    *&nbsp;为必填项
+                </div>
+            </div>
+
+
+        </div>
+    </div>
     <!-- new format e -->
 
 
@@ -378,6 +466,11 @@ mage :: log($addressId);
         $('#contentWrap').delegate('div.step_radio label', 'click', function(e){
             jQuery('.step_radio').removeClass("selected");
             jQuery(this).parent().addClass("selected");
+        });
+
+        $('.step_radio').click(function() {
+            $(this).parent().children().removeClass('selected');
+            $(this).addClass('selected');
         });
     });
 
