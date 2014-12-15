@@ -120,7 +120,27 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                 $this->_getSession()->setAddressFormData($this->getRequest()->getPost())
                     ->addException($e, $this->__('Cannot save address.'));
             }
-            echo $address->getId();
+            $newId = $address->getId();
+            $label = $address->format('oneline');
+            $billingId = "billing_address_id_".$newId;
+            $return = <<<HTML
+                    <div class="step_radio">
+                        <input type="radio" value="<?php echo $newId?>"  id="<?php echo $billingId?>"  name="billing_address_id">
+                        <label for="<?php echo $billingId?>">
+                            <span class="city_name">
+                                $label
+                            </span>
+                        </label>
+                        <div class="btns">
+                            <a class="btn edit" data-addrid="<?php echo $newId?>" href="javascript:;"><span>修改地址</span></a>
+                            <a class="btn set_def" href="javascript:;"><span>设为默认</span></a>
+                        </div>
+                        <i class="arrow"></i>
+                    </div>
+HTML;
+
+            echo $return;
         }
     }
+
 }

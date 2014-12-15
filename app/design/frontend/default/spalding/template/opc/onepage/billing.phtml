@@ -41,7 +41,7 @@ mage :: log($addressId);
                         </label>
                         <div class="btns">
                             <a class="btn edit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
-                            <a class="btn set_def" onclick="saveAddressDefault(<?php echo $addrValueId?>)" href="javascript:;"><span>设为默认</span></a>
+                            <a class="btn set_def" href="javascript:;"><span>设为默认</span></a>
                         </div>
                         <i class="arrow"></i>
                     </div>
@@ -403,7 +403,7 @@ mage :: log($addressId);
             jQuery(this).parent().addClass("selected");
         });
 
-        $('.step_radio').click(function() {
+        $('.step_radio_wrap').delegate('div.step_radio', 'click',function() {
             $(this).parent().children().removeClass('selected');
             $(this).addClass('selected');
         });
@@ -443,9 +443,10 @@ mage :: log($addressId);
                         city_id:city_id
                     },
                     success: function(data){
-                        var id = data;
-                        jQuery("#billing_address_id_hidden").val(id);
-                        getAddress(id);
+                        jQuery(".step_radio_wrap").append(data);
+//                        var id = data;
+//                        jQuery("#billing_address_id_hidden").val(id);
+//                        getAddress(id);
                     },
                     error: function(e){}
                 });
