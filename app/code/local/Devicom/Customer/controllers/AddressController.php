@@ -41,36 +41,36 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
     public function formPostAjaxAction(){
         // Save data
         if ($this->getRequest()->isPost()) {
-            $params = $this->getRequest()->getParams();
-
             $customer = $this->_getSession()->getCustomer();
+            $params = $this->getRequest()->getParams();
             /* @var $address Mage_Customer_Model_Address */
             $address  = Mage::getModel('customer/address');
-
-            $errors = array();
-            $addressId = $params['address_id'];
-            if($addressId){
-                $existsAddress = Mage::getModel('customer/address')->load($addressId);
-                if($existsAddress){
-                    $existsAddress->setFirstname($params['firstName']);
+            $addressId = $this->getRequest()->getParam('id');
+            if ($addressId) {
+                $existsAddress = $customer->getAddressById($addressId);
+                if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
+                    $address->setId($existsAddress->getId());
                     $existsAddress->setRegionId($params['region_id']);
                     $existsAddress->setCityId($params['city_id']);
                     $existsAddress->setCity($params['city']);
                     $existsAddress->setDistrictId($params['district_id']);
                     $existsAddress->setDistrict($params['district']);
-                    $existsAddress->setStreet($params['street']);
-                    $existsAddress->setPostcode($params['postcode']);
-                    $existsAddress->setTelephone($params['telephone']);
                     $existsAddress->save();
-//                    var_dump($existsAddress->toArray()) ;
+                    $this->_getSession()->addSuccess($this->__('The address has been saved.'));
+                    $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
                     return;
                 }
-
             }
+
+            $errors = array();
+
             /* @var $addressForm Mage_Customer_Model_Form */
             $addressForm = Mage::getModel('customer/form');
             $addressForm->setFormCode('customer_address_edit')
                 ->setEntity($address);
+
+            $paraFromPost = $this->getRequest();
+//            $addressData    = $addressForm->extractData($this->getRequest());
             $addressData    = array(
                 'firstname' => $params['firstName'],
                 'company' => false,
@@ -86,15 +86,16 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                 'district_id' =>$params['district_id'],
                 'city_id' => $params['city_id'],
             );
+            $addressErrors  = $addressForm->validateData($addressData);
+            if ($addressErrors !== true) {
+                $errors = $addressErrors;
+            }
+
             try {
                 $addressForm->compactData($addressData);
-                $shipDefault = null;
-                if($this->getRequest()->getParam('default_billing', false)){
-                    $shipDefault = 1;
-                }
                 $address->setCustomerId($customer->getId())
-                    ->setIsDefaultBilling(true)
-                    ->setIsDefaultShipping(1);
+                    ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
+                    ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
 
                 $addressErrors = $address->validate();
                 if ($addressErrors !== true) {
@@ -104,8 +105,8 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                 if (count($errors) === 0) {
                     $address->save();
 //                    $this->_getSession()->addSuccess($this->__('The address has been saved.'));
-                    // $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
-                    //  return;
+//                    $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
+//                    return;
                 } else {
                     $this->_getSession()->setAddressFormData($this->getRequest()->getPost());
                     foreach ($errors as $errorMessage) {
@@ -119,7 +120,7 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                 $this->_getSession()->setAddressFormData($this->getRequest()->getPost())
                     ->addException($e, $this->__('Cannot save address.'));
             }
-            echo $address->getId();
+            return $address->getId();
         }
     }
 }
