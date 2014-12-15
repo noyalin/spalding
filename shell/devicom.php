@@ -17,7 +17,7 @@ class Devicom_DB extends Mage_Shell_Abstract {
 
          //Flush Cache:  php shell/devicom.php  --type Tools:FlushCache
          //Reset taobao tag:  php shell/devicom.php  --type Tools:ResetImage
-         //Cacel order:  php shell/devicom.php  --type Tools:CancelOrder
+         //Add image gallert  php shell/devicom.php  --type Tools:AddGallery
         //Stock Reindexer:  php shell/devicom.php  --type Tools:StockReindexer
         //Sitemap Generator:  php shell/devicom.php  --type Tools:SitemapGenerator
         //Catalog Process Tracker:  php shell/devicom.php  --type Tools:Tracker_CatalogProcessTracker
