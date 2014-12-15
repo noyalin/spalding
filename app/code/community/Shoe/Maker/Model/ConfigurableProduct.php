@@ -358,6 +358,52 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setPromotionTag( $valueArr['promotionTag'] );
         $product->setCanonical( $valueArr['canonical'] );
         $product->setUrlKey( $valueArr['urlKey'] );
+        //根据URLKEY取得所有的图片
+        $skuImage =$valueArr['sku'];
+        $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount']);
+        //image gallery
+        $imageCount = $valueArr['imageCount'] ;
+
+
+//        $urlKeyImageTmp =  $valueArr['urlKey']."-1.jpg";
+//        if($imageCount > 1){
+//            for($n=1;$n<=$imageCount;$n++){
+//                $fullPathImage = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-$n.jpg";
+//                mage :: log($fullPathImage);
+//                $product->addImageToMediaGallery($fullPathImage, array('image','thumbnail','small_image'), false, false) ;
+//
+//            }
+//        }
+
+
+
+
+//        $urlKeyImageTmp =  $valueArr['urlKey']."-2.jpg";
+//        $product->addImageToMediaGallery($fullPath."/$skuImage/$urlKeyImageTmp", array('image','thumbnail','small_image'), false, false) ;
+//        if($imageCount > 1){
+//            $product->setMediaGallery (array('images'=>array (), 'values'=>array ()));
+//            for($i=1;$i<=$imageCount;$i++){
+//                $urlKeyImageTmp =  $valueArr['urlKey']."-$i.jpg";
+//                $product->addImageToMediaGallery("/$skuImage/$urlKeyImageTmp", array('image','thumbnail','small_image'), false, false) ;
+//            }
+//        }
+        //保存图片
+
+        $urlKeyImage = $valueArr['urlKey']."-1.jpg";
+        $product->setImage("/$skuImage/$urlKeyImage");
+        $product->setSmallImage("/$skuImage/$urlKeyImage");
+        $product->setThumbnail("/$skuImage/$urlKeyImage");
+
+//        $fullPathImage1 = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-1.jpg";
+//        $fullPathImage2 = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-2.jpg";
+//        $fullPathImage3 = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-3.jpg";
+//        mage :: log($fullPathImage1);
+//        mage :: log($fullPathImage2);
+//        $product->addImageToMediaGallery($fullPathImage1, array('image','thumbnail','small_image'), false, false) ;
+//        $product->addImageToMediaGallery($fullPathImage2, array('image','thumbnail','small_image'), false, false) ;
+//        $product->addImageToMediaGallery($fullPathImage3, array('image','thumbnail','small_image'), false, false) ;
+
+
         $product->setSpecialShippingGroup( $valueArr['specialShippingGroup'] ); // 0, 1 or 2
         if ( $valueArr['eligibleForRewards'] == '0') {
             $product->setRewardPoints('0'); //
@@ -394,6 +440,50 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 
     }
 
+    public function getAllImagesByUrlkey($sku,$urlKey,$count){
+        $dir = Mage::getBaseDir()."/media/catalog/product/";
+        for($i=1;$i<=$count;$i++){
+            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
+            $needDir = $dir.$sku."/";
+            if(!file_exists($needDir)){
+                mkdir($needDir);
+            }
+            $filename = $needDir."$urlKey-$i.jpg";
+            if(file_exists($filename)){
+                continue;
+            }
+            $return = $this->grabImage($url,$filename);
+            if($return){
+                // means save succcess, save database
+            }else{
+                //重新获取
+            }
+        }
+    }
+    function grabImage($url,$filename="") {
+        if($url==""):return false;endif;
+
+        if($filename=="") {
+            $filename=date("dMYHis").'jpg';
+        }
+
+        ob_start();
+        readfile($url);
+        $img = ob_get_contents();
+        ob_end_clean();
+        $size = strlen($img);
+        if($img && $size){
+            $fp2=@fopen($filename, "a");
+            fwrite($fp2,$img);
+            fclose($fp2);
+            return $filename;
+        }else{
+            return null;
+        }
+
+
+
+    }
     public function saveOtherStore($product,$valueArr){
         $sku =  $valueArr['sku'];
         $websites = $valueArr['websites'];
