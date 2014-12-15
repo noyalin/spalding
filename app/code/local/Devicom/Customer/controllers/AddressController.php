@@ -120,7 +120,7 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                 $this->_getSession()->setAddressFormData($this->getRequest()->getPost())
                     ->addException($e, $this->__('Cannot save address.'));
             }
-            return $address->getId();
+            echo $address->getId();
         }
     }
 }

@@ -445,27 +445,12 @@ mage :: log($addressId);
                     success: function(data){
                         var id = data;
                         jQuery("#billing_address_id_hidden").val(id);
-                        jQuery( "#dialog" ).dialog( "close" );
                         getAddress(id);
                     },
                     error: function(e){}
                 });
             }
 
-        });
-        jQuery( "#dialog_new_address" ).dialog({
-            autoOpen: false,
-            width:800,
-            modal: true,
-            show: {
-                effect: "fade",
-                duration: 300
-            },
-            hide: {
-                effect: "fade",
-                duration: 300
-            },
-            closeText:'×'
         });
         jQuery( "#add_new_address_button" ).click(function() {
             jQuery( "#dialog_new_address" ).dialog( "open" );
