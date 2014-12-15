@@ -359,13 +359,49 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setCanonical( $valueArr['canonical'] );
         $product->setUrlKey( $valueArr['urlKey'] );
         //根据URLKEY取得所有的图片
-        $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount']);
-        //保存图片
         $skuImage =$valueArr['sku'];
+        $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount']);
+        //image gallery
+        $imageCount = $valueArr['imageCount'] ;
+
+
+//        $urlKeyImageTmp =  $valueArr['urlKey']."-1.jpg";
+//        if($imageCount > 1){
+//            for($n=1;$n<=$imageCount;$n++){
+//                $fullPathImage = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-$n.jpg";
+//                mage :: log($fullPathImage);
+//                $product->addImageToMediaGallery($fullPathImage, array('image','thumbnail','small_image'), false, false) ;
+//
+//            }
+//        }
+
+
+
+
+//        $urlKeyImageTmp =  $valueArr['urlKey']."-2.jpg";
+//        $product->addImageToMediaGallery($fullPath."/$skuImage/$urlKeyImageTmp", array('image','thumbnail','small_image'), false, false) ;
+//        if($imageCount > 1){
+//            $product->setMediaGallery (array('images'=>array (), 'values'=>array ()));
+//            for($i=1;$i<=$imageCount;$i++){
+//                $urlKeyImageTmp =  $valueArr['urlKey']."-$i.jpg";
+//                $product->addImageToMediaGallery("/$skuImage/$urlKeyImageTmp", array('image','thumbnail','small_image'), false, false) ;
+//            }
+//        }
+        //保存图片
+
         $urlKeyImage = $valueArr['urlKey']."-1.jpg";
         $product->setImage("/$skuImage/$urlKeyImage");
         $product->setSmallImage("/$skuImage/$urlKeyImage");
         $product->setThumbnail("/$skuImage/$urlKeyImage");
+
+//        $fullPathImage1 = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-1.jpg";
+//        $fullPathImage2 = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-2.jpg";
+//        $fullPathImage3 = Mage::getBaseDir()."/media/catalog/product"."/$skuImage/".$valueArr['urlKey']."-3.jpg";
+//        mage :: log($fullPathImage1);
+//        mage :: log($fullPathImage2);
+//        $product->addImageToMediaGallery($fullPathImage1, array('image','thumbnail','small_image'), false, false) ;
+//        $product->addImageToMediaGallery($fullPathImage2, array('image','thumbnail','small_image'), false, false) ;
+//        $product->addImageToMediaGallery($fullPathImage3, array('image','thumbnail','small_image'), false, false) ;
 
 
         $product->setSpecialShippingGroup( $valueArr['specialShippingGroup'] ); // 0, 1 or 2
@@ -416,7 +452,6 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             if(file_exists($filename)){
                 continue;
             }
-            mage :: log($filename);
             $return = $this->grabImage($url,$filename);
             if($return){
                 // means save succcess, save database
