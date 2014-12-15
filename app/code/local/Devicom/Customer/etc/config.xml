@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+	<Devicom_Customer>
+	    <version>0.1</version>
+	</Devicom_Customer>
+    </modules>
+    <frontend>
+        <routers>
+            <customer>
+                <args>
+                    <modules>
+                        <Devicom_Customer before="Mage_Customer">Devicom_Customer</Devicom_Customer>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+</config>
