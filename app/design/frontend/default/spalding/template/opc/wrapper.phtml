@@ -241,10 +241,16 @@ $theme = Mage::getDesign()->getTheme('frontend');
 
                     <?php echo $this->getChildHtml('agreements')?>
                 <?php echo $this->getChildHtml('opc.newsletters');?>
-                <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Place Order Now') ?></span></span></button>
+
 
             </div>
-
+                <div class="checkoutCommit">
+                    <div class="add_addr">
+                        <a href="javascript:;" class="btn" muse_scanned="true">
+                            <button type="button" title="提交订单" class="button btn-checkout opc-btn-checkout"><span><span>提交订单</span></span></button>
+                        </a>
+                    </div>
+                </div>
         </div>
 <script>
 	var vopc = '<?php echo Mage::getConfig()->getModuleConfig("IWD_Opc")->version;?>';
@@ -284,12 +290,9 @@ $theme = Mage::getDesign()->getTheme('frontend');
         jQuery('#checkoutInvoiceNormal').hide();
         jQuery('#checkoutInvoiceTax').hide();
         jQuery('#checkoutInvoiceCommand').hide();
-        alert(jQuery(this).attr('checked'));
             if (thisId == "chkCheckoutInvoiceNormal") {
-                alert(1);
                 jQuery('#checkoutInvoiceNormal').show();
             } else if (thisId = "chkCheckoutInvoiceTax") {
-                alert(2);
                 jQuery('#checkoutInvoiceTax').show();
             }
 
