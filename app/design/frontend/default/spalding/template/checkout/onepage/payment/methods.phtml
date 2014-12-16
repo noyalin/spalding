@@ -43,6 +43,17 @@
 <?php else:
     foreach ($methods as $_method):
         $_code = $_method->getCode();
+        if($_code == "alipay_payment"):
+            $imgSrc = $this->getSkinUrl('images2/paytype1.jpg') ;
+            $str = <<<HTML
+<div class="step_radio selected">
+            <span class="no-display"><input id="p_method_$_code" value="$_code" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+            <img src=" $imgSrc  ">
+            <i class="arrow"></i>
+        </div>
+HTML;
+            echo $str;
+            else:
 ?>
     <dt>
     <?php if(!$oneMethod): ?>
@@ -58,6 +69,7 @@
         <?php echo $html; ?>
     </dd>
     <?php endif; ?>
+<?php endif; ?>
 <?php endforeach;
     endif;
 ?>

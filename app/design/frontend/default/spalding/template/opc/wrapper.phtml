@@ -53,11 +53,15 @@ $theme = Mage::getDesign()->getTheme('frontend');
         </div>
 
 
-        <div class="opc-col-right">
+        <div class="opc-col-right one_step">
 
             <?php if (!$this->getOnepage()->getQuote()->isVirtual()):?>
                 <div class="shipping-block">
-                    <h3><?php echo $this->__('Shipping Method')?></h3>
+                    <div class="checkoutWrapContent">
+                        <div class="checkoutWrapContentItem clearfix">
+                            请选中运送方式
+                        </div>
+                    </div>
                     <div id="shipping-block-methods">
                         <?php echo $this->getChildHtml('shipping_method');//$this->_getShippingMethodsHtml();?>
                     </div>
