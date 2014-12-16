@@ -134,6 +134,21 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 .one_step .step_radio_disabled label{ cursor:not-allowed; opacity:.2; filter:Alpha(opacity=20);}
 .one_step .step_radio_disabled .note{ color:#666;}
 
+
+.btn{ background-position:0 -416px;}
+.btn:hover{ background-position:0 -448px;}
+.btn span{ background:#fdb905; color:#000; padding:9px 26px 8px 26px;font-size:14px;font-weight:bold;}
+.btn:hover span{ background-position:100% -448px;}
+.btn span{ border-radius:3px;}
+.btn{ margin-right:9px;}
+.btngrey span{ background:#333333; color:#fff;}
+
+/* common start */
+input[type="text"] {
+	border-radius:3px;
+}
+/* common end */
+
 /* addr_step */
 .addr_step .step_main{ margin-right:10px; padding-bottom:10px;}
 .addr_step .step_radio{ color:#1c2738; margin-right:20px; padding:10px;}
@@ -145,21 +160,14 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 .addr_step .step_radio .addr_tel{ display:block; font-size:13px; height:3em; overflow:hidden; color:#b4b4b4;}
 .addr_step .step_radio .tel{ color:#707781; font-family:Arial; margin-left:1.5em;}
 .addr_step .step_radio .btns{ padding-top:8px;}
-.addr_step .step_radio .btn{ background:#c4c4c4; border-radius:3px; line-height:24px; margin-right:10px; text-shadow:none; font-size:13px; padding:5px 10px 5px 10px;color: #000;}
+/* fdb905 */ .addr_step .step_radio .btn{ background:#c4c4c4; border-radius:3px; line-height:24px; margin-right:10px; text-shadow:none; font-size:13px; padding:5px 10px 5px 10px;color: #000;font-weight:normal;}
 .addr_step .step_radio:hover .btn, .addr_step .step_radio.selected .btn{ color: #000;}
 .addr_step .step_radio .btn:hover{ background-color:#d9d9d9;}
 .addr_step .step_radio:hover .btn:hover{ background-color:#fdb905;}
 .addr_step .step_radio span.set_def, .addr_step .step_radio span.set_def:hover,
 .addr_step .step_radio:hover span.set_def, .addr_step .step_radio:hover span.set_def:hover,
 .addr_step .step_radio.selected span.set_def, .addr_step .step_radio.selected span.set_def:hover{ background:none; color:#fdb905; cursor:default; display:inline;}
-.addr_step .step_radio .btn span{ background:none; padding:0;}
-
-.add_addr .btn{ background-position:0 -416px;}
-.add_addr .btn:hover{ background-position:0 -448px;}
-.add_addr .btn span{ background:#fdb905; color:#000; padding:9px 26px 8px 26px;font-size:14px;font-weight:bold;}
-.add_addr .btn:hover span{ background-position:100% -448px;}
-.add_addr .btn{ border-radius:10px 10px 10px 10px;}
-
+.addr_step .step_radio .btn span{ background:none; padding:0;font-size:13px;font-weight:normal;}
 
 .new_address{ padding:20px 10px;}
 .new_address th{ font-weight:normal; width:100px; text-align:right;}
@@ -185,15 +193,9 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 .pay_step .step_radio .name em{ font-weight:normal; margin-left:0;}
 .pay_step .step_radio .addr_tel{ display:block; font-size:13px; height:3em; overflow:hidden; color:#b4b4b4;}
 .pay_step .step_radio .tel{ color:#707781; font-family:Arial; margin-left:1.5em;}
-.pay_step .step_radio .btns{ padding-top:8px;}
-.pay_step .step_radio .btn{ background:#c4c4c4; border-radius:3px; line-height:24px; margin-right:10px; text-shadow:none; font-size:13px; padding:5px 10px 5px 10px;color: #000;}
-.pay_step .step_radio:hover .btn, .addr_step .step_radio.selected .btn{ color: #000;}
-.pay_step .step_radio .btn:hover{ background-color:#d9d9d9;}
-.pay_step .step_radio:hover .btn:hover{ background-color:#fdb905;}
 .pay_step .step_radio span.set_def, .addr_step .step_radio span.set_def:hover,
 .pay_step .step_radio:hover span.set_def, .addr_step .step_radio:hover span.set_def:hover,
 .pay_step .step_radio.selected span.set_def, .addr_step .step_radio.selected span.set_def:hover{ background:none; color:#fdb905; cursor:default; display:inline;}
-.pay_step .step_radio .btn span{ background:none; padding:0;}
 
 /* ship_step */
 .ship_step{ margin-bottom:10px;}
@@ -214,37 +216,49 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 	margin-top:23px;
 }
 
-.checkoutNewAddressContent {
+.checkoutWrapContent {
 	font-size:12px;
 	color:#b4b4b4;
 }
-.checkoutNewAddressContentItem {
+.checkoutWrapContentItem input[type="text"] {
+	width:270px;
+	height:27px;
+}
+.checkoutWrapContentItem select {
+	height:30px;
+}
+.checkoutWrapContentItem textarea {
+	width:508px;
+	height:57px;
+
+	border-radius:3px;
+}
+
+.checkoutWrapContentItem {
 	display:block;
 	
 	padding:0px;
-	margin-bottom:10px;
+	margin-bottom:9px;
 }
-.checkoutNewAddressContentItemLeft {
+.checkoutWrapContentItemLeft {
 	display:inline-block;
 
 	width:186px;
-	height:25px;
 	float:left;
 	text-align:right;
 	vertical-align:middle;
 }
-.checkoutNewAddressContentItemRight {
+.checkoutWrapContentItemRight {
 	display:inline-block;
 
 	width:753px;
-	height:25px;
 	float:right;
 	text-align:left;
 	vertical-align:top;
 	
 	padding-left:16px;
 }
-.checkoutNewAddressContentItemSave {
+.checkoutWrapContentItemSave {
 	margin-left:225px;
 }
 
@@ -257,16 +271,30 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 	
 	vertical-align:top;
 }
+
+#checkoutNewAddressForm {
+	display:none;
+}
 /* 选择收货地址 end */
 
+/* 发票服务 start */
+#checkoutInvoiceNormal {
+	display:none;
+}
+#checkoutInvoiceTax {
+	display:none;
+}
+#checkoutInvoiceCommand {
+	display:none;
+}
+/* 发票服务 end */
+
 /* 商品清单 start */
-.checkoutSmallTitle input[type="checkbox"] {
+.checkoutSmallTitle input[type="radio"] {
 	margin-top:4px;
 	margin-right:6px;
 }
-/* 商品清单 end */
 
-/* 商品清单 start */
 .checkoutProductList {
 	margin-left:100px;
 	margin-top:15px;
@@ -291,9 +319,6 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 
 	border-bottom:1px solid #484848;
 	display:block;
-}
-.productsListRow:hover {
-	background:#333;
 }
 .productsListCol {
 	display:inline-block;
