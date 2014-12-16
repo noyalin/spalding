@@ -340,16 +340,16 @@
 <!--        --><?php //endif;?>
 <!--    </form>-->
 <!---->
-<!--    <script type="text/javascript">-->
+    <script type="text/javascript">
 <!--    //<![CDATA[-->
-<!--            var productAddToCartForm = new VarienForm('product_addtocart_form');-->
-<!--            productAddToCartForm.submit = function(){-->
-<!--                    if (this.validator.validate()) {-->
-<!--                            this.form.submit();-->
-<!--                    }-->
-<!--            }.bind(productAddToCartForm);-->
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(){
+                    if (this.validator.validate()) {
+                            this.form.submit();
+                    }else{}
+            }.bind(productAddToCartForm);
 <!--    //]]>-->
-<!--    </script>-->
+    </script>
 <!--    </div>-->
 <!---->
 <!--    <div class="product-collateral">-->

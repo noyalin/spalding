@@ -43,26 +43,11 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
             $valueArr = $_attribute->getPrices();
         ?>
             <div class="sale-num prodetail-box">
-                <span><?php echo $_attribute->getLabel() ?></span>
+                <span><?php echo $_attribute->getLabel() ?>：</span>
                 <?php foreach($valueArr as $optionValue): ?>
-                    <span class="sale_kind sale_kindChos"><?php echo $optionValue['label']; ?></span>
+                    <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId() ?>"><?php echo $optionValue['label']; ?></span>
+                    <input type="radio" <?php echo $checked; ?> value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select" style="display: none">
                 <?php endforeach; ?>
             </div>
-
-
-
-<!--    <dl>-->
-<!--        <dt><label class="required"><em>*</em>--><?php //echo $_attribute->getLabel() ?><!--</label></dt>-->
-<!--        <dd--><?php //if ($_attribute->decoratedIsLast){?><!-- class="last"--><?php //}?><!-->-->
-<!--            <div class="input-box">-->
-<!--                <select name="super_attribute[--><?php //echo $_attribute->getAttributeId() ?><!--]" id="attribute--><?php //echo $_attribute->getAttributeId() ?><!--" class="required-entry super-attribute-select">-->
-<!--                    <option>--><?php //echo $this->__('Choose an Option...') ?><!--</option>-->
-<!--                  </select>-->
-<!--              </div>-->
-<!--        </dd>-->
     <?php endforeach; ?>
-<!--    </dl>-->
-<!--    <script type="text/javascript">-->
-<!--        var spConfig = new Product.Config(--><?php //echo $this->getJsonConfig() ?><!--);-->
-<!--    </script>-->
 <?php endif;?>

@@ -58,10 +58,12 @@
 </script>
 <?php else: ?>
 <p class="product-image">
-    <?php
-        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(265).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
-        echo $_helper->productAttribute($_product, $_img, 'image');
-    ?>
+    <img id="mainImage"  src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($mainImageSize[0], $mainImageSize[1]); ?>" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1" data-zoom-image="http://img04.taobaocdn.com/imgextra/i4/1792368114/TB2zLHBbXXXXXa5XXXXXXXXXXXX_!!1792368114.jpg"/>
+
+<!--    --><?php
+//        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(265).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+//        echo $_helper->productAttribute($_product, $_img, 'image');
+//    ?>
 </p>
 <?php endif; ?>
 <?php //if (count($this->getGalleryImages()) > 0): ?>
@@ -76,3 +78,7 @@
 <!--    </ul>-->
 <!--</div>-->
 <?php //endif; ?>
+<script>
+
+    jQuery('#mainImage').elevateZoom();
+</script>
