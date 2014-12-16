@@ -29,11 +29,17 @@ mage :: log($addressId);
             <div class="clearfix step_radio_wrap">
                 <?php foreach( $options as $eacAddr){
                     $addrValueId = $eacAddr['value'];
+                    $selected = null;
+                    $checked = '';
+                    if($addrValueId == 17){
+                        $selected = "selected";
+                        $checked = 'checked="true"';
+                    }
                     $addrLabel = $eacAddr['label'];
                     $billingId = "billing_address_id_".$addrValueId;
                     ?>
-                    <div class="step_radio">
-                        <input type="radio" value="<?php echo $addrValueId?>"  id="<?php echo $billingId?>"  name="billing_address_id">
+                    <div class="step_radio <?php echo $selected?> ">
+                        <input type="radio" <?php echo $checked; ?> value="<?php echo $addrValueId?>"  id="<?php echo $billingId?>"    name="billing_address_id">
                         <label for="<?php echo $billingId?>">
                             <span class="city_name">
                                 <?php echo $addrLabel?>
@@ -208,9 +214,9 @@ mage :: log($addressId);
     <?php if ($this->customerHasAddresses()): ?>
         <li class="wide">
             <label for="billing-address-select" class="notice"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
-            <div class="input-box">
-                <?php echo $this->getAddressesHtmlSelect('billing') ?>
-            </div>
+<!--            <div class="input-box">-->
+<!--                --><?php //echo $this->getAddressesHtmlSelect('billing') ?>
+<!--            </div>-->
         </li>
     <?php endif; ?>
     <li id="billing-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
@@ -406,6 +412,10 @@ mage :: log($addressId);
         $('.step_radio_wrap').delegate('div.step_radio', 'click',function() {
             $(this).parent().children().removeClass('selected');
             $(this).addClass('selected');
+            var addressId =$j("input[name='billing_address_id'][checked]").val();
+            if (addressId!='' && addressId!=undefined ){
+                IWD.OPC.Billing.save();
+            }
         });
     });
 
