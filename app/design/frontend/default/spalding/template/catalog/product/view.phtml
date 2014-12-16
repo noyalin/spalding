@@ -123,30 +123,35 @@
             $aaaaa =   $_product->getMediaGalleryImages();
             $bbbbb =   count($_product->getMediaGalleryImages());;
             ?>
-            <div id="detailPixWrap">
-                <div class="product-img-box">
+<!--            <div id="detailPixWrap">-->
+<!--                <div class="product-img-box">-->
                     <?php echo $this->getChildHtml('media') ?>
-                </div>
-                <div class="detailArrowPrev">
-                    <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>
-                </div>
-                <div class="detailImageReelWindow">
-                    <div class="detailImageReel">
-                        <div id="detailProductGallery">
-                            <?php $imageCount = floor($_product->getImageCount()) ?>
-                            <?php $i = 0 ?>
-                            <?php foreach ($_product->getMediaGalleryImages() as $_image): ?>
-                                <div><a rel="productGallery [gallery]" href="<?php echo $this->helper('catalog/image')->init($_product, 'image', $_image->getFile())->resize(500); ?>" onMouseOver="javascript:sku=<?php echo $i ?>;">
-                                        <!--                                    <img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/--><?php //echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?><!-----><?php //echo $i ?><!--" alt=""/></a></div>-->
-                                        <img width="88" height="88" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(56); ?>" alt=""/></a></div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="detailArrowNext">
-                    <a class="detailArrowNextBtn" href="javascript:void(0)"></a>
-                </div>
-                <div id="detailPixIconWrap"></div>
+<!--                </div>-->
+<!--                <div class="detailArrowPrev">-->
+<!--                    <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>-->
+<!--                </div>-->
+<!--                <div class="detailImageReelWindow">-->
+<!--                    <div class="detailImageReel">-->
+<!--                        <div id="detailProductGallery">-->
+<!--                            --><?php //$imageCount = floor($_product->getImageCount()) ?>
+<!--                            --><?php //$i = 0 ?>
+<!--                            --><?php //foreach ($_product->getMediaGalleryImages() as $_image): ?>
+<!--                                <div>-->
+<!--                                    <a rel="productGallery [gallery]" href="--><?php //echo $this->helper('catalog/image')->init($_product, 'image', $_image->getFile())->resize(500); ?><!--" onMouseOver="javascript:sku=--><?php //echo $i ?><!--;">\-->
+<!--<!--                                            <img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/-->--><?php ////echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?><!--<!----->--><?php ////echo $i ?><!--<!--" alt=""/>-->-->
+<!--                                        <img width="88" height="88" src="--><?php //echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(56); ?><!--" alt=""/>-->
+<!---->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                </div>-->
+<!--                            --><?php //endforeach ?>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="detailArrowNext">-->
+<!--                    <a class="detailArrowNextBtn" href="javascript:void(0)"></a>-->
+<!--                </div>-->
+<!--                <div id="detailPixIconWrap"></div>-->
             </div>
             <div class="clear"></div>
         </form>

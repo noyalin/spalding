@@ -33,10 +33,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
 <?php echo $this->getChildHtml('head') ?>
-<?php echo $this->getChildHtml('header') ?>
+
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/20141210002.jpg');  ?>" alt=""></div>
 <?php echo $this->getChildHtml('after_body_start') ?>
+<?php echo $this->getChildHtml('header') ?>
 
 <!-- 主框架 e -->
 <!--<div class="wrapper">-->
