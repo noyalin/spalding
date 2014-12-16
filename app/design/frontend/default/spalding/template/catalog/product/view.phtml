@@ -242,19 +242,19 @@
 
 
 <!--<div id="messages_product_view">--><?php //echo $this->getMessagesBlock()->getGroupedHtml() ?><!--</div>-->
-<div style="height:110px; z-index:-2;"></div>
-<div class="product-view">
-    <div class="product-essential">
-    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-        <div class="no-display">
-            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-            <input type="hidden" name="related_product" id="related-products-field" value="" />
-        </div>
-
-        <div class="product-shop">
-            <div class="product-name">
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-            </div>
+<!--<div style="height:110px; z-index:-2;"></div>-->
+<!--<div class="product-view">-->
+<!--    <div class="product-essential">-->
+<!--    <form action="--><?php //echo $this->getSubmitUrl($_product) ?><!--" method="post" id="product_addtocart_form"--><?php //if($_product->getOptions()): ?><!-- enctype="multipart/form-data"--><?php //endif; ?><!-->-->
+<!--        <div class="no-display">-->
+<!--            <input type="hidden" name="product" value="--><?php //echo $_product->getId() ?><!--" />-->
+<!--            <input type="hidden" name="related_product" id="related-products-field" value="" />-->
+<!--        </div>-->
+<!---->
+<!--        <div class="product-shop">-->
+<!--            <div class="product-name">-->
+<!--                <h1>--><?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><!--</h1>-->
+<!--            </div>-->
 
 <!--            --><?php //echo $this->getReviewsSummaryHtml($_product, false, true)?>
 <!--            --><?php //echo $this->getChildHtml('alert_urls') ?>
@@ -279,47 +279,47 @@
 <!--            --><?php //endif; ?>
             
 
-            <?php if ($_product->getShortDescription()):?>
-                <div class="short-description">
-                    <h2><?php echo $this->__('Quick Overview') ?></h2>
-                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-                </div>
-            <?php endif;?>
-
+<!--            --><?php //if ($_product->getShortDescription()):?>
+<!--                <div class="short-description">-->
+<!--                    <h2>--><?php //echo $this->__('Quick Overview') ?><!--</h2>-->
+<!--                    <div class="std">--><?php //echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?><!--</div>-->
+<!--                </div>-->
+<!--            --><?php //endif;?>
+<!---->
             <?php echo $this->getChildHtml('other');?>
+<!---->
+<!--            --><?php //if ($_product->isSaleable() && $this->hasOptions()):?>
+<!--                --><?php //echo $this->getChildChildHtml('container1', '', true, true) ?>
+<!--            --><?php //endif;?>
 
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-            <?php endif;?>
-
-        </div>
-
-
-        <div id="detailPixWrap">
-            <div class="product-img-box">
-                <?php echo $this->getChildHtml('media') ?>
-            </div>
-            <div class="detailArrowPrev">
-                <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>
-            </div>
-            <div class="detailImageReelWindow">
-                <div class="detailImageReel">
-                    <div id="detailProductGallery">
-                        <?php $imageCount = floor($_product->getImageCount()) ?>
-                        <?php $i = 0 ?>
-                        <?php while ($i++ < $imageCount) : ?>
-                            <div><a rel="productGallery [gallery]" href="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/<?php echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?>-<?php echo $i ?>" onMouseOver="javascript:sku=<?php echo $i ?>;">
-                                    <!--                                    <img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/--><?php //echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?><!-----><?php //echo $i ?><!--" alt=""/></a></div>-->
-                                    <img width="88" height="88" src="http://image.sneakerhead.com/is/image/sneakerhead/<?php echo $this->htmlEscape($_product->getUrlKey());?>-<?php echo $i ?>?$270$" alt=""/></a></div>
-                        <?php endwhile ?>
-                    </div>
-                </div>
-            </div>
-            <div class="detailArrowNext">
-                <a class="detailArrowNextBtn" href="javascript:void(0)"></a>
-            </div>
-            <div id="detailPixIconWrap"></div>
-        </div>
+<!--        </div>-->
+<!---->
+<!---->
+<!--        <div id="detailPixWrap">-->
+<!--            <div class="product-img-box">-->
+<!--                --><?php //echo $this->getChildHtml('media') ?>
+<!--            </div>-->
+<!--            <div class="detailArrowPrev">-->
+<!--                <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>-->
+<!--            </div>-->
+<!--            <div class="detailImageReelWindow">-->
+<!--                <div class="detailImageReel">-->
+<!--                    <div id="detailProductGallery">-->
+<!--                        --><?php //$imageCount = floor($_product->getImageCount()) ?>
+<!--                        --><?php //$i = 0 ?>
+<!--                        --><?php //while ($i++ < $imageCount) : ?>
+<!--                            <div><a rel="productGallery [gallery]" href="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/--><?php //echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?><!-----><?php //echo $i ?><!--" onMouseOver="javascript:sku=--><?php //echo $i ?><!--;">-->
+<!--                                    <!--                                    <img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/-->--><?php ////echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?><!--<!----->--><?php ////echo $i ?><!--<!--" alt=""/></a></div>-->-->
+<!--                                    <img width="88" height="88" src="http://image.sneakerhead.com/is/image/sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey());?><!-----><?php //echo $i ?><!--?$270$" alt=""/></a></div>-->
+<!--                        --><?php //endwhile ?>
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="detailArrowNext">-->
+<!--                <a class="detailArrowNextBtn" href="javascript:void(0)"></a>-->
+<!--            </div>-->
+<!--            <div id="detailPixIconWrap"></div>-->
+<!--        </div>-->
         <!-- TODO 只有衣服需要此选项 -->
 <!--        <h2>可选颜色:</h2>-->
 <!--        <div id="detailAvailColor">-->
@@ -335,27 +335,27 @@
 //            ?>
 <!--        </div>-->
 <!--        <div class="clearer"></div>-->
-        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-        <?php endif;?>
-    </form>
-
-    <script type="text/javascript">
-    //<![CDATA[
-            var productAddToCartForm = new VarienForm('product_addtocart_form');
-            productAddToCartForm.submit = function(){
-                    if (this.validator.validate()) {
-                            this.form.submit();
-                    }
-            }.bind(productAddToCartForm);
-    //]]>
-    </script>
-    </div>
-
-    <div class="product-collateral">
-        <?php echo $this->getChildHtml('description') ?>
-        <?php echo $this->getChildHtml('additional') ?>
-        <?php echo $this->getChildHtml('upsell_products') ?>
-        <?php echo $this->getChildHtml('product_additional_data') ?>
-    </div>
+<!--        --><?php //if ($_product->isSaleable() && $this->hasOptions()):?>
+<!--            --><?php //echo $this->getChildChildHtml('container2', '', true, true) ?>
+<!--        --><?php //endif;?>
+<!--    </form>-->
+<!---->
+<!--    <script type="text/javascript">-->
+<!--    //<![CDATA[-->
+<!--            var productAddToCartForm = new VarienForm('product_addtocart_form');-->
+<!--            productAddToCartForm.submit = function(){-->
+<!--                    if (this.validator.validate()) {-->
+<!--                            this.form.submit();-->
+<!--                    }-->
+<!--            }.bind(productAddToCartForm);-->
+<!--    //]]>-->
+<!--    </script>-->
+<!--    </div>-->
+<!---->
+<!--    <div class="product-collateral">-->
+<!--        --><?php //echo $this->getChildHtml('description') ?>
+<!--        --><?php //echo $this->getChildHtml('additional') ?>
+<!--        --><?php //echo $this->getChildHtml('upsell_products') ?>
+<!--        --><?php //echo $this->getChildHtml('product_additional_data') ?>
+<!--    </div>-->
 </div>
