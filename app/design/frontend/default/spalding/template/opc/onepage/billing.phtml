@@ -1,15 +1,222 @@
+<style type="text/css">
+    .checkoutNewAddress input.error, .new_address textarea.error, .new_address select.error {
+        border: 1px solid #FF0000;
+    }
+    .checkoutNewAddress .error_em {
+        color: #FF0000;
+    }
+</style>
+<?php
+list($options,$addressId) = $this->getAddressesArray('billing');
+?>
 <div id="co-billing-form">
-    <h3><?php echo $this->__('Name & Address')?></h3>
+    <div class="add_addr" id="add_new_address_button" >
+        <a class="btn" href="javascript:;">
+            <i class="add">&nbsp;</i>
+        </a>
+    </div>
+<!-- new format s-->
+
+    <div class="one_step addr_step">
+        <div id="addressUl" class="step_main">
+            <div class="clearfix step_radio_wrap">
+                <?php foreach( $options as $eacAddr){
+                    $addrValueId = $eacAddr['value'];
+                    $selected = null;
+                    $checked = '';
+                    if($addrValueId == 20){
+                        $selected = "selected";
+                        $checked = 'checked="true"';
+                    }
+                    $addrLabel = $eacAddr['label'];
+                    $billingId = "billing_address_id_".$addrValueId;
+                    ?>
+                    <div class="step_radio <?php echo $selected?> ">
+                        <input type="radio" <?php echo $checked; ?> value="<?php echo $addrValueId?>"  id="<?php echo $billingId?>"    name="billing_address_id">
+                        <label for="<?php echo $billingId?>">
+                            <span class="city_name">
+                                <?php echo $addrLabel?>
+                            </span>
+                        </label>
+                        <div class="btns">
+                            <a class="btn edit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
+                            <a class="btn set_def" href="javascript:;"><span>设为默认</span></a>
+                        </div>
+                        <i class="arrow"></i>
+                    </div>
+                <?php } ?>
+            </div>
+            <div class="add_addr">
+                <a href="javascript:;" id="create_new_addr" class="btn" muse_scanned="true">
+                    <i class="add"></i>
+                    <span>使用新地址</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkoutNewAddress clearfix" style="display: block">
+        <div class="checkoutNewAddressContent checkoutWrapContent" id="checkoutNewAddressForm">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    <label for="firstname" class="required"><span class="rStar">*</span>收货人姓名:</label>
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="hidden" value="addressid" id="addressid">
+                    <input type="text" title="收货人" name="firstname" id="firstname" value="" class="regBoxInp input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?>" required/>
+                    <em class="error_em" id="firstname_error"></em>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    所在地区
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <select  title="所在省市" id="region_id" required >
+                        <option value="">请选择</option>
+                        <option value="485" title="北京市">北京市</option><option value="486" title="天津市">天津市</option><option value="487" title="河北省">河北省</option><option value="488" title="山西省">山西省</option><option value="489" title="内蒙古">内蒙古</option><option value="490" title="辽宁省">辽宁省</option><option value="491" title="吉林省">吉林省</option><option value="492" title="黑龙江">黑龙江</option><option value="493" title="上海市">上海市</option><option value="494" title="江苏省">江苏省</option><option value="495" title="浙江省">浙江省</option><option value="496" title="安徽省">安徽省</option><option value="497" title="福建省">福建省</option><option value="498" title="江西省">江西省</option><option value="499" title="山东省">山东省</option><option value="500" title="河南省">河南省</option><option value="501" title="湖北省">湖北省</option><option value="502" title="湖南省">湖南省</option><option value="503" title="广东省">广东省</option><option value="504" title="广  西">广  西</option><option value="505" title="海南省">海南省</option><option value="506" title="重庆市">重庆市</option><option value="507" title="四川省">四川省</option><option value="508" title="贵州省">贵州省</option><option value="509" title="云南省">云南省</option><option value="510" title="西  藏">西  藏</option><option value="511" title="陕西省">陕西省</option><option value="512" title="甘肃省">甘肃省</option><option value="513" title="青海省">青海省</option><option value="514" title="宁  夏">宁  夏</option><option value="515" title="新  疆">新  疆</option><option value="516" title="台湾省">台湾省</option><option value="517" title="香  港">香  港</option><option value="518" title="澳  门">澳  门</option></select>
+                    <script type="text/javascript">
+                    </script>
+                    <input type="text" id="region" name="region" value=""  style="display: none" title="<?php echo $this->__('State/Province') ?>" />
+
+                    <select id="city_id"  name="city_id" title="市" class="validate-select" required>
+                        <option value="">请选择</option>
+                    </select>
+                    <input type="text" id="city" name="city" value=""  style="display:none;" />
+
+                    <select id="district_id"  name="district_id" title="区" class="validate-select" required>
+                        <option value="">请选择</option>
+                    </select>
+                    <input type="text" id="district" name="district" value=""  style="display:none;" />
+                    <em class="error_em" id="address_error"></em>
+                    <br>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    街道地址
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutWrapContentItemRight">
+<!--                    <textarea rows="2"></textarea><br>-->
+                    <input type="text" name="street[]" value="" title="街道地址" id="street_1" class="regBoxInp input-text" size="80" style="width: 600px;"/>
+                    <em class="error_em" id="street_error"></em>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    邮政编码
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" name="postcode" value=""  id="postcode" />
+                    <em class="error_em" id="postcode_error"></em>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    手机号码
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" name="telephone" value=""   id="telephone1"  class="regBoxInp"/>
+                    <em class="error_em" id="phone_error"></em>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    设置默认
+                    &nbsp;&nbsp;*
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="checkbox"><br>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutNewAddressContentItemSave add_addr">
+                    <a href="javascript:;" class="btn ds_dialog_yes" muse_scanned="true" id="4">
+                        <i class="add"></i>
+                        <span>保存</span>
+                    </a>
+                    <br /><br />
+                    *&nbsp;为必填项
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- new format e -->
+        <script>
+            jQuery(document).ready(function(){
+//            jQuery("#addressForm").validate();
+                jQuery('#region_id').change(
+                    function(){
+                        var id = this.value;
+                        jQuery('#region').val(id);
+                        jQuery.ajax({
+                            type: 'POST',
+                            url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
+                            data: {id:id},
+                            success: function(data, textStatus){
+                                jQuery('#city_id').html(data);
+                            },
+                            error: function(){
+                            }
+                        });
+                    }
+                );
+                jQuery('#city_id').change(
+                    function(){
+                        var id = this.value;
+                        var text = jQuery('#city_id option:selected').text();
+                        jQuery('#city').val(text);
+                        jQuery.ajax({
+                            type: 'POST',
+                            url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
+                            data: {id:id},
+                            success: function(data, textStatus){
+                                jQuery('#district_id').html(data);
+                            },
+                            //  dataType: "json",
+                            error: function(){
+//                                                alert('error');
+                            }
+                        });
+                    }
+                );
+                jQuery('#district_id').change(
+                    function(){
+                        var id = this.value;
+                        var text = jQuery('#district_id option:selected').text();
+                        jQuery('#district').val(text);
+
+                    }
+                );
+            });
+        </script>
+        <!--    </form>-->
+    </div>
+
     <ul class="form-list">
     <?php if ($this->customerHasAddresses()): ?>
         <li class="wide">
-            <label for="billing-address-select" class="notice"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
-            <div class="input-box">
-                <?php echo $this->getAddressesHtmlSelect('billing') ?>
-            </div>
+<!--            <label for="billing-address-select" class="notice">--><?php //echo $this->__('Select a billing address from your address book or enter a new address.') ?><!--</label>-->
+<!--            <div class="input-box">-->
+<!--                --><?php //echo $this->getAddressesHtmlSelect('billing') ?>
+<!--            </div>-->
         </li>
     <?php endif; ?>
-    <li id="billing-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
+
+    <li id="billing-new-address-form" style="display:none;">
         <fieldset>
             <input type="hidden" name="billing[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="billing:address_id" />
             <ul>
@@ -129,7 +336,7 @@
                             </li>
                     <?php endif ?>
 
-                    
+
                 <?php endif; ?>
                 <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
                 	<div class="clear"></div>
@@ -143,6 +350,7 @@
             </ul>
         </fieldset>
     </li>
+
     <?php /* Extensions placeholder */ ?>
     <?php echo $this->getChildHtml('checkout.onepage.billing.extra')?>
     <?php if(!$this->isCustomerLoggedIn()): ?>
@@ -176,7 +384,7 @@
     <?php endif;?>
     
     <?php if ($this->canShip()): ?>
-        <li class="control <?php if (!Mage::helper('opc')->isShowShippingForm()):?>hidden<?php endif;?>">
+        <li class="control hidden">
             <input type="checkbox" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1"<?php if ($this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo  $this->__('Ship to this address') ?>" class="checkbox   " /><label for="billing:use_for_shipping_yes"><?php echo  $this->__('Ship to this address') ?></label>
         </li>
     <?php endif; ?>
@@ -190,4 +398,132 @@
 //<![CDATA[
     var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
 //]]>
+</script>
+<script>
+
+    jQuery(document).ready(function(){
+        jQuery('.step_radio_wrap').delegate('div.step_radio', 'click',function() {
+            jQuery(this).parent().children().removeClass('selected');
+            jQuery(this).addClass('selected');
+            var addressId = jQuery(this).children("input[name='billing_address_id']").attr('value');
+//            var addressId = jQuery("input[name='billing_address_id'][checked]").val();
+            if (addressId!='' && addressId!=undefined ){
+                IWD.OPC.Billing.save();
+            }
+        });
+
+        jQuery('.ds_dialog_yes').click(function(event){
+            flag = checkAddressForm();
+            if(!flag){
+                return;
+            }
+            var addressId = jQuery("#addressid").val();
+            var firstName = jQuery("#firstname").val();
+            var street = jQuery("#street_1").val();
+            var postcode = jQuery("#postcode").val();
+            var telephone = jQuery("#telephone1").val();
+            var region = jQuery("#region").val();
+            var city = jQuery("#city").val();
+            var district = jQuery("#district").val();
+            var city_id = jQuery('#city_id option:selected').val();
+            var district_id = jQuery('#district_id option:selected').val();
+            if(firstName != '' && street != '' && district_id!='' && city_id!='' && telephone != ''){
+                jQuery.ajax({
+                    type: 'POST',
+                    //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+                    url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customer/address/formPostAjax/',
+                    data:{
+                        address_id:addressId,
+                        firstName:firstName,
+                        street:street,
+                        city: city,
+                        region_id:region,
+                        postcode:postcode,
+                        telephone:telephone,
+                        district:district,
+                        district_id:district_id,
+                        city_id:city_id
+                    },
+                    success: function(data){
+                        jQuery(".step_radio_wrap").append(data);
+                        jQuery('#checkoutNewAddressForm').hide();
+//                        var id = data;
+//                        jQuery("#billing_address_id_hidden").val(id);
+//                        getAddress(id);
+                    },
+                    error: function(e){}
+                });
+            }
+
+        });
+        jQuery( "#add_new_address_button" ).click(function() {
+            jQuery( "#dialog_new_address" ).dialog( "open" );
+        });
+        jQuery( ".ds_dialog_no" ).click(function() {
+            jQuery( "#dialog_new_address" ).dialog( "close" );
+        });
+    });
+    /*
+     {"entity_id":"52","entity_type_id":"2","attribute_set_id":"0","increment_id":null,"parent_id":"16","created_at":"2014-08-13T11:18:29+08:00","updated_at":"2014-08-13 11:28:50","is_active":"1",
+     "firstname":"davis","lastname":"lastname","city":"\u5317\u4eac\u5e02",
+     "country_id":"CN","region":"\u5317\u4eac\u5e02","postcode":"mmm","telephone":"nnn",
+     "district":"\u897f\u57ce\u533a","region_id":"0","district_id":"110102","city_id":"110100","street":"fffff"}
+     */
+    function modifyAddress(id){
+        jQuery.ajax({
+            type: 'POST',
+            //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customer/address/getAddressInfo/',
+            data:{
+                id:id
+            },
+            success: function(data){
+                var dataObj = eval("("+data+")");
+                jQuery( "#dialog" ).dialog( "open" );
+                jQuery(".ui-dialog-title").html("修改收货地址");
+                jQuery(".new_address #firstname").val(dataObj.firstname);
+                jQuery(".new_address #addressid").val(dataObj.entity_id);
+                jQuery(".new_address #street_1").val(dataObj.street);
+                jQuery(".new_address #postcode").val(dataObj.postcode);
+                jQuery(".new_address #telephone").val(dataObj.telephone);
+                jQuery(".new_address #city").val(dataObj.city);
+                jQuery(".new_address #region").val(dataObj.region_id);
+                jQuery(".new_address #district").val(dataObj.district);
+                jQuery('.new_address #region_id ').val(dataObj.region_id);
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
+                    data: {id:dataObj.region_id},
+                    success: function(data, textStatus){
+                        jQuery('#city_id').html(data);
+                        jQuery('.new_address #city_id ').val(dataObj.city_id);
+                    },
+                    error: function(){
+                    }
+                });
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
+                    data: {id:dataObj.city_id},
+                    success: function(data, textStatus){
+                        jQuery('#district_id').html(data);
+                        jQuery('.new_address #district_id ').val(dataObj.district_id);
+                    },
+                    error: function(){
+                    }
+                });
+
+            },
+            error: function(e){}
+        });
+    }
+//    function doShowCheckoutNewAddressForm() {
+//        jQuery('#checkoutNewAddressForm').show();
+//    }
+    jQuery("#create_new_addr").click(function(){
+            jQuery('#checkoutNewAddressForm').toggle();
+        }
+    );
 </script>

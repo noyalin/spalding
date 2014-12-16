@@ -20,6 +20,8 @@ class CosmoCommerce_Weixinpay_Model_Wxpayserverpub extends CosmoCommerce_Weixinp
         $tmpData = $this->data;
         unset($tmpData['sign']);
         $sign = $this->getSign($tmpData);//本地签名
+        mage :: log($this->data['sign'] .' data sign');
+        mage :: log($sign .' created sign');
         if ($this->data['sign'] == $sign) {
             return TRUE;
         }

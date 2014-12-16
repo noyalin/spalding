@@ -196,4 +196,34 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
         }
         $this->getResponse()->setRedirect(Mage::getUrl('*/*/index'));
     }
+
+    public function getAddressInfoAction(){
+        $addressId = $this->getRequest()->getParam('id', false);
+        $existsAddress = Mage::getModel('customer/address')->load($addressId);
+        $this->getResponse()->setBody(Zend_Json::encode($existsAddress));
+    }
+
+
+    public function getCurrentCustomerAddressesAjaxAction(){
+        $customer = $this->_getSession()->getCustomer();
+        $options = array();
+        foreach ($customer->getAddresses() as $address) {
+            $options[] = array(
+                'value' => $address->getId(),
+                'label' => $address->format('oneline')
+            );
+        }
+        $this->getResponse()->setBody(Zend_Json::encode($options));
+    }
+
+    public function setDefaultAddressAjaxAction(){
+        $addressId = $this->getRequest()->getParam('id', false);
+        $customer = $this->_getSession()->getCustomer();
+        $address = Mage::getModel('customer/address')->load($addressId);
+        $address->setCustomerId($customer->getId())
+            ->setIsDefaultBilling(true)
+            ->setIsDefaultShipping(1);
+        $address->save();
+
+    }
 }

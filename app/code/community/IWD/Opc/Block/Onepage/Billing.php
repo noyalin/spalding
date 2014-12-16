@@ -25,4 +25,22 @@ class IWD_Opc_Block_Onepage_Billing extends Mage_Checkout_Block_Onepage_Billing
 
     	return $this->_address;
     }
+    public function getAddressesArray($type)
+    {
+        if ($this->isCustomerLoggedIn()) {
+            $options = array();
+            foreach ($this->getCustomer()->getAddresses() as $address) {
+                $options[] = array(
+                    'value' => $address->getId(),
+                    'label' => $address->format('oneline')
+                );
+            }
+
+            $addressId = $this->getAddress()->getCustomerAddressId();
+
+
+            return array($options,$addressId);
+        }
+        return '';
+    }
 }

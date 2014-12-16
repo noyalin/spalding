@@ -395,7 +395,7 @@ IWD.OPC = {
 			IWD.OPC.Checkout.unlockPlaceOrder();				
 			
 			IWD.OPC.Plugin.dispatch('responseSaveOrder', response);
-		},
+		}
 		
 		
 };
@@ -433,7 +433,8 @@ IWD.OPC.Checkout = {
 			
 			
 			if (this.config.isLoggedIn===1){
-				var addressId = $j('#billing-address-select').val();
+//				var addressId = $j('#billing-address-select').val();//old opc
+				var addressId =$j("input[name='billing_address_id'][checked]").val();
 				if (addressId!='' && addressId!=undefined ){
 					IWD.OPC.Billing.save();
 				}else{
@@ -842,10 +843,10 @@ IWD.OPC.Billing = {
 					else
 						IWD.OPC.Checkout.lockPlaceOrder(1);
 					
-					IWD.OPC.Billing.bill_need_update = false;		
+					IWD.OPC.Billing.bill_need_update = false;
 					IWD.OPC.Checkout.xhr = $j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/saveBilling',form, IWD.OPC.Checkout.prepareAddressResponse,'json');
 			}, 500);
-		},
+		}
 		
 };
 
@@ -1077,7 +1078,7 @@ IWD.OPC.Comment = {
 				}
 			});
 			
-		},		
+		}
 };
 
 IWD.OPC.Agreement ={
