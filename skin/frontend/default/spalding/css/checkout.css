@@ -76,7 +76,7 @@ i, cite, em, address {
 .one_step .funs a.high{ color:#09F; font-size:14px;}
 .one_step .funs a.high:hover{ color:#F60;}
 .one_step .note_info{ margin:10px 0 0;}
-.one_step .step_main{ margin:0 36px; padding-top:10px;}
+/*.one_step .step_main{ margin:0 36px; padding-top:10px;}*/
 .one_step .intro, .one_step .twrap{ background:#F7FAFC; border:1px solid #E4E9EE; color:#333; margin:0 0 10px 0; padding:10px;}
 .one_step .twrap{ margin-top:10px;}
 .one_step .twrap td{ padding:5px;}

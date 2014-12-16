@@ -10,7 +10,6 @@
 list($options,$addressId) = $this->getAddressesArray('billing');
 ?>
 <div id="co-billing-form">
-    <h3><?php echo $this->__('Name & Address')?></h3>
     <div class="add_addr" id="add_new_address_button" >
         <a class="btn" href="javascript:;">
             <i class="add">&nbsp;</i>
@@ -19,17 +18,13 @@ list($options,$addressId) = $this->getAddressesArray('billing');
 <!-- new format s-->
 
     <div class="one_step addr_step">
-        <div class="checkoutSubTitleMain">
-            <span class="checkoutSubTitleBall"></span>
-            <span class="checkoutSubTitleText">选择收货地址</span>
-        </div>
         <div id="addressUl" class="step_main">
             <div class="clearfix step_radio_wrap">
                 <?php foreach( $options as $eacAddr){
                     $addrValueId = $eacAddr['value'];
                     $selected = null;
                     $checked = '';
-                    if($addrValueId == 17){
+                    if($addrValueId == 20){
                         $selected = "selected";
                         $checked = 'checked="true"';
                     }
@@ -51,36 +46,35 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                     </div>
                 <?php } ?>
             </div>
+            <div class="add_addr">
+                <a href="javascript:;" id="create_new_addr" class="btn" muse_scanned="true">
+                    <i class="add"></i>
+                    <span>使用新地址</span>
+                </a>
+            </div>
         </div>
     </div>
 
     <div class="checkoutNewAddress clearfix" style="display: block">
-        <div class="add_addr">
-            <a href="javascript:;" onclick="doShowCheckoutNewAddressForm();" class="btn" muse_scanned="true">
-                <i class="add"></i>
-                <span>使用新地址</span>
-            </a>
-        </div>
-
-        <div class="checkoutNewAddressContent" id="checkoutNewAddressForm">
-            <div class="checkoutNewAddressContentItem clearfix">
-                <div class="checkoutNewAddressContentItemLeft">
+        <div class="checkoutNewAddressContent checkoutWrapContent" id="checkoutNewAddressForm">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
                     <label for="firstname" class="required"><span class="rStar">*</span>收货人姓名:</label>
                     &nbsp;&nbsp;*
                 </div>
-                <div class="checkoutNewAddressContentItemRight">
+                <div class="checkoutWrapContentItemRight">
                     <input type="hidden" value="addressid" id="addressid">
                     <input type="text" title="收货人" name="firstname" id="firstname" value="" class="regBoxInp input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?>" required/>
                     <em class="error_em" id="firstname_error"></em>
                 </div>
             </div>
 
-            <div class="checkoutNewAddressContentItem clearfix">
-                <div class="checkoutNewAddressContentItemLeft">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
                     所在地区
                     &nbsp;&nbsp;*
                 </div>
-                <div class="checkoutNewAddressContentItemRight">
+                <div class="checkoutWrapContentItemRight">
                     <select  title="所在省市" id="region_id" required >
                         <option value="">请选择</option>
                         <option value="485" title="北京市">北京市</option><option value="486" title="天津市">天津市</option><option value="487" title="河北省">河北省</option><option value="488" title="山西省">山西省</option><option value="489" title="内蒙古">内蒙古</option><option value="490" title="辽宁省">辽宁省</option><option value="491" title="吉林省">吉林省</option><option value="492" title="黑龙江">黑龙江</option><option value="493" title="上海市">上海市</option><option value="494" title="江苏省">江苏省</option><option value="495" title="浙江省">浙江省</option><option value="496" title="安徽省">安徽省</option><option value="497" title="福建省">福建省</option><option value="498" title="江西省">江西省</option><option value="499" title="山东省">山东省</option><option value="500" title="河南省">河南省</option><option value="501" title="湖北省">湖北省</option><option value="502" title="湖南省">湖南省</option><option value="503" title="广东省">广东省</option><option value="504" title="广  西">广  西</option><option value="505" title="海南省">海南省</option><option value="506" title="重庆市">重庆市</option><option value="507" title="四川省">四川省</option><option value="508" title="贵州省">贵州省</option><option value="509" title="云南省">云南省</option><option value="510" title="西  藏">西  藏</option><option value="511" title="陕西省">陕西省</option><option value="512" title="甘肃省">甘肃省</option><option value="513" title="青海省">青海省</option><option value="514" title="宁  夏">宁  夏</option><option value="515" title="新  疆">新  疆</option><option value="516" title="台湾省">台湾省</option><option value="517" title="香  港">香  港</option><option value="518" title="澳  门">澳  门</option></select>
@@ -102,51 +96,51 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                 </div>
             </div>
 
-            <div class="checkoutNewAddressContentItem clearfix">
-                <div class="checkoutNewAddressContentItemLeft">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
                     街道地址
                     &nbsp;&nbsp;*
                 </div>
-                <div class="checkoutNewAddressContentItemRight">
+                <div class="checkoutWrapContentItemRight">
 <!--                    <textarea rows="2"></textarea><br>-->
                     <input type="text" name="street[]" value="" title="街道地址" id="street_1" class="regBoxInp input-text" size="80" style="width: 600px;"/>
                     <em class="error_em" id="street_error"></em>
                 </div>
             </div>
 
-            <div class="checkoutNewAddressContentItem clearfix">
-                <div class="checkoutNewAddressContentItemLeft">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
                     邮政编码
                     &nbsp;&nbsp;*
                 </div>
-                <div class="checkoutNewAddressContentItemRight">
+                <div class="checkoutWrapContentItemRight">
                     <input type="text" name="postcode" value=""  id="postcode" />
                     <em class="error_em" id="postcode_error"></em>
                 </div>
             </div>
 
-            <div class="checkoutNewAddressContentItem clearfix">
-                <div class="checkoutNewAddressContentItemLeft">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
                     手机号码
                     &nbsp;&nbsp;*
                 </div>
-                <div class="checkoutNewAddressContentItemRight">
+                <div class="checkoutWrapContentItemRight">
                     <input type="text" name="telephone" value=""   id="telephone1"  class="regBoxInp"/>
                     <em class="error_em" id="phone_error"></em>
                 </div>
             </div>
 
-            <div class="checkoutNewAddressContentItem clearfix">
-                <div class="checkoutNewAddressContentItemLeft">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
                     设置默认
                     &nbsp;&nbsp;*
                 </div>
-                <div class="checkoutNewAddressContentItemRight">
+                <div class="checkoutWrapContentItemRight">
                     <input type="checkbox"><br>
                 </div>
             </div>
 
-            <div class="checkoutNewAddressContentItem clearfix">
+            <div class="checkoutWrapContentItem clearfix">
                 <div class="checkoutNewAddressContentItemSave add_addr">
                     <a href="javascript:;" class="btn ds_dialog_yes" muse_scanned="true" id="4">
                         <i class="add"></i>
@@ -215,13 +209,14 @@ list($options,$addressId) = $this->getAddressesArray('billing');
     <ul class="form-list">
     <?php if ($this->customerHasAddresses()): ?>
         <li class="wide">
-            <label for="billing-address-select" class="notice"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+<!--            <label for="billing-address-select" class="notice">--><?php //echo $this->__('Select a billing address from your address book or enter a new address.') ?><!--</label>-->
 <!--            <div class="input-box">-->
 <!--                --><?php //echo $this->getAddressesHtmlSelect('billing') ?>
 <!--            </div>-->
         </li>
     <?php endif; ?>
-    <li id="billing-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
+
+    <li id="billing-new-address-form" style="display:none;">
         <fieldset>
             <input type="hidden" name="billing[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="billing:address_id" />
             <ul>
@@ -341,7 +336,7 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                             </li>
                     <?php endif ?>
 
-                    
+
                 <?php endif; ?>
                 <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
                 	<div class="clear"></div>
@@ -355,6 +350,7 @@ list($options,$addressId) = $this->getAddressesArray('billing');
             </ul>
         </fieldset>
     </li>
+
     <?php /* Extensions placeholder */ ?>
     <?php echo $this->getChildHtml('checkout.onepage.billing.extra')?>
     <?php if(!$this->isCustomerLoggedIn()): ?>
@@ -404,24 +400,18 @@ list($options,$addressId) = $this->getAddressesArray('billing');
 //]]>
 </script>
 <script>
-    jQuery(function($){
-        var doc = $(document);
-        $('#contentWrap').delegate('div.step_radio label', 'click', function(e){
-            jQuery('.step_radio').removeClass("selected");
-            jQuery(this).parent().addClass("selected");
-        });
 
-        $('.step_radio_wrap').delegate('div.step_radio', 'click',function() {
-            $(this).parent().children().removeClass('selected');
-            $(this).addClass('selected');
-            var addressId =$j("input[name='billing_address_id'][checked]").val();
+    jQuery(document).ready(function(){
+        jQuery('.step_radio_wrap').delegate('div.step_radio', 'click',function() {
+            jQuery(this).parent().children().removeClass('selected');
+            jQuery(this).addClass('selected');
+            var addressId = jQuery(this).children("input[name='billing_address_id']").attr('value');
+//            var addressId = jQuery("input[name='billing_address_id'][checked]").val();
             if (addressId!='' && addressId!=undefined ){
                 IWD.OPC.Billing.save();
             }
         });
-    });
 
-    jQuery(document).ready(function(){
         jQuery('.ds_dialog_yes').click(function(event){
             flag = checkAddressForm();
             if(!flag){
@@ -529,7 +519,11 @@ list($options,$addressId) = $this->getAddressesArray('billing');
             error: function(e){}
         });
     }
-    function doShowCheckoutNewAddressForm() {
-        jQuery('#checkoutNewAddressForm').show();
-    }
+//    function doShowCheckoutNewAddressForm() {
+//        jQuery('#checkoutNewAddressForm').show();
+//    }
+    jQuery("#create_new_addr").click(function(){
+            jQuery('#checkoutNewAddressForm').toggle();
+        }
+    );
 </script>

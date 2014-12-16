@@ -328,7 +328,7 @@
 .opc-wrapper-opc .opc-data-table .btn-remove img{margin-top: 5px;width: 10px;}
 .opc-wrapper-opc .opc-data-table tfoot tr.last{display:none}
 .opc-wrapper-opc .opc-data-table .btn-remove{display:none}
-.opc-review-actions{border-top:1px solid #b6b6b6;}
+/*.opc-review-actions{border-top:1px solid #b6b6b6;}*/
 .opc-review-actions h5{color:#3f3f3f; font-size:16px;font-weight:bold;margin-top:30px; }
 .opc-review-actions h5 span{margin-left:45px;}
 .opc-review-actions h5 span span{margin:0}
