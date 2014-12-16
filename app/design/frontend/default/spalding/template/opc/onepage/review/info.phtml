@@ -27,7 +27,29 @@
 
 <?php echo $this->getChildHtml('items_before'); ?>
 <div id="checkout-review-table-wrapper">
-    <h3 class="review-title"><?php echo $this->__('Review Your Order')?></h3>
+<!--    <h3 class="review-title">--><?php //echo $this->__('Review Your Order')?><!--</h3>-->
+    <div class="checkoutProductList"  id="checkout-review-table">
+        <div class="productsListRowHeader">
+            <div class="productsListCol productsListCol_Number">
+                商品编号
+            </div>
+            <div class="productsListCol productsListCol_Name">
+                商品名称
+            </div>
+            <div class="productsListCol productsListCol_Price">
+                价格
+            </div>
+            <div class="productsListCol productsListCol_QtyStatus">
+                库存状态
+            </div>
+            <div class="productsListCol productsListCol_Count">
+                数量
+            </div>
+        </div>
+        <?php foreach($this->getItems() as $_item): ?>
+            <?php echo $this->getItemHtml($_item)?>
+        <?php endforeach ?>
+    </div>
     <table class="opc-data-table" id="checkout-review-table">
         <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2; else: $colspan = $rowspan = 1; endif; ?>
         <col />
@@ -56,9 +78,7 @@
         </thead>
         <?php echo $this->getChildHtml('totals'); ?>
         <tbody>
-        <?php foreach($this->getItems() as $_item): ?>
-            <?php echo $this->getItemHtml($_item)?>
-        <?php endforeach ?>
+
         </tbody>
     </table>
 </div>
