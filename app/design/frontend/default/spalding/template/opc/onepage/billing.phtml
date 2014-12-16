@@ -51,14 +51,18 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                     </div>
                 <?php } ?>
             </div>
-            <div class="add_addr"><a class="btn" href="javascript:;"><i class="add"></i><span>新增收货地址</span></a></div>
         </div>
     </div>
 
     <div class="checkoutNewAddress clearfix" style="display: block">
-        <div class="checkoutSmallTitle">新增收货地址</div>
+        <div class="add_addr">
+            <a href="javascript:;" onclick="doShowCheckoutNewAddressForm();" class="btn" muse_scanned="true">
+                <i class="add"></i>
+                <span>使用新地址</span>
+            </a>
+        </div>
 
-        <div class="checkoutNewAddressContent">
+        <div class="checkoutNewAddressContent" id="checkoutNewAddressForm">
             <div class="checkoutNewAddressContentItem clearfix">
                 <div class="checkoutNewAddressContentItemLeft">
                     <label for="firstname" class="required"><span class="rStar">*</span>收货人姓名:</label>
@@ -384,7 +388,7 @@ list($options,$addressId) = $this->getAddressesArray('billing');
     <?php endif;?>
     
     <?php if ($this->canShip()): ?>
-        <li class="control <?php if (!Mage::helper('opc')->isShowShippingForm()):?>hidden<?php endif;?>">
+        <li class="control hidden">
             <input type="checkbox" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1"<?php if ($this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo  $this->__('Ship to this address') ?>" class="checkbox   " /><label for="billing:use_for_shipping_yes"><?php echo  $this->__('Ship to this address') ?></label>
         </li>
     <?php endif; ?>
@@ -452,6 +456,7 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                     },
                     success: function(data){
                         jQuery(".step_radio_wrap").append(data);
+                        jQuery('#checkoutNewAddressForm').hide();
 //                        var id = data;
 //                        jQuery("#billing_address_id_hidden").val(id);
 //                        getAddress(id);
@@ -523,5 +528,8 @@ list($options,$addressId) = $this->getAddressesArray('billing');
             },
             error: function(e){}
         });
+    }
+    function doShowCheckoutNewAddressForm() {
+        jQuery('#checkoutNewAddressForm').show();
     }
 </script>
