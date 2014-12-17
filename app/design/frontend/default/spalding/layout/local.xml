@@ -31,9 +31,9 @@
 
         </reference>
         <reference name="left">
-            <block type="cms/block" name="cms_left_info_block" after="left.poll">
-                <action method="setBlockId"><block_id>left_info_block</block_id></action>
-            </block>
+            <!--<block type="cms/block" name="cms_left_info_block" after="left.poll">-->
+                <!--<action method="setBlockId"><block_id>left_info_block</block_id></action>-->
+            <!--</block>-->
             <remove name="right.newsletter" />
 
             <remove name="left.permanent.callout" />

@@ -29,7 +29,7 @@
         <reference name="right">
             <block type="blog/menu_sidebar" name="right.blog.menu" before="-">
                 <action method="setTemplate" ifconfig="blog/menu/right" ifvalue="1">
-                    <template>aw_blog/menu.phtml</template>
+                    <!--<template>aw_blog/menu.phtml</template>-->
                 </action>
                 <block type="blog/tags" name="blog_tags" />
             </block>
@@ -37,7 +37,7 @@
         <reference name="left">
             <block type="blog/menu_sidebar" name="left.blog.menu"  before="-">
                 <action method="setTemplate" ifconfig="blog/menu/left">
-                    <template>aw_blog/menu.phtml</template> 
+                    <!--<template>aw_blog/menu.phtml</template> -->
                 </action>
                 <block type="blog/tags" name="blog_tags" />
             </block>
