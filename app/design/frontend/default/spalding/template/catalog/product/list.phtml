@@ -100,15 +100,16 @@
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 <!--                    <img src="--><?php //echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?><!--" width="135" height="135" alt="--><?php //echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?><!--" />-->
-                    <img id="mainImage" width="210" height="210" src="http://image.sneakerhead.com/is/image/sneakerhead/<?php echo $_product->getUrlKey();  ?>-1?$270$" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
+<!--                    <img id="mainImage" width="210" height="210" src="http://image.sneakerhead.com/is/image/sneakerhead/--><?php //echo $_product->getUrlKey();  ?><!---1?$270$" alt="--><?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><!--" onMouseOver="javascript:sku=1"/>-->
+                    <img id="mainImage" width="210" height="210" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210, 210); ?>" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
                 </a>
                 <div class="img-over">
                     <div class="img-over-sn">
                         <h3><?php echo $_product->getName();  ?></h3>
-                        <p>74-00000</p>
+                        <p><?php echo $_product->getSku();  ?></p>
                         <h3>￥ <?php echo $_product->getPrice() ?></h3>
                     </div>
-                    <div class="products-buyNow"><button>立即购买</button></div>
+                    <div class="products-buyNow"><button onclick='window.open("<?php echo $_product->getProductUrl();?>")'>立即购买</button></div>
 
                 </div>
                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
