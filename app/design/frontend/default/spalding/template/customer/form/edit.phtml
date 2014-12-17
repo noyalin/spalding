@@ -1,0 +1,156 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<div class="col-main ms-fr">
+    <div class="my-account">
+        <div class="dashboard">
+            <div class="page-title">个人账户</div>
+            <form action="" class="accounePreForm">
+                <div class="fieldset">
+                    <h2 class="legend">个人基本信息</h2>
+                </div>
+                <ul class="form-list">
+                    <li class="fields clearfix">
+                        <label for="firstname" class="required ms-fl">姓名：</label>
+                        <div class="input-box ms-fl">
+                            <input type="text" id="firstname" name="firstname" value="carrie" title="First Name" maxlength="255" class="input-text required-entry">
+                        </div>
+                    </li>
+                    <li class="userMail clearfix">
+                        <label for="email" class="required ms-fl">E-mail：</label>
+                        <div class="input-box ms-fl">
+                            <input type="text" name="email" id="email" value="carrie.zhang@voyageone.com" title="Email Address" class="input-text required-entry validate-email">
+                        </div>
+                    </li>
+                    <li class="control clearfix">
+                        <button>保存</button>
+                    </li>
+                </ul>
+            </form>
+            <form action="" class="accounePreForm">
+                <div class="fieldset">
+                    <h2 class="legend">设置新密码</h2>
+                </div>
+                <ul class="form-list">
+                    <li class="fields clearfix">
+                        <label for="" class="required ms-fl">新密码：</label>
+                        <div class="input-box ms-fl">
+                            <input type="text" id="" name="" value="" title="" maxlength="255" class="input-text required-entry">
+                        </div>
+                    </li>
+                    <li class="userMail clearfix">
+                        <label for="" class="required ms-fl">确认新密码：</label>
+                        <div class="input-box ms-fl">
+                            <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
+                        </div>
+                    </li>
+                    <li class="control clearfix">
+                        <button>保存</button>
+                    </li>
+                </ul>
+            </form>
+            <form action="" class="accounePreForm">
+                <div class="fieldset">
+                    <h2 class="legend">其他信息</h2>
+                </div>
+                <ul class="form-list">
+                    <li class="fields clearfix">
+                        <label for="firstname" class="required ms-fl">性别：</label>
+                        <div class="input-box ms-fl">
+                            <select name="" id="">
+                                <option value="">请选择</option>
+                                <option value="">男</option>
+                                <option value="">女</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="userMail clearfix">
+                        <label for="" class="required ms-fl">生日：</label>
+                        <div class="input-box ms-fl">
+                            <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
+                        </div>
+                    </li>
+                    <li class="userMail clearfix">
+                        <label for="" class="required ms-fl">身份证：</label>
+                        <div class="input-box ms-fl">
+                            <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
+                        </div>
+                    </li>
+                    <li class="control clearfix">
+                        <button>保存</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 用户中心 e -->
+<!-- 左侧导航 -->
+<div class="col-left sidebar ms-fl">
+    <div class="block block-account">
+        <div class="block-title block-title-cus">
+            <strong><span><img src='<?php echo $this->getSkinUrl("images/cusCentre_lefNavTit.png") ?>' alt=""></span></strong>
+        </div>
+        <div class="block-content">
+            <ul>
+                <li><a href="userAccountMgt.html">账户管理</a></li>
+                <li class="current"><strong>个人账户</strong></li>
+                <li><a href="userAccountAdrs.html">地址管理</a></li>
+                <li><a href="userAccountOrders.html">我的订单</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 左侧导航 e -->
+<div class="clear"></div>
+</div>
+</div>
+<!-- 主框架 e -->
+
+<!--<script type="text/javascript">-->
+<!--//<![CDATA[-->
+<!--    var dataForm = new VarienForm('form-validate', true);-->
+<!--    function setPasswordForm(arg){-->
+<!--        if(arg){-->
+<!--            $('current_password').up(3).show();-->
+<!--            $('current_password').addClassName('required-entry');-->
+<!--            $('password').addClassName('required-entry');-->
+<!--            $('confirmation').addClassName('required-entry');-->
+<!---->
+<!--        }else{-->
+<!--            $('current_password').up(3).hide();-->
+<!--            $('current_password').removeClassName('required-entry');-->
+<!--            $('password').removeClassName('required-entry');-->
+<!--            $('confirmation').removeClassName('required-entry');-->
+<!--        }-->
+<!--    }-->
+<!---->
+<!--    --><?php //if($this->getCustomer()->getChangePassword()): ?>
+<!--        setPasswordForm(true);-->
+<!--    --><?php //endif; ?>
+<!--//]]>-->
+<!--</script>-->

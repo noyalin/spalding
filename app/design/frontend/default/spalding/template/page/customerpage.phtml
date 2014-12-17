@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>用户中心</title>
+    <?php echo $this->getChildHtml('head') ?>
+    <script>
+        $(function(){
+            //修改用户基本信息
+            $('.box-amend').on("click",function(){
+                $(this).parent().parent().parent('.col-1').css("display","none");
+                $(this).parent().parent().parent('.col-1').next('.col-2').css("display","block");
+            });
+            //文本框获取焦点时选中值
+            $(":text").focus(function(){
+                $(this).select();
+            });
+
+            //保存用户基本信息
+            $('.box-save').on("click",function(){
+                var $userName = $('#user_name').val();
+                var $userEmail = $('#user_email').val();
+                var $col1 = $(this).parent().parent().parent('.col-2').siblings('.col-1');
+                var $col2 = $(this).parent().parent().parent('.col-2')
+                //name & email 验证
+                if($userName == '' ){
+                    $('#user_name').val('请输入姓名');
+                }else if($userEmail.search(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)==-1){
+                    $('#user_email').val('请输入正确的EMAIL格式');
+                }else{
+                    $col2.css("display","none");
+                    $col1.find('.user_name').html($userName);
+                    $col1.find('.user_email').html($userEmail);
+                    $col1.css("display","block");
+                }
+            });
+
+            //去除最后一个form下划线
+            $('form:last').css("border-bottom","none");
+        });
+    </script>
+</head>
+<body>
+<div class="bodyBg"><img src='<?php echo $this->getSkinUrl("images/20141210002.jpg") ?>'></div>
+<?php echo $this->getChildHtml('header') ?>
+<!-- 主框架 s -->
+<div style="height:110px; z-index:-2;"></div>
+<div class="main-container col2-left-layout">
+    <div class="main">
+        <!-- 用户中心 -->
+        <div class="col-main ms-fr">
+            <div class="my-account">
+                <div class="dashboard">
+                    <div class="page-title">个人账户</div>
+                    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                    <form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate" autocomplete="off" class="accounePreForm">
+                        <div class="fieldset">
+                            <?php echo $this->getBlockHtml('formkey')?>
+                            <h2 class="legend">个人基本信息</h2>
+                        </div>
+                        <ul class="form-list">
+                            <li class="fields clearfix">
+                                <label for="firstname" class="required ms-fl">姓名：</label>
+                                <div class="input-box ms-fl">
+                                    <input type="text" id="firstname" name="firstname" value="" title="First Name" maxlength="255" class="input-text required-entry">
+                                </div>
+                            </li>
+                            <li class="userMail clearfix">
+                                <label for="email" class="required ms-fl">E-mail：</label>
+                                <div class="input-box ms-fl">
+                                    <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="Email Address" class="input-text required-entry validate-email">
+                                </div>
+                            </li>
+                            <li class="control clearfix">
+                                <button>保存</button>
+                            </li>
+                        </ul>
+                    </form>
+                    <form action="" class="accounePreForm">
+                        <div class="fieldset">
+                            <h2 class="legend">设置新密码</h2>
+                        </div>
+                        <ul class="form-list">
+                            <li class="fields clearfix">
+                                <label for="" class="required ms-fl">新密码：</label>
+                                <div class="input-box ms-fl">
+                                    <input type="text" id="" name="" value="" title="" maxlength="255" class="input-text required-entry">
+                                </div>
+                            </li>
+                            <li class="userMail clearfix">
+                                <label for="" class="required ms-fl">确认新密码：</label>
+                                <div class="input-box ms-fl">
+                                    <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
+                                </div>
+                            </li>
+                            <li class="control clearfix">
+                                <button>保存</button>
+                            </li>
+                        </ul>
+                    </form>
+                    <form action="" class="accounePreForm">
+                        <div class="fieldset">
+                            <h2 class="legend">其他信息</h2>
+                        </div>
+                        <ul class="form-list">
+                            <li class="fields clearfix">
+                                <label for="firstname" class="required ms-fl">性别：</label>
+                                <div class="input-box ms-fl">
+                                    <select name="" id="">
+                                        <option value="">请选择</option>
+                                        <option value="">男</option>
+                                        <option value="">女</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="userMail clearfix">
+                                <label for="" class="required ms-fl">生日：</label>
+                                <div class="input-box ms-fl">
+                                    <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
+                                </div>
+                            </li>
+                            <li class="userMail clearfix">
+                                <label for="" class="required ms-fl">身份证：</label>
+                                <div class="input-box ms-fl">
+                                    <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
+                                </div>
+                            </li>
+                            <li class="control clearfix">
+                                <button>保存</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 用户中心 e -->
+        <!-- 左侧导航 -->
+        <div class="col-left sidebar ms-fl">
+            <?php echo $this->getChildHtml('left') ?>
+        </div>
+        <!-- 左侧导航 e -->
+        <div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>
