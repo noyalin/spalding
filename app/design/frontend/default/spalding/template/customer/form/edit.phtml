@@ -24,133 +24,191 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<div class="page-title">
+    <h1><?php echo $this->__('Edit Account Information') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate" autocomplete="off" class="accounePreForm">
+    <div class="fieldset">
+        <?php echo $this->getBlockHtml('formkey')?>
+        <h2 class="legend"><?php echo $this->__('Account Base Information') ?></h2>
+        <ul class="form-list">
+            <li class="fields clearfix">
+                <div class="field name-firstname">
+                    <label class="required ms-fl" for="firstname">姓名：</label>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry" maxlength="255" title="收件人姓名" value="davis" name="firstname" id="firstname">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?></label>
+                <div class="input-box">
+                    <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+                </div>
+            </li>
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php if ($_dob->isEnabled()): ?>
+            <li><?php echo $_dob->setDate($this->getCustomer()->getDob())->toHtml() ?></li>
+        <?php endif ?>
+        <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+        <?php if ($_taxvat->isEnabled()): ?>
+            <li><?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?></li>
+        <?php endif ?>
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+        <?php if ($_gender->isEnabled()): ?>
+            <li><?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?></li>
+        <?php endif ?>
+<!--            <li class="control">-->
+<!--                <input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="--><?php //echo $this->__('Change Password') ?><!--"--><?php //if($this->getCustomer()->getChangePassword()==1): ?><!-- checked="checked"--><?php //endif; ?><!-- class="checkbox" /><label for="change_password">--><?php //echo $this->__('Change Password') ?><!--</label>-->
+<!--            </li>-->
 
-<div class="col-main ms-fr">
-    <div class="my-account">
-        <div class="dashboard">
-            <div class="page-title">个人账户</div>
-            <form action="" class="accounePreForm">
-                <div class="fieldset">
-                    <h2 class="legend">个人基本信息</h2>
-                </div>
-                <ul class="form-list">
-                    <li class="fields clearfix">
-                        <label for="firstname" class="required ms-fl">姓名：</label>
-                        <div class="input-box ms-fl">
-                            <input type="text" id="firstname" name="firstname" value="carrie" title="First Name" maxlength="255" class="input-text required-entry">
-                        </div>
-                    </li>
-                    <li class="userMail clearfix">
-                        <label for="email" class="required ms-fl">E-mail：</label>
-                        <div class="input-box ms-fl">
-                            <input type="text" name="email" id="email" value="carrie.zhang@voyageone.com" title="Email Address" class="input-text required-entry validate-email">
-                        </div>
-                    </li>
-                    <li class="control clearfix">
-                        <button>保存</button>
-                    </li>
-                </ul>
-            </form>
-            <form action="" class="accounePreForm">
-                <div class="fieldset">
-                    <h2 class="legend">设置新密码</h2>
-                </div>
-                <ul class="form-list">
-                    <li class="fields clearfix">
-                        <label for="" class="required ms-fl">新密码：</label>
-                        <div class="input-box ms-fl">
-                            <input type="text" id="" name="" value="" title="" maxlength="255" class="input-text required-entry">
-                        </div>
-                    </li>
-                    <li class="userMail clearfix">
-                        <label for="" class="required ms-fl">确认新密码：</label>
-                        <div class="input-box ms-fl">
-                            <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
-                        </div>
-                    </li>
-                    <li class="control clearfix">
-                        <button>保存</button>
-                    </li>
-                </ul>
-            </form>
-            <form action="" class="accounePreForm">
-                <div class="fieldset">
-                    <h2 class="legend">其他信息</h2>
-                </div>
-                <ul class="form-list">
-                    <li class="fields clearfix">
-                        <label for="firstname" class="required ms-fl">性别：</label>
-                        <div class="input-box ms-fl">
-                            <select name="" id="">
-                                <option value="">请选择</option>
-                                <option value="">男</option>
-                                <option value="">女</option>
-                            </select>
-                        </div>
-                    </li>
-                    <li class="userMail clearfix">
-                        <label for="" class="required ms-fl">生日：</label>
-                        <div class="input-box ms-fl">
-                            <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
-                        </div>
-                    </li>
-                    <li class="userMail clearfix">
-                        <label for="" class="required ms-fl">身份证：</label>
-                        <div class="input-box ms-fl">
-                            <input type="text" name="" id="" value="" title="Email Address" class="input-text required-entry">
-                        </div>
-                    </li>
-                    <li class="control clearfix">
-                        <button>保存</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
+            <li class="control clearfix">
+                <button type="submit" title="<?php echo $this->__('Save') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
+            </li>
+        </ul>
     </div>
-</div>
-<!-- 用户中心 e -->
-<!-- 左侧导航 -->
-<div class="col-left sidebar ms-fl">
-    <div class="block block-account">
-        <div class="block-title block-title-cus">
-            <strong><span><img src='<?php echo $this->getSkinUrl("images/cusCentre_lefNavTit.png") ?>' alt=""></span></strong>
-        </div>
-        <div class="block-content">
-            <ul>
-                <li><a href="userAccountMgt.html">账户管理</a></li>
-                <li class="current"><strong>个人账户</strong></li>
-                <li><a href="userAccountAdrs.html">地址管理</a></li>
-                <li><a href="userAccountOrders.html">我的订单</a></li>
-            </ul>
-        </div>
+    <div class="fieldset" style="display:none;">
+        <h2 class="legend"><?php echo $this->__('Change Password') ?></h2>
+        <ul class="form-list">
+            <li>
+                <label for="current_password" class="required"><em>*</em><?php echo $this->__('Current Password') ?></label>
+                <div class="input-box">
+                    <!-- This is a dummy hidden field to trick firefox from auto filling the password -->
+                    <input type="text" class="input-text no-display" name="dummy" id="dummy" />
+                    <input type="password" title="<?php echo $this->__('Current Password') ?>" class="input-text" name="current_password" id="current_password" />
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="password" class="required"><em>*</em><?php echo $this->__('New Password') ?></label>
+                    <div class="input-box">
+                        <input type="password" title="<?php echo $this->__('New Password') ?>" class="input-text validate-password" name="password" id="password" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm New Password') ?></label>
+                    <div class="input-box">
+                        <input type="password" title="<?php echo $this->__('Confirm New Password') ?>" class="input-text validate-cpassword" name="confirmation" id="confirmation" />
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
-</div>
-<!-- 左侧导航 e -->
-<div class="clear"></div>
-</div>
-</div>
-<!-- 主框架 e -->
+<!--    <div class="buttons-set">-->
+<!--        <p class="required">--><?php //echo $this->__('* Required Fields') ?><!--</p>-->
+<!--        <p class="back-link"><a href="--><?php //echo $this->escapeUrl($this->getBackUrl()) ?><!--"><small>&laquo; </small>--><?php //echo $this->__('Back') ?><!--</a></p>-->
+<!--        <button type="submit" title="--><?php //echo $this->__('Save') ?><!--" class="button"><span><span>--><?php //echo $this->__('Save') ?><!--</span></span></button>-->
+<!--    </div>-->
+</form>
 
-<!--<script type="text/javascript">-->
-<!--//<![CDATA[-->
-<!--    var dataForm = new VarienForm('form-validate', true);-->
-<!--    function setPasswordForm(arg){-->
-<!--        if(arg){-->
-<!--            $('current_password').up(3).show();-->
-<!--            $('current_password').addClassName('required-entry');-->
-<!--            $('password').addClassName('required-entry');-->
-<!--            $('confirmation').addClassName('required-entry');-->
-<!---->
-<!--        }else{-->
-<!--            $('current_password').up(3).hide();-->
-<!--            $('current_password').removeClassName('required-entry');-->
-<!--            $('password').removeClassName('required-entry');-->
-<!--            $('confirmation').removeClassName('required-entry');-->
-<!--        }-->
-<!--    }-->
-<!---->
-<!--    --><?php //if($this->getCustomer()->getChangePassword()): ?>
-<!--        setPasswordForm(true);-->
-<!--    --><?php //endif; ?>
-<!--//]]>-->
-<!--</script>-->
+<style type="text/css">
+    ul.form-list li input[type="password"] {
+        border: 0 none;
+        border-radius: 3px 3px 3px 3px;
+        color: #666666;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 5px;
+        width: 260px;
+    }
+    .no-display {
+        display: none;
+    }
+</style>
+<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate_password" autocomplete="off" class="accounePreForm">
+    <div class="fieldset">
+        <h2 class="legend">设置新密码</h2>
+    </div>
+    <div class="fieldset">
+        <ul class="form-list">
+            <li class="fields clearfix">
+                <div class="input-box">
+                    <input style="display: none" type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+                </div>
+            </li>
+            <li class="fields clearfix">
+                <label class="required ms-fl" for="current_password">旧密码</label>
+                <div class="input-box">
+                    <!-- This is a dummy hidden field to trick firefox from auto filling the password -->
+                    <input type="text" class="input-text no-display" name="dummy" id="dummy" />
+                    <input type="password" id="current_password" name="current_password" class="input-text required-entry validation-failed" title="Current Password">
+                </div>
+            </li>
+            <li class="fields clearfix">
+                <div class="field">
+                    <label class="required ms-fl" for="password">新密码：</label>
+                    <div class="input-box ms-fl">
+                        <input type="password" title="<?php echo $this->__('New Password') ?>" class="input-text validate-password required-entry" name="password" id="password" />
+                    </div>
+                </div>
+            </li>
+            <li class="userMail clearfix">
+                <label class="required ms-fl"  for="confirmation" >确认新密码：</label>
+                <div class="input-box ms-fl">
+                    <input type="password" title="<?php echo $this->__('Confirm New Password') ?>" class="input-text validate-cpassword required-entry" name="confirmation" id="confirmation" />
+                </div>
+            </li>
+            <li class="control clearfix">
+                <button type="submit" title="<?php echo $this->__('Save') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
+            </li>
+        </ul>
+    </div>
+</form>
+
+<form class="accounePreForm" action="<?php echo $this->getUrl('customer/account/editPost') ?>" style="border-bottom: medium none;">
+    <div class="fieldset">
+        <h2 class="legend">其他信息</h2>
+    </div>
+    <ul class="form-list">
+        <li class="fields clearfix">
+            <label class="required ms-fl" for="firstname">性别：</label>
+            <div class="input-box ms-fl">
+                <select id="" name="">
+                    <option value="">请选择</option>
+                    <option value="">男</option>
+                    <option value="">女</option>
+                </select>
+            </div>
+        </li>
+        <li class="userMail clearfix">
+            <label class="required ms-fl" for="">生日：</label>
+            <div class="input-box ms-fl">
+                <input type="text" class="input-text required-entry" title="Email Address" value="" id="" name="">
+            </div>
+        </li>
+        <li class="userMail clearfix">
+            <label class="required ms-fl" for="">身份证：</label>
+            <div class="input-box ms-fl">
+                <input type="text" class="input-text required-entry" title="Email Address" value="" id="" name="">
+            </div>
+        </li>
+        <li class="control clearfix">
+            <button>保存</button>
+        </li>
+    </ul>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    var dataForm2 = new VarienForm('form-validate_password', true);
+    function setPasswordForm(arg){
+        if(arg){
+            $('current_password').up(3).show();
+            $('current_password').addClassName('required-entry');
+            $('password').addClassName('required-entry');
+            $('confirmation').addClassName('required-entry');
+
+        }else{
+            $('current_password').up(3).hide();
+            $('current_password').removeClassName('required-entry');
+            $('password').removeClassName('required-entry');
+            $('confirmation').removeClassName('required-entry');
+        }
+    }
+
+    <?php if($this->getCustomer()->getChangePassword()): ?>
+        setPasswordForm(true);
+    <?php endif; ?>
+//]]>
+</script>

@@ -25,29 +25,26 @@
  */
 ?>
 <div class="block block-account">
+<!--    <div class="block-title">-->
+<!--        <strong><span>--><?php //echo $this->__('My Account'); ?><!--</span></strong>-->
+<!--    </div>-->
     <div class="block-title block-title-cus">
-        <strong><span><img src='<?php echo $this->getSkinUrl("images/cusCentre_lefNavTit.png") ?>'/></span></strong>
+        <strong><span><img alt="" src="<?php echo $this->getSkinUrl("images/cusCentre_lefNavTit.png")  ?>"></span></strong>
     </div>
     <div class="block-content">
         <ul>
-            <?php $_links = $this->getLinks(); ?>
+            <?php
+            $_links = $this->getLinks();
+            $arrShow = array("account","account_edit","address_book","orders");
+            ?>
             <?php $_index = 1; ?>
             <?php $_count = count($_links); ?>
             <?php
-                $isShow4LeftArr = array();
-                $isShow4LeftArr[0] = 'account';
-                $isShow4LeftArr[1] = 'account_edit';
-                $isShow4LeftArr[2] = 'address_book';
-                $isShow4LeftArr[3] = 'orders';
-            ?>
-<!--            --><?php //var_dump($_links)?>
-            <?php foreach ($_links as $_link): ?>
-                <?php
-                    if(!in_array($_link->getName(),$isShow4LeftArr)){
+                foreach ($_links as $_link):
+                    if(!in_array($_link->getName(),$arrShow)){
                         continue;
                     }
-                ?>
-
+             ?>
                 <?php $_last = ($_index++ >= $_count); ?>
                 <?php if ($this->isActive($_link)): ?>
                     <li class="current<?php echo ($_last ? ' last' : '') ?>"><strong><?php echo $_link->getLabel() ?></strong></li>
