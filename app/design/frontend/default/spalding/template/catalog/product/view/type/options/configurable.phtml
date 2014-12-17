@@ -25,6 +25,24 @@
  */
 ?>
 
+<script>
+    jQuery(function() {
+        var spanLen = jQuery('#product-options-wrapper input[type="radio"]').length;
+        if(spanLen<2){
+            jQuery('#product-options-wrapper span').addClass('checked');
+            jQuery('#product-options-wrapper input[type="radio"]').attr('checked', 'checked');
+        }else{
+            jQuery('#product-options-wrapper span').removeClass('checked');
+            jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked');
+            jQuery('#product-options-wrapper span').click(function(){
+                var radioId = jQuery(this).attr('name');
+                jQuery('#product-options-wrapper span').removeClass('checked') && jQuery(this).addClass('checked');
+                jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
+            });
+        };
+    });
+</script>
+
 <?php
 $_product    = $this->getProduct();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
@@ -43,10 +61,13 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
             $valueArr = $_attribute->getPrices();
         ?>
             <div class="sale-num prodetail-box">
-                <span><?php echo $_attribute->getLabel() ?>：</span>
+<!--                <span>--><?php //echo $_attribute->getLabel() ?><!--：</span>-->
+                <label><?php echo $_attribute->getLabel() ?>：</label>
+                <?php $sizeIndex = 1;?>
                 <?php foreach($valueArr as $optionValue): ?>
-                    <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId() ?>"><?php echo $optionValue['label']; ?></span>
-                    <input type="radio" <?php echo $checked; ?> value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select" style="display: none">
+                    <?php $sizeIndex  = $sizeIndex + 1;?>
+                    <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" name="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>"><?php echo $optionValue['label']; ?></span>
+                    <input type="radio" <?php echo $checked; ?> value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
                 <?php endforeach; ?>
             </div>
     <?php endforeach; ?>
