@@ -32,10 +32,57 @@
 ?>
 <div class="page-title title-buttons">
     <h1><?php echo $this->__('Address Book') ?></h1>
-    <button type="button" title="<?php echo $this->__('Add New Address') ?>" class="button" onclick="window.location='<?php echo $this->getAddAddressUrl() ?>';"><span><span><?php echo $this->__('Add New Address') ?></span></span></button>
+
+<!--    <button type="button" title="--><?php //echo $this->__('Add New Address') ?><!--" class="button" onclick="window.location='--><?php //echo $this->getAddAddressUrl() ?><!--';"><span><span>--><?php //echo $this->__('Add New Address') ?><!--</span></span></button>-->
+</div>
+<div class="itemFun">
+    <a href="<?php echo $this->getAddAddressUrl() ?>" style="width: 90px">添加新地址</a>
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <div class="col2-set addresses-list">
+
+    <div class="col-1 addresses-primary">
+        <h2>已保存的收货地址</h2>
+        <ol>
+            <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
+                <li class="item clearfix">
+                    <div class="itemBox ms-fl">
+                        <span>
+                            <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?> (默认收货地址)
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="itemFun ms-fr">
+                        <a  style="width: 90px" href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">修改默认地址</a>
+                    </div>
+                </li>
+            <?php else: ?>
+                <li class="item">
+                    <h3><?php echo $this->__('Default Billing Address') ?></h3>
+                    <?php echo $this->__('You have no default billing address in your address book.') ?>
+                </li>
+            <?php endif ?>
+            <?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
+                <?php foreach($_pAddsses as $_address): ?>
+                    <li class="item clearfix">
+                        <span>
+                            <?php echo $this->getAddressHtml($_address) ?>
+                        </span>
+                        <div class="itemFun ms-fr">
+                            <a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>">修改</a>
+                            <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');">删除</a>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li class="item empty">
+                    <p><?php echo $this->__('You have no additional address entries in your address book.') ?></p>
+                </li>
+            <?php endif ?>
+        </ol>
+    </div>
+
+    <!--
     <div class="col-1 addresses-primary">
         <h2><?php echo $this->__('Default Addresses') ?></h2>
         <ol>
@@ -89,10 +136,13 @@
         <?php endif ?>
         </ol>
     </div>
+    -->
 </div>
+<!--
 <div class="buttons-set">
     <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
 </div>
+-->
 <script type="text/javascript">
 //<![CDATA[
     function deleteAddress(addressId) {
