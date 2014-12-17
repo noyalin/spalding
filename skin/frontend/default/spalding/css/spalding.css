@@ -5,6 +5,10 @@
  * @Spalding  2014-12-08 17:04:03
  */
 
+ button{
+ 	cursor:pointer;
+ }
+
 /*头部 s*/
 .header{
 	position: absolute;
@@ -1296,11 +1300,25 @@ span.spCarTit_fun{
 	color:#b6b6b6;
 }
 
-.sale-num span.sale_kindChos{
+.sale-num span.sale_kind{
 	padding:10px 10px;
 	background: url(../images/productDetail_kind.png) right bottom no-repeat #fff;
 	border:2px solid #fbb605;
 	color:#000;
+}
+
+#product-options-wrapper input[type="radio"] {
+  display: none;
+}
+#product-options-wrapper span.sale_kind {
+  padding:10px 10px;
+  background: #f2f2f2;
+  border:2px solid #B6B6B6;
+  color:#000;
+}
+#product-options-wrapper span.checked {
+  background: url(../images/productDetail_kind.png) right bottom no-repeat #fff;
+  border:2px solid #fbb605;
 }
 
 .add-to-cart input.proNum{
@@ -1497,6 +1515,8 @@ h2.product-collateral-box-nam{
 	margin-bottom:10px;
 	border-bottom:5px solid #fff;
 }
+
+
 
 
 .box-head{
@@ -1753,6 +1773,9 @@ ul.form-list li p{
 	width:80px;
 }
 
+.order_data .order_data_tit span.order_ifts_tit_state{
+	width:150px;
+}
 
 .order_data .order_data_tit span.order_data_tit_priceO{
 	width:70px;
@@ -1768,6 +1791,7 @@ ul.form-list li p{
 .order_data ul.order_data_list li{
 	border:1px solid #4d4d4d;
 	font-size: 12px;
+	margin-bottom:10px;
 }
 
 
@@ -1776,7 +1800,7 @@ ul.form-list li p{
 	background: rgba(51,51,51,.7);
 	font-size: 12px;
 	font-weight: normal;
-	color:#ddd9d9;
+	color:#888;
 }
 
 .order_data ul.order_data_list li h2>span{
@@ -1789,6 +1813,7 @@ ul.form-list li p{
 	float: left;
 	text-align: center;
 	margin-left:5px;
+	color:#ddd9d9;
 }
 
 
@@ -1840,6 +1865,11 @@ ul.form-list li p{
 	line-height: 65px;
 }
 
+.order_data ul.order_data_list li>span.order_ifts_list_state{
+	width:150px;
+	line-height: 65px;
+}
+
 .order_data ul.order_data_list li>span.order_data_list_priceO{
 	width:70px;
 	line-height: 65px;
@@ -1860,49 +1890,132 @@ ul.form-list li p{
 	color:#ffba00;
 }
 
+.order-infs{
+	margin-bottom:50px;
+	margin-top:30px;
+}
+
+.order-infs p{
+	color:#fff;
+	font-size: 12px;
+	margin:15px 0;
+}
+
+
+
+.order-infs p span{
+	font-weight: bold;
+}
+
+.order-infs p span.order_infs_price{
+	font-size: 20px;
+	color:#fdb905;
+}
+
+.order_data h4{
+	font-weight: bold;
+	font-size: 14px;
+	color:#fdb905;
+	margin-bottom:15px;
+}
+
+.orderPrice{
+	text-align: right;
+	margin-top:50px;
+	font-size: 28px;
+	font-weight: bold;
+	color:#fdb905;
+}
+
+
+.orderPriceFun{
+	text-align: right;
+	margin-top:15px;
+	font-size: 12px;
+}
+
+
+.orderPriceFun a{
+	display:inline-block;
+	margin-left:10px;
+	color:#fdb905;
+}
+.orderPriceFun a:hover{
+	text-decoration:underline;
+}
 
 
 
 
+/*忘记密码*/
+.col-main-forgetPasw{
+	width:100%;
+	margin:30px auto 0;
+}
+.col-main-forgetPasw .page-title{
+	border-bottom:none;
+	padding:10px 10px;
+	background:#333;
+	color:#fff;
+}
+
+.col-main-forgetPasw .page-title h1{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.col-main-forgetPasw .fieldset{
+	text-align: center;
+}
+
+.col-main-forgetPasw .fieldset img{
+	margin:50px 0;
+}
 
 
+.col-main-forgetPasw .fieldset label{
+	display: inline-block;
+	color:#b6b6b6;
+	font-size: 12px;
+}
+
+.col-main-forgetPasw .fieldset label input{
+	width:270px;
+	height:30px;
+	line-height: 30px;
+	font-size: 12px;
+	color:#666;
+	border:none;
+	border-radius: 3px;
+	margin-left:20px;
+	padding:0 10px;
+}
 
 
+.buttons-set{
+	text-align: center;
+	font-size: 12px;
+	margin:20px 0;
+}
 
+.buttons-set button{
+	width:80px;
+	height:35px;
+	line-height: 35px;
+	font-size: 14px;
+	color:#000;
+	border:none;
+	border-radius: 3px;
+	background:#fdb905;
+}
 
+.buttons-set p{
+	margin-top:50px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.buttons-set p span{
+	color:#fdb905;
+}
 
 
 
