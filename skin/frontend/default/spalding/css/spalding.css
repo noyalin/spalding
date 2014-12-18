@@ -1311,16 +1311,30 @@ span.spCarTit_fun{
   display: none;
 }
 #product-options-wrapper span.sale_kind {
-  padding:10px 10px;
+  padding:7px 10px;
   background: #f2f2f2;
   border:2px solid #B6B6B6;
   color:#000;
+  cursor:pointer;
+  font-size: 14px;
 }
 #product-options-wrapper span.checked {
   background: url(../images/productDetail_kind.png) right bottom no-repeat #fff;
   border:2px solid #fbb605;
 }
 
+#detailAvailColor a{
+	display: inline-block;
+	position: relative;
+} 
+
+#detailAvailColor a img.availableColorPxNow{
+	display: block;
+	position: absolute;
+	margin-left:-5px;
+	right:0;
+	bottom:0;
+}
 .add-to-cart input.proNum{
 	height:16px;
 	height:16px;
@@ -1727,7 +1741,8 @@ ul.form-list li p{
 }
 
 
-.itemFun button{
+.itemFun a{
+	display: inline-block;
 	width:50px;
 	height:25px;
 	line-height: 25px;
@@ -1736,6 +1751,7 @@ ul.form-list li p{
 	border-radius: 3px;
 	background: #fdb905;
 	font-weight:bold;
+	color:#000;
 }
 
 
