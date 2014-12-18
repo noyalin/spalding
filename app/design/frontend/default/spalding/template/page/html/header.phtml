@@ -75,11 +75,70 @@
                 if(!strstr($current_url,'customer/account/login/')){
                     ?>
                     <div class="header_nav_wrap">
-                        <a href="#">首页</a>
-                        <a href="#">关于斯伯丁</a>
-                        <a href="#">斯伯丁商城</a>
-                        <a href="#">产品我科技</a>
-                        <a href="#">新闻与媒体</a>
+                        <!-- menu start -->
+                        <div class="header_nav_wrap_new menu_all">
+
+                            <!-- menu_all -->
+                            <div class="menu_wrap">
+                                <div class="main">
+                                    <ul class="side_nav clearfix">
+                                        <li><a href="" target="_parent">首页</a></li>
+                                        <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_parent">关于斯伯丁</a></li>
+                                        <li><a href="<?php echo $this->getUrl('products.html') ?>" target="_parent">斯伯丁商城</a></li>
+                                        <li><a href="#>" target="_parent">产品科技</a></li>
+                                        <li><a href="#" target="_parent">新闻与媒体</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="lower_wrap">
+                                <div class="main">
+                                    <div class="lower_list lower_01" style="display:block;">
+                                        <div class="text_a">
+
+                                        </div>
+                                    </div><!--end lower_01-->
+
+                                    <div class="lower_list lower_02">
+                                        <div class="text_a">
+                                            <ul class="clearfix">
+                                                <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>">SPALDING创始人</a></li>
+                                                <li><a href="<?php echo $this->getUrl('brands') ?>">品牌历史</a></li>
+                                                <li><a href="<?php echo $this->getUrl('partner') ?>">合作伙伴</a></li>
+                                                <li><a href="<?php echo $this->getUrl('contactus') ?>">联系我们</a></li>
+                                            </ul>
+                                        </div>
+                                    </div><!--end lower_02-->
+
+                                    <div class="lower_list lower_03">
+                                        <div class="text_a">
+                                            <ul class="clearfix">
+                                                <li><a href="userAccountMgt.html">篮球规格</a></li>
+                                                <li><a href="userAccountPer.html">篮球系列</a></li>
+                                                <li><a href="userAccountAdrs.html">男子运动服饰</a></li>
+                                                <li><a href="userAccountOrders.html">材质分类</a></li>
+                                                <li><a href="userAccountOrders.html">篮板包/运动包</a></li>
+                                                <li><a href="userAccountOrders.html">篮板架</a></li>
+                                            </ul>
+                                        </div>
+                                    </div><!--end lower_03-->
+
+                                    <div class="lower_list lower_04">
+                                        <div class="text_a">
+                                            <ul class="clearfix"></ul>
+                                        </div>
+                                    </div><!--end lower_04-->
+
+                                    <div class="lower_list lower_05">
+                                        <div class="text_a">
+                                            <ul></ul>
+                                        </div>
+
+                                    </div><!--end lower_05-->
+                                </div>
+                            </div><!--end lower_wrap-->
+
+                        </div>
+                        <!-- end menu -->
                         <span class="searchBtn"><img src='<?php echo $this->getSkinUrl("images/20141208001.png") ?>' alt=""></span>
                     </div>
                 <?php
