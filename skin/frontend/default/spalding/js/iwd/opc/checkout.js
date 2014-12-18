@@ -1107,7 +1107,7 @@ IWD.OPC.Login ={
 				e.preventDefault();
 				$j('#modal-login').addClass('md-show');
 			});
-			
+            $j('#modal-login').addClass('md-show');
 			$j(document).on('click','.md-modal .close', function(e){
 				e.preventDefault();
 				$j('.md-modal').removeClass('md-show');
