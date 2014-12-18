@@ -167,28 +167,41 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         </div>
         <div class="spListInfsBotm clearfix">
             <div class="spListInfsBotm_lef ms-fl">
-                <?php if ($_options = $this->getOptionList()):?>
-                        <?php foreach ($_options as $_option) : ?>
-                            <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                             <?php echo $this->escapeHtml($_option['label']) ?>
-                             <?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?><?php echo $_formatedOptionValue['value'] ?>
-                                <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                                    <div class="truncated_full_value">
+<!--                --><?php //if ($_options = $this->getOptionList()):?>
+<!--                        --><?php //foreach ($_options as $_option) : ?>
+<!--                            --><?php //$_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
+<!--                             --><?php //echo $this->escapeHtml($_option['label']) ?>
+<!--                             --><?php //if (isset($_formatedOptionValue['full_view'])): ?><!-- class="truncated"--><?php //endif; ?><!----><?php //echo $_formatedOptionValue['value'] ?>
+<!--                                --><?php //if (isset($_formatedOptionValue['full_view'])): ?>
+<!--                                    <div class="truncated_full_value">-->
+<!---->
+<!--                                             --><?php //echo $this->escapeHtml($_option['label']) ?>
+<!--                                             --><?php //echo $_formatedOptionValue['full_view'] ?>
+<!---->
+<!--                                    </div>-->
+<!--                                --><?php //endif; ?>
+<!---->
+<!--                        --><?php //endforeach; ?>
+<!--                --><?php //endif;?>
+                <?php
+                    $sku = $_item->getSku();
+                    $arr = explode('-', $sku);
+                    $size = end($arr);
+                    $configSku = substr($sku, 0, -(strlen($size) + 1));
+                    $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
 
-                                             <?php echo $this->escapeHtml($_option['label']) ?>
-                                             <?php echo $_formatedOptionValue['full_view'] ?>
-
-                                    </div>
-                                <?php endif; ?>
-
-                        <?php endforeach; ?>
-                <?php endif;?>
-                <p><span>产品材质：PU</span> <span>产品规格： 6号球</span></p>
-                <p>场地： 室内/室外</p>
+                    $product_catena = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_catena",$_product->getProductCatena());//篮球系列
+                    $product_material = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_material",$_product->getProductMaterial());//篮球材质;
+                    $product_sku = $_product->getSku();//sku
+                    $product_norm = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_norm",$_product->getProductNorm());//篮球规格
+                    $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
+                ?>
+                <p><span>产品材质：<?php echo $product_material;?></span> <span>产品规格： <?php echo $product_norm;?></span></p>
+                <p>场地： <?php echo $product_side;?></p>
             </div>
             <div class="spListInfsBotm_rig ms-fl">
                 <h4>现货供应</h4>
-                <p>商品编号：74-1000</p>
+                <p>商品编号：<?php echo $product_sku;?></p>
             </div>
         </div>
         </dt>

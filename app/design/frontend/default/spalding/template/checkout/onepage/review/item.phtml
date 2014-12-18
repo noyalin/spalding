@@ -24,12 +24,26 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php $_item = $this->getItem()?>
+<?php
+    $_item = $this->getItem();
+    $sku = $_item->getSku();
+    $arr = explode('-', $sku);
+    $size = end($arr);
+    $configSku = substr($sku, 0, -(strlen($size) + 1));
+    $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+
+    $product_catena = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_catena",$_product->getProductCatena());//篮球系列
+    $product_material = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_material",$_product->getProductMaterial());//篮球材质;
+    $product_sku = $_product->getSku();//sku
+    $product_norm = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_norm",$_product->getProductNorm());//篮球规格
+    $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
+
+?>
 <div class="productsListRow">
     <div class="productsListCol productsListCol_Number">
-        74-0000
+        <?php echo $sku;?>
     </div>
-    <div class="productsListCol productsListCol_Name">
+    <div class="productsListCol productsListCol_Name" style="text-align: center">
         <?php echo $this->escapeHtml($this->getProductName()) ?>
     </div>
     <div class="productsListCol productsListCol_Price">
