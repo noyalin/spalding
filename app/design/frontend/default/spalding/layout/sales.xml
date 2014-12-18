@@ -53,7 +53,7 @@ Customer account pages, rendered for all tabs in dashboard
             <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label></action>
         </reference>
         <reference name="left">
-            <block type="sales/reorder_sidebar" name="sale.reorder.sidebar" as="reorder" template="sales/reorder/sidebar.phtml"/>
+            <!--<block type="sales/reorder_sidebar" name="sale.reorder.sidebar" as="reorder" template="sales/reorder/sidebar.phtml"/>-->
         </reference>
 
     </customer_account>
@@ -95,9 +95,9 @@ Customer account home dashboard layout
             <action method="setTemplate"><template>page/2columns-left-customerpage.phtml</template></action>
         </reference>
         <reference name="my.account.wrapper">
-            <block type="sales/order_info" as="info" name="sales.order.info">
-                <block type="sales/order_info_buttons" as="buttons" name="sales.order.info.buttons" />
-            </block>
+            <!--<block type="sales/order_info" as="info" name="sales.order.info">-->
+                <!--<block type="sales/order_info_buttons" as="buttons" name="sales.order.info.buttons" />-->
+            <!--</block>-->
             <block type="sales/order_view" name="sales.order.view">
                 <block type="sales/order_items" name="order_items" template="sales/order/items.phtml">
                     <action method="addItemRender"><type>default</type><block>sales/order_item_renderer_default</block><template>sales/order/items/renderer/default.phtml</template></action>
