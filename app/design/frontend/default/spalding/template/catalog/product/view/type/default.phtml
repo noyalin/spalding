@@ -24,14 +24,15 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="product-options" id="product-options-wrapper">
-    <?php echo $this->getChildHtml('', true, true);?>
-    <?php if ($this->hasRequiredOptions()):?>
-        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-    <?php endif;?>
-</div>
-<script type="text/javascript">
-    decorateGeneric($$('#product-options-wrapper dl'), ['last']);
-//    jQuery("#attribute2094").val("24");
-//    jQuery('#attribute2094').checked = "checked";
-</script>
+<?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
+<?php $_product = $this->getProduct() ?>
+
+<?php //if ($this->displayProductStockStatus()): ?>
+<!--    --><?php //if ($_product->isAvailable()): ?>
+<!--        <p class="availability in-stock">--><?php //echo $this->__('Availability:') ?><!-- <span>--><?php //echo $this->__('In stock') ?><!--</span></p>-->
+<!--    --><?php //else: ?>
+<!--        <p class="availability out-of-stock">--><?php //echo $this->__('Availability:') ?><!-- <span>--><?php //echo $this->__('Out of stock') ?><!--</span></p>-->
+<!--    --><?php //endif; ?>
+<?php //endif; ?>
+<?php echo $this->getChildHtml('product_type_data_extra') ?>
+<?php echo $this->getPriceHtml($_product) ?>
