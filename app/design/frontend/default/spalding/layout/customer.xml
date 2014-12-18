@@ -277,6 +277,9 @@ Customer account address book
         <label>Customer My Account Address Book</label>
         <!-- Mage_Customer -->
         <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left-customerpage.phtml</template></action>
+        </reference>
         <reference name="my.account.wrapper">
             <block type="customer/address_book" name="address_book" template="customer/address/book.phtml"/>
         </reference>
@@ -289,6 +292,9 @@ Customer account address edit page
     <customer_address_form translate="label">
         <label>Customer My Account Address Edit Form</label>
         <!-- Mage_Customer -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left-customerpage.phtml</template></action>
+        </reference>
         <update handle="customer_account"/>
         <reference name="my.account.wrapper">
             <block type="customer/address_edit" name="customer_address_edit" template="customer/address/edit.phtml"/>
