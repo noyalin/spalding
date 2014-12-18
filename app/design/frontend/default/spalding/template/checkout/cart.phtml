@@ -32,18 +32,18 @@
  */
 ?>
 <div class="cart">
-    <div class="page-title title-buttons">
-        <h1><?php echo $this->__('Shopping Cart') ?></h1>
-        <?php if(!$this->hasError()): ?>
-        <ul class="checkout-types">
-        <?php foreach ($this->getMethods('top_methods') as $method): ?>
-            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-            <li><?php echo $methodHtml; ?></li>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        </ul>
-        <?php endif; ?>
-    </div>
+<!--    <div class="page-title title-buttons">-->
+<!--        <h1>--><?php //echo $this->__('Shopping Cart') ?><!--</h1>-->
+<!--        --><?php //if(!$this->hasError()): ?>
+<!--        <ul class="checkout-types">-->
+<!--        --><?php //foreach ($this->getMethods('top_methods') as $method): ?>
+<!--            --><?php //if ($methodHtml = $this->getMethodHtml($method)): ?>
+<!--            <li>--><?php //echo $methodHtml; ?><!--</li>-->
+<!--            --><?php //endif; ?>
+<!--        --><?php //endforeach; ?>
+<!--        </ul>-->
+<!--        --><?php //endif; ?>
+<!--    </div>-->
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
     <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
@@ -72,18 +72,24 @@
             <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Shopping Cart'); ?>" class="button btn-empty ms-fl" id="empty_cart_button">
                 <span><span>清空商品</span></span>
             </button>
-            <p class="getSpNum ms-fr">购物车3件商品总计：¥999</p>
+            <p class="getSpNum ms-fr">购物车<?php echo $_item->getQty();?>件商品总计：<?php echo $this->getChildHtml('totals'); ?></p>
         </div>
         <div class="spListSubmit">
-            <p class="spListSubmitMoy ms-fl"><?php echo $this->getChildHtml('totals'); ?></span></p>
+            <p class="spListSubmitMoy ms-fl">总计（不含运费）：<?php echo $this->getChildHtml('totals'); ?></span></p>
+<!--            <p class="spListSubmitMoy ms-fl getSpNum ms-fr">--><?php //echo $this->getChildHtml('totals'); ?><!--</span></p>-->
             <?php if(!$this->hasError()): ?>
-                <ul class="checkout-types">
+<!--                <ul class="checkout-types">-->
                     <?php foreach ($this->getMethods('methods') as $method): ?>
+                        <?php
+                            if($method !== "checkout.cart.methods.onepage")
+                                continue;
+                        ?>
                         <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                            <li><?php echo $methodHtml; ?></li>
+<!--                            <li>--><?php //echo $methodHtml; ?><!--</li>-->
+                            <?php echo $methodHtml; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
-                </ul>
+<!--                </ul>-->
             <?php endif; ?>
         </div>
         <!-- 主框架 e -->
@@ -137,13 +143,13 @@
                 <tfoot>
                     <tr>
                         <td colspan="50" class="a-right">
-                            <?php if($this->getContinueShoppingUrl()): ?>
-                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-                            <?php endif; ?>
-                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
-                            <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Shopping Cart'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Clear Shopping Cart'); ?></span></span></button>
-                            <!--[if lt IE 8]>
-                            <input type="hidden" id="update_cart_action_container" />
+<!--                            --><?php //if($this->getContinueShoppingUrl()): ?>
+<!--                                <button type="button" title="--><?php //echo $this->__('Continue Shopping') ?><!--" class="button btn-continue" onclick="setLocation('--><?php //echo $this->getContinueShoppingUrl() ?><!--')"><span><span>--><?php //echo $this->__('Continue Shopping') ?><!--</span></span></button>-->
+<!--                            --><?php //endif; ?>
+<!--                            <button type="submit" name="update_cart_action" value="update_qty" title="--><?php //echo $this->__('Update Shopping Cart'); ?><!--" class="button btn-update"><span><span>--><?php //echo $this->__('Update Shopping Cart'); ?><!--</span></span></button>-->
+<!--                            <button type="submit" name="update_cart_action" value="empty_cart" title="--><?php //echo $this->__('Clear Shopping Cart'); ?><!--" class="button btn-empty" id="empty_cart_button"><span><span>--><?php //echo $this->__('Clear Shopping Cart'); ?><!--</span></span></button>-->
+<!--                            <!--[if lt IE 8]>-->
+<!--                            <input type="hidden" id="update_cart_action_container" />-->
                             <script type="text/javascript">
                             //<![CDATA[
                                 Event.observe(window, 'load', function()
@@ -174,31 +180,31 @@
 <!--            <script type="text/javascript">decorateTable('shopping-cart-table')</script>-->
         </fieldset>
     </form>
-    <div class="cart-collaterals">
-        <div class="col2-set">
-            <div class="col-1">
-                <?php echo $this->getChildHtml('crosssell') ?>
-            </div>
-            <div class="col-2">
-                <?php /* Extensions placeholder */ ?>
-                <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-                <?php echo $this->getChildHtml('coupon') ?>
-                <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
-            </div>
-        </div>
-        <div class="totals">
-            <?php echo $this->getChildHtml('totals'); ?>
-            <?php if(!$this->hasError()): ?>
-            <ul class="checkout-types">
-            <?php foreach ($this->getMethods('methods') as $method): ?>
-                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                <li><?php echo $methodHtml; ?></li>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            </ul>
-            <?php endif; ?>
-        </div>
-    </div>
+<!--    <div class="cart-collaterals">-->
+<!--        <div class="col2-set">-->
+<!--            <div class="col-1">-->
+<!--                --><?php //echo $this->getChildHtml('crosssell') ?>
+<!--            </div>-->
+<!--            <div class="col-2">-->
+<!--                --><?php ///* Extensions placeholder */ ?>
+<!--                --><?php //echo $this->getChildHtml('checkout.cart.extra') ?>
+<!--                --><?php //echo $this->getChildHtml('coupon') ?>
+<!--                --><?php //if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="totals">-->
+<!--            --><?php //echo $this->getChildHtml('totals'); ?>
+<!--            --><?php //if(!$this->hasError()): ?>
+<!--            <ul class="checkout-types">-->
+<!--            --><?php //foreach ($this->getMethods('methods') as $method): ?>
+<!--                --><?php //if ($methodHtml = $this->getMethodHtml($method)): ?>
+<!--                <li>--><?php //echo $methodHtml; ?><!--</li>-->
+<!--                --><?php //endif; ?>
+<!--            --><?php //endforeach; ?>
+<!--            </ul>-->
+<!--            --><?php //endif; ?>
+<!--        </div>-->
+<!--    </div>-->
 </div>
 
 
