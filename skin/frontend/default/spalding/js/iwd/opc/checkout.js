@@ -843,8 +843,7 @@ IWD.OPC.Billing = {
 			
 			IWD.OPC.Checkout.ajaxProgress = setTimeout(function(){
 					var form = $j('#opc-address-form-billing').serializeArray();
-                    console.log(form);
-					form = IWD.OPC.Checkout.applyShippingMethod(form);					
+					form = IWD.OPC.Checkout.applyShippingMethod(form);
 					form = IWD.OPC.Checkout.applySubscribed(form); 
 					
 					if (IWD.OPC.Checkout.xhr!=null){
