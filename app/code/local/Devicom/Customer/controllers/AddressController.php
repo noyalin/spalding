@@ -123,9 +123,12 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
             $newId = $address->getId();
             $label = $address->format('oneline');
             $billingId = "billing_address_id_".$newId;
+            $result['id'] = $newId;
+            $result['label'] = $label;
+            /*
             $return = <<<HTML
                     <div class="step_radio">
-                        <input type="radio" value="<?php echo $newId?>"  id="<?php echo $billingId?>"  name="billing_address_id">
+                        <input type="radio" value="$newId"  id="$billingId"  name="billing_address_id">
                         <label for="<?php echo $billingId?>">
                             <span class="city_name">
                                 $label
@@ -138,8 +141,8 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                         <i class="arrow"></i>
                     </div>
 HTML;
-
-            echo $return;
+*/
+            echo json_encode($result);
         }
     }
 

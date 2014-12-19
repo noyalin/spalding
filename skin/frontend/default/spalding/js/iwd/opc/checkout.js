@@ -26,18 +26,26 @@ IWD.OPC = {
 				if (IWD.OPC.Checkout.disabledSave==true){
 					return;
 				}
-				var addressForm = new VarienForm('billing-new-address-form');
-				if (!addressForm.validator.validate()){
-					return;
-				}
-				
+//				var addressForm = new VarienForm('billing-new-address-form');
+//				if (!addressForm.validator.validate()){
+//					return;
+//				}
+                var addressId =$j("input[name='billing_address_id'][checked]").val();
+                if(addressId == ''){
+                    addressId =  $j("#billing_address_id_hidden").val();
+                }
+//                console.log(addressId);
+                if(addressId == undefined){
+                    alert("温馨提示：请选择收货地址");
+                    return;
+                }
 				if (!$j('input[name="billing[use_for_shipping]"]').prop('checked')){
 					var addressForm = new VarienForm('opc-address-form-shipping');
 					if (!addressForm.validator.validate()){				
 						return;
 					}
 				}
-				
+                IWD.OPC.Billing.save();
 				IWD.OPC.saveOrderStatus = true;
 				IWD.OPC.Plugin.dispatch('saveOrderBefore');
 				if (IWD.OPC.Checkout.isVirtual===false){
@@ -435,6 +443,10 @@ IWD.OPC.Checkout = {
 			if (this.config.isLoggedIn===1){
 //				var addressId = $j('#billing-address-select').val();//old opc
 				var addressId =$j("input[name='billing_address_id'][checked]").val();
+                if(addressId == undefined){
+                    alert("温馨提示：请选择收货地址");
+                    return;
+                }
 				if (addressId!='' && addressId!=undefined ){
 					IWD.OPC.Billing.save();
 				}else{
@@ -831,6 +843,7 @@ IWD.OPC.Billing = {
 			
 			IWD.OPC.Checkout.ajaxProgress = setTimeout(function(){
 					var form = $j('#opc-address-form-billing').serializeArray();
+                    console.log(form);
 					form = IWD.OPC.Checkout.applyShippingMethod(form);					
 					form = IWD.OPC.Checkout.applySubscribed(form); 
 					
@@ -844,6 +857,7 @@ IWD.OPC.Billing = {
 						IWD.OPC.Checkout.lockPlaceOrder(1);
 					
 					IWD.OPC.Billing.bill_need_update = false;
+
 					IWD.OPC.Checkout.xhr = $j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/saveBilling',form, IWD.OPC.Checkout.prepareAddressResponse,'json');
 			}, 500);
 		}
@@ -1107,7 +1121,7 @@ IWD.OPC.Login ={
 				e.preventDefault();
 				$j('#modal-login').addClass('md-show');
 			});
-			
+            $j('#modal-login').addClass('md-show');
 			$j(document).on('click','.md-modal .close', function(e){
 				e.preventDefault();
 				$j('.md-modal').removeClass('md-show');
