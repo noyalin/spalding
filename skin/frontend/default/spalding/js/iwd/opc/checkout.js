@@ -31,11 +31,10 @@ IWD.OPC = {
 //					return;
 //				}
                 var addressId =$j("input[name='billing_address_id'][checked]").val();
-                if(addressId == ''){
+                if(addressId == undefined){
                     addressId =  $j("#billing_address_id_hidden").val();
                 }
-//                console.log(addressId);
-                if(addressId == undefined){
+                if(addressId == undefined || addressId == ''){
                     alert("温馨提示：请选择收货地址");
                     return;
                 }
@@ -45,6 +44,7 @@ IWD.OPC = {
 						return;
 					}
 				}
+
                 IWD.OPC.Billing.save();
 				IWD.OPC.saveOrderStatus = true;
 				IWD.OPC.Plugin.dispatch('saveOrderBefore');
@@ -442,8 +442,8 @@ IWD.OPC.Checkout = {
 			
 			if (this.config.isLoggedIn===1){
 //				var addressId = $j('#billing-address-select').val();//old opc
-				var addressId =$j("input[name='billing_address_id'][checked]").val();
-                if(addressId == undefined){
+				var addressId =$j("#billing_address_id_hidden").val();
+                if(addressId == undefined || addressId == ''){
                     alert("温馨提示：请选择收货地址");
                     return;
                 }
@@ -843,8 +843,7 @@ IWD.OPC.Billing = {
 			
 			IWD.OPC.Checkout.ajaxProgress = setTimeout(function(){
 					var form = $j('#opc-address-form-billing').serializeArray();
-                    console.log(form);
-					form = IWD.OPC.Checkout.applyShippingMethod(form);					
+					form = IWD.OPC.Checkout.applyShippingMethod(form);
 					form = IWD.OPC.Checkout.applySubscribed(form); 
 					
 					if (IWD.OPC.Checkout.xhr!=null){

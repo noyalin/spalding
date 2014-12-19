@@ -146,4 +146,26 @@ HTML;
         }
     }
 
+    public function setDefaultAddressAjaxAction(){
+        $customer = $this->_getSession()->getCustomer();
+        $params = $this->getRequest()->getParams();
+        $id = $params['id'];
+        try{
+            foreach ($customer->getAddresses() as $address){
+                $addrId = $address->getId();
+                if ($addrId == $id){
+                    $address->setCustomerId($customer->getId())
+                        ->setIsDefaultBilling('1')->setIsDefaultShipping(1)
+                        ->save();
+                    break;
+                }
+            }
+            echo 'yes';
+        }catch (Exception $e){
+            $this->_getSession()->addException($e, $this->__('Cannot set default address.'));
+            echo 'no';
+        }
+
+    }
+
 }

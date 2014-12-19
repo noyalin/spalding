@@ -8,6 +8,7 @@
 </style>
 <?php
 list($options,$addressId) = $this->getAddressesArray('billing');
+$defaultBillingId = $this->getDefaultBilling();
 ?>
 <div id="co-billing-form">
     <div class="add_addr" id="add_new_address_button" >
@@ -25,9 +26,11 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                     $addrValueId = $eacAddr['value'];
                     $selected = null;
                     $checked = '';
-                    if($addrValueId == 20){
+                    $defaultDescription = "设为默认";
+                    if($addrValueId == $defaultBillingId){
                         $selected = "selected";
                         $checked = 'checked="true"';
+                        $defaultDescription = "已设为默认";
                     }
                     $addrLabel = $eacAddr['label'];
                     $billingId = "billing_address_id_".$addrValueId;
@@ -41,7 +44,7 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                         </label>
                         <div class="btns">
                             <a class="btn edit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
-                            <a class="btn set_def" href="javascript:;"><span>设为默认</span></a>
+                            <a class="btn set_def" id="set_def_<?php echo $addrValueId;?>" href="javascript:;" onclick="saveAddressDefault('<?php echo $addrValueId;?>')"><span><?php echo $defaultDescription?></span></a>
                         </div>
                         <i class="arrow"></i>
                     </div>
@@ -407,6 +410,7 @@ list($options,$addressId) = $this->getAddressesArray('billing');
             jQuery(this).parent().children().removeClass('selected');
             jQuery(this).addClass('selected');
             var addressId = jQuery(this).children("input[name='billing_address_id']").attr('value');
+            jQuery("#billing_address_id_hidden").val(addressId);
 //            var addressId = jQuery("input[name='billing_address_id'][checked]").val();
             if (addressId!='' && addressId!=undefined ){
                 IWD.OPC.Billing.save();
@@ -534,4 +538,22 @@ list($options,$addressId) = $this->getAddressesArray('billing');
             jQuery('#checkoutNewAddressForm').toggle();
         }
     );
+
+    function saveAddressDefault(id){
+        jQuery.ajax({
+            type: 'POST',
+            //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+            url: "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customer/address/setDefaultAddressAjax/",
+            data:{
+                id:id
+            },
+            success: function(data){
+                alert(1);
+                setDef = "set_def_" + id;
+                alert(setDef);
+                jQuery("#"+setDef).html("已设为默认");
+            },
+            error: function(e){}
+        });
+    }
 </script>
