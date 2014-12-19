@@ -35,9 +35,10 @@
 <!--    <a rel="productGallery [gallery]" href="http://image.sneakerhead.com/is/image/sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!---1">-->
     <a rel="productGallery [gallery]" href="http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$imagemoban=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1">
 <!--        <img width="330" id="mainImage" src="http://image.sneakerhead.com/is/image/sneakerhead/detail-big-image?&$detail_big_image$&layer=2&src=sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!---1"-->
-        <img width="302" id="mainImage" src="http://s7d5.scene7.com/is/image/sneakerhead/spalding302px?$spalding302x302$&$image302px=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1"
+        <img width="330" id="mainImage" src="http://s7d5.scene7.com/is/image/sneakerhead/spalding330px?$330x330$&$image330=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1"
              alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"
              onMouseOver="javascript:sku=1"  data-zoom-image="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>"/></a>
+             onMouseOver="javascript:sku=1"  data-zoom-image="<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1"/>
     <div class="detailArrowPrev">
         <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>
     </div>

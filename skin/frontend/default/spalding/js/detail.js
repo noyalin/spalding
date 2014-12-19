@@ -73,7 +73,7 @@ jQuery(document).ready(function () {
         return false
     });
     jQuery("#detailProductGallery div img").hover(function () {
-        jQuery("#mainImage").attr("src", jQuery(this).attr("src").replace("viewer_thumbnail_template?&$viewer_thumbnail_image_preset", "detail-big-image?&$detail_big_image"))
+        jQuery("#mainImage").attr("src", jQuery(this).attr("src").replace("spalding50px", "spalding330px").replace("50x50","330x330").replace("image50","image330"))
     });
     var i = 0;
     imgSwap = [];
