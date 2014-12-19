@@ -81,5 +81,20 @@
             jQuery(this).parent('ul').css("display","none");
         });
 
+        //购物车
+        jQuery("#cartHeader").bind("click",function(){
+            var $topCartContent = jQuery(this).parent().next('#topCartContent');
+            if($topCartContent.is(":visible")){
+                $topCartContent.slideUp();
+            }else{
+                $topCartContent.slideDown();
+                $topCartContent.mouseleave(function(){
+                    setTimeout(function(){
+                        $topCartContent.slideUp();
+                    },1000);
+                });
+            }
+        });
+
     });
 </script>
