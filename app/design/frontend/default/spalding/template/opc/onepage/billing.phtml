@@ -20,6 +20,7 @@ list($options,$addressId) = $this->getAddressesArray('billing');
     <div class="one_step addr_step">
         <div id="addressUl" class="step_main">
             <div class="clearfix step_radio_wrap">
+                <input type="hidden" name="billing_address_id_hidden" id="billing_address_id_hidden"/>
                 <?php foreach( $options as $eacAddr){
                     $addrValueId = $eacAddr['value'];
                     $selected = null;
@@ -444,11 +445,18 @@ list($options,$addressId) = $this->getAddressesArray('billing');
                         district_id:district_id,
                         city_id:city_id
                     },
+                    dataType: 'json',
                     success: function(data){
-                        jQuery(".step_radio_wrap").append(data);
+                         var elementValues = {};
+                         newId = data.id;
+                        billingId = "billing_address_id_" + newId;
+                        label = data.label;
+                        jQuery('.step_radio_wrap .step_radio').removeClass('selected');
+                        html = '<div class="step_radio selected"><input type="radio" checked value="'+newId+'"  id="'+billingId+'"  name="billing_address_id"><label for="'+billingId+'"><span class="city_name">'+label+
+                            ' </span> </label><div class="btns"> <a class="btn edit" href="javascript:;"><span>修改地址</span></a><a class="btn set_def" href="javascript:;"><span>设为默认</span></a></div> <i class="arrow"></i></div>'
+                        jQuery(".step_radio_wrap").append(html);
                         jQuery('#checkoutNewAddressForm').hide();
-//                        var id = data;
-//                        jQuery("#billing_address_id_hidden").val(id);
+                        jQuery("#billing_address_id_hidden").val(newId);
 //                        getAddress(id);
                     },
                     error: function(e){}
