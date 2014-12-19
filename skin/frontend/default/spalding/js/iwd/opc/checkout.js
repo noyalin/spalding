@@ -30,7 +30,11 @@ IWD.OPC = {
 				if (!addressForm.validator.validate()){
 					return;
 				}
-				
+                var addressId =$j("input[name='billing_address_id'][checked]").val();
+                if(addressId == undefined){
+                    alert("温馨提示：请选择收货地址");
+                    return;
+                }
 				if (!$j('input[name="billing[use_for_shipping]"]').prop('checked')){
 					var addressForm = new VarienForm('opc-address-form-shipping');
 					if (!addressForm.validator.validate()){				
@@ -435,6 +439,10 @@ IWD.OPC.Checkout = {
 			if (this.config.isLoggedIn===1){
 //				var addressId = $j('#billing-address-select').val();//old opc
 				var addressId =$j("input[name='billing_address_id'][checked]").val();
+                if(addressId == undefined){
+                    alert("请选择地址");
+                    return;
+                }
 				if (addressId!='' && addressId!=undefined ){
 					IWD.OPC.Billing.save();
 				}else{
