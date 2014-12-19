@@ -58,7 +58,8 @@
 </script>
 <?php else: ?>
 <p class="product-image">
-    <img id="mainImage"  src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($mainImageSize[0], $mainImageSize[1]); ?>" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1" data-zoom-image="http://img04.taobaocdn.com/imgextra/i4/1792368114/TB2zLHBbXXXXXa5XXXXXXXXXXXX_!!1792368114.jpg"/>
+<!--    <img id="mainImage"  src="--><?php //echo $this->helper('catalog/image')->init($_product, 'image')->resize($mainImageSize[0], $mainImageSize[1]); ?><!--" alt="--><?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><!--" onMouseOver="javascript:sku=1" data-zoom-image="http://img04.taobaocdn.com/imgextra/i4/1792368114/TB2zLHBbXXXXXa5XXXXXXXXXXXX_!!1792368114.jpg"/>-->
+    <img id="mainImage"  src="http://s7d5.scene7.com/is/image/sneakerhead/spalding302px?$spalding302x302$&$image302px=<?php echo $_product->getUrlKey();  ?>-1" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1" data-zoom-image="http://img04.taobaocdn.com/imgextra/i4/1792368114/TB2zLHBbXXXXXa5XXXXXXXXXXXX_!!1792368114.jpg"/>
 
 <!--    --><?php
 //        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(265).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
