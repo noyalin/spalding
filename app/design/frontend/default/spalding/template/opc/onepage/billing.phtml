@@ -410,9 +410,10 @@ $defaultBillingId = $this->getDefaultBilling();
             jQuery(this).parent().children().removeClass('selected');
             jQuery(this).addClass('selected');
             var addressId = jQuery(this).children("input[name='billing_address_id']").attr('value');
+            jQuery("#billing_address_id_hidden").val(addressId);
 //            var addressId = jQuery("input[name='billing_address_id'][checked]").val();
             if (addressId!='' && addressId!=undefined ){
-//                IWD.OPC.Billing.save();
+                IWD.OPC.Billing.save();
             }
         });
 
