@@ -55,17 +55,6 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_background')
     </div>
 </div>
 <!-- 顶部 header e -->
-<div class="wrapper">
-<!--    --><?php //echo $this->getChildHtml('global_notices') ?>
-    <div class="page">
-<!--        --><?php //echo $this->getChildHtml('header') ?>
-<!--        --><?php //echo $this->getChildHtml('content') ?>
-<!--        --><?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml();?>
-        <?php echo $this->getChildHtml('footer') ?>
-<!--        --><?php //echo $this->getChildHtml('global_cookie_notice') ?>
-<!--        --><?php //echo $this->getChildHtml('before_body_end') ?>
-    </div>
-</div>
-<?php //echo $this->getAbsoluteFooter() ?>
+<?php echo $this->getChildHtml('footer') ?>
 </body>
 </html>
