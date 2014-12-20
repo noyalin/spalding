@@ -37,12 +37,36 @@
 <body style="background:#000; margin-top:-15px;">
 <?php echo $this->getChildHtml('header') ?>
 <?php
-echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_background')->toHtml();
+//echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_background')->toHtml();
 ?>
-<div class="spalding_index_plate">
-    <div class="spalding_plateWrap clearfix">
-        <div class="plateBox plateBox_01"></div>
-        <div class="plateBox plateBox_02"></div>
+
+<div class="spalding_index weiduduan">
+    <div class="spalding_index_slider kuzhan">
+        <ul class="fix_flash">
+            <li imglink="<?php echo $this->getSkinUrl("images/20141208002.jpg") ?>">
+                <a style="background:url(<?php echo $this->getSkinUrl("images/20141208002.jpg") ?>) center top no-repeat" href=""></a>
+            </li>
+            <li imglink="<?php echo $this->getSkinUrl("images/20141208002.jpg") ?>">
+                <a style="background:url(<?php echo $this->getSkinUrl("images/banIndex.png") ?>) center top no-repeat" href=""></a>
+            </li>
+        </ul>
+    </div>
+    <div class="kuzhan_center">
+        <div class="kuzhan_flash_s"></div>
+    </div>
+
+</div>
+
+<div class="spalding_index_plate" style="height:300px; background:url(<?php echo $this->getSkinUrl("images/spalding_index_plate.png") ?>) left bottom no-repeat; margin-bottom:0;">
+    <div class="spalding_plateWrap clearfix" style="padding-top:50px;">
+        <div class="plateBox plateBox_01">
+            <span class="plateBoxImg"><img src="<?php echo $this->getSkinUrl("images/20141209004.png") ?>" alt=""></span>
+            <a href="<?php echo $this->getUrl('products.html') ?>" class="plateBoxImgHover"><img src="<?php echo $this->getSkinUrl("images/plateBoxHover_1.png") ?>" alt="" /></a>
+        </div>
+        <div class="plateBox plateBox_02">
+            <span class="plateBoxImg"><img src="<?php echo $this->getSkinUrl("images/20141209005.png") ?>" alt=""></span>
+            <a href="<?php echo $this->getUrl('tech') ?>" class="plateBoxImgHover"><img src="<?php echo $this->getSkinUrl("images/plateBoxHover_2.png") ?>" alt="" /></a>
+        </div>
         <div class="plateBox plateBox_03">
             <ul>
                 <li><a href="#">2014年斯伯丁上海全民线下活动</a></li>
@@ -51,9 +75,24 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_background')
                 <li><a href="#">2014年斯伯丁上海全民线下活动</a></li>
             </ul>
         </div>
-        <div class="plateBox plateBox_tf ms-fl"><a href="#"><img src='<?php echo $this->getSkinUrl("images/20141209007.png") ?>'></a></div>
+        <div class="plateBox plateBox_tf ms-fl" style="position:absolute; right:-30px;"><a href="#"><img src="<?php echo $this->getSkinUrl("images/20141209007.png") ?>" alt=""></a></div>
     </div>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery(".kuzhan li").css("width",jQuery("body").width()+"px");
+        jQuery(".kuzhan li").css("cursor","pointer");
+        jQuery(".kuzhan ul").css("width","999999px");
+        var str = "";
+        for(i=0;i<jQuery(".fix_flash li").length;i++){
+            str += "<div class='kuzhan_sele' number="+i+" onclick='FIX_scroll(this)'></div>"
+        }
+        jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5+250+"px")
+        jQuery(".kuzhan_flash_s").html(str);
+        jQuery(".kuzhan_sele").eq(0).addClass("kuzhan_over")
+        //$(".kuzhan_flash_v").css("left",122+"px")
+    })
+</script>
 <!-- 顶部 header e -->
 <?php echo $this->getChildHtml('footer') ?>
 </body>
