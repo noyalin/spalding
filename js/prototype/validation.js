@@ -418,7 +418,7 @@ Validation.addAllThese([
 	['validate-select', 'Please select an option.', function(v) {
                 return ((v != "none") && (v != null) && (v.length != 0));
             }],
-    ['required-entry', 'This is a required field.', function(v) {
+    ['required-entry', '请输入必填项', function(v) {
                 return !Validation.get('IsEmpty').test(v);
             }],
     ['validate-number', 'Please enter a valid number in this field.', function(v) {
