@@ -55,6 +55,12 @@
                     <layout_handle>page_homepage</layout_handle>
                     <is_default>1</is_default>
                 </homepage>
+                <one_columnPage module="page" translate="label">
+                    <label>one_columnPage</label>
+                    <template>page/1columnPage.phtml</template>
+                    <layout_handle>page_one_columnPage</layout_handle>
+                    <is_default>1</is_default>
+                </one_columnPage>
                 <one_column module="page" translate="label">
                     <label>1 column</label>
                     <template>page/1column.phtml</template>
