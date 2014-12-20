@@ -34,11 +34,18 @@
 <?php $_filters = $this->getActiveFilters() ?>
 <?php if(!empty($_filters)): ?>
 <div class="currently">
-    <p class="block-subtitle"><?php echo $this->__('Currently Shopping by:') ?></p>
+    <div class="exp-left-nav-header">
+        <!--                <div class="exp-left-nav-product-count nsg-font-family--platform nsg-text--dark-grey"> 79件商品 </div>-->
+        <div class="exp-left-nav-filter nsg-font-family--base nsg-text--medium-grey"><?php echo $this->__('Currently Shopping by:') ?></div>
+        <span class="nsg-keyline--horizontal"></span>
+    </div>
+
     <ol>
     <?php foreach ($_filters as $_filter): ?>
         <li>
-            <span class="label"><?php echo $this->__($_filter->getName()) ?>:</span> <span class="value"><?php echo $this->stripTags($_filter->getLabel()) ?></span>
+            <span class="label"><?php echo $this->__($_filter->getName()) ?>:</span>
+<!--            <span class="value">--><?php //echo $this->stripTags($_filter->getLabel()) ?><!--</span>-->
+            <a data-qa="filter.gender.men" class="selected-facet facet  "><?php echo $this->stripTags($_filter->getLabel()) ?></a>
             <?php
                 $clearLinkUrl = $_filter->getClearLinkUrl();
                 if ($clearLinkUrl):
