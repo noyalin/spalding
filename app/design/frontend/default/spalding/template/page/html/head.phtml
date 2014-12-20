@@ -96,5 +96,15 @@
             }
         });
 
+        //首页板块内容
+        $('.plateBox').mouseenter(function(){
+            $(this).children('span.plateBoxImg').css("display","none");
+            $(this).children('a.plateBoxImgHover').css("display","block");
+        });
+        $('.plateBox').mouseleave(function(){
+            $(this).children('a.plateBoxImgHover').css("display","none");
+            $(this).children('span.plateBoxImg').css("display","block");
+        });
+
     });
 </script>
