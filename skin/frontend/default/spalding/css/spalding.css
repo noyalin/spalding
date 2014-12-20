@@ -4,6 +4,9 @@
  * @authors Carrie (carrie.zhang@voyageone.com)
  * @Spalding  2014-12-08 17:04:03
  */
+ body{
+ 	background: #000;
+ }
 
  button{
  	cursor:pointer;
@@ -296,28 +299,35 @@ ul.scarch_select_option li:hover{
 .spalding_index_plate .spalding_plateWrap{
 	position: relative;
 	width:1125px;
-	height: 190px;
+	height: 200px;
 	margin:0 auto;
 }
 .spalding_plateWrap .plateBox{
 	float: left;
 	margin-right: 15px;
 }
+
+.spalding_plateWrap .plateBox a.plateBoxImgHover{
+	display: none;
+}
+.spalding_plateWrap img{
+	vertical-align: bottom;
+}
 .spalding_plateWrap .plateBox_01{
 	width:255px;
-	height:190px;
-	background: url(../images/20141209004.png) left bottom no-repeat;
+	height:200px;
+	/*background: url(../images/20141209004.png) left bottom no-repeat;*/
 }
 
 .spalding_plateWrap .plateBox_02{
 	width:255px;
-	height:190px;
-	background: url(../images/20141209005.png) left bottom no-repeat;
+	height:200px;
+	/*background: url(../images/20141209005.png) left bottom no-repeat;*/
 }
 
 .spalding_plateWrap .plateBox_03{
 	width:255px;
-	height:190px;
+	height:200px;
 	background: url(../images/20141209006.png) left bottom no-repeat;
 }
 
@@ -2238,7 +2248,6 @@ ul.form-list li p{
 	cursor: pointer;
 }
 
-
 #mini-cart li{
 	padding-top:3px;
 	margin-top:10px;
@@ -2314,71 +2323,362 @@ ul.form-list li p{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*新闻与媒体*/
+.newsWrap{
+	position: relative;
+	width:100%;
+	background: #000;
+	color:#fff;
+}
+
+.newsWrapBg{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.newsWrapBg .newsWrapBgTop{
+	position: absolute;
+	width:100%;
+	top:0;
+	left:0;
+}
+.newsWrapBg .newsWrapBgBot{
+	position: absolute;
+	width:100%;
+	bottom:0;
+	left:0;
+}
+
+.newsWrapBg img{
+	width:100%;
+}
+
+
+
+
+.newsWrapBox{
+	position: relative;
+	width:970px;
+	margin:0px auto;
+	padding:20px 0 0;
+	overflow: hidden;
+}
+
+.newsWrapTit{
+	width:100%;
+	text-align: center;
+	margin-bottom:10px;
+}
+
+
+.newsList ul li{
+	width:300px;
+	background: #2a2a2a;
+	font-size: 12px;
+	color:#8b8b8b;
+	margin-top:20px;
+	overflow: hidden;
+}
+
+
+.newsList ul li img{
+	width:100%;
+	vertical-align: top;
+}
+
+.newsList ul li h2{
+	margin:30px 0 5px;
+	text-align:center;
+	font-size: 14px;
+	color:#fff;
+	font-weight: bold;
+}
+
+.newsList ul li h3{
+	color:#636363;
+	font-size: 12px;
+	font-weight: normal;
+	text-align:center;
+}
+
+.newsList ul li p{
+	margin:10px 20px;
+	padding:10px 0;
+	border-top:1px solid #666;
+}
+
+ul.newsListBox_cen{
+	margin:0 30px;
+}
+
+
+.newsList ul li:hover{
+	background:#fff;
+}
+
+.newsList ul li:hover h2{
+	color:#000;
+}
+
+.newsArtsTit{
+	width:100%;
+	text-align: center;
+	margin-top:60px;
+	margin-bottom:20px;
+}
+.newsArtsTit h2{
+	font-size: 22px;
+	font-weight: bold;
+	color:#fff;
+}
+.newsArtsTit h3{
+	font-size: 12px;
+	font-weight: normal;
+	color:#9c9c9c;
+}
+
+.newsArtsWrap{
+	border:1px solid #353535;
+	background: #1e1e1e;
+	font-size: 12px;
+	color:#cbcbcb;
+	margin-bottom:10px;
+}
+
+.newsArtsWrap img{
+	width:100%;
+}
+.newsArtsWrap h2{
+	font-size: 12px;
+	color:#cbcbcb;
+	text-indent:20px;
+	color:#fff;
+}
+.newsArtsWrap p{
+	margin:10px 20px;
+	text-indent: 24px;
+}
+
+
+.newsArtsshare {
+	height:44px;
+	width:100%;
+	text-align: center;
+	line-height: 44px;
+	background: url(../images/newsShareBg.jpg) left top repeat-x;
+	border-top:1px solid #4f4f4f;
+	cursor: pointer;
+}
+
+
+.newsArtsFun{
+	font-size: 12px;
+	margin:20px 0;
+}
+
+.newsArtsFun a{
+	color:#666;
+}
+
+.newsArtsFun a:hover{
+	color:#cbcbcb;
+}
+
+.shareBox{
+	position:fixed;
+	height:100%;
+	width:100%;
+	left:0;
+	top:0;
+	background:rgba(0,0,0,.8);
+	z-index:999;
+	display: none;
+}
+
+
+.shareBoxWrap{
+	width:670px;
+	height:300px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin-top:-150px;
+	margin-left:-335px;
+	overflow: hidden;
+}
+
+.shareBoxMain{
+	width:595px;
+	height:300px;
+	background:#2e2e2e;
+	color:#fff;
+	overflow: hidden;
+}
+
+
+.shareBoxClose{
+	position:absolute;
+	right:0;
+	top:0;
+	cursor: pointer;
+} 
+
+.shareBoxMain h2{
+	font-size: 22px;
+	font-weight: bold;
+	color:#fff;
+	margin:50px 0 10px;
+	text-align: center;
+}
+
+.shareBoxMain h3{
+	font-size: 14px;
+	color:#fff;
+	font-weight: bold;
+	color:#fff;
+	margin:10px 0;
+	text-align: center;
+}
+
+.shareBoxMain ul{
+	margin:20px 30px;
+	padding-top:10px;
+	border-top:1px solid #4f4f4f;
+	text-align: center;
+}
+
+
+.shareBoxMain ul li{
+	float: left;
+	margin:0 15px;
+	margin-top:20px;
+}
+
+
+
+/*科技*/
+.tegyWrap{
+	width:970px;
+	margin:0 auto;
+}
+
+
+.teyWrapTit{
+	position: relative;
+	width:100%;
+	text-align: center;
+	margin-bottom:40px;
+}
+
+.teyWrapClo{
+	position: relative;
+	width:970px;
+	height:390px;
+	background: url(../images/technoloies_ball.png) left top no-repeat;
+}
+
+ul.teyCloLis{
+	position: relative;
+}
+
+
+ul.teyCloLis li span{
+	position: absolute;
+	overflow: hidden;
+}
+
+
+
+ul.teyCloLis li span.teyCloTex{
+	display: block;
+	margin-left:470px;
+	margin-top:40px;
+	width:390px;
+	font-size: 12px;
+	color:#fff;
+	display: none;
+}
+
+ul.teyCloLis li span.teyCloTex h2{
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color:#ffb900;
+}
+
+
+ul.teyCloLis li.teyColLisBox_1 span.teyCloImg{
+	margin-left:120px;
+	cursor: pointer;
+}
+
+ul.teyCloLis li.teyColLisBox_2 span.teyCloImg{
+	margin-left:250px;
+	margin-top:130px;
+	cursor: pointer;
+}
+ul.teyCloLis li.teyColLisBox_3 span.teyCloImg{
+	margin-left:190px;
+	margin-top:345px;
+	cursor: pointer;
+}
+
+
+
+ul.teyCloLis li.teyColLisBox_4 span.teyCloImg{
+	margin-left:320px;
+	margin-top:30px;
+	cursor: pointer;
+}
+
+ul.teyCloLis li.teyColLisBox_5 span.teyCloImg{
+	margin-left:370px;
+	margin-top:120px;
+	cursor: pointer;
+}
+
+ul.teyCloLis li.teyColLisBox_6 span.teyCloImg{
+	margin-left:370px;
+	margin-top:230px;
+	cursor: pointer;
+}
+
+ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
+	margin-left:320px;
+	margin-top:320px;
+	cursor: pointer;
+}
+
+
+
+.teyCloFuns{
+	position: absolute;
+	margin-left:470px;
+	width:390px;
+	text-align: center;
+	margin-top:150px;
+}
+
+.teyCloFuns button{
+	display: block;
+	width:130px;
+	height:38px;
+	line-height: 38px;
+	background: #ffb900;
+	color:#000;
+	font-size: 20px;
+	font-weight: bold;
+	border:none;
+	margin:0 auto;
+}
+
+
+
+.teyWrapChart{
+	position: relative;
+}
 
 
 
