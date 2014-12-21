@@ -107,7 +107,7 @@
                     <div class="img-over-sn">
                         <h3><?php echo $_product->getName();  ?></h3>
                         <p><?php echo $_product->getSku();  ?></p>
-                        <h3>￥ <?php echo $_product->getPrice() ?></h3>
+                        <h3>￥ <?php echo number_format($_product->getFinalPrice(), '2', '.', ','); ?></h3>
                     </div>
                     <div class="products-buyNow"><button onclick='window.open("<?php echo $_product->getProductUrl();?>")'>立即购买</button></div>
 
@@ -119,21 +119,13 @@
                 <?php if($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                 <?php endif; ?>
-                <?php echo $this->getPriceHtml($_product, true) ?>
+<!--                --><?php //echo $this->getPriceHtml($_product, true) ?>
                 <div class="actions">
                     <?php if($_product->isSaleable()): ?>
 <!--                        <button type="button" title="--><?php //echo $this->__('Add to Cart') ?><!--" class="button btn-cart" onclick="setLocation('--><?php //echo $this->getAddToCartUrl($_product) ?><!--')"><span><span>--><?php //echo $this->__('Add to Cart') ?><!--</span></span></button>-->
                     <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                     <?php endif; ?>
-<!--                    <ul class="add-to-links">-->
-<!--                        --><?php //if ($this->helper('wishlist')->isAllow()) : ?>
-<!--                            <li><a href="--><?php //echo $this->helper('wishlist')->getAddUrl($_product) ?><!--" class="link-wishlist">--><?php //echo $this->__('Add to Wishlist') ?><!--</a></li>-->
-<!--                        --><?php //endif; ?>
-<!--                        --><?php //if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-<!--                            <li><span class="separator">|</span> <a href="--><?php //echo $_compareUrl ?><!--" class="link-compare">--><?php //echo $this->__('Add to Compare') ?><!--</a></li>-->
-<!--                        --><?php //endif; ?>
-<!--                    </ul>-->
                 </div>
 
 
