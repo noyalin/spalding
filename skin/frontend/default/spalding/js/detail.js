@@ -73,6 +73,13 @@ jQuery(document).ready(function () {
         return false
     });
     jQuery("#detailProductGallery div img").hover(function () {
+        originSrc = jQuery("#mainImage").attr("data-zoom-image");
+        smallSrc = jQuery(this).attr("src");
+        lastSmallSrc =  smallSrc.substring(smallSrc.length-2,smallSrc.length);
+        originSrcFirstPart = originSrc.substring(0,originSrc.length-6);
+        originSrcSecondPart = lastSmallSrc + '.jpg';
+        originSrcNew = originSrcFirstPart + originSrcSecondPart;
+        jQuery("#mainImage").attr("data-zoom-image",originSrcNew);
         jQuery("#mainImage").attr("src", jQuery(this).attr("src").replace("spalding50px", "spalding330px").replace("50x50","330x330").replace("image50","image330"))
     });
     var i = 0;
