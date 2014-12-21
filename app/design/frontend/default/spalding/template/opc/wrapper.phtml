@@ -3,7 +3,7 @@
 $package = Mage::getDesign()->getPackageName();
 $theme = Mage::getDesign()->getTheme('frontend');
 ?>
-<div class="checkoutMain opc-wrapper-opc design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+<div>
         <div class="checkoutTitleMain">
             填写并核对订单信息
         </div>
@@ -20,7 +20,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
             <span class="checkoutSubTitleBall"></span>
             <span class="checkoutSubTitleText">选择收货地址</span>
         </div>
-        <div id="addressUl" class="step_main one_step addr_step">
+        <div id="addressUl" class="  " style="margin-left: 70px;">
             <form id="opc-address-form-billing" method="post">
                 <?php echo $this->getChildHtml('billing')?>
             </form>
