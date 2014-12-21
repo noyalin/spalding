@@ -41,13 +41,14 @@
         <?php echo $this->__('No Payment Methods') ?>
     </dt>
 <?php else:
+    echo '<div class="clearfix step_radio_wrap">';
     foreach ($methods as $_method):
         $_code = $_method->getCode();
         if($_code == "alipay_payment"):
             $imgSrc = $this->getSkinUrl('images2/paytype1.jpg') ;
             $str = <<<HTML
 <div class="step_radio selected">
-            <span class="no-display"><input id="p_method_$_code" value="$_code" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+            <div class="display:none"><input id="p_method_$_code" value="$_code" type="radio" name="payment[method]" checked="checked" class="radio" /></div>
             <img src=" $imgSrc  ">
             <i class="arrow"></i>
         </div>
@@ -71,6 +72,7 @@ HTML;
     <?php endif; ?>
 <?php endif; ?>
 <?php endforeach;
+    echo "</div>";
     endif;
 ?>
 <?php echo $this->getChildChildHtml('additional'); ?>
