@@ -86,13 +86,6 @@ $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProduc
                 </div>
             <?php endif; ?>
 
-            <?php if ($_product->getShortDescription()):?>
-                <div class="short-description">
-                    <h2><?php echo $this->__('Quick Overview') ?></h2>
-                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-                </div>
-            <?php endif;?>
-
             <?php echo $this->getChildHtml('other');?>
 
             <?php if ($_product->isSaleable() && $this->hasOptions()):?>
@@ -101,6 +94,9 @@ $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProduc
             <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                 <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
             <?php endif;?>
+            <div class="short-description">
+                <img alt="" src="<?php echo $this->getSkinUrl("images/productDetail_des.png") ?>">
+            </div>
         </div>
 
         <div class="product-img-box">
