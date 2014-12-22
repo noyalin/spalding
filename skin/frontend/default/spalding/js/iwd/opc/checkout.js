@@ -442,7 +442,10 @@ IWD.OPC.Checkout = {
 			
 			if (this.config.isLoggedIn===1){
 //				var addressId = $j('#billing-address-select').val();//old opc
-				var addressId =$j("#billing_address_id_hidden").val();
+                var addressId =$j("input[name='billing_address_id'][checked]").val();
+                if(addressId == undefined){
+                    addressId =  $j("#billing_address_id_hidden").val();
+                }
                 if(addressId == undefined || addressId == ''){
                     alert("温馨提示：请选择收货地址");
                     return;

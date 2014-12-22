@@ -49,7 +49,9 @@
             $str = <<<HTML
 <div class="step_radio selected">
             <div class="display:none"><input id="p_method_$_code" value="$_code" type="radio" name="payment[method]" checked="checked" class="radio" /></div>
-            <img src=" $imgSrc  ">
+            <div style="height:60px">
+                <img src=" $imgSrc  ">
+            </div>
             <i class="arrow"></i>
         </div>
 HTML;
