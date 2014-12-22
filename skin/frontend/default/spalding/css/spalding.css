@@ -12,6 +12,8 @@
  	cursor:pointer;
  }
 
+ a{color:#b6b6b6;}
+
 /*头部 s*/
 .header{
 	position: absolute;
