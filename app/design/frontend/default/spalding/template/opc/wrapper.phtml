@@ -223,15 +223,15 @@ $theme = Mage::getDesign()->getTheme('frontend');
                     </div>
 
                     <div class="checkoutBalanceItem">
-                        发票类型:&nbsp;无需发票
+                        发票类型:&nbsp;<span class="spaninvoicetype">无需发票</span>
                     </div>
 
                     <div class="checkoutBalanceItem">
-                        发票抬头:&nbsp;
+                        发票抬头:&nbsp;<span class="spaninvoicetitle"></span>
                     </div>
 
                     <div class="checkoutBalanceItem">
-                        开票内容:&nbsp;
+                        开票内容:&nbsp;<span class="spaninvoicecontent"></span>
                     </div>
 
                     <div class="checkoutBalanceItem">
@@ -325,6 +325,9 @@ $theme = Mage::getDesign()->getTheme('frontend');
         }else{
             invoiceTypeName = "增值税专用发票";
         }
+        jQuery('.spaninvoicetype').html(invoiceTypeName);
+        jQuery('.spaninvoicetitle').html(invoice_title);
+        jQuery('.spaninvoicecontent').html(invoice_content);
         jQuery('#checkoutInvoiceNormal').hide();
         jQuery('#checkoutInvoiceTax').hide();
         jQuery('#checkoutInvoiceCommand').hide();
