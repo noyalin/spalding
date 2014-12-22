@@ -40,24 +40,32 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
     }
     public function formPostAjaxAction(){
         // Save data
+        $result = array();
         if ($this->getRequest()->isPost()) {
             $customer = $this->_getSession()->getCustomer();
             $params = $this->getRequest()->getParams();
             /* @var $address Mage_Customer_Model_Address */
             $address  = Mage::getModel('customer/address');
-            $addressId = $this->getRequest()->getParam('id');
+            $addressId = $this->getRequest()->getParam('address_id');
             if ($addressId) {
                 $existsAddress = $customer->getAddressById($addressId);
                 if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
-                    $address->setId($existsAddress->getId());
+                    $existsAddress->setFirstname($params['firstName']);
                     $existsAddress->setRegionId($params['region_id']);
                     $existsAddress->setCityId($params['city_id']);
                     $existsAddress->setCity($params['city']);
                     $existsAddress->setDistrictId($params['district_id']);
                     $existsAddress->setDistrict($params['district']);
+                    $existsAddress->setStreet($params['street']);
+                    $existsAddress->setPostcode($params['postcode']);
+                    $existsAddress->setTelephone($params['telephone']);
+                    $existsAddress->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
+                        ->setIsDefaultShipping($this->getRequest()->getParam('default_billing', false));
                     $existsAddress->save();
-                    $this->_getSession()->addSuccess($this->__('The address has been saved.'));
-                    $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
+                    $label = $existsAddress->format('oneline');
+                    $result['id'] = $addressId;
+                    $result['label'] = $label;
+                    echo json_encode($result);
                     return;
                 }
             }
@@ -95,7 +103,7 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                 $addressForm->compactData($addressData);
                 $address->setCustomerId($customer->getId())
                     ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
-                    ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
+                    ->setIsDefaultShipping($this->getRequest()->getParam('default_billing', false));
 
                 $addressErrors = $address->validate();
                 if ($addressErrors !== true) {
