@@ -466,19 +466,30 @@ $defaultBillingId = $this->getDefaultBilling();
                          label = data.label;
                          billingId = "billing_address_id_" + newId;
                          labelId = "label_id_" + newId;
-                        if(addressId && addressId==newId){//修改已经存在的ADDRESS
+
+                        var defaultBilling = data.isdefault;
+                        var textDefaultBilling = "设为默认";
+                        if( defaultBilling == 1){
+                            textDefaultBilling = "已设为默认";
+                            //首先重置所有的text
+                            jQuery(".set_def").html("<span>设为默认</span>");
+                        }
+
+                        if(addressId && addressId==newId){
+                            //修改已经存在的ADDRESS
+                            jQuery("#set_def_"+addressId).html("<span>已设为默认</span>");
                             spanAddres = '<span class="city_name">    ' + label + '   </span>';
                             jQuery("#"+labelId).html(spanAddres);
                         }else{
                             jQuery('.step_radio_wrap .step_radio').removeClass('selected');
                             html = '<div class="step_radio selected"><input type="radio" checked value="'+newId+'"  id="'+billingId+'"  name="billing_address_id"><label for="'+billingId+'"><span class="city_name">'+label+
-                                ' </span> </label><div class="btns"> <a class="btn edit" href="javascript:;"><span>修改地址</span></a><a class="btn set_def" href="javascript:;"><span>设为默认</span></a></div> <i class="arrow"></i></div>'
+                                ' </span> </label><div class="btns"> <a class="btn edit" href="javascript:;"><span>修改地址</span></a><a class="btn set_def" href="javascript:;"><span>'+textDefaultBilling+'</span></a></div> <i class="arrow"></i></div>'
                             jQuery(".step_radio_wrap").append(html);
                             jQuery('#checkoutNewAddressForm').hide();
                         }
 
                         jQuery("#billing_address_id_hidden").val(newId);
-                        jQuery('#checkoutNewAddressForm').toggle();
+                        jQuery('#checkoutNewAddressForm').hide();
 //                        getAddress(id);
                     },
                     error: function(e){}

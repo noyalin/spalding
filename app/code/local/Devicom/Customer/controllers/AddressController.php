@@ -65,6 +65,7 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
                     $label = $existsAddress->format('oneline');
                     $result['id'] = $addressId;
                     $result['label'] = $label;
+                    $result['isdefault'] = $existsAddress->getIsDefaultBilling();
                     echo json_encode($result);
                     return;
                 }
@@ -133,6 +134,7 @@ class Devicom_Customer_AddressController extends Mage_Customer_AddressController
             $billingId = "billing_address_id_".$newId;
             $result['id'] = $newId;
             $result['label'] = $label;
+            $result['isdefault'] = $address->getIsDefaultBilling();
             /*
             $return = <<<HTML
                     <div class="step_radio">
