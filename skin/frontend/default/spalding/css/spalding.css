@@ -477,6 +477,7 @@ ul.scarch_select_option li:hover{
 .footerWrap .shopCode{
 	font-size: 12px;
 	margin-right: 50px;
+	margin-top:-5px;
 }
 .footerWrap .shopCode a.tmallLink{
 	color:#fdb905;
@@ -499,7 +500,7 @@ ul.scarch_select_option li:hover{
 	height:160px;
 	overflow: hidden;
 	font-size: 12px;
-	margin-right: 40px;
+	margin-right: 35px;
 }
 
 .footerWrap dl.footerNav dd{
@@ -820,7 +821,7 @@ button.rulAgree{
 
 .block-content dl.narrow-by-list dd ol li a:hover{
 	color:#333;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 
@@ -2372,7 +2373,9 @@ ul.form-list li p{
 	margin-bottom:10px;
 }
 
-
+.newsList{
+	margin-bottom:20px;
+}
 .newsList ul li{
 	width:300px;
 	background: #2a2a2a;
@@ -2437,6 +2440,7 @@ ul.newsListBox_cen{
 	font-size: 12px;
 	font-weight: normal;
 	color:#9c9c9c;
+	margin-top:10px;
 }
 
 .newsArtsWrap{
@@ -2453,11 +2457,11 @@ ul.newsListBox_cen{
 .newsArtsWrap h2{
 	font-size: 12px;
 	color:#cbcbcb;
-	text-indent:20px;
+	text-indent:40px;
 	color:#fff;
 }
 .newsArtsWrap p{
-	margin:10px 20px;
+	margin:10px 40px;
 	text-indent: 24px;
 }
 
@@ -2482,8 +2486,16 @@ ul.newsListBox_cen{
 	color:#666;
 }
 
-.newsArtsFun a:hover{
+.newsArtsFun .newsArtsLas a{
+	color:#666;
+}
+
+.newsArtsFun .newsArtsNex a{
 	color:#cbcbcb;
+}
+
+.newsArtsFun a:hover{
+	color:#fff;
 }
 
 .shareBox{
@@ -2679,6 +2691,220 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .teyWrapChart{
 	position: relative;
 }
+
+
+/*关于斯伯丁*/
+.aboutUs_top{
+	width:970px;
+	margin:0 auto;
+}
+
+
+.aboutTit{
+	width:100%;
+	text-align: center;
+	margin-bottom:10px;
+}
+
+
+
+.aboutNav{
+	text-align: center;
+	margin-bottom:50px;
+}
+
+
+.aboutNav a{
+	display: inline-block;
+	width:225px;
+	height:45px;
+	line-height: 45px;
+	font-size: 16px;
+	font-weight: bold;
+	color:#fff;
+	background: rgba(0,0,0,.65);
+	margin:0 5px;
+}
+
+.aboutNav a:hover{
+	background: rgba(0,0,0,.95);
+	color:#b6b6b6;
+}
+.aboutNav a.aboutNav_now{
+	background: #e8a902;
+	color:#000;
+}
+
+
+.aboutUs_box{
+	width:100%;
+	height: auto;
+	background: #fff;
+	margin-bottom:80px;
+}
+.aboutUs_box_cont{
+	background: #333;
+}
+.aboutUs_boxLeft{
+	width:50%;
+}
+
+
+.aboutUs_boxLeft img{
+	width:100%;
+}
+
+.aboutUs_boxRig{
+	width:50%;
+	font-size: 12px;
+	background: #fff;
+}
+
+.aboutUs_boxRig .aboutUs_boxRig_tit{
+	margin-left:5%;
+	margin-top:30px;
+	margin-bottom:20px;
+}
+
+
+.aboutUs_boxRig p{
+	margin:10px 5%;
+	color:#666;
+}
+
+.aboutUs_boxRig h2{
+	margin:20px 5% 10px ;
+	font-size: 12px;
+	font-weight: normal;
+	color:#333;
+}
+
+.aboutUs_boxRig_cont{
+	padding-bottom:20px;
+}
+
+
+
+.aboutUs_boxRig_img{
+	margin:10px 5%;
+}
+.aboutUs_boxRig_img img{
+	width: 100%;
+}
+
+
+
+
+.boxLeft_contactUs{
+	padding:0 13% 0 22%;
+	background: #333;
+	height:100%;
+	margin:50px 0 0;
+}
+.contactForm{
+	margin:15px 0;
+}
+
+.contactForm span{
+	display: inline-block;
+	float: left;
+	color:#b6b6b6;
+	font-size: 12px;
+}
+
+.contactForm span.contactFormTit{
+	width:10%;
+	line-height: 26px;
+}
+
+.contactForm span.contactFormInp{
+	width:90%;
+}
+.contactForm span.contactFormInpBox_30{
+	width:32%;
+}
+.contactForm span.contactFormInpBox_50{
+	width:52%;
+}
+.contactForm span.contactFormL{
+	width:6%;
+	text-align: center;
+}
+.contactForm span.contactFormInp .contactFormInpBox{
+	width:100%;
+	background: #373737;
+	border:1px solid #424242;
+	height:26px;
+	line-height: 26px;
+	color:#b6b6b6;
+}
+
+.contactForm span select{
+	height: 26px;
+	line-height: 26px;
+	background: #333333;
+	color:#b6b6b6;
+	border:1px solid #424242;
+	font-size: 12px;
+	width:100%;
+}
+
+
+.contactForm span textarea{
+	min-width:100%;
+	max-width:100%;
+	background: #373737;
+	border:1px solid #424242;
+	min-height: 105px;
+	max-height: 105px;
+	color:#b6b6b6;
+	font-size: 12px;
+}
+
+.contactForm span.contactForm_textareaTit{
+	line-height: 105px;
+}
+
+
+.contactForm span.contactFormInp button{
+	width:100px;
+	height: 32px;
+	line-height: 32px;
+	background: #e8a902;
+	color:#000;
+	font-size: 16px;
+	font-weight: bold;
+	border:0;
+	margin-bottom:15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
