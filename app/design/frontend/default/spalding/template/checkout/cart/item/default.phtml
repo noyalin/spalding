@@ -43,6 +43,11 @@ $product_sku = $_product->getSku();//sku
 $product_norm = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_norm",$_product->getProductNorm());//篮球规格
 $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
 ?>
+<style>
+     .spCarTit_name a:link{
+        color: #ffba00;
+    }
+</style>
 <div class="spListWrap p_number">
     <dl class="clearfix">
         <dd class="ms-fl">
