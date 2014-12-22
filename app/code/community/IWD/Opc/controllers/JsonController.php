@@ -590,6 +590,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 			if (Mage::helper('opc')->isShowComment())
 			{
 				$comment = $this->getRequest()->getPost('customer_comment', '');
+                $comment .= $this->getRequest()->getPost('customer_invoice', '');
 				if(empty($comment))
 					$comment  = Mage::getSingleton('core/session')->getOpcOrderComment();
 				else
@@ -729,6 +730,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 			return;
 		}
 		$comment  = $this->getRequest()->getParam('comment');
+        $comment .= $this->getRequest()->getParam('customer_invoice');
 		if (!empty($comment)){
 			Mage::getSingleton('core/session')->setOpcOrderComment($comment);
 		}else{
