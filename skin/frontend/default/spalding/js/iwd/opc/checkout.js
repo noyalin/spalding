@@ -291,11 +291,11 @@ IWD.OPC = {
 		
 		/** SAVE CUSTOMER COMMNET **/
 		saveCustomerComment: function(){
-			$j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/comment',{"comment": $j('#customer_comment').val()});
+			$j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/comment',{"comment": $j('#customer_comment').val(),"customer_invoice": $j('#customer_invoice').val()});
 		}, 
 		
 		getComment: function(form){
-			var com = $j('#customer_comment').val();
+			var com = $j('#customer_comment').val() + $j('#customer_invoice').val();
 			form.push({"name":"customer_comment", "value":com});
 			return form;
 		},
