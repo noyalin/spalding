@@ -36,10 +36,11 @@ $defaultBillingId = $this->getDefaultBilling();
                     }
                     $addrLabel = $eacAddr['label'];
                     $billingId = "billing_address_id_".$addrValueId;
+                    $labelId = "label_id_".$addrValueId;
                     ?>
                     <div class="step_radio <?php echo $selected?> ">
                         <input type="radio" <?php echo $checked; ?> value="<?php echo $addrValueId?>"  id="<?php echo $billingId?>"    name="billing_address_id">
-                        <label for="<?php echo $billingId?>">
+                        <label id="<?php echo $labelId;?>" for="<?php echo $billingId?>">
                             <span class="city_name">
                                 <?php echo $addrLabel?>
                             </span>
@@ -143,7 +144,7 @@ $defaultBillingId = $this->getDefaultBilling();
                     &nbsp;&nbsp;*
                 </div>
                 <div class="checkoutWrapContentItemRight">
-                    <input type="checkbox"><br>
+                    <input type="checkbox" name="default_billing" id="default_billing"><br>
                 </div>
             </div>
 
@@ -435,6 +436,11 @@ $defaultBillingId = $this->getDefaultBilling();
             var district = jQuery("#district").val();
             var city_id = jQuery('#city_id option:selected').val();
             var district_id = jQuery('#district_id option:selected').val();
+            var default_billing = jQuery('#default_billing:input:checkbox:checked').val();
+            var default_billing_value = 0;
+            if(default_billing == 'on'){
+                default_billing_value = 1;
+            }
             if(firstName != '' && street != '' && district_id!='' && city_id!='' && telephone != ''){
                 jQuery.ajax({
                     type: 'POST',
@@ -450,20 +456,40 @@ $defaultBillingId = $this->getDefaultBilling();
                         telephone:telephone,
                         district:district,
                         district_id:district_id,
+                        default_billing:default_billing_value,
                         city_id:city_id
                     },
                     dataType: 'json',
                     success: function(data){
                          var elementValues = {};
                          newId = data.id;
-                        billingId = "billing_address_id_" + newId;
-                        label = data.label;
-                        jQuery('.step_radio_wrap .step_radio').removeClass('selected');
-                        html = '<div class="step_radio selected"><input type="radio" checked value="'+newId+'"  id="'+billingId+'"  name="billing_address_id"><label for="'+billingId+'"><span class="city_name">'+label+
-                            ' </span> </label><div class="btns"> <a class="btn edit" href="javascript:;"><span>修改地址</span></a><a class="btn set_def" href="javascript:;"><span>设为默认</span></a></div> <i class="arrow"></i></div>'
-                        jQuery(".step_radio_wrap").append(html);
-                        jQuery('#checkoutNewAddressForm').hide();
+                         label = data.label;
+                         billingId = "billing_address_id_" + newId;
+                         labelId = "label_id_" + newId;
+
+                        var defaultBilling = data.isdefault;
+                        var textDefaultBilling = "设为默认";
+                        if( defaultBilling == 1){
+                            textDefaultBilling = "已设为默认";
+                            //首先重置所有的text
+                            jQuery(".set_def").html("<span>设为默认</span>");
+                        }
+
+                        if(addressId && addressId==newId){
+                            //修改已经存在的ADDRESS
+                            jQuery("#set_def_"+addressId).html("<span>已设为默认</span>");
+                            spanAddres = '<span class="city_name">    ' + label + '   </span>';
+                            jQuery("#"+labelId).html(spanAddres);
+                        }else{
+                            jQuery('.step_radio_wrap .step_radio').removeClass('selected');
+                            html = '<div class="step_radio selected"><input type="radio" checked value="'+newId+'"  id="'+billingId+'"  name="billing_address_id"><label for="'+billingId+'"><span class="city_name">'+label+
+                                ' </span> </label><div class="btns"> <a class="btn edit" href="javascript:;"><span>修改地址</span></a><a class="btn set_def" href="javascript:;"><span>'+textDefaultBilling+'</span></a></div> <i class="arrow"></i></div>'
+                            jQuery(".step_radio_wrap").append(html);
+                            jQuery('#checkoutNewAddressForm').hide();
+                        }
+
                         jQuery("#billing_address_id_hidden").val(newId);
+                        jQuery('#checkoutNewAddressForm').hide();
 //                        getAddress(id);
                     },
                     error: function(e){}
@@ -478,62 +504,6 @@ $defaultBillingId = $this->getDefaultBilling();
             jQuery( "#dialog_new_address" ).dialog( "close" );
         });
     });
-    /*
-     {"entity_id":"52","entity_type_id":"2","attribute_set_id":"0","increment_id":null,"parent_id":"16","created_at":"2014-08-13T11:18:29+08:00","updated_at":"2014-08-13 11:28:50","is_active":"1",
-     "firstname":"davis","lastname":"lastname","city":"\u5317\u4eac\u5e02",
-     "country_id":"CN","region":"\u5317\u4eac\u5e02","postcode":"mmm","telephone":"nnn",
-     "district":"\u897f\u57ce\u533a","region_id":"0","district_id":"110102","city_id":"110100","street":"fffff"}
-     */
-    function modifyAddress(id){
-        jQuery.ajax({
-            type: 'POST',
-            //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
-            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customer/address/getAddressInfo/',
-            data:{
-                id:id
-            },
-            success: function(data){
-                var dataObj = eval("("+data+")");
-                jQuery( "#dialog" ).dialog( "open" );
-                jQuery(".ui-dialog-title").html("修改收货地址");
-                jQuery(".new_address #firstname").val(dataObj.firstname);
-                jQuery(".new_address #addressid").val(dataObj.entity_id);
-                jQuery(".new_address #street_1").val(dataObj.street);
-                jQuery(".new_address #postcode").val(dataObj.postcode);
-                jQuery(".new_address #telephone").val(dataObj.telephone);
-                jQuery(".new_address #city").val(dataObj.city);
-                jQuery(".new_address #region").val(dataObj.region_id);
-                jQuery(".new_address #district").val(dataObj.district);
-                jQuery('.new_address #region_id ').val(dataObj.region_id);
-
-                jQuery.ajax({
-                    type: 'POST',
-                    url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
-                    data: {id:dataObj.region_id},
-                    success: function(data, textStatus){
-                        jQuery('#city_id').html(data);
-                        jQuery('.new_address #city_id ').val(dataObj.city_id);
-                    },
-                    error: function(){
-                    }
-                });
-
-                jQuery.ajax({
-                    type: 'POST',
-                    url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
-                    data: {id:dataObj.city_id},
-                    success: function(data, textStatus){
-                        jQuery('#district_id').html(data);
-                        jQuery('.new_address #district_id ').val(dataObj.district_id);
-                    },
-                    error: function(){
-                    }
-                });
-
-            },
-            error: function(e){}
-        });
-    }
 //    function doShowCheckoutNewAddressForm() {
 //        jQuery('#checkoutNewAddressForm').show();
 //    }
@@ -588,7 +558,7 @@ $defaultBillingId = $this->getDefaultBilling();
                     data: {id:dataObj.region_id},
                     success: function(data, textStatus){
                         jQuery('#city_id').html(data);
-                        jQuery('.new_address #city_id ').val(dataObj.city_id);
+                        jQuery('.checkoutNewAddress #city_id ').val(dataObj.city_id);
                     },
                     error: function(){
                     }
@@ -600,7 +570,7 @@ $defaultBillingId = $this->getDefaultBilling();
                     data: {id:dataObj.city_id},
                     success: function(data, textStatus){
                         jQuery('#district_id').html(data);
-                        jQuery('.new_address #district_id ').val(dataObj.district_id);
+                        jQuery('.checkoutNewAddress #district_id ').val(dataObj.district_id);
                     },
                     error: function(){
                     }
