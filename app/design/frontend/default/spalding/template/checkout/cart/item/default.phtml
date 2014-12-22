@@ -173,10 +173,14 @@ $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("produc
             </span>
 						<span class="spCarTit_num">
 							<div class="f_l add_chose">
-                                <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
+<!--                                <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>-->
 <!--                                <input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />-->
-                                <input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
-                                <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>
+
+                                <button class="reduce" type="submit" onclick="redQtyone(<?php echo $_item->getId() ?>);">-</button>
+                                <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" />
+                                <button class="add"  type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);" >+</button>
+
+<!--                                <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>-->
                             </div>
 
 						</span>
@@ -199,3 +203,25 @@ $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("produc
         </dt>
     </dl>
 </div>
+
+
+<script type="text/javascript">
+    function addQtyone(id){
+            var qtyPro=$('qtyPro_'+id);
+            qtyPro.value = parseInt(qtyPro.value)+1;
+        }
+    function redQtyone(id){
+        var qtyPro=$('qtyPro_'+id);
+        qtyPro.value = parseInt(qtyPro.value)-1;
+    }
+</script>
+<style>
+    button{
+        height: 15px;
+        width: 15px;
+        background-color: #FFFFFF;
+        border: 0px;
+        float: left;
+        margin: 5px 0 0 0 ;
+    }
+</style>
