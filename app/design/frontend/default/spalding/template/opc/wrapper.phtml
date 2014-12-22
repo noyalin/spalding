@@ -67,9 +67,9 @@ $theme = Mage::getDesign()->getTheme('frontend');
             <div class="checkoutNewAddress clearfix">
                 <div class="checkoutSmallTitle">
                     发票类型：
-                    <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio">普通发票
+                    <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="1">普通发票
                     &nbsp;&nbsp;&nbsp;
-                    <input id="chkCheckoutInvoiceTax" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio">增值税专用发票
+                    <input id="chkCheckoutInvoiceTax" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="2">增值税专用发票
                 </div>
 
                 <br />
@@ -80,11 +80,11 @@ $theme = Mage::getDesign()->getTheme('frontend');
                             发票抬头：&nbsp;
                         </div>
                         <div class="checkoutWrapContentItemRight">
-                            <select>
+                            <select class="invoicetaitou">
                                 <option>个人</option>
                                 <option>公司</option>
                             </select>
-                            <input type="text" class="regBoxInp">
+                            <input type="text" class="regBoxInp" id="invoicecontent">
                             <br>
                         </div>
                     </div>
@@ -164,7 +164,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
                     <div class="checkoutWrapContentItem clearfix">
                         <div class="checkoutWrapContentItemSave add_addr">
 
-                            <a href="javascript:;" class="btn" muse_scanned="true">
+                            <a href="javascript:;" class="btn" muse_scanned="true" id="saveInvoice" onclick="saveInvoice()">
                                 <i class="add"></i>
                                 <span>保存发票信息</span>
                             </a>
@@ -313,5 +313,21 @@ $theme = Mage::getDesign()->getTheme('frontend');
         jQuery('#checkoutInvoiceCommand').hide();
 
         jQuery('.checkoutSmallTitle input[type="radio"]').removeAttr('checked');
+    }
+    function saveInvoice(){
+//        var invoiceType = jQuery('input[type="radio"].invoicetaitou:checked').val();
+        var invoiceType = jQuery("input[name='chkCheckoutInvoice']:checked").val();
+        var invoiceTypeName = "普通发票";
+
+        if(invoiceType == 1){//普通发票
+            var invoice_title = jQuery('select.invoicetaitou option:selected').val();
+            var invoice_content = jQuery("#invoicecontent").val();
+        }else{
+            invoiceTypeName = "增值税专用发票";
+        }
+        jQuery('#checkoutInvoiceNormal').hide();
+        jQuery('#checkoutInvoiceTax').hide();
+        jQuery('#checkoutInvoiceCommand').hide();
+
     }
 </script>
