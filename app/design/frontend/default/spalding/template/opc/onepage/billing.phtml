@@ -27,10 +27,12 @@ $defaultBillingId = $this->getDefaultBilling();
                     $selected = null;
                     $checked = '';
                     $defaultDescription = "设为默认";
+                    $adefault = '';
                     if($addrValueId == $defaultBillingId){
                         $selected = "selected";
                         $checked = 'checked="true"';
                         $defaultDescription = "已设为默认";
+                        $adefault = "adefault";
                     }
                     $addrLabel = $eacAddr['label'];
                     $billingId = "billing_address_id_".$addrValueId;
@@ -43,8 +45,8 @@ $defaultBillingId = $this->getDefaultBilling();
                             </span>
                         </label>
                         <div class="btns">
-                            <a class="btn edit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
-                            <a class="btn set_def" id="set_def_<?php echo $addrValueId;?>" href="javascript:;" onclick="saveAddressDefault('<?php echo $addrValueId;?>')"><span><?php echo $defaultDescription?></span></a>
+                            <a class="btn edit btnedit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
+                            <a class="btn set_def " id="set_def_<?php echo $addrValueId;?>" href="javascript:;" onclick="saveAddressDefault('<?php echo $addrValueId;?>')"><span class="<?php echo $adefault ?> "><?php echo $defaultDescription?></span></a>
                         </div>
                         <i class="arrow"></i>
                     </div>
@@ -549,12 +551,62 @@ $defaultBillingId = $this->getDefaultBilling();
                 id:id
             },
             success: function(data){
-                alert(1);
+                jQuery(".set_def").html("<span>设为默认</span>");
                 setDef = "set_def_" + id;
-                alert(setDef);
-                jQuery("#"+setDef).html("已设为默认");
+                jQuery("#"+setDef).html("<span class='adefault'> 已设为默认</span>");
             },
             error: function(e){}
         });
     }
+    jQuery(".btnedit").click(function(e){
+        e.preventDefault();
+        jQuery('#checkoutNewAddressForm').toggle();
+        var addressId = jQuery(this).attr('data-addrid');
+
+        jQuery.ajax({
+            type: 'POST',
+            //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+            url: "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customer/address/getAddressInfo/",
+            data:{
+                id:addressId
+            },
+            success: function(data){
+                var dataObj = eval("("+data+")");
+                jQuery(".checkoutNewAddress #firstname").val(dataObj.firstname);
+                jQuery(".checkoutNewAddress #addressid").val(dataObj.entity_id);
+                jQuery(".checkoutNewAddress #street_1").val(dataObj.street);
+                jQuery(".checkoutNewAddress #postcode").val(dataObj.postcode);
+                jQuery(".checkoutNewAddress #telephone1").val(dataObj.telephone);
+                jQuery(".checkoutNewAddress #city").val(dataObj.city);
+                jQuery(".checkoutNewAddress #region").val(dataObj.region_id);
+                jQuery(".checkoutNewAddress #district").val(dataObj.district);
+                jQuery('.checkoutNewAddress #region_id ').val(dataObj.region_id);
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
+                    data: {id:dataObj.region_id},
+                    success: function(data, textStatus){
+                        jQuery('#city_id').html(data);
+                        jQuery('.new_address #city_id ').val(dataObj.city_id);
+                    },
+                    error: function(){
+                    }
+                });
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
+                    data: {id:dataObj.city_id},
+                    success: function(data, textStatus){
+                        jQuery('#district_id').html(data);
+                        jQuery('.new_address #district_id ').val(dataObj.district_id);
+                    },
+                    error: function(){
+                    }
+                });
+            },
+            error: function(e){}
+        });
+    });
 </script>

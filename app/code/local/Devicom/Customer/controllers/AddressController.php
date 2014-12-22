@@ -168,4 +168,10 @@ HTML;
 
     }
 
+    public function getAddressInfoAction(){
+        $addressId = $this->getRequest()->getParam('id', false);
+        $existsAddress = Mage::getModel('customer/address')->load($addressId);
+        $this->getResponse()->setBody(Zend_Json::encode($existsAddress));
+    }
+
 }

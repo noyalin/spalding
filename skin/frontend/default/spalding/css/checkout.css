@@ -160,8 +160,12 @@ input[type="text"] {
 .addr_step .step_radio .addr_tel{ display:block; font-size:13px; height:3em; overflow:hidden; color:#b4b4b4;}
 .addr_step .step_radio .tel{ color:#707781; font-family:Arial; margin-left:1.5em;}
 .addr_step .step_radio .btns{ padding-top:8px;}
+.btn span .adefault {
+    color: #FDB905;
+}
 /* fdb905 */ .addr_step .step_radio .btn{ background:#c4c4c4; border-radius:3px; line-height:24px; margin-right:10px; text-shadow:none; font-size:13px; padding:5px 10px 5px 10px;color: #000;font-weight:normal;}
 .addr_step .step_radio:hover .btn, .addr_step .step_radio.selected .btn{ color: #000;}
+
 .addr_step .step_radio .btn:hover{ background-color:#d9d9d9;}
 .addr_step .step_radio:hover .btn:hover{ background-color:#fdb905;}
 .addr_step .step_radio span.set_def, .addr_step .step_radio span.set_def:hover,
