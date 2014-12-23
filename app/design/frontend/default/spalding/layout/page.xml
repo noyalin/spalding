@@ -65,6 +65,11 @@ Default layout, loads most of the pages
                     <name>css/spalding.css</name>
                     <params/>
                 </action>
+                <action method="addItem">
+                    <type>skin_css</type>
+                    <name>css/new.css</name>
+                    <params/>
+                </action>
 
                 <action method="addItem">
                     <type>skin_css</type>
