@@ -45,7 +45,7 @@ IWD.OPC = {
 					}
 				}
 
-                IWD.OPC.Billing.save();
+                IWD.OPC.Billing.saveBillingOneStep();
 				IWD.OPC.saveOrderStatus = true;
 				IWD.OPC.Plugin.dispatch('saveOrderBefore');
 				if (IWD.OPC.Checkout.isVirtual===false){
@@ -837,7 +837,28 @@ IWD.OPC.Billing = {
 			//init trigger change shipping form
 			$j('#opc-address-form-shipping select[name="shipping[country_id]"]').change();
 		},
+        saveBillingOneStep: function(){
+            if (IWD.OPC.Checkout.ajaxProgress!=false){
+                clearTimeout(IWD.OPC.Checkout.ajaxProgress);
+            }
 
+                var form = $j('#opc-address-form-billing').serializeArray();
+                form = IWD.OPC.Checkout.applyShippingMethod(form);
+                form = IWD.OPC.Checkout.applySubscribed(form);
+
+                if (IWD.OPC.Checkout.xhr!=null){
+                    IWD.OPC.Checkout.xhr.abort();
+                }
+
+                if($j('input[name="billing[use_for_shipping]"]').is(':checked'))
+                    IWD.OPC.Checkout.showLoader();
+                else
+                    IWD.OPC.Checkout.lockPlaceOrder(1);
+
+                IWD.OPC.Billing.bill_need_update = false;
+
+                IWD.OPC.Checkout.xhr = $j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/saveBilling',form, IWD.OPC.Checkout.prepareAddressResponse,'json');
+        },
 		/** METHOD CREATE AJAX REQUEST FOR UPDATE BILLING ADDRESS **/
 		save: function(){
 			if (IWD.OPC.Checkout.ajaxProgress!=false){
