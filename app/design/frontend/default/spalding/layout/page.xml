@@ -52,6 +52,7 @@ Default layout, loads most of the pages
                     <type>skin_js</type>
                     <name>js/jquery-1.7.1.min.js</name>
                 </action>
+
                 <action method="addItem">
                     <type>skin_js</type>
                     <name>js/noconflict.js</name>
@@ -64,6 +65,7 @@ Default layout, loads most of the pages
                     <name>css/spalding.css</name>
                     <params/>
                 </action>
+
                 <action method="addItem">
                     <type>skin_css</type>
                     <name>css/basic.css</name>

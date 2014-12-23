@@ -25,4 +25,9 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 //        $block->setBlockId('tmall_1111_high');
 //        echo $block->toHtml();
     }
+    public function authAction(){
+        header("Content-type: image/PNG");
+        $m = Mage::getModel('tools/imagecode');
+        $m->show();
+    }
 }
