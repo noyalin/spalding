@@ -366,8 +366,8 @@ $defaultBillingId = $this->getDefaultBilling();
     	<?php
     	$guest_allowed = $this->getQuote()->isAllowedGuestCheckout();
     	if($guest_allowed): ?>
-	    <li class="control">
-	            <input type="checkbox" name="billing[create_account]" id="billing:create_account" value="1" title="<?php echo  $this->__('Create an account for later use') ?>"  class="checkbox" /><label for="billing:create_account"><?php echo  $this->__('Create an account for later use') ?></label>
+	    <li class="control" style="display: none">
+	            <input type="checkbox" name="billing[create_account]" id="billing:create_account" value="1"  class="checkbox" />
 	    </li>
 	    <?php else:?>
 	    	<input type="hidden" name="billing[create_account]" id="billing:create_account" value="1" />
