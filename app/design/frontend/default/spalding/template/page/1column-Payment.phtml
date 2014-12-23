@@ -41,7 +41,7 @@
     ?>
 </div>
 <?php echo $this->getChildHtml('after_body_start') ?>
-<div style="height:110px; z-index:-2;"></div>
+
 <!-- 主框架 s -->
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
@@ -52,6 +52,7 @@
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <div class="col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>
+                    <div style="height:110px; z-index:-2;"></div>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
             </div>
