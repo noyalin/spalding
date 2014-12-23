@@ -410,7 +410,7 @@ $defaultBillingId = $this->getDefaultBilling();
 <script>
 
     jQuery(document).ready(function(){
-        jQuery('.step_radio_wrap').delegate('div.step_radio', 'click',function() {
+        jQuery('#addressUl .step_radio_wrap').delegate('div.step_radio', 'click',function() {
             jQuery(this).parent().children().removeClass('selected');
             jQuery(this).addClass('selected');
             var addressId = jQuery(this).children("input[name='billing_address_id']").attr('value');
@@ -481,10 +481,10 @@ $defaultBillingId = $this->getDefaultBilling();
                             spanAddres = '<span class="city_name">    ' + label + '   </span>';
                             jQuery("#"+labelId).html(spanAddres);
                         }else{
-                            jQuery('.step_radio_wrap .step_radio').removeClass('selected');
+                            jQuery('#addressUl .step_radio_wrap .step_radio').removeClass('selected');
                             html = '<div class="step_radio selected"><input type="radio" checked value="'+newId+'"  id="'+billingId+'"  name="billing_address_id"><label for="'+billingId+'"><span class="city_name">'+label+
                                 ' </span> </label><div class="btns"> <a class="btn edit" href="javascript:;"><span>修改地址</span></a><a class="btn set_def" href="javascript:;"><span>'+textDefaultBilling+'</span></a></div> <i class="arrow"></i></div>'
-                            jQuery(".step_radio_wrap").append(html);
+                            jQuery("#addressUl .step_radio_wrap").append(html);
                             jQuery('#checkoutNewAddressForm').hide();
                         }
 
