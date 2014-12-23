@@ -36,6 +36,16 @@ jQuery(document).ready(function () {
         }
         return false
     });
+
+
+    //sku slideImg hover
+    jQuery('#detailProductGallery>div:eq(0)>a>img').css({"border":"2px solid #fdb905","padding":"5px 0","margin-top":"-1px"});
+    jQuery("#detailProductGallery>div>a>img").hover(function () {
+        jQuery(this).parent().parent().siblings().find('img').css({"border":"1px solid #9a9898","padding":"0 0","margin-top":"5px"})
+        jQuery(this).css({"border":"2px solid #fdb905","padding":"5px 0","margin-top":"-1px"});
+    });
+    
+
     var e = 92;
     var t = jQuery(".detailImageReel img").size();
     var n = e * t;
