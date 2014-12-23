@@ -47,17 +47,13 @@
 <!--            <span class="value">--><?php //echo $this->stripTags($_filter->getLabel()) ?><!--</span>-->
             <div class="selected-label">
             <a data-qa="filter.gender.men" class="selected-facet facet  "><?php echo $this->stripTags($_filter->getLabel()) ?></a>
-            <img src="<?php echo $this->getSkinUrl('images/remove.jpg')?>" alt=""/>
+                <a  class="btn-remove" href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>">
+                    <img src="<?php echo $this->getSkinUrl('images/remove.jpg')?>" alt=""/>
+                </a>
             </div>
             <?php
                 $clearLinkUrl = $_filter->getClearLinkUrl();
-                if ($clearLinkUrl):
             ?>
-                <a  class="btn-previous" href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Previous') ?>"><?php echo $this->__('Previous') ?></a>
-                <a  class="btn-remove" title="<?php echo $this->escapeHtml($_filter->getFilter()->getClearLinkText()) ?>" href="<?php echo $clearLinkUrl ?>"><?php echo $this->escapeHtml($_filter->getFilter()->getClearLinkText()) ?></a>
-            <?php else: ?>
-                <a  class="btn-remove" href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>"><?php echo $this->__('Remove This Item') ?></a>
-            <?php endif; ?>
         </li>
     <?php endforeach; ?>
     </ol>
