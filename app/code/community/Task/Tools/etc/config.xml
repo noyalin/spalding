@@ -25,5 +25,12 @@
             </modules>
         </suite>
     </phpunit>
+    <global>
+        <models>
+            <tools>
+                <class>Task_Tools_Model</class>
+            </tools>
+        </models>
+    </global>
 
 </config>
