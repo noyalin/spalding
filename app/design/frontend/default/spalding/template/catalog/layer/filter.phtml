@@ -33,7 +33,7 @@
 ?>
 
 <ol>
-<?php foreach ($this->getItems() as $_item): ?>
+<?php foreach ($this->getItems() as $_item): if ($_item->getCount() == 0){continue;} ?>
     <li>
         <?php if ($_item->getCount() > 0): ?>
         <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>"><?php echo $_item->getLabel() ?></a>
