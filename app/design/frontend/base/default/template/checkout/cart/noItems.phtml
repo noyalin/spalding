@@ -24,28 +24,13 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
-
-
-
-<div class="userContreMain userContreMain_sp">
-    <div class="spCarTop clearfix">
-        <h2 class="spCarTop_tit ms-fl"><img alt="" src="http://localhost/spalding/skin/frontend/default/spalding/images/shoppingCar_title_carIcon.png">&nbsp;我的购物车</h2>
-        <a class="spCarTop_goOn ms-fr" href="http://localhost/spalding/">继续购物</a>
-    </div>
-
-    <style>
-        .spCarTit_name a:link{
-            color: #ffba00;
-        }
-    </style>
-    <div class="spListWrap p_number">
-        <div class="cart-empty" style="color: #ffffff">
-            <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-            <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
-            <p><?php echo $this->__('You have no items in your shopping cart.') ?></p>
-            <p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p>
-            <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
-        </div>
-    </div>
+<div class="page-title">
+    <h1><?php echo $this->__('Shopping Cart is Empty') ?></h1>
+</div>
+<div class="cart-empty">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
+    <p><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+    <p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p>
+    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
 </div>
