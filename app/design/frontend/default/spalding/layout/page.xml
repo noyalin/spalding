@@ -71,11 +71,6 @@ Default layout, loads most of the pages
                     <name>css/basic.css</name>
                     <params/>
                 </action>
-                <action method="addItem">
-                    <type>skin_css</type>
-                    <name>css/other.css</name>
-                    <params/>
-                </action>
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
                 <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
