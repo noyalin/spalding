@@ -1,0 +1,232 @@
+
+/*Base*/
+
+ul,
+ol { 
+	list-style:none;
+    font-size: 0px;
+    letter-spacing:normal;
+    word-spacing: normal;
+}
+li {
+	list-style:none;
+    display: inline-block;	
+    float: left;
+    _display:inline;
+    font-size: 12px;
+}
+
+
+/*his*/
+.con{
+}
+
+.con-bg{
+	background: url("../images/con-bg.jpg") no-repeat fixed top;
+}
+
+
+#close{
+	width: 75px;
+	height: 64px;
+	background: url("../images/close.jpg") no-repeat center;
+	position: fixed;
+	top: 100px;
+	right: 0px;
+}
+.his-bg{
+	background: url("../images/his-bg.jpg") no-repeat top;
+	position: relative;
+}
+.his-bg .bd{
+	width: 1000px;
+	margin: 0 auto;
+	color: #fff;
+	height: 700px;
+	overflow: hidden;
+	position: relative;
+}
+.his-bg .bd ul{
+	position: relative;
+	width: 1000px;
+	height: 700px;
+	margin-top:60px;
+}
+.his-bg .bd li{
+	text-align: center;
+	position: absolute;
+	width: 1000px;
+	height: 700px;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+.his-bg .bd .year{
+	font-size: 230px;
+	color: #6f6f6f;
+	font-family: Arial;
+	width: 580px;
+	position: absolute;
+	top: 120px;
+	left: 50%;
+	margin-left: -290px;
+}
+.his-bg .div-tit{
+	position: relative;
+	z-index: 3;
+	margin-top:-50px;
+}
+.his-bg .div-tit .en{
+	height: 100px;
+	background: url("../images/his-tit.png") no-repeat center;
+}
+.his-bg .div-tit .cn{
+	font-size: 18px;
+}
+.div-tit i{
+	width: 66px;
+	height: 3px;
+	background: #fff;
+	display: block;
+	margin: 13px auto;
+	font-size: 0px;
+}
+.div-text{
+	margin: 190px auto 0px;
+	width: 820px;
+}
+
+.div-text dl dd{
+	width:220px;
+	margin-right:20px;
+}
+.div-text dl dt{
+	width:580px;
+	text-align: left;
+}
+
+.div-text h2{
+	font-size: 20px;
+	font-weight: bold;
+	color:#ffb900;
+}
+.his-bg .hd{
+	background: url("../images/scale-bg.jpg") repeat-x 0px 25px;
+	padding: 6px 0px 65px;
+	position: relative;
+	margin-top:-10px;
+}
+.his-bg .hd .prev,
+.his-bg .hd .next{
+	display: block;
+	width: 25px;
+	height: 50px;
+	background: url("../images/scale-row.png") no-repeat left;
+	position: absolute;
+	top: -6px;
+}
+.his-bg .hd .prev:hover,
+.his-bg .hd .next:hover{
+	opacity: 0.6;
+}
+.his-bg .hd .prev{
+	left: 0px;
+}
+.his-bg .hd .next{
+	right: 0px;
+	background: url("../images/scale-row.png") no-repeat right;
+}
+.scale-box{
+	width: 846px;
+	margin: 0 auto;
+	position: relative;
+}
+#sc-buttom{
+	width: 30px;
+	height: 30px;
+	background: url("../images/sc-bottom.png") no-repeat center;
+	position: absolute;
+	top: 2px;
+	left: 0px;
+	-moz-user-select:-moz-none;
+	cursor: move;
+}
+.scale-div{
+	width: 816px;
+	margin: 0 auto;
+	border-right: 1px solid #5b5b5b;
+	overflow: hidden;
+	height: 26px;
+	position: relative;
+}
+.scale-div ul{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.scale-div li{
+	width: 136px;
+	height: 28px;
+	background: url("../images/scale-li.png") no-repeat center;
+}
+.year-div{
+	width: 952px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	height: 60px;
+}
+.year-div ul{
+	position: absolute;
+}
+.year-div li{
+	width: 136px;
+	color: #7d7d7d;
+	text-align: center;
+	font-size: 18px;
+	line-height: 60px;
+}
+.year-div li.on{
+	color: #fff;
+	font-size: 24px;
+}
+
+
+
+
+.w1000{
+	width: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
