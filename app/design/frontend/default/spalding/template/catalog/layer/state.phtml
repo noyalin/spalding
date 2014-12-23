@@ -32,12 +32,25 @@
  */
 ?>
 <?php $_filters = $this->getActiveFilters() ?>
+<style>
+    .selected-label{
+        background: url(<?php echo $this->getSkinUrl('images/catalogsearchBg.jpg') ?>) no-repeat -50px 0;
+        z-index: 2000000000;
+
+    }
+    .selected-label img{
+        /*float: right;*/
+        /*margin-right: 10px;*/
+        padding-right: 10px;
+        /*margin: 2px 10px 2px 0;*/
+    }
+</style>
 <?php if(!empty($_filters)): ?>
 <div class="currently">
     <div class="exp-left-nav-header">
         <!--                <div class="exp-left-nav-product-count nsg-font-family--platform nsg-text--dark-grey"> 79件商品 </div>-->
         <div class="exp-left-nav-filter nsg-font-family--base nsg-text--medium-grey"><?php echo $this->__('Currently Shopping by:') ?></div>
-        <span class="nsg-keyline--horizontal"></span>
+<!--        <span class="nsg-keyline--horizontal"></span>-->
     </div>
 
     <ol>
@@ -45,7 +58,10 @@
         <li>
             <span class="label"><?php echo $this->__($_filter->getName()) ?>:</span>
 <!--            <span class="value">--><?php //echo $this->stripTags($_filter->getLabel()) ?><!--</span>-->
+            <div class="selected-label">
             <a data-qa="filter.gender.men" class="selected-facet facet  "><?php echo $this->stripTags($_filter->getLabel()) ?></a>
+            <img src="<?php echo $this->getSkinUrl('images/remove.jpg')?>" alt=""/>
+            </div>
             <?php
                 $clearLinkUrl = $_filter->getClearLinkUrl();
                 if ($clearLinkUrl):
