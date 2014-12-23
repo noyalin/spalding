@@ -417,7 +417,7 @@ $defaultBillingId = $this->getDefaultBilling();
             jQuery("#billing_address_id_hidden").val(addressId);
 //            var addressId = jQuery("input[name='billing_address_id'][checked]").val();
             if (addressId!='' && addressId!=undefined ){
-                //IWD.OPC.Billing.save();
+                IWD.OPC.Billing.save();
             }
         });
 
@@ -486,6 +486,7 @@ $defaultBillingId = $this->getDefaultBilling();
                                 ' </span> </label><div class="btns"> <a class="btn edit" href="javascript:;"><span>修改地址</span></a><a class="btn set_def" href="javascript:;"><span>'+textDefaultBilling+'</span></a></div> <i class="arrow"></i></div>'
                             jQuery("#addressUl .step_radio_wrap").append(html);
                             jQuery('#checkoutNewAddressForm').hide();
+                            IWD.OPC.Billing.save();
                         }
 
                         jQuery("#billing_address_id_hidden").val(newId);

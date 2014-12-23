@@ -221,6 +221,9 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
             if(!$customerAddressId){
                 $customerAddressId = $this->getRequest()->getPost('billing_address_id_hidden', false);
             }
+            if(!$customerAddressId){
+                $customerAddressId = $this->getRequest()->getPost('address_id', false);
+            }
 
 			if (isset($data['email'])) {
 				$data['email'] = trim($data['email']);
