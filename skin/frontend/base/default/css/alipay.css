@@ -12,9 +12,9 @@
 
 /*shortcut_wrapper*/
 .shortcut_wrapper{width:100%;margin:0 auto;color:#404040;}
-.shortcut_wrapper .shortcut_price{width:100%;padding:0;color:#ffffff;}
+/*.shortcut_wrapper .shortcut_price{width:100%;padding:0;color:#ffffff;}*/
 .shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;}
-.shortcut_wrapper .shortcut_price .price{color:#ffffff;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}
+/*.shortcut_wrapper .shortcut_price .price{color:#ffffff;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}*/
 .shortcut_wrapper .shortcut_price span{display:inline-block;padding-right:50px;}
 .shortcut_wrapper .shortcut_price .red{font:bold 20px 'Arial';}
 
