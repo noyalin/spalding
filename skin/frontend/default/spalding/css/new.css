@@ -1,11 +1,24 @@
-.selected-label{
-    background: url('../images/catalogsearchBg.jpg') no-repeat -50px 0;
-    z-index: 2000000000;
+  .block-content{padding-left:0px; font-size: 12px;}
+  .block-content a{font-size: 12px;}
+  .block-layered-nav{margin-left:-10px;}
+  .currently ol li span.label{margin-left:20px;}
+  .currently .exp-left-nav-header{margin-left:20px;}
+    .selected-label{
+  		padding-left:26px;
+        background: url(http://localhost/spalding/skin/frontend/default/spalding/images/catalogsearchBg.jpg) no-repeat -20px 0;
+        z-index: 2000000000;
+  		height:24px;
+  		line-height:24px;
+  		margin-left:-6px;
 
-}
-.selected-label img{
-    /*float: right;*/
-    /*margin-right: 10px;*/
-    padding-right: 10px;
-    /*margin: 2px 10px 2px 0;*/
-}
+    }
+    .selected-label img{
+        /*float: right;*/
+        /*margin-right: 10px;*/
+        padding-right: 10px;
+        /*margin: 2px 10px 2px 0;*/
+    }
+.actions{margin-left:20px;}
+    .narrow-by-list{margin-left:20px;}
+    a.btn-remove{margin-left:20px;}
+    .block-title{margin-left:10px;}
