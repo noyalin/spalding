@@ -1,0 +1,11 @@
+.selected-label{
+    background: url('../images/catalogsearchBg.jpg') no-repeat -50px 0;
+    z-index: 2000000000;
+
+}
+.selected-label img{
+    /*float: right;*/
+    /*margin-right: 10px;*/
+    padding-right: 10px;
+    /*margin: 2px 10px 2px 0;*/
+}
