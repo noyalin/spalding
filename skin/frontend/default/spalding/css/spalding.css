@@ -716,6 +716,10 @@ ul.scarch_select_option li:hover{
 	background: #fff;
 }
 
+.spaldingMain.spaldingMain_pay{
+	background: none;
+}
+
 div.regTit{
 	padding:10px 20px;
 	background: #333333;
