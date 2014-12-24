@@ -45,6 +45,10 @@
 
 <?php
 $_product    = $this->getProduct();
+$attributeSetModel = Mage::getModel("eav/entity_attribute_set");
+$attributeSetModel->load($_product->getAttributeSetId());
+$attributeSetName = $attributeSetModel->getAttributeSetName();
+$sku = $_product->getSku();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 ?>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
@@ -64,10 +68,29 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 <!--                <span>--><?php //echo $_attribute->getLabel() ?><!--：</span>-->
                 <label><?php echo $_attribute->getLabel() ?>：</label>
                 <?php $sizeIndex = 1;?>
-                <?php foreach($valueArr as $optionValue): ?>
+                <?php foreach($valueArr as $optionValue):?>
+                    <?php
+                        if($attributeSetName == 'ball'){
+                            $simpleSku = $sku."-OneSize";
+                            $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
+                            $qtyStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleSku)->getQty();
+                            $stockStatus = "";
+                            if($qtyStock == 0){
+                                $stockStatus = "目前无货";
+                            }
+                        }else{
+                            $simpleSku = $sku."-".$optionValue['default_label'];
+                            $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
+                            $qtyStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleSku)->getQty();
+                            if($qtyStock == 0){
+                                continue;
+                            }
+                        }
+                    ?>
                     <?php $sizeIndex  = $sizeIndex + 1;?>
                     <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" name="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>"><?php echo $optionValue['label']; ?></span>
-                    <input type="radio" <?php echo $checked; ?> value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
+                    <input type="radio"  value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
+                    <label><?php echo $stockStatus; ?></label>
                 <?php endforeach; ?>
             </div>
     <?php endforeach; ?>
