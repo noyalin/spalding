@@ -68,11 +68,13 @@
 
         //搜索选择下拉框
         jQuery(".search_selected").bind("click",function(){
+            var selectUlSiblings = jQuery(this).parent().parent().siblings().find('ul');
             var selectUl = jQuery(this).next('ul');
             if(selectUl.is(":visible")){
                 selectUl.css("display","none");
             }else{
                 selectUl.css("display","block");
+                selectUlSiblings.css("display","none");
             }
         });
 
