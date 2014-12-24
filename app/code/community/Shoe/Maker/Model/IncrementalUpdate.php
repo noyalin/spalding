@@ -118,15 +118,15 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
     }
 
     public function getWeight($weight){
-        if ($weight == 2.5) {
-            $weight = 4;
-        }else if ($weight == 1.00) {
-            $weight = 4;
-        }  elseif ($weight == .5) {
-            $weight = 1;
-        } else {
-            $this->transactionLogHandle("    ->ERROR       : Weight not found");
-        }
+//        if ($weight == 2.5) {
+//            $weight = 4;
+//        }else if ($weight == 1.00) {
+//            $weight = 4;
+//        }  elseif ($weight == .5) {
+//            $weight = 1;
+//        } else {
+//            $this->transactionLogHandle("    ->ERROR       : Weight not found");
+//        }
         return $weight;
     }
 

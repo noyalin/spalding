@@ -14,7 +14,8 @@ function navGPS(navJson, titleStr) {
             conName = navJson[i].conName;
             clsNameStr = navJson[i].clsName == '' ? 'current' : navJson[i].clsName;
             jQuery(conName).children('li').eq(indexNum).addClass(clsNameStr);
-            jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).show(); //二级菜单显示
+            //jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).show(); //二级菜单显示
+            jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).css("display","block"); //二级菜单显示
         }
         i++;
     }
@@ -28,20 +29,20 @@ jQuery(function () {
 
     var index = jQuery('.menu_wrap ul.side_nav>li').index(jQuery(".on"));
 
-    jQuery('.lower_wrap .main').children('.lower_list').stop().hide().eq(index).show();
+    jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(index).slideDown();
 
     //导航效果
     jQuery('.menu_wrap ul.side_nav>li').each(function (i) {
 
         jQuery(this).hover(function () {
             jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(i).addClass('on');
-            jQuery('.lower_wrap .main').children('.lower_list').stop().hide().eq(i).show();
+            jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(i).slideDown();
             //alert(indexNum)
         })
     })
     jQuery('.menu_all').hover(function () {
     }, function () {
-        jQuery('.lower_wrap .main').children('.lower_list').stop().hide().eq(indexNum).show();
+        jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(indexNum).slideDown();
         jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(indexNum).addClass('on');
         //alert(indexNum)
     })
@@ -55,7 +56,7 @@ jQuery(function () {
             jQuery(this).show();
         });
         jQuery("#loading").ajaxStop(function () {
-            jQuery(this).hide();
+            jQuery(this).css("display","none");
         });
     }
 
