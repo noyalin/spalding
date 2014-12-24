@@ -75,7 +75,7 @@
                 <li><a href="#">2014年斯伯丁上海全民线下活动</a></li>
             </ul>
         </div>
-        <div id="sun" class="plateBox plateBox_tf ms-fl" style="position:absolute; right:-30px;"><a href="javascript:void(0)"><img src="<?php echo $this->getSkinUrl("images/20141209007.png") ?>" alt=""></a></div>
+        <div id="sun" class="plateBox plateBox_tf ms-fl" style=""><a href="javascript:void(0)"><img src="<?php echo $this->getSkinUrl("images/20141209007.png") ?>" alt=""></a></div>
     </div>
 </div>
 <div id="dialog" style="display: none;background-color: #000000;display: block;
@@ -89,7 +89,7 @@
     z-index: 2999999;">
     <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="closebutton" style="float: right;cursor: pointer"/>
     <div class="new_address">
-        <table cellspacing="0" cellpadding="0" border="0" style="margin-top:200px;margin-left: 100px;">
+        <table cellspacing="0" cellpadding="0" border="0" style="margin-top:200px;margin-left: 20px;">
             <tbody>
             <tr>
                 <th><label class="required " for="barcode" ><span class="rStar">*</span>
@@ -98,9 +98,14 @@
                 <td colspan="2">
                     <input type="text" required="" class="input-text required-entry" value="" id="barcode" name="firstname" title="防伪码">
                 </td>
+               
+            </tr>
+            <tr>
+                <td></td>
                 <td>
                     <em id="barcode_error" class="error_em"></em>
-                </td>
+                </td> 
+                <td></td>
             </tr>
             <tr>
                 <th><label class="required" for="verifycode"><span class="rStar">*</span><i class="verifycodeLabel"></i></label></th>
@@ -110,9 +115,14 @@
                 <td>
                     <img style="cursor: pointer" src="<?php echo $this->getUrl('code_num.php', array('_secure'=>true)) ?>" id="getcode_num" title="看不清，点击换一张" align="absmiddle"></p>
                 </td>
-                <td>
+                
+            </tr>
+            <tr>
+                <td></td>
+               <td>
                     <em id="verifycode_error" class="error_em"></em>
-                </td>
+                </td> 
+                <td></td>
             </tr>
             <tr>
                 <td colspan="4">
@@ -163,6 +173,7 @@
 
     })
 </script>
+
 <!-- 顶部 header e -->
 <?php echo $this->getChildHtml('footer') ?>
 </body>

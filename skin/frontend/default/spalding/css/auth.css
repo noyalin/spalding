@@ -49,9 +49,11 @@ element.style {
 .new_address td input {
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #3E3E3E;
+    border-radius: 5px;
     font-size: 14px;
     height: 30px;
-    margin: 0;
+    line-height: 30px;
+    margin: 10px 0;
     outline: medium none;
     padding: 5px 15px;
     width: 350px;
