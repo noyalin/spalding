@@ -1,9 +1,9 @@
 .masks{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;_position:absolute;_top:expression(eval(document.documentElement.scrollTop));_height:expression(eval(document.documentElement.clientHeight));background-color:#000;filter:alpha(opacity=20);opacity:0.2;}
 /*public*/
-.red{color:#c30;}
+.red{color:#f4b201;}
 .gray{color:#969696;}
-.shortcut_wrapper a{color:#1a66b3;text-decoration:none;}
-.shortcut_wrapper a:hover{color:#1a66b3;text-decoration:underline;}
+.shortcut_wrapper a{color:#f4b201;text-decoration:none;}
+.shortcut_wrapper a:hover{color:#f4b201;text-decoration:underline;}
 /*images*/
 .shortcut_bank_list h5 a,.shortcut_bank_list .btn a,.shortcut_bank .btn02 .icon,.shortcut_content .btn_next a{background-repeat:no-repeat;}
 /*clearfix*/
@@ -11,9 +11,9 @@
 .shortcut_bank_list h5,.shortcut_bank_list .bank,.shortcut_bank_table td p,.shortcut_bank_box{zoom:1;}
 
 /*shortcut_wrapper*/
-.shortcut_wrapper{width:100%;margin:0 auto;color:#404040;}
+.shortcut_wrapper{width:100%;margin:0 auto; font-size: 14px;}
 /*.shortcut_wrapper .shortcut_price{width:100%;padding:0;color:#ffffff;}*/
-.shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;}
+.shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;color:#fff;}
 /*.shortcut_wrapper .shortcut_price .price{color:#ffffff;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}*/
 .shortcut_wrapper .shortcut_price span{display:inline-block;padding-right:50px;}
 .shortcut_wrapper .shortcut_price .red{font:bold 20px 'Arial';}
@@ -347,16 +347,19 @@ z-index: 1;
     cursor: pointer;
 }
 .btn-next, .btn-nextun {
-    background: url("../images/btn-sp.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border: medium none;
+    background-color: #fd5419;
+    border:none;
     display: inline-block;
-    font-size: 0;
+    font-size: 14px;
+    font-weight: bold;
     height: 37px;
-    line-height: 100px;
+    line-height: 37px;
     overflow: hidden;
     vertical-align: middle;
     width: 159px;
-    margin: 30px;
+    margin:0 0 30px 130px;
+    color:#fff;
+    border-radius: 5px;
 }
 a {
     color: #666666;
@@ -392,12 +395,16 @@ a {
     background: none repeat scroll 0 0 #F2F2F2;
     border: 1px solid #D6D6D6;
     margin: 20px 0 0;
-    padding: 15px;
+    padding:15px 15px 15px 35px;
+    color:#333;
+    width:880px;
 }
 .box p {
     clear: both;
     height: 30px;
     line-height: 30px;
+    font-weight: bold;
+    margin-bottom:5px;
 }
 dl, ul, li, ol {
     list-style: none outside none;
