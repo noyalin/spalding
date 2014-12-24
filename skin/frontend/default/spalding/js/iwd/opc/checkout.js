@@ -447,7 +447,7 @@ IWD.OPC.Checkout = {
                     addressId =  $j("#billing_address_id_hidden").val();
                 }
                 if(addressId == undefined || addressId == ''){
-                    alert("温馨提示：请选择收货地址");
+//                    alert("温馨提示：请选择收货地址");
                     return;
                 }
 				if (addressId!='' && addressId!=undefined ){
