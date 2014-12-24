@@ -118,6 +118,9 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                     $existsAddress->setCity($params['city']);
                     $existsAddress->setDistrictId($params['district_id']);
                     $existsAddress->setDistrict($params['district']);
+                    $existsAddress->setCustomerId($customer->getId())
+                        ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
+                        ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
                     $existsAddress->save();
                     $this->_getSession()->addSuccess($this->__('The address has been saved.'));
                     $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));

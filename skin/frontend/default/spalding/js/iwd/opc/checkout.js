@@ -451,7 +451,7 @@ IWD.OPC.Checkout = {
                     return;
                 }
 				if (addressId!='' && addressId!=undefined ){
-					IWD.OPC.Billing.save();
+//					IWD.OPC.Billing.save();
 				}else{
 					//FIX FOR MAGENTO 1.8 - NEED LOAD PAYTMENT METHOD BY AJAX
 					IWD.OPC.Checkout.pullPayments();
