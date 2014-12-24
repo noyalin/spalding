@@ -104,9 +104,15 @@ $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProduc
     //<![CDATA[
         var productAddToCartForm = new VarienForm('product_addtocart_form');
         productAddToCartForm.submit = function(button, url) {
+
             if (this.validator.validate()) {
                 var form = this.form;
                 var oldUrl = form.action;
+                var list= jQuery('input:radio[data-input="kinds"]:checked').val();
+                if(list==null){
+                    alert("请选择尺码");
+                    return false;
+                }
 
                 if (url) {
                    form.action = url;
