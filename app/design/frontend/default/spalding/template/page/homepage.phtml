@@ -84,7 +84,7 @@
     
     <div class="new_address" style="left: 50%;margin-left: -400px;margin-top: -270px;position: fixed;top: 50%;width: 723px; height:550px;z-index: 2999999;">
         <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="closebutton" style="float: right;cursor: pointer;margin-top:100px;margin-right:50px;"/>
-        <table cellspacing="0" cellpadding="0" border="0" style="margin-top:230px;margin-left: 200px;">
+        <table cellspacing="0" cellpadding="0" border="0" style="margin-top:250px;margin-left: 200px;">
             <tbody>
             <tr>
                 <th><label class="required " for="barcode" ><span class="rStar">*</span>
@@ -98,7 +98,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <em id="barcode_error" class="error_em"></em>
+                    
                 </td> 
                 <td></td>
             </tr>
@@ -115,7 +115,7 @@
             <tr>
                 <td></td>
                <td>
-                    <em id="verifycode_error" class="error_em"></em>
+                    
                 </td> 
                 <td></td>
             </tr>
@@ -134,6 +134,10 @@
             <!--</tr>-->
             </tbody>
         </table>
+        <div style="position:relative;margin-top:-180px;margin-left:290px; font-weight:bold;color:#fdb905;">
+            <em id="barcode_error" class="error_em"></em>
+            <em id="verifycode_error" class="error_em"></em>
+        </div>
         <div id="barcodeVerifyResult"></div>
     </div>
     </div>

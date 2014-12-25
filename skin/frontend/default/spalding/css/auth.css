@@ -40,9 +40,12 @@ element.style {
     margin-left:145px;
 }
 #barcodeVerifyResult{
-    color:#FFFF00;
+    color:#fdb905;
     font-size: 18px;
-    padding-left: 100px;
+    font-weight: bold;
+    padding-left: 170px;
+    padding-right:60px;
+    margin-top:195px;
     text-align:center;
 }
 
@@ -63,5 +66,6 @@ element.style {
     width:120px;
 }
 .error_em{
-    color: #ffffff;
+    color: #fdb905;
+    font-weight: bold;
 }
