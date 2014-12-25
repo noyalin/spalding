@@ -24,7 +24,7 @@
       </action>
     </reference>
     <reference name="before_body_end">
-      <block type="core/template" name="quickcontact" template="quickcontact/form.phtml"/>
+      <!--<block type="core/template" name="quickcontact" template="quickcontact/form.phtml"/>-->
     </reference>
   </default>
 </layout>
