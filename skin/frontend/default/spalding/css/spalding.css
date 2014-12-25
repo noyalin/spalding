@@ -2257,7 +2257,7 @@ ul.form-list li p{
 	margin-left:215px;
 }
 .lower_03 .text_a i{
-	left:39.5%;
+	left:50.5%;
 }
 
 /*下拉购物车*/
@@ -3018,21 +3018,63 @@ ul.shopsList li span.shopsList_adrs{
 }
 
 
+/*footer*/
+.footerCons{
+	width:930px;
+	padding:30px 20px;
+	background: #fff;
+	margin:0px auto;
+}
+
+.footerCons .footerLeft{
+	width:220px;
+	height: auto;
+	margin-right:10px;
+}
+
+.footerCons .footerLeft dl dd{
+	font-size: 16px;
+	font-weight: bold;
+	color:#333;
+	margin-top:10px;
+}
+.footerCons .footerLeft dl dt{
+	font-size: 12px;
+	color:#747472;
+}
+
+.footerCons .footerLeft dl dt a{
+	color:#747472;
+}
+.footerCons .footerLeft dl dt a:hover{
+	color:#333;
+}
+.footerRig{
+	width:700px;
+}
+
+.footerRigTitle{
+	border-bottom:6px solid #333;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top:29px;
+	padding-bottom:4px;
+}
 
 
+.footerMain h2{
+	font-size: 14px;
+	font-weight: bold;
+	color:#333;
+	margin:5px 0;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+.footerMain p{
+	font-size: 12px;
+	color:#666;
+	margin:5px 0;
+}
 
 
 

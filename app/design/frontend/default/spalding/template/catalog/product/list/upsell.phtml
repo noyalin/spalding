@@ -24,27 +24,52 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+$sku1 = "74-570y";
+$sku2 = "74-100";
+$sku3 = "73-904y";
+$product1 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku1);
+$urlKey1 = $product1->getUrlKey();
+$src1 = 'http://s7d5.scene7.com/is/image/sneakerhead/black220px?$220x220$&$image220='.$product1->getUrlKey().'-1';
+$title1 = $product1->getName();
+$price1 = $product1->getFinalPrice();
+$url1 = $this->getUrl($urlKey1.".html");
+
+$product2 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku2);
+$urlKey2 = $product2->getUrlKey();
+$src2 = 'http://s7d5.scene7.com/is/image/sneakerhead/black220px?$220x220$&$image220='.$product2->getUrlKey().'-1';
+$title2 = $product2->getName();
+$price2 = $product2->getFinalPrice();
+$url2 = $this->getUrl($urlKey2.".html");
+
+$product3 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku3);
+$urlKey3 = $product3->getUrlKey();
+$src3 = 'http://s7d5.scene7.com/is/image/sneakerhead/black220px?$220x220$&$image220='.$product3->getUrlKey().'-1';
+$title3 = $product3->getName();
+$price3 = $product3->getFinalPrice();
+$url3 = $this->getUrl($urlKey3.".html");
+?>
 <div class="productArgs">
     <div class="productArgs_tit">看了又看</div>
     <div class="productSaw">
         <ul class="clearfix">
             <li>
-                <span class="productSaw_img"><img src='<?php echo $this->getSkinUrl("images/productDetail_sawBall.png") ?>' alt=""></span>
+                <span class="productSaw_img"><a href="<?php echo $url1 ?>"><img src='<?php echo  $src1; ?>' alt=""></a></span>
                 <span class="productSaw_kind">spalding</span>
-                <span class="productSaw_nam">NBA洛杉矶湖人队徽球</span>
-                <span class="productSaw_price">￥199</span>
+                <span class="productSaw_nam"><a href="<?php echo $url1 ?>"><?php echo $title1; ?></a></span>
+                <span class="productSaw_price">￥<?php echo $price1;?></span>
             </li>
             <li>
-                <span class="productSaw_img"><img src='<?php echo $this->getSkinUrl("images/productDetail_sawBall.png") ?>' alt=""></span>
+                <span class="productSaw_img"><a href="<?php echo $url2 ?>"><img src='<?php echo $src2 ?>' alt=""></a></span>
                 <span class="productSaw_kind">spalding</span>
-                <span class="productSaw_nam">NBA热火队队徽球</span>
-                <span class="productSaw_price">￥199</span>
+                <span class="productSaw_nam"><a href="<?php echo $url2 ?>"><?php echo $title2; ?></a></span>
+                <span class="productSaw_price">￥<?php echo $price2;?></span>
             </li>
             <li>
-                <span class="productSaw_img"><img src='<?php echo $this->getSkinUrl("images/productDetail_sawBall.png") ?>' alt=""></span>
+                <span class="productSaw_img"><a href="<?php echo $url3 ?>"><img src='<?php echo $src3 ?>' alt=""></a></span>
                 <span class="productSaw_kind">spalding</span>
-                <span class="productSaw_nam">NBA热火队队徽球</span>
-                <span class="productSaw_price">￥199</span>
+                <span class="productSaw_nam"><a href="<?php echo $url3 ?>"><?php echo $title3; ?></a></span>
+                <span class="productSaw_price">￥<?php echo $price3;?></span>
             </li>
         </ul>
     </div>

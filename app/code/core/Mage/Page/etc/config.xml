@@ -67,6 +67,12 @@
                     <layout_handle>page_one_column</layout_handle>
                     <is_default>1</is_default>
                 </one_column>
+                <one_columnFooter module="page" translate="label">
+                    <label>one_columnFooter</label>
+                    <template>page/1columnFooter.phtml.phtml</template>
+                    <layout_handle>one_columnFooter</layout_handle>
+                    <is_default>1</is_default>
+                </one_columnFooter>
                 <two_columns_left module="page" translate="label">
                     <label>2 columns with left bar</label>
                     <template>page/2columns-left.phtml</template>

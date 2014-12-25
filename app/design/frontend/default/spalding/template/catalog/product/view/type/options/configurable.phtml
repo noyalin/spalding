@@ -89,7 +89,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                     ?>
                     <?php $sizeIndex  = $sizeIndex + 1;?>
                     <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" name="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>"><?php echo $optionValue['label']; ?></span>
-                    <input type="radio"  value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
+                    <input type="radio"  data-input="kinds" value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
                     <label><?php echo $stockStatus; ?></label>
                 <?php endforeach; ?>
             </div>
