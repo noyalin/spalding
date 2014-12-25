@@ -43,8 +43,6 @@ $product_sku = $_product->getSku();//sku
 $product_norm = $this->getAttrNameByOptionId("product_norm",$_product->getProductNorm());//篮球规格
 $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
 ?>
-<div style="height:110px; z-index:-2;"></div>
-<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="product-view">
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
