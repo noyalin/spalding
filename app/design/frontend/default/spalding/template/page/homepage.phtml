@@ -35,11 +35,12 @@
 <?php echo $this->getChildHtml('head') ?>
 </head>
 <body style="background:#000; margin-top:-15px;">
+<div style="height:15px; z-index:-2;"></div>
 <?php echo $this->getChildHtml('header') ?>
 <?php
 //echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_background')->toHtml();
 ?>
-
+<div style="height:100px; z-index:-2;"></div>
 <div class="spalding_index weiduduan">
     <div class="spalding_index_slider kuzhan">
         <ul class="fix_flash">
@@ -166,12 +167,12 @@
             }
         });
 
-        $('#closebutton').on("click",function(){
-            //$(this).parent('##dialog').css("display","none");
-            alert(9)
-        });
-
+        setInterval("ballMove()",1000);
     })
+
+    function ballMove(){
+        jQuery('.plateBox_tf img') .animate({marginTop:"-=20px"},1000).animate({marginTop:"+=20px"},1000).animate({marginLeft:"+=20px"},1000).animate({marginLeft:"-=20px"},1000)
+    };
 </script>
 
 <!-- 顶部 header e -->
