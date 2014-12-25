@@ -7865,7 +7865,7 @@
         _create: function() {
             this.originalCss = {
                 display: this.element[ 0 ].style.display,
-                width: this.element[ 0 ].style.width,
+                //width: this.element[ 0 ].style.width,
                 minHeight: this.element[ 0 ].style.minHeight,
                 maxHeight: this.element[ 0 ].style.maxHeight,
                 height: this.element[ 0 ].style.height
@@ -8491,7 +8491,7 @@
 
             // Reset content sizing
             this.element.show().css({
-                width: "auto",
+                width: "723px",  //2014.12.25修改 原：width:"auto";
                 minHeight: 0,
                 maxHeight: "none",
                 height: 0
@@ -8504,8 +8504,8 @@
             // reset wrapper sizing
             // determine the height of all the non-content elements
             nonContentHeight = this.uiDialog.css({
-                height: "auto",
-                width: options.width
+                height: "0",
+                width: "0"
             })
                 .outerHeight();
             minContentHeight = Math.max( 0, options.minHeight - nonContentHeight );

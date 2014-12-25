@@ -78,18 +78,12 @@
         <div id="sun" class="plateBox plateBox_tf ms-fl" style=""><a href="javascript:void(0)"><img src="<?php echo $this->getSkinUrl("images/20141209007.png") ?>" alt=""></a></div>
     </div>
 </div>
-<div id="dialog" style="display: none;background-color: #000000;display: block;
-    height: auto;
-    left: 50%;
-    margin-left: -373px;
-    margin-top: -270px;
-    position: fixed;
-    top: 50%;
-    width: 746px;
-    z-index: 2999999;">
-    <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="closebutton" style="float: right;cursor: pointer"/>
-    <div class="new_address">
-        <table cellspacing="0" cellpadding="0" border="0" style="margin-top:200px;margin-left: 20px;">
+<div id="dialog" style="display:none;">
+    <div class="aa" style="position:fixed; width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.8);z-index:100;">
+    
+    <div class="new_address" style="left: 50%;margin-left: -400px;margin-top: -270px;position: fixed;top: 50%;width: 723px; height:550px;z-index: 2999999;">
+        <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="closebutton" style="float: right;cursor: pointer;margin-top:100px;margin-right:50px;"/>
+        <table cellspacing="0" cellpadding="0" border="0" style="margin-top:230px;margin-left: 200px;">
             <tbody>
             <tr>
                 <th><label class="required " for="barcode" ><span class="rStar">*</span>
@@ -110,7 +104,7 @@
             <tr>
                 <th><label class="required" for="verifycode"><span class="rStar">*</span><i class="verifycodeLabel"></i></label></th>
                 <td class="infoInput">
-                    <input type="text" id="verifycode" required="" class="input-text required-entry"  value="" name="验证码">
+                    <input type="text" id="verifycode" required="" class="input-text required-entry"  value="" name="验证码" style="width:140px;">
                 </td>
                 <td>
                     <img style="cursor: pointer" src="<?php echo $this->getUrl('code_num.php', array('_secure'=>true)) ?>" id="getcode_num" title="看不清，点击换一张" align="absmiddle"></p>
@@ -141,6 +135,7 @@
         </table>
         <div id="barcodeVerifyResult"></div>
     </div>
+    </div>
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function(){
@@ -158,7 +153,7 @@
         //条形码验证
         jQuery( "#dialog" ).dialog({
             autoOpen: false,
-            width:746,
+            //width:746,
             height:546,
             modal: true,
             show: {
@@ -169,6 +164,11 @@
                 effect: "fade",
                 duration: 1000
             }
+        });
+
+        $('#closebutton').on("click",function(){
+            //$(this).parent('##dialog').css("display","none");
+            alert(9)
         });
 
     })

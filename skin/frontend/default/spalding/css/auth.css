@@ -6,7 +6,7 @@ element.style {
     min-height: 0;
     width: auto;
 }
-#dialog {
+#dialog .new_address {
     background-image: url("../auth/form/form_background.png");
     background-repeat: no-repeat;
 }
@@ -37,7 +37,7 @@ element.style {
     display: inline-block;
     vertical-align: middle;
     background-position:-155px -40px;
-    margin-left:230px;
+    margin-left:145px;
 }
 #barcodeVerifyResult{
     color:#FFFF00;
@@ -46,17 +46,21 @@ element.style {
     text-align:center;
 }
 
+
 .new_address td input {
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #3E3E3E;
     border-radius: 5px;
     font-size: 14px;
-    height: 30px;
-    line-height: 30px;
+    height: 28px;
+    line-height: 28px;
     margin: 10px 0;
     outline: medium none;
-    padding: 5px 15px;
-    width: 350px;
+    padding: 3px 15px;
+    width: 260px;
+}
+.new_address td img{
+    width:120px;
 }
 .error_em{
     color: #ffffff;
