@@ -1,0 +1,82 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body  style="background:#000;">
+    <div class="bodyBg"><img src="<?php  $this->getSkinUrl("images/20141210002.jpg") ?>" alt=""></div>
+    <?php echo $this->getChildHtml('header') ?>
+
+    <!-- 主框架 s -->
+    <div style="height:110px; z-index:-2;"></div>
+    <div class="footerCons clearfix">
+        <div class="footerLeft ms-fl">
+            <img src="<?php  $this->getSkinUrl("images/footer_left_logo.jpg") ?>" alt="">
+            <dl>
+                <dd>关于我们</dd>
+                <dt><a href="">关于spalding</a></dt>
+                <dt><a href="">公司新闻</a></dt>
+                <dt><a href="">合作伙伴</a></dt>
+
+                <dd>购物指南</dd>
+                <dt><a href="">新用户注册</a></dt>
+                <dt><a href="">会员登录</a></dt>
+                <dt><a href="">订购流程</a></dt>
+                <dt><a href="">交易须知</a></dt>
+
+                <dd>配送与收货</dd>
+                <dt><a href="">退换货政策</a></dt>
+                <dt><a href="">如何退换货</a></dt>
+                <dt><a href="">退款说明</a></dt>
+                <dt><a href="">Mini球/1号球(纪念)</a></dt>
+
+                <dd>材质分类</dd>
+                <dt><a href="">7号球(标准球)</a></dt>
+                <dt><a href="">6号球(女子篮球)</a></dt>
+                <dt><a href="">5号球(青少年篮球)</a></dt>
+                <dt><a href="">Mini球/1号球(纪念)</a></dt>
+            </dl>
+        </div>
+        <div class="footerRig ms-fl">
+            <div class="footerRigTitle">斯伯丁产品</div>
+            <div class="footerMain">
+                <?php echo $this->getChildHtml('content') ?>
+            </div>
+        </div>
+    </div>
+    <!-- 主框架 e -->
+
+<?php echo $this->getChildHtml('footer') ?>
+</body>
+</html>
