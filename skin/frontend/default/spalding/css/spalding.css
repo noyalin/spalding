@@ -894,6 +894,12 @@ button.rulAgree{
 	color:#333;
 }
 
+.products-grid li.item h4{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+
 .products-grid li.item .price-box{
 	font-size: 14px;
 	font-weight: bold;
@@ -2797,6 +2803,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 .aboutUs_boxLeft img{
 	width:100%;
+	vertical-align: top;
 }
 
 .aboutUs_boxRig{

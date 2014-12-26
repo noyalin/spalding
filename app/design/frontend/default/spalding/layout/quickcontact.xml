@@ -10,7 +10,7 @@
         <!--<type>skin_js</type>-->
         <!--<name>js/noconflict.js</name>-->
       <!--</action>-->
-        <action method="addItem"><type>skin_js</type><name>js/menuLoad.js</name></action>
+
       <action method="addItem">
         <type>skin_js</type>
         <name>quickcontact/js/modalwindow.js</name>
@@ -24,7 +24,7 @@
       </action>
     </reference>
     <reference name="before_body_end">
-      <block type="core/template" name="quickcontact" template="quickcontact/form.phtml"/>
+      <!--<block type="core/template" name="quickcontact" template="quickcontact/form.phtml"/>-->
     </reference>
   </default>
 </layout>

@@ -437,7 +437,9 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             $product->setProductMaterial( $this->getProductMaterialOthersOptionId($valueArr['productMaterial']) );//衣服 包的材质 多选
         }
 
-
+        //衣服 保存上下装和尺码表
+        $product->setApparelType( $this->getAttributeOptionId('apparel_type',$valueArr['apparelType']) );
+        $product->setSizeTable( $this->getAttributeOptionId('size_table',$valueArr['sizeTable']) );
     }
 
     public function getAllImagesByUrlkey($sku,$urlKey,$count){
@@ -699,6 +701,11 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $MaterialFabric = $entity->MaterialFabric;//材质
         $valueArr['productMaterial'] =$MaterialFabric ;
 
+        $apparelType = $entity->CNMagentoApparelType;//上下装
+        $valueArr['apparelType'] =$apparelType;
+
+        $sizeTable = $entity->CNMagentoSizeTable;//尺码表
+        $valueArr['sizeTable'] =$sizeTable;
 
         return $valueArr;
     }

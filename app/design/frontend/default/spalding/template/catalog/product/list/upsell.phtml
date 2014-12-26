@@ -30,21 +30,21 @@ $sku2 = "74-100";
 $sku3 = "73-904y";
 $product1 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku1);
 $urlKey1 = $product1->getUrlKey();
-$src1 = 'http://s7d5.scene7.com/is/image/sneakerhead/black220px?$220x220$&$image220='.$product1->getUrlKey().'-1';
+$src1 = 'http://s7d5.scene7.com/is/image/sneakerhead/sku220px%2D1?$220x220$&$image220px='.$product1->getUrlKey().'-1';
 $title1 = $product1->getName();
 $price1 = $product1->getFinalPrice();
 $url1 = $this->getUrl($urlKey1.".html");
 
 $product2 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku2);
 $urlKey2 = $product2->getUrlKey();
-$src2 = 'http://s7d5.scene7.com/is/image/sneakerhead/black220px?$220x220$&$image220='.$product2->getUrlKey().'-1';
+$src2 = 'http://s7d5.scene7.com/is/image/sneakerhead/sku220px%2D1?$220x220$&$image220px='.$product2->getUrlKey().'-1';
 $title2 = $product2->getName();
 $price2 = $product2->getFinalPrice();
 $url2 = $this->getUrl($urlKey2.".html");
 
 $product3 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku3);
 $urlKey3 = $product3->getUrlKey();
-$src3 = 'http://s7d5.scene7.com/is/image/sneakerhead/black220px?$220x220$&$image220='.$product3->getUrlKey().'-1';
+$src3 = 'http://s7d5.scene7.com/is/image/sneakerhead/sku220px%2D1?$220x220$&$image220px='.$product3->getUrlKey().'-1';
 $title3 = $product3->getName();
 $price3 = $product3->getFinalPrice();
 $url3 = $this->getUrl($urlKey3.".html");
