@@ -111,7 +111,7 @@ li {
 	color:#ffb900;
 }
 .his-bg .hd{
-	background: url("../images/scale-bg.jpg") repeat-x 0px 25px;
+	background: url("../images/scale-bg.jpg") repeat-x 0px 25px #000000;
 	padding: 6px 0px 65px;
 	position: relative;
 	margin-top:-10px;
