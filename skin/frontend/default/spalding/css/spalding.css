@@ -55,6 +55,13 @@
 	text-indent: 18px;
 	margin-left:10px;
 }
+.header_nav_funs a.header_nav_shopAds{
+	display: inline-block;
+	background: url(../images/shopAds_navImg.png) left center no-repeat;
+	text-indent: 18px;
+	margin-right:10px;
+}
+
 
 span.searchBtn{
 	position:absolute;
