@@ -1,5 +1,6 @@
 <?php
 $provinceList = $this->getAllProvince();
+$defaultList = $this->getAllStore();
 ?>
 <!-- 主框架 s -->
 <div style="height:90px; z-index:-2; background:#000;"></div>
@@ -13,60 +14,27 @@ $provinceList = $this->getAllProvince();
         <div class="shopsSelect clearfix">
             <span class="ms-fl"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_selectTit.png") ?>" alt=""></span>
             	<span class="ms-fl">
-            		<select name="" id="">
-                        <?php foreach($provinceList as $each): ?>
-                        <option value=""><?php echo $each ?></option>
+            		<select name="province" id="pname">
+                        <?php foreach($provinceList as $each):
+                            $check = '';
+                            if( $each == '上海'){
+                                $check = "selected";
+                            }
+                        ?>
+                        <option value="" <?php echo $check ?>><?php echo $each ?></option>
                         <?php endforeach; ?>
                     </select>
             	</span>
         </div>
         <div class="shopListTitle"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_listTitle.png") ?>" alt=""></div>
         <ul class="shopsList">
+            <?php foreach($defaultList as $eachStore): ?>
             <li class="clearfix">
-                <span class="shopsList_city">1上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
+                <span class="shopsList_city"><?php echo $eachStore['city'] ?></span>
+                <span class="shopsList_name">斯伯丁</span>
+                <span class="shopsList_adrs"><?php echo $eachStore['address'] ?></span>
             </li>
-            <li class="clearfix">
-                <span class="shopsList_city">2上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
-            <li class="clearfix">
-                <span class="shopsList_city">3上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
-            <li class="clearfix">
-                <span class="shopsList_city">4上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
-            <li class="clearfix">
-                <span class="shopsList_city">5上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
-            <li class="clearfix">
-                <span class="shopsList_city">5上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
-            <li class="clearfix">
-                <span class="shopsList_city">5上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
-            <li class="clearfix">
-                <span class="shopsList_city">5上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
-            <li class="clearfix">
-                <span class="shopsList_city">5上海</span>
-                <span class="shopsList_name">斯伯丁 上海 闵行店</span>
-                <span class="shopsList_adrs">闵行区顾戴路80号(虹梅路)</span>
-            </li>
+            <?php endforeach ?>
         </ul>
     </div>
 </div>
@@ -81,6 +49,26 @@ $provinceList = $this->getAllProvince();
                 jQuery(this).css("background","#282828");
             }
         });
+        jQuery('#pname').change(
+            function(){
+                var id = this.value;
+                var text = jQuery('#pname option:selected').text();
+                jQuery.ajax({
+                    type: 'POST',
+                    //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+                    url: "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/store/index/getData/",
+                    data:{
+                        pname:text
+                    },
+//                    dataType: "json",
+                    success: function(data){
+                        jQuery('.shopsList').html(data);
 
+
+                    },
+                    error: function(e){}
+                });
+            }
+        );
     });
 </script>
