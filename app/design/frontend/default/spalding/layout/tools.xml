@@ -45,5 +45,9 @@ Supported layout update handles (special):
         <reference name="root">
             <action method="setTemplate"><template>page/1columnStore.phtml</template></action>
         </reference>
+        <reference name="content">
+            <block type="tools/list" name="storelist" as="storelist"  template="tools/list.phtml" >
+            </block>
+        </reference>
     </tools_index_show>
 </layout>

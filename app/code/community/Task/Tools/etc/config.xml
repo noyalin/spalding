@@ -38,6 +38,11 @@
                 <class>Task_Tools_Model</class>
             </tools>
         </models>
+        <blocks>
+            <tools>
+                <class>Task_Tools_Block</class>
+            </tools>
+        </blocks>
     </global>
 
 </config>
