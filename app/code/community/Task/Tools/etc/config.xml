@@ -13,10 +13,17 @@
                 <use>standard</use>
                 <args>
                     <module>Task_Tools</module>
-                    <frontName>tools</frontName>
+                    <frontName>store</frontName>
                 </args>
             </tools>
         </routers>
+        <layout>
+            <updates>
+                <tools>
+                    <file>tools.xml</file>
+                </tools>
+            </updates>
+        </layout>
     </frontend>
     <phpunit>
         <suite>
