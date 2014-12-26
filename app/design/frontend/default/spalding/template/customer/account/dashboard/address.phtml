@@ -39,10 +39,10 @@
                     <br/>
                     <p>
                     <?php $address = $this->getCustomer()->getPrimaryShippingAddress();?>
-                        <?php if($address!= null){?>
+                        <?php if($address!= null){ $street = $address->getStreet();?>
                         <span class="box-content-tit">收货人：</span><?php echo $address->getFirstname() ?><br />
                         <span class="box-content-tit">所在地区：</span><?php echo $address->getRegion().$address->getCity().$address->getDistrict(); ?><br />
-                        <span class="box-content-tit">地址：</span><?php echo $address->getStreet()[0] ?><br />
+                        <span class="box-content-tit">地址：</span><?php echo $street[0] ?><br />
                         <span class="box-content-tit">邮政编码：</span><?php echo $address->getPostcode() ?><br />
                         <span class="box-content-tit">手机：</span><?php echo $address->getTelephone() ?><br />
                         <?php }else{;?>
