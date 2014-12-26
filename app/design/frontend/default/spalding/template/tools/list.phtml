@@ -1,5 +1,5 @@
 <?php
-$this->getAllStore();
+$provinceList = $this->getAllProvince();
 ?>
 <!-- 主框架 s -->
 <div style="height:90px; z-index:-2; background:#000;"></div>
@@ -14,7 +14,9 @@ $this->getAllStore();
             <span class="ms-fl"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_selectTit.png") ?>" alt=""></span>
             	<span class="ms-fl">
             		<select name="" id="">
-                        <option value="">上海</option>
+                        <?php foreach($provinceList as $each): ?>
+                        <option value=""><?php echo $each ?></option>
+                        <?php endforeach; ?>
                     </select>
             	</span>
         </div>
