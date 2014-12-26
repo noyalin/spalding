@@ -30,4 +30,9 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $m = Mage::getModel('tools/imagecode');
         $m->show();
     }
+
+    public function showAction(){
+        $this->loadLayout();
+        $this->renderLayout();
+    }
 }
