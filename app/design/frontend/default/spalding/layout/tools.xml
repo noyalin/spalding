@@ -1,4 +1,5 @@
-<?php
+<?xml version="1.0"?>
+<!--
 /**
  * Magento
  *
@@ -23,25 +24,30 @@
  * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-?>
-<?php
-/**
- * Template for Mage_Page_Block_Html
- */
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
-<head>
-    <?php echo $this->getChildHtml('head') ?>
-</head>
-<body  style="background:#000;">
-<?php echo $this->getChildHtml('header') ?>
-<div class="bodyBg"><img src="<?php echo $this->getSkinUrl("images/20141210002.jpg")?>" alt=""></div>
-<?php echo $this->getChildHtml('content') ?>
-<?php echo $this->getChildHtml('footer') ?>
-<?php echo $this->getChildHtml('global_cookie_notice') ?>
-<?php echo $this->getChildHtml('before_body_end') ?>
 
-<?php echo $this->getAbsoluteFooter() ?>
-</body>
-</html>
+Supported layout update handles (action):
+- catalog_product_gallery
+- catalog_product_compare_index
+
+Supported layout update handles (special):
+- default
+- catalog_category_default
+- catalog_category_layered
+- catalog_product_view
+
+-->
+<layout version="0.1.0">
+    <tools_index_show translate="label">
+        <!-- Mage_Customer -->
+        <!--<remove name="right"/>-->
+        <!--<remove name="left"/>-->
+
+        <reference name="root">
+            <action method="setTemplate"><template>page/1columnStore.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="tools/list" name="storelist" as="storelist"  template="tools/list.phtml" >
+            </block>
+        </reference>
+    </tools_index_show>
+</layout>

@@ -13,10 +13,17 @@
                 <use>standard</use>
                 <args>
                     <module>Task_Tools</module>
-                    <frontName>tools</frontName>
+                    <frontName>store</frontName>
                 </args>
             </tools>
         </routers>
+        <layout>
+            <updates>
+                <tools>
+                    <file>tools.xml</file>
+                </tools>
+            </updates>
+        </layout>
     </frontend>
     <phpunit>
         <suite>
@@ -31,6 +38,23 @@
                 <class>Task_Tools_Model</class>
             </tools>
         </models>
+        <resources>
+            <tools_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tools_write>
+            <tools_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tools_read>
+        </resources>
+        <blocks>
+            <tools>
+                <class>Task_Tools_Block</class>
+            </tools>
+        </blocks>
     </global>
 
 </config>

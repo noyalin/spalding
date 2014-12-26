@@ -1,0 +1,74 @@
+<?php
+$provinceList = $this->getAllProvince();
+$defaultList = $this->getAllStore();
+?>
+<!-- 主框架 s -->
+<div style="height:90px; z-index:-2; background:#000;"></div>
+<div class="newsWrap">
+    <div class="newsWrapBg">
+        <div class="newsWrapBgTop"><img src="<?php  echo $this->getSkinUrl("images/news_bg.jpg") ?>" alt=""></div>
+        <!-- <div class="newsWrapBgBot"><img src="../images/newsBackground_bottom.jpg" alt=""></div> -->
+    </div>
+    <div class="newsWrapBox">
+        <div class="newsWrapTit"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_title.png") ?>" alt=""></div>
+        <div class="shopsSelect clearfix">
+            <span class="ms-fl"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_selectTit.png") ?>" alt=""></span>
+            	<span class="ms-fl">
+            		<select name="province" id="pname">
+                        <?php foreach($provinceList as $each):
+                            $check = '';
+                            if( $each == '上海'){
+                                $check = "selected";
+                            }
+                        ?>
+                        <option value="" <?php echo $check ?>><?php echo $each ?></option>
+                        <?php endforeach; ?>
+                    </select>
+            	</span>
+        </div>
+        <div class="shopListTitle"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_listTitle.png") ?>" alt=""></div>
+        <ul class="shopsList">
+            <?php foreach($defaultList as $eachStore): ?>
+            <li class="clearfix">
+                <span class="shopsList_city"><?php echo $eachStore['city'] ?></span>
+                <span class="shopsList_name">斯伯丁</span>
+                <span class="shopsList_adrs"><?php echo $eachStore['address'] ?></span>
+            </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+</div>
+<!-- 主框架 e -->
+<script>
+    jQuery(function(){
+        // $('ul.shopsList li:even').css("background","#282828");
+        var $adrLi =  jQuery('ul.shopsList li');
+        $adrLi.each(function(){
+            var adrLiInd = jQuery(this).index();
+            if(adrLiInd%2==0){
+                jQuery(this).css("background","#282828");
+            }
+        });
+        jQuery('#pname').change(
+            function(){
+                var id = this.value;
+                var text = jQuery('#pname option:selected').text();
+                jQuery.ajax({
+                    type: 'POST',
+                    //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+                    url: "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/store/index/getData/",
+                    data:{
+                        pname:text
+                    },
+//                    dataType: "json",
+                    success: function(data){
+                        jQuery('.shopsList').html(data);
+
+
+                    },
+                    error: function(e){}
+                });
+            }
+        );
+    });
+</script>

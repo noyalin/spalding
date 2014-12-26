@@ -30,4 +30,37 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $m = Mage::getModel('tools/imagecode');
         $m->show();
     }
+
+    public function showAction(){
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    public function getDataAction(){
+        $resource = Mage::getSingleton('core/resource');
+        $readConnection = $resource->getConnection('core_read');
+        $arr = array();
+
+        $pname = $this->getRequest()->getParam('pname', false);
+        $query = "SELECT 	address,city  FROM `store` where province='".$pname."'";
+        $res = $readConnection->query($query);
+        $str = '';
+        foreach($res as  $key => $each){
+            $tmp = array();
+            $tmp['city'] = $each['city'];
+            $tmp['address'] = $each['address'];
+            $arr[] = $tmp;
+            $background = '';
+            if($key%2 == 0){
+                $background = 'style="background: none repeat scroll 0% 0% rgb(40, 40, 40);"';
+            }
+            $str .= '
+            <li class="clearfix" '.$background.'>
+                <span class="shopsList_city">'.$each['city'].'</span><span class="shopsList_name">斯伯丁</span>
+                <span class="shopsList_adrs">'.$each['address'].'</span>
+            </li>';
+        }
+//        echo json_encode($arr);
+        echo $str;
+    }
 }
