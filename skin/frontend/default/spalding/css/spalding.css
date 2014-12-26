@@ -2647,11 +2647,13 @@ ul.teyCloLis li span{
 ul.teyCloLis li span.teyCloTex{
 	display: block;
 	margin-left:470px;
-	margin-top:40px;
 	width:390px;
 	font-size: 12px;
 	color:#fff;
 	display: none;
+}
+ul.teyCloLis li span.teyCloTex p{
+	margin-top:40px;
 }
 
 ul.teyCloLis li span.teyCloTex h2{
@@ -2659,6 +2661,7 @@ ul.teyCloLis li span.teyCloTex h2{
 	font-size: 16px;
 	font-weight: bold;
 	color:#ffb900;
+	margin-bottom:-40px;
 }
 
 
@@ -2731,7 +2734,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 .teyWrapChart{
 	position: relative;
-	margin-bottom:20px;
+	margin-bottom:90px;
 }
 
 
