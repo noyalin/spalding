@@ -59,9 +59,4 @@ jQuery(function () {
             jQuery(this).css("display","none");
         });
     }
-
-
-    
-
-
 });  //end
