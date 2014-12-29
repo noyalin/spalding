@@ -178,7 +178,7 @@
 "Invalid attribute option specified for attribute %s (%s), skipping the record.","为属性 %s (%s) 指定的属性选项无效，正在跳过该记录。"
 "Invalid attribute set specified, skipping the record.","指定的属性集无效，正在跳过该记录。"
 "Invalid billing address for (%s)","(%s) 的帐单地址无效"
-"Invalid current password","当前密码无效"
+"Invalid current password","当前密码不正确"
 "Invalid customer data","客户数据无效"
 "Invalid email address ""%s"".","电子邮件地址 ""%s"" 无效。"
 "Invalid email address.","邮件地址无效。"
