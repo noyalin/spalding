@@ -48,7 +48,7 @@
                 <div class="field name-firstname">
                     <label class="required ms-fl" for="firstname">收货人姓名<em>*</em></label>
                     <div class="input-box">
-                        <input type="text" class="input-text required-entry" maxlength="255" title="收件人姓名" value="davis" name="firstname" id="firstname">
+                        <input type="text" class="input-text required-entry" maxlength="255" title="收件人姓名" value="<?php echo $this->getAddress()->getFirstname() ?>" name="firstname" id="firstname">
                     </div>
                 </div>
             </li>
