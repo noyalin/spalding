@@ -42,7 +42,7 @@
                 </div>
             </li>
             <li>
-                <label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?></label>
+                <label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?>：</label>
                 <div class="input-box">
                     <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
                 </div>
@@ -128,7 +128,7 @@
                 </div>
             </li>
             <li class="fields clearfix">
-                <label class="required ms-fl" for="current_password">旧密码 :</label>
+                <label class="required ms-fl" for="current_password">旧密码：</label>
                 <div class="input-box">
                     <!-- This is a dummy hidden field to trick firefox from auto filling the password -->
                     <input type="text" class="input-text no-display" name="dummy" id="dummy" />
