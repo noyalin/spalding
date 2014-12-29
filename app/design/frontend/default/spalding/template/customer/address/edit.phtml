@@ -137,13 +137,15 @@
                     <label class="required ms-fl" for="">设为默认</label>
                     <div class="input-box ms-fl">
                         <?php if($this->isDefaultBilling()): ?>
+                            <input type="hidden" name="default_billing" value="1" />
                             <strong><?php echo $this->__('Default Billing Address') ?></strong>
                         <?php elseif($this->canSetAsDefaultBilling()): ?>
-                            <input type="checkbox" id="primary_billing" name="default_billing" value="1" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" />
+<!--                            <input type="hidden" name="default_shipping" value="1" />-->
+                            <input type="checkbox" id="primary_billing" name="default_billing" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" />
                         <?php else: ?>
+<!--                            <input type="hidden" name="default_shipping" value="1" />-->
                             <input type="hidden" name="default_billing" value="1" />
                         <?php endif; ?>
-                        <input type="hidden" name="default_shipping" value="1" />
                     </div>
                 </div>
             </li>
