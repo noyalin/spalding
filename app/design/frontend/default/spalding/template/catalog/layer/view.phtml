@@ -48,7 +48,7 @@ $arr = array('分类','Attribute Set Name');
                         continue;
                     }
                     ?>
-                <?php if($_filter->getItemsCount()): ?>
+                <?php if($_filter->getItemsCount() && ($_filter->getChildCount()>0) ):  ?>
                     <dt><?php echo $this->__($_filter->getName()) ?></dt>
                     <dd><?php echo $_filter->getHtml() ?></dd>
                 <?php endif; ?>

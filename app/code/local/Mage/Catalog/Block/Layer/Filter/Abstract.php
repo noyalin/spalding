@@ -131,7 +131,13 @@ abstract class Mage_Catalog_Block_Layer_Filter_Abstract extends Mage_Core_Block_
     {
         return $this->_filter->getItemsCount();
     }
-
+    public function getChildCount(){
+        $return = 0;
+        foreach ($this->_filter->getItems() as $_item){
+            $return += $_item->getCount();
+        }
+        return $return;
+    }
     /**
      * Getter for $_displayProductCount
      * @return bool
