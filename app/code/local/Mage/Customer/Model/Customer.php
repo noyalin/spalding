@@ -512,9 +512,9 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
         if ($this->getDefaultBilling()) {
             $ids[] = $this->getDefaultBilling();
         }
-//        if ($this->getDefaultShipping()) {
-//            $ids[] = $this->getDefaultShipping();
-//        }
+        if ($this->getDefaultShipping()) {
+            $ids[] = $this->getDefaultShipping();
+        }
         return $ids;
     }
 

@@ -120,7 +120,7 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                     $existsAddress->setDistrict($params['district']);
                     $existsAddress->setCustomerId($customer->getId())
                         ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
-                        ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
+                        ->setIsDefaultShipping($this->getRequest()->getParam('default_billing', false));
                     $existsAddress->save();
                     $this->_getSession()->addSuccess($this->__('The address has been saved.'));
                     $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
@@ -146,7 +146,7 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                 $addressForm->compactData($addressData);
                 $address->setCustomerId($customer->getId())
                     ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
-                    ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
+                    ->setIsDefaultShipping($this->getRequest()->getParam('default_billing', false));
 
                 $addressErrors = $address->validate();
                 if ($addressErrors !== true) {
