@@ -440,6 +440,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         //衣服 保存上下装和尺码表
         $product->setApparelType( $this->getAttributeOptionId('apparel_type',$valueArr['apparelType']) );
         $product->setSizeTable( $this->getAttributeOptionId('size_table',$valueArr['sizeTable']) );
+        $product->setAttributeSetName ( $this->getAttributeOptionId('attribute_set_name',$valueArr['attributeSetName']) );
     }
 
     public function getAllImagesByUrlkey($sku,$urlKey,$count){
