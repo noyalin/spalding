@@ -42,6 +42,7 @@ $product_material = $this->getAttrNameByOptionId("product_material",$_product->g
 $product_sku = $_product->getSku();//sku
 $product_norm = $this->getAttrNameByOptionId("product_norm",$_product->getProductNorm());//篮球规格
 $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
+$size_table_id = $_product->getSizeTable();//尺码表valueid
 ?>
 <div class="product-view">
     <div class="product-essential">
@@ -206,6 +207,14 @@ $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProduc
                 </div>
             </div>
 
+        <?php
+        }
+        ?>
+        <?php
+            if(($size_table_id != null)){
+                $size_table_url = "images/sizeTable/".$size_table_id.".png";
+                ?>
+                <center><img src='<?php echo $this->getSkinUrl($size_table_url) ?>' alt=""></center>
         <?php
         }
         ?>
