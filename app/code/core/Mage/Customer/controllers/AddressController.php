@@ -113,7 +113,7 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                 $existsAddress = $customer->getAddressById($addressId);
                 if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
                     $address->setId($existsAddress->getId());
-                    $existsAddress->setFirstname($params['firstName']);
+                    $existsAddress->setFirstname($params['firstname']);
                     $existsAddress->setStreet($params['street']);
                     $existsAddress->setPostcode($params['postcode']);
                     $existsAddress->setTelephone($params['telephone']);
