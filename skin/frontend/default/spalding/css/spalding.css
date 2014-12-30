@@ -1955,6 +1955,11 @@ ul.form-list li p{
 	line-height: 65px;
 }
 
+.order_data ul.order_data_list li>span.lisStat_lineHeight{
+	line-height: 1.4em;
+	margin-top:15px;
+}
+
 .order_data ul.order_data_list li>span.order_ifts_list_state{
 	width:150px;
 	line-height: 65px;
@@ -2520,7 +2525,10 @@ ul.newsListBox_cen{
 	margin:10px 40px;
 	text-indent: 24px;
 }
-
+.newsArtsWrap ul{
+	margin:10px 40px;
+	line-height: 1.8em;
+}
 
 .newsArtsshare {
 	height:44px;
