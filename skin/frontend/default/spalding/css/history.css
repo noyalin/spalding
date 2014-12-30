@@ -69,14 +69,14 @@ li {
 	font-family: Arial;
 	width: 580px;
 	position: absolute;
-	top: 120px;
+	top: 155px;
 	left: 50%;
 	margin-left: -290px;
 }
 .his-bg .div-tit{
 	position: relative;
 	z-index: 3;
-	margin-top:-50px;
+	margin-top:-20px;
 }
 .his-bg .div-tit .en{
 	height: 100px;
