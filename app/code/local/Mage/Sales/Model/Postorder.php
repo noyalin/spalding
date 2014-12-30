@@ -101,43 +101,43 @@ class Mage_Sales_Model_Postorder extends Mage_Core_Model_Abstract{
                     fwrite($transactionLogHandle, "    ->CREATED     : SUBSCRIBE FILE " . $subscribedFilename . "\n");
                 }
             }
-
+//rewordpoint模块暂时没有-------------------------------------------------------------------STA
             //Log new order points if customer
-            if ($newCustomerId && $newCustomerGroupId != 2) {
-
-                $currentPoints = 0;
-                foreach ($newOrder->getAllItems() as $orderItem) {
-                    if (!$orderItem->getQtyToShip()) {
-                        continue;
-                    } else {
-                        $shippedQty = $orderItem->getQtyToShip();
-                    }
-                    $orderItemSku = $orderItem->getSku();
-                    if (substr($orderItemSku, 0, 6) != 'promo-' && substr($orderItemSku, 0, 3) != 'gc-') {
-                        $sizeArray = explode('-', $orderItemSku);
-                        $size = end($sizeArray);
-                        $sku = substr($orderItemSku, 0, -(strlen($size) + 1));
-                        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
-                        if (is_null($product->getRewardPoints())) {
-                            fwrite($transactionLogHandle, "    ->ELIGIBLE    : " . $orderItemSku . " -> " . $shippedQty * round($orderItem->getPrice()) . "\n");
-                            $currentPoints += $shippedQty * round($orderItem->getPrice());
-                        }
-                    }
-                }
-
-                //Update points for order reward transaction if it exists
-                $query = "INSERT INTO `rewardpoints_account` (`customer_id`, `store_id`, `order_id`, `points_current`, `points_spent`) VALUES (" . $newCustomerId . ", '" . $newStoreId . "', '" . $newOrder->getIncrementId() . "'," . $currentPoints . ", 0)";
-                //fwrite($transactionLogHandle, "    ->QUERY       : " . $query . "\n");
-
-                $writeConnection->query($query);
-
-                fwrite($transactionLogHandle, "    ->ADDED       : TRANSACTION RECORD   : " . $currentPoints . "\n");
-
-                //Refresh rewarpoints_flat _account table -- not required on new order reward transaction as it creates a NULL store transaction -- J2T runs the refresh and creates
-                //RewardPoints_Model_Observer::processRecordFlatRefresh($newCustomerId, $storeId);
-                //fwrite($transactionLogHandle, "    ->REFRESH     : FLAT TABLE REFRESHED : " . $newCustomerId . "\n");
-            }
-
+//            if ($newCustomerId && $newCustomerGroupId != 2) {
+//
+//                $currentPoints = 0;
+//                foreach ($newOrder->getAllItems() as $orderItem) {
+//                    if (!$orderItem->getQtyToShip()) {
+//                        continue;
+//                    } else {
+//                        $shippedQty = $orderItem->getQtyToShip();
+//                    }
+//                    $orderItemSku = $orderItem->getSku();
+//                    if (substr($orderItemSku, 0, 6) != 'promo-' && substr($orderItemSku, 0, 3) != 'gc-') {
+//                        $sizeArray = explode('-', $orderItemSku);
+//                        $size = end($sizeArray);
+//                        $sku = substr($orderItemSku, 0, -(strlen($size) + 1));
+//                        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+//                        if (is_null($product->getRewardPoints())) {
+//                            fwrite($transactionLogHandle, "    ->ELIGIBLE    : " . $orderItemSku . " -> " . $shippedQty * round($orderItem->getPrice()) . "\n");
+//                            $currentPoints += $shippedQty * round($orderItem->getPrice());
+//                        }
+//                    }
+//                }
+//
+//                //Update points for order reward transaction if it exists
+//                $query = "INSERT INTO `rewardpoints_account` (`customer_id`, `store_id`, `order_id`, `points_current`, `points_spent`) VALUES (" . $newCustomerId . ", '" . $newStoreId . "', '" . $newOrder->getIncrementId() . "'," . $currentPoints . ", 0)";
+//                //fwrite($transactionLogHandle, "    ->QUERY       : " . $query . "\n");
+//
+//                $writeConnection->query($query);
+//
+//                fwrite($transactionLogHandle, "    ->ADDED       : TRANSACTION RECORD   : " . $currentPoints . "\n");
+//
+//                //Refresh rewarpoints_flat _account table -- not required on new order reward transaction as it creates a NULL store transaction -- J2T runs the refresh and creates
+//                //RewardPoints_Model_Observer::processRecordFlatRefresh($newCustomerId, $storeId);
+//                //fwrite($transactionLogHandle, "    ->REFRESH     : FLAT TABLE REFRESHED : " . $newCustomerId . "\n");
+//            }
+//rewordpoint模块暂时没有-------------------------------------------------------------------END
             // New Order
             $newOrderNumber = $newOrder->getIncrementId();
 
@@ -169,248 +169,6 @@ class Mage_Sales_Model_Postorder extends Mage_Core_Model_Abstract{
             foreach ($items as $itemId => $item) {
                 if ($item->getQtyToInvoice() > 0) {
 
-                    switch ($item->getSku()) {
-                        case 'promo-discount-10':
-                            //Check if redemption 10% coupon is being purchased to send code
-                            $i = 1;
-                            while ($i <= $item->getQtyToInvoice()) {
-
-                                try {
-                                    $query = "SELECT COUNT(*) AS `count` FROM `salesrule_coupon` AS `src` WHERE `src`.`rule_id` = 2 AND NOT EXISTS (SELECT * FROM `devicom_coupon_tracker` AS `dct` WHERE `dct`.`code` = `src`.`code`) LIMIT 1";
-                                    $results = $writeConnection->query($query);
-                                    foreach ($results as $result) {
-                                        if ($result['count'] <= 10) {
-                                            throw new Exception($newOrderFilename . " : The 10% discount code pool has only 10 or less codes\n");
-                                            fwrite($transactionLogHandle, "    ->CODE POOL   : 10% HAS ONLY 10 OR LESS CODES\n");
-                                        }
-                                    }
-
-                                    $query = "SELECT `src`.`code` AS `code` FROM `salesrule_coupon` AS `src` WHERE `src`.`rule_id` = 2 AND NOT EXISTS (SELECT * FROM `devicom_coupon_tracker` AS `dct` WHERE `dct`.`code` = `src`.`code`) LIMIT 1";
-                                    $results = $writeConnection->query($query);
-
-                                    foreach ($results as $result) {
-
-                                        $coupon_code = $result['code'];
-                                        $name = $newOrder->getCustomer()->getName();
-                                        $email = $newOrder->getCustomer()->getEmail();
-
-                                        $query = "INSERT INTO `devicom_coupon_tracker` (`code`, `rule_id`, `increment_id`, `email`) values ('" . $coupon_code . "', 2, '" . $newOrderNumber . "', '" . $email . "')";
-
-                                        $result = $writeConnection->query($query);
-
-                                        //If successful, then email code
-                                        // Transactional Email Template's ID
-                                        $templateId = 1;
-
-                                        // Set sender information
-                                        $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
-                                        $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');
-                                        $sender = array('name' => $senderName,
-                                            'email' => $senderEmail);
-
-                                        // Set variables that can be used in email template
-                                        $vars = array('name' => $name,
-                                            'code' => $coupon_code);
-
-                                        // Added footer_review block to template
-                                        $isBackend = true;
-                                        $customerEmail = $email;
-                                        $orderNumber = $newOrderNumber;
-                                        include($html_root . "/app/design/frontend/default/sneakerhead/template/email/footer_review.phtml");
-                                        $vars['footer_review'] = $footer_review;
-
-                                        $translate = Mage::getSingleton('core/translate');
-
-                                        // Send Transactional Email
-                                        Mage::getModel('core/email_template')
-                                            ->sendTransactional($templateId, $sender, $email, $name, $vars, $newStoreId);
-
-                                        $translate->setTranslateInline(true);
-
-                                        fwrite($transactionLogHandle, "    ->SENT COUPON : " . $coupon_code . " \n");
-                                    }
-                                } catch (Exception $e) {
-                                    fwrite($transactionLogHandle, "  ->ERROR         : See exception_log\n");
-
-                                    //Append error to exception log
-                                    $exceptionHandle = fopen($salesLogsDirectory . 'exception_log', 'a');
-                                    fwrite($exceptionHandle, $e->getMessage());
-                                    fclose($exceptionHandle);
-                                }
-                                $i++;
-                            }
-                            break;
-                        case 'promo-discount-5':
-                            //Check if redemption 5% coupon is being purchased to send code
-                            $i = 1;
-                            while ($i <= $item->getQtyToInvoice()) {
-
-                                try {
-                                    $query = "SELECT COUNT(*) AS `count` FROM `salesrule_coupon` AS `src` WHERE `src`.`rule_id` = 3 AND NOT EXISTS (SELECT * FROM `devicom_coupon_tracker` AS `dct` WHERE `dct`.`code` = `src`.`code`) LIMIT 1";
-                                    $results = $writeConnection->query($query);
-                                    foreach ($results as $result) {
-                                        if ($result['count'] <= 0) {
-                                            throw new Exception($newOrderFilename . " : The 5% discount code pool has only 10 or less codes\n");
-                                            fwrite($transactionLogHandle, "    ->CODE POOL   : 5% HAS IOBLY 10 OR LESS CODES\n");
-                                        }
-                                    }
-
-                                    $query = "SELECT `src`.`code` AS `code` FROM `salesrule_coupon` AS `src` WHERE `src`.`rule_id` = 3 AND NOT EXISTS (SELECT * FROM `devicom_coupon_tracker` AS `dct` WHERE `dct`.`code` = `src`.`code`) LIMIT 1";
-                                    $results = $writeConnection->query($query);
-
-                                    foreach ($results as $result) {
-
-                                        $coupon_code = $result['code'];
-                                        $name = $newOrder->getCustomer()->getName();
-                                        $email = $newOrder->getCustomer()->getEmail();
-
-                                        $query = "INSERT INTO `devicom_coupon_tracker` (`code`, `rule_id`, `increment_id`, `email`) values ('" . $coupon_code . "', 3, '" . $newOrderNumber . "', '" . $email . "')";
-
-                                        $result = $writeConnection->query($query);
-
-                                        //If successful, then email code
-                                        // Transactional Email Template's ID
-                                        $templateId = 1;
-
-                                        // Set sender information
-                                        $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
-                                        $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');
-                                        $sender = array('name' => $senderName,
-                                            'email' => $senderEmail);
-
-                                        // Set variables that can be used in email template
-                                        $vars = array('name' => $name,
-                                            'code' => $coupon_code);
-
-                                        // Added footer_review block to template
-                                        $isBackend = true;
-                                        $customerEmail = $email;
-                                        $orderNumber = $newOrderNumber;
-                                        include($html_root . "/app/design/frontend/default/sneakerhead/template/email/footer_review.phtml");
-                                        $vars['footer_review'] = $footer_review;
-
-                                        $translate = Mage::getSingleton('core/translate');
-
-                                        // Send Transactional Email
-                                        Mage::getModel('core/email_template')
-                                            ->sendTransactional($templateId, $sender, $email, $name, $vars, $newStoreId);
-
-                                        $translate->setTranslateInline(true);
-
-                                        fwrite($transactionLogHandle, "  ->SENT COUPON   : " . $coupon_code . " \n");
-                                    }
-                                } catch (Exception $e) {
-                                    fwrite($transactionLogHandle, "  ->ERROR         : See exception_log\n");
-
-                                    //Append error to exception log
-                                    $exceptionHandle = fopen($salesLogsDirectory . 'exception_log', 'a');
-                                    fwrite($exceptionHandle, $e->getMessage());
-                                    fclose($exceptionHandle);
-                                }
-                                $i++;
-                            }
-                            break;
-                        case 'promo-gc-100-virtual':
-                            //Check if redemption 100 dollar gift card is being purchased to send code
-                            if ($newOrder->canInvoice()) {
-
-                                $query = "SELECT COUNT(*) AS `count` FROM `enterprise_giftcardaccount_pool` WHERE `status` = 0 LIMIT 1";
-                                $results = $writeConnection->query($query);
-                                foreach ($results as $result) {
-                                    if ($result['count'] <= 10) {
-                                        throw new Exception($newOrderFilename . " : The gift card code pool has only 10 or less codes\n");
-                                        fwrite($transactionLogHandle, "    ->CODE POOL   : promo-gc-100 GIFT CARD HAS ONLY 10 OR LESS CODES\n");
-                                    }
-                                }
-
-                                $invoice = Mage::getModel('sales/service_order', $newOrder)->prepareInvoice();
-
-                                if (!$invoice->getTotalQty()) {
-                                    Mage::throwException(Mage::helper('core')->__('Cannot create an invoice without products.'));
-                                }
-
-                                $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_OFFLINE); //Note CAPTURE OFFLINE
-                                $invoice->register();
-                                $transactionSave = Mage::getModel('core/resource_transaction')
-                                    ->addObject($invoice)
-                                    ->addObject($invoice->getOrder());
-
-                                $transactionSave->save();
-                                fwrite($transactionLogHandle, "  ->INVOICED       :\n");
-
-                                // Update state and status because Magento changes it to complete on invoice if only virtual products in order
-                                $status = 'processing';
-                                $state = 'processing';
-
-                                $query = "UPDATE `sales_flat_order` SET `status` = '" . $status . "', `state` = '" . $state . "' WHERE `increment_id` = '" . $newOrderNumber . "'";
-                                $writeConnection->query($query);
-
-                                fwrite($transactionLogHandle, "      ->STATUS    : CHANGED TO : PROCESSING (sales_flat_order)\n");
-
-                                $query = "UPDATE `sales_flat_order_grid` SET `status` = '" . $status . "' WHERE `increment_id` = '" . $newOrderNumber . "'";
-                                $writeConnection->query($query);
-
-                                fwrite($transactionLogHandle, "      ->STATUS    : CHANGED TO : PROCESSING (sales_flat_order_grid)\n");
-                            }
-                            break;
-                        case 'promo-gc-50-virtual':
-                            //Check if redemption 50 dollar gift card is being purchased to send code
-                            if ($newOrder->canInvoice()) {
-
-                                $query = "SELECT COUNT(*) AS `count` FROM `enterprise_giftcardaccount_pool` WHERE `status` = 0 LIMIT 1";
-                                $results = $writeConnection->query($query);
-                                foreach ($results as $result) {
-                                    if ($result['count'] <= 10) {
-                                        throw new Exception($newOrderFilename . " : The gift card code pool has only 10 or less codes\n");
-                                        fwrite($transactionLogHandle, "    ->CODE POOL   : promo-gc-50 GIFT CARD HAS ONLY 10 OR LESS CODES\n");
-                                    }
-                                }
-
-                                $invoice = Mage::getModel('sales/service_order', $newOrder)->prepareInvoice();
-
-                                if (!$invoice->getTotalQty()) {
-                                    Mage::throwException(Mage::helper('core')->__('Cannot create an invoice without products.'));
-                                }
-
-                                $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_OFFLINE); //Note CAPTURE OFFLINE
-                                $invoice->register();
-                                $transactionSave = Mage::getModel('core/resource_transaction')
-                                    ->addObject($invoice)
-                                    ->addObject($invoice->getOrder());
-
-                                $transactionSave->save();
-                                fwrite($transactionLogHandle, "  ->INVOICED       :\n");
-
-                                // Update state and status because Magento changes it to complete on invoice if only virtual products in order
-                                $status = 'processing';
-                                $state = 'processing';
-
-                                $query = "UPDATE `sales_flat_order` SET `status` = '" . $status . "', `state` = '" . $state . "' WHERE `increment_id` = '" . $newOrderNumber . "'";
-                                $writeConnection->query($query);
-
-                                fwrite($transactionLogHandle, "      ->STATUS    : CHANGED TO : PROCESSING (sales_flat_order)\n");
-
-                                $query = "UPDATE `sales_flat_order_grid` SET `status` = '" . $status . "' WHERE `increment_id` = '" . $newOrderNumber . "'";
-                                $writeConnection->query($query);
-
-                                fwrite($transactionLogHandle, "      ->STATUS    : CHANGED TO : PROCESSING (sales_flat_order_grid)\n");
-                            }
-                            break;
-                        case 'gc-100-virtual':
-                            $query = "SELECT COUNT(*) AS `count` FROM `enterprise_giftcardaccount_pool` WHERE `status` = 0 LIMIT 1";
-                            $results = $writeConnection->query($query);
-                            foreach ($results as $result) {
-                                if ($result['count'] <= 10) {
-                                    throw new Exception($newOrderFilename . " : The gift card code pool has only 10 or less codes\n");
-                                    fwrite($transactionLogHandle, "    ->CODE POOL   : gc-100 GIFT CARD HAS ONLY 10 OR LESS CODES\n");
-                                }
-                            }
-                            // DO NOTHING TO PREVENT INVENTORY CHECK SINCE GIFT CARD IS NOT INVENTORIED
-                            break;
-                        case 'test-product-OneSize':
-                            // DO NOTHING TO PREVENT INVENTORY CHECK SINCE GIFT CARD IS NOT INVENTORIED
-                            break;
-                        default:
                             $productFound = true;
                             if (substr($item->getSku(), 0, 6) != 'promo-') {
 
@@ -580,7 +338,6 @@ class Mage_Sales_Model_Postorder extends Mage_Core_Model_Abstract{
                                     unlink($inventoryDirectory . $parent_sku . '.xml');
                                     fwrite($transactionLogHandle, "    ->REMOVED XML  : " . $parent_sku . '.xml' . "\n");
                                 }
-                            }
                         /*****************************************************/
                         /*****************************************************/
                     }
