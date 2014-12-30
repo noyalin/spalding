@@ -2920,7 +2920,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 	margin:0px 5%;
 }
 .aboutUs_boxRig_img img{
-	width: 75%;
+	width: 80%;
+	max-height:160px;
 }
 
 
