@@ -34,6 +34,13 @@
 <?php
 
 $arr = array('分类','Attribute Set Name');
+$imageArr = array(
+    "NBA篮球系列" => 'basketballseries.png',
+    "篮球材质分类" => 'basketballmaterail.png',
+    "篮球规格" => 'basketballguige.png',
+    "男子运动服饰" => 'apperal.png',
+    "使用场地" => 'usetype.png',
+);
 ?>
 <?php if($this->canShowBlock()): ?>
 <div class="block block-layered-nav">
@@ -48,8 +55,11 @@ $arr = array('分类','Attribute Set Name');
                         continue;
                     }
                     ?>
-                <?php if($_filter->getItemsCount() && ($_filter->getChildCount()>0) ):  ?>
-                    <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                <?php if($_filter->getItemsCount() && ($_filter->getChildCount()>0) ):
+                        $name = $_filter->getName();
+                        $src =  $this->getSkinUrl("images/category/".$imageArr["$name"]);
+                ?>
+                    <dt><img src="<?php echo $src ?>"/></dt>
                     <dd><?php echo $_filter->getHtml() ?></dd>
                 <?php endif; ?>
                 <?php endforeach; ?>

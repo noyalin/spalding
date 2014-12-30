@@ -38,6 +38,13 @@
     if(isset($childrenFilterName) && !empty($childrenFilterName) &&count($childrenFilterName)==1 && $childrenFilterName[0]=='Attribute Set Name'){
         $label = false;
     }
+    $imageArr = array(
+        "NBA篮球系列" => 'basketballseries.png',
+        "篮球材质分类" => 'basketballmaterail.png',
+        "篮球规格" => 'basketballguige.png',
+        "男子运动服饰" => 'apperal.png',
+        "使用场地" => 'usetype.png',
+    );
 ?>
 <?php if(!empty($_filters)): ?>
 <div class="currently">
@@ -48,9 +55,15 @@
     </div>
 
     <ol>
-    <?php foreach ($_filters as $_filter):  if('分类' == $this->__($_filter->getName()))continue;?>
+    <?php
+        foreach ($_filters as $_filter):
+            if('分类' == $this->__($_filter->getName()))
+                continue;
+            $name = $_filter->getName();
+            $src =  $this->getSkinUrl("images/category/".$imageArr["$name"]);
+    ?>
         <li>
-            <span class="label"><?php echo $this->__($_filter->getName()) ?>:</span>
+            <span class="label"><img src="<?php echo $src ?>"/></span>
 <!--            <span class="value">--><?php //echo $this->stripTags($_filter->getLabel()) ?><!--</span>-->
             <div class="selected-label">
             <a data-qa="filter.gender.men" class="selected-facet facet  "><?php echo $this->stripTags($_filter->getLabel()) ?></a>
