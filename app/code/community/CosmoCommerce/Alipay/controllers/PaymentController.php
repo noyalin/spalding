@@ -240,8 +240,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     //create xml
                     $model = Mage::getModel('sales/postorder');
                     $model->post_new_order($order);
-                    $postMessage = Mage::getModel('sales/postmessage');
-                    $postMessage->saveDataAndSendWebservice($order);
+//                    $postMessage = Mage::getModel('sales/postmessage');
+//                    $postMessage->saveDataAndSendWebservice($order);
                     try{
                         $order->save();
                         Mage :: log("付款成功");
