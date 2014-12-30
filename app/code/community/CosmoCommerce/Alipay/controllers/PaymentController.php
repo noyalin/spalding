@@ -211,8 +211,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         $verify_result = $alipayNotify->verifyReturn($postData);
         $order = Mage::getModel('sales/order');
         $order->loadByIncrementId($postData['out_trade_no']);
-//        if($verify_result){
-        if(true){
+        if($verify_result){
+//        if(true){
             //商户订单号
             $out_trade_no = $postData['out_trade_no'];
             //支付宝交易号
