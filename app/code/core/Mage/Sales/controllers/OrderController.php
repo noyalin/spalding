@@ -90,4 +90,39 @@ class Mage_Sales_OrderController extends Mage_Sales_Controller_Abstract
         $this->_forward('noRoute');
         return;
     }
+
+
+
+    public  function _cancelAction()
+    {
+        $orderId = (int) $this->getRequest()->getParam('order_id');
+        $order = Mage::getModel('sales/order')->load($orderId);
+        if (!$this->_loadValidOrder()) {
+            return;
+        }
+//        $order = Mage::registry('current_order');
+
+        if ($order->canCancel())
+        {
+            $order->cancel();
+            $order->setStatus('canceled');
+            $order->save();
+            $order->sendOrderUpdateEmail();
+        }
+
+        $session = Mage::getSingleton('core/session');
+        $session->addSuccess('The order has been canceld.');
+    }
+
+    public function cancelAction()
+    {
+        $this->_cancelAction();
+        $this->_redirect('*/*/history');
+    }
+
+    public function recentCancelAction()
+    {
+        $this->_cancelAction();
+        $this->_redirect('customer/account');
+    }
 }
