@@ -109,11 +109,12 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
             /* @var $address Mage_Customer_Model_Address */
             $address  = Mage::getModel('customer/address');
             $addressId = $this->getRequest()->getParam('id');
+            $defaultBilling = $this->getRequest()->getParam('default_billing', false);
             if ($addressId) {
                 $existsAddress = $customer->getAddressById($addressId);
                 if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
                     $address->setId($existsAddress->getId());
-                    $existsAddress->setFirstname($params['firstName']);
+                    $existsAddress->setFirstname($params['firstname']);
                     $existsAddress->setStreet($params['street']);
                     $existsAddress->setPostcode($params['postcode']);
                     $existsAddress->setTelephone($params['telephone']);
@@ -124,7 +125,7 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                     $existsAddress->setDistrict($params['district']);
                     $existsAddress->setCustomerId($customer->getId())
                         ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
-                        ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
+                        ->setIsDefaultShipping($this->getRequest()->getParam('default_billing', false));
                     $existsAddress->save();
                     $this->_getSession()->addSuccess($this->__('The address has been saved.'));
                     $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
@@ -150,7 +151,7 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                 $addressForm->compactData($addressData);
                 $address->setCustomerId($customer->getId())
                     ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
-                    ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
+                    ->setIsDefaultShipping($this->getRequest()->getParam('default_billing', false));
 
                 $addressErrors = $address->validate();
                 if ($addressErrors !== true) {

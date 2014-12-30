@@ -87,4 +87,17 @@ class Mage_Sales_Block_Order_History extends Mage_Core_Block_Template
     {
         return $this->getUrl('customer/account/');
     }
+
+    public function getPayUrl($order)
+    {
+        return $this->getUrl('alipay/payment/pay', array('order_id' => $order->getId()));
+    }
+    public function getOrderStatus($order){
+        $status = $order->getStatus();
+        $payMethod = $order->getPayment()->getMethodInstance()->getCode();
+        if($status=="alipay_wait_buyer_pay" && $payMethod=="alipay_payment"){
+            return true;
+        }
+        return false;
+    }
 }

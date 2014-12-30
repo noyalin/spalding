@@ -108,7 +108,7 @@ class Mage_Core_Block_Template extends Mage_Core_Block_Abstract
      * @param string $template
      * @return Mage_Core_Block_Template
      */
-    public function setTemplate($template)
+    public function setTemplate($template=null)
     {
         $this->_template = $template;
         return $this;

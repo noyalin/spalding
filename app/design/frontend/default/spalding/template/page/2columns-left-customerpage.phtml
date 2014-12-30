@@ -38,20 +38,17 @@
 <div class="bodyBg"><img src="<?php echo $this->getSkinUrl("images/20141210002.jpg") ?>" alt=""></div>
         <?php echo $this->getChildHtml('header') ?>
         <div style="height:110px; z-index:-2;"></div>
-        <div class="main-container col2-left-layout">
-            <div class="main">
-<!--                --><?php //echo $this->getChildHtml('breadcrumbs') ?>
-                <div class="col-main ms-fr">
-                    <?php echo $this->getChildHtml('content') ?>
-                </div>
-                <div class="col-left sidebar ms-fl">
-                    <?php echo $this->getChildHtml('left') ?>
+            <div class="main-container col2-left-layout">
+                <div class="main">
+                    <div class="col-main ms-fr">
+                        <?php echo $this->getChildHtml('content') ?>
+                    </div>
+                    <div class="col-left sidebar ms-fl">
+                        <?php echo $this->getChildHtml('left') ?>
+                    </div>
+                    <div class="clear"></div>
                 </div>
             </div>
-        </div>
-<!--        --><?php //echo $this->getChildHtml('footer') ?>
-<!--        --><?php //echo $this->getChildHtml('global_cookie_notice') ?>
-<!--        --><?php //echo $this->getChildHtml('before_body_end') ?>
-<?php echo $this->getAbsoluteFooter() ?>
+            <?php echo $this->getChildHtml('footer') ?>
 </body>
 </html>

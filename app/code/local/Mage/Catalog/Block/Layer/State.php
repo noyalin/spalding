@@ -57,6 +57,15 @@ class Mage_Catalog_Block_Layer_State extends Mage_Core_Block_Template
         return $filters;
     }
 
+    public function getChildrenFilterName(){
+        $filters = $this->getLayer()->getState()->getFilters();
+        $arr = array();
+        foreach ($filters as $_filter){
+            $arr[] = $_filter->getName();
+        }
+        return $arr;
+    }
+
     /**
      * Retrieve Clear Filters URL
      *

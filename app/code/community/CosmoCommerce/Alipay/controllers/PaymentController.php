@@ -198,69 +198,11 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         Mage::log(print_r($postData,true));
         Mage::log("end alipay");
         $sendemail = null;
-		if( (isset($postData['seller_email']) && ($postData['seller_email'] == 'kobexin_8@126.com')) || (isset($postData['exterface']) &&($postData['exterface'] == 'create_direct_pay_by_user')) ){
-            //网银在线 支付 进入到 kobexin_8@126.com
-            /*
-             * 2014-08-21T02:30:12+00:00 DEBUG (7): begin alipay
-2014-08-21T02:30:12+00:00 DEBUG (7): Method: post   trade_no: 800000097
-2014-08-21T02:30:12+00:00 DEBUG (7): Array
-(
-    [discount] => 0.00
-    [payment_type] => 1
-    [subject] => 800000097
-    [trade_no] => 2014082124757283
-    [buyer_email] => kehuzijinbu015@alipay.com
-    [gmt_create] => 2014-08-21 10:24:57
-    [notify_type] => trade_status_sync
-    [quantity] => 1
-    [out_trade_no] => 800000097
-    [seller_id] => 2088511937423302
-    [notify_time] => 2014-08-21 10:30:08
-    [body] => 800000097
-    [trade_status] => TRADE_SUCCESS
-    [is_total_fee_adjust] => N
-    [total_fee] => 0.10
-    [gmt_payment] => 2014-08-21 10:26:05
-    [seller_email] => kobexin_8@126.com
-    [bank_seq_no] => 6871307099
-    [price] => 0.10
-    [buyer_id] => 2088502970072835
-    [notify_id] => b9862546c845792670be37f6cd1a3b086m
-    [use_coupon] => N
-    [sign_type] => MD5
-    [sign] => 352547d951a737907831854c32f710f9
-)
 
-2014-08-21T02:30:12+00:00 DEBUG (7): end alipay
-
-             */
+        //目前只有国内支付宝
             $partner="2088511937423302";
             $security_code="rspyr9coik8c7sj5csug95k84yik2bm7";
             $sendemail =  $postData['seller_email'];
-        }else{
-            //come from alipay go to kobe.xin@sneakerhead.com
-            /* POST
- * 2014-08-22T07:01:29+00:00 DEBUG (7): begin alipay
-2014-08-22T07:01:29+00:00 DEBUG (7): Method: post   trade_no: 800000096
-2014-08-22T07:01:29+00:00 DEBUG (7): Array
-(
-[notify_id] => fba5bd24367b1e24400e8dbae685894052
-[notify_type] => trade_status_sync
-[sign] => 931f68c8f0a976260dac0eb019840ee8
-[trade_no] => 2014082243112155
-[total_fee] => 0.02
-[out_trade_no] => 800000096
-[currency] => USD
-[notify_time] => 2014-08-22 15:01:25
-[trade_status] => TRADE_FINISHED
-[sign_type] => MD5
-)
-//GET  url http://snkculture.cn/alipay/payment/notify/?currency=USD&total_fee=0.02&out_trade_no=800000097&trade_no=2014082243289755&trade_status=TRADE_FINISHED
-2014-08-22T07:01:29+00:00 DEBUG (7): end alipay
- */
-            $partner="2088611060046440";
-            $security_code="5afxblbtnyu2nzakivis9u9g8ww9m7qc";
-        }
 
         $alipayNotify = Mage::getModel('alipay/alipaynotify',array(
             'partner' => $partner,
@@ -270,6 +212,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         $order = Mage::getModel('sales/order');
         $order->loadByIncrementId($postData['out_trade_no']);
         if($verify_result){
+//        if(true){
             //商户订单号
             $out_trade_no = $postData['out_trade_no'];
             //支付宝交易号
@@ -297,11 +240,11 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     //create xml
                     $model = Mage::getModel('sales/postorder');
                     $model->post_new_order($order);
-                    $postMessage = Mage::getModel('sales/postmessage');
-                    $postMessage->saveDataAndSendWebservice($order);
+//                    $postMessage = Mage::getModel('sales/postmessage');
+//                    $postMessage->saveDataAndSendWebservice($order);
                     try{
                         $order->save();
-//                        Mage :: log("付款成功");
+                        Mage :: log("付款成功");
                         $this->sendMail($out_trade_no);
                         if($method == 'get'){
                             $this->_redirect("sales/order/view/order_id/".$order->getId());
@@ -331,7 +274,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         return;
     }
     public function sendMail($orderId){
-        $to = "davis.du@sneakerhead.com";
+//        $to = "davis.du@sneakerhead.com";
+        $to = "bale.wang@voyageone.cn";
         $subject = "lala New order ".$orderId;
         $message = "New Order come this order id is ".$orderId;
 

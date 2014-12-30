@@ -99,14 +99,9 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 
 
 <?php
-//$_currentCategory = Mage::Registry('current_category');
-//if($_currentCategory){
-//$_productAvailableColorsCollection = $_currentCategory->getProductCollection()->addAttributeToFilter(array(array('attribute'=> 'model','eq' => $_product->getModel()))); //CLOSE
-//}
 $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter(array(array('attribute'=> 'model','eq' => $_product->getModel())));
-
 ?>
-<?php if ( count($_productAvailableColorsCollection) > 1) : ?>
+<?php if ($attributeSetName=='apparel' && count($_productAvailableColorsCollection) > 1) : ?>
     <div id="detailAvailColorWrap" class="sale-num prodetail-box">
         <span class="ms-fl">可选颜色：</span>
         <div id="detailAvailColor" class="ms-fl">
@@ -144,7 +139,7 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
                 foreach ($_productAvailableColorsCollection as $productColor) {
                     if ($i++ >= 5) {
                         $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
-                        echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="' . $_helper->productAttribute($_productColor, $_productColor->getName(), 'name') . '" width="84" height="84"/></a>';
+                        echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" width="84" height="84"/></a>';
                     }
                 }
                 ?>

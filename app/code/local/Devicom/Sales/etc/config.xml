@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+	<Devicom_Sales>
+	    <version>0.1</version>
+	</Devicom_Sales>
+    </modules>
+	<frontend>
+		<routers>
+			<sales>
+				<args>
+					<modules>
+						<Devicom_Sales before="Mage_Sales">Devicom_Sales</Devicom_Sales>
+					</modules>
+				</args>
+			</sales>
+		</routers>
+	</frontend>
+    <global>
+	<models>
+	    <devicom_sales>
+		<class>Devicom_Sales_Model</class>
+	    </devicom_sales>
+	</models>
+	<blocks>
+		<sales>
+			<rewrite>
+				<order_history>Devicom_Sales_Block_Order_History</order_history>
+				<order_recent>Devicom_Sales_Block_Order_Recent</order_recent>
+			</rewrite>
+		</sales>
+	</blocks>
+	<events>
+	    <sales_order_place_after>
+		<observers>
+		    <devicom_sales_order_observer>
+			<type>singleton</type>
+			<class>Devicom_Sales_Model_Order_Observer</class>
+			<method>post_new_order</method>
+		    </devicom_sales_order_observer>
+		</observers>
+	    </sales_order_place_after>
+	</events>
+    </global>
+</config>

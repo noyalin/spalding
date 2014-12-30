@@ -31,17 +31,24 @@
  * @see Mage_Catalog_Block_Layer_State
  */
 ?>
-<?php $_filters = $this->getActiveFilters() ?>
+<?php
+    $_filters = $this->getActiveFilters();
+    $childrenFilterName = $this->getChildrenFilterName();
+    $label = true;
+    if(isset($childrenFilterName) && !empty($childrenFilterName) &&count($childrenFilterName)==1 && $childrenFilterName[0]=='Attribute Set Name'){
+        $label = false;
+    }
+?>
 <?php if(!empty($_filters)): ?>
 <div class="currently">
     <div class="exp-left-nav-header">
-        <!--                <div class="exp-left-nav-product-count nsg-font-family--platform nsg-text--dark-grey"> 79件商品 </div>-->
+        <?php if($label): ?>
         <div class="exp-left-nav-filter nsg-font-family--base nsg-text--medium-grey"><?php echo $this->__('Currently Shopping by:') ?></div>
-<!--        <span class="nsg-keyline--horizontal"></span>-->
+        <?php endif; ?>
     </div>
 
     <ol>
-    <?php foreach ($_filters as $_filter): ?>
+    <?php foreach ($_filters as $_filter):  if('分类' == $this->__($_filter->getName()))continue;?>
         <li>
             <span class="label"><?php echo $this->__($_filter->getName()) ?>:</span>
 <!--            <span class="value">--><?php //echo $this->stripTags($_filter->getLabel()) ?><!--</span>-->
