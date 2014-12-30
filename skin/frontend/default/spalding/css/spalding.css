@@ -2785,13 +2785,14 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 	font-size: 16px;
 	font-weight: bold;
 	color:#fff;
-	background: rgba(0,0,0,.65);
+	background: rgba(0,0,0,.5);
 	margin:0 5px;
 }
 
 .aboutNav a img{
+	line-height: 45px;
 	vertical-align: middle;
-	margin-top:13px;
+	/*margin-top:13px;*/
 }
 
 .aboutNav a:hover{
@@ -2820,11 +2821,11 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 }
 
 .aboutUs_boxLeft.about_ori{
-	background: url(../images/about_originator.jpg) center top no-repeat;
+	background: url(../images/about_originator.jpg) scroll center top no-repeat;
 }
 
 .aboutUs_boxLeft.about_par{
-	background: url(../images/about_partner.jpg) center top no-repeat;
+	background: url(../images/about_partner.jpg) scroll center top no-repeat;
 }
 
 .aboutUs_boxLeft img{
