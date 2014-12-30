@@ -63,4 +63,20 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 //        echo json_encode($arr);
         echo $str;
     }
+
+    public function saveContactUsAction(){
+        $params = $this->getRequest()->getParams();
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $readConnection = $resource->getConnection('core_read');
+        $uid = 1;
+        $name = $params['name'];
+        $telephone = $params['telephone'];
+        $content = $params['content'];
+        $region_id = $params['region_id'];
+        $city_id = $params['city_id'];
+        $query = "insert into `contactus` ( `name`, `phone`, `province`,city,content,uid) values ('$name','$telephone','$region_id','$city_id','$content',$uid)";
+        $writeConnection->query($query);
+        echo "success";
+    }
 }
