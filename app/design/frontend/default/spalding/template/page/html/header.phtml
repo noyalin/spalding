@@ -48,7 +48,7 @@
 
             <div class="header_nav ms-fr">
                 <div class="header_nav_funs">
-                    <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds">门店经销商</a>
+                    <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds">授权经销商</a>
                     <?php
                     if(Mage::getSingleton('customer/session')->isLoggedIn()){
                         $customerName = Mage::helper('customer')->getCustomerName();

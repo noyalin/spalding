@@ -89,19 +89,54 @@
     </div>
     <ul class="order_data_list">
     <?php foreach ($_orders as $_order): ?>
+    <?php
+    $_items = $_order->getItemsCollection();
+    ?>
+    <?php foreach ($_items as $_item): ?>
+
+    <?php
+    if($_item->getProductType() == 'simple'){
+        continue;
+    }
+    $sku = $_item->getSku();
+    $arr = explode('-', $sku);
+    $size = end($arr);
+    $configSku = substr($sku, 0, -(strlen($size) + 1));
+    $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+
+    $product_catena = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_catena",$_product->getProductCatena());//篮球系列
+    $product_material = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_material",$_product->getProductMaterial());//篮球材质;
+    $product_sku = $_product->getSku();//sku
+    $product_norm = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_norm",$_product->getProductNorm());//篮球规格
+    $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
+
+    $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
+    $attributeSetModel->load($_product->getAttributeSetId());
+    $attributeSetName = $attributeSetModel->getAttributeSetName();
+
+    $_item_title = $_product->getName();
+    ?>
         <li class="clearfix">
             <h2 class="clearfix">
                 <span class="ms-fl">订单编号：<?php echo $_order->getRealOrderId() ?></span>
                 <span class="ms-fr">下单时间：<?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span>
             </h2>
         						<span class="order_data_list_nam clearfix">
-        							<img alt="" src="../images/myorder_list_ball.png">
-        							<h3>斯伯丁NBA热火队队徽球</h3>
-        							<p>
-                                        <span>产品材质：PU</span>
-                                        <span>产品规格： 6号球</span>
-                                    </p>
+<!--        							<img src="--><?php //echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(75); ?><!--" />-->
+        							<img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=<?php echo $_product->getUrlKey() ?>-1" alt=""/>
+<!--        							<h3>斯伯丁NBA热火队队徽球</h3>-->
+        							<h3><?php echo $_item_title ?></h3>
+                                    <?php if($attributeSetName=="ball"){?>
+                                        <p><span>产品材质：<?php echo $product_material;?></span>
+                                           <span>产品规格： <?php echo $product_norm;?></span>
+                                        </p>
+                                    <?php
+                                    }else {;?>
+                                        <p>尺码： <?php echo $size;?></p>
+                                    <?php }
+                                    ?>
         						</span>
+
             <span class="order_data_list_priceP"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></span>
             <span class="order_data_list_num">1</span>
             <span class="order_data_list_state lisStat_lineHeight"><?php echo $_order->getStatusLabel() ?></span>
@@ -110,9 +145,10 @@
                                     <?php if($this->getOrderStatus($_order)) : ?>
         							<a href="<?php echo $this->getPayUrl($_order) ?>">立即支付</a><?php endif ?>
         							<a class="order_data_list_fun_che" href="<?php echo $this->getViewUrl($_order) ?>">查看订单</a>
-        							<a href="#">取消订单</a>
+        							<a href="<?php echo $this->getCancelUrl($_order) ?>">取消订单</a>
         						</span>
         </li>
+        <?php endforeach; ?>
     <?php endforeach; ?>
 
 

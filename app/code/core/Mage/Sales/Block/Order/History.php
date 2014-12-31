@@ -72,7 +72,10 @@ class Mage_Sales_Block_Order_History extends Mage_Core_Block_Template
     {
         return $this->getUrl('*/*/view', array('order_id' => $order->getId()));
     }
-
+    public function getCancelUrl($order)
+    {
+        return $this->getUrl('*/*/cancel', array('order_id' => $order->getId()));
+    }
     public function getTrackUrl($order)
     {
         return $this->getUrl('*/*/track', array('order_id' => $order->getId()));
