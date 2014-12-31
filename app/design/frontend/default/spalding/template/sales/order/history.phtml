@@ -98,6 +98,21 @@
     if($_item->getProductType() == 'simple'){
         continue;
     }
+
+    $preitemcount = 2;
+    if($_item->getQtyOrdered() > 0){
+        $preitemcount = $_item->getQtyOrdered()*1;
+    }
+    if($_item->getQtyShipped() > 0){
+        $preitemcount = $_item->getQtyShipped()*1;
+    }
+    if($_item->getQtyCanceled() > 0){
+        $preitemcount = $_item->getQtyCanceled()*1;
+    }
+    if($_item->getQtyRefunded() > 0){
+        $preitemcount = $_item->getQtyRefunded()*1;
+    }
+
     $sku = $_item->getSku();
     $arr = explode('-', $sku);
     $size = end($arr);
@@ -127,7 +142,8 @@
 <!--        							<h3>斯伯丁NBA热火队队徽球</h3>-->
         							<h3><?php echo $_item_title ?></h3>
                                     <?php if($attributeSetName=="ball"){?>
-                                        <p><span>产品材质：<?php echo $product_material;?></span>
+                                        <p>
+<!--                                            <span>产品材质：--><?php //echo $product_material;?><!--</span>-->
                                            <span>产品规格： <?php echo $product_norm;?></span>
                                         </p>
                                     <?php
@@ -137,8 +153,9 @@
                                     ?>
         						</span>
 
-            <span class="order_data_list_priceP"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></span>
-            <span class="order_data_list_num">1</span>
+<!--            <span class="order_data_list_priceP">--><?php //echo $_order->formatPrice($_order->getGrandTotal()) ?><!--</span>-->
+            <span class="order_data_list_priceP"><?php echo $_item->getPrice() ?></span>
+            <span class="order_data_list_num"><?php echo $preitemcount;?></span>
             <span class="order_data_list_state lisStat_lineHeight"><?php echo $_order->getStatusLabel() ?></span>
             <span class="order_data_list_priceO"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></span>
         						<span class="order_data_list_fun">

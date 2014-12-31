@@ -505,6 +505,7 @@ ul.scarch_select_option li:hover{
 
 .footerWrap .shopCode p{
 	color:#b6b6b6;
+	/*margin-left:90px;*/
 	line-height: 1.2em;
 }
 
@@ -537,7 +538,7 @@ ul.scarch_select_option li:hover{
 	margin:0 10px;
 }
 .footerLogo .footerLogoBox.footerLogo_02{
-	margin-left:20px;
+	/*margin-left:20px;*/
 }
 .footerLogo .footerLogoBox.footerLogo_02 span{
 	margin:0 5px;
@@ -1017,6 +1018,26 @@ button.rulAgree{
 
 .img-over .products-buyNow button:hover{
 	color:#141414;
+}
+.pagesBotm{
+	width:100%;
+	text-align: center;
+	padding-top:20px;
+	border-top:2px solid #000;
+}
+.pagesBotm ol li{
+	float: left;
+	line-height: 60px;
+	text-align: center;
+	margin:0 5px;
+	font-size: 12px;
+}
+
+.pagesBotm ol li.pageNext{
+	float:right;
+}
+.pagesBotm ol li.pagePrev{
+	margin-right:230px;
 }
 
 /*购物车*/
@@ -1581,7 +1602,9 @@ h2.product-collateral-box-nam{
 	color:#ffba00;
 	background: url(../images/20141209008.png) left center no-repeat;
 }
-
+.block-content ul li img{
+	vertical-align: middle;
+}
 .block-content ul li a{
 	color:#fff;
 }
@@ -1598,7 +1621,7 @@ h2.product-collateral-box-nam{
 	font-size: 18px;
 	font-weight: bold;
 	color:#ffba00;
-	padding-bottom:10px;
+	padding-bottom:8px;
 	margin-bottom:10px;
 	border-bottom:5px solid #fff;
 }
@@ -1906,26 +1929,26 @@ ul.form-list li p{
 }
 
 
-.order_data ul.order_data_list li>span.order_data_list_nam{
+.order_data ul.order_data_list li span.order_data_list_nam{
 	width:300px;
 	text-align: left;
 	margin-left:15px;
 }
 
-.order_data ul.order_data_list li>span.order_data_list_nam img{
+.order_data ul.order_data_list li span.order_data_list_nam img{
 	float: left;
 	width:65px;
 	height: 65px;
 	margin-right:10px;
 }
 
-.order_data ul.order_data_list li>span.order_data_list_nam h3{
+.order_data ul.order_data_list li span.order_data_list_nam h3{
 	font-size: 12px;
 	margin-top:5px;
 	color:#ffba00;
 }
 
-.order_data ul.order_data_list li>span.order_data_list_nam p{
+.order_data ul.order_data_list li span.order_data_list_nam p{
 	font-size: 12px;
 	color:#b6b6b6;
 	width:210px;
