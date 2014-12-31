@@ -94,14 +94,23 @@
     <div class="proListFunLine"></div>
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
-    <?php $m=1; $i=0; foreach ($_productCollection as $_product): ?>
+    <?php $m=1; $i=0; foreach ($_productCollection as $_product):
+                    $skuConfig = $_product->getSku();
+                    $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
+                    $productNorm = $configurableProduct->getProductNorm();
+                    if($productNorm == 6){
+                        $scen7 = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image=';
+                    }else{
+                        $scen7 = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$220x220$&$image=';
+                    }
+        ?>
         <?php if ($i++%$_columnCount==0): ?>
         <ul class="products-grid">
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 <!--                    <img src="--><?php //echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?><!--" width="135" height="135" alt="--><?php //echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?><!--" />-->
-                    <img id="mainImage" width="220" height="220" src="http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$220x220$&$image=<?php echo $_product->getUrlKey();  ?>-1" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
+                    <img id="mainImage" width="220" height="220" src="<?php echo $scen7.$_product->getUrlKey();  ?>-1" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
 <!--                    <img id="mainImage" width="210" height="210" src="http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$image220px=--><?php //echo $_product->getUrlKey();  ?><!---1" alt="--><?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><!--" onMouseOver="javascript:sku=1"/>-->
 <!--                    <img id="mainImage" width="210" height="210" src="--><?php //echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210, 210); ?><!--" alt="--><?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><!--" onMouseOver="javascript:sku=1"/>-->
                 </a>
