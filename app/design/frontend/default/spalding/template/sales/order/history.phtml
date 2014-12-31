@@ -122,7 +122,8 @@
                 <span class="ms-fr">下单时间：<?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span>
             </h2>
         						<span class="order_data_list_nam clearfix">
-        							<img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(75); ?>" />
+<!--        							<img src="--><?php //echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(75); ?><!--" />-->
+        							<img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=<?php echo $_product->getUrlKey() ?>-1" alt=""/>
 <!--        							<h3>斯伯丁NBA热火队队徽球</h3>-->
         							<h3><?php echo $_item_title ?></h3>
                                     <?php if($attributeSetName=="ball"){?>
