@@ -34,7 +34,7 @@ class Devicom_Sales_Model_Order_Observer {
 			// Subscribe customer
 			$event = $observer->getEvent();
 			$newOrder = $event->getOrder();
-			$newStoreCode = "sncn";;
+			$newStoreCode = "cpcn";;
 			$newStoreId = $newOrder->getStore()->getId();
 			$newCustomerId = $newOrder->getCustomer()->getId();
 			$newCustomerGroupId = $newOrder->getCustomer()->getGroupId();

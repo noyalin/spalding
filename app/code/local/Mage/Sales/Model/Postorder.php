@@ -29,7 +29,7 @@ class Mage_Sales_Model_Postorder extends Mage_Core_Model_Abstract{
             $writeConnection = $resource->getConnection('core_write');
 
             // Subscribe customer
-            $newStoreCode = "sncn";;
+            $newStoreCode = "spcn";;
             $newStoreId = $newOrder->getStore()->getId();
             $newCustomerId = $newOrder->getCustomerId();
             $newCustomerGroupId = $newOrder->getCustomerGroupId();
