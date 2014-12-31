@@ -116,7 +116,7 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
      *
      * @var string
      */
-    protected $_direction           = 'desc';
+    protected $_direction           = 'asc';
 
     /**
      * Default View mode
