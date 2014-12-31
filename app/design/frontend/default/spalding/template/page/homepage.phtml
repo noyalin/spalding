@@ -73,14 +73,14 @@
                 <li><a href="<?php echo $this->getUrl('news_snwny') ?>">2014年斯坦科维奇杯斯伯丁成为斯洛文尼亚球衣赞助商</a></li>
             </ul>
         </div>
-        <div id="sun" class="plateBox plateBox_tf ms-fl" style=""><a href="javascript:void(0)"><img src="<?php echo $this->getSkinUrl("images/20141209007.png") ?>" alt=""></a></div>
+        <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="javascript:void(0)"><img src="<?php echo $this->getSkinUrl("images/20141209007.png") ?>" alt=""></a></div>
     </div>
 </div>
 <div id="dialog" style="display:none;">
     <div class="aa" style="position:fixed; width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.8);z-index:100;">
     
-    <div class="new_address" style="left: 50%;margin-left: -400px;margin-top: -270px;position: fixed;top: 50%;width: 723px; height:550px;z-index: 2999999;">
-        <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="closebutton" style="float: right;cursor: pointer;margin-top:100px;margin-right:50px;"/>
+    <div class="new_address" style="left: 50%;margin-left: -400px;margin-top: -270px;position: fixed;top: 50%;width: 723px; height:550px;">
+        <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="" class="closebutton" style="float: right;cursor: pointer;margin-top:100px;margin-right:50px;"/>
         <table cellspacing="0" cellpadding="0" border="0" style="margin-top:250px;margin-left: 200px;">
             <tbody>
             <tr>
@@ -138,6 +138,7 @@
         <div id="barcodeVerifyResult"></div>
     </div>
     </div>
+    <div class="clear"></div>
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function(){
@@ -152,20 +153,26 @@
         jQuery(".kuzhan_flash_s").html(str);
         jQuery(".kuzhan_sele").eq(0).addClass("kuzhan_over")
         //$(".kuzhan_flash_v").css("left",122+"px")
-        //条形码验证
-        jQuery( "#dialog" ).dialog({
-            autoOpen: false,
-            //width:746,
-            height:546,
-            modal: true,
-            show: {
-                effect: "fade",
-                duration: 1000
-            },
-            hide: {
-                effect: "fade",
-                duration: 1000
-            }
+        //条形码验证  sun
+        // jQuery( "#dialog" ).dialog({
+        //     autoOpen: false,
+        //     //width:746,
+        //     height:546,
+        //     modal: true,
+        //     show: {
+        //         effect: "fade",
+        //         duration: 1000
+        //     },
+        //     hide: {
+        //         effect: "fade",
+        //         duration: 1000
+        //     }
+        // });
+        jQuery('.plateBox_tf').on("click",function(){
+            jQuery(this).parents().find('#dialog').fadeIn();
+        });
+        jQuery('.closebutton').on("click",function(){
+            jQuery(this).parent().parent().parent('#dialog').fadeOut();
         });
 
         setInterval("ballMove()",1000);
