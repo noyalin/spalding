@@ -5,10 +5,10 @@
   .currently .exp-left-nav-header{margin-left:20px;}
     .selected-label{
   		padding-left:26px;
-        background: url(http://localhost/spalding/skin/frontend/default/spalding/images/catalogsearchBg.jpg) no-repeat -20px 0;
+        background: url(http://localhost/spalding/skin/frontend/default/spalding/images/catalogsearchBg.jpg) no-repeat left top;
         z-index: 2000000000;
-  		height:24px;
-  		line-height:24px;
+  		height:26px;
+  		line-height:26px;
   		margin-left:-6px;
 
     }
