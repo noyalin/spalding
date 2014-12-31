@@ -346,7 +346,8 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             $product->setProductcolor( $productColor );
         }
         $product->setVisibility( $valueArr['visibility'] ); // 1 or 4
-//                    $product->setCreatedAt($createdAt);
+//        $product->setCreatedAt($valueArr['createdAt']);
+        $product->setCreatedMarket($valueArr['createdAt']);
         $product->setModel( $valueArr['model']);
         $product->setImageCount( $valueArr['imageCount'] );
         $product->setBrand( $valueArr['brand'] );
@@ -593,7 +594,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $valueArr['thirdPartyPrice'] =$thirdPartyPrice;
 
         $createdAt = $entity->CreatedAt;
-        $valueArr['createdAt'] =$createdAt;
+        $valueArr['createdAt'] = strtotime($createdAt);
 
         $model = (string) $entity->Model;
         $valueArr['model'] =$model;
