@@ -1,6 +1,6 @@
 <?php
 abstract class  Task_Tools_Model_Base{
-    const CONF_NEWORDER_RECEIVER_ASPX_URL ="http://74.212.242.42/Net4/NewOrder/Receiver.aspx";
+    const CONF_NEWORDER_RECEIVER_ASPX_URL ="http://222.73.202.154:40002/NewOrder/Receiver.aspx";
     const CONF_NEW_ORDER_POST_LIMIT = 25;
     // Constant Contact API info
     const CREATE_CONTACT_CC_USERNAME = 'davis.du';//'dennis.zhang';
