@@ -107,7 +107,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
                 $firstname=mb_substr($screen_name,1,mb_strlen($screen_name)-1);
 				$customer->setFirstname($firstname);
 				//$customer->setAvatar($profile_image_url);
-				$customer->setLastname($lastname);
+//				$customer->setLastname($lastname);
 				$customer->setWeiboId($uid);
 				//$customer->setLocation($location);
 				//$customer->setProvince($province);
@@ -247,7 +247,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
                     $firstname=$userdata->nickname;
                     $customer->setFirstname($firstname);
                     //$customer->setAvatar($profile_image_url);
-                    $customer->setLastname($lastname);
+//                    $customer->setLastname($lastname);
                     $customer->setQqId($openid);
                     //$customer->setLocation($location);
                     //$customer->setProvince($province);
