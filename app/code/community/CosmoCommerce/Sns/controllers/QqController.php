@@ -12,12 +12,12 @@ class CosmoCommerce_Sns_QqController extends Mage_Core_Controller_Front_Action
 	
 	
 //		$app_key=Mage::getStoreConfig('sns/sns_tweibo/app_key');
-		$app_key="101141742";
+		$app_key="101182962";
 //		$debug=Mage::getStoreConfig('sns/sns_tweibo/debug');
 		$debug=false;
 //        $app_secret=Mage::getStoreConfig('sns/sns_tweibo/app_secret');
 
-        $app_secret="184c3a8c251d86f89a00073e1af5f891";
+        $app_secret="0c8f2519769a8a88ee2245f36fb761b6";
 		
 		if($debug){
 			error_reporting(E_ALL);
