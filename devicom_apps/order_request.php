@@ -404,7 +404,7 @@ final class StoneEdge_MagentoImport {
             if( $beginWord == 81){
                 $storeId = 122;
             }
-			$lastEntityId = self::getOrderEntityId($db, $sql, $lastDate, $lastOrder,$storeId);
+//			$lastEntityId = self::getOrderEntityId($db, $sql, $lastDate, $lastOrder,$storeId);
 		}
         $entityStr = '';
         if("800000000" == trim($lastOrder) || "810000000"==$lastOrder){
