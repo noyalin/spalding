@@ -190,10 +190,14 @@ $size_table_id = $_product->getSizeTable();//尺码表valueid
         </div>
         <?php
         $urlkey = $_product->getUrlKey();
-        $collection = $_product->getMediaGalleryImages();
+//        $collection = $_product->getMediaGalleryImages();
         $i = 0;
         $arr = array( "正面/FRONT","反面/BACK","侧面/SIDE");
-        foreach ($collection as $key => $_image){
+        //----------------------------------------------------------------------------STA
+        $imgCount = $_product->getImageCount();
+        for($count = 0;$count <$imgCount;$count++){
+        //----------------------------------------------------------------------------END
+//        foreach ($collection as $key => $_image){
             $des = $arr[$i];
             $i++;
         ?>
