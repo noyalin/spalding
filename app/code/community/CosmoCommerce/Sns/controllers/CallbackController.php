@@ -13,7 +13,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
     }
     public function successAction()
     {
-        $this->_redirect('index.html');
+        $this->_redirectUrl(Mage::helper('core/url')->getHomeUrl());
         return;
 //		$this->loadLayout();
 //		$this->renderLayout();
