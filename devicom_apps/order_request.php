@@ -420,6 +420,7 @@ final class StoneEdge_MagentoImport {
             mage :: log($_GET);
             mage :: log("end");
             $gmtTime = date("Y-m-d H:i:s",strtotime($time)-8*60*60);
+            mage :: log($gmtTime . '  gtime');
         }
 
 //        Mage :: log($storeId);
