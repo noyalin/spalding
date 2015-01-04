@@ -33,7 +33,7 @@
             if(!strstr($current_url,'customer/account/login/')){
                 ?>
                 <div class="header_logo">
-                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo" target="_blank">
                         <?php if ($this->getIsHomePage()){
                             echo "<img src='".$this->getSkinUrl("images/20141208001.jpg")."'/>";
                         }else{
@@ -48,25 +48,25 @@
 
             <div class="header_nav ms-fr">
                 <div class="header_nav_funs">
-                    <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds">授权经销商</a>
+                    <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds" target="_blank">授权经销商</a>
                     <?php
                     if(Mage::getSingleton('customer/session')->isLoggedIn()){
                         $customerName = Mage::helper('customer')->getCustomerName();
                         echo "欢迎 $customerName";
 
                     ?>
-                        <a href="<?php echo $this->getUrl('customer/account/logout/', array('_secure'=>true)) ?>">注销</a>&nbsp;|&nbsp;
+                        <a href="<?php echo $this->getUrl('customer/account/logout/', array('_secure'=>true)) ?>" target="_blank">注销</a>&nbsp;|&nbsp;
                     <?php
                     }else{
                         ?>
-                        <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
-                        <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
+                        <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>" target="_blank">登录</a>&nbsp;|&nbsp;
+                        <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>" target="_blank">注册</a>&nbsp;|&nbsp;
                     <?php
                     }
                     ?>
 
-                    <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">用户中心</a>&nbsp;|&nbsp;
-                    <a href="<?php echo $this->getUrl('sales/order/history/', array('_secure'=>true)) ?>">我的订单</a>
+                    <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>" target="_blank">用户中心</a>&nbsp;|&nbsp;
+                    <a href="<?php echo $this->getUrl('sales/order/history/', array('_secure'=>true)) ?>" target="_blank">我的订单</a>
                     <?php echo $this->getChildHtml('cart_sidebar_top') ?>
                 </div>
                 <?php
@@ -81,11 +81,11 @@
                             <div class="menu_wrap">
                                 <div class="main">
                                     <ul class="side_nav clearfix">
-                                        <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl();?>" target="_parent">首页</a></li>
-                                        <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_parent">关于斯伯丁</a></li>
-                                        <li><a href="<?php echo $this->getUrl('products.html') ?>" target="_parent">斯伯丁商城</a></li>
-                                        <li><a href="<?php echo $this->getUrl('tech') ?>" target="_parent">产品科技</a></li>
-                                        <li><a href="<?php echo $this->getUrl('news') ?>" target="_parent">新闻与媒体</a></li>
+                                        <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl();?>" target="_blank">首页</a></li>
+                                        <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_blank">关于斯伯丁</a></li>
+                                        <li><a href="<?php echo $this->getUrl('products.html') ?>" target="_blank">斯伯丁商城</a></li>
+                                        <li><a href="<?php echo $this->getUrl('tech') ?>" target="_blank">产品科技</a></li>
+                                        <li><a href="<?php echo $this->getUrl('news') ?>" target="_blank">新闻与媒体</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -101,10 +101,10 @@
                                         <div class="text_a">
                                             <i class="nav_row"></i>
                                             <ul class="clearfix">
-                                                <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>">SPALDING创始人</a></li>
-                                                <li><a href="<?php echo $this->getUrl('brands') ?>">品牌历史</a></li>
-                                                <li><a href="<?php echo $this->getUrl('partner') ?>">合作伙伴</a></li>
-                                                <li><a href="<?php echo $this->getUrl('contactus') ?>">联系我们</a></li>
+                                                <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_blank">SPALDING创始人</a></li>
+                                                <li><a href="<?php echo $this->getUrl('brands') ?>" target="_blank">品牌历史</a></li>
+                                                <li><a href="<?php echo $this->getUrl('partner') ?>" target="_blank">合作伙伴</a></li>
+                                                <li><a href="<?php echo $this->getUrl('contactus') ?>" target="_blank">联系我们</a></li>
                                             </ul>
                                         </div>
                                     </div><!--end lower_02-->
@@ -113,10 +113,10 @@
                                         <div class="text_a">
                                             <i class="nav_row"></i>
                                             <ul class="clearfix">
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1))  ?>">篮球系列</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1))?>">男子运动服饰</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=71'), 0, -1)) ?>">篮板包/运动包</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=69'), 0, -1)) ?>">篮板架</a></li>
+                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1))  ?>" target="_blank">篮球系列</a></li>
+                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1))?>" target="_blank">男子运动服饰</a></li>
+                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=71'), 0, -1)) ?>" target="_blank">篮板包/运动包</a></li>
+                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=69'), 0, -1)) ?>" target="_blank">篮板架</a></li>
                                             </ul>
                                         </div>
                                     </div><!--end lower_03-->
@@ -238,7 +238,7 @@
                     <h2>按产品名称/货号搜索</h2>
                     <p>请输入一款产品的型号或产品名称:</p>
                     <input type="text" class="scarchInp" id="inputSearchVal">
-                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl()?>products/accessories.html"><span>全部配件</span></a>
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl()?>products/accessories.html" target="_blank"><span>全部配件</span></a>
                     <button onclick=searchClick()>搜索</button>
 <!--                    <button onclick="window.open('http://localhost/spalding/catalogsearch/advanced/result/?'.$searchArgs)">搜索</button>-->
                 </div>
