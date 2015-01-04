@@ -391,7 +391,7 @@ final class StoneEdge_MagentoImport {
 		$batchsize = (isset($_REQUEST['batchsize']) && (int) $_REQUEST['batchsize'] > 0 ? $_REQUEST['batchsize'] : 10000000);
 		$lastOrder = ((isset($_REQUEST['lastorder']) && strtolower($_REQUEST['lastorder']) != 'all') ? $_REQUEST['lastorder'] : 0);
 		$lastDate = ((isset($_REQUEST['lastdate']) && strtolower($_REQUEST['lastdate']) != 'all') ? date_create($_REQUEST['lastdate']) : date_create(date('Y-m-d')));
-        mage :: log($lastDate . ' Time');
+        mage :: log($lastDate);
         $ordRows = array();
 		$res = Mage::getSingleton('core/resource');
 		$ordersTable = $res->getTableName('sales/order');
