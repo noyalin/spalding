@@ -514,7 +514,7 @@ final class StoneEdge_MagentoImport {
 		self::xmlAppend("IPHostName", $order->getData('remote_ip'), $ndOther, $xd);
 		self::xmlAppend("TotalOrderWeight", $order->getData('weight'), $ndOther, $xd);
 		self::xmlAppend("GiftMessage", self::getGiftMessage($order), $ndOther, $xd);
-		self::xmlAppend("Comments", $order->getData('order_comment'), $ndOther, $xd);
+		self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
 		$ndOrder->appendChild($ndOther);
 		return true;
 	}
