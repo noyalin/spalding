@@ -53,9 +53,30 @@
             //jQuery('.footer').css("display","block")
         },100);
 
-        jQuery('.searchBtn').mouseover(function(){
-            jQuery(this).parents().find('.dropDown_search').slideDown();
+//        jQuery('.searchBtn').mouseover(function(){
+//            jQuery(this).parents().find('.dropDown_search').slideDown();
+//        });
+        var timer = null;	//定义用于清除setTimeout的变量
+        jQuery(".searchBtn").hover(function(){
+            clearTimeout(timer);
+            jQuery(".dropDown_search").slideDown();
+        },function(){
+            timer = setTimeout(function(){
+                jQuery(".dropDown_search").css("display","none");
+            },500)
+
         });
+        jQuery(".dropDownWrap").hover(function(){
+            clearTimeout(timer);
+            jQuery(".dropDown_search").css("display","block")
+        },function(){
+            timer = setTimeout(function(){
+                jQuery(".dropDown_search").slideUp();
+            },1000)
+
+        });
+
+        //鼠标经过放大镜显示搜索模块 e
 
         jQuery('.dropDownBg').on("click",function(){
             jQuery(this).parent('.dropDown_search').slideUp();
