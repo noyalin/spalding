@@ -129,5 +129,12 @@
             jQuery(this).children('span.plateBoxImg').css("display","block");
         });
 
+
+        //返回顶部
+        jQuery('#top').click(function(){
+            jQuery('html,body').animate({scrollTop: '0px'}, 600);
+            return false;
+        });
+
     });
 </script>
