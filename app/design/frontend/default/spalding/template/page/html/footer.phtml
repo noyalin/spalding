@@ -93,7 +93,7 @@
                 conName = navJson[i].conName;
                 clsNameStr = navJson[i].clsName == '' ? 'current' : navJson[i].clsName;
                 jQuery(conName).children('li').eq(indexNum).addClass(clsNameStr);
-                //jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).show(); //二级菜单显示
+//jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).show(); //二级菜单显示
                 jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).css("display","block"); //二级菜单显示
             }
             i++;
@@ -101,35 +101,36 @@
     }
     navGPS(aName_main, c_title)
 
-
-
-
     jQuery(function () {
 
         var index = jQuery('.menu_wrap ul.side_nav>li').index(jQuery(".on"));
 
         jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(index).slideDown();
 
-        //导航效果
+//导航效果
         jQuery('.menu_wrap ul.side_nav>li').each(function (i) {
 
             jQuery(this).hover(function () {
                 jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(i).addClass('on');
                 jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(i).slideDown();
-                //alert(indexNum)
-            })
-        })
+//alert(indexNum)
+            });
+        });
+
+//鼠标经过子菜单时，停止下拉动画，仅显示
+        jQuery('.lower_list').hover(function(){
+            jQuery(this).stop(false,true).css("display","block");
+        });
+
+
         jQuery('.menu_all').hover(function () {
         }, function () {
             jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(indexNum).slideDown();
             jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(indexNum).addClass('on');
-            //alert(indexNum)
+//alert(indexNum)
         })
 
-
-
-
-        //AJAX加载动画
+//AJAX加载动画
         if (jQuery('#loading').length > 0) {
             jQuery("#loading").ajaxStart(function () {
                 jQuery(this).show();
