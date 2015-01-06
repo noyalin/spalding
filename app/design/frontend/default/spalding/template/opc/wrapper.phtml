@@ -84,11 +84,22 @@
                                     <option>个人</option>
                                     <option>公司</option>
                                 </select>
-                                <input type="text" class="regBoxInp" id="invoicecontent">
+                                <input type="text" class="regBoxInp" id="invoicecontent" style="display: none" placeholder="请输入公司名称">
                                 <br>
                             </div>
                         </div>
-
+                        <div class="checkoutWrapContentItem clearfix">
+                            <div class="checkoutWrapContentItemLeft">
+                                发票内容：&nbsp;
+                            </div>
+                            <div class="checkoutWrapContentItemRight">
+                                <select class="invoiceneirong">
+                                    <option>篮球</option>
+                                    <option>体育用品</option>
+                                </select>
+                                <br>
+                            </div>
+                        </div>
                         <div class="checkoutWrapContentItemSave add_addr">
                             温馨提示：您所填的信息将被系统自动打印到发票上，请仔细核对所填发票信息！
                             <br /><br />
@@ -151,7 +162,7 @@
                         </div>
 
                         <div class="checkoutWrapContentItemSave add_addr">
-                            完成请将以下加盖了公章的企业资质证书的彩色扫描件发送至spalding@voyageone.com；
+                            完成请将以下加盖了公章的企业资质证书的彩色扫描件发送至customer.service@spaldingchina.com.cn；
                             <br />
                             （1）营业执照副本（2）税务登记证副本（3）开户许可证（4）一般纳税人认定通知书
                             <br /><br />
@@ -321,12 +332,17 @@
 
             if(invoiceType == 1){//普通发票
                 var invoice_title = jQuery('select.invoicetaitou option:selected').val();
-                var invoice_content = jQuery("#invoicecontent").val();
+
+                var invoice_content = "  名称为： " + jQuery("#invoicecontent").val();
+                if(invoice_title == "个人"){
+                    invoice_content = '';
+                }
             }else{
                 invoiceTypeName = "增值税专用发票";
             }
+            var invoice_neirong = jQuery('select.invoiceneirong option:selected').val();
             if(invoiceType > 0){
-                jQuery("#customer_invoice").val("发票类型: "+invoiceTypeName +"  发票抬头: "+invoice_title + " 开票内容: "+invoice_content);
+                jQuery("#customer_invoice").val("发票类型: "+invoiceTypeName +"  发票抬头: "+invoice_title + invoice_content + " 开票内容: "+invoice_neirong );
             }
             jQuery('.spaninvoicetype').html(invoiceTypeName);
             jQuery('.spaninvoicetitle').html(invoice_title);
@@ -336,4 +352,12 @@
             jQuery('#checkoutInvoiceCommand').hide();
 
         }
+        jQuery(".invoicetaitou").change(function(){
+            var invoice_title = jQuery('select.invoicetaitou option:selected').val();
+            if(invoice_title == '个人'){
+                jQuery("#invoicecontent").hide();
+            }else{
+                jQuery("#invoicecontent").show();
+            }
+        });
     </script>
