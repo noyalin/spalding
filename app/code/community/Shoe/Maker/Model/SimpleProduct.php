@@ -275,7 +275,7 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
             $productId = $product->getId();
             $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($productId);
             $stockItemId = $stockItem->getId();
-            $stockItem->setData('qty', 6); //force 6
+            $stockItem->setData('qty', $qty);
             $stockItem->setData('is_in_stock', 1); //force in stock
             //Save stock
             $stockItem->save();
