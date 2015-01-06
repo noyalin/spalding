@@ -4,8 +4,6 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
     public $orderStatusNeedCheck = array( 'new', 'holded','processing','payment_review','Returned');
     public $carrierArr = array(
         '申通' => 'flatrate',
-        '圆通' => 'devicom',
-        '顺丰' => 'tablerate',
     );
     public function __construct(){
         parent::__construct();
@@ -375,7 +373,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
         if (count($unshippedRewardItems)) {
             $this->transactionLogHandle( "      ->RWDPOINTS : CHECKING TRANSACTION RECORDS\n");
             // Create a gift to offset any spent points for unshipped item(s)
-            $this->returnSpentRewardPoints($customerId, $order, $orderUpdate, $readConnection, $writeConnection, $unshippedRewardItems);
+//            $this->returnSpentRewardPoints($customerId, $order, $orderUpdate, $readConnection, $writeConnection, $unshippedRewardItems);
         }
     }
     public function updateShipment($order,$orderUpdate,$writeConnection){
