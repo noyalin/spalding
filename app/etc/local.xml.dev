@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   Mage
+ * @package    Mage_Core
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <global>
+        <install>
+            <date><![CDATA[Fri, 14 Nov 2014 09:02:17 +0000]]></date>
+        </install>
+        <crypt>
+            <key><![CDATA[4a9eefbb837e7d3e37e266166537249c]]></key>
+        </crypt>
+        <disable_local_modules>false</disable_local_modules>
+        <resources>
+            <db>
+                <table_prefix><![CDATA[]]></table_prefix>
+            </db>
+            <default_setup>
+                <connection>
+                    <host><![CDATA[localhost]]></host>
+                    <username><![CDATA[root]]></username>
+                    <password><![CDATA[Sneakerhead2014]]></password>
+                    <dbname><![CDATA[bluescale2013]]></dbname>
+                    <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
+                    <model><![CDATA[mysql4]]></model>
+                    <type><![CDATA[pdo_mysql]]></type>
+                    <pdoType><![CDATA[]]></pdoType>
+                    <active>1</active>
+                </connection>
+            </default_setup>
+        </resources>
+        <session_save><![CDATA[files]]></session_save>
+        <!--<full_page_cache>-->
+            <!--<backend>Mage_Cache_Backend_File</backend>-->
+            <!--<backend_options>-->
+                <!--<cache_dir>full_page_cache</cache_dir>-->
+            <!--</backend_options>-->
+        <!--</full_page_cache>-->
+        <!--<cache>-->
+            <!--<frontend_options>-->
+                <!--<lifetime>3600</lifetime>-->
+            <!--</frontend_options>-->
+            <!--<backend><![CDATA[Cm_Cache_Backend_Redis]]></backend>-->
+            <!--<backend_options>-->
+                <!--<lifetime>3600</lifetime>-->
+                <!--&lt;!&ndash; HAProxy is running on port 6379 on the private IP address. If the redis instance on 127.0.0.1:6379 fails, HAproxy will redirect to redis on 127.0.0.1:6380 &ndash;&gt;-->
+                <!--<server><![CDATA[localhost]]></server>-->
+                <!--<port><![CDATA[6379]]></port>-->
+                <!--<database><![CDATA[0]]></database>-->
+                <!--<force_standalone><![CDATA[0]]></force_standalone>  &lt;!&ndash; 0 for phpredis, 1 for standalone PHP &ndash;&gt;-->
+                <!--<automatic_cleaning_factor><![CDATA[0]]></automatic_cleaning_factor> &lt;!&ndash; Disabled by default &ndash;&gt;-->
+                <!--<compress_data><![CDATA[1]]></compress_data>  &lt;!&ndash; 0-9 for compression level, recommended: 0 or 1 &ndash;&gt;-->
+                <!--<compress_tags><![CDATA[1]]></compress_tags>  &lt;!&ndash; 0-9 for compression level, recommended: 0 or 1 &ndash;&gt;-->
+                <!--<compress_threshold><![CDATA[20480]]></compress_threshold>  &lt;!&ndash; Strings below this size will not be compressed &ndash;&gt;-->
+                <!--<compression_lib><![CDATA[gzip]]></compression_lib> &lt;!&ndash; Supports gzip, lzf and snappy &ndash;&gt;-->
+                <!--<lifetimelimit><![CDATA[3600]]></lifetimelimit>-->
+                <!--<connect_retries>1</connect_retries>-->
+                <!--<read_timeout>10</read_timeout>-->
+            <!--</backend_options>-->
+        <!--</cache>-->
+        <!--<full_page_cache>-->
+            <!--<backend><![CDATA[Cm_Cache_Backend_Redis]]></backend>-->
+            <!--<backend_options>-->
+                <!--<lifetime>3600</lifetime>-->
+                <!--&lt;!&ndash; HAProxy is running on port 6379 on the private IP address. If the redis instance on 127.0.0.1:6379 fails, HAproxy will redirect to redis on 127.0.0.1:6380 &ndash;&gt;-->
+                <!--<server><![CDATA[10.10.42.30]]></server>-->
+                <!--<port><![CDATA[6379]]></port>-->
+                <!--<database><![CDATA[1]]></database>-->
+                <!--<force_standalone><![CDATA[0]]></force_standalone>  &lt;!&ndash; 0 for phpredis, 1 for standalone PHP &ndash;&gt;-->
+                <!--<automatic_cleaning_factor><![CDATA[0]]></automatic_cleaning_factor> &lt;!&ndash; Disabled by default &ndash;&gt;-->
+                <!--<compress_data><![CDATA[0]]></compress_data>  &lt;!&ndash; 0-9 for compression level, recommended: 0 or 1 &ndash;&gt;-->
+                <!--<compress_tags><![CDATA[0]]></compress_tags>  &lt;!&ndash; 0-9 for compression level, recommended: 0 or 1 &ndash;&gt;-->
+                <!--<compress_threshold><![CDATA[20480]]></compress_threshold>  &lt;!&ndash; Strings below this size will not be compressed &ndash;&gt;-->
+                <!--<compression_lib><![CDATA[gzip]]></compression_lib> &lt;!&ndash; Supports gzip, lzf and snappy &ndash;&gt;-->
+                <!--<lifetimelimit><![CDATA[3600]]></lifetimelimit>-->
+                <!--<connect_retries>1</connect_retries>-->
+                <!--<read_timeout>10</read_timeout>-->
+            <!--</backend_options>-->
+        <!--</full_page_cache>-->
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <frontName><![CDATA[admin]]></frontName>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

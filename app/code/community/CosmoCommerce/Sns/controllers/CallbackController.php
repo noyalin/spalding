@@ -240,7 +240,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
                   ->addAttributeToFilter('qq_id',$openid)->load()->getFirstItem();
                
                 if(!$customer->getId()){ 
-                    $customer->setEmail($openid."@sneakerhead.com");
+                    $customer->setEmail($openid."@spaldingchina.com.cn");
                     
                     
                     $lastname='lastname';
