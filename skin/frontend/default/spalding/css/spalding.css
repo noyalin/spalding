@@ -61,7 +61,12 @@
 	text-indent: 18px;
 	margin-right:10px;
 }
-
+.header_nav_funs a.header_nav_online{
+	display: inline-block;
+	background: url(../images/online_qq.png) left center no-repeat;
+	text-indent: 18px;
+	margin-left:10px;
+}
 
 span.searchBtn{
 	position:absolute;
@@ -538,7 +543,7 @@ ul.scarch_select_option li:hover{
 	margin:0 10px;
 }
 .footerLogo .footerLogoBox.footerLogo_02{
-	/*margin-left:20px;*/
+	margin-left:20px;
 }
 .footerLogo .footerLogoBox.footerLogo_02 span{
 	margin:0 5px;
