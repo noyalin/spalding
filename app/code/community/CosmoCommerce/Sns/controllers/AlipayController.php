@@ -46,7 +46,7 @@ class CosmoCommerce_Sns_AlipayController extends Mage_Core_Controller_Front_Acti
                 ->addAttributeToSelect('alipay_user_id')
                 ->addAttributeToFilter('alipay_user_id',$userId)->load()->getFirstItem();
             if(!$customer->getId()){
-                $customer->setEmail("Sneakerhead_".$userId."@sneakerhead.com");
+                $customer->setEmail("Spalding_".$userId."@spaldingchina.com.cn");
                 //$lastname='lastname';
                 $customer->setFirstname($_GET['real_name']);
                 //$customer->setAvatar($profile_image_url);
