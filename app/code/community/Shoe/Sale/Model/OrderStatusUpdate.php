@@ -4,8 +4,6 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
     public $orderStatusNeedCheck = array( 'new', 'holded','processing','payment_review','Returned');
     public $carrierArr = array(
         '申通' => 'flatrate',
-        '圆通' => 'devicom',
-        '顺丰' => 'tablerate',
     );
     public function __construct(){
         parent::__construct();
@@ -238,7 +236,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
             $this->checkStatus($orderUpdate,$readConnection,$writeConnection,$customerId,$order,$shipmentCreated,$totalQtyOrdered);
 
             //If customerId then update points for order reward transaction
-            $this->updateCustomerRewardPoints($customerId, $orderUpdate, $order, $storeId, $writeConnection);
+//            $this->updateCustomerRewardPoints($customerId, $orderUpdate, $order, $storeId, $writeConnection);
 
         }
         $this->transactionLogHandle( "  ->STATUS UPDATE : FINISHED\n");
@@ -375,7 +373,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
         if (count($unshippedRewardItems)) {
             $this->transactionLogHandle( "      ->RWDPOINTS : CHECKING TRANSACTION RECORDS\n");
             // Create a gift to offset any spent points for unshipped item(s)
-            $this->returnSpentRewardPoints($customerId, $order, $orderUpdate, $readConnection, $writeConnection, $unshippedRewardItems);
+//            $this->returnSpentRewardPoints($customerId, $order, $orderUpdate, $readConnection, $writeConnection, $unshippedRewardItems);
         }
     }
     public function updateShipment($order,$orderUpdate,$writeConnection){
@@ -734,7 +732,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
             $writeConnection->query($query);
 
             //Refresh rewarpoints_flat _account table
-            RewardPoints_Model_Observer::processRecordFlatRefresh($customerId, $storeId);
+//            RewardPoints_Model_Observer::processRecordFlatRefresh($customerId, $storeId);
             $this->transactionLogHandle( "    ->REFRESH     : FLAT TABLE REFRESHED : " . $customerId . "\n");
         }
     }
