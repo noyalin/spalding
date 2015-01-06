@@ -236,7 +236,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
             $this->checkStatus($orderUpdate,$readConnection,$writeConnection,$customerId,$order,$shipmentCreated,$totalQtyOrdered);
 
             //If customerId then update points for order reward transaction
-            $this->updateCustomerRewardPoints($customerId, $orderUpdate, $order, $storeId, $writeConnection);
+//            $this->updateCustomerRewardPoints($customerId, $orderUpdate, $order, $storeId, $writeConnection);
 
         }
         $this->transactionLogHandle( "  ->STATUS UPDATE : FINISHED\n");
@@ -732,7 +732,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
             $writeConnection->query($query);
 
             //Refresh rewarpoints_flat _account table
-            RewardPoints_Model_Observer::processRecordFlatRefresh($customerId, $storeId);
+//            RewardPoints_Model_Observer::processRecordFlatRefresh($customerId, $storeId);
             $this->transactionLogHandle( "    ->REFRESH     : FLAT TABLE REFRESHED : " . $customerId . "\n");
         }
     }
