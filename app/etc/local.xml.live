@@ -42,7 +42,7 @@
                 <connection>
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
-                    <password><![CDATA[Sneakerhead2014]]></password>
+                    <password><![CDATA[6330b10311]]></password>
                     <dbname><![CDATA[bluescale2013]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
@@ -95,7 +95,7 @@
         <routers>
             <adminhtml>
                 <args>
-                    <frontName><![CDATA[admin]]></frontName>
+                    <frontName><![CDATA[devicom]]></frontName>
                 </args>
             </adminhtml>
         </routers>
