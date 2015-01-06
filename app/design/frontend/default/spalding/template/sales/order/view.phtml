@@ -77,14 +77,18 @@
                 <p><span>编号：</span><?php echo $_order->getRealOrderId() ?></p>
                 <p><span>订单状态：</span><?php echo $_order->getStatusLabel() ?></p>
                 <p><span>订单总计：</span><span class="order_infs_price"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></span> (含运费 ¥0.00)</p>
-                <p><span>订单信息：</span><?php echo $oneLineAddress ?>付款方式（在线支付）发票（个人）</p>
+                <p><span>订单信息：</span><?php echo $oneLineAddress ?>付款方式（在线支付</p>
                 <p><span>收货地址： </span><?php echo $oneLineAddress ?></p>
                 <!--            <p><span>顺丰单号：</span>1101353707</p>-->
             </div>
         </div>
     </div>
     <?php echo $this->getChildHtml('order_items') ?>
-
+    <h2 class="table-caption"><?php echo $this->__('Items Ordered') ?>
+        <?php if ($_order->getTracksCollection()->count()) : ?>
+            <span class="separator">|</span> <a href="#" onclick="popWin('<?php echo $this->helper('shipping')->getTrackingPopupUrlBySalesModel($_order) ?>','trackorder','top=0,left=0,width=800,height=600,resizable=yes,scrollbars=yes'); return false;" title="<?php echo $this->__('Track your order') ?>"><?php echo $this->__('Track your order') ?></a>
+        <?php endif; ?>
+    </h2>
     <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order', $_order) && $_order->getGiftMessageId()): ?>
     <div class="order-additional order-gift-message">
         <h2 class="sub-title"><?php echo $this->__('Gift Message for This Order') ?></h2>
