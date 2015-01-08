@@ -56,7 +56,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             }
             $str .= '
             <li class="clearfix" '.$background.'>
-                <span class="shopsList_city">'.$each['city'].'</span><span class="shopsList_name">斯伯丁</span>
+                <span class="shopsList_city" style="width:250px;">'.$each['city'].'</span>
                 <span class="shopsList_adrs">'.$each['address'].'</span>
             </li>';
         }
