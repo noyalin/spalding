@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {//&& in_array($ip, $allowed)
 
 		switch ($updateType) {
 			case 0://FULL PRODUCT
-				$filename = 'full_inventory_update_' . $realTime[5] . $realTime[4] . $realTime[3] . '_' . $realTime[2] . $realTime[1] . $realTime[0] . substr(microtime(), 2, 3) . '.xml';
+				$filename = 'incremental_product_update_'."full_inventory_update_" . $realTime[5] . $realTime[4] . $realTime[3] . '_' . $realTime[2] . $realTime[1] . $realTime[0] . substr(microtime(), 2, 3) . '.xml';
 				break;
 			case 1://INCREMENTAL PRODUCT
 				$filename = 'incremental_product_update_' . $realTime[5] . $realTime[4] . $realTime[3] . '_' . $realTime[2] . $realTime[1] . $realTime[0] . substr(microtime(), 2, 3) . '.xml';

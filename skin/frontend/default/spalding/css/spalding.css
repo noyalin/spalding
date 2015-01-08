@@ -40,6 +40,9 @@
 	text-align: right;
 	color:#999;
 }
+*+html .header_nav_funs{
+	margin-top:20px;
+}
 .header_nav_funs a{
 	color:#999;
 }
@@ -380,6 +383,14 @@ ul.scarch_select_option li:hover{
 	vertical-align: top;
 }
 
+.spalding_plateWrap .plateBox_tf.plate_tf_fix{
+	position:fixed; 
+	right:-75px; 
+	top:350px; 
+	width:480px; 
+	height:390px;
+}
+
 .weiduduan {
 	width: 100%;
 	margin: 15px auto 0 auto;
@@ -483,6 +494,14 @@ ul.scarch_select_option li:hover{
 	width:1080px;
 	margin:35px auto;
 }
+
+.footerWrap .shopCode{
+	font-size: 12px;
+	margin-right: 50px;
+	margin-top:-5px;
+	max-width:250px;
+}
+
 .shopCode .shopCodeWrap{
 	margin:0 5px;
 }
@@ -493,11 +512,7 @@ ul.scarch_select_option li:hover{
 	text-align: center;
 	margin:5px 0;
 }
-.footerWrap .shopCode{
-	font-size: 12px;
-	margin-right: 50px;
-	margin-top:-5px;
-}
+
 .footerWrap .shopCode a.tmallLink{
 	color:#fdb905;
 }

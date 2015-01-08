@@ -183,6 +183,20 @@
         });
 
         setInterval("ballMove()",1000);
+
+        //判断滚动条位置 显示隐藏“验证”
+        if(jQuery(window).width()<=1360){
+            jQuery(".plateBox_tf").addClass("plate_tf_fix");
+            jQuery(window).scroll(function () {
+                if(jQuery(window).scrollTop()<=150) {
+                    jQuery(".plateBox_tf").addClass("plate_tf_fix");
+                }else {
+                    jQuery(".plateBox_tf").removeClass("plate_tf_fix");
+                }
+            });
+        }else{
+            jQuery(".plateBox_tf").removeClass("plate_tf_fix");
+        };
     })
 
     function ballMove(){
