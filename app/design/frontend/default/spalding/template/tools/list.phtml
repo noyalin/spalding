@@ -30,8 +30,7 @@ $defaultList = $this->getAllStore();
         <ul class="shopsList">
             <?php foreach($defaultList as $eachStore): ?>
             <li class="clearfix">
-                <span class="shopsList_city"><?php echo $eachStore['city'] ?></span>
-                <span class="shopsList_name">斯伯丁</span>
+                <span class="shopsList_city" style="width: 250px;"><?php echo $eachStore['city'] ?></span>
                 <span class="shopsList_adrs"><?php echo $eachStore['address'] ?></span>
             </li>
             <?php endforeach ?>
