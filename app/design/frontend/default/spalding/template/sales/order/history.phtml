@@ -165,15 +165,35 @@
                                     <?php if($_order->getStatus() === 'alipay_wait_buyer_pay'){?>
         							<a href="<?php echo $this->getCancelUrl($_order) ?>">取消订单</a>
                                     <?php }?>
+                                    <?php if($_order->getStatus() === 'shipped'){
+                                        $trackingid = getTrackingByOrderID($_order->getRealOrderId());
+                                        if($trackingid !==""){
+                                        ?>
+                                        <a href="http://www.baidu.com/baidu?tn=baidu&word=<?php echo $trackingid?>" target="_blank">查看物流</a>
+                                    <?php }}?>
         						</span>
         </li>
         <?php endforeach; ?>
     <?php endforeach; ?>
-
-
-
     </ul>
 </div>
 <?php else: ?>
     <p><?php echo $this->__('You have placed no orders.'); ?></p>
 <?php endif ?>
+
+<?php
+    function getTrackingByOrderID($orderid){
+        $resource = Mage::getSingleton('core/resource');
+        $readConnection = $resource->getConnection('core_read');
+        $arr = array();
+        $query = "select a.track_number from sales_flat_shipment_track as  a inner join sales_flat_order as  b on  a.order_id = b.entity_id where b.increment_id = '".$orderid."'"."LIMIT 1";
+        $res = $readConnection->query($query);
+
+        $tracking_id = '';
+        foreach($res as  $key => $each){
+            $tmp = array();
+            $tracking_id = $each['track_number'];
+        }
+        return $tracking_id;
+    }
+?>
