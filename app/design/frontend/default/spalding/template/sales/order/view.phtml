@@ -68,7 +68,6 @@
 
     $address = Mage :: getModel('sales/order_address')->load($_order->getBillingAddress()->getId());
     $oneLineAddress = $address->format('oneline');
-    //mage :: log($address->format('oneline'));
     ?>
     <div class="col-main ms-fr">
         <div class="my-account">
