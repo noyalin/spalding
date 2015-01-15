@@ -44,11 +44,11 @@ $_imgUrl = null;
 ?>
 <div class="block">
     <?php
-    if($_GET['attribute_set_name'] == 70){
+    if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 70){
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_furniture')->toHtml();
-    }else if($_GET['attribute_set_name'] == 71){
+    }else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 71){
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_bag')->toHtml();
-    }else if($_GET['attribute_set_name'] == 69){
+    }else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 69){
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_stands')->toHtml();
     }else{
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner')->toHtml();
