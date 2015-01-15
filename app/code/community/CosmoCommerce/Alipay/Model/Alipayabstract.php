@@ -19,10 +19,10 @@ class CosmoCommerce_Alipay_Model_Alipayabstract extends Mage_Core_Model_Abstract
      */
     function __construct($arr = array()){
         if(empty($arr)){
-            $alipay_config['partner']		= '2088511937423302';
+            $alipay_config['partner']		= '2088711909431762';
 
 //安全检验码，以数字和字母组成的32位字符
-            $alipay_config['key']			= 'rspyr9coik8c7sj5csug95k84yik2bm7';
+            $alipay_config['key']			= 'qisngbnvaj4ydshzji1irosklki1y8jb';
         }else{
             $alipay_config['partner']		= $arr['partner'];
 

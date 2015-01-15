@@ -196,11 +196,11 @@ class CosmoCommerce_Alipay_Model_Wappayment extends Mage_Payment_Model_Method_Ab
 		}else if($bank == "alipay_qrcode"){
             $parameter = array(
                 "service" => "create_direct_pay_by_user",
-                "partner" => '2088511937423302',
+                "partner" => '2088711909431762',
                 "payment_type"	=> 1,
                 "notify_url"	=> $this->getReturnURL(),
                 "return_url"	=> $this->getNotifyURL(),
-                "seller_email"	=> 'kobexin_8@126.com',
+                "seller_email"	=> 'sc-official@spaldingchina.com.cn',
                 "out_trade_no"	=> $order->getRealOrderId(),
                 "subject"	=> $order->getRealOrderId(),
                 "total_fee"	=> sprintf('%.2f', $converted_final_price) ,
@@ -211,7 +211,7 @@ class CosmoCommerce_Alipay_Model_Wappayment extends Mage_Payment_Model_Method_Ab
                 "qr_pay_mode" => 2,
                 "_input_charset"	=> 'utf-8'
             );
-            $security_code = "rspyr9coik8c7sj5csug95k84yik2bm7";
+            $security_code = "qisngbnvaj4ydshzji1irosklki1y8jb";
         }else{
 		
 			$fromCur = Mage::app()->getStore()->getCurrentCurrencyCode();
@@ -240,7 +240,7 @@ class CosmoCommerce_Alipay_Model_Wappayment extends Mage_Payment_Model_Method_Ab
             
             $logistics_fees=0;
 			$parameter = array('service'           => trim('create_direct_pay_by_user'),
-							   'partner'           => trim('2088511937423302'),
+							   'partner'           => trim('2088711909431762'),
 							   'return_url'        => $this->getReturnURL(),
 							   'notify_url'        => $this->getNotifyURL(),
 							   '_input_charset'    => 'utf-8',
@@ -254,14 +254,14 @@ class CosmoCommerce_Alipay_Model_Wappayment extends Mage_Payment_Model_Method_Ab
 							   'payment_type'      => '1',
 							   'quantity'          => '1', // For the moment, the parameter of price is total price, so the quantity is 1.
 							   'show_url'          => Mage::getUrl(),
-							   'seller_email'      => 'kobexin_8@126.com'
+							   'seller_email'      => 'sc-official@spaldingchina.com.cn'
 							);
 		}
 
        if($bank != "alipay" && $bank != "alipay_qrcode" ){
             $parameter['paymethod']="bankPay";
             $parameter['defaultbank']=$this->getBank();
-            $security_code = trim('rspyr9coik8c7sj5csug95k84yik2bm7');
+            $security_code = trim('qisngbnvaj4ydshzji1irosklki1y8jb');
         }
 		$parameter = $this->para_filter($parameter);
 
@@ -428,7 +428,7 @@ class CosmoCommerce_Alipay_Model_Wappayment extends Mage_Payment_Model_Method_Ab
         //begin
         $notify_url = $this->getReturnURL();
         $call_back_url = $this->getReturnURL();
-        $seller_email = "kobexin_8@126.com";
+        $seller_email = "sc-official@spaldingchina.com.cn";
         $order = $this->getOrder();
         $out_trade_no = $order->getRealOrderId();
         $subject = $order->getRealOrderId();
@@ -451,7 +451,7 @@ class CosmoCommerce_Alipay_Model_Wappayment extends Mage_Payment_Model_Method_Ab
         $v = "2.0";
         $req_id = date('Ymdhis');
         $inputCharset = 'utf-8';
-        $partner = '2088511937423302';
+        $partner = '2088711909431762';
         $para_token = array(
             "service" => "alipay.wap.trade.create.direct",
             "partner" => $partner,

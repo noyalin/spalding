@@ -200,12 +200,12 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         $sendemail = null;
 
         //目前只有国内支付宝
-            $partner="2088511937423302";
-            $security_code="rspyr9coik8c7sj5csug95k84yik2bm7";
+            $partner="2088711909431762";
+            $security_code="qisngbnvaj4ydshzji1irosklki1y8jb";
             $sendemail =  $postData['seller_email'];
 
 
-        if( (isset($postData['seller_email']) && ($postData['seller_email'] == 'kobexin_8@126.com')) || (isset($postData['exterface']) &&($postData['exterface'] == 'create_direct_pay_by_user')) ){
+        if( (isset($postData['seller_email']) && ($postData['seller_email'] == 'sc-official@spaldingchina.com.cn')) || (isset($postData['exterface']) &&($postData['exterface'] == 'create_direct_pay_by_user')) ){
             //网银在线 支付 进入到 kobexin_8@126.com
             /*
              * 2014-08-21T02:30:12+00:00 DEBUG (7): begin alipay
@@ -221,7 +221,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
     [notify_type] => trade_status_sync
     [quantity] => 1
     [out_trade_no] => 800000097
-    [seller_id] => 2088511937423302
+    [seller_id] => 2088711909431762
     [notify_time] => 2014-08-21 10:30:08
     [body] => 800000097
     [trade_status] => TRADE_SUCCESS
@@ -241,8 +241,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 2014-08-21T02:30:12+00:00 DEBUG (7): end alipay
 
              */
-            $partner="2088511937423302";
-            $security_code="rspyr9coik8c7sj5csug95k84yik2bm7";
+            $partner="2088711909431762";
+            $security_code="qisngbnvaj4ydshzji1irosklki1y8jb";
             $sendemail =  $postData['seller_email'];
         }else{
             //come from alipay go to kobe.xin@sneakerhead.com
@@ -598,8 +598,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         Mage::log(print_r($postData,true));
         Mage::log("end wap alipay");
         $sendemail = null;
-        $partner="2088511937423302";
-        $security_code="rspyr9coik8c7sj5csug95k84yik2bm7";
+        $partner="2088711909431762";
+        $security_code="qisngbnvaj4ydshzji1irosklki1y8jb";
         /*
          * 2014-10-28T08:08:36+00:00 DEBUG (7): Array
 (
