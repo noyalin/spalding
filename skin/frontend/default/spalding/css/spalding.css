@@ -53,8 +53,8 @@
 
 .header_nav_funs span{
 	display: inline-block;
-	color:#000000;
-	/*color:#e8a902;*/
+	/*color:#000000;*/
+	color:#e8a902;
 	background: url(../images/20141208002.png) left center no-repeat;
 	text-indent: 18px;
 	margin-left:10px;
