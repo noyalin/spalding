@@ -470,7 +470,7 @@ final class StoneEdge_MagentoImport {
 		$orderDate = new DateTime();
 		$orderDate = date_create($order->getData('updated_at'));
 //PCN BEGIN
-		$orderDate->modify("-8 hours");
+		$orderDate->modify("+8 hours");
 //PCN END
 		self::xmlAppend("OrderDate", $orderDate->format('d-M-Y g:i:s A'), $ndOrder, $xd);
 
