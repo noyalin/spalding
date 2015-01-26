@@ -1,0 +1,90 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+/** @var $this Mage_Paypal_Block_Express_Review */
+?>
+<script>var rateSelected = <?php echo ($this->getCurrentShippingRate()) ? 'true' : 'false' ?>;</script>
+
+<table>
+<tr>
+<td class="infoInput">
+
+<fieldset id="shipping-method-container">
+<?php /* Create sortable price-mapped array */ ?>
+<?php $shippingMethods = array(); ?>
+<?php if ($this->getCanEditShippingMethod() || !$this->getCurrentShippingRate()):?>
+        <?php if ($groups = $this->getShippingRateGroups()):?>
+            <?php $currentRate = $this->getCurrentShippingRate(); ?>
+			<label class="for-select">
+            <select name="shipping_method" id="shipping_method" class="required-entry">
+            <?php if (!$currentRate):?>
+                <option value=""><?php echo $this->__('Please select a shipping method...') ?></option>
+			<?php endif; ?>
+			<?php $z = (!$currentRate) ? 1 : 0; ?>
+            <?php foreach ($groups as $code => $rates):?>
+
+                <?php foreach ($rates as $rate):?>
+
+				<?php /****************************************************************************************/ ?>
+				<?php /**** BUILD THE PRICE-MAP ARRAY FOR USE WITH JAVASCRIPT AT EOF  *************************/ ?>
+				<?php $formatted_rate = number_format($rate->getPrice(), 2, '.', ''); ?>
+				<?php $formatted_rate = str_pad($formatted_rate, 6, "0", STR_PAD_LEFT); ?>
+				<?php $shippingMethods[$rate->getCode()] = array("rate" => $formatted_rate, "code" => $rate->getCode(), "option" => $z); ?>
+				<?php $z++; ?>
+				<?php /****************************************************************************************/ ?>
+				<?php /****************************************************************************************/ ?>
+
+                <?php endforeach;?>
+
+            <?php endforeach;?>
+
+            <?php foreach ($groups as $code => $rates):?>
+                <?php foreach ($rates as $rate):?>
+					<!-- Set shipping method to "cheapest" option, if nothing else already selected -->
+                    <option value="<?php echo $this->renderShippingRateValue($rate)?>"<?php echo ($currentRate === $rate) ? ' selected="selected"' : '' ;?>>
+                        <?php echo $this->renderShippingRateOption($rate)?>
+                    </option>
+                <?php endforeach;?>
+            <?php endforeach;?>
+            </select>
+			</label>
+        <?php else: ?>
+            <p><strong><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></strong></p>
+        <?php endif;?>
+
+<?php else: ?>
+    <p><strong><?php echo $this->renderShippingRateOption($this->getCurrentShippingRate())?></strong></p>
+<?php endif; ?>
+</fieldset>
+</td>
+</tr>
+</table>
+
+<div style="display:none" id="shipping_method_update"><p><?php echo $this->__('Please update order data to get shipping methods and rates') ?></p></div>
+
+<?php sort($shippingMethods); ?>
+<script type="text/javascript">
+	var cheapestMethod = <?php echo count($shippingMethods) ? $shippingMethods[0]['option']: 0; ?>;
+</script>

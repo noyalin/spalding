@@ -1,0 +1,108 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Customer onepage checkout login form template
+ *
+ * @see app/design/frontend/enterprise/default/template/checkout/onepage/login.phtml
+ */
+/** @var $this Mage_Checkout_Block_Onepage_Login */
+?>
+
+<div id="my-account-wrapper">
+	<div id="checkout-step-login" class="step a-item" style="">
+	<div class="col2-set">
+
+    <div class="col-2">
+			<table id="step1-register">
+			<tfoot>
+                <tr>
+					<td>
+						<button id="onepage-guest-register-button" type="button" class="button" onclick="jQuery('[alt=login-guest]').attr('checked', true); checkout.setMethod(); jQuery('#checkout-login-box').hide(); jQuery('#onepage-customer-login-button').show(); " >
+							<span><span>I'M A NEW CUSTOMER</span></span></button>
+						<?php /* Set to "register" to enable automated display of "password" block in billing section */ ?>
+						<input style="display:none;" type="radio" name="checkout_method" id="login:guest" alt="login-guest" value="guest"/>
+						<input style="display:none;" type="radio" name="checkout_method" id="login:register" value="register"/>
+					</td>
+				</tr>
+                <tr>
+					<td>
+						<button id="onepage-customer-login-button" type="button" class="button" onClick="jQuery(this).fadeOut(); jQuery('#checkout-login-box').fadeIn()">
+							<span><span>I'M A RETURNING CUSTOMER</span></span></button>
+					</td>
+				</tr>
+			</tfoot>
+			</table>
+    </div>
+
+	<div id="checkout-login-box" class="col-1 logInInfoBox">
+	<h4>Login</h4>
+			<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+			<form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post">
+			<fieldset>
+				<table id="step1-login">
+					<tbody>
+						<tr>
+							<td class="infoLabel" colspan="2">
+								<label for="login-email">Email Address</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="infoInput" colspan="2">
+								<input name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="login-email" type="email" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+							</td>
+						</tr>
+						<tr>
+							<td class="infoLabel" colspan="2">
+								<label for="login-password">Password</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="infoInput" colspan="2">
+								<input name="login[password]" type="password" class="marLoginInput input-text required-entry validate-password" id="login-password" title="<?php echo $this->__('Password') ?>" />
+							</td>
+						</tr>
+						</tbody>
+						<tfoot>
+						<tr>
+							<td>
+								<a href="<?php echo $this->helper('customer')->getForgotPasswordUrl()?>">Forgot your Password?</a>
+							</td>
+							<td>
+								<input name="context" type="hidden" value="checkout" />
+								<button type="submit" class="button" onclick="return validateForm('#login-form')"><span><span><?php echo $this->__('Login') ?></span></span></button>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</fieldset>
+			</form>
+		</div>
+		
+	</div>
+</div>
+</div>

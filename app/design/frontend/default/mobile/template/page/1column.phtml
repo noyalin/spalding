@@ -1,0 +1,67 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2012 MeigeeTeam. (http://www.meigeeteam.com)
+ *
+ *
+ *
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+	<?php echo $this->getChildHtml('head') ?>
+</head>
+<body>
+<div id="page">
+	<a name="page"></a>
+	<?php echo $this->getChildHtml('after_body_start') ?>
+	<?php echo $this->getChildHtml('header') ?>
+	<div class="content-wrapper">
+		<?php echo $this->getChildHtml('global_messages') ?>
+		<?php echo $this->getChildHtml('messages') ?>
+		<?php /* Show customer service 'return to cs menu' block only on customer service pages */ ?>
+		<?php
+        $scriptUrl = Mage::helper('core/url')->getCurrentUrl();
+        $server_script_url = str_replace("/", "",$scriptUrl); ?>
+		<?php if ($server_script_url != 'cs-customer-service.html' && preg_match('/(^cs-|^int-)(.*)html$/', $server_script_url)): ?>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_cs_return_to_menu')->toHtml(); ?>
+		<?php endif; ?>
+		<?php echo $this->getChildHtml('content') ?>
+
+		<div class="clearfloats"></div>
+		<?php echo $this->getChildHtml('footer') ?>
+	</div>
+</div>
+<div id="to-top-btn" style="display:none">
+	<span><a href="#page"></a></span>
+</div>
+
+<!-- BEGIN: Google Trusted Stores -->
+<!--<script type="text/javascript">-->
+<!--  var gts = gts || [];-->
+<!---->
+<!--  gts.push(["id", "66454"]);-->
+<!--  //gts.push(["google_base_offer_id", "ITEM_GOOGLE_SHOPPING_ID"]);-->
+<!--  gts.push(["google_base_subaccount_id", "57460"]);-->
+<!--  gts.push(["google_base_country", "US"]);-->
+<!--  gts.push(["google_base_language", "EN"]);-->
+<!---->
+<!--  (function() {-->
+<!--	var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");-->
+<!--	var gts = document.createElement("script");-->
+<!--	gts.type = "text/javascript";-->
+<!--	gts.async = true;-->
+<!--	gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";-->
+<!--	var s = document.getElementsByTagName("script")[0];-->
+<!--	s.parentNode.insertBefore(gts, s);-->
+<!--  })();-->
+<!--</script>-->
+<!-- END: Google Trusted Stores -->
+
+</body>
+</html>

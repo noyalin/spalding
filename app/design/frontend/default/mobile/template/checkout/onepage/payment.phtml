@@ -1,0 +1,111 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<script type="text/javascript">
+//<![CDATA[
+    var quoteBaseGrandTotal = <?php echo (float)$this->getQuoteBaseGrandTotal(); ?>;
+    var checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+    var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('checkout/onepage/savePayment') ?>');
+    var lastPrice;
+//]]>
+</script>
+<form action="" id="co-payment-form">
+    <fieldset>
+        <?php echo $this->getChildChildHtml('methods_additional', '', true, true) ?>
+        <?php echo $this->getChildHtml('methods') ?>
+    </fieldset>
+</form>
+<?php echo $this->getChildChildHtml('additional') ?>
+
+	<table id="step4-continue">
+		<tfoot>
+			<tr>
+				<td class="back-link">
+					<button type="button" class="button" onclick="checkout.back('opc-payment')"><span><?php echo $this->__('Back') ?></span></button>
+				</td>
+				<td>
+					<div class="buttons-set" id="payment-buttons-container">
+					<img id="payment-please-wait" class="please-wait" src="<?php echo $this->getSkinUrl('images/loader.gif', array('_secure'=>true))?>" style="display:none"/>
+					<button type="button" class="button" onclick="checkPaymentForm();"><span><?php echo $this->__('Continue') ?></span></button>
+					</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+<p class="required"><?php echo $this->__('* Required Fields') ?></p>
+
+<div class="clearFloats"></div>
+
+<script type="text/javascript">
+//<![CDATA[
+    payment.currentMethod = "<?php echo $this->getChild('methods')->getSelectedMethodCode() ?>";
+
+	function checkPaymentForm() {
+
+		var hasErrors = false;
+
+		jQuery('#co-payment-form input').parent().find('div').each(function(){
+			jQuery(this).remove();
+		});
+		jQuery('#co-payment-form select').parent().find('div').each(function(){
+			jQuery(this).remove();
+		});
+
+		var methodSelected = false;
+		jQuery('#co-payment-form input[type=radio]').each(function(){
+			if (jQuery(this).prop('checked')) {
+				methodSelected = true;
+			}
+		});
+		if (jQuery('#checkout-payment-method-load').css('display') == 'none'
+			&& typeof jQuery('#use_customer_balance') !== undefined
+			&& jQuery('#use_customer_balance').prop('checked')) {
+			methodSelected = true;
+		}
+
+		if (!methodSelected) {
+			showAlert('Please select a payment method.');
+			return false;
+		}
+
+		payment.save();
+
+		jQuery('#co-payment-form input').parent().find('div').each(function(){
+			jQuery(this).fadeIn();
+			hasErrors = true;
+		});
+		jQuery('#co-payment-form select').parent().find('div').each(function(){
+			jQuery(this).fadeIn();
+			hasErrors = true;
+		});
+
+		if (hasErrors){
+			showAlert('Highlighted fields required.');
+		}
+	}
+//]]>
+</script>

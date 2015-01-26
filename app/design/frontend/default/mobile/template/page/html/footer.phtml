@@ -1,0 +1,252 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+
+<footer style="margin: 0 !important;">
+	<div class="footer-help">
+		<a style="text-transform: uppercase;" id="footer-help" href="<?php echo Mage::getUrl(''); ?>cs-customer-service.html" onClick="jQuery('#search_bar').toggleClass('open', false);">帮助中心</a>
+		<a style="text-transform: uppercase;" id="footer-desktop" href="javascript: void(0)" onClick="setCookie('mobilePreference', 1); window.location=finalUrl">电脑版</a>
+<!--        <a style="text-transform: uppercase;" id="footer-help" href="--><?php //echo Mage::getUrl(''); ?><!--cs-customer-service.html" onClick="jQuery('#search_bar').toggleClass('open', false);">Help Center</a>-->
+<!--        <a style="text-transform: uppercase;" id="footer-desktop" href="javascript: void(0)" onClick="setCookie('mobilePreference', 1); window.location=finalUrl">Desktop View</a>-->
+	</div>
+<!--	<p>Copyright &copy; 2001 - --><?php //echo date('Y'); ?><!-- Sneakerhead.com. All Rights Reserved.</p>-->
+    <p>Copyright© 2013 sneakerhead.cn 中国 版权所有</p>
+    <p>备案编号：<a href="http://www.miitbeian.gov.cn/" target="_blank">沪ICP备14028343号-1</a></p>
+    <div class="footer-call"><a href="tel:15921784636">点击联系我们:15921784636</a></div>
+</footer>
+
+<div id="alert" title="Alert">
+	<p></p>
+</div>
+
+<script type="text/javascript">
+
+if (!isMobileDevice) {
+//	jQuery('.footer-call').html('<a>CALL US 1-866-339-7463</a>');
+    jQuery('.footer-call').html('<a>联系电话:15921784636</a>');
+}
+
+jQuery(window).ready(function(){
+	jQuery("#alert").dialog({
+		modal: true,
+		autoOpen: false,
+		hide: 300,
+		show: 300,
+		draggable: false,
+		resizable: false,
+		dialogClass: 'ui-alert',
+		buttons: [
+			{
+			text: "GOT IT",
+				click: function() {
+					jQuery( this ).dialog( "close" );
+				},
+			class: 'ui-alert-button',
+			},
+		],
+		open: function(){
+			resetAlert();
+			jQuery('.ui-widget-overlay').removeClass('ui-front');
+			jQuery('.ui-alert').animate({
+				scrollTop: jQuery(".ui-dialog-titlebar").offset().top
+			}, 0);
+		}
+	});
+
+	// Scroll if the button's clicked
+	jQuery('a.writeReview, a.anchorReview').click(function(event){
+		if (currentModule == 'review'){
+			// Don't follow review link if already on page
+			event.preventDefault();
+		}
+		scrollToElement(".rating-review-form", 50);
+	});
+
+	var scrollOk = (window.location.hash) ? true : false;
+
+	var errorMessage = new Array();
+	jQuery('.myAccountMsg .error-msg').each(function() {
+		if (!inArray(jQuery(this).html(), errorMessage)) {
+			errorMessage.push(jQuery(this).html());
+		}
+	});
+	jQuery('.myAccountMsg .warning-msg').each(function() {
+		if (!inArray(jQuery(this).html(), errorMessage)) {
+			errorMessage.push(jQuery(this).html());
+		}
+	});
+	jQuery('.myAccountMsg .notice-msg').each(function() {
+		if (!inArray(jQuery(this).html(), errorMessage)) {
+			errorMessage.push(jQuery(this).html());
+		}
+	});
+
+	var successMessage = new Array();
+	jQuery('.myAccountMsg .success-msg').each(function() {
+		/* Don't show the "added to cart" message (it's redundant because it's obvious) */
+		if (currentModule !== 'checkout' && currentController !== 'cart') {
+			if (!inArray(jQuery(this).html(), successMessage)) {
+				successMessage.push(jQuery(this).html());
+			}
+		}
+	});
+
+	var finalMessage = '';
+	var payPalError = '';
+
+	/* Place any messages into an alert */
+	if (errorMessage.length > 0) {
+		for (n = 0; n < errorMessage.length; n++) {
+			/* Display custom message for Paypal Error #10486 */
+			if (errorMessage[n].match(/#10486/)) {
+				payPalError = 'Your transaction could not be completed with Paypal. ';
+				payPalError += 'The payment method associated with your PayPal account has insufficient funds for this purchase.</ul>';
+				payPalError += '<p>Visit PayPal to update your account payment information.</p>';
+				finalMessage += '<p class=\'error-msg\'>' + payPalError + '</p>';
+
+				var buttons = jQuery("#alert").dialog("option", "buttons");
+				jQuery.extend(buttons, [
+					{
+					text: "GOT IT",
+						click: function() {
+							jQuery("#alert").dialog("close");
+						},
+					},
+					{
+					text: "VISIT PAYPAL",
+						click: function() {
+							window.location = payPalUrl;
+						},
+					class: 'selected',
+					},
+				]);
+				jQuery("#alert").dialog("option", "dialogClass", "mismatch");
+				jQuery("#alert").dialog("option", "buttons", buttons);
+				jQuery('.ui-dialog .ui-dialog-titlebar').css('margin-left', '15px');
+				jQuery('.mismatch').css('right', '15px');
+
+			} else if (errorMessage[n].match(/paypal/i)) {
+				payPalError = errorMessage[n];
+				finalMessage = '<p class=\'error-msg\'>' + payPalError + '</p>';
+
+				var buttons = jQuery("#alert").dialog("option", "buttons");
+				jQuery.extend(buttons, [
+					{
+					text: "GOT IT",
+						click: function() {
+							jQuery("#alert").dialog("close");
+						},
+					class: 'ui-alert-button paypal',
+					},
+				]);
+				jQuery("#alert").dialog("option", "buttons", buttons);
+			} else {
+				finalMessage += '<p class=\'error-msg\'>' + errorMessage[n] + '</p>';
+			}
+		}
+	}
+
+	if (successMessage.length > 0 && payPalError.length == 0) {
+		for (n = 0; n < successMessage.length; n++) {
+			finalMessage += '<p class=\'success-msg\'>' + successMessage[n] + '</p>';
+		}
+	}
+
+	if (finalMessage.length > 0) {
+		showAlert(finalMessage);
+		scrollOk = false;
+	}
+
+	/* If a review was submitted, scrollOk is set to false (to show alert) */
+	if (scrollOk) {
+		// Scroll on page load to requested review or
+		if (window.location.hash.match('reviewTitle')) {
+			hashSelector = window.location.hash.replace('#', '');
+			setTimeout("scrollToElement('a[name^=' + hashSelector + ']', 50)", 500);
+		// to the rating form
+		} else if (window.location.hash.match('readMore')) {
+			setTimeout("scrollToElement('#review-form', 50)", 500);
+		} else if (window.location.hash.match('review-form')) {
+			setTimeout("scrollToElement('.rating-review-form', 50)", 500);
+		} else if (window.location.hash) {
+			hashSelector = window.location.hash;
+			setTimeout("scrollToElement(hashSelector, 50)", 500);
+		}
+	}
+
+	jQuery('a[href^="#"]').click(function(event) {
+		event.preventDefault();
+		var aTarget = jQuery(this).prop('href').split('#');
+		var targetSelector = 'a[name="' + aTarget[1] + '"]';
+		scrollToElement(jQuery(targetSelector), 60);
+	});
+
+	jQuery('#to-top-btn').click(function() {
+		scrollToElement(jQuery('a[name="page"]'), 60);
+	});
+
+	resetPleaseWait();
+	resetAlert();
+	jQuery(window).resize(resetPleaseWait);
+	jQuery(window).resize(resetAlert);
+
+	/* To Top button */
+	setToTop();
+	jQuery(window).scroll(setToTop);
+});
+
+function setToTop() {
+	if(jQuery(window).scrollTop() >= 500){
+		jQuery('#to-top-btn').fadeIn();
+	} else {
+		jQuery('#to-top-btn').fadeOut();
+	}
+}
+function resetPleaseWait() {
+	jQuery('.please-wait').each(function() {
+		jQuery(this).css('top', jQuery(window).height() / 2);
+		jQuery(this).css('left', jQuery(window).width() / 2);
+	});
+}
+
+
+function resetAlert() {
+	var thisAlertTop = ((jQuery(window).height() - jQuery(".ui-alert").height()) / 2) - 20;
+	var thisAlertLeft = (jQuery(window).width() - jQuery(".ui-alert").width()) / 2;
+	jQuery(".ui-alert").css('top', thisAlertTop - 15);
+	jQuery(".ui-alert").css('left', thisAlertLeft);
+	jQuery(".ui-alert").css('max-height', jQuery(window).height() - 125);
+	jQuery(".ui-alert").css('height', 'auto');
+}
+
+function inArray(needle, haystack) {
+    var length = haystack.length;
+    for(var i = 0; i < length; i++) {
+        if(haystack[i] == needle) return true;
+    }
+    return false;
+}
+</script>

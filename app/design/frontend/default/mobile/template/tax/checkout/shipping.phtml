@@ -1,0 +1,94 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+/**
+ * @var $this Mage_Tax_Block_Checkout_Shipping
+ * @see Mage_Tax_Block_Checkout_Shipping
+ */
+?>
+<?php if ($this->displayBoth()):?>
+<tr>
+    <td class="align-right" colspan="3">
+        <span class="subTotal"><?php echo $this->getExcludeTaxLabel() ?></span>
+    </td>
+    <td class="align-right">
+        <span class="price"><?php echo $this->helper('checkout')->formatPrice($this->getShippingExcludeTax()) ?></span>
+    </td>
+</tr>
+<tr>
+    <td class="align-right" colspan="3">
+        <span class="subTotal"><?php echo $this->getIncludeTaxLabel() ?></span>
+    </td>
+    <td class="align-right">
+        <span class="price"><?php echo $this->helper('checkout')->formatPrice($this->getShippingIncludeTax()) ?></span>
+    </td>
+</tr>
+<?php elseif($this->displayIncludeTax()) : ?>
+<tr>
+    <td class="align-right" colspan="3">
+        <span class="subTotal"><?php echo $this->getTotal()->getTitle() ?></span>
+    </td>
+    <td class="align-right">
+        <span class="price"><?php echo $this->helper('checkout')->formatPrice($this->getShippingIncludeTax()) ?></span>
+    </td>
+</tr>
+<?php else:?>
+<tr>
+    <td class="align-right" colspan="3">
+        <span class="subTotal">
+	    <?php
+		$shippingMethod = NULL;
+		$estimatedDelivery = NULL;
+		switch ($this->escapeHtml($this->getTotal()->getTitle())) {
+		    case 'Shipping (Priority Mail 1-Day)':
+			$shippingMethod = 'Shipping (USPS Priority Mail)';
+			break;
+		    case 'Shipping (Priority Mail 2-Day)':
+			$shippingMethod = 'Shipping (USPS Priority Mail)';
+			break;
+		    case 'Shipping (Priority Mail 3-Day)':
+			$shippingMethod = 'Shipping (USPS Priority Mail)';
+			break;
+		    case 'Shipping (Priority Mail DPO)':
+			$shippingMethod = 'Shipping (USPS Priority Mail)';
+			break;
+		    case 'Shipping (Priority Mail Military)':
+			$shippingMethod = 'Shipping (USPS Priority Mail)';
+			break;
+		    case 'Shipping (UPS Worldwide Expedited)':
+			$shippingMethod = 'Shipping (International Express)';
+			break;
+		    default:
+			$shippingMethod = $this->escapeHtml($this->getTotal()->getTitle());
+		}
+	    ?>
+	    <?php echo $shippingMethod ?>
+	</span>
+    </td>
+    <td class="align-right">
+        <span class="price"><?php echo $this->helper('checkout')->formatPrice($this->getShippingExcludeTax()) ?></span>
+    </td>
+</tr>
+<?php endif;?>

@@ -1,0 +1,153 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+
+<div id="my-account-all">
+
+	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
+		<div class="my-account-top clearfix">
+			<div class="my-account-welcome">
+				<span>
+					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+					<?php echo 'Welcome, ' . $customerName ?>
+				</span>
+			</div>
+			<div class="my-account-logout">
+				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">Log Out</a>
+			</div>
+		</div>
+
+
+	<?php endif; ?>
+</div>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<div id="cart-wrapper">
+	<h1>Shopping Bag</h1>
+	<div class="cart-content">
+		<?php echo $this->getChildHtml('form_before') ?>
+		<form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+			<fieldset>
+				<table id="shopping-cart-table" class="data-table cart-table">
+					<tbody>
+						<?php foreach ($this->getItems() as $_item): ?>
+							<?php echo $this->getItemHtml($_item) ?>
+						<?php endforeach ?>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2">
+							<?php if ($this->getContinueShoppingUrl()): ?>
+								<button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="location.href='<?php echo $this->getContinueShoppingUrl() ?>'"><?php echo $this->__('Continue Shopping') ?></button>
+							<?php endif;?>
+								<button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Bag'); ?>" class="button btn-update"><?php echo $this->__('Update Shopping Bag'); ?></button>
+								<!--[if lt IE 8]>
+								<input type="hidden" id="update_cart_action_container" />
+								<script type="text/javascript">
+								//<![CDATA[
+									Event.observe(window, 'load', function()
+									{
+										// Internet Explorer (lt 8) does not support value attribute in button elements
+										$emptyCartButton = $('empty_cart_button');
+										$cartActionContainer = $('update_cart_action_container');
+										if ($emptyCartButton && $cartActionContainer) {
+											Event.observe($emptyCartButton, 'click', function()
+											{
+												$emptyCartButton.setAttribute('name', 'update_cart_action_temp');
+												$cartActionContainer.setAttribute('name', 'update_cart_action');
+												$cartActionContainer.setValue('empty_cart');
+											});
+										}
+
+									});
+								//]]>
+								</script>
+								<![endif]-->
+
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</fieldset>
+		</form>
+
+		<div class="totals">
+			<?php echo $this->getChildHtml('totals'); ?>
+		</div>
+
+		<?php if (!$this->hasError()): ?>
+			<table id="shopping-cart-checkout-types">
+			<tr>
+			<td>
+			<?php foreach ($this->getMethods('methods') as $method): ?>
+				<?php if ($method == 'checkout.cart.methods.onepage.bottom') : ?>
+					<?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+						<?php echo $methodHtml; ?>
+					<?php endif; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
+			</td>
+			</tr>
+
+			<?php foreach ($this->getMethods('methods') as $method): ?>
+				<?php if ($method == 'checkout.cart.methods.paypal_express.bottom') : ?>
+					<?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+			<tr>
+			<td>
+				- OR -
+			</td>
+			</tr>
+			<tr>
+			<td>
+				<?php echo $methodHtml; ?>
+			</td>
+			</tr>
+					<?php endif; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
+			</table>
+		<?php endif; ?>
+	</div>
+</div>
+<div id="cart-wrapper">
+	<?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+
+	<h1>Discount / Giftcard</h1>
+	<div class="cart-content logInInfoBox">
+		<?php echo $this->getChildHtml('coupon') ?>
+	</div>
+	<div class="cart-content logInInfoBox">
+		<?php echo $this->getChildHtml('giftcards') ?>
+	</div>
+</div>

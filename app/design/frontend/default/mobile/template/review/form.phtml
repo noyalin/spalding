@@ -1,0 +1,150 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+$_product = $this->getParentBlock()->getProduct();
+?>
+<div class="rating-review-form">
+<h2>Write a Review for the <br>
+	"<span class="review-form-product-name"><?php echo Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name') ?>"</span></h2>
+<?php if ($this->getAllowWriteReviewFlag()): ?>
+<h3><span class="rStar">*</span>How do you rate this product?</h3>
+
+    <form method="post" action="<?php echo $this->getAction() ?>#page" id="submit-form" enctype="multipart/form-data">
+	<?php echo $this->getChildHtml('form_fields_before')?>
+	<?php if ($this->getRatings() && $this->getRatings()->getSize()): ?>
+	    <span id="input-message-box"></span>
+
+		<div class="review-star-wrapper">
+		<table class="review-star-table">
+        <tr>
+        <td><a href="javascript:void(0)" value="1">1 Star</a></td>
+        <td><a href="javascript:void(0)" value="2">2 Stars</a></td>
+        <td><a href="javascript:void(0)" value="3">3 Stars</a></td>
+        <td><a href="javascript:void(0)" value="4">4 Stars</a></td>
+        <td><a href="javascript:void(0)" value="5">5 Stars</a></td>
+        </tr>
+        </table>
+		</div>
+
+		<input type="hidden" name="ratings[1]" id="ratings" value="">
+
+		<div class="validation-advice" id="ratings-error">You must provide a rating.</div>
+
+	<?php endif ?>
+		<table>
+			<tbody>
+			<tr>
+				<td class="label-cell"><label for="nickname_field" class="required"><span class="rStar">*</span>Nickname</label></td>
+			</tr>
+			<tr>
+				<td class="input-cell"><input type="text" name="nickname" id="nickname_field" class="input-text required-entry"
+					value="<?php echo $this->getRequest()->getParam('fname') ?>" autocomplete="off" /></td>
+			</tr>
+			<tr>
+				<td class="label-cell"><label for="location_field" class="required"><span class="rStar">*</span>Location</label></td>
+			</tr>
+			<tr>
+				<td class="input-cell"><input type="text" name="location" id="location_field" class="input-text required-entry" value="" autocomplete="off" /></td>
+			</tr>
+			<tr>
+				<td class="label-cell"><label for="summary_field" class="required"><span class="rStar">*</span>Subject</label></td>
+			</tr>
+			<tr>
+				<td class="input-cell"><input type="text" name="title" id="summary_field" class="input-text required-entry" value="" autocomplete="off" /></td>
+			</tr>
+			<tr>
+				<td class="label-cell"><label for="review_field" class="required"><span class="rStar">*</span>Review</label></td>
+			</tr>
+			<tr>
+				<td class="input-cell"><textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"></textarea></td>
+			</tr>
+			<?php /* If not logged in */ ?>
+			<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) : ?>
+			<tr>
+				<td class="label-cell"><label for="email_field" >Email</label></td>
+			</tr>
+			<tr>
+				<td class="input-cell"><input type="email" name="email" id="email_field" class="input-text validate-email"
+					value="<?php echo $this->getRequest()->getParam('email') ?>" placeholder="Required to earn reward points." autocomplete="off" /></td>
+			</tr>
+			<?php endif ?>
+			</tbody>
+		</table>
+		<div class="reviewPopBtnBox">
+			<button type="submit" class="button" onClick = "return submitReview('.rating-review-form');">Submit Review</button>
+		</div>
+		<div class="reviewPopBtnBox">
+			<p class="required"><span class="rStar">*</span>Required Fields</p>
+		</div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+jQuery('.review-star-wrapper a').click(function() {
+	var ratingButton = jQuery(this);
+	jQuery('.review-star-wrapper a').each(function(){jQuery(this).toggleClass('review-star-active', false)});
+	ratingButton.toggleClass('review-star-active', true);
+	jQuery('#ratings').val(ratingButton.attr('value'));
+	jQuery('#ratings-error').fadeOut();
+});
+
+function submitReview(selector) {
+	// Remove existing error messages
+	jQuery('#ratings-error').hide();
+	jQuery(selector + ' .required-entry').each(function(){
+		jQuery(this).parent().find('div').remove();
+	});
+
+	var submitThis = true;
+	var ratings = jQuery('#ratings').val();
+
+	if (ratings < 1 || ratings > 5) {
+		jQuery('#ratings-error').show();
+		submitThis = false;
+	}
+
+	jQuery(selector + ' .required-entry').each(function(){
+		if (jQuery(this).val() == '') {
+			jQuery(this).parent().append('<div class="validation-advice">This is a required field.</div>');
+			submitThis = false;
+		}
+	});
+
+	if (!submitThis) {
+		showAlert('Highlighted fields required.');
+		return false;
+	}
+
+	return true;
+}
+
+</script>
+<?php else: ?>
+    <p>
+	<?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
+    </p>
+<?php endif ?>
+</div>

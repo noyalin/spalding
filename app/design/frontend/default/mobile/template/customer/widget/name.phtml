@@ -1,0 +1,22 @@
+<tr>
+<!--	<td class="infoLabel" colspan="2"><label for="firstname" class="infoLabel required"><span class="rStar">*</span>First Name</label></td>-->
+    <td class="infoLabel" colspan="2"><label for="firstname" class="infoLabel required"><span class="rStar">*</span>姓名</label></td>
+</tr>
+<tr>
+	<td class="infoInput" colspan="2">
+		<input type="text" id="<?php echo $this->getFieldId('firstname')?>" name="<?php echo $this->getFieldName('firstname')?>" value="<?php echo (strlen($this->getRequest()->getParam('fname'))) ? $this->getRequest()->getParam('fname') : $this->escapeHtml($this->getObject()->getFirstname()) ?>" title="<?php echo $this->getStoreLabel('firstname') ?>" maxlength="255" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?> required-entry" <?php echo $this->getFieldParams() ?> />
+	</td>
+</tr>
+<!--<tr>-->
+<!--	<td class="infoLabel" colspan="2"><label for="lastname" class="required"><span class="rStar">*</span>Last Name</label></td>-->
+<!--    <td class="infoLabel" colspan="2"><label for="lastname" class="required"><span class="rStar">*</span>lastname(要去掉的)</label></td>-->
+<!--    <td class="infoLabel" colspan="2"><label for="lastname" ><span class="rStar">*</span>lastname(要去掉的)</label></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--	<td class="infoInput" colspan="2">-->
+<!--		 <input type="text" id="--><?php //echo $this->getFieldId('lastname')?><!--" name="--><?php //echo $this->getFieldName('lastname')?><!--" value="--><?php //echo (strlen($this->getRequest()->getParam('lname'))) ? $this->getRequest()->getParam('lname') : $this->escapeHtml($this->getObject()->getLastname()) ?><!--" title="--><?php //echo $this->getStoreLabel('lastname') ?><!--" maxlength="255" class="input-text --><?php //echo $this->helper('customer/address')->getAttributeValidationClass('lastname') ?><!-- required-entry" --><?php //echo $this->getFieldParams() ?><!-- />-->
+<!--        <input type="text" id="--><?php //echo $this->getFieldId('lastname')?><!--" name="--><?php //echo $this->getFieldName('lastname')?><!--" value="--><?php //echo (strlen($this->getRequest()->getParam('lname'))) ? $this->getRequest()->getParam('lname') : $this->escapeHtml($this->getObject()->getLastname()) ?><!--" title="--><?php //echo $this->getStoreLabel('lastname') ?><!--" maxlength="255" class="input-text --><?php //echo $this->helper('customer/address')->getAttributeValidationClass('lastname') ?><!-- " --><?php //echo $this->getFieldParams() ?><!-- />-->
+<!--	</td>-->
+<!--</tr>-->
+
+<input type="hidden" id="<?php echo $this->getFieldId('group_id')?>" name="<?php echo $this->getFieldName('group_id')?>" value="<?php echo (ctype_digit($this->getRequest()->getParam('group_id'))) ? $this->getRequest()->getParam('group_id') : 1 ?>" title="<?php echo $this->getStoreLabel('group_id') ?>" />

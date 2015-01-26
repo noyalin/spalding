@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="checkout.links">
+            <block type="checkout/links" name="checkout_cart_link">
+                <!-- <action method="addCartLink"></action> -->
+                <action method="addCheckoutLink"></action>
+            </block>
+        </reference>
+    </default>
+
+    <checkout_cart_index translate="label">
+        <label>Shopping Bag</label>
+        <remove name="right"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+			<action method="addJs"><script>prototype/prototype.js</script></action>
+			<action method="addJs"><script>prototype/validation.js</script></action>
+			<action method="addJs"><script>varien/form.js</script></action>
+			<action method="addItem"><type>skin_css</type><name>css/account_checkout.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="checkout/cart" name="checkout.cart">
+                <action method="setCartTemplate"><value>checkout/cart.phtml</value></action>
+                <action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
+                <action method="chooseTemplate"/>
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/item/default.phtml</template></action>
+
+                <block type="core/text_list" name="checkout.cart.empty.widget" as="checkout_cart_empty_widget" translate="label">
+                    <label>Empty Shopping Cart Content Before</label>
+                </block>
+
+                <block type="core/text_list" name="checkout.cart.top_methods" as="top_methods" translate="label">
+                    <label>Payment Methods Before Checkout Button</label>
+                    <block type="checkout/onepage_link" name="checkout.cart.methods.onepage.top" template="checkout/onepage/link.phtml"/>
+                </block>
+
+                <block type="page/html_wrapper" name="checkout.cart.form.before" as="form_before" translate="label">
+                    <label>Shopping Cart Items Before</label>
+                    <action method="setElementClass"><value>rewards</value></action>
+                    <action method="setMayBeInvisible"><value>1</value></action>
+                </block>
+
+                <block type="core/text_list" name="checkout.cart.methods" as="methods" translate="label">
+                    <label>Payment Methods After Checkout Button</label>
+                    <block type="checkout/onepage_link" name="checkout.cart.methods.onepage.bottom" template="checkout/onepage/link.phtml"/>
+                    <block type="checkout/multishipping_link" name="checkout.cart.methods.multishipping" template="checkout/multishipping/link.phtml"/>
+                </block>
+
+                <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
+                <block type="checkout/cart_shipping" name="checkout.cart.shipping" as="shipping" template="checkout/cart/shipping.phtml"/>
+                <block type="core/text_list" name="checkout.cart.widget" as="checkout_cart_widget" translate="label">
+                    <label>Shopping Cart Items After</label>
+                </block>
+                <block type="checkout/cart_crosssell" name="checkout.cart.crosssell" as="crosssell" template="checkout/cart/crosssell.phtml"/>
+
+                <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+            </block>
+        </reference>
+        <block type="core/text_list" name="additional.product.info" translate="label">
+            <label>Additional Product Info</label>
+        </block>
+    </checkout_cart_index>
+
+    <checkout_cart_configure translate="label">
+        <label>Configure Cart Item</label>
+        <update handle="catalog_product_view"/>
+        <reference name="product.info">
+            <block type="checkout/cart_item_configure" name="checkout.cart.item.configure.block"></block>
+        </reference>
+    </checkout_cart_configure>
+
+<!--
+One page checkout main layout
+-->
+
+    <checkout_onepage_index translate="label">
+        <label>One Page Checkout</label>
+        <reference name="head">
+		<action method="addJs"><script>prototype/prototype.js</script></action>
+	    <action method="addJs"><script>prototype/validation.js</script></action>
+	    <action method="addJs"><script>lib/ccard.js</script></action>
+	    <action method="addJs"><script>varien/form.js</script></action>
+	    <action method="addJs"><script>varien/js.js</script></action>
+		<action method="addItem"><type>skin_css</type><name>css/account_checkout.css</name></action>
+
+        </reference>
+        <remove name="right"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="checkout/onepage" name="checkout.onepage" template="checkout/onepage.phtml">
+                <block type="cms/block" name="checkout.callout" as="checkoutCallout">
+                    <action method="setBlockId"><block_id>checkout_callout</block_id></action>
+                </block>
+               <!-- <block type="checkout/onepage_progress" as="checkoutProgress" name="checkout.progress" template="checkout/onepage/progress.phtml"/> -->
+                <block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="checkout/onepage/login.phtml">
+                    <block type="page/html_wrapper" name="checkout.onepage.login.before" as="login_before" translate="label">
+                        <label>Login/Registration Before</label>
+                        <action method="setMayBeInvisible"><value>1</value></action>
+                    </block>
+                </block>
+                <block type="checkout/onepage_billing" name="checkout.onepage.billing" as="billing" template="checkout/onepage/billing.phtml">
+                    <block type="enterprise_customer/form" template="customer/form/userattributes.phtml" name="customer_form_customer_user_defined_attributes">
+                        <action method="setFormCode"><code>checkout_register</code></action>
+                    </block>
+                    <block type="enterprise_customer/form" template="customer/form/userattributes.phtml" name="customer_form_billing_address_user_defined_attributes">
+                        <action method="setFormCode"><code>customer_register_address</code></action>
+                    </block>
+                </block>
+                <block type="checkout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="checkout/onepage/shipping.phtml">
+                    <block type="enterprise_customer/form" template="customer/form/userattributes.phtml" name="customer_form_shipping_address_user_defined_attributes">
+                        <action method="setFormCode"><code>customer_register_address</code></action>
+                    </block>
+                </block>
+                <block type="checkout/onepage_shipping_method" name="checkout.onepage.shipping_method" as="shipping_method" template="checkout/onepage/shipping_method.phtml">
+                    <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
+                    <!--<block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>-->
+                </block>
+                <block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="checkout/onepage/payment.phtml">
+                    <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="checkout/onepage/payment/methods.phtml">
+                        <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+                    </block>
+                    <block type="core/template" name="checkout.onepage.payment.additional" as="additional" />
+                    <block type="core/template" name="checkout.onepage.payment.methods_additional" as="methods_additional" />
+                </block>
+                <block type="checkout/onepage_review" name="checkout.onepage.review" as="review" template="checkout/onepage/review.phtml"/>
+            </block>
+        </reference>
+        <update handle="customer_form_template_handle"/>
+    </checkout_onepage_index>
+
+<!--
+One page checkout progress block
+-->
+
+  <!--<checkout_onepage_progress>
+        <remove name="right"/>
+        <block type="checkout/onepage_progress" name="root" output="toHtml" template="checkout/onepage/progress.phtml">
+            <block type="checkout/onepage_payment_info" name="payment_info">
+                <action method="setInfoTemplate"><method></method><template></template></action>
+            </block>
+        </block>
+    </checkout_onepage_progress>-->
+
+<!--
+One page checkout payment methods block
+-->
+    <checkout_onepage_paymentmethod>
+        <remove name="right"/>
+        <block type="checkout/onepage_payment_methods" name="root" output="toHtml" template="checkout/onepage/payment/methods.phtml">
+            <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+            <block type="core/template" name="checkout.onepage.payment.methods.scripts" as="scripts" />
+            <block type="core/template" name="checkout.onepage.payment.methods.additional" as="additional" />
+        </block>
+    </checkout_onepage_paymentmethod>
+
+
+<!--
+One page checkout shipping methods block
+-->
+
+    <checkout_onepage_shippingmethod>
+        <remove name="right"/>
+        <block type="checkout/onepage_shipping_method_available" name="root" output="toHtml" template="checkout/onepage/shipping_method/available.phtml"/>
+    </checkout_onepage_shippingmethod>
+
+    <checkout_onepage_additional>
+        <remove name="right"/>
+        <block type="checkout/onepage_shipping_method_additional" name="root" output="toHtml" template="checkout/onepage/shipping_method/additional.phtml">
+            <action method="setDontDisplayContainer"><param>1</param></action>
+        </block>
+    </checkout_onepage_additional>
+
+<!--
+One page checkout order review block
+-->
+
+    <checkout_onepage_review translate="label">
+        <label>One Page Checkout Overview</label>
+        <remove name="right"/>
+        <block type="checkout/onepage_review_info" name="root" output="toHtml" template="checkout/onepage/review/info.phtml">
+            <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/onepage/review/item.phtml</template></action>
+            <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
+            <block type="core/text_list" name="checkout.onepage.review.info.items.before" as="items_before" translate="label">
+                <label>Items Before</label>
+            </block>
+            <block type="core/text_list" name="checkout.onepage.review.info.items.after" as="items_after" translate="label">
+                <label>Items After</label>
+            </block>
+            <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="checkout/onepage/agreements.phtml"/>
+            <block type="core/template" name="checkout.onepage.review.button" as="button" template="checkout/onepage/review/button.phtml"/>
+        </block>
+        <block type="core/text_list" name="additional.product.info" translate="label">
+            <label>Additional Product Info</label>
+        </block>
+    </checkout_onepage_review>
+    <checkout_onepage_success translate="label">
+        <label>One Page Checkout Success</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+			<action method="addJs"><script>prototype/prototype.js</script></action>
+			<action method="addJs"><script>prototype/validation.js</script></action>
+			<action method="addJs"><script>varien/form.js</script></action>
+			<action method="addItem"><type>skin_css</type><name>css/account_checkout.css</name></action>
+        </reference>
+       <reference name="content">
+            <block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+    <checkout_onepage_failure translate="label">
+        <label>One Page Checkout Failure</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="checkout/onepage_failure" name="checkout.failure" template="checkout/onepage/failure.phtml"/>
+        </reference>
+    </checkout_onepage_failure>
+
+    <sku_failed_products_handle>
+        <reference name="checkout.cart">
+            <block type="enterprise_checkout/sku_products" name="sku.failed.products" template="checkout/cart/sku/failed.phtml" as="shopping.cart.table.after">
+                <block type="enterprise_checkout/sku_products_info" name='additional.product.info' template="checkout/cart/sku/failed/info.phtml" />
+                <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/failed.phtml</template></action>
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/failed.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>giftcard</type><block>enterprise_giftcard/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>downloadable</type><block>downloadable/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>virtual</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>undefined</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/failed.phtml</template></action>
+            </block>
+        </reference>
+    </sku_failed_products_handle>
+
+    <checkout_cart_configurefailed translate="label">
+        <label>Configure Cart Item</label>
+        <update handle="catalog_product_view"/>
+        <reference name="product.info">
+            <block type="enterprise_checkout/cart_item_configure" name="checkout.cart.item.configure.block"></block>
+        </reference>
+    </checkout_cart_configurefailed>
+
+<!--
+Customer Account Dashboard
+-->
+
+    <customer_account>
+        <block type="enterprise_checkout/customer_link" name="customer_link_sku">
+            <action method="addDashboardLink" translate="label" module="enterprise_checkout">
+                <block>customer_account_navigation</block><name>checkout</name><path>enterprise_checkout/sku</path><label>Order by SKU</label>
+            </action>
+        </block>
+    </customer_account>
+
+    <enterprise_checkout_sku_index>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="core/template" name="checkout.customer.order" template="checkout/customer/sku.phtml">
+                <block type="enterprise_checkout/customer_sku" name="checkout.customer.sku" template="checkout/widget/sku.phtml">
+                    <action method="setIsTitleHidden"><value>true</value></action>
+                    <block type="core/template" template="checkout/customer/file.phtml"></block>
+                </block>
+            </block>
+        </reference>
+    </enterprise_checkout_sku_index>
+
+</layout>

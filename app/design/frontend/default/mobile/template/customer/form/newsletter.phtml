@@ -1,0 +1,83 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<div id="my-account-all">
+
+	<div class="my-account-top clearfix">
+		<div class="my-account-welcome">
+			<span>
+				<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+				<?php echo 'Welcome, ' . $customerName ?>
+			</span>
+		</div>
+		<div class="my-account-logout">
+			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">Log Out</a>
+		</div>
+	</div>
+
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
+
+	<h1 id="my-account-newsletter">Email Newsletter Sign-Up</h1>
+	<div id="my-account-newsletter-content">
+		<div class="myAccountBox">
+			<p>Keep up-to-date about new arrivals and promotions from Sneakerhead.com. We NEVER share, rent, sell, transfer, or otherwise disclose your personal information, including name and email address.</p>
+		</div>
+
+		<div class="bottom-section-content">
+			<form id="emailsignup" class="footerEmail" target="_blank" action="http://ui.constantcontact.com/d.jsp" method="post" name="ccoptin">
+				<input type="hidden" value="1100638013274" name="m">
+				<input type="hidden" value="oi" name="p">
+				<input type="email" placeholder="EMAIL ADDRESS" name="ea">
+				<button type="submit" name="go" onClick="if(this.form.ea.value == '') return false;">SIGN UP</button>
+			</form>
+		</div>
+
+		<div class="myAccountBox">
+			<h2 style="padding-left: 0 !important">Social Network</h2>
+			<p>Join us on Facebook &amp; Twitter:</p>
+			<ul class="bottom-section-social clearfix">
+				<li class="social-facebook"><a target="_blank" href="http://www.facebook.com/SNEAKERHEADcom"><span>Facebook</span></a></li>
+				<li class="social-twitter"><a target="_blank" href="http://twitter.com/sneakerheadcom"><span>Twitter</span></a></li>
+				<li class="social-instagram"><a target="_blank" href="#"><span>Instagram</span></a></li>
+			</ul>
+		</div>
+
+		<div class="logInInfoBox">
+			<table class="logInInfoBtn">
+				<tr>
+					<td class="backBtn">
+						<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account')) ?>" class="backBtn">Back To My Profile</a>
+					</td>
+				</tr>
+			</table>
+			<div class="clearfloats"></div>
+		</div>
+
+
+	</div>
+</div>

@@ -1,0 +1,145 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+$configuredSummaryMax = Mage::getModel('core/variable')->loadByCode('review_summary_max_display')->getValue('html');
+$configuredReviewMax = Mage::getModel('core/variable')->loadByCode('review_summary_max_display')->getValue('text');
+$summaryMax = ((int) $configuredSummaryMax > 0) ? $configuredSummaryMax : 2;
+$reviewMax = ((int) $configuredReviewMax > 0) ? $configuredReviewMax : 6;
+
+$page = Mage::app()->getFrontController()->getRequest()->getRouteName();
+$request = $this->getRequest();
+$module = $request->getModuleName();
+?>
+<?php $_items = $this->getReviewsCollection()->getItems(); ?>
+
+<?php /* Default product detail page */ ?>
+<?php if ($module != 'review'): ?>
+	<?php if (count($_items)): ?>
+		<?php $n = 0; ?>
+		<?php foreach ($_items as $_review): ?>
+			<?php
+			if (++$n > $summaryMax) {
+				break;
+			}
+			?>
+			<div class="prListWrapper">
+				<div class="prListTitle">
+					<h5><?php echo $this->htmlEscape($_review->getTitle()) ?></h5>
+					<h6>
+						<table class="data-table review-summary-table">
+							<tbody>
+								<?php foreach ($_review->getRatingVotes() as $_vote): ?>
+									<tr>
+										<td class="value">
+											<div class="rating-box">
+												<div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											By <span><?php echo $this->__('%s', $this->htmlEscape($_review->getNickname())) ?></span> from <span><?php echo $this->__('%s', $this->htmlEscape($_review->getLocation())) ?></span> on <span><?php echo $this->__('%s', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</h6>
+				</div>
+				<?php
+				$reviewText = strip_tags($this->htmlEscape($_review->getDetail()));
+				$reviewsUrl = Mage::getUrl('review/product/list', array(
+							'id' => $this->getProduct()->getId(),
+							'category' => $this->getProduct()->getCategoryId()
+				));
+				if (strlen($reviewText) > 300) {
+					// truncate string
+					$stringCut = substr($reviewText, 0, 200);
+					// make sure it ends in a word so assassinate doesn't become ass...
+					$reviewText = substr($stringCut, 0, strrpos($stringCut, ' '));
+					$reviewText .= "... <a href='{$reviewsUrl}#reviewTitle_{$_review->getId()}'>Read More</a>";
+				}
+				?>
+				<?php echo $reviewText ?>
+
+				<br clear="all"/>
+				<br clear="all"/>
+			</div>
+		<?php endforeach; ?>
+
+		<?php if (count($_items) > $summaryMax): ?>
+			<div id="detailReadMoreReviews" class="detailReadMore">
+				<a href="<?php echo $reviewsUrl; ?>#readMore">See more Reviews +</a>
+			</div>
+		<?php endif; ?>
+
+	<?php endif; ?>
+	<?php /* review/product view page */ ?>
+<?php else: ?>
+	<?php if (count($_items)): ?>
+		<?php $n = 0; ?>
+		<?php foreach ($_items as $_review): ?>
+			<a name="reviewTitle_<?php echo $_review->getId() ?>"></a>
+			<div class="prListWrapper<?php echo (++$n > $reviewMax) ? ' more' : ''; ?>">
+				<div class="prListTitle">
+					<h5><?php echo $this->htmlEscape($_review->getTitle()) ?></h5>
+					<h6>
+						<table class="data-table review-summary-table">
+							<tbody>
+								<?php foreach ($_review->getRatingVotes() as $_vote): ?>
+									<tr>
+										<td class="value">
+											<div class="rating-box">
+												<div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											By <span><?php echo $this->__('%s', $this->htmlEscape($_review->getNickname())) ?></span> from <span><?php echo $this->__('%s', $this->htmlEscape($_review->getLocation())) ?></span> on <span><?php echo $this->__('%s', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</h6>
+				</div>
+				<?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
+				<br clear="all"/>
+				<br clear="all"/>
+
+				<?php if ($n < count($_items) && !($n % $reviewMax)): ?>
+					<div id="detailReadMoreReviews" class="detailReadMore read-more-<?php echo $n ?>">
+						<a href="javascript:void(0)" onClick="showMoreReviews('.detailReadMore.read-more-<?php echo $n ?>', <?php echo $reviewMax ?>)">See More Reviews +</a>
+					</div>
+				<?php endif; ?>
+
+			</div>
+		<?php endforeach; ?>
+
+	<?php endif; ?>
+<?php endif; ?>

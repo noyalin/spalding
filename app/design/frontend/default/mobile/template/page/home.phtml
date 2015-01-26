@@ -1,0 +1,163 @@
+<?php
+/**
+ * Requires creating of cms page and setting for mobile view.
+ * setTemplate = "page/home.phtml"
+ * add layoutXML head/refs for skin_js/index.js and skin_css/index.css
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+	<?php echo $this->getChildHtml('head') ?>
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/jquery.iosslider.min.js"></script>
+</head>
+
+<body>
+<div id="page">
+	<?php echo $this->getChildHtml('after_body_start') ?>
+	<?php echo $this->getChildHtml('global_notices') ?>
+	<?php echo $this->getChildHtml('header') ?>
+
+	<div class="home-wrapper">
+
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_page_sections')->toHtml(); ?>
+
+		<?php
+
+		$_category = Mage::getModel('catalog/category')->load(573);
+		$_productCollection = Mage::getResourceModel('catalog/product_collection')
+			->addCategoryFilter($_category)
+			->addAttributeToSelect('*')
+			->addAttributeToFilter('status', 1)
+			->addAttributeToFilter('visibility', 4);
+		$_helper = $this->helper('catalog/output');
+		?>
+
+
+	<header class="global-header">
+<!--	<h1 class="home">New Arrivals</h1>-->
+    <h1 class="home">新品上市</h1>
+	</header>
+
+	<!-- ****************** NEW ARRIVALS SLIDERS ******************** -->
+	<section id="product_wrapper" class="landing">
+		<div class="sliderContainerWrapperLanding">
+		<table class="sliderContainer">
+		<tr>
+		<td class="sliderNavCell"><a class="sliderMiniPrev"></a></td>
+		<td class="iosSliderCell">
+			<div class='iosSliderStyles' style="opacity: 0; filter: alpha(opacity:0);">
+
+				<!-- slider -->
+				<div class = 'slider'>
+
+				<?php foreach ($_productCollection as $_product) : ?>
+					<?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+					<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+					<div class = 'button'>
+						<a href="<?php echo $_product->getProductUrl()?>" class="availableColorPxavailableColorPx">
+							<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html')?>/<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1" />
+						</a>
+						<a class="product-name" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><br><?php echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?></a>
+<!--						<p class="cat-price sku---><?php //echo $_product->getSku() ?><!--">$--><?php //echo number_format($_product->getPrice(), '2', '.', ','); ?><!--</p>-->
+                        <p class="cat-price sku-<?php echo $_product->getSku() ?>">￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></p>
+					</div>
+				<?php endforeach; ?>
+					<?php /* More New Arrivals Button */ ?>
+					<div class = 'button'>
+						<a href="<?php echo Mage::getUrl(''); ?>new-arrivals-men-p1.html" class="availableColorPx">
+							<img class="last" src="<?php echo $this->getSkinUrl(''); ?>images/view-all-new-arrival.png" />
+						</a>
+					</div>
+
+
+				</div>
+
+			</div>
+		<div class="clearfloats"></div>
+		</td>
+		<td class="sliderNavCell"><a class="sliderMiniNext"></a></td>
+		</tr>
+		</table>
+		</div>
+	</section>
+
+	<!-- main category entrance banner -->
+	<section class="banner-main-wrapper clearfix" style>
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>mens-shoes.html"><img src="<?php echo $this->getSkinUrl(''); ?>images/mobile-banners-mens.jpg"></a>
+			</div>
+		</div>
+
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>womens-shoes.html"><img src="<?php echo $this->getSkinUrl(''); ?>images/mobile-banners-womens.jpg"></a>
+			</div>
+		</div>
+	</section>
+	<section class="banner-main-wrapper clearfix">
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>kids.html"><img src="<?php echo $this->getSkinUrl(''); ?>images/mobile-banners-kids.jpg"></a>
+			</div>
+		</div>
+
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>accessories.html"><img src="<?php echo $this->getSkinUrl(''); ?>images/mobile-banners-gear.jpg"></a>
+			</div>
+		</div>
+	</section>
+	<!-- main category entrance banner -->
+
+		<div class="clearfloats"></div>
+		<?php echo $this->getChildHtml('footer') ?>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	jQuery('.iosSliderStyles').iosSlider({
+		startAtSlide: 1,
+		snapToChildren: true,
+		snapSlideCenter: false,
+		snapVelocityThreshold: 0,
+		desktopClickDrag: true,
+		infiniteSlider: false,
+		navPrevSelector: 'a.sliderMiniPrev',
+		navNextSelector: 'a.sliderMiniNext',
+		keyboardControls: false
+	});
+
+	// Allowing it to be visible when drawing causes all four slides to be visible momentarily.
+	// 'display: none' would cause the page jump. This method maintains the placeholder position.
+	jQuery('.iosSliderStyles').css({'opacity': '1', 'filter': 'alpha(opacity:100)'});
+
+</script>
+
+<!-- BEGIN: Google Trusted Stores -->
+<script type="text/javascript">
+//  var gts = gts || [];
+//
+//  gts.push(["id", "66454"]);
+//  //gts.push(["google_base_offer_id", "ITEM_GOOGLE_SHOPPING_ID"]);
+//  gts.push(["google_base_subaccount_id", "57460"]);
+//  gts.push(["google_base_country", "US"]);
+//  gts.push(["google_base_language", "EN"]);
+//
+//  (function() {
+//	var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+//	var gts = document.createElement("script");
+//	gts.type = "text/javascript";
+//	gts.async = true;
+//	gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+//	var s = document.getElementsByTagName("script")[0];
+//	s.parentNode.insertBefore(gts, s);
+//  })();
+</script>
+<!-- END: Google Trusted Stores -->
+
+</body>
+</html>
