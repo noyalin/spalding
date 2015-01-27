@@ -1,13 +1,13 @@
 <?php
 /**
- * Magento Enterprise Edition
+ * Magento
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the Magento Enterprise Edition License
- * that is bundled with this package in the file LICENSE_EE.txt.
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
  * It is also available through the world-wide-web at this URL:
- * http://www.magentocommerce.com/license/enterprise-edition
+ * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@magentocommerce.com so we can send you a copy immediately.
@@ -20,15 +20,29 @@
  *
  * @category    design
  * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://www.magentocommerce.com/license/enterprise-edition
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
 <?php $_product = $this->getProduct(); ?>
-<?php if($_product->getTypeId() == 'giftcard' || $_product->getTypeId() == 'virtual'): ?>
-    <div class="detailSelectBtn">
-<!--        <button type="submit" class="addToBag" onclick="return validateForm('.giftcard-form')"/>ADD TO BAG</button>-->
-        <button type="submit" class="addToBag" onclick="return validateForm('.giftcard-form')"/>添加收藏</button>
-        <?php echo $this->getChildHtml('', true, true) ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-box">
+        <div class="add-to-cart">
+            <?php if(!$_product->isGrouped()): ?>
+                <!--        <label for="qty">--><?php //echo $this->__('Qty:') ?><!--</label>-->
+                <label for="qty">数量：</label>
+                <!--        <input type="text" name="qty" id="qty" maxlength="12" value="--><?php //echo $this->getProductDefaultQty() * 1 ?><!--" title="--><?php //echo $this->__('Qty') ?><!--" class="input-text qty" />-->
+                <input type="text" name="qty" id="qty_item_1" value="<?php echo $this->getProductDefaultQty() * 1 ?>" onKeyUp="setAmount.modify('#qty_item_1')" class="proNum input-text qty" />
+                <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>
+                <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
+            <?php endif; ?>
+            <!--        <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>--><?php //echo $buttonTitle ?><!--</span></span></button>-->
+            <div class="detailSelectBtn">
+<!--                <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>加入购物车</span></span></button>-->
+                <button type="submit" class="addToBag" onclick="return validateForm('.giftcard-form')"/>加入购物车</button>
+            </div>
+            <?php echo $this->getChildHtml('', true, true) ?>
+        </div>
     </div>
 <?php endif; ?>

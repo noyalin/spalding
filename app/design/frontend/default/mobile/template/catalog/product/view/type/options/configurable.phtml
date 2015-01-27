@@ -1,13 +1,13 @@
 <?php
 /**
- * Magento Enterprise Edition
+ * Magento
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the Magento Enterprise Edition License
- * that is bundled with this package in the file LICENSE_EE.txt.
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
  * It is also available through the world-wide-web at this URL:
- * http://www.magentocommerce.com/license/enterprise-edition
+ * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@magentocommerce.com so we can send you a copy immediately.
@@ -20,179 +20,137 @@
  *
  * @category    design
  * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://www.magentocommerce.com/license/enterprise-edition
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
 
-<?php
-$_product    = $this->getProduct();
-$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
-
-$_code = Mage::getModel('eav/entity_attribute_set')->load($_product->getAttributeSetId())->getAttributeSetName();
-$attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')->setCodeFilter($_code)->getFirstItem();
-$attributeId = $attributeInfo->getAttributeId();
-
-$attributeOptions = json_decode(Mage::getModel('core/variable')->loadByCode('catalog_attribute_size_options')->getValue('html'), $assoc = true);
-
-?>
-    <div class="detailSelectBox">
-	<label>
-	<select class="super-attribute-select" name="super_attribute[<?php echo $attributeId ?>]" id="attribute<?php echo $attributeId ?>">
-<!--	    <option value="0">Select Size:</option>-->
-        <option value="0">选择尺码:</option>
-		<?php foreach ($attributeOptions[$attributeId]['options'] as $value => $option): ?>
-	    <option value="<?php echo $value ?>" price="<?php echo $option['price'] ?>"><?php echo $option['label'] ?></option>
-		<?php endforeach ?>
-	</select>
-	</label>
-    </div>
-<script type="text/javascript">
-
-    <?php if (!$_product->getJ2tRewardvalue()) : ?>
-	var skuXml = '<?php echo $_product->getSku() ?>';
-    <?php else : ?>
-	var skuXml = '<?php echo substr($_product->getSku(), 6) ?>';
-    <?php endif ?>
-
-    jQuery(document).ready(function(jQuery) {
-		jQuery.ajax({
-			url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>inventory/product/' + skuXml + '.xml',
-			type: 'GET',
-			dataType: 'xml',
-			success: xmlParser,
-			error: notFound
-		});
-
-
-		if (!isMobileDevice) {
-			jQuery('p.detail-call-order').html('<a>ORDER BY PHONE ONLY. CALL US @ 1-866-339-7463</a>');
-		}
-
+<script>
+    jQuery(function() {
+        var spanLen = jQuery('#product-options-wrapper input[type="radio"]').length;
+        if(spanLen<2){
+            jQuery('#product-options-wrapper span').addClass('checked');
+            jQuery('#product-options-wrapper input[type="radio"]').attr('checked', 'checked');
+        }else{
+            jQuery('#product-options-wrapper span').removeClass('checked');
+            jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked');
+            jQuery('#product-options-wrapper span').click(function(){
+                var radioId = jQuery(this).attr('name');
+                jQuery('#product-options-wrapper span').removeClass('checked') && jQuery(this).addClass('checked');
+                jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
+            });
+        };
     });
-    function xmlParser(xml) {
-		var sizeOptions = new Array();
-		jQuery(xml).find("Info").each(function () {
-			var categoryIds = jQuery(this).find('CategoryIds').text();
-			categoryIdsArray = new Array();
-			categoryIdsArray = categoryIds.split(',');
-		});
-
-		jQuery(xml).find('Product').each(function () {
-			var optionId = jQuery(this).find('OptionId').text();
-			var label = jQuery(this).find('Label').text();
-
-			if (jQuery.inArray('87', categoryIdsArray) >= 0) {
-				switch (label) {
-					case 'S':
-					var additionalLabel = ' (3Y-5Y)';
-					break;
-					case 'M':
-					var additionalLabel = ' (6-8)';
-					break;
-					case 'L':
-					var additionalLabel = ' (8-12)';
-					break;
-					case 'XL':
-					var additionalLabel = ' (12-15)';
-					break;
-					default:
-					var additionalLabel = '';
-				}
-			} else if (jQuery.inArray('101', categoryIdsArray) >= 0) {
-				//Search for nike womens sock
-				if(jQuery('.category-header:contains("Women")').text()){
-					switch (label) {
-						case 'S':
-						var additionalLabel = ' (4-6)';
-						break;
-						case 'M':
-						var additionalLabel = ' (6-10)';
-						break;
-						case 'L':
-						var additionalLabel = ' (10-13)';
-						break;
-						default:
-						var additionalLabel = '';
-					}
-				} else {
-					switch (label) {
-						case 'S':
-						var additionalLabel = ' (3Y-5Y)';
-						break;
-						case 'M':
-						var additionalLabel = ' (6-8)';
-						break;
-						case 'L':
-						var additionalLabel = ' (8-12)';
-						break;
-						case 'XL':
-						var additionalLabel = ' (12-15)';
-						break;
-						default:
-						var additionalLabel = '';
-					}
-				}
-			} else if (jQuery.inArray('118', categoryIdsArray) >= 0) {
-				switch (label) {
-					case 'S':
-					var additionalLabel = ' (6-8.5)';
-					break;
-					case 'L':
-					var additionalLabel = ' (9-13)';
-					break;
-					default:
-					var additionalLabel = '';
-				}
-			} else {
-				var additionalLabel = '';
-			}
-
-			jQuery('#attribute<?php echo $attributeId ?> option').each(function(){
-				if (jQuery(this).val() == optionId) {
-					var thisHtml = jQuery(this).html() + additionalLabel;
-					jQuery(this).html(thisHtml);
-				}
-			});
-
-			sizeOptions.push({
-				'option': optionId,
-				'label': label,
-			});
-		});
-
-		if (sizeOptions.length < 1) {
-			notFound();
-		}
-
-		jQuery('#attribute<?php echo $attributeId ?> option').each(function(){
-			if (jQuery(this).val() != '0') {
-				jQuery(this).remove();
-			}
-		});
-
-		if (sizeOptions.length > 0) {
-			for (n = 0; n < sizeOptions.length; n++) {
-				jQuery('#attribute<?php echo $attributeId ?>').append("<option value='" + sizeOptions[n].option + "'>" + sizeOptions[n].label + "</option>");
-			}
-		}
-    }
-	function notFound(){
-		jQuery('#attribute<?php echo $attributeId ?>').remove();
-		jQuery('.detailSelectBox').hide();
-		jQuery('.detailSelectBtn').hide();
-		jQuery('.detail-call-order').hide();
-		jQuery('.product-shipgroup-label').html('<span class="sold-out">This item is currently sold out.</span>');
-		jQuery('p.detail-sold-out').show();
-	}
-
 </script>
 
+<?php
+$_product    = $this->getProduct();
+$attributeSetModel = Mage::getModel("eav/entity_attribute_set");
+$attributeSetModel->load($_product->getAttributeSetId());
+$attributeSetName = $attributeSetModel->getAttributeSetName();
+$sku = $_product->getSku();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+?>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <!--    <div class="sale-num prodetail-box">-->
+    <!--        <span>篮球类型：</span>-->
+    <!--        --><?php //foreach($_attributes as $_attribute): ?>
+    <!--        <span class="sale_kind sale_kindChos">--><?php //echo $_attribute; ?><!--</span>-->
+    <!--        --><?php //endforeach; ?>
+    <!--    </div>-->
 
-<!--<p class="detail-sold-out">CURRENTLY SOLD OUT</p>-->
-<p class="detail-sold-out">目前售罄</p>
 
-<div class="detailSelectBtn">
-<!--	<button class="addToBag" type="submit" onClick="return validateSelect('#attribute--><?php //echo $attributeId ?><!--')">ADD TO BAG</button>-->
-    <button class="addToBag" type="submit" onClick="return validateSelect('#attribute<?php echo $attributeId ?>')">添加购物车</button>
-</div>
+
+
+    <?php foreach($_attributes as $_attribute): ?>
+        <?php
+        $valueArr = $_attribute->getPrices();
+        ?>
+        <div class="sale-num prodetail-box">
+            <!--                <span>--><?php //echo $_attribute->getLabel() ?><!--：</span>-->
+            <label><?php echo $_attribute->getLabel() ?>：</label>
+            <?php $sizeIndex = 1;?>
+            <?php foreach($valueArr as $optionValue):?>
+                <?php
+                if($attributeSetName == 'ball'){
+                    $simpleSku = $sku."-OneSize";
+                    $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
+                    $qtyStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleSku)->getQty();
+                    $stockStatus = "";
+                    if($qtyStock == 0){
+                        $stockStatus = "目前无货";
+                    }
+                }else{
+                    $simpleSku = $sku."-".$optionValue['default_label'];
+                    $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
+                    $qtyStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleSku)->getQty();
+                    if($qtyStock == 0){
+                        continue;
+                    }
+                }
+                ?>
+                <?php $sizeIndex  = $sizeIndex + 1;?>
+                <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" name="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>"><?php echo $optionValue['label']; ?></span>
+                <input type="radio"  data-input="kinds" value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
+                <label><?php echo $stockStatus; ?></label>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif;?>
+
+
+
+<?php
+$_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter(array(array('attribute'=> 'model','eq' => $_product->getModel())));
+?>
+<?php if ($attributeSetName=='apparel' && count($_productAvailableColorsCollection) > 1) : ?>
+    <div id="detailAvailColorWrap" class="sale-num prodetail-box">
+        <span class="ms-fl">可选颜色：</span>
+        <div id="detailAvailColor" class="ms-fl">
+            <?php
+            $i = 0;
+
+            $pageUrlkey = $_product->getUrlKey();
+            foreach ($_productAvailableColorsCollection as $productColor) {
+                if ($i++ < 5) {
+                    $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
+                    $thisUrlkey = $_productColor->getUrlKey();
+                    $availableColorPxNow = "";
+                    $border = '';
+                    if($pageUrlkey===$thisUrlkey){
+                        $availableColorPxNow =  '<img src='.$this->getSkinUrl("images/productDetail_kind.png").'  class="availableColorPxNow"/>';
+//                        $border = "border:2px solid #FBB605";
+                        $border = "";
+                    }
+//                    $thisSmallImage = $this->helper('catalog/image')->init($_product, 'small_image')->resize(50, 50);
+//                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding45px?$image45px='.$thisUrlkey.'-1';
+                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$thisUrlkey.'-1';
+
+                    echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.
+                        '<div style="height:50px;padding-left:4px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
+                        </a>';
+//                    echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.'<img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="" width="50" height="50"/></a>';
+                }
+            }
+            ?>
+        </div>
+        <?php if (count($_productAvailableColorsCollection) > 5) : ?>
+            <div id="detailAvailColorMore">
+                <?php
+                $i = 0;
+                foreach ($_productAvailableColorsCollection as $productColor) {
+                    if ($i++ >= 5) {
+                        $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
+                        echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" width="84" height="84"/></a>';
+                    }
+                }
+                ?>
+            </div>
+            <div class="clearfloats"></div>
+            <div id="detailReadMoreColors" class="detailReadMore">
+                <a href="">See more +</a>
+            </div>
+        <?php endif ?>
+        <div class="clear"></div>
+    </div>
+<?php endif ?>

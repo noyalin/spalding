@@ -131,45 +131,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 	</div>
 	<?php endif; ?>
 
-	<?php /********************************************************************/ ?>
-	<?php /********************************************************************/ ?>
-
-<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
-	<div class="sliderContainerWrapper">
-	<table class="sliderContainer">
-	<tr>
-	<td class="sliderNavCell"><?php if (count($_productAvailableColorsCollection) > 3): ?><a class="sliderMiniPrev"></a><?php endif; ?></td>
-	<td class="iosSliderCell">
-		<div class='iosSliderStyles' style="opacity: 0; filter: alpha(opacity:0);">
-
-			<!-- slider -->
-			<div class = 'slider'>
-
-			<?php $startingSlide = 1; ?>
-			<?php $i = 0; foreach ($_productAvailableColorsCollection as $productColor) : ?>
-					<?php $i++ ?>
-
-					<?php if ($productColor->getId() == $_product->getId()) $startingSlide = $i; ?>
-					<?php $_productColor = Mage::getModel('catalog/product')->load($productColor->getId()); ?>
-					<div class = 'button<?php if ($productColor->getId() == $_product->getId()) echo ' selected'; ?>'>
-						<a href="<?php echo $_productColor->getProductUrl()?>" class="availableColorPx"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html')?>/<?php echo ($_product->getDefaultCategory() == 213) ? substr($this->htmlEscape($_productColor->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_productColor->getUrlKey()) ?>-1" alt="<?php echo $_helper->productAttribute($_productColor, $_productColor->getName(), 'name') ?>"></a>
-					</div>
-
-			<?php endforeach; ?>
-			</div>
-
-		</div>
-	<div class="clearfloats"></div>
-	</td>
-	<td class="sliderNavCell"><?php if (count($_productAvailableColorsCollection) > 3): ?><a class="sliderMiniNext"></a><?php endif; ?></td>
-	</tr>
-	</table>
-	</div>
-<?php endif; ?>
-
-	<?php /********************************************************************/ ?>
-	<?php /********************************************************************/ ?>
-
 	<section class="detail-style-info<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) echo ' moreStyles'; ?>">
 		<p class="detail-price">
 			<?php if (!is_null($_product->getJ2tRewardvalue())): ?>
@@ -178,45 +139,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 				<?php echo $this->getPriceHtml($_product) ?>
 			<?php endif; ?>
 		</p>
-
-		<?php if (!preg_match('/^promo-/i', $_product->getSku()) && $_product->getMsrp() && $_product->getPrice() <= $_product->getMsrp() - ($_product->getMsrp() * .05)): //5% ?>
-			<p class="detail-msrp">MSRP: <span class="detail-msrp-price">$<?php echo number_format($_product->getMsrp(), '2', '.', ','); ?></span></p>
-		<?php endif; ?>
-
-<!--		--><?php //if ($_product->getPrice() > 0): ?>
-<!--		<p class="detail-tax">Tax: $0.00 *excludes CA residents.</p>-->
-<!--		--><?php //endif; ?>
-
-		<?php if ($_product->getLimitQuantity()): ?>
-<!--		<p class="detail-limit-buy">*LIMIT 1 PAIR PER CUSTOMER.</p>-->
-        <p class="detail-limit-buy">*每个客户限购一双.</p>
-		<?php endif; ?>
-
-		<!-- FREE RETURN/SHIPPING ELIGIBILITY -->
-		<?php if ($_product->getSpecialShippingGroup() == 8001 || $_product->getSpecialShippingGroup() == 8002): ?>
-<!--		<p class="detail-free-shipping">FREE SHIPPING &amp; FREE RETURN ELIGIBLE.</span></li>-->
-        <p class="detail-free-shipping">包邮 &amp; 免费退换货.</span></li></p>
-		<?php else: ?>
-<!--		<p class="detail-nofree-shipping">*Not eligible for Free Shipping & Free Return.</li>-->
-        <p class="detail-nofree-shipping">*没有资格获得免费送货及免费退货.</li></p>
-		<?php endif ?>
-
-		<!-- REWARD POINTS -->
-		<?php if ($_helper->productAttribute($_product, $_product->getRewardPoints(), 'reward_points') == NULL): ?>
-			<p class="detail-reward-points"><?php echo $this->getChildHtml('points_product') ?></p>
-		<?php endif; ?>
-
-		<!-- ELIGIBLE FOR DISCOUNT -->
-		<?php if ($_helper->productAttribute($_product, $_product->getEligibleForDiscount(), 'eligible_for_discount') == 0 && $_helper->productAttribute($_product, $_product->getRewardPoints(), 'reward_points') != NULL): ?>
-<!--			<p class="detail-reward-points">*Excluded From Discount & Reward Points</p>-->
-            <p class="detail-reward-points">*不能使用折扣 & 积分</p>
-		<?php elseif ($_helper->productAttribute($_product, $_product->getEligibleForDiscount(), 'eligible_for_discount') == 0 && $_helper->productAttribute($_product, $_product->getRewardPoints(), 'reward_points') == NULL) : ?>
-<!--			<p class="detail-reward-points">*Excluded From Discount</p>-->
-            <p class="detail-reward-points">*不能使用折扣</p>
-		<?php elseif ($_helper->productAttribute($_product, $_product->getEligibleForDiscount(), 'eligible_for_discount') == 1 && $_helper->productAttribute($_product, $_product->getRewardPoints(), 'reward_points') != NULL) : ?>
-<!--			<p class="detail-reward-points">*Excluded From Reward Points</p>-->
-            <p class="detail-reward-points">*不能使用积分</p>
-		<?php endif; ?>
 
 
 <!--		<p>Style Number: --><?php //echo $_product->getSku() ?><!--</p>-->
@@ -231,10 +153,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 	<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" name="product_addtocart_form" id="product_addtocart_form">
 	<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
 
-			<?php if (preg_match('/gc-/i', $_product->getSku())) :?>
-				<!-- Gift Card Form -->
-				<?php echo $this->getChildHtml('product_type_data') ?>
-			<?php endif ?>
 
 		    <?php if (!$this->hasOptions()): ?>
 			<div class="add-to-box">
@@ -249,7 +167,7 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 					<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
 					</div>
 				<?php else: ?>
-					<?php echo $this->getChildHtml('addto') ?>
+<!--					--><?php //echo $this->getChildHtml('addto') ?>
 				<?php endif;?>
 		    <?php endif; ?>
 
@@ -277,61 +195,23 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 			<p><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?></p>
 		</div>
 	</div>
-<!--	<h3 id="detailTabReturns">Shipping &amp; Returns <a class="headerToggle"></a></h3>-->
-    <h3 id="detailTabReturns">物流 &amp; 退换货 <a class="headerToggle"></a></h3>
-	<div id="detailTabReturnsContent">
-		<div>
-		<?php if ($_product->getSpecialShippingGroup() == 8001 || $_product->getSpecialShippingGroup() == 8002): ?>
-		<p>
-<!--			<span class="boldText greyText">THIS ITEM IS FREE RETURN ELIGIBLE.</span>-->
-            <span class="boldText greyText">此商品符合免费退换货条件.</span>
-		</p>
-		<p>
-			With <b class="boldText greyText">FREE RETURNS</b>
-			there's no risk. Sneakerhead.com will issue you a FREE return label if you are not completely satisfied with your purchase.
-			Simply return items(s) for an exchange or refund
-			<span class="boldText greyText">within 30 days of the delivery date</span>.
-			<a href="<?php echo $this->getUrl() ?>cs-returns.html">Learn more</a>
-		</p>
-		<?php else: ?>
-		<p>
-			If, for any reason, you are not completely satisfied with your purchase, simply return items(s) for an exchange or refund
-			<span class="boldText greyText">within 30 days of the delivery date</span>.
-			<a href="<?php echo $this->getUrl() . 'customer/account/' ?>cs-returns.html">Learn more</a>
-		</p>
-		<?php endif ?>
-		</div>
-	</div>
 
-<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
-	<h3 id="detailTabStyles">Available Colors <a class="headerToggle"></a></h3>
-	<div id="detailTabStylesContent">
-		<div id="detailAvailColor">
-			<?php
-			$i = 0;
-			foreach ($_productAvailableColorsCollection as $productColor) {
-				$i++;
-				$_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
-				echo '<a href="' . $_productColor->getProductUrl() . '" class="availableColorPx"><img src="' . Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') . '/' . $this->htmlEscape($_productColor->getUrlKey()) . '-1" alt="' . $_helper->productAttribute($_productColor, $_productColor->getName(), 'name') . '" width="125"/></a>';
-			}
-			?>
-		</div>
-	</div>
-	<?php endif; ?>
 
-<!--	<h3 id="detailTabReviews">Product Reviews <a class="headerToggle"></a></h3>-->
-    <h3 id="detailTabReviews">商品评价 <a class="headerToggle"></a></h3>
-	<div id="detailTabReviewsContent">
-<!--    	<div class='title' id="review-form">Overall Rating for --><?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><!--</div>-->
-        <div class='title' id="review-form">总体评价: <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
-			<div class="prOverallRating">
-			<?php echo $this->getReviewsSummaryHtml($_product, 'custom', true) ?>
-			</div>
-		<?php echo $this->getChildHtml('reviews') ?>
-
-		<!-- Product Review Form -->
-	    <?php echo $this->getChildHtml('product_additional_data') ?>
-	</div>
+<?php //if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
+<!--	<h3 id="detailTabStyles">Available Colors <a class="headerToggle"></a></h3>-->
+<!--	<div id="detailTabStylesContent">-->
+<!--		<div id="detailAvailColor">-->
+<!--			--><?php
+//			$i = 0;
+//			foreach ($_productAvailableColorsCollection as $productColor) {
+//				$i++;
+//				$_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
+//				echo '<a href="' . $_productColor->getProductUrl() . '" class="availableColorPx"><img src="' . Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') . '/' . $this->htmlEscape($_productColor->getUrlKey()) . '-1" alt="' . $_helper->productAttribute($_productColor, $_productColor->getName(), 'name') . '" width="125"/></a>';
+//			}
+//			?>
+<!--		</div>-->
+<!--	</div>-->
+<!--	--><?php //endif; ?>
 
 </section>
 
