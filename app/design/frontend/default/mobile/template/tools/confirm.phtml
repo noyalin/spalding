@@ -67,6 +67,11 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
             return s == '';
         }
 
+        function loading(){
+            var html = '<div><img src="auth/ajax-loader-tr.gif"/></div>';
+            jQuery('#barcodeVerifyResult').html(html);
+        }
+
     });
 </script>
 
@@ -106,8 +111,9 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
                     <div style="font-weight:bold;color:#fdb905;">
                         <em id="barcode_error" class="error_em"></em>
                         <em id="verifycode_error" class="error_em"></em>
+                        <div id="barcodeVerifyResult"></div>
                     </div>
-                    <div id="barcodeVerifyResult"></div>
+
 
 				</div>
 			</form>
