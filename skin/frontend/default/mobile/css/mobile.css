@@ -3686,3 +3686,140 @@ h3 a.headerToggle {
 	position: relative;
 	top: 4px;
 }
+
+
+/*真伪验证*/
+.confirmWrap{
+	position: relative;
+	margin:60px auto 0;
+}
+#my-account-wrapper h1{
+	font-weight:bold;
+	font-size:14px;
+	margin:50px 0 15px 0;
+	border-bottom:1px solid #333;
+	border-top:1px solid #282828;
+	background:url(../images/bg-title.png) repeat rgba(0,0,0,00);
+	letter-spacing:0.4px;
+	color:#F3AC00;
+	padding:15px;
+}
+#my-confirm-login-wrapper{
+	padding:0 20px;
+}
+
+.confirmBox .infoInput{
+	border-radius:5px;
+	background:rgba(255,255,255,1);
+	overflow:hidden;
+	padding:10px 0;
+	text-align:center;
+}
+
+
+.confirmBox input{
+	border:none;
+	background:none;
+	outline:none;
+	width:95%;
+	font-size:12px;
+	color:rgba(0,0,0,1.00);
+}
+
+
+.confirm-content{
+	margin-bottom:10px;
+}
+
+
+
+.confirmBox p{
+	font-size: 14px;
+	font-weight: bold;
+	margin-top:10px;
+}
+
+.infoInput span{
+	position: absolute;
+	height:36px;
+	line-height:36px;
+	width:100px;
+	z-index: 99;
+	right:20px;
+	color:#333;
+	margin-top:-10px;
+	background: #ccc;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.infoInput span img{
+	width: 100%;
+}
+
+.confirmBtn{
+	margin:15px 0;
+}
+.confirmBtn button{
+		border:none;
+		width:100%;
+		display:block;
+		float:none;
+		border-radius:5px;
+		font-size:12px;
+		font-weight:bold;
+		padding:15px 0;
+		color:#FFF;
+		font-family:Arial;
+		background: rgb(239,190,83); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(239,190,83,1) 0%, rgba(243,172,0,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,190,83,1)), color-stop(100%,rgba(243,172,0,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efbe53', endColorstr='#f3ac00',GradientType=0 ); /* IE6-9 */
+		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
+		text-transform: uppercase;
+	}
+
+
+
+.confirm-content h3{
+	text-align: center;
+	color: #F3AC00;
+	margin-top:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
