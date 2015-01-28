@@ -500,12 +500,17 @@ section header{
 	font-weight:bold;
 	color:#FFF;
 }
-.top-nav-wrapper a.sneakerhead {
+.top-nav-wrapper a.splading {
 	float:left;
 	border: none !important;
 }
-.top-nav-wrapper a.sneakerhead:active,
-.top-nav-wrapper a.sneakerhead:hover {
+
+.top-nav-wrapper a.splading img{
+	width: 90%;
+}
+
+.top-nav-wrapper a.splading:active,
+.top-nav-wrapper a.splading:hover {
 	background:none;
 	color: #FFF;
 	transition:all 0.3s ease-in-out;
@@ -538,7 +543,8 @@ section header{
 		margin: 3px 0 10px 15px;
 		border: none !important;
 	}
-	.top-nav-wrapper a.sneakerhead {
+
+	.top-nav-wrapper a.splading {
 		display:none;
 	}
 }
