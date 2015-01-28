@@ -1,5 +1,77 @@
+<?php
+$home_url = Mage::helper('core/url')->getHomeUrl();
+
+?>
+<script text="text/javascript" >
+    jQuery(document).ready(function(){
+        jQuery("#getcode_num").click(function(){
+            jQuery(this).attr("src",'<?php echo $home_url;?>code_num.php?' + Math.random());
+        });
+        jQuery('.ds_dialog_yes').click(function(){
+            var flag =  checkAddressForm();
+            if(flag == true){
+                var barcode = jQuery("#barcode");
+                var verifycode = jQuery("#verifycode");
+                jQuery("#barcode_error").html("");
+                jQuery("#verifycode_error").html("");
+                barcode.removeClass("error");
+                verifycode.removeClass("error");
+                sure_button_onclick();
+            }
+
+        });
+        function checkAddressForm(){
+            var flag = true;
+            var barcode = jQuery("#barcode");
+            var verifycode = jQuery("#verifycode");
+            if (isEmpty(barcode.val())){
+                jQuery("#barcode_error").html("防伪码不能为空");
+                barcode.addClass("error");
+                flag = false;
+            }
+            if (isEmpty(verifycode.val())){
+                jQuery("#verifycode_error").html("验证码不能为空");
+                verifycode.addClass("error");
+                flag = false;
+            }
+            return flag;
+        }
+        function sure_button_onclick(){
+            var barcode =jQuery("#barcode").val();
+            var verifycode =jQuery("#verifycode").val();
+            var verifyResult;
+            jQuery.ajax({
+                async:false,
+                type: 'POST',
+                url: '<?php echo $home_url;?>barcodeVerify.php',
+                beforeSend:loading,
+                data: {barcode:barcode,verifycode:verifycode},
+                success: function(data, textStatus){
+                    verifyResult = data;
+                },
+                //  dataType: "json",
+                error: function(){
+                    alert('error');
+                }
+            });
+            if(verifyResult != "1"){
+                document.getElementById("barcodeVerifyResult").innerHTML = verifyResult;
+            }else{
+                jQuery("#verifycode_error").html("验证码不符");
+                jQuery("#verifycode").addClass("error");
+                jQuery('#barcodeVerifyResult').html("");
+            }
+
+        }
+        function isEmpty (s) {
+            return s == '';
+        }
+
+    });
+</script>
+
 <div class="detail-back">
-	<p><a href="http://localhost/mspalding/">返回首页</a></p>
+	<p><a href="<?php echo $home_url;?>">返回首页</a></p>
 </div>
 <div id="my-account-wrapper">
 	<h1>真伪验证</h1>
@@ -8,7 +80,7 @@
 			<form action="">
 				<div class="confirmBox">
 					<p>防伪码</p>
-					<div class="infoInput"><input type="text" name="" id="" ></div>
+					<div class="infoInput"><input type="text" name="" id="barcode" ></div>
 				</div>
 				<div class="confirmBox">
 					<p>验证码</p>
@@ -16,20 +88,27 @@
 
                         <span><img style="cursor: pointer" src="<?php echo $this->getUrl('code_num.php', array('_secure'=>true)) ?>" id="getcode_num" title="看不清，点击换一张" align="absmiddle"/>
 						</span>
-                            <input type="text" name="" id="" class="verImg" >
+                            <input type="text" name="" id="verifycode" class="verImg" >
 					</div>
 				</div>
-				<h3>
-					<span>防伪码不能为空</span>
-					<span>验证码不能为空</span>
-				</h3>
+<!--				<h3>-->
+<!--					<span>防伪码不能为空</span>-->
+<!--					<span>验证码不能为空</span>-->
+<!--				</h3>-->
 				<div class="confirmBtn">
 					<i class="ds_dialog_yes">确认</i>
 				</div>
 				<div class="confirmSn">
 					
-					<h2>没有此数码，请当心该产品是假冒产品。如有疑问，请拨打咨询电话4008-155-999。</h2>
+<!--					<h2>没有此数码，请当心该产品是假冒产品。如有疑问，请拨打咨询电话4008-155-999。</h2>-->
 					<p>所有验证相关的奖励与抽奖活动已失效，敬请谅解！</p>
+
+                    <div style="font-weight:bold;color:#fdb905;">
+                        <em id="barcode_error" class="error_em"></em>
+                        <em id="verifycode_error" class="error_em"></em>
+                    </div>
+                    <div id="barcodeVerifyResult"></div>
+
 				</div>
 			</form>
 		</div>
