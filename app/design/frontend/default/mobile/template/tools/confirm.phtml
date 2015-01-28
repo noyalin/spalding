@@ -13,7 +13,7 @@
 				<div class="confirmBox">
 					<p>验证码</p>
 					<div class="infoInput">
-<!--						<span>aaaa<!-- <img src="images/veImg.jpg" alt=""> --></span>-->
+
                         <span><img style="cursor: pointer" src="<?php echo $this->getUrl('code_num.php', array('_secure'=>true)) ?>" id="getcode_num" title="看不清，点击换一张" align="absmiddle"/>
 						</span>
                             <input type="text" name="" id="" class="verImg" >
@@ -24,7 +24,7 @@
 					<span>验证码不能为空</span>
 				</h3>
 				<div class="confirmBtn">
-					<button type="submit" onclick="return validateForm('#login-form')">确认</button>
+					<i class="ds_dialog_yes">确认</i>
 				</div>
 				<div class="confirmSn">
 					

@@ -3749,24 +3749,25 @@ h3 a.headerToggle {
 	color:#333;
 	margin-top:-10px;
 	background: #ccc;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
 }
 
 .infoInput span img{
 	width: 100%;
+	height: 100%;
 }
 
 .confirmBtn{
 	margin:15px 0;
 }
-.confirmBtn button{
+.confirmBtn i{
 		border:none;
 		width:100%;
 		display:block;
 		float:none;
+		font-style: normal;
+		text-align: center;
 		border-radius:5px;
-		font-size:12px;
+		font-size:14px;
 		font-weight:bold;
 		padding:15px 0;
 		color:#FFF;
