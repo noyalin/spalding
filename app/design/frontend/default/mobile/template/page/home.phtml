@@ -20,7 +20,7 @@
 	<?php echo $this->getChildHtml('header') ?>
 
 	<div class="home-wrapper">
-		<div class="checktf">验证</div>
+		
 		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_page_sections')->toHtml(); ?>
 
 		<?php
@@ -33,7 +33,7 @@
 			->addAttributeToFilter('visibility', 4);
 		$_helper = $this->helper('catalog/output');
 		?>
-
+<div class="checktf"><a href="#"><img src="<?php echo $this->getSkinUrl(''); ?>images/confirm.jpg"></a></div>
 
 	<header class="global-header">
 <!--	<h1 class="home">New Arrivals</h1>-->
