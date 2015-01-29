@@ -3792,9 +3792,14 @@ h3 a.headerToggle {
 	margin-top:10px;
 }
 
+.checktf{
+	width:100%;
+	margin:3px 0;
+}
 
-
-
+.checktf img{
+	width:100%;
+}
 
 
 
