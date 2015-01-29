@@ -80,6 +80,7 @@ class CosmoCommerce_Alipay_Model_Source_Banks
 "BJRCB"=>"BJRCB",
 "FDB"=>"FDB",
 "POSTGC"=>"PSBC",
+"COMM"=>"COMM",//交通银行
 //"abc1003"=>"visa",
 //"abc1004"=>"master"
 );
