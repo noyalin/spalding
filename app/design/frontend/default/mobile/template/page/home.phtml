@@ -33,52 +33,6 @@
 		$_helper = $this->helper('catalog/output');
 		?>
 
-<!--	<header class="global-header">-->
-<!--    <h1 class="home">新品上市</h1>-->
-<!--	</header>-->
-
-	<!-- ****************** NEW ARRIVALS SLIDERS ******************** -->
-<!--	<section id="product_wrapper" class="landing">-->
-<!--		<div class="sliderContainerWrapperLanding">-->
-<!--		<table class="sliderContainer">-->
-<!--		<tr>-->
-<!--		<td class="sliderNavCell"><a class="sliderMiniPrev"></a></td>-->
-<!--		<td class="iosSliderCell">-->
-<!--			<div class='iosSliderStyles' style="opacity: 0; filter: alpha(opacity:0);">-->
-<!---->
-<!--				<!-- slider -->-->
-<!--				<div class = 'slider'>-->
-<!---->
-<!--				--><?php //foreach ($_productCollection as $_product) : ?>
-<!--					--><?php //$_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
-<!--					--><?php //$_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
-<!--					<div class = 'button'>-->
-<!--						<a href="--><?php //echo $_product->getProductUrl()?><!--" class="availableColorPxavailableColorPx">-->
-<!--							<img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html')?><!--/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!---1" />-->
-<!--						</a>-->
-<!--						<a class="product-name" href="--><?php //echo $_product->getProductUrl() ?><!--" title="--><?php //echo $_productNameStripped; ?><!--"><br>--><?php //echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?><!--</a>-->
-<!--<!--						<p class="cat-price sku--->--><?php ////echo $_product->getSku() ?><!--<!--">$-->--><?php ////echo number_format($_product->getPrice(), '2', '.', ','); ?><!--<!--</p>-->-->
-<!--                        <p class="cat-price sku---><?php //echo $_product->getSku() ?><!--">￥--><?php //echo number_format($_product->getPrice(), '2', '.', ','); ?><!--</p>-->
-<!--					</div>-->
-<!--				--><?php //endforeach; ?>
-<!--					--><?php ///* More New Arrivals Button */ ?>
-<!--					<div class = 'button'>-->
-<!--						<a href="--><?php //echo Mage::getUrl(''); ?><!--new-arrivals-men-p1.html" class="availableColorPx">-->
-<!--							<img class="last" src="--><?php //echo $this->getSkinUrl(''); ?><!--images/view-all-new-arrival.png" />-->
-<!--						</a>-->
-<!--					</div>-->
-<!---->
-<!---->
-<!--				</div>-->
-<!---->
-<!--			</div>-->
-<!--		<div class="clearfloats"></div>-->
-<!--		</td>-->
-<!--		<td class="sliderNavCell"><a class="sliderMiniNext"></a></td>-->
-<!--		</tr>-->
-<!--		</table>-->
-<!--		</div>-->
-<!--	</section>-->
         <div class="checktf">
             <a href="<?php echo Mage::getUrl(''); ?>store/index/confirm"><img src="<?php echo $this->getSkinUrl(''); ?>images/verify.jpg"></a>
         </div>
