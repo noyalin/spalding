@@ -67,9 +67,10 @@ $stockStatus = '';
         <?php
         $valueArr = $_attribute->getPrices();
         ?>
-        <div class="sale-num prodetail-box">
+        <div class="sale-num prodetail-box clearfix">
             <!--                <span>--><?php //echo $_attribute->getLabel() ?><!--：</span>-->
-            <label><?php echo $_attribute->getLabel() ?>：</label>
+            <div class="proboxTit ms-fl"><label><?php echo $_attribute->getLabel() ?>：</label></div>
+            
             <?php $sizeIndex = 1;?>
             <?php foreach($valueArr as $optionValue):?>
                 <?php
@@ -91,9 +92,11 @@ $stockStatus = '';
                 }
                 ?>
                 <?php $sizeIndex  = $sizeIndex + 1;?>
+                <div class="proboxCons ms-fl">
                 <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" name="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>"><?php echo $optionValue['label']; ?></span>
                 <input type="radio"  data-input="kinds" value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
                 <label><?php echo $stockStatus; ?></label>
+                </div>
             <?php endforeach; ?>
         </div>
     <?php endforeach; ?>
@@ -105,9 +108,10 @@ $stockStatus = '';
 $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter(array(array('attribute'=> 'model','eq' => $_product->getModel())));
 ?>
 <?php if ($attributeSetName=='apparel' && count($_productAvailableColorsCollection) > 1) : ?>
-    <div id="detailAvailColorWrap" class="sale-num prodetail-box">
-        <span class="ms-fl">可选颜色：</span>
-        <div id="detailAvailColor" class="ms-fl">
+    <div id="detailAvailColorWrap" class="sale-num prodetail-box colorBox clearfix">
+        <div class="proboxTit ms-fl">颜色：</div>
+        <div class="proboxCons ms-fl">
+        <div id="detailAvailColor" class="colorCons">
             <?php
             $i = 0;
 
@@ -128,13 +132,15 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
                     $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$thisUrlkey.'-1';
 
                     echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.
-                        '<div style="height:50px;padding-left:4px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
+                        '<div style="height:50px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
                         </a>';
 //                    echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.'<img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="" width="50" height="50"/></a>';
                 }
             }
             ?>
         </div>
+        </div>
+        <div class="clear"></div>
         <?php if (count($_productAvailableColorsCollection) > 5) : ?>
             <div id="detailAvailColorMore">
                 <?php

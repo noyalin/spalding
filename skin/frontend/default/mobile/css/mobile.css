@@ -1,3 +1,28 @@
+/**浮动**/
+.ms-fl{float:left;}
+.ms-fr{float:right;}
+
+/**清除浮动**/
+.ms-cf:before, .ms-cf:after {content:"";display:table;}
+.ms-cf:after {clear:both;}
+.ms-cf {zoom:1;}
+
+.cl{clear:left;}
+.cr{clear:right;}
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.clearfix { display: inline-table; zoom:1;}
+*html .clearfix { height: 1%;}
+.clearfix { display: block; }
+
+/*
+ * 清理元素
+ * @class clear
+ * @desc	清理浮动元素,当浮动换行时后面元素不希望浮动，添加此属性，防止IE BUG
+ */
+.clear{clear:both; height:0px; width:100%; font-size:1px; line-height:0px; visibility:hidden; overflow:hidden;}
+
+
+
 /* Layout helpers
 ----------------------------------*/
 .ui-helper-hidden {
@@ -3801,31 +3826,74 @@ h3 a.headerToggle {
 	width:100%;
 }
 
+span.sale_kind{
+	padding:3px 10px;
+	border:1px solid #fff;
+	background: #fff;
+	color:#333;
+}
 
+.sale-num{
+	margin-bottom:20px;
+}
 #product-options-wrapper span.checked {
     background: url("../images/productDetail_kind.png") no-repeat scroll right bottom #FFFFFF;
-    border: 2px solid #FBB605;
+    border: 1px solid #FBB605;
+    color:#cf0000;
+}
+.colorBox span.colorTit{
+	display: block;
+	float: left;
+}
+.colorBox .colorCons{
+	float: left;
+}
+.colorBox .availableColorPx{
+	display: block;
+	float: left;
 }
 
 
 
 
+.colorCons a{
+	display: inline-block;
+	position: relative;
+	margin-right:5px;
+}
+
+.colorCons a img.availableColorPxNow{
+	position: absolute;
+	right: 0;
+	bottom:0;
+}
+
+.add-to-cart{
+	margin-bottom:20px;
+}
+
+.add-to-cart a{
+	display: inline-block;
+	padding:5px 8px;
+	background: #fff;
+	color:#333;
+	border:1px solid #ccc;
+
+}
+.add-to-cart input.proNum{
+	padding:5px 3px;
+	color:#333;
+	width:50px;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.proboxTit{
+	width:25%;
+	text-align: right;
+}
+.proboxCons span{
+	margin-right:5px;
+}
 
 
 
