@@ -3802,6 +3802,10 @@ h3 a.headerToggle {
 }
 
 
+#product-options-wrapper span.checked {
+    background: url("../images/productDetail_kind.png") no-repeat scroll right bottom #FFFFFF;
+    border: 2px solid #FBB605;
+}
 
 
 

@@ -50,6 +50,7 @@ $attributeSetModel->load($_product->getAttributeSetId());
 $attributeSetName = $attributeSetModel->getAttributeSetName();
 $sku = $_product->getSku();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$stockStatus = '';
 ?>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
     <!--    <div class="sale-num prodetail-box">-->
