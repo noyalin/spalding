@@ -114,19 +114,7 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 				</div>
 			<?php endwhile ?>
 			</div>
-			<script>
-				jQuery(function(){
-					jQuery('.slide').on("click",function(){
-						var _url = jQuery(this).children('img').attr("src");
-						jQuery(this).append("<div class='bigImg'><img src" + "=" + _url + '.jpg' + "/>adfaf</div>");
-					});
-
-				});
-
-				// function bigImg(){
-				// 	alert(9);
-				// }
-			</script>
+			
 		</div>
 	</td>
 	<td class="sliderNavCell"><?php echo ($imageCount > 1) ? '<a class="sliderNext"></a>' : '&nbsp;'?></td>
@@ -293,4 +281,21 @@ jQuery(document).ready(function(){
 
 <?php /* Need for Share Links */ ?>
 var shareProductUrl = '<?php echo 'http://www.sneakerhead.com/' . $_product->getUrlKey() . '.html' ?>';
+</script>
+
+
+
+<script>
+	//点击图片全屏查看大图 & 点击大图 移除层
+	jQuery(function(){
+		jQuery('.slide').on("click",function(){
+			var _url = jQuery(this).children('img').attr("src");
+			jQuery(this).parents('#page').before("<div class='bigImg'><img src" + "=" + _url + "></div>");
+		});
+
+		jQuery('.bigImg').live("click",function(){
+			jQuery(this).remove();
+		});
+
+	});
 </script>

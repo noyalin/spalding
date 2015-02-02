@@ -3902,10 +3902,12 @@ span.sale_kind{
 	position: fixed;
 	background: rgba(0,0,0,1);
 	z-index: 99999;
+	cursor: pointer;
 }
 
 
 .bigImg img{
 	width:100%;
+	vertical-align: middle;
 }
 
