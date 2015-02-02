@@ -110,12 +110,23 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 			<?php $i = 0 ?>
 			<?php while ($i++ < $imageCount) : ?>
 				<div class = 'slide'>
-					<a href="javascript:void(0)" onClick="enlargeCurrentImage(<?php echo $i; ?>)">
-					<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_detail_image')->getValue('html')?>/<?php echo ($_product->getDefaultCategory() == 213) ? substr($this->htmlEscape($_product->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>"></a>
+					<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_detail_image')->getValue('html')?>/<?php echo ($_product->getDefaultCategory() == 213) ? substr($this->htmlEscape($_product->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>">
 				</div>
 			<?php endwhile ?>
 			</div>
+			<script>
+				jQuery(function(){
+					jQuery('.slide').on("click",function(){
+						var _url = jQuery(this).children('img').attr("src");
+						jQuery(this).append("<div class='bigImg'><img src" + "=" + _url + '.jpg' + "/>adfaf</div>");
+					});
 
+				});
+
+				// function bigImg(){
+				// 	alert(9);
+				// }
+			</script>
 		</div>
 	</td>
 	<td class="sliderNavCell"><?php echo ($imageCount > 1) ? '<a class="sliderNext"></a>' : '&nbsp;'?></td>
