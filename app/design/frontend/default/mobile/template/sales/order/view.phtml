@@ -26,7 +26,8 @@
 ?>
     <?php $_order = $this->getOrder() ?>
     <div class="myAccountBox">
-	<h2>Items Ordered</h2>
+<!--	<h2>Items Ordered</h2>-->
+	<h2>商品已下单</h2>
         <?php echo $this->getChildHtml('order_items') ?>
     </div>
     <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order', $_order) && $_order->getGiftMessageId()): ?>
@@ -58,7 +59,7 @@
 	<table class="logInInfoBtn">
 	    <tr>
 		<td class="backBtn">
-		    <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="backBtn">Back To My Orders</a>
+		    <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="backBtn">返回我的订单</a>
 		</td>
 	    </tr>
 	</table>

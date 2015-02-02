@@ -26,7 +26,7 @@
 ?>
 <div class="myAccountBox">
     <?php $_orders = $this->getOrders(); ?>
-    <h2>最近订单</h2>
+    <h2>最近订单111</h2>
     <?php echo $this->getChildHtml()?>
     <?php if( sizeof($_orders->getItems()) > 0 ): ?>
     <table>
@@ -36,8 +36,8 @@
 		<td>日期</td>
 		<td>收货人</td>
 		<td>订单金额</td>
-		<td  width="15%">订单状态</td>
-		<td width="15%">&nbsp;</td>
+		<td  width="10%">订单状态</td>
+		<td width="20%">操作</td>
 	    </tr>
 	</thead>
         <tbody>
@@ -49,10 +49,13 @@
                     <td><?php echo $_order->getBillingAddress() ? $this->htmlEscape($_order->getBillingAddress()->getFirstname()) : '&nbsp;' ?></td>
                     <td><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
                     <td><?php echo $_order->getStatusLabel() ?></td>
-                    <td><?php
-                        if($this->getOrderStatus($_order)) : ?>
-                            <span class="nobr"><a target="_blank" href="<?php echo $this->getPayUrl($_order) ?>">现在支付</a></span><br/>
-                        <?php endif ?>
+                    <td>
+                        <!-- bale test STA-->
+<!--                        --><?php //if($this->getOrderStatus($_order)) : ?>
+                        <a href='<?php echo $this->getCheckoutUrl() ?>';">下单结算 </a>
+                            <span class="nobr"><a target="_blank" href="http://localhost/mspalding/checkout/onepage/">现在支付</a></span><br/>
+<!--                        --><?php //endif ?>
+                        <!-- bale test END-->
                         <span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>">查看订单</a></span>
                     </td>
                 </tr>
