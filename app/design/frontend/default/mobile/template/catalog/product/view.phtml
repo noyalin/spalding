@@ -299,7 +299,7 @@ var shareProductUrl = '<?php echo 'http://www.sneakerhead.com/' . $_product->get
 			});
 		});
 
-		jQuery('.bigImg').live("click",function(){
+		jQuery(document).on("click",".bigImg",function(){
 			jQuery(this).remove();
 		});
 
