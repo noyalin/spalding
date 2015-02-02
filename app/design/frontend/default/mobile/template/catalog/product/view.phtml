@@ -291,6 +291,12 @@ var shareProductUrl = '<?php echo 'http://www.sneakerhead.com/' . $_product->get
 		jQuery('.slide').on("click",function(){
 			var _url = jQuery(this).children('img').attr("src");
 			jQuery(this).parents('#page').before("<div class='bigImg'><img src" + "=" + _url + "></div>");
+			var imgH = jQuery('.bigImg>img').height();
+			jQuery('.bigImg>img').css({
+				"position":"absolute",
+				"margin-top":-imgH/2,
+				"top":"50%"
+			});
 		});
 
 		jQuery('.bigImg').live("click",function(){
