@@ -25,21 +25,20 @@
 <?php if($_product): ?>
     <?php if($_product->getIsOffline()): ?>
     <?php //echo "Archive | " . $_product->getName() . " | Sneakerhead.com - " . $_product->getSku() ?>
-    <?php echo "Archive | " . $_product->getName() . " | Sneakerhead.cn - " . $_product->getSku() ?>
+    <?php echo "Archive | " . $_product->getName() . " | Spalding 斯伯丁中国n - " . $_product->getSku() ?>
     <?php else: ?>
     <?php //echo $_product->getName() . " - $" . round($_product->getPrice(), 2) . " | Sneakerhead.com - " . $_product->getSku() ?>
-    <?php echo $_product->getName() . " - $" . round($_product->getPrice(), 2) . " | Sneakerhead.cn - " . $_product->getSku() ?>
+    <?php echo $_product->getName() . " - $" . round($_product->getPrice(), 2) . " | Spalding 斯伯丁中国 - " . $_product->getSku() ?>
     <?php endif; ?>
 <?php elseif (Mage::getBlockSingleton('cms/page')->getPage()->getIdentifier() === 'mobile_home_page'): ?>
-    <?php //echo "Shop Authentic Shoes | Nike Shoes - Air Jordan Shoes | Sneakerhead.com"; ?>
-    <?php echo "Shop Authentic Shoes | Nike Shoes - Air Jordan Shoes | Sneakerhead.cn"; ?>
+    <?php echo "Spalding 斯伯丁中国 首页"; ?>
 <?php else: ?>
     <?php if($module != 'paypal'): ?>
     <?php //echo $title . " | Sneakerhead.com" . $pageNumber ?>
-        <?php echo $title . " | Sneakerhead.cn" . $pageNumber ?>
+        <?php echo $title . " | Spalding 斯伯丁中国" . $pageNumber ?>
     <?php else: ?>
     <?php //echo "PayPal Express Review | Sneakerhead.com" . $pageNumber ?>
-    <?php echo "PayPal Express Review | Sneakerhead.cn" . $pageNumber ?>
+    <?php echo "PayPal Express Review | Spalding 斯伯丁中国" . $pageNumber ?>
     <?php endif; ?>
 <?php endif; ?>
     </title>
