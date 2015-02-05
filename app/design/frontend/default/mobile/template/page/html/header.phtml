@@ -189,12 +189,12 @@ if ($_currentCategory) {
 			</li><?php endforeach; ?>
 
 			<li class="Selected"><a href="javascript:void(0)">&nbsp;</a></li>
-			<li class=""><a href="<?php echo Mage::getUrl(''); ?>cs-customer-service.html">Customer Service</a></li>
+<!--			<li class=""><a href="--><?php //echo Mage::getUrl(''); ?><!--cs-customer-service.html">Customer Service</a></li>-->
 		<?php if ($this->helper('customer')->isLoggedIn()) : ?>
 			<li class=""><a href="<?php echo Mage::getUrl('customer/account/');?>">My Account</a></li>
 			<li><a href="<?php echo Mage::getUrl(''); ?>cs-rewards.html">Reward Program</a></li>
 		<?php else: ?>
-			<li class=""><a href="<?php echo Mage::getUrl(''); ?>cs-order-tracking.html">Track My Order</a></li>
+<!--			<li class=""><a href="--><?php //echo Mage::getUrl(''); ?><!--cs-order-tracking.html">Track My Order</a></li>-->
 		<?php endif; ?>
 	</ul>
 	<?php endif; ?>
