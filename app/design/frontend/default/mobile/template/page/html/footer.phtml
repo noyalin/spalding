@@ -24,11 +24,20 @@
  * @license     http://www.magentocommerce.com/license/enterprise-edition
  */
 ?>
+<?php
 
+
+$module = $this->getRequest()->getModuleName();
+$controller = $this->getRequest()->getControllerName();
+$server_script_url = Mage::helper('core/url')->getCurrentUrl();
+$sneakerhead_en_store = getStoreByCode('sneakerhead_cn');
+$sneakerhead_en_store_url = $sneakerhead_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+$sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_en_store_url), '/');
+?>
 <footer style="margin: 0 !important;">
 	<div class="footer-help">
 		<a style="text-transform: uppercase;" id="footer-help" href="<?php echo Mage::getUrl(''); ?>cs-customer-service.html" onClick="jQuery('#search_bar').toggleClass('open', false);">帮助中心</a>
-		<a style="text-transform: uppercase;" id="footer-desktop" href="javascript: void(0)" onClick="setCookie('mobilePreference', 1); window.location=finalUrl">电脑版</a>
+		<a style="text-transform: uppercase;" id="footer-desktop" href="javascript: void(0)" onClick="setCookie('mobilePreference', 1); window.location='http://<?php echo $sneakerhead_en_store_url?>'">电脑版</a>
 <!--        <a style="text-transform: uppercase;" id="footer-help" href="--><?php //echo Mage::getUrl(''); ?><!--cs-customer-service.html" onClick="jQuery('#search_bar').toggleClass('open', false);">Help Center</a>-->
 <!--        <a style="text-transform: uppercase;" id="footer-desktop" href="javascript: void(0)" onClick="setCookie('mobilePreference', 1); window.location=finalUrl">Desktop View</a>-->
 	</div>
