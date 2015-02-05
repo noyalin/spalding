@@ -32,11 +32,11 @@
 			<div class="my-account-welcome">
 				<span>
 					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-					<?php echo 'Welcome, ' . $customerName ?>
+					<?php echo '欢迎, ' . $customerName ?>
 				</span>
 			</div>
 			<div class="my-account-logout">
-				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">Log Out</a>
+				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">退出</a>
 			</div>
 		</div>
 
