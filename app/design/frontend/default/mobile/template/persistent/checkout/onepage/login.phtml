@@ -63,6 +63,7 @@
 	<h4>登录</h4>
 			<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 			<form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post">
+                <?php echo $this->getBlockHtml('formkey'); ?>
 			<fieldset>
 				<table id="step1-login">
 					<tbody>
