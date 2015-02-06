@@ -39,7 +39,7 @@
 			<div class="my-account-welcome">
 				<span>
 					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-					<?php echo 'Welcome, ' . $customerName ?>
+					<?php echo '欢迎, ' . $customerName ?>
 				</span>
 			</div>
 			<div class="my-account-logout">
@@ -51,7 +51,7 @@
 	<?php endif; ?>
 </div>
 
-<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <div id="cart-wrapper">
 	<h1>购物车</h1>

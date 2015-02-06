@@ -25,17 +25,18 @@
  */
 ?>
 <div id="my-account-all">
-	<h1 id="my-account-info">Edit Account Information</h1>
+<!--	<h1 id="my-account-info">Edit Account Information</h1>-->
+	<h1 id="my-account-info">编辑账户信息</h1>
 
 	<div class="my-account-top clearfix">
 		<div class="my-account-welcome">
 			<span>
 				<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-				<?php echo 'Welcome, ' . $customerName ?>
+				<?php echo '欢迎, ' . $customerName ?>
 			</span>
 		</div>
 		<div class="my-account-logout">
-			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">Log Out</a>
+			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">退出</a>
 		</div>
 	</div>
 
@@ -47,18 +48,20 @@
 		<form id="account-edit-form" action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate" enctype="multipart/form-data">
 			<div class="logInInfoBox">
 				<?php echo $this->getBlockHtml('formkey') ?>
-				<h2>Login Information</h2>
+<!--				<h2>Login Information</h2>-->
+				<h2>登陆信息</h2>
 				<table>
 					<tbody>
 						<?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() ?>
 					<tr>
-						<td class="infoLabel" colspan="2"><label for="email" class="required"><span class="rStar">*</span>Email Address</label></td>
+						<td class="infoLabel" colspan="2"><label for="email" class="required"><span class="rStar">*</span>Email 地址</label></td>
 					</tr>
 					<tr>
 						<td class="infoInput" colspan="2"><input type="email" name="email" id="email" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="Email Address" class="input-text required-entry validate-email"></td>
 					</tr>
 					<tr>
-						<td class="infoLabel"><label for="change_password">Change Password</label></td>
+<!--						<td class="infoLabel"><label for="change_password">Change Password</label></td>-->
+						<td class="infoLabel"><label for="change_password">是否更改密码</label></td>
 						<td class="infoCheck">
 							<input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="Change Password"<?php if ($this->getCustomer()->getChangePassword() == 1): ?> checked="checked"<?php endif; ?> class="checkbox" />
 						</td>
@@ -67,23 +70,24 @@
 				</table>
 			</div>
 			<div class="logInInfoBox change-password" style="display:none;">
-				<h2>Change Password</h2>
+<!--				<h2>Change Password</h2>-->
+				<h2>更改密码</h2>
 				<table>
 					<tbody>
 						<tr>
-							<td class="infoLabel"><label for="current_password"><span class="rStar">*</span>Current Password</label></td>
+							<td class="infoLabel"><label for="current_password"><span class="rStar">*</span>当前密码</label></td>
 						</tr>
 						<tr>
 							<td class="infoInput"><input type="password" class="input-text" name="current_password" id="current_password"></td>
 						</tr>
 						<tr>
-							<td class="infoLabel"><label for="password"><span class="rStar">*</span>New Password</label></td>
+							<td class="infoLabel"><label for="password"><span class="rStar">*</span>新密码</label></td>
 						</tr>
 						<tr>
 							<td class="infoInput"><input type="password" class="input-text validate-password" name="password" id="password"></td>
 						</tr>
 						<tr>
-							<td class="infoLabel"><label for="confirmation"><span class="rStar">*</span>Confirm Password</label></td>
+							<td class="infoLabel"><label for="confirmation"><span class="rStar">*</span>重复新密码</label></td>
 						</tr>
 						<tr>
 							<td class="infoInput"><input type="password" class="input-text validate-cpassword" name="confirmation" id="confirmation"></td>
@@ -95,17 +99,17 @@
 				<table class="logInInfoBtn">
 					<tbody><tr>
 							<td class="backBtn">
-								<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account/')) ?>" class="backBtn">Back To My Profile</a>
+								<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account/')) ?>" class="backBtn">返回用户中心</a>
 							</td>
 							<td class="submitBtn">
-								<button type="submit" class="button" title="Save" onClick="return validateForm('#account-edit-form')">Save Change</button>
+								<button type="submit" class="button" title="Save" onClick="return validateForm('#account-edit-form')">保存修改</button>
 							</td>
 						</tr>
 					</tbody></table>
 				<div class="clearfloats"></div>
 			</div>
 			<div class="logInInfoBox clearfix">
-				<p class="required">* Required Fields</p>
+				<p class="required">* 必填项</p>
 			</div>
 		</form>
 	</div>

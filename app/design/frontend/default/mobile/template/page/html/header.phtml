@@ -55,6 +55,7 @@ var currentController = '<?php echo $controller; ?>';
 
 // Detect if mobile device
 var isMobileDevice = checkUserAgent(navigator.userAgent||navigator.vendor||window.opera);
+var isMobileDevice = false;
 var isMobileSite = <?php echo (preg_match('/^m\./', $_SERVER['HTTP_HOST'])) ? 'true' : 'false'; ?>;
 var baseDomain = '<?php echo preg_replace('/^(m|s|www)\./', '', $_SERVER['HTTP_HOST']) ?>';
 

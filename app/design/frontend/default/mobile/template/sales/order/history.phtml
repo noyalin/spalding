@@ -30,11 +30,11 @@
 		<div class="my-account-welcome">
 			<span>
 				<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-				<?php echo 'Welcome, ' . $customerName ?>
+				<?php echo '欢迎, ' . $customerName ?>
 			</span>
 		</div>
 		<div class="my-account-logout">
-			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">Log Out</a>
+			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">退出</a>
 		</div>
 	</div>
 
@@ -61,7 +61,7 @@
                 <td>日期</td>
                 <td>订单金额</td>
                 <td>订单状态</td>
-                <td>&nbsp;</td>
+                <td>操作</td>
 			</tr>
 			</thead>
 			<tbody>
@@ -88,7 +88,7 @@
 		<table class="logInInfoBtn">
 		<tr>
 			<td class="backBtn">
-			<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account')) ?>" class="backBtn">Back To My Profile</a>
+			<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account')) ?>" class="backBtn">返回用户中心</a>
 			</td>
 		</tr>
 		</table>
