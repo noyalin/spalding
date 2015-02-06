@@ -135,8 +135,8 @@ if ($_currentCategory) {
 	<?php /* protocol has to match the protocol of the current page */ ?>
 	<form id="main-search" action="<?php echo $MageUrl;?>catalogsearch/result/" method="GET" onSubmit="return checkKeywords();">
 		<div class='filter-button'><button type="button" class="search_button">Filter</button></div>
-		<div class='search-input'><input type="text" id="search-keywords" name="q" value="" placeholder="find products" maxlength="128" autocomplete="off"></div>
-		<div class='search-button' onClick="jQuery('#main-search').submit()"><button type="submit" class="search_button">Search</button></div>
+		<div class='search-input'><input type="text" id="search-keywords" name="q" value="" placeholder="输入搜索条件..." maxlength="128" autocomplete="off"></div>
+		<div class='search-button' onClick="jQuery('#main-search').submit()"><button type="submit" class="search_button">搜索</button></div>
 	</form>
 	</div>
 </div>
