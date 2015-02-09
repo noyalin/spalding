@@ -57,6 +57,12 @@
 <!--                        --><?php //endif ?>
                         <!-- bale test END-->
                         <span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>">查看订单</a></span>
+                        <?php if($_order->getStatus() === 'shipped'){
+                            $trackingid = getTrackingByOrderID($_order->getRealOrderId());
+                            if($trackingid !==""){
+                                ?>
+                                <a href="http://www.baidu.com/baidu?tn=baidu&word=<?php echo $trackingid?>" target="_blank">查看物流</a>
+                            <?php }}?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -73,3 +79,21 @@
 	<p><?php echo $this->__('You have placed no orders.'); ?></p>
     <?php endif; ?>
 </div>
+
+
+<?php
+function getTrackingByOrderID($orderid){
+    $resource = Mage::getSingleton('core/resource');
+    $readConnection = $resource->getConnection('core_read');
+    $arr = array();
+    $query = "select a.track_number from sales_flat_shipment_track as  a inner join sales_flat_order as  b on  a.order_id = b.entity_id where b.increment_id = '".$orderid."'"."LIMIT 1";
+    $res = $readConnection->query($query);
+
+    $tracking_id = '';
+    foreach($res as  $key => $each){
+        $tmp = array();
+        $tracking_id = $each['track_number'];
+    }
+    return $tracking_id;
+}
+?>
