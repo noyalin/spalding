@@ -401,17 +401,12 @@ final class StoneEdge_MagentoImport {
         $storeId = 1;
 		if ($lastOrder) {
             $beginWord = substr($lastOrder, 0, 2);
-            if( $beginWord == 81){
-                $storeId = 122;
+            if( $beginWord == 11 || $beginWord == 20){
+                $storeId = 2;
             }
 //			$lastEntityId = self::getOrderEntityId($db, $sql, $lastDate, $lastOrder,$storeId);
 		}
         $entityStr = '';
-        if("800000000" == trim($lastOrder) || "810000000"==$lastOrder){
-            $entityStr = '';
-        }else{
-            $entityStr = "or entity_id > $lastEntityId";
-        }
         $time = Date("Y-m-d H:i:s");
         $gmtTime = $time;
         if(isset($_REQUEST['lastdate'])){
