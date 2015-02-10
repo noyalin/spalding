@@ -23,7 +23,7 @@ class CosmoCommerce_Sns_ShowController extends Mage_Core_Controller_Front_Action
 		
 		if(!$this->_getSession()->getCustomerId()){
 		
-			$this->_getSession()->addError('请登陆后再上传照片');
+			$this->_getSession()->addError('请登录后再上传照片');
 			$this->_redirect('customer/account/login');
 			return;
 		}
