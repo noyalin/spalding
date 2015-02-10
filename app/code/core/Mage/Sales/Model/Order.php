@@ -339,6 +339,7 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
     const STATE_HOLDED          = 'holded';
     const STATE_PAYMENT_REVIEW  = 'payment_review';
 
+    const STATTE_WAIT_PAY = "alipay_wait_buyer_pay";
     /**
      * Order statuses
      */
@@ -554,6 +555,11 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
 
         $state = $this->getState();
         if ($this->isCanceled() || $state === self::STATE_COMPLETE || $state === self::STATE_CLOSED) {
+            return false;
+        }
+        //付款后不允许退换货2015-02-10 by bale
+        $status = $this->getStatus();
+        if($status != self::STATTE_WAIT_PAY){
             return false;
         }
 
