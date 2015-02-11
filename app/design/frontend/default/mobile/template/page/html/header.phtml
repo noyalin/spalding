@@ -60,7 +60,9 @@ var isMobileSite = <?php echo (preg_match('/^m\./', $_SERVER['HTTP_HOST'])) ? 't
 var baseDomain = '<?php echo preg_replace('/^(m|s|www)\./', '', $_SERVER['HTTP_HOST']) ?>';
 
 var mobilePreference = getCookie('mobilePreference');
-
+if(mobilePreference == 1){
+    isMobileDevice = false;
+}
 function setCookie(name, value, expire_days) {
 	var expire_date = new Date();
 	expire_date.setDate(expire_date.getDate() + expire_days);
