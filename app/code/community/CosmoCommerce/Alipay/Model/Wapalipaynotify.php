@@ -200,9 +200,7 @@ class CosmoCommerce_Alipay_Model_Wapalipaynotify extends CosmoCommerce_Alipay_Mo
 				$isSgin = $this->rsaVerify($prestr, trim($this->alipay_config['ali_public_key_path']), $sign);
 				break;
 			case "0001" :
-                mage :: log(trim($this->alipay_config['ali_public_key_path'])."   aaaaaaaaaaaaaaaaa");
 				$isSgin = $this->rsaVerify($prestr, trim($this->alipay_config['ali_public_key_path']), $sign);
-                mage :: log($isSgin."   bbbbbbbbbb");
 				break;
 			default :
 				$isSgin = false;
