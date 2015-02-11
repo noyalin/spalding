@@ -61,7 +61,7 @@ var baseDomain = '<?php echo preg_replace('/^(m|s|www)\./', '', $_SERVER['HTTP_H
 
 var mobilePreference = getCookie('mobilePreference');
 if(mobilePreference == 1){
-    isMobileDevice = false;
+    var isMobileDevice = false;
 }
 function setCookie(name, value, expire_days) {
 	var expire_date = new Date();
