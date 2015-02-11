@@ -626,7 +626,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         }
 
         $order = Mage::getModel('sales/order');
-
+        mage :: log($verify_result . "  POST  result");
         $paySuccessFromPost = false;
         if($verify_result){
             if($method == "post"){
@@ -702,8 +702,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     //create xml
                     $model = Mage::getModel('sales/postorder');
                     $model->post_new_order($order);
-                    $postMessage = Mage::getModel('sales/postmessage');
-                    $postMessage->saveDataAndSendWebservice($order);
+                    //$postMessage = Mage::getModel('sales/postmessage');
+                    //$postMessage->saveDataAndSendWebservice($order);
                     try{
                         $order->save();
 //                        echo "success";

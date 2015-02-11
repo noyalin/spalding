@@ -53,4 +53,20 @@ Supported layout update handles (special):
             </block>
         </reference>
     </tools_index_show>
+    <tools_index_notice translate="label">
+        <!-- Mage_Customer -->
+        <!--<remove name="right"/>-->
+        <!--<remove name="left"/>-->
+
+        <reference name="root">
+            <action method="setTemplate"><template>page/1columnStore.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="setTitle"><title></title></action>
+        </reference>
+        <reference name="content">
+            <block type="tools/list" name="notice" as="notice"  template="tools/notice.phtml" >
+            </block>
+        </reference>
+    </tools_index_notice>
 </layout>
