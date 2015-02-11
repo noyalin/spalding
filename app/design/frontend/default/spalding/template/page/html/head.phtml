@@ -47,7 +47,10 @@
     var canMove = true;
     var isMobileDevice = checkUserAgent(navigator.userAgent||navigator.vendor||window.opera);
     var baseDomain = '<?php echo preg_replace('/^(m|s|www)\./', '', $_SERVER['HTTP_HOST']) ?>';
-
+    var mobilePreference = getCookie('mobilePreference');
+    if(mobilePreference == 1){
+        isMobileDevice = false;
+    }
     if (isMobileDevice) {
         window.location.href="http://<?php echo $spalding_mobile_en_store_url;?>";
     }
