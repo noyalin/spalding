@@ -37,11 +37,11 @@ $sneakerhead_mobile_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', ''
 
 $MageUrl = (Mage::app()->getStore()->isCurrentlySecure()) ? Mage::getUrl('', array('_secure'=>true)) : Mage::getUrl('');
 $finalUrl = str_replace($sneakerhead_mobile_en_store_url, $sneakerhead_en_store_url, rtrim($MageUrl, '/') . $_SERVER['REQUEST_URI']);
-
+$orderId = (int) $this->getRequest()->getParam('order_id');
 /* If shipping/tracking, we need to adjust the site-switching destination, since
  * the desktop version is a popup only. Redirect to the order's view page instead. */
 if ($module == 'shipping' && $controller == 'tracking') {
-	$finalUrl = "https://$sneakerhead_en_store_url/sales/order/view/order_id/{$_GET['order_id']}/";
+	$finalUrl = "https://$sneakerhead_en_store_url/sales/order/view/order_id/$orderId/";
 }
 
 ?>
