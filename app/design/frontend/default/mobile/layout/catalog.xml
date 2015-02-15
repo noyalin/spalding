@@ -62,7 +62,7 @@ Supported layout update handles (special):
         <label>Catalog Category (Non-Anchor)</label>
         <reference name="head">
             <!-- Magento -->
-            <block type="catalog/category_view" name="head_url" as="head_url" template="catalog/category/head.phtml" />
+            <!--<block type="catalog/category_view" name="head_url" as="head_url" template="catalog/category/head.phtml" />-->
 
             <!-- Devicom -->
             <action method="addItem"><type>skin_js</type><name>js/catalog.js</name></action>
@@ -105,7 +105,7 @@ Supported layout update handles (special):
         </reference>
         <reference name="head">
             <!-- Magento -->
-            <block type="catalog/category_view" name="head_url" as="head_url" template="catalog/category/head.phtml" />
+            <!--<block type="catalog/category_view" name="head_url" as="head_url" template="catalog/category/head.phtml" />-->
 
             <!-- Devicom -->
             <action method="addItem"><type>skin_js</type><name>js/jquery.ias.min.js</name></action>
