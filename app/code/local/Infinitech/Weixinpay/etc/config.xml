@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinitech_Weixinpay>
+            <version>0.1.0</version>
+        </Infinitech_Weixinpay>
+    </modules>
+    <frontend>
+        <routers>
+            <!-- the <Weixinpay> tagname appears to be arbitrary, but by
+            convention is should match the frontName tag below-->
+            <weixinpay>
+                <use>standard</use>
+                <args>
+                    <module>Infinitech_Weixinpay</module>
+                    <frontName>weixin</frontName>
+                </args>
+            </weixinpay>
+        </routers>
+        <layout>
+            <updates>
+                <weixinpay>
+                    <file>weixinpay.xml</file>
+                </weixinpay>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <models>
+            <weixinpay>
+                <class>Infinitech_Weixinpay_Model</class>
+                <resourceModel>weixinpay_mysql4</resourceModel>
+            </weixinpay>
+            <weixinpay_mysql4>
+                <class>Infinitech_Weixinpay_Model_Mysql4</class>
+                <entities>
+                    <log><table>weixin_log</table></log>
+                    <api_debug><table>weixin_api_debug</table></api_debug>
+                </entities>
+            </weixinpay_mysql4>
+        </models>
+        <resources>
+            <weixinpay_setup>
+                <setup>
+                    <module>Infinitech_Weixinpay</module>
+                    <class>Infinitech_Weixinpay_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </weixinpay_setup>
+            <weixinpay_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </weixinpay_write>
+            <weixinpay_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </weixinpay_read>
+        </resources>
+        <sales>
+            <order>
+                <statuses>
+                    <weixin_wait_buyer_pay translate="label">
+                        <label>WAIT BUYER PAY</label>
+                    </weixin_wait_buyer_pay>
+                    <weixin_wait_seller_send_goods translate="label">
+                        <label>WAIT SELLER SEND GOODS</label>
+                    </weixin_wait_seller_send_goods>
+                    <weixin_trade_closed translate="label">
+                        <label>TRADE CLOSED</label>
+                    </weixin_trade_closed>
+                    <weixin_trade_success translate="label">
+                        <label>TRADE SUCCESS</label>
+                    </weixin_trade_success>
+                    <weixin_trade_finished translate="label">
+                        <label>TRADE FINISHED</label>
+                    </weixin_trade_finished>
+                </statuses>
+            </order>
+        </sales>
+        <blocks>
+            <weixinpay>
+                <class>Infinitech_Weixinpay_Block</class>
+            </weixinpay>
+        </blocks>
+        <helpers>
+            <weixinpay>
+                <class>Infinitech_Weixinpay_Helper</class>
+            </weixinpay>
+        </helpers>
+    </global>
+
+    <default>
+        <payment>
+            <weixinpay>
+                <active>1</active>
+                <model>weixinpay/pay</model>
+                <order_status>processing</order_status>
+                <title>微信支付</title>
+            </weixinpay>
+        </payment>
+    </default>
+</config>
