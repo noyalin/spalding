@@ -42,6 +42,7 @@
 
 "WAIT BUYER PAY","交易创建,等待买家付款"
 "WAIT SELLER SEND GOODS","买家付款成功,等待卖家发货"
+"WEIXIN WAIT SELLER SEND GOODS","买家通过微信付款成功,等待卖家发货"
 "WAIT BUYER CONFIRM GOODS","卖家已经发货,等待买家确认"
 "TRADE CLOSED","交易关闭"
 "WAIT SELLER AGREE","退款协议等待卖家确认中"
