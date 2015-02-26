@@ -42,7 +42,6 @@ $shopName = Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("shop_name");
 $unifiedOrder->setParameter("body", $shopName); //商品描述
 //自定义订单号，此处仅作举例
 $timeStamp = time();
-//$out_trade_no = CosmoCommerce_Weixinpay_Model_Wxpaypubconfig::APPID."_"."$realOrderId"."_"."$timeStamp";
 $out_trade_no = "$realOrderId" . "_" . "$timeStamp";
 $totalFee = $_order->getGrandTotal() * 100;
 $unifiedOrder->setParameter("out_trade_no", "$out_trade_no"); //商户订单号
