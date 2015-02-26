@@ -418,7 +418,7 @@ final class StoneEdge_MagentoImport {
             $sql = $db->select()
                 ->from($ordersTable, 'entity_id')
                 ->where('store_id=?', $storeId, Zend_Db::INT_TYPE)
-                ->where('status="alipay_wait_seller_send_goods"')
+                ->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"')
                 ->where(  "updated_at >= '$gmtTime' " ) // "entity_id > $lastEntityId"
 // ALERTBOT BEGIN => Exclude orders from sneakerhead.com domain
                 ->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')")

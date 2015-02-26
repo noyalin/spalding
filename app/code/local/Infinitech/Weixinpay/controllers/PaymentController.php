@@ -42,7 +42,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         }
         $order->addStatusToHistory(
             $order->getStatus(),
-            Mage::helper('weixinpay')->__('Customer was redirected to Alipay')
+            Mage::helper('weixinpay')->__('Customer was redirected to Weixinpay')
         );
         $order->save();
 
