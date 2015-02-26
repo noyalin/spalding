@@ -75,14 +75,14 @@ if ($unifiedOrderResult["return_code"] == "FAIL") {
         <title>微信安全支付</title>
     </head>
     <body>
-    <div class="header pngFix">
+    <div class="header pngFix" style="width: 900px;">
         <h1 class="pay_logo">
             <a class="index_access" href="/">
                 <img title="微信支付" alt="微信支付标志" src="<?php echo $weixinImageSrc; ?>" class="pngFix">
             </a>
         </h1>
     </div>
-    <div align="center" id="qrcode" style="padding:20px;">
+    <div align="center" id="qrcode" style="padding-top:70px; padding-bottom: 20px;">
     </div>
     <div align="center">
         <div class="msg_default_box"><i class="icon60_qr pngFix"></i>
@@ -102,12 +102,12 @@ if ($unifiedOrderResult["return_code"] == "FAIL") {
 
                 <div class="pay_bill_unit no_extra">
                     <dl>
-                        <dt><?php echo $shopName; ?></dt>
+                        <dt style="color: #ffffff"><?php echo $shopName; ?></dt>
                     </dl>
-                    <div class="pay_bill_info"><p><label>交易单号</label><span class="pay_bill_value"><?php echo($_order->getRealOrderId()) ?></span>
+                    <div class="pay_bill_info"><p><label style="color: #ffffff">交易单号</label><span class="pay_bill_value"><?php echo($_order->getRealOrderId()) ?></span>
                         </p>
 
-                        <p><label>创建时间</label><span class="pay_bill_value"><?php echo date("Y-m-d H:i:s",strtotime($_order->getCreatedAt())+8*60*60);  ?></span></p></div>
+                        <p><label style="color: #ffffff">创建时间</label><span class="pay_bill_value"><?php echo date("Y-m-d H:i:s",strtotime($_order->getCreatedAt())+8*60*60);  ?></span></p></div>
                 </div>
                 <!--            <div class="pay_bill_unit no_extra">              <dl>                <dt></dt>                <dd></dd>              </dl>              <div class="pay_bill_info">                <p><label>交易单号</label><span class="pay_bill_value"></span></p>                <p><label>创建时间</label><span class="pay_bill_value"></span></p>              </div>            </div>            -->
             </div>
