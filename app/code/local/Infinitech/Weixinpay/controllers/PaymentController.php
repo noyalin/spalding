@@ -199,7 +199,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         header('Content-Type: text/javascript;charset=UTF-8');
         if( 'alipay_wait_buyer_pay' == $status ){
             echo 'window.code=408';
-        }else if("alipay_wait_seller_send_goods" == $status){
+        }else if("weixin_wait_seller_send_goods" == $status){
             echo 'window.code=300';
         }else{
             echo 'window.code=400';
