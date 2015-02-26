@@ -208,7 +208,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
     }
 
     public function getTokenAction(){
-        $weixinpay = Mage::getModel('weixinpay/weixinpay');
+        $weixinpay = Mage::getModel('weixin/weixinpay');
 //        $token = $weixinpay->getAccessToken();
         $list = $weixinpay->getList();
     }
