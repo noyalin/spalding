@@ -45,6 +45,20 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $sku = $valueArr['sku'];
         $this->transactionLogHandle("    ->UPDATING    : Configurable : " . $sku);
 
+        $defaultCategoryTreeArray = explode(',', $valueArr['defaultCategory']);
+
+        $reversedDefaultCategoryTreeArray = array_reverse($defaultCategoryTreeArray);
+        $categoryFound = null;
+        foreach ($reversedDefaultCategoryTreeArray as $defaultCategoryId) {
+            if ($categoryToCheck = Mage::getModel('catalog/category')->load($defaultCategoryId)) {
+                if ($categoryToCheck->getId()) {
+                    //Create mapping
+                    $product->setCategoryIds($defaultCategoryId);
+                    $categoryFound = 1;
+                    break;
+                }
+            }
+        }
         $this->saveTopAttributes($product,$valueArr);
 
         // Check if configurable is offline -- if so, delete simples
@@ -59,7 +73,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->save();
 
         //save other store
-        $this->saveOtherStore($product,$valueArr);
+        //$this->saveOtherStore($product,$valueArr);
         return $product;
     }
 
@@ -450,7 +464,6 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 //            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
             $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$image='."$urlKey-$i";
             $url = 'http://s7d5.scene7.com/is/image/sneakerhead/bigball1200?$1200x1200$&$imagemoban='."$urlKey-$i";
-            mage :: log($url);
             $needDir = $dir.$sku."/";
             if(!file_exists($needDir)){
                 mkdir($needDir);
@@ -497,24 +510,6 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $thirdPartyPrice = $valueArr['thirdPartyPrice'];
         $urlKey = $valueArr['urlKey'];
         $return = false;
-        if (strpos($websites, 'sneakerrx') !== false && strpos($websites, 'military') !== false) {
-            //Unset and reload product after save
-            unset($product);
-            $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
-            $product->setUrlKey( $urlKey."-m" );
-            $product->setStoreId(1);
-            $product->setPrice($thirdPartyPrice);
-            //Save product
-            $product->save();
-
-            $product->setUrlKey( $urlKey."-s" );
-            $product->setStoreId(20);
-            $product->setPrice($thirdPartyPrice);
-            //Save product
-            $product->save();
-
-            $return = true;
-        }
         return $return;
     }
 
@@ -531,7 +526,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $valueArr = array();
         //Set variables to supplied values
         $store = (string) $entity->Store; // 0 or admin -- NO NEED IF HARD-CODED
-        $valueArr['store'] =$store;
+        $valueArr['store'] ="sneakerhead_cn";
 
         $websites = (string) $entity->Websites; // sneakerhead, sneakerrx, military
         $valueArr['websites'] =$websites;
@@ -636,18 +631,14 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $price = $entity->SalePrice;
         $valueArr['price'] =$price;
 
-        if ((string) $entity->Status == 2) { //  1 online, 2 offline
-            $defaultCategory = (string) $entity->CategoryIds;
-        } else {
-            if($attributeSetName == 'ball'){
-                $defaultCategory = "6,10";//篮球规格 和 系列 -
-            }else if($attributeSetName == 'accessories'){//配件
-                $defaultCategory = "26";
-            }else if($attributeSetName == 'apparel'){//衣服
-                $defaultCategory = "10,24";
-            }else{
-                $defaultCategory = (string) $entity->PrimaryCategoryId;
-            }
+        if($attributeSetName == 'ball'){
+            $defaultCategory = "6,10";//篮球规格 和 系列 -
+        }else if($attributeSetName == 'accessories'){//配件
+            $defaultCategory = "26";
+        }else if($attributeSetName == 'apparel'){//衣服
+            $defaultCategory = "10,24";
+        }else{
+            $defaultCategory = (string) $entity->PrimaryCategoryId;
         }
         $valueArr['defaultCategory'] =$defaultCategory;
 
