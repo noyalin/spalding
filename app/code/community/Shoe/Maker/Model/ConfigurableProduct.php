@@ -643,6 +643,8 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                 $defaultCategory = "6,10";//篮球规格 和 系列 -
             }else if($attributeSetName == 'accessories'){//配件
                 $defaultCategory = "26";
+            }else if($attributeSetName == 'apparel'){//衣服
+                $defaultCategory = "10,24";
             }else{
                 $defaultCategory = (string) $entity->PrimaryCategoryId;
             }
