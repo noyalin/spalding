@@ -325,6 +325,9 @@ class Mage_Checkout_Model_Type_Onepage
                         if (!is_null($shippingValue) && !is_null($billing->getData($shippingKey))
                             && !isset($data[$shippingKey]) && !in_array($shippingKey, $requiredBillingAttributes)
                         ) {
+                            if($shippingKey == 'district' || $shippingKey == 'district_id' || $shippingKey == 'city_id'){
+                                continue;
+                            }
                             $billing->unsetData($shippingKey);
                         }
                     }

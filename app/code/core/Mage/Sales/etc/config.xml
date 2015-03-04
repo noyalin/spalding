@@ -340,6 +340,18 @@
                     <to_order_address>*</to_order_address>
                     <to_customer_address>*</to_customer_address>
                 </city>
+                <city_id>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </city_id>
+                <district>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </district>
+                <district_id>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </district_id>
                 <region>
                     <to_order_address>*</to_order_address>
                     <to_customer_address>*</to_customer_address>
@@ -895,6 +907,15 @@
                 <region_id>
                     <to_quote_address>*</to_quote_address>
                 </region_id>
+                <city_id>
+                    <to_quote_address>*</to_quote_address>
+                </city_id>
+                <district>
+                    <to_quote_address>*</to_quote_address>
+                </district>
+                <district_id>
+                    <to_quote_address>*</to_quote_address>
+                </district_id>
                 <postcode>
                     <to_quote_address>*</to_quote_address>
                 </postcode>
