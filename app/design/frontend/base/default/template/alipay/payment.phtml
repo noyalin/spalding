@@ -95,12 +95,12 @@ $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
                     <img  id="payimg3" alt="支付宝扫码支付" title="支付宝扫码支付" src="<?php echo $alipayQrImageSrc; ?>">
                 </label>
             </li>
-<!--            <li>-->
-<!--                <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">-->
-<!--                <label for="payment_4">-->
-<!--                    <img  id="payimg4" alt="微信支付" title="微信支付" src="--><?php //echo $weixinImageSrc; ?><!--">-->
-<!--                </label>-->
-<!--            </li>-->
+            <li>
+                <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">
+                <label for="payment_4">
+                    <img  id="payimg4" alt="微信支付" title="微信支付" src="<?php echo $weixinImageSrc; ?>">
+                </label>
+            </li>
         </ul>
         <div style="text-align: center">
             <button type="submit" id="submitbutton" title="下订单" class="button btn-checkout btn-next" ><span><span>下订单</span></span></button>
