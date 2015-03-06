@@ -1,4 +1,8 @@
 <?php
+$session = Mage::getSingleton('checkout/session');
+Mage :: log($session->getLastRealOrderId().'         payment');
+
+
 $orderId = (int)$this->getRequest()->getParam('orderid');
 if(!$orderId){
     echo '订单错误，请联系我们.商城客服电话：18017018167';
