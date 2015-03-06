@@ -50,6 +50,25 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         $this->loadLayout();
         $this->renderLayout();
     }
+    public function wappayAction(){
+        $session = Mage::getSingleton('checkout/session');
+        $order = $this->getOrder();
+
+        if (!$order->getId())
+        {
+            $this->norouteAction();
+            return;
+        }
+        $order->addStatusToHistory(
+            $order->getStatus(),
+            Mage::helper('weixinpay')->__('Customer was redirected to Weixinpay')
+        );
+        $order->save();
+
+        $session->unsQuoteId();
+        $this->loadLayout();
+        $this->renderLayout();
+    }
 
     public function notifyAction(){
         //使用通用通知接口

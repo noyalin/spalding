@@ -87,7 +87,7 @@ if (strpos($agent, "MicroMessenger")) {
             <?php } ?>
         </ul>
         <div style="text-align: left">
-            <button type="submit" title="下订单" class="button btn-checkout btn-next" onclick="go_pay('<?php echo $this->getUrl('alipay/payment/wapredirect'); ?>',globalbank);"><span><span>下订单</span></span></button>
+            <button type="submit" title="下订单" class="button btn-checkout btn-next" id="submitbutton"><span><span>下订单</span></span></button>
         </div>
     </div>
     <?php
@@ -125,3 +125,14 @@ if (strpos($agent, "MicroMessenger")) {
         </div>
     </div>
 </div>
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#submitbutton").click(function(){
+            if(globalbank == "weixin_pay"){
+                go_pay_with_weixin("<?php echo $this->getUrl('weixinpay/payment/wappay');?>",globalbank,"<?php echo $orderId;?>");
+            }else{
+                go_pay("<?php echo $this->getUrl('alipay/payment/wapredirect');?>",globalbank);
+            }
+        });
+    });
+</script>
