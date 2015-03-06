@@ -1,15 +1,13 @@
 <?php
 $session = Mage::getSingleton('checkout/session');
-$_order = Mage::getModel('sales/order');
+$order = $this->getOrder();
 
-$_order->loadByIncrementId($session->getLastRealOrderId());
-$orderId = $session->getLastRealOrderId();
-$realOrderId = $_order->getIncrementId();
-if (!$_order->getId()) {
+$realOrderId = $order->getIncrementId();
+if (!$order->getId()) {
     echo '订单错误，请联系我们';
     exit();
 }
-if ($_order->getStatus() == "alipay_wait_seller_send_goods") {
+if ($order->getStatus() == "alipay_wait_seller_send_goods") {
     echo "亲 " .$realOrderId . " 已付款成功！";
     return;
 }
@@ -52,7 +50,7 @@ $timeStamp = time();
 $out_trade_no = $realOrderId."$timeStamp";
 $unifiedOrder->setParameter("out_trade_no","$realOrderId");//商户订单号
 
-$totalFee = $_order->getGrandTotal() * 100;
+$totalFee = $order->getGrandTotal() * 100;
 $unifiedOrder->setParameter("total_fee","$totalFee");//总金额
 $unifiedOrder->setParameter("notify_url",$unifiedOrder->getNotifyUrl());//通知地址
 $unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
