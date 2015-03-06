@@ -59,6 +59,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
             $this->norouteAction();
             return;
         }
+        Mage::getSingleton('core/session')->setOrderId($order->getId());
         $order->addStatusToHistory(
             $order->getStatus(),
             Mage::helper('weixinpay')->__('Customer was redirected to Weixinpay')

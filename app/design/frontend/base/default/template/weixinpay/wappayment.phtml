@@ -1,6 +1,6 @@
 <?php
 $session = Mage::getSingleton('checkout/session');
-Mage :: log($session->getLastRealOrderId().'         payment');
+Mage :: log(Mage::getSingleton('core/session')->getOrderId().'         payment');
 
 
 $orderId = (int)$this->getRequest()->getParam('orderid');
