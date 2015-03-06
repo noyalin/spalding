@@ -1,16 +1,14 @@
 <?php
 $orderId = (int)$this->getRequest()->getParam('orderid');
-
-mage :: log($orderId .'   payment');
-$session = Mage::getSingleton('checkout/session');
-$_order = Mage::getModel('sales/order');
-
-$_order->loadByIncrementId($session->getLastRealOrderId());
-$orderId = $session->getLastRealOrderId();
+if(!$orderId){
+    echo '订单错误，请联系我们.商城客服电话：18017018167';
+    exit();
+}
+$_order = Mage::getModel('sales/order')->load($orderId);
 
 $realOrderId = $_order->getIncrementId();
 if (!$_order->getId()) {
-    echo '订单错误，请联系我们';
+    echo '订单错误，请联系我们.商城客服电话：18017018167';
     exit();
 }
 if ($_order->getStatus() == "alipay_wait_seller_send_goods") {
