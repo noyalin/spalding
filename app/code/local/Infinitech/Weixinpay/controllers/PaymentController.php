@@ -64,7 +64,6 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
             Mage::helper('weixinpay')->__('Customer was redirected to Weixinpay')
         );
         $order->save();
-        mage :: log($order->getId() .' id  ');
         $session->unsQuoteId();
         $this->loadLayout();
         $this->renderLayout();
