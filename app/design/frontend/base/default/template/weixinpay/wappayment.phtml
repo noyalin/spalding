@@ -1,4 +1,7 @@
 <?php
+$orderId = (int)$this->getRequest()->getParam('orderid');
+
+mage :: log($orderId .'   payment');
 $session = Mage::getSingleton('checkout/session');
 $_order = Mage::getModel('sales/order');
 
