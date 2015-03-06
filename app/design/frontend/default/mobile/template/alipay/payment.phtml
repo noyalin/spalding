@@ -56,7 +56,7 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
         echo '<div class="box">订单已经付款成功</div>';
     }else{
     ?>
-    <div class="box">
+    <div class="box" style="width: 400px;">
 <?php
 
 $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
@@ -86,7 +86,7 @@ if (strpos($agent, "MicroMessenger")) {
             </li>
             <?php } ?>
         </ul>
-        <div style="text-align: center">
+        <div style="text-align: left">
             <button type="submit" title="下订单" class="button btn-checkout btn-next" onclick="go_pay('<?php echo $this->getUrl('alipay/payment/wapredirect'); ?>',globalbank);"><span><span>下订单</span></span></button>
         </div>
     </div>
