@@ -1,4 +1,18 @@
 <?php
+$session = Mage::getSingleton('checkout/session');
+$_order = Mage::getModel('sales/order');
+
+$_order->loadByIncrementId($session->getLastRealOrderId());
+$orderId = $session->getLastRealOrderId();
+$realOrderId = $_order->getIncrementId();
+if (!$_order->getId()) {
+    echo '订单错误，请联系我们';
+    exit();
+}
+if ($_order->getStatus() == "alipay_wait_seller_send_goods") {
+    echo "亲 " .$realOrderId . " 已付款成功！";
+    return;
+}
 //使用jsapi接口
 //$jsApi = new JsApi_pub();
 $jsApi = Mage::getModel('weixinpay/jsapipub');
@@ -29,7 +43,7 @@ $unifiedOrder = Mage::getModel('weixinpay/unifiedorderpub');
 //spbill_create_ip已填,商户无需重复填写
 //sign已填,商户无需重复填写
 $shopName = Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("shop_name");
-$realOrderId = $_order->getIncrementId();
+
 $unifiedOrder->setParameter("openid","$openid");//商品描述
 $unifiedOrder->setParameter("body","$shopName");//商品描述
 //自定义订单号，此处仅作举例
