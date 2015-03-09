@@ -108,16 +108,45 @@ $jsApiParameters = $jsApi->getParameters();
                 jsApiCall();
             }
         }
-
+        var i = 0;
         jQuery(document).ready(function(){
             callpay();
+
+            window.code = 400;
+            var qrcodeChangeInternal = setInterval(changeQrcode, 1 * 1000);
+
+            function changeQrcode() {
+                i++;
+                if(i<3600){
+                    jQuery.getScript('<?php echo $this->getUrl('weixinpay/payment/js',array('order_id'=>$_order->getId()));?>');
+                    switch (window.code) {
+                        case 400:
+                        case 408:
+                            break;
+                        case 300:
+                            //付款成功，需要显示付款成功的标签
+                            jQuery(".msg_box").show();
+                            clearInterval(qrcodeChangeInternal);
+                            break;
+                    }
+                }else{
+                    clearInterval(qrcodeChangeInternal);
+                }
+
+            }
         });
+
     </script>
 </head>
 <body>
 </br></br></br></br>
 <div align="center">
     <button style="width:210px; height:30px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >点击付款</button>
+</div>
+<div class="msg_box" style="display: none;">
+    <i class="icon60_qr pngFix"></i>
+
+    <p><strong>付款成功</strong><br/><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>">查看订单</a></p>
 </div>
 </body>
 </html>
