@@ -145,10 +145,12 @@ $jsApiParameters = $jsApi->getParameters();
 <div align="center">
     <button id="paybutton" style="width:210px; height:30px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >点击付款</button>
 </div>
-<div align="center" class="msg_box" style="display: none;">
-    <i class="icon60_qr pngFix"></i>
+<div  align="center">
+    <div class="msg_box" style="display: none;" >
+        <i class="icon60_qr pngFix"></i>
 
-    <p><strong>付款成功</strong><br/><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>">查看订单</a></p>
+        <p><strong>付款成功</strong><br/><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>">查看订单</a></p>
+    </div>
 </div>
 </body>
 </html>
