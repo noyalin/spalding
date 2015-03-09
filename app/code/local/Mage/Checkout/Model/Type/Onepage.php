@@ -294,6 +294,8 @@ class Mage_Checkout_Model_Type_Onepage
             return $result;
         }
 
+        mage :: log($this->getQuote()->getCustomerId() ."   email   ". $address->getEmail() .'   method  '.$this->getQuote()->getCheckoutMethod());
+
         if (!$this->getQuote()->getCustomerId() && self::METHOD_REGISTER == $this->getQuote()->getCheckoutMethod()) {
             if ($this->_customerEmailExists($address->getEmail(), Mage::app()->getWebsite()->getId())) {
                 return array('error' => 1, 'message' => $this->_customerEmailExistsMessage);
