@@ -115,26 +115,12 @@ Checkout.prototype = {
     },
 
     setMethod: function(scrollBoolean){
-        if ($('login:guest') && $('login:guest').checked) {
-            this.method = 'guest';
-            var request = new Ajax.Request(
-                this.saveMethodUrl,
-                {method: 'post', onFailure: this.ajaxFailure.bind(this), parameters: {method:'guest'}}
-            );
-           // Element.hide('register-customer-password');
-        }
-        else if($('login:register') && ($('login:register').checked)) {
-            this.method = 'register';
-            var request = new Ajax.Request(
-                this.saveMethodUrl,
-                {method: 'post', onFailure: this.ajaxFailure.bind(this), parameters: {method:'register'}}
-            );
-          //  Element.show('register-customer-password');
-        }
-        else{
-            alert('Please choose to register or to checkout as a guest');
-            return false;
-        }
+        this.method = 'register';
+        var request = new Ajax.Request(
+            this.saveMethodUrl,
+            {method: 'post', onFailure: this.ajaxFailure.bind(this), parameters: {method:'register'}}
+        );
+
 		if (scrollBoolean !== false) this.gotoSection('billing');
         document.body.fire('login:setMethod', {method : this.method});
     },
