@@ -295,13 +295,11 @@
 	}
 jQuery(document).ready(function(){
     var s = jQuery('#create_account').attr("checked");
-    alert(2);
     if(s == 'checked' || s == true){
         jQuery('#register-customer-password').fadeIn();
         jQuery('input[id*="customer_password"]').toggleClass('required-entry validate-password', true);
         jQuery('input[id*="confirm_password"]').toggleClass('required-entry validate-cpassword', true);
         jQuery('[id="login:register"]').prop('checked', true);
-        alert(1);
     }
     jQuery('#billing\\:region_id').change(
         function(){
