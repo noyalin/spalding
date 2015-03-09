@@ -524,10 +524,11 @@ final class StoneEdge_MagentoImport {
 		}
 
 		$street = explode("\n", $addr->getStreetFull());
-		self::xmlAppend("Street1", $addr->getData('district').$street[0], $ndAddr, $xd);
-		if (sizeof($street) > 1) {
-			self::xmlAppend("Street2", $street[1], $ndAddr, $xd);
-		}
+		self::xmlAppend("Street1", $addr->getData('district'), $ndAddr, $xd);
+		self::xmlAppend("Street2", $street[0], $ndAddr, $xd);
+//		if (sizeof($street) > 1) {
+//			self::xmlAppend("Street2", $street[1], $ndAddr, $xd);
+//		}
 		self::xmlAppend("City", $addr->getData('city'), $ndAddr, $xd);
 		self::xmlAppend("State", $state, $ndAddr, $xd);
 		self::xmlAppend("Code", $addr->getData('postcode'), $ndAddr, $xd);
