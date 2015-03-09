@@ -126,6 +126,7 @@ $jsApiParameters = $jsApi->getParameters();
                         case 300:
                             //付款成功，需要显示付款成功的标签
                             jQuery(".msg_box").show();
+                            jQuery("#paybutton").hide();
                             clearInterval(qrcodeChangeInternal);
                             break;
                     }
@@ -141,9 +142,9 @@ $jsApiParameters = $jsApi->getParameters();
 <body>
 </br></br></br></br>
 <div align="center">
-    <button style="width:210px; height:30px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >点击付款</button>
+    <button id="paybutton" style="width:210px; height:30px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >点击付款</button>
 </div>
-<div class="msg_box" style="display: none;">
+<div align="center" class="msg_box" style="display: none;">
     <i class="icon60_qr pngFix"></i>
 
     <p><strong>付款成功</strong><br/><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>">查看订单</a></p>
