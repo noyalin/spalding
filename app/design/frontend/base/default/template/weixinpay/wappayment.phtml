@@ -1,6 +1,5 @@
 <?php
 $orderId = (int)Mage::getSingleton('core/session')->getOrderId();
-mage :: log($orderId ." order id");
 if(!$orderId){
     echo '订单错误，请联系我们.商城客服电话：18017018167';
     exit();
