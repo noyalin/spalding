@@ -114,16 +114,16 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 
 
         $storeCode = Mage::app()->getStore()->getCode();
-        if('sneakerhead_cn_mobile' ==  $storeCode){
-            $agent = $_SERVER['HTTP_USER_AGENT'];
-            if(strpos($agent, "MicroMessenger")){
-                $url = mage :: getUrl('weixinpay/payment/wappay', array('_secure'=>true));
-            }else{
-                $url = mage :: getUrl('alipay/payment/wapredirect', array('_secure'=>true));
-            }
-
-            $this->_redirectUrl($url);
-        }
+//        if('sneakerhead_cn_mobile' ==  $storeCode){
+//            $agent = $_SERVER['HTTP_USER_AGENT'];
+//            if(strpos($agent, "MicroMessenger")){
+//                $url = mage :: getUrl('weixinpay/payment/wappay', array('_secure'=>true));
+//            }else{
+//                $url = mage :: getUrl('alipay/payment/wapredirect', array('_secure'=>true));
+//            }
+//
+//            $this->_redirectUrl($url);
+//        }
         $this->loadLayout();
         $this->renderLayout();
     }
