@@ -26,7 +26,7 @@ function validateForm(selector) {
 	}
 
 	if (!validateOk) {
-		showAlert('Highlighted fields required.');
+		showAlert('必填项不能为空！');
 		return false;
 	} else {
 		return true;

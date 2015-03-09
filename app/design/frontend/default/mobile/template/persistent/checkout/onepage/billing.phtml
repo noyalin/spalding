@@ -152,7 +152,7 @@
 				<table id="step2-email" style="margin-bottom: -20px">
 					<tbody>
 			    <tr>
-					<td><input type="checkbox" id="create_account" class="checkbox" onClick="togglePassword()"/></td>
+					<td><input type="checkbox" id="create_account" class="checkbox"  onClick="togglePassword()" checked="true"/></td>
 					<td class="info-check-area"><label class="checkbox" for="create_account" style="margin-left: -6px;">创建帐号</label></td>
 			    </tr>
 					</tbody>
@@ -183,32 +183,8 @@
 			<?php if(!$this->isCustomerLoggedIn()): ?>
 				<table id="step2-email">
 					<tbody>
-<!--						<tr>-->
-<!--							<td colspan="2">-->
-<!--								<input class="checkbox" checked type="checkbox" name="newsletter_signup" value="1" title="Sneakerhead.com Email Newsletter" id="newsletter_signup">-->
-<!--								<label class="checkbox" for="newsletter_signup">Sneakerhead.com Email Newsletter</label>-->
-<!--							</td>-->
-<!--						</tr>-->
-<!--						<tr>-->
-<!--							<td colspan="2">-->
-<!--								<input class="checkbox" checked type="checkbox" name="reviews_signup" value="1" title="--><?php //echo $this->__('Promotional Emails from Sneakerhead.com') ?><!--" id="reviews_signup" />-->
-<!--								<label class="checkbox" for="reviews_signup">Promotional Emails from Sneakerhead.com</label></td>-->
-<!--						</tr>-->
-<!--						<tr>-->
-<!--							<td colspan="2"><div id="privacyToolTipLink" onClick="showAlert(jQuery('#privacyToolTip').html())">How does Sneakerhead.com protect my privacy?</div></td>-->
-<!--						</tr>-->
 						<input type="hidden" name="billing[save_in_address_book]" value="1" />
 					</tbody>
-<!--					<tfoot>-->
-<!--						<tr>-->
-<!--							<td colspan="2">-->
-<!--								<div id="privacyToolTip" style="visibility:hidden;">-->
-<!--									<p style="font-size:14px !important; font-weight:normal !important"><b>Sneakerhead.com</b> respects the privacy of its customers. We never sell, rent, or give away your name, email, or address to anyone.  All customer information is stored in our secure database and used exclusively by <b>Sneakerhead.com</b></p>-->
-<!--									<p style="font-size:14px !important; font-weight:normal !important">We encourage our customers to sign up for our newsletter to keep our customers up-to-date about the latest new arrivals and promotions.</p>-->
-<!--								</div>-->
-<!--							</td>-->
-<!--						</tr>-->
-<!--					</tfoot>-->
 				<?php echo $this->getChildHtml('form.additional.info'); ?>
 				</table>
 				<?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
@@ -251,7 +227,6 @@
 			<tfoot>
 				<tr>
 					<td colspan="2">
-<!--						<button type="button" style="float:left" class="button" onClick="location.href='--><?php //echo $this->getUrl('checkout/cart/');?><!--'"><span>--><?php //echo $this->__('Edit Bag') ?><!--</span></button>-->
 						<div id="billing-buttons-container">
 						<img id="billing-please-wait" class="please-wait" src="<?php echo $this->getSkinUrl('images/loader.gif', array('_secure'=>true)) ?>" style="display:none"/>
 						<button type="button" class="button" onclick="checkBillingForm();"><span><?php echo $this->__('Continue') ?></span></button>
@@ -297,12 +272,14 @@
 		});
 
 		if (hasErrors){
-			showAlert('Highlighted fields required.');
+			showAlert('必填项不能为空！');
 			return false;
 		}
 	}
 
 	function togglePassword() {
+
+
 		if (jQuery('#create_account').prop('checked')) {
 			jQuery('#register-customer-password').fadeIn();
 			jQuery('input[id*="customer_password"]').toggleClass('required-entry validate-password', true);
@@ -317,7 +294,13 @@
 		checkout.setMethod(false);
 	}
 jQuery(document).ready(function(){
-    console.log(billing);
+    var s = jQuery('#create_account').attr("checked");
+    if(s == 'checked' || s == true){
+        jQuery('#register-customer-password').fadeIn();
+        jQuery('input[id*="customer_password"]').toggleClass('required-entry validate-password', true);
+        jQuery('input[id*="confirm_password"]').toggleClass('required-entry validate-cpassword', true);
+        jQuery('[id="login:register"]').prop('checked', true);
+    }
     jQuery('#billing\\:region_id').change(
         function(){
             var id = this.value;
