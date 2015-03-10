@@ -81,6 +81,7 @@ class Infinitech_Weixinpay_Model_Commonutilpub
         //签名步骤四：所有字符转为大写
         $result_ = strtoupper($String);
         //echo "【result】 ".$result_."</br>";
+        mage :: log($result_);
         return $result_;
     }
 
