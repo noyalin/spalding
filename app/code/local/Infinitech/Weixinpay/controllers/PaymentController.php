@@ -84,7 +84,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         if($notify->checkSign() == FALSE){
             $notify->setReturnParameter("return_code","FAIL");//返回状态码
             $notify->setReturnParameter("return_msg","签名失败");//返回信息
-            mage :: log("return_msg 签名失败 ");
+            mage :: log("return_msg 签名失败 NOT GOOD ");
         }else{
             $notify->setReturnParameter("return_code","SUCCESS");//设置返回码
         }
