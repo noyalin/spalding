@@ -95,7 +95,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         //以log文件形式记录回调信息
         mage :: log("【接收到的notify通知】:\n".$xml."\n");
 
-        if($notify->checkSign() == TRUE)
+        if($notify->checkSign() == TRUE  || $notify->data["return_code"] == "SUCCESS")
         {
             if ($notify->data["return_code"] == "FAIL") {
                 //此处应该更新一下订单状态，商户自行增删操作
