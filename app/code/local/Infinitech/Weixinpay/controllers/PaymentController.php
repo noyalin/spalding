@@ -84,6 +84,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         if($notify->checkSign() == FALSE){
             $notify->setReturnParameter("return_code","FAIL");//返回状态码
             $notify->setReturnParameter("return_msg","签名失败");//返回信息
+            mage :: log("return_msg 签名失败 ");
         }else{
             $notify->setReturnParameter("return_code","SUCCESS");//设置返回码
         }
@@ -114,6 +115,8 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
             //例如：更新订单状态
             //例如：数据库操作
             //例如：推送支付完成信息
+        }else{
+            mage :: log("【签名失败-error】");
         }
     }
     public function updateOrder($str){
@@ -123,7 +126,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         if(!empty($arr)){
             $orderId = $arr[0];
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-            if ($order->getStatus() == 'weixin_wait_buyer_pay' || $order->getState() == 'new'  ) {
+            if ($order->getStatus() == 'weixin_wait_buyer_pay' || $order->getState() == 'new' ||$order->getStatus() == 'alipay_wait_buyer_pay' ) {
                 //写LOG
                 $postDataFromPost['out_trade_no'] = $orderId;
                 $postDataFromPost['trade_no'] = (string)$xml->transaction_id;
