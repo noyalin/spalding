@@ -11,7 +11,7 @@ if (!$_order->getId()) {
     echo '订单错误，请联系我们.商城客服电话：18017018167';
     exit();
 }
-if ($_order->getStatus() == "alipay_wait_seller_send_goods") {
+if ($_order->getStatus() == "alipay_wait_seller_send_goods" || 'weixin_wait_seller_send_goods' == $_order->getStatus()) {
     echo "亲 " .$realOrderId . " 已付款成功！";
     return;
 }
@@ -32,7 +32,14 @@ if (!isset($_GET['code']))
     $code = $_GET['code'];
     $jsApi->setCode($code);
     $openid = $jsApi->getOpenId();
+
+    //将OPENID 和 ORDER ID 绑定
+    $resource = Mage::getSingleton('core/resource');
+    $writeConnection = $resource->getConnection('core_write');
+    $query = "insert into `weixin_web_data` ( `openid`, `orderid`) values ('$openid','$realOrderId')";
+    $writeConnection->query($query);
 }
+
 //=========步骤2：使用统一支付接口，获取prepay_id============
 //使用统一支付接口
 $unifiedOrder = Mage::getModel('weixinpay/unifiedorderpub');

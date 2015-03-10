@@ -23,7 +23,7 @@ if (!$_order->getId()) {
     echo '订单错误，请联系我们';
     exit();
 }
-if ($_order->getStatus() == "alipay_wait_seller_send_goods") {
+if ($_order->getStatus() == "alipay_wait_seller_send_goods" || 'weixin_wait_seller_send_goods' == $_order->getStatus()) {
     echo "亲 " . $_order->getIncrementId() . " 已付款成功！";
     return;
 }
