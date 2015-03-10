@@ -73,6 +73,7 @@ class Infinitech_Weixinpay_Model_Commonutilpub
         //echo '【string1】'.$String.'</br>';
         //签名步骤二：在string后加入KEY
         $String = $String."&key=".Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("pay_key");
+        mage :: log(Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("pay_key"));
         //echo "【string2】".$String."</br>";
         //签名步骤三：MD5加密
         $String = md5($String);
