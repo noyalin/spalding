@@ -89,4 +89,86 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $writeConnection->query($query);
         echo "success";
     }
+    function imageAction(){
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $readConnection = $resource->getConnection('core_read');
+
+
+        $collectionConfigurable = Mage::getResourceModel('catalog/product_collection')
+            ->addAttributeToFilter('type_id', array('eq' => 'configurable'));
+        $i = 0;
+        foreach( $collectionConfigurable as $_product){
+            $entityId = $_product->getEntityId();
+            $configurableProduct = Mage::getModel('catalog/product')->load($entityId);
+            $imageCount = $configurableProduct->getImageCount();
+            $urlKey = $configurableProduct->getUrlKey();
+            $sku = $configurableProduct->getSku();
+            $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
+            echo $imageCount. "    ".$urlKey."<br/>";
+            if($i >= 10 ){
+                break;
+            }
+            $i++;
+            $skuImage = $configurableProduct->getSku();
+//            for($i=1;$i<=$imageCount;$i++){
+//                $urlKeyImage = $urlKey."-$i.jpg";
+//                $file  = "/$skuImage/$urlKeyImage";
+//                $query = "insert into `catalog_product_entity_media_gallery` ( `attribute_id`, `entity_id`, `value`) values (88,$entityId,'$file')";
+//
+//                echo $query."\n";
+//                $res = $writeConnection->query($query);
+//            }
+
+        }
+    }
+
+    public function getAllImagesByUrlkey($sku,$urlKey,$count){
+        $dir = Mage::getBaseDir()."/media/catalog/product/";
+        for($i=1;$i<=$count;$i++){
+//            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
+            $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$image='."$urlKey-$i";
+            $url = 'http://s7d5.scene7.com/is/image/sneakerhead/bigball1200?$1200x1200$&$imagemoban='."$urlKey-$i";
+            $needDir = $dir.$sku."/";
+            if(!file_exists($needDir)){
+                mkdir($needDir);
+            }
+            $filename = $needDir."$urlKey-$i.jpg";
+            if(file_exists($filename)){
+                continue;
+            }
+            $return = $this->grabImage($url,$filename);
+            if($return){
+                // means save succcess, save database
+            }else{
+                //重新获取
+            }
+        }
+    }
+
+    function grabImage($url,$filename="") {
+        if($url==""):return false;endif;
+
+        if($filename=="") {
+            $filename=date("dMYHis").'jpg';
+        }
+
+        ob_start();
+        readfile($url);
+        $img = ob_get_contents();
+        ob_end_clean();
+        $size = strlen($img);
+        if($img && $size){
+            $fp2=@fopen($filename, "a");
+            fwrite($fp2,$img);
+            fclose($fp2);
+            return $filename;
+        }else{
+            return null;
+        }
+
+
+
+    }
+
 }
