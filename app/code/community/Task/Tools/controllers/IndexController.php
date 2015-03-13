@@ -104,12 +104,13 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $imageCount = $configurableProduct->getImageCount();
             $urlKey = $configurableProduct->getUrlKey();
             $sku = $configurableProduct->getSku();
-            if($sku == '66-996y'){
+//            if($sku == '66-996y'){
                 $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
-            }
+//            }
 
             $i++;
-            $skuImage = $configurableProduct->getSku();
+            echo $sku."    ".$i."<br/>";
+//            $skuImage = $configurableProduct->getSku();
 //            for($i=1;$i<=$imageCount;$i++){
 //                $urlKeyImage = $urlKey."-$i.jpg";
 //                $file  = "/$skuImage/$urlKeyImage";
@@ -120,6 +121,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 //            }
 
         }
+        echo $i;
     }
 
     public function getAllImagesByUrlkey($sku,$urlKey,$count){
