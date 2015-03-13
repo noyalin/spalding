@@ -104,11 +104,10 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $imageCount = $configurableProduct->getImageCount();
             $urlKey = $configurableProduct->getUrlKey();
             $sku = $configurableProduct->getSku();
-            $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
-            echo $imageCount. "    ".$urlKey."<br/>";
-            if($i >= 10 ){
-                break;
+            if($sku == '66-996y'){
+                $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
             }
+
             $i++;
             $skuImage = $configurableProduct->getSku();
 //            for($i=1;$i<=$imageCount;$i++){
@@ -125,6 +124,8 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function getAllImagesByUrlkey($sku,$urlKey,$count){
         $dir = Mage::getBaseDir()."/media/catalog/product/";
+
+        //取得详情页三个大图
         for($i=1;$i<=$count;$i++){
 //            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
             $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$image='."$urlKey-$i";
@@ -142,6 +143,48 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 // means save succcess, save database
             }else{
                 //重新获取
+            }
+        }
+
+        //取得产品列表小图
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,4);
+
+        //detail page left image
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding330px?$330x330$&$image330='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,5);
+
+        //detail small image under left image
+        for($m=1;$m<=$count;$m++){
+            $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$urlKey.'-'.$m;
+            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,5+$m);
+        }
+
+        //Front image
+        for($m=1;$m<=$count;$m++){
+            $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/ballTemplates?$960x598$&$image488px='.$urlKey.'-'.$m;
+            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,8+$m);
+        }
+
+        //购物车 small image
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,12);
+
+        //my order image 66-996-66996y-1
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,13);
+    }
+
+    function getImageVByUrl($urlProductList,$sku,$urlKey,$i){
+        $dir = Mage::getBaseDir()."/media/catalog/product/";
+        $needDir = $dir.$sku."/";
+        $filename = $needDir."$urlKey-$i.jpg";
+        if(file_exists($filename)){
+            //do nothing
+        }else{
+            $return = $this->grabImage($urlProductList,$filename);
+            if($return){
+                echo "产品列表页面小图保存成功!<br/>";
             }
         }
     }
