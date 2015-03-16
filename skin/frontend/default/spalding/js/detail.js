@@ -98,7 +98,7 @@ jQuery(document).ready(function () {
         jQuery("#mainImage").attr("src", newstr);
 
         dStr = oldStr.replace(r+".jpg",r-7+".jpg");
-        jQuery("#mainImage").attr("data-zoom-image", dStr);
+        jQuery("#mainImage").attr("data-zoom-image", dStr   );
     });
     var i = 0;
     imgSwap = [];

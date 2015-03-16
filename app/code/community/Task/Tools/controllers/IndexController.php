@@ -104,12 +104,13 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $imageCount = $configurableProduct->getImageCount();
             $urlKey = $configurableProduct->getUrlKey();
             $sku = $configurableProduct->getSku();
-            if($sku == '74-412'){
+            if($sku == '73-901y'){
                 $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
+                echo $sku."    ".$i."<br/>";
             }
 
             $i++;
-            echo $sku."    ".$i."<br/>";
+
 //            $skuImage = $configurableProduct->getSku();
 //            for($i=1;$i<=$imageCount;$i++){
 //                $urlKeyImage = $urlKey."-$i.jpg";
@@ -121,7 +122,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 //            }
 
         }
-        echo $i;
+        //echo $i;
     }
 
     public function getAllImagesByUrlkey($sku,$urlKey,$count){
@@ -185,6 +186,10 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         //my order image 66-996-66996y-1
         $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image='.$urlKey.'-1';
         $this->getImageVByUrl($urlProductList,$sku,$urlKey,15);
+
+        //detail page - view more other product
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/sku220px%2D1?$220x220$&$image220px='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,16);
     }
 
     function getImageVByUrl($urlProductList,$sku,$urlKey,$i){
