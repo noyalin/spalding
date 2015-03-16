@@ -104,7 +104,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $imageCount = $configurableProduct->getImageCount();
             $urlKey = $configurableProduct->getUrlKey();
             $sku = $configurableProduct->getSku();
-//            if($sku == '66-996y'){
+//            if($sku == '74-642y'){
                 $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
 //            }
 
@@ -149,7 +149,13 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         }
 
         //取得产品列表小图
-        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image='.$urlKey.'-1';
+        $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+        $productNorm = $configurableProduct->getProductNorm();
+        if($productNorm == 6){
+            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image='.$urlKey.'-1';
+        }else{
+            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$220x220$&$image='.$urlKey.'-1';
+        }
         $this->getImageVByUrl($urlProductList,$sku,$urlKey,4);
 
         //detail page left image
