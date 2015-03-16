@@ -57,11 +57,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
         <dd class="ms-fl">
             <?php if ($this->hasProductUrl()):?>
                 <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?>
-<!--                    <img src="--><?php //echo $this->getProductThumbnail()->resize(75); ?><!--" width="75" height="75" alt="--><?php //echo $this->escapeHtml($this->getProductName()) ?><!--" />-->
-
-<!--                    <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=--><?php //echo $urlKey ?><!---1" alt=""/>-->
-                    <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=<?php echo $urlKey ?>-1" alt=""/>
-
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $product_sku."/". $urlKey ?>-14.jpg" alt=""/>
                     <?php if ($this->hasProductUrl()):?>
                 </a>
             <?php endif;?>
