@@ -85,12 +85,18 @@ jQuery(document).ready(function () {
     jQuery("#detailProductGallery div img").hover(function () {
         originSrc = jQuery("#mainImage").attr("data-zoom-image");
         smallSrc = jQuery(this).attr("src");
+        nStr = smallSrc.replace(".jpg",'');
+        aStr = nStr.split('-');
+        len = aStr.length;
+        r = aStr[len-1];
         lastSmallSrc =  smallSrc.substring(smallSrc.length-2,smallSrc.length);
         originSrcFirstPart = originSrc.substring(0,originSrc.length-6);
         originSrcSecondPart = lastSmallSrc + '.jpg';
         originSrcNew = originSrcFirstPart + originSrcSecondPart;
         jQuery("#mainImage").attr("data-zoom-image",originSrcNew);
-        jQuery("#mainImage").attr("src", jQuery(this).attr("src").replace("spalding50px", "spalding330px").replace("50x50","330x330").replace("image50","image330"))
+        oldStr = jQuery(this).attr("src");
+        newstr = oldStr.replace(r+".jpg",r-3+".jpg");
+        jQuery("#mainImage").attr("src", newstr)
     });
     var i = 0;
     imgSwap = [];
