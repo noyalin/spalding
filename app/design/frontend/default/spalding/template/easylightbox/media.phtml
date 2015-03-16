@@ -49,8 +49,8 @@
                 <?php while ($i++ < $imageCount) : ?>
                     <div>
                         <a rel="productGallery [gallery]" onMouseOver="javascript:sku=<?php echo $i ?>;">
-<!--                            <img src="http://image.sneakerhead.com/is/image/sneakerhead/viewer_thumbnail_template?&$viewer_thumbnail_image_preset$&layer=2&src=sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!-----><?php //echo $i ?><!--" alt=""/>-->
-                            <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>" alt=""/>
+<!--                            <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50=--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!-----><?php //echo $i ?><!--" alt=""/>-->
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i+5 ?>.jpg" alt=""/>
                         </a>
                     </div>
                 <?php endwhile ?>
