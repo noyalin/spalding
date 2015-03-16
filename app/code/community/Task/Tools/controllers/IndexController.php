@@ -187,12 +187,18 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $dir = Mage::getBaseDir()."/media/catalog/product/";
         $needDir = $dir.$sku."/";
         $filename = $needDir."$urlKey-$i.jpg";
-        if(file_exists($filename)){
+        $return = null;
+        if(file_exists($filename) && $i!=4){
             //do nothing
         }else{
+            if($i == 4){
+                //删除原图
+//                unlink($filename);
+//                echo $filename."     删除成功!<br/>";
+            }
             $return = $this->grabImage($urlProductList,$filename);
             if($return){
-                echo "产品列表页面小图保存成功!<br/>";
+                echo $urlProductList."     产品列表页面小图保存成功!<br/>";
             }
         }
     }
