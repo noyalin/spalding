@@ -33,9 +33,9 @@
 
 <div id="detailPixWrap">
 <!--    <a rel="productGallery [gallery]" href="http://image.sneakerhead.com/is/image/sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!---1">-->
-    <a rel="productGallery [gallery]" href="http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$imagemoban=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1">
+    <a rel="productGallery [gallery]" >
 <!--        <img width="330" id="mainImage" src="http://image.sneakerhead.com/is/image/sneakerhead/detail-big-image?&$detail_big_image$&layer=2&src=sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!---1"-->
-        <img width="330" id="mainImage" src="http://s7d5.scene7.com/is/image/sneakerhead/spalding330px?$330x330$&$image330=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1"
+        <img width="330" id="mainImage" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-5.jpg"
              alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"
              onMouseOver="javascript:sku=1"  data-zoom-image="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>"/></a>
     <div class="detailArrowPrev">
@@ -50,7 +50,7 @@
                     <div>
                         <a rel="productGallery [gallery]" onMouseOver="javascript:sku=<?php echo $i ?>;">
 <!--                            <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50=--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!-----><?php //echo $i ?><!--" alt=""/>-->
-                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i+5 ?>.jpg" alt=""/>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i+7 ?>.jpg" alt=""/>
                         </a>
                     </div>
                 <?php endwhile ?>

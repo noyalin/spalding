@@ -104,9 +104,9 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $imageCount = $configurableProduct->getImageCount();
             $urlKey = $configurableProduct->getUrlKey();
             $sku = $configurableProduct->getSku();
-//            if($sku == '74-642y'){
+            if($sku == '74-642y'){
                 $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
-//            }
+            }
 
             $i++;
             echo $sku."    ".$i."<br/>";
@@ -159,28 +159,32 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $this->getImageVByUrl($urlProductList,$sku,$urlKey,4);
 
         //detail page left image
-        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding330px?$330x330$&$image330='.$urlKey.'-1';
-        $this->getImageVByUrl($urlProductList,$sku,$urlKey,5);
+        for($m=1;$m<=$count;$m++){
+            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding330px?$330x330$&$image330='.$urlKey.'-'.$m;
+            $this->getImageVByUrl($urlProductList,$sku,$urlKey,4+$m);
+        }
+
+
 
         //detail small image under left image
         for($m=1;$m<=$count;$m++){
             $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$urlKey.'-'.$m;
-            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,5+$m);
+            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,7+$m);
         }
 
         //Front image
         for($m=1;$m<=$count;$m++){
             $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/ballTemplates?$960x598$&$image488px='.$urlKey.'-'.$m;
-            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,8+$m);
+            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,10+$m);
         }
 
         //购物车 small image
         $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image='.$urlKey.'-1';
-        $this->getImageVByUrl($urlProductList,$sku,$urlKey,12);
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,14);
 
         //my order image 66-996-66996y-1
         $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image='.$urlKey.'-1';
-        $this->getImageVByUrl($urlProductList,$sku,$urlKey,13);
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,15);
     }
 
     function getImageVByUrl($urlProductList,$sku,$urlKey,$i){
