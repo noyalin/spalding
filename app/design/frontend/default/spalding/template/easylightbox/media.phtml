@@ -28,16 +28,16 @@
     }
 
     $urlKey = $_product->getUrlKey();
+    $pSku = $_product->getSku();
 
 ?>
 
 <div id="detailPixWrap">
-<!--    <a rel="productGallery [gallery]" href="http://image.sneakerhead.com/is/image/sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!---1">-->
     <a rel="productGallery [gallery]" >
-<!--        <img width="330" id="mainImage" src="http://image.sneakerhead.com/is/image/sneakerhead/detail-big-image?&$detail_big_image$&layer=2&src=sneakerhead/--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!---1"-->
-        <img width="330" id="mainImage" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-5.jpg"
+        <img width="330" id="mainImage" data-zoom-image="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $pSku."/". $urlKey ?>-1.jpg"
+             src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $pSku."/". $urlKey ?>-5.jpg"
              alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"
-             onMouseOver="javascript:sku=1"  data-zoom-image="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>"/></a>
+             onMouseOver="javascript:sku=1" /></a>
     <div class="detailArrowPrev">
         <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>
     </div>
@@ -74,31 +74,6 @@
 ?>
 
 <?php endif; ?>
-
-<?php //if (count($this->getGalleryImages()) > 0): ?>
-<!--<div class="more-views">-->
-<!--    <h4>--><?php //echo $this->__('More Views') ?><!--</h4>-->
-<!--    <ul>-->
-<!--    --><?php //foreach ($this->getGalleryImages() as $_image): ?>
-<!--	--><?php
-//	$subtitle = $this->htmlEscape($_image->getLabel());
-//	if(($_lightboxConfig['productName'] != 0) && empty($subtitle)):
-//	        $subtitle  = $_product->getName();
-//	endif;
-//	?>
-<!--    <li>-->
-<!--        <a href="--><?php //echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($popupImageSize[0], $popupImageSize[1]); ?><!--"-->
-<!--            rel="lightbox[rotation]"-->
-<!--            title="--><?php //echo $subtitle; ?><!--"-->
-<!--            onclick="return false;"-->
-<!--        ><img src="--><?php //echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($additionalImageSize[0], $additionalImageSize[1]); ?><!--" alt="--><?php //echo $subtitle; ?><!--"-->
-<!--        /></a>-->
-<!--    </li>-->
-<!--    --><?php //endforeach; ?>
-<!--    </ul>-->
-<!--</div>-->
-<?php //endif; ?>
-
 <script type="text/javascript">
 jQuery('#mainImage').elevateZoom();
 </script>

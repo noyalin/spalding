@@ -104,7 +104,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $imageCount = $configurableProduct->getImageCount();
             $urlKey = $configurableProduct->getUrlKey();
             $sku = $configurableProduct->getSku();
-            if($sku == '74-642y'){
+            if($sku == '74-412'){
                 $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
             }
 
@@ -192,7 +192,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $needDir = $dir.$sku."/";
         $filename = $needDir."$urlKey-$i.jpg";
         $return = null;
-        if(file_exists($filename) && $i!=4){
+        if(file_exists($filename)){
             //do nothing
         }else{
             if($i == 4){

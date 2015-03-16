@@ -93,10 +93,12 @@ jQuery(document).ready(function () {
         originSrcFirstPart = originSrc.substring(0,originSrc.length-6);
         originSrcSecondPart = lastSmallSrc + '.jpg';
         originSrcNew = originSrcFirstPart + originSrcSecondPart;
-        jQuery("#mainImage").attr("data-zoom-image",originSrcNew);
         oldStr = jQuery(this).attr("src");
         newstr = oldStr.replace(r+".jpg",r-3+".jpg");
-        jQuery("#mainImage").attr("src", newstr)
+        jQuery("#mainImage").attr("src", newstr);
+
+        dStr = oldStr.replace(r+".jpg",r-7+".jpg");
+        jQuery("#mainImage").attr("data-zoom-image", dStr);
     });
     var i = 0;
     imgSwap = [];
