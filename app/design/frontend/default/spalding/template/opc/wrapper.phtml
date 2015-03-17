@@ -112,7 +112,7 @@
                                 公司名称：
                             </div>
                             <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp"><br>
+                                <input type="text" class="regBoxInp" id="zengzhi_companyname" name="zengzhi_companyname"><br>
                             </div>
                         </div>
 
@@ -121,7 +121,7 @@
                                 纳税人识别号：
                             </div>
                             <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp"><br>
+                                <input type="text" class="regBoxInp" id="zengzhi_shibiehao" name="zengzhi_shibiehao"><br>
                             </div>
                         </div>
 
@@ -130,7 +130,7 @@
                                 公司地址：
                             </div>
                             <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp"><br>
+                                <input type="text" class="regBoxInp" id="zengzhi_companyaddress" name="zengzhi_companyaddress"><br>
                             </div>
                         </div>
 
@@ -139,7 +139,7 @@
                                 公司电话：
                             </div>
                             <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp"><br>
+                                <input type="text" class="regBoxInp" id="zengzhi_companyphone" name="zengzhi_companyphone"><br>
                             </div>
                         </div>
 
@@ -148,7 +148,7 @@
                                 开户行名称：
                             </div>
                             <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp"><br>
+                                <input type="text" class="regBoxInp" id="zengzhi_bankname" name="zengzhi_bankname"><br>
                             </div>
                         </div>
 
@@ -157,7 +157,7 @@
                                 开户行帐号：
                             </div>
                             <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp"><br>
+                                <input type="text" class="regBoxInp" id="zengzhi_bankaccount" name="zengzhi_bankaccount"><br>
                             </div>
                         </div>
 
@@ -329,7 +329,8 @@
     //        var invoiceType = jQuery('input[type="radio"].invoicetaitou:checked').val();
             var invoiceType = jQuery("input[name='chkCheckoutInvoice']:checked").val();
             var invoiceTypeName = "普通发票";
-
+            var invoice_neirong = jQuery('select.invoiceneirong option:selected').val();
+            spaninvoicecontent = invoice_neirong;
             if(invoiceType == 1){//普通发票
                 var invoice_title = jQuery('select.invoicetaitou option:selected').val();
 
@@ -339,14 +340,24 @@
                 }
             }else{
                 invoiceTypeName = "增值税专用发票";
+                invoice_content = ""
+                    + "  公司名称: " + jQuery("#zengzhi_companyname").val()
+                    + "  纳税人识别号: "+ jQuery("#zengzhi_shibiehao").val()
+                    + "  公司地址: "+ jQuery("#zengzhi_companyaddress").val()
+                    + "  公司电话: "+ jQuery("#zengzhi_companyphone").val()
+                    + "  开户行名称: "+ jQuery("#zengzhi_bankname").val()
+                    + "  开户行帐号: "+ jQuery("#zengzhi_bankaccount").val();
+                spaninvoicecontent = invoice_content;
             }
-            var invoice_neirong = jQuery('select.invoiceneirong option:selected').val();
-            if(invoiceType > 0){
+
+            if(invoiceType  ==  1){
                 jQuery("#customer_invoice").val("发票类型: "+invoiceTypeName +"  发票抬头: "+invoice_title + invoice_content + " 开票内容: "+invoice_neirong );
+            }else{
+                jQuery("#customer_invoice").val("发票类型: "+invoiceTypeName + invoice_content );
             }
             jQuery('.spaninvoicetype').html(invoiceTypeName);
             jQuery('.spaninvoicetitle').html(invoice_title);
-            jQuery('.spaninvoicecontent').html(invoice_content);
+            jQuery('.spaninvoicecontent').html(spaninvoicecontent);
             jQuery('#checkoutInvoiceNormal').hide();
             jQuery('#checkoutInvoiceTax').hide();
             jQuery('#checkoutInvoiceCommand').hide();
