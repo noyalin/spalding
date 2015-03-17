@@ -460,9 +460,10 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 
     public function getAllImagesByUrlkey($sku,$urlKey,$count){
         $dir = Mage::getBaseDir()."/media/catalog/product/";
+
+        //取得详情页三个大图
         for($i=1;$i<=$count;$i++){
-//            $url = "http://image.sneakerhead.com/is/image/sneakerhead/$urlKey-$i?$270$";
-            $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$image='."$urlKey-$i";
+//            $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$image='."$urlKey-$i";
             $url = 'http://s7d5.scene7.com/is/image/sneakerhead/bigball1200?$1200x1200$&$imagemoban='."$urlKey-$i";
             $needDir = $dir.$sku."/";
             if(!file_exists($needDir)){
@@ -479,7 +480,65 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                 //重新获取
             }
         }
+
+        //取得产品列表小图
+        $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+        $productNorm = $configurableProduct->getProductNorm();
+        if($productNorm == 6){
+            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image='.$urlKey.'-1';
+        }else{
+            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$220x220$&$image='.$urlKey.'-1';
+        }
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,4);
+
+        //detail page left image
+        for($m=1;$m<=$count;$m++){
+            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding330px?$330x330$&$image330='.$urlKey.'-'.$m;
+            $this->getImageVByUrl($urlProductList,$sku,$urlKey,4+$m);
+        }
+
+
+
+        //detail small image under left image
+        for($m=1;$m<=$count;$m++){
+            $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$urlKey.'-'.$m;
+            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,7+$m);
+        }
+
+        //Front image
+        for($m=1;$m<=$count;$m++){
+            $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/ballTemplates?$960x598$&$image488px='.$urlKey.'-'.$m;
+            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,10+$m);
+        }
+
+        //购物车 small image
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,14);
+
+        //my order image 66-996-66996y-1
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,15);
+
+        //detail page - view more other product
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/sku220px%2D1?$220x220$&$image220px='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,16);
     }
+
+    function getImageVByUrl($urlProductList,$sku,$urlKey,$i){
+        $dir = Mage::getBaseDir()."/media/catalog/product/";
+        $needDir = $dir.$sku."/";
+        $filename = $needDir."$urlKey-$i.jpg";
+        $return = null;
+        if(file_exists($filename)){
+            //do nothing
+        }else{
+            $return = $this->grabImage($urlProductList,$filename);
+            if($return){
+//                echo $urlProductList."     产品列表页面小图保存成功!<br/>";
+            }
+        }
+    }
+
     function grabImage($url,$filename="") {
         if($url==""):return false;endif;
 
@@ -500,9 +559,6 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         }else{
             return null;
         }
-
-
-
     }
     public function saveOtherStore($product,$valueArr){
         $sku =  $valueArr['sku'];

@@ -104,10 +104,10 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $imageCount = $configurableProduct->getImageCount();
             $urlKey = $configurableProduct->getUrlKey();
             $sku = $configurableProduct->getSku();
-            if($sku == '73-901y'){
+//            if($sku == '73-901y'){
                 $this->getAllImagesByUrlkey($sku,$urlKey,$imageCount);
                 echo $sku."    ".$i."<br/>";
-            }
+//            }
 
             $i++;
 
