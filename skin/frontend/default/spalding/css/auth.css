@@ -39,13 +39,22 @@ element.style {
     background-position:-155px -40px;
     margin-left:145px;
 }
+.ds_dialog_process {
+    background: url("../auth/process.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 42px;
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left:145px;
+}
 #barcodeVerifyResult{
     color:#fdb905;
     font-size: 18px;
     font-weight: bold;
     padding-left: 170px;
     padding-right:60px;
-    margin-top:195px;
+    margin-top:200px;
     text-align:center;
 }
 

@@ -9,9 +9,12 @@ jQuery(document).ready(function(){
     jQuery("#getcode_num").click(function(){
         jQuery(this).attr("src",'code_num.php?' + Math.random());
     });
-    jQuery('.ds_dialog_yes').click(function(){
+
+    jQuery(".ds_dialog_buttons").delegate(".ds_dialog_yes","click",function(){
         var flag =  checkAddressForm();
         if(flag == true){
+            jQuery(this).removeClass("ds_dialog_yes");
+            jQuery(this).addClass("ds_dialog_process");
             var barcode = jQuery("#barcode");
             var verifycode = jQuery("#verifycode");
             jQuery("#barcode_error").html("");
@@ -20,7 +23,6 @@ jQuery(document).ready(function(){
             verifycode.removeClass("error");
             sure_button_onclick();
         }
-
     });
     function checkAddressForm(){
         var flag = true;
@@ -53,12 +55,20 @@ jQuery(document).ready(function(){
             },
             //  dataType: "json",
             error: function(){
-                alert('error');
+                //alert('error');
             }
         });
         if(verifyResult != "1"){
             document.getElementById("barcodeVerifyResult").innerHTML = verifyResult;
+            if(verifyResult.indexOf("没有此数码，请当心该产品是假冒产品")>=0  ||   verifyResult.indexOf("该防伪码已超过规定查询次数")>=0 ||  verifyResult.indexOf("没有此防伪码，请当心该产品是假冒产品")>=0){
+                jQuery(".ds_dialog_process").addClass("ds_dialog_yes");
+                jQuery(".ds_dialog_process").removeClass("ds_dialog_process");
+            }else{
+                jQuery("#checkmessage").html("");
+            }
         }else{
+            jQuery(".ds_dialog_process").addClass("ds_dialog_yes");
+            jQuery(".ds_dialog_process").removeClass("ds_dialog_process");
             jQuery("#verifycode_error").html("验证码不符");
             jQuery("#verifycode").addClass("error");
             jQuery('#barcodeVerifyResult').html("");
