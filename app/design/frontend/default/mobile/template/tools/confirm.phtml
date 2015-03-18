@@ -76,7 +76,7 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
         }
 
         function loading(){
-            var html = '<div><img src="auth/ajax-loader-tr.gif"/></div>';
+            var html = '<div><img src="<?php echo $this->getSkinUrl(); ?>images/auth/ajax-loader-tr.gif"/></div>';
             jQuery('#barcodeVerifyResult').html(html);
         }
 
