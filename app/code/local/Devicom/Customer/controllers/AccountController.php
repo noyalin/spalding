@@ -40,16 +40,6 @@ class Devicom_Customer_AccountController extends Mage_Customer_AccountController
             $this->_redirect('*/*/');
             return;
         }
-        /**
-         * 判断当前是否为手机
-         */
-        $storeCode = Mage::app()->getStore()->getCode();
-        if($storeCode == 'sneakerhead_cn_mobile'){
-            //需要通过微信获取用户信息
-            $this->authWeixin();
-        }
-
-
         $this->getResponse()->setHeader('Login-Required', 'true');
         $this->loadLayout();
         $this->_initLayoutMessages('customer/session');
@@ -57,7 +47,7 @@ class Devicom_Customer_AccountController extends Mage_Customer_AccountController
         $this->renderLayout();
     }
 
-    public function authWeixin(){
+    public function authWeixinAction(){
         $appid = 'wx36026301d4b1cb01';
         $appsecret = '79311ea02ea318af5f228492bf119104';
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();

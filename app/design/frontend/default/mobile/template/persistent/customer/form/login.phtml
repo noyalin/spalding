@@ -26,18 +26,15 @@
 ?>
 
 <div class="detail-back">
-<!--<p><a href="--><?php //echo $this->getUrl(''); ?><!--">Back to Home</a></p>-->
 <p><a href="<?php echo $this->getUrl(''); ?>">返回首页</a></p>
 </div>
 
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <div id="my-account-wrapper">
-<!--	<h1>My Account</h1>-->
     <h1>用户中心</h1>
 	<div id="my-account-login-wrapper">
 		<div class="my-account-content">
-<!--			<h2>Login</h2>-->
             <h2>登录信息</h2>
 				<form action="<?php echo $this->getUrl('customer/account/loginPost/');?>" method="post" id="login-form">
                     <?php echo $this->getBlockHtml('formkey'); ?>
@@ -45,7 +42,6 @@
 					<tbody>
 						<tr>
 							<td class="infoLabel">
-<!--								<label for="email">Email Address</label>-->
                                 <label for="email">邮箱</label>
 							</td>
 						</tr>
@@ -56,7 +52,6 @@
 						</tr>
 						<tr>
 							<td class="infoLabel">
-<!--								<label for="pass">Password</label>-->
                                 <label for="pass">密码</label>
 							</td>
 						</tr>
@@ -68,13 +63,11 @@
 						<?php echo $this->getChildHtml('form.additional.info'); ?>
 						<tr>
 							<td align="right" style="padding-top: 10px;">
-<!--								<a href="--><?php //echo $this->getForgotPasswordUrl() ?><!--">Forgot your Password?</a>-->
                                 <a href="<?php echo $this->getForgotPasswordUrl() ?>">忘记密码?</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="submit-btn">
-<!--								<button type="submit" onclick="return validateForm('#login-form')">Log In</button>-->
                                 <button type="submit" onclick="return validateForm('#login-form')">登录</button>
 							</td>
 						</tr>
@@ -88,19 +81,23 @@
 	<?php endif; ?>
 	<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
 		<div class="accountbenefits">
-<!--			<h2>I'm a New Customer!</h2>-->
             <h2>我是新用户!</h2>
                 <button class="button" onclick="location.href='<?php echo $this->getUrl('customer/account/create/'); ?>'">创建我的账户</button>
-<!--			<h2>注册优惠:</h2>-->
-<!--            <h3>奖励</h3>-->
-<!--                <p>通过购买商品获取积分，积分可以兑换产品，商品打折等等</p>-->
-<!--            <h3>订单跟踪</h3>-->
-<!--				<p>随时查看现有订单和以前的订单状态.</p>-->
-<!--            <h3>快速结账</h3>-->
-<!--                <p>存储您的付款信息和物流信息，以便更便捷的购物.</p>-->
-<!--            <h3>独享优惠</h3>-->
-<!--                <p>获取最新的sneaker新闻资讯等.</p>-->
 		</div>
 	<?php endif; ?>
+
+        <?php
+        $agent = $_SERVER['HTTP_USER_AGENT'];
+        if(strpos($agent, "MicroMessenger")){
+        ?>
+    <!-- 如果是微信用户 提供微信登录入口 -->
+        <div class="accountweixin">
+            <h2>亲爱的微信用户:</h2>
+            <button class="button" onclick="location.href='<?php echo $this->getUrl('store/index/authweixin/'); ?>'">微信号直接接入</button>
+        </div>
+        <?php
+        }
+        ?>
+
 	</div>
 </div>
