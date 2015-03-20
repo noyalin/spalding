@@ -283,7 +283,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 ->addAttributeToFilter('weixin_openid',$openId)->load()->getFirstItem();
 
             if(!$customer->getId()){
-                $customer->setEmail($openId."@spaldingchina.com.cn");
+                $customer->setEmail("Spalding_".$openId."@spaldingchina.com.cn");
                 $nickname = $userInfoObj->nickname;
                 $city = $userInfoObj->city;
                 $province = $userInfoObj->province;
