@@ -1,12 +1,8 @@
 <?php
 class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     public function testAction(){
-//        header("Location: http://www.baidu.com");
-//        $url = mage :: getUrl('alipay/payment/wapredirect', array('_secure'=>true));
-        $url = 'http://www.baidu.com';
-//        $this->_redirect($url);
-
-        Mage::app()->getFrontController()->getResponse()->setRedirect($url);
+        $customers = Mage::getModel('customer/customer')->getCollection();
+        echo $customers->count();
     }
 
     public function indexAction(){
@@ -283,7 +279,10 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 ->addAttributeToFilter('weixin_openid',$openId)->load()->getFirstItem();
 
             if(!$customer->getId()){
-                $customer->setEmail("Spalding_".$openId."@spaldingchina.com.cn");
+                $customers = Mage::getModel('customer/customer')->getCollection();
+                $customerCount = $customers->count();
+
+                $customer->setEmail("Spalding_"."1000_$customerCount"."@spaldingchina.com.cn");
                 $nickname = $userInfoObj->nickname;
                 $city = $userInfoObj->city;
                 $province = $userInfoObj->province;
