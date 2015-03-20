@@ -113,7 +113,9 @@ One page checkout main layout
 	    <action method="addJs"><script>lib/ccard.js</script></action>
 	    <action method="addJs"><script>varien/form.js</script></action>
 	    <action method="addJs"><script>varien/js.js</script></action>
+
 		<action method="addItem"><type>skin_css</type><name>css/account_checkout.css</name></action>
+        <action method="addItem"><type>skin_css</type><name>css/account_checkout_v2.css</name></action>
 
         </reference>
         <remove name="right"/>
