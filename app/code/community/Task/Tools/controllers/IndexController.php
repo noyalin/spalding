@@ -297,7 +297,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 $customer->setWeixinHeadimgurl($imageUrl);
                 //$customer->setLocation($location);
                 //$customer->setProvince($province);
-                $customer->setPassword($nickname);
+                $customer->setPassword('111111');
                 try {
                     $customer->save();
                     $customer->setConfirmation(null);
