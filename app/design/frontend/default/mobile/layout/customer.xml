@@ -87,6 +87,7 @@ Supported layout update handles (special):
 			</action>
 			<action method="addItem"><type>skin_js</type><name>js/customer.js</name></action>
 			<action method="addItem"><type>skin_css</type><name>css/account_checkout.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/account_checkout_v2.css</name></action>
 		</reference>
 		<reference name="content">
 			<block type="core/template" name="customer_logout" template="customer/logout.phtml"/>
