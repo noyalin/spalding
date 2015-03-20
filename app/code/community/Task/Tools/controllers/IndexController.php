@@ -308,12 +308,12 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 }
                 Mage::getSingleton('customer/session')->loginById($customer->getId());
                 mage :: log(" create user id ".$customer->getId());
-//                $this->_redirect('sns/callback/success');
+                $this->_redirect('customer/account');
                 return;
             }else{
                 Mage::getSingleton('customer/session')->loginById($customer->getId());
                 mage :: log(" existed user id ".$customer->getId());
-//                $this->_redirect('customer/account');
+                $this->_redirect('customer/account');
                 return;
             }
 
