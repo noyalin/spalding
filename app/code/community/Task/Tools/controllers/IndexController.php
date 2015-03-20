@@ -303,7 +303,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 $customer->setWeixinHeadimgurl($imageUrl);
                 //$customer->setLocation($location);
                 //$customer->setProvince($province);
-                $customer->setPassword('111111');
+                $customer->setPassword('SpaldingOnly1Ball');
                 try {
                     $customer->save();
                     $customer->setConfirmation(null);
