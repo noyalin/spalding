@@ -55,6 +55,10 @@
 							<span><span>我是老客户</span></span></button>
 					</td>
 				</tr>
+                <?php
+                $agent = $_SERVER['HTTP_USER_AGENT'];
+                if(strpos($agent, "MicroMessenger")){
+                ?>
                 <tr>
                     <td>
                         <button class="onepage-customer-login-button-weixin"    onclick="location.href='<?php echo $this->getUrl('store/index/authweixin/'); ?>'">
@@ -62,6 +66,9 @@
                         </button>
                     </td>
                 </tr>
+                <?php
+                }
+                ?>
 			</tfoot>
 			</table>
     </div>
