@@ -60,7 +60,7 @@ Supported layout update handles (special):
 			<action method="setTitle" translate="title" module="customer">
 				<title>Customer Account Logout Success</title>
 			</action>
-			<action method="addItem"><type>skin_css</type><name>css/account_checkout.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/account_checkout.css?v=20150320</name></action>
 		</reference>
 
 		<reference name="content">
