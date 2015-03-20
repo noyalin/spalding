@@ -92,20 +92,18 @@
 		<div class="accountbenefits">
             <h2>我是一个新用户!</h2>
                 <button class="button" onclick="location.href='<?php echo $this->getUrl('customer/account/create/'); ?>'">注册新账户</button>
-<!--			<h2>Sign up &amp; enjoy:</h2>-->
-<!--            <h3>获取积分</h3>-->
-<!--                <p>通过购买商品和评论获取会员积分，可以用来兑换商品，获取折扣等.</p>-->
-<!--            <h3>订单跟踪</h3>-->
-<!--                <p>获取当前订单的最新状态以及历史订单.</p>-->
-<!--            <h3>快速结算</h3>-->
-<!--                <p>存储您的付款方式，物流信息以便更快捷的购物体验.</p>-->
-<!--            <h3>独家提供</h3>-->
-<!--                <p>获取最新sneaker资讯，创意广告.</p>-->
 		</div>
 	<?php endif; ?>
+        <?php
+        $agent = $_SERVER['HTTP_USER_AGENT'];
+        if(strpos($agent, "MicroMessenger")){
+        ?>
         <div class="accountweixin">
             <h2>亲爱的微信用户:</h2>
             <button class="button" onclick="location.href='<?php echo $this->getUrl('store/index/authweixin/'); ?>'">微信号直接接入</button>
         </div>
+        <?php
+        }
+        ?>
 	</div>
 </div>

@@ -88,8 +88,7 @@
 
         <?php
         $agent = $_SERVER['HTTP_USER_AGENT'];
-        mage :: log($agent);
-//        if(strpos($agent, "MicroMessenger")){
+        if(strpos($agent, "MicroMessenger")){
         ?>
     <!-- 如果是微信用户 提供微信登录入口 -->
         <div class="accountweixin">
@@ -97,7 +96,7 @@
             <button class="button" onclick="location.href='<?php echo $this->getUrl('store/index/authweixin/'); ?>'">微信号直接接入</button>
         </div>
         <?php
-//        }
+        }
         ?>
 
 	</div>
