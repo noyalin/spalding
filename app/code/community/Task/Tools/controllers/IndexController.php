@@ -269,7 +269,19 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $accessToken = $obj->access_token;
             $userUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=$accessToken&openid=$openId&lang=zh_CN";
             $useinfo =  $this->httpdata($userUrl);
-            mage :: log($useinfo);
+            /**
+             * {"openid":"oYkdqs6YN282-he6W8cPxMKS2D-c","nickname":"davis","sex":1,"language":"zh_CN","city":"浦东新区","province":"上海","country":"中国","headimgurl":"http:\/\/wx.qlogo.cn\/mmopen\/ykF2ySc7iaKqibg3B0XP1nich7ia8FBYEUWLSF9owUlaTE3hMBcOEHWmicmWOhibRRibbcrbgtibWRITmS1gT8ZUgNsbMTqErKjCT4kG\/0","privilege":[]}
+             */
+            $userInfoObj = json_decode($useinfo);
+            $openId = $userInfoObj->openid;
+            $nickname = $userInfoObj->nickname;
+            $city = $userInfoObj->city;
+            $province = $userInfoObj->province;
+            $country = $userInfoObj->country;
+            $imageUrl = $userInfoObj->headimgurl;
+
+            echo $openId .$nickname.$city.$province.$country;
+
         }else{
             Mage::app()->getFrontController()->getResponse()->setRedirect($url);
         }
