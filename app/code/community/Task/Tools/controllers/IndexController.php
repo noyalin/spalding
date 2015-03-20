@@ -374,7 +374,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 
         if (!$session->getBeforeAuthUrl() || $session->getBeforeAuthUrl() == Mage::getBaseUrl()) {
             // Set default URL to redirect customer to
-            $session->setBeforeAuthUrl($this->_getHelper('customer')->getAccountUrl());
+            $session->setBeforeAuthUrl(Mage::helper('customer')->getAccountUrl());
             // Redirect customer to the last page visited after logging in
             if ($session->isLoggedIn()) {
                 if (!Mage::getStoreConfigFlag(
@@ -384,7 +384,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                     if ($referer) {
                         // Rebuild referer URL to handle the case when SID was changed
                         $referer = $this->_getModel('core/url')
-                            ->getRebuiltUrl( $this->_getHelper('core')->urlDecode($referer));
+                            ->getRebuiltUrl( Mage::helper('core')->urlDecode($referer));
                         if ($this->_isUrlInternal($referer)) {
                             $session->setBeforeAuthUrl($referer);
                         }
@@ -393,10 +393,10 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                     $session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
                 }
             } else {
-                $session->setBeforeAuthUrl( $this->_getHelper('customer')->getLoginUrl());
+                $session->setBeforeAuthUrl( Mage::helper('customer')->getLoginUrl());
             }
-        } else if ($session->getBeforeAuthUrl() ==  $this->_getHelper('customer')->getLogoutUrl()) {
-            $session->setBeforeAuthUrl( $this->_getHelper('customer')->getDashboardUrl());
+        } else if ($session->getBeforeAuthUrl() ==  Mage::helper('customer')->getLogoutUrl()) {
+            $session->setBeforeAuthUrl( Mage::helper('customer')->getDashboardUrl());
         } else {
             if (!$session->getAfterAuthUrl()) {
                 $session->setAfterAuthUrl($session->getBeforeAuthUrl());
