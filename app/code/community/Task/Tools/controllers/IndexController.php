@@ -243,8 +243,8 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     }
 
     public function authWeixinAction(){
-        $appid = 'wx36026301d4b1cb01';
-        $appsecret = '79311ea02ea318af5f228492bf119104';
+        $appid = 'wx79873079dca36474';
+        $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
         $redirectUrl = urlencode ($currentUrl);
         $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_userinfo&state=sneakerhead#wechat_redirect";
@@ -306,12 +306,10 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                     Mage::log($ex->getMessage());
                 }
                 Mage::getSingleton('customer/session')->loginById($customer->getId());
-                mage :: log(" create user id ".$customer->getId());
                 $this->_redirect('customer/account');
                 return;
             }else{
                 Mage::getSingleton('customer/session')->loginById($customer->getId());
-                mage :: log(" existed user id ".$customer->getId());
                 $this->_redirect('customer/account');
                 return;
             }
