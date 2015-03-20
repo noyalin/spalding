@@ -370,7 +370,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 
     protected function _loginPostRedirect()
     {
-        $session = $this->_getSession();
+        $session = Mage::getSingleton('customer/session');
 
         if (!$session->getBeforeAuthUrl() || $session->getBeforeAuthUrl() == Mage::getBaseUrl()) {
             // Set default URL to redirect customer to
