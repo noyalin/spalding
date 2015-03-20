@@ -274,13 +274,49 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
              */
             $userInfoObj = json_decode($useinfo);
             $openId = $userInfoObj->openid;
-            $nickname = $userInfoObj->nickname;
-            $city = $userInfoObj->city;
-            $province = $userInfoObj->province;
-            $country = $userInfoObj->country;
-            $imageUrl = $userInfoObj->headimgurl;
 
-            echo $openId .$nickname.$city.$province.$country;
+            //根据openid判断用户是否存在
+            $customer = Mage::getModel('customer/customer')
+                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                ->getCollection()
+                ->addAttributeToSelect('weixin_openid')
+                ->addAttributeToFilter('weixin_openid',$openId)->load()->getFirstItem();
+
+            if(!$customer->getId()){
+                $customer->setEmail($openId."@spaldingchina.com.cn");
+                $nickname = $userInfoObj->nickname;
+                $city = $userInfoObj->city;
+                $province = $userInfoObj->province;
+                $country = $userInfoObj->country;
+                $imageUrl = $userInfoObj->headimgurl;
+
+                $customer->setFirstname($nickname);
+                //$customer->setAvatar($profile_image_url);
+//                    $customer->setLastname($lastname);
+                $customer->setWeixinOpenid($openId);
+                $customer->setWeixinHeadimgurl($imageUrl);
+                //$customer->setLocation($location);
+                //$customer->setProvince($province);
+                $customer->setPassword($nickname);
+                try {
+                    $customer->save();
+                    $customer->setConfirmation(null);
+                    $customer->save();
+                }
+                catch (Exception $ex) {
+                    Mage::log($ex->getMessage());
+                }
+                Mage::getSingleton('customer/session')->loginById($customer->getId());
+                mage :: log(" create user id ".$customer->getId());
+//                $this->_redirect('sns/callback/success');
+                return;
+            }else{
+                Mage::getSingleton('customer/session')->loginById($customer->getId());
+                mage :: log(" existed user id ".$customer->getId());
+//                $this->_redirect('customer/account');
+                return;
+            }
+
 
         }else{
             Mage::app()->getFrontController()->getResponse()->setRedirect($url);

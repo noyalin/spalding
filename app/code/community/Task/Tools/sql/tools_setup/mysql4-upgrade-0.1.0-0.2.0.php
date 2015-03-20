@@ -4,11 +4,11 @@ $installer->startSetup();
 
 $installer->addAttribute(
     'customer',
-    'weixin_openid',
+    'weixin_headimgurl',
     array(
         'group'                => 'Default',
         'type'                 => 'varchar',
-        'label'                => 'Weixin_openid Id',
+        'label'                => 'Weixin_headimgurl',
         'input'                => 'text',
         'source'               => 'eav/entity_attribute_source_text',
         'global'               => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
@@ -20,7 +20,7 @@ $installer->addAttribute(
     )
 );
 
-$oAttribute = Mage::getSingleton('eav/config')->getAttribute('customer', 'weixin_openid');
+$oAttribute = Mage::getSingleton('eav/config')->getAttribute('customer', 'weixin_headimgurl');
 $oAttribute->setData('used_in_forms', array('adminhtml_customer'));
 $oAttribute->save();
 $installer->endSetup();
