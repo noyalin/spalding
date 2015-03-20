@@ -1,5 +1,14 @@
 <?php
 class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
+    public function testAction(){
+//        header("Location: http://www.baidu.com");
+//        $url = mage :: getUrl('alipay/payment/wapredirect', array('_secure'=>true));
+        $url = 'http://www.baidu.com';
+//        $this->_redirect($url);
+
+        Mage::app()->getFrontController()->getResponse()->setRedirect($url);
+    }
+
     public function indexAction(){
 //        $this->loadLayout();
 //        $this->renderLayout();
@@ -262,7 +271,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $useinfo =  $this->httpdata($userUrl);
             mage :: log($useinfo);
         }else{
-            header("Location: $url");
+            Mage::app()->getFrontController()->getResponse()->setRedirect($url);
         }
     }
 
