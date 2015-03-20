@@ -282,7 +282,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 $customers = Mage::getModel('customer/customer')->getCollection();
                 $customerCount = $customers->count();
                 $customerCount = $customerCount*1 + 1;
-                $customer->setEmail("Spalding_"."1000_$customerCount"."@spaldingchina.com.cn");
+                $customer->setEmail("Spalding_"."1000$customerCount"."@spaldingchina.com.cn");
                 $nickname = $userInfoObj->nickname;
                 $city = $userInfoObj->city;
                 $province = $userInfoObj->province;
