@@ -263,7 +263,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 
         if ($code && $state == 'sneakerhead') {
             $token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
-            $token_data = httpdata($token_url);
+            $token_data = $this->httpdata($token_url);
             $obj = json_decode($token_data);
             $openId = $obj->openid;
             $accessToken = $obj->access_token;
