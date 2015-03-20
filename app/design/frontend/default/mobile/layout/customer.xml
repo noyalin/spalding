@@ -61,6 +61,7 @@ Supported layout update handles (special):
 				<title>Customer Account Logout Success</title>
 			</action>
 			<action method="addItem"><type>skin_css</type><name>css/account_checkout.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/account_checkout_v2.css</name></action>
 		</reference>
 
 		<reference name="content">

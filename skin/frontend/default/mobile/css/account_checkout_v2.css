@@ -1,0 +1,22 @@
+.accountweixin button{
+    border:none;
+    width:100%;
+    display:block;
+    float:none;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:bold;
+    padding:15px 0;
+    color:#FFF;
+    font-family:Arial;
+    background: #04be02; /* Old browsers */
+    /*background: -moz-linear-gradient(top, rgba(239,190,83,1) 0%, rgba(243,172,0,1) 100%); *//* FF3.6+ */
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,190,83,1)), color-stop(100%,rgba(243,172,0,1))); *//* Chrome,Safari4+ */
+    /*background: -webkit-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); *//* Chrome10+,Safari5.1+ */
+    /*background: -o-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); *//* Opera 11.10+ */
+    /*background: -ms-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); *//* IE10+ */
+    /*background: linear-gradient(to bottom, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); *//* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efbe53', endColorstr='#f3ac00',GradientType=0 ); /* IE6-9 */
+    box-shadow:1px 1px 1px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+}
