@@ -11,8 +11,8 @@ class WP_CustomMenu_Block_Toggle extends Mage_Core_Block_Template
         if (is_object($topnav)) {
             $topnav->setTemplate('webandpeople/custommenu/top.phtml');
             $head = $layout->getBlock('head');
-            $head->addItem('skin_js', 'js/webandpeople/custommenu/custommenu.js');
-            $head->addItem('skin_css', 'css/webandpeople/custommenu/custommenu.css');
+//            $head->addItem('skin_js', 'js/webandpeople/custommenu/custommenu.js');
+//            $head->addItem('skin_css', 'css/webandpeople/custommenu/custommenu.css');
             // --- Insert menu content ---
             if (!Mage::getStoreConfig('custom_menu/general/ajax_load_content')) {
                 $menuContent = $layout->getBlock('custommenu-content');
