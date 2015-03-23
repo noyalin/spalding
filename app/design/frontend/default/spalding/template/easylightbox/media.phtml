@@ -34,8 +34,8 @@
 
 <div id="detailPixWrap">
     <a rel="productGallery [gallery]" >
-        <img width="330" id="mainImage" data-zoom-image="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $pSku."/". $urlKey ?>-1.jpg"
-             src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $pSku."/". $urlKey ?>-5.jpg"
+        <img width="330" id="mainImage" data-zoom-image="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $pSku."/". $urlKey ?>-1.jpg"
+             src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $pSku."/". $urlKey ?>-5.jpg"
              alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"
              onMouseOver="javascript:sku=1" /></a>
     <div class="detailArrowPrev">
@@ -50,7 +50,7 @@
                     <div>
                         <a rel="productGallery [gallery]" onMouseOver="javascript:sku=<?php echo $i ?>;">
 <!--                            <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50=--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!-----><?php //echo $i ?><!--" alt=""/>-->
-                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i+7 ?>.jpg" alt=""/>
+                            <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i+7 ?>.jpg" alt=""/>
                         </a>
                     </div>
                 <?php endwhile ?>
