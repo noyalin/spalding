@@ -161,7 +161,20 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
     {
         return Mage::getUrl('alipay/payment/pay');
     }
-
+    function getOrderInfo($order){
+        $orderItems = $order->getItemsCollection();
+        $tmpArr = array();
+        $skuArr = array();
+        foreach ($orderItems as $item){
+            $sku = $item->getSku();
+            if(!in_array($sku,$skuArr)){
+                $qty =(int) $item->getQtyOrdered();
+                $tmpArr[] = $tmpArr[] = "Sku: ".$sku." Qty: $qty" ." 名称: ".$item->getName();
+                $skuArr[] = $sku;
+            }
+        }
+        return implode($tmpArr,' | ');
+    }
     /**
      *  Return Standard Checkout Form Fields for request to Alipay
      *
@@ -204,7 +217,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
                 "out_trade_no"	=> $order->getRealOrderId(),
                 "subject"	=> $order->getRealOrderId(),
                 "total_fee"	=> sprintf('%.2f', $converted_final_price) ,
-                "body"	=> $order->getRealOrderId(),
+                "body"	=> $this->getOrderInfo($order),
                 "show_url"	=> Mage::getUrl(),
                 "anti_phishing_key"	=> "",
                 "exter_invoke_ip"	=> "",
@@ -245,7 +258,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 							   'notify_url'        => $this->getNotifyURL(),
 							   '_input_charset'    => 'utf-8',
 							   'subject'           => $order->getRealOrderId(), 
-							   'body'              => $order->getRealOrderId(),
+							   'body'              => $this->getOrderInfo($order),
 							   'out_trade_no'      => $order->getRealOrderId(), // order ID
 							   'logistics_fee'     => sprintf('%.2f', $logistics_fees), //because magento has shipping system, it has included shipping price
 							   'logistics_payment' => $this->getConfigData('logistics_payment'),  //always
