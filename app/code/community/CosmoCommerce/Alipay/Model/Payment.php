@@ -169,7 +169,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
             $sku = $item->getSku();
             if(!in_array($sku,$skuArr)){
                 $qty =(int) $item->getQtyOrdered();
-                $tmpArr[] = $tmpArr[] = "Sku: ".$sku." Qty: $qty" ." 名称: ".$item->getName();
+                $tmpArr[] = $tmpArr[] = "Sku: ".$sku." Qty: $qty" ." ".iconv("utf-8","gb2312//IGNORE",'名称').": ". iconv("utf-8","gb2312//IGNORE",$item->getName());
                 $skuArr[] = $sku;
             }
         }
