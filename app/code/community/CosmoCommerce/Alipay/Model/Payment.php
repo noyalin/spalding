@@ -173,6 +173,8 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
                 $skuArr[] = $sku;
             }
         }
+        mage :: log($tmpArr);
+        mage :: log($skuArr);
         return implode($tmpArr,' | ');
     }
     /**

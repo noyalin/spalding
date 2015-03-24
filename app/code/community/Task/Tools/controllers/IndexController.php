@@ -15,6 +15,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                 $skuArr[] = $sku;
             }
         }
+        echo '<pre>';
         var_dump($tmpArr) ;
         return implode($tmpArr,' | ');
     }
