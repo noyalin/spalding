@@ -173,9 +173,13 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
                 $skuArr[] = $sku;
             }
         }
-        mage :: log($tmpArr);
-        mage :: log($skuArr);
-        return implode($tmpArr,' | ');
+        $return = implode($tmpArr,' | ');
+
+        if(strlen($return) >= 1000){
+            return  substr($return,0,1000);
+        }
+
+        return $return;
     }
     /**
      *  Return Standard Checkout Form Fields for request to Alipay

@@ -1,7 +1,7 @@
 <?php
 class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     public function testAction(){
-        $orderIncrementId = '100000041';
+        $orderIncrementId = '100000042';
         $order = Mage::getModel('sales/order')
             ->loadByIncrementId($orderIncrementId);
         $orderItems = $order->getItemsCollection();
@@ -9,15 +9,22 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $skuArr = array();
         foreach ($orderItems as $item){
             $sku = $item->getSku();
+
             if(!in_array($sku,$skuArr)){
                 $qty =(int) $item->getQtyOrdered();
                 $tmpArr[] = "Sku: ".$sku." Qty: $qty" ." ".iconv("utf-8","gb2312//IGNORE",'名称').": ". iconv("utf-8","gb2312//IGNORE",$item->getName());
                 $skuArr[] = $sku;
+//                echo "<pre>";
+//                var_dump($item->getProductOptions());
             }
         }
         echo '<pre>';
-        var_dump($tmpArr) ;
-        return implode($tmpArr,' | ');
+//        var_dump($tmpArr) ;
+        $a =  implode($tmpArr,' | ');
+echo $a."<br/>";
+        if(strlen($a) > 50){
+            echo substr($a,0,50);
+        }
     }
 
     public function indexAction(){
