@@ -1,8 +1,22 @@
 <?php
 class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     public function testAction(){
-        $customers = Mage::getModel('customer/customer')->getCollection();
-        echo $customers->count();
+        $orderIncrementId = '100000041';
+        $order = Mage::getModel('sales/order')
+            ->loadByIncrementId($orderIncrementId);
+        $orderItems = $order->getItemsCollection();
+        $tmpArr = array();
+        $skuArr = array();
+        foreach ($orderItems as $item){
+            $sku = $item->getSku();
+            if(!in_array($sku,$skuArr)){
+                $qty =(int) $item->getQtyOrdered();
+                $tmpArr[] = "Sku: ".$sku." Qty: $qty" ." ".iconv("utf-8","gb2312//IGNORE",'名称').": ". iconv("utf-8","gb2312//IGNORE",$item->getName());
+                $skuArr[] = $sku;
+            }
+        }
+        var_dump($tmpArr) ;
+        return implode($tmpArr,' | ');
     }
 
     public function indexAction(){
