@@ -203,6 +203,11 @@
     function ballMove(){
         jQuery('.plateBox_tf img') .animate({marginTop:"-=20px"},1000).animate({marginTop:"+=20px"},1000).animate({marginLeft:"+=20px"},1000).animate({marginLeft:"-=20px"},1000)
     };
+
+    function loading(){
+        var html = '<div><img src="<?php echo $this->getSkinUrl(); ?>images/auth/ajax-loader-tr.gif"/></div>';
+        jQuery('#barcodeVerifyResult').html(html);
+    }
 </script>
 
 <!-- 顶部 header e -->

@@ -78,8 +78,5 @@ jQuery(document).ready(function(){
     function isEmpty (s) {
         return s == '';
     }
-    function loading(){
-        var html = '<div><img src="auth/ajax-loader-tr.gif"/></div>';
-        jQuery('#barcodeVerifyResult').html(html);
-    }
+
 });
