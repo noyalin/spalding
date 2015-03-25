@@ -11,7 +11,8 @@ if($verifycode !=$_SESSION["helloweba_num"]){
     echo '1';
     return;
 }
-$barcode = $_POST['barcode'];
+$barcode = trim($_POST['barcode']);
+$barcode = str_replace(" ","",$barcode);
 $post_data =  array (
     'QryChannel' => '10000',
     'FwCode' =>$barcode,
