@@ -2076,9 +2076,9 @@ class OSS_ALIOSS{
             echo $index++.". ";
             $response = $this->create_mpu_object($bucket, (!empty($object)?$object.'/':'').$item['file'],$options);
             if($response->isOK()){
-                echo "Upload file {".$item['path']." } successful..\n";
+                mage :: log( "Upload file {".$item['path']." } successful.." );
             }else{
-                echo "Upload file {".$item['path']." } failed..\n";
+                mage :: log( "Upload file {".$item['path']." } failed..");
                 continue;
             }
         }

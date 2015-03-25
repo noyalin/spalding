@@ -1,30 +1,29 @@
 <?php
 class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     public function testAction(){
-        $orderIncrementId = '100000042';
-        $order = Mage::getModel('sales/order')
-            ->loadByIncrementId($orderIncrementId);
-        $orderItems = $order->getItemsCollection();
-        $tmpArr = array();
-        $skuArr = array();
-        foreach ($orderItems as $item){
-            $sku = $item->getSku();
+        $oss_sdk_service = new OSS_ALIOSS();
 
-            if(!in_array($sku,$skuArr)){
-                $qty =(int) $item->getQtyOrdered();
-                $tmpArr[] = "Sku: ".$sku." Qty: $qty" ." ".iconv("utf-8","gb2312//IGNORE",'名称').": ". iconv("utf-8","gb2312//IGNORE",$item->getName());
-                $skuArr[] = $sku;
-//                echo "<pre>";
-//                var_dump($item->getProductOptions());
-            }
-        }
-        echo '<pre>';
-//        var_dump($tmpArr) ;
-        $a =  implode($tmpArr,' | ');
-echo $a."<br/>";
-        if(strlen($a) > 50){
-            echo substr($a,0,50);
-        }
+//设置是否打开curl调试模式
+        $oss_sdk_service->set_debug_mode(FALSE);
+
+        $options = array(
+            'bucket' 	=> 'spalding-products',
+            'object'	=> 'media/catalog/product/74-517y',
+            'directory' => '/home/dev/html/spalding/media/catalog/product/74-517y',
+        );
+        //$response = $oss_sdk_service->batch_upload_file($options);
+
+
+        $bucket = 'spalding-products';
+        $object = 'media/catalog/product/74-517y';
+
+        $response = $oss_sdk_service->is_object_exist($bucket,$object);
+
+        $this->_format($response);
+    }
+    function _format($response) {
+        echo "<pre>";
+        var_dump($response->status);
     }
 
     public function indexAction(){
