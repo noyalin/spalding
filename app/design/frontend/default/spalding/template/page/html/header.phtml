@@ -35,9 +35,9 @@
                 <div class="header_logo">
                     <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo" target="_blank">
                         <?php if ($this->getIsHomePage()){
-                            echo "<img src='".$this->getSkinUrl("images/20141208001.jpg")."'/>";
+                            echo "<img src='". Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141208001.jpg' ."'/>";
                         }else{
-                            echo "<img src='".$this->getSkinUrl("images/20141210001.jpg")."'/>";
+                            echo "<img src='".Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141210001.jpg' ."'/>";
                         }
                         ?>
                     </a>
