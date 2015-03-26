@@ -376,6 +376,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         //根据URLKEY取得所有的图片
         $skuImage =$valueArr['sku'];
         $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount']);
+        $this->pushImageToOss($valueArr['sku'],$valueArr['urlKey']);
         //image gallery
         $imageCount = $valueArr['imageCount'] ;
 
@@ -522,6 +523,32 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         //detail page - view more other product
         $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/sku220px%2D1?$220x220$&$image220px='.$urlKey.'-1';
         $this->getImageVByUrl($urlProductList,$sku,$urlKey,16);
+    }
+
+    public function pushImageToOss($sku,$urlKey){
+        //首先判断此SKU是否存在
+        $oss_sdk_service = new OSS_ALIOSS();
+
+//设置是否打开curl调试模式
+        $oss_sdk_service->set_debug_mode(FALSE);
+        $bucket = 'spalding-products';
+        $object = "media/catalog/product/$sku/$urlKey-1.jpg";
+
+        $response = $oss_sdk_service->is_object_exist($bucket,$object);
+        if($response->status != 200){
+            $dir = Mage::getBaseDir()."/media/catalog/product/";
+            //上传这个文件夹到OSS
+            $options = array(
+                'bucket' 	=> 'spalding-products',
+                'object'	=> "media/catalog/product/$sku",
+                'directory' => $dir.$sku,
+            );
+            $response = $oss_sdk_service->batch_upload_file($options);
+            mage :: log($response);
+        }else{
+            $this->transactionLogHandle("    ->UPDATING    :".$sku." has been pushed to OSS, do nothing \n");
+        }
+
     }
 
     function getImageVByUrl($urlProductList,$sku,$urlKey,$i){

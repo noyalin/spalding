@@ -1,32 +1,72 @@
 <?php
 class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     public function testAction(){
-        $orderIncrementId = '100000042';
-        $order = Mage::getModel('sales/order')
-            ->loadByIncrementId($orderIncrementId);
-        $orderItems = $order->getItemsCollection();
-        $tmpArr = array();
-        $skuArr = array();
-        foreach ($orderItems as $item){
-            $sku = $item->getSku();
 
-            if(!in_array($sku,$skuArr)){
-                $qty =(int) $item->getQtyOrdered();
-                $tmpArr[] = "Sku: ".$sku." Qty: $qty" ." ".iconv("utf-8","gb2312//IGNORE",'名称').": ". iconv("utf-8","gb2312//IGNORE",$item->getName());
-                $skuArr[] = $sku;
-//                echo "<pre>";
-//                var_dump($item->getProductOptions());
+        $oss_sdk_service = new OSS_ALIOSS();
+        $oss_sdk_service->set_debug_mode(FALSE);
+//设置是否打开curl调试模式
+        //取得文件下所有的
+        $dir = "/home/davis/Documents/spaldingimage/product";
+        $arr  =  scandir($dir);
+        echo "<pre>";
+        foreach($arr as $sku){
+            //$sku = "74-413";
+            if($sku != 'a' && $sku != 'b'  && $sku != 'cache'  && $sku != 'fr59618'  && $sku != 'l'  && $sku != '.'   && $sku != '..' ){
+                $bucket = 'spalding-products';
+                $object = "media/catalog/product/$sku";
+                $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+                if(!$configurableProduct){
+                    continue;
+                }
+                $urlKey = $configurableProduct->getUrlKey();
+                $object = "media/catalog/product/$sku/$urlKey-1.jpg";
+                //根据SKU 取得PRODUCT
+
+                $response = $oss_sdk_service->is_object_exist($bucket,$object);
+                if($response->status != 200){
+                    $options = array(
+                        'bucket' 	=> 'spalding-products',
+                        'object'	=> "media/catalog/product/$sku",
+                        'directory' => "/home/davis/Documents/spaldingimage/product/$sku",
+                    );
+                    $response = $oss_sdk_service->batch_upload_file($options);
+                    $this->_format($response);
+                }
             }
         }
-        echo '<pre>';
-//        var_dump($tmpArr) ;
-        $a =  implode($tmpArr,' | ');
-echo $a."<br/>";
-        if(strlen($a) > 50){
-            echo substr($a,0,50);
+    }
+    function _format($response) {
+        echo "<pre>";
+        var_dump($response->status);
+    }
+    public function pushImagetoOSS(){
+
+        $oss_sdk_service = new OSS_ALIOSS();
+        $oss_sdk_service->set_debug_mode(FALSE);
+//设置是否打开curl调试模式
+        //取得文件下所有的
+        $dir = "/home/davis/Documents/spaldingimage/product";
+        $arr  =  scandir($dir);
+        echo "<pre>";
+        foreach($arr as $sku){
+            //$sku = "74-413";
+            echo "$sku <br/>";
+            if($sku != 'a' && $sku != 'b'  && $sku != 'cache'  && $sku != 'fr59618'  && $sku != 'l'  && $sku != '.'   && $sku != '..' ){
+                $bucket = 'spalding-products';
+                $object = "media/catalog/product/$sku";
+                $response = $oss_sdk_service->is_object_exist($bucket,$object);
+                if($response->status != 200){
+                    $options = array(
+                        'bucket' 	=> 'spalding-products',
+                        'object'	=> "media/catalog/product/$sku",
+                        'directory' => "/home/davis/Documents/spaldingimage/product/$sku",
+                    );
+                    $response = $oss_sdk_service->batch_upload_file($options);
+                    $this->_format($response);
+                }
+            }
         }
     }
-
     public function indexAction(){
 //        $this->loadLayout();
 //        $this->renderLayout();
