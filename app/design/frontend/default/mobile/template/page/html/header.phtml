@@ -103,9 +103,9 @@ if ($_currentCategory) {
 
 <header id="masterheader">
 	<div class="top-nav-wrapper">
-		<a class="splading" href="<?php echo Mage::getUrl(''); ?>"><img src="<?php echo $this->getSkinUrl('images/logo_s.png');?>" border="0"></a>
+		<a class="splading" href="<?php echo Mage::getUrl(''); ?>"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html').'images/logo_s.png';?>" border="0"></a>
 		<div id="sneakerheadLogo">
-			<a href="<?php echo $this->getUrl('') ?>"><img src="<?php echo $this->getSkinUrl('images/logo.png');?>" border="0"></a>
+			<a href="<?php echo $this->getUrl('') ?>"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html').'images/logo.png' ;?>" border="0"></a>
 		</div>
 		<a class="bag" href="<?php echo Mage::getUrl('checkout/cart/', array('_secure'=>true)) ?>" onClick="jQuery('#search_bar').toggleClass('open', false);">
 		<?php if (Mage::app()->getStore()->isCurrentlySecure()): /* https only */ ?>
