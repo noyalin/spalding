@@ -2482,7 +2482,8 @@ class OSS_ALIOSS{
      * @return array
      */
     private  function read_dir($dir, $exclude = ".|..|.svn", $recursive = false){
-        static $file_list_array = array();
+//        static $file_list_array = array();
+        $file_list_array = array();
 
         $exclude_array = explode("|", $exclude);
         //读取目录
