@@ -2021,7 +2021,7 @@ class OSS_ALIOSS{
      * 		'recursive' =>  (Optional)
      * )
      */
-    public function batch_upload_file($options = NULL){
+    public function batch_upload_file($options = NULL,$urlKey,$sku){
         if((NULL == $options) || !isset($options['bucket']) || empty($options['bucket']) || !isset($options['directory']) ||empty($options['directory']) ) {
             throw new OSS_Exception('Bad Request',400);
         }
@@ -2035,7 +2035,7 @@ class OSS_ALIOSS{
 
         //判断是否目录
         if(!is_dir($directory)){
-            throw new OSS_Exception($dir.' is not a directory...,pls check it');
+            throw new OSS_Exception($directory.' is not a directory...,pls check it');
         }
 
         $object = '';
@@ -2061,25 +2061,35 @@ class OSS_ALIOSS{
         //read directory
         $file_list_array = $this->read_dir($directory,$exclude,$recursive);
 
+        mage :: log($sku ." begin scan file ".$directory."  exclude  ".$exclude."  recursive ".$recursive);
+        mage :: log($file_list_array);
+
         if(!$file_list_array){
             throw new OSS_Exception($directory.' is empty...');
         }
 
         $index = 1;
-
+        $i=0;
         foreach ($file_list_array as $item){
             $options = array(
                 self::OSS_FILE_UPLOAD => $item['path'],
                 self::OSS_PART_SIZE => 5242880,
             );
-
-            echo $index++.". ";
+            if(!strstr($item['path'],$urlKey)){
+                continue;
+            }
+          //  echo $index++.". ";
             $response = $this->create_mpu_object($bucket, (!empty($object)?$object.'/':'').$item['file'],$options);
             if($response->isOK()){
+                $i++;
                 mage :: log( "Upload file {".$item['path']." } successful.." );
             }else{
                 mage :: log( "Upload file {".$item['path']." } failed..");
                 continue;
+            }
+            mage :: log($i);
+            if($i>18){
+                die("系统有问题");
             }
         }
     }

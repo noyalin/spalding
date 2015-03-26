@@ -9,6 +9,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $dir = "/home/davis/Documents/spaldingimage/product";
         $arr  =  scandir($dir);
         echo "<pre>";
+        $i=0;
         foreach($arr as $sku){
             //$sku = "74-413";
             if($sku != 'a' && $sku != 'b'  && $sku != 'cache'  && $sku != 'fr59618'  && $sku != 'l'  && $sku != '.'   && $sku != '..' ){
@@ -24,20 +25,31 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
 
                 $response = $oss_sdk_service->is_object_exist($bucket,$object);
                 if($response->status != 200){
-                    $options = array(
-                        'bucket' 	=> 'spalding-products',
-                        'object'	=> "media/catalog/product/$sku",
-                        'directory' => "/home/davis/Documents/spaldingimage/product/$sku",
-                    );
-                    $response = $oss_sdk_service->batch_upload_file($options);
-                    $this->_format($response);
+                    echo $sku."      URL:      ".  $urlKey."              object    $object"."<br/>";
+                    $i++;
+//                    if($sku == '65-848y'){
+                         $options = array(
+                            'bucket' 	=> 'spalding-products',
+                            'object'	=> "media/catalog/product/$sku",
+                            'directory' => "/home/davis/Documents/spaldingimage/product/$sku",
+                        );
+                        $response = $oss_sdk_service->batch_upload_file($options,$urlKey,$sku);
+                        //$this->_format($response);
+                        if($i>6){
+                            break;
+                        }
+//                    }
+
                 }
             }
         }
     }
     function _format($response) {
-        echo "<pre>";
-        var_dump($response->status);
+        if($response){
+            echo "<pre>";
+            var_dump($response->status);
+        }
+
     }
     public function pushImagetoOSS(){
 
