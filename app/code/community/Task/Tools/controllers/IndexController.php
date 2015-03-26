@@ -10,8 +10,48 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $arr  =  scandir($dir);
         echo "<pre>";
         foreach($arr as $sku){
+            //$sku = "74-413";
+            if($sku != 'a' && $sku != 'b'  && $sku != 'cache'  && $sku != 'fr59618'  && $sku != 'l'  && $sku != '.'   && $sku != '..' ){
+                $bucket = 'spalding-products';
+                $object = "media/catalog/product/$sku";
+                $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+                if(!$configurableProduct){
+                    continue;
+                }
+                $urlKey = $configurableProduct->getUrlKey();
+                $object = "media/catalog/product/$sku/$urlKey-1.jpg";
+                //根据SKU 取得PRODUCT
+
+                $response = $oss_sdk_service->is_object_exist($bucket,$object);
+                if($response->status != 200){
+                    $options = array(
+                        'bucket' 	=> 'spalding-products',
+                        'object'	=> "media/catalog/product/$sku",
+                        'directory' => "/home/davis/Documents/spaldingimage/product/$sku",
+                    );
+                    $response = $oss_sdk_service->batch_upload_file($options);
+                    $this->_format($response);
+                }
+            }
+        }
+    }
+    function _format($response) {
+        echo "<pre>";
+        var_dump($response->status);
+    }
+    public function pushImagetoOSS(){
+
+        $oss_sdk_service = new OSS_ALIOSS();
+        $oss_sdk_service->set_debug_mode(FALSE);
+//设置是否打开curl调试模式
+        //取得文件下所有的
+        $dir = "/home/davis/Documents/spaldingimage/product";
+        $arr  =  scandir($dir);
+        echo "<pre>";
+        foreach($arr as $sku){
+            //$sku = "74-413";
             echo "$sku <br/>";
-            if($sku != 'a' && $sku != 'b'  && $sku != 'cache'  && $sku != 'fr59618'  && $sku != 'l' ){
+            if($sku != 'a' && $sku != 'b'  && $sku != 'cache'  && $sku != 'fr59618'  && $sku != 'l'  && $sku != '.'   && $sku != '..' ){
                 $bucket = 'spalding-products';
                 $object = "media/catalog/product/$sku";
                 $response = $oss_sdk_service->is_object_exist($bucket,$object);
@@ -22,19 +62,11 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                         'directory' => "/home/davis/Documents/spaldingimage/product/$sku",
                     );
                     $response = $oss_sdk_service->batch_upload_file($options);
+                    $this->_format($response);
                 }
             }
         }
-
-
-
-
     }
-    function _format($response) {
-        echo "<pre>";
-        var_dump($response->status);
-    }
-
     public function indexAction(){
 //        $this->loadLayout();
 //        $this->renderLayout();
