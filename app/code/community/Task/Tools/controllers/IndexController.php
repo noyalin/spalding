@@ -35,7 +35,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
                         );
                         $response = $oss_sdk_service->batch_upload_file($options,$urlKey,$sku);
                         //$this->_format($response);
-                        if($i>6){
+                        if($i>200){
                             break;
                         }
 //                    }

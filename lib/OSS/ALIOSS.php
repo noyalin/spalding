@@ -2075,9 +2075,6 @@ class OSS_ALIOSS{
                 self::OSS_FILE_UPLOAD => $item['path'],
                 self::OSS_PART_SIZE => 5242880,
             );
-            if(!strstr($item['path'],$urlKey)){
-                continue;
-            }
           //  echo $index++.". ";
             $response = $this->create_mpu_object($bucket, (!empty($object)?$object.'/':'').$item['file'],$options);
             if($response->isOK()){
@@ -2088,9 +2085,6 @@ class OSS_ALIOSS{
                 continue;
             }
             mage :: log($i);
-            if($i>18){
-                die("系统有问题");
-            }
         }
     }
 
@@ -2492,7 +2486,7 @@ class OSS_ALIOSS{
                 if(!in_array(strtolower($file),$exclude_array)){
                     $new_file = $dir.'/'.$file;
                     if(is_dir($new_file) && $recursive){
-                        $this->read_dir($new_file,$exclude,$recursive);
+                       // $this->read_dir($new_file,$exclude,$recursive);
                     }else{
                         $file_list_array[] = array(
                             'path' => $new_file,
