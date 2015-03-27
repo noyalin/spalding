@@ -44,7 +44,7 @@ if(!empty($arr)){
     $str = $arr[17];
     $str = str_replace("</string>","",$str);
     if(strstr($str,"4008155999")){
-        $str = str_replace("4008155999"," 180-1701-8167",$str);
+        $str = str_replace("4008155999"," 4000801876",$str);
     }
 }
 echo $str ;
