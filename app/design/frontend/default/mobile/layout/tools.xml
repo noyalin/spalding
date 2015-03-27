@@ -42,7 +42,7 @@ Supported layout update handles (special):
         <!--<remove name="right"/>-->
         <!--<remove name="left"/>-->
         <reference name="head">
-            <action method="setTitle"><title>斯伯丁 - 官网 - 防伪码真伪验证</title></action>
+            <action method="setTitle"><title>防伪码真伪验证</title></action>
         </reference>
         <reference name="content">
             <block type="tools/list" name="storelist" as="storelist"  template="tools/confirm.phtml" >
