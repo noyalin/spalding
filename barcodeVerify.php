@@ -43,7 +43,9 @@ $str = "系统忙，请重新输入";
 if(!empty($arr)){
     $str = $arr[17];
     $str = str_replace("</string>","",$str);
-    $str = str_replace("4008155999"," 180-1701-8167",$str);
+    if(strstr($str,"4008155999")){
+        $str = str_replace("4008155999"," 180-1701-8167",$str);
+    }
 }
 echo $str ;
 //return $str;
