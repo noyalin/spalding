@@ -75,10 +75,8 @@
 
                 if(!strstr($current_url,'customer/account/login/')){
                     ?>
-                        <!-- menu start -->
                         <div class="header_nav_wrap_new menu_all">
 
-                            <!-- menu_all -->
                             <div class="menu_wrap">
                                 <div class="main">
                                     <ul class="side_nav clearfix">
@@ -96,11 +94,10 @@
                                         <div class="text_a">
 
                                         </div>
-                                    </div><!--end lower_01-->
+                                    </div>
 
                                     <div class="lower_list lower_02">
                                         <div class="text_a">
-<!--                                            <i class="nav_row"></i>-->
                                             <ul class="clearfix">
                                                 <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_blank">SPALDING创始人</a></li>
                                                 <li><a href="<?php echo $this->getUrl('brands') ?>" target="_blank">品牌历史</a></li>
@@ -108,11 +105,10 @@
                                                 <li><a href="<?php echo $this->getUrl('contactus') ?>" target="_blank">联系我们</a></li>
                                             </ul>
                                         </div>
-                                    </div><!--end lower_02-->
+                                    </div>
 
                                     <div class="lower_list lower_03">
                                         <div class="text_a">
-<!--                                            <i class="nav_row"></i>-->
                                             <ul class="clearfix">
                                                 <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1))  ?>" target="_blank">篮球系列</a></li>
                                                 <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1))?>" target="_blank">男子运动服饰</a></li>
@@ -121,25 +117,24 @@
                                                 <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=76'), 0, -1)) ?>" target="_blank">篮球架</a></li>
                                             </ul>
                                         </div>
-                                    </div><!--end lower_03-->
+                                    </div>
 
                                     <div class="lower_list lower_04">
                                         <div class="text_a">
                                             <ul class="clearfix"></ul>
                                         </div>
-                                    </div><!--end lower_04-->
+                                    </div>
 
                                     <div class="lower_list lower_05">
                                         <div class="text_a">
                                             <ul></ul>
                                         </div>
 
-                                    </div><!--end lower_05-->
+                                    </div>
                                 </div>
-                            </div><!--end lower_wrap-->
+                            </div>
 
                         </div>
-                        <!-- end menu -->
                         <span class="searchBtn"><img src='<?php echo $this->getSkinUrl("images/20141208001.png") ?>' alt=""></span>
                 <?php
                 }
@@ -147,19 +142,16 @@
 
             </div>
         </div>
-<!--                        --><?php //echo $this->getChildHtml('topAdvancedSearch') ?>
         <script>
             jQuery(function(){
 
                 jQuery('.scarch_select_option>li').click(function(){
                    var args = jQuery(this).attr("param") + jQuery(this).val();
                    window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>products.html?' + args);
-//                    alert(jQuery(this).html()+jQuery(this).val()+jQuery(this).attr("param"))
                 });
             });
             function searchClick(){
                 window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>catalogsearch/result/?q=' + jQuery("#inputSearchVal").val());
-//                alert(args);
             }
             </script>
         <div class="dropDown_search" id="dropDown_search">
@@ -174,7 +166,6 @@
                         <div class="search_selectBox">
                             <div class="search_selected clearfix">
                                 <span class="ms-fl">请选择</span>
-                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
                             </div>
                             <ul class="scarch_select_option">
                                 <li value="10" param="product_side=">室内</li>
@@ -188,7 +179,6 @@
                         <div class="search_selectBox">
                             <div class="search_selected clearfix">
                                 <span class="ms-fl">请选择</span>
-                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
                             </div>
                             <ul class="scarch_select_option">
                                 <li value="20" param="product_material=">牛皮</li>
@@ -202,7 +192,6 @@
                         <div class="search_selectBox">
                             <div class="search_selected clearfix">
                                 <span class="ms-fl">请选择</span>
-                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
                             </div>
                             <ul class="scarch_select_option">
                                 <li value="9" param="product_norm=">7号球(标准球)</li>
@@ -217,7 +206,6 @@
                         <div class="search_selectBox">
                             <div class="search_selected clearfix">
                                 <span class="ms-fl">请选择</span>
-                                <!-- <span class="ms-fr"><img src="../images/search_seleDrop.png" alt=""></span> -->
                             </div>
                             <ul class="scarch_select_option">
                                 <li value="13" param="product_catena=" class="selected">比赛用球</li>
@@ -242,16 +230,9 @@
                     <input type="text" class="scarchInp" id="inputSearchVal">
                     <a href="<?php echo Mage::helper('core/url')->getHomeUrl()?>products/accessories.html" target="_blank"><span>全部配件</span></a>
                     <button onclick=searchClick()>搜索</button>
-<!--                    <button onclick="window.open('http://localhost/spalding/catalogsearch/advanced/result/?'.$searchArgs)">搜索</button>-->
                 </div>
             </div>
 
         </div>
     </div>
     </div>
-<?php //echo $this->getChildHtml('topMenu') ?>
-
-<!--<div class="home_page_header_block">--><?php //echo $this->getChildHtml('home_page_header_block'); ?><!--</div>-->
-
-<?php //echo $this->getChildHtml('spalding_top_header'); ?>
-<?php //echo $this->getChildHtml('home_page_header_block'); ?>

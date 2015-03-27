@@ -34,7 +34,6 @@
             <div class="shopCodeWrap ms-fl"><span>斯伯丁中国微博</span> <span><img src="<?php echo $this->getSkinUrl('images/20141208004.jpg') ?>"
                                                                             alt=""/></span></div>
             <div class="clear">&nbsp;</div>
-<!--            <a class="tmallLink" href="http://spalding.tmall.com" target="_blank">斯伯丁天猫:http://spalding.tmall.com</a>-->
 
             <h3>商城客服电话：18017018167</h3>
             <p>商务垂询电话：021-61610547</p>
@@ -50,8 +49,6 @@
         </dl>
         <dl class="footerNav ms-fl">
             <dd>购物指南</dd>
-<!--            <dt><a href="--><?php //echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?><!--">注册</a></dt>-->
-<!--            <dt><a href="--><?php //echo $this->getUrl('customer/account/', array('_secure'=>true)) ?><!--">登录</a></dt>-->
             <dt><a href="<?php echo $this->getUrl('footer_shopping') ?>" target="_blank">导购流程</a></dt>
             <dt><a href="<?php echo $this->getUrl('maintenance') ?>" target="_blank">篮球保养</a></dt>
             <dt><a href="<?php echo $this->getUrl('sizetable') ?>" target="_blank">篮球规格</a></dt>
@@ -68,11 +65,9 @@
                 <span><img src="<?php echo $this->getSkinUrl('images/20141209002.png') ?>" alt=""/></span>
                 <span><img src="<?php echo $this->getSkinUrl('images/20141209003.png') ?>" alt=""/></span>
                 
-<!--                <span><img src="--><?php //echo $this->getSkinUrl('images/20141209003.png') ?><!--" alt=""/></span>-->
             </div>
             <div class="footerLogoBox footerLogo_02">
                 
-<!--                <span><img src="--><?php //echo $this->getSkinUrl('images/20141209001.jpg') ?><!--" alt="" /></span>-->
                 <span><img src="<?php echo $this->getSkinUrl('images/20141209002.jpg') ?>" alt="" /></span>
                 <span><img src="<?php echo $this->getSkinUrl('images/logoBasketball.png') ?>" height="53" alt=""/></span>
             </div>
@@ -99,7 +94,6 @@
                 conName = navJson[i].conName;
                 clsNameStr = navJson[i].clsName == '' ? 'current' : navJson[i].clsName;
                 jQuery(conName).children('li').eq(indexNum).addClass(clsNameStr);
-//jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).show(); //二级菜单显示
                 jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).css("display","block"); //二级菜单显示
             }
             i++;
@@ -119,7 +113,6 @@
             jQuery(this).hover(function () {
                 jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(i).addClass('on');
                 jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(i).slideDown();
-//alert(indexNum)
             });
         });
 
@@ -133,7 +126,6 @@
         }, function () {
             jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(indexNum).slideDown();
             jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(indexNum).addClass('on');
-//alert(indexNum)
         })
 
 //AJAX加载动画
@@ -145,6 +137,6 @@
                 jQuery(this).css("display","none");
             });
         }
-    });  //end
+    });
 </script>
 <!-- 底部 bottom e -->
