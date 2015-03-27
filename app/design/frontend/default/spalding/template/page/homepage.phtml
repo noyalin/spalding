@@ -37,9 +37,6 @@
 <body style="background:#000; margin-top:-15px;">
 <!-- 顶部 header s -->
 <?php echo $this->getChildHtml('header') ?>
-<?php
-//echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_background')->toHtml();
-?>
 <div class="spalding_index weiduduan">
     <div class="spalding_index_slider kuzhan">
         <ul class="fix_flash">
@@ -132,11 +129,6 @@
             <tr>
                 <td colspan="4" ><div id="checkmessage" style="color:#fff; font-size:12px; text-align:center;margin-top:5px;padding-top:55px;">所有的验证码只能验证一次,请输入后点击确认,耐心等待,不要重复点击确认按钮!</div></td>
             </tr>
-            <!--<tr>-->
-            <!--<td style="text-align:center" colspan="4">-->
-            <!---->
-            <!--</td>-->
-            <!--</tr>-->
             </tbody>
         </table>
         <div style="position:relative;margin-top:-265px;margin-left:290px; font-weight:bold;color:#fdb905;">
@@ -160,22 +152,6 @@
         jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5+250+"px")
         jQuery(".kuzhan_flash_s").html(str);
         jQuery(".kuzhan_sele").eq(0).addClass("kuzhan_over")
-        //$(".kuzhan_flash_v").css("left",122+"px")
-        //条形码验证  sun
-        // jQuery( "#dialog" ).dialog({
-        //     autoOpen: false,
-        //     //width:746,
-        //     height:546,
-        //     modal: true,
-        //     show: {
-        //         effect: "fade",
-        //         duration: 1000
-        //     },
-        //     hide: {
-        //         effect: "fade",
-        //         duration: 1000
-        //     }
-        // });
         jQuery('.plateBox_tf').on("click",function(){
             jQuery(this).parents().find('#dialog').fadeIn();
         });
