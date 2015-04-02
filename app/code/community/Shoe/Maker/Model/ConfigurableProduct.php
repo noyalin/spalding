@@ -474,6 +474,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             if(file_exists($filename)){
                 continue;
             }
+            mage :: log($url);
             $return = $this->grabImage($url,$filename);
             if($return){
                 // means save succcess, save database
