@@ -467,6 +467,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 //            $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding1200?$1200x1200$&$image='."$urlKey-$i";
             $url = 'http://s7d5.scene7.com/is/image/sneakerhead/bigball1200?$1200x1200$&$imagemoban='."$urlKey-$i";
             $needDir = $dir.$sku."/";
+            mage :: log($needDir);
             if(!file_exists($needDir)){
                 mkdir($needDir);
             }
