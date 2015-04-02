@@ -375,7 +375,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setUrlKey( $valueArr['urlKey'] );
         //根据URLKEY取得所有的图片
         $skuImage =$valueArr['sku'];
-        $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount']);
+        $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount'],$valueArr['productNorm']);
         $this->pushImageToOss($valueArr['sku'],$valueArr['urlKey']);
         //image gallery
         $imageCount = $valueArr['imageCount'] ;
@@ -459,7 +459,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setAttributeSetName ( $this->getAttributeOptionId('attribute_set_name',$valueArr['attributeSetName']) );
     }
 
-    public function getAllImagesByUrlkey($sku,$urlKey,$count){
+    public function getAllImagesByUrlkey($sku,$urlKey,$count,$norm){
         $dir = Mage::getBaseDir()."/media/catalog/product/";
 
         //取得详情页三个大图
@@ -485,8 +485,9 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         }
 
         //取得产品列表小图
-        $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
-        $productNorm = $configurableProduct->getProductNorm();
+       // $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+//        $productNorm = $configurableProduct->getProductNorm();
+        $productNorm = str_replace("#","",$norm);
         if($productNorm == 6){
             $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image='.$urlKey.'-1';
         }else{
