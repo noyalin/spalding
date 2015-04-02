@@ -485,9 +485,12 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         }
 
         //取得产品列表小图
-       // $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
-//        $productNorm = $configurableProduct->getProductNorm();
-        $productNorm = str_replace("#","",$norm);
+        $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+        if($configurableProduct){
+            $productNorm = $configurableProduct->getProductNorm();
+        }else{
+            $productNorm = str_replace("#","",$norm);
+        }
         if($productNorm == 6){
             $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image='.$urlKey.'-1';
         }else{
