@@ -576,7 +576,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         }
 
         ob_start();
-        @readfile($url);
+        readfile($url);
         $img = ob_get_contents();
         ob_end_clean();
         $size = strlen($img);
