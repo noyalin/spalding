@@ -218,17 +218,17 @@ $product_attributeSetName = $_product->getAttributeSetName();
         ?>
         <?php
             if(($size_table_id != null)){
-                $size_table_url = "images/sizeTable/".$size_table_id.".png";
+                $size_table_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/".$size_table_id.".png";
                 ?>
-                <center><img src='<?php echo $this->getSkinUrl($size_table_url) ?>' alt=""></center>
+                <center><img src='<?php echo $size_table_url; ?>' alt=""></center>
         <?php
         }
         ?>
         <?php
         if(($product_attributeSetName != null) && $product_attributeSetName == 72){
-            $view_bottom_url = "images/sizeTable/view_bottom.png";
+            $view_bottom_url =  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/view_bottom.png";
             ?>
-            <center><img src='<?php echo $this->getSkinUrl($view_bottom_url) ?>' alt=""></center>
+            <center><img src='<?php echo $view_bottom_url ?>' alt=""></center>
         <?php
         }
         ?>
