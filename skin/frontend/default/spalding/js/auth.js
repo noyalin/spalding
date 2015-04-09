@@ -52,7 +52,8 @@ jQuery(document).ready(function(){
             data: {barcode:barcode,verifycode:verifycode},
             success: function(data, textStatus){
                 verifyResult = data;
-                jQuery(".ds_dialog_process").removeClass("ds_dialog_process");
+                jQuery(".ds_dialog_process").addClass("ds_dialog_process_second");
+                jQuery(".ds_dialog_process_second").removeClass("ds_dialog_process");
             },
             //  dataType: "json",
             error: function(){
@@ -62,14 +63,14 @@ jQuery(document).ready(function(){
         if(verifyResult != "1"){
             document.getElementById("barcodeVerifyResult").innerHTML = verifyResult;
             if(verifyResult.indexOf("没有此数码，请当心该产品是假冒产品")>=0  ||   verifyResult.indexOf("该防伪码已超过规定查询次数")>=0 ||  verifyResult.indexOf("没有此防伪码，请当心该产品是假冒产品")>=0){
-                jQuery(".ds_dialog_process").addClass("ds_dialog_yes");
-                jQuery(".ds_dialog_process").removeClass("ds_dialog_process");
+                jQuery(".ds_dialog_process_second").addClass("ds_dialog_yes");
+                jQuery(".ds_dialog_process_second").removeClass("ds_dialog_process");
             }else{
                 jQuery("#checkmessage").html("");
             }
         }else{
-            jQuery(".ds_dialog_process").addClass("ds_dialog_yes");
-            jQuery(".ds_dialog_process").removeClass("ds_dialog_process");
+            jQuery(".ds_dialog_process_second").addClass("ds_dialog_yes");
+            jQuery(".ds_dialog_process_second").removeClass("ds_dialog_process");
             jQuery("#verifycode_error").html("验证码不符");
             jQuery("#verifycode").addClass("error");
             jQuery('#barcodeVerifyResult').html("");
