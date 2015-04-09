@@ -52,6 +52,7 @@ jQuery(document).ready(function(){
             data: {barcode:barcode,verifycode:verifycode},
             success: function(data, textStatus){
                 verifyResult = data;
+                jQuery(".ds_dialog_process").removeClass("ds_dialog_process");
             },
             //  dataType: "json",
             error: function(){

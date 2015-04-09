@@ -50,6 +50,7 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
                 data: {barcode:barcode,verifycode:verifycode},
                 success: function(data, textStatus){
                     verifyResult = data;
+                    jQuery(this).removeClass("ds_dialog_process");
                 },
                 //  dataType: "json",
                 error: function(){
