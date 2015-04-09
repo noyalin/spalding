@@ -802,7 +802,7 @@ final class StoneEdge_MagentoImport {
                     self::xmlAppend("Name", "Cnpay", $nd, $xd);
                     self::xmlAppend("Description", "Alipay手机网页支付 ", $nd, $xd);
                 }else if($tradeStatus == "weixinsuccess" ){
-                    self::xmlAppend("Name", "Cnpay", $nd, $xd);
+                    self::xmlAppend("Name", "Weixinpay", $nd, $xd);
                     self::xmlAppend("Description", "Weixinpay ", $nd, $xd);
                 }else{
                     self::xmlAppend("Name", "Cnpay", $nd, $xd);

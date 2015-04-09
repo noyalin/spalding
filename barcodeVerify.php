@@ -46,6 +46,9 @@ if(!empty($arr)){
     if(strstr($str,"4008155999")){
         $str = str_replace("4008155999"," 4000801876",$str);
     }
+    if(strstr($str,"4008-155-999")){
+        $str = str_replace("4008-155-999"," 400-080-1876",$str);
+    }
 }
 echo $str ;
 //return $str;
