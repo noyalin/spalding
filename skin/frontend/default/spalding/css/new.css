@@ -22,3 +22,36 @@
     .narrow-by-list{margin-left:20px;}
     a.btn-remove{margin-left:20px;}
     .block-title{margin-left:10px;}
+
+
+
+  .tm-countdown {
+      background-color: #ffe0bc;
+      margin: 30px -20px 0;
+      padding: 10px 10px 10px 88px;
+      position: relative;
+  }
+
+  .tm-countdown .tb-btn-wait {
+      background-color: #818181;
+      border: 1px solid #818181;
+      color: #fff;
+      cursor: default;
+      float: left;
+      font-family: "Microsoft Yahei";
+      font-size: 16px;
+      height: 28px;
+      line-height: 28px;
+      margin-right: 10px;
+      text-align: center;
+      text-decoration: none;
+      width: 150px;
+  }
+
+  .tm-countdown .tm-countdown-notice {
+      line-height: 30px;
+  }
+
+  .tm-countdown .tm-countdown-timer {
+      display: inline;
+  }

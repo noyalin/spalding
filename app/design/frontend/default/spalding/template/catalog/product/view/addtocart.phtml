@@ -30,17 +30,28 @@
     <div class="add-to-box">
     <div class="add-to-cart">
         <?php if(!$_product->isGrouped()): ?>
-            <!--        <label for="qty">--><?php //echo $this->__('Qty:') ?><!--</label>-->
         <label for="qty">数量：</label>
-<!--        <input type="text" name="qty" id="qty" maxlength="12" value="--><?php //echo $this->getProductDefaultQty() * 1 ?><!--" title="--><?php //echo $this->__('Qty') ?><!--" class="input-text qty" />-->
         <input type="text" name="qty" id="qty_item_1" value="<?php echo $this->getProductDefaultQty() * 1 ?>" onKeyUp="setAmount.modify('#qty_item_1')" class="proNum input-text qty" />
         <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)"></a>
         <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)"></a>
         <?php endif; ?>
-<!--        <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>--><?php //echo $buttonTitle ?><!--</span></span></button>-->
-        <div class="add-to-car-button">
-        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>加入购物车</span></span></button>
-        </div>
+        <?php
+            mage :: log($_product->getSku().' aa');
+            $sku = $_product->getSku();
+            if($sku == '66-996y'){
+        ?>
+                <div class="add-to-car-button">
+                    <div class="tm-countdown"><div class="tb-btn-wait">即将开始 · · · </div>
+                        <div class="tm-countdown-notice">距开售 还剩<div class="tm-countdown-timer">4天23小时</div></div></div>
+                </div>
+
+        <?php
+            }else{
+        ?>
+            <div class="add-to-car-button">
+            <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>加入购物车</span></span></button>
+            </div>
+        <?php } ?>
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>
     </div>
