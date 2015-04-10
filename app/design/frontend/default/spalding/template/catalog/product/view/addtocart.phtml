@@ -36,15 +36,48 @@
         <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)"></a>
         <?php endif; ?>
         <?php
-            mage :: log($_product->getSku().' aa');
             $sku = $_product->getSku();
-            if($sku == '66-996y'){
+            $dateNeed =  strtotime("2015-04-15 10:00:00");
+            $dateNeed -= 8*60*60;
+            $left = $dateNeed - time();
+            if($sku == '74-569y' && $left>=0 ){
+                mage :: log(date("Y-m-d H:i:s"));
         ?>
                 <div class="add-to-car-button">
                     <div class="tm-countdown"><div class="tb-btn-wait">即将开始 · · · </div>
-                        <div class="tm-countdown-notice">距开售 还剩<div class="tm-countdown-timer">4天23小时</div></div></div>
+                        <div class="tm-countdown-notice">距开售 还剩
+                            <div class="tm-countdown-timer">
+                                <div id="remainSeconds" style="display:none"><?php echo $left ?></div>
+                                <span id="remainTime" ></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <script type="text/javascript">
+                    var SysSecond;
+                    var InterValObj;
+                    jQuery(document).ready(function() {
+                        SysSecond = parseInt(jQuery("#remainSeconds").html()); //这里我是在服务端算好了剩余的秒数，并保存到客户端，如果过期则返回0
+                        InterValObj = window.setInterval(SetRemainTime, 1000); //间隔函数，1秒执行
+                    });
 
+                    //代理,接单的时间+1小时减去当前时间的秒数
+                    function SetRemainTime() {
+                        if (SysSecond > 0) {
+                            //alert(SysSecond);
+                            SysSecond = SysSecond - 1;
+                            var second = Math.floor(SysSecond % 60);             // 计算秒
+                            var minite = Math.floor((SysSecond / 60) % 60);      //计算分
+                            var hour = Math.floor((SysSecond / 3600) % 24);      //计算小时
+                            var day = Math.floor((SysSecond / 3600) / 24);        //计算天
+
+                            jQuery("#remainTime").html(day + "天" + hour + "小时" + minite + "分" + second + "秒");
+                        } else {//剩余时间小于或等于0的时候，就停止间隔函数
+                            window.clearInterval(InterValObj);
+                            location.reload();
+                        }
+                    }
+                </script>
         <?php
             }else{
         ?>
