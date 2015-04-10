@@ -20,6 +20,7 @@
  	width:100%;
  	height:90px;
  	background:rgba(0,0,0,.8);
+ 	z-index: 1;
  }
 
 
@@ -296,7 +297,7 @@ ul.scarch_select_option li:hover{
 /*大图轮放*/
 .spalding_index{
 	position: relative;
-	z-index: -1;
+	/*z-index: -1;*/
 }
 
 .spalding_index .spalding_index_slider{
@@ -416,14 +417,14 @@ ul.scarch_select_option li:hover{
 	overflow: hidden;
 	float: left;
 	display: inline;
-	cursor: pointer;
+	/*cursor: pointer;*/
 }
 
 .kuzhan ul.fix_flash li a {
 	display: block;
 	height: 955px;
 	width: 100%;
-	cursor: pointer;
+	cursor: default;
 }
 
 /* .kuzhan_center {
