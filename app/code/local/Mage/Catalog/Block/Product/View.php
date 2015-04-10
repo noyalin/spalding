@@ -279,6 +279,10 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
     public  function  getAttrNameByOptionId($attribute,$productSizeOptionId){
         if(!$productSizeOptionId)
             return null;
+        $productOptionIdArray = array();
+        if(strstr($productSizeOptionId,',')){
+            $productOptionIdArray = explode(',',$productSizeOptionId);
+        }
         $attrName = null;
         $attributeProductSize = Mage::getModel('eav/config')->getAttribute('catalog_product', $attribute);
         $optionsProductSize = $attributeProductSize->getSource()->getAllOptions(true, true);
@@ -286,10 +290,20 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
             if(empty($eachOption['value'])){
                 continue;
             }
-            if($productSizeOptionId == $eachOption['value']){
-                $attrName = $eachOption['label'];
-                break;
+            if(!empty($productOptionIdArray)){
+                if( in_array($eachOption['value'],$productOptionIdArray) ){
+                    $attrName[] = $eachOption['label'];
+                }
+            }else{
+                if($productSizeOptionId == $eachOption['value']){
+                    $attrName = $eachOption['label'];
+                    break;
+                }
             }
+
+        }
+        if(is_array($attrName)){
+            return implode(' , ',$attrName);
         }
         return $attrName;
     }
