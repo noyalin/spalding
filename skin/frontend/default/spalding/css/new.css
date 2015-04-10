@@ -50,6 +50,8 @@
 
   .tm-countdown .tm-countdown-notice {
       line-height: 30px;
+      font-size: 13px;
+      color: #000000;
   }
 
   .tm-countdown .tm-countdown-timer {
