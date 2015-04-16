@@ -1,0 +1,67 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2012 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+    $_product = Mage::registry('current_product');
+    $request = $this->getRequest();
+    $module = $request->getModuleName();
+	$title = $this->getTitle();
+?>
+    <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+    <title>
+<?php
+    $pageNumber = '';
+    if (Mage::getBlockSingleton('page/html_pager')->getCurrentPage() > 1)
+    {
+	$pageNumber = " Page " . Mage::getBlockSingleton('page/html_pager')->getCurrentPage();
+    }
+?>
+<?php if($_product): ?>
+    <?php if($_product->getIsOffline()): ?>
+    <?php //echo "Archive | " . $_product->getName() . " | Sneakerhead.com - " . $_product->getSku() ?>
+    <?php echo "Archive | " . $_product->getName() . " | Spalding 斯伯丁中国n - " . $_product->getSku() ?>
+    <?php else: ?>
+    <?php //echo $_product->getName() . " - $" . round($_product->getPrice(), 2) . " | Sneakerhead.com - " . $_product->getSku() ?>
+    <?php echo $_product->getName() . " - ￥" . round($_product->getPrice(), 2) . " | Spalding 斯伯丁中国 - " . $_product->getSku() ?>
+    <?php endif; ?>
+<?php elseif (Mage::getBlockSingleton('cms/page')->getPage()->getIdentifier() === 'mobile_home_page'): ?>
+    <?php echo "Spalding 斯伯丁手机移动官网 首页"; ?>
+<?php else: ?>
+    <?php if($module != 'paypal'): ?>
+    <?php //echo $title . " | Sneakerhead.com" . $pageNumber ?>
+        <?php echo $title . " | 斯伯丁 Spalding 手机移动官网 篮球" . $pageNumber ?>
+    <?php else: ?>
+    <?php //echo "PayPal Express Review | Sneakerhead.com" . $pageNumber ?>
+    <?php echo "PayPal Express Review | Spalding 斯伯丁 官网 篮球" . $pageNumber ?>
+    <?php endif; ?>
+<?php endif; ?>
+    </title>
+<?php if($_product): ?>
+    <?php if(!$_product->getIsOffline()): ?>
+	<meta property="og:image" content="http://image.sneakerhead.com/is/image/sneakerhead/detail-big-image?&$detail_big_image$&layer=2&src=sneakerhead/<?php echo substr($this->htmlEscape($_product->getUrlKey()), 6) ?>-1"/>
+	<meta property="og:title" content="<?php echo $_product->getName() ?>"/>
+	<meta property="og:url" content="<?php echo $_product->getProductUrl() ?>"/>
+    <?php endif; ?>
+<?php endif; ?>
+    <meta name="Author" content="Sneakerhead, author@sneakerhead.com"/>
+    <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+    <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+	<meta name="robots" content="noindex,nofollow" />
+	<meta name="viewport" content="width=device-width, maximum-scale=1">
+    <?php if (Mage::app()->getStore()->isCurrentlySecure()) : ?>
+	<link rel="icon" href="<?php echo $this->getUrl('',array('_secure'=>true)) . 'favicon.ico'; ?>" type="image/x-icon" />
+	<link rel="shortcut icon" href="<?php echo $this->getUrl('',array('_secure'=>true)) . 'favicon.ico'; ?>" type="image/x-icon" />
+    <?php else : ?>
+	<link rel="icon" href="<?php echo $this->getUrl() . 'favicon.ico'; ?>" type="image/x-icon" />
+	<link rel="shortcut icon" href="<?php echo $this->getUrl() . 'favicon.ico'; ?>" type="image/x-icon" />
+    <?php endif ?>
+
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->getIncludes() ?>

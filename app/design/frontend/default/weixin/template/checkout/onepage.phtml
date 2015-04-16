@@ -1,0 +1,189 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+
+<div id="my-account-all">
+
+	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
+		<div class="my-account-top clearfix">
+			<div class="my-account-welcome">
+				<span>
+					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+					<?php echo '欢迎, ' . $customerName ?>
+				</span>
+			</div>
+			<div class="my-account-logout">
+				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">退出</a>
+			</div>
+		</div>
+
+
+	<?php endif; ?>
+</div>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<div id="cart-wrapper">
+	<h1>结算</h1>
+	<div class="step-content clearfix">
+
+		<?php echo $this->getChildHtml('checkoutCallout') ?>
+
+		<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+		<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+
+		<ol class="opc" id="checkoutSteps">
+			<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+			<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+			<li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+				<div class="step-title">
+				<span class="number"><?php echo $i ?></span>
+				<h2><?php echo $_stepInfo['label'] ?></h2>
+				</div>
+				<div id="checkout-step-<?php echo $_stepId ?>" class="step a-item logInInfoBox" style="display:none;">
+				<?php echo $this->getChildHtml($_stepId) ?>
+				</div>
+			</li>
+			<?php endforeach ?>
+		</ol>
+
+		<script type="text/javascript">
+		//<![CDATA[
+			var accordion = new Accordion('checkoutSteps', '.step-title', true);
+			<?php if($this->getActiveStep()): ?>
+			accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+			<?php endif ?>
+			var checkout = new Checkout(accordion,{
+				progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+				review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+				saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+				failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+			);
+
+			jQuery(document).ready(function(){
+				scrollToElement("#cart-wrapper", 50);
+			});
+
+			function checkAddressMatch(element) {
+				jQuery('#mismatch').dialog('open');
+			}
+
+			// Magento hides the region_id selector when no options available
+			jQuery('select[id="billing:country_id"]').change(function() {
+				if (jQuery('select[id="billing:region_id"]').css('display') == 'none') {
+					// Remove the "css select arrow"
+					jQuery('#label-for-billing-region-id').toggleClass('empty', true);
+				} else {
+					jQuery('#label-for-billing-region-id').toggleClass('empty', false);
+				}
+			});
+			jQuery('select[id="shipping:country_id"]').change(function() {
+				if (jQuery('select[id="shipping:region_id"]').css('display') == 'none') {
+					// Remove the "css select arrow"
+					jQuery('#label-for-shipping-region-id').toggleClass('empty', true);
+				} else {
+					jQuery('#label-for-shipping-region-id').toggleClass('empty', false);
+				}
+			});
+
+		//]]>
+		</script>
+
+    </div>
+</div>
+
+<div id="mismatch" title="Important">
+	<?php echo Mage::getModel('core/variable')->loadByCode('checkout_shipping_mismatch_message')->getValue('text') ?>
+
+	<br>
+	<a class="tell-me-more-link" href="javascript:void(0)"
+	   onClick="jQuery('#tell-me-more-shipping').toggleClass('open'); resetDialog();">Learn more &raquo;</a>
+
+	<div id="tell-me-more-shipping">
+		<?php echo Mage::getModel('core/variable')->loadByCode('checkout_shipping_mismatch_message')->getValue('html') ?>
+	</div>
+</div>
+
+<?php /* Strip html tags in button text */
+$text_button = strip_tags(Mage::getModel('core/variable')->loadByCode('checkout_shipping_mismatch_button_text')->getValue('text'));
+$html_button = strip_tags(Mage::getModel('core/variable')->loadByCode('checkout_shipping_mismatch_button_text')->getValue('html'));
+?>
+
+
+
+<script type="text/javascript">
+jQuery(window).ready(function(){
+	jQuery( "#mismatch" ).dialog({
+		modal: true,
+		autoOpen: false,
+		hide: 300,
+		show: 300,
+		draggable: false,
+		resizable: false,
+		dialogClass: 'mismatch',
+		buttons: [
+			{
+				text: "<?php echo $html_button ?>",
+				click: function() {
+					$('billing:use_for_shipping_no').checked = true;
+					$('shipping:same_as_billing').checked = false;
+					jQuery( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "<?php echo $text_button ?>",
+				click: function() {
+					$('billing:use_for_shipping_yes').checked = true;
+					$('shipping:same_as_billing').checked = true;
+					jQuery( this ).dialog( "close" );
+				},
+				class: 'selected'
+			}
+		],
+		open: function(){
+			resetDialog();
+			jQuery('.ui-widget-overlay').removeClass('ui-front');
+		}
+	});
+
+	jQuery(window).resize(resetDialog);
+});
+
+function resetDialog() {
+	var thisTop = ((jQuery(window).height() - jQuery(".mismatch").height()) / 2) - 20;
+	var thisLeft = (jQuery(window).width() - jQuery(".mismatch").width()) / 2;
+	jQuery(".mismatch").css('top', thisTop);
+	jQuery(".mismatch").css('left', thisLeft);
+	jQuery(".mismatch").css('max-height', jQuery(window).height() - 50);
+	jQuery(".mismatch").css('height', 'auto');
+	if (jQuery('#tell-me-more-shipping').hasClass('open')) {
+		jQuery('.tell-me-more-link').html('&laquo; Hide');
+	} else {
+		jQuery('.tell-me-more-link').html('Tell me more &raquo;');
+	}
+}
+
+</script>

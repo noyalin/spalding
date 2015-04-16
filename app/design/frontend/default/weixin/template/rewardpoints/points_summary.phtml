@@ -1,0 +1,66 @@
+<?php
+/**
+ * J2T RewardsPoint2
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@j2t-design.com so we can send you a copy immediately.
+ *
+ * @category   Magento extension
+ * @package    RewardsPoint2
+ * @copyright  Copyright (c) 2009 J2T DESIGN. (http://www.j2t-design.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ ?>
+<div id="my-account-reward-content">
+<?php $_points = $this->getPoints();?>
+    <?php if($_points->getSize()): ?>
+	<table>
+	    <thead>
+		<tr>
+		    <td>Type of point</td>
+		    <td>Points added</td>
+		    <td>Points used</td>
+		    <td>Date</td>
+		</tr>
+	    </thead>
+	    <tbody>
+		<?php $i = 1 ?>
+		<?php foreach ($_points as $_point): ?>
+		    <tr class="<?php if(++$i % 2 == 0) : ?>tableBgEven<?php else:?>tableBgOdd<?php endif;?> itemRow">
+			<td>
+			    <?php echo $this->getTypeOfPoint($_point);?>
+			</td>
+			<td><?php echo $_point->getPoints_current() . $this->getPending($_point) ?></td>
+			<td><?php echo $_point->getPoints_spent() ?></td>
+			<td><?php if ($_point->getDate_start() != ""): echo $this->formatDate($_point->getDate_start(), 'short'); endif; ?></td>
+		    </tr>
+		<?php endforeach; ?>
+	    </tbody>
+	</table>
+	<div style="display:none"><?php echo $this->getPagerHtml() ?></div>
+    <?php else: ?>
+	<p><?php echo $this->__('You have no recorded points.'); ?></p>
+    <?php endif ?>
+</div>
+
+<?php /* Closes the myAccountBox established in 'dashboard_points.html' */ ?>
+</div>
+
+<div class="logInInfoBox">
+    <table class="logInInfoBtn">
+		<tbody>
+			<tr>
+				<td class="backBtn">
+					<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account')) ?>" class="backBtn">Back To My Profile</a>
+				</td>
+			</tr>
+		</tbody>
+    </table>
+    <div class="clearfloats"></div>
+</div>

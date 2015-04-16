@@ -1,0 +1,110 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php if ($this->getProductData()->getId()): ?>
+	<div id="my-account-all">
+		<div class="my-account-top clearfix">
+			<div class="my-account-welcome">
+				<span>
+					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+					<?php echo 'Welcome, ' . $customerName ?>
+				</span>
+			</div>
+			<div class="my-account-logout">
+				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">Log Out</a>
+			</div>
+		</div>
+
+		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
+
+		<h1 id="my-account-review">Review Details</h1>
+		<div id="my-account-review-content">
+			<div class="myAccountBox">
+				<div class="myAccountReviewImg">
+					<a href="<?php echo $this->getProductData()->getProductUrl() ?>">
+						<img src="http://image.sneakerhead.com/is/image/sneakerhead/mobile-detail?$260m$&amp;$img=sneakerhead/<?php echo $this->getProductData()->getUrlKey() ?>-1&amp;layer=1&amp;originN=0,.5&amp;pos=0,80" alt="<?php echo $this->htmlEscape($this->getProductData()->getName()) ?>">
+					</a>
+				</div>
+				<div class="myAccountReviewRight">
+
+					<h2><?php echo $this->htmlEscape($this->getProductData()->getName()) ?></h2>
+					<div class="avgRating">
+						<?php if ($this->getRating() && $this->getRating()->getSize()): ?>
+							<h3><?php echo $this->__('Average Customer Rating:') ?></h3>
+							<?php echo $this->getReviewsSummaryHtml($this->getProductData()) ?>
+						<?php endif; ?>
+					</div>
+
+					<div class="avgRating">
+						<h3><?php echo ($this->isReviewOwner()) ? $this->__('Your Rating:') : $this->__('Rating:'); ?></h3>
+						<div class="rating" style="width:100%;">
+							<table>
+								<?php foreach ($this->getRating() as $_rating): ?>
+									<?php if ($_rating->getPercent()): ?>
+										<tr>
+											<td class="value">
+												<div class="rating-box">
+													<div class="rating" style="width:<?php echo ceil($_rating->getPercent()) ?>%;"></div>
+												</div></td>
+										</tr>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							</table>
+						</div>
+					</div>
+					<div class="avgRating">
+						<h3>
+							<?php
+							$dateTimestamp = Mage::getModel('core/date')->timestamp(strtotime($this->getReviewData()->getCreatedAt()));
+							$date = date('m/d/Y', $dateTimestamp);
+							?>
+							<?php if ($this->isReviewOwner()): ?>
+								<?php echo $this->__('Your Review (submitted on %s):', $date) ?>
+							<?php else : ?>
+								<?php echo $this->__('Review (submitted on %s):', $date) ?>
+							<?php endif; ?>
+						</h3>
+						<p><?php echo nl2br($this->htmlEscape($this->getReviewData()->getDetail())) ?></p>
+					</div>
+				</div>
+
+			</div>
+			<div class="clearfloats"></div>
+		</div>
+		<div class="logInInfoBox">
+			<table class="logInInfoBtn">
+				<tr>
+					<td class="backBtn">
+						<a href="<?php echo $this->getBackUrl() ?>" class="backBtn">Back to My Reviews</a>
+					</td>
+				</tr>
+			</table>
+			<div class="clearfloats"></div>
+		</div>
+	</div>
+<?php endif; ?>

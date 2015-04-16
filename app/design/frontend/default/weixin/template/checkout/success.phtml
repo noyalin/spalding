@@ -1,0 +1,249 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+
+<div id="my-account-all">
+
+	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
+		<div class="my-account-top clearfix">
+			<div class="my-account-welcome">
+				<span>
+					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+					<?php echo '欢迎, ' . $customerName ?>
+				</span>
+			</div>
+			<div class="my-account-logout">
+				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">退出</a>
+			</div>
+		</div>
+
+
+	<?php endif; ?>
+</div>
+
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<div id="cart-wrapper">
+	<h1>Thank you for your purchase!</h1>
+	<div class="cart-content">
+		<?php if ($this->getOrderId()):?>
+			<?php if ($this->getCanViewOrder()) :?>
+			<p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+			<?php  else :?>
+			<p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+			<?php endif;?>
+			<p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+		<?php endif;?>
+		<p><a href="<?php echo $this->getUrl('') ?>">Click here</a> to continue shopping.</p>
+	</div>
+</div>
+
+
+<?php
+/*******************************************/
+/* BEGIN GUEST CREATE ACCOUNT MODAL WINDOW */
+/*******************************************/
+$order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
+$orderId = $order->getId();
+if (!$this->helper('customer')->isLoggedIn()) {
+	// Check if guest already has an account with this email address
+	$customer = Mage::getModel("customer/customer");
+	$customer->setWebsiteId(Mage::app()->getWebsite()->getId());
+	$customer->loadByEmail($order->getCustomerEmail());
+	$customerId = $customer->getId();
+} else {
+	$customerId = $order->getCustomerId();
+}
+?>
+
+<?php if ($orderId && !$customerId) : ?>
+<div id="accountCreation" class="dialogContainer">
+	<div class="dialog">
+	<h1>You Can Still Create an Account</h1>
+	<p>All you need is a password.</p>
+	<div class="myAccountMsg" id="error_message"></div>
+	<form method="post" id="form-validate" enctype="multipart/form-data">
+		<div class="logInInfoBox">
+			<table>
+				<tbody>
+				<tr>
+					<td class="infoLabel"><label for="firstname" class="infoLabel required"><span class="rStar">*</span>First Name</label></td>
+				</tr>
+				<tr>
+					<td class="infoInput"><input type="text" id="firstname" name="firstname" autocomplete="off" title="First Name" value="<?php echo $order->getBillingAddress()->getFirstname(); ?>" maxlength="255" readonly style="color:gray" class="input-box required-entry"></td>
+				</tr>
+				<tr>
+					<td class="infoLabel"><label for="lastname" class="required"><span class="rStar">*</span>Last Name</label></td>
+				</tr>
+				<tr>
+					<td class="infoInput"><input type="text" id="lastname" name="lastname" title="Last Name" autocomplete="off" value="<?php echo $order->getBillingAddress()->getLastname(); ?>" maxlength="255" readonly style="color:gray" class="input-box required-entry"></td>
+				</tr>
+				<tr>
+					<td class="infoLabel"><label for="email_address" class="required"><span class="rStar">*</span>Email Address</label></td>
+				</tr>
+				<tr>
+					<td class="infoInput"><input type="email" id="email_address" name="email" title="Email Address" autocomplete="off" value="<?php echo $order->getBillingAddress()->getEmail(); ?>" readonly style="color:gray" class="input-box validate-email required-entry"></td>
+				</tr>
+				<tr>
+					<td class="infoLabel"><label for="password" class="required"><span class="rStar">*</span>Password</label></td>
+				</tr>
+				<tr>
+					<td class="infoInput"><input type="password" id="password" name="password" title="Password" autocomplete="off" class="input-box required-entry validate-password"></td>
+				</tr>
+				<tr>
+					<td class="infoLabel"><label for="confirmation" class="required"><span class="rStar">*</span>Confirm Password</label></td>
+				</tr>
+				<tr>
+					<td class="infoInput"><input type="password" id="confirmation" name="confirmation" title="Confirm Password" autocomplete="off" class="input-box required-entry validate-cpassword"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="logInInfoBox">
+			<table class="guestPopup">
+				<tbody>
+				<tr>
+					<td>
+						<button onClick = "createAccount();" type="button" autocomplete="off" class="buttonRight" title="Save Account" id = "submit_button" style="width: 150px;">Save My Account</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button onClick="jQuery('#accountCreation').dialog('close');" type="button" autocomplete="off" class="buttonLeft" title="Cancel" id = "cancel_button">Cancel</button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<img class="please-wait" id="account-please-wait" style="display:none" src="<?php echo $this->getSkinUrl('images/loader.gif', array('_secure'=>true)) ?>" />
+		</div>
+	 <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+	</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+function createAccount() {
+
+	// The accountCreation div (and therefore the "form-validate" form)
+	// gets replicated when the modal window opens. So there are actually two
+	// instances of the form available in the DOM. We need to reference the visible one explicitly
+
+	var validateOk = true;
+
+	if (!validateForm('#form-validate'))
+		return false;
+
+	if (!validateEmail(jQuery('#email_address').val())) {
+		jQuery(this).parent().append('<div class="validation-advice">Please provide a valid email address.</div>');
+		validateOk = false;
+	}
+
+	if (jQuery('#confirmation').val() !== jQuery('#password').val()){
+		jQuery('#confirmation').parent().append('<div class="validation-advice">Passwords must match.</div>');
+		jQuery('#password').parent().append('<div class="validation-advice">Passwords must match.</div>');
+		showAlert("Please be sure passwords match.");
+		return false;
+	} else if (!validateOk) {
+		showAlert("Highlighted fields required.");
+		return false;
+	}
+
+	// Data validated. Attempt to create an account
+	jQuery("#account-please-wait").fadeIn();
+
+	var createUrl = "<?php echo $this->getUrl("customer/account/createPost");?>";
+	var request = new Ajax.Request(createUrl, {
+		method: "post",
+		parameters: {
+			"firstname": jQuery('#firstname').val(),
+			"lastname": jQuery('#lastname').val(),
+			"email": jQuery('#email_address').val(),
+			"password": jQuery('#password').val(),
+			"confirmation": jQuery('#confirmation').val(),
+			"group_id": 3,
+			"error_url": '',
+			"success_url": '',
+			"is_subscribed": 0
+		},
+		onSuccess: function (transport) {
+			response = transport.responseText;
+			// Returns account page even on fail. Check for error-msg class in responseHTML
+			// Will only return first message <li>
+			error_start = response.indexOf('<li class="error-msg">') + 22;
+			error_end = response.indexOf('</li>', error_start);
+			jQuery("#account-please-wait").hide();
+			if (response.indexOf('<li class="error-msg">') > -1) {
+				error_msg = response.substring(error_start, error_end);
+				error_msg = error_msg.replace("<br>", " ");
+				showAlert(error_msg);
+			} else {
+				var success_msg = jQuery('#success_message').html();
+				jQuery('#accountCreation').dialog('close');
+				showAlert(jQuery('#success_message').html());
+			}
+		}
+	});
+
+	return false;
+}
+
+function validateEmail(v) {
+	// Taken directly from Magento Validation rules (validation.js)
+	return Validation.get('IsEmpty').test(v) || /^([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*@([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*\.(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]){2,})$/i.test(v);
+}
+
+jQuery(document).ready(function() {
+	jQuery( "#accountCreation" ).dialog({
+		modal: true,
+		autoOpen: false,
+		hide: 300,
+		show: 300,
+		height: 'auto',
+		draggable: false,
+		dialogClass: 'accountCreation',
+		open: function(){
+			jQuery('.ui-widget-overlay').removeClass('ui-front');
+		}
+	});
+
+	// Launch modal window
+	jQuery( "#accountCreation" ).dialog('open');
+	setTimeout('jQuery("#password").focus()', 1000);
+});
+
+</script>
+
+
+<!-- REGISTRATION SUCCESS CONTENT -->
+<div id="success_message" style = "display: none;">
+<p>Thank you for registering with Sneakerhead.com. Click <a href="<?php echo $this->getUrl("customer/account/"); ?>">here</a> to update your account settings.</p>
+<p class="important">IMPORTANT: Please allow up to 24 hours for this order to appear in your order history.</p>
+</div>
+
+<?php endif; ?>
+
+<?php /* END GUEST CREATE ACCOUNT MODAL WINDOW */ ?>

@@ -1,0 +1,163 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
+<?php $_order = $this->getOrder() ?>
+<div id="my-account-all">
+
+    <?php if ($this->helper('customer')->isLoggedIn()) : ?>
+        <div class="my-account-top clearfix">
+            <div class="my-account-welcome">
+				<span>
+					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+                    <!--					--><?php //echo 'Welcome, ' . $customerName ?>
+                    <?php echo '欢迎, ' . $customerName ?>
+				</span>
+            </div>
+            <div class="my-account-logout">
+                <!--				<a class="logout-link" href="--><?php //echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?><!--">Log Out</a>-->
+                <a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">退出</a>
+            </div>
+        </div>
+    <?php else: ?>
+        <div style="margin-bottom: 50px;">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_cs_return_to_menu')->toHtml(); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+    <?php if ($this->helper('customer')->isLoggedIn()) : ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
+    <?php endif; ?>
+
+    <?php
+    /* Convert the popup link to mobile */
+    $temp = explode('?', $this->helper('shipping')->getTrackingPopupUrlBySalesModel($_order));
+    $popupLink = $temp[0];
+
+    $sneakerhead_en_store = getStoreByCode('sneakerhead_cn');
+    $sneakerhead_en_store_url = $sneakerhead_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+    $sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_en_store_url), '/');
+
+    $sneakerhead_mobile_en_store = getStoreByCode('sneakerhead_cn_mobile');
+    $sneakerhead_mobile_en_store_url = $sneakerhead_mobile_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+    $sneakerhead_mobile_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_mobile_en_store_url), '/');
+
+//    $popupLink = preg_replace("/^http:\/\/$sneakerhead_en_store_url/", "http://$sneakerhead_mobile_en_store_url", $popupLink);
+
+    ?>
+    <h1 id="my-account-orders"><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+    <div id="my-account-orders-content">
+        <div class="myAccountBox">
+            <!--			<h2>Order Information</h2>-->
+            <h2>订单详情</h2>
+            <table class="logInInfo">
+                <tbody>
+                <tr>
+                    <td colspan="2" class="orderMsg">
+                        <!--					<span class="orderMsgTitle">Order Date: </span>&nbsp;--><?php //echo $this->__('%s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
+                        <span class="orderMsgTitle">订单日期: </span>&nbsp;<?php echo $this->__('%s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="orderMsg">
+                        <!--					<span class="orderMsgTitle">Order Status:</span>&nbsp;<span class="yellowText">--><?php //echo $_order->getStatusLabel() ?>
+                        <span class="orderMsgTitle">订单状态:</span>&nbsp;<span class="yellowText"><?php echo $_order->getStatusLabel() ?>
+                            <?php if ($_order->getTracksCollection()->count()) : ?>
+                                | <a href="<?php echo $popupLink ?>?order_id=<?php echo $_order->getId()?>" title="<?php echo $this->__('Track your order') ?>"><?php echo $this->__('Track your order') ?></a>
+                            <?php endif; ?>
+					</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!--					<h3>Billing Address</h3>-->
+                        <h3>收货地址</h3>
+                        <p>
+                            <?php echo $_order->getBillingAddress()->format('html') ?>
+                        </p>
+                    </td>
+                    <?php if (!$_order->getIsVirtual()): ?>
+                        <td>
+                            <!--                    <h3>收货地址</a></h3>-->
+                            <!--					<p>-->
+                            <!--						--><?php //echo $_order->getShippingAddress()->format('html') ?>
+                            <!--					</p>-->
+                        </td>
+                    <?php else: ?>
+                        <td>
+                            <p>&nbsp;</p>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+                <?php if (!$_order->getIsVirtual()): ?>
+                    <tr>
+                        <td colspan="2" class="orderMsg">
+                            <!--					<span class="orderMsgTitle">Shipping Method:</span>&nbsp;-->
+                            <span class="orderMsgTitle">物流:</span>&nbsp;
+                            <?php if ($_order->getShippingDescription()): ?>
+                                <?php
+                                $shippingMethod = NULL;
+                                switch ($this->escapeHtml($_order->getShippingDescription())) {
+                                    case 'Priority Mail 1-Day':
+                                        $shippingMethod = 'USPS Priority Mail';
+                                        break;
+                                    case 'Priority Mail 2-Day':
+                                        $shippingMethod = 'USPS Priority Mail';
+                                        break;
+                                    case 'Priority Mail 3-Day':
+                                        $shippingMethod = 'USPS Priority Mail';
+                                        break;
+                                    case 'Priority Mail DPO':
+                                        $shippingMethod = 'USPS Priority Mail';
+                                        break;
+                                    case 'Priority Mail Military':
+                                        $shippingMethod = 'USPS Priority Mail';
+                                        break;
+                                    case 'UPS Worldwide Expedited':
+                                        $shippingMethod = 'International Express';
+                                        break;
+                                    default:
+                                        $shippingMethod = $this->escapeHtml($_order->getShippingDescription());
+                                }
+                                ?>
+                                <?php echo $shippingMethod ?>
+                            <?php else: ?>
+                                <?php echo $this->helper('sales')->__('No shipping information available'); ?>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+                <tr>
+                    <td colspan="2" class="orderMsg">
+                        <!--					<span class="orderMsgTitle">Payment Method:</span>&nbsp;--><?php //echo $this->getPaymentInfoHtml() ?>
+                        <span class="orderMsgTitle">付款方式:</span>&nbsp;<?php echo $this->getPaymentInfoHtml() ?>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>

@@ -1,0 +1,307 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$_currentCategory = Mage::Registry('current_category');
+
+/* If navigated directly to product page, default category for back link */
+if (!$_currentCategory) {
+	$_currentCategory = Mage::getModel('catalog/category')->load($_product->getDefaultCategory());
+}
+
+?>
+
+<?php
+
+$_productAvailableColors = Mage::getModel('catalog/product')->getCollection()
+		->addAttributeToFilter(array(array('attribute' => 'model', 'eq' => $_product->getModel())))
+		->addAttributeToFilter('visibility', 4);
+
+$_productAvailableColorsCollection = array();
+foreach ($_productAvailableColors as $_productAvailableColor) {
+	$productData = $_productAvailableColor->getData();
+	if (array_key_exists('is_salable', $productData)) {
+		$_productAvailableColorsCollection[] = $_productAvailableColor;
+	}
+}
+
+$reviewsUrl = Mage::getUrl('review/product/list', array(
+			'id' => $this->getProduct()->getId(),
+			'category' => $this->getProduct()->getCategoryId()
+));
+
+$page = Mage::app()->getFrontController()->getRequest()->getRouteName();
+$request = $this->getRequest();
+$module = $request->getModuleName();
+
+$parentCategoryUrlKey = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-100-physical' ||
+		$_currentCategory->getUrlKey() == 'cs-sneakerhead-gift-card')
+	? 'cs-customer-service'
+	: $_currentCategory->getUrlKey();
+
+$parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-100-physical' ||
+		$_currentCategory->getUrlKey() == 'cs-sneakerhead-gift-card')
+	? 'Customer Service'
+	: $_currentCategory->getDescription();
+?>
+
+<section id="product_wrapper">	
+
+	<div class="category-filter clearfix">
+		<?php if ($_currentCategory): ?>
+		<div class="detail-site-map cat-site-map-arrow-bak">
+<!--			<a class="back-category-title" href="--><?php //echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName ?><!--">Back to --><?php //echo $parentCategoryName ?><!--</a>-->
+            <a class="back-category-title" href="<?php echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName ?>">搜索 <?php echo $parentCategoryName ?></a>
+		</div>
+		<?php endif; ?>
+		<header class="global-header detail-title">
+			<div class="clearfix title">
+				<div class="clearfix"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
+			</div>
+		</header>
+	</div>
+
+<!--	<header class="">
+		<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><br>
+	</header>-->
+
+	<?php $imageCount = floor($_product->getImageCount()) ?>
+
+		<!-- slider container -->
+	<table class="sliderContainer">
+	<tr>
+	<td class="sliderNavCell"><?php echo ($imageCount > 1) ? '<a class="sliderPrev"></a>' : '&nbsp;'?></td>
+	<td class="iosSliderCell">
+		<div class = 'iosSlider' style="opacity: 0; filter: alpha(opacity:0);">
+
+			<!-- slider -->
+			<div class = 'slider'>
+			<?php $i = 0 ?>
+			<?php while ($i++ < $imageCount) : ?>
+				<div class = 'slide'>
+					<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_detail_image')->getValue('html')?>/<?php echo ($_product->getDefaultCategory() == 213) ? substr($this->htmlEscape($_product->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>">
+				</div>
+			<?php endwhile ?>
+			</div>
+			
+		</div>
+	</td>
+	<td class="sliderNavCell"><?php echo ($imageCount > 1) ? '<a class="sliderNext"></a>' : '&nbsp;'?></td>
+	</tr>
+	</table>
+
+	<?php if ($imageCount > 1) : ?>
+	<div class = 'iosSliderButtons<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) echo ' moreStyles'; ?>'>
+		<?php $i = 0 ?>
+		<?php while ($i++ < $imageCount) : ?>
+		<div class = 'button'></div>
+		<?php endwhile ?>
+	</div>
+	<?php endif; ?>
+
+	<section class="detail-style-info<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) echo ' moreStyles'; ?>">
+		<p class="detail-price">
+			<?php if (!is_null($_product->getJ2tRewardvalue())): ?>
+				<?php echo $_helper->productAttribute($_product, $_product->getJ2tRewardvalue(), 'j2t_rewardvalue') . ' Points' ?>
+			<?php else: ?>
+				<?php echo $this->getPriceHtml($_product) ?>
+			<?php endif; ?>
+		</p>
+
+
+<!--		<p>Style Number: --><?php //echo $_product->getSku() ?><!--</p>-->
+        <p>款号: <?php echo $_product->getSku() ?></p>
+<!--		--><?php //if ($_product->getColorSn()) : ?><!--<p>Color: --><?php //echo $_product->getColorSn() ?><!----><?php //endif; ?>
+        <?php if ($_product->getColorSn()) : ?><p>颜色: <?php echo $_product->getColorSn() ?><?php endif; ?>
+		</p>
+
+	</section>
+
+<div class="detailCheckOutWrap">
+	<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" name="product_addtocart_form" id="product_addtocart_form">
+	<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+
+
+		    <?php if (!$this->hasOptions()): ?>
+			<div class="add-to-box">
+			    <?php if($_product->isSaleable()): ?>
+					<?php echo $this->getChildHtml('addtocart') ?>
+			    <?php endif; ?>
+				 <?php echo $this->getChildHtml('addto') ?>
+			</div>
+		    <?php else:?>
+				<?php if ($_product->isSaleable() && $this->getChildChildHtml('container1') ):?>
+					<div class="options-container-small">
+					<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+					</div>
+				<?php else: ?>
+<!--					--><?php //echo $this->getChildHtml('addto') ?>
+				<?php endif;?>
+		    <?php endif; ?>
+
+			<?php if ($_product->getPhoneOrderOnly()): ?>
+			<?php $phoneOrderingMessage = htmlentities($_helper->productAttribute($_product, nl2br($_product->getOrderingMessage()), 'ordering_message'), ENT_QUOTES) ?>
+				<p class="detail-call-order" style="text-transform:uppercase;"><a href="tel:18017018167"><?php echo $phoneOrderingMessage ?></a></p>
+			<?php else: ?>
+			    <?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2')): ?>
+				<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+			    <?php endif; ?>
+			<?php endif; ?>
+
+	</form>
+</div>
+
+</section>
+
+<!-- Accordion Sections -->
+<section id="detailAccordion">
+<!--	<h3 id="detailTabDescription">Description <a class="headerToggle"></a></h3>-->
+    <h3 id="detailTabDescription">商品简介 <a class="headerToggle"></a></h3>
+	<div id="detailTabDescriptionContent">
+		<div>
+			<div class='title'><?php echo $_helper->productAttribute($_product, nl2br($_product->getName()), 'name') ?></div>
+			<p><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?></p>
+		</div>
+	</div>
+
+
+<?php //if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
+<!--	<h3 id="detailTabStyles">Available Colors <a class="headerToggle"></a></h3>-->
+<!--	<div id="detailTabStylesContent">-->
+<!--		<div id="detailAvailColor">-->
+<!--			--><?php
+//			$i = 0;
+//			foreach ($_productAvailableColorsCollection as $productColor) {
+//				$i++;
+//				$_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
+//				echo '<a href="' . $_productColor->getProductUrl() . '" class="availableColorPx"><img src="' . Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') . '/' . $this->htmlEscape($_productColor->getUrlKey()) . '-1" alt="' . $_helper->productAttribute($_productColor, $_productColor->getName(), 'name') . '" width="125"/></a>';
+//			}
+//			?>
+<!--		</div>-->
+<!--	</div>-->
+<!--	--><?php //endif; ?>
+
+</section>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+
+	jQuery('.iosSlider').iosSlider({
+		snapToChildren: true,
+		snapSlideCenter: true,
+		snapVelocityThreshold: 1,
+		desktopClickDrag: true,
+		infiniteSlider: true,
+		navSlideSelector: jQuery('.iosSliderButtons .button'),
+		navPrevSelector: '#product_wrapper a.sliderPrev',
+		navNextSelector: '#product_wrapper a.sliderNext',
+		onSlideChange: slideContentChange,
+		onSliderLoaded: slideContentChange,
+		keyboardControls: true
+	});
+
+<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
+
+	jQuery('.iosSliderStyles').iosSlider({
+		startAtSlide: <?php echo (count($_productAvailableColorsCollection) < 4) ? 1 : $startingSlide ?>,
+		snapToChildren: true,
+		snapSlideCenter: <?php echo (count($_productAvailableColorsCollection) < 4) ? "false" : "true" ?>,
+		snapVelocityThreshold: 1,
+		desktopClickDrag: true,
+		infiniteSlider: true,
+		navPrevSelector: '#product_wrapper a.sliderMiniPrev',
+		navNextSelector: '#product_wrapper a.sliderMiniNext',
+		keyboardControls: false
+	});
+
+<?php endif ?>
+
+	// Allowing it to be visible when drawing causes all four slides to be visible momentarily.
+	// 'display: none' would cause the page jump. This method maintains the placeholder position.
+	jQuery('.iosSlider').css({'opacity': '1', 'filter': 'alpha(opacity:100)'});
+	jQuery('.iosSliderStyles').css({'opacity': '1', 'filter': 'alpha(opacity:100)'});
+
+	function slideContentChange(args) {
+		/* indicator */
+		jQuery('.iosSliderButtons .button').removeClass('selected');
+		jQuery('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
+	}
+
+	jQuery('#detailAccordion').accordion({
+		collapsible: true,
+		active: <?php echo ($module == 'review') ? ((count($_productAvailableColorsCollection) > 1) ? 3 : 2) : 0; ?>,
+		heightStyle: 'content',
+		animate: 200,
+	});
+
+	<?php if ($_product->getPhoneOrderOnly()): ?>
+	if (!isMobileDevice) {
+		jQuery('p.detail-call-order').html('<a><?php echo $phoneOrderingMessage ?></a>');
+	}
+	<?php endif; ?>
+});
+
+	function enlargeCurrentImage(slide) {
+		var imageSrc = '<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_detail_zoom_image')->getValue('html')?>/<?php echo ($_product->getDefaultCategory() == 213) ? substr($this->htmlEscape($_product->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_product->getUrlKey()) ?>-' + slide;
+		window.open(imageSrc, '_blank', 'fullscreen=yes,location=yes,scrollbars=yes', false);
+		return false;
+	}
+
+<?php /* Need for Share Links */ ?>
+var shareProductUrl = '<?php echo 'http://www.sneakerhead.com/' . $_product->getUrlKey() . '.html' ?>';
+</script>
+
+
+
+<script>
+	//点击图片全屏查看大图 & 点击大图 移除层
+	jQuery(function(){
+		jQuery('.slide').on("click",function(){
+			var _url = jQuery(this).children('img').attr("src");
+			jQuery(this).parents('#page').before("<div class='bigImg'><img src=" + _url + "></div>");
+			var imgH = jQuery('.bigImg>img').height();
+			jQuery('.bigImg>img').css({
+				"position":"absolute",
+				"margin-top":-imgH/2,
+				"top":"50%"
+			});
+		});
+
+		jQuery(document).on("click",".bigImg",function(){
+			jQuery(this).remove();
+		});
+
+	});
+</script>

@@ -1,0 +1,372 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php /** @var $this Mage_Checkout_Block_Cart_Shipping */ ?>
+<h1>Estimate Shipping and Tax</h1>
+<div class="cart-content logInInfoBox">
+    <form action="<?php echo $this->getUrl('checkout/cart/estimatePost') ?>#shipping-methods" method="post" id="shipping-zip-form">
+        <fieldset>
+			<table class="shopping-cart-shipping-tax">
+				<tr>
+					<td class="infoLabel">
+						<label for="country">Country</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="infoInput">
+						<div>
+							<label class="account-select">
+								<?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId()) ?>
+							</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="infoLabel">
+						<label for="region_id"<?php if ($this->isStateProvinceRequired()) echo ' class="required"' ?>><?php if ($this->isStateProvinceRequired()) echo '<em>*</em>' ?><?php echo $this->__('State/Province') ?></label>
+					</td>
+				</tr>
+				<tr>
+					<td class="infoInput">
+						<div>
+							<label class="account-select">
+								<select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" style="display:none;"<?php echo ($this->isStateProvinceRequired() ? ' class="validate-select required-entry"' : '') ?>>
+									<option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+								</select>
+								<script type="text/javascript">
+									//<![CDATA[
+									$('region_id').setAttribute('defaultValue', "<?php echo $this->getEstimateRegionId() ?>");
+									//]]>
+								</script>
+								<input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getEstimateRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text" style="display:none;" />
+							</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="infoLabel">
+						<label for="postcode"<?php if ($this->isZipCodeRequired()) echo ' class="required"' ?>><?php if ($this->isZipCodeRequired()) echo '<em>*</em>' ?><?php echo $this->__('Zip/Postal Code') ?></label>
+					</td>
+				</tr>
+				<tr>
+					<td  class="infoInput">
+						<input class="input-text validate-postcode required-entry" type="number" id="postcode" name="estimate_postcode" value="<?php echo $this->escapeHtml($this->getEstimatePostcode()) ?>" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="">
+						<div class="buttons-set">
+							<button type="submit" onclick="return validateForm('#shipping-zip-form')" class="button"><span><span><?php echo $this->__('Get a Quote') ?></span></span></button>
+						</div>
+					</td>
+				</tr>
+			</table>
+        </fieldset>
+    </form>
+    <script type="text/javascript">
+		//<![CDATA[
+		new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>);
+		//]]>
+    </script>
+	<?php /* Create sortable price-mapped array */ ?>
+	<?php $shippingMethods = array(); ?>
+	<?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
+		<div class="calculator" id="shipping-methods">
+			<form id="co-shipping-method-form" action="<?php echo $this->getUrl('checkout/cart/estimateUpdatePost') ?>#shipping-methods">
+				<h2>Shipping Methods</h2>
+				<table class="shopping-cart-shipping-calc">
+					<?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+						<?php foreach ($_rates as $_rate): ?>
+							<tr>
+								<?php if ($_rate->getErrorMessage()) : ?>>
+									<td>
+										<ul class="messages">
+											<li class="error-msg"><ul><li><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li></ul></li>
+										</ul>
+									</td>
+								<?php else: ?>
+									<td>
+										<input name="estimate_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if ($_rate->getCode() === $this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio" />
+									</td>
+									<td>
+										<label for="s_method_<?php echo $_rate->getCode() ?>">
+
+											<?php /****************************************************************************************/ ?>
+											<?php /**** BUILD THE PRICE-MAP ARRAY FOR USE WITH JAVASCRIPT AT EOF  *************************/ ?>
+											<?php $formatted_rate = number_format($_rate->getPrice(), 2, '.', ''); ?>
+											<?php $formatted_rate = str_pad($formatted_rate, 6, "0", STR_PAD_LEFT); ?>
+											<?php $shippingMethods[$_rate->getCode()] = array("rate" => $formatted_rate, "code" => $_rate->getCode()); ?>
+											<?php /****************************************************************************************/ ?>
+											<?php /****************************************************************************************/ ?>
+
+											<?php if ($_rate->getPrice() == 0) : ?>
+												<?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+												<?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+												<?php echo $_excl; ?>
+												<?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+													(<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+												<?php endif; ?>
+												<?php echo '<span class="priceFree">(FREE Shipping)</span>' ?>
+											<?php else: ?>
+												<?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+												<?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+												<?php echo $_excl; ?>
+												<?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+													(<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+												<?php endif; ?>
+											<?php endif; ?>
+											<?php
+											$shippingMethod = NULL;
+											$estimatedDelivery = NULL;
+											$shippingNumberOfDays = NULL;
+											switch ($this->escapeHtml($_rate->getMethodTitle())) {
+												case 'Christmas Express':
+													$shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
+													$shippingService = 'UPS';
+													$estimatedDelivery = 'Delivered by December 24';
+													break;
+												case 'Free Shipping':
+													$shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
+													$shippingService = 'Free Shipping';
+													$estimatedDelivery = 'Estimated Delivery 4-7 Business Days';
+													break;
+												case 'UPS Ground':
+													$shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
+													$shippingService = 'UPS';
+													// Get resource
+													$resource = Mage::getSingleton('core/resource');
+													$readConnection = $resource->getConnection('core_read');
+
+													//Select by first number
+													$zipCode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getPostcode();
+
+													$query = "SELECT * FROM `devicom_delivery_zone` WHERE `service` = 'UPS'";
+
+													$results = $readConnection->query($query);
+													foreach ($results as $result) {
+
+														$explodedZipCodes = explode('-', $result['zip_code']);
+														if (count($explodedZipCodes) > 1) {
+															$first = $explodedZipCodes[0];
+															$last = $explodedZipCodes[1];
+															if (substr($zipCode, 0, 3) >= $first && substr($zipCode, 0, 3) <= $last) {
+																$shippingNumberOfDays = $result['days'];
+																//echo '<br>MATCH->' . $first . ' AND ' . $last;
+																break;
+															}
+														} else {
+															if (substr($zipCode, 0, 3) == substr($explodedZipCodes[0], 0, 3)) {
+																$shippingNumberOfDays = $result['days'];
+																//echo '<br>' . $result['days'];
+																//echo '<br>' . $explodedZipCodes[0];
+																break;
+															}
+														}
+													}
+
+													break;
+												case 'UPS 3 Day Select':
+													$shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
+													$shippingService = 'UPS';
+													$shippingNumberOfDays = 3;
+													break;
+												case 'UPS 2nd Day Air':
+													$shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
+													$shippingService = 'UPS';
+													$shippingNumberOfDays = 2;
+													break;
+												case 'UPS Next Day Air Saver':
+													$shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
+													$shippingService = 'UPS';
+													$shippingNumberOfDays = 1;
+													break;
+												case 'Priority Mail 1-Day':
+													$shippingMethod = 'USPS Priority Mail';
+													$shippingService = 'USPS';
+													$shippingNumberOfDays = 1;
+													break;
+												case 'Priority Mail 2-Day':
+													$shippingMethod = 'USPS Priority Mail';
+													$shippingService = 'USPS';
+													$shippingNumberOfDays = 2;
+													break;
+												case 'Priority Mail 3-Day':
+													$shippingMethod = 'USPS Priority Mail';
+													$shippingService = 'USPS';
+													$shippingNumberOfDays = 3;
+													break;
+												case 'Priority Mail DPO':
+													$shippingMethod = 'USPS Priority Mail';
+													$shippingService = 'USPS';
+													$estimatedDelivery = 'Estimated Delivery 5-15 Business Days';
+													break;
+												case 'Priority Mail Military':
+													$shippingMethod = 'USPS Priority Mail';
+													$shippingService = 'USPS';
+													$estimatedDelivery = 'Estimated Delivery 5-15 Business Days';
+													break;
+												case 'UPS Worldwide Expedited':
+													$shippingMethod = 'International Express';
+													$shippingService = 'UPS';
+													$estimatedDelivery = 'Estimated Delivery 5-10 Business Days';
+													break;
+												default:
+													$shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
+											}
+											?>
+											<?php echo '<br>' . $shippingMethod ?>
+											<?php if ($estimatedDelivery) : ?>
+												<?php echo '<br>' . $estimatedDelivery ?>
+											<?php elseif ($shippingNumberOfDays) : ?>
+												<?php
+												//Determine if cutoff
+												date_default_timezone_set('America/Los_Angeles');
+												$createdAt = date('Y-m-d', time());
+												if (date('H', time()) < '8') {
+													$startProcessingNumberOfDays = 0;
+												} else {
+													$startProcessingNumberOfDays = 1;
+												}
+												$endProcessingNumberOfDays = 2;
+
+												$holidays = array();
+												$holidays['UPS'] = array('2014-05-26', '2014-07-04', '2014-09-01', '2014-11-27', '2014-11-28', '2014-12-25', '2014-12-31', '2015-01-01');
+												$holidays['USPS'] = array('2014-01-20', '2014-02-17', '2014-05-26', '2014-07-04', '2014-09-01', '2014-10-13', '2014-11-11', '2014-11-27', '2014-12-25', '2015-01-01');
+
+												if ($shippingNumberOfDays && $createdAt) {
+													//START
+													$time = strtotime($createdAt);
+													$i = 1;
+													$numberOfDays = $startProcessingNumberOfDays + $shippingNumberOfDays;
+													while ($i <= ($numberOfDays)) {
+														$time += 86400;
+														//Check if holiday or weekend
+														if (in_array((string) date('Y-m-d', $time), $holidays[$shippingService]) || date('w', $time) == 6 || date('w', $time) == 0) {
+															//echo "Hol/Sat/Sun: " . gmdate('Y-m-d',$time) . "<br />";
+															//echo "DAY-> " . gmdate('w', $time) . "<br>";
+														} else {
+															//echo "Monday/Thursday: " . gmdate('Y-m-d',$time) . "<br />";
+															//echo "DAY-> " . gmdate('w', $time) . "<br>";
+															$i++;
+														}
+													}
+													$startEstimatedDelivery = date('F j, Y', $time);
+
+													//END
+													$time = strtotime($createdAt);
+													$i = 1;
+													$numberOfDays = $endProcessingNumberOfDays + $shippingNumberOfDays;
+													while ($i <= ($numberOfDays)) {
+														$time += 86400;
+														//Check if holiday or weekend
+														if (in_array((string) date('Y-m-d', $time), $holidays[$shippingService]) || date('w', $time) == 6 || date('w', $time) == 0) {
+															//echo "Hol/Sat/Sun: " . gmdate('Y-m-d',$time) . "<br />";
+															//echo "DAY-> " . gmdate('w', $time) . "<br>";
+														} else {
+															//echo "Monday/Thursday: " . gmdate('Y-m-d',$time) . "<br />";
+															//echo "DAY-> " . gmdate('w', $time) . "<br>";
+															$i++;
+														}
+													}
+													$endEstimatedDelivery = date('F j, Y', $time);
+												}
+												?>
+												<?php echo '<br>Estimated Delivery ' . $startEstimatedDelivery . ' - ' . $endEstimatedDelivery ?>
+											<?php endif ?>
+										</label>
+									</td>
+								<?php endif; ?>
+							</tr>
+						<?php endforeach; ?>
+					<?php endforeach; ?>
+					<tr>
+						<td colspan="2">
+							<div class="buttons-set">
+								<button type="submit" class="button" name="do" value="<?php echo $this->__('Update Total') ?>"><span><span><?php echo $this->__('Update Total') ?></span></span></button>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	<?php endif; ?>
+
+</div>
+
+    <script type="text/javascript">
+		//<![CDATA[
+		var coShippingMethodForm = new VarienForm('shipping-zip-form');
+		var countriesWithOptionalZip = <?php echo $this->helper('directory')->getCountriesWithOptionalZip(true) ?>;
+
+		coShippingMethodForm.submit = function() {
+			var country = $F('country');
+			var optionalZip = false;
+
+			for (i = 0; i < countriesWithOptionalZip.length; i++) {
+				if (countriesWithOptionalZip[i] == country) {
+					optionalZip = true;
+				}
+			}
+			if (optionalZip) {
+				$('postcode').removeClassName('required-entry');
+			}
+			else {
+				$('postcode').addClassName('required-entry');
+			}
+			return VarienForm.prototype.submit.bind(coShippingMethodForm)();
+		}
+		//]]>
+
+<?php
+if (count($shippingMethods)) {
+	// Sort array (by price, as first element)
+	sort($shippingMethods);
+	// Set default selection to "cheapest" method
+	$selectedMatch = $shippingMethods[0]['code'];
+
+	$i = 0;
+	foreach ($shippingMethods as $method) {
+		// If there's already a selection that matches the available list
+		// set that as selected instead
+		if ($this->getAddressShippingMethod() === $method['code']) {
+			$selectedMatch = $shippingMethods[$i]['code'];
+		}
+		$i++;
+		// Output each option for debugging
+		echo "\n\t// {$method['code']} => {$method['rate']}";
+	}
+	echo "\n";
+}
+?>
+
+<?php if (count($shippingMethods)) : ?>
+			// jQuery's not loaded. Use built-in js method
+			window.onload = function() {
+				// Set shipping method to "cheapest" option, if nothing else already selected
+				document.getElementById("s_method_<?php echo $selectedMatch ?>").checked = "true";
+			};
+<?php endif; ?>
+    </script>

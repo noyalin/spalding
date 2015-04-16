@@ -1,0 +1,53 @@
+<?php
+/**
+ * J2T RewardsPoint2
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@j2t-design.com so we can send you a copy immediately.
+ *
+ * @category   Magento extension
+ * @package    RewardsPoint2
+ * @copyright  Copyright (c) 2009 J2T DESIGN. (http://www.j2t-design.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ ?>
+<div class="my-account-top clearfix">
+	<div class="my-account-welcome">
+		<span>
+			<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+			<?php echo 'Welcome, ' . $customerName ?>
+		</span>
+	</div>
+	<div class="my-account-logout">
+		<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">Log Out</a>
+	</div>
+</div>
+
+<div id="my-account-wrapper">
+
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_cs_return_to_menu')->toHtml(); ?>
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
+
+	<div id="my-account-all">
+<!--		<h1 id="my-account-profile">My Profile</h1>-->
+        <h1 id="my-account-profile">我的信息</h1>
+
+		<div id="my-account-profile-content">
+			<?php echo $this->getChildHtml('points') ?>
+			<?php echo $this->getChildHtml('top') ?>
+			<?php echo $this->getChildHtml('info') ?>
+			<?php echo $this->getChildHtml('address') ?>
+			<?php echo $this->getChildHtml('info1') ?>
+			<?php echo $this->getChildHtml('info2') ?>
+		</div>
+	</div>
+
+</div>

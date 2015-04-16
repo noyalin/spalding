@@ -1,0 +1,77 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?><?php
+$page = Mage::app()->getFrontController()->getRequest()->getRouteName();
+$request = $this->getRequest();
+$module = $request->getModuleName();
+$controller = $request->getControllerName();
+
+$discountLabel = '';
+$discountLabel1 = null;
+$discountLabel2 = null;
+$quote = Mage::getSingleton('checkout/session')->getQuote();
+$ruleIds = $quote->getAppliedRuleIds();
+$pieces = explode(",", $ruleIds);
+if($pieces) {
+	$i = 0;
+	foreach($pieces as $ruleId) {
+		$couponCode = null;
+		$ruleLabel = '';
+		if ($ruleId != 1 && $ruleId != 4 && $ruleId != 6) {//skip military and rewards and free shipping
+			$i++;
+			$couponCode = $this->getQuote()->getCouponCode();
+			$ruleObject = Mage::getModel('salesrule/rule')->load($ruleId);
+			$ruleLabel = $ruleObject->getStoreLabel();
+			if ($couponCode) {
+				$discountLabel1 = $ruleLabel . ' - ' . $couponCode;
+			}
+		} elseif ($ruleId != 6) { //skip free shipping
+			$i++;
+			$ruleObject = Mage::getModel('salesrule/rule')->load($ruleId);
+			$ruleLabel = $ruleObject->getStoreLabel();
+			$discountLabel2 = $ruleLabel;
+		}
+	}
+	if ($i > 1) {
+		$discountLabel = $discountLabel2 . ', ' . $discountLabel1;
+	} elseif ($discountLabel1) {
+		$discountLabel = $discountLabel1;
+	} elseif ($discountLabel2) {
+		$discountLabel = $discountLabel2;
+	}
+}
+?>
+<tr>
+    <td class="align-right" colspan="3">
+		<?php if ($controller != 'onepage') : ?>
+			<a href="javascript:void(0)" class="btn-remove" onclick="discountForm.submit(true)">Remove</a>
+		<?php endif ?>
+		<span class="subTotal"><?php echo 'Discount (' . $this->escapeHtml($discountLabel) . ')'; ?></span>
+    </td>
+    <td class="align-right">
+		<span class="price"><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></span>
+    </td>
+</tr>

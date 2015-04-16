@@ -1,0 +1,81 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php /* @var $this Enterprise_GiftCard_Block_Catalog_Product_View_Type_Giftcard */?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_id = $_product->getId(); ?>
+<div class="giftcard-form">
+<?php if ($_product->isSaleable() && $this->isConfigured($_product)): ?>
+	<table>
+		<tr>
+			<td class="label-cell"><label for="giftcard_sender_name" class="required"><span class="rStar">*</span><?php echo Mage::helper('enterprise_giftcard')->__('Sender Name'); ?></label></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="text" id="giftcard_sender_name" name="giftcard_sender_name" class="required-entry input-text" value="<?php echo $this->escapeHtml($this->getDefaultSenderName()) ?>" />
+			</td>
+		</tr>
+		<?php if ($this->isEmailAvailable($_product)): ?>
+		<tr>
+			<td class="label-cell"><label for="giftcard_sender_email" class="required"><span class="rStar">*</span><?php echo Mage::helper('enterprise_giftcard')->__('Sender Email'); ?></label></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="text" id="giftcard_sender_email" name="giftcard_sender_email" class="validate-email required-entry input-text" value="<?php echo $this->escapeHtml($this->getDefaultSenderEmail()) ?>"/>
+			</td>
+		</tr>
+		<?php endif; ?>
+		<tr>
+			<td class="label-cell"> <label for="giftcard_recipient_name" class="required"><span class="rStar">*</span><?php echo Mage::helper('enterprise_giftcard')->__('Recipient Name'); ?></label></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="text" id="giftcard_recipient_email" name="giftcard_recipient_name" class="validate-email required-entry input-text" value="<?php echo $this->escapeHtml($this->getDefaultValue('giftcard_recipient_name')) ?>" />
+			</td>
+		</tr>
+		<?php if ($this->isEmailAvailable($_product)): ?>
+		<tr>
+			<td class="label-cell"><label for="giftcard_recipient_email" class="required"><span class="rStar">*</span><?php echo Mage::helper('enterprise_giftcard')->__('Recipient Email'); ?></label></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="text" id="giftcard_sender_email" name="giftcard_recipient_email" class="validate-email required-entry input-text" value="<?php echo $this->escapeHtml($this->getDefaultValue('giftcard_recipient_email')) ?>"/>
+			</td>
+		</tr>
+		<?php endif; ?>
+        <?php if ($this->isMessageAvailable($_product)): ?>
+         <tr>
+			 <td class="label-cell"><label for="giftcard_message"><?php echo Mage::helper('enterprise_giftcard')->__('Message'); ?></label></td>
+		 </tr>
+		 <tr>
+			 <td>
+                    <textarea name="giftcard_message" id="giftcard_message" class="input-text giftcard-message-max-length" cols="5" rows="3" maxlength="<?php echo ($this->getMessageMaxLength()) ? $this->getMessageMaxLength() : '255'; ?>"><?php echo $this->escapeHtml($this->getDefaultValue('giftcard_message')) ?></textarea>
+			</td>
+		</tr>
+        <?php endif; ?>
+	</table>
+<?php endif; ?>
+</div>

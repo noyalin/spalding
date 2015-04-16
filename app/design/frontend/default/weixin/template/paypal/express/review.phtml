@@ -1,0 +1,248 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+/** @var $this Mage_Paypal_Block_Express_Review */
+
+$billingBlock = $this->getChild('billing')->setFieldNamePrefix('billing')->setHideEmailAddress(true);
+$shippingAddress = $this->getShippingAddress();
+?>
+<div id="my-account-all">
+
+	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
+		<div class="my-account-top clearfix">
+			<div class="my-account-welcome">
+				<span>
+					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
+					<?php echo 'Welcome, ' . $customerName ?>
+				</span>
+			</div>
+			<div class="my-account-logout">
+				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">Log Out</a>
+			</div>
+		</div>
+
+
+	<?php endif; ?>
+</div>
+
+<div id="paypal-review-wrap">
+    <h1><?php echo $this->__('Review Order') ?></h1>
+
+    <script type="text/javascript">
+    //<![CDATA[
+	var countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?>
+    //]]>
+    </script>
+
+	<div class="myAccountMsg">
+		<p class="success-msg">Your address information has been pre-filled from your PayPal account and cannot be modified.</p>
+	</div>
+
+    <div class="paypal-review-order">
+	<form method="post" id="order_review_form" action="<?php echo $this->getPlaceOrderUrl() ?>">
+
+	    <?php if(!$billingBlock->isCustomerLoggedIn()): ?>
+		<h2 class="legend">Customer Information</h2>
+		<div class="logInInfoBox">
+			<table>
+				<tbody>
+					<tr>
+						<td class="infoLabel"><label for="customer:email" class="required"><span class="rStar">*</span>Email Address</label></td>
+					</tr>
+					<tr>
+						<td class="infoInput"><input name="customer-email" id="customer:email" value="<?php echo $this->escapeHtml($billingBlock->getAddress()->getEmail()) ?>" title="Email Address" class="input-text validate-email required-entry csinfo-email" type="text"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	    <?php endif ?>
+
+		<div class="paypal-address-wrap">
+			<div class="paypal-billing-add">
+				<h2 class="legend"><?php echo $this->__('Billing Address') ?></h2>
+				<div class="logInInfoBox" id="billing-address">
+					<?php if ($shippingAddress): ?>
+						<?php echo $billingBlock->setShowAsShippingCheckbox(true)->toHtml(); ?>
+					<?php else: ?>
+						<?php echo $billingBlock->toHtml(); ?>
+					<?php endif; ?>
+				</div>
+			</div>
+			<?php if ($shippingAddress): ?>
+				<div class="paypal-shipping-add">
+					<h2 class="legend"><?php echo $this->__('Shipping Address') ?></h2>
+					<div class="logInInfoBox" id="shipping-address">
+						<?php echo $this->getChild('shipping')->setFieldNamePrefix('shipping')->setHideEmailAddress(true)->toHtml(); ?>
+					</div>
+				</div>
+				<div id="shipping_address_overlay"></div>
+			<?php else: ?>
+				<div class="paypal-shipping-add" style="display:none">
+					<h2 class="legend"><?php echo $this->__('Shipping Address') ?></h2>
+					<div class="logInInfoBox" id="shipping-address">
+						Shipping address is not required for this order.
+					</div>
+				</div>
+			<?php endif; ?>
+			<div class="clearfloats"></div>
+		</div>
+
+	    <?php if ($shippingAddress): ?>
+		<h2>Shipping Method</h2>
+		<div class="info-set col2-set">
+			<div class="col-2">
+				<div class="box paypal-shipping-method">
+					<div class="box-content logInInfoBox">
+					<?php echo $this->getChild('shipping_method')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <?php endif; ?>
+
+	    <h2 class="legend"><?php echo $this->__('Items in Your Shopping Bag') ?><span class="separator"> | </span><a style="white-space:nowrap" href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Edit Your Bag') ?></a></h2>
+
+		<div class="info-set">
+			<div id="details-reload">
+				<div id="details-reload">
+					<?php echo $this->getChildHtml('details') ?>
+				</div>
+			</div>
+		</div>
+
+	    <?php echo $this->getChildHtml('agreements'); ?>
+		<div class="buttons-set buttons-set-order" id="review-buttons-container">
+			<table id="pay-pal-place-order">
+				<tbody>
+					<tr>
+						<td class="back-link">
+							<button type="button" id="update_order" class="button btn-checkout"><span><span>Update Order Data</span></span></button>
+						</td>
+						<td>
+							<button type="button" id="review_button" value="Place Order" class="button btn-checkout"><span><span>Place Order</span></span></button>
+							<button style="display: none;" type="button" id="review_submit" value="Place Order" class="button btn-checkout"><span><span>Place Order</span></span></button>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2" align="center">
+							<div align="center">
+								<img src="<?php echo $this->getSkinUrl('images/loader.gif') ?>" id="review-please-wait" class="please-wait" style="display:none"/>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+	</form>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+<?php if ($shippingAddress): ?>
+jQuery(window).ready(function(){
+	var overlayTop = jQuery('#shipping-address').offset();
+	var overlayBottom = jQuery('.paypal-shipping-method').offset();
+	var overlayHeight = overlayBottom.top - overlayTop.top - 75;
+	jQuery('#shipping_address_overlay').offset({ top: overlayTop.top, left: 0})
+	jQuery('#shipping_address_overlay').css('height', overlayHeight + 'px');
+});
+<?php endif; ?>
+
+// submit buttons are not needed when submitting with ajax
+
+$('review_submit').hide();
+if ($('update_shipping_method_submit')) {
+    $('update_shipping_method_submit').hide();
+}
+
+<?php if ($this->getUseAjax()):?>
+    OrderReviewController.prototype._submitOrder = function() {
+	if (this._canSubmitOrder) {
+	    if (this._pleaseWait) {
+		this._pleaseWait.show();
+	    }
+	    new Ajax.Request(this.form.action, {
+		parameters: {isAjax: 1, method: 'POST'},
+		onSuccess: function(transport) {
+		    try{
+			response = eval('(' + transport.responseText + ')');
+		    } catch (e) {
+			response = {};
+		    }
+		    if (response.redirect) {
+			setLocation(response.redirect);
+			return;
+		    }
+		    if (response.success) {
+			setLocation('<?php echo $this->getSuccessUrl()?>');
+			return;
+		    } else {
+			var msg = response.error_messages;
+			if (typeof(msg)=='object') {
+			    msg = msg.join("\n");
+			}
+			if (msg) {
+			    $('review-please-wait').hide();
+			    alert(msg);
+			    return;
+			}
+		    }
+		    $('review-please-wait').hide();
+		    alert('<?php echo $this->jsQuoteEscape($this->__('Unknown Error. Please try again later.')); ?>');
+		    return;
+		},
+		onFailure: function(){
+		    alert('<?php echo $this->jsQuoteEscape($this->__('Server Error. Please try again.')) ?>');
+		    $('review-please-wait').hide();
+		}
+	    });
+	}
+    }
+<?php endif ?>
+PayPalExpressAjax = new OrderReviewController($('order_review_form'), $('review_button'),
+    'shipping_method', null, 'details-reload'
+);
+PayPalExpressAjax.addPleaseWait($('review-please-wait'));
+PayPalExpressAjax.setShippingAddressContainer($('shipping-address'));
+PayPalExpressAjax.setShippingMethodContainer('shipping-method-container');
+PayPalExpressAjax.shippingMethodsUpdateUrl = '<?php echo $this->escapeHtml($this->getUpdateShippingMethodsUrl()) ?>';
+PayPalExpressAjax.setUpdateButton($('update_order'),'<?php echo $this->escapeHtml($this->getUpdateOrderSubmitUrl()) ?>','details-reload');
+if ($('billing:as_shipping')) {
+    PayPalExpressAjax.setCopyElement($('billing:as_shipping'));
+}
+//]]>
+
+jQuery(document).ready(function() {
+	if (rateSelected === false) {
+		document.getElementById("shipping_method").selectedIndex = cheapestMethod;
+		jQuery("#update_order").trigger("click");
+	}
+});
+
+</script>

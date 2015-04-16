@@ -1,0 +1,60 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+	<?php echo $this->getPagerHtml() ?>
+	<?php $framePages = $this->getFramePages(); ?>
+	<?php $currentPage = 1; ?>
+	<?php if (count($framePages)): ?>
+		<?php foreach ($this->getFramePages() as $_page): ?>
+			<?php if ($this->isPageCurrent($_page)): ?>
+			<?php $currentPage = $_page; break;?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php endif; ?>
+
+<script type="text/javascript">
+	jQuery.ias({
+		container : '.multi-view-wrapper',
+		item: '.multi-view-box ',
+		pagination: '<?php echo ($this->getLastPageNum() > 0) ? "a.pages" : "a.pager"; ?>',
+		next: 'a.next',
+		current: <?php echo $currentPage; ?>,
+		last: <?php echo $this->getLastPageNum() ?>,
+		thresholdMargin: -250,
+		triggerPageThreshold: 4,
+		loader: '<div class="ias_loader"><img src="<?php echo($this->getSkinUrl('images/loader.gif')); ?>" /></div>',
+		trigger: '<div class="ias_trigger"><a href="#">MORE STYLES</a></div>',
+	});
+</script>
+<?php endif ?>

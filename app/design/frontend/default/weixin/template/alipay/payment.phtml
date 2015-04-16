@@ -1,0 +1,133 @@
+ 
+<?php
+
+$alipay = Mage::getModel('alipay/payment');
+?>
+
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<?php
+
+
+$orderId = (int) $this->getRequest()->getParam('order_id');
+if (!$orderId) {
+    $session = Mage::getSingleton('checkout/session');
+    $_order = Mage::getModel('sales/order');
+
+    $_order->loadByIncrementId($session->getLastRealOrderId());
+}else{
+
+    
+    $_order =Mage::getModel('sales/order')->load($orderId);
+    
+    $order_cid=$_order->getCustomerId();
+    $current_cid=0;
+    if(Mage::helper('customer')->getCustomer()){
+        $current_cid=Mage::helper('customer')->getCustomer()->getId();
+    }
+    
+    if ($current_cid!=$order_cid)
+    {
+        echo '订单错误，请联系我们';
+        exit();
+    }
+}
+if (!$_order->getId())
+{
+    echo '订单错误，请联系我们';
+    exit();
+}
+$warnImageSrc =$this->getSkinUrl( "images/warn.png");
+?>      
+<div class="shortcut_wrapper">
+    <div class="shortcut_price">
+        <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
+        <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
+    </div>
+
+    <?php
+    //需要判断订单状态 如果已经付款成功，直接显示付款成功的提示
+    if($_order->getStatus() == 'alipay_wait_seller_send_goods'){
+        //已经付款成功
+        echo '<div class="box">订单已经付款成功</div>';
+    }else{
+    ?>
+    <div class="box" style="width: 400px;">
+<?php
+
+$weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
+$alipayImageSrc = $this->getSkinUrl( "images/bankico/alipay.jpg");
+$alipayQrImageSrc = $this->getSkinUrl( "images/bankico/alipay_qr.jpg");
+//判断当前浏览器是否为微信
+$weixinPay = false;
+$agent = $_SERVER['HTTP_USER_AGENT'];
+if (strpos($agent, "MicroMessenger")) {
+    $weixinPay = true;
+}
+?>
+        <p>点击选择支付平台前往付款：</p>
+        <ul>
+            <li>
+                <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">
+                <label for="payment_4">
+                    <img  id="payimg4" alt="微信支付" title="微信支付" src="<?php echo $weixinImageSrc; ?>">
+                </label>
+            </li>
+                <li>
+                    <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('alipay_mobile');">
+                    <label for="payment_2">
+                        <img  id="payimg2" alt="支付宝" title="支付宝" src="<?php echo $alipayImageSrc; ?>">
+                    </label>
+                </li>
+        </ul>
+        <div style="text-align: left">
+            <button type="submit" title="下订单" class="button btn-checkout btn-next" id="submitbutton"><span><span>下订单</span></span></button>
+        </div>
+    </div>
+    <?php
+    }
+    ?>
+  <div class="bottom_hint">
+    <div><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>" target="_blank">查看订单详情&gt;&gt;</a></div>
+    <div class="title">付款遇到问题：</div>
+    <p>联系我们 <span class="gray"> 客服帮助您解决支付过程中遇到的困难 <a href="<?php echo $this->getUrl('contacts'); ?>" target="_blank" >客服中心</a> </span></p>
+    <div><a href="http://help.alipay.com/lab/index.htm" target="_blank">支付宝帮助中心&nbsp;&gt;&gt;</a></div>
+  </div>
+</div>
+
+<div class="popup-wrap popup-orderEnd" style="display:none;" id="go_pay_window">
+    <div class="popup-title">
+        <h3>温馨提示</h3>
+        <a class="btn-popup-close" href="javascript:window_close();"></a>
+    </div>
+    <div class="tit"></div>
+    <div class="popup-cont">
+        <div class="msg-tit">
+            <i></i>
+            请在新打开的页面中完成付款
+        </div>
+        <div class="msg-text">
+            付款完成前请不要关闭此窗口<br>完成付款后请点击下面按钮
+        </div>
+        <div class="msg-btns">
+            <input type="button" value="完成付款" class="actbtn success" onclick="setLocation('<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>')">
+            <input type="button" value="付款遇到问题" class="actbtn fail" onclick="setLocation('<?php echo $this->getUrl('contacts'); ?>');">
+        </div>
+        <div class="bgpay">
+            <i></i>
+            <a onclick="javascript:window_close();" href="javascript:void(0)">返回选择其它支付方式</a>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#submitbutton").click(function(){
+            if(globalbank == "weixin_pay"){
+                go_pay_with_weixin("<?php echo $this->getUrl('weixinpay/payment/wappay');?>",globalbank,"<?php echo $orderId;?>");
+            }else{
+                go_pay("<?php echo $this->getUrl('alipay/payment/wapredirect');?>",globalbank);
+            }
+        });
+    });
+</script>

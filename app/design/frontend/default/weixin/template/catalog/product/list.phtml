@@ -1,0 +1,1213 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+$_category = parent::getCurrentCategory();
+$_currentCategory = Mage::Registry('current_category');
+if ($_currentCategory) {
+	$_currentCategoryId = $_currentCategory->getId();
+	$_currentCategoryName = $_currentCategory->getName();
+	$parentCategoryArray = explode('/', $_currentCategory->getPath());
+
+	if (count($parentCategoryArray) > 2) {
+		$parentId = $parentCategoryArray[count($parentCategoryArray) - 2];
+		if ($_currentCategoryId == 10) $_currentCategoryName = "Big Kids'";
+		if ($_currentCategoryId == 542) $_currentCategoryName = "Kids'";
+		if ($_currentCategoryId == 150) $_currentCategoryName = "Outlet";
+		$_parentCategory = Mage::getModel('catalog/category')->load($parentId);
+	}
+
+	$breadCrumbs = array();
+	foreach ($parentCategoryArray as $breadCrumbId) {
+		if ($breadCrumbId <= 2) continue;
+		$breadCrumbCategory = Mage::getModel('catalog/category')->load($breadCrumbId);
+		$breadCrumbUrlKey = $breadCrumbCategory->getUrlKey() . '.html';
+		switch((int)$breadCrumbId) {
+			case 10:
+				$breadCrumbName = "Big Kids'";
+				break;
+			case 542:
+				$breadCrumbName = "Kids'";
+				break;
+			case 150:
+				$breadCrumbName = "Outlet";
+				break;
+			default:
+				$breadCrumbName = $breadCrumbCategory->getName();
+		}
+
+		$bannerPathName = strtolower(preg_replace('/[^A-Za-z0-9\s]/', '', $breadCrumbName));
+		$bannerPathArray[$breadCrumbId] = preg_replace('/\s+/', '_', $bannerPathName);
+
+		$breadCrumbName = str_replace(' ', '&nbsp;', $breadCrumbName);
+		$breadCrumbs[$breadCrumbId] = array('name' => $breadCrumbName, 'url_key' => $breadCrumbUrlKey);
+	}
+
+	$_category = Mage::getModel('catalog/category')->load($_currentCategoryId);
+	$_subcategories = $_category->getChildrenCategories();
+}else{
+    $_currentCategoryId = 573;
+    $parentCategoryArray = array(1,1,573,1,1);
+}
+
+$_total = '0';
+$filteredList = $this->getLayout()
+		->getBlockSingleton('catalog/product_list')
+		->getLoadedProductCollection();
+$_total = $filteredList->getSize();
+
+$styles = ($_total > 1) ? "个产品" : "个产品";
+
+$pageLimit = Mage::getStoreConfig('catalog/frontend/grid_per_page');
+
+$keywords = (array_key_exists('keywords', $_REQUEST)) ? $_REQUEST['keywords'] : '';
+
+$attributeOptionsConfig = json_decode(Mage::getModel('core/variable')->loadByCode('catalog_attribute_size_options')->getValue('html'), $assoc = true);
+$attributeOptions = array();
+$attributeLabel = NULL;
+$attributeFilter = array();
+
+/* Filter out uncommon sizes from "Shop by Size" list */
+switch ($parentCategoryArray[2]) {
+	case '6'://Mens
+		$attributeLabel = 'mensize';
+		foreach ($attributeOptionsConfig[2006]['options'] as $value => $option) {
+			$optionValues = explode(' ', $option['label']);
+			$optionSize = $optionValues[1];
+//			if ((float)$optionSize < 8 || (float)$optionSize > 14) continue;
+			$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+			$attributeFilters[] = "$attributeLabel = '" .  ($option['label']) . "'";
+		}
+		break;
+	case '9'://Womens
+		$attributeLabel = 'womensize';
+		foreach ($attributeOptionsConfig[2009]['options'] as $value => $option) {
+			$optionValues = explode(' ', $option['label']);
+			$optionSize = $optionValues[1];
+//			if ((float)$optionSize < 6.5 || (float)$optionSize > 10.5) continue;
+			$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+		}
+		break;
+	case '542'://Kids
+		$attributeLabel = 'bigkidssize';
+		foreach ($attributeOptionsConfig[2002]['options'] as $value => $option) {
+			$optionValues = explode(' ', $option['label']);
+			$optionSize = $optionValues[1];
+//			if ((float)$optionSize < 4 || (float)$optionSize > 7) continue;
+			$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+		}
+		if (array_key_exists(3, $parentCategoryArray)) {
+			if ($parentCategoryArray[3] == 60) {//Preschool
+				$attributeLabel = 'preschoolsize';
+				$attributeOptions = array();
+				foreach ($attributeOptionsConfig[2008]['options'] as $value => $option) {
+					$optionValues = explode(' ', $option['label']);
+					$optionSize = $optionValues[1];
+					if ((float)$optionSize == 3) continue;
+					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+				}
+			} else if ($parentCategoryArray[3] == 2800) {//Toddler
+				$attributeLabel = 'toddlersize';
+				$attributeOptions = array();
+				foreach ($attributeOptionsConfig[2083]['options'] as $value => $option) {
+					$optionValues = explode(' ', $option['label']);
+					$optionSize = $optionValues[1];
+					if ((float)$optionSize == 3) continue;
+					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+				}
+			}
+		}
+		break;
+	case '75'://Gear
+		$attributeLabel = 'apparelsize';
+        if(!isset($parentCategoryArray[3])){$parentCategoryArray[3]=0;}
+        switch ($parentCategoryArray[3]) {
+			case '123'://Mens Apparel
+				if (array_key_exists(4, $parentCategoryArray)) {
+					if ($parentCategoryArray[4] != 2722) {// Not Bottoms
+						foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
+							$optionSize = $option['label'];
+							if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXXL') continue;
+							$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+						}
+					} else {// Bottoms only
+						foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
+							$optionSize = $option['label'];
+							if (!ctype_digit("$optionSize")) continue;
+							$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+						}
+					}
+				}
+				break;
+			case '2724'://Womens Apparel
+				foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
+					$optionSize = $option['label'];
+					if (ctype_digit("$optionSize") || $optionSize == 'XXL' || $optionSize == 'XXXL') continue;
+					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+				}
+				break;
+			case '124'://Watches
+				if (array_key_exists(4, $parentCategoryArray)) {
+					switch ($parentCategoryArray[4]) {
+						case '104'://O Clock
+							foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
+								$optionSize = $option['label'];
+								if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXXL') continue;
+								$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+							}
+							break;
+					}
+				}
+				break;
+			case '126'://Socks
+				foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
+					$optionSize = $option['label'];
+					if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXL' || $optionSize == 'XXXL') continue;
+					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+				}
+				break;
+			case '128'://Sneakerhead
+				if (array_key_exists(4, $parentCategoryArray)) {
+					switch ($parentCategoryArray[4]) {
+						case '115'://Apparel
+							foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
+								$optionSize = $option['label'];
+								if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXXL') continue;
+								$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
+							}
+							break;
+					}
+				}
+			default:
+		}
+}
+
+/******************************************************************************
+ * @ $landingPageCategories array values:
+ * infiniteSlider: whether the slider will loop or show "More New Arrivals" image
+ * special_category_id: category from which to filter custom collection
+ * url_key: if infiniteSlider set to false, destination url
+ * include_set: attribute_set_id(s) used to filter product-types
+ * filter: 'brand' to filter
+ * include_cats: for Apparel, include products belonging to these cat_id(s) only, but
+ * exclude_cats: for Apparel, exclude products also belonging to these cat_id(s)
+ */
+
+$landingPageCategories = array(
+
+	/* Men's -> Use Men's New Arrivals */
+	6 => array(
+		'infiniteSlider' => 'false',
+		'special_category_id' => 539,
+		'url_key' => 'sneakerhead-new-arrivals-men.html',
+		'include_set' => array(301),
+	),
+	/* Men's -> Use Men's New Arrivals, filter by Nike */
+	7 => array(
+		'infiniteSlider' => 'true',
+		'special_category_id' => 539,
+		'include_set' => array(301),
+		'filter' => 'Nike'
+	),
+	/* Women's -> Use Women's New Arrivals */
+	9 => array(
+		'infiniteSlider' => 'false',
+		'special_category_id' => 540,
+		'url_key' => 'sneakerhead-new-arrivals-women.html',
+		'include_set' => array(303),
+	),
+	/* Kids' -> Use Kids' New Arrivals */
+	542 => array(
+		'infiniteSlider' => 'false',
+		'special_category_id' => 541,
+		'url_key' => 'sneakerhead-new-arrivals-kids.html',
+		'include_set' => array(300, 302, 306),
+	),
+	/* Gear -> Use (Main) New Arrivals, filter non-apparel only */
+	75 => array(
+		'infiniteSlider' => 'true',
+		'special_category_id' => 534,
+		'exclude_cats' => array(6,7,9,542,123,2724),
+	),
+	/* Apparel Men -> Use (Main) New Arrivals, filter Apparel Men */
+	123 => array(
+		'infiniteSlider' => 'true',
+		'special_category_id' => 534,
+		'include_cats' => array(123),
+		'exclude_cats' => array(6,7,9,542),
+	),
+	/* Apparel Women -> Use (Main) New Arrivals, filter Apparel Women */
+	2724 => array(
+		'infiniteSlider' => 'true',
+		'special_category_id' => 534,
+		'include_cats' => array(2724),
+		'exclude_cats' => array(6,7,9,542),
+	),
+	/* Outlet Home */
+	150 => array(
+		'infiniteSlider' => 'true',
+		'special_category_id' => 2764,
+	),
+);
+
+$isLandingPage = ($_currentCategory && array_key_exists($_currentCategoryId, $landingPageCategories)) ? true : false;
+
+/* Create custom collection based on special_category_id */
+if ($isLandingPage && array_key_exists('special_category_id', $landingPageCategories[$_currentCategoryId])) {
+
+	/* Grab the custom collection for the given landing page */
+	$_productCollection = Mage::getModel('catalog/category')
+		->load($landingPageCategories[$_currentCategoryId]['special_category_id'])
+		->getProductCollection();
+
+	/* Filter by brand (if defined) */
+	if (array_key_exists('filter', $landingPageCategories[$_currentCategoryId])) {
+		$_productCollection->addAttributeToFilter('brand', $landingPageCategories[$_currentCategoryId]['filter']);
+	}
+
+	$customSelect = array();
+
+	/* Filter by attribute_set_id(s) */
+	if (array_key_exists('include_set', $landingPageCategories[$_currentCategoryId])) {
+		$customSelect[] = "e.attribute_set_id IN (" . implode(',', $landingPageCategories[$_currentCategoryId]['include_set']) . ")";
+	}
+
+	/* For apparel, filter out products belonging to these parent category id(s) */
+	if (array_key_exists('exclude_cats', $landingPageCategories[$_currentCategoryId])) {
+		foreach ($landingPageCategories[$_currentCategoryId]['exclude_cats'] as $exclude_cat) {
+			$customSelect[] = "(SELECT COUNT(cat_prod.category_id) FROM catalog_category_product_index cat_prod WHERE cat_prod.product_id = cat_index.product_id AND cat_prod.category_id = $exclude_cat) = 0 ";
+		}
+	}
+	/* For apparel, allow only products belonging to these parent category id(s) */
+	if (array_key_exists('include_cats', $landingPageCategories[$_currentCategoryId])) {
+		foreach ($landingPageCategories[$_currentCategoryId]['include_cats'] as $include_cat) {
+			$customSelect[] = "(SELECT COUNT(cat_prod.category_id) FROM catalog_category_product_index cat_prod WHERE cat_prod.product_id = cat_index.product_id AND cat_prod.category_id = $include_cat) > 0 ";
+		}
+	}
+
+	if (count($customSelect)) {
+		$_productCollection->getSelect()->where(implode(' AND ',  $customSelect));
+	}
+
+	/* Sort position */
+	$_productCollection->addAttributeToSort('position');
+
+	/* Limit collection to first 15 results.*/
+	$_productCollection->setPageSize(15) ->setCurPage(1);
+
+/******************************************************************************/
+}
+
+$has_category_filter = false;
+$has_size_filter = false;
+$breadCrumbs = array();
+?>
+
+<section id="category-wrapper">
+
+	<?php if ($_currentCategoryId != 239): ?>
+	
+		<?php /****************** LANDING PAGES *********************/ ?>
+		<?php if ($isLandingPage): ?>
+
+			<?php $bannerPath = implode('_', $bannerPathArray); ?>
+
+			<!-- mobile_landing_banner_<?php echo $bannerPath ?> -->
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_landing_banner_' . $bannerPath)->toHtml(); ?>
+	
+			<div class="category-filter clearfix">
+				<div class="detail-site-map cat-site-map-arrow">
+				<?php
+					foreach ($breadCrumbs as $id => $breadCrumb) {
+						echo ($id == $_currentCategoryId)
+							? "<a href='javascript:void(0)' class='current'>{$breadCrumb['name']}</a>"
+							: "<a href='{$breadCrumb['url_key']}'>{$breadCrumb['name']}</a> ";
+					}
+				?>
+				</div>
+			</div>
+
+			<div class="multi-view-wrapper"></div>
+
+			<section id="product_wrapper" class="landing">
+				<div class="sliderContainerWrapperLanding">
+				<table class="sliderContainer">
+				<tr>
+				<td class="sliderNavCell"><a class="sliderMiniPrev"></a></td>
+				<td class="iosSliderCell">
+					<div class='iosSliderStyles' style="opacity: 0; filter: alpha(opacity:0);">
+
+						<!-- slider -->
+						<div class = 'slider'>
+
+						<?php foreach ($_productCollection as $_product) : ?>
+							<?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+							<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+							<div class = 'button'>
+								<a href="<?php echo $_product->getProductUrl()?>" class="availableColorPx">
+									<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html')?>/<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1" />
+								</a>
+								<a class="product-name" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><br><?php echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?></a>
+								<p class="cat-price sku-<?php echo $_product->getSku() ?>">￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></p>
+							</div>
+						<?php endforeach; ?>
+						<?php if ($landingPageCategories[$_currentCategoryId]['infiniteSlider'] === 'false'): ?>
+						<?php /* More New Arrivals Button */ ?>
+						<div class = 'button'>
+							<a href="<?php echo Mage::getUrl(''); ?><?php echo $landingPageCategories[$_currentCategoryId]['url_key']; ?>" class="availableColorPx">
+								<img class="last" src="<?php echo $this->getSkinUrl(''); ?>images/view-all-new-arrival.png" />
+							</a>
+						</div>
+						<?php endif; ?>
+
+						</div>
+
+					</div>
+				<div class="clearfloats"></div>
+				</td>
+				<td class="sliderNavCell"><a class="sliderMiniNext"></a></td>
+				</tr>
+				</table>
+				</div>
+			</section>
+
+			<?php $_categoryHelper = Mage::helper('catalog/category'); ?>
+			<?php if (count($_subcategories)): ?>
+			<section id="detailAccordion">
+				<?php foreach ($_subcategories as $subcategory): ?>
+				<h3 class="landing" onClick="window.location='<?php echo $_categoryHelper->getCategoryUrl($subcategory); ?>'"><a style="text-decoration:none; color: white;" class="headerToggle" href="<?php echo $_categoryHelper->getCategoryUrl($subcategory); ?>">
+					<?php echo $subcategory->getName() ?></a></h3>
+				<?php endforeach; ?>
+			</section>
+			<?php endif; ?>
+
+		<?php else: ?>
+
+
+			<div class="category-filter clearfix">
+				<div class="detail-site-map cat-site-map-arrow">
+					<?php
+						$n = 1;
+						$br =(count($breadCrumbs) > 1) ? '<br>' : '';
+						foreach ($breadCrumbs as $id => $breadCrumb) {
+							if ($n == count($breadCrumbs)) {
+								echo "{$br}<a href='javascript:void(0)' class='current'>{$breadCrumb['name']}</a>";
+							} else {
+								echo "<a href='{$breadCrumb['url_key']}'>{$breadCrumb['name']}</a> ";
+							}
+							$n++;
+						}
+					?>
+					<span class="catalog_total_count">Showing <?php echo ($_total > $pageLimit) ? "$pageLimit of $_total $styles" : "$_total $styles"; ?></span>
+				</div>
+			</div>
+
+			<?php if (!$_productCollection->count()): ?>
+				<div class="multi-view-wrapper">
+				<div class="noItemPara">
+					<p><?php echo $this->__('Sorry, no items found in this section.') ?></p>
+					<p>点击 <a href="javascript: void(0)" onClick="history.back()">这里</a> 继续购物</p>
+					<script type="text/javascript">
+						if (window.history.length == 1) setTimeout(window.location='<?php echo Mage::getUrl('');?>', 10000);
+					</script>
+				</div>
+				</div>
+			<?php else: ?>
+				<div class="multi-view-wrapper<?php echo (count($parentCategoryArray) > 3) ? ' sub' : '' ?>">
+					<?php foreach ($_productCollection as $_product): ?>
+
+						<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+
+						<a name="multi-view-box-<?php echo $_product->getId() ?>"></a>
+						<div class="multi-view-box" id="multi-view-box-<?php echo $_product->getId() ?>" sku='<?php echo $_product->getSku() ?>'>
+							<div class="multi-view-img">
+								<a href="<?php echo $_product->getProductUrl() ?>">
+									<?php $catalogProductUrlKey = ($parentCategoryArray[2] == 200) ? substr($this->htmlEscape($_product->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_product->getUrlKey()); ?>
+									<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') ?>/<?php echo $catalogProductUrlKey ?>-1" alt="<?php echo $_productNameStripped; ?>">
+								</a>
+							</div>
+							<?php if ($parentCategoryArray[2] == 200): ?>
+								<h3><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?></a></h3>
+								<p class="cat-price sku-<?php echo substr($_product->getSku(), 6) ?>"><?php echo $_helper->productAttribute($_product, $_product->getJ2tRewardvalue(), 'j2t_rewardvalue') . ' Points' ?></p>
+							<?php else: ?>
+								<h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><br><?php echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?></a></h3>
+								<p class="cat-price sku-<?php echo $_product->getSku() ?>">￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></p>
+							<?php endif; ?>
+						</div>
+					<?php endforeach; ?>
+				</div>
+
+
+				<!-- Draw but don't display, for the AjaxScroller -->
+				<div style="display:none"><?php echo $this->getToolbarHtml() ?></div>
+
+			<?php endif; ?>
+
+		<?php endif; ?>
+
+<script type="text/javascript">
+
+	var currentCategoryPath = <?php echo (!empty($_currentCategoryPath)) ? "'$_currentCategoryPath'" : "window.location.pathname"; ?>;
+	function filterBySize(label, val) {
+		jQuery('.ias_loader').css('top', '40%');
+		jQuery('.ias_loader').fadeIn();
+		if (val > 0) {
+			window.location = currentCategoryPath + '?' + label + '=' + val;
+		} else {
+			window.location = currentCategoryPath;
+		}
+	}
+	function filterByCategory(url, keepSize) {
+		jQuery('.ias_loader').css('top', '40%');
+		jQuery('.ias_loader').fadeIn();
+		var loc = url;
+		if (keepSize) {
+			loc += window.location.search;
+		}
+
+		window.location = loc;
+	}
+
+	var total_styles = <?php echo $_total; ?>;
+
+	jQuery(window).ready(function() {
+		var lastQuery = "<?php echo $this->getParentBlock()->helper('catalogsearch')->getEscapedQueryText(); ?>";
+
+		<?php if ($_currentCategoryId && $_currentCategoryId != 543 && $_currentCategoryId != 544 && $_currentCategoryId != 545 && $parentCategoryArray[2] != 375 && $_currentCategoryId != 573 && $parentCategoryArray[2] != 200 && $parentCategoryArray[2] != 238): //Not Alerbot, Whats Hot, Sneakerfolio, Special Categories or Customer Service ?>
+		jQuery.ajax({
+			url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>inventory/category/<?php echo 'category-' . $_currentCategoryId ?>.xml',
+			type: 'GET',
+			dataType: 'xml',
+			success: xmlParser
+		});
+
+		function xmlParser(xml) {
+			jQuery(xml).find("Product").each(function() {
+				var sku = ".sku-" + jQuery(this).find("Sku").text();
+				var sizes = jQuery(this).find("Sizes").text();
+				if (!sizes.match(/size/i)) {
+					jQuery(sku).html('<span class="sold-out">Sold Out</span>');
+				}
+			});
+		}
+		<?php endif; ?>
+
+		<?php if ($isLandingPage): ?>
+		jQuery('.iosSliderStyles').iosSlider({
+			startAtSlide: 1,
+			snapToChildren: true,
+			snapSlideCenter: false,
+			snapVelocityThreshold: 1,
+			desktopClickDrag: true,
+			infiniteSlider: <?php echo $landingPageCategories[$_currentCategoryId]['infiniteSlider']; ?>,
+			navPrevSelector: 'a.sliderMiniPrev',
+			navNextSelector: 'a.sliderMiniNext',
+			keyboardControls: false
+		});
+
+		// Allowing it to be visible when drawing causes all four slides to be visible momentarily.
+		// 'display: none' would cause the page jump. This method maintains the placeholder position.
+		jQuery('.iosSliderStyles').css({'opacity': '1', 'filter': 'alpha(opacity:100)'});
+		<?php endif; ?>
+
+		// If size selected, append to url for pre-selection (if enabled)
+		jQuery('.multi-view-img a').click(function(){
+			if (window.location.search) {
+				jQuery(this).prop('href', jQuery(this).prop('href') + window.location.search);
+			}
+		});
+
+		// Set search input text to last search if available
+		jQuery('#search_field').val(lastQuery);
+
+		updateStylesCount(1);
+		setFilterMenu();
+		jQuery(window).resize(setFilterMenu);
+
+		jQuery('.filter-main-cat-title a.cat').click(function() {
+			jQuery('.filter-main-cat-title').toggleClass('selected', false);
+			jQuery('#cat-select').toggleClass('open');
+			jQuery('#filter-size').toggleClass('open', false);
+			jQuery(this).parent().toggleClass('selected');
+			if (jQuery('#cat-select').hasClass('open')) {
+				jQuery(this).toggleClass('selected', true);
+				jQuery('#search_blocker').css('z-index', '9995');
+				jQuery('#search_blocker').toggleClass('open', true);
+			} else {
+				jQuery(this).parent().toggleClass('selected', false);
+				jQuery('#search_blocker').css('z-index', '9999');
+				jQuery('#search_blocker').toggleClass('open', false);
+			}
+		});
+
+		jQuery('.filter-main-cat-title a.size').click(function() {
+			jQuery('.filter-main-cat-title').toggleClass('selected', false);
+			jQuery('#cat-select').toggleClass('open', false);
+			jQuery('#filter-size').toggleClass('open');
+			if (jQuery('#filter-size').hasClass('open')) {
+				jQuery(this).parent().toggleClass('selected', true);
+				jQuery('#search_blocker').css('z-index', '9995');
+				jQuery('#search_blocker').toggleClass('open', true);
+			} else {
+				jQuery(this).parent().toggleClass('selected', false);
+				jQuery('#search_blocker').css('z-index', '9999');
+				jQuery('#search_blocker').toggleClass('open', false);
+			}
+		});
+
+		jQuery('#search_blocker').click(function() {
+			jQuery('#filter-size').toggleClass('open', false);
+			jQuery('.filter-main-cat-title').toggleClass('selected', false);
+			jQuery('#cat-select').toggleClass('open', false);
+			jQuery('.filter-main-cat-title').toggleClass('selected', false);
+		});
+
+		<?php /* Adjust filter & size lists for viewport width & height. */ ?>
+		<?php if ($has_category_filter): ?>
+		jQuery('#cat-select').css({'width' : '+=50'});
+		<?php endif; ?>
+		<?php if ($has_size_filter): ?>
+		jQuery('#filter-size').css({'width' : '+=50'});
+		<?php endif; ?>
+
+	});
+
+	function setFilterMenu() {
+
+		<?php if (!$isLandingPage && !$has_category_filter && !$has_size_filter): ?>
+		jQuery('.global-header').hide();
+		<?php endif; ?>
+
+		var height = jQuery(window).height() - jQuery('.category-filter').height() - 75;
+
+		<?php if ($has_category_filter): ?>
+		var cat_left = (jQuery('#cat-select').width() <= jQuery(window).width() - 50) ? 15 : 0;
+		jQuery('#cat-select').css({'max-height' : height, 'left' : cat_left});
+		<?php endif; ?>
+
+		<?php if ($has_size_filter): ?>
+		var size_left = (jQuery('#cat-select').width() + jQuery('#filter-size').width() <= jQuery(window).width() - 50)
+			? jQuery('#cat-select').parent().width() + 15
+			: jQuery(window).width() - jQuery('#filter-size').width() - 50;
+		jQuery('#filter-size').css({'max-height' : height, 'left' : size_left});
+		<?php endif; ?>
+
+		<?php if (!$isLandingPage): ?>
+		var categoryWrapperTop = jQuery('.category-filter').height() + 80;
+		jQuery('#category-wrapper').css('margin-top', categoryWrapperTop);
+		<?php endif; ?>
+	}
+
+	function updateStylesCount(currPage) {
+		var qtyPerPage = <?php echo $pageLimit; ?>;
+		var product_max = currPage * qtyPerPage;
+		product_max = (product_max >= total_styles) ? total_styles : product_max;
+		var total_more_styles = total_styles - product_max;
+		var styles_string = (total_styles != 1) ? ' 个产品' : ' 个产品';
+		jQuery('.catalog_total_count').html('(' + total_styles + styles_string + ')<br><i style="text-transform:none !important">(Showing ' + product_max + ' of ' + total_styles + ')</i>');
+		return total_more_styles;
+	}
+
+</script>
+
+		<?php /* SEARCH RESULTS PAGE */ ?>
+	<?php else: ?>
+
+	<?php $_REQUEST = (!strcasecmp($_SERVER['REQUEST_METHOD'], 'POST')) ? $_POST : $_GET; ?>
+	<form id="return-results" method="POST" action="<?php echo $this->getUrl('');?>search.html">
+	<input type="hidden" id="page" name="page" value="1">
+	<input type="hidden" id="res_per_page" name="res_per_page" value="<?php echo $pageLimit; ?>">
+	<input type="hidden" id="keywords" name="keywords" value="<?php echo $keywords; ?>">
+	<input type="hidden" id="ip" name="ip" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>">
+	<input type="hidden" id="user_agent" name="user_agent" value="<?php echo $_SERVER['HTTP_USER_AGENT']; ?>">
+	<input type="hidden" id="initial_sort" name="initial_sort" value="Size2:ASC">
+
+		<!-- search filter -->
+		<div id="search-filter">
+			<table class="form-vertical search-filter-table">
+
+				<tr class="filter-none">
+					<td colspan="2" class="form-vertical-label">
+						No additional filters available.
+					</td>
+				</tr>
+
+				<tr class="filter-buttons">
+					<td class="filter-button-reset form-vertical-submit form-vertical-reset">
+						<button type="reset">CLEAR ALL FILTERS</button>
+					</td>
+					<td class="filter-button-cancel form-vertical-submit form-vertical-reset">
+						<button type="reset" onClick="jQuery('#search_blocker').click()">CLOSE</button>
+					</td>
+				</tr>
+
+				<tr class="filter-gender">
+					<td colspan="2" class="form-vertical-label">
+						<label>By Gender</label>
+					</td>
+				</tr>
+				<tr class="filter-gender">
+					<td colspan="2" class="form-vertical-checkbox-rating" id="gender-filter-content">
+					</td>
+				</tr>
+
+				<tr class="filter-brand">
+					<td colspan="2" class="form-vertical-label">
+						<label>By Brand</label>
+					</td>
+				</tr>
+				<tr class="filter-brand">
+					<td colspan="2" class="form-vertical-checkbox-rating" id="brand-filter-content">
+					</td>
+				</tr>
+
+				<tr class="filter-category">
+					<td colspan="2" class="form-vertical-label">
+						<label>By Category</label>
+					</td>
+				</tr>
+				<tr class="filter-category">
+					<td colspan="2" class="form-vertical-checkbox-rating" id="category-filter-content">
+					</td>
+				</tr>
+
+				<tr class="filter-size">
+					<td colspan="2" class="form-vertical-label">
+						<label>By Size</label>
+					</td>
+				</tr>
+				<tr class="filter-size">
+					<td colspan="2" class="form-vertical-checkbox-rating" id="size-filter-content">
+					</td>
+				</tr>
+
+				<tr class="filter-price">
+					<td colspan="2" class="form-vertical-label">
+						<label>By Price</label>
+					</td>
+				</tr>
+				<tr class="filter-price">
+					<td colspan="2" class="form-vertical-checkbox-rating" id="price-filter-content">
+					</td>
+				</tr>
+
+				<tr class="filter-color">
+					<td colspan="2" class="form-vertical-label">
+						<label>By Color</label>
+					</td>
+				</tr>
+				<tr class="filter-color">
+					<td colspan="2" class="form-vertical-checkbox-rating" id="color-filter-content">
+					</td>
+				</tr>
+
+				<tr class="filter-buttons">
+					<td class="filter-button-reset form-vertical-submit form-vertical-reset">
+						<button type="reset">CLEAR ALL FILTERS</button>
+					</td>
+					<td class="filter-button-cancel form-vertical-submit form-vertical-reset">
+						<button type="reset" onClick="jQuery('#search_blocker').click()">CLOSE</button>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</form>
+
+		<!-- END SEARCH FILTER TEMPLATES -->
+
+		<div class="category-filter clearfix">
+			<div class="detail-site-map cat-site-map-arrow">
+				<a href='javascript:void(0)' class='current'>Searching...</a><br>
+				<span class="search_total_count"></span>
+			</div>
+			<header class="global-header currentCategory">
+				<div class="clearfix filter">
+					<div class="clearfix">
+						<ul class="filter-main-cat">
+							<li class="filter-main-cat-title"><a class="filter" href="javascript:void(0)" onClick="showFilters()"></a></li>
+						</ul>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div class="multi-view-wrapper"></div>
+
+		<div class="ias_trigger" style="display: none !important; margin-top:0;"><button type="button" id="load-more" value="" onClick="current_page_global++;jQuery('.ias_trigger').hide(); jQuery('#return-results #page').val(this.value); getSearchResults(false)"><a>MORE STYLES</a></button></div>
+		<div class="ias_loader" style="top: 35%; position: fixed !important; z-index:10000; display: inline-block; margin-top:0;"><img src="<?php echo $this->getSkinUrl('images/loader.gif');?>" /></div>
+
+		<template id="result_template" style="display:none">
+
+			<a name='multi-view-box-{{product_id}}'></a>
+			<div class="multi-view-box" id='multi-view-box-{{product_id}}' sku='{{product_sku}}'>
+				<div class="multi-view-img">
+					<a href='<?php echo $this->getUrl('');?>{{product_url_key}}.html'>
+						<img src="<?php if (Mage::app()->getStore()->isCurrentlySecure()) : ?><?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('text') ?><?php else : ?><?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') ?><?php endif ?>/{{product_url_key}}-1&layer=1">
+					</a>
+				</div>
+				<h3><a href='<?php echo $this->getUrl('');?>{{product_url_key}}.html'><br>{{product_description}}</a></h3>
+				<p class='cat-price sku-{{product_sku}}'>{{product_price}}</p>
+			</div>
+
+		</template>
+
+		<template id="no_results_template" style="display:none">
+			<div class="cart-content">
+				<p>Sorry, no items matched your search.</p>
+				<p><a href="javascript:void(0)" onClick="jQuery('#masterheader .search').click()">Search Again</a>, or
+					<a href="javascript:void(0)" onClick="jQuery('#masterheader .menu').click()">click here</a> to continue shopping.</p>
+			</div>
+		</template>
+
+<script type="text/javascript">
+
+	var closeHeader = null;
+
+
+	var current_page_global = 1;
+	var okayToTrigger = true;
+
+	jQuery(window).ready(function() {
+
+		jQuery(window).scroll(function() {
+			var triggerVisible = isComingIntoView('section.nav-btm');
+			if (current_page_global != 99 && okayToTrigger && triggerVisible) {
+				if (current_page_global % 4 != 0) {
+					jQuery(".ias_loader").fadeIn();
+					okayToTrigger = false;
+					current_page_global++;
+					jQuery('#return-results #page').val(current_page_global);
+					getSearchResults(false);
+					setTimeout(function() {
+						okayToTrigger = true;
+					}, 1000);
+				} else {
+					jQuery('.ias_trigger').fadeIn();
+				}
+			} else return;
+		});
+
+		jQuery('.content-wrapper').toggleClass('search', true);
+
+		// Capture subsequent search actions
+		jQuery('#main-search').attr('action', '<?php echo $this->getUrl('');?>inventory/search/search-results.php');
+
+		// Set filter toggle
+		jQuery('#search_bar .filter-button').click(function(){
+			jQuery('#search-filter').scrollTop(0);
+			jQuery('#search-filter').css('height', jQuery(window).height());
+			jQuery('#search-filter').toggleClass('open');
+		});
+
+		jQuery('#main-search').submit(function(e) {
+			jQuery(window).scrollTop(0);
+			// If new keyword search, remove all filters & reset page
+			jQuery('#return-results #page').val('1');
+			jQuery('#return-results input[type=checkbox]').each(function(){
+				jQuery(this).prop('checked', false);
+			});
+
+			e.preventDefault();
+			jQuery('#search_blocker').click();
+			// If the same search, do nothing
+			if (jQuery('#main-search #search-keywords').val() === jQuery('#return-results #keywords').val()) {
+				return false;
+			}
+			jQuery('#return-results #keywords').val(jQuery('#main-search #search-keywords').val());
+			current_page_global = 1;
+			getSearchResults(true);
+		});
+
+		// Load initial search results
+		jQuery(document).ready(function(jQuery) {
+			current_page_global = 1;
+			jQuery('#main-search #search-keywords').val('<?php echo $keywords; ?>');
+			setTimeout('getSearchResults(false)', 1000);
+		});
+
+		jQuery('.ias_trigger').hide();
+		jQuery('#search-filter').css('height', jQuery(window).height() - 30);
+
+		jQuery(window).resize(function(){
+			jQuery('#search-filter').css('height', jQuery(window).height() - 30);
+		});
+		jQuery('.filter-button-reset').click(function(){
+			jQuery('#return-results input[type=checkbox]').each(function(){
+				jQuery(this).prop('checked', false);
+			});
+			// Reset pagination to first page
+			jQuery('#return-results #page').val('1');
+			jQuery('#search_blocker').click();
+			current_page_global = 1;
+			getSearchResults(true);
+		});
+
+		jQuery('.filter').css('box-shadow', 'none');
+		jQuery(window).resize(setFilterMenu);
+	});
+
+	function isComingIntoView(elem) {
+		var docViewTop = jQuery(window).scrollTop();
+		var docViewBottom = docViewTop + jQuery(window).height();
+
+		var elemTop = jQuery(elem).offset().top - 500;
+		var elemBottom = elemTop + jQuery(elem).height();
+
+		return ((elemBottom <= docViewBottom));
+	}
+
+	function setFilterMenu() {
+		var categoryWrapperTop = jQuery('.category-filter').height() + 80;
+		jQuery('#category-wrapper').css('margin-top', categoryWrapperTop);
+	}
+
+	function getSearchResults(replaceContent) {
+		if (!checkKeywords()) {
+			jQuery('#main-search #search-keywords').val(decodeURI(getCookie('searchKeywords')));
+			return false;
+		}
+
+		jQuery(".ias_loader").fadeIn();
+		jQuery('#search-filter').scrollTop(0);
+
+		if (jQuery('#main-search #search-keywords').val() == '') {
+			jQuery(".ias_loader").hide();
+			showAlert('Please enter one or more keywords to search.');
+			jQuery('.multi-view-wrapper').html(jQuery('#no_results_template').html());
+
+			jQuery('.search_total_count').each(function(){
+				jQuery(this).html('');
+			});
+
+			jQuery('header.currentCategory h1').html('Please Enter a Search Term...');
+			setTimeout("jQuery('.search').click()", 1000);
+			return false;
+		}
+
+		// Scroll to top on new search
+		if (replaceContent) {
+			jQuery('.view-btns .back').click();
+		}
+
+		<?php /* Have to adjust the protocol to match the main page's request (came from secure page originally) */ ?>
+		<?php $MageUrl = (Mage::app()->getStore()->isCurrentlySecure()) ? Mage::getUrl('', array('_secure'=>true)) : Mage::getUrl(''); ?>
+
+		jQuery.ajax({
+			url: '<?php echo $MageUrl;?>inventory/search/search-results.php',
+			type: 'GET',
+			dataType: 'xml',
+			data: jQuery('#return-results').serialize(),
+			error: function() {
+				jQuery(".ias_loader").hide();
+				showAlert('An unknown error occurred. Please try your search again.');
+				return false;
+			},
+			success: function (xml) {
+
+				// Save last valid search keywords
+				setCookie('searchKeywords', jQuery('#return-results #keywords').val());
+
+				if (jQuery(xml).find("xml_feed_done").text() !== '1') {
+					jQuery(".ias_loader").hide();
+					showAlert('Failed to retrieve complete results. Please try your search again.');
+					return false;
+				}
+
+				var total_styles = parseInt(jQuery(xml).find('total_products').text());
+
+				// Clear the results if a new search
+				if (replaceContent) {
+					jQuery('.multi-view-wrapper').html('');
+				}
+
+				// Check for currentFilters. Are no results based on refinement or not?
+				var currentFilters = new Array();
+				var a = 0;
+				jQuery(xml).find("user_search_depth").find("item").each(function() {
+					currentFilters[a] = new Array();
+					currentFilters[a].name = jQuery(this).find("key").text();
+					currentFilters[a].value = jQuery(this).find("value").text();
+					a++;
+				});
+
+				if (currentFilters.length > 1) {
+					jQuery('.filter-button-reset').show();
+				} else {
+					jQuery('.filter-button-reset').hide();
+				}
+
+				if (total_styles < 1 && currentFilters.length < 1) {
+					jQuery('.multi-view-wrapper').html(jQuery('#no_results_template').html());
+
+					jQuery('.search_total_count').each(function(){
+						jQuery(this).html('NO STYLES FOUND');
+					});
+
+					jQuery('.filter-main-cat-title a.filter').html('No filters available');
+					jQuery('header.currentCategory .filter-main-cat-title a.filter').toggleClass('none', true);
+					jQuery('.detail-site-map .current').html('Search Results for "<i>' + jQuery('#keywords').val() + '</i>"');
+				} else {
+
+					// Retrieve and set pagination values
+					var current_page = parseInt(jQuery(xml).find('current_page').text());
+					var total_pages = parseInt(jQuery(xml).find('total_pages').text());
+					var product_max = parseInt(jQuery(xml).find('product_max').text());
+
+					var total_more_styles = total_styles - product_max;
+					var styles_string = (total_styles > 1) ? ' STYLES' : ' STYLE';
+
+					jQuery('.search_total_count').html(total_styles + styles_string + '&nbsp;<i style="text-transform:none !important">(Showing ' + product_max + ' of ' + total_styles + ')</i>');
+
+					if (total_more_styles > 0) {
+						jQuery('.ias_trigger #load-more').html(total_more_styles + ' MORE STYLES');
+					}
+
+					/* So we have to hide it if it's accidentally shown when no more pages available */
+					if (product_max == total_styles) {
+						current_page_global = 99;
+					}
+
+					/* Should only need the 'if' here, but the behavior isn't consistent */
+					if (product_max < total_styles) {
+						// Set load-more button to next page value
+						jQuery('#load-more').val(current_page + 1);
+					}
+
+					jQuery('.detail-site-map .current').html('Search Results for "<i>' + jQuery('#keywords').val() + '</i>"');
+
+					// Show/hide current filters in header
+					jQuery('header.currentCategory ul.style-filter-text').remove();
+					jQuery('.filter-main-cat-title a.filter').toggleClass('none', false);
+					jQuery('.filter-main-cat-title a.filter').html('按类目<span class="filter-expand-icon"></span>');
+
+					// Append results to the grid multi-view-wrapper
+					jQuery(xml).find("result").each(function() {
+						var templateContent = jQuery('#result_template').html();
+						var product_id = jQuery(this).find('id').text();
+						var product_sku = jQuery(this).find('Sku').text();
+						// Extract url_key from product_url
+						var product_url = jQuery(this).find('Url').text().replace('http://', '');
+						var productUrlKeyStart = product_url.indexOf('/');
+							product_url = product_url.substr(productUrlKeyStart + 1);
+						var product_url_key = product_url.replace('.html', '');
+
+						var product_description = jQuery(this).find('Abstract').text();
+						var product_price = '$' + jQuery(this).find('Price').text();
+						var sold_out_text = jQuery(this).find('Options').text();
+							product_price = (sold_out_text.match('Out-of-Stock')) ? '<span class="sold-out">Sold Out</span>' : product_price;
+
+						templateContent = templateContent.replace(/{{product_id}}/ig, product_id);
+						templateContent = templateContent.replace(/{{product_sku}}/ig, product_sku);
+						templateContent = templateContent.replace(/{{product_url_key}}/ig, product_url_key);
+						templateContent = templateContent.replace(/{{product_description}}/ig, product_description);
+						templateContent = templateContent.replace(/{{product_price}}/ig, product_price);
+
+						jQuery('.multi-view-wrapper').append(templateContent);
+					});
+
+					var hasAvailableFilters = false;
+					var hasPriceFilter = 0;
+					var hasSizeFilter = 0;
+					var hasCategoryFilter = 0;
+					var hasBrandFilter = 0;
+					var hasColorFilter = 0;
+					var hasGenderFilter = 0;
+
+					// Check for available filters (refinements)
+					jQuery(xml).find("refinable").each(function(){
+							hasAvailableFilters = true;
+						if (jQuery(this).find("name").first().text() == 'Price') {
+							hasPriceFilter = 1;
+						}
+						if (jQuery(this).find("name").first().text() == 'Size') {
+							hasSizeFilter = 1;
+						}
+						if (jQuery(this).find("name").first().text() == 'Category') {
+							hasCategoryFilter = 1;
+						}
+						if (jQuery(this).find("name").first().text() == 'Brand') {
+							hasBrandFilter = 1;
+						}
+						if (jQuery(this).find("name").first().text() == 'Color') {
+							hasColorFilter = 1;
+						}
+						if (jQuery(this).find("name").first().text() == 'Gender') {
+							hasGenderFilter = 1;
+						}
+					});
+					// Now check for current filters. We need to show ones already selected
+					// since they won't be in the refinements list
+					for (a = 0; a < currentFilters.length; a++) {
+						if (currentFilters[a].name == 'Price') {
+							hasPriceFilter = 2;
+						}
+						if (currentFilters[a].name == 'Size') {
+							hasSizeFilter = 2;
+						}
+						if (currentFilters[a].name == 'Category') {
+							hasCategoryFilter = 2;
+						}
+						if (currentFilters[a].name == 'Brand') {
+							hasBrandFilter = 2;
+						}
+						if (currentFilters[a].name == 'Color') {
+							hasColorFilter = 2;
+						}
+						if (currentFilters[a].name == 'Gender') {
+							hasGenderFilter = 2;
+						}
+					}
+
+					// If any filters are available, hide the no-filter message
+					// and enable available filters.
+					if (hasAvailableFilters || currentFilters.length > 0) {
+
+						jQuery('.filter-none').hide();
+						if (currentFilters.length > 0) {
+							jQuery('.filter-button-reset').fadeIn();
+						}
+
+						createFilter('Price', hasPriceFilter, currentFilters, jQuery(xml).find("refinables"));
+						createFilter('Size', hasSizeFilter, currentFilters, jQuery(xml).find("refinables"));
+						createFilter('Category', hasCategoryFilter, currentFilters, jQuery(xml).find("refinables"));
+						createFilter('Brand', hasBrandFilter, currentFilters, jQuery(xml).find("refinables"));
+						createFilter('Color', hasColorFilter, currentFilters, jQuery(xml).find("refinables"));
+						createFilter('Gender', hasGenderFilter, currentFilters, jQuery(xml).find("refinables"));
+					}
+				}
+
+				jQuery(".ias_loader").fadeOut();
+
+				// Set desktop switcher to Nextopia page
+				var current_filters = 'keywords=' + jQuery('#return-results #keywords').val();
+				for (a = 0; a < currentFilters.length; a++) {
+						current_filters += '&' + currentFilters[a].name + '=' + currentFilters[a].value;
+				}
+				finalUrl = "http://search.sneakerhead.com/results.php?" + current_filters;
+
+				setFilterMenu();
+			}
+
+		});
+	}
+
+	function showFilters() {
+		if (!jQuery('.filter-main-cat-title a.filter').hasClass('none')) {
+			jQuery('#search_bar').toggleClass('open', false);
+			jQuery('#search_blocker').toggleClass('open', true);
+			setTimeout("jQuery('html body').toggleClass('open')", 500);
+			jQuery('#search-filter').toggleClass('open', true);
+			jQuery('#return-results #keywords').val(decodeURI(getCookie('searchKeywords')));
+		}
+	}
+
+	function updateFilter(element, boolean) {
+		jQuery(element).prop('checked', boolean);
+		// Reset pagination to first page
+		jQuery('#return-results #page').val('1');
+		// Close open dialogs (search-blocker has eventhandler to do this
+		jQuery('#search_blocker').click();
+		jQuery(".ias_loader").fadeIn();
+		current_page_global = 1;
+		getSearchResults(true);
+	}
+
+	function createFilter(filter, filterType, currentFilters, refinables) {
+
+		var this_id = filter.toLowerCase();
+
+		// Clear previous filter content
+		jQuery('#' + this_id + '-filter-content').html('');
+		jQuery('.filter-' + this_id).hide();
+
+		if (filterType === 0) {
+			return;
+		}
+
+		if (filterType === 2) {
+
+			for (var a = 0; a < currentFilters.length; a++) {
+				if (currentFilters[a].name === filter) {
+					var this_name = currentFilters[a].value;
+					var this_label = this_name;
+					var this_field_id = 'search-' + this_id + '-' + a;
+					if (this_id === 'color') {
+						this_field_id = 'search-color-swatch-' + this_name;
+						this_label = '';
+					}
+					var this_option = '<input type="checkbox" id="search-' + this_id + '-' + a + '" name="' + filter + '" value="' + this_name + '" checked>';
+					this_option = this_option + '<label id="' + this_field_id + '" onClick="updateFilter(\'#search-' + this_id + '-' + a + '\', false)" for="search-' + this_id + '-' + a + '"><b>' + this_label + '</b></label>';
+					this_option = this_option + ' <a class="filter-remove" onClick="updateFilter(\'#search-' + this_id + '-' + a + '\', false)">(Remove this filter)</a>';
+					break;
+				}
+			}
+
+			// Append this option to the table cell
+			jQuery('#' + this_id + '-filter-content').append(this_option);
+
+		} else {
+
+			var hasRefinables = false;
+			jQuery(refinables).find("refinable").each(function(){
+				jQuery(this).find("name").each(function(){
+					if (jQuery(this).text() === filter) {
+						hasRefinables = true;
+						// Create price filter options
+						var t = 1;
+						jQuery(this).parent().find("value").each(function(){
+							var this_name = jQuery(this).find("name").text();
+							var this_label = this_name;
+							var this_num = jQuery(this).find("num").text(); // number of items available with this filter selected
+							var this_field_id = 'search-' + this_id + '-' + t;
+							this_num = ' (' + this_num + ')';
+							if (this_id === 'color') {
+								this_field_id = 'search-color-swatch-' + this_name;
+								this_label = '';
+								this_num = '';
+							}
+							var this_option = '<input type="checkbox" id="search-' + this_id + '-' + t + '" name="' + filter + '" value="' + this_name + '">';
+							this_option = this_option + '<label id="' + this_field_id + '" onClick="updateFilter(\'#search-' + this_id + '-' + t + '\', true)" for="search-' + this_id + '-' + t + '"><b>' + this_label + '</b>' + this_num + '</label>';
+							t++;
+
+							// Append this option to the table cell
+							jQuery('#' + this_id + '-filter-content').append(this_option);
+						});
+					}
+				});
+			});
+		}
+
+		jQuery('.filter-' + this_id).each(function(){
+			jQuery(this).show();
+		});
+	}
+</script>
+
+	<?php endif; ?>
+
+</section>

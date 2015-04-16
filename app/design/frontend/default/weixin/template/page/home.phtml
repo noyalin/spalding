@@ -1,0 +1,116 @@
+<?php
+/**
+ * Requires creating of cms page and setting for mobile view.
+ * setTemplate = "page/home.phtml"
+ * add layoutXML head/refs for skin_js/index.js and skin_css/index.css
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+	<?php echo $this->getChildHtml('head') ?>
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/jquery.iosslider.min.js"></script>
+</head>
+
+<body>
+<div id="page">
+	<?php echo $this->getChildHtml('after_body_start') ?>
+	<?php echo $this->getChildHtml('global_notices') ?>
+	<?php echo $this->getChildHtml('header') ?>
+
+	<div class="home-wrapper">
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_page_sections')->toHtml(); ?>
+
+		<?php
+
+		$_category = Mage::getModel('catalog/category')->load(573);
+		$_productCollection = Mage::getResourceModel('catalog/product_collection')
+			->addCategoryFilter($_category)
+			->addAttributeToSelect('*')
+			->addAttributeToFilter('status', 1)
+			->addAttributeToFilter('visibility', 4);
+		$_helper = $this->helper('catalog/output');
+		?>
+
+        <div class="checktf">
+            <a href="<?php echo Mage::getUrl(''); ?>store/index/confirm"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/verify.jpg"></a>
+        </div>
+	<!-- main category entrance banner -->
+	<section class="banner-main-wrapper clearfix" style>
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>products/bath-body.html?attribute_set_name=72"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/home_ball.jpg"></a>
+			</div>
+		</div>
+
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>catalogsearch/result/?q=包"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/home_bag.jpg"></a>
+			</div>
+		</div>
+	</section>
+	<section class="banner-main-wrapper clearfix">
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>catalogsearch/result/?q=背心%20裤%20针织%20短袖"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/home_apparel.jpg"></a>
+			</div>
+		</div>
+
+		<div class="banner-sub">
+			<div class="banner-sub-img">
+				<a href="<?php echo Mage::getUrl(''); ?>products/accessories.html"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/home_onesize.jpg"></a>
+			</div>
+		</div>
+	</section>
+	<!-- main category entrance banner -->
+
+		<div class="clearfloats"></div>
+		<?php echo $this->getChildHtml('footer') ?>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	jQuery('.iosSliderStyles').iosSlider({
+		startAtSlide: 1,
+		snapToChildren: true,
+		snapSlideCenter: false,
+		snapVelocityThreshold: 0,
+		desktopClickDrag: true,
+		infiniteSlider: false,
+		navPrevSelector: 'a.sliderMiniPrev',
+		navNextSelector: 'a.sliderMiniNext',
+		keyboardControls: false
+	});
+
+	// Allowing it to be visible when drawing causes all four slides to be visible momentarily.
+	// 'display: none' would cause the page jump. This method maintains the placeholder position.
+	jQuery('.iosSliderStyles').css({'opacity': '1', 'filter': 'alpha(opacity:100)'});
+
+</script>
+
+<!-- BEGIN: Google Trusted Stores -->
+<script type="text/javascript">
+//  var gts = gts || [];
+//
+//  gts.push(["id", "66454"]);
+//  //gts.push(["google_base_offer_id", "ITEM_GOOGLE_SHOPPING_ID"]);
+//  gts.push(["google_base_subaccount_id", "57460"]);
+//  gts.push(["google_base_country", "US"]);
+//  gts.push(["google_base_language", "EN"]);
+//
+//  (function() {
+//	var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+//	var gts = document.createElement("script");
+//	gts.type = "text/javascript";
+//	gts.async = true;
+//	gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+//	var s = document.getElementsByTagName("script")[0];
+//	s.parentNode.insertBefore(gts, s);
+//  })();
+</script>
+<!-- END: Google Trusted Stores -->
+
+</body>
+</html>

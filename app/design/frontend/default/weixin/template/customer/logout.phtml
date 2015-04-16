@@ -1,0 +1,109 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+
+<div class="detail-back">
+<!--<p><a href="--><?php //echo $this->getUrl(''); ?><!--">Back to Home</a></p>-->
+<p><a href="<?php echo $this->getUrl(''); ?>">返回主页</a></p>
+</div>
+
+<div class="myAccountMsg">
+<!--	<p class="success-msg">You have logged-out successfully.</p>-->
+    <p class="success-msg">您已经成功退出.</p>
+</div>
+
+<div id="my-account-wrapper">
+<!--	<h1>My Account</h1>-->
+    <h1>我的账户</h1>
+	<div id="my-account-login-wrapper">
+		<div class="my-account-content">
+<!--			<h2>Login</h2>-->
+            <h2>登录</h2>
+				<form action="<?php echo $this->getUrl('customer/account/loginPost/');?>" method="post" id="login-form">
+				<table id="my-account-login">
+					<tbody>
+						<tr>
+							<td class="infoLabel">
+<!--								<label for="email">Email Address</label>-->
+                                <label for="email">邮箱</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="infoInput">
+								<input name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" type="text" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+							</td>
+						</tr>
+						<tr>
+							<td class="infoLabel">
+<!--								<label for="pass">Password</label>-->
+                                <label for="pass">密码</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="infoInput">
+								<input name="login[password]" type="password" class="marLoginInput input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+							</td>
+						</tr>
+						<?php echo $this->getChildHtml('form.additional.info'); ?>
+						<tr>
+							<td align="right" style="padding-top: 10px;">
+<!--								<a href="--><?php //echo $this->getUrl('customer/account/forgotpassword/') ?><!--">Forgot your Password?</a>-->
+                                <a href="<?php echo $this->getUrl('customer/account/forgotpassword/') ?>">忘记密码?</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="submit-btn">
+<!--								<button type="submit" onclick="return validateForm('#login-form')">Log In</button>-->
+                                <button type="submit" onclick="return validateForm('#login-form')">登录</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+
+	<?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+		<input name="context" type="hidden" value="checkout" />
+	<?php endif; ?>
+	<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
+		<div class="accountbenefits">
+            <h2>我是一个新用户!</h2>
+                <button class="button" onclick="location.href='<?php echo $this->getUrl('customer/account/create/'); ?>'">注册新账户</button>
+		</div>
+	<?php endif; ?>
+        <?php
+        $agent = $_SERVER['HTTP_USER_AGENT'];
+        if(strpos($agent, "MicroMessenger")){
+        ?>
+        <div class="accountweixin">
+            <h2>亲爱的微信用户:</h2>
+            <button class="button" onclick="location.href='<?php echo $this->getUrl('store/index/authweixin/'); ?>'">微信号直接接入</button>
+        </div>
+        <?php
+        }
+        ?>
+	</div>
+</div>
