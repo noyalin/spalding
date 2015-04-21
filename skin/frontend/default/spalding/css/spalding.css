@@ -427,14 +427,15 @@ ul.scarch_select_option li:hover{
 	cursor: default;
 }
 
-/* .kuzhan_center {
+ .kuzhan_center {
 	width: 300px;
-	height: 106px;
+	height: 400px;
 	margin: 0px auto;
 	position: absolute;
 	overflow: hidden;
 	top: 300px;
 	left: 900px;
+	z-index:9;
 }
 
 .kuzhan_flash_v {
@@ -480,7 +481,7 @@ ul.scarch_select_option li:hover{
 
 .kuzhan_over {
 	background: #ff9000;
-} */
+} 
 
 
 /*底部 s*/

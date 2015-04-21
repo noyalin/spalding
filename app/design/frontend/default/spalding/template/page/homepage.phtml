@@ -155,7 +155,8 @@
         for(i=0;i<jQuery(".fix_flash li").length;i++){
             str += "<div class='kuzhan_sele' number="+i+" onclick='FIX_scroll(this)'></div>"
         }
-        jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5+250+"px")
+        //jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5+250+"px")
+        jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5-250+"px");
         jQuery(".kuzhan_flash_s").html(str);
         jQuery(".kuzhan_sele").eq(0).addClass("kuzhan_over")
         jQuery('.plateBox_tf').on("click",function(){
