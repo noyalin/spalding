@@ -39,7 +39,6 @@
     $spalding_mobile_en_store = getStoreByCode('sneakerhead_cn_mobile');
     $spalding_mobile_en_store_url = $spalding_mobile_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
     $spalding_mobile_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $spalding_mobile_en_store_url), '/');
-//header("'Location:". $spalding_mobile_en_store_url."'");exit();
 ?>
 <script type="text/javascript">
 
@@ -168,7 +167,6 @@
         });
 
         jQuery('.scarch_select_option>li').click(function(){
-            jQuery(this).parent().siblings('.search_selected').html("<span>" + jQuery(this).html() + "</span>");
             jQuery(this).parent('ul').css("display","none");
         });
 

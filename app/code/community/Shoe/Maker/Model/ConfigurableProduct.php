@@ -307,7 +307,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
      * and function updateConfigurableProduct both use them
      */
     public function saveTopAttributes(&$product,$valueArr){
-        $product->setStoreId($this->getStoreId($valueArr['store']));
+       // $product->setStoreId($this->getStoreId($valueArr['store']));
         $product->setWebsiteIds($this->getWebsiteIds($valueArr['websites']));
         //Set categories
         $product->setStoreCategoryIds($valueArr['categoryIds']);
