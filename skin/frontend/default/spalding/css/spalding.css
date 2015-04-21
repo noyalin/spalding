@@ -470,17 +470,19 @@ ul.scarch_select_option li:hover{
 .kuzhan_sele {
 	float: left;
 	display: inline;
-	width: 24px;
-	height: 5px;
+	width: 20px;
+	height: 20px;
 	margin-left: 2px;
-	background: #2d74a2;
+	/*background: #2d74a2;*/
+	background: url(../images/kuzhan_sele.png) left top no-repeat;
 	line-height: 5px;
 	overflow: hidden;
 	cursor: pointer;
 }
 
 .kuzhan_over {
-	background: #ff9000;
+	/*background: #ff9000;*/
+	background: url(../images/kuzhan_over.png) left top no-repeat;
 } 
 
 
