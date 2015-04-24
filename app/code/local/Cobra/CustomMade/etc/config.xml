@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cobra_CustomMade>
+            <version>0.1.0</version>
+        </Cobra_CustomMade>
+    </modules>
+    <frontend>
+        <routers>
+            <!-- the <CustomMade> tagname appears to be arbitrary, but by
+            convention is should match the frontName tag below-->
+            <custommade>
+                <use>standard</use>
+                <args>
+                    <module>Cobra_CustomMade</module>
+                    <frontName>custommade</frontName>
+                </args>
+            </custommade>
+        </routers>
+    </frontend>
+</config>
