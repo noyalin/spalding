@@ -2,7 +2,7 @@
 jQuery(document).ready(function(){
 	//cust_flash_s();	
 //	$(".cust_flash_s ul li").eq(0).css("background","#ff9000");
-	FIX_TIMER = setInterval("cust_flash()",3000)
+	FIX_TIMER = setInterval("cust_flash()",5000)
 	head_faq();
 })
 
