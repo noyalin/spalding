@@ -44,195 +44,207 @@ $product_norm = $this->getAttrNameByOptionId("product_norm",$_product->getProduc
 $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
 $size_table_id = $_product->getSizeTable();//尺码表valueid
 $product_attributeSetName = $_product->getAttributeSetName();
+
+//get current category id
+$layer = Mage::getSingleton('catalog/layer');
+$_category = $layer->getCurrentCategory();
+$currentCategoryId= $_category->getId();
+if($currentCategoryId == 35):
+    //专属定制
+
+else:
 ?>
-<div class="product-view">
-    <div class="product-essential">
-    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-        <?php echo $this->getBlockHtml('formkey') ?>
-        <div class="no-display">
-            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-            <input type="hidden" name="related_product" id="related-products-field" value="" />
-        </div>
-
-        <div class="product-shop">
-            <div class="product-name">
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+    <div class="product-view">
+        <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
             </div>
-            <?php echo $this->getChildHtml('alert_urls') ?>
-<!--            --><?php //echo $this->getChildHtml('product_type_data') ?>
-            <?php echo $this->getTierPriceHtml() ?>
-            <?php echo $this->getChildHtml('extrahint') ?>
 
-            <?php if (!$this->hasOptions()):?>
-                <div class="add-to-box">
-                    <?php if($_product->isSaleable()): ?>
-                        <?php echo $this->getChildHtml('addtocart') ?>
-                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                            <span class="or"><?php echo $this->__('OR') ?></span>
+            <div class="product-shop">
+                <div class="product-name">
+                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                </div>
+                <?php echo $this->getChildHtml('alert_urls') ?>
+    <!--            --><?php //echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
                         <?php endif; ?>
-                    <?php endif; ?>
-                    <?php echo $this->getChildHtml('addto') ?>
-                </div>
-                <?php echo $this->getChildHtml('extra_buttons') ?>
-            <?php elseif (!$_product->isSaleable()): ?>
-                <div class="add-to-box">
-                    <?php echo $this->getChildHtml('addto') ?>
-                </div>
-            <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                <?php endif; ?>
 
-            <?php echo $this->getChildHtml('other');?>
+                <?php echo $this->getChildHtml('other');?>
 
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-            <?php endif;?>
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-            <?php endif;?>
-            <div class="short-description">
-                <img alt="" src="<?php echo $this->getSkinUrl("images/productDetail_des.png") ?>">
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                <?php endif;?>
+                <div class="short-description">
+                    <img alt="" src="<?php echo $this->getSkinUrl("images/productDetail_des.png") ?>">
+                </div>
             </div>
-        </div>
 
-        <div class="product-img-box">
-            <?php echo $this->getChildHtml('media') ?>
-        </div>
+            <div class="product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
 
-        <div class="clear"></div>
+            <div class="clear"></div>
 
-    </form>
-    <script type="text/javascript">
-    //<![CDATA[
-        var productAddToCartForm = new VarienForm('product_addtocart_form');
-        productAddToCartForm.submit = function(button, url) {
-
-            if (this.validator.validate()) {
-                var form = this.form;
-                var oldUrl = form.action;
-                var list= jQuery('input:radio[data-input="kinds"]:checked').val();
-                if(list==null){
-                    alert("请选择尺码");
-                    return false;
-                }
-
-                if (url) {
-                   form.action = url;
-                }
-                var e = null;
-                try {
-                    this.form.submit();
-                } catch (e) {
-                }
-                this.form.action = oldUrl;
-                if (e) {
-                    throw e;
-                }
-
-                if (button && button != 'undefined') {
-                    button.disabled = true;
-                }
-            }
-        }.bind(productAddToCartForm);
-
-        productAddToCartForm.submitLight = function(button, url){
-            if(this.validator) {
-                var nv = Validation.methods;
-                delete Validation.methods['required-entry'];
-                delete Validation.methods['validate-one-required'];
-                delete Validation.methods['validate-one-required-by-name'];
-                // Remove custom datetime validators
-                for (var methodName in Validation.methods) {
-                    if (methodName.match(/^validate-datetime-.*/i)) {
-                        delete Validation.methods[methodName];
-                    }
-                }
+        </form>
+        <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
 
                 if (this.validator.validate()) {
-                    if (url) {
-                        this.form.action = url;
+                    var form = this.form;
+                    var oldUrl = form.action;
+                    var list= jQuery('input:radio[data-input="kinds"]:checked').val();
+                    if(list==null){
+                        alert("请选择尺码");
+                        return false;
                     }
-                    this.form.submit();
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
                 }
-                Object.extend(Validation.methods, nv);
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
+        </div>
+
+
+
+
+
+
+        <!-- 产品参数 -->
+        <div class="productArgs">
+            <div class="productArgs_tit">产品参数</div>
+            <div class="productArgs_box">
+                <ul class="clearfix">
+                    <li>货号：<?php echo $product_sku;?></li>
+                    <li>篮球规格: <?php echo $product_norm;?></li>
+                    <li>系列：<?php echo $product_catena;?></li>
+                    <li>场地：<?php echo $product_side;?></li>
+                    <li>材质：<?php echo $product_material;?></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 产品详情 -->
+        <style>
+            .product-collateral-box-img img{
+                margin: 0 0 0 -60px;
             }
-        }.bind(productAddToCartForm);
-    //]]>
-    </script>
-    </div>
-
-
-
-
-
-
-    <!-- 产品参数 -->
-    <div class="productArgs">
-        <div class="productArgs_tit">产品参数</div>
-        <div class="productArgs_box">
-            <ul class="clearfix">
-                <li>货号：<?php echo $product_sku;?></li>
-                <li>篮球规格: <?php echo $product_norm;?></li>
-                <li>系列：<?php echo $product_catena;?></li>
-                <li>场地：<?php echo $product_side;?></li>
-                <li>材质：<?php echo $product_material;?></li>
-            </ul>
-        </div>
-    </div>
-    <!-- 产品详情 -->
-    <style>
-        .product-collateral-box-img img{
-            margin: 0 0 0 -60px;
-        }
-    </style>
-    <div class="product-collateral">
-        <div class="productDetail_collTit">
-            <img src='<?php echo $this->getSkinUrl("images/productDetail_collateralTit.png") ?>' alt="">
-        </div>
-        <?php
-        $urlkey = $_product->getUrlKey();
-        $sku = $_product->getSku();
-        $i = 0;
-        $arr = array( "正面/FRONT","反面/BACK","侧面/SIDE");
-        //----------------------------------------------------------------------------STA
-        $imgCount = $_product->getImageCount();
-        for($count = 0;$count <$imgCount;$count++){
-        //----------------------------------------------------------------------------END
-            $des = $arr[$i];
-            $i++;
-        ?>
-            <div class="product-collateral-wrap">
-                <div class="product-collateral-box">
-                    <h2 class="product-collateral-box-nam"><?php echo $des; ?></h2>
-                    <?php if($count == 0 && $sku == '74-582y'): ?>
+        </style>
+        <div class="product-collateral">
+            <div class="productDetail_collTit">
+                <img src='<?php echo $this->getSkinUrl("images/productDetail_collateralTit.png") ?>' alt="">
+            </div>
+            <?php
+            $urlkey = $_product->getUrlKey();
+            $sku = $_product->getSku();
+            $i = 0;
+            $arr = array( "正面/FRONT","反面/BACK","侧面/SIDE");
+            //----------------------------------------------------------------------------STA
+            $imgCount = $_product->getImageCount();
+            for($count = 0;$count <$imgCount;$count++){
+            //----------------------------------------------------------------------------END
+                $des = $arr[$i];
+                $i++;
+            ?>
+                <div class="product-collateral-wrap">
+                    <div class="product-collateral-box">
+                        <h2 class="product-collateral-box-nam"><?php echo $des; ?></h2>
+                        <?php if($count == 0 && $sku == '74-582y'): ?>
+                            <div class="product-collateral-box-img">
+                                <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/74-582y/74-582-top1.jpg" alt=""/>
+                            </div>
+                        <?php endif; ?>
                         <div class="product-collateral-box-img">
-                            <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/74-582y/74-582-top1.jpg" alt=""/>
+                            <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku."/". $urlkey."-".($i+10) ?>.jpg" alt=""/>
                         </div>
-                    <?php endif; ?>
-                    <div class="product-collateral-box-img">
-                        <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku."/". $urlkey."-".($i+10) ?>.jpg" alt=""/>
                     </div>
                 </div>
-            </div>
 
-        <?php
-        }
-        ?>
-        <?php
-            if(($size_table_id != null)){
-                $size_table_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/".$size_table_id.".png";
-                ?>
-                <center><img src='<?php echo $size_table_url; ?>' alt=""></center>
-        <?php
-        }
-        ?>
-        <?php
-        if(($product_attributeSetName != null) && $product_attributeSetName == 72){
-            $view_bottom_url =  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/view_bottom.png";
+            <?php
+            }
             ?>
-            <center><img src='<?php echo $view_bottom_url ?>' alt=""></center>
-        <?php
-        }
-        ?>
+            <?php
+                if(($size_table_id != null)){
+                    $size_table_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/".$size_table_id.".png";
+                    ?>
+                    <center><img src='<?php echo $size_table_url; ?>' alt=""></center>
+            <?php
+            }
+            ?>
+            <?php
+            if(($product_attributeSetName != null) && $product_attributeSetName == 72){
+                $view_bottom_url =  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/view_bottom.png";
+                ?>
+                <center><img src='<?php echo $view_bottom_url ?>' alt=""></center>
+            <?php
+            }
+            ?>
+        </div>
+        <!-- 产品详情 e -->
+        <?php echo $this->getChildHtml('upsell_products') ?>
     </div>
-    <!-- 产品详情 e -->
-    <?php echo $this->getChildHtml('upsell_products') ?>
-</div>
+<?php
+    endif;
+?>
