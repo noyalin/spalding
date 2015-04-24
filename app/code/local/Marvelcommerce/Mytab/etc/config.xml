@@ -7,13 +7,22 @@
 
     <admin>
         <routers>
-            <adminhtml>
+            <mytab>
+                <use>admin</use>
                 <args>
-                    <modules>
-                        <mytab>Marvelcommerce_Mytab_index</mytab>
-                    </modules>
+                    <module>Marvelcommerce_Mytab</module>
+                    <frontName>custommadebackend</frontName>
                 </args>
-            </adminhtml>
+            </mytab>
         </routers>
     </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <mytab>
+                    <file>mytab.xml</file>
+                </mytab>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

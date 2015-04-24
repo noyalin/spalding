@@ -7,7 +7,7 @@
                 <example>
                     <title>资料审核</title>
                     <sort_order>1</sort_order>
-                    <action>adminhtml/mytab/index</action>
+                    <action>custommadebackend/adminhtml_mytab</action>
                 </example>
             </children>
         </mytab>
