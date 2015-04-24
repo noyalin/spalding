@@ -10,11 +10,6 @@
             <action method="addCss"><name>iwd/all/iwdall.css</name></action>
         </reference>
 
-
-        <reference name="notifications">
-            <block type="iwdall/adminhtml_notification_modal" name="notification_modal" as="notification_modal" acl="system/adminnotification/show_toolbar" template="iwd/notification/modal.phtml" />
-        </reference>
-
     </default>
 
     <mytab_adminhtml_mytab_index>
@@ -23,11 +18,5 @@
             <block type="iwdall/adminhtml_support_edit" after="-" name="supportform"/>
         </reference>
     </mytab_adminhtml_mytab_index>
-
-    <adminhtml_system_config_edit>
-        <reference name="content">
-            <block type="iwdall/jsinit" name="iwd_all_jsinit" template="iwd/jsinit.phtml"></block>
-        </reference>
-    </adminhtml_system_config_edit>
 
 </layout>
