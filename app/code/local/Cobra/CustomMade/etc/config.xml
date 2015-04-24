@@ -18,4 +18,11 @@
             </custommade>
         </routers>
     </frontend>
+    <global>
+        <helpers>
+            <custommade>
+                <class>Cobra_CustomMade_Helper</class>
+            </custommade>
+        </helpers>
+    </global>
 </config>

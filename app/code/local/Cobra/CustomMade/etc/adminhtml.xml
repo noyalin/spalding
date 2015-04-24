@@ -1,0 +1,10 @@
+<shopbybrand translate="title" module="CustomMade">
+    <title>Shop by Brand</title>
+    <sort_order>39</sort_order>
+    <children>
+        <brand module="CustomMade">
+            <title>Shop by Brand</title>
+            <action>custommade/index/index</action>
+        </brand>
+    </children>
+</shopbybrand>
