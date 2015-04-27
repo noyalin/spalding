@@ -44,6 +44,21 @@ $product_norm = $this->getAttrNameByOptionId("product_norm",$_product->getProduc
 $product_side = $this->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
 $size_table_id = $_product->getSizeTable();//尺码表valueid
 $product_attributeSetName = $_product->getAttributeSetName();
+//get description
+$shortDescription =  $_product->getShortDescription();
+if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
+    if( strstr($shortDescription,'，')  ){
+        $tmpArr = explode("，",$shortDescription);
+        $shortDescription = "(".$tmpArr[1].")";
+    }elseif(strstr($shortDescription,',')){
+        $tmpArr = explode(",",$shortDescription);
+        $shortDescription = "(". $tmpArr[1].")";
+    }else{
+        $shortDescription = '';
+    }
+}else{
+    $shortDescription = '';
+}
 ?>
 <div class="product-view">
     <div class="product-essential">
@@ -56,7 +71,7 @@ $product_attributeSetName = $_product->getAttributeSetName();
 
         <div class="product-shop">
             <div class="product-name">
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name').$shortDescription ?></h1>
             </div>
             <?php echo $this->getChildHtml('alert_urls') ?>
 <!--            --><?php //echo $this->getChildHtml('product_type_data') ?>
