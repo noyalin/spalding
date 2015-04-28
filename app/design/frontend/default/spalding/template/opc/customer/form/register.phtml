@@ -10,13 +10,6 @@
     }
 ?>
 <div class="account-create">
-<!--    <div class="page-title">-->
-<!--        <h1>--><?php //echo $this->__('Create an Account') ?><!--</h1>-->
-<!--    </div>-->
-<!--    --><?php //echo $this->getChildHtml('form_fields_before')?>
-<!--    --><?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<!--    --><?php //echo $this->getChildHtml('paypalauth.register'); ?>
-<!--    <div style="height:110px; z-index:-2;"></div>-->
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
         <div class="spaldingMain">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
@@ -28,17 +21,14 @@
             </div>
                     <label class="required">
                         <div class="regBox clearfix">
-<!--                            <span class="regBoxTit ms-fl">创建理想登录名 *</span>-->
 			                <span class="regBoxWrap ms-fl">
                                     <input type="hidden" id="firstname" name="firstname" value="" title="收件人姓名" maxlength="255">
-<!--				            <span class="regBoxWrapSn">例如：张三，zhangsan，zhang,shan。使用（汉字、字母、下划线等字符），数字不能第一个字符出现</span>-->
 			                </span>
                         </div>
                     </label>
             <div class="regBox clearfix">
                 <span class="regBoxTit ms-fl">电子邮件E-mail *</span>
 			<span class="regBoxWrap ms-fl">
-<!--				<input type="text" class="regBoxInp"><br>-->
                 <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" /><br>
 				<span class="regBoxWrapSn">您必须提供一个正确电子邮箱地址，否则账号无法激活</span>
 			</span>
@@ -59,14 +49,12 @@
 
 
                     <div class="regBox clearfix">
-<!--                        <label for="password" class="required"><em>*</em>--><?php //echo $this->__('Password') ?><!--</label>-->
                         <span class="regBoxTit ms-fl">设定登录密码 *</span>
                         <span class="regBoxWrap ms-fl">
                             <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="regBoxInp input-text required-entry validate-password" />
                         </span>
                     </div>
                     <div class="regBox clearfix">
-<!--                        <label for="confirmation" class="required"><em>*</em>--><?php //echo $this->__('Confirm Password') ?><!--</label>-->
                         <span class="regBoxTit ms-fl">请再次输入密码 *</span>
                         <span class="regBoxWrap ms-fl">
                             <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" />
@@ -193,27 +181,5 @@
                 }
             });
         });
-        $(function(){
-            setTimeout(function(){
-                var sliderH = $('.spalding_index_slider img').height();
-                //alert(sliderH);
-                $('#focus').css("height",sliderH);
-                //$('.footer').css("display","block")
-            },100);
-
-            $('.searchBtn').mouseover(function(){
-                $(this).parents().find('.dropDown_search').slideDown();
-            });
-
-            $('.dropDownBg').on("click",function(){
-                $(this).parent('.dropDown_search').slideUp();
-            });
-            $('.dropClose').on("click",function(){
-                $(this).parent('.dropDown_search').slideUp();
-            });
-
-
-        });
-
     </script>
 </div>
