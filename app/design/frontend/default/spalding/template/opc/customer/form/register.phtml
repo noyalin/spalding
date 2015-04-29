@@ -175,8 +175,11 @@
                     data:{
                         email:email
                     },
+                    beforeSend:function(){
+                        var html = '<div><img width=50 height=50 src="http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/auth/ajax1.gif"/></div>';
+                        jQuery('.emailspanhtml').html(html);
+                    },
                     success: function(data){
-                        console.log(data);
                         if(data > 0){
                             //邮件存在
                             jQuery(".emailspan").addClass("validation-error");
