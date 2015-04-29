@@ -28,8 +28,9 @@
                     </label>
             <div class="regBox clearfix">
                 <span class="regBoxTit ms-fl">电子邮件E-mail *</span>
-			<span class="regBoxWrap ms-fl">
-                <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" /><br>
+			<span class="regBoxWrap ms-fl emailspan">
+                <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" />
+                <br>
 				<span class="regBoxWrapSn">您必须提供一个正确电子邮箱地址，否则账号无法激活</span>
 			</span>
             </div>
@@ -166,10 +167,29 @@
         jQuery(function(){
             jQuery("#email_address").change(function(){
                 var email = jQuery("#email_address").val();
+                //判断email是否已经存在
+                jQuery.ajax({
+                    type: 'POST',
+                    //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+                    url: "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/store/check/email",
+                    data:{
+                        email:email
+                    },
+                    success: function(data){
+                        if(data*1 > 0){
+                            //邮件存在
+                            jQuery(".emailspan").addClass("validation-error");
+                        }else{
+                            jQuery(".emailspan").addClass("validation-passed");
+                        }
+
+                    },
+                    error: function(e){}
+                });
                 if(email.indexOf("@")>=0){
                     var arr = email.split("@");
                     firstName =arr[0];
-                    jQuery("#firstname").val(firstName);
+                    jQuery("firstname").val(firstName);
                 }
             });
         });

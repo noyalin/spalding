@@ -1,0 +1,11 @@
+span.validation-passed {
+    background: url("../images/icon_ok.gif") no-repeat scroll 100% 2px rgba(0, 0, 0, 0);
+    padding-right: 20px;
+}
+.regBox span.regBoxWrap {
+    width: 290px;
+}
+span.validation-error {
+    background: url("../images/icon_error.gif") no-repeat scroll 100% 2px rgba(0, 0, 0, 0);
+    padding-right: 20px;
+}

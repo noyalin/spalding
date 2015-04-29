@@ -13,7 +13,7 @@ class Task_Tools_CheckController extends Mage_Core_Controller_Front_Action{
         mage :: log($email);
         $websiteId = Mage::app()->getWebsite()->getId();
 
-        echo $this->IscustomerEmailExists($email).' aaa';
+        echo $this->IscustomerEmailExists($email);
     }
     function IscustomerEmailExists($email, $websiteId = null){
         $customer = Mage::getModel('customer/customer');
