@@ -167,6 +167,11 @@
         jQuery(function(){
             jQuery("#email_address").change(function(){
                 var email = jQuery("#email_address").val();
+                if(email.indexOf("@")>=0){
+                    var arr = email.split("@");
+                    firstName =arr[0];
+                    jQuery("#firstname").val(firstName);
+                }
                 //判断email是否已经存在
                 jQuery.ajax({
                     type: 'POST',
@@ -194,11 +199,7 @@
                     },
                     error: function(e){}
                 });
-                if(email.indexOf("@")>=0){
-                    var arr = email.split("@");
-                    firstName =arr[0];
-                    jQuery("firstname").val(firstName);
-                }
+
             });
         });
     </script>
