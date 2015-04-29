@@ -192,7 +192,7 @@
                             //邮件存在
                             jQuery(".emailspan").addClass("validation-error");
                             jQuery(".emailspanhtml").show();
-                            jQuery(".emailspanhtml").html("<div id='mobile_exist_msg'>该E-mail已被注册</div>");
+                            jQuery(".emailspanhtml").html("<div id='mobile_exist_msg'>该E-mail已被注册</div>&nbsp;&nbsp;您可以直接[<a class='registeralink' href=\"<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>\">登录</a>]");
                         }else if(data == 1){
                             jQuery(".emailspan").removeClass("validation-error");
                             jQuery(".emailspanhtml").html("");

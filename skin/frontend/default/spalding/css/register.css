@@ -13,4 +13,12 @@ span.validation-error {
     clear: both;
     color: #d91a00;
     font-size: 11px;
+    float:left;
+}
+
+.regBoxWrapSn a{
+    text-decoration:underline;
+}
+.regBoxWrapSn a:hover{
+    color: #000000;
 }
