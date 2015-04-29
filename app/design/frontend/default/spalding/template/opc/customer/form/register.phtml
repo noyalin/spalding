@@ -31,7 +31,7 @@
 			<span class="regBoxWrap ms-fl emailspan">
                 <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" />
                 <br>
-				<span class="regBoxWrapSn">您必须提供一个正确电子邮箱地址，否则账号无法激活</span>
+				<span class="regBoxWrapSn emailspanhtml"></span>
 			</span>
             </div>
 
@@ -176,10 +176,15 @@
                         email:email
                     },
                     success: function(data){
-                        if(data*1 > 0){
+                        console.log(data);
+                        if(data > 0){
                             //邮件存在
                             jQuery(".emailspan").addClass("validation-error");
+                            jQuery(".emailspanhtml").show();
+                            jQuery(".emailspanhtml").html("<div id='mobile_exist_msg'>该E-mail已被注册</div>");
                         }else{
+                            jQuery(".emailspan").removeClass("validation-error");
+                            jQuery(".emailspanhtml").html("");
                             jQuery(".emailspan").addClass("validation-passed");
                         }
 
