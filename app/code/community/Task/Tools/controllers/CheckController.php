@@ -5,6 +5,9 @@ class Task_Tools_CheckController extends Mage_Core_Controller_Front_Action{
         if (!$this->getRequest()->isPost()) {
             return;
         }
+        if (!$this->_validateFormKey()) {
+            return;
+        }
         $email = $this->getRequest()->getParam('email');
         $websiteId = Mage::app()->getWebsite()->getId();
 
@@ -16,8 +19,8 @@ class Task_Tools_CheckController extends Mage_Core_Controller_Front_Action{
         $customer->setWebsiteId(1);
         $customer->loadByEmail($email);
         if ($customer->getId()) {
-            return 1;
+            return 2;
         }
-        return false;
+        return 1;
     }
 }

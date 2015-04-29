@@ -31,6 +31,7 @@
 			<span class="regBoxWrap ms-fl emailspan">
                 <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" />
                 <br>
+                <input type="hidden" id="form_key" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>">
 				<span class="regBoxWrapSn emailspanhtml"></span>
 			</span>
             </div>
@@ -173,24 +174,26 @@
                     jQuery("#firstname").val(firstName);
                 }
                 //判断email是否已经存在
+                var formKey = jQuery("#form_key").val();
                 jQuery.ajax({
                     type: 'POST',
                     //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
                     url: "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/store/check/email",
                     data:{
-                        email:email
+                        email:email,
+                        form_key:formKey
                     },
                     beforeSend:function(){
                         var html = '<div><img width=50 height=50 src="http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/auth/ajax1.gif"/></div>';
                         jQuery('.emailspanhtml').html(html);
                     },
                     success: function(data){
-                        if(data > 0){
+                        if(data == 2){
                             //邮件存在
                             jQuery(".emailspan").addClass("validation-error");
                             jQuery(".emailspanhtml").show();
                             jQuery(".emailspanhtml").html("<div id='mobile_exist_msg'>该E-mail已被注册</div>");
-                        }else{
+                        }else if(data == 1){
                             jQuery(".emailspan").removeClass("validation-error");
                             jQuery(".emailspanhtml").html("");
                             jQuery(".emailspan").addClass("validation-passed");
