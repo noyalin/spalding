@@ -449,6 +449,21 @@ $breadCrumbs = array();
                             if($productNorm == 6){
                                 $className = "multi-view-img";
                             }
+                            $shortDescription =  $_product->getShortDescription();
+                            mage :: log($shortDescription);
+                            if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
+                                if( strstr($shortDescription,'，')  ){
+                                    $tmpArr = explode("，",$shortDescription);
+                                    $shortDescription = "(".$tmpArr[1].")";
+                                }elseif(strstr($shortDescription,',')){
+                                    $tmpArr = explode(",",$shortDescription);
+                                    $shortDescription = "(". $tmpArr[1].")";
+                                }else{
+                                    $shortDescription = '';
+                                }
+                            }else{
+                                $shortDescription = '';
+                            }
                     ?>
 
 						<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
@@ -465,7 +480,7 @@ $breadCrumbs = array();
 								<h3><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $_productNameStripped ?></a></h3>
 								<p class="cat-price sku-<?php echo substr($_product->getSku(), 6) ?>"><?php echo $_helper->productAttribute($_product, $_product->getJ2tRewardvalue(), 'j2t_rewardvalue') . ' Points' ?></p>
 							<?php else: ?>
-								<h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_productNameStripped ?></a></h3>
+								<h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_productNameStripped ." ". $shortDescription ?></a></h3>
 								<p class="cat-price sku-<?php echo $_product->getSku() ?>">￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></p>
 							<?php endif; ?>
 						</div>
