@@ -462,10 +462,10 @@ $breadCrumbs = array();
 								</a>
 							</div>
 							<?php if ($parentCategoryArray[2] == 200): ?>
-								<h3><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?></a></h3>
+								<h3><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $_productNameStripped ?></a></h3>
 								<p class="cat-price sku-<?php echo substr($_product->getSku(), 6) ?>"><?php echo $_helper->productAttribute($_product, $_product->getJ2tRewardvalue(), 'j2t_rewardvalue') . ' Points' ?></p>
 							<?php else: ?>
-								<h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><br><?php echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?></a></h3>
+								<h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_productNameStripped ?></a></h3>
 								<p class="cat-price sku-<?php echo $_product->getSku() ?>">￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></p>
 							<?php endif; ?>
 						</div>

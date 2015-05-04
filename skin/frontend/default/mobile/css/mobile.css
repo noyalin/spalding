@@ -1550,7 +1550,7 @@ section#category-wrapper header h1{
 .multi-view-img{
 	margin: 0 auto;
     width:185px;
-    height:140px;
+    height:100px;
     margin-top:40px
 }
 .multi-view-img img{
@@ -1558,6 +1558,8 @@ section#category-wrapper header h1{
 }
 .multi-view-img-big{
     margin: 0 auto;
+    width:185px;
+    height:140px;
 }
 .multi-view-img-big img{
     width: 185px;
