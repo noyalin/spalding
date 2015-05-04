@@ -439,13 +439,23 @@ $breadCrumbs = array();
 				</div>
 			<?php else: ?>
 				<div class="multi-view-wrapper<?php echo (count($parentCategoryArray) > 3) ? ' sub' : '' ?>">
-					<?php foreach ($_productCollection as $_product): ?>
+					<?php
+
+                        foreach ($_productCollection as $_product):
+                            $className = "multi-view-img-big";
+                            $skuConfig = $_product->getSku();
+                            $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
+                            $productNorm = $configurableProduct->getProductNorm();
+                            if($productNorm == 6){
+                                $className = "multi-view-img";
+                            }
+                    ?>
 
 						<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
 
 						<a name="multi-view-box-<?php echo $_product->getId() ?>"></a>
 						<div class="multi-view-box" id="multi-view-box-<?php echo $_product->getId() ?>" sku='<?php echo $_product->getSku() ?>'>
-							<div class="multi-view-img">
+							<div class="<?php  echo $className; ?>">
 								<a href="<?php echo $_product->getProductUrl() ?>">
 									<?php $catalogProductUrlKey = ($parentCategoryArray[2] == 200) ? substr($this->htmlEscape($_product->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_product->getUrlKey()); ?>
 									<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') ?>/<?php echo $catalogProductUrlKey ?>-1" alt="<?php echo $_productNameStripped; ?>">

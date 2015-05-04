@@ -1549,9 +1549,18 @@ section#category-wrapper header h1{
 }
 .multi-view-img{
 	margin: 0 auto;
+    width:185px;
+    height:140px;
+    margin-top:40px
 }
 .multi-view-img img{
 	width: 120px;
+}
+.multi-view-img-big{
+    margin: 0 auto;
+}
+.multi-view-img-big img{
+    width: 185px;
 }
 .multi-view-box h3{
 	font-size:10px;
