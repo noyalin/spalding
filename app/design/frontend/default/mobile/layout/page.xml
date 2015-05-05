@@ -26,7 +26,7 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>mage/cookies.js</script></action>
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
 
-				<action method="addItem"><type>skin_css</type><name>css/mobile2.css</name></action>
+				<action method="addItem"><type>skin_css</type><name>css/mobile3.css</name></action>
             </block>
 
             <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
