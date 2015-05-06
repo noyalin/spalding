@@ -155,7 +155,9 @@
                     <div style="display: none" id="advice-required-entry-agree_terms" class="validation-advice">这是必填字段。</div>
                 </div>
                 <div class="field" style="padding-top: 20px;">
-                    <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button">注册</button><br>
+                    <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button" id="submitbutton">注册</button>
+                    <button type="button" title="<?php echo $this->__('注册') ?>" class="rulNotAgree button" id="disablesubmitbutton" style="display: none">注册</button>
+                    <br>
                 </div>
 
 				<span>* 为必填项</span>

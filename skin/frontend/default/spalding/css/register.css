@@ -52,3 +52,13 @@ span.validation-error {
     font-size: 11px !important;
     padding: 3px 0 0 !important;
 }
+button.rulNotAgree {
+    background: none repeat scroll 0 0 #cccccc;
+    border: 0 none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 10px;
+    width: 100px;
+}
