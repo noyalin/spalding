@@ -147,11 +147,12 @@
                         <label for="is_subscribed" class="terms"><a href="#">订阅邮件</a></label>
                     </div>
                 <?php endif ?>
-                <div class="field">
+                <div class="field" style="height: 15px;">
                     <div class="input-box">
                         <input type="checkbox" name="agree_terms" id="agree_terms" value="1" checked="checked" class="checkbox required-entry" autocomplete="off">
                         <label for="agree_terms" class="terms"><a href="#">我接受注册用户服务条款</a></label>
                     </div>
+                    <div style="display: none" id="advice-required-entry-agree_terms" class="validation-advice">这是必填字段。</div>
                 </div>
                 <div class="field" style="padding-top: 20px;">
                     <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button">注册</button><br>

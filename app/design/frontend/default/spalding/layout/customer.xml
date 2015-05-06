@@ -132,6 +132,11 @@ New customer registration
                 <name>css/register.css</name>
                 <params/>
             </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/register.js</name>
+                <params/>
+            </action>
             <action method="removeItem">
                 <type>skin_css</type>
                 <name>css/print.css</name>

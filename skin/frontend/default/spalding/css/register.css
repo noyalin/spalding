@@ -45,3 +45,10 @@ span.validation-error {
     width: auto;
     margin-top: -3px;
 }
+
+.validation-advice {
+    clear: both;
+    color: #d91a00 !important;
+    font-size: 11px !important;
+    padding: 3px 0 0 !important;
+}
