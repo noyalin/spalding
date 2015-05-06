@@ -832,6 +832,7 @@ button.rulAgree{
 	background: #fdb905;
 	border-radius: 3px;
 	cursor:pointer;
+    width: 100px;
 }
 
 /*产品*/

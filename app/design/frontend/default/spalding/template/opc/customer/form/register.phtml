@@ -141,13 +141,19 @@
 
                     　　同意以上所有服务条款，才能继续申请。
 				</div>
-				<span class="regBoxWrapSn" style="margin:10px 0;">点击下面的“我接受”，及表示您同意接受上面的<font style="color:#666;text-decoration:underline;">条款</font>。</span><br>
                 <?php if ($this->isNewsletterEnabled()): ?>
+                    <div class="newsletter">
                         <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                        <span class="regBoxWrapSn">发送注册信息到我的注册邮箱？</span><br>
-<!--                    <label for="is_subscribed">--><?php //echo $this->__('Sign Up for Newsletter') ?><!--</label>-->
+                        <span><a href="#">订阅邮件</a></span>
+                    </div>
                 <?php endif ?>
-                <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button">我接受,并注册</button><br>
+                <div class="field">
+                    <div class="input-box">
+                        <input type="checkbox" name="agree_terms" id="agree_terms" value="1" checked="checked" class="checkbox required-entry" autocomplete="off">
+                        <label for="agree_terms" class="terms"><a href="#">我接受注册用户服务条款</a></label>
+                    </div>
+                </div>
+                <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button">注册</button><br>
 				<span>* 为必填项</span>
 			</span>
             </div>

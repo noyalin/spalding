@@ -22,3 +22,22 @@ span.validation-error {
 .regBoxWrapSn a:hover{
     color: #000000;
 }
+.regBoxWrap .field{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.newsletter{
+    padding-top: 20px;
+}
+#agree_terms{
+    margin-right: 5px;
+    float: left;
+
+}
+
+.terms {
+    float: left;
+    padding: 0;
+    width: auto;
+    margin-top: -2px;
+}
