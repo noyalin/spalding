@@ -34,10 +34,14 @@ span.validation-error {
     float: left;
 
 }
+.agree_terms{
+    margin-right: 5px;
+    float: left;
 
+}
 .terms {
     float: left;
     padding: 0;
     width: auto;
-    margin-top: -2px;
+    margin-top: -3px;
 }
