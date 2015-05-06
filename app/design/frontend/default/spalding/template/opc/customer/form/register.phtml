@@ -182,10 +182,15 @@
         jQuery(function(){
             jQuery("#email_address").change(function(){
                 var email = jQuery("#email_address").val();
+                if(email == ''){
+                    return;
+                }
                 if(email.indexOf("@")>=0){
                     var arr = email.split("@");
                     firstName =arr[0];
                     jQuery("#firstname").val(firstName);
+                }else{
+                    return;
                 }
                 //判断email是否已经存在
                 var formKey = jQuery("#form_key").val();
@@ -202,6 +207,7 @@
                         jQuery('.emailspanhtml').html(html);
                     },
                     success: function(data){
+
                         if(data == 2){
                             //邮件存在
                             jQuery(".emailspan").addClass("validation-error");
@@ -211,6 +217,8 @@
                             jQuery(".emailspan").removeClass("validation-error");
                             jQuery(".emailspanhtml").html("");
                             jQuery(".emailspan").addClass("validation-passed");
+                        }else{
+                           // alert(data + ' here ' +  "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/store/check/email");
                         }
 
                     },
