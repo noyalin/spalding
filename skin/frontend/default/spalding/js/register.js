@@ -1,7 +1,7 @@
 jQuery(function(){
-
     jQuery("#email_address").focus();
     jQuery("#agree_terms").click(function(){
+        console.log(1);
         if("checked" == jQuery(this).attr("checked")){
             jQuery("#advice-required-entry-agree_terms").hide();
             jQuery("#submitbutton").show();
