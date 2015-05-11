@@ -714,7 +714,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                         $order->save();
 //                        echo "success";
                         Mage :: log("付款成功");
-                        $this->sendMail($out_trade_no);
+//                        $this->sendMail($out_trade_no);
                         if($method == "get"){
                             $this->_redirect("sales/order/view/order_id/".$order->getId());
                             return;

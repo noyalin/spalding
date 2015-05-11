@@ -404,7 +404,6 @@ final class StoneEdge_MagentoImport {
             if( $beginWord == 11 || $beginWord == 20){
                 $storeId = 2;
             }
-//			$lastEntityId = self::getOrderEntityId($db, $sql, $lastDate, $lastOrder,$storeId);
 		}
         $entityStr = '';
         $time = Date("Y-m-d H:i:s");
@@ -413,22 +412,17 @@ final class StoneEdge_MagentoImport {
             $time = $_REQUEST['lastdate'];
             $gmtTime = date("Y-m-d H:i:s",strtotime($time)-8*60*60);
         }
-
-//        if($lastEntityId){
             $sql = $db->select()
                 ->from($ordersTable, 'entity_id')
                 ->where('store_id=?', $storeId, Zend_Db::INT_TYPE)
                 ->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"')
                 ->where(  "updated_at >= '$gmtTime' " ) // "entity_id > $lastEntityId"
-// ALERTBOT BEGIN => Exclude orders from sneakerhead.com domain
                 ->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')")
-// ALERTBOT END
                 ->limit($batchsize, $startnum);
             if (self::$_debug) {
                 echo "Executing SQL: $sql\r\n";
             }
             $ordRows = $db->fetchAll($sql);
-//        }
 
 
 		$xd = new DOMDocument("1.0", "UTF-8");
@@ -526,9 +520,6 @@ final class StoneEdge_MagentoImport {
 		$street = explode("\n", $addr->getStreetFull());
 		self::xmlAppend("Street1", $addr->getData('district'), $ndAddr, $xd);
 		self::xmlAppend("Street2", $street[0], $ndAddr, $xd);
-//		if (sizeof($street) > 1) {
-//			self::xmlAppend("Street2", $street[1], $ndAddr, $xd);
-//		}
 		self::xmlAppend("City", $addr->getData('city'), $ndAddr, $xd);
 		self::xmlAppend("State", $state, $ndAddr, $xd);
 		self::xmlAppend("Code", $addr->getData('postcode'), $ndAddr, $xd);
@@ -1108,74 +1099,6 @@ final class StoneEdge_MagentoImport {
 		}
 	}
 
-//PCN BEGIN
-//Removed updateOrderStatus
-//	private static function updateOrderStatus(DOMElement $ndOrder) {
-//		$orderNumber = $ndOrder->getElementsByTagName('OrderNumber')->item(0)->nodeValue;
-//		$status = strtolower($ndOrder->getElementsByTagName('Status')->item(0)->nodeValue);
-//
-//		$order = Mage::getModel('sales/order')->loadByIncrementId($orderNumber);
-//		if (!$order) { throw new Exception("Order number $orderNumber was not found."); }
-//		
-//		// Get shipment increment ID - if there are already shipments, just get the last one
-//		$shipmentId = false; $shipments = false;
-//		$api = Mage::getModel('sales/order_shipment_api');
-//
-//		try {
-//			$shipments = $order->getShipmentsCollection();
-//			
-//			if (!$shipments || empty($shipments) || !count($shipments)) {
-//				// returns incrementId of new shipment
-//				$shipmentId = $api->create($orderNumber);
-//			} else {
-//				// get incrementId of last shipment
-//				foreach ($shipments as $shipment) {
-//					$shipmentId = $shipment['increment_id'];
-//				}
-//				if ($shipmentId === false) { 
-//					$shipmentId = $api->create($orderNumber); 
-//				}
-//			}
-//			$shipments = $api->info($shipmentId);
-//		} catch (Exception $e) {
-//			throw $e;	
-//		}
-//		
-//		// Are we updating tracking data?
-//		$packages = $ndOrder->getElementsByTagName('Package');
-//		$doTracking = ($packages != null && $packages->length > 0);		
-//		if ($doTracking) {
-//			foreach ($packages as $package) {
-//				$trackNum = $package->getElementsByTagName('TrackNum')->item(0)->nodeValue;
-//				$carrier = $package->getElementsByTagName('Shipper')->item(0)->nodeValue;
-//				$carrierCode = self::parseShipmentCarrier($orderNumber, $carrier, $api);
-//				if (!$carrierCode || self::trackingNumberExists($trackNum, $shipments)) { continue; }				
-//				$api->addTrack($shipmentId, $carrierCode, $status, $trackNum);
-//			}
-//		}
-//
-//		try {
-//			// Add status change to order status history (does not add comment or notify customer)
-//			$api = Mage::getModel('sales/order_api');
-//			$api->addComment($orderNumber, $status);		
-//		
-//			// Set the status (but don't change the state)
-//			$order = Mage::getModel('sales/order')->loadByIncrementId($orderNumber);
-//	
-//			if ($order->isStateProtected($order->getState())) {
-//				$order->setStatus($status);	
-//			} else {
-//				$order->setState($order->getState(), $status);
-//			}
-//			$order->save();			
-//
-//		} catch (Exception $e) { 
-//			if (self::$_debug) { echo "Status update error: $e\r\n"; }
-//			throw $e; 
-//		}	
-//	}
-//PCN END
-	
 	private static function trackingNumberExists($trackNum, $shipments) {
 		if (!is_array($shipments))
 			return false;

@@ -10,13 +10,6 @@
     }
 ?>
 <div class="account-create">
-<!--    <div class="page-title">-->
-<!--        <h1>--><?php //echo $this->__('Create an Account') ?><!--</h1>-->
-<!--    </div>-->
-<!--    --><?php //echo $this->getChildHtml('form_fields_before')?>
-<!--    --><?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<!--    --><?php //echo $this->getChildHtml('paypalauth.register'); ?>
-<!--    <div style="height:110px; z-index:-2;"></div>-->
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
         <div class="spaldingMain">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
@@ -28,13 +21,24 @@
             </div>
                     <label class="required">
                         <div class="regBox clearfix">
-                            <span class="regBoxTit ms-fl">创建理想登录名 *</span>
 			                <span class="regBoxWrap ms-fl">
-                                    <input type="text" id="firstname" name="firstname" value="" title="收件人姓名" maxlength="255" class="regBoxInp input-text required-entry">
-				            <span class="regBoxWrapSn">例如：张三，zhangsan，zhang,shan。使用（汉字、字母、下划线等字符），数字不能第一个字符出现</span>
+                                    <input type="hidden" id="firstname" name="firstname" value="" title="收件人姓名" maxlength="255">
 			                </span>
                         </div>
                     </label>
+
+            <div style="padding-left: 180px;font-size:13px;">
+                <span>* 为必填项</span>
+            </div>
+            <div class="regBox clearfix">
+                <span class="regBoxTit ms-fl">电子邮件E-mail *</span>
+			<span class="regBoxWrap ms-fl emailspan">
+                <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" />
+                <br>
+                <input type="hidden" id="form_key" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>">
+				<span class="regBoxWrapSn emailspanhtml"></span>
+			</span>
+            </div>
 
             <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
             <?php if ($_dob->isEnabled()): ?>
@@ -51,14 +55,12 @@
 
 
                     <div class="regBox clearfix">
-<!--                        <label for="password" class="required"><em>*</em>--><?php //echo $this->__('Password') ?><!--</label>-->
                         <span class="regBoxTit ms-fl">设定登录密码 *</span>
                         <span class="regBoxWrap ms-fl">
                             <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="regBoxInp input-text required-entry validate-password" />
                         </span>
                     </div>
                     <div class="regBox clearfix">
-<!--                        <label for="confirmation" class="required"><em>*</em>--><?php //echo $this->__('Confirm Password') ?><!--</label>-->
                         <span class="regBoxTit ms-fl">请再次输入密码 *</span>
                         <span class="regBoxWrap ms-fl">
                             <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" />
@@ -67,36 +69,96 @@
                 <?php echo $this->getChildHtml('persistent.remember.me'); ?>
             <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
 
-            <div class="regBox clearfix">
-                <span class="regBoxTit ms-fl">电子邮件E-mail *</span>
-			<span class="regBoxWrap ms-fl">
-<!--				<input type="text" class="regBoxInp"><br>-->
-                <input type="text" name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" /><br>
-				<span class="regBoxWrapSn">您必须提供一个正确电子邮箱地址，否则账号无法激活</span>
-			</span>
-            </div>
+
             <div class="regBox clearfix">
                 <span class="regBoxTit ms-fl">服务条款</span>
 			<span class="regBoxWrap ms-fl">
-				<span class="regBoxWrapSn">请检查以上您输入的个人账户信息（内容可以随意更改）,并阅读以下服务条款。</span>
-				<div class="regRuls">本协议是您与斯伯丁中国商城网站（简称“本站”，网址：www.SPALDINGCHINA.com）所有者（以下简称为“斯伯丁中国商城”）之间就斯伯丁商城网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击“同意以下协议，提交”按钮后，本协议即构成对双方有约束力的法律文件。第1条 本站服务条款的确认和接纳1.1	本站的各项电子服务的所有权和运作权归斯伯丁中国有限公司所有。用户同意所有协议是您与斯伯丁中国商城网站（简称“本站”，网址：www.SPALDINGCHINA.com）所有者（以下简称为“斯伯丁中国商城”）之间就斯伯丁商城网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击“同意以下协议，提交”按钮后，本协议即构成对双方有约束力的法律文件。第1条 本站服务条款的确认和接纳1.1	本站的各项电子服务的所有权和运作权归斯伯丁中国有限公司所有。用户同意所有</div>
-				<span class="regBoxWrapSn" style="margin:10px 0;">点击下面的“我接受”，及表示您同意接受上面的<font style="color:#666;text-decoration:underline;">条款</font>。</span><br>
-                <?php if ($this->isNewsletterEnabled()): ?>
-                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                        <span class="regBoxWrapSn">发送注册信息到我的注册邮箱？</span><br>
-<!--                    <label for="is_subscribed">--><?php //echo $this->__('Sign Up for Newsletter') ?><!--</label>-->
-                <?php endif ?>
-                <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button">我接受,并注册</button><br>
-				<span>* 为必填项</span>
+				<span class="regBoxWrapSn">请检查以上您输入的个人信息,并阅读以下服务条款。</span>
+				<div class="regRuls">
+                    一、特别提示
+                    1.1.斯伯丁（中国）同意按照本协议的规定及其不定时发布的操作规则提供基于互联网的相关服务（以下称"网络服务"）。为获得网络服务，服务使用人（以下称"用户"）应当同意本协议的全部条款并按照页面上的提示完成全部的注册程序。
+                    用户在进行注册程序过程中选择"我同意斯伯丁（中国）服务协议"选项，即表示用户完全接受本协议项下的全部条款。<br/>
+                    二、服务内容
+                    2.1斯伯丁（中国）会员专区网络服务的具体内容由斯伯丁（中国）根据实际情况提供，例如论坛(BBS)、招商信息、资料库、发表新闻评论等。斯伯丁（中国）保留随时变更、中断或终止部分或全部网络服务的权利。
+                    2.2用户理解，斯伯丁（中国）仅提供相关的网络服务，除此之外与相关网络服务有关的设备（如电脑、调制解调器及其他与接入互联网有关的装置）及所需的费用（如为接入互联网而支付的电话费及上网费）均应由用户自行负担。<br/>
+                    三、使用规则
+                    3.1用户在申请使用斯伯丁（中国）网络服务时，必须向斯伯丁（中国）提供准确的个人资料，如个人资料有任何变动，必须及时更新。
+                    3.2用户注册成功后，斯伯丁（中国）将给予每个用户一个用户帐号及相应的密码，该用户帐号和密码由用户负责保管；用户应当对以其用户帐号进行的所有活动和事件负法律责任。
+                    3.3用户必须同意接受斯伯丁（中国）通过电子邮件或其他方式向用户发送的优惠服务信息或其他相关服务信息。
+                    3.4用户在使用斯伯丁（中国）网络服务过程中，必须遵循以下原则：
+                    在斯伯丁（中国）的网页上发布信息或者利用斯伯丁（中国）的服务时必须符合中国有关法规(部分法规请见附录)，不得在斯伯丁（中国）的网页上或者利用斯伯丁（中国）的服务制作、复制、发布、传播以下信息：
+                    (a)反对宪法所确定的基本原则的；
+                    (b)危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；
+                    (c)损害国家荣誉和利益的；
+                    (d)煽动民族仇恨、民族歧视，破坏民族团结的；
+                    (e)破坏国家宗教政策，宣扬邪教和封建迷信的；
+                    (f)散布谣言，扰乱社会秩序，破坏社会稳定的；
+                    (g)散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；
+                    (h)侮辱或者诽谤他人，侵害他人合法权益的；
+                    (i)含有法律、行政法规禁止的其他内容的。
+                    在斯伯丁（中国）的网页上发布信息或者利用斯伯丁（中国）的服务时还必须符合其他有关国家和地区的法律规定以及国际法的有关规定。
+                    (3)不利用斯伯丁（中国）的服务从事以下活动：
+                    (a)未经允许，进入计算机信息网络或者使用计算机信息网络资源的；
+                    (b)未经允许，对计算机信息网络功能进行删除、修改或者增加的；
+                    (c)未经允许，对进入计算机信息网络中存储、处理或者传输的数据和应用程序进行删除、修改或者增加的；
+                    (d)故意制作、传播计算机病毒等破坏性程序的；
+                    (e)其他危害计算机信息网络安全的行为。
+                    不以任何方式干扰斯伯丁（中国）的服务。
+                    (5)遵守斯伯丁（中国）的所有其他规定和程序。<br/>
+                    四、内容所有权
+                    4.1斯伯丁（中国）提供的网络服务内容可能包括：文字、软件、声音、图片、录像、图表等。所有这些内容受版权、商标和其它财产所有权法律的保护。
+                    4.2用户只有在获得斯伯丁（中国）或其他相关权利人的授权之后才能使用这些内容，而不能擅自复制、再造这些内容、或创造与内容有关的派生产品。<br/>
+                    五、隐私保护
+                    5.1保护用户隐私是斯伯丁（中国）的一项基本政策，斯伯丁（中国）保证不对外公开或向第三方提供用户注册资料及用户在使用网络服务时存储在斯伯丁（中国）的非公开内容，但下列情况除外：
+                    (a)事先获得用户的明确授权；
+                    (b)根据有关的法律法规要求；
+                    (c)按照相关政府主管部门的要求；
+                    (d)为维护社会公众的利益；
+                    (e)为维护斯伯丁（中国）的合法权益。
+                    5.2斯伯丁（中国）可能会与第三方合作向用户提供相关的网络服务，在此情况下，如该第三方同意承担与斯伯丁（中国）同等的保护用户隐私的责任，则斯伯丁（中国）可将用户的注册资料等提供给该第三方。
+                    5.3在不透露单个用户隐私资料的前提下，斯伯丁（中国）有权对整个用户数据库进行分析并对用户数据库进行商业上的利用。<br/>
+                    六、免责声明
+                    6.1若斯伯丁（中国）已经明示其网络服务提供方式发生变更并提醒用户应当注意事项，用户未按要求操作所产生的一切后果由用户自行承担。
+                    6.2用户明确同意其使用斯伯丁（中国）网络服务所存在的风险将完全由其自己承担；因其使用斯伯丁（中国）网络服务而产生的一切后果也由其自己承担，斯伯丁（中国）对用户不承担任何责任。
+                    6.3斯伯丁（中国）不担保网络服务一定能满足用户的要求，也不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也都不作担保。<br/>
+                    七、服务变更、中断或终止
+                    7.1如因系统维护或升级的需要而需暂停网络服务，斯伯丁（中国）将尽可能事先进行通告。7.2如发生下列任何一种情形，斯伯丁（中国）有权随时中断或终止向用户提供本协议项下的网络服务而无需通知用户：
+                    用户提供的个人资料不真实；
+                    用户违反本协议中规定的使用规则。
+                    7.3除前款所述情形外，斯伯丁（中国）同时保留在不事先通知用户的情况下随时中断或终止部分或全部网络服务的权利，对于所有服务的中断或终止而造成的任何损失，斯伯丁（中国）无需对用户或任何第三方承担任何责任。<br/>
+                    八、违约赔偿
+                    8.1用户同意保障和维护斯伯丁（中国）及其他用户的利益，如因用户违反有关法律、法规或本协议项下的任何条款而给斯伯丁（中国）或任何其他第三人造成损失，用户同意承担由此造成的损害赔偿责任。<br/>
+                    九、修改协议
+                    9.1斯伯丁（中国）将可能不时的修改本协议的有关条款，一旦条款内容发生变动，斯伯丁（中国）将会在相关的页面提示修改内容。
+                    9.2如果不同意斯伯丁（中国）对服务条款所做的修改，用户有权停止使用网络服务。如果用户继续使用网络服务，则视为用户接受服务条款的变动。<br/>
+                    十、法律管辖
+                    10.1本协议的订立、执行和解释及争议的解决均应适用中国法律。
+                    10.2如双方就本协议内容或其执行发生任何争议，双方应尽量友好协商解决；协商不成时，任何一方均可向斯伯丁（中国）所在地的人民法院提起诉讼。<br/>
+                    十一、通知和送达
+                    11.1本协议项下所有的通知均可通过重要页面公告、电子邮件或常规的信件传送等方式进行；该等通知于发送之日视为已送达收件人。<br/>
+                    十二、其他规定
+                    12.1本协议构成双方对本协议之约定事项及其他有关事宜的完整协议，除本协议规定的之外，未赋予本协议各方其他权利。
+                    12.2如本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本协议的其余条款仍应有效并且有约束力。
+                    12.3本协议中的标题仅为方便而设，在解释本协议时应被忽略。
+
+                    　　青少年用户特别提示青少年用户必须遵守全国青少年网络文明公约：要善于网上学习，不浏览不良信息；要诚实友好交流，不侮辱欺诈他人；要增强自护意识，不随意约会网友；要维护网络安全，不破坏网络秩序；要有益身心健康，不沉溺虚拟时空。您只有无条件接受
+
+                    　　同意以上所有服务条款，才能继续申请。
+				</div>
+                <div class="field" style="height: 15px;">
+                    <div class="input-box">
+                        <input type="checkbox" name="agree_terms" id="agree_terms" value="1" checked="checked" class="checkbox required-entry" autocomplete="off">
+                        <label for="agree_terms" class="terms"><a href="#">我接受注册用户服务条款</a></label>
+                    </div>
+                    <div style="display: none" id="advice-required-entry-agree_terms" class="validation-advice">勾选接受服务条款，即可继续注册。</div>
+                </div>
+                <div class="field" style="padding-top: 20px;">
+                    <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button" id="submitbutton">注册</button>
+                    <button type="button" title="<?php echo $this->__('注册') ?>" class="rulNotAgree button" id="disablesubmitbutton" style="display: none">注册</button>
+                    <br>
+                </div>
 			</span>
             </div>
-
-
-<!--        <div class="buttons-set">-->
-<!--            <p class="required">--><?php //echo $this->__('* Required Fields') ?><!--</p>-->
-<!--            <p class="back-link"><a href="--><?php //echo $this->escapeUrl($this->getBackUrl()) ?><!--" class="back-link"><small>&laquo; </small>--><?php //echo $this->__('Back') ?><!--</a></p>-->
-<!--            <button type="submit" title="--><?php //echo $this->__('Submit') ?><!--" class="button"><span><span>--><?php //echo $this->__('Submit') ?><!--</span></span></button>-->
-<!--        </div>-->
         <?php if ($isContextCheckout): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
@@ -111,26 +173,68 @@
     //]]>
     </script>
     <script>
-        $(function(){
-            setTimeout(function(){
-                var sliderH = $('.spalding_index_slider img').height();
-                //alert(sliderH);
-                $('#focus').css("height",sliderH);
-                //$('.footer').css("display","block")
-            },100);
+        jQuery(function(){
+            jQuery("#email_address").change(function(){
+                var email = jQuery("#email_address").val();
+                if(email == ''){
+                    return;
+                }
+                if(email.indexOf("@")>=0){
+                    var arr = email.split("@");
+                    firstName =arr[0];
+                    jQuery("#firstname").val(firstName);
+                }else{
+                    return;
+                }
+                //判断email是否已经存在
+                var formKey = jQuery("#form_key").val();
+                jQuery.ajax({
+                    type: 'POST',
+                    //url: 'https://mp.weixin.qq.com/cgi-bin/login?lang=zh_CN',
+                    url: "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/store/check/email",
+                    data:{
+                        email:email,
+                        form_key:formKey
+                    },
+                    beforeSend:function(){
+                        var html = '<div><img width=50 height=50 src="http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/auth/ajax1.gif"/></div>';
+                        jQuery('.emailspanhtml').html(html);
+                    },
+                    success: function(data){
 
-            $('.searchBtn').mouseover(function(){
-                $(this).parents().find('.dropDown_search').slideDown();
+                        if(data == 2){
+                            //邮件存在
+                            jQuery(".emailspan").addClass("validation-error");
+                            jQuery(".emailspanhtml").show();
+                            jQuery(".emailspanhtml").html("<div id='mobile_exist_msg'>该E-mail已被注册</div>&nbsp;&nbsp;您可以直接[<a class='registeralink' href=\"<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>\">登录</a>]");
+                        }else if(data == 1){
+                            jQuery(".emailspan").removeClass("validation-error");
+                            jQuery(".emailspanhtml").html("");
+                            jQuery(".emailspan").addClass("validation-passed");
+                        }else{
+                           // alert(data + ' here ' +  "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/store/check/email");
+                        }
+
+                    },
+                    error: function(e){}
+                });
+
             });
 
-            $('.dropDownBg').on("click",function(){
-                $(this).parent('.dropDown_search').slideUp();
-            });
-            $('.dropClose').on("click",function(){
-                $(this).parent('.dropDown_search').slideUp();
-            });
+            jQuery("#email_address").focus();
+            jQuery("#agree_terms").click(function(){
+                console.log(1);
+                if("checked" == jQuery(this).attr("checked")){
+                    jQuery("#advice-required-entry-agree_terms").hide();
+                    jQuery("#submitbutton").show();
+                    jQuery("#disablesubmitbutton").hide();
+                }else{
+                    jQuery("#advice-required-entry-agree_terms").show();
+                    jQuery("#submitbutton").hide();
+                    jQuery("#disablesubmitbutton").show();
+                }
 
+            });
         });
-
     </script>
 </div>

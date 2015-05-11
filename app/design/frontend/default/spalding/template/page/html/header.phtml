@@ -151,9 +151,20 @@
                    var args = jQuery(this).attr("param") + jQuery(this).val();
                    window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>products.html?' + args);
                 });
+                //绑定回车按钮
+                jQuery(document).keydown(function(event){
+                    if(event.keyCode==13){
+                        searchClick();
+                    }
+                });
             });
             function searchClick(){
-                window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>catalogsearch/result/?q=' + jQuery("#inputSearchVal").val());
+                var serachVal = jQuery("#inputSearchVal").val();
+                if(serachVal == ''){
+                    window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>products.html/' );
+                }else{
+                    window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>catalogsearch/result/?q=' + jQuery("#inputSearchVal").val());
+                }
             }
             </script>
         <div class="dropDown_search" id="dropDown_search">

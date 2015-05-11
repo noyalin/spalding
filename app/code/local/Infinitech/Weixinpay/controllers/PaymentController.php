@@ -142,7 +142,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
 //                $postMessage->saveDataAndSendWebservice($order);
                 try{
                     $order->save();
-                    $this->sendMail($orderId);
+//                    $this->sendMail($orderId);
                     Mage :: log("付款成功");
                     echo "success";
                     return;

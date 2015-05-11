@@ -1,0 +1,64 @@
+span.validation-passed {
+    background: url("../images/icon_ok.gif") no-repeat scroll 100% 2px rgba(0, 0, 0, 0);
+    padding-right: 20px;
+}
+.regBox span.regBoxWrap {
+    width: 290px;
+}
+span.validation-error {
+    background: url("../images/icon_error.gif") no-repeat scroll 100% 2px rgba(0, 0, 0, 0);
+    padding-right: 20px;
+}
+#mobile_exist_msg {
+    clear: both;
+    color: #d91a00;
+    font-size: 11px;
+    float:left;
+}
+
+.regBoxWrapSn a{
+    text-decoration:underline;
+}
+.regBoxWrapSn a:hover{
+    color: #000000;
+}
+.regBoxWrap .field{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.newsletter{
+    padding-top: 20px;
+}
+#agree_terms{
+    margin-right: 5px;
+    float: left;
+
+}
+.agree_terms{
+    margin-right: 5px;
+    float: left;
+
+}
+.terms {
+    float: left;
+    padding: 0;
+    width: auto;
+    margin-top: -3px;
+}
+
+.validation-advice {
+    clear: both;
+    color: #d91a00 !important;
+    font-size: 11px !important;
+    padding: 3px 0 0 !important;
+}
+button.rulNotAgree {
+    background: none repeat scroll 0 0 #cccccc;
+    border: 0 none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 10px;
+    width: 100px;
+}

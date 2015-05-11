@@ -1549,9 +1549,9 @@ section#category-wrapper header h1{
 }
 .multi-view-img{
 	margin: 0 auto;
-    width:185px;
     height:100px;
-    margin-top:40px
+    margin-top:40px;
+    width:150px;
 }
 .multi-view-img img{
 	width: 120px;

@@ -93,7 +93,7 @@
 				    $shippingNumberOfDays = NULL;
 				    switch ($this->escapeHtml($_rate->getCode())) {
                         case 'flatrate_flatrate':
-                            $shippingMethod = "申通".$this->escapeHtml($_rate->getMethodTitle());
+                            $shippingMethod = "顺丰".$this->escapeHtml($_rate->getMethodTitle());
                             break;
                         case 'devicom_devicom':
                             $shippingMethod = "圆通".$this->escapeHtml($_rate->getMethodTitle());

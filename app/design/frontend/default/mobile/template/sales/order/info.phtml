@@ -95,7 +95,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <!--					<h3>Billing Address</h3>-->
                         <h3>收货地址</h3>
                         <p>
                             <?php echo $_order->getBillingAddress()->format('html') ?>
@@ -103,10 +102,6 @@
                     </td>
                     <?php if (!$_order->getIsVirtual()): ?>
                         <td>
-                            <!--                    <h3>收货地址</a></h3>-->
-                            <!--					<p>-->
-                            <!--						--><?php //echo $_order->getShippingAddress()->format('html') ?>
-                            <!--					</p>-->
                         </td>
                     <?php else: ?>
                         <td>
