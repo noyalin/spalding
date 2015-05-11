@@ -101,9 +101,9 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 <?php
 $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter(array(array('attribute'=> 'model','eq' => $_product->getModel())));
 ?>
-<?php if ($attributeSetName=='apparel' && count($_productAvailableColorsCollection) > 1) : ?>
+<?php if ( ($attributeSetName=='apparel' || $attributeSetName=='bags')   && count($_productAvailableColorsCollection) > 1) : ?>
     <div id="detailAvailColorWrap" class="sale-num prodetail-box">
-        <span class="ms-fl">可选颜色：</span>
+        <p class="ms-fl">可选颜色：</p>
         <div id="detailAvailColor" class="ms-fl">
             <?php
             $i = 0;
