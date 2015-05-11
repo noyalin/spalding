@@ -413,7 +413,7 @@ final class StoneEdge_MagentoImport {
             $time = $_REQUEST['lastdate'];
             $gmtTime = date("Y-m-d H:i:s",strtotime($time)-8*60*60);
         }
-
+        mage :: log($_REQUEST);
 //        if($lastEntityId){
             $sql = $db->select()
                 ->from($ordersTable, 'entity_id')
