@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
         jQuery( "#dialog" ).dialog( "close" );
     });
     jQuery("#getcode_num").click(function(){
-        jQuery(this).attr("src",'code_num.php?' + Math.random());
+        jQuery(this).attr("src",'/code_num.php?' + Math.random());
     });
 
     jQuery(".ds_dialog_buttons").delegate(".ds_dialog_yes","click",function(){
