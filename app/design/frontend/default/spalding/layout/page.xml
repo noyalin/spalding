@@ -58,7 +58,10 @@ Default layout, loads most of the pages
                     <name>js/noconflict.js</name>
                 </action>
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
-
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/auth.js</name>
+                </action>
                 <!--<action method="addCss"><stylesheet>css/base.css</stylesheet></action>-->
                 <action method="addItem">
                     <type>skin_css</type>
@@ -70,7 +73,11 @@ Default layout, loads most of the pages
                     <name>css/new.css</name>
                     <params/>
                 </action>
-
+                <action method="addItem">
+                    <type>skin_css</type>
+                    <name>css/auth.css</name>
+                    <params/>
+                </action>
                 <action method="addItem">
                     <type>skin_css</type>
                     <name>css/basic.css</name>

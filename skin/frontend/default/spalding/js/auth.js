@@ -47,7 +47,7 @@ jQuery(document).ready(function(){
         jQuery.ajax({
             async:false,
             type: 'POST',
-            url: 'barcodeVerify.php',
+            url: '/barcodeVerify.php',
             beforeSend:loading,
             data: {barcode:barcode,verifycode:verifycode},
             success: function(data, textStatus){
