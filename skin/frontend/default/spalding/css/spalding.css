@@ -55,15 +55,20 @@
 .header_nav_funs span{
 	display: inline-block;
 	/*color:#000000;*/
-	color:#e8a902;
+	/*color:#e8a902;*/
 	background: url(../images/20141208002.png) left center no-repeat;
-	text-indent: 18px;
+	text-indent: 20px;
 	margin-left:10px;
 }
+
+.header_nav_funs nobr{
+    color:#e8a902;
+}
+
 .header_nav_funs a.header_nav_shopAds{
 	display: inline-block;
 	background: url(../images/shopAds_navImg.png) left center no-repeat;
-	text-indent: 18px;
+	text-indent: 13px;
 	margin-right:10px;
 }
 .header_nav_funs a.header_nav_online{
