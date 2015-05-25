@@ -97,8 +97,24 @@
                 <img src="<?php echo $this->getSkinUrl('images/pager_arrow_right.gif') ?>" alt="" class="v-middle" />
             </li>
         <?php endif;?>
+            <li style="width:100px;border:0px;margin-left:2px"class="next-icon">
+                <form onsubmit="return true;"class="custom_form"action=""name="p"method="get">
+                    <input type="text"value=""name="p"class="custom_page"style="width: 30px; height: 23px; text-align: center ">
+                    <input type="submit"class="gogogo"onclick="submitCustomPages(this);"value="Go"name="submit">
+                </form>
+                <script type="text/javascript">
+                    function submitCustomPages(self){
+                        var inputValue = jQuery.trim(jQuery(self).prev().val());
+                        if(inputValue && !isNaN(inputValue)){
+                            var vv = parseInt(inputValue);
+                        }else{
+                            alert("请输入一个数字。");
+                            return false;
+                        }return ture;
+                    }
+                </script>
+            </li>
         </ol>
-
     </div>
     <?php endif; ?>
 
