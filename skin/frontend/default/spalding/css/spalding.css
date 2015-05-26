@@ -1057,16 +1057,15 @@ button.rulAgree{
 	color:#141414;
 }
 .pagesBotm{
-	width:100%;
+	width:700px;
 	text-align: center;
 	padding-top:20px;
 }
 .pagesBotm ol li{
-	float: left;
+	display:inline-block;
 	line-height: 60px;
 	text-align: center;
 	margin:0 5px;
-	font-size: 12px;
 	font-size:15px;
 }
 
@@ -1074,7 +1073,7 @@ button.rulAgree{
 	float:right;
 }
 .pagesBotm ol li.pagePrev{
-	margin-right:230px;
+	float: left;
 }
 
 /*购物车*/
