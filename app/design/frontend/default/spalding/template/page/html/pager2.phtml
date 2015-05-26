@@ -45,7 +45,7 @@
             <li  class="pageli">
                 <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
                     <?php if(!$this->getAnchorTextForPrevious()): ?>
-                        <img src="<?php echo $this->getSkinUrl('images/pager_arrow_left.gif') ?>" alt="<?php echo $this->__('Previous') ?>" class="v-middle" />
+                        <img src="<?php echo $this->getSkinUrl('images/move_left.jpg') ?>" alt="<?php echo $this->__('Previous') ?>" class="v-middle" />
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForPrevious() ?>
                     <?php endif;?>
@@ -53,7 +53,7 @@
             </li>
         <?php else: ?>
             <li  class="pageli">
-                <img src="<?php echo $this->getSkinUrl('images/pager_arrow_left.gif') ?>" alt="" class="v-middle" />
+                <img src="<?php echo $this->getSkinUrl('images/move_left.jpg') ?>" alt="" class="v-middle" />
             </li>
         <?php endif;?>
 
@@ -86,7 +86,7 @@
             <li class="pageli">
                 <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
                     <?php if(!$this->getAnchorTextForNext()): ?>
-                        <img src="<?php echo $this->getSkinUrl('images/pager_arrow_right.gif') ?>" alt="<?php echo $this->__('Next') ?>" class="v-middle" />
+                        <img src="<?php echo $this->getSkinUrl('images/move_right.jpg') ?>" alt="<?php echo $this->__('Next') ?>" class="v-middle" />
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForNext() ?>
                     <?php endif;?>
@@ -94,26 +94,26 @@
             </li>
         <?php else: ?>
             <li  class="pageli">
-                <img src="<?php echo $this->getSkinUrl('images/pager_arrow_right.gif') ?>" alt="" class="v-middle" />
+                <img src="<?php echo $this->getSkinUrl('images/move_right.jpg') ?>" alt="" class="v-middle" />
             </li>
         <?php endif;?>
-            <li style="width:100px;border:0px;margin-left:2px"class="next-icon">
-                <form onsubmit="return true;"class="custom_form"action=""name="p"method="get">
-                    <input type="text"value=""name="p"class="custom_page"style="width: 30px; height: 23px; text-align: center ">
-                    <input type="submit"class="gogogo"onclick="submitCustomPages(this);"value="Go"name="submit">
-                </form>
-                <script type="text/javascript">
-                    function submitCustomPages(self){
-                        var inputValue = jQuery.trim(jQuery(self).prev().val());
-                        if(inputValue && !isNaN(inputValue)){
-                            var vv = parseInt(inputValue);
-                        }else{
-                            alert("请输入一个数字。");
-                            return false;
-                        }return ture;
-                    }
-                </script>
-            </li>
+<!--            <li style="width:100px;border:0px;margin-left:2px"class="next-icon">-->
+<!--                <form onsubmit="return true;"class="custom_form"action=""name="p"method="get">-->
+<!--                    <input type="text"value=""name="p"class="custom_page"style="width: 30px; height: 23px; text-align: center ">-->
+<!--                    <input type="submit"class="gogogo"onclick="submitCustomPages(this);"value="Go"name="submit">-->
+<!--                </form>-->
+<!--                <script type="text/javascript">-->
+<!--                    function submitCustomPages(self){-->
+<!--                        var inputValue = jQuery.trim(jQuery(self).prev().val());-->
+<!--                        if(inputValue && !isNaN(inputValue)){-->
+<!--                            var vv = parseInt(inputValue);-->
+<!--                        }else{-->
+<!--                            alert("请输入一个数字。");-->
+<!--                            return false;-->
+<!--                        }return ture;-->
+<!--                    }-->
+<!--                </script>-->
+<!--            </li>-->
         </ol>
     </div>
     <?php endif; ?>
