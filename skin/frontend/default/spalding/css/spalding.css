@@ -1060,7 +1060,6 @@ button.rulAgree{
 	width:100%;
 	text-align: center;
 	padding-top:20px;
-	border-top:2px solid #000;
 }
 .pagesBotm ol li{
 	float: left;
@@ -1068,6 +1067,7 @@ button.rulAgree{
 	text-align: center;
 	margin:0 5px;
 	font-size: 12px;
+	font-size:15px;
 }
 
 .pagesBotm ol li.pageNext{
@@ -1663,7 +1663,7 @@ h2.product-collateral-box-nam{
 	font-size: 18px;
 	font-weight: bold;
 	color:#ffba00;
-	padding-bottom:8px;
+	padding-bottom:4px;
 	margin-bottom:10px;
 	border-bottom:5px solid #fff;
 }

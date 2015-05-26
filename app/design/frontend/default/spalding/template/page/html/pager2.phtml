@@ -38,11 +38,11 @@
     <?php endif ?>
 
     <?php if($this->getLastPageNum()>1): ?>
-    <div class="pages">
+    <div class="pagesBotm">
 <!--        <strong>--><?php //echo $this->__('Page:') ?><!--</strong>-->
-        <ol class="pageol">
+        <ol class="pageol clearfix">
         <?php if (!$this->isFirstPage()): ?>
-            <li  class="pageli">
+            <li  class="pagePrev">
                 <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
                     <?php if(!$this->getAnchorTextForPrevious()): ?>
                         <img src="<?php echo $this->getSkinUrl('images/move_left.jpg') ?>" alt="<?php echo $this->__('Previous') ?>" class="v-middle" />
@@ -52,7 +52,7 @@
                 </a>
             </li>
         <?php else: ?>
-            <li  class="pageli">
+            <li  class="pagePrev">
                 <img src="<?php echo $this->getSkinUrl('images/move_left.jpg') ?>" alt="" class="v-middle" />
             </li>
         <?php endif;?>
@@ -83,7 +83,7 @@
         <?php endif;?>
 
         <?php if (!$this->isLastPage()): ?>
-            <li class="pageli">
+            <li class="pageNext">
                 <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
                     <?php if(!$this->getAnchorTextForNext()): ?>
                         <img src="<?php echo $this->getSkinUrl('images/move_right.jpg') ?>" alt="<?php echo $this->__('Next') ?>" class="v-middle" />
@@ -93,7 +93,7 @@
                 </a>
             </li>
         <?php else: ?>
-            <li  class="pageli">
+            <li  class="pageNext">
                 <img src="<?php echo $this->getSkinUrl('images/move_right.jpg') ?>" alt="" class="v-middle" />
             </li>
         <?php endif;?>
