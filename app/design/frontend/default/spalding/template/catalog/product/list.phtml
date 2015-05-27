@@ -106,7 +106,7 @@
                     }else{
                         $scen7 = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$220x220$&$image=';
                     }
-                    $shortDescription =  $_product->getShortDescription();
+                    $shortDescription   =  $_product->getShortDescription();
                     if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
                         if( strstr($shortDescription,'，')  ){
                             $tmpArr = explode("，",$shortDescription);

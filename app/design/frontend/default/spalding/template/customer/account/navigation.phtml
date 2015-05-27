@@ -35,23 +35,30 @@
         <ul>
             <?php
             $_links = $this->getLinks();
-            $arrShow = array("account" => "select_account_mng.png" , "account_edit" => "select_account.png", "address_book" => "select_address_mng.png", "orders" => "select_my_orders.png");
+            $arrShow_y = array("account" => "select_account_mng.png" , "account_edit" => "select_account.png", "address_book" => "select_address_mng.png", "orders" => "select_my_orders.png");
+            $arrShow_w = array("account" => "AccountMgt_tit_w.png" , "account_edit" => "AccountPer_tit_w.png", "address_book" => "AccountAdrs_tit_w.png", "orders" => "AccountOrder_tit_w.png");
+            $arrShow_g = array("account" => "AccountMgt_tit_g.png" , "account_edit" => "AccountPer_tit_g.png", "address_book" => "AccountAdrs_tit_g.png", "orders" => "AccountOrder_tit_g.png");
             ?>
             <?php $_index = 1; ?>
             <?php $_count = count($_links); ?>
             <?php
                 foreach ($_links as $_link):
-                    if(!array_key_exists($_link->getName(),$arrShow)){
+                    if(!array_key_exists($_link->getName(),$arrShow_y)){
 
                         continue;
                     }
              ?>
                 <?php $_last = ($_index++ >= $_count); ?>
                 <?php if ($this->isActive($_link)): ?>
-                    <img class="current<?php echo ($_last ? ' last' : '') ?>" src="<?php echo $this->getSkinUrl('images/'.$arrShow[$_link->getName()]);  ?>" alt="">
+                    <li> <img class="current<?php echo ($_last ? ' last' : '') ?>" src="<?php echo $this->getSkinUrl('images/'.$arrShow_y[$_link->getName()]);  ?>" alt=""> </li>
 <!--                    <li class="current--><?php //echo ($_last ? ' last' : '') ?><!--"><strong>--><?php //echo $_link->getLabel() ?><!--</strong></li>-->
                 <?php else: ?>
-                    <li<?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                    <a href="<?php echo $_link->getUrl() ?>">
+                        <li <?php echo (' class="navi_li_'.$_link->getName().'"') ?> >
+                            <img class="current<?php echo ($_last ? ' last' : '') ?>" src="<?php echo $this->getSkinUrl('images/'.$arrShow_w[$_link->getName()]);  ?>" alt="">
+                        </li>
+                    </a>
+<!--                    <li --><?php //echo ($_last ? ' class="last"' : '') ?><!-- ><a href="--><?php //echo $_link->getUrl() ?><!--">--><?php //echo $_link->getLabel() ?><!--</a></li>-->
                 <?php endif; ?>
             <?php endforeach; ?>
         </ul>
