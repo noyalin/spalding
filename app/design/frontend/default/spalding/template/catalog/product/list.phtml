@@ -124,7 +124,7 @@
         ?>
         <?php if ($i++%$_columnCount==0): ?>
         <ul class="products-grid">
-        <div class="proListLine"></div>
+        <div class="proListLine" style="margin-top:10px;"></div>
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" target="_blank">
