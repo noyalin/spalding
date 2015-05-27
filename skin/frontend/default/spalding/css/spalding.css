@@ -1645,7 +1645,7 @@ h2.product-collateral-box-nam{
 	background: url(../images/20141209008.png) left center no-repeat;
 }
 .block-content ul li img{
-	vertical-align: middle;
+	/*vertical-align: middle;*/
 }
 .block-content ul li a{
 	color:#fff;
@@ -1653,6 +1653,36 @@ h2.product-collateral-box-nam{
 
 .block-content ul li a:hover{
 	color:#b6b6b6;
+}
+.block-content ul li.navi_li_account{
+	background:url(../images/AccountMgt_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_account:hover{
+	background:url(../images/AccountMgt_tit_g.png) 42px top no-repeat;
+}
+.block-content ul li.navi_li_account_edit{
+	background:url(../images/AccountPer_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_account_edit:hover{
+	background:url(../images/AccountPer_tit_g.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_address_book{
+	background:url(../images/AccountAdrs_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_address_book:hover{
+	background:url(../images/AccountAdrs_tit_g.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_orders{
+	background:url(../images/AccountOrder_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_orders:hover{
+	background:url(../images/AccountOrder_tit_g.png) 42px top no-repeat;
 }
 
 .col-main{
