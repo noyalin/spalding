@@ -40,7 +40,9 @@
     <?php if($this->getLastPageNum()>1): ?>
     <div class="pagesBotm">
 <!--        <strong>--><?php //echo $this->__('Page:') ?><!--</strong>-->
+        <div class="proListFunLine"></div>
         <ol class="pageol clearfix">
+
         <?php if (!$this->isFirstPage()): ?>
             <li  class="pagePrev">
                 <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">

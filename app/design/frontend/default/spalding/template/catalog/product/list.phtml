@@ -93,7 +93,7 @@
 
 <div class="category-products">
     <?php echo $this->getToolbarHtml() ?>
-    <div class="proListFunLine"></div>
+
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
     <?php $m=1; $i=0; foreach ($_productCollection as $_product):
@@ -124,6 +124,7 @@
         ?>
         <?php if ($i++%$_columnCount==0): ?>
         <ul class="products-grid">
+        <div class="proListLine"></div>
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" target="_blank">
@@ -150,11 +151,11 @@
             </li>
 
         <?php if ($i%$_columnCount==0 && $i!=$_collectionSize): ?>
-            <?php
-            if($_collectionSize >$_columnCount && $m != $_collectionSize/$_columnCount){
-                echo '<div class="proListLine"></div>';
-            }
-            $m++;
+<!--            --><?php
+//            if($_collectionSize >$_columnCount || $m == $_collectionSize/$_columnCount){
+//                echo '<div class="proListLine"></div>';
+//            }
+//            $m++;
             ?>
         </ul>
 
