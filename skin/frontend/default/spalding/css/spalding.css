@@ -55,16 +55,22 @@
 .header_nav_funs span{
 	display: inline-block;
 	/*color:#000000;*/
-	color:#e8a902;
+	/*color:#e8a902;*/
 	background: url(../images/20141208002.png) left center no-repeat;
-	text-indent: 18px;
+	text-indent: 20px;
 	margin-left:10px;
 }
+
+.header_nav_funs nobr{
+    color:#e8a902;
+}
+
 .header_nav_funs a.header_nav_shopAds{
 	display: inline-block;
 	background: url(../images/shopAds_navImg.png) left center no-repeat;
-	text-indent: 18px;
+	text-indent: 13px;
 	margin-right:10px;
+
 }
 .header_nav_funs a.header_nav_online{
 	display: inline-block;
@@ -695,11 +701,14 @@ ul.scarch_select_option li:hover{
 	display: inline-block;
 	height:16px;
 	line-height: 16px;
-	margin-left:35px;
+	margin-left:30px;
+	font-family: "微软雅黑";
 }
 
 .loginOther a img{
 	vertical-align: middle;
+  	height: 14px;
+  	margin-top: -2px;
 }
 .getAccont{
 	width:100px;
@@ -911,7 +920,7 @@ button.rulAgree{
 
 .products-grid li.item{
 	width:210px; 
-	height:290px;
+	min-height:290px;
 	float: left;
 	overflow: hidden;
 	margin:10px 10px;
@@ -921,6 +930,8 @@ button.rulAgree{
 	font-size: 12px;
 	text-align: center;
 	font-weight: normal;
+	height:40px;
+	overflow:hidden;
 }
 
 .products-grid li.item h2 a{
@@ -951,7 +962,7 @@ button.rulAgree{
 	float: left;
 	height: 1px;
 	width: 700px;
-	background: #999;
+	background: #ccc;
 }
 
 .sorter{
@@ -1046,24 +1057,24 @@ button.rulAgree{
 	color:#141414;
 }
 .pagesBotm{
-	width:100%;
+	width:700px;
 	text-align: center;
 	padding-top:20px;
 	border-top:2px solid #000;
 }
 .pagesBotm ol li{
-	float: left;
+	display:inline-block;
 	line-height: 60px;
 	text-align: center;
 	margin:0 5px;
-	font-size: 12px;
+	font-size:15px;
 }
 
 .pagesBotm ol li.pageNext{
 	float:right;
 }
 .pagesBotm ol li.pagePrev{
-	margin-right:230px;
+	float: left;
 }
 
 /*购物车*/
@@ -1337,6 +1348,7 @@ span.spCarTit_fun{
 	background: #ffba00;
 	font-family: "微软雅黑";
 	cursor:pointer;
+    margin: 0 0 0 0 ;
 }
 
 .spListSubmit p{
@@ -1602,12 +1614,16 @@ h2.product-collateral-box-nam{
 }
 
 
+.cart {
+    min-height: 500px;
+}
 
 .main-container{
 	width:930px;
 	padding:10px 20px;
 	margin:0 auto;
 	color:#fff;
+    min-height: 500px;
 }
 
 
@@ -1629,7 +1645,7 @@ h2.product-collateral-box-nam{
 	background: url(../images/20141209008.png) left center no-repeat;
 }
 .block-content ul li img{
-	vertical-align: middle;
+	/*vertical-align: middle;*/
 }
 .block-content ul li a{
 	color:#fff;
@@ -1637,6 +1653,36 @@ h2.product-collateral-box-nam{
 
 .block-content ul li a:hover{
 	color:#b6b6b6;
+}
+.block-content ul li.navi_li_account{
+	background:url(../images/AccountMgt_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_account:hover{
+	background:url(../images/AccountMgt_tit_g.png) 42px top no-repeat;
+}
+.block-content ul li.navi_li_account_edit{
+	background:url(../images/AccountPer_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_account_edit:hover{
+	background:url(../images/AccountPer_tit_g.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_address_book{
+	background:url(../images/AccountAdrs_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_address_book:hover{
+	background:url(../images/AccountAdrs_tit_g.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_orders{
+	background:url(../images/AccountOrder_tit_w.png) 42px top no-repeat;
+}
+
+.block-content ul li.navi_li_orders:hover{
+	background:url(../images/AccountOrder_tit_g.png) 42px top no-repeat;
 }
 
 .col-main{
@@ -1647,7 +1693,7 @@ h2.product-collateral-box-nam{
 	font-size: 18px;
 	font-weight: bold;
 	color:#ffba00;
-	padding-bottom:8px;
+	padding-bottom:4px;
 	margin-bottom:10px;
 	border-bottom:5px solid #fff;
 }
@@ -2898,7 +2944,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .aboutUs_boxRig .aboutUs_boxRig_tit{
 	margin-left:5%;
 	margin-top:70px;
-	margin-bottom:50px;
+	margin-bottom:15px;
 }
 
 

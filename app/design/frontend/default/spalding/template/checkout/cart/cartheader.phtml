@@ -33,19 +33,26 @@
 <div class="top-cart ms-fr">
 <?php $_cartQty = $this->getSummaryCount() ?>
 <?php if ($_cartQty > 0): ?>
-    <?php $_myCart = $this->__('购物车 (%s)', '<span>' . $_cartQty . '</span>') ?>
+    <?php $_myCart = $this->__('(%s)', '' . $_cartQty) ?>
 <?php else: ?>
-    <?php $_myCart = $this->__('购物车 (%s)', '<span>0</span>') ?>
+    <?php $_myCart = $this->__('(%s)', '0') ?>
 <?php endif ?>
 <?php if ($this->getIsLinkMode() || !$this->getIsNeedToDisplaySideBar()):?>
     <div class="block-title no-items">
         <ul class="links cart-link">
-            <li ><a href="<?php echo $this->getUrl('checkout/cart'); ?>"><?php echo "&nbsp;".$_myCart ?></a></li>
+            <li ><a href="<?php echo $this->getUrl('checkout/cart'); ?>">
+                    <span>购物车</span>
+                    <nobr ><?php echo "&nbsp;".$_myCart ?></nobr>
+                </a>
+            </li>
         </ul>
     </div>
 <?php else:?>
     <div class="block-title<?php if(!$_cartQty) { echo (' no-items'); } ?>">
-        <strong id="cartHeader"><?php echo "&nbsp;". $_myCart ?></strong>
+        <strong id="cartHeader" style="display: inline-block;">
+            <span>购物车</span>
+            <nobr ><?php echo "&nbsp;". $_myCart ?></nobr>
+        </strong>
     </div>
     <div id="topCartContent" class="block-content">
         <div class="inner-wrapper">
