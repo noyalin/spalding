@@ -11,7 +11,7 @@
             <action method="addCss"><stylesheet>css/weixin/weixinevent.css</stylesheet></action>
         </reference>
         <reference name="content">
-            <block  before="*" template="weixinevent/event1.phtml" >
+            <block type="weixinevent/event1"    before="*" template="weixinevent/event1.phtml" >
             </block>
         </reference>
     </weixinevent_index_index>
