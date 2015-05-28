@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+    <weixinevent_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/weixinevent.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="setTitle"><title>微信活动</title></action>
+            <action method="addItem"><type>skin_js</type><script>js/weixin/jquery.js</script></action>
+            <action method="addCss"><stylesheet>css/weixin/weixinevent.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block  before="*" template="weixinevent/event1.phtml" >
+            </block>
+        </reference>
+    </weixinevent_index_index>
+</layout>
