@@ -5,7 +5,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
         $appid = 'wx79873079dca36474';
         $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
-        $redirectUrl = urlencode ("http://www.m.spaldingchina.com.cn/index/index/");
+        $redirectUrl = urlencode ("http://www.m.spaldingchina.com.cn/auth2.php");
         $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
         $code = trim($_GET["code"]);
         $state = trim($_GET['state']);
