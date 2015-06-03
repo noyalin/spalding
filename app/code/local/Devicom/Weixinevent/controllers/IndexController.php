@@ -31,14 +31,14 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             mage::log("useinfo=".$useinfo);
 //            var_dump($useinfo);
         }else{
-            mage::log("code=".$code.", state=".$state);
-            $this->_redirect("$url");
+            mage::log($url);
+            $this->_redirectUrl("$url");
 
         }
 
 
-        $this->loadLayout();
-        $this->renderLayout();
+//        $this->loadLayout();
+//        $this->renderLayout();
     }
 
     function httpdata($url, $method="get", $postfields = null, $headers = array(), $debug = false)
