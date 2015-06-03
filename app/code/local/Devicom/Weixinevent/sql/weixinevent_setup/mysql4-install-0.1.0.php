@@ -22,6 +22,18 @@ CREATE TABLE `{$this->getTable('weixin_appset')}` (
   `refresh_token_createtime` int(12)  NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+DROP TABLE IF EXISTS `{$this->getTable('weixin_promotion')}` ;
+CREATE TABLE `{$this->getTable('weixin_promotion')}` (
+  `order_id` varchar(50) NOT NULL,
+  `open_id` varchar(50) NOT NULL,
+  `promotion_id` varchar(50) NOT NULL,
+  `sponsor_flag` int(1)  NULL,
+  `operation` varchar(800)  NULL,
+  `refresh_token_createtime` int(12)  NULL,
+  PRIMARY KEY (`order_id`,`open_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
     ");
 
 $installer->run("
