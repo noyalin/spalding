@@ -10,7 +10,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $state = isset($_GET["state"])?null: trim($_GET['state']);
 
         mage::log("code=".$code.", state=".$state);
-        if ($code && $state == 'spaldingchina') {
+        if ($state == 'spaldingchina') {//$code && 
             $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
             $openid_data = $this->httpdata($openid_url);
             mage::log("openid_data=".$openid_data);
