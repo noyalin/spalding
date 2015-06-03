@@ -6,11 +6,10 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
         $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
         $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
-        $code = isset($_GET["code"])?null:trim($_GET["code"]);
-        $state = isset($_GET["state"])?null: trim($_GET['state']);
+        $code =  Mage::app()->getRequest()->getParam('code');
+        $state = Mage::app()->getRequest()->getParam('state');
 
-        mage::log( Mage::app()->getRequest()->getParams());
-        if ($state == 'spaldingchina') {//$code &&
+        if ($code && $state == 'spaldingchina') {//
             $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
             $openid_data = $this->httpdata($openid_url);
             mage::log("openid_data=".$openid_data);
