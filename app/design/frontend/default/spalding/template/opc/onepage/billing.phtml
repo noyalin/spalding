@@ -22,36 +22,38 @@ $defaultBillingId = $this->getDefaultBilling();
         <div id="addressUl" class="">
             <div class="clearfix step_radio_wrap">
                 <input type="hidden" name="billing_address_id_hidden" id="billing_address_id_hidden"/>
-                <?php foreach( $options as $eacAddr){
-                    $addrValueId = $eacAddr['value'];
-                    $selected = null;
-                    $checked = '';
-                    $defaultDescription = "设为默认";
-                    $adefault = '';
-                    if($addrValueId == $defaultBillingId){
-                        $selected = "selected";
-                        $checked = 'checked="true"';
-                        $defaultDescription = "已设为默认";
-                        $adefault = "adefault";
-                    }
-                    $addrLabel = $eacAddr['label'];
-                    $billingId = "billing_address_id_".$addrValueId;
-                    $labelId = "label_id_".$addrValueId;
-                    ?>
-                    <div class="step_radio <?php echo $selected?> ">
-                        <input type="radio" <?php echo $checked; ?> value="<?php echo $addrValueId?>"  id="<?php echo $billingId?>"    name="billing_address_id">
-                        <label id="<?php echo $labelId;?>" for="<?php echo $billingId?>">
-                            <span class="city_name">
-                                <?php echo $addrLabel?>
-                            </span>
-                        </label>
-                        <div class="btns">
-                            <a class="btn edit btnedit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
-                            <a class="btn set_def " id="set_def_<?php echo $addrValueId;?>" href="javascript:;" onclick="saveAddressDefault('<?php echo $addrValueId;?>')"><span class="<?php echo $adefault ?> "><?php echo $defaultDescription?></span></a>
+                <?php
+                if($options):
+                    foreach( $options as $eacAddr){
+                        $addrValueId = $eacAddr['value'];
+                        $selected = null;
+                        $checked = '';
+                        $defaultDescription = "设为默认";
+                        $adefault = '';
+                        if($addrValueId == $defaultBillingId){
+                            $selected = "selected";
+                            $checked = 'checked="true"';
+                            $defaultDescription = "已设为默认";
+                            $adefault = "adefault";
+                        }
+                        $addrLabel = $eacAddr['label'];
+                        $billingId = "billing_address_id_".$addrValueId;
+                        $labelId = "label_id_".$addrValueId;
+                        ?>
+                        <div class="step_radio <?php echo $selected?> ">
+                            <input type="radio" <?php echo $checked; ?> value="<?php echo $addrValueId?>"  id="<?php echo $billingId?>"    name="billing_address_id">
+                            <label id="<?php echo $labelId;?>" for="<?php echo $billingId?>">
+                                <span class="city_name">
+                                    <?php echo $addrLabel?>
+                                </span>
+                            </label>
+                            <div class="btns">
+                                <a class="btn edit btnedit" data-addrid="<?php echo $addrValueId?>" href="javascript:;"><span>修改地址</span></a>
+                                <a class="btn set_def " id="set_def_<?php echo $addrValueId;?>" href="javascript:;" onclick="saveAddressDefault('<?php echo $addrValueId;?>')"><span class="<?php echo $adefault ?> "><?php echo $defaultDescription?></span></a>
+                            </div>
+                            <i class="arrow"></i>
                         </div>
-                        <i class="arrow"></i>
-                    </div>
-                <?php } ?>
+                    <?php } endif; ?>
             </div>
             <div class="add_addr">
                 <a href="javascript:;" id="create_new_addr" class="btn" muse_scanned="true">

@@ -130,7 +130,6 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     public function indexAction(){
 //        $this->loadLayout();
 //        $this->renderLayout();
-        mage :: log(file_get_contents("php://input"));
         $str = file_get_contents("php://input");
         if(!$str){
             $str = '{"tid":"580415280761034","name":"东北人19680624","price":"2349.0"}';
