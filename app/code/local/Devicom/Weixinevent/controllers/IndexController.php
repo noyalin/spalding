@@ -1,7 +1,19 @@
 <?php
+//include_once("app/SendTemplateSMS.php");
+
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
+
     public function indexAction(){
         mage::log("Devicom_Weixinevent_IndexController indexAction");
+
+//        //Demo调用
+//        //**************************************举例说明***********************************************************************
+//        //*假设您用测试Demo的APP ID，则需使用默认模板ID 1，发送手机号是13800000000，传入参数为6532和5，则调用方式为           *
+//        //*result = sendTemplateSMS("13800000000" ,array('6532','5'),"1");																		  *
+//        //*则13800000000手机号收到的短信内容是：【云通讯】您使用的是云通讯短信模板，您的验证码是6532，请于5分钟内正确输入     *
+//        //*********************************************************************************************************************
+//        SendTemplateSMS::send("13651758225",array('4567','3'),"1");//手机号码，替换内容数组，模板ID
+
         $appid = 'wx79873079dca36474';
         $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
         $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
@@ -18,26 +30,28 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             $openId = $openid_obj->openid;
 //    $accessToken = $openid_obj->access_token;
 
-            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
-            $token_data = $this->httpdata($token_url);
-            mage::log("token_data=".$token_data);
-//    var_dump($token_data);
-            $token_obj = json_decode($token_data);
-            $accessToken = $token_obj->access_token;
+//            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+//            $token_data = $this->httpdata($token_url);
+//            mage::log("token_data=".$token_data);
+////    var_dump($token_data);
+//            $token_obj = json_decode($token_data);
+//            $accessToken = $token_obj->access_token;
+//
+//            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
+//            $useinfo =  $this->httpdata($userUrl);
+//            mage::log("useinfo=".$useinfo);
+////            var_dump($useinfo);
 
-            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
-            $useinfo =  $this->httpdata($userUrl);
-            mage::log("useinfo=".$useinfo);
-//            var_dump($useinfo);
+
+
         }else{
             mage::log($url);
             $this->_redirectUrl("$url");
-
         }
 
 
-//        $this->loadLayout();
-//        $this->renderLayout();
+        $this->loadLayout();
+        $this->renderLayout();
     }
 
     function httpdata($url, $method="get", $postfields = null, $headers = array(), $debug = false)
