@@ -3,7 +3,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
     public $createLockFile = true;
     public $orderStatusNeedCheck = array( 'new', 'holded','processing','payment_review','Returned');
     public $carrierArr = array(
-        '申通' => 'flatrate',
+        'SF' => 'flatrate',
     );
     public function __construct(){
         parent::__construct();
