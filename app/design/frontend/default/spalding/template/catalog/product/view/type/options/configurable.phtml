@@ -42,7 +42,6 @@
         };
     });
 </script>
-
 <?php
 $_product    = $this->getProduct();
 $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
@@ -52,12 +51,6 @@ $sku = $_product->getSku();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 ?>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
-<!--    <div class="sale-num prodetail-box">-->
-<!--        <span>篮球类型：</span>-->
-<!--        --><?php //foreach($_attributes as $_attribute): ?>
-<!--        <span class="sale_kind sale_kindChos">--><?php //echo $_attribute; ?><!--</span>-->
-<!--        --><?php //endforeach; ?>
-<!--    </div>-->
 
 
     <?php foreach($_attributes as $_attribute): ?>
@@ -65,9 +58,8 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
             $valueArr = $_attribute->getPrices();
         ?>
             <div class="sale-num prodetail-box">
-<!--                <span>--><?php //echo $_attribute->getLabel() ?><!--：</span>-->
                 <label><?php echo $_attribute->getLabel() ?>：</label>
-                <?php $sizeIndex = 1;?>
+                <?php $sizeIndex = 1;$stockStatus = "";?>
                 <?php foreach($valueArr as $optionValue):?>
                     <?php
                         if($attributeSetName == 'ball'){
