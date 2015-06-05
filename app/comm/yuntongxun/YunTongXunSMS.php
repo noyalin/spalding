@@ -1,7 +1,9 @@
 <?php
-include_once("app/CCPRestSmsSDK.php");
 
-final class SendTemplateSMS {
+define('YUNTONGXUN_ROOT',  dirname(__FILE__).'/');
+require_once YUNTONGXUN_ROOT.'CCPRestSmsSDK.php';
+
+final class YunTongXunSMS {
     /*
  *  Copyright (c) 2014 The CCP project authors. All Rights Reserved.
  *
