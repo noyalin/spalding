@@ -9,31 +9,31 @@
         <routers>
             <!-- the <Weixinpay> tagname appears to be arbitrary, but by
             convention is should match the frontName tag below-->
-            <Weixindev>
+            <weixindev>
                 <use>standard</use>
                 <args>
                     <module>Devicom_Weixindev</module>
-                    <frontName>Weixindev</frontName>
+                    <frontName>weixindev</frontName>
                 </args>
-            </Weixindev>
+            </weixindev>
         </routers>
     </frontend>
     <global>
         <models>
-            <Weixindev>
+            <weixindev>
                 <class>Devicom_Weixindev_Model</class>
                 <resourceModel>Weixindev_mysql4</resourceModel>
-            </Weixindev>
-            <Weixindev_mysql4>
+            </weixindev>
+            <weixindev_mysql4>
                 <class>Devicom_Weixindev_Model_Mysql4</class>
                 <entities>
                     <log><table>weixin_log</table></log>
                     <api_debug><table>weixin_api_debug</table></api_debug>
                 </entities>
-            </Weixindev_mysql4>
+            </weixindev_mysql4>
         </models>
         <resources>
-            <Weixindev_setup>
+            <weixindev_setup>
                 <setup>
                     <module>Devicom_Weixindev</module>
                     <class>Devicom_Weixindev_Model_Mysql4_Setup</class>
@@ -41,27 +41,27 @@
                 <connection>
                     <use>core_setup</use>
                 </connection>
-            </Weixindev_setup>
-            <Weixindev_write>
+            </weixindev_setup>
+            <weixindev_write>
                 <connection>
                     <use>core_write</use>
                 </connection>
-            </Weixindev_write>
-            <Weixindev_read>
+            </weixindev_write>
+            <weixindev_read>
                 <connection>
                     <use>core_read</use>
                 </connection>
-            </Weixindev_read>
+            </weixindev_read>
         </resources>
         <blocks>
-            <Weixindev>
+            <weixindev>
                 <class>Devicom_Weixindev_Block</class>
-            </Weixindev>
+            </weixindev>
         </blocks>
         <helpers>
-            <Weixindev>
+            <weixindev>
                 <class>Devicom_Weixindev_Helper</class>
-            </Weixindev>
+            </weixindev>
         </helpers>
     </global>
 

@@ -3,7 +3,8 @@ $installer = $this;
 
 $installer->startSetup();
 
-Mage::log("Running installer weixinpay");
+Mage::log("Running installer weixin dev");
+
 $installer->run("
 
 DROP TABLE IF EXISTS `{$this->getTable('weixin_user')}` ;
@@ -31,14 +32,8 @@ CREATE TABLE `{$this->getTable('weixin_identity')}` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB   DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-DROP TABLE IF EXISTS `{$this->getTable('weixin_token')}` ;
-CREATE TABLE `{$this->getTable('weixin_token')}` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `token` varchar(500) CHARACTER SET utf8 NOT NULL,
-  `createtime` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB   DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 ");
+
 
 $installer->endSetup();
 
