@@ -3,8 +3,8 @@
 /**
  * 定义程序绝对路径
  */
-define('ROOT_E_MAY_SMS',  dirname(__FILE__).'/');
-require_once ROOT_E_MAY_SMS . 'include/Client.php';
+define('EMAY_SMS_ROOT',  dirname(__FILE__).'/');
+require_once EMAY_SMS_ROOT . 'include/Client.php';
 
 
 /**
@@ -12,7 +12,7 @@ require_once ROOT_E_MAY_SMS . 'include/Client.php';
  */	
  
  
-final class EmaySMS {
+final class EMAY_SMS {
     static private $gwUrl = 'http://sdk4report.eucp.b2m.cn:8080/sdk/SDKService';
 
     /**
@@ -112,6 +112,6 @@ final class EmaySMS {
 
 }
 
-EmaySMS::initialize();
+EMAY_SMS::initialize();
 
 ?>

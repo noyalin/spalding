@@ -2,7 +2,7 @@
 /**
  *
  */
-final class TelephoneCheck
+final class SMS_Check
 {
     /**
      * 取得某个用户某次活动的手机验证码
