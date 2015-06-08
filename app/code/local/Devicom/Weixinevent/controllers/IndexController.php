@@ -9,7 +9,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
         //TelephoneCheck::
         // 亿美短信发送
-        EMAY_SMS::sendSMS();
+        //EMAY_SMS::sendSMS();
 
 //        //Demo调用
 //        //**************************************举例说明***********************************************************************
