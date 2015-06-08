@@ -1,13 +1,16 @@
 <?php
-include_once("app/comm/emay/EmaySMS.php");
+//include_once("app/comm/emay/EmaySMS.php");
 //include_once("app/comm/yuntongxun/YunTongXunSMS.php");
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function indexAction(){
         mage::log("Devicom_Weixinevent_IndexController indexAction");
+
+        //TelephoneCheck::
         // 亿美短信发送
-//        EmaySMS::sendSMS();
+        EmaySMS::sendSMS();
+
 //        //Demo调用
 //        //**************************************举例说明***********************************************************************
 //        //*假设您用测试Demo的APP ID，则需使用默认模板ID 1，发送手机号是13800000000，传入参数为6532和5，则调用方式为           *

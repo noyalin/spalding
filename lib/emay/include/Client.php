@@ -1,6 +1,6 @@
 ﻿<?php
 
-require_once(SCRIPT_ROOT.'nusoaplib/nusoap.php');
+require_once(EMAY_SMS_ROOT . 'nusoaplib/nusoap.php');
 
 /**
  * 验证流程概要:

@@ -1,7 +1,7 @@
 <?php
 
-define('YUNTONGXUN_ROOT',  dirname(__FILE__).'/');
-require_once YUNTONGXUN_ROOT.'CCPRestSmsSDK.php';
+define('ROOT_YUN_TONG_XUN',  dirname(__FILE__).'/');
+require_once ROOT_YUN_TONG_XUN . 'CCPRestSmsSDK.php';
 
 final class YunTongXunSMS {
     /*

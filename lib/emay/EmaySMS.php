@@ -3,8 +3,8 @@
 /**
  * 定义程序绝对路径
  */
-define('SCRIPT_ROOT',  dirname(__FILE__).'/');
-require_once SCRIPT_ROOT.'include/Client.php';
+define('ROOT_E_MAY_SMS',  dirname(__FILE__).'/');
+require_once ROOT_E_MAY_SMS . 'include/Client.php';
 
 
 /**
@@ -90,7 +90,7 @@ final class EmaySMS {
          * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
          * $client->sendSMS还有更多可用参数，请参考 Client.php
          */
-        $statusCode = self::$client->sendSMS(array('13651758225'),"【Sneakerhead】陈力，您购买的宝贝美国洛杉矶发货。");
+        $statusCode = self::$client->sendSMS(array('13651758225'),"【Sneakerhead】。");
         mage::log("发送号码：13651758225 -> "."【Sneakerhead】陈力，您购买的宝贝美国洛杉矶发货。");
         mage::log("处理状态码:".$statusCode);
         self::getBalance();
