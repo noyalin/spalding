@@ -90,7 +90,7 @@ final class EMAY_SMS {
          * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
          * $client->sendSMS还有更多可用参数，请参考 Client.php
          */
-        $statusCode = self::$client->sendSMS(array('13651758225'),"【Sneakerhead】。");
+        $statusCode = self::$client->sendSMS(array('13651758225'),"【Sneakerhead】陈力，您购买的宝贝美国洛杉矶发货。");
         mage::log("发送号码：13651758225 -> "."【Sneakerhead】陈力，您购买的宝贝美国洛杉矶发货。");
         mage::log("处理状态码:".$statusCode);
         self::getBalance();
