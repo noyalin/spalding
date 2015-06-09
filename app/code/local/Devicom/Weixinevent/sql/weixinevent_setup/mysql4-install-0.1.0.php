@@ -32,17 +32,14 @@ CREATE TABLE `{$this->getTable('weixin_promotion')}` (
   `operation` varchar(800)  NULL,
   `refresh_token_createtime` int(12)  NULL,
   PRIMARY KEY (`order_id`,`open_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `{$this->getTable('weixin_captcha')}` ;
 CREATE TABLE `{$this->getTable('weixin_captcha')}` (
-  `order_id` varchar(50) NOT NULL,
   `open_id` varchar(50) NOT NULL,
   `telephone_no` varchar(50) NOT NULL,
-  `sponsor_flag` int(1)  NULL,
-  `createtime` int(12)  NULL,
-  PRIMARY KEY (`order_id`,`open_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`open_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
     ");
 
