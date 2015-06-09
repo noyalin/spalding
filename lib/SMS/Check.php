@@ -11,7 +11,7 @@ final class SMS_Check
      * @param $telephone 用户手机号
      * @return bool|int 4位数的验证码
      */
-    public static function getTelephoneCode($uin, $actId, $telephone)
+    public static function  getTelephoneCode($uin, $actId, $telephone)
     {
         if ($uin < 10000 || $actId < 1000 || empty($telephone)) {
             return false;

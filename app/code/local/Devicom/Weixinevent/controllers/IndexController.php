@@ -1,19 +1,28 @@
-<?php
-//include_once("app/comm/emay/EmaySMS.php");
-//include_once("app/comm/yuntongxun/YunTongXunSMS.php");
+    <?php
+    //include_once("app/comm/emay/EmaySMS.php");
+    //include_once("app/comm/yuntongxun/YunTongXunSMS.php");
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function sendCaptchaAction(){
         mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction");
-        $uin =  Mage::app()->getRequest()->getParam('uid');
+        $uid =  Mage::app()->getRequest()->getParam('uid');
         $actId =  Mage::app()->getRequest()->getParam('actId');
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
         $signature = '【Sneakerhead】';
-        $captcha = SMS_Check::getTelephoneCode($uin, $actId, $telephone);
-        EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+        $captcha = SMS_Check::getTelephoneCode($uid, $actId, $telephone);
+//        EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+        echo $captcha;
     }
 
+    public function checkCaptchaAction(){
+        mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction");
+        $inputCaptcha = Mage::app()->getRequest()->getParam('inputCaptcha');
+        $uid =  Mage::app()->getRequest()->getParam('uid');
+        $actId =  Mage::app()->getRequest()->getParam('actId');
+        $telephone =  Mage::app()->getRequest()->getParam('telephone');
+        echo SMS_Check::checkTelephoneCode($uid,$actId,$telephone,$inputCaptcha);
+    }
     public function indexAction(){
         mage::log("Devicom_Weixinevent_IndexController indexAction");
 

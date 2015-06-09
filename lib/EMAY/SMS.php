@@ -99,9 +99,10 @@ final class EMAY_SMS {
         mage::log("处理状态码:" . $statusCode);
         self::getBalance();
         if ($statusCode != null && $statusCode == 0) {
-
+            return true;
         } else {
-            self::chkError();
+            mage::log(self::chkError());
+            return false;
         }
     }
 
