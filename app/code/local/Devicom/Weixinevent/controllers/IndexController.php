@@ -4,12 +4,22 @@
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
+    public function sendCaptchaAction(){
+        mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction");
+        $uin =  Mage::app()->getRequest()->getParam('uid');
+        $actId =  Mage::app()->getRequest()->getParam('actId');
+        $telephone =  Mage::app()->getRequest()->getParam('telephone');
+        $signature = '【Sneakerhead】';
+        $captcha = SMS_Check::getTelephoneCode($uin, $actId, $telephone);
+        EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+    }
+
     public function indexAction(){
         mage::log("Devicom_Weixinevent_IndexController indexAction");
 
         //TelephoneCheck::
         // 亿美短信发送
-        //EMAY_SMS::sendSMS();
+//        EMAY_SMS::sendSMS();
 
 //        //Demo调用
 //        //**************************************举例说明***********************************************************************

@@ -60,8 +60,9 @@ final class EMAY_SMS {
      * 接口调用错误查看 用例
      */
 
-    public static function initialize() {
-        self::$client = new Client(self::$gwUrl,self::$serialNumber,self::$password,self::$sessionKey,self::$proxyhost,self::$proxyport,self::$proxyusername,self::$proxypassword,self::$connectTimeOut,self::$readTimeOut);
+    public static function initialize()
+    {
+        self::$client = new Client(self::$gwUrl, self::$serialNumber, self::$password, self::$sessionKey, self::$proxyhost, self::$proxyport, self::$proxyusername, self::$proxypassword, self::$connectTimeOut, self::$readTimeOut);
         self::$client->setOutgoingEncoding("UTF-8");
     }
 
@@ -82,23 +83,26 @@ final class EMAY_SMS {
 
     /**
      * 短信发送 用例
+     * @param $telephone
+     * @param $signature
+     * @param $captcha
      */
-    public static function sendSMS()
+    public static function sendSMS($telephone, $signature, $captcha)
     {
         self::getBalance();
         /**
          * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
          * $client->sendSMS还有更多可用参数，请参考 Client.php
          */
-        $statusCode = self::$client->sendSMS(array('13651758225'),"【Sneakerhead】陈力，您购买的宝贝美国洛杉矶发货。");
-        mage::log("发送号码：13651758225 -> "."【Sneakerhead】陈力，您购买的宝贝美国洛杉矶发货。");
-        mage::log("处理状态码:".$statusCode);
+        $statusCode = self::$client->sendSMS(array($telephone),$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
+        mage::log("发送号码：$telephone -> ".$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
+        mage::log("处理状态码:" . $statusCode);
         self::getBalance();
-         if ($statusCode!=null && $statusCode==0)  {
+        if ($statusCode != null && $statusCode == 0) {
 
-         } else {
-             self::chkError();
-         }
+        } else {
+            self::chkError();
+        }
     }
 
     /**
