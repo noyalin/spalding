@@ -17,11 +17,17 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function checkCaptchaAction(){
         mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction");
-        $inputCaptcha = Mage::app()->getRequest()->getParam('inputCaptcha');
+        $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
         $uid =  Mage::app()->getRequest()->getParam('uid');
         $actId =  Mage::app()->getRequest()->getParam('actId');
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
-        echo SMS_Check::checkTelephoneCode($uid,$actId,$telephone,$inputCaptcha);
+
+        mage::log($inputCaptcha."  ".$uid."  ".$actId."  ".$telephone);
+        if (SMS_Check::checkTelephoneCode($uid,$actId,$telephone,$inputCaptcha)) {
+            echo "Success";
+        } else {
+            echo "Fail";
+        }
     }
     public function indexAction(){
         mage::log("Devicom_Weixinevent_IndexController indexAction");

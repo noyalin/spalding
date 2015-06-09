@@ -47,7 +47,7 @@ $actId =  998877;
             url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
             data: {inputCaptcha: inputCaptcha,uid: uid, actId: actId, telephone: telephone},
             success: function (data) {
-                if(data) {
+                if(jQuery.trim(data) == "Success") {
                     alert("验证成功");
                 }else{
                     alert("验证失败");
