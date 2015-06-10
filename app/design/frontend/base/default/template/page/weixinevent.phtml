@@ -34,26 +34,26 @@
 <head>
 <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
-<?php echo $this->getChildHtml('after_body_start') ?>
-<div class="wrapper">
-    <?php echo $this->getChildHtml('global_notices') ?>
-    <div class="page">
-<!--        --><?php //echo $this->getChildHtml('header') ?>
-        <div class="main-container col1-layout">
-            <div class="main">
-                <?php echo $this->getChildHtml('breadcrumbs') ?>
-                <div class="col-main">
-                    <?php echo $this->getChildHtml('global_messages') ?>
-                    <?php echo $this->getChildHtml('content') ?>
-                </div>
-            </div>
-        </div>
-<!--        --><?php //echo $this->getChildHtml('footer') ?>
-        <?php echo $this->getChildHtml('global_cookie_notice') ?>
-        <?php echo $this->getChildHtml('before_body_end') ?>
+<body>
+<div id="page">
+    <a name="page"></a>
+    <?php echo $this->getChildHtml('after_body_start') ?>
+    <?php echo $this->getChildHtml('header') ?>
+    <div class="content-wrapper">
+        <?php echo $this->getChildHtml('global_messages') ?>
+        <?php echo $this->getChildHtml('messages') ?>
+        <?php /* Show customer service 'return to cs menu' block only on customer service pages */ ?>
+        <?php
+        $scriptUrl = Mage::helper('core/url')->getCurrentUrl();
+        $server_script_url = str_replace("/", "",$scriptUrl); ?>
+        <?php if ($server_script_url != 'cs-customer-service.html' && preg_match('/(^cs-|^int-)(.*)html$/', $server_script_url)): ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_cs_return_to_menu')->toHtml(); ?>
+        <?php endif; ?>
+        <?php echo $this->getChildHtml('content') ?>
+
+        <div class="clearfloats"></div>
+        <?php echo $this->getChildHtml('footer') ?>
     </div>
 </div>
-<?php echo $this->getAbsoluteFooter() ?>
 </body>
 </html>
