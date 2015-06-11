@@ -135,16 +135,24 @@
                         <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') . "<br/>" .$shortDescription?>
                     </a>
                 </h2>
-                <h4>￥ <?php echo number_format($_product->getFinalPrice(), '2', '.', ','); ?></h4>
+                <h4>￥
+                    <?php
+                        if($_product->isSaleable()) {
+                            echo number_format($_product->getFinalPrice(), '2', '.', ',');
+                        } else {
+                            echo number_format($_product->getFinalPrice(), '2', '.', ',').' ( '.$this->__('Out of stock').' )';
+                        }
+                    ?>
+                </h4>
                 <?php if($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                 <?php endif; ?>
-                <div class="actions">
-                    <?php if($_product->isSaleable()): ?>
-                    <?php else: ?>
-                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                    <?php endif; ?>
-                </div>
+<!--                <div class="actions">-->
+<!--                    --><?php //if($_product->isSaleable()): ?>
+<!--                    --><?php //else: ?>
+<!--                        <p class="availability out-of-stock"><span>--><?php //echo $this->__('Out of stock') ?><!--</span></p>-->
+<!--                    --><?php //endif; ?>
+<!--                </div>-->
 
 
                 <div class="sp"></div>
