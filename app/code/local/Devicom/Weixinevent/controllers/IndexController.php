@@ -1,6 +1,5 @@
-    <?php
-    //include_once("app/comm/emay/EmaySMS.php");
-    //include_once("app/comm/yuntongxun/YunTongXunSMS.php");
+<?php
+include '/lib/phpqrcode/phpqrcode.php';
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
@@ -121,6 +120,12 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         }
         curl_close($ci);
         return $response;
+    }
+
+    public function qrcodeAction(){
+
+        QRcode::png('http://mingzi.111cn.net');
+
     }
 
 }
