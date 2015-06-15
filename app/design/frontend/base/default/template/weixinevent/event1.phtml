@@ -9,10 +9,12 @@ $shareimageurl = "http://images.spaldingchina.com.cn/skin/frontend/default/spald
     请输入手机号:<input id="telephone" type="text"/>
     <input id="btnSendCode" type="button" value="发送验证码" onclick="sendMessage()"/><br/>
     请输入验证码:<input id="captcha" type="text">
-    <input id="btnCheckCode" type="button" value="验证" onclick="checkMessage()"/>
+    <input id="btnCheckCode" type="button" value="验证" onclick="checkMessage()"/><br />
 <?php else: ?>
-    <?php echo "您已经参加过活动，订单号：".$this->getOpenId(); ?>
+    <?php echo "您已经参加过活动，订单号：".$this->getOpenId(); ?><br />
 <?php endif; ?>
+
+<img src="<?php echo $this->getUrl('weixinevent/index/qrcode/') ?>" ><br />
 
 <?php
 ////    echo '<img src="'.$this->getCodeImage().'" />';
