@@ -87,7 +87,19 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
     {
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
         $openId = Mage::getSingleton('customer/session')->getOpenId();
-        $sql = "select count(*) from `weixin_promotion` where order_id = '" . $orderId . "' and open_id = '" . $openId . "'";
+        $sql = "select count(*) from `weixin_promotion` where order_id = '" . $orderId . "' and open_id = '" . $openId . "' and sponsor_flag =5";
+        $result = $this->readConnection->fetchOne($sql);
+        if ($result != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function checkSponsor()
+    {
+        $orderId = Mage::getSingleton('customer/session')->getOrderId();
+        $actId = Mage::getSingleton('customer/session')->getActId();
+        $sql = "select count(*) from `weixin_promotion` where order_id = '" . $orderId . "' and act_id = '" . $actId . "'";
         $result = $this->readConnection->fetchOne($sql);
         if ($result != 0) {
             return false;
@@ -98,13 +110,21 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
     public function getOpenId(){
         return Mage::getSingleton('customer/session')->getOpenId();
     }
-    public function setPromotionData($flag,$clickOrder){
+
+    public function setPromotionData($flag, $clickOrder)
+    {
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
         $openId = Mage::getSingleton('customer/session')->getOpenId();
         $actId = Mage::getSingleton('customer/session')->getActId();
         $time = time();
 
-        $sql = "insert into weixin_promotion values (null,'".$orderId."','".$openId."','".$actId."','".$flag."','".$clickOrder."','".$time."')";
+        $sql = "insert into weixin_promotion values (null,'" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $time . "')";
+        $this->writeConnection->query($sql);
+    }
+
+    public function updatePromotionData($actId, $orderId)
+    {
+        $sql = "update weixin_promotion set sponsor_flag = 1 where order_id = '" . $orderId . "' and act_id = '" . $actId . "'";
         $this->writeConnection->query($sql);
     }
 

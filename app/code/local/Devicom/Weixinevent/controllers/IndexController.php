@@ -10,12 +10,13 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
         $signature = '【Sneakerhead】';
         $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
-//        EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+        //EMAY_SMS::sendSMS($telephone,$signature,$captcha);
 
         echo $captcha;
     }
 
-    public function checkCaptchaAction(){
+    public function checkCaptchaAction()
+    {
         mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction");
         $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
         $telephone = Mage::app()->getRequest()->getParam('telephone');
@@ -28,18 +29,18 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             $result = Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
             if ($result) {
                 $promotion_opt = Mage::getSingleton('customer/session')->getPromotionStatus($orderId, $actId);
-                if(count($promotion_opt)<4){
-                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5,$clickOrder);
-
+                if (count($promotion_opt) < 4) {
+                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
+                    //EMAY_SMS::sendPromotionSMS
                     echo "Success";
-                }else if(count($promotion_opt)==4){
-                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5,$clickOrder);
-
+                } else if (count($promotion_opt) == 4) {
+                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
+                    //EMAY_SMS::sendPromotionSMS
                     echo "Success";
-                }else{
+                } else {
                     echo "Fail";
                 }
-            }else{
+            } else {
                 echo "Fail";
             }
 
@@ -47,6 +48,14 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             echo "Fail";
         }
     }
+
+    public function updatePromotionDataAction()
+    {
+        $actId = Mage::getSingleton('customer/session')->getActId();
+        $orderId = Mage::getSingleton('customer/session')->getOrderId();
+        Mage::getSingleton('weixinevent/promotion')->updatePromotionData($actId, $orderId);
+    }
+
     public function indexAction(){
         mage::log("Devicom_Weixinevent_IndexController indexAction");
 
@@ -69,8 +78,10 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 //            $openid_obj = json_decode($openid_data);
 //            $openId = $openid_obj->openid;
 //            Mage::getSingleton('customer/session')->setOpenId($openId);
-        Mage::getSingleton('customer/session')->setOpenId("88888");
-
+        Mage::getSingleton('customer/session')->setOpenId("666666");
+        if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+            Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+        }
 //    $accessToken = $openid_obj->access_token;
 //
 //            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
@@ -139,7 +150,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function qrcodeAction(){
 
-        QRcode::png('http://mingzi.111cn.net');
+        QRcode::png('http://www.m.spaldingchina.com.cn/weixinevent/index/index/oid/1234567890/aid/112233');
 
     }
 

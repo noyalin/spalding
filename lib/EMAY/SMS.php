@@ -106,6 +106,25 @@ final class EMAY_SMS {
         }
     }
 
+    public static function sendPromotionSMS($telephone, $signature, $content)
+    {
+        self::getBalance();
+        /**
+         * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
+         * $client->sendSMS还有更多可用参数，请参考 Client.php
+         */
+        $statusCode = self::$client->sendSMS(array($telephone),$signature.$content);
+        mage::log("发送号码：$telephone -> ".$signature.$content);
+        mage::log("处理状态码:" . $statusCode);
+        self::getBalance();
+        if ($statusCode != null && $statusCode == 0) {
+            return true;
+        } else {
+            mage::log(self::chkError());
+            return false;
+        }
+    }
+
     /**
      * 余额查询 用例
      */

@@ -43,7 +43,7 @@ $shareimageurl = "http://images.spaldingchina.com.cn/skin/frontend/default/spald
     function checkMessage() {
         var inputCaptcha = document.getElementById("captcha").value;
         var telephone = document.getElementById("telephone").value;
-        var clickOrder = 1;
+        var clickOrder = 3;
 
         jQuery.ajax({
             type: 'POST',
@@ -55,6 +55,19 @@ $shareimageurl = "http://images.spaldingchina.com.cn/skin/frontend/default/spald
                 }else{
                     alert("验证失败");
                 }
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+    function sharePromotion() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo $this->getUrl('weixinevent/index/updatePromotionData') ?>',
+            success: function (data) {
+
             },
             error: function () {
 
@@ -128,6 +141,7 @@ $shareimageurl = "http://images.spaldingchina.com.cn/skin/frontend/default/spald
             },
             success: function (res) {
                 //如果分享成功
+                sharePromotion();
                 alert(1);
 
             },
@@ -148,7 +162,8 @@ $shareimageurl = "http://images.spaldingchina.com.cn/skin/frontend/default/spald
                 //alert('用户点击发送给朋友');
             },
             success: function (res) {
-                //如果分享成功 
+                //如果分享成功
+                sharePromotion();
                 alert(2);
             },
             cancel: function (res) {
