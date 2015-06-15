@@ -28,6 +28,7 @@ CREATE TABLE `{$this->getTable('weixin_promotion')}` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` varchar(50) NOT NULL,
   `open_id` varchar(50) NOT NULL,
+  `act_id` varchar(50) NOT NULL,
   `promotion_id` varchar(50) NOT NULL,
   `sponsor_flag` int(1)  NULL,
   `operation` varchar(800)  NULL,
