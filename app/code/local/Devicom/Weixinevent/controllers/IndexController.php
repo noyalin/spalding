@@ -1,28 +1,32 @@
-<?php
+    <?php
+    //include_once("app/comm/emay/EmaySMS.php");
+    //include_once("app/comm/yuntongxun/YunTongXunSMS.php");
 include '/lib/phpqrcode/phpqrcode.php';
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function sendCaptchaAction(){
         mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction");
-        $uid =  Mage::app()->getRequest()->getParam('uid');
-        $actId =  Mage::app()->getRequest()->getParam('actId');
+        $openId = Mage::getSingleton('customer/session')->getOpenId();
+        $actId = Mage::getSingleton('customer/session')->getActId();
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
         $signature = '【Sneakerhead】';
-        $captcha = SMS_Check::getTelephoneCode($uid, $actId, $telephone);
+        $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
 //        EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+
         echo $captcha;
     }
 
     public function checkCaptchaAction(){
         mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction");
         $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
-        $uid =  Mage::app()->getRequest()->getParam('uid');
-        $actId =  Mage::app()->getRequest()->getParam('actId');
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
+        $openId = Mage::getSingleton('customer/session')->getOpenId();
+        $actId = Mage::getSingleton('customer/session')->getActId();
 
-        mage::log($inputCaptcha."  ".$uid."  ".$actId."  ".$telephone);
-        if (SMS_Check::checkTelephoneCode($uid,$actId,$telephone,$inputCaptcha)) {
+        if (SMS_Check::checkTelephoneCode($openId,$actId,$telephone,$inputCaptcha)) {
+            Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
+            Mage::getSingleton('weixinevent/promotion')->setPromotionData($telephone);
             echo "Success";
         } else {
             echo "Fail";
@@ -31,17 +35,9 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
     public function indexAction(){
         mage::log("Devicom_Weixinevent_IndexController indexAction");
 
-        //TelephoneCheck::
-        // 亿美短信发送
-//        EMAY_SMS::sendSMS();
-
-//        //Demo调用
-//        //**************************************举例说明***********************************************************************
-//        //*假设您用测试Demo的APP ID，则需使用默认模板ID 1，发送手机号是13800000000，传入参数为6532和5，则调用方式为           *
-//        //*result = sendTemplateSMS("13800000000" ,array('6532','5'),"1");																		  *
-//        //*则13800000000手机号收到的短信内容是：【云通讯】您使用的是云通讯短信模板，您的验证码是6532，请于5分钟内正确输入     *
-//        //*********************************************************************************************************************
-//        YunTongXunSMS::send("13651758225",array('4567','3'),"1");//手机号码，替换内容数组，模板ID
+        $params = $this->getRequest()->getParams();
+        Mage::getSingleton('customer/session')->setOrderId($params['oid']);
+        Mage::getSingleton('customer/session')->setActId($params['aid']);
 
 //        $appid = 'wx79873079dca36474';
 //        $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
@@ -53,25 +49,26 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 //        if ($code && $state == 'spaldingchina') {//
 //            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
 //            $openid_data = $this->httpdata($openid_url);
-//            mage::log("openid_data=".$openid_data);
+//            Mage::log("openid_data=".$openid_data);
 ////    var_dump($openid_data);
 //            $openid_obj = json_decode($openid_data);
 //            $openId = $openid_obj->openid;
-////    $accessToken = $openid_obj->access_token;
+//            Mage::getSingleton('customer/session')->setOpenId($openId);
+        Mage::getSingleton('customer/session')->setOpenId("88888");
+
+//    $accessToken = $openid_obj->access_token;
 //
-////            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
-////            $token_data = $this->httpdata($token_url);
-////            mage::log("token_data=".$token_data);
-//////    var_dump($token_data);
-////            $token_obj = json_decode($token_data);
-////            $accessToken = $token_obj->access_token;
-////
-////            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
-////            $useinfo =  $this->httpdata($userUrl);
-////            mage::log("useinfo=".$useinfo);
-//////            var_dump($useinfo);
+//            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+//            $token_data = $this->httpdata($token_url);
+//            mage::log("token_data=".$token_data);
+////    var_dump($token_data);
+//            $token_obj = json_decode($token_data);
+//            $accessToken = $token_obj->access_token;
 //
-//
+//            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
+//            $useinfo =  $this->httpdata($userUrl);
+//            mage::log("useinfo=".$useinfo);
+////            var_dump($useinfo);
 //
 //        }else{
 //            mage::log($url);
@@ -79,8 +76,11 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 //        }
 
 
+
+
         $this->loadLayout();
         $this->renderLayout();
+
     }
 
     function httpdata($url, $method="get", $postfields = null, $headers = array(), $debug = false)

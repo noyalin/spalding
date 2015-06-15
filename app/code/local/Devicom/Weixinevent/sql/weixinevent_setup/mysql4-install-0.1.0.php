@@ -25,20 +25,22 @@ CREATE TABLE `{$this->getTable('weixin_appset')}` (
 
 DROP TABLE IF EXISTS `{$this->getTable('weixin_promotion')}` ;
 CREATE TABLE `{$this->getTable('weixin_promotion')}` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` varchar(50) NOT NULL,
   `open_id` varchar(50) NOT NULL,
   `promotion_id` varchar(50) NOT NULL,
   `sponsor_flag` int(1)  NULL,
   `operation` varchar(800)  NULL,
   `refresh_token_createtime` int(12)  NULL,
-  PRIMARY KEY (`order_id`,`open_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `{$this->getTable('weixin_captcha')}` ;
 CREATE TABLE `{$this->getTable('weixin_captcha')}` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `open_id` varchar(50) NOT NULL,
   `telephone_no` varchar(50) NOT NULL,
-  PRIMARY KEY (`open_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
     ");
