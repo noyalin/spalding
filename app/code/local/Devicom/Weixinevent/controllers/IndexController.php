@@ -51,9 +51,13 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function updatePromotionDataAction()
     {
+        Mage::log("updatePromotionDataAction start");
         $actId = Mage::getSingleton('customer/session')->getActId();
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
+        Mage::log($actId."------------".$orderId);
         Mage::getSingleton('weixinevent/promotion')->updatePromotionData($actId, $orderId);
+
+        Mage::log("updatePromotionDataAction end");
     }
 
     public function indexAction(){
