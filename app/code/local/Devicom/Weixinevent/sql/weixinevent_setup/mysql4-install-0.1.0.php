@@ -29,7 +29,6 @@ CREATE TABLE `{$this->getTable('weixin_promotion')}` (
   `order_id` varchar(50) NOT NULL,
   `open_id` varchar(50) NOT NULL,
   `act_id` varchar(50) NOT NULL,
-  `promotion_id` varchar(50) NOT NULL,
   `sponsor_flag` int(1)  NULL,
   `operation` varchar(800)  NULL,
   `refresh_token_createtime` int(12)  NULL,

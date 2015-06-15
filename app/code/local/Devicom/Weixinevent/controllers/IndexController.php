@@ -18,14 +18,31 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
     public function checkCaptchaAction(){
         mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction");
         $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
-        $telephone =  Mage::app()->getRequest()->getParam('telephone');
+        $telephone = Mage::app()->getRequest()->getParam('telephone');
+        $clickOrder = Mage::app()->getRequest()->getParam('clickOrder');
         $openId = Mage::getSingleton('customer/session')->getOpenId();
         $actId = Mage::getSingleton('customer/session')->getActId();
+        $orderId = Mage::getSingleton('customer/session')->getOrderId();
 
-        if (SMS_Check::checkTelephoneCode($openId,$actId,$telephone,$inputCaptcha)) {
-            Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
-            Mage::getSingleton('weixinevent/promotion')->setPromotionData($telephone);
-            echo "Success";
+        if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
+            $result = Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
+            if ($result) {
+                $promotion_opt = Mage::getSingleton('customer/session')->getPromotionStatus($orderId, $actId);
+                if(count($promotion_opt)<4){
+                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5,$clickOrder);
+
+                    echo "Success";
+                }else if(count($promotion_opt)==4){
+                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5,$clickOrder);
+
+                    echo "Success";
+                }else{
+                    echo "Fail";
+                }
+            }else{
+                echo "Fail";
+            }
+
         } else {
             echo "Fail";
         }
