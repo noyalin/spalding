@@ -10,6 +10,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
         $signature = '【Sneakerhead】';
         $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
+        Mage::log("验证码：".$captcha);
         //EMAY_SMS::sendSMS($telephone,$signature,$captcha);
 
         echo $captcha;
