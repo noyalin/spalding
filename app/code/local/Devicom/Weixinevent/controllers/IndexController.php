@@ -1,5 +1,5 @@
 <?php
-include '/lib/phpqrcode/phpqrcode.php';
+include  Mage :: getBaseDir().'/lib/phpqrcode/phpqrcode.php';
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
