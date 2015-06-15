@@ -13,7 +13,7 @@ final class SMS_Check
      */
     public static function  getTelephoneCode($uin, $actId, $telephone)
     {
-        if ($uin < 10000 || $actId < 1000 || empty($telephone)) {
+        if (empty($uin) || empty($actId) || empty($telephone)) {
             return false;
         }
 
@@ -52,7 +52,7 @@ final class SMS_Check
     public static function  checkTelephoneCode($uin, $actId, $telephone, $code)
     {
 
-        if ($uin < 10000 || $actId < 1000 || empty($telephone) || empty($code)) {
+        if (empty($uin) || empty($actId) || empty($telephone) || empty($code)) {
             return false;
         }
 
