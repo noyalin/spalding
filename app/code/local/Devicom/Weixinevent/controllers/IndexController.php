@@ -1,6 +1,4 @@
-    <?php
-    //include_once("app/comm/emay/EmaySMS.php");
-    //include_once("app/comm/yuntongxun/YunTongXunSMS.php");
+<?php
 include '/lib/phpqrcode/phpqrcode.php';
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
