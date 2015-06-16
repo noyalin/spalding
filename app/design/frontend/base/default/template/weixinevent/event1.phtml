@@ -8,6 +8,7 @@ $uid = 778899;
 $actId =  998877;
 ?>
 
+
 <!-- 请输入手机号:<input id="telephone" type="text" />
 <input id="btnSendCode" type="button" value="发送验证码" onclick="sendMessage()" /><br />
 请输入验证码:<input id="captcha" type="text">
@@ -23,7 +24,7 @@ $actId =  998877;
         position: relative;
         width:100%;
         height: 100%;
-        background: url(../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/weix_bg1.jpg) left top no-repeat;
+        background: url(<?php echo $this->getSkinUrl("images/weixin/weix_bg1.jpg"); ?>) left top no-repeat;
         background-size: 100% 100%;
         overflow: hidden;
     }
@@ -39,7 +40,7 @@ $actId =  998877;
 <div class="popPhone">
     <div class="popPhoneWrap">
         <div class="popPhoneClose clearfix">
-            <img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/popClose.png" alt="">
+            <img src="<?php echo $this->getSkinUrl("images/weixin/popClose.png"); ?>" alt="">
         </div>
         <div class="popPhoneBox">
             <h2>领取优惠券</h2>
@@ -63,11 +64,12 @@ $actId =  998877;
     </div>
 </div>
 <div class="container">
-    
+
     <div class="page page0 cur">
         <div class="wxWrap">
         <!-- <div class="wxWrapBg"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/weix_bg1.jpg" alt=""></div> -->
-            <div class="wxTit"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxTitle.png" alt=""></div>
+            <div class="wxTit"><img src="<?php echo $this->getSkinUrl("images/weixin/wxTitle.png"); ?>" alt=""></div>
+
 
             <div class="wxBalls">
                 <div class="wxBall wxBall_1">
@@ -128,9 +130,9 @@ $actId =  998877;
             </li>
         </ul>
     </div>
-  
-  
-  
+
+
+
 </div>
 
 
@@ -139,19 +141,20 @@ $actId =  998877;
 
     function sendMessage() {
 
-        var uid = '<?php echo $uid;?>';
-        var actId = '<?php echo $actId;?>';
         var telephone = document.getElementById("telephone").value;
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
-            data: {uid: uid, actId: actId, telephone: telephone},
+            data: {telephone: telephone},
             success: function (data) {
                 alert(data);
-            },q 
+            },
             //  dataType: "json",
             error: function () {
-//              alert('error');
+                alert('error');
+            },
+            complete:function(){
+                //document.getElementById("btnSendCode").disabled = true;
             }
         });
 
@@ -160,18 +163,31 @@ $actId =  998877;
     function checkMessage() {
         var inputCaptcha = document.getElementById("captcha").value;
         var telephone = document.getElementById("telephone").value;
-        var uid = '<?php echo $uid;?>';
-        var actId = '<?php echo $actId;?>';
+        var clickOrder = 3;
+
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
-            data: {inputCaptcha: inputCaptcha,uid: uid, actId: actId, telephone: telephone},
+            data: {inputCaptcha: inputCaptcha,telephone: telephone,clickOrder: clickOrder},
             success: function (data) {
                 if(jQuery.trim(data) == "Success") {
                     alert("验证成功");
                 }else{
                     alert("验证失败");
                 }
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+    function sharePromotion() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo $this->getUrl('weixinevent/index/updatePromotionData') ?>',
+            success: function (data) {
+
             },
             error: function () {
 
@@ -245,6 +261,7 @@ $actId =  998877;
             },
             success: function (res) {
                 //如果分享成功
+                sharePromotion();
                 alert(1);
 
             },
@@ -262,28 +279,30 @@ $actId =  998877;
             link: '<?php echo $currentUrl;  ?>',
             imgUrl: '<?php echo $shareimageurl;  ?>',
             trigger: function (res) {
-                //alert('用户点击发送给朋友');
+                alert('用户点击发送给朋友');
             },
             success: function (res) {
-                //如果分享成功 
+                //如果分享成功
+                alert(22);
+                sharePromotion();
                 alert(2);
             },
             cancel: function (res) {
-                //alert('已取消');
+                alert('已取消');
             },
             fail: function (res) {
-                //alert(JSON.stringify(res));
+                alert(JSON.stringify(res));
             }
         });
 
     });
     wx.error(function (res) {
-       // alert(res.errMsg);
+        alert(res.errMsg);
     });
 
-//   jQuery(function(){
-//        alert(1);
-//    });
+    //   jQuery(function(){
+    //        alert(1);
+    //    });
 </script>
 
 <script type="text/javascript" src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/js/jquery-1.11.1.min.js"></script>
@@ -319,7 +338,7 @@ $actId =  998877;
                 });
         }
 
-        
+
     );
 
     jQuery(function(){
@@ -333,7 +352,7 @@ $actId =  998877;
                 jQuery(this).off("touchstart");
                 //alert("已完全点亮");
             }
-                
+
         });
 
         //关闭手机验证
