@@ -109,7 +109,6 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
 
 
-
         $this->loadLayout();
         $this->renderLayout();
 
