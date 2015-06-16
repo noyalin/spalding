@@ -73,31 +73,31 @@ $actId =  998877;
 
             <div class="wxBalls">
                 <div class="wxBall wxBall_1">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_1.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_1.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_2">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_2.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_2.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_3">
-                    <span class="wxBallGy"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_3.png" alt=""></span>
+                    <span class="wxBallGy"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_3.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_4">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_4.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_4.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_5">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_5.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_5.png"); ?>" alt=""></span>
                 </div>
             </div>
-            <div class="ruls"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/rules.png" alt=""></div>
+            <div class="ruls"><img src="<?php echo $this->getSkinUrl("images/weixin/rules.png"); ?>" alt=""></div>
         </div>
     </div>
     <div class="page page1">
@@ -305,8 +305,8 @@ $actId =  998877;
     //    });
 </script>
 
-<script type="text/javascript" src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/jquery-1.11.1.min.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/jquery.touchSwipe.min.js"); ?>"></script>
 <script type="text/javascript">
 
     jQuery(document).ready(
@@ -347,7 +347,7 @@ $actId =  998877;
             var _wxBallGy = jQuery(".wxBallGys");
             var _wxBallGyLen = _wxBallGy.length;
             if(_wxBallGyLen>0){
-                jQuery(this).children(".wxBallGys").remove();
+                //jQuery(this).children(".wxBallGys").remove();
                 jQuery(this).parents().find(".popPhone").show();
             }else{
                 jQuery(this).off("touchstart");

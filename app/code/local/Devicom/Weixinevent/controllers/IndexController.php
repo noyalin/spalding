@@ -36,16 +36,17 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                 if (count($promotion_opt) < 4) {
                     Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
                     //EMAY_SMS::sendPromotionSMS
+//                    $result1 = Mage::getSingleton('weixinevent/promotion')->updateCoupon("12","1");
                     echo "Success";
                 } else if (count($promotion_opt) == 4) {
                     Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
                     //EMAY_SMS::sendPromotionSMS
                     echo "Success";
                 } else {
-                    echo "Fail";
+                    echo "球已被点完";
                 }
             } else {
-                echo "Fail";
+                echo "已参加过活动";
             }
 
         } else {

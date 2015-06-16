@@ -48,11 +48,12 @@ CREATE TABLE `{$this->getTable('weixin_coupon')}` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(50) NOT NULL,
   `types` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL,
   `start_time` varchar(14) NOT NULL,
   `end_time` varchar(14) NOT NULL,
   `create_time` varchar(14) NOT NULL,
   `modify_time` varchar(14) NOT NULL,
-  `uid` varchar(50) NOT NULL,
+  `uid` varchar(50) NULL,
   `act_id` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

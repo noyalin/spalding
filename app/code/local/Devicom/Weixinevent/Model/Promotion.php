@@ -151,4 +151,10 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         return $result;
     }
 
+    public function updateCoupon($telephone_no,$types)
+    {
+//        $modify_time = date("YmdHis",time());
+//        $sql = "update weixin_coupon set status = 1 ,";
+//        return "1";
+    }
 }
