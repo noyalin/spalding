@@ -1,6 +1,8 @@
 <?php
 //include  Mage :: getBaseDir().'/lib/phpqrcode/phpqrcode.php';
 
+define('SIGNATURE',   '【Spalding】');
+
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function sendCaptchaAction(){
@@ -8,7 +10,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $openId = Mage::getSingleton('customer/session')->getOpenId();
         $actId = Mage::getSingleton('customer/session')->getActId();
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
-        $signature = '【Sneakerhead】';
+        $signature = SIGNATURE;
         Mage::log("openId：".$openId."---actId:".$actId."---telephone".$telephone);
         $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
         Mage::log("验证码：".$captcha);

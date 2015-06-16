@@ -53,6 +53,7 @@ CREATE TABLE `{$this->getTable('weixin_coupon')}` (
   `create_time` varchar(14) NOT NULL,
   `modify_time` varchar(14) NOT NULL,
   `uid` varchar(50) NOT NULL,
+  `act_id` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
     ");
