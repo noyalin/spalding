@@ -3923,3 +3923,447 @@ span.sale_kind{
 	text-align: center;
 }
 
+
+
+
+/*微信活动*/
+
+@keyframes titleMove
+{
+	0%   {left:0px; top:0px;}
+	25%  {left:20px; top:0px;}
+	50%  {left:20px; top:20px;}
+	75%  {left:0px; top:20px;}
+	100% {left:0px; top:0px;}
+}
+
+@-webkit-keyframes titleMove 
+{
+	0%   {left:-10px; top:-10px;}
+	25%  {left:10px; top:0px;}
+	50%  {left:10px; top:10px;}
+	75%  {left:-0px; top:10px;}
+	100% {left:-10px; top:-10px;}
+}
+
+
+.wxWrap{
+	position: relative;
+	width:100%;
+	height:100%;
+	
+}
+
+
+.wxWrap .wxWrapBg{
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}
+
+
+.wxWrap .wxWrapBg img{
+	width:100%;
+	height:100%;
+}
+
+.wxTit{
+	position: relative;
+	padding-top:43%;
+	margin: 0 10%;
+	animation:titleMove 3s;
+	-webkit-animation:titleMove 3s;
+	animation-iteration-count:infinite;
+	-webkit-animation-iteration-count:infinite;
+}
+
+.wxTit img{
+	width: 100%;
+}
+
+.wxBalls{
+	position: relative;
+	margin:10% 10%;
+}
+
+
+.wxBalls .wxBall{
+	position: absolute;
+	width:30%;
+}
+
+.wxBalls .wxBall span{
+	display: block;
+	width:100%;
+}
+
+.wxBalls .wxBall img{
+	width:100%;
+}
+
+
+.wxBalls .wxBall span.wxBallGy{
+	position: absolute;
+	cursor:pointer;
+}
+
+.wxBalls .wxBall_1{
+	left: 0;
+	top:0;
+}
+
+.wxBalls .wxBall_2{
+	right:0;
+	top:0;
+}
+
+.wxBalls .wxBall_3{
+	left:50%;
+	margin-left:-15%;
+	margin-top:25%;
+}
+
+.wxBalls .wxBall_4{
+	left:0;
+	margin-top:50%;
+}
+
+.wxBalls .wxBall_5{
+	right:0;
+	margin-top:50%;
+}
+
+.container { 
+	width: 100%; 
+	height: 100%; 
+	position: absolute; 
+	left: 0; 
+	top: 0%; 
+}
+.container .page { 
+	height: 100%; 
+	position: relative; 
+	color:#fff;
+	text-align:center; 
+}
+
+.container .page1 { 
+	background-color:#ffcc00;
+	color:#000; 
+	font-family: "微软雅黑";
+	font-size: 14px;
+	line-height: 1.5em;
+}
+.xiangxiatishi { 
+	position: fixed; 
+	bottom: 20px; left: 50%; 
+	-webkit-transform: translateX(-50%); 
+	-webkit-animation: dong 1s linear 0s infinite alternate; 
+}
+@-webkit-keyframes dong {  
+	from {bottom:20px;}
+	to { bottom: 60px; }
+}
+
+.popPhone{
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	z-index:999;
+	background:rgba(0,0,0,.6);
+}
+
+
+.popPhoneWrap{
+	position:relative;
+	background:rgba(0,0,0,1);
+	margin:100px 10px 0;
+	padding:20px 10px;
+}
+
+.popPhoneClose{
+	width:5%;
+	margin-left:95%;
+}
+
+.popPhoneClose img{
+	width:100%;
+}
+
+.popPhoneBox{
+	position: relative;
+	font-family: "微软雅黑";
+	margin:0 30px;
+}
+
+.popPhoneBox h2{
+	font-size:280%;
+	text-align: center;
+	color:#fc0;
+}
+
+.popPhoneBox p{
+	font-size:14px;
+	color:#fff;
+	line-height: 1.5em;
+	
+}
+
+.popPhoneInp{
+	position: relative;
+	-webkit-box-sizing:border-box;
+	border:1px solid #fc0;
+	background:#1c1c1c;
+}
+
+.popPhoneInp>div{
+	height: 42px;
+    line-height: 42px;
+    -webkit-box-sizing: border-box;
+}
+
+.popPhoneInp>div input{
+	height:42px;
+	line-height: 42px;
+	font-size:14px;
+	background:none;
+	border:none;
+	color:#f2f2f2;
+	text-indent:5px;
+}
+.popPhoneInp>div.phoneInpNum span{
+	display: inline-block;
+}
+
+.popPhoneInp>div.phoneInpNum{
+	border-bottom:1px solid #fc0;
+}
+.popPhoneInp>div.phoneInpCd input{
+	width:100%;
+}
+
+.popPhoneInp>div.phoneInpNum span.telNum{
+	width: 60%;
+}
+
+.popPhoneInp>div.phoneInpNum span.telNum input{
+	width:100%;
+}
+
+.popPhoneInp>div.phoneInpNum span.clearTel{
+	width: 14px;
+    height: 14px;
+    line-height: 12px;
+    text-align: center;
+    border: 1px solid #f2f2f2;
+    color: #f2f2f2;
+    border-radius: 7px;
+    margin-left:-20px;
+    z-index: 1;
+}
+.popPhoneInp>div.phoneInpNum span.sendCd{
+	margin-left:10px;
+}
+
+.sendCd button{
+	padding:3px;
+	background:#6e6e6e;
+	color:#fff;
+	font-size: 12px;
+	border:none;
+}
+
+
+
+.popPhoneBtn{
+	margin:10px 0;
+	text-align: center;
+}
+
+.popPhoneBtn button{
+	border:none;
+	color:#000;
+	font-size:20px;
+	font-weight: bold;
+	background: #fc0;
+	width:100%;
+	height:40px;
+	line-height: 40px;
+}
+
+.ruls{
+	  position: absolute;
+	  width: 20%;
+	  margin: 0 auto;
+	  bottom: 10px;
+	  left: 50%;
+	  margin-left: -10%;
+}
+
+.ruls img{
+	width: 100%;
+}
+.container .page1 h1{
+	margin:0;
+	font-size: 240%;
+	font-family: "微软雅黑";
+	text-align: center;
+	color:#000;
+	padding:20px 0;
+	border:none;
+}
+
+.container .page1 h2{
+	margin:0;
+	font-size: 120%;
+	font-family: "微软雅黑";
+	text-align: center;
+	color:#000;
+	padding:10px 0;
+}
+.container .page1 ul{
+	margin:0 10px;
+}
+
+.container .page1 ul li{
+	text-align: left;
+	margin-bottom:15px;
+	line-height: 1.5em;
+	font-size:14px;
+	font-weight: bold;
+	
+}
+
+.container .page1 ul li span{
+	float: left;
+}
+
+.container .page1 ul li span.rulNum{
+	width: 5%;
+}
+
+.container .page1 ul li span.rulTex{
+	width: 95%;
+}
+
+/*
+***iphone 4 以下 小屏css
+***屏幕高度小于480px
+*/
+
+@media only screen and (min-height: 300px) and (max-height: 480px){
+
+	.wxTit{
+		padding-top:25%;
+	}
+	.container .page1 h1{
+	margin:0;
+	font-size: 200%;
+	font-family: "微软雅黑";
+	text-align: center;
+	color:#000;
+	padding:20px 0;
+	border:none;
+	}
+
+
+	.container .page1 h2{
+	margin:0 10px;
+	font-size: 100%;
+	font-family: "微软雅黑";
+	text-align: center;
+	color:#000;
+	padding:10px 0;
+	}
+
+    .container .page1 ul li{
+	text-align: left;
+	margin-bottom:15px;
+	line-height: 1.5em;
+	font-size:12px;
+	font-weight: bold;
+	
+	}
+
+	.popPhoneWrap {
+	  position: relative;
+	  background: rgba(0,0,0,1);
+	  margin: 50px 10px 0;
+	  padding: 20px 10px;
+	}
+
+	.popPhoneBox h2{
+		font-size: 240%;
+	}
+
+
+}
+
+/*
+*** iphone 6 plus
+*** 屏幕高度大于670(667)
+*** 屏幕高度小于740(736)
+*/
+@media only screen and (min-height: 670px) and (max-height: 740px){
+
+	.popPhoneBox p{
+		font-size: 16px;
+	}
+
+	.popPhoneInp{
+		margin:5px 0;
+	}
+
+	.popPhoneInp>div{
+		height: 52px;
+		line-height: 52px;
+	}
+
+	.popPhoneInp>div input{
+		height: 52px;
+		line-height: 52px;
+		font-size: 18px;
+	}
+
+	.sendCd button{
+		font-size: 18px;
+		 padding: 5px;
+	}
+
+	.popPhoneInp>div.phoneInpNum span.clearTel {
+	  width: 20px;
+	  height: 20px;
+	  line-height: 18px;
+	  text-align: center;
+	  border: 1px solid #f2f2f2;
+	  color: #f2f2f2;
+	  border-radius: 10px;
+	  margin-left: -20px;
+	  font-size: 16px;
+	  z-index: 1;
+	}
+
+	.popPhoneBtn button{
+		height: 50px;
+		line-height: 50px;
+		font-size: 24px;
+	}
+
+	.container .page1 h1{
+		font-size: 280%;
+		padding:30px 0;
+	}
+
+	.container .page1 h2{
+		font-size: 140%;
+	}
+
+	.container .page1 ul li{
+		font-size: 18px;
+	}
+
+}
