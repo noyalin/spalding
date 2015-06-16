@@ -3,9 +3,6 @@ list($appId,$timestamp,$noncestr,$signature,$currentUrl) = $this->getVar();
 $title = "微信活动";
 $desc = "微信活动";
 $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/20141208001.jpg";
-
-$uid = 778899;
-$actId =  998877;
 ?>
 
 
@@ -300,9 +297,6 @@ $actId =  998877;
         alert(res.errMsg);
     });
 
-    //   jQuery(function(){
-    //        alert(1);
-    //    });
 </script>
 
 <script type="text/javascript" src="<?php echo $this->getSkinUrl("js/jquery-1.11.1.min.js"); ?>"></script>
@@ -343,27 +337,64 @@ $actId =  998877;
 
     jQuery(function(){
         //点亮球
-        jQuery(".wxBall").on("touchstart",function(){
+        jQuery(".wxBall").on("click",function(){
             var _wxBallGy = jQuery(".wxBallGys");
             var _wxBallGyLen = _wxBallGy.length;
             if(_wxBallGyLen>0){
                 //jQuery(this).children(".wxBallGys").remove();
                 jQuery(this).parents().find(".popPhone").show();
             }else{
-                jQuery(this).off("touchstart");
+                jQuery(this).off("click");
                 //alert("已完全点亮");
             }
 
         });
 
         //关闭手机验证
-        jQuery(".popPhoneClose").on("touchstart",function(){
+        jQuery(".popPhoneClose").on("click",function(){
             jQuery(this).parents(".popPhone").hide();
         });
 
         //清除手机号码
         jQuery(".clearTel").on("click",function(){
             jQuery(this).siblings(".telNum").find(":text").val("").focus();
+        });
+
+        //发送验证码
+        jQuery(".sendCd").on("click", function () {
+            var telephone = jQuery(this).siblings(".telNum").find("input").val();
+            jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
+                data: {telephone: telephone},
+                success: function (data) {
+                    alert(data);
+                },
+                error: function () {
+                    alert('error');
+                },
+                complete:function(){
+                    //document.getElementById("btnSendCode").disabled = true;
+                }
+            });
+        });
+
+        //验证验证码
+        jQuery(".popPhoneBtn").on("click", function () {
+            var telephone = jQuery(this).siblings(".popPhoneInp").find(".telNum").find("input").val();
+            var inputCaptcha = jQuery(this).siblings(".popPhoneInp").find(".phoneInpCd").find("input").val();
+            jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
+                data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
+                success: function (data) {
+                    if (jQuery.trim(data) == "Success") {
+                        alert("验证成功");
+                    } else {
+                        alert("验证失败");
+                    }
+                }
+            });
         });
 
      });
