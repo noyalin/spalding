@@ -941,7 +941,27 @@
         public static function png($frame, $filename = false, $pixelPerPoint = 4, $outerFrame = 4,$saveandprint=FALSE) 
         {
             $image = self::image($frame, $pixelPerPoint, $outerFrame);
-            
+
+            $logo = Mage :: getBaseDir().'/lib/phpqrcode/logo.png';
+
+            if($logo !== FALSE){
+                $logo = imagecreatefromstring(file_get_contents($logo));
+
+                $QR_width = imagesx($image);
+                $QR_height = imagesy($image);
+
+                $logo_width = imagesx($logo);
+                $logo_height = imagesy($logo);
+
+                // Scale logo to fit in the QR Code
+                $logo_qr_width = $QR_width/5;
+                $scale = $logo_width/$logo_qr_width;
+                $logo_qr_height = $logo_height/$scale;
+                $from_width = ($QR_width-$logo_qr_width)/2;
+                //echo $from_width;exit;
+                imagecopyresampled($image, $logo, $from_width, $from_width, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
+            }
+
             if ($filename === false) {
                 Header("Content-type: image/png");
                 ImagePng($image);
