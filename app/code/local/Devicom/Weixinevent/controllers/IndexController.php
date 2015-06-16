@@ -1,5 +1,5 @@
 <?php
-include  Mage :: getBaseDir().'/lib/phpqrcode/phpqrcode.php';
+//include  Mage :: getBaseDir().'/lib/phpqrcode/phpqrcode.php';
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
@@ -155,7 +155,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function qrcodeAction(){
 
-        QRcode::png('http://www.m.spaldingchina.com.cn/weixinevent/index/index/oid/1234567890/aid/112233');
+        phpqrcode_qrcode::CreateQRCodePNG('http://www.m.spaldingchina.com.cn/weixinevent/index/index/oid/1234567890/aid/112233');
 
     }
 
