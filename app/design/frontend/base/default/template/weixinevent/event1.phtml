@@ -348,6 +348,7 @@ $actId =  998877;
             var _wxBallGyLen = _wxBallGy.length;
             if(_wxBallGyLen>0){
                 jQuery(this).children(".wxBallGys").remove();
+                jQuery(this).parents().find(".popPhone").show();
             }else{
                 jQuery(this).off("touchstart");
                 //alert("已完全点亮");
