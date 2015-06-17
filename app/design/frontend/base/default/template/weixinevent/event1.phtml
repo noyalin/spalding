@@ -43,7 +43,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         </div>
         <div class="popPhoneBox">
             <div class="telTit">
-                <img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/telTit.png" alt="">
+                <img src="<?php echo $this->getSkinUrl("images/weixin/telTit.png"); ?>" alt="">
             </div>
             <p>恭喜你点亮第一个球，获得斯伯丁官方商城(Spaldingchina.com.cn)<font style="color:#fc0">10元优惠券</font>一张请输入你的手机号以领取：</p>
             <div class="popPhoneInp">
@@ -89,7 +89,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
                 <div class="wxBall wxBall_3">
                     <span class="please">请点亮</span>
-                    <span class="wxBallGy"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
                     <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_3.png"); ?>" alt=""></span>
                 </div>
 
@@ -155,12 +155,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             success: function (data) {
                 alert(data);
             },
-            //  dataType: "json",
             error: function () {
                 alert('error');
-            },
-            complete:function(){
-                //document.getElementById("btnSendCode").disabled = true;
             }
         });
 
@@ -169,12 +165,11 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
     function checkMessage() {
         var inputCaptcha = document.getElementById("captcha").value;
         var telephone = document.getElementById("telephone").value;
-        var clickOrder = 3;
 
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
-            data: {inputCaptcha: inputCaptcha,telephone: telephone,clickOrder: clickOrder},
+            data: {inputCaptcha: inputCaptcha,telephone: telephone,clickOrder: 0},
             success: function (data) {
                 if(jQuery.trim(data) == "Success") {
                     alert("验证成功");
@@ -268,8 +263,6 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             success: function (res) {
                 //如果分享成功
                 sharePromotion();
-                alert(1);
-
             },
             cancel: function (res) {
                 //alert('已取消');
@@ -289,15 +282,13 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             },
             success: function (res) {
                 //如果分享成功
-                alert(22);
                 sharePromotion();
-                alert(2);
             },
             cancel: function (res) {
                 alert('已取消');
             },
             fail: function (res) {
-                alert(JSON.stringify(res));
+//                alert(JSON.stringify(res));
             }
         });
 
@@ -346,14 +337,21 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
     jQuery(function(){
         var _lightedCnt = <?php echo $this->getPromotion() ?>;
-        for (var i = 0; i < _lightedCnt; i++) {
+        var i;
+        for (i = 0; i < _lightedCnt; i++) {
             var str = ".wxBall_" + (i + 1);
             jQuery(str).children(".wxBallGys").remove();
             jQuery(str).children(".please").remove();
         }
+        for (; i < 5; i++) {
+            var str = ".wxBall_" + (i + 1);
+            if (i != _lightedCnt) {
+                jQuery(str).children(".please").remove();
+            }
+        }
         jQuery(".popPhone").hide();
         //点亮球
-        jQuery(".wxBall").on("click",function(){
+        jQuery(".please").on("click",function(){
             var _wxBallGy = jQuery(".wxBallGys");
             var _wxBallGyLen = _wxBallGy.length;
             if(_wxBallGyLen>0){
@@ -405,14 +403,15 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
                 success: function (data) {
                     if (jQuery.trim(data) == "Success") {
+                        jQuery(".popPhone").hide();
                         alert("验证成功");
                         //分享提示层
                         var _shareWx = jQuery(".shareWx")
                         _shareWx.show();
                         _shareWx.on("click",function(){
                             jQuery(this).hide();
+                            location.reload();
                         });
-                        location.reload();
                     } else {
                         alert("验证失败");
                     }
