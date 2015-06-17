@@ -5,11 +5,6 @@ $desc = "微信活动";
 $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/20141208001.jpg";
 ?>
 
-
-<!-- 请输入手机号:<input id="telephone" type="text" />
-<input id="btnSendCode" type="button" value="发送验证码" onclick="sendMessage()" /><br />
-请输入验证码:<input id="captcha" type="text">
-<input id="btnCheckCode" type="button" value="验证" onclick="checkMessage()" /> -->
 <style>
     html{
         position: relative;
@@ -336,12 +331,17 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
     );
 
     jQuery(function(){
+        var _lightedCnt = <?php echo $this->getPromotion() ?>;
+        for (var i = 0; i < _lightedCnt; i++) {
+            var str = ".wxBall_" + (i + 1);
+            jQuery(str).children(".wxBallGys").remove();
+        }
         //点亮球
         jQuery(".wxBall").on("click",function(){
             var _wxBallGy = jQuery(".wxBallGys");
             var _wxBallGyLen = _wxBallGy.length;
             if(_wxBallGyLen>0){
-                //jQuery(this).children(".wxBallGys").remove();
+//                jQuery(this).children(".wxBallGys").remove();
                 jQuery(this).parents().find(".popPhone").show();
             }else{
                 jQuery(this).off("click");
@@ -390,6 +390,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 success: function (data) {
                     if (jQuery.trim(data) == "Success") {
                         alert("验证成功");
+                        location.reload();
                     } else {
                         alert("验证失败");
                     }

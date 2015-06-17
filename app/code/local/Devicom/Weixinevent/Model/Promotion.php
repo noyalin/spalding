@@ -89,10 +89,8 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         $openId = Mage::getSingleton('customer/session')->getOpenId();
         $sql = "select count(*) from `weixin_promotion` where order_id = '" . $orderId . "' and open_id = '" . $openId . "' and sponsor_flag =5";
         $result = $this->readConnection->fetchOne($sql);
-        if ($result != 0) {
-            return false;
-        }
-        return true;
+
+        return $result;
     }
 
     public function checkSponsor()
