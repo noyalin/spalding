@@ -72,8 +72,16 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             Zend_Log::DEBUG);
 
         $params = $this->getRequest()->getParams();
-        Mage::getSingleton('customer/session')->setOrderId($params['oid']);
-        Mage::getSingleton('customer/session')->setActId($params['aid']);
+        try {
+            Mage::getSingleton('customer/session')->setOrderId($params['oid']);
+            Mage::getSingleton('customer/session')->setActId($params['aid']);
+        } catch (Exception $e) {
+            return;
+        }
+
+        if ($params['aid'] != '10000001') {
+            return;
+        }
 
 //        $appid = 'wx79873079dca36474';
 //        $appsecret = 'ba74acc7f680e7bbe62203815df1df41';

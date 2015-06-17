@@ -61,6 +61,9 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
             $query = "update `weixin_appset` set  access_token = '$accessToken',create_time=$createTime where id = $id";
             $writeConnection->query($query);
         }
+        else {
+            $accessToken = $apidata['access_token'];
+        }
         if($apidata['ticket']==null || (time()-1*$apidata['ticket_time']>7200)){
             $token = $accessToken;
             $jsonTicket = $this->getJsTicket($token);
