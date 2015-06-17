@@ -6,7 +6,8 @@ define('SIGNATURE',   '【Spalding】');
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function sendCaptchaAction(){
-        mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction");
+        mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction",
+            Zend_Log::DEBUG);
         $openId = Mage::getSingleton('customer/session')->getOpenId();
         $actId = Mage::getSingleton('customer/session')->getActId();
         $telephone =  Mage::app()->getRequest()->getParam('telephone');
@@ -20,7 +21,8 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function checkCaptchaAction()
     {
-        mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction");
+        mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction",
+            Zend_Log::DEBUG);
         $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
         $telephone = Mage::app()->getRequest()->getParam('telephone');
         $clickOrder = Mage::app()->getRequest()->getParam('clickOrder');
@@ -55,16 +57,19 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function updatePromotionDataAction()
     {
-        Mage::log("updatePromotionDataAction start");
+        Mage::log("updatePromotionDataAction start",
+            Zend_Log::DEBUG);
         $actId = Mage::getSingleton('customer/session')->getActId();
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
         Mage::getSingleton('weixinevent/promotion')->updatePromotionData($actId, $orderId);
 
-        Mage::log("updatePromotionDataAction end");
+        Mage::log("updatePromotionDataAction end",
+            Zend_Log::DEBUG);
     }
 
     public function indexAction(){
-        mage::log("Devicom_Weixinevent_IndexController indexAction");
+        mage::log("Devicom_Weixinevent_IndexController indexAction",
+            Zend_Log::DEBUG);
 
         $params = $this->getRequest()->getParams();
         Mage::getSingleton('customer/session')->setOrderId($params['oid']);
@@ -156,7 +161,21 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function qrcodeAction(){
 
-        phpqrcode_qrcode::CreateQRCodePNG('http://www.m.spaldingchina.com.cn/weixinevent/index/index/oid/1234567890/aid/112233');
+        $params = $this->getRequest()->getParams();
+
+        $baseUrl = 'http://www.m.spaldingchina.com.cn/weixinevent/index/index/';
+
+        foreach ($params as $k=>$v) {
+            if ($k == null || $v == null) {
+                continue;
+            }
+            $baseUrl = $baseUrl.$k.'/'.$v.'/';
+        }
+
+        Mage::log('baseUrl = '.$baseUrl,
+            Zend_Log::DEBUG);
+
+        phpqrcode_qrcode::CreateQRCodePNG($baseUrl, false, 'L', 6, 2);
 
     }
 
