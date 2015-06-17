@@ -4050,8 +4050,9 @@ span.sale_kind{
 }
 
 .container .page1 { 
-	background-color:#ffcc00;
-	color:#000; 
+	background:url(../images/weixin/weix_bg2.jpg) center center no-repeat #000;
+	background-size: 100% 100%;
+	color:#e6e6e6; 
 	font-family: "微软雅黑";
 	font-size: 14px;
 	line-height: 1.5em;
@@ -4075,12 +4076,14 @@ span.sale_kind{
 	top:0;
 	z-index:999;
 	background:rgba(0,0,0,.6);
+	display: none;
 }
 
 
 .popPhoneWrap{
 	position:relative;
-	background:rgba(0,0,0,1);
+	background:url(../images/weixin/telBg.png) center center no-repeat #000;
+	background-size: 100% 100%;
 	margin:100px 10px 0;
 	padding:20px 10px;
 }
@@ -4100,10 +4103,14 @@ span.sale_kind{
 	margin:0 30px;
 }
 
-.popPhoneBox h2{
-	font-size:280%;
-	text-align: center;
-	color:#fc0;
+.popPhoneBox .telTit{
+	width:60%;
+	margin:0 auto;
+	margin-top:-20px;
+}
+
+.popPhoneBox .telTit img{
+	width: 100%;
 }
 
 .popPhoneBox p{
@@ -4116,8 +4123,6 @@ span.sale_kind{
 .popPhoneInp{
 	position: relative;
 	-webkit-box-sizing:border-box;
-	border:1px solid #fc0;
-	background:#1c1c1c;
 }
 
 .popPhoneInp>div{
@@ -4127,24 +4132,48 @@ span.sale_kind{
 }
 
 .popPhoneInp>div input{
-	height:42px;
-	line-height: 42px;
+	height:32px;
+	line-height: 32px;
 	font-size:14px;
-	background:none;
+	background:#fff;
+	border-radius:4px;
 	border:none;
-	color:#f2f2f2;
+	color:#333;
 	text-indent:5px;
 }
-.popPhoneInp>div.phoneInpNum span{
+.popPhoneInp>div span{
 	display: inline-block;
 }
 
-.popPhoneInp>div.phoneInpNum{
-	border-bottom:1px solid #fc0;
+.popPhoneInp>div.phoneInpCd span.cdInp{
+	width: 60%;
 }
-.popPhoneInp>div.phoneInpCd input{
+
+.popPhoneInp>div.phoneInpCd span.cdInp input{
 	width:100%;
 }
+
+.popPhoneInp>div.phoneInpCd span.popPhoneBtn{
+	text-align: center;
+	width:35%;
+	margin-left:5px;
+}
+
+.popPhoneBtn button{
+	border:none;
+	color:#000;
+	background: #fc0;
+	width:100%;
+	height:32px;
+	line-height: 32px;
+	font-size: 16px;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+
+
+
 
 .popPhoneInp>div.phoneInpNum span.telNum{
 	width: 60%;
@@ -4155,45 +4184,32 @@ span.sale_kind{
 }
 
 .popPhoneInp>div.phoneInpNum span.clearTel{
-	width: 14px;
-    height: 14px;
+	font-size:24px;
     line-height: 12px;
-    text-align: center;
-    border: 1px solid #f2f2f2;
-    color: #f2f2f2;
-    border-radius: 7px;
+    color: #fc0;
     margin-left:-20px;
     z-index: 1;
 }
 .popPhoneInp>div.phoneInpNum span.sendCd{
 	margin-left:10px;
+	width: 35%;
 }
 
 .sendCd button{
-	padding:3px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
 	background:#6e6e6e;
 	color:#fff;
-	font-size: 12px;
 	border:none;
+	border-radius: 4px;
+	width: 100%;
+	font-size: 14px;
 }
 
 
 
-.popPhoneBtn{
-	margin:10px 0;
-	text-align: center;
-}
 
-.popPhoneBtn button{
-	border:none;
-	color:#000;
-	font-size:20px;
-	font-weight: bold;
-	background: #fc0;
-	width:100%;
-	height:40px;
-	line-height: 40px;
-}
 
 .ruls{
 	  position: absolute;
@@ -4207,14 +4223,14 @@ span.sale_kind{
 .ruls img{
 	width: 100%;
 }
-.container .page1 h1{
-	margin:0;
-	font-size: 240%;
-	font-family: "微软雅黑";
-	text-align: center;
-	color:#000;
-	padding:20px 0;
-	border:none;
+.container .page1 .rulTit{
+	width:80%;
+	margin:0 auto;
+}
+
+.container .page1 .rulTit img{
+	width: 100%;
+	padding-top:20px;
 }
 
 .container .page1 h2{
@@ -4222,8 +4238,16 @@ span.sale_kind{
 	font-size: 120%;
 	font-family: "微软雅黑";
 	text-align: center;
-	color:#000;
+	color:#e6e6e6;
 	padding:10px 0;
+}
+.container .page1 h3{
+	text-align: left;
+	margin-bottom:10px;
+}
+
+.container .page1 h5{
+	color:#ffb400;
 }
 .container .page1 ul{
 	margin:0 10px;
@@ -4250,16 +4274,49 @@ span.sale_kind{
 	width: 95%;
 }
 
+/*分享*/
+.shareWx{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,.9);
+	z-index: 99999;
+	display: none;
+}
+
+.shareWx .shareWxWrap{
+	width:100%;
+	position: absolute;
+	right:0;
+	top:0;
+}
+
+.shareWx .shareWxWrap img{
+	width: 100%;
+}
+
 /*
 ***iphone 4 以下 小屏css
 ***屏幕高度小于480px
 */
 
 @media only screen and (min-height: 300px) and (max-height: 480px){
-
+	
 	.wxTit{
 		padding-top:25%;
 	}
+	.popPhoneInp>div input{
+		font-size:12px;
+	}
+
+	.sendCd button{
+		font-size: 12px;
+	}
+
+	.popPhoneBtn button{
+		font-size: 14px;
+	}
+
 	.container .page1 h1{
 	margin:0;
 	font-size: 200%;
@@ -4276,7 +4333,7 @@ span.sale_kind{
 	font-size: 100%;
 	font-family: "微软雅黑";
 	text-align: center;
-	color:#000;
+	color:#e6e6e6;
 	padding:10px 0;
 	}
 
@@ -4291,16 +4348,48 @@ span.sale_kind{
 
 	.popPhoneWrap {
 	  position: relative;
-	  background: rgba(0,0,0,1);
+	  background: url(../images/weixin/telBg.png) center center no-repeat #000;
+  	  background-size: 100% 100%;
 	  margin: 50px 10px 0;
 	  padding: 20px 10px;
 	}
 
-	.popPhoneBox h2{
-		font-size: 240%;
+	
+
+
+}
+
+/*
+***iphone 5
+***屏幕高度 介于 481 - 570
+*/
+@media only screen and (min-height: 481px) and (max-height: 570px){
+
+	.popPhoneInp>div input{
+		font-size: 12px;
 	}
 
+	.sendCd button{
+		font-size:12px;
+	}
 
+	.popPhoneBtn button{
+		font-size:14px;
+	}
+
+	.container .page1 h2{
+		font-size:100%;
+	}
+
+	.container .page1 h3 {
+	  text-align: left;
+	  margin-bottom: 5px;
+	  font-size: 14px;
+	}
+
+	.container .page1 ul li{
+		font-size:12px;
+	}
 }
 
 /*
@@ -4324,33 +4413,32 @@ span.sale_kind{
 	}
 
 	.popPhoneInp>div input{
-		height: 52px;
-		line-height: 52px;
+		height: 42px;
+		line-height: 42px;
 		font-size: 18px;
 	}
 
 	.sendCd button{
+		height:42px;
+		line-height: 32px;
 		font-size: 18px;
 		 padding: 5px;
 	}
 
 	.popPhoneInp>div.phoneInpNum span.clearTel {
-	  width: 20px;
-	  height: 20px;
-	  line-height: 18px;
-	  text-align: center;
-	  border: 1px solid #f2f2f2;
-	  color: #f2f2f2;
-	  border-radius: 10px;
-	  margin-left: -20px;
-	  font-size: 16px;
-	  z-index: 1;
+	    font-size:24px;
+	    line-height: 12px;
+	    color: #fc0;
+	    margin-left:-20px;
+	    z-index: 1;
 	}
 
 	.popPhoneBtn button{
-		height: 50px;
-		line-height: 50px;
-		font-size: 24px;
+		height: 42px;
+		line-height: 42px;
+		font-size: 20px;
+		vertical-align: top;
+		margin-top:4px;
 	}
 
 	.container .page1 h1{

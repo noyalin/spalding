@@ -2101,6 +2101,23 @@ ul.form-list li p{
 	color:#fdb905;
 }
 
+.wxCD{
+	position: relative;
+	width: 700px;
+	height: 254px;
+	margin-bottom:30px;
+	background: url(../images/wxCd.png) left top no-repeat;
+
+}
+
+.wxCD img{
+	position: absolute;
+	top:90px;
+	left:20px;
+	width:100px;
+	height: 100px;
+}
+
 .order_data h4{
 	font-weight: bold;
 	font-size: 14px;

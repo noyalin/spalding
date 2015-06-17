@@ -29,6 +29,13 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         position: relative;
     }
 </style>
+<!-- 分享提示 -->
+<div class="shareWx">
+    <div class="shareWxWrap">
+        <img src="<?php echo $this->getSkinUrl("images/weixin/shareWx.png"); ?>" alt="">
+    </div>
+</div>
+<!-- 手机验证 -->
 <div class="popPhone">
     <div class="popPhoneWrap">
         <div class="popPhoneClose clearfix">
@@ -57,6 +64,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         </div>
     </div>
 </div>
+
+<!-- 主框架 -->
 <div class="container">
 
     <div class="page page0 cur">
@@ -95,34 +104,32 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         </div>
     </div>
     <div class="page page1">
-        <h1>游戏规则</h1>
+        <div class="rulTit"><img src="<?php echo $this->getSkinUrl("images/weixin/rulTit.png"); ?>" alt=""></div>
         <h2>活动日期：2015年6月17日~2015年7月31日</h2>
+        <h3>【活动主规则】</h3>
         <ul>
             <li class="clearfix">
                 <span class="rulNum">1、</span>
-                <span class="rulTex">在斯伯丁官方商城（Spaldingchina.com.cn）下单并分享至微信朋友圈或发送好友和群，即可获赠斯伯丁专业篮球袜一双</span>
+                <span class="rulTex">在斯伯丁官方商城（Spaldingchina.com.cn）下单并分享至微信朋友圈或发送好友和群，即可获赠<font style="color:#e1272a">斯伯丁专业篮球袜一双</font></span>
             </li>
             <li class="clearfix">
                 <span class="rulNum">2、</span>
-                <span class="rulTex">好友互动可为你点亮一颗篮球（一共五颗篮球可以被点亮），你的好友将获得斯伯丁官方商城10元优惠券（满100元可以使用）</span>
+                <span class="rulTex">好友互动可为你点亮一颗篮球（一共五颗篮球可以被点亮），你的好友将获得斯伯丁官方商城<font style="color:#e1272a">10元优惠券</font>（满100元可以使用）</span>
             </li>
             <li class="clearfix">
                 <span class="rulNum">3、</span>
-                <span class="rulTex">5颗篮球全部被点亮之后，你可获得官方商城10元无门槛优惠券。</span>
+                <span class="rulTex">5颗篮球全部被点亮之后，你可获得官方商城<font style="color:#e1272a">10元无门槛优惠券</font>。</span>
             </li>
             <li class="clearfix">
                 <span class="rulNum">4、</span>
-                <span class="rulTex">所有优惠券有效期为自发放日起的30天内，一笔订单只能使用一张优惠券，券不可重叠使用。</span>
+                <span class="rulTex">所有优惠券有效期为自发放日起的<font style="color:#e1272a">30天内</font>，一笔订单只能使用一张优惠券，券不可重叠使用。</span>
             </li>
             <li class="clearfix">
                 <span class="rulNum">5、</span>
                 <span class="rulTex">未在斯伯丁官方商城购物，您也可以转发本次活动，但是无法获得袜子和无门槛优惠券的奖励。</span>
             </li>
-            <li class="clearfix">
-                <span class="rulNum">6、</span>
-                <span class="rulTex">本次活动最终解释权归斯伯丁中国所有。</span>
-            </li>
         </ul>
+        <h5>*本次活动最终解释权归斯伯丁中国所有。</h5>
     </div>
 
 
@@ -364,7 +371,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
         //发送验证码
         jQuery(".sendCd").on("click", function () {
-            var telephone = jQuery(this).siblings(".telNum").find("input").val();
+            var telephone = jQuery(".telNum").find("input").val();
             jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
@@ -383,8 +390,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
         //验证验证码
         jQuery(".popPhoneBtn").on("click", function () {
-            var telephone = jQuery(this).siblings(".popPhoneInp").find(".telNum").find("input").val();
-            var inputCaptcha = jQuery(this).siblings(".popPhoneInp").find(".phoneInpCd").find("input").val();
+            var telephone = jQuery(".telNum").find("input").val();
+            var inputCaptcha = jQuery(".phoneInpCd").find("input").val();
             jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
@@ -392,6 +399,12 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 success: function (data) {
                     if (jQuery.trim(data) == "Success") {
                         alert("验证成功");
+                        //分享提示层
+                        var _shareWx = jQuery(".shareWx")
+                        _shareWx.show();
+                        _shareWx.on("click",function(){
+                            jQuery(this).hide();
+                        });
                         location.reload();
                     } else {
                         alert("验证失败");
@@ -399,6 +412,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 }
             });
         });
+
+        
 
      });
 
