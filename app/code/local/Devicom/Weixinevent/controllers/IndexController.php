@@ -175,7 +175,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         Mage::log('baseUrl = '.$baseUrl,
             Zend_Log::DEBUG);
 
-        phpqrcode_qrcode::CreateQRCodePNG($baseUrl, false, 'L', 6, 2);
+        phpqrcode_qrcode::CreateQRCodePNG($baseUrl, false, 'L', 4, 2);
 
     }
 
