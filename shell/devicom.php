@@ -25,7 +25,7 @@ class Devicom_DB extends Mage_Shell_Abstract {
          //Error Tracker:  php shell/devicom.php  --type Tools:Tracker_ErrorTracker
          //Sale Log Tracker:  php shell/devicom.php  --type Tools:Tracker_SaleProcessTracker
 
-
+        //php shell/devicom.php  --type InventoryUpdate
         //php shell/devicom.php  --type IncrementalUpdate
         //php shell/devicom.php  --type CategoryUpdate
         //php shell/devicom.php  --type FullInventoryUpdate
