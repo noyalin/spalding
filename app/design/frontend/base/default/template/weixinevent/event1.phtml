@@ -76,27 +76,32 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
             <div class="wxBalls">
                 <div class="wxBall wxBall_1">
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="please">请点亮</span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
                     <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_1.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_2">
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="please">请点亮</span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
                     <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_2.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_3">
-                    <span class="wxBallGy"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="please">请点亮</span>
+                    <span class="wxBallGy"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
                     <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_3.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_4">
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="please">请点亮</span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
                     <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_4.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_5">
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="please">请点亮</span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
                     <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_5.png"); ?>" alt=""></span>
                 </div>
             </div>
@@ -344,6 +349,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         for (var i = 0; i < _lightedCnt; i++) {
             var str = ".wxBall_" + (i + 1);
             jQuery(str).children(".wxBallGys").remove();
+            jQuery(str).children(".please").remove();
         }
         //点亮球
         jQuery(".wxBall").on("click",function(){

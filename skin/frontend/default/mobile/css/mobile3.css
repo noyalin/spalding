@@ -4003,6 +4003,14 @@ span.sale_kind{
 	width:100%;
 }
 
+.wxBalls .wxBall span.please{
+	position: absolute;
+	z-index: 22;
+	color:#e6e6e6;
+	font-size: 16px;
+	top:50%;
+	margin-top:-8px;
+}
 
 .wxBalls .wxBall span.wxBallGy{
 	position: absolute;
