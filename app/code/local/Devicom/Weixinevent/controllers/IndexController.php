@@ -171,13 +171,13 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
         $params = $this->getRequest()->getParams();
 
-        $baseUrl = 'http://www.m.spaldingchina.com.cn/weixinevent/index/index/';
+        $baseUrl = 'http://www.m.spaldingchina.com.cn/weixinevent/index/index';
 
         foreach ($params as $k=>$v) {
             if ($k == null || $v == null) {
                 continue;
             }
-            $baseUrl = $baseUrl.$k.'/'.$v.'/';
+            $baseUrl = $baseUrl.'/'.$k.'/'.$v;
         }
 
         Mage::log('baseUrl = '.$baseUrl,
