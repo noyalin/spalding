@@ -3,15 +3,8 @@ list($appId,$timestamp,$noncestr,$signature,$currentUrl) = $this->getVar();
 $title = "微信活动";
 $desc = "微信活动";
 $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/20141208001.jpg";
-
-$uid = 778899;
-$actId =  998877;
 ?>
 
-<!-- 请输入手机号:<input id="telephone" type="text" />
-<input id="btnSendCode" type="button" value="发送验证码" onclick="sendMessage()" /><br />
-请输入验证码:<input id="captcha" type="text">
-<input id="btnCheckCode" type="button" value="验证" onclick="checkMessage()" /> -->
 <style>
     html{
         position: relative;
@@ -23,7 +16,7 @@ $actId =  998877;
         position: relative;
         width:100%;
         height: 100%;
-        background: url(../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/weix_bg1.jpg) left top no-repeat;
+        background: url(<?php echo $this->getSkinUrl("images/weixin/weix_bg1.jpg"); ?>) left top no-repeat;
         background-size: 100% 100%;
         overflow: hidden;
     }
@@ -39,7 +32,7 @@ $actId =  998877;
 <div class="popPhone">
     <div class="popPhoneWrap">
         <div class="popPhoneClose clearfix">
-            <img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/popClose.png" alt="">
+            <img src="<?php echo $this->getSkinUrl("images/weixin/popClose.png"); ?>" alt="">
         </div>
         <div class="popPhoneBox">
             <div class="telTit">
@@ -65,39 +58,40 @@ $actId =  998877;
     </div>
 </div>
 <div class="container">
-    
+
     <div class="page page0 cur">
         <div class="wxWrap">
         <!-- <div class="wxWrapBg"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/weix_bg1.jpg" alt=""></div> -->
-            <div class="wxTit"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxTitle.png" alt=""></div>
+            <div class="wxTit"><img src="<?php echo $this->getSkinUrl("images/weixin/wxTitle.png"); ?>" alt=""></div>
+
 
             <div class="wxBalls">
                 <div class="wxBall wxBall_1">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_1.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_1.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_2">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_2.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_2.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_3">
-                    <span class="wxBallGy"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_3.png" alt=""></span>
+                    <span class="wxBallGy"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_3.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_4">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_4.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_4.png"); ?>" alt=""></span>
                 </div>
 
                 <div class="wxBall wxBall_5">
-                    <span class="wxBallGy wxBallGys"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/wxBallGy.png" alt=""></span>
-                    <span class="wxBallCon"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/ball_5.png" alt=""></span>
+                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy.png"); ?>" alt=""></span>
+                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_5.png"); ?>" alt=""></span>
                 </div>
             </div>
-            <div class="ruls"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/rules.png" alt=""></div>
+            <div class="ruls"><img src="<?php echo $this->getSkinUrl("images/weixin/rules.png"); ?>" alt=""></div>
         </div>
     </div>
     <div class="page page1">
@@ -130,9 +124,9 @@ $actId =  998877;
             </li>
         </ul>
     </div>
-  
-  
-  
+
+
+
 </div>
 
 
@@ -141,19 +135,20 @@ $actId =  998877;
 
     function sendMessage() {
 
-        var uid = '<?php echo $uid;?>';
-        var actId = '<?php echo $actId;?>';
         var telephone = document.getElementById("telephone").value;
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
-            data: {uid: uid, actId: actId, telephone: telephone},
+            data: {telephone: telephone},
             success: function (data) {
                 alert(data);
-            },q 
+            },
             //  dataType: "json",
             error: function () {
-//              alert('error');
+                alert('error');
+            },
+            complete:function(){
+                //document.getElementById("btnSendCode").disabled = true;
             }
         });
 
@@ -162,18 +157,31 @@ $actId =  998877;
     function checkMessage() {
         var inputCaptcha = document.getElementById("captcha").value;
         var telephone = document.getElementById("telephone").value;
-        var uid = '<?php echo $uid;?>';
-        var actId = '<?php echo $actId;?>';
+        var clickOrder = 3;
+
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
-            data: {inputCaptcha: inputCaptcha,uid: uid, actId: actId, telephone: telephone},
+            data: {inputCaptcha: inputCaptcha,telephone: telephone,clickOrder: clickOrder},
             success: function (data) {
                 if(jQuery.trim(data) == "Success") {
                     alert("验证成功");
                 }else{
                     alert("验证失败");
                 }
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+    function sharePromotion() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo $this->getUrl('weixinevent/index/updatePromotionData') ?>',
+            success: function (data) {
+
             },
             error: function () {
 
@@ -247,6 +255,7 @@ $actId =  998877;
             },
             success: function (res) {
                 //如果分享成功
+                sharePromotion();
                 alert(1);
 
             },
@@ -264,32 +273,31 @@ $actId =  998877;
             link: '<?php echo $currentUrl;  ?>',
             imgUrl: '<?php echo $shareimageurl;  ?>',
             trigger: function (res) {
-                //alert('用户点击发送给朋友');
+                alert('用户点击发送给朋友');
             },
             success: function (res) {
-                //如果分享成功 
+                //如果分享成功
+                alert(22);
+                sharePromotion();
                 alert(2);
             },
             cancel: function (res) {
-                //alert('已取消');
+                alert('已取消');
             },
             fail: function (res) {
-                //alert(JSON.stringify(res));
+                alert(JSON.stringify(res));
             }
         });
 
     });
     wx.error(function (res) {
-       // alert(res.errMsg);
+        alert(res.errMsg);
     });
 
-//   jQuery(function(){
-//        alert(1);
-//    });
 </script>
 
-<script type="text/javascript" src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/jquery-1.11.1.min.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/jquery.touchSwipe.min.js"); ?>"></script>
 <script type="text/javascript">
 
     jQuery(document).ready(
@@ -321,32 +329,75 @@ $actId =  998877;
                 });
         }
 
-        
+
     );
 
     jQuery(function(){
+        var _lightedCnt = <?php echo $this->getPromotion() ?>;
+        for (var i = 0; i < _lightedCnt; i++) {
+            var str = ".wxBall_" + (i + 1);
+            jQuery(str).children(".wxBallGys").remove();
+        }
         //点亮球
-        jQuery(".wxBall").on("touchstart",function(){
+        jQuery(".wxBall").on("click",function(){
             var _wxBallGy = jQuery(".wxBallGys");
             var _wxBallGyLen = _wxBallGy.length;
             if(_wxBallGyLen>0){
-                jQuery(this).children(".wxBallGys").remove();
+//                jQuery(this).children(".wxBallGys").remove();
                 jQuery(this).parents().find(".popPhone").show();
             }else{
-                jQuery(this).off("touchstart");
+                jQuery(this).off("click");
                 //alert("已完全点亮");
             }
-                
+
         });
 
         //关闭手机验证
-        jQuery(".popPhoneClose").on("touchstart",function(){
+        jQuery(".popPhoneClose").on("click",function(){
             jQuery(this).parents(".popPhone").hide();
         });
 
         //清除手机号码
         jQuery(".clearTel").on("click",function(){
             jQuery(this).siblings(".telNum").find(":text").val("").focus();
+        });
+
+        //发送验证码
+        jQuery(".sendCd").on("click", function () {
+            var telephone = jQuery(this).siblings(".telNum").find("input").val();
+            jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
+                data: {telephone: telephone},
+                success: function (data) {
+                    alert(data);
+                },
+                error: function () {
+                    alert('error');
+                },
+                complete:function(){
+                    //document.getElementById("btnSendCode").disabled = true;
+                }
+            });
+        });
+
+        //验证验证码
+        jQuery(".popPhoneBtn").on("click", function () {
+            var telephone = jQuery(this).siblings(".popPhoneInp").find(".telNum").find("input").val();
+            var inputCaptcha = jQuery(this).siblings(".popPhoneInp").find(".phoneInpCd").find("input").val();
+            jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
+                data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
+                success: function (data) {
+                    if (jQuery.trim(data) == "Success") {
+                        alert("验证成功");
+                        location.reload();
+                    } else {
+                        alert("验证失败");
+                    }
+                }
+            });
         });
 
      });
