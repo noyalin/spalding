@@ -100,9 +100,9 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             $openId = $openid_obj->openid;
             Mage::getSingleton('customer/session')->setOpenId($openId);
 //        Mage::getSingleton('customer/session')->setOpenId("666666");
-        if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-            Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
-        }
+            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+            }
 //    $accessToken = $openid_obj->access_token;
 //
 //            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
@@ -117,15 +117,13 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 //            mage::log("useinfo=".$useinfo);
 ////            var_dump($useinfo);
 //
+            $this->loadLayout();
+            $this->renderLayout();
         }else{
             mage::log($url);
             $this->_redirectUrl("$url");
         }
 
-
-
-        $this->loadLayout();
-        $this->renderLayout();
 
     }
 
