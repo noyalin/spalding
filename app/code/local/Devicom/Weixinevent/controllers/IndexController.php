@@ -31,8 +31,9 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
 
         if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
-            $result = Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
-            if ($result) {
+            Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
+            $result = Mage::getSingleton('weixinevent/promotion')->getPromotion();
+            if ($result == 0) {
                 $promotion_opt = Mage::getSingleton('customer/session')->getPromotionStatus($orderId, $actId);
                 if (count($promotion_opt) < 4) {
                     Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
@@ -47,7 +48,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                     echo "球已被点完";
                 }
             } else {
-                echo "已参加过活动";
+                echo "Joined";
             }
 
         } else {
@@ -83,22 +84,22 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             return;
         }
 
-//        $appid = 'wx79873079dca36474';
-//        $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
-//        $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
-//        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
-//        $code =  Mage::app()->getRequest()->getParam('code');
-//        $state = Mage::app()->getRequest()->getParam('state');
-//
-//        if ($code && $state == 'spaldingchina') {//
-//            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
-//            $openid_data = $this->httpdata($openid_url);
-//            Mage::log("openid_data=".$openid_data);
-////    var_dump($openid_data);
-//            $openid_obj = json_decode($openid_data);
-//            $openId = $openid_obj->openid;
-//            Mage::getSingleton('customer/session')->setOpenId($openId);
-        Mage::getSingleton('customer/session')->setOpenId("666666");
+        $appid = 'wx79873079dca36474';
+        $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
+        $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
+        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
+        $code =  Mage::app()->getRequest()->getParam('code');
+        $state = Mage::app()->getRequest()->getParam('state');
+
+        if ($code && $state == 'spaldingchina') {//
+            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
+            $openid_data = $this->httpdata($openid_url);
+            Mage::log("openid_data=".$openid_data);
+//    var_dump($openid_data);
+            $openid_obj = json_decode($openid_data);
+            $openId = $openid_obj->openid;
+            Mage::getSingleton('customer/session')->setOpenId($openId);
+//        Mage::getSingleton('customer/session')->setOpenId("666666");
         if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
             Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
         }
@@ -116,10 +117,10 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 //            mage::log("useinfo=".$useinfo);
 ////            var_dump($useinfo);
 //
-//        }else{
-//            mage::log($url);
-//            $this->_redirectUrl("$url");
-//        }
+        }else{
+            mage::log($url);
+            $this->_redirectUrl("$url");
+        }
 
 
 
