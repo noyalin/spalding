@@ -173,8 +173,32 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
     public function updateCoupon($openId, $types)
     {
         $modify_time = date("YmdHis", time());
-        $sql = "update weixin_coupon set status = 1,modify_time='" . $modify_time . "' where uid='" . $openId . "'and types='" . $types . "'";
-        $result = $this->writeConnection->query($sql);
-        return "1";
+
+        $sql1 = "select id from weixin_coupon where types = '" . $types . "' and status = 0 limit 1 for update";
+        $id = $this->readConnection->fetchOne($sql1);
+
+        if ($id) {
+            $sql2 = "update weixin_coupon set status = 1 , modify_time = '" . $modify_time . "', uid = '" . $openId . "' where id = '" . $id . "'";
+            $this->writeConnection->query($sql2);
+            $sql3 = "select code from weixin_coupon where id = '" . $id . "'";
+            $code = $this->readConnection->fetchOne($sql3);
+            return $code;
+        }
+
+        return $id;
+    }
+
+    public function getSponsorId($orderId)
+    {
+        $sql = "select open_id from weixin_promotion where order_id = '" . $orderId . "' and sponsor_flag = 1";
+        $result = $this->readConnection->fetchOne($sql);
+        return $result;
+    }
+
+    public function getSponsorTel($openId)
+    {
+        $sql = "select telephone_no from weixin_captcha where open_id = '" . $openId . "'";
+        $result = $this->readConnection->fetchOne($sql);
+        return $result;
     }
 }
