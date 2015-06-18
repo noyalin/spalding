@@ -300,10 +300,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
     jQuery(function(){
         var InterValObj; //timer变量，控制时间
-        var count = 60; //间隔函数，1秒执行
+        var count = 120; //间隔函数，1秒执行
         var curCount;//当前剩余秒数
-        var code = ""; //验证码
-        var codeLength = 6;//验证码长度
 
         var _lightedCnt = <?php echo $this->getPromotionCount() ?>;
         var _isPromotioned = <?php echo $this->isPromotioned() ?>;
@@ -450,7 +448,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             }
             else {
                 curCount--;
-                jQuery(".sendCd").val(curCount + "秒");
+                jQuery(".sendCd").val("( " + curCount + " ) 秒");
             }
         }
 
