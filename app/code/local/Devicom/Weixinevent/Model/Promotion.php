@@ -167,10 +167,11 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         return $result;
     }
 
-    public function updateCoupon($telephone_no,$types)
+    public function updateCoupon($openId, $types)
     {
-//        $modify_time = date("YmdHis",time());
-//        $sql = "update weixin_coupon set status = 1 ,";
-//        return "1";
+        $modify_time = date("YmdHis", time());
+        $sql = "update weixin_coupon set status = 1,modify_time='" . $modify_time . "' where uid='" . $openId . "'and types='" . $types . "'";
+        $result = $this->writeConnection->query($sql);
+        return "1";
     }
 }
