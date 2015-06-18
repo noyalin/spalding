@@ -40,16 +40,21 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         return $jsoninfo;
     }
 
-    public function getVar(){
+    public function getApidata(){
         $resource = Mage::getSingleton('core/resource');
         $readConnection = $resource->getConnection('core_read');
-        $writeConnection = $resource->getConnection('core_write');
+
         $arr = array();
         $query = "SELECT * from weixin_appset where id = 1";
 
         $apidata = $readConnection->fetchRow($query);
+        return $apidata;
+    }
 
-
+    public function getVar(){
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $apidata = $this->getApidata();
 
         $ticket = $apidata['ticket'];
         if($apidata['access_token']==null || (time()-1*$apidata['create_time']>7200)){
