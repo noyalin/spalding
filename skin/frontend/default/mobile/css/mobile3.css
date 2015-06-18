@@ -4198,12 +4198,12 @@ span.sale_kind{
     margin-left:-20px;
     z-index: 1;
 }
-.popPhoneInp>div.phoneInpNum span.sendCd{
+.popPhoneInp>div.phoneInpNum span.sendCdBox{
 	margin-left:10px;
 	width: 35%;
 }
 
-.sendCd button{
+.popPhoneInp>div input.sendCd{
 	height: 32px;
 	line-height: 32px;
 	text-align: center;
@@ -4317,7 +4317,7 @@ span.sale_kind{
 		font-size:12px;
 	}
 
-	.sendCd button{
+	.sendCd{
 		font-size: 12px;
 	}
 

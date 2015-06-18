@@ -50,9 +50,10 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 <div class="phoneInpNum">
                     <span class="telNum"><input type="text" placeholder="请输入手机号码" class="telWrap" ></span>
                     <span class="clearTel">x</span>
-                    <span class="sendCd">
-                        <button>发送验证码</button>
+                    <span class="sendCdBox">
+                        <input type="button" class="sendCd" id="btnSendCode" value="发送验证码">
                     </span>
+                    
                 </div>
                 <div class="phoneInpCd">
                     <span class="cdInp"><input type="text" placeholder="请输入收到的验证码"></span>
@@ -298,6 +299,12 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
     );
 
     jQuery(function(){
+        var InterValObj; //timer变量，控制时间
+        var count = 5; //间隔函数，1秒执行
+        var curCount;//当前剩余秒数
+        var code = ""; //验证码
+        var codeLength = 6;//验证码长度
+
         var _lightedCnt = <?php echo $this->getPromotion() ?>;
         var i;
         for (i = 0; i < _lightedCnt; i++) {
@@ -339,6 +346,10 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         //发送验证码
         jQuery(".sendCd").on("click", function () {
             var telephone = jQuery(".telNum").find("input").val();
+            if (!checkTelNo(telephone)) {
+                return;
+            }
+            sendMessage();
             jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
@@ -353,12 +364,18 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                     //document.getElementById("btnSendCode").disabled = true;
                 }
             });
+
         });
 
         //验证验证码
         jQuery(".popPhoneBtn").on("click", function () {
             var telephone = jQuery(".telNum").find("input").val();
             var inputCaptcha = jQuery(".phoneInpCd").find("input").val();
+
+            if (!checkTelNo(telephone) || !checkCaptcha(inputCaptcha)) {
+                return;
+            }
+
             jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
@@ -384,6 +401,48 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             });
         });
 
-     });
+        function checkTelNo(telno) {
+            var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+            if(!reg.test(telno))
+            {
+                alert('请输入有效的手机号码！');
+                return false;
+            }
+            return true;
+        }
+
+        function checkCaptcha(code) {
+            var reg = /^\d{4}$/;
+            if(!reg.test(code))
+            {
+                alert('请输入4位验证码！');
+                return false;
+            }
+            return true;
+        }
+
+        function sendMessage() {
+            curCount = count;
+            //设置button效果，开始计时
+            jQuery(".sendCd").attr("disabled", "true");
+            jQuery(".sendCd").val(curCount + "秒");
+            InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+        }
+
+        //timer处理函数
+        function SetRemainTime() {
+            if (curCount == 0) {
+                window.clearInterval(InterValObj);//停止计时器
+                jQuery(".sendCd").removeAttr("disabled");//启用按钮
+                jQuery(".sendCd").val("重新发送");
+                code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+            }
+            else {
+                curCount--;
+                jQuery(".sendCd").val(curCount + "秒");
+            }
+        }
+
+    });
 
 </script>
