@@ -30,30 +30,35 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $actId = Mage::getSingleton('customer/session')->getActId();
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
 
+        $result = array ();
+
         if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
             Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
             $result = Mage::getSingleton('weixinevent/promotion')->getPromotion();
             if ($result == 0) {
-                $promotion_opt = Mage::getSingleton('customer/session')->getPromotionStatus($orderId, $actId);
-                if (count($promotion_opt) < 4) {
-                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
-                    //EMAY_SMS::sendPromotionSMS
-//                    $result1 = Mage::getSingleton('weixinevent/promotion')->updateCoupon("12","1");
-                    echo "Success";
-                } else if (count($promotion_opt) == 4) {
-                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
-                    //EMAY_SMS::sendPromotionSMS
-                    echo "Success";
+                $promotion_opt = Mage::getSingleton('weixinevent/promotion')->getPromotionCount();
+                if ($promotion_opt >= 5) {
+                    $result["status"] = "Finished";
                 } else {
-                    echo "球已被点完";
+                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
+                    if ($promotion_opt < 4) {
+                        //EMAY_SMS::sendPromotionSMS
+    //                    $result1 = Mage::getSingleton('weixinevent/promotion')->updateCoupon("12","1");
+                    } else {
+                        //EMAY_SMS::sendPromotionSMS
+                    }
+                    $result["status"] = "Success";
+                    $result["lightedCnt"] = $promotion_opt + 1;
                 }
             } else {
-                echo "Joined";
+                $result["status"] = "Joined";
             }
-
         } else {
-            echo "Fail";
+            $result["status"] = "Fail";
         }
+
+        $resultString = json_encode ( $result );
+        echo $resultString;
     }
 
     public function updatePromotionDataAction()
@@ -84,49 +89,49 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             return;
         }
 
-        $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
-        $appid = $apidata['appid'];
-        $appsecret = $apidata['appsecret'];
-        $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
-        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
-        $code =  Mage::app()->getRequest()->getParam('code');
-        $state = Mage::app()->getRequest()->getParam('state');
-
-        if ($code && $state == 'spaldingchina') {//
-            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
-            $openid_data = $this->httpdata($openid_url);
-            Mage::log("openid_data=".$openid_data);
-            $openid_obj = json_decode($openid_data);
-            $openId = $openid_obj->openid;
-            Mage::getSingleton('customer/session')->setOpenId($openId);
-            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
-            }
-
-//            // 微信用户信息取得
-//            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
-//            $token_data = $this->httpdata($token_url);
-//            mage::log("token_data=".$token_data);
-//            $token_obj = json_decode($token_data);
-//            $accessToken = $token_obj->access_token;
-//            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
-//            $useinfo =  $this->httpdata($userUrl);
-//            mage::log("useinfo=".$useinfo);
-
-            $this->loadLayout();
-            $this->renderLayout();
-        }else{
-            mage::log($url);
-            $this->_redirectUrl("$url");
-        }
-
-//        // Test
-//        Mage::getSingleton('customer/session')->setOpenId("666666");
-//        if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-//            Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+//        $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
+//        $appid = $apidata['appid'];
+//        $appsecret = $apidata['appsecret'];
+//        $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
+//        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
+//        $code =  Mage::app()->getRequest()->getParam('code');
+//        $state = Mage::app()->getRequest()->getParam('state');
+//
+//        if ($code && $state == 'spaldingchina') {//
+//            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
+//            $openid_data = $this->httpdata($openid_url);
+//            Mage::log("openid_data=".$openid_data);
+//            $openid_obj = json_decode($openid_data);
+//            $openId = $openid_obj->openid;
+//            Mage::getSingleton('customer/session')->setOpenId($openId);
+//            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+//                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+//            }
+//
+////            // 微信用户信息取得
+////            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+////            $token_data = $this->httpdata($token_url);
+////            mage::log("token_data=".$token_data);
+////            $token_obj = json_decode($token_data);
+////            $accessToken = $token_obj->access_token;
+////            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
+////            $useinfo =  $this->httpdata($userUrl);
+////            mage::log("useinfo=".$useinfo);
+//
+//            $this->loadLayout();
+//            $this->renderLayout();
+//        }else{
+//            mage::log($url);
+//            $this->_redirectUrl("$url");
 //        }
-//        $this->loadLayout();
-//        $this->renderLayout();
+
+        // Test
+        Mage::getSingleton('customer/session')->setOpenId("666666");
+        if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+            Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+        }
+        $this->loadLayout();
+        $this->renderLayout();
     }
 
     function httpdata($url, $method="get", $postfields = null, $headers = array(), $debug = false)

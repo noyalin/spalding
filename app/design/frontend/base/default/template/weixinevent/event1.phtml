@@ -36,7 +36,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
     </div>
 </div>
 <!-- 手机验证 -->
-<div class="popPhone">
+<div class="popPhone" style="display: none">
     <div class="popPhoneWrap">
         <div class="popPhoneClose clearfix">
             <img src="<?php echo $this->getSkinUrl("images/weixin/popClose.png"); ?>" alt="">
@@ -300,25 +300,13 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
     jQuery(function(){
         var InterValObj; //timer变量，控制时间
-        var count = 5; //间隔函数，1秒执行
+        var count = 120; //间隔函数，1秒执行
         var curCount;//当前剩余秒数
-        var code = ""; //验证码
-        var codeLength = 6;//验证码长度
 
-        var _lightedCnt = <?php echo $this->getPromotion() ?>;
-        var i;
-        for (i = 0; i < _lightedCnt; i++) {
-            var str = ".wxBall_" + (i + 1);
-            jQuery(str).children(".wxBallGys").remove();
-            jQuery(str).children(".please").remove();
-        }
-        for (; i < 5; i++) {
-            var str = ".wxBall_" + (i + 1);
-            if (i != _lightedCnt) {
-                jQuery(str).children(".please").remove();
-            }
-        }
-        jQuery(".popPhone").hide();
+        var _lightedCnt = <?php echo $this->getPromotionCount() ?>;
+        var _isPromotioned = <?php echo $this->isPromotioned() ?>;
+        loadLight(_lightedCnt, _isPromotioned);
+
         //点亮球
         jQuery(".please").on("click",function(){
             var _wxBallGy = jQuery(".wxBallGys");
@@ -381,28 +369,46 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
                 data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
                 success: function (data) {
-                    if (jQuery.trim(data) == "Success") {
+                    var dataObj = eval("("+jQuery.trim(data)+")");
+                    if (dataObj.status == "Success") {
+                        loadLight(dataObj.lightedCnt, 1);
                         jQuery(".popPhone").hide();
                         alert("验证成功");
                         //分享提示层
                         var sponsor_flag = <?php echo $this->isSponsor() ?>;
-                        if (sponsor_flag == true) {
+                        if (sponsor_flag == 1) {
                             var _shareWx = jQuery(".shareWx");
                             _shareWx.show();
                             _shareWx.on("click", function () {
                                 jQuery(this).hide();
-                                location.reload();
+
                             });
                         }
-                    } else if (jQuery.trim(data) == "Joined") {
-                        alert("已参加过活动");
-                        location.reload();
+//                    } else if (jQuery.trim(data) == "Joined") {
+//                        alert("已参加过活动");
+//                        location.reload();
                     } else {
                         alert("验证失败");
                     }
                 }
             });
         });
+
+        //timer处理函数
+        function loadLight(lightedCnt, flag) {
+            var i;
+            for (i = 0; i < lightedCnt; i++) {
+                var str = ".wxBall_" + (i + 1);
+                jQuery(str).children(".wxBallGys").remove();
+                jQuery(str).children(".please").remove();
+            }
+            for (; i < 5; i++) {
+                var str = ".wxBall_" + (i + 1);
+                if (i != lightedCnt || flag == 1) {
+                    jQuery(str).children(".please").remove();
+                }
+            }
+        }
 
         function checkTelNo(telno) {
             var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
@@ -428,7 +434,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             curCount = count;
             //设置button效果，开始计时
             jQuery(".sendCd").attr("disabled", "true");
-            jQuery(".sendCd").val(curCount + "秒");
+            jQuery(".sendCd").val("( " + curCount + " ) 秒");
             InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
         }
 
@@ -442,7 +448,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             }
             else {
                 curCount--;
-                jQuery(".sendCd").val(curCount + "秒");
+                jQuery(".sendCd").val("( " + curCount + " ) 秒");
             }
         }
 
