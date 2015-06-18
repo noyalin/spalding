@@ -84,47 +84,50 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             return;
         }
 
-        $appid = 'wx79873079dca36474';
-        $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
-        $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
-        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
-        $code =  Mage::app()->getRequest()->getParam('code');
-        $state = Mage::app()->getRequest()->getParam('state');
-
-        if ($code && $state == 'spaldingchina') {//
-            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
-            $openid_data = $this->httpdata($openid_url);
-            Mage::log("openid_data=".$openid_data);
-//    var_dump($openid_data);
-            $openid_obj = json_decode($openid_data);
-            $openId = $openid_obj->openid;
-            Mage::getSingleton('customer/session')->setOpenId($openId);
-//        Mage::getSingleton('customer/session')->setOpenId("666666");
-            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
-            }
-//    $accessToken = $openid_obj->access_token;
+//        $appid = 'wx79873079dca36474';
+//        $appsecret = 'ba74acc7f680e7bbe62203815df1df41';
+//        $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
+//        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
+//        $code =  Mage::app()->getRequest()->getParam('code');
+//        $state = Mage::app()->getRequest()->getParam('state');
 //
-//            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
-//            $token_data = $this->httpdata($token_url);
-//            mage::log("token_data=".$token_data);
-////    var_dump($token_data);
-//            $token_obj = json_decode($token_data);
-//            $accessToken = $token_obj->access_token;
-//
-//            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
-//            $useinfo =  $this->httpdata($userUrl);
-//            mage::log("useinfo=".$useinfo);
-////            var_dump($useinfo);
-//
-            $this->loadLayout();
-            $this->renderLayout();
-        }else{
-            mage::log($url);
-            $this->_redirectUrl("$url");
-        }
+//        if ($code && $state == 'spaldingchina') {//
+//            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
+//            $openid_data = $this->httpdata($openid_url);
+//            Mage::log("openid_data=".$openid_data);
+////    var_dump($openid_data);
+//            $openid_obj = json_decode($openid_data);
+//            $openId = $openid_obj->openid;
+//            Mage::getSingleton('customer/session')->setOpenId($openId);
+////        Mage::getSingleton('customer/session')->setOpenId("666666");
+//            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+//                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+//            }
+////    $accessToken = $openid_obj->access_token;
+////
+////            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+////            $token_data = $this->httpdata($token_url);
+////            mage::log("token_data=".$token_data);
+//////    var_dump($token_data);
+////            $token_obj = json_decode($token_data);
+////            $accessToken = $token_obj->access_token;
+////
+////            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
+////            $useinfo =  $this->httpdata($userUrl);
+////            mage::log("useinfo=".$useinfo);
+//////            var_dump($useinfo);
+////
+//            $this->loadLayout();
+//            $this->renderLayout();
+//        }else{
+//            mage::log($url);
+//            $this->_redirectUrl("$url");
+//        }
 
 
+        Mage::getSingleton('customer/session')->setOpenId("666666");
+        $this->loadLayout();
+        $this->renderLayout();
     }
 
     function httpdata($url, $method="get", $postfields = null, $headers = array(), $debug = false)
