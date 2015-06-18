@@ -136,6 +136,16 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         Mage::log("result::".$result);
     }
 
+    public function isSponsor()
+    {
+        $openId = Mage::getSingleton('customer/session')->getOpenId();
+        $sql = "select count(*) from weixin_promotion where open_id = '" . $openId . "' and sponsor_flag = 0";
+        $result = $this->readConnection->fetchOne($sql);
+        if ($result != 0) {
+            return true;
+        }
+        return false;
+    }
     public function setCaptchaData($telephone)
     {
         $openId = Mage::getSingleton('customer/session')->getOpenId();

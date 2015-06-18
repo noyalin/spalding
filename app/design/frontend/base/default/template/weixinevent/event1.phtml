@@ -385,12 +385,15 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                         jQuery(".popPhone").hide();
                         alert("验证成功");
                         //分享提示层
-                        var _shareWx = jQuery(".shareWx")
-                        _shareWx.show();
-                        _shareWx.on("click",function(){
-                            jQuery(this).hide();
-                            location.reload();
-                        });
+                        var sponsor_flag = <?php echo $this->isSponsor() ?>;
+                        if (sponsor_flag == true) {
+                            var _shareWx = jQuery(".shareWx");
+                            _shareWx.show();
+                            _shareWx.on("click", function () {
+                                jQuery(this).hide();
+                                location.reload();
+                            });
+                        }
                     } else if (jQuery.trim(data) == "Joined") {
                         alert("已参加过活动");
                         location.reload();
