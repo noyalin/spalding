@@ -305,8 +305,9 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         var code = ""; //验证码
         var codeLength = 6;//验证码长度
 
-        var _lightedCnt = <?php echo $this->getPromotion() ?>;
-        loadLight(_lightedCnt, false);
+        var _lightedCnt = <?php echo $this->getPromotionCount() ?>;
+        var _isPromotioned = <?php echo $this->isPromotioned() ?>;
+        loadLight(_lightedCnt, _isPromotioned);
 
         //点亮球
         jQuery(".please").on("click",function(){
@@ -370,19 +371,24 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
                 data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
                 success: function (data) {
-                    if (jQuery.trim(data) == "Success") {
+                    var dataObj = eval("("+jQuery.trim(data)+")");
+                    if (dataObj.status == "Success") {
+                        loadLight(dataObj.lightedCnt, 1);
                         jQuery(".popPhone").hide();
                         alert("验证成功");
                         //分享提示层
-                        var _shareWx = jQuery(".shareWx");
-                        _shareWx.show();
-                        _shareWx.on("click",function(){
-                            jQuery(this).hide();
-                            loadLight(_lightedCnt, true);
-                        });
-                    } else if (jQuery.trim(data) == "Joined") {
-                        alert("已参加过活动");
-                        location.reload();
+                        var sponsor_flag = <?php echo $this->isSponsor() ?>;
+                        if (sponsor_flag == 1) {
+                            var _shareWx = jQuery(".shareWx");
+                            _shareWx.show();
+                            _shareWx.on("click", function () {
+                                jQuery(this).hide();
+
+                            });
+                        }
+//                    } else if (jQuery.trim(data) == "Joined") {
+//                        alert("已参加过活动");
+//                        location.reload();
                     } else {
                         alert("验证失败");
                     }
@@ -400,12 +406,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             }
             for (; i < 5; i++) {
                 var str = ".wxBall_" + (i + 1);
-                if (i != lightedCnt) {
+                if (i != lightedCnt || flag == 1) {
                     jQuery(str).children(".please").remove();
-                } else {
-                    if (flag) {
-                        jQuery(str).children(".please").remove();
-                    }
                 }
             }
         }
@@ -434,7 +436,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             curCount = count;
             //设置button效果，开始计时
             jQuery(".sendCd").attr("disabled", "true");
-            jQuery(".sendCd").val("( "curCount + " ) 秒");
+            jQuery(".sendCd").val("( " + curCount + " ) 秒");
             InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
         }
 

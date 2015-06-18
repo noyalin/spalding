@@ -91,14 +91,16 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         return array($apidata['appid'],$timestamp,$noncestr,$signature,$currentUrl);
     }
 
-    public function getPromotion()
+    public function isPromotioned()
     {
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
         $openId = Mage::getSingleton('customer/session')->getOpenId();
         $sql = "select count(*) from `weixin_promotion` where order_id = '" . $orderId . "' and open_id = '" . $openId . "' and sponsor_flag =5";
         $result = $this->readConnection->fetchOne($sql);
-
-        return $result;
+        if ($result != 0) {
+            return 1;
+        }
+        return 0;
     }
 
     public function checkSponsor()
@@ -136,6 +138,16 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         Mage::log("result::".$result);
     }
 
+    public function isSponsor()
+    {
+        $openId = Mage::getSingleton('customer/session')->getOpenId();
+        $sql = "select count(*) from weixin_promotion where open_id = '" . $openId . "' and sponsor_flag = 0";
+        $result = $this->readConnection->fetchOne($sql);
+        if ($result != 0) {
+            return 1;
+        }
+        return 0;
+    }
     public function setCaptchaData($telephone)
     {
         $openId = Mage::getSingleton('customer/session')->getOpenId();
@@ -150,10 +162,11 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
     }
 
 
-    public function getPromotionStatus($order_id, $act_id)
+    public function getPromotionCount()
     {
-        $sql = "select operation from weixin_promotion where order_id = '".$order_id."' and act_id = '".$act_id."' and sponsor_flag = 5";
-        $result = $this->readConnection->fetchCol($sql);
+        $orderId = Mage::getSingleton('customer/session')->getOrderId();
+        $sql = "select count(*) from weixin_promotion where order_id = '".$orderId."' and sponsor_flag = 5";
+        $result = $this->readConnection->fetchOne($sql);
         return $result;
     }
 
