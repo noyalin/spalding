@@ -354,6 +354,9 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 data: {telephone: telephone},
                 success: function (data) {
                     var dataObj = ajaxEvalJson("("+jQuery.trim(data)+")");
+                    if (dataObj.status == "Success") {
+                        alert(dataObj.data);
+                    }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                     alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
@@ -396,7 +399,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                             });
                         }
                     }
-                }
+                },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                     alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
                 }

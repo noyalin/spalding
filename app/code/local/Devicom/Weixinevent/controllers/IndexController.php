@@ -98,7 +98,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             mage::log("Exception : ".$ex->getMessage(),
                 Zend_Log::ERR);
             $result["status"] = "Fail";
-            $result["message"] = "发送验证码失败。";
+            $result["message"] = "验证码输入错误。";
         }
 
         $resultString = json_encode ( $result );
@@ -122,7 +122,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             mage::log("Exception : ".$ex->getMessage(),
             Zend_Log::ERR);
             $result["status"] = "Fail";
-            $result["message"] = "发送验证码失败。";
+            $result["message"] = "更新数据失败。";
         }
 
         $resultString = json_encode ( $result );
@@ -130,6 +130,44 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             Zend_Log::DEBUG);
         echo $resultString;
 
+    }
+
+    private  function  checkOrderId($incrementID) {
+        $strStatus = 'alipay_wait_buyer_pay';
+
+        $orders = Mage::getModel('sales/order')->getCollection();
+
+        $orders->addAttributeToFilter('increment_id', $incrementID); //其中 $incrementID为订单号
+
+        $orders->addAttributeToSelect('*');
+
+        $orders->load();
+
+        $alldata = $orders->getData();
+        if (!$alldata || count($alldata) < 1 ){
+            throw new Exception('checkOrderId 订单不存在。');
+        }
+
+        $oid = $alldata[0]['entity_id'];
+        if( $oid=='' )  {
+            throw new Exception('checkOrderId 订单不存在。');
+        }
+
+        $sales_order = Mage::getModel('sales/order')->load($oid);
+
+        if($sales_order->getStatus() != $strStatus) {
+            throw new Exception('订单状态不正确 : '.$sales_order->getStatus().' != '.$strStatus);
+        }
+//        $billingAddress=$sales_order->getBillingAddress();
+//
+//        $Email=$sales_order->getData('customer_email'); //客户的邮件
+//
+//        foreach ($sales_order->getAllItems() as $item) {
+//
+//            $option = $item->getProductOptions();
+//
+//            $qty =   $item->getQtyOrdered();
+//        }
     }
 
     public function indexAction(){
@@ -140,66 +178,78 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                 Zend_Log::DEBUG);
 
             $params = $this->getRequest()->getParams();
-            try {
-                Mage::getSingleton('customer/session')->setOrderId($params['oid']);
-                Mage::getSingleton('customer/session')->setActId($params['aid']);
-            } catch (Exception $e) {
-                return;
-            }
+            $oid = $params['oid'];
+            $aid = $params['aid'];
+            Mage::getSingleton('customer/session')->setOrderId($oid);
+            Mage::getSingleton('customer/session')->setActId($aid);
 
-            if ($params['aid'] != '10000001') {
-                return;
-            }
-
-            $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
-            $appid = $apidata['appid'];
-            $appsecret = $apidata['appsecret'];
-            $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
-            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
-            $code =  Mage::app()->getRequest()->getParam('code');
-            $state = Mage::app()->getRequest()->getParam('state');
-
-            if ($code && $state == 'spaldingchina') {//
-                $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
-                $openid_data = $this->httpdata($openid_url);
-                Mage::log("openid_data=".$openid_data);
-                $openid_obj = json_decode($openid_data);
-                $openId = $openid_obj->openid;
-                Mage::getSingleton('customer/session')->setOpenId($openId);
-                if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+            $strParams = '';
+            foreach ($params as $k=>$v) {
+                if ($k == null || $v == null) {
+                    continue;
                 }
-
-//                // 微信用户信息取得
-//                $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
-//                $token_data = $this->httpdata($token_url);
-//                mage::log("token_data=".$token_data);
-//                $token_obj = json_decode($token_data);
-//                $accessToken = $token_obj->access_token;
-//                $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
-//                $useinfo =  $this->httpdata($userUrl);
-//                mage::log("useinfo=".$useinfo);
-
-                $this->loadLayout();
-                $this->renderLayout();
-                mage::log("Devicom_Weixinevent_IndexController indexAction End ---- ",
-                    Zend_Log::DEBUG);
-            }else{
-                $this->_redirectUrl("$url");
-                mage::log("_redirectUrl : $url",
-                    Zend_Log::DEBUG);
+                $strParams = $strParams.$k.'='.$v.' ;';
             }
+
+            mage::log('params : '.$strParams,
+                Zend_Log::DEBUG);
+
+            if ($aid != '10000001') {
+                throw new Exception('活动ID不正确。');
+            }
+
+            $this->checkOrderId($oid);
+
+//            $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
+//            $appid = $apidata['appid'];
+//            $appsecret = $apidata['appsecret'];
+//            $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
+//            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
+//            $code =  Mage::app()->getRequest()->getParam('code');
+//            $state = Mage::app()->getRequest()->getParam('state');
+//
+//            if ($code && $state == 'spaldingchina') {//
+//                $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
+//                $openid_data = $this->httpdata($openid_url);
+//                Mage::log("openid_data=".$openid_data);
+//                $openid_obj = json_decode($openid_data);
+//                $openId = $openid_obj->openid;
+//                Mage::getSingleton('customer/session')->setOpenId($openId);
+//                if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+//                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+//                }
+//
+////                // 微信用户信息取得
+////                $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+////                $token_data = $this->httpdata($token_url);
+////                mage::log("token_data=".$token_data);
+////                $token_obj = json_decode($token_data);
+////                $accessToken = $token_obj->access_token;
+////                $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
+////                $useinfo =  $this->httpdata($userUrl);
+////                mage::log("useinfo=".$useinfo);
+//
+//                $this->loadLayout();
+//                $this->renderLayout();
+//                mage::log("Devicom_Weixinevent_IndexController indexAction End ---- ",
+//                    Zend_Log::DEBUG);
+//            }else{
+//                $this->_redirectUrl("$url");
+//                mage::log("_redirectUrl : $url",
+//                    Zend_Log::DEBUG);
+//            }
 
             // Test
-//            Mage::getSingleton('customer/session')->setOpenId("666666");
-//            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-//                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
-//            }
-//            $this->loadLayout();
-//            $this->renderLayout();
+            Mage::getSingleton('customer/session')->setOpenId("666666");
+            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+            }
+            $this->loadLayout();
+            $this->renderLayout();
         } catch (Exception $ex) {
             mage::log("Exception : ".$ex->getMessage(),
                 Zend_Log::ERR);
+            $this->_redirect('cms/index/noRoute');
         }
     }
 
