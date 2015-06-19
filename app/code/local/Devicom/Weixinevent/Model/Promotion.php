@@ -224,7 +224,30 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 //    }
 
     public function getSponsorTelephone($orderId){
-        return "111111";
+
+        $orders = Mage::getModel('sales/order')->getCollection();
+
+        $orders->addAttributeToFilter('increment_id', $orderId); //其中 $incrementID为订单号
+
+        $orders->addAttributeToSelect('*');
+
+        $orders->load();
+
+        $alldata = $orders->getData();
+        if (!$alldata || count($alldata) < 1 ){
+            throw new Exception('checkOrderId 订单不存在。');
+        }
+
+        $oid_entity_id = $alldata[0]['entity_id'];
+        if ($oid_entity_id == '')  {
+            throw new Exception('checkOrderId 订单不存在。');
+        }
+
+        $sales_order = Mage::getModel('sales/order')->load($oid_entity_id);
+        $billingAddress=$sales_order->getBillingAddress();
+        $telephone = $billingAddress->getTelephone();
+
+        return $telephone;
     }
 
     public  function  isPromotionOrderId($incrementID) {
