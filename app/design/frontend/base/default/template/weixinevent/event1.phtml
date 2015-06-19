@@ -405,6 +405,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                     alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
+                    jQuery(".popPhoneBtn").attr("disabled", "false");
                 }
             });
         });

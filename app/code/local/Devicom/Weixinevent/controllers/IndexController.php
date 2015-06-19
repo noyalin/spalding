@@ -132,44 +132,6 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     }
 
-    private  function  checkOrderId($incrementID) {
-        $strStatus = 'alipay_wait_buyer_pay';
-
-        $orders = Mage::getModel('sales/order')->getCollection();
-
-        $orders->addAttributeToFilter('increment_id', $incrementID); //其中 $incrementID为订单号
-
-        $orders->addAttributeToSelect('*');
-
-        $orders->load();
-
-        $alldata = $orders->getData();
-        if (!$alldata || count($alldata) < 1 ){
-            throw new Exception('checkOrderId 订单不存在。');
-        }
-
-        $oid = $alldata[0]['entity_id'];
-        if( $oid=='' )  {
-            throw new Exception('checkOrderId 订单不存在。');
-        }
-
-        $sales_order = Mage::getModel('sales/order')->load($oid);
-
-        if($sales_order->getStatus() != $strStatus) {
-            throw new Exception('订单状态不正确 : '.$sales_order->getStatus().' != '.$strStatus);
-        }
-//        $billingAddress=$sales_order->getBillingAddress();
-//
-//        $Email=$sales_order->getData('customer_email'); //客户的邮件
-//
-//        foreach ($sales_order->getAllItems() as $item) {
-//
-//            $option = $item->getProductOptions();
-//
-//            $qty =   $item->getQtyOrdered();
-//        }
-    }
-
     public function indexAction(){
 
         try {
@@ -198,7 +160,9 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                 throw new Exception('活动ID不正确。');
             }
 
-            $this->checkOrderId($oid);
+            if (!Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($oid)) {
+                throw new Exception('活动ID不正确。');
+            }
 
 //            $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
 //            $appid = $apidata['appid'];

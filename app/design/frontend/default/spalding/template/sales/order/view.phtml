@@ -85,24 +85,21 @@
 
     <?php
         $activityId = '10000001';
-        $strStart = '2015-06-17 00:00:00';
-        $strEnd = '2015-07-01 00:00:00';
-        $strStatus = 'alipay_wait_buyer_pay';
-        $strEmail = '@voyageone.cn';
-        if($_order->getStatus() == $strStatus &&
-            strrchr($_order->getCustomerEmail(),$strEmail) && strstr($_order->getCustomerNote(), 'test') &&
-            strtotime($_order->getCreatedAt())>=strtotime($strStart) && strtotime($_order->getUpdatedAt())>=strtotime($strStart) &&
-            strtotime($_order->getCreatedAt())<strtotime($strEnd) && strtotime($_order->getUpdatedAt())<strtotime($strEnd)
-        ):
+    //        $strStart = '2015-06-17 00:00:00';
+    //        $strEnd = '2015-07-01 00:00:00';
+    //        $strStatus = 'alipay_wait_buyer_pay';
+    //        $strEmail = '@voyageone.cn';
+    //        if($_order->getStatus() == $strStatus &&
+    //            strrchr($_order->getCustomerEmail(),$strEmail) && strstr($_order->getCustomerNote(), 'test') &&
+    //            strtotime($_order->getCreatedAt())>=strtotime($strStart) && strtotime($_order->getUpdatedAt())>=strtotime($strStart) &&
+    //            strtotime($_order->getCreatedAt())<strtotime($strEnd) && strtotime($_order->getUpdatedAt())<strtotime($strEnd)
+    //        ):
+        if($this->isPromotionOrderId()):
     ?>
 
-
-    
-    
     <div class="wxCD">
         <img src="<?php echo $this->getUrl('weixinevent/index/qrcode/aid/'.$activityId.'/oid/'.$_order->getRealOrderId()).'/' ?>" >
     </div>
-
 
     <?php endif; ?>
 

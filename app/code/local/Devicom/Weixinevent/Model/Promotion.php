@@ -1,4 +1,12 @@
 <?php
+
+define('WEIXIN_PROMOTION_ACTIVITY_ID',   '10000001');
+define('WEIXIN_PROMOTION_START_TIME',   '2015-06-17 00:00:00');
+define('WEIXIN_PROMOTION_END_TIME',   '2015-07-01 00:00:00');
+define('WEIXIN_PROMOTION_ORDEY_STATUS',   'alipay_wait_buyer_pay');
+define('WEIXIN_PROMOTION_ORDEY_EMAIL',   '@voyageone.cn');
+define('WEIXIN_PROMOTION_ORDEY_NOTE',   'test');
+
 class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 {
     private $readConnection;
@@ -201,4 +209,62 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         $result = $this->readConnection->fetchOne($sql);
         return $result;
     }
+
+    public  function  isPromotionOrderId($incrementID) {
+        try {
+            $orders = Mage::getModel('sales/order')->getCollection();
+
+            $orders->addAttributeToFilter('increment_id', $incrementID); //其中 $incrementID为订单号
+
+            $orders->addAttributeToSelect('*');
+
+            $orders->load();
+
+            $alldata = $orders->getData();
+            if (!$alldata || count($alldata) < 1 ){
+                throw new Exception('checkOrderId 订单不存在。');
+            }
+
+            $oid_entity_id = $alldata[0]['entity_id'];
+            if ($oid_entity_id == '')  {
+                throw new Exception('checkOrderId 订单不存在。');
+            }
+
+            $sales_order = Mage::getModel('sales/order')->load($oid_entity_id);
+
+            if (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS, $sales_order->getStatus()) != 0) {
+                throw new Exception('订单状态不正确 : '.$sales_order->getStatus().' != '.WEIXIN_PROMOTION_ORDEY_STATUS);
+            }
+
+            if (!(strtotime($sales_order->getCreatedAt())>=strtotime(WEIXIN_PROMOTION_START_TIME) &&
+                strtotime($sales_order->getUpdatedAt())>=strtotime(WEIXIN_PROMOTION_START_TIME) &&
+                strtotime($sales_order->getCreatedAt())<strtotime(WEIXIN_PROMOTION_END_TIME) &&
+                strtotime($sales_order->getUpdatedAt())<strtotime(WEIXIN_PROMOTION_END_TIME))) {
+                throw new Exception('订单时间在不正确。');
+            }
+
+            if (!strrchr($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL) ||
+                !strstr($sales_order->getCustomerNote(), WEIXIN_PROMOTION_ORDEY_NOTE)) {
+                throw new Exception('测试验证不通过。');
+            }
+
+
+    //        $billingAddress=$sales_order->getBillingAddress();
+    //
+    //        $Email=$sales_order->getData('customer_email'); //客户的邮件
+    //
+    //        foreach ($sales_order->getAllItems() as $item) {
+    //
+    //            $option = $item->getProductOptions();
+    //
+    //            $qty =   $item->getQtyOrdered();
+    //        }
+            return true;
+        } catch (Exception $ex) {
+            mage::log("Exception : ".$ex->getMessage(),
+                Zend_Log::ERR);
+        }
+        return false;
+    }
+
 }

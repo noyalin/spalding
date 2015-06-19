@@ -942,7 +942,7 @@
         {
             $image = self::image($frame, $pixelPerPoint, $outerFrame);
 
-            $logo = PHPQRCODE_API_PATH.'/logo.png';
+            $logo = PHPQRCODE_API_PATH.'/logo.jpg';
 
             if($logo !== FALSE){
                 $logo = imagecreatefromstring(file_get_contents($logo));
