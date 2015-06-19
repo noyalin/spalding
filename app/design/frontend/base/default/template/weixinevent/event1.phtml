@@ -151,10 +151,10 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             type: 'POST',
             url: '<?php echo $this->getUrl('weixinevent/index/updatePromotionData') ?>',
             success: function (data) {
-
+                var dataObj = ajaxEvalJson("("+jQuery.trim(data)+")");
             },
-            error: function () {
-
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
             }
         });
     }
@@ -305,7 +305,18 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
         var _lightedCnt = <?php echo $this->getPromotionCount() ?>;
         var _isPromotioned = <?php echo $this->isPromotioned() ?>;
+
         loadLight(_lightedCnt, _isPromotioned);
+
+        function ajaxEvalJson(data)
+        {
+            var dataObj = eval("("+jQuery.trim(data)+")");
+            if (dataObj.status != "Success") {
+                loadLight(dataObj.lightedCnt, 1);
+                alert(dataObj.message);
+            }
+            return dataObj;
+        }
 
         //点亮球
         jQuery(".please").on("click",function(){
@@ -316,7 +327,6 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 jQuery(this).parents().find(".popPhone").show();
             }else{
                 jQuery(this).off("click");
-                //alert("已完全点亮");
             }
 
         });
@@ -343,10 +353,10 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
                 data: {telephone: telephone},
                 success: function (data) {
-                    alert(data);
+                    var dataObj = ajaxEvalJson("("+jQuery.trim(data)+")");
                 },
-                error: function () {
-                    alert('error');
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
                 },
                 complete:function(){
                     //document.getElementById("btnSendCode").disabled = true;
@@ -354,6 +364,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             });
 
         });
+
 
         //验证验证码
         jQuery(".popPhoneBtn").on("click", function () {
@@ -369,7 +380,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
                 data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
                 success: function (data) {
-                    var dataObj = eval("("+jQuery.trim(data)+")");
+                    var dataObj = ajaxEvalJson("("+jQuery.trim(data)+")");
                     if (dataObj.status == "Success") {
                         loadLight(dataObj.lightedCnt, 1);
                         jQuery(".popPhone").hide();
@@ -384,12 +395,10 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
                             });
                         }
-//                    } else if (jQuery.trim(data) == "Joined") {
-//                        alert("已参加过活动");
-//                        location.reload();
-                    } else {
-                        alert("验证失败");
                     }
+                }
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
                 }
             });
         });

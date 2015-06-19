@@ -6,149 +6,201 @@ define('SIGNATURE',   '【Spalding】');
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function sendCaptchaAction(){
-        mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction",
-            Zend_Log::DEBUG);
-        $openId = Mage::getSingleton('customer/session')->getOpenId();
-        $actId = Mage::getSingleton('customer/session')->getActId();
-        $telephone =  Mage::app()->getRequest()->getParam('telephone');
-        $signature = SIGNATURE;
-        $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
-        Mage::log("验证码：".$captcha);
-        EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+        $result = array ();
+        try {
+            mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction Start ---- ",
+                Zend_Log::DEBUG);
+            $openId = Mage::getSingleton('customer/session')->getOpenId();
+            $actId = Mage::getSingleton('customer/session')->getActId();
+            $telephone =  Mage::app()->getRequest()->getParam('telephone');
+            $signature = SIGNATURE;
+            $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
+            if (!$captcha) {
+                throw new Exception("SMS_Check::getTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone");
+            }
+            EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+            $result["status"] = "Success";
+            $result["data"] = $captcha;
+        } catch (Exception $ex) {
+            mage::log("Exception : ".$ex->getMessage(),
+                Zend_Log::ERR);
+            $result["status"] = "Fail";
+            $result["message"] = "发送验证码失败。";
+        }
 
-        echo $captcha;
+        $resultString = json_encode ( $result );
+        mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction echo -> $resultString",
+            Zend_Log::DEBUG);
+        echo $resultString;
+
     }
 
     public function checkCaptchaAction()
     {
-        mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction",
-            Zend_Log::DEBUG);
-        $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
-        $telephone = Mage::app()->getRequest()->getParam('telephone');
-        $clickOrder = Mage::app()->getRequest()->getParam('clickOrder');
-        $openId = Mage::getSingleton('customer/session')->getOpenId();
-        $actId = Mage::getSingleton('customer/session')->getActId();
-        $orderId = Mage::getSingleton('customer/session')->getOrderId();
-
         $result = array ();
+        try {
+            mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction Start ---- ",
+                Zend_Log::DEBUG);
+            $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
+            $telephone = Mage::app()->getRequest()->getParam('telephone');
+            $clickOrder = Mage::app()->getRequest()->getParam('clickOrder');
+            $openId = Mage::getSingleton('customer/session')->getOpenId();
+            $actId = Mage::getSingleton('customer/session')->getActId();
+            $orderId = Mage::getSingleton('customer/session')->getOrderId();
 
-        if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
-            Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
-            $result = Mage::getSingleton('weixinevent/promotion')->getPromotion();
-            if ($result == 0) {
-                $promotion_opt = Mage::getSingleton('weixinevent/promotion')->getPromotionCount();
-                if ($promotion_opt >= 5) {
-                    $result["status"] = "Finished";
-                } else {
-                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
-                    if ($promotion_opt < 4) {
-                        $code = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId,"m100j10");
-                        if($code){
-                            EMAY_SMS::sendPromotionSMS($telephone,SIGNATURE,"恭喜你获得买100减10优惠券,优惠券号码：".$code);
-                        }else{
-                            EMAY_SMS::sendPromotionSMS($telephone,SIGNATURE,"优惠券已发完");
-                        }
+            $result = array ();
+
+            if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
+                Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
+                $result = Mage::getSingleton('weixinevent/promotion')->getPromotion();
+                if ($result == 0) {
+                    $promotion_opt = Mage::getSingleton('weixinevent/promotion')->getPromotionCount();
+                    if ($promotion_opt >= 5) {
+                        $result["status"] = "Finished";
+                        $result["message"] = "球已经被全部点亮。";
                     } else {
-                        $code1 = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId, "m100j10");
-                        if ($code1) {
-                            EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code1);
+                        Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
+                        if ($promotion_opt < 4) {
+                            $code = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId,"m100j10");
+                            if($code){
+                                EMAY_SMS::sendPromotionSMS($telephone,SIGNATURE,"恭喜你获得买100减10优惠券,优惠券号码：".$code);
+                            }else{
+                                EMAY_SMS::sendPromotionSMS($telephone,SIGNATURE,"优惠券已发完");
+                            }
                         } else {
-                            EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
+                            $code1 = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId, "m100j10");
+                            if ($code1) {
+                                EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code1);
+                            } else {
+                                EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
+                            }
+                            $code2 = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId, "lj10");
+                            $sponsorId = Mage::getSingleton('weixinevent/promotion')->getSponsorId($orderId);
+                            $sponsorTel = Mage::getSingleton('weixinevent/promotion')->getSponsorTel($sponsorId);
+                            if ($code2) {
+                                EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $code2);
+                            } else {
+                                EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "优惠券已发完");
+                            }
                         }
-                        $code2 = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId, "lj10");
-                        $sponsorId = Mage::getSingleton('weixinevent/promotion')->getSponsorId($orderId);
-                        $sponsorTel = Mage::getSingleton('weixinevent/promotion')->getSponsorTel($sponsorId);
-                        if ($code2) {
-                            EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $code2);
-                        } else {
-                            EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "优惠券已发完");
-                        }
+                        $result["status"] = "Success";
+                        $result["data"] = $promotion_opt + 1;
                     }
-                    $result["status"] = "Success";
-                    $result["lightedCnt"] = $promotion_opt + 1;
+                } else {
+                    $result["status"] = "Joined";
+                    $result["message"] = "你已参加过次活动。";
                 }
             } else {
-                $result["status"] = "Joined";
+                throw new Exception("SMS_Check::checkTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone, inputCaptcha=$inputCaptcha");
             }
-        } else {
+
+        } catch (Exception $ex) {
+            mage::log("Exception : ".$ex->getMessage(),
+                Zend_Log::ERR);
             $result["status"] = "Fail";
+            $result["message"] = "发送验证码失败。";
         }
 
         $resultString = json_encode ( $result );
+        mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction echo -> $resultString",
+            Zend_Log::DEBUG);
         echo $resultString;
     }
 
     public function updatePromotionDataAction()
     {
-        Mage::log("updatePromotionDataAction start",
-            Zend_Log::DEBUG);
-        $actId = Mage::getSingleton('customer/session')->getActId();
-        $orderId = Mage::getSingleton('customer/session')->getOrderId();
-        Mage::getSingleton('weixinevent/promotion')->updatePromotionData($actId, $orderId);
+        $result = array ();
+        try {
+            Mage::log("updatePromotionDataAction start",
+                Zend_Log::DEBUG);
+            $actId = Mage::getSingleton('customer/session')->getActId();
+            $orderId = Mage::getSingleton('customer/session')->getOrderId();
+            Mage::getSingleton('weixinevent/promotion')->updatePromotionData($actId, $orderId);
+            $result["status"] = "Success";
 
-        Mage::log("updatePromotionDataAction end",
+        } catch (Exception $ex) {
+            mage::log("Exception : ".$ex->getMessage(),
+            Zend_Log::ERR);
+            $result["status"] = "Fail";
+            $result["message"] = "发送验证码失败。";
+        }
+
+        $resultString = json_encode ( $result );
+        mage::log("Devicom_Weixinevent_IndexController updatePromotionDataAction echo -> $resultString",
             Zend_Log::DEBUG);
+        echo $resultString;
+
     }
 
     public function indexAction(){
-        mage::log("Devicom_Weixinevent_IndexController indexAction",
-            Zend_Log::DEBUG);
 
-        $params = $this->getRequest()->getParams();
         try {
-            Mage::getSingleton('customer/session')->setOrderId($params['oid']);
-            Mage::getSingleton('customer/session')->setActId($params['aid']);
-        } catch (Exception $e) {
-            return;
-        }
 
-        if ($params['aid'] != '10000001') {
-            return;
-        }
+            mage::log("Devicom_Weixinevent_IndexController indexAction",
+                Zend_Log::DEBUG);
 
-        $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
-        $appid = $apidata['appid'];
-        $appsecret = $apidata['appsecret'];
-        $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
-        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
-        $code =  Mage::app()->getRequest()->getParam('code');
-        $state = Mage::app()->getRequest()->getParam('state');
-
-        if ($code && $state == 'spaldingchina') {//
-            $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
-            $openid_data = $this->httpdata($openid_url);
-            Mage::log("openid_data=".$openid_data);
-            $openid_obj = json_decode($openid_data);
-            $openId = $openid_obj->openid;
-            Mage::getSingleton('customer/session')->setOpenId($openId);
-            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+            $params = $this->getRequest()->getParams();
+            try {
+                Mage::getSingleton('customer/session')->setOrderId($params['oid']);
+                Mage::getSingleton('customer/session')->setActId($params['aid']);
+            } catch (Exception $e) {
+                return;
             }
 
-//            // 微信用户信息取得
-//            $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
-//            $token_data = $this->httpdata($token_url);
-//            mage::log("token_data=".$token_data);
-//            $token_obj = json_decode($token_data);
-//            $accessToken = $token_obj->access_token;
-//            $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
-//            $useinfo =  $this->httpdata($userUrl);
-//            mage::log("useinfo=".$useinfo);
+            if ($params['aid'] != '10000001') {
+                return;
+            }
 
-            $this->loadLayout();
-            $this->renderLayout();
-        }else{
-            mage::log($url);
-            $this->_redirectUrl("$url");
+            $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
+            $appid = $apidata['appid'];
+            $appsecret = $apidata['appsecret'];
+            $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());
+            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=spaldingchina#wechat_redirect";
+            $code =  Mage::app()->getRequest()->getParam('code');
+            $state = Mage::app()->getRequest()->getParam('state');
+
+            if ($code && $state == 'spaldingchina') {//
+                $openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$appsecret&code=$code&grant_type=authorization_code";
+                $openid_data = $this->httpdata($openid_url);
+                Mage::log("openid_data=".$openid_data);
+                $openid_obj = json_decode($openid_data);
+                $openId = $openid_obj->openid;
+                Mage::getSingleton('customer/session')->setOpenId($openId);
+                if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+                    Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+                }
+
+//                // 微信用户信息取得
+//                $token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+//                $token_data = $this->httpdata($token_url);
+//                mage::log("token_data=".$token_data);
+//                $token_obj = json_decode($token_data);
+//                $accessToken = $token_obj->access_token;
+//                $userUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId&lang=zh_CN";
+//                $useinfo =  $this->httpdata($userUrl);
+//                mage::log("useinfo=".$useinfo);
+
+                $this->loadLayout();
+                $this->renderLayout();
+                mage::log("Devicom_Weixinevent_IndexController indexAction End ---- ",
+                    Zend_Log::DEBUG);
+            }else{
+                $this->_redirectUrl("$url");
+                mage::log("_redirectUrl : $url",
+                    Zend_Log::DEBUG);
+            }
+
+            // Test
+//            Mage::getSingleton('customer/session')->setOpenId("666666");
+//            if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
+//                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
+//            }
+//            $this->loadLayout();
+//            $this->renderLayout();
+        } catch (Exception $ex) {
+            mage::log("Exception : ".$ex->getMessage(),
+                Zend_Log::ERR);
         }
-
-        // Test
-//        Mage::getSingleton('customer/session')->setOpenId("666666");
-//        if (Mage::getSingleton('weixinevent/promotion')->checkSponsor()) {
-//            Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null);
-//        }
-//        $this->loadLayout();
-//        $this->renderLayout();
     }
 
     function httpdata($url, $method="get", $postfields = null, $headers = array(), $debug = false)
