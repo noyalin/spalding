@@ -11,9 +11,9 @@ class Devicom_Weixinevent_Block_Event1 extends Mage_Payment_Block_Form
         return Mage::getSingleton('weixinevent/promotion')->getPromotionCount();
     }
 
-    public function getOpenId(){
-        return Mage::getSingleton('weixinevent/promotion')->getOpenId();
-    }
+//    public function getOpenId(){
+//        return Mage::getSingleton('weixinevent/promotion')->getOpenId();
+//    }
 
     public function getVar()
     {
@@ -22,5 +22,10 @@ class Devicom_Weixinevent_Block_Event1 extends Mage_Payment_Block_Form
 
     public function isSponsor(){
         return Mage::getSingleton('weixinevent/promotion')->isSponsor();
+    }
+
+
+    public function hasSponsor(){
+        return Mage::getSingleton('weixinevent/promotion')->hasSponsor();
     }
 }

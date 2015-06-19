@@ -387,12 +387,12 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 success: function (data) {
                     var dataObj = ajaxEvalJson(data);
                     if (dataObj.status == "Success") {
-                        loadLight(dataObj.lightedCnt, 1);
+                        loadLight(dataObj.data, 1);
                         jQuery(".popPhone").hide();
                         alert("验证成功");
                         //分享提示层
                         var sponsor_flag = <?php echo $this->isSponsor() ?>;
-                        if (sponsor_flag == 1) {
+                        if (sponsor_flag == 1 && dataObj.data < 5) {
                             var _shareWx = jQuery(".shareWx");
                             _shareWx.show();
                             _shareWx.on("click", function () {
@@ -400,6 +400,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
 
                             });
                         }
+                    } else if (dataObj.status == "Joined") {
+                        jQuery(".popPhone").hide();
                     }
                     jQuery(".popPhoneBtn").attr("disabled", "false");
                 },

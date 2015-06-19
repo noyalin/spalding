@@ -111,23 +111,11 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         return 0;
     }
 
-    public function checkSponsor()
-    {
-        $orderId = Mage::getSingleton('customer/session')->getOrderId();
-        $actId = Mage::getSingleton('customer/session')->getActId();
-        $sql = "select count(*) from `weixin_promotion` where order_id = '" . $orderId . "' and act_id = '" . $actId . "'";
-        $result = $this->readConnection->fetchOne($sql);
-        if ($result != 0) {
-            return false;
-        }
-        return true;
-    }
+//    public function getOpenId(){
+//        return Mage::getSingleton('customer/session')->getOpenId();
+//    }
 
-    public function getOpenId(){
-        return Mage::getSingleton('customer/session')->getOpenId();
-    }
-
-    public function setPromotionData($flag, $clickOrder)
+    public function setPromotionData($flag, $telephone, $clickOrder)
     {
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
         $openId = Mage::getSingleton('customer/session')->getOpenId();
@@ -135,10 +123,11 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         $time = time();
 
         if($flag == 0){
-            $telephone = $this->getSponsorTelephone($orderId);
-            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $time . "','".$telephone."')";
+            $sponsorTelephone = $this->getSponsorOrderTel($orderId);
+            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $time . "','".$sponsorTelephone."')";
         }else{
-            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $time . "')";
+            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $time . "','".$telephone."');";
+            $sql .= " update weixin_promotion set telephone_no = '$telephone' where order_id = '" . $orderId . "' and openId = '" . $openId . "' and act_id = '" . $actId . "' and ( sponsor_flag = 0 || sponsor_flag = 1 );";
         }
 
         $this->writeConnection->query($sql);
@@ -154,14 +143,27 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 
     public function isSponsor()
     {
+        $orderId = Mage::getSingleton('customer/session')->getOrderId();
         $openId = Mage::getSingleton('customer/session')->getOpenId();
-        $sql = "select count(*) from weixin_promotion where open_id = '" . $openId . "' and sponsor_flag = 0";
+        $sql = "select count(*) from weixin_promotion where open_id = '" . $openId . "' and order_id = '". $orderId ."' and (sponsor_flag = 0 or sponsor_flag = 1)";
         $result = $this->readConnection->fetchOne($sql);
         if ($result != 0) {
             return 1;
         }
         return 0;
     }
+
+    public function hasSponsor()
+    {
+        $orderId = Mage::getSingleton('customer/session')->getOrderId();
+        $sql = "select count(*) from weixin_promotion where order_id = '". $orderId ."' and (sponsor_flag = 0 or sponsor_flag = 1)";
+        $result = $this->readConnection->fetchOne($sql);
+        if ($result != 0) {
+            return 1;
+        }
+        return 0;
+    }
+
     public function setCaptchaData($telephone)
     {
         $openId = Mage::getSingleton('customer/session')->getOpenId();
@@ -213,17 +215,17 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 //        return $result;
 //    }
 //
-//    public function getSponsorTel($openId)
-//    {
-//        $sql = "select telephone_no from weixin_captcha where open_id = '" . $openId . "'";
-//        $result = $this->readConnection->fetchOne($sql);
-//        if (!$result) {
-//            return 0;
-//        }
-//        return $result;
-//    }
+    public function getSponsorTel($orderId) {
 
-    public function getSponsorTelephone($orderId){
+        $sql = "select telephone_no from weixin_promotion where order_id = '".$orderId."' and (sponsor_flag = 0 || sponsor_flag = 1)";
+        $result = $this->readConnection->fetchOne($sql);
+        if (!$result) {
+            return 0;
+        }
+        return $result;
+    }
+
+    public function getSponsorOrderTel($orderId){
 
         $orders = Mage::getModel('sales/order')->getCollection();
 

@@ -104,6 +104,7 @@ final class EMAY_SMS {
 //            mage::log(self::chkError());
 //            return false;
 //        }
+        Mage::log($telephone.$signature.$captcha, Zend_Log::DEBUG);
     }
 
     public static function sendPromotionSMS($telephone, $signature, $content)
@@ -123,6 +124,9 @@ final class EMAY_SMS {
 //            mage::log(self::chkError());
 //            return false;
 //        }
+
+        Mage::log($telephone.$signature.$content, Zend_Log::DEBUG);
+
     }
 
     /**
