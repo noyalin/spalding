@@ -108,6 +108,6 @@ class Mage_Sales_Block_Order_View extends Mage_Core_Block_Template
 
     public function isPromotionOrderId($order)
     {
-        return Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($order->getId());
+        return Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($order->getRealOrderId());
     }
 }

@@ -94,7 +94,7 @@
     //            strtotime($_order->getCreatedAt())>=strtotime($strStart) && strtotime($_order->getUpdatedAt())>=strtotime($strStart) &&
     //            strtotime($_order->getCreatedAt())<strtotime($strEnd) && strtotime($_order->getUpdatedAt())<strtotime($strEnd)
     //        ):
-        if($this->isPromotionOrderId()):
+        if($this->isPromotionOrderId($_order)):
     ?>
 
     <div class="wxCD">
