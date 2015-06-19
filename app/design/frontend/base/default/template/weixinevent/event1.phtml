@@ -151,7 +151,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             type: 'POST',
             url: '<?php echo $this->getUrl('weixinevent/index/updatePromotionData') ?>',
             success: function (data) {
-                var dataObj = ajaxEvalJson("("+jQuery.trim(data)+")");
+                var dataObj = ajaxEvalJson(data);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
@@ -353,7 +353,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
                 data: {telephone: telephone},
                 success: function (data) {
-                    var dataObj = ajaxEvalJson("("+jQuery.trim(data)+")");
+                    var dataObj = ajaxEvalJson(data);
                     if (dataObj.status == "Success") {
                         alert(dataObj.data);
                     }
@@ -378,12 +378,14 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                 return;
             }
 
+            jQuery(".popPhoneBtn").attr("disabled", "true");
+
             jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
                 data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
                 success: function (data) {
-                    var dataObj = ajaxEvalJson("("+jQuery.trim(data)+")");
+                    var dataObj = ajaxEvalJson(data);
                     if (dataObj.status == "Success") {
                         loadLight(dataObj.lightedCnt, 1);
                         jQuery(".popPhone").hide();
@@ -399,6 +401,7 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                             });
                         }
                     }
+                    jQuery(".popPhoneBtn").attr("disabled", "false");
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                     alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
