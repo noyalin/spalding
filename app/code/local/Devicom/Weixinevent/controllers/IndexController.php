@@ -37,7 +37,9 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function checkCaptchaAction()
     {
-        $result = array ();
+        $opt = Mage::getSingleton('weixinevent/promotion');
+
+        $result = array();
         try {
             mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction Start ---- ",
                 Zend_Log::DEBUG);
@@ -48,48 +50,42 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             $actId = Mage::getSingleton('customer/session')->getActId();
             $orderId = Mage::getSingleton('customer/session')->getOrderId();
 
-            $result = array ();
+            $result = array();
 
             if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
-                $ret = Mage::getSingleton('weixinevent/promotion')->setCaptchaData($telephone);
-                if ($ret) {
-                    $result = Mage::getSingleton('weixinevent/promotion')->getPromotion();
-                    if ($result == 0) {
-                        $promotion_opt = Mage::getSingleton('weixinevent/promotion')->getPromotionCount();
-                        if ($promotion_opt >= 5) {
-                            $result["status"] = "Finished";
-                            $result["message"] = "球已经被全部点亮。";
-                        } else {
-                            Mage::getSingleton('weixinevent/promotion')->setPromotionData(5, $clickOrder);
-                            if ($promotion_opt < 4) {
-                                $code = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId, "m100j10");
-                                if ($code != 0) {
-                                    EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code);
-                                } else {
-                                    EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
-                                }
-                            } else {
-                                $code1 = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId, "m100j10");
-                                if ($code1 != 0) {
-                                    EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code1);
-                                } else {
-                                    EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
-                                }
-                                $code2 = Mage::getSingleton('weixinevent/promotion')->updateCoupon($openId, "lj10");
-                                $sponsorId = Mage::getSingleton('weixinevent/promotion')->getSponsorId($orderId);
-                                $sponsorTel = Mage::getSingleton('weixinevent/promotion')->getSponsorTel($sponsorId);
-                                if ($code2 != 0 && $sponsorId != 0 && $sponsorTel != 0) {
-                                    EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $code2);
-                                } else {
-                                    //EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "优惠券已发完");
-                                }
-                            }
-                            $result["status"] = "Success";
-                            $result["data"] = $promotion_opt + 1;
-                        }
+                $opt->setCaptchaData($telephone);
+                $result = $opt->getPromotion();
+                if ($result == 0) {
+                    $promotion_opt = $opt->getPromotionCount();
+                    if ($promotion_opt >= 5) {
+                        $result["status"] = "Finished";
+                        $result["message"] = "球已经被全部点亮。";
                     } else {
-                        $result["status"] = "Joined";
-                        $result["message"] = "你已参加过次活动。";
+                        $opt->setPromotionData(5, $clickOrder);
+                        if ($promotion_opt < 4) {
+                            $code = $opt->updateCoupon($openId, "m100j10");
+                            if ($code != 0) {
+                                EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code);
+                            } else {
+                                EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
+                            }
+                        } else {
+                            $code1 = $opt->updateCoupon($openId, "m100j10");
+                            if ($code1 != 0) {
+                                EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code1);
+                            } else {
+                                EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
+                            }
+                            $code2 = $opt->updateCoupon($openId, "lj10");
+                            $sponsorTel = $opt->getSponsorTelephone($orderId);
+                            if ($code2 != 0) {
+                                EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $code2);
+                            } else {
+                                //EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "优惠券已发完");
+                            }
+                        }
+                        $result["status"] = "Success";
+                        $result["data"] = $promotion_opt + 1;
                     }
                 } else {
                     $result["status"] = "Joined";
@@ -98,15 +94,14 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             } else {
                 throw new Exception("SMS_Check::checkTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone, inputCaptcha=$inputCaptcha");
             }
-
         } catch (Exception $ex) {
-            mage::log("Exception : ".$ex->getMessage(),
+            mage::log("Exception : " . $ex->getMessage(),
                 Zend_Log::ERR);
             $result["status"] = "Fail";
             $result["message"] = "验证码输入错误。";
         }
 
-        $resultString = json_encode ( $result );
+        $resultString = json_encode($result);
         mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction echo -> $resultString",
             Zend_Log::DEBUG);
         echo $resultString;

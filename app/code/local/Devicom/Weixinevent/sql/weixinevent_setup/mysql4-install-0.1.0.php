@@ -32,6 +32,7 @@ CREATE TABLE `{$this->getTable('weixin_promotion')}` (
   `sponsor_flag` int(1)  NULL,
   `operation` varchar(800)  NULL,
   `refresh_token_createtime` int(12)  NULL,
+  `telephone_no` varchar(50) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
