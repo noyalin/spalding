@@ -89,41 +89,41 @@ final class EMAY_SMS {
      */
     public static function sendSMS($telephone, $signature, $captcha)
     {
-//        self::getBalance();
-//        /**
-//         * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
-//         * $client->sendSMS还有更多可用参数，请参考 Client.php
-//         */
-//        $statusCode = self::$client->sendSMS(array($telephone),$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
-//        mage::log("发送号码：$telephone -> ".$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
-//        mage::log("处理状态码:" . $statusCode);
-//        self::getBalance();
-//        if ($statusCode != null && $statusCode == 0) {
-//            return true;
-//        } else {
-//            mage::log(self::chkError());
-//            return false;
-//        }
+        self::getBalance();
+        /**
+         * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
+         * $client->sendSMS还有更多可用参数，请参考 Client.php
+         */
+        $statusCode = self::$client->sendSMS(array($telephone),$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
+        mage::log("发送号码：$telephone -> ".$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
+        mage::log("处理状态码:" . $statusCode);
+        self::getBalance();
+        if ($statusCode != null && $statusCode == 0) {
+            return true;
+        } else {
+            mage::log(self::chkError());
+            return false;
+        }
         Mage::log($telephone.$signature.$captcha, Zend_Log::DEBUG);
     }
 
     public static function sendPromotionSMS($telephone, $signature, $content)
     {
-//        self::getBalance();
-//        /**
-//         * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
-//         * $client->sendSMS还有更多可用参数，请参考 Client.php
-//         */
-//        $statusCode = self::$client->sendSMS(array($telephone),$signature.$content);
-//        mage::log("发送号码：$telephone -> ".$signature.$content);
-//        mage::log("处理状态码:" . $statusCode);
-//        self::getBalance();
-//        if ($statusCode != null && $statusCode == 0) {
-//            return true;
-//        } else {
-//            mage::log(self::chkError());
-//            return false;
-//        }
+        self::getBalance();
+        /**
+         * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
+         * $client->sendSMS还有更多可用参数，请参考 Client.php
+         */
+        $statusCode = self::$client->sendSMS(array($telephone),$signature.$content);
+        mage::log("发送号码：$telephone -> ".$signature.$content);
+        mage::log("处理状态码:" . $statusCode);
+        self::getBalance();
+        if ($statusCode != null && $statusCode == 0) {
+            return true;
+        } else {
+            mage::log(self::chkError());
+            return false;
+        }
 
         Mage::log($telephone.$signature.$content, Zend_Log::DEBUG);
 
