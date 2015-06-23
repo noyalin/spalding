@@ -35,6 +35,12 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         <img src="<?php echo $this->getSkinUrl("images/weixin/shareWx.png"); ?>" alt="">
     </div>
 </div>
+<!-- 分享后 -->
+<div class="shareAf">
+    <div class="shareAfWrap">
+        <img src="<?php echo $this->getSkinUrl("images/weixin/shareAf.png"); ?>" alt="">
+    </div>
+</div>
 <!-- 手机验证 -->
 <div class="popPhone" style="display: none">
     <div class="popPhoneWrap">
@@ -45,7 +51,8 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             <div class="telTit">
                 <img src="<?php echo $this->getSkinUrl("images/weixin/telTit.png"); ?>" alt="">
             </div>
-            <p>恭喜你点亮第一个球，获得斯伯丁官方商城(Spaldingchina.com.cn)<font style="color:#fc0">10元优惠券</font>一张请输入你的手机号以领取：</p>
+            <p>恭喜您点亮一颗球，获得斯伯丁官方商城<font style="color:#fc0">10元优惠券</font>【满100可使用】一张。</p>
+            <p>请输入您的手机号以领取:</p>
             <div class="popPhoneInp">
                 <div class="phoneInpNum">
                     <span class="telNum"><input type="text" placeholder="请输入手机号码" class="telWrap" maxlength="11"></span>
@@ -106,7 +113,9 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
                     <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_5.png"); ?>" alt=""></span>
                 </div>
             </div>
-            <div class="ruls"><img src="<?php echo $this->getSkinUrl("images/weixin/rules.png"); ?>" alt=""></div>
+            <div class="ruls">
+                <img alt="" id="img1" class="style1" src="" /> 
+            </div>
         </div>
     </div>
     <div class="page page1">
@@ -115,23 +124,23 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         <h3>【活动主规则】</h3>
         <ul>
             <li class="clearfix">
-                <span class="rulNum">1、</span>
-                <span class="rulTex">在斯伯丁官方商城（Spaldingchina.com.cn）下单并分享至微信朋友圈或发送好友和群，即可获赠<font style="color:#e1272a">斯伯丁专业篮球袜一双</font></span>
+                <span class="rulNum">1</span>
+                <span class="rulTex">在斯伯丁官方商城（Spaldingchina.com.cn）下单并分享至微信朋友圈或发送好友和群，即可获赠<font style="color:#ffba00">斯伯丁专业篮球袜一双</font></span>
             </li>
             <li class="clearfix">
-                <span class="rulNum">2、</span>
-                <span class="rulTex">好友互动可为你点亮一颗篮球（一共五颗篮球可以被点亮），你的好友将获得斯伯丁官方商城<font style="color:#e1272a">10元优惠券</font>（满100元可以使用）</span>
+                <span class="rulNum">2</span>
+                <span class="rulTex">好友互动可为你点亮一颗篮球（一共五颗篮球可以被点亮），你的好友将获得斯伯丁官方商城<font style="color:#ffba00">10元优惠券</font>（满100元可以使用）</span>
             </li>
             <li class="clearfix">
-                <span class="rulNum">3、</span>
-                <span class="rulTex">5颗篮球全部被点亮之后，你可获得官方商城<font style="color:#e1272a">10元无门槛优惠券</font>。</span>
+                <span class="rulNum">3</span>
+                <span class="rulTex">5颗篮球全部被点亮之后，你可获得官方商城<font style="color:#ffba00">10元无门槛优惠券</font>。</span>
             </li>
             <li class="clearfix">
-                <span class="rulNum">4、</span>
-                <span class="rulTex">所有优惠券有效期为自发放日起的<font style="color:#e1272a">30天内</font>，一笔订单只能使用一张优惠券，券不可重叠使用。</span>
+                <span class="rulNum">4</span>
+                <span class="rulTex">所有优惠券有效期为自发放日起的<font style="color:#ffba00">30天内</font>，一笔订单只能使用一张优惠券，券不可重叠使用。</span>
             </li>
             <li class="clearfix">
-                <span class="rulNum">5、</span>
+                <span class="rulNum">5</span>
                 <span class="rulTex">未在斯伯丁官方商城购物，您也可以转发本次活动，但是无法获得袜子和无门槛优惠券的奖励。</span>
             </li>
         </ul>
@@ -412,6 +421,11 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             });
         });
 
+        // 关闭分享后
+        jQuery(".shareAfWrap").on("click",function(){
+            jQuery(this).parents(".shareAf").hide();
+        });
+
         //timer处理函数
         function loadLight(lightedCnt, flag) {
             var i;
@@ -473,3 +487,23 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
     });
 
 </script>
+
+<!-- 规则 s -->
+<script type="text/javascript"> 
+// 圆点渐加
+var numb = 0; 
+var imgnumb = 1; 
+var clearid; 
+function imgfor() { 
+    imgnumb++; 
+    document.getElementById('img1').setAttribute('src','<?php echo $this->getSkinUrl("images/weixin/"); ?>' + "rules" + 
+        + imgnumb + '.png'); 
+
+        // document.getElementById('img1').setAttribute('src','../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/rules' + imgnumb + '.png'); 
+    if (imgnumb == 5) { 
+        imgnumb = 0; 
+    } 
+} 
+clearid = setInterval(imgfor, 350); 
+</script> 
+<!-- 规则 e -->

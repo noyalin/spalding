@@ -3973,10 +3973,10 @@ span.sale_kind{
 	position: relative;
 	padding-top:43%;
 	margin: 0 10%;
-	animation:titleMove 3s;
+	/*animation:titleMove 3s;
 	-webkit-animation:titleMove 3s;
 	animation-iteration-count:infinite;
-	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-iteration-count:infinite;*/
 }
 
 .wxTit img{
@@ -4083,16 +4083,16 @@ span.sale_kind{
 	left:0;
 	top:0;
 	z-index:999;
-	background:rgba(0,0,0,.6);
+	background:rgba(0,0,0,.9);
 	display: none;
 }
 
 
 .popPhoneWrap{
 	position:relative;
-	background:url(../images/weixin/telBg.png) center center no-repeat #000;
+	background:url(../images/weixin/telBg.png) center center no-repeat;
 	background-size: 100% 100%;
-	margin:100px 10px 0;
+	margin:100px 10% 0;
 	padding:20px 10px;
 }
 
@@ -4108,13 +4108,11 @@ span.sale_kind{
 .popPhoneBox{
 	position: relative;
 	font-family: "微软雅黑";
-	margin:0 30px;
+	margin:0 10px;
 }
 
 .popPhoneBox .telTit{
-	width:60%;
-	margin:0 auto;
-	margin-top:-20px;
+	
 }
 
 .popPhoneBox .telTit img{
@@ -4169,7 +4167,7 @@ span.sale_kind{
 
 .popPhoneBtn button{
 	border:none;
-	color:#000;
+	color:#b30f12;
 	background: #fc0;
 	width:100%;
 	height:32px;
@@ -4232,13 +4230,11 @@ span.sale_kind{
 	width: 100%;
 }
 .container .page1 .rulTit{
-	width:80%;
 	margin:0 auto;
 }
 
 .container .page1 .rulTit img{
 	width: 100%;
-	padding-top:20px;
 }
 
 .container .page1 h2{
@@ -4255,7 +4251,10 @@ span.sale_kind{
 }
 
 .container .page1 h5{
-	color:#ffb400;
+	color: #fff;
+    text-align: left;
+    margin-left: 35px;
+    font-weight: normal;
 }
 .container .page1 ul{
 	margin:0 10px;
@@ -4266,20 +4265,30 @@ span.sale_kind{
 	margin-bottom:15px;
 	line-height: 1.5em;
 	font-size:14px;
-	font-weight: bold;
 	
 }
 
 .container .page1 ul li span{
+	display:block;
 	float: left;
 }
 
 .container .page1 ul li span.rulNum{
-	width: 5%;
+	width:20px;
+	height:20px;
+	text-align:center;
+	color:#000;
+	font-weight:bold;
+	border-radius:10px;
+	background: #ffba00;
+	line-height: 20px;
+	margin-top:3px;
 }
 
 .container .page1 ul li span.rulTex{
-	width: 95%;
+	width: 90%;
+	font-size: 14px;
+	margin-left:10px;
 }
 
 /*分享*/
@@ -4300,6 +4309,28 @@ span.sale_kind{
 }
 
 .shareWx .shareWxWrap img{
+	width: 100%;
+}
+
+/*分享后*/
+.shareAf{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,.9);
+	z-index: 99999;
+	display: none;
+}
+
+.shareAf .shareAfWrap{
+	width:90%;
+	position: absolute;
+	right:0;
+	top:50px;
+	margin:0 5%;
+}
+
+.shareAf .shareAfWrap img{
 	width: 100%;
 }
 
@@ -4347,10 +4378,9 @@ span.sale_kind{
 
     .container .page1 ul li{
 	text-align: left;
-	margin-bottom:15px;
+	margin-bottom:5px;
 	line-height: 1.5em;
 	font-size:12px;
-	font-weight: bold;
 	
 	}
 
@@ -4362,8 +4392,20 @@ span.sale_kind{
 	  padding: 20px 10px;
 	}
 
-	
+	.container .page1 ul li span.rulTex{
+		font-size:12px;
+	}
 
+	.container .page1 ul li span.rulNum{
+		width: 16px;
+		height: 16px;
+		border-radius: 8px;
+		line-height: 16px;
+	}
+
+	.wxBalls .wxBall span.please{
+		font-size: 12px;
+	}
 
 }
 
@@ -4396,6 +4438,15 @@ span.sale_kind{
 	}
 
 	.container .page1 ul li{
+		font-size:12px;
+	}
+
+	.popPhoneBox p{
+		font-size:12px;
+		margin-top:10px;
+	}
+
+	.popPhoneInp>div input.sendCd{
 		font-size:12px;
 	}
 }
