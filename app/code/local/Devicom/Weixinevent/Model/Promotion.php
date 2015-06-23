@@ -202,7 +202,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
             return $code;
         }
 
-        return 0;
+        return -1;
     }
 
 //    public function getSponsorId($orderId)

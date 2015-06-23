@@ -66,7 +66,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                         $code = $opt->updateCoupon($openId, "m100j10");
                         mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction code--- ".$code,
                             Zend_Log::DEBUG);
-                        if ($code != 0) {
+                        if ($code != -1) {
                             EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code);
                         } else {
                             EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
@@ -74,7 +74,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                         if ($promotion_opt >= 5) {
                             $code2 = $opt->updateCoupon($openId, "lj10");
                             $sponsorTel = $opt->getSponsorTel($orderId);
-                            if ($code2 != 0) {
+                            if ($code2 != -1) {
                                 EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $code2);
                             } else {
                                 EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "优惠券已发完");
@@ -199,7 +199,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                     Zend_Log::DEBUG);
             }
 
-//            // Test
+            // Test
 //            Mage::getSingleton('customer/session')->setOpenId("666666");
 //            if (Mage::getSingleton('weixinevent/promotion')->hasSponsor() == 0) {
 //                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null, null);
