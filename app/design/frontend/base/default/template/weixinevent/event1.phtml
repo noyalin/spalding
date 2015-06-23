@@ -257,14 +257,14 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
             link: '<?php echo $currentUrl;  ?>',
             imgUrl: '<?php echo $shareimageurl;  ?>',
             trigger: function (res) {
-                alert('用户点击发送给朋友');
+//                alert('用户点击发送给朋友');
             },
             success: function (res) {
                 //如果分享成功
                 sharePromotion();
             },
             cancel: function (res) {
-                alert('已取消');
+//                alert('已取消');
             },
             fail: function (res) {
 //                alert(JSON.stringify(res));
@@ -273,7 +273,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
 
     });
     wx.error(function (res) {
-        alert(res.errMsg);
+//        alert(res.errMsg);
     });
 
 </script>
@@ -405,7 +405,8 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
                     if (dataObj.status == "Success") {
                         loadLight(dataObj.data, 1);
                         jQuery(".popPhone").hide();
-                        alert("验证成功");
+//                        alert("验证成功");
+                        jQuery(".wxAlert").find("p").val("验证成功").show();
                         //分享提示层
                         var sponsor_flag = <?php echo $this->isSponsor() ?>;
                         if (sponsor_flag == 1 && dataObj.data < 5) {
