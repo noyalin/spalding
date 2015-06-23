@@ -29,6 +29,13 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
         position: relative;
     }
 </style>
+<!-- alert -->
+<div class="wxAlert">
+    <div class="wxAlertWrap clearfix">
+        <p>验证成功验证成功验证成功验证成功</p>
+        <span class="closeAlert"><img src="<?php echo $this->getSkinUrl("images/weixin/popClose.png"); ?>" alt=""></span>
+    </div>
+</div>
 <!-- 分享提示 -->
 <div class="shareWx">
     <div class="shareWxWrap">
@@ -426,6 +433,11 @@ $shareimageurl ="http://images.spaldingchina.com.cn/skin/frontend/default/spaldi
             jQuery(this).parents(".shareAf").hide();
         });
 
+        // 关闭操作提示
+        jQuery(".closeAlert").on("click",function(){
+            jQuery(this).parents(".wxAlert").hide();
+        });
+
         //timer处理函数
         function loadLight(lightedCnt, flag) {
             var i;
@@ -496,10 +508,7 @@ var imgnumb = 1;
 var clearid; 
 function imgfor() { 
     imgnumb++; 
-    document.getElementById('img1').setAttribute('src','<?php echo $this->getSkinUrl("images/weixin/"); ?>' + "rules" + 
-        + imgnumb + '.png'); 
-
-        // document.getElementById('img1').setAttribute('src','../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/rules' + imgnumb + '.png'); 
+    document.getElementById('img1').setAttribute('src','<?php echo $this->getSkinUrl("images/weixin/"); ?>' + "rules" + imgnumb + '.png');
     if (imgnumb == 5) { 
         imgnumb = 0; 
     } 
