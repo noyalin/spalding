@@ -64,6 +64,8 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                         $opt->setPromotionData(5, $telephone, $clickOrder);
                         $promotion_opt++;
                         $code = $opt->updateCoupon($openId, "m100j10");
+                        mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction code--- ".$code,
+                            Zend_Log::DEBUG);
                         if ($code != 0) {
                             EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code);
                         } else {
