@@ -2104,7 +2104,7 @@ ul.form-list li p{
 .wxCD{
 	position: relative;
 	width: 700px;
-	height: 254px;
+	height: 280px;
 	margin-bottom:30px;
 	background: url(../images/wxCd.png) left top no-repeat;
 
@@ -2112,8 +2112,8 @@ ul.form-list li p{
 
 .wxCD img{
 	position: absolute;
-	top:90px;
-	left:20px;
+	top:125px;
+	left:25px;
 	width:100px;
 	height: 100px;
 }
