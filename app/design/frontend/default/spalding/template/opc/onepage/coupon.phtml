@@ -1,16 +1,21 @@
 <form id="opc-discount-coupon-form" action="<?php echo $this->getUrl('Opc/Coupon/couponPost', array('_secure' => $this->getRequest()->isSecure())) ?>" method="post">
-    <div class="discount">
-        <div class="discount-form">
-            <label for="coupon_code"><?php echo $this->__('Enter your coupon code:') ?></label>            
-            <div class="input-box">
+    <div class="discount checkoutWrapContent">
+        <div class="discount-form checkoutWrapContentItem clearfix">
+            <div class="checkoutWrapContentItemLeft">
+                <label for="coupon_code"><?php echo $this->__('Enter your coupon code:') ?></label>
+            </div>
+                        
+            <div class="input-box checkoutWrapContentItemLeft" style="width:350px; margin-left:20px;">
                 <input class="input-text" id="coupon_code" type="text" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" autocomplete="off"/>
             </div>
-            <div class="buttons-set">
-                <button type="button" title="<?php echo $this->__('Apply') ?>" class="button apply-coupon"  value="<?php echo $this->__('Apply') ?>"><span><span><?php echo $this->__('Apply') ?></span></span></button>
+            <div class="buttons-set checkoutWrapContentItemLeft" style="width:260px; text-align:left; margin:0 10px;">
+                <button type="button" title="<?php echo $this->__('Apply') ?>" class="button apply-coupon"  value="<?php echo $this->__('Apply') ?>"><?php echo $this->__('Apply') ?></button>
                 <?php if(strlen($this->getCouponCode())): ?>
-                    &nbsp; <button type="button" title="<?php echo $this->__('Cancel') ?>" class="button remove-coupon right"  value="<?php echo $this->__('Cancel') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+                    &nbsp; <button type="button" style="background:#333; color:#fff;" title="<?php echo $this->__('Cancel') ?>" class="button remove-coupon"  value="<?php echo $this->__('Cancel') ?>"><?php echo $this->__('Cancel') ?></button>
                 <?php endif;?>
             </div>
         </div>
+
+        
     </div>
 </form>
