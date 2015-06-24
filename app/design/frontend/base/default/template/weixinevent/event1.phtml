@@ -322,6 +322,8 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
         var _lightedCnt = <?php echo $this->getPromotionCount() ?>;
         var _isPromotioned = <?php echo $this->isPromotioned() ?>;
 
+        var dataObj;
+
         loadLight(_lightedCnt, _isPromotioned);
 
         function ajaxEvalJson(data)
@@ -401,22 +403,12 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
                 data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
                 success: function (data) {
-                    var dataObj = ajaxEvalJson(data);
+                    dataObj = ajaxEvalJson(data);
                     if (dataObj.status == "Success") {
                         loadLight(dataObj.data, 1);
                         jQuery(".popPhone").hide();
 //                        alert("验证成功");
-                        jQuery(".wxAlert").find("p").val("验证成功").show();
-                        //分享提示层
-                        var sponsor_flag = <?php echo $this->isSponsor() ?>;
-                        if (sponsor_flag == 1 && dataObj.data < 5) {
-                            var _shareWx = jQuery(".shareWx");
-                            _shareWx.show();
-                            _shareWx.on("click", function () {
-                                jQuery(this).hide();
-
-                            });
-                        }
+                        jQuery(".shareAf").show();
                     } else if (dataObj.status == "Joined") {
                         jQuery(".popPhone").hide();
                     }
@@ -432,6 +424,17 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
         // 关闭分享后
         jQuery(".shareAfWrap").on("click",function(){
             jQuery(this).parents(".shareAf").hide();
+
+            //分享提示层
+            var sponsor_flag = <?php echo $this->isSponsor() ?>;
+            if (sponsor_flag == 1 && dataObj.data < 5) {
+                var _shareWx = jQuery(this).parents(".shareAf").siblings(".shareWx");
+                _shareWx.show();
+                _shareWx.on("click", function () {
+                    jQuery(this).hide();
+
+                });
+            }
         });
 
         // 关闭操作提示
