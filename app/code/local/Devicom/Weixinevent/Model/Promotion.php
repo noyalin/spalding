@@ -285,7 +285,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
                 throw new Exception('订单时间在不正确。');
             }
 
-            if (!strrchr($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL) ||
+            if (!strpos($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL) ||
                 !strstr($sales_order->getCustomerNote(), WEIXIN_PROMOTION_ORDEY_NOTE)) {
                 throw new Exception('测试验证不通过。');
             }

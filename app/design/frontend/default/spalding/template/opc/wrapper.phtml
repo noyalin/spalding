@@ -195,8 +195,9 @@
                 <!-- 发票 e -->
 
                 <!-- 优惠券 s -->
-<div style="display: none">
+<!--<div style="display: none">-->
 <!--<div>-->
+<?php if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
                 <div class="checkoutLine"></div>
 
                 <div class="checkoutSubTitleMain">
@@ -208,7 +209,8 @@
                 <div  id="discount-coupon-block" class="collapse-block">
                     <?php echo $this->getChildhtml('coupon');?>
                 </div>
-</div>
+<?php endif;?>
+<!--</div>-->
                 <!-- 优惠券 e -->
 
 
@@ -241,10 +243,12 @@
                             商品总金额:&nbsp;
                             <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getSubtotal()?></div>
                         </div>
-                        <div class="checkoutBalanceItem" style="display: none">
+<?php if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
+                        <div class="checkoutBalanceItem">
                             优惠金额:&nbsp;
                             <div class="checkoutProductDiscountPrice"><?php echo Mage::helper('opc')->getSubtotalOfDiscount()?></div>
                         </div>
+<?php endif;?>
                         <div class="checkoutBalanceItem">
                             配送费用:&nbsp;¥0.00
                         </div>
