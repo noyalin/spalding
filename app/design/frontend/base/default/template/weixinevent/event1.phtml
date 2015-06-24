@@ -297,8 +297,10 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
         {
             var dataObj = eval("("+jQuery.trim(data)+")");
             if (dataObj.status != "Success") {
-                loadLight(dataObj.lightedCnt, 1);
-                alert(dataObj.message);
+                loadLight(dataObj.lightedCnt, 0);
+//                alert(dataObj.message);
+                jQuery(".wxAlert").find("p").html(dataObj.message);
+                jQuery(".wxAlert").show();
             }
             return dataObj;
         }
@@ -340,14 +342,13 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
                 success: function (data) {
                     var dataObj = ajaxEvalJson(data);
                     if (dataObj.status == "Success") {
-                        alert(dataObj.data);
+//                        alert(dataObj.data);
+                        jQuery(".wxAlert").find("p").html(dataObj.data);
+                        jQuery(".wxAlert").show();
                     }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                     alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
-                },
-                complete:function(){
-                    //document.getElementById("btnSendCode").disabled = true;
                 }
             });
 
@@ -355,7 +356,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
 
 
         //验证验证码
-        jQuery(".popPhoneBtn").on("click", function () {
+        jQuery(".popPhoneBtn button").on("click", function () {
             var telephone = jQuery(".telNum").find("input").val();
             var inputCaptcha = jQuery(".phoneInpCd").find("input").val();
 
@@ -363,7 +364,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
                 return;
             }
 
-            jQuery(".popPhoneBtn").attr("disabled", "true");
+            jQuery(".popPhoneBtn button").attr("disabled", true);
 
             jQuery.ajax({
                 type: 'POST',
@@ -379,11 +380,11 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
                     } else if (dataObj.status == "Joined") {
                         jQuery(".popPhone").hide();
                     }
-                    jQuery(".popPhoneBtn").attr("disabled", "false");
+                    jQuery(".popPhoneBtn button").attr("disabled", false);
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                     alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
-                    jQuery(".popPhoneBtn").attr("disabled", "false");
+                    jQuery(".popPhoneBtn button").attr("disabled", false);
                 }
             });
         });
@@ -429,7 +430,10 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
             var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
             if(!reg.test(telno))
             {
-                alert('请输入有效的手机号码！');
+//                alert('请输入有效的手机号码！');
+                jQuery(".wxAlert").find("p").html('手机号码格式不正确');
+                jQuery(".wxAlert").show();
+
                 return false;
             }
             return true;
@@ -439,7 +443,9 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
             var reg = /^\d{4}$/;
             if(!reg.test(code))
             {
-                alert('请输入4位验证码！');
+//                alert('请输入4位验证码！');
+                jQuery(".wxAlert").find("p").html('验证码不正确');
+                jQuery(".wxAlert").show();
                 return false;
             }
             return true;
