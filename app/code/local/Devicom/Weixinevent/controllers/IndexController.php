@@ -1,7 +1,7 @@
 <?php
 //include  Mage :: getBaseDir().'/lib/phpqrcode/phpqrcode.php';
 
-define('SIGNATURE',   '【Spalding】');
+define('SIGNATURE',   '【Spalding官网】');
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
@@ -59,36 +59,42 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                 $opt->setCaptchaData($telephone);
                 $isPromotioned = $opt->isPromotioned();
                 $promotion_opt = $opt->getPromotionCount();
+                $flag = true;
                 if ($isPromotioned == 0) {
                     if ($promotion_opt >= 5) {
                         $result["status"] = "Finished";
-                        $result["message"] = "球已经被全部点亮。";
+                        $result["message"] = "被人抢先了一步，篮球已全部点亮";
                         $result["data"] = 5;
                     } else {
                         $opt->setPromotionData(5, $telephone, $clickOrder);
                         $promotion_opt++;
-                        $code = $opt->updateCoupon($openId, "m100j10");
-                        if ($code != -1) {
-                            EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code);
+                        $record = $opt->updateCoupon($openId, "m100j10");
+                        if ($record != -1) {
+                            EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record["code"] . "，有效期至：" . substr($record["end_time"], 0, 4)
+                                . "年" . substr($record["end_time"], 4, 2) . "月" . substr($record["end_time"], 6, 2) . "日");
                         } else {
-                            EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "优惠券已发完");
+                            $flag = false;
                         }
                         if ($promotion_opt >= 5) {
-                            $code2 = $opt->updateCoupon($openId, "lj10");
+                            $record2 = $opt->updateCoupon($openId, "lj10");
                             $sponsorTel = $opt->getSponsorTel($orderId);
-                            if ($code2 != -1) {
-                                EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $code2);
-                            } else {
-                                EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "优惠券已发完");
+                            if ($record2 != -1) {
+                                EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record2["code"] . "，有效期至：" . substr($record2["end_time"], 0, 4)
+                                    . "年" . substr($record2["end_time"], 4, 2) . "月" . substr($record2["end_time"], 6, 2) . "日");
                             }
                         }
-                        $result["status"] = "Success";
+                        if ($flag) {
+                            $result["status"] = "Success";
+                        } else {
+                            $result["status"] = "End";
+                            $result["message"] = "优惠券已发完";
+                        }
                         $result["data"] = $promotion_opt;
                         $result["lightedCnt"] = $promotion_opt;
                     }
                 } else {
                     $result["status"] = "Joined";
-                    $result["message"] = "你已参加过次活动。";
+                    $result["message"] = "您已参加过活动，不能再次点亮篮球";
                     $result["lightedCnt"] = $promotion_opt;
                 }
             } else {
