@@ -81,52 +81,55 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
 </div>
 
 <!-- 主框架 -->
-<div class="container">
+<div class="global ease" >
+    <div class="screen container"> 
+        <!-- page 1 /S -->
+        <div class="layout" id="layout_1" data-page-type="bigTxt" data-statics="info_list">
+            <div class="wxWrap">
+                <div class="wxTit"><img src="<?php echo $this->getSkinUrl("images/weixin/wxTitle.png"); ?>" alt=""></div>
 
-    <div class="page page0 cur">
-        <div class="wxWrap">
-        <!-- <div class="wxWrapBg"><img src="../../../../../../../../spalding_mobile/skin/frontend/default/mobile/images/weixin/weix_bg1.jpg" alt=""></div> -->
-            <div class="wxTit"><img src="<?php echo $this->getSkinUrl("images/weixin/wxTitle.png"); ?>" alt=""></div>
 
+                <div class="wxBalls">
+                    <div class="wxBall wxBall_1">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_1.png"); ?>" alt=""></span>
+                    </div>
 
-            <div class="wxBalls">
-                <div class="wxBall wxBall_1">
-                    <span class="please">请点亮</span>
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
-                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_1.png"); ?>" alt=""></span>
+                    <div class="wxBall wxBall_2">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_2.png"); ?>" alt=""></span>
+                    </div>
+
+                    <div class="wxBall wxBall_3">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_3.png"); ?>" alt=""></span>
+                    </div>
+
+                    <div class="wxBall wxBall_4">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_4.png"); ?>" alt=""></span>
+                    </div>
+
+                    <div class="wxBall wxBall_5">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_5.png"); ?>" alt=""></span>
+                    </div>
                 </div>
-
-                <div class="wxBall wxBall_2">
-                    <span class="please">请点亮</span>
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
-                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_2.png"); ?>" alt=""></span>
+                <div class="ruls">
+                    <img alt="" id="img1" class="style1" src="" /> 
                 </div>
-
-                <div class="wxBall wxBall_3">
-                    <span class="please">请点亮</span>
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
-                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_3.png"); ?>" alt=""></span>
-                </div>
-
-                <div class="wxBall wxBall_4">
-                    <span class="please">请点亮</span>
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
-                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_4.png"); ?>" alt=""></span>
-                </div>
-
-                <div class="wxBall wxBall_5">
-                    <span class="please">请点亮</span>
-                    <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
-                    <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_5.png"); ?>" alt=""></span>
-                </div>
-            </div>
-            <div class="ruls">
-                <img alt="" id="img1" class="style1" src="" /> 
             </div>
         </div>
-    </div>
-    <div class="page page1">
-        <div class="rulTit"><img src="<?php echo $this->getSkinUrl("images/weixin/rulTit.png"); ?>" alt=""></div>
+        <!-- page 1 /E --> 
+        
+        <!-- page 2 /S -->
+        <div class="layout page1" id="layout_2">
+          <div class="rulTit"><img src="<?php echo $this->getSkinUrl("images/weixin/rulTit.png"); ?>" alt=""></div>
         <h2>活动日期：2015年6月17日~2015年7月31日</h2>
         <h3>【活动主规则】</h3>
         <ul>
@@ -152,13 +155,11 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
             </li>
         </ul>
         <h5>*本次活动最终解释权归斯伯丁中国所有。</h5>
+        </div>
+        <!-- page 2 /E --> 
+    
     </div>
-
-
-
 </div>
-
-
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
 <script>
 
@@ -277,42 +278,8 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
     });
 
 </script>
-
 <script type="text/javascript" src="<?php echo $this->getSkinUrl("js/jquery-1.11.1.min.js"); ?>"></script>
-<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/jquery.touchSwipe.min.js"); ?>"></script>
 <script type="text/javascript">
-
-    jQuery(document).ready(
-        //滑动整屏滚动
-        function() {
-            var nowpage = 0;
-            //给最大的盒子增加事件监听
-            jQuery(".container").swipe(
-                {
-                    swipe:function(event, direction, distance, duration, fingerCount) {
-                         if(direction == "up"){
-                            nowpage = nowpage + 1;
-                         }else if(direction == "down"){
-                            nowpage = nowpage - 1;
-                         }
-
-                         if(nowpage > 1){
-                            nowpage = 1;
-                         }
-
-                         if(nowpage < 0){
-                            nowpage = 0;
-                         }
-
-                        jQuery(".container").animate({"top":nowpage * -100 + "%"},400);
-
-                        jQuery(".page").eq(nowpage).addClass("cur").siblings().removeClass("cur");
-                    }
-                });
-        }
-
-
-    );
 
     jQuery(function(){
         var InterValObj; //timer变量，控制时间
@@ -520,3 +487,80 @@ function imgfor() {
 clearid = setInterval(imgfor, 350); 
 </script> 
 <!-- 规则 e -->
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/zepto.min.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/touch.js"); ?>"></script>
+<script type="text/javascript">
+/* ua */
+var UA = function(){
+    var userAgent = navigator.userAgent.toLowerCase();
+    return {
+        ipad: /ipad/.test(userAgent),
+        iphone: /iphone/.test(userAgent),
+        android: /android/.test(userAgent),
+        qqnews: /qqnews/.test(userAgent),
+        weixin: /micromessenger/.test(userAgent)
+    };
+}
+
+/* page */
+var Layout = {
+    Dialog: {
+        open: function(){
+            $(".storyshdow").show();
+            $(".storydialog").addClass("bounceIn animated dialog_index");
+            setTimeout(function(){
+                $(".storydialog").removeClass("bounceIn animated").addClass("opacity");
+            }, 800);
+        },
+        close: function(){
+            $(".storydialog").addClass("bounceOut animated");
+            setTimeout(function(){
+                $(".storyshdow").hide();
+                $(".storydialog").removeClass("opacity bounceOut animated dialog_index");
+            }, 800)
+        },
+        init: function(){
+            var _this = this;
+            $(".storyshdow").on("click", _this.close);
+            $(".storydialog").on("click", ".closed_btn", _this.close);
+        }
+    },
+    page: function (i, _h){
+        $(".global").css({ "-webkit-transform": "translate3d(0px, -" + _h * i +"px, 0px)" });
+    },
+    swipe: function(_h, _len){
+        var _this = this;
+        $(".layout").each(function(index, obj){
+            $(obj).on("swipeUp", function(){
+                index = index < (_len - 1) ? index : (_len - 2);
+                _this.page(index + 1, _h);
+            }).on("swipeDown", function(){
+                _this.page(index - 1, _h);
+            });
+        });
+    },
+    init: function(){
+        var _this = this,
+            _w = $(window).width(),
+            _h = $(window).height(),
+            _len = $(".layout").length;
+        var ua = UA();
+        if(ua.iphone && ua.qqnews){
+            _h = _h - 44;
+        }
+        $(".swipe_tip").addClass("fadeOutUp");
+        $(".global").width( _w ).height( _h * _len ).addClass("ease");
+        $(".screen").width( _w ).height( _h * _len );
+        $(".layout").width( _w ).height( _h );
+        $(".main,.wrapCon").height( _h - 65 );
+
+        _this.page(0, _h);
+        _this.swipe(_h, _len);
+        _this.Dialog.init();
+
+    }
+}
+
+Layout.init();
+
+</script>

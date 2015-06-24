@@ -4008,8 +4008,9 @@ span.sale_kind{
 	z-index: 22;
 	color:#e6e6e6;
 	font-size: 16px;
-	top:50%;
-	margin-top:-8px;
+	height:100px;
+	line-height: 100px;
+	text-align: center;
 }
 
 .wxBalls .wxBall span.wxBallGy{
@@ -4255,6 +4256,7 @@ span.sale_kind{
     text-align: left;
     margin-left: 35px;
     font-weight: normal;
+    font-family: "Microsoft YaHei";
 }
 .container .page1 ul{
 	margin:0 10px;
@@ -4379,6 +4381,32 @@ span.sale_kind{
 	width: 100%;
 }
 
+
+/*整屏滑动 new*/
+.global{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    /*overflow: hidden;*/
+    -webkit-transform-style: preserve-3d;
+}
+.screen{
+    -webkit-transform-style: preserve-3d;
+}
+
+.ease{
+    -webkit-transition: all 1.0s ease-in-out;
+}
+.layer{
+    position: relative;
+    overflow: hidden;
+}
+
+
+.layout {
+  position: relative;
+  overflow: hidden;
+}
 
 /*
 ***iphone 4 以下 小屏css
