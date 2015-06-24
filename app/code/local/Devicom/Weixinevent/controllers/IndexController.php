@@ -7,6 +7,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     public function sendCaptchaAction(){
         $result = array ();
+        $opt = Mage::getSingleton('weixinevent/promotion');
         try {
             mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction Start ---- ",
                 Zend_Log::DEBUG);
@@ -21,11 +22,13 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             EMAY_SMS::sendSMS($telephone,$signature,$captcha);
             $result["status"] = "Success";
             $result["data"] = $captcha;
+            $result["lightedCnt"] = $opt->getPromotionCount();
         } catch (Exception $ex) {
             mage::log("Exception : ".$ex->getMessage(),
                 Zend_Log::ERR);
             $result["status"] = "Fail";
             $result["message"] = "发送验证码失败。";
+            $result["lightedCnt"] = $opt->getPromotionCount();
         }
 
         $resultString = json_encode ( $result );
@@ -55,17 +58,16 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
                 $opt->setCaptchaData($telephone);
                 $isPromotioned = $opt->isPromotioned();
+                $promotion_opt = $opt->getPromotionCount();
                 if ($isPromotioned == 0) {
-                    $promotion_opt = $opt->getPromotionCount();
                     if ($promotion_opt >= 5) {
                         $result["status"] = "Finished";
                         $result["message"] = "球已经被全部点亮。";
+                        $result["data"] = 5;
                     } else {
                         $opt->setPromotionData(5, $telephone, $clickOrder);
                         $promotion_opt++;
                         $code = $opt->updateCoupon($openId, "m100j10");
-                        mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction code--- ".$code,
-                            Zend_Log::DEBUG);
                         if ($code != -1) {
                             EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $code);
                         } else {
@@ -82,10 +84,12 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                         }
                         $result["status"] = "Success";
                         $result["data"] = $promotion_opt;
+                        $result["lightedCnt"] = $promotion_opt;
                     }
                 } else {
                     $result["status"] = "Joined";
                     $result["message"] = "你已参加过次活动。";
+                    $result["lightedCnt"] = $promotion_opt;
                 }
             } else {
                 throw new Exception("SMS_Check::checkTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone, inputCaptcha=$inputCaptcha");
@@ -94,7 +98,8 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             mage::log("Exception : " . $ex->getMessage(),
                 Zend_Log::ERR);
             $result["status"] = "Fail";
-            $result["message"] = "验证码输入错误。";
+            $result["message"] = "验证码不正确";
+            $result["lightedCnt"] = $opt->getPromotionCount();
         }
 
         $resultString = json_encode($result);
@@ -106,6 +111,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
     public function updatePromotionDataAction()
     {
         $result = array ();
+        $opt = Mage::getSingleton('weixinevent/promotion');
         try {
             Mage::log("updatePromotionDataAction start",
                 Zend_Log::DEBUG);
@@ -113,12 +119,14 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             $orderId = Mage::getSingleton('customer/session')->getOrderId();
             Mage::getSingleton('weixinevent/promotion')->updatePromotionData($actId, $orderId);
             $result["status"] = "Success";
+            $result["lightedCnt"] = $opt->getPromotionCount();
 
         } catch (Exception $ex) {
             mage::log("Exception : ".$ex->getMessage(),
             Zend_Log::ERR);
             $result["status"] = "Fail";
             $result["message"] = "更新数据失败。";
+            $result["lightedCnt"] = $opt->getPromotionCount();
         }
 
         $resultString = json_encode ( $result );
@@ -199,7 +207,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                     Zend_Log::DEBUG);
             }
 
-            // Test
+//            // Test
 //            Mage::getSingleton('customer/session')->setOpenId("666666");
 //            if (Mage::getSingleton('weixinevent/promotion')->hasSponsor() == 0) {
 //                Mage::getSingleton('weixinevent/promotion')->setPromotionData(0, null, null);
