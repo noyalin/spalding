@@ -1089,7 +1089,7 @@ IWD.OPC.Coupon = {
 				IWD.OPC.Checkout.pullReview();
 			}
 			if (typeof(response.coupon) != "undefined"){
-				$j('#opc-discount-coupon-form').replaceWith(response.coupon);
+				$j('#discount-coupon-block').html(response.coupon);
 			}
 			if (typeof(response.payments)!="undefined"){
 				$j('#checkout-payment-method-load').html(response.payments);
@@ -1226,8 +1226,8 @@ IWD.OPC.Decorator = {
 			});
 		},
 		updateGrandTotal: function(response){
-				$j('.opc-review-actions h5 span').html(response.grandTotal);
-				$j('.review-total span').html(response.grandTotal);
+				$j('.checkoutProductDiscountPrice').html(response.subtotalOfDiscount);
+				$j('.checkoutPriceTotalPrice').html(response.grandTotal);
 				
 		}
 }

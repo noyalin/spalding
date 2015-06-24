@@ -194,12 +194,24 @@
                 </div>
                 <!-- 发票 e -->
 
-    <!--            <div class="discount-block">-->
-    <!--                <h3>--><?php //echo $this->__('Discount Codes')?><!--</h3>-->
-    <!--                <div  class="collapse-block hidden">-->
-    <!--                    --><?php //echo $this->getChildhtml('coupon');?>
-    <!--                </div>-->
-    <!--            </div>-->
+                <!-- 优惠券 s -->
+<div style="display: none">
+<!--<div>-->
+                <div class="checkoutLine"></div>
+
+                <div class="checkoutSubTitleMain">
+                        <span class="checkoutSubTitleBall">
+                            <img src="<?php echo $this->getSkinUrl('images/shop_coupon.png');  ?>" alt="">
+                        </span>
+                </div>
+
+                <div  id="discount-coupon-block" class="collapse-block">
+                    <?php echo $this->getChildhtml('coupon');?>
+                </div>
+</div>
+                <!-- 优惠券 e -->
+
+
                 <div class="checkoutLine"></div>
 
                 <div class="checkoutSubTitleMain">
@@ -227,9 +239,12 @@
                     <div class="checkoutBalance">
                         <div class="checkoutBalanceItem">
                             商品总金额:&nbsp;
-                            <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getGrandTotal()?></div>
+                            <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getSubtotal()?></div>
                         </div>
-
+                        <div class="checkoutBalanceItem" style="display: none">
+                            优惠金额:&nbsp;
+                            <div class="checkoutProductDiscountPrice"><?php echo Mage::helper('opc')->getSubtotalOfDiscount()?></div>
+                        </div>
                         <div class="checkoutBalanceItem">
                             配送费用:&nbsp;¥0.00
                         </div>
@@ -328,6 +343,9 @@
             jQuery('#checkoutInvoiceTax').hide();
             jQuery('#checkoutInvoiceCommand').hide();
 
+            jQuery('.spaninvoicetype').html('无需发票');
+            jQuery('.spaninvoicetitle').html('');
+            jQuery('.spaninvoicecontent').html('');
             jQuery('.checkoutSmallTitle input[type="radio"]').removeAttr('checked');
         }
         function saveInvoice(){

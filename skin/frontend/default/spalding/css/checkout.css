@@ -383,6 +383,10 @@ input[type="text"] {
 	margin-bottom:6px;
 }
 
+.checkoutProductDiscountPrice {
+    font-size: 14px;
+    color:#fdb905;
+}
 .checkoutProductPriceTotalPrice {
 	font-size: 14px;
 	color:#fdb905;
@@ -396,6 +400,7 @@ input[type="text"] {
 	color:#fdb905;
 }
 
+.checkoutProductDiscountPrice,
 .checkoutProductPriceTotalPrice,
 .checkoutPriceTotalText,
 .checkoutPriceTotalPrice {

@@ -463,6 +463,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 	
 				$responseData['review'] = $this->_getReviewHtml();
 				$responseData['grandTotal'] = Mage::helper('opc')->getGrandTotal();
+                $responseData['subtotalOfDiscount'] = Mage::helper('opc')->getSubtotalOfDiscount();
 				/*$result['update_section'] = array(
 						'name' => 'payment-method',
 						'html' => $this->_getPaymentMethodsHtml()
@@ -484,7 +485,9 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$responseData = array();
 		$responseData['review'] = $this->_getReviewHtml();
 		$responseData['grandTotal'] = Mage::helper('opc')->getGrandTotal();
-		$this->getResponse()->setHeader('Content-type','application/json', true);
+        $responseData['subtotalOfDiscount'] = Mage::helper('opc')->getSubtotalOfDiscount();
+
+        $this->getResponse()->setHeader('Content-type','application/json', true);
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($responseData));
 	}
 	
@@ -525,7 +528,9 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 				
 				$result['review'] = $this->_getReviewHtml();
 				$result['grandTotal'] = Mage::helper('opc')->getGrandTotal();
-			}
+                $result['subtotalOfDiscount'] = Mage::helper('opc')->getSubtotalOfDiscount();
+
+            }
 			if ($redirectUrl) {
 				$result['redirect'] = $redirectUrl;
 			}
