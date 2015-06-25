@@ -80,8 +80,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                             $record2 = $opt->updateCoupon($openId, "lj10");
                             $sponsorTel = $opt->getSponsorTel($orderId);
                             if ($record2 != -1) {
-                                EMAY_SMS::sendPromotionSMS($sponsorTel, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record2["code"] . "，有效期至：" . substr($record2["end_time"], 0, 4)
-                                    . "年" . substr($record2["end_time"], 4, 2) . "月" . substr($record2["end_time"], 6, 2) . "日");
+                                EMAY_SMS::sendPromotionSMS($sponsorTel, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $record2["code"] . "，有效期至：" . substr($record2["end_time"], 0, 4)                                    . "年" . substr($record2["end_time"], 4, 2) . "月" . substr($record2["end_time"], 6, 2) . "日");
                             }
                         }
                         if ($flag) {
