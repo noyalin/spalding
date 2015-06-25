@@ -94,8 +94,8 @@ final class EMAY_SMS {
          * 下面的代码将发送内容为 test 给 159xxxxxxxx 和 159xxxxxxxx
          * $client->sendSMS还有更多可用参数，请参考 Client.php
          */
-        $statusCode = self::$client->sendSMS(array($telephone),$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
-        mage::log("发送号码：$telephone -> ".$signature.'您的验证码是：'.$captcha.'，请于5分钟内正确输入。');
+        $statusCode = self::$client->sendSMS(array($telephone),$signature.'您的验证码是：'.$captcha);
+        mage::log("发送号码：$telephone -> ".$signature.'您的验证码是：'.$captcha);
         mage::log("处理状态码:" . $statusCode);
         self::getBalance();
         if ($statusCode != null && $statusCode == 0) {
