@@ -1,7 +1,8 @@
 <?php
 //include  Mage :: getBaseDir().'/lib/phpqrcode/phpqrcode.php';
 
-define('SIGNATURE',   '【Spalding官网】');
+define('WEIXIN_PROMOTION_SIGNATURE',   '【Spalding官网】');
+define('WEIXIN_PROMOTION_ACTIVITY_ID',   '10000001');
 
 class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Action{
 
@@ -14,7 +15,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             $openId = Mage::getSingleton('customer/session')->getOpenId();
             $actId = Mage::getSingleton('customer/session')->getActId();
             $telephone =  Mage::app()->getRequest()->getParam('telephone');
-            $signature = SIGNATURE;
+            $signature = WEIXIN_PROMOTION_SIGNATURE;
             $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
             if (!$captcha) {
                 throw new Exception("SMS_Check::getTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone");
@@ -70,7 +71,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                         $promotion_opt++;
                         $record = $opt->updateCoupon($openId, "m100j10");
                         if ($record != -1) {
-                            EMAY_SMS::sendPromotionSMS($telephone, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record["code"] . "，有效期至：" . substr($record["end_time"], 0, 4)
+                            EMAY_SMS::sendPromotionSMS($telephone, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record["code"] . "，有效期至：" . substr($record["end_time"], 0, 4)
                                 . "年" . substr($record["end_time"], 4, 2) . "月" . substr($record["end_time"], 6, 2) . "日");
                         } else {
                             $flag = false;
@@ -79,7 +80,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                             $record2 = $opt->updateCoupon($openId, "lj10");
                             $sponsorTel = $opt->getSponsorTel($orderId);
                             if ($record2 != -1) {
-                                EMAY_SMS::sendPromotionSMS($sponsorTel, SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record2["code"] . "，有效期至：" . substr($record2["end_time"], 0, 4)
+                                EMAY_SMS::sendPromotionSMS($sponsorTel, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record2["code"] . "，有效期至：" . substr($record2["end_time"], 0, 4)
                                     . "年" . substr($record2["end_time"], 4, 2) . "月" . substr($record2["end_time"], 6, 2) . "日");
                             }
                         }
@@ -152,6 +153,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             $params = $this->getRequest()->getParams();
             $oid = $params['oid'];
             $aid = $params['aid'];
+            $cc = (int)$params['cc'];
             Mage::getSingleton('customer/session')->setOrderId($oid);
             Mage::getSingleton('customer/session')->setActId($aid);
 
@@ -166,12 +168,17 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             mage::log('params : '.$strParams,
                 Zend_Log::DEBUG);
 
-            if ($aid != '10000001') {
+            if ($aid != WEIXIN_PROMOTION_ACTIVITY_ID) {
                 throw new Exception('活动ID不正确。');
             }
 
             if (!Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($oid)) {
                 throw new Exception('活动ID不正确。');
+            }
+
+            $oidCC = Mage::getSingleton('weixinevent/promotion')->getCheckCode($oid);
+            if ($oidCC != $cc) {
+                throw new Exception('活动验证码不正确。('.$oidCC.' != '.$oid.')');
             }
 
             $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();

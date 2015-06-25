@@ -252,6 +252,26 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         return $telephone;
     }
 
+    /**
+     * 取得某个用户某次活动的订单验证码
+     * @param $oid 订单ID
+     * @param $actId 活动ID
+     * @return bool|int 验证码
+     */
+    public function getCheckCode($oid)
+    {
+        $keyFeature = hexdec(substr(md5('8888948'), 8, 4));
+
+        $actIdFeature = hexdec(substr(md5(WEIXIN_PROMOTION_ACTIVITY_ID), 16, 4));
+
+        $oidFeature = hexdec(substr(md5($oid), 24, 4));
+
+        $sumFeature = $keyFeature + $actIdFeature + $oidFeature;
+
+        Mage::log("getCheckCode = ".$sumFeature);
+        return $sumFeature;
+    }
+
     public  function  isPromotionOrderId($incrementID) {
         try {
             $orders = Mage::getModel('sales/order')->getCollection();

@@ -98,7 +98,7 @@
     ?>
 
     <div class="wxCD">
-        <img src="<?php echo $this->getUrl('weixinevent/index/qrcode/aid/'.$activityId.'/oid/'.$_order->getRealOrderId()).'/' ?>" >
+        <img src="<?php echo $this->getUrl('weixinevent/index/qrcode/aid/'.$activityId.'/oid/'.$_order->getRealOrderId().'/cc/'.$this->getCheckCode($_order->getRealOrderId())).'/' ?>" >
     </div>
 
     <?php endif; ?>
