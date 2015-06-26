@@ -85,6 +85,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
     <div class="screen container"> 
         <!-- page 1 /S -->
         <div class="layout page0" id="layout_1" data-page-type="bigTxt" data-statics="info_list">
+            <div class="wxWrapBg"><img src="<?php echo $this->getSkinUrl("images/weixin/weix_bg1.jpg"); ?>" alt=""></div>
             <div class="wxWrap">
                 <div class="wxTit"><img src="<?php echo $this->getSkinUrl("images/weixin/wxTitle.png"); ?>" alt=""></div>
 
@@ -121,7 +122,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
                     </div>
                 </div>
                 <div class="ruls">
-                    <img alt="" id="img1" class="style1" src="" /> 
+                    <img src="<?php echo $this->getSkinUrl("images/weixin/rules.png"); ?>" alt="">
                 </div>
             </div>
         </div>
@@ -129,6 +130,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
         
         <!-- page 2 /S -->
         <div class="layout page1" id="layout_2">
+            <div class="wxWrapBg"><img src="<?php echo $this->getSkinUrl("images/weixin/weix_bg2.jpg"); ?>" alt=""></div>
           <div class="rulTit"><img src="<?php echo $this->getSkinUrl("images/weixin/rulTit.png"); ?>" alt=""></div>
         <h2>活动日期：2015年6月17日~2015年7月31日</h2>
         <h3>【活动主规则】</h3>
@@ -478,22 +480,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
 
 </script>
 
-<!-- 规则 s -->
-<script type="text/javascript"> 
-// 圆点渐加
-var numb = 0; 
-var imgnumb = 1; 
-var clearid; 
-function imgfor() { 
-    imgnumb++; 
-    document.getElementById('img1').setAttribute('src','<?php echo $this->getSkinUrl("images/weixin/"); ?>' + "rules" + imgnumb + '.png');
-    if (imgnumb == 5) { 
-        imgnumb = 0; 
-    } 
-} 
-clearid = setInterval(imgfor, 350); 
-</script> 
-<!-- 规则 e -->
+<!-- 整屏滑动 -->
 <script type="text/javascript" src="<?php echo $this->getSkinUrl("js/zepto.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl("js/touch.js"); ?>"></script>
 <script type="text/javascript">

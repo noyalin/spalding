@@ -3955,16 +3955,17 @@ span.sale_kind{
 }
 
 
-.wxWrap .wxWrapBg{
+.container .wxWrapBg{
 	position:absolute;
 	width:100%;
 	height:100%;
 	left:0;
 	top:0;
+	z-index:-1;
 }
 
 
-.wxWrap .wxWrapBg img{
+.container .wxWrapBg img{
 	width:100%;
 	height:100%;
 }
@@ -4058,15 +4059,8 @@ span.sale_kind{
 	text-align:center; 
 }
 .container .page1 { 
-	background:url(../images/weixin/weix_bg2.jpg) center center no-repeat #000;
 }
 .container .page0 { 
-	background:url(../images/weixin/weix_bg1.jpg) center center no-repeat #000;
-	background-size: 100% 100%;
-	color:#e6e6e6; 
-	font-family: "微软雅黑";
-	font-size: 14px;
-	line-height: 1.5em;
 }
 .xiangxiatishi { 
 	position: fixed; 
