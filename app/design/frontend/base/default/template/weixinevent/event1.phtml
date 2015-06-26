@@ -2,8 +2,7 @@
 list($appId,$timestamp,$noncestr,$signature,$currentUrl) = $this->getVar();
 $title = "微信活动";
 $desc = "微信活动";
-//$shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
-$shareimageurl = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/weixin/share.jpg';
+$shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
 ?>
 
 <style>
@@ -142,7 +141,6 @@ $shareimageurl = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images
 <!--                <img src="--><?php //echo $this->getSkinUrl("images/weixin/weix_bg2.jpg"); ?><!--" alt="">-->
             </div>
           <div class="rulTit"><img src="<?php echo $this->getSkinUrl("images/weixin/rulTit.png"); ?>" alt=""></div>
-        <h2>活动日期：2015年6月17日~2015年7月31日</h2>
         <h3>【活动主规则】</h3>
         <ul>
             <li class="clearfix">
