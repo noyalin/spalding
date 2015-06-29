@@ -37,6 +37,10 @@ final class SMS_Check
 
         $result = $sumFeature | $timeFeature;
 
+        if ($result >= 10000) {
+            $result = $result & 0x1FFF;
+        }
+
         Mage::log("result = ".$result."----sumFeature = ".$sumFeature."----timeFeature".$timeFeature);
         return $result;
     }
