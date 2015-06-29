@@ -120,13 +120,12 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         $orderId = Mage::getSingleton('customer/session')->getOrderId();
         $openId = Mage::getSingleton('customer/session')->getOpenId();
         $actId = Mage::getSingleton('customer/session')->getActId();
-        $time = time();
 
-        if($flag == 0){
+        if ($flag == 0) {
             $sponsorTelephone = $this->getSponsorOrderTel($orderId);
-            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $time . "','".$sponsorTelephone."')";
-        }else{
-            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $time . "','".$telephone."');";
+            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $sponsorTelephone . "')";
+        } else {
+            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $telephone . "');";
             $sql .= " update weixin_promotion set telephone_no = '$telephone' where order_id = '" . $orderId . "' and openId = '" . $openId . "' and act_id = '" . $actId . "' and ( sponsor_flag = 0 || sponsor_flag = 1 );";
         }
 
@@ -135,10 +134,11 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 
     public function updatePromotionData($actId, $orderId)
     {
-        $sql = "update weixin_promotion set sponsor_flag = 1 where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
-        Mage::log("sql::".$sql, Zend_Log::DEBUG);
+        $modify_time = date("YmdHis", time());
+        $sql = "update weixin_promotion set sponsor_flag = 1,modify_time='" . $modify_time . "' where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
+        Mage::log("sql::" . $sql, Zend_Log::DEBUG);
         $result = $this->writeConnection->query($sql);
-        Mage::log("result::".$result, Zend_Log::DEBUG);
+        Mage::log("result::" . $result, Zend_Log::DEBUG);
     }
 
     public function isSponsor()
