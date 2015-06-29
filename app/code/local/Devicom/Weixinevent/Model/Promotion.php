@@ -125,7 +125,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
             $sponsorTelephone = $this->getSponsorOrderTel($orderId);
             $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $sponsorTelephone . "')";
         } else {
-            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,refresh_token_createtime,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $telephone . "');";
+            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,telephone_no) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $telephone . "');";
             $sql .= " update weixin_promotion set telephone_no = '$telephone' where order_id = '" . $orderId . "' and openId = '" . $openId . "' and act_id = '" . $actId . "' and ( sponsor_flag = 0 || sponsor_flag = 1 );";
         }
 
