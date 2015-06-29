@@ -37,6 +37,7 @@ final class SMS_Check
 
         $result = $sumFeature | $timeFeature;
 
+        Mage::log("result = ".$result."----sumFeature = ".$sumFeature."----timeFeature".$timeFeature);
         return $result;
     }
 
