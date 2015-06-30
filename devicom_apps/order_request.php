@@ -457,7 +457,7 @@ final class StoneEdge_MagentoImport {
 //PCN BEGIN
 		$orderDate->modify("+8 hours");
 //PCN END
-		self::xmlAppend("OrderDate", $orderDate->format('d-M-Y g:i:s A'), $ndOrder, $xd);
+		self::xmlAppend("OrderDate", $orderDate->format('Y-m-d H:i:s'), $ndOrder, $xd);
 
 		if (!$order->getBillingAddress()) {
 			if (self::$_debug) {
