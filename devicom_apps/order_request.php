@@ -412,13 +412,15 @@ final class StoneEdge_MagentoImport {
             $time = $_REQUEST['lastdate'];
             $gmtTime = date("Y-m-d H:i:s",strtotime($time)-8*60*60);
         }
-            $sql = $db->select()
-                ->from($ordersTable, 'entity_id')
-                ->where('store_id=?', $storeId, Zend_Db::INT_TYPE)
-                ->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"')
-                ->where(  "updated_at >= '$gmtTime' " ) // "entity_id > $lastEntityId"
-                ->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')")
-                ->limit($batchsize, $startnum);
+            $sql = $db->select();
+                $sql->from($ordersTable, 'entity_id');
+                if ($lastOrder) {
+                	$sql->where('store_id=?', $storeId, Zend_Db::INT_TYPE);
+                }
+                $sql->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"');
+                $sql->where(  "updated_at >= '$gmtTime' " ); // "entity_id > $lastEntityId"
+                $sql->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')");
+                $sql->limit($batchsize, $startnum);
             if (self::$_debug) {
                 echo "Executing SQL: $sql\r\n";
             }
