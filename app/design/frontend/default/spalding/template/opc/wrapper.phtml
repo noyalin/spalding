@@ -68,7 +68,15 @@
                 </div>
 
                 <div class="checkoutNewAddress clearfix">
-                    <div class="checkoutSmallTitle">
+                    <style>
+                        .bill{font-size:12px;color:#fff;margin-left:97px;color:#b4b4b4;}
+                        .choBill{color:#38f;cursor:pointer;}
+                    </style>
+                    <div class="bill">
+                        <span>不需要发票</span>
+                        <span class="choBill">[修改]</span>
+                    </div>
+                    <div class="checkoutSmallTitle" style="display:none;">
                         发票类型：
                         <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="1">普通发票
                         &nbsp;&nbsp;&nbsp;
@@ -323,6 +331,11 @@
         </div>
     </div>
     <script>
+        // 初始为不需要发票，点击修改显示发票服务
+        jQuery(".choBill").click(function(){
+            jQuery(this).parent(".bill").hide();
+            jQuery(this).parent(".bill").siblings(".checkoutSmallTitle").show();
+        });
         // 发票服务
         // 当选择了普通发票, 只显示普通发票的内容
         // 当选择了增值税专用发票, 只显示增值税专用发票的内容
@@ -351,6 +364,8 @@
             jQuery('.spaninvoicetitle').html('');
             jQuery('.spaninvoicecontent').html('');
             jQuery('.checkoutSmallTitle input[type="radio"]').removeAttr('checked');
+            jQuery(".checkoutSmallTitle").hide();
+            jQuery(".bill").show();
         }
         function saveInvoice(){
     //        var invoiceType = jQuery('input[type="radio"].invoicetaitou:checked').val();
