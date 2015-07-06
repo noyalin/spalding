@@ -37,6 +37,15 @@
             </custommade>
         </helpers>
         <resources>
+            <custommade_setup>
+                <setup>
+                    <module>Cobra_CustomMade</module>
+                    <class>Cobra_CustomMade_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </custommade_setup>
             <custommade_write>
                 <connection>
                     <use>core_write</use>
