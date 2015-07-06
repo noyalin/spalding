@@ -7,8 +7,6 @@
     </modules>
     <frontend>
         <routers>
-            <!-- the <CustomMade> tagname appears to be arbitrary, but by
-            convention is should match the frontName tag below-->
             <custommade>
                 <use>standard</use>
                 <args>
@@ -19,10 +17,36 @@
         </routers>
     </frontend>
     <global>
+        <models>
+            <custommade>
+                <class>Cobra_CustomMade_Model</class>
+                <resourceModel>custommade_mysql4</resourceModel>
+            </custommade>
+            <custommade_mysql4>
+                <class>Cobra_CustomMade_Model_Mysql4</class>
+                <entities>
+                    <info>
+                        <table>custommade_info</table>
+                    </info>
+                </entities>
+            </custommade_mysql4>
+        </models>
         <helpers>
             <custommade>
                 <class>Cobra_CustomMade_Helper</class>
             </custommade>
         </helpers>
+        <resources>
+            <custommade_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </custommade_write>
+            <custommade_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </custommade_read>
+        </resources>
     </global>
 </config>
