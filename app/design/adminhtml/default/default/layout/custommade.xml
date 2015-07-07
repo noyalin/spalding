@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <custommade_adminhtml_check_index>
+        <reference name="content">
+            <block type="custommade/adminhtml_check" name="check" />
+        </reference>
+    </custommade_adminhtml_check_index>
+</layout>

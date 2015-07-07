@@ -16,6 +16,26 @@
             </custommade>
         </routers>
     </frontend>
+    <admin>
+        <routers>
+            <custommade>
+                <use>admin</use>
+                <args>
+                    <module>Cobra_CustomMade</module>
+                    <frontName>custommade</frontName>
+                </args>
+            </custommade>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <custommade>
+                    <file>custommade.xml</file>
+                </custommade>
+            </updates>
+        </layout>
+    </adminhtml>
     <global>
         <models>
             <custommade>
@@ -31,6 +51,11 @@
                 </entities>
             </custommade_mysql4>
         </models>
+        <blocks>
+            <custommade>
+                <class>Cobra_CustomMade_Block</class>
+            </custommade>
+        </blocks>
         <helpers>
             <custommade>
                 <class>Cobra_CustomMade_Helper</class>
