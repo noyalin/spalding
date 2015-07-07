@@ -504,8 +504,8 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
                     $this->createDevicomRewardValidation($customerId, $orderUpdate, $readConnection, $writeConnection);
 
                     // Update state and status
-                    $status = 'cancel';
-                    $state = 'processing';
+                    $status = 'canceled';
+                    $state = 'canceled';
                     $log_status = 'CANCEL';
                     $this->salesOrderStatusUpdate($orderUpdate, $log_status, $status, $state, $writeConnection);
                 } catch (Exception $e) {

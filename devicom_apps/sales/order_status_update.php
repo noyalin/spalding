@@ -258,8 +258,8 @@ if (!rtrim(basename(shell_exec('ls ' . $salesLogsDirectory . '*.lock | head --li
 							createDevicomRewardValidation($customerId, $orderUpdate, $readConnection, $writeConnection, $transactionLogHandle);
 
 							// Update state and status
-							$status = 'cancel';
-							$state = 'processing';
+							$status = 'canceled';
+							$state = 'canceled';
 							$log_status = 'CANCEL';
 							salesOrderStatusUpdate($orderUpdate, $log_status, $status, $state, $writeConnection, $transactionLogHandle);
 						} catch (Exception $e) {
