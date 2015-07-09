@@ -20,26 +20,53 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 
     protected function _prepareColumns()
     {
-        $this->addColumn('id', array(
-            'header' => Mage::helper('custommade')->__('ID'),
+        $this->addColumn('order_id', array(
+            'header' => Mage::helper('custommade')->__('order_id'),
             'align' => 'right',
             'width' => '50px',
-            'index' => 'id',
+            'index' => 'order_id',
         ));
 
-        $this->addColumn('position', array(
-            'header' => Mage::helper('custommade')->__('Title'),
+        $this->addColumn('type_p1', array(
+            'header' => Mage::helper('custommade')->__('type_p1'),
             'align' => 'left',
-            'index' => 'position',
+            'index' => 'type_p1',
         ));
 
-        /*
-        $this->addColumn('content', array(
-            'header'    =>  Mage::helper('employee')->__('Item Content'),
-            'width'     =>  '150px',
-            'index'     =>  'content',
+        $this->addColumn('msg1_p1', array(
+                'header' => Mage::helper('custommade')->__('msg1_p1'),
+                'align' => 'left',
+                'index' => 'msg1_p1',
+                'renderer' => 'custommade/adminhtml_check_renderer_image',
+                'filter' => false,
+                'sortable' => false,
+            )
+        );
+
+        $this->addColumn('msg2_p1', array(
+            'header' => Mage::helper('custommade')->__('msg2_p1'),
+            'align' => 'left',
+            'index' => 'msg2_p1',
         ));
-        */
+
+        $this->addColumn('type_p2', array(
+            'header' => Mage::helper('custommade')->__('type_p2'),
+            'align' => 'left',
+            'index' => 'type_p2',
+        ));
+
+        $this->addColumn('msg1_p2', array(
+            'header' => Mage::helper('custommade')->__('msg1_p2'),
+            'align' => 'left',
+            'index' => 'msg1_p2',
+        ));
+
+        $this->addColumn('msg2_p2', array(
+            'header' => Mage::helper('custommade')->__('msg2_p2'),
+            'align' => 'left',
+            'index' => 'msg2_p2',
+        ));
+
 
         $this->addColumn('type', array(
             'header' => Mage::helper('custommade')->__('Status'),
@@ -108,8 +135,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         return $this;
     }
 
-    public function getRowUrl($row)
-    {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
-    }
+//    public function getRowUrl($row)
+//    {
+//        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+//    }
 }
