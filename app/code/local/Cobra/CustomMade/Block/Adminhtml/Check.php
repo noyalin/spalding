@@ -6,8 +6,9 @@ class Cobra_CustomMade_Block_Adminhtml_Check extends Mage_Adminhtml_Block_Widget
     {
         $this->_controller = 'adminhtml_check';
         $this->_blockGroup = 'custommade';
-        $this->_headerText = Mage::helper('custommade')->__('Employee Manager');
+        $this->_headerText = Mage::helper('custommade')->__('Custom Made Manager');
         $this->_addButtonLabel = Mage::helper('custommade')->__('Add Employee');
         parent::__construct();
     }
+
 }

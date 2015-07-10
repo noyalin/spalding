@@ -20,6 +20,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 
     protected function _prepareColumns()
     {
+
         $this->addColumn('order_id', array(
             'header' => Mage::helper('custommade')->__('order_id'),
             'align' => 'right',
@@ -31,40 +32,66 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'header' => Mage::helper('custommade')->__('type_p1'),
             'align' => 'left',
             'index' => 'type_p1',
+            'sortable' => false,
+            'type' => 'options',
+            'options' => array(
+                1 => 'Image',
+                2 => 'Text',
+            ),
         ));
 
         $this->addColumn('msg1_p1', array(
                 'header' => Mage::helper('custommade')->__('msg1_p1'),
                 'align' => 'left',
                 'index' => 'msg1_p1',
-                'renderer' => 'custommade/adminhtml_check_renderer_image',
+                'renderer' => 'custommade/adminhtml_check_renderer_content',
                 'filter' => false,
                 'sortable' => false,
+                'position' => 'p1',
             )
         );
 
         $this->addColumn('msg2_p1', array(
-            'header' => Mage::helper('custommade')->__('msg2_p1'),
-            'align' => 'left',
-            'index' => 'msg2_p1',
-        ));
+                'header' => Mage::helper('custommade')->__('msg2_p1'),
+                'align' => 'left',
+                'index' => 'msg2_p1',
+                'renderer' => 'custommade/adminhtml_check_renderer_content',
+                'filter' => false,
+                'sortable' => false,
+                'position' => 'p1',
+            )
+        );
 
         $this->addColumn('type_p2', array(
             'header' => Mage::helper('custommade')->__('type_p2'),
             'align' => 'left',
             'index' => 'type_p2',
+            'sortable' => false,
+            'type' => 'options',
+            'options' => array(
+                1 => 'Image',
+                2 => 'Text',
+            ),
         ));
 
         $this->addColumn('msg1_p2', array(
             'header' => Mage::helper('custommade')->__('msg1_p2'),
             'align' => 'left',
             'index' => 'msg1_p2',
+            'renderer' => 'custommade/adminhtml_check_renderer_content',
+            'filter' => false,
+            'sortable' => false,
+            'position' => 'p2',
         ));
 
         $this->addColumn('msg2_p2', array(
             'header' => Mage::helper('custommade')->__('msg2_p2'),
             'align' => 'left',
             'index' => 'msg2_p2',
+            'renderer' => 'custommade/adminhtml_check_renderer_content',
+            'filter' => false,
+            'sortable' => false,
+            'position' => 'p2',
         ));
 
 
@@ -75,27 +102,10 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'index' => 'status',
             'type' => 'options',
             'options' => array(
-                1 => 'Enabled',
-                2 => 'Disabled',
+                1 => 'Approved',
+                2 => 'Approving',
+                3 => 'Cancel',
             ),
-        ));
-
-        $this->addColumn('action', array(
-            'header' => Mage::helper('custommade')->__('Action'),
-            'width' => '100',
-            'type' => 'action',
-            'getter' => 'getId',
-            'actions' => array(
-                array(
-                    'caption' => Mage::helper('custommade')->__('Edit'),
-                    'url' => array('base' => '*/*/edit'),
-                    'field' => 'id'
-                )
-            ),
-            'filter' => false,
-            'sortable' => false,
-            'index' => 'stores',
-            'is_system' => true,
         ));
 
         $this->addExportType('*/*/exportCsv', Mage::helper('custommade')->__('CSV'));
