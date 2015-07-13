@@ -47,7 +47,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 'renderer' => 'custommade/adminhtml_check_renderer_content',
                 'filter' => false,
                 'sortable' => false,
-                'position' => 'p1',
+                'position' => 'P1',
             )
         );
 
@@ -58,7 +58,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 'renderer' => 'custommade/adminhtml_check_renderer_content',
                 'filter' => false,
                 'sortable' => false,
-                'position' => 'p1',
+                'position' => 'P1',
             )
         );
 
@@ -81,7 +81,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'renderer' => 'custommade/adminhtml_check_renderer_content',
             'filter' => false,
             'sortable' => false,
-            'position' => 'p2',
+            'position' => 'P2',
         ));
 
         $this->addColumn('msg2_p2', array(
@@ -91,7 +91,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'renderer' => 'custommade/adminhtml_check_renderer_content',
             'filter' => false,
             'sortable' => false,
-            'position' => 'p2',
+            'position' => 'P2',
         ));
 
 
