@@ -36,7 +36,24 @@
 
 </head>
 <body>
-<div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/20141210002.jpg');  ?>" alt=""></div>
+<?php
+//get current category id
+$layer = Mage::getSingleton('catalog/layer');
+$_category = $layer->getCurrentCategory();
+$currentCategoryId= $_category->getId();
+
+if($currentCategoryId == 35){
+//专属定制
+?>
+    <div class=""><img src="<?php echo $this->getSkinUrl('images/20141210002.jpg');  ?>" alt=""></div>
+
+<?php
+}else{
+?>
+    <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/20141210002.jpg');  ?>" alt=""></div>
+<?php
+    }
+?>
 <?php echo $this->getChildHtml('header') ?>
 <div style="height:110px; z-index:-2;"></div>
 <?php echo $this->getChildHtml('content') ?>
