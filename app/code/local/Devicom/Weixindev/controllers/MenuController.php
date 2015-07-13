@@ -81,7 +81,7 @@ class Devicom_Weixindev_MenuController extends Mage_Core_Controller_Front_Action
 
 
         $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
-        $result = $this->https_request($url, $jxsonmenu);
+        $result = $this->https_request($url, $jsonmenu);
         var_dump($result);
     }
 
