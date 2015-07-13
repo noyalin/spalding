@@ -47,7 +47,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 'renderer' => 'custommade/adminhtml_check_renderer_content',
                 'filter' => false,
                 'sortable' => false,
-                'position' => 'p1',
+                'position' => 'P1',
             )
         );
 
@@ -58,7 +58,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 'renderer' => 'custommade/adminhtml_check_renderer_content',
                 'filter' => false,
                 'sortable' => false,
-                'position' => 'p1',
+                'position' => 'P1',
             )
         );
 
@@ -81,7 +81,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'renderer' => 'custommade/adminhtml_check_renderer_content',
             'filter' => false,
             'sortable' => false,
-            'position' => 'p2',
+            'position' => 'P2',
         ));
 
         $this->addColumn('msg2_p2', array(
@@ -91,7 +91,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'renderer' => 'custommade/adminhtml_check_renderer_content',
             'filter' => false,
             'sortable' => false,
-            'position' => 'p2',
+            'position' => 'P2',
         ));
 
 
@@ -119,34 +119,22 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->setMassactionIdField('id');
         $this->getMassactionBlock()->setFormFieldName('custommade');
 
-        $this->getMassactionBlock()->addItem('delete', array(
-            'label' => Mage::helper('custommade')->__('Delete'),
-            'url' => $this->getUrl('*/*/massDelete'),
-            'confirm' => Mage::helper('custommade')->__('Are you sure?')
+        $this->getMassactionBlock()->addItem('approved', array(
+            'label' => Mage::helper('custommade')->__('Approved'),
+            'url' => $this->getUrl('*/*/massApproved')
         ));
 
-        //$statuses = Mage::getSingleton('employee/status')->getOptionArray();
-        $statuses = 1;
-
-        array_unshift($statuses, array('label' => '', 'value' => ''));
-        $this->getMassactionBlock()->addItem('status', array(
-            'label' => Mage::helper('custommade')->__('Change status'),
-            'url' => $this->getUrl('*/*/massStatus', array('_current' => true)),
-            'additional' => array(
-                'visibility' => array(
-                    'name' => 'status',
-                    'type' => 'select',
-                    'class' => 'required-entry',
-                    'label' => Mage::helper('custommade')->__('Status'),
-                    'values' => $statuses
-                )
-            )
+        $this->getMassactionBlock()->addItem('approving', array(
+            'label' => Mage::helper('custommade')->__('Approving'),
+            'url' => $this->getUrl('*/*/massApproving')
         ));
+
+        $this->getMassactionBlock()->addItem('cancel', array(
+            'label' => Mage::helper('custommade')->__('Cancel'),
+            'url' => $this->getUrl('*/*/massCancel')
+        ));
+
         return $this;
     }
 
-//    public function getRowUrl($row)
-//    {
-//        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
-//    }
 }
