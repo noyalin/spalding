@@ -226,6 +226,7 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
                 if(!empty($keyword) && $last == 'sign-up')
                 {
                     $contentStr = $this->checkSignUpInfo(trim($keyword),$postObj);
+                    $this->saveSessionLast('',$fromUsername);
                     $this->responseTextMsg($postObj,$contentStr);
                 }
                 //only 1 ball
