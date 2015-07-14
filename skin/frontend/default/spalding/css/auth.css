@@ -30,23 +30,33 @@ element.style {
     width: 75px;
 }
 .ds_dialog_yes {
-    background: url("../auth/input.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../auth/btnYes.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
     height: 42px;
     width: 118px;
     display: inline-block;
     vertical-align: middle;
-    background-position:-155px -40px;
+    /*background-position:-155px -40px;*/
+    margin-left:145px;
+}
+.ds_dialog_complete {
+    background: url("../auth/btnComplete.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    /*cursor: pointer;*/
+    height: 42px;
+    width: 118px;
+    display: inline-block;
+    vertical-align: middle;
+    /*background-position:-155px -40px;*/
     margin-left:145px;
 }
 .ds_dialog_process {
     background: url("../auth/process.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    cursor: pointer;
+    /*cursor: pointer;*/
     height: 42px;
     width: 200px;
     display: inline-block;
     vertical-align: middle;
-    margin-left:145px;
+    margin-left:105px;
 }
 #barcodeVerifyResult{
     color:#fdb905;

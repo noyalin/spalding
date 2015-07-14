@@ -41,7 +41,7 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
         function sure_button_onclick(){
             var barcode =jQuery("#barcode").val();
             var verifycode =jQuery("#verifycode").val();
-            var verifyResult;
+            var verifyResult = "";
             jQuery.ajax({
                 async:false,
                 type: 'POST',
@@ -50,8 +50,8 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
                 data: {barcode:barcode,verifycode:verifycode},
                 success: function(data, textStatus){
                     verifyResult = data;
-                    jQuery(this).addClass("ds_dialog_process_second");
-                    jQuery(this).removeClass("ds_dialog_process");
+//                    jQuery(this).addClass("ds_dialog_process_second");
+//                    jQuery(this).removeClass("ds_dialog_process");
                 },
                 //  dataType: "json",
                 error: function(){
@@ -61,16 +61,24 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
             if(verifyResult != "1"){
                 document.getElementById("barcodeVerifyResult").innerHTML = verifyResult;
                 if(verifyResult.indexOf("没有此数码，请当心该产品是假冒产品")>=0  ||   verifyResult.indexOf("该防伪码已超过规定查询次数")>=0 ||  verifyResult.indexOf("没有此防伪码，请当心该产品是假冒产品")>=0){
-                    jQuery(".ds_dialog_process_second").addClass("ds_dialog_yes");
-                    jQuery(".ds_dialog_process_second").html("确认");
+                }else{
+                    jQuery("#checkmessage").html("");
                 }
             }else{
                 jQuery("#verifycode_error").html("验证码不符");
                 jQuery("#verifycode").addClass("error");
                 jQuery('#barcodeVerifyResult').html("");
-                jQuery(".ds_dialog_process_second").addClass("ds_dialog_yes");
-                jQuery(".ds_dialog_process_second").html("确认");
             }
+
+            jQuery("#zy_check_ok").html("验证完成");
+            jQuery("#zy_check_ok").addClass("ds_dialog_complete");
+            jQuery("#zy_check_ok").removeClass("ds_dialog_process");
+            window.setTimeout(function () {
+
+                jQuery("#zy_check_ok").html("确认");
+                jQuery("#zy_check_ok").addClass("ds_dialog_yes");
+                jQuery("#zy_check_ok").removeClass("ds_dialog_complete");
+            }, 5000);
 
         }
         function isEmpty (s) {
@@ -111,7 +119,7 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
 <!--					<span>验证码不能为空</span>-->
 <!--				</h3>-->
 				<div class="confirmBtn">
-					<i class="ds_dialog_yes">确认</i>
+					<i id="zy_check_ok" class="ds_dialog_yes">确认</i>
 				</div>
 				<div class="confirmSn">
 					
