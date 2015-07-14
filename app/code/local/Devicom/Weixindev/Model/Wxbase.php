@@ -108,10 +108,14 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
                             $this->responseTextMsg($postObj,$contentStr);
                             break;
                         case "sign-up":
-                            $this->saveSessionLast('sign-up', $fromUsername);
-                            $contentStr = "呐喊参与口号，回复参加城市和联系方式，幸运儿可能就是你！（如：There's only one Spalding,北京,小明,13888888888）\n";
-                            $contentStr .= "温馨提示：会员凭真实姓名和手机号码入场，参与即有惊喜。";
-                            $this->responseTextMsg($postObj,$contentStr);
+                            if ($this->getSignUpInfo($fromUsername) > 0) {
+                                $contentStr = "你已报过名。";
+                            } else {
+                                $this->saveSessionLast('sign-up', $fromUsername);
+                                $contentStr = "呐喊参与口号，回复参加城市和联系方式，幸运儿可能就是你！（如：There's only one Spalding,北京,小明,13888888888）\n";
+                                $contentStr .= "温馨提示：会员凭真实姓名和手机号码入场，参与即有惊喜。";
+                            }
+                            $this->responseTextMsg($postObj, $contentStr);
                             break;
                         default :
                             $contentStr = "无响应事件";

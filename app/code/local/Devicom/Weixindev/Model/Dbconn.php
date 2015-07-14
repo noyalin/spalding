@@ -123,7 +123,7 @@ class Devicom_Weixindev_Model_Dbconn extends Mage_Core_Model_Abstract{
 
     public function saveSignUpInfo($openid, $username, $telephone, $city, $slogan){
         $count = $this->getSignUpInfo($openid);
-        if ($count != 0) {
+        if ($count > 0) {
             return false;
         }
         $date = date('Y-m-d H:i:s', time());
