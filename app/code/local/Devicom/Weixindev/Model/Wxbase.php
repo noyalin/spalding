@@ -225,8 +225,18 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
                 //NBA Nation
                 if(!empty($keyword) && $last == 'sign-up')
                 {
-                    $contentStr = $this->checkSignUpInfo(trim($keyword),$postObj);
-                    $this->saveSessionLast('',$fromUsername);
+                    $ret = $this->checkSignUpInfo(trim($keyword),$postObj);
+                    if ($ret == 3) {
+                        $contentStr = "格式不正确。";
+                    } else if ($ret == 2) {
+                        $contentStr = "你已经报过名。";
+                        $this->saveSessionLast('',$fromUsername);
+                    } else if ($ret == 1) {
+                        $contentStr = "报名成功。";
+                        $this->saveSessionLast('',$fromUsername);
+                    } else {
+                        $contentStr = "系统异常，请联系客服。";
+                    }
                     $this->responseTextMsg($postObj,$contentStr);
                 }
                 //only 1 ball
@@ -987,7 +997,8 @@ EOF;
 //        $pattern = "/0?1[3|4|5|8][0-9]\d{8}/";
 //        preg_match($pattern,$telephone);
         if ($array == false || count($array) != 4) {
-            $return = "格式不正确。";
+            // 格式不正确。
+            $return = 3;
         } else {
             list($slogan, $city, $username, $telephone) = $array;
             $slogan = trim($slogan);
@@ -995,13 +1006,16 @@ EOF;
             $username = trim($username);
             $telephone = trim($telephone);
             if ($slogan == "" || $city == "" || $username == "" || $telephone == "") {
-                $return = "格式不正确。";
+                // 格式不正确。
+                $return = 3;
             } else {
                 $res = $this->saveSignUpInfo($postObj->FromUserName, $slogan, $city, $username, $telephone);
                 if ($res) {
-                    $return = "报名成功。";
+                    // 报名成功。
+                    $return = 1;
                 } else {
-                    $return = "你已经报过名。";
+                    // 你已经报过名。
+                    $return = 2;
                 }
             }
         }
