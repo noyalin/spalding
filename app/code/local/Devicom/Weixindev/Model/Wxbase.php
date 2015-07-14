@@ -990,14 +990,21 @@ EOF;
             $return = "格式不正确。";
         } else {
             list($slogan, $city, $username, $telephone) = $array;
-            $res = $this->saveSignUpInfo($postObj->FromUserName,trim($slogan), trim($city), trim($username), trim($telephone));
-            if($res){
-                $return = "报名成功。";
-            }else{
-                $return = "你已经报过名。";
+            $slogan = trim($slogan);
+            $city = trim($city);
+            $username = trim($username);
+            $telephone = trim($telephone);
+            if ($slogan == "" || $city == "" || $username == "" || $telephone == "") {
+                $return = "格式不正确。";
+            } else {
+                $res = $this->saveSignUpInfo($postObj->FromUserName, $slogan, $city, $username, $telephone);
+                if ($res) {
+                    $return = "报名成功。";
+                } else {
+                    $return = "你已经报过名。";
+                }
             }
         }
-
         return $return;
     }
 }
