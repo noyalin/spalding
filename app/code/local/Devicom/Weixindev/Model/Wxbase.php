@@ -107,6 +107,12 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
                             $contentStr = "互动游戏即将上线,敬请关注!";
                             $this->responseTextMsg($postObj,$contentStr);
                             break;
+                        case "sign-up":
+                            $this->saveSessionLast('sign-up', $fromUsername);
+                            $contentStr = "呐喊参与口号，回复参加城市和联系方式，幸运儿可能就是你！（如：There's only one Spalding,北京,小明,13888888888）\n";
+                            $contentStr .= "温馨提示：会员凭真实姓名和手机号码入场，参与即有惊喜。";
+                            $this->responseTextMsg($postObj,$contentStr);
+                            break;
                         default :
                             $contentStr = "无响应事件";
                             $this->responseTextMsg($postObj,$contentStr);
@@ -210,6 +216,12 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
 
                     $contentStr = $this->checkCode(trim($keyword),$postObj);
 //                    $contentStr = "yes";
+                    $this->responseTextMsg($postObj,$contentStr);
+                }
+                //NBA Nation
+                if(!empty($keyword) && $last == 'sign-up')
+                {
+                    $contentStr = $this->checkSignUpInfo(trim($keyword),$postObj);
                     $this->responseTextMsg($postObj,$contentStr);
                 }
                 //only 1 ball
@@ -961,5 +973,26 @@ EOF;
         }
 
         return $str;
+    }
+
+    function checkSignUpInfo($content, $postObj)
+    {
+        $str = strtr($content, array("'" => "''", "，" => ",","\\" => "\\\\","\"" => "\\\""));
+        $array = explode(',', $str);
+//        $pattern = "/0?1[3|4|5|8][0-9]\d{8}/";
+//        preg_match($pattern,$telephone);
+        if ($array == false || count($array) != 4) {
+            $return = "格式不正确。";
+        } else {
+            list($openid, $username, $telephone, $city) = $array;
+            $res = $this->saveSignUpInfo(trim($openid), trim($username), trim($telephone), trim($city), $postObj->FromUserName);
+            if($res){
+                $return = "报名成功。";
+            }else{
+                $return = "你已经报过名。";
+            }
+        }
+
+        return $return;
     }
 }

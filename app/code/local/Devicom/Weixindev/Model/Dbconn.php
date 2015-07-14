@@ -120,4 +120,21 @@ class Devicom_Weixindev_Model_Dbconn extends Mage_Core_Model_Abstract{
         $res = $this->readConnection->fetchRow("select phone,username  FROM weixin_identity where id=$id");
         return $res;
     }
+
+    public function saveSignUpInfo($openid, $username, $telephone, $city, $slogan){
+        $count = $this->getSignUpInfo($openid);
+        if ($count != 0) {
+            return false;
+        }
+        $date = date('Y-m-d H:i:s', time());
+        $sql = "insert into weixin_nba(openid,username,telephone,city,slogan,join_time) values('" . $openid . "','" . $username
+            . "','" . $telephone . "','" . $city . "','" . $slogan . "','" . $date . "')";
+        $this->writeConnection->query($sql);
+        return true;
+    }
+
+    public function getSignUpInfo($openid){
+        $sql = "select count(1) from weixin_nba where openid = '" . $openid . "'";
+        return $this->readConnection->fetchOne($sql);
+    }
 }
