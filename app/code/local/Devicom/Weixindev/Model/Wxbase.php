@@ -989,8 +989,8 @@ EOF;
         if ($array == false || count($array) != 4) {
             $return = "格式不正确。";
         } else {
-            list($openid, $username, $telephone, $city) = $array;
-            $res = $this->saveSignUpInfo($postObj->FromUserName,trim($openid), trim($username), trim($telephone), trim($city));
+            list($slogan, $city, $username, $telephone) = $array;
+            $res = $this->saveSignUpInfo($postObj->FromUserName,trim($slogan), trim($city), trim($username), trim($telephone));
             if($res){
                 $return = "报名成功。";
             }else{

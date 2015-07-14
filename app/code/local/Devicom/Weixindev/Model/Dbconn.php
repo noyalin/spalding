@@ -121,7 +121,7 @@ class Devicom_Weixindev_Model_Dbconn extends Mage_Core_Model_Abstract{
         return $res;
     }
 
-    public function saveSignUpInfo($openid, $username, $telephone, $city, $slogan){
+    public function saveSignUpInfo($openid, $slogan, $city, $username, $telephone){
         $count = $this->getSignUpInfo($openid);
         if ($count > 0) {
             return false;
