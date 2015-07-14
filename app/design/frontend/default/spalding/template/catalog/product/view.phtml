@@ -66,8 +66,116 @@ $_category = $layer->getCurrentCategory();
 $currentCategoryId= $_category->getId();
 if($currentCategoryId == 35):
 //专属定制
+?>
+<!-- 定制背景 -->
+<div class="bodyBg_cusMade">
+    <img style="width:100%;" src="<?php echo $this->getSkinUrl('images/customMade/cBg2.jpg');  ?>" alt="">
+</div>
 
-else:
+<!-- 定制主框架 -->
+<!-- 第一步 开始定制 -->
+<div class="cusMadeCons madeStep_1" style="display:none;">
+    <div class="cusMadeBox cusMadeCen">
+        <div class="step_1_ball"><img src="<?php echo $this->getSkinUrl('images/customMade/step_1_ball.png');  ?>" alt=""></div>
+        <div class="step_1_Btn"><a href="javascript:;"><img src="<?php echo $this->getSkinUrl('images/customMade/step_1_ballBtn.png');  ?>" alt=""></a></div>
+    </div>
+    <div class="cusMadeBox cusMadeRig">
+        <div class="madeBoxVal">
+            <h1>SPALDING 74-604 ID</h1>
+            <h2>价格：￥220</h2>
+        </div>
+
+        <div class="madeBoxCons">
+            <h3>可定制球皮</h3>
+            <p>“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，恰到好处的粘度让你轻松“掌控”比赛！</p>
+            <dl>
+                <dd>产品特点</dd>
+                <dt>添加图案</dt>
+                <dt>定制专属签名</dt>
+            </dl>
+            <div class="madeServ">斯伯丁定制退换货服务</div>
+            <div class="madeDate">该产品定制将在4-6周内送货上门</div>
+        </div>
+        <div class="madeFuns">
+            <button>开始定制</button>
+        </div>
+    </div>
+</div>
+
+<!-- 第二步  定制-->
+<div class="cusMadeCons madeStep_2">
+    <div class="cusMadeBox cusMadeCen">
+        <div class="step_2_Fun">
+            <div class="step_2_FunBg"><img src="<?php echo $this->getSkinUrl('images/customMade/step_2_Bgball.png');  ?>" alt=""></div>
+            <div class="step_2_funBtn"><img src="<?php echo $this->getSkinUrl('images/customMade/step_2_funBtn.png');  ?>" alt=""></div>
+        </div>
+        <div class="step_2_wrap">
+            
+        </div>
+        
+    </div>
+    <div class="cusMadeBox cusMadeRig">
+        <div class="madeBoxVal">
+            <h1>SPALDING 74-604 ID</h1>
+            <h2>价格：￥220</h2>
+        </div>
+        <div class="madeP_btn madeP_1_btn madeP_btn_now">P1</div>
+        <div class="madeP_btn madeP_2_btn">P2</div>
+        
+        <!-- p1 -->
+        <div class="madeBoxCons madeBoxCons_p1">
+            <h3>可定制球皮</h3>
+            <p class="madeTs">选择添加图案或个性签名</p>
+            <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+            <!-- 定制图案 -->
+            <div class="madeBoxImg">1</div>
+        </div>
+
+        <!-- p2 -->
+        <div class="madeBoxCons madeBoxCons_p2" style="display:none;">
+            <h3>可定制球皮</h3>
+            <p class="madeTs">选择添加图案或个性签名</p>
+            <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+            <!-- 定制图案 -->
+            <div class="madeBoxImg">2</div>
+        </div>
+
+
+        <div class="madeFuns">
+            <button>开始定制</button>
+        </div>
+    </div>
+</div>
+
+<div class="madeBotmSn">
+    <h1>定制专属篮球</h1>
+    <p>斯伯丁74-604“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，<br>恰到好处的粘度让你轻松“掌控”比赛！</p>
+</div>
+<script>
+    jQuery(function(){
+        //开始定制按钮
+        //暂时隐藏step1层 后期看是否是进行页面跳转
+        jQuery(".step_1_Btn a").click(function(){
+            jQuery(this).parents().find(".madeStep_1").css("display","none");
+            jQuery(this).parents().find(".madeStep_2").css("display","block");
+        });
+        //点击P1按钮
+        jQuery(".madeP_1_btn").click(function(){
+            jQuery(this).addClass("madeP_btn_now");
+            jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
+            jQuery(this).siblings(".madeBoxCons_p1").css("display","block");
+            jQuery(this).siblings(".madeBoxCons_p2").css("display","none");
+        });
+        //点击P2按钮
+        jQuery(".madeP_2_btn").click(function(){
+            jQuery(this).addClass("madeP_btn_now");
+            jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
+            jQuery(this).siblings(".madeBoxCons_p2").css("display","block");
+            jQuery(this).siblings(".madeBoxCons_p1").css("display","none");
+        });
+    });
+</script>
+<?php else: 
 ?>
 <div class="product-view">
     <div class="product-essential">

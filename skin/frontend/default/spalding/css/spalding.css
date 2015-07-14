@@ -3251,11 +3251,235 @@ ul.shopsList li span.shopsList_adrs{
 	color:#666;
 }
 
+/*专属定制*/
+.bodyBg_cusMade{
+	position:absolute; 
+	top:0; 
+	width:100%; 
+	z-index:-2;
+}
+.cusMadeCons{
+	position: relative;
+	min-height: 570px;
+}
+
+.cusMadeCen{
+	position: absolute;
+	width:400px;
+	height:400px;
+	left:50%;
+	margin-left:-200px;
+	color:#fff;
+}
+.step_1_ball{
+	position: absolute;
+}
+
+.step_1_Btn{
+	position: absolute;
+	z-index: 1;
+	margin-top:160px;
+	margin-left:110px;
+}
+
+.step_1_Btn img:hover{
+	opacity: .9;
+}
+
+
+
+.cusMadeRig{
+	position:absolute;
+	top:-20px;
+	right:0;
+	color:#fff;
+	width:305px;
+	height: 570px;
+	background:#030403;
+	border:1px solid #323232;
+	border-right:none;
+}
+
+.madeBoxVal{
+	height:80px;
+	background: url(../images/customMade/step_1_valBg.jpg) left top no-repeat;
+
+	border-bottom:1px solid #323232;
+	text-align: center;
+	overflow: hidden;
+}
+.madeBoxVal h1{
+	font-size: 24px;
+	font-weight: bold;
+	margin-top:20px;
+	margin-bottom: 5px;
+	font-family: import,arial, helvetica, sans-serif;
+}
+.madeBoxVal h2{
+	font-size: 20px;
+	font-weight: bold;
+	color:#fdb905;
+}
+
+.madeBoxCons{
+	padding:10px 25px;
+	height:395px;
+}
+
+.madeBoxCons h3{
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	border-bottom:1px dashed #808080;
+	margin-bottom:10px;
+	padding-bottom: 10px;
+}
+
+.madeBoxCons p{
+	font-size: 12px;
+	color:#808080;
+	text-indent: 24px;
+	line-height: 1.5em;
+}
+
+.madeBoxCons dl{
+	font-size: 12px;
+	color:#808080;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom: 10px;
+	border-bottom:1px solid #323232;
+}
+
+.madeBoxCons dl dd{
+	color:#fff;
+}
+.madeBoxCons dl dt{
+	text-indent: 15px;
+}
+.madeBoxCons dl dt:before{
+	position:absolute;
+	content: '';
+	width:0;
+	height:0;
+	margin-top:8px;
+	border:3px solid #808080;
+	border-radius: 3px;
+	margin-left:-10px;
+}
+.madeBoxCons .madeServ{
+	font-size: 12px;
+	color:#808080;
+	background:url(../images/customMade/step_1_coin1.png) left top no-repeat;
+	line-height: 24px;
+	text-indent:40px;
+	margin-top:20px;
+	margin-bottom:10px;
+	margin-left:10px;
+}
+.madeBoxCons .madeDate{
+	font-size: 12px;
+	color:#808080;
+	background:url(../images/customMade/step_1_coin2.png) left top no-repeat;
+	line-height: 24px;
+	text-indent:40px;
+	margin-left:10px;
+}
 
 
 
 
 
 
+.madeFuns{
+	border-top:1px solid #808080;
+	text-align: center;
+	color:#1d1000;
+}
+
+.madeFuns button{
+	border:none;
+	background: #fdb905;
+	background: -webkit-linear-gradient(#fdb905, #f29d09); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#fdb905, #f29d09); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#fdb905, #f29d09); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#fdb905, #f29d09); /* 标准的语法 */
+	width:265px;
+	margin:0 20px;
+	height:40px;
+	line-height: 40px;
+	font-weight: bold;
+	font-size: 18px;
+	border-radius: 5px;
+	margin-top:15px;
+}
+
+.madeBotmSn{
+	position: relative;
+	margin:20px 0;
+	text-align: center;
+	color: #fff;
+}
+
+.madeBotmSn h1{
+	font-size:40px;
+	line-height: 40px;
+	font-weight: bold;
+	margin-bottom:15px; 
+}
+
+.madeBotmSn p{
+	font-size: 14px;
+	line-height: 1.5em;
+}
+.madeP_btn{
+	position: absolute;
+	margin-left:-35px;
+	border:1px solid #323232;
+	color:#fff;
+	width:33px;
+	height:190px;
+	background: #191a1c;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	line-height: 190px;
+	text-align: center;
+	cursor: pointer;
+}
+.madeP_1_btn{
+	margin-top:20px;
+}
+.madeP_2_btn{
+	margin-top:210px;
+}
+.madeP_btn_now{
+	background: #020303;
+	border-right: none;
+	width:34px;
+}
+
+/*fun ball*/
+.step_2_FunBg{
+	position: absolute;
+}
+
+.step_2_funBtn{
+	position: absolute;
+	z-index: 2;
+	margin-top:160px;
+	margin-left:120px;
+	cursor: pointer;
+}
+.step_2_funBtn img:hover{
+	opacity: .9;
+}
 
 
+/*p1*/
+.madeBoxCons p.madeTs{
+	color:#fff;
+	text-align: center;
+}
+.madeBoxCons p.madeSn{
+	text-align: center;
+}
