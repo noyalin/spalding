@@ -3261,6 +3261,7 @@ ul.shopsList li span.shopsList_adrs{
 .cusMadeCons{
 	position: relative;
 	min-height: 570px;
+	overflow: hidden;
 }
 
 .cusMadeCen{
@@ -3269,7 +3270,9 @@ ul.shopsList li span.shopsList_adrs{
 	height:400px;
 	left:50%;
 	margin-left:-200px;
+	margin-top:50px;
 	color:#fff;
+	z-index: 0;
 }
 .step_1_ball{
 	position: absolute;
@@ -3326,7 +3329,7 @@ ul.shopsList li span.shopsList_adrs{
 	height:395px;
 }
 
-.madeBoxCons h3{
+.madeBoxCons>h3{
 	font-size: 22px;
 	font-weight: bold;
 	text-align: center;
@@ -3335,7 +3338,7 @@ ul.shopsList li span.shopsList_adrs{
 	padding-bottom: 10px;
 }
 
-.madeBoxCons p{
+.madeBoxCons>p{
 	font-size: 12px;
 	color:#808080;
 	text-indent: 24px;
@@ -3354,10 +3357,10 @@ ul.shopsList li span.shopsList_adrs{
 .madeBoxCons dl dd{
 	color:#fff;
 }
-.madeBoxCons dl dt{
+.madeBoxCons dl.prods dt{
 	text-indent: 15px;
 }
-.madeBoxCons dl dt:before{
+.madeBoxCons dl.prods dt:before{
 	position:absolute;
 	content: '';
 	width:0;
@@ -3385,10 +3388,6 @@ ul.shopsList li span.shopsList_adrs{
 	text-indent:40px;
 	margin-left:10px;
 }
-
-
-
-
 
 
 .madeFuns{
@@ -3470,16 +3469,112 @@ ul.shopsList li span.shopsList_adrs{
 	margin-left:120px;
 	cursor: pointer;
 }
-.step_2_funBtn img:hover{
-	opacity: .9;
+
+
+.step_2_funBtn_1{
+	width:163px;
+	height: 63px;
+	border:none;
+	background: url(../images/customMade/step_2_funBtn.png) left top no-repeat;
+	cursor:pointer;
+}
+
+.funBall{
+	position: absolute;
+	z-index:1;
+}
+
+.imgFuns{
+	position:absolute;
+	width:400px;
+	margin-top:290px;
+	z-index:99;
+	margin-left:80px;
+}
+.imgFuns span{
+	display: inline-block;
+}
+
+.imgFuns span img{
+	vertical-align: middle;
+}
+
+.portrait_revolve{
+	position:absolute;
+	width:290px;
+	margin-left:60px;
+	margin-top:50px;
+	z-index:99;
+
+}
+
+.portrait_revolve span{
+	display: inline-block;
+	margin:0 30px;
+}
+
+.step_2_funBtn_2{
+	border:none;
+	font-size: 16px;
+	color:#fff;
+	background:none;
+	cursor: pointer;
+}
+.step_2_funBtn_2:hover{
+	color:#f2f2f2;
 }
 
 
-/*p1*/
 .madeBoxCons p.madeTs{
 	color:#fff;
 	text-align: center;
 }
 .madeBoxCons p.madeSn{
 	text-align: center;
+}
+dl.madeBoxFuns{
+	font-size: 12px;
+}
+dl.madeBoxFuns dd.madeKindTit{
+	background:#1e1e1e;
+	color:#787878;
+	border:1px solid #303030 ;
+	width:255px;
+	height:48px;
+	line-height: 48px;
+	text-indent:15px;
+	margin-top:10px;
+	cursor: pointer;
+}
+dl.madeBoxFuns dd.madeNow{
+	background: url(../images/customMade/madenow.png) 230px 20px no-repeat #dddee3;
+}
+dl.madeBoxFuns dt{
+	width:253px;
+	background: #201f1f;
+	padding:10px 0;
+	border:1px solid #3f3f3f;
+	border-top:none;
+}
+
+.madeKindTex{
+	display: none;
+}
+
+
+#product-options-wrapper input[type="radio"] {
+  display: none;
+}
+#product-options-wrapper span.sale_kind {
+  padding:3px 10px;
+  background: #222;
+  border:2px solid #B6B6B6;
+  color:#9b9b9b;
+  cursor:pointer;
+  font-size: 12px;
+}
+#product-options-wrapper span.checked {
+  background: #161515;
+  border:2px solid #fcb805;
+  color:#fcb805;
 }
