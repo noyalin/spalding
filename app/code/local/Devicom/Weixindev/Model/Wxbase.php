@@ -227,9 +227,9 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
                 {
                     $ret = $this->checkSignUpInfo(trim($keyword), $postObj);
                     if ($ret == 4) {
-                        $contentStr = "手机号码不正确。";
+                        $contentStr = "手机号码不正确，请重新输入。";
                     } else if ($ret == 3) {
-                        $contentStr = "格式不正确。";
+                        $contentStr = "格式不正确，请重新输入。";
                     } else if ($ret == 2) {
                         $contentStr = "你已经报过名。";
                         $this->saveSessionLast('', $fromUsername);
