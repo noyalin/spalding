@@ -3261,7 +3261,6 @@ ul.shopsList li span.shopsList_adrs{
 .cusMadeCons{
 	position: relative;
 	min-height: 570px;
-	overflow: hidden;
 }
 
 .cusMadeCen{
