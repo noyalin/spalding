@@ -3351,7 +3351,6 @@ ul.shopsList li span.shopsList_adrs{
 	margin-top:10px;
 	margin-bottom:10px;
 	padding-bottom: 10px;
-	border-bottom:1px solid #323232;
 }
 
 .madeBoxCons dl dd{
@@ -3561,7 +3560,26 @@ dl.madeBoxFuns dt{
 	display: none;
 }
 
+.madeKindImg>h5{
+	font-size: 12px;
+	color:#fbb306;
+	font-weight: normal;
+	text-align: center;
+}
+.madeKindImg>p{
+	font-size: 12px;
+	color:#fff;
+	text-align: center;
+}
 
+.madeKindTex>p{
+	text-indent: 11px;
+	margin-bottom:5px;
+}
+
+#product-options-wrapper{
+	margin-left:6px;
+}
 #product-options-wrapper input[type="radio"] {
   display: none;
 }
@@ -3572,9 +3590,87 @@ dl.madeBoxFuns dt{
   color:#9b9b9b;
   cursor:pointer;
   font-size: 12px;
+  margin-left:5px;
 }
 #product-options-wrapper span.checked {
   background: #161515;
   border:2px solid #fcb805;
   color:#fcb805;
+}
+
+#product-options-wrapper span.sale_kind:hover{
+	color:#fcb805;
+	border-color:#fcb805;
+}
+
+
+.madeSubmit{
+	margin-left:20px;
+}
+.madeSubmit button{
+	border:none;
+	color:#717171;
+	text-align: center;
+	width:104px;
+	height:32px;
+	line-height: 32px;
+	background:#dfe2e4; 
+	display: inline-block;
+	opacity: .9
+}
+.madeSubmit button:hover{
+	opacity: 1;
+}
+
+.madeSubmit button.submitY{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.madeSubmit button.submitN{
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+
+
+.madeTex_ball{
+	position: absolute;
+	z-index: 1;
+}
+
+.madeTexWrap{
+	position: absolute;
+	width: 400px;
+	margin-top:190px;
+	text-align: center;
+	z-index: 2;
+	font-size:30px;
+	color:#000;
+}
+
+.madeTexWrap.size_40{
+	font-size: 40px;
+}
+
+.madeTexWrap.size_60{
+	font-size: 60px;
+}
+
+.madeTexWrap.size_80{
+	font-size: 80px;
+}
+
+.madeTextInp{
+	margin-left:10px;
+	margin-bottom:10px;
+}
+
+.madeTextInp>input{
+	border:1px solid #ccc;
+	width: 220px;
+	height:20px;
+	line-height: 20px;
+	padding:2px 5px;
+	border-radius: 4px;
 }

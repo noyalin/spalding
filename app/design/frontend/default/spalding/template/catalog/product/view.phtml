@@ -147,7 +147,7 @@ if($currentCategoryId == 35):
                             <td style="background: #000000; height: 117px;" colspan="3"></td>
                         </tr>
                     </table>
-                    <img id="avatar" style="position:relative; top:-400px; left:0px"  src="<?php echo $this->getSkinUrl('images/customMade/temp/source.jpg');  ?>" />
+                    <img id="avatar" style="position:relative; top:-400px; left:0px"  src="<?php echo $this->getSkinUrl('images/customMade/source.jpg');  ?>" />
                 </div>
 
 
@@ -167,7 +167,19 @@ if($currentCategoryId == 35):
     </div>
     <!-- 定制文本 -->
     <div class="madeStepTex" style="display:none;">
-        <div class="cusMadeBox cusMadeCen">定制文本</div>
+        <div class="cusMadeBox cusMadeCen">
+            <div class="madeTex_ball"><img src="<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>" alt=""></div>
+            <div class="madeTexWrap">
+                spadling
+            </div>
+        </div>
+    </div>
+
+    <!-- 空白 -->
+    <div class="madeStepNone" style="display:none;">
+        <div class="cusMadeBox cusMadeCen">
+            <div class="madeTex_ball"><img src="<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>" alt=""></div>
+        </div>
     </div>
     <div class="cusMadeBox cusMadeRig">
         <div class="madeBoxVal">
@@ -191,20 +203,26 @@ if($currentCategoryId == 35):
                 </dt>
                 <dd class="madeKindTit madeKindTitTex">定制文字</dd>
                 <dt class="madeKindCons madeKindTex">
-                    <p>选择字体大小</p>
-                    <div id="product-options-wrapper" class="product-options">
-                      <div class="sale-num prodetail-box">
+                    <div class="madeTextInp">
+                        <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
+                    </div>
+                    <div id="product-options-wrapper" class="madeKindTexSpan">
+                      <div class="sale-num">
                         <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
-                        <span class="sale_kind" for="attribute2098" name="attribute2098">大号字体</span>
+                        <span class="sale_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
                         <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="attribute2097" data-input="kinds" value="54">
-                        <span class="sale_kind" for="attribute2097" name="attribute2097">中号字体</span>
+                        <span class="sale_kind setSize_30" for="attribute2097" name="attribute2097">中号字体</span>
                         <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="attribute2096" data-input="kinds" value="55">
-                        <span class="sale_kind" for="attribute2096" name="attribute2096">中号字体</span>
+                        <span class="sale_kind setSize_20" for="attribute2096" name="attribute2096">小号字体</span>
                       </div>
                     </div>
                 </dt>
                 <dd class="madeKindTit madeKindTitNon">空白</dd>
             </dl>
+            <div class="madeSubmit">
+                <button class="submitY">完成此次定制</button>
+                <button class="submitN">重置此次定制</button>
+            </div>
         </div>
 
         <!-- p2 -->
@@ -212,13 +230,40 @@ if($currentCategoryId == 35):
             <h3>可定制球皮</h3>
             <p class="madeTs">选择添加图案或个性签名</p>
             <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
-            <!-- 定制图案 -->
-            <div class="madeBoxImg">2</div>
+            <!-- 定制参数 -->
+            <dl class="madeBoxFuns">
+                <dd class="madeKindTit madeKindTitImg madeNow">定制图案</dd>
+                <dt class="madeKindCons madeKindImg">
+                    <h5>***注意***</h5>
+                    <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
+                </dt>
+                <dd class="madeKindTit madeKindTitTex">定制文字</dd>
+                <dt class="madeKindCons madeKindTex">
+                    <div class="madeTextInp">
+                        <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
+                    </div>
+                    <div id="product-options-wrapper" class="madeKindTexSpan">
+                      <div class="sale-num">
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
+                        <span class="sale_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="attribute2097" data-input="kinds" value="54">
+                        <span class="sale_kind setSize_30" for="attribute2097" name="attribute2097">中号字体</span>
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="attribute2096" data-input="kinds" value="55">
+                        <span class="sale_kind setSize_20" for="attribute2096" name="attribute2096">小号字体</span>
+                      </div>
+                    </div>
+                </dt>
+                <dd class="madeKindTit madeKindTitNon">空白</dd>
+            </dl>
+            <div class="madeSubmit">
+                <button class="submitY">完成此次定制</button>
+                <button class="submitN">重置此次定制</button>
+            </div>
         </div>
 
 
         <div class="madeFuns">
-            <button>开始定制</button>
+            <button>加入购物车</button>
         </div>
     </div>
 </div>
@@ -231,19 +276,15 @@ if($currentCategoryId == 35):
 <!-- 选择字号 -->
 <script>
 jQuery(function() {
-  var spanLen = jQuery('#product-options-wrapper input[type="radio"]').length;
-  if(spanLen<2){
-    jQuery('#product-options-wrapper span').addClass('checked');
-    jQuery('#product-options-wrapper input[type="radio"]').attr('checked', 'checked');
-  }else{
+    var spanLen = jQuery('#product-options-wrapper input[type="radio"]').length;
     jQuery('#product-options-wrapper span').removeClass('checked');
     jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked');
+
     jQuery('#product-options-wrapper span').click(function(){
       var radioId = jQuery(this).attr('name');
       jQuery('#product-options-wrapper span').removeClass('checked') && jQuery(this).addClass('checked');
       jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
     });
-  };
 });
 </script>
 <script>
@@ -274,6 +315,8 @@ jQuery(function() {
         var _madeTexDt = jQuery(".madeKindTex");
         var _imgWrap = jQuery(".madeStepImg");
         var _texWrap = jQuery(".madeStepTex");
+
+        //选择图案
         jQuery(".madeKindTitImg").click(function(){
             jQuery(this).addClass("madeNow");
             jQuery(this).siblings("dd").removeClass("madeNow");
@@ -284,10 +327,13 @@ jQuery(function() {
             if(_madeImgDt.is(":hidden")){
                 jQuery(this).siblings(".madeKindImg").slideDown()
             }
+            //隐藏显示编辑
             jQuery(this).parents().find(".madeStepImg").css("display","block");
             jQuery(this).parents().find(".madeStepTex").css("display","none");
+            jQuery(this).parents().find(".madeStepNone").css("display","none");
         });
 
+        //选择文本
         jQuery(".madeKindTitTex").click(function(){
             jQuery(this).addClass("madeNow");
             jQuery(this).siblings("dd").removeClass("madeNow");
@@ -298,17 +344,32 @@ jQuery(function() {
             if(_madeTexDt.is(":hidden")){
                 jQuery(this).siblings(".madeKindTex").slideDown()
             }
-            //隐藏图片编辑
-            jQuery(this).parents().find("").css("display","none");
-
+            //隐藏显示编辑
             jQuery(this).parents().find(".madeStepTex").css("display","block");
             jQuery(this).parents().find(".madeStepImg").css("display","none");
+            jQuery(this).parents().find(".madeStepNone").css("display","none");
         });
         //选择空白
         jQuery(".madeKindTitNon").click(function(){
             jQuery(this).addClass("madeNow");
             jQuery(this).siblings("dd").removeClass("madeNow");
             jQuery(this).siblings("dt").slideUp();
+
+            //隐藏显示编辑
+            jQuery(this).parents().find(".madeStepNone").css("display","block");
+            jQuery(this).parents().find(".madeStepTex").css("display","none");
+            jQuery(this).parents().find(".madeStepImg").css("display","none");
+        });
+
+        //设置字体
+        jQuery(".setSize_20").click(function(){
+            jQuery(this).parents().find(".madeTexWrap").attr("class","madeTexWrap size_40")
+        });
+        jQuery(".setSize_30").click(function(){
+            jQuery(this).parents().find(".madeTexWrap").attr("class","madeTexWrap size_60")
+        });
+        jQuery(".setSize_40").click(function(){
+            jQuery(this).parents().find(".madeTexWrap").attr("class","madeTexWrap size_80")
         });
     });
 </script>
