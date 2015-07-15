@@ -11,6 +11,11 @@ class Devicom_Weixindev_MenuController extends Mage_Core_Controller_Front_Action
              "sub_button":[
             {
                "type":"click",
+               "name":"成为会员，参加NBA Nation",
+               "key":"sign-up"
+            },
+            {
+               "type":"click",
                "name":"验真伪",
                "key":"checkcode"
             },
@@ -73,11 +78,6 @@ class Devicom_Weixindev_MenuController extends Mage_Core_Controller_Front_Action
                "type":"view",
                "name":"All4Real",
                "url":"http://www.nba.spaldingchina.com.cn"
-             },
-             {
-               "type":"click",
-               "name":"成为会员，参加NBA Nation",
-               "key":"sign-up"
              }
             ]
        }
