@@ -3349,7 +3349,6 @@ ul.shopsList li span.shopsList_adrs{
 	color:#808080;
 	margin-top:10px;
 	margin-bottom:10px;
-	padding-bottom: 10px;
 }
 
 .madeBoxCons dl dd{
@@ -3538,10 +3537,10 @@ dl.madeBoxFuns dd.madeKindTit{
 	color:#787878;
 	border:1px solid #303030 ;
 	width:255px;
-	height:48px;
-	line-height: 48px;
+	height:45px;
+	line-height: 45px;
 	text-indent:15px;
-	margin-top:10px;
+	margin-top:8px;
 	cursor: pointer;
 }
 dl.madeBoxFuns dd.madeNow{
@@ -3583,17 +3582,18 @@ dl.madeBoxFuns dt{
   display: none;
 }
 #product-options-wrapper span.sale_kind {
-  padding:3px 10px;
+  padding:2px 10px;
   background: #222;
-  border:2px solid #B6B6B6;
+  border:1px solid #B6B6B6;
   color:#9b9b9b;
   cursor:pointer;
   font-size: 12px;
   margin-left:5px;
+  border-radius: 3px;
 }
 #product-options-wrapper span.checked {
   background: #161515;
-  border:2px solid #fcb805;
+  border:1px solid #fcb805;
   color:#fcb805;
 }
 
@@ -3666,10 +3666,11 @@ dl.madeBoxFuns dt{
 }
 
 .madeTextInp>input{
-	border:1px solid #ccc;
+	border:1px solid #565656;
 	width: 220px;
 	height:20px;
 	line-height: 20px;
 	padding:2px 5px;
-	border-radius: 4px;
+	background: #1b1b1b;
+	color:#565656;
 }
