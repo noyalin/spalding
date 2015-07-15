@@ -204,10 +204,10 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$alipay = Mage::getModel('alipay/payment');
         $partner=$alipay->getConfigData('partner_id');
         $security_code=$alipay->getConfigData('security_code');
-        Mage::log("begin alipay");
-        Mage::log("Method: ".$method. "   trade_no: ".$postData['out_trade_no']);
-        Mage::log(print_r($postData,true));
-        Mage::log("end alipay");
+//        Mage::log("begin alipay");
+//        Mage::log("Method: ".$method. "   trade_no: ".$postData['out_trade_no']);
+//        Mage::log(print_r($postData,true));
+//        Mage::log("end alipay");
         $sendemail = null;
 
         //目前只有国内支付宝

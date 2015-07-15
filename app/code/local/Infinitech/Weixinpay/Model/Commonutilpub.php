@@ -63,16 +63,20 @@ class Infinitech_Weixinpay_Model_Commonutilpub
      */
     public function getSign($Obj)
     {
+        mage :: log("getSign Start ------- ");
         foreach ($Obj as $k => $v)
         {
             $Parameters[$k] = $v;
+            mage :: log("Parameters Key = ".$Parameters[$k]."   Value = ".$v);
         }
         //签名步骤一：按字典序排序参数
         ksort($Parameters);
         $String = $this->formatBizQueryParaMap($Parameters, false);
+        mage :: log("String 1 = ".$String);
         //echo '【string1】'.$String.'</br>';
         //签名步骤二：在string后加入KEY
         $String = $String."&key=".Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("pay_key");
+        mage :: log("String 2 = ".$String);
         //echo "【string2】".$String."</br>";
         //签名步骤三：MD5加密
         $String = md5($String);
@@ -80,7 +84,8 @@ class Infinitech_Weixinpay_Model_Commonutilpub
         //签名步骤四：所有字符转为大写
         $result_ = strtoupper($String);
         //echo "【result】 ".$result_."</br>";
-        mage :: log($result_);
+        mage :: log("result_".$result_);
+        mage :: log("getSign End ------- ");
         return $result_;
     }
 
@@ -109,8 +114,10 @@ class Infinitech_Weixinpay_Model_Commonutilpub
      */
     public function xmlToArray($xml)
     {
+        mage :: log("xmlToArray xml = ".$xml);
         //将XML转为array
         $array_data = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
+        mage :: log("xmlToArray array_data = ".$array_data);
         return $array_data;
     }
 
