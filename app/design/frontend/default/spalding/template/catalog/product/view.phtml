@@ -106,9 +106,9 @@ if($currentCategoryId == 35):
 <div class="cusMadeCons madeStep_2">
     <!-- 定制图案 -->
     <div class="madeStepImg">
-        <img id="img_grip" style="position:absolute; z-index:100; cursor:pointer;" src="<?php echo $this->getSkinUrl('images/customMade/grip.png');  ?>" />
+        <img id="img_grip" style="position:absolute;opacity:0; z-index:100; cursor:pointer;" src="<?php echo $this->getSkinUrl('images/customMade/grip.png');  ?>" />
         <div class="cusMadeBox cusMadeCen">
-            <div class="step_2_Fun" id="formBtn" style="display:none;">
+            <div class="step_2_Fun" id="formBtn">
                 <div class="step_2_FunBg"><img src="<?php echo $this->getSkinUrl('images/customMade/step_2_Bgball.png');  ?>" alt=""></div>
                 <div class="step_2_funBtn">
                     <input type="file" onchange="previewImage(this,'avatar')" id="shopSetFile_1" name="file" style="display:none ">
@@ -116,7 +116,7 @@ if($currentCategoryId == 35):
                 </div>
 
             </div>
-            <div class="step_2_wrap" id="imgFuns" style="opacity:1; position:relative;">
+            <div class="step_2_wrap" id="imgFuns" style="opacity:0; position:relative;">
                 <div class="portrait_revolve">
                     <span>
                         <a href="javascript:;" class="revol_left_txt" onClick="avatarrotateleft();"><img src="<?php echo $this->getSkinUrl('images/customMade/rotLeft.png');  ?>" alt=""></a>
@@ -269,6 +269,10 @@ if($currentCategoryId == 35):
 </div>
 
 
+<!-- 预览 -->
+<!-- <div class="madeView"></div> -->
+
+
 <div class="madeBotmSn">
     <h1>定制专属篮球</h1>
     <p>斯伯丁74-604“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，<br>恰到好处的粘度让你轻松“掌控”比赛！</p>
@@ -377,6 +381,7 @@ jQuery(function() {
 <script type="text/javascript">
 function previewImage(file,imgId){
   var _formBtn = document.getElementById('formBtn');
+  var _gripImg = document.getElementById('img_grip');
   var _form = document.getElementById('imgFuns');
   if (file.files && file.files[0]){  
     var img = document.getElementById(imgId);  
@@ -384,6 +389,7 @@ function previewImage(file,imgId){
     reader.onload = function(evt){img.src = evt.target.result;}
     reader.readAsDataURL(file.files[0]);
     _form.style.opacity = 1;
+    _gripImg.style.opacity = 1;
     _formBtn.style.display = "none";
   }else{
     file.select();
