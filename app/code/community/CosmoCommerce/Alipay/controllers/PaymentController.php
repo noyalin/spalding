@@ -333,6 +333,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 }else{
                     if($method == 'get'){
                         echo "订单已付款成功";
+                        Mage :: log("订单编号：".$order->getIncrementId()."， 支付宝付款成功。");
                         $this->_redirect("sales/order/view/order_id/".$order->getId());
                     }
                 }
@@ -343,7 +344,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         }
         if($method == 'get'){
             //否则 直接跳转
-            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
+//            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
             $this->_redirect("sales/order/view/order_id/".$order->getId());
         }
         return;
@@ -601,10 +602,10 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
             return;
         }
 
-        Mage::log("begin wap alipay");
-        Mage::log("Method: ".$method);
-        Mage::log(print_r($postData,true));
-        Mage::log("end wap alipay");
+//        Mage::log("begin wap alipay");
+//        Mage::log("Method: ".$method);
+//        Mage::log(print_r($postData,true));
+//        Mage::log("end wap alipay");
         $sendemail = null;
         $partner="2088711909431762";
         $security_code="qisngbnvaj4ydshzji1irosklki1y8jb";
@@ -718,6 +719,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 }else{
                     if($method == "get"){
                         echo "订单已付款成功";
+                        Mage :: log("订单编号：".$order->getIncrementId()."， 支付宝(wap)付款成功。");
                         $this->_redirect("sales/order/view/order_id/".$order->getId());
                     }
 
@@ -729,7 +731,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         }
         //否则 直接跳转
         if($method == "get"){
-            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
+//            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
             $this->_redirect("sales/order/view/order_id/".$order->getId());
             return;
         }

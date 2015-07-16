@@ -99,9 +99,13 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
                                 break;
                             }
                         case "checkcode":
-                            $this->saveSessionLast('checkcode',$fromUsername);
-                            $contentStr = "请输入防伪码";
-                            $this->responseTextMsg($postObj,$contentStr);
+                            try {
+                                $this->saveSessionLast('checkcode',$fromUsername);
+                                $contentStr = "请输入防伪码";
+                                $this->responseTextMsg($postObj,$contentStr);
+                            }catch (Exception $ex) {
+                                Mage::log("checkcode Err = ".$ex->getMessage());
+                            }
                             break;
                         case "game":
                             $contentStr = "互动游戏即将上线,敬请关注!";
@@ -626,7 +630,7 @@ EOF;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); // 对认证证书来源的检查，0表示阻止对证书的合法性的检查。
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1); // 从证书中检查SSL加密算法是否存在
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // 从证书中检查SSL加密算法是否存在
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $r = curl_exec($ch);
 
@@ -979,6 +983,11 @@ EOF;
         $arr = explode('|',$return);
         $str = "系统忙，请重新输入";
         if(!empty($arr)){
+            if (count($arr) < 17) {
+                Mage::log("return = ".$return);
+                Mage::log("arr = ");
+                Mage::log($arr);
+            }
             $str = $arr[17];
             $str = str_replace("</string>","",$str);
             if(strstr($str,"4008155999")){
