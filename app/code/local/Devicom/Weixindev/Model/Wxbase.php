@@ -75,7 +75,7 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
                         case "ship-phone":
                             //手机查询事件
                             $res = $this->readConnection->fetchRow("select phone  FROM weixin_user where openid='$fromUsername'");
-                            $contentStr =$res[0];
+//                            $contentStr =$res[0];
                             if(!empty($res) && isset($res[0]) && is_numeric($res[0]))
                             {
                                 $phoneNum = $res[0];

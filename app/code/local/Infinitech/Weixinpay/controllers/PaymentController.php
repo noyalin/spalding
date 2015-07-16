@@ -142,7 +142,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
                 try{
                     $order->save();
 //                    $this->sendMail($orderId);
-                    Mage :: log("订单编号：$orderId， 微信付款成功。");
+                    Mage :: log("订单编号：".$orderId."， 微信付款成功。");
                     echo "success";
                     return;
                 } catch(Exception $e){
