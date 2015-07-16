@@ -18,7 +18,12 @@ class Infinitech_Weixinpay_Model_Wxpayserverpub extends Infinitech_Weixinpay_Mod
     function checkSign()
     {
         $tmpData = $this->data;
-        unset($tmpData['sign']);
+        if (array_key_exists('sign',$tmpData)) {
+            unset($tmpData['sign']);
+        }
+        if (array_key_exists('___SID',$tmpData)) {
+            unset($tmpData['___SID']);
+        }
         $sign = $this->getSign($tmpData);//本地签名
         if ($this->data['sign'] == $sign) {
             return TRUE;
