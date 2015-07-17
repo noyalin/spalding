@@ -47,6 +47,8 @@ class Shoe_Maker_Model_InventoryUpdate extends  Shoe_Maker_Model_UpdateBase{
             //remove lock file
             $this->removeLockFile();
             $this->removeFile();
+
+            sleep(1);
         }
     }
 

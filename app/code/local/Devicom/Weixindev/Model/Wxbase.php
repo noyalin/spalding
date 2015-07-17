@@ -9,8 +9,10 @@ class Devicom_Weixindev_Model_Wxbase extends Devicom_Weixindev_Model_Dbconn {
 
     public function responseMsg()
     {
-        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-        if (!empty($postStr)){
+        if (isset($GLOBALS) && isset($GLOBALS["HTTP_RAW_POST_DATA"])) {
+            $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+        }
+        if (isset($postStr) && !empty($postStr)){
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $this->postObj = $postObj;
             $fromUsername = trim($postObj->FromUserName);
