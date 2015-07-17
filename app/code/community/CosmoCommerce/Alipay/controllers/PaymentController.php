@@ -350,8 +350,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         return;
     }
     public function sendMail($orderId){
-//        $to = "davis.du@sneakerhead.com";
-        $to = "bale.wang@voyageone.cn";
+        $to = "davis.du@voyageone.cn;bob.chen@voyageone.cn";
         $subject = "lala New order ".$orderId;
         $message = "New Order come this order id is ".$orderId;
 

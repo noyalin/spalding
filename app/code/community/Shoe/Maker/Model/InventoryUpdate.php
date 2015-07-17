@@ -180,7 +180,7 @@ class Shoe_Maker_Model_InventoryUpdate extends  Shoe_Maker_Model_UpdateBase{
         $catalogLogsDirectory = $this->catalogLogsDirectory;
         $receivedDirectory = $this->receivedDirectory;
 
-        if(count(glob($catalogLogsDirectory . '*.lock')) > 0){
+        if(count(glob($catalogLogsDirectory . 'inventory_product_update*.lock')) > 0){
             echo "Log file exist. exit... There is no xml file to be executed \n";
             return true;
         }
