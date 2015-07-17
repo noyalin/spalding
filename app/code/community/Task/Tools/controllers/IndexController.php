@@ -530,4 +530,10 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $this->_redirectUrl($session->getBeforeAuthUrl(true));
     }
 
+
+    public function previewAction(){
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
 }
