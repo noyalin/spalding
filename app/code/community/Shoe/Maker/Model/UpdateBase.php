@@ -82,13 +82,13 @@ class  Shoe_Maker_Model_UpdateBase extends Shoe_Maker_Model_Base{
     }
 
     public function transactionLogHandle($msg){
-        $str = date("Ymd")."\t".$msg." \n";
+        $str = date("YmdHis")."\t".$msg." \n";
 //        $msg .= " \n";
 //        $root_dir = dirname(__FILE__);
         fwrite($this->transactionLogHandle, $str);
     }
     public function transactionCategoryXmlGeneratorLog($msg){
-        $str = date("Ymd")."\t".$msg." \n";
+        $str = date("YmdHis")."\t".$msg." \n";
 //        $msg .= " \n";
 //        $root_dir = dirname(__FILE__);
         fwrite($this->transactionCategoryXmlGeneratorLogHandle, $str);
