@@ -267,6 +267,8 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         $resource = Mage::getSingleton('core/resource');
         $writeConnection = $resource->getConnection('core_write');
 
+        Mage::getModel('inventory/physical')->updateQtyBySku($sku, $qty);
+
         // If qunatity is greater than 0, update stock else delete simple
         if ($qty > 0) {
 
