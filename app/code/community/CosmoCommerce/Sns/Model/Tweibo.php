@@ -216,7 +216,7 @@ class CosmoCommerce_Sns_Model_Tweibo extends Mage_Core_Model_Abstract{
         $url=self::$accessTokenURL.'?'.http_build_query($params);
         $r = self::request($url);
         parse_str($r, $out);
-        if ($out['access_token']) {//获取成功
+        if (isset($out['access_token']) && $out['access_token']) {//获取成功
             $_SESSION['t_access_token'] = $out['access_token'];
             $_SESSION['t_refresh_token'] = $out['refresh_token'];
             $_SESSION['t_expire_in'] = $out['expires_in'];

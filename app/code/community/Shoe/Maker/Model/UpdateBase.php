@@ -94,7 +94,9 @@ class  Shoe_Maker_Model_UpdateBase extends Shoe_Maker_Model_Base{
         fwrite($this->transactionCategoryXmlGeneratorLogHandle, $str);
     }
     public function removeFile(){
-        rename($this->receivedDirectory . $this->filename, $this->processedDirectory . $this->filename);
+        if(file_exists($this->receivedDirectory . $this->filename)){
+            rename($this->receivedDirectory . $this->filename, $this->processedDirectory . $this->filename);
+        }
     }
 
 
