@@ -241,13 +241,15 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
 
                 }
             catch(Exception $ex) {
-                $errInfo .= ($orderUpdate['orderNumber'].", ");
+                $str = ($orderUpdate['orderNumber']." ( ".$ex->getMessage()." ) \n");
+                $this->transactionLogHandle( "        ->ERROR   : ".$str);
+                $errInfo .= $str;
             }
         }
         $this->transactionLogHandle( "  ->STATUS UPDATE : FINISHED\n");
 
         if ($errInfo) {
-            throw new Exception("OrderStatusUpdate is error. ==> ".$errInfo);
+            throw new Exception("OrderStatusUpdate is error. ==> \n".$errInfo);
         }
     }
 
