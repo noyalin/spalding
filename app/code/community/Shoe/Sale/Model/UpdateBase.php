@@ -42,6 +42,9 @@ class  Shoe_Sale_Model_UpdateBase extends Shoe_Sale_Model_Base{
             $this->run();
 
         }catch(Exception $e){
+
+            $this->sendNotification( 'Shoe_Maker_Model_UpdateBase Exception', $this->filename . " - " . $e->getMessage());
+
             $this->transactionLogHandle(  "  ->ERROR         : See exception_log ");
 
             //Append error to exception log file

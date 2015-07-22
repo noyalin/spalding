@@ -173,73 +173,82 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
 
         $this->transactionLogHandle( "  ->STATUS UPDATE : STARTED\n");
 
+        $errInfo = false;
         foreach ($orderUpdates as $orderUpdate) {
+            try {
+                $order = Mage::getModel('sales/order')->loadByIncrementId($orderUpdate['orderNumber']);
 
-            $order = Mage::getModel('sales/order')->loadByIncrementId($orderUpdate['orderNumber']);
+                //Currently checking for larger order number than 100000000 to prevent loading of orders for which are not in system and are sneakerhead
+                //This is to allow receiving status updates for sneakerhead orders before migration
+                if(!$this->checkOrderNumber($order,$orderUpdate)){
+                    continue;
+                }
 
-            //Currently checking for larger order number than 100000000 to prevent loading of orders for which are not in system and are sneakerhead
-            //This is to allow receiving status updates for sneakerhead orders before migration
-            if(!$this->checkOrderNumber($order,$orderUpdate)){
-                continue;
+                $this->transactionLogHandle( "    ->ORDER LOADED: " . $orderUpdate['orderNumber'] . "\n");
+                $this->transactionLogHandle( "      ->STATUS    : CURRENT    : " . $order->getStatus() . "\n");
+                $this->transactionLogHandle( "      ->STATE     : CURRENT    : " . $order->getState() . "\n");
+                $this->transactionLogHandle( "      ->STATUS    : POSTED     : " . $orderUpdate['status'] . "\n");
+
+                //Bail if state is complete and notify
+                if ( !in_array($order->getState(),$this->orderStatusNeedCheck) ) {
+                    $this->transactionLogHandle( "      ->STATUS    : NOT CHANGED: IN COMPLETE STATE AND NOT A RETURN\n");
+                    // SEND EMAIL NOTIFICATION
+                    $message = "You are being notified that order update " . $this->filename . " for order number " . $orderUpdate['orderNumber'] . " is in a completed state and cannot be changed to a processing state.";
+                    $this->sendNotification(  'STATUS NOT CHANGED', $message);
+                    continue;
+                }
+
+                $totalQtyOrdered = 0;
+                foreach ($order->getAllVisibleItems() as $orderItem) {
+                    $totalQtyOrdered = $totalQtyOrdered + $orderItem->getQtyOrdered();
+                }
+                settype($totalQtyOrdered, 'integer');
+
+                //Set customer and store ids for validation and reward transaction adjustment
+                $customerId = $order->getCustomerId();
+                $storeId = $order->getStoreId();
+                $orderCreatedAt = $order->getCreatedAt();
+
+                //Add all order items to devicom_order_item table
+                $query = "SELECT * FROM `devicom_order_item` WHERE `increment_id` = '" . $orderUpdate['orderNumber'] . "'";
+                $getOrderResults = $writeConnection->fetchAll($query);
+                $orderFound = NULL;
+                if(count($getOrderResults) > 0 ){
+                    $orderFound = 1;
+                }
+
+                $this->transactionLogHandle( "      ->ORDERITEMS:\n");
+                if (is_null($orderFound)) {
+                    //ADD
+                   $this->addItemToTableDevicomOrderItem($order,$orderUpdate,$writeConnection);
+                } else {
+                    //UPDATE
+                    $this->updateTableDevicomOrderItem($order,$orderUpdate,$writeConnection);
+                }
+
+                // Create/Update Shipment regardless of status if tracking number provided
+                $shipmentCreated = $this->createOrderShipment($customerId, $order, $orderUpdate, $readConnection, $writeConnection,$totalQtyOrdered);
+
+                // Create invoice only if we create a shipment (regardless of status) and haven't already invoiced
+                if ($shipmentCreated && !$order->hasInvoices()) {
+                    $this->createOrderInvoice($order, $orderUpdate, $totalQtyOrdered);
+                }
+
+                $this->checkStatus($orderUpdate,$readConnection,$writeConnection,$customerId,$order,$shipmentCreated,$totalQtyOrdered);
+
+                //If customerId then update points for order reward transaction
+    //            $this->updateCustomerRewardPoints($customerId, $orderUpdate, $order, $storeId, $writeConnection);
+
+                }
+            catch(Exception $ex) {
+                $errInfo .= ($orderUpdate['orderNumber'].", ");
             }
-
-            $this->transactionLogHandle( "    ->ORDER LOADED: " . $orderUpdate['orderNumber'] . "\n");
-            $this->transactionLogHandle( "      ->STATUS    : CURRENT    : " . $order->getStatus() . "\n");
-            $this->transactionLogHandle( "      ->STATE     : CURRENT    : " . $order->getState() . "\n");
-            $this->transactionLogHandle( "      ->STATUS    : POSTED     : " . $orderUpdate['status'] . "\n");
-
-            //Bail if state is complete and notify
-            if ( !in_array($order->getState(),$this->orderStatusNeedCheck) ) {
-                $this->transactionLogHandle( "      ->STATUS    : NOT CHANGED: IN COMPLETE STATE AND NOT A RETURN\n");
-                // SEND EMAIL NOTIFICATION
-                $message = "You are being notified that order update " . $this->filename . " for order number " . $orderUpdate['orderNumber'] . " is in a completed state and cannot be changed to a processing state.";
-                $this->sendNotification(  'STATUS NOT CHANGED', $message);
-                continue;
-            }
-
-            $totalQtyOrdered = 0;
-            foreach ($order->getAllVisibleItems() as $orderItem) {
-                $totalQtyOrdered = $totalQtyOrdered + $orderItem->getQtyOrdered();
-            }
-            settype($totalQtyOrdered, 'integer');
-
-            //Set customer and store ids for validation and reward transaction adjustment
-            $customerId = $order->getCustomerId();
-            $storeId = $order->getStoreId();
-            $orderCreatedAt = $order->getCreatedAt();
-
-            //Add all order items to devicom_order_item table
-            $query = "SELECT * FROM `devicom_order_item` WHERE `increment_id` = '" . $orderUpdate['orderNumber'] . "'";
-            $getOrderResults = $writeConnection->fetchAll($query);
-            $orderFound = NULL;
-            if(count($getOrderResults) > 0 ){
-                $orderFound = 1;
-            }
-
-            $this->transactionLogHandle( "      ->ORDERITEMS:\n");
-            if (is_null($orderFound)) {
-                //ADD
-               $this->addItemToTableDevicomOrderItem($order,$orderUpdate,$writeConnection);
-            } else {
-                //UPDATE
-                $this->updateTableDevicomOrderItem($order,$orderUpdate,$writeConnection);
-            }
-
-            // Create/Update Shipment regardless of status if tracking number provided
-            $shipmentCreated = $this->createOrderShipment($customerId, $order, $orderUpdate, $readConnection, $writeConnection,$totalQtyOrdered);
-
-            // Create invoice only if we create a shipment (regardless of status) and haven't already invoiced
-            if ($shipmentCreated && !$order->hasInvoices()) {
-                $this->createOrderInvoice($order, $orderUpdate, $totalQtyOrdered);
-            }
-
-            $this->checkStatus($orderUpdate,$readConnection,$writeConnection,$customerId,$order,$shipmentCreated,$totalQtyOrdered);
-
-            //If customerId then update points for order reward transaction
-//            $this->updateCustomerRewardPoints($customerId, $orderUpdate, $order, $storeId, $writeConnection);
-
         }
         $this->transactionLogHandle( "  ->STATUS UPDATE : FINISHED\n");
+
+        if ($errInfo) {
+            throw new Exception("OrderStatusUpdate is error. ==> ".$errInfo);
+        }
     }
 
     public function validate(){
