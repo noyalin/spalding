@@ -231,7 +231,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 //  string(1) "0"
 //}
 
-        if($userdata->ret==0){
+        if(isset($userdata)  && $userdata->ret==0){
                 
                 $customer = Mage::getModel('customer/customer')
                   ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
