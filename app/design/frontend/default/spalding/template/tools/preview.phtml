@@ -1,3 +1,10 @@
+<script>
+	jQuery(function(){
+		//设置预览字号
+		var _textSize = 80;
+		jQuery(".textBox").css("font-size" , _textSize + 'px');
+	});
+</script>
 <!-- 定制背景 -->
 <div class="bodyBg_cusMade">
     <img style="width:100%;" src="<?php echo $this->getSkinUrl('images/customMade/cBg2.jpg');  ?>" alt="">
@@ -6,13 +13,20 @@
 <div class="cusMadeCons madeStep_2">
 	<div class="cusMadeBox cusMadeCen">
 		<div id="playimages" class="play" style="height:600px;">
-		    <ul class="big_pic">
+			<div class="prev"></div>
+			<div class="next"></div>
 
-				<div class="prev"></div>
+			<div class="prev_n"></div>
+			<div class="next_z"></div>
+
+			<!-- 第一套 s -->
+			<ul class="big_pic made_1" style="display:none;">
+
+				<!-- <div class="prev"></div>
 				<div class="next"></div>
 
 				<div class="prev_n"></div>
-				<div class="next_z"></div>
+				<div class="next_z"></div> -->
 
 				<!-- 遮罩 -->
 				<!-- <div class="zz"><img src="<?php  echo $this->getSkinUrl("images/customMade/01.png") ?>" alt="" /></div> -->
@@ -227,6 +241,219 @@
 		            <div class="imgBox imgPag_1 imgPag_1_27"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgPer_1.jpg") ?>" alt="" /></div>
 		            <div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_y/32.png") ?>" alt="" /></div>
 		        </li>
+			</ul>
+		    <!-- 第一套 e -->
+			
+
+			<!-- 第二套 s -->
+		    <ul class="big_pic">
+				<!-- 遮罩 -->
+				<!-- <div class="zz"><img src="<?php  echo $this->getSkinUrl("images/customMade/01.png") ?>" alt="" /></div> -->
+				
+				<!-- 2-1 -->
+				<li style="z-index:1;">
+		        	<div class="textBox textPag_1 textPag_1_1">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/01.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-2 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_2">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/02.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-3 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_3">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/03.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-4 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_4">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/04.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-5 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_5">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/05.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-6 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_6">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/06.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-7 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_7">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/07.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-8 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_8">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_1">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/08.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-9 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_9">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_2">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/09.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-10 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_10">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_3">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/10.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-11 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_11">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_4">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/11.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-12 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_12">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_5">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/12.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-13 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_13">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_6">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/13.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-14 -->
+				<li>
+		        	<div class="textBox textPag_2 textPag_2_7">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/14.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-15 -->
+				<li>
+		        	<div class="textBox textPag_2 textPag_2_8">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/15.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-16 -->
+				<li>
+		        	<div class="textBox textPag_2 textPag_2_9">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/16.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-17 -->
+				<li>
+		        	<div class="textBox textPag_2 textPag_2_10">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/17.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-18 -->
+				<li>
+		        	<div class="textBox textPag_2 textPag_2_11">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/18.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-19 -->
+				<li>
+		        	<div class="textBox textPag_2 textPag_2_12">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/19.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-20 -->
+				<li>
+		        	<div class="textBox textPag_2 textPag_2_13">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/20.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-21 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_14">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_14">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/21.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-22 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_15">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_15">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/22.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-23 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_16">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_16">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/23.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-24 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_17">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_17">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/24.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-25 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_18">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_18">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/25.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-26 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_19">Spalding</div>
+		        	<div class="textBox textPag_2 textPag_2_19">ABCDEFG</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/26.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-27 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_20">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/27.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-28 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_21">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/28.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-29 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_22">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/29.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-30 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_23">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/30.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-31 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_24">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/31.png") ?>" alt="" /></div>
+		        </li>
+
+		        <!-- 2-32 -->
+				<li>
+		        	<div class="textBox textPag_1 textPag_1_25">Spalding</div>
+		        	<div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/imgBall_n/32.png") ?>" alt="" /></div>
+		        </li>
+
 		    </ul>
 		    
 		</div>
