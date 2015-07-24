@@ -239,7 +239,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
                 //If customerId then update points for order reward transaction
     //            $this->updateCustomerRewardPoints($customerId, $orderUpdate, $order, $storeId, $writeConnection);
 
-                }
+            }
             catch(Exception $ex) {
                 $str = ($orderUpdate['orderNumber']." ( ".$ex->getMessage()." ) \n");
                 $this->transactionLogHandle( "        ->ERROR   : ".$str);
@@ -271,20 +271,26 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
         return false;
     }
     function createOrderShipment($customerId, $order, $orderUpdate, $readConnection, $writeConnection,$totalQtyOrdered) {
-
-        //Cannot create/update shipment if no tracking data
-        if (!$orderUpdate['trackingNumber'] || !$orderUpdate['carrier']) {
-            $this->transactionLogHandle( "      ->SHIPMENT  : NO TRACKING DATA\n");
-            return false;
+        try {
+            //Cannot create/update shipment if no tracking data
+            if (!$orderUpdate['trackingNumber'] || !$orderUpdate['carrier']) {
+                $this->transactionLogHandle( "      ->SHIPMENT  : NO TRACKING DATA\n");
+                return false;
+            }
+            // New Shipment
+            if ($order->getShipmentsCollection()->count() == 0) {
+                $this->newShipment($order,$orderUpdate,$readConnection,$writeConnection,$totalQtyOrdered,$customerId);
+                return true;
+                // Update Shipment
+            } else {
+                $this->updateShipment($order,$orderUpdate,$writeConnection);
+                // Shipment already exists
+                return false;
+            }
         }
-        // New Shipment
-        if ($order->getShipmentsCollection()->count() == 0) {
-            $this->newShipment($order,$orderUpdate,$readConnection,$writeConnection,$totalQtyOrdered,$customerId);
-            return true;
-            // Update Shipment
-        } else {
-            $this->updateShipment($order,$orderUpdate,$writeConnection);
-            // Shipment already exists
+        catch(Exception $ex) {
+            $str = ('createOrderShipment order = '.$order." ( ".$ex->getMessage()." ) \n");
+            $this->transactionLogHandle( "        ->ERROR   : ".$str);
             return false;
         }
     }
