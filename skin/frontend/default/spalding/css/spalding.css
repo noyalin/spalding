@@ -3325,7 +3325,7 @@ ul.shopsList li span.shopsList_adrs{
 
 .madeBoxCons{
 	padding:10px 25px;
-	height:395px;
+	height:360px;
 }
 
 .madeBoxCons>h3{
@@ -3604,7 +3604,8 @@ dl.madeBoxFuns dt{
 
 
 .madeSubmit{
-	margin-left:20px;
+	margin-left:40px;
+	margin-bottom:10px;
 }
 .madeSubmit button{
 	border:none;
