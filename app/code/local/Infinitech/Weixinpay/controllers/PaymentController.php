@@ -153,15 +153,18 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
 
     }
     public function sendMail($orderId){
-        $to = Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("send_mail_notification");
-        $subject = "lala New order ".$orderId;
+//        $to = Infinitech_Weixinpay_Model_Wxpaypubconfig::getCode("send_mail_notification");
+//        $subject = "lala New order ".$orderId;
+//        $message = "New Order come this order id is ".$orderId;
+//
+//        $headers = 'From: admin@snaekerhead.com '  . "\r\n" .
+//            'Reply-To: admin@snaekerhead.com ' . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+//
+//        mail($to, $subject, $message, $headers);
+
         $message = "New Order come this order id is ".$orderId;
-
-        $headers = 'From: admin@snaekerhead.com '  . "\r\n" .
-            'Reply-To: admin@snaekerhead.com ' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-        mail($to, $subject, $message, $headers);
+        Mage :: log($message);
     }
     public function logTrans($trans,$type){
         $log = Mage::getModel('alipay/log');

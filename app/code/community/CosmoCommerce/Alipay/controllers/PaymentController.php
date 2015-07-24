@@ -350,15 +350,18 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         return;
     }
     public function sendMail($orderId){
-        $to = "davis.du@voyageone.cn;bob.chen@voyageone.cn";
-        $subject = "lala New order ".$orderId;
+//        $to = "davis.du@voyageone.cn;bob.chen@voyageone.cn";
+//        $subject = "lala New order ".$orderId;
+//        $message = "New Order come this order id is ".$orderId;
+//
+//        $headers = 'From: admin@snaekerhead.com '  . "\r\n" .
+//            'Reply-To: admin@snaekerhead.com ' . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+//
+//        mail($to, $subject, $message, $headers);
+
         $message = "New Order come this order id is ".$orderId;
-
-        $headers = 'From: admin@snaekerhead.com '  . "\r\n" .
-            'Reply-To: admin@snaekerhead.com ' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-        mail($to, $subject, $message, $headers);
+        Mage :: log($message);
     }
 	public function get_verify($url,$time_out = "60") {
 		$urlarr     = parse_url($url);
