@@ -512,8 +512,8 @@ var Layout = {
         var _this = this;
         $(".layout").each(function(index, obj){
             $(obj).on("swipeUp", function(){
-                index = index < (_len - 1) ? index : (_len - 2);
-                _this.page(index + 1, _h);
+                index = 1;
+                _this.page(index, _h);
             }).on("swipeDown", function(){
                 _this.page(index - 1, _h);
             });

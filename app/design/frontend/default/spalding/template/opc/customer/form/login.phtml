@@ -43,7 +43,7 @@
         $accountUrl = $this->getCreateAccountUrl();
     }
 ?>
-
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
     	<?php echo $this->getBlockHtml('formkey'); ?>
 <!--                    <ul class="form-list">-->
