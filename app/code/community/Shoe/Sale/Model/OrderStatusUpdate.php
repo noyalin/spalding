@@ -289,7 +289,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
             }
         }
         catch(Exception $ex) {
-            $str = ('createOrderShipment order = '.$order." ( ".$ex->getMessage()." ) \n");
+            $str = ("createOrderShipment ( ".$ex->getMessage()." ) \n");
             $this->transactionLogHandle( "        ->ERROR   : ".$str);
             return false;
         }
