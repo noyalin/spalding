@@ -43,6 +43,8 @@ jQuery(function(){
         jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
         jQuery(this).siblings(".madeBoxCons_p1").css("display","block");
         jQuery(this).siblings(".madeBoxCons_p2").css("display","none");
+        jQuery(".select_ball_P1").css("display","block");
+        jQuery(".select_ball_P2").css("display","none");
         setPosition(0);
     });
     //点击P2按钮
@@ -51,6 +53,8 @@ jQuery(function(){
         jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
         jQuery(this).siblings(".madeBoxCons_p2").css("display","block");
         jQuery(this).siblings(".madeBoxCons_p1").css("display","none");
+        jQuery(".select_ball_P2").css("display","block");
+        jQuery(".select_ball_P1").css("display","none");
         setPosition(1);
     });
 
@@ -361,7 +365,8 @@ function completeCustomMade(url){
         url: url,
         data: {},
         success: function (res) {
-            jQuery('.madeStep_2').innerHTML(res);
+            //jQuery('.madeStep_2').innerHTML(res);
+            window.location.reload();
         }
     });
 }
