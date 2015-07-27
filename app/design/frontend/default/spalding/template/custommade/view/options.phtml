@@ -47,14 +47,6 @@
             </dt>
             <dd class="madeKindTit madeKindTitNon">空白</dd>
         </dl>
-        <div class="madeSubmit">
-            <button type="button" class="submitY"
-                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>')">完成此次定制
-            </button>
-            <button type="button" class="submitN"
-                    onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>')">重置此次定制
-            </button>
-        </div>
     </div>
 
     <!-- p2 -->
@@ -87,10 +79,15 @@
             </dt>
             <dd class="madeKindTit madeKindTitNon">空白</dd>
         </dl>
-        <div class="madeSubmit">
-            <button type="button" class="submitY">完成此次定制</button>
-            <button type="button" class="submitN">重置此次定制</button>
-        </div>
+    </div>
+
+    <div class="madeSubmit">
+        <button type="button" class="submitY"
+                onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>')">完成此次定制
+        </button>
+        <button type="button" class="submitN"
+                onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>')">重置此次定制
+        </button>
     </div>
 
     <div style="display:none;">
