@@ -43,8 +43,8 @@ jQuery(function(){
         jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
         jQuery(this).siblings(".madeBoxCons_p1").css("display","block");
         jQuery(this).siblings(".madeBoxCons_p2").css("display","none");
-        jQuery(".select_ball_P1").css("display","block");
-        jQuery(".select_ball_P2").css("display","none");
+        jQuery(".select_P1").css("display","block");
+        jQuery(".select_P2").css("display","none");
         setPosition(0);
     });
     //点击P2按钮
@@ -53,8 +53,8 @@ jQuery(function(){
         jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
         jQuery(this).siblings(".madeBoxCons_p2").css("display","block");
         jQuery(this).siblings(".madeBoxCons_p1").css("display","none");
-        jQuery(".select_ball_P2").css("display","block");
-        jQuery(".select_ball_P1").css("display","none");
+        jQuery(".select_P2").css("display","block");
+        jQuery(".select_P1").css("display","none");
         setPosition(1);
     });
 
@@ -359,11 +359,12 @@ function avatarrotateright(){
 //        }
 //    }
 //}
-function completeCustomMade(url){
+function completeCustomMade(url, pos) {
+    var originalImg = document.getElementById('avatar').src;
     jQuery.ajax({
         type: 'POST',
         url: url,
-        data: {},
+        data: {originalImg: originalImg, position: pos},
         success: function (res) {
             //jQuery('.madeStep_2').innerHTML(res);
             window.location.reload();
@@ -371,11 +372,11 @@ function completeCustomMade(url){
     });
 }
 
-function resetCustomMade(url) {
+function resetCustomMade(url, pos) {
     jQuery.ajax({
         type: 'POST',
         url: url,
-        data: {},
+        data: {position: pos},
         success: function (res) {
             window.location.reload();
         }

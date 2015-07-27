@@ -1,10 +1,21 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
-<?php if ($this->getStep() == 1): ?>
-    <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
-<?php else: ?>
-    <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
-<?php endif; ?>
+
+<div class="select_P1">
+    <?php if ($this->getStep_P1() == 1): ?>
+        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+    <?php else: ?>
+        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+    <?php endif; ?>
+</div>
+
+<div class="select_P2" style="display: none;">
+    <?php if ($this->getStep_P2() == 1): ?>
+        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+    <?php else: ?>
+        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+    <?php endif; ?>
+</div>
 
 <!-- 右侧设置通栏 s -->
 <div class="cusMadeBox cusMadeRig">
@@ -47,6 +58,15 @@
             </dt>
             <dd class="madeKindTit madeKindTitNon">空白</dd>
         </dl>
+
+        <div class="madeSubmit">
+            <button type="button" class="submitY"
+                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P1')">完成此次定制
+            </button>
+            <button type="button" class="submitN"
+                    onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>','P1')">重置此次定制
+            </button>
+        </div>
     </div>
 
     <!-- p2 -->
@@ -79,15 +99,15 @@
             </dt>
             <dd class="madeKindTit madeKindTitNon">空白</dd>
         </dl>
-    </div>
 
-    <div class="madeSubmit">
-        <button type="button" class="submitY"
-                onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>')">完成此次定制
-        </button>
-        <button type="button" class="submitN"
-                onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>')">重置此次定制
-        </button>
+        <div class="madeSubmit">
+            <button type="button" class="submitY"
+                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P2')">完成此次定制
+            </button>
+            <button type="button" class="submitN"
+                    onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>','P2')">重置此次定制
+            </button>
+        </div>
     </div>
 
     <div style="display:none;">

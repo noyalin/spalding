@@ -2,9 +2,14 @@
 
 class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 {
-    public function getStep()
+    public function getStep_P1()
     {
-        return Mage::getSingleton('core/session')->getData('step');
+        return Mage::getSingleton('core/session')->getData('step_p1');
+    }
+
+    public function getStep_P2()
+    {
+        return Mage::getSingleton('core/session')->getData('step_p2');
     }
 
 }
