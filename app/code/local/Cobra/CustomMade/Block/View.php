@@ -12,4 +12,15 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return Mage::getSingleton('core/session')->getData('step_p2');
     }
 
+    public function getImgUrl_P1()
+    {
+        $url = null;//$this->getSkinUrl("images/customMade/img1.jpg");
+        return $url;
+    }
+
+    public function getImgUrl_P2()
+    {
+        $url = null;//$this->getSkinUrl("images/customMade/img1.jpg");
+        return $url;
+    }
 }
