@@ -16,8 +16,6 @@ function setType(type) {
     made_type[made_position] = type;
 }
 
-
-
 jQuery(function() {
     var spanLen = jQuery('#product-options-wrapper input[type="radio"]').length;
     jQuery('#product-options-wrapper span').removeClass('checked');
