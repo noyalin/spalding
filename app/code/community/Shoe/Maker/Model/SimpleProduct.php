@@ -25,8 +25,8 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
 
         if ($this->_mailMessage != "") {
             $this->_mailMessage = ("executeJob ( 1 ) Incremental Update: " . $this->filename .$this->_mailMessage);
+            $this->sendNotification( 'Configurable product Error ', $this->_mailMessage);
         }
-        $this->sendNotification( 'Configurable product Error ', $this->_mailMessage);
 
 
         $this->_mailMessage = "";
@@ -46,8 +46,8 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
 
         if ($this->_mailMessage != "") {
             $this->_mailMessage = ("executeJob ( 2 ) Incremental Update: " . $this->filename .$this->_mailMessage);
+            $this->sendNotification( 'Configurable product UpdateQuantity Error ', $this->_mailMessage);
         }
-        $this->sendNotification( 'Configurable product UpdateQuantity Error ', $this->_mailMessage);
     }
 
     public function handleEachSimpleEntity($entity){
