@@ -34,8 +34,9 @@ $urlKey = $this->getProductUrlKey()
 $sku = $_item->getSku();
 $arr = explode('-', $sku);
 $size = end($arr);
-$configSku = substr($sku, 0, -(strlen($size) + 1));
-$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+//$configSku = substr($sku, 0, -(strlen($size) + 1));
+//$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+$_product = Mage::getModel('catalog/product')->load($_item->getProductId());
 
 $product_catena = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_catena",$_product->getProductCatena());//篮球系列
 $product_material = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_material",$_product->getProductMaterial());//篮球材质;

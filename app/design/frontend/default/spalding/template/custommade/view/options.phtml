@@ -1,0 +1,123 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $_taxHelper = $this->helper('tax'); ?>
+<?php if ($this->getStep() == 1): ?>
+    <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+<?php else: ?>
+    <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+<?php endif; ?>
+
+<!-- 右侧设置通栏 s -->
+<div class="cusMadeBox cusMadeRig">
+    <div class="madeBoxVal">
+        <h1>SPALDING 74-604 ID</h1>
+<!--            <h2>价格：￥220</h2>-->
+        <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $_product->getPrice()) ?></h2>
+    </div>
+    <div class="madeP_btn madeP_1_btn madeP_btn_now">P1</div>
+    <div class="madeP_btn madeP_2_btn">P2</div>
+
+    <!-- p1 -->
+    <div class="madeBoxCons madeBoxCons_p1">
+        <h3>可定制球皮</h3>
+        <p class="madeTs">选择添加图案或个性签名</p>
+        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+        <!-- 定制参数 -->
+        <dl class="madeBoxFuns">
+            <dd class="madeKindTit madeKindTitImg madeNow">定制图案</dd>
+            <dt class="madeKindCons madeKindImg">
+            <h5>***注意***</h5>
+            <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
+            </dt>
+            <dd class="madeKindTit madeKindTitTex">定制文字</dd>
+            <dt class="madeKindCons madeKindTex">
+            <div class="madeTextInp">
+                <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
+            </div>
+            <p>请选择字号：</p>
+            <div id="product-options-wrapper" class="madeKindTexSpan">
+                <div class="sale-num">
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
+                    <span class="sale_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="attribute2097" data-input="kinds" value="54">
+                    <span class="sale_kind setSize_30" for="attribute2097" name="attribute2097">中号字体</span>
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="attribute2096" data-input="kinds" value="55">
+                    <span class="sale_kind setSize_20" for="attribute2096" name="attribute2096">小号字体</span>
+                </div>
+            </div>
+            </dt>
+            <dd class="madeKindTit madeKindTitNon">空白</dd>
+        </dl>
+        <div class="madeSubmit">
+            <button type="button" class="submitY"
+                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>')">完成此次定制
+            </button>
+            <button type="button" class="submitN"
+                    onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>')">重置此次定制
+            </button>
+        </div>
+    </div>
+
+    <!-- p2 -->
+    <div class="madeBoxCons madeBoxCons_p2" style="display:none;">
+        <h3>可定制球皮</h3>
+        <p class="madeTs">选择添加图案或个性签名</p>
+        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+        <!-- 定制参数 -->
+        <dl class="madeBoxFuns">
+            <dd class="madeKindTit madeKindTitImg madeNow">定制图案</dd>
+            <dt class="madeKindCons madeKindImg">
+            <h5>***注意***</h5>
+            <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
+            </dt>
+            <dd class="madeKindTit madeKindTitTex">定制文字</dd>
+            <dt class="madeKindCons madeKindTex">
+            <div class="madeTextInp">
+                <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
+            </div>
+            <div id="product-options-wrapper" class="madeKindTexSpan">
+                <div class="sale-num">
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
+                    <span class="sale_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="attribute2097" data-input="kinds" value="54">
+                    <span class="sale_kind setSize_30" for="attribute2097" name="attribute2097">中号字体</span>
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="attribute2096" data-input="kinds" value="55">
+                    <span class="sale_kind setSize_20" for="attribute2096" name="attribute2096">小号字体</span>
+                </div>
+            </div>
+            </dt>
+            <dd class="madeKindTit madeKindTitNon">空白</dd>
+        </dl>
+        <div class="madeSubmit">
+            <button type="button" class="submitY">完成此次定制</button>
+            <button type="button" class="submitN">重置此次定制</button>
+        </div>
+    </div>
+
+    <div style="display:none;">
+        <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+        <input type="hidden" name="related_product" id="related-products-field" value="" />
+
+        <?php
+        $allowAttributes = $_product->getTypeInstance(true)->getConfigurableAttributes($_product);
+        $_attributes = Mage::helper('core')->decorateArray($allowAttributes);
+        ?>
+        <?php foreach($_attributes as $_attribute): ?>
+            <?php $valueArr = $_attribute->getPrices(); ?>
+            <label><?php echo $_attribute->getLabel() ?>：</label>
+            <?php $sizeIndex = 1;?>
+            <?php foreach($valueArr as $optionValue):?>
+                <span class="super_attribute_<?php echo $_attribute->getAttributeId() ?>">
+                    <label for="super_attribute[<?php echo $_attribute->getAttributeId().$sizeIndex ?>]"><?php echo $optionValue['label']?></label>
+                    <input type="radio" id="super_attribute[<?php echo $_attribute->getAttributeId().$sizeIndex ?>]" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                           value="<?php echo $optionValue['value_index']?>"/>
+                </span>
+                <?php $sizeIndex  = $sizeIndex + 1;?>
+            <?php endforeach ?>
+        <?php endforeach ?>
+    </div>
+
+    <div class="madeFuns">
+        <button onclick="productAddToCartForm.submit(this)">加入购物车</button>
+    </div>
+</div>
+<!-- 右侧设置通栏 e -->

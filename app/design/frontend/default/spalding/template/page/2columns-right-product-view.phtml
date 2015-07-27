@@ -29,33 +29,30 @@
  * Template for Mage_Page_Block_Html
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
-<head>
-<?php echo $this->getChildHtml('head') ?>
-
-</head>
-<body>
 <?php
 //get current category id
 $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
 $currentCategoryId= $_category->getId();
-
-if($currentCategoryId == 35){
-//专属定制
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<?php if($currentCategoryId == 35)://专属定制?>
+    <script src="<?php echo $this->getSkinUrl('js/move.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/load3D.js'); ?>"></script>
+<?php endif; ?>
+</head>
+<body>
+<?php if($currentCategoryId == 35)://专属定制 ?>
     <!-- <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/customMade/cBg.jpg');  ?>" alt=""></div> -->
     <script src="<?php echo $this->getSkinUrl('js/jQueryRotate.js'); ?>"></script>
     <script src="<?php echo $this->getSkinUrl('js/drag.js'); ?>"></script>
-	
-<?php
-}else{
-?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/zns_style.css'); ?>">
+<?php else: ?>
     <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/20141210002.jpg');  ?>" alt=""></div>
-<?php
-    }
-?>
+<?php endif ?>
 <?php echo $this->getChildHtml('header') ?>
 <div style="height:110px; z-index:-2;"></div>
 <?php echo $this->getChildHtml('content') ?>

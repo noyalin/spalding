@@ -78,6 +78,9 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                             if($qtyStock == 0){
                                 $stockStatus = "目前无货";
                             }
+                        }elseif($attributeSetName == 'custom_ball'){
+
+
                         }else{
                             $simpleSku = $sku."-".$optionValue['default_label'];
                             $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);

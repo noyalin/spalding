@@ -25,11 +25,12 @@
  */
 ?>
 <?php $_item = $this->getItem() ;
-$sku = $_item->getSku();
-$arr = explode('-', $sku);
-$size = end($arr);
-$configSku = substr($sku, 0, -(strlen($size) + 1));
-$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+//$sku = $_item->getSku();
+//$arr = explode('-', $sku);
+//$size = end($arr);
+//$configSku = substr($sku, 0, -(strlen($size) + 1));
+//$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+$_product = Mage::getModel('catalog/product')->load($_item->getProductId());
 ?>
 <li class="item last odd">
     <div class="product-image" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" href="<?php echo $this->getProductUrl()?>">
