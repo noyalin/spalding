@@ -46,7 +46,7 @@
                 <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
             </div>
             <p>请选择字号：</p>
-            <div id="product-options-wrapper" class="madeKindTexSpan">
+            <div id="customMade_fontSize_1" class="madeKindTexSpan">
                 <div class="sale-num">
                     <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
                     <span class="size_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
@@ -62,7 +62,7 @@
 
         <div class="madeSubmit">
             <button type="button" class="submitY"
-                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P1')">完成此次定制
+                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P1')">完成P1定制
             </button>
             <button type="button" class="submitN"
                     onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>','P1')">重置此次定制
@@ -87,7 +87,7 @@
             <div class="madeTextInp">
                 <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
             </div>
-            <div id="product-options-wrapper" class="madeKindTexSpan">
+            <div id="customMade_fontSize_2" class="madeKindTexSpan">
                 <div class="sale-num">
                     <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
                     <span class="size_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
@@ -103,7 +103,7 @@
 
         <div class="madeSubmit">
             <button type="button" class="submitY"
-                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P2')">完成此次定制
+                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P2')">完成P2定制
             </button>
             <button type="button" class="submitN"
                     onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>','P2')">重置此次定制
@@ -135,6 +135,7 @@
     </div>
 
     <div class="madeFuns">
+        <button>预览</button>
         <button onclick="productAddToCartForm.submit(this)">加入购物车</button>
     </div>
 </div>

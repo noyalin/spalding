@@ -17,14 +17,26 @@ function setType(type) {
 }
 
 jQuery(function() {
-    var spanLen = jQuery('#product-options-wrapper input[type="radio"]').length;
-    jQuery('#product-options-wrapper span').removeClass('checked');
-    jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked');
+    var spanLen = jQuery('#customMade_fontSize_1 input[type="radio"]').length;
+    jQuery('#customMade_fontSize_1 span').removeClass('checked');
+    jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
 
-    jQuery('#product-options-wrapper span').click(function(){
+    jQuery('#customMade_fontSize_1 span').click(function(){
         var radioId = jQuery(this).attr('name');
-        jQuery('#product-options-wrapper span').removeClass('checked') && jQuery(this).addClass('checked');
-        jQuery('#product-options-wrapper input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
+        jQuery('#customMade_fontSize_1 span').removeClass('checked') && jQuery(this).addClass('checked');
+        jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
+    });
+});
+
+jQuery(function() {
+    var spanLen = jQuery('#customMade_fontSize_2 input[type="radio"]').length;
+    jQuery('#customMade_fontSize_2 span').removeClass('checked');
+    jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
+
+    jQuery('#customMade_fontSize_2 span').click(function(){
+        var radioId = jQuery(this).attr('name');
+        jQuery('#customMade_fontSize_2 span').removeClass('checked') && jQuery(this).addClass('checked');
+        jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
     });
 });
 

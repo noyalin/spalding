@@ -3252,6 +3252,14 @@ ul.shopsList li span.shopsList_adrs{
 }
 
 /*专属定制*/
+@font-face {
+	font-family: 'Conv_CustomGrotesque-Regular';
+	src: url('../fonts/CustomGrotesque-Regular.eot');
+	src: local('☺'), url('../fonts/CustomGrotesque-Regular.woff') format('woff'), url('../fonts/CustomGrotesque-Regular.ttf') format('truetype'), url('../fonts/CustomGrotesque-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .bodyBg_cusMade{
 	position:absolute; 
 	top:0; 
@@ -3394,14 +3402,15 @@ ul.shopsList li span.shopsList_adrs{
 }
 
 .madeFuns button{
+	display: inline-block;
 	border:none;
 	background: #fdb905;
 	background: -webkit-linear-gradient(#fdb905, #f29d09); /* Safari 5.1 - 6.0 */
     background: -o-linear-gradient(#fdb905, #f29d09); /* Opera 11.1 - 12.0 */
     background: -moz-linear-gradient(#fdb905, #f29d09); /* Firefox 3.6 - 15 */
     background: linear-gradient(#fdb905, #f29d09); /* 标准的语法 */
-	width:265px;
-	margin:0 20px;
+	width:132px;
+	margin:0 5px;
 	height:40px;
 	line-height: 40px;
 	font-weight: bold;
@@ -3575,13 +3584,13 @@ dl.madeBoxFuns dt{
 	margin-bottom:5px;
 }
 
-#product-options-wrapper{
+.madeKindTexSpan{
 	margin-left:6px;
 }
-#product-options-wrapper input[type="radio"] {
+.madeKindTexSpan input[type="radio"] {
   display: none;
 }
-#product-options-wrapper span.size_kind {
+.madeKindTexSpan span.size_kind {
   padding:2px 10px;
   background: #222;
   border:1px solid #B6B6B6;
@@ -3591,13 +3600,13 @@ dl.madeBoxFuns dt{
   margin-left:5px;
   border-radius: 3px;
 }
-#product-options-wrapper span.size_kind.checked {
+.madeKindTexSpan span.size_kind.checked {
   background: #161515;
   border:1px solid #fcb805;
   color:#fcb805;
 }
 
-#product-options-wrapper span.size_kind:hover{
+.madeKindTexSpan span.size_kind:hover{
 	color:#fcb805;
 	border-color:#fcb805;
 }
@@ -3639,6 +3648,7 @@ dl.madeBoxFuns dt{
 }
 
 .madeTexWrap{
+	font-family:'Conv_CustomGrotesque-Regular',Sans-Serif;
 	position: absolute;
 	width: 400px;
 	margin-top:190px;
