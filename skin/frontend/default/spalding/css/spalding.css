@@ -3687,13 +3687,12 @@ dl.madeBoxFuns dt{
 
 
 .viewMade{
-	position: relative;
+	position: absolute;
 	width:128px;
 	height:27px;
 	left:50%;
 	margin-left:-64px;
-	margin-top:-50px;
-	margin-bottom:50px;
+	top:500px;
 }
 
 .viewMade button{
