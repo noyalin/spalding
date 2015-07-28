@@ -2,28 +2,51 @@
 class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
     public $newRelatedProductGroups;
 
+    private $_mailMessage = "";
 
     public function executeJob($rootXmlElement){
 
-        //Step into entities array to access simple products
-        foreach ($rootXmlElement->Simple as $simpleProducts) {
-            $itemCounter = 1;
-            foreach ($simpleProducts->Product as $entity) {
-                $this->transactionLogHandle( "  ->ITEM          : " . $itemCounter );
-                $this->handleEachSimpleEntity($entity);
-                $itemCounter++;
+        $this->_mailMessage = "";
+
+        try{
+            //Step into entities array to access simple products
+            foreach ($rootXmlElement->Simple as $simpleProducts) {
+                $itemCounter = 1;
+                foreach ($simpleProducts->Product as $entity) {
+                    $this->transactionLogHandle( "  ->ITEM          : " . $itemCounter );
+                    $this->handleEachSimpleEntity($entity);
+                    $itemCounter++;
+                }
+                $this->updateRelatedProductGroups();
             }
-            $this->updateRelatedProductGroups();
+        } catch (Exception $ex) {
+            $this->_mailMessage .= ("\r\nexecuteJob Exception: ".$ex->getMessage());
         }
 
-        //Process Simple products to update quantities
-        foreach ($rootXmlElement->Simple as $simpleProducts) {
-            $itemCounter = 1;
-            foreach ($simpleProducts->Product as $entity) {
-                $this->transactionLogHandle( "  ->ITEM  Quantity         : " . $itemCounter );
-                $this->handleUpdateQuantityForEachSimpleEntity($entity);
-                $itemCounter++;
+        if ($this->_mailMessage != "") {
+            $this->_mailMessage = ("executeJob ( 1 ) Incremental Update: " . $this->filename .$this->_mailMessage);
+            $this->sendNotification( 'Configurable product Error ', $this->_mailMessage);
+        }
+
+
+        $this->_mailMessage = "";
+        try{
+            //Process Simple products to update quantities
+            foreach ($rootXmlElement->Simple as $simpleProducts) {
+                $itemCounter = 1;
+                foreach ($simpleProducts->Product as $entity) {
+                    $this->transactionLogHandle( "  ->ITEM  Quantity         : " . $itemCounter );
+                    $this->handleUpdateQuantityForEachSimpleEntity($entity);
+                    $itemCounter++;
+                }
             }
+        } catch (Exception $ex) {
+            $this->_mailMessage .= ("\r\nexecuteJob Exception: ".$ex->getMessage());
+        }
+
+        if ($this->_mailMessage != "") {
+            $this->_mailMessage = ("executeJob ( 2 ) Incremental Update: " . $this->filename .$this->_mailMessage);
+            $this->sendNotification( 'Configurable product UpdateQuantity Error ', $this->_mailMessage);
         }
     }
 
@@ -56,8 +79,7 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         if (!$configurableProduct) {
             //Send email
             $this->transactionLogHandle( "    ->ERROR       : Configurable not found " . substr($sku, 0, -(strlen($size) + 1)));
-            $message = "Incremental Update: " . $this->filename . "\r\n\r\nThe simple product could not be created because the configurable product " . substr($sku, 0, -(strlen($size) + 1)) . " was not found.";
-            $this->sendNotification( 'Configurable product not found', $message);
+            $this->_mailMessage = "\r\nThe simple product could not be created because the configurable product " . substr($sku, 0, -(strlen($size) + 1)) . " was not found.";
             return;
         }
         if($configurableProduct->getIsOffline() == 1) {
@@ -194,8 +216,8 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
             unset($product);
         } else {
             // Send email
-            $message = "Incremental Update: " . $this->filename . "\r\n\r\nThe specified size was not found for simple product " . $sku . ". This indicates that either a new size needs to be added to the attribute set or the size was entered in Item Manager incorrectly.";
-            $this->sendNotification('Size not found', $message);
+            $this->_mailMessage = "\r\nThe specified size was not found for simple product " . $sku . ". This indicates that either a new size needs to be added to the attribute set or the size was entered in Item Manager incorrectly.";
+//            $this->sendNotification('Size not found', $message);
             $this->transactionLogHandle("    ->NOT SAVED   : Simple       : " . $sku . " because $size not found\n");
         }
     }
@@ -216,8 +238,8 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
                     $this->transactionLogHandle(  "  ->ERROR         : Configurable not found " . $existingConfigurableProduct);
 
                     // Send email
-                    $message = "Incremental Update: " . $this->filename . "\r\n\r\nThe simple products could not associated because the configurable product " . $existingConfigurableProduct . " was not found.";
-                    $this->sendNotification( 'Configurable product not found', $message);
+                    $this->_mailMessage = "\r\nThe simple products could not associated because the configurable product " . $existingConfigurableProduct . " was not found.";
+//                    $this->sendNotification( 'Configurable product not found', $message);
                 } else {
 
                     // get previous children if any
