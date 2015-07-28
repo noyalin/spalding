@@ -22,6 +22,8 @@ window.onload=function ()
     var oBtnNext=getByClass(oDiv, 'next')[0];
     var oBtnN=getByClass(oDiv, 'prev_n')[0];
     var oBtnZ=getByClass(oDiv, 'next_z')[0];
+    var oBtnZ_top=getByClass(oDiv, 'next_z_top')[0];
+    var oBtnN_top=getByClass(oDiv, 'prev_n_top')[0];
     var oMarkLeft=getByClass(oDiv, 'mark_left')[0];
     var oMarkRight=getByClass(oDiv, 'mark_right')[0];
 
@@ -73,11 +75,21 @@ window.onload=function ()
 
     oBtnZ.onclick = function(){
         timer=setInterval(oBtnNext.onclick, 60);
+
+        oBtnZ_top.style.display = "block";
+        setTimeout(function(){
+            oBtnZ_top.style.display = "none";
+        },600);
         //oBtnNext.onclick();
     };
 
     oBtnN.onclick = function(){
-        timer=setInterval(oBtnPrev.onclick, 100);
+        timer=setInterval(oBtnPrev.onclick, 60);
+
+        oBtnN_top.style.display = "block";
+        setTimeout(function(){
+            oBtnN_top.style.display = "none";
+        },600);
         //oBtnPrev.onclick();
     };
 };

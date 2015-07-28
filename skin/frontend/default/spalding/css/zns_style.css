@@ -153,6 +153,19 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	opacity:1; 
 	cursor: pointer; 
 }
+
+.prev_n_top { 
+	display: none;
+	width: 60px; 
+	height: 60px; 
+	position: absolute; 
+	top: 450px; 
+	left: 10px; 
+	z-index: 3002; 
+	filter:alpha(opacity:1); 
+	opacity:1; 
+	cursor: pointer; 
+}
 .next_z { 
 	width: 60px; 
 	height: 60px; 
@@ -165,7 +178,19 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	opacity:1; 
 	cursor: pointer; 
 }
-
+.next_z_top { 
+	display: none;
+	width: 60px; 
+	height: 60px; 
+	position: absolute; 
+	top: 450px; 
+	right: 10px; 
+	z-index: 3001; 
+	filter:alpha(opacity:1); 
+	opacity:1; 
+	cursor: pointer; 
+	z-index:3002;
+}
 
 .big_pic li{
 
