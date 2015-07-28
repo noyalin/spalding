@@ -51,7 +51,7 @@ jQuery(document).ready(function(){
             beforeSend:loading,
             data: {barcode:barcode,verifycode:verifycode},
             success: function(data, textStatus){
-                verifyResult = data;
+                verifyResult = data.replace("防伪码系统升级中","由于此款防伪码为老款");
             },
             //  dataType: "json",
             error: function(){
