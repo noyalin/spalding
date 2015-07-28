@@ -145,12 +145,12 @@ var cut_div;  //裁减图片外框div
 var avatar;  //裁减图片
 var imgdefw;  //图片默认宽度
 var imgdefh;  //图片默认高度
-var offsetx = 82; //图片位置位移x
-var offsety = -193; //图片位置位移y
+var offsetx = 0; //图片位置位移x
+var offsety = -303; //图片位置位移y
 var divx = 400; //外框宽度
 var divy = 400; //外框高度
-var cutx = 120;  //裁减宽度
-var cuty = 120;  //裁减高度
+var cutx = 400;  //裁减宽度
+var cuty = 186;  //裁减高度
 var zoom = 1; //缩放比例
 
 var zmin = 0.1; //最小比例
@@ -254,9 +254,10 @@ function getcutpos(){
     var imgpos = getStylepos(avatar);
     var x = offsetx - imgpos.x;
     var y = offsety - imgpos.y;
-    var cut_pos = document.getElementById('cut_pos');
-    cut_pos.value = x + ',' + y + ',' + avatar.width + ',' + avatar.height;
-    return true;
+    //var cut_pos = document.getElementById('cut_pos');
+    //cut_pos.value = x + ',' + y + ',' + avatar.width + ',' + avatar.height;
+    //return true;
+    return x + ',' + y + ',' + avatar.width + ',' + avatar.height;
 }
 
 //缩放条初始化
@@ -362,7 +363,7 @@ function completeCustomMade(url, pos) {
     jQuery.ajax({
         type: 'POST',
         url: url,
-        data: {originalImg: originalImg, position: pos},
+        data: {cut_pos: getcutpos(), originalImg: originalImg, position: pos},
         success: function (res) {
             //jQuery('.madeStep_2').innerHTML(res);
             window.location.reload();
