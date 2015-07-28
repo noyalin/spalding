@@ -506,7 +506,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $object = "media/catalog/product/$sku/$urlKey-1.jpg";
 
         $response = $oss_sdk_service->is_object_exist($bucket,$object);
-        if($response->status != 200){
+        if(true){//$response->status != 200
             $dir = Mage::getBaseDir()."/media/catalog/product/";
             //上传这个文件夹到OSS
             $options = array(
