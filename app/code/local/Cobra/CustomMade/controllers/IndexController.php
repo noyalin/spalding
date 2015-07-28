@@ -20,10 +20,23 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             Mage::getSingleton('core/session')->setData('step_p2', 1);
         }
 
+        $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
+        $data_decode = base64_decode($data);
+        file_put_contents("media/tmp/img.jpg", $data_decode);
 
-//        $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
-//        $data_decode = base64_decode($data);
-//        file_put_contents("media/tmp/img.jpg", $data_decode);
+
+        $imgresize = new ImageResize(); //åˆ›å»ºå›¾ç‰‡ç¼©æ”¾å’Œè£å‰ªç±»
+        $imgresize->load($data_decode); //è½½å…¥åŸå§‹å›¾ç‰‡
+
+        $posary=explode(',', $params['cut_pos']);
+        foreach($posary as $k=>$v) $posary[$k]=intval($v); //è·å¾—ç¼©æ”¾æ¯”ä¾‹å’Œè£å‰ªä½ç½®
+
+        if($posary[2]>0 && $posary[3]>0) $imgresize->resize($posary[2], $posary[3]); //é¥å‰§å¢–ç¼‚â•‚æ–
+
+        $imgresize->save('media/tmp/img0.jpg');
+
+        $imgresize->cut(400, 186, intval($posary[0]), intval($posary[1]));
+        $imgresize->save('media/tmp/img1.jpg');
 
     }
 
@@ -36,42 +49,27 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             Mage::getSingleton('core/session')->setData('step_p2', 0);
         }
 
-        $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
-        $data_decode = base64_decode($data);
-        file_put_contents("media/tmp/img.jpg", $data_decode);
-
-
-        $imgresize = new ImageResize(); //´´½¨Í¼Æ¬Ëõ·ÅºÍ²Ã¼ôÀà
-        $imgresize->load($data_decode); //ÔØÈëÔ­Ê¼Í¼Æ¬
-
-        $posary=explode(',', $params['cut_pos']);
-        foreach($posary as $k=>$v) $posary[$k]=intval($v); //»ñµÃËõ·Å±ÈÀıºÍ²Ã¼ôÎ»ÖÃ
-
-        if($posary[2]>0 && $posary[3]>0) $imgresize->resize($posary[2], $posary[3]); //Í¼Æ¬Ëõ·Å
-
-        $imgresize->save('media/tmp/img0.jpg');
-
-        $imgresize->cut(400, 186, intval($posary[0]), intval($posary[1]));
-        $imgresize->save('media/tmp/img1.jpg');
     }
 }
 
+//--------------------------------------------------------
+
 /**
- * Í¼Æ¬Ëõ·ÅºÍ²Ã¼ôÀà
+ * å›¾ç‰‡ç¼©æ”¾å’Œè£å‰ªç±»
  */
 
 class ImageResize
 {
-    //Ô´Í¼Ïó
+    //æºå›¾è±¡
     var $_img;
-    //Í¼Æ¬ÀàĞÍ
+    //å›¾ç‰‡ç±»å‹
     var $_imagetype;
-    //Êµ¼Ê¿í¶È
+    //å®é™…å®½åº¦
     var $_width;
-    //Êµ¼Ê¸ß¶È
+    //å®é™…é«˜åº¦
     var $_height;
 
-    //ÔØÈëÍ¼Æ¬
+    //è½½å…¥å›¾ç‰‡
     function load($img_name, $img_type=''){
         if(!empty($img_type)) $this->_imagetype = $img_type;
         else $this->_imagetype = $this->get_type($img_name);
@@ -92,7 +90,7 @@ class ImageResize
         $this->getxy();
     }
 
-    //Ëõ·ÅÍ¼Æ¬
+    //ç¼©æ”¾å›¾ç‰‡
     function resize($width, $height, $percent=0)
     {
         if(!is_resource($this->_img)) return false;
@@ -115,7 +113,7 @@ class ImageResize
         $this->getxy();
     }
 
-    //²Ã¼ôÍ¼Æ¬
+    //è£å‰ªå›¾ç‰‡
     function cut($width, $height, $x=0, $y=0){
         if(!is_resource($this->_img)) return false;
         if($width > $this->_width) $width = $this->_width;
@@ -130,7 +128,7 @@ class ImageResize
     }
 
 
-    //ÏÔÊ¾Í¼Æ¬
+    //æ˜¾ç¤ºå›¾ç‰‡
     function display($destroy=true)
     {
         if(!is_resource($this->_img)) return false;
@@ -153,7 +151,7 @@ class ImageResize
         if($destroy) $this->destroy();
     }
 
-    //±£´æÍ¼Æ¬ $destroy=true ÊÇ±£´æºóÏú»ÙÍ¼Æ¬±äÁ¿£¬falseÕâ²»Ïú»Ù£¬¿ÉÒÔ¼ÌĞø´¦ÀíÕâÍ¼Æ¬
+    //ä¿å­˜å›¾ç‰‡ $destroy=true æ˜¯ä¿å­˜åé”€æ¯å›¾ç‰‡å˜é‡ï¼Œfalseè¿™ä¸é”€æ¯ï¼Œå¯ä»¥ç»§ç»­å¤„ç†è¿™å›¾ç‰‡
     function save($fname, $destroy=false, $type='')
     {
         if(!is_resource($this->_img)) return false;
@@ -175,13 +173,13 @@ class ImageResize
         return $ret;
     }
 
-    //Ïú»ÙÍ¼Ïñ
+    //é”€æ¯å›¾åƒ
     function destroy()
     {
         if(is_resource($this->_img)) imagedestroy($this->_img);
     }
 
-    //È¡µÃÍ¼Ïñ³¤¿í
+    //å–å¾—å›¾åƒé•¿å®½
     function getxy()
     {
         if(is_resource($this->_img)){
@@ -191,8 +189,8 @@ class ImageResize
     }
 
 
-    //»ñµÃÍ¼Æ¬µÄ¸ñÊ½£¬°üÀ¨jpg,png,gif
-    function get_type($img_name)//»ñÈ¡Í¼ÏñÎÄ¼şÀàĞÍ
+    //è·å¾—å›¾ç‰‡çš„æ ¼å¼ï¼ŒåŒ…æ‹¬jpg,png,gif
+    function get_type($img_name)//è·å–å›¾åƒæ–‡ä»¶ç±»å‹
     {
         if (preg_match("/\.(jpg|jpeg|gif|png)$/i", $img_name, $matches)){
             $type = strtolower($matches[1]);
