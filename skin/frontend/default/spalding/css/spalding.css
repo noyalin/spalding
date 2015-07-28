@@ -3325,7 +3325,7 @@ ul.shopsList li span.shopsList_adrs{
 
 .madeBoxCons{
 	padding:10px 25px;
-	height:360px;
+	height:390px;
 }
 
 .madeBoxCons>h3{
@@ -3502,7 +3502,7 @@ ul.shopsList li span.shopsList_adrs{
 	margin-left:60px;
 	margin-top:50px;
 	z-index:99;
-
+	text-align: center;
 }
 
 .portrait_revolve span{
@@ -3581,7 +3581,7 @@ dl.madeBoxFuns dt{
 #product-options-wrapper input[type="radio"] {
   display: none;
 }
-#product-options-wrapper span.sale_kind {
+#product-options-wrapper span.size_kind {
   padding:2px 10px;
   background: #222;
   border:1px solid #B6B6B6;
@@ -3591,21 +3591,20 @@ dl.madeBoxFuns dt{
   margin-left:5px;
   border-radius: 3px;
 }
-#product-options-wrapper span.checked {
+#product-options-wrapper span.size_kind.checked {
   background: #161515;
   border:1px solid #fcb805;
   color:#fcb805;
 }
 
-#product-options-wrapper span.sale_kind:hover{
+#product-options-wrapper span.size_kind:hover{
 	color:#fcb805;
 	border-color:#fcb805;
 }
 
 
 .madeSubmit{
-	margin-left:40px;
-	margin-bottom:10px;
+	margin-left:20px;
 }
 .madeSubmit button{
 	border:none;
@@ -3649,15 +3648,15 @@ dl.madeBoxFuns dt{
 	color:#000;
 }
 
-.madeTexWrap.size_40{
+.size_40{
 	font-size: 40px;
 }
 
-.madeTexWrap.size_60{
+.size_60{
 	font-size: 60px;
 }
 
-.madeTexWrap.size_80{
+.size_80{
 	font-size: 80px;
 }
 

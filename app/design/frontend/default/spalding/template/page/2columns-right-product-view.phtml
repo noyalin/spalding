@@ -41,7 +41,7 @@ $currentCategoryId= $_category->getId();
 <?php echo $this->getChildHtml('head') ?>
 <?php if($currentCategoryId == 35)://专属定制?>
     <script src="<?php echo $this->getSkinUrl('js/move.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/load3D.js'); ?>"></script>
+    
 <?php endif; ?>
 </head>
 <body>
@@ -49,6 +49,7 @@ $currentCategoryId= $_category->getId();
     <!-- <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/customMade/cBg.jpg');  ?>" alt=""></div> -->
     <script src="<?php echo $this->getSkinUrl('js/jQueryRotate.js'); ?>"></script>
     <script src="<?php echo $this->getSkinUrl('js/drag.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/load3D.js'); ?>"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/zns_style.css'); ?>">
 <?php else: ?>
     <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/20141210002.jpg');  ?>" alt=""></div>

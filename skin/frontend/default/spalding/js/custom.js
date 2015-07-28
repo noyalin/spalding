@@ -111,14 +111,27 @@ jQuery(function(){
     });
 
     //设置字体
-    jQuery(".setSize_20").click(function(){
-        jQuery(this).parents().find(".madeTexWrap").attr("class","madeTexWrap size_40")
+    jQuery(".madeBoxCons_p1 .setSize_20").click(function(){
+        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class","select_P1 size_40")
     });
-    jQuery(".setSize_30").click(function(){
-        jQuery(this).parents().find(".madeTexWrap").attr("class","madeTexWrap size_60")
+    jQuery(".madeBoxCons_p2 .setSize_20").click(function(){
+        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class","select_P2 size_40")
     });
-    jQuery(".setSize_40").click(function(){
-        jQuery(this).parents().find(".madeTexWrap").attr("class","madeTexWrap size_80")
+
+    //中号
+    jQuery(".madeBoxCons_p1 .setSize_30").click(function(){
+        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class","select_P1 size_60")
+    });
+    jQuery(".madeBoxCons_p2 .setSize_30").click(function(){
+        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class","select_P2 size_60")
+    });
+
+    //大号
+    jQuery(".madeBoxCons_p1 .setSize_40").click(function(){
+        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class","select_P1 size_80")
+    });
+    jQuery(".madeBoxCons_p2 .setSize_40").click(function(){
+        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class","select_P2 size_80")
     });
 });
 

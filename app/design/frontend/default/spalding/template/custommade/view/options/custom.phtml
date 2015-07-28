@@ -1,5 +1,5 @@
 <!-- 定制图案 -->
-<div class="madeStepImg">
+<div class="madeStepImg" style="display:none;">
     <img id="img_grip" style="position:absolute;opacity:0; z-index:100; cursor:pointer;" src="<?php echo $this->getSkinUrl('images/customMade/grip.png');  ?>" />
     <div class="cusMadeBox cusMadeCen">
         <div class="step_2_Fun" id="formBtn">
@@ -8,7 +8,7 @@
                     <img src="<?php echo $this->getSkinUrl('images/customMade/step_2_Bgball.png');  ?>" alt="">
                 </div>
                 <div class="select_P2" style="display: none;">
-                    <img src="<?php echo $this->getSkinUrl('images/customMade/imgBall_y/17.png');  ?>" alt="">
+                    <img src="<?php echo $this->getSkinUrl('images/customMade/step_2_Bgball2.png');  ?>" alt="">
                 </div>
             </div>
             <div class="step_2_funBtn">
@@ -20,42 +20,36 @@
         <div class="step_2_wrap" id="imgFuns" style="opacity:0; position:relative;">
             <div class="portrait_revolve">
                 <span>
-                    <a href="javascript:;" class="revol_left_txt" onClick="avatarrotateleft();"><img src="<?php echo $this->getSkinUrl('images/customMade/rotLeft.png');  ?>" alt=""></a>
-                </span>
-
-                <span>
                     <input type="file" onchange="previewImage(this,'avatar')" id="shopSetFile_2" name="file" style="display:none ">
                     <input type="button" onclick="shopSetFile_2.click();" value="重新添加" class="step_2_funBtn_2">
                 </span>
 
-                <span>
-                    <a href="javascript:;" class="revol_right_txt" onClick="avatarrotateright();"><img src="<?php echo $this->getSkinUrl('images/customMade/rotRig.png');  ?>" alt=""></a>
-                </span>
+                
             </div>
             <div class="funBall">
                 <div class="select_P1">
                     <img src="<?php echo $this->getSkinUrl('images/customMade/step_2_funball.png');  ?>" alt="">
                 </div>
                 <div class="select_P2" style="display: none;">
-                    <img src="<?php echo $this->getSkinUrl('images/customMade/imgBall_y/17.png');  ?>" alt="">
+                    <img src="<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>" alt="">
                 </div>
             </div>
 
-            <div id="cut_div" style="width:400px; height:400px; border-radius:200px; overflow: hidden; position:absolute; cursor:pointer;">
-                <table style="border-collapse: collapse; z-index: 10; filter: alpha(opacity=75); position: relative; left: 0px; top: 0px; width: 400px;  height: 400px; opacity: 0.75; border-radius:200px; overflow:hidden;" cellspacing="0" cellpadding="0" border="0" unselectable="on">
+            <div id="cut_div" style="width:400px; height:400px; position:absolute;cursor:pointer;border-radius:200px;overflow:hidden;">
+                <table style="border-collapse: collapse; z-index: 10; filter: alpha(opacity=65); position: relative; left: 0px; top: 0px; width: 400px;  height: 400px; opacity: 0.65; " cellspacing="0" cellpadding="0" border="0" unselectable="on">
                     <tr>
                         <td style="background: #000000; height: 97px;" colspan="3"></td>
                     </tr>
                     <tr>
                         <td style="background: #000000; width: 52px;"></td>
-                        <td style="border: 1px dashed #ffffff; width: 296px; height: 186px;"></td>
+                        <td style="border: 1px dashed #ffffff; width: 316px; height: 186px;"></td>
                         <td style="background: #000000; width: 52px;"></td>
                     </tr>
                     <tr>
                         <td style="background: #000000; height: 117px;" colspan="3"></td>
                     </tr>
                 </table>
-                <img id="avatar" style="position:relative; top:-283px; left:52px"  src="<?php echo $this->getSkinUrl('images/customMade/source.jpg');  ?>" />
+                <img id="avatar" style="position:relative; top:-303px; left:0"  src="<?php echo $this->getSkinUrl('images/customMade/step_2_Bgball.png');  ?>" />
             </div>
 
 
@@ -81,23 +75,28 @@
                 <img src="<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png'); ?>" alt="">
             </div>
             <div class="select_P2" style="display: none;">
-                <img src="<?php echo $this->getSkinUrl('images/customMade/imgBall_n/17.png'); ?>" alt="">
+                <img src="<?php echo $this->getSkinUrl('images/customMade/madeTexBg2.png'); ?>" alt="">
             </div>
         </div>
         <div class="madeTexWrap">
-            spadling
+            <div class="select_P1">
+                Spalding
+            </div>
+            <div class="select_P2" style="display: none;">
+                adfasdf
+            </div>
         </div>
     </div>
 </div>
 <!-- 空白 -->
-<div class="madeStepNone" style="display:none;">
+<div class="madeStepNone">
     <div class="cusMadeBox cusMadeCen">
         <div class="madeTex_ball">
             <div class="select_P1">
                 <img src="<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png'); ?>" alt="">
             </div>
             <div class="select_P2" style="display: none;">
-                <img src="<?php echo $this->getSkinUrl('images/customMade/imgBall_y/17.png'); ?>" alt="">
+                <img src="<?php echo $this->getSkinUrl('images/customMade/madeTexBg2.png'); ?>" alt="">
             </div>
         </div>
     </div>
