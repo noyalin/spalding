@@ -3409,8 +3409,8 @@ ul.shopsList li span.shopsList_adrs{
     background: -o-linear-gradient(#fdb905, #f29d09); /* Opera 11.1 - 12.0 */
     background: -moz-linear-gradient(#fdb905, #f29d09); /* Firefox 3.6 - 15 */
     background: linear-gradient(#fdb905, #f29d09); /* 标准的语法 */
-	width:132px;
-	margin:0 5px;
+	width:265px;
+	margin:0 20px;
 	height:40px;
 	line-height: 40px;
 	font-weight: bold;
@@ -3683,4 +3683,25 @@ dl.madeBoxFuns dt{
 	padding:2px 5px;
 	background: #1b1b1b;
 	color:#565656;
+}
+
+
+.viewMade{
+	position: relative;
+	width:128px;
+	height:27px;
+	left:50%;
+	margin-left:-64px;
+	margin-top:-50px;
+	margin-bottom:50px;
+}
+
+.viewMade button{
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.viewMade button:hover img{
+	opacity: .9;
 }
