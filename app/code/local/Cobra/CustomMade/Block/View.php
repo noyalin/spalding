@@ -14,13 +14,13 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 
     public function getImgUrl_P1()
     {
-        $url = null;//$this->getSkinUrl("images/customMade/img1.jpg");
+        $url = $this->getSkinUrl("images/customMade/imgPer_1.jpg");
         return $url;
     }
 
     public function getImgUrl_P2()
     {
-        $url = null;//$this->getSkinUrl("images/customMade/img1.jpg");
+        $url = $this->getSkinUrl("images/customMade/imgPer_2.jpg");
         return $url;
     }
 }
