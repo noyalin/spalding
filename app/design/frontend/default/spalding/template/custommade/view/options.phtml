@@ -1,21 +1,9 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
 
-<div class="select_P1">
-    <?php if ($this->getStep_P1() == 1): ?>
-        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
-    <?php else: ?>
-        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
-    <?php endif; ?>
-</div>
 
-<div class="select_P2" style="display: none;">
-    <?php if ($this->getStep_P2() == 1): ?>
-        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
-    <?php else: ?>
-        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
-    <?php endif; ?>
-</div>
+
+<?php echo $this->getChildHtml('custommade_view_options_custom') ?>
 
 <!-- 右侧设置通栏 s -->
 <div class="cusMadeBox cusMadeRig">
