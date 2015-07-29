@@ -31,7 +31,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         $posary=explode(',', $params['cut_pos']);
         foreach($posary as $k=>$v) $posary[$k]=intval($v); //获得缩放比例和裁剪位置
 
-        if($posary[2]>0 && $posary[3]>0) $imgresize->resize($posary[2], $posary[3]); //鍥剧墖缂╂斁
+        if($posary[2]>0 && $posary[3]>0) $imgresize->resize($posary[2], $posary[3]); //图片缩放
 
         $imgresize->save('media/tmp/img0.jpg');
 
