@@ -40,11 +40,13 @@ jQuery(function() {
     });
 });
 
+
+
 jQuery(function(){
     //获取初始数据
     var _imgIni = jQuery("#avatar");
-    var _texIni1 = jQuery(".select_P1").html();
-    var _texIni2 = jQuery(".select_P2").html();
+    var _texIni1 = jQuery(".madeTexWrap").find(".select_P1").html();
+    var _texIni2 = jQuery(".madeTexWrap").find(".select_P2").html();
     var _imgIniVal = _imgIni.attr("src");
 
     //开始定制按钮
@@ -58,15 +60,15 @@ jQuery(function(){
     //点击P1按钮
     jQuery(".madeP_1_btn").click(function(){
         var _imgNowVal = _imgIni.attr("src");
-        var _texNow = jQuery(".select_P2").html();
+        var _texNow = jQuery(".madeTexWrap").find(".select_P2").html();
         if(_imgNowVal == _imgIniVal && _texNow == _texIni2){
             //未改动
             jQuery(this).addClass("madeP_btn_now");
             jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
             jQuery(this).siblings(".madeBoxCons_p1").css("display","block");
             jQuery(this).siblings(".madeBoxCons_p2").css("display","none");
-            jQuery(".select_P1").css("display","block");
-            jQuery(".select_P2").css("display","none");
+            jQuery(this).parents().find(".select_P1").css("display","block");
+            jQuery(this).parents().find(".select_P2").css("display","none");
             setPosition(0);
         }else{
             //已改动
@@ -78,15 +80,15 @@ jQuery(function(){
     //点击P2按钮
     jQuery(".madeP_2_btn").click(function(){
         var _imgNowVal = _imgIni.attr("src");
-        var _texNow = jQuery(".select_P1").html();
+        var _texNow = jQuery(".madeTexWrap").find(".select_P1").html();
         if(_imgNowVal == _imgIniVal && _texNow == _texIni1){
             //未改动
             jQuery(this).addClass("madeP_btn_now");
             jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
             jQuery(this).siblings(".madeBoxCons_p1").css("display","none");
             jQuery(this).siblings(".madeBoxCons_p2").css("display","block");
-            jQuery(".select_P2").css("display","block");
-            jQuery(".select_P1").css("display","none");
+            jQuery(this).parents().find(".select_P2").css("display","block");
+            jQuery(this).parents().find(".select_P1").css("display","none");
             setPosition(1);
         }else{
             //已改动
@@ -564,11 +566,43 @@ jQuery(function() {
         var _comfBox = jQuery(this).parent().parent(".comfBox");
         _comfBox.parent(".madeBoxCons").siblings(".madeP_1_btn").removeClass("madeP_btn_now");
         _comfBox.parent(".madeBoxCons").siblings(".madeP_2_btn").addClass("madeP_btn_now");
+        jQuery(this).parents().find(".select_P2").css("display","block");
+        jQuery(this).parents().find(".select_P1").css("display","none");
     });
 
     jQuery(".saveMadeY_p2").click(function(){
         var _comfBox = jQuery(this).parent().parent(".comfBox");
         _comfBox.parent(".madeBoxCons").siblings(".madeP_2_btn").removeClass("madeP_btn_now");
         _comfBox.parent(".madeBoxCons").siblings(".madeP_1_btn").addClass("madeP_btn_now");
+        jQuery(this).parents().find(".select_P1").css("display","block");
+        jQuery(this).parents().find(".select_P2").css("display","none");
+    });
+
+    jQuery(":text").focus(function(){
+        jQuery(this).select();
     });
 });
+
+function SwapTxt_1(){
+    var _txt_1 = document.getElementById("textInput_1").value;
+    var _textP1 = document.getElementById("textMade_P1")
+    var _swapTexLen = _txt_1.length;
+
+    if(_swapTexLen <= 8){
+        _textP1.innerHTML=_txt_1;
+    }else{
+        alert("请不要超过8个英文字符")
+    }
+}
+
+function SwapTxt_2(){
+    var _txt_2 = document.getElementById("textInput_2").value;
+    var _textP2 = document.getElementById("textMade_P2")
+    var _swapTexLen = _txt_2.length;
+
+    if(_swapTexLen <= 8){
+        _textP2.innerHTML=_txt_2;
+    }else{
+        alert("请不要超过8个英文字符")
+    }
+}

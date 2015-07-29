@@ -3676,6 +3676,7 @@ dl.madeBoxFuns dt{
 }
 
 .madeTextInp>input{
+	display: inline-block;
 	border:1px solid #565656;
 	width: 220px;
 	height:20px;
@@ -3683,6 +3684,25 @@ dl.madeBoxFuns dt{
 	padding:2px 5px;
 	background: #1b1b1b;
 	color:#565656;
+	float: left;
+}
+
+.madeTextInp .comText{
+	display: inline-block;
+	border:1px solid #565656;
+	text-align: center;
+	width: 50px;
+	height:26px;
+	background: #1b1b1b;
+	line-height: 26px;
+	margin-left: 10px;
+	color: #565656;
+	float: left;
+}
+
+.madeTextInp .comText:hover{
+	border-color:#fcb805;
+	color:#fcb805;
 }
 
 
