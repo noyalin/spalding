@@ -41,31 +41,59 @@ jQuery(function() {
 });
 
 jQuery(function(){
+    //获取初始数据
+    var _imgIni = jQuery("#avatar");
+    var _texIni1 = jQuery(".select_P1").html();
+    var _texIni2 = jQuery(".select_P2").html();
+    var _imgIniVal = _imgIni.attr("src");
+
     //开始定制按钮
     //暂时隐藏step1层 后期看是否是进行页面跳转
     jQuery(".step_1_Btn a").click(function(){
         jQuery(this).parents().find(".madeStep_1").css("display","none");
         jQuery(this).parents().find(".madeStep_2").css("display","block");
     });
+
+    //判断数据是否改动，进行相应的操作
     //点击P1按钮
     jQuery(".madeP_1_btn").click(function(){
-        jQuery(this).addClass("madeP_btn_now");
-        jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
-        jQuery(this).siblings(".madeBoxCons_p1").css("display","block");
-        jQuery(this).siblings(".madeBoxCons_p2").css("display","none");
-        jQuery(".select_P1").css("display","block");
-        jQuery(".select_P2").css("display","none");
-        setPosition(0);
+        var _imgNowVal = _imgIni.attr("src");
+        var _texNow = jQuery(".select_P2").html();
+        if(_imgNowVal == _imgIniVal && _texNow == _texIni2){
+            //未改动
+            jQuery(this).addClass("madeP_btn_now");
+            jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
+            jQuery(this).siblings(".madeBoxCons_p1").css("display","block");
+            jQuery(this).siblings(".madeBoxCons_p2").css("display","none");
+            jQuery(".select_P1").css("display","block");
+            jQuery(".select_P2").css("display","none");
+            setPosition(0);
+        }else{
+            //已改动
+            jQuery(this).siblings(".madeBoxCons_p2").find(".madeBoxFuns").css("display","none");
+            jQuery(this).siblings(".madeBoxCons_p2").find(".madeSubmit").css("display","none");
+            jQuery(this).siblings(".madeBoxCons_p2").find(".comfBox").css("display","block");
+        }
     });
     //点击P2按钮
     jQuery(".madeP_2_btn").click(function(){
-        jQuery(this).addClass("madeP_btn_now");
-        jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
-        jQuery(this).siblings(".madeBoxCons_p2").css("display","block");
-        jQuery(this).siblings(".madeBoxCons_p1").css("display","none");
-        jQuery(".select_P2").css("display","block");
-        jQuery(".select_P1").css("display","none");
-        setPosition(1);
+        var _imgNowVal = _imgIni.attr("src");
+        var _texNow = jQuery(".select_P1").html();
+        if(_imgNowVal == _imgIniVal && _texNow == _texIni1){
+            //未改动
+            jQuery(this).addClass("madeP_btn_now");
+            jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
+            jQuery(this).siblings(".madeBoxCons_p1").css("display","none");
+            jQuery(this).siblings(".madeBoxCons_p2").css("display","block");
+            jQuery(".select_P2").css("display","block");
+            jQuery(".select_P1").css("display","none");
+            setPosition(1);
+        }else{
+            //已改动
+            jQuery(this).siblings(".madeBoxCons_p1").find(".madeBoxFuns").css("display","none");
+            jQuery(this).siblings(".madeBoxCons_p1").find(".madeSubmit").css("display","none");
+            jQuery(this).siblings(".madeBoxCons_p1").find(".comfBox").css("display","block");
+        }
     });
 
     //定制图案或文字时 另一定制收起
@@ -166,7 +194,7 @@ function previewImage(file,imgId){
         _gripImg.style.opacity = 0;
         _formBtn.style.display = "block";
 
-        alert("请上传后缀名为jpg或png的照片!");
+        alert("请上传后缀名为jpg或png的图片!");
         return false;
     }
     var fileSize = 0;
@@ -186,7 +214,7 @@ function previewImage(file,imgId){
         _gripImg.style.opacity = 0;
         _formBtn.style.display = "block";
 
-        alert("照片最大尺寸为8M，请重新上传!");
+        alert("图片最大尺寸为8M，请重新上传!");
         return false;
     }else if(fileSize<=2*1024){
         _img.setAttribute("src",_imgSrc);
@@ -194,7 +222,7 @@ function previewImage(file,imgId){
         _gripImg.style.opacity = 0;
         _formBtn.style.display = "block";
 
-        alert("照片最小尺寸为2M，请重新上传!");
+        alert("图片最小尺寸为2M，请重新上传!");
         return false;
     }
 
@@ -504,3 +532,43 @@ productAddToCartForm.submitLight = function(button, url){
     }
 }.bind(productAddToCartForm);
 
+
+//定制提交判断
+jQuery(function() {
+
+    //提交当前PAGE按钮
+    jQuery(".submitY").click(function(){
+        jQuery(this).parent(".madeSubmit").css("display","none");
+        jQuery(this).parent(".madeSubmit").siblings(".madeBoxFuns").css("display","none");
+        jQuery(this).parent(".madeSubmit").siblings(".comfBox").css("display","block");
+    });
+
+    //保存 & 放弃定制
+    jQuery(".saveMadeY").click(function(){
+        var _comfBox = jQuery(this).parent().parent(".comfBox");
+        var _btnClass = _comfBox.parent(".madeBoxCons").siblings(".madeP_btn").attr("class");
+        _comfBox.css("display","none");
+        _comfBox.siblings(".madeSubmit").css("display","block");
+        _comfBox.siblings(".madeBoxFuns").css("display","block");
+        _comfBox.parent(".madeBoxCons").css("display","none");
+        _comfBox.parent(".madeBoxCons").siblings(".madeBoxCons").css("display","block");        
+    });
+
+    jQuery(".saveMadeN").click(function(){
+        jQuery(this).parent().parent(".comfBox").css("display","none");
+        jQuery(this).parent().parent(".comfBox").siblings(".madeSubmit").css("display","block");
+        jQuery(this).parent().parent(".comfBox").siblings(".madeBoxFuns").css("display","block");
+    });
+
+    jQuery(".saveMadeY_p1").click(function(){
+        var _comfBox = jQuery(this).parent().parent(".comfBox");
+        _comfBox.parent(".madeBoxCons").siblings(".madeP_1_btn").removeClass("madeP_btn_now");
+        _comfBox.parent(".madeBoxCons").siblings(".madeP_2_btn").addClass("madeP_btn_now");
+    });
+
+    jQuery(".saveMadeY_p2").click(function(){
+        var _comfBox = jQuery(this).parent().parent(".comfBox");
+        _comfBox.parent(".madeBoxCons").siblings(".madeP_2_btn").removeClass("madeP_btn_now");
+        _comfBox.parent(".madeBoxCons").siblings(".madeP_1_btn").addClass("madeP_btn_now");
+    });
+});

@@ -3704,3 +3704,41 @@ dl.madeBoxFuns dt{
 .viewMade button:hover img{
 	opacity: .9;
 }
+
+
+.comfBox{
+	display: none;
+	position: relative;
+	width: 170px;
+	height: 100px;
+	overflow: hidden;
+	margin:30px auto;
+	background: #e6e6e6;
+	color:#000;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 4px;
+}
+
+.comfBox>p{
+	margin:20px 0 15px;
+}
+
+.confBtn button{
+	display: inline-block;
+	width:50px;
+	height: 30px;
+	border:1px solid #000;
+	border-radius: 2px;
+	cursor:pointer;
+}
+
+.confBtn button.saveMadeY{
+	background: #f29d09;
+}
+
+.confBtn button.saveMadeN{
+	background: #eee;
+	color: #7c7c7c;
+	border-color:#cfcfcf;
+}

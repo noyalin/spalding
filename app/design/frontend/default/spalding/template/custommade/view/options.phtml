@@ -1,9 +1,23 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
 
+<div class="select_P1">
+    <?php if ($this->getStep_P1() == 1): ?>
+        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+    <?php else: ?>
+        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+    <?php endif; ?>
+</div>
+
+<div class="select_P2" style="display: none;">
+    <?php if ($this->getStep_P2() == 1): ?>
+        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+    <?php else: ?>
+        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+    <?php endif; ?>
+</div>
 
 
-<?php echo $this->getChildHtml('custommade_view_options_custom') ?>
 
 <!-- 右侧设置通栏 s -->
 <div class="cusMadeBox cusMadeRig">
@@ -24,36 +38,43 @@
         <dl class="madeBoxFuns">
             <dd class="madeKindTit madeKindTitImg">定制图案</dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
-            <h5>***注意***</h5>
-            <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
+                <h5>***注意***</h5>
+                <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
             </dt>
             <dd class="madeKindTit madeKindTitTex">定制文字</dd>
             <dt class="madeKindCons madeKindTex">
-            <div class="madeTextInp">
-                <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
-            </div>
-            <p>请选择字号：</p>
-            <div id="customMade_fontSize_1" class="madeKindTexSpan">
-                <div class="sale-num">
-                    <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
-                    <span class="size_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
-                    <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="attribute2097" data-input="kinds" value="54">
-                    <span class="size_kind setSize_30" for="attribute2097" name="attribute2097">中号字体</span>
-                    <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="attribute2096" data-input="kinds" value="55">
-                    <span class="size_kind setSize_20" for="attribute2096" name="attribute2096">小号字体</span>
+                <div class="madeTextInp">
+                    <input type="text" class="madeTextInpBox" placeholder="请输入定制文字">
                 </div>
-            </div>
+                <p>请选择字号：</p>
+                <div id="customMade_fontSize_1" class="madeKindTexSpan">
+                    <div class="sale-num">
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="attribute2098" data-input="kinds" value="53">
+                        <span class="size_kind setSize_40" for="attribute2098" name="attribute2098">大号字体</span>
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="attribute2097" data-input="kinds" value="54">
+                        <span class="size_kind setSize_30" for="attribute2097" name="attribute2097">中号字体</span>
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="attribute2096" data-input="kinds" value="55">
+                        <span class="size_kind setSize_20" for="attribute2096" name="attribute2096">小号字体</span>
+                    </div>
+                </div>
             </dt>
             <dd class="madeKindTit madeKindTitNon madeNow">空白</dd>
         </dl>
 
         <div class="madeSubmit">
-            <button type="button" class="submitY"
-                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P1')">完成P1定制
-            </button>
+            <button type="button" class="submitY">完成P1定制</button>
             <button type="button" class="submitN"
                     onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>','P1')">重置此次定制
             </button>
+        </div>
+
+        <!-- 确认&放弃提示 P1 -->
+        <div class="comfBox">
+            <p>是否保存当前定制？</p>
+            <div class="confBtn">
+                <button type="button" class="saveMadeY saveMadeY_p1">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p1">否</button>
+            </div>
         </div>
     </div>
 
@@ -89,12 +110,20 @@
         </dl>
 
         <div class="madeSubmit">
-            <button type="button" class="submitY"
-                    onclick="completeCustomMade('<?php echo $this->getUrl('custommade/index/complete') ?>','P2')">完成P2定制
+            <button type="button" class="submitY">完成P2定制
             </button>
             <button type="button" class="submitN"
                     onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>','P2')">重置此次定制
             </button>
+        </div>
+
+        <!-- 确认&放弃提示 P1 -->
+        <div class="comfBox">
+            <p>是否保存当前定制？</p>
+            <div class="confBtn">
+                <button type="button" class="saveMadeY saveMadeY_p2">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p2">否</button>
+            </div>
         </div>
     </div>
 
