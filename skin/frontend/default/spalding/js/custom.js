@@ -152,8 +152,51 @@ function previewImage(file,imgId){
     var _gripImg = document.getElementById('img_grip');
     var _form = document.getElementById('imgFuns');
 
-    var img = document.getElementById(imgId);
-    var _imgSrc = img.src;
+    var _img = document.getElementById(imgId);
+    var _imgSrc = _img.getAttribute("src");
+
+
+    //size & format
+    photoExt=file.value.substr(file.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
+    if(photoExt!='.jpg' && photoExt!='.png'){
+        
+        _img.setAttribute("src",_imgSrc);
+
+        _form.style.opacity = 0;
+        _gripImg.style.opacity = 0;
+        _formBtn.style.display = "block";
+
+        alert("请上传后缀名为jpg或png的照片!");
+        return false;
+    }
+    var fileSize = 0;
+    var isIE = /msie/i.test(navigator.userAgent) && !window.opera;            
+    if (isIE && !file.files) {          
+         var filePath = file.value;            
+         var fileSystem = new ActiveXObject("Scripting.FileSystemObject");   
+         var file = fileSystem.GetFile (filePath);               
+         fileSize = file.Size;         
+    }else {  
+         fileSize = file.files[0].size;
+    } 
+    fileSize=Math.round(fileSize/1024*100)/100; //单位为KB
+    if(fileSize>=8*1024){
+        _img.setAttribute("src",_imgSrc);
+        _form.style.opacity = 0;
+        _gripImg.style.opacity = 0;
+        _formBtn.style.display = "block";
+
+        alert("照片最大尺寸为8M，请重新上传!");
+        return false;
+    }else if(fileSize<=2*1024){
+        _img.setAttribute("src",_imgSrc);
+        _form.style.opacity = 0;
+        _gripImg.style.opacity = 0;
+        _formBtn.style.display = "block";
+
+        alert("照片最小尺寸为2M，请重新上传!");
+        return false;
+    }
 
 
     if (file.files && file.files[0]){
@@ -168,46 +211,6 @@ function previewImage(file,imgId){
         file.select();
         var src = document.selection.createRange().text;
         jQuery("#"+imgId).attr("src",src);
-    }
-
-
-    //size & format
-    photoExt=file.value.substr(file.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
-    if(photoExt!='.jpg' && photoExt!='.png'){
-        
-        img.src = _imgSrc;
-
-        _form.style.opacity = 0;
-        _gripImg.style.opacity = 0;
-        _formBtn.style.display = "block";
-        alert("请上传后缀名为jpg或png的照片!");
-        return false;
-    }
-    var fileSize = 0;
-    var isIE = /msie/i.test(navigator.userAgent) && !window.opera;            
-    if (isIE && !file.files) {          
-         var filePath = file.value;            
-         var fileSystem = new ActiveXObject("Scripting.FileSystemObject");   
-         var file = fileSystem.GetFile (filePath);               
-         fileSize = file.Size;         
-    }else {  
-         fileSize = file.files[0].size;     
-    } 
-    fileSize=Math.round(fileSize/1024*100)/100; //单位为KB
-    if(fileSize>=8*1024){
-        _form.style.opacity = 0;
-        _gripImg.style.opacity = 0;
-        _formBtn.style.display = "block";
-
-        alert("照片最大尺寸为8M，请重新上传!");
-        return false;
-    }else if(fileSize<=2*1024){
-        _form.style.opacity = 0;
-        _gripImg.style.opacity = 0;
-        _formBtn.style.display = "block";
-
-        alert("照片最小尺寸为2M，请重新上传!");
-        return false;
     }
 }
 
