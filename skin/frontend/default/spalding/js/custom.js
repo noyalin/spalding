@@ -164,6 +164,29 @@ jQuery(function(){
             var src = document.selection.createRange().text;
             jQuery("#"+imgId).attr("src",src);
         }
+
+
+        //size
+        photoExt=file.value.substr(file.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
+        if(photoExt!='.jpg'){
+            alert("请上传后缀名为jpg的照片!");
+            return false;
+        }
+        var fileSize = 0;
+        var isIE = /msie/i.test(navigator.userAgent) && !window.opera;            
+        if (isIE && !file.files) {          
+             var filePath = file.value;            
+             var fileSystem = new ActiveXObject("Scripting.FileSystemObject");   
+             var file = fileSystem.GetFile (filePath);               
+             fileSize = file.Size;         
+        }else {  
+             fileSize = file.files[0].size;     
+        } 
+        fileSize=Math.round(fileSize/1024*100)/100; //单位为KB
+        if(fileSize>=10){
+            alert("照片最大尺寸为10KB，请重新上传!");
+            return false;
+        }
     }
 
 var cut_div;  //裁减图片外框div

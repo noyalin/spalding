@@ -199,8 +199,9 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	position:absolute;
 }
 
-.big_pic li .imgPag_1 img{
-	height:175px;
+.big_pic li .imgPag_1 img,.big_pic li .imgPag_2 img{
+	width: 600px;
+	height:186px;
 }
 
 .big_pic li .imgBall{
