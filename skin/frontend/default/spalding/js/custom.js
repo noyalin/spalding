@@ -73,8 +73,18 @@ jQuery(function(){
 
 
             // TODO
-
-            resetView_1(2, "abcdeft", 1);
+            jQuery.ajax({
+                type: 'POST',
+                url: jQuery('#check').val(),
+                data: {position: 1},
+                success: function (res) {
+                    dataObj = ajaxEvalJson(res);
+                    if (dataObj != null) {
+                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    }
+                }
+            });
+            //resetView_1(2, "abcdeft", 1);
         }else{
             //已改动
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeBoxFuns").css("display","none");
@@ -101,7 +111,18 @@ jQuery(function(){
             jQuery("#options_pos").val(2);
 
             // TODO
-            resetView_2(1, "http://localhost/spalding/skin/frontend/default/spalding/images/customMade/imgPer_1.jpg", "");
+            jQuery.ajax({
+                type: 'POST',
+                url: jQuery('#check').val(),
+                data: {position: 2},
+                success: function (res) {
+                    dataObj = ajaxEvalJson(res);
+                    if (dataObj != null) {
+                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    }
+                }
+            });
+            //resetView_2(1, "http://localhost/spalding/skin/frontend/default/spalding/images/customMade/imgPer_1.jpg", "");
 
         }else{
             //已改动

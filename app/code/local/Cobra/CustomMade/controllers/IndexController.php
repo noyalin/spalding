@@ -14,13 +14,13 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     public function completeAction()
     {
         $params = Mage::app()->getRequest()->getParams();
-        Mage::getSingleton('core/session')->setPos($params[position]);
-        $type = null;
+        $pos = $params['position'];
+        $type = $params['type'];
         $content1 = null;
         $content2 = null;
 
-        if ($params[position] == 1) {
-            if ($params[type] == 1) {
+        if ($pos == 1) {
+            if ($type == 1) {
                 $imgPath = 'media/custommade/tmp/';
                 $imgBaseName = time();
                 $img0 = $imgBaseName . '_p1_0.jpg';
@@ -48,17 +48,21 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $imgresize->save($imgPath . $img2);
                 $content2 = Mage::getUrl($imgPath) . $img2;
 
-            } elseif ($params[type] == 2) {
+            } elseif ($type == 2) {
                 $content1 = $params['text'];
                 $content2 = $params['size'];
+            } else {
+                $type = 3;
+                $content1 = null;
+                $content2 = null;
             }
 
-            Mage::getSingleton('core/session')->setTypeP1($params[type]);
+            Mage::getSingleton('core/session')->setTypeP1($type);
             Mage::getSingleton('core/session')->setContent1P1($content1);
             Mage::getSingleton('core/session')->setContent2P1($content2);
 
-        } elseif ($params[position] == 2) {
-            if ($params[type] == 1) {
+        } elseif ($pos == 2) {
+            if ($type == 1) {
                 $imgPath = 'media/custommade/tmp/';
                 $imgBaseName = time();
                 $img0 = $imgBaseName . '_p2_0.jpg';
@@ -84,9 +88,13 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
                 $imgresize->save($imgPath . $img2);
                 $content2 = Mage::getUrl($imgPath) . $img2;
-            } elseif ($params[type] == 2) {
+            } elseif ($type == 2) {
                 $content1 = $params['text'];
                 $content2 = $params['size'];
+            } else {
+                $type = 3;
+                $content1 = null;
+                $content2 = null;
             }
 
             Mage::getSingleton('core/session')->setTypeP2($type);
@@ -94,17 +102,18 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             Mage::getSingleton('core/session')->setContent2P2($content2);
 
         }
+        echo self::getCustomMadeSession($pos);
     }
 
     public function resetAction()
     {
         $params = Mage::app()->getRequest()->getParams();
-        Mage::getSingleton('core/session')->setPos($params[position]);
-        if ($params[position] == 1) {
+        $pos = $params['position'];
+        if ($pos == 1) {
             Mage::getSingleton('core/session')->setTypeP1(null);
             Mage::getSingleton('core/session')->setContent1P1(null);
             Mage::getSingleton('core/session')->setContent2P1(null);
-        } elseif ($params[position] == 2) {
+        } elseif ($pos == 2) {
             Mage::getSingleton('core/session')->setTypeP2(null);
             Mage::getSingleton('core/session')->setContent1P2(null);
             Mage::getSingleton('core/session')->setContent2P2(null);
@@ -113,12 +122,38 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function previewAction()
     {
-        $status = Mage::getSingleton('core/session')->getStatus();
+        $status = Mage::getSingleton('core/session')->getCustomStatus();
         if ($status == 1) {
-            Mage::getSingleton('core/session')->setStatus(0);
+            Mage::getSingleton('core/session')->setCustomStatus(0);
         } else {
-            Mage::getSingleton('core/session')->setStatus(1);
+            Mage::getSingleton('core/session')->setCustomStatus(1);
         }
+    }
+
+    public function checkAction()
+    {
+        $params = Mage::app()->getRequest()->getParams();
+        $position = $params['position'];
+        echo self::getCustomMadeSession($position);
+
+    }
+
+    private function getCustomMadeSession($position)
+    {
+        $session = Mage::getSingleton('core/session');
+        $res = array();;
+        if ($position == 1) {
+            $res['type'] = $session->getTypeP1();
+            $res['content1'] = $session->getContent1P1();
+            $res['content2'] = $session->getContent2P1();
+        } elseif ($position == 2) {
+            $res['type'] = $session->getTypeP2();
+            $res['content1'] = $session->getContent1P2();
+            $res['content2'] = $session->getContent2P2();
+        }
+
+        $resultString = json_encode($res);
+        return $resultString;
     }
 }
 

@@ -37,477 +37,539 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <?php
-$product_catena = $this->getAttrNameByOptionId("product_catena",$_product->getProductCatena());//篮球系列
-$product_material = $this->getAttrNameByOptionId("product_material",$_product->getProductMaterial());//篮球材质;
+$product_catena = $this->getAttrNameByOptionId("product_catena", $_product->getProductCatena());//篮球系列
+$product_material = $this->getAttrNameByOptionId("product_material", $_product->getProductMaterial());//篮球材质;
 $product_sku = $_product->getSku();//sku
-$product_norm = $this->getAttrNameByOptionId("product_norm",$_product->getProductNorm());//篮球规格
-$product_side = $this->getAttrNameByOptionId("product_side",$_product->getProductSide());//篮球场地
+$product_norm = $this->getAttrNameByOptionId("product_norm", $_product->getProductNorm());//篮球规格
+$product_side = $this->getAttrNameByOptionId("product_side", $_product->getProductSide());//篮球场地
 $size_table_id = $_product->getSizeTable();//尺码表valueid
 $product_attributeSetName = $_product->getAttributeSetName();
 //get description
-$shortDescription =  $_product->getShortDescription();
-if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
-    if( strstr($shortDescription,'，')  ){
-        $tmpArr = explode("，",$shortDescription);
-        $shortDescription = "(".$tmpArr[1].")";
-    }elseif(strstr($shortDescription,',')){
-        $tmpArr = explode(",",$shortDescription);
-        $shortDescription = "(". $tmpArr[1].")";
-    }else{
+$shortDescription = $_product->getShortDescription();
+if (strstr($shortDescription, "直径") && stristr($shortDescription, "mm")) {
+    if (strstr($shortDescription, '，')) {
+        $tmpArr = explode("，", $shortDescription);
+        $shortDescription = "(" . $tmpArr[1] . ")";
+    } elseif (strstr($shortDescription, ',')) {
+        $tmpArr = explode(",", $shortDescription);
+        $shortDescription = "(" . $tmpArr[1] . ")";
+    } else {
         $shortDescription = '';
     }
-}else{
+} else {
     $shortDescription = '';
 }
 
 //get current category id
 $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
-$currentCategoryId= $_category->getId();
-if($currentCategoryId == 35):
+$currentCategoryId = $_category->getId();
+if ($currentCategoryId == 35):
 //专属定制
-?>
+    ?>
     <?php echo $this->getChildHtml('custommade_view') ?>
-<?php else: 
-?>
-<div class="product-view">
-    <div class="product-essential">
-        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-            <?php echo $this->getBlockHtml('formkey') ?>
-            <div class="no-display">
-                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-                <input type="hidden" name="related_product" id="related-products-field" value="" />
-            </div>
-
-            <div class="product-shop">
-                <div class="product-name">
-                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name').$shortDescription ?></h1>
+<?php else:
+    ?>
+    <div class="product-view">
+        <div class="product-essential">
+            <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post"
+                  id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                <?php echo $this->getBlockHtml('formkey') ?>
+                <div class="no-display">
+                    <input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
+                    <input type="hidden" name="related_product" id="related-products-field" value=""/>
                 </div>
-                <?php echo $this->getChildHtml('alert_urls') ?>
-                <!--            --><?php //echo $this->getChildHtml('product_type_data') ?>
-                <?php echo $this->getTierPriceHtml() ?>
-                <?php echo $this->getChildHtml('extrahint') ?>
 
-                <?php if (!$this->hasOptions()):?>
-                    <div class="add-to-box">
-                        <?php if($_product->isSaleable()): ?>
-                            <?php echo $this->getChildHtml('addtocart') ?>
-                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                <span class="or"><?php echo $this->__('OR') ?></span>
+                <div class="product-shop">
+                    <div class="product-name">
+                        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') . $shortDescription ?></h1>
+                    </div>
+                    <?php echo $this->getChildHtml('alert_urls') ?>
+                    <!--            --><?php //echo $this->getChildHtml('product_type_data')
+                    ?>
+                    <?php echo $this->getTierPriceHtml() ?>
+                    <?php echo $this->getChildHtml('extrahint') ?>
+
+                    <?php if (!$this->hasOptions()): ?>
+                        <div class="add-to-box">
+                            <?php if ($_product->isSaleable()): ?>
+                                <?php echo $this->getChildHtml('addtocart') ?>
+                                <?php if ($this->helper('wishlist')->isAllow() || $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                    <span class="or"><?php echo $this->__('OR') ?></span>
+                                <?php endif; ?>
                             <?php endif; ?>
-                        <?php endif; ?>
-                        <?php echo $this->getChildHtml('addto') ?>
-                    </div>
-                    <?php echo $this->getChildHtml('extra_buttons') ?>
-                <?php elseif (!$_product->isSaleable()): ?>
-                    <div class="add-to-box">
-                        <?php echo $this->getChildHtml('addto') ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php echo $this->getChildHtml('other');?>
-
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                <?php endif;?>
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-                <?php endif;?>
-                <div class="short-description">
-                    <img alt="" src="<?php echo $this->getSkinUrl("images/productDetail_des.png") ?>">
-                </div>
-            </div>
-
-            <div class="product-img-box">
-                <?php echo $this->getChildHtml('media') ?>
-            </div>
-
-            <div class="clear"></div>
-
-        </form>
-        <script type="text/javascript">
-            //<![CDATA[
-            var productAddToCartForm = new VarienForm('product_addtocart_form');
-            productAddToCartForm.submit = function(button, url) {
-
-                if (this.validator.validate()) {
-                    var form = this.form;
-                    var oldUrl = form.action;
-                    var list= jQuery('input:radio[data-input="kinds"]:checked').val();
-                    if(list==null){
-                        alert("请选择尺码");
-                        return false;
-                    }
-
-                    if (url) {
-                        form.action = url;
-                    }
-                    var e = null;
-                    try {
-                        this.form.submit();
-                    } catch (e) {
-                    }
-                    this.form.action = oldUrl;
-                    if (e) {
-                        throw e;
-                    }
-
-                    if (button && button != 'undefined') {
-                        button.disabled = true;
-                    }
-                }
-            }.bind(productAddToCartForm);
-
-            productAddToCartForm.submitLight = function(button, url){
-                if(this.validator) {
-                    var nv = Validation.methods;
-                    delete Validation.methods['required-entry'];
-                    delete Validation.methods['validate-one-required'];
-                    delete Validation.methods['validate-one-required-by-name'];
-                    // Remove custom datetime validators
-                    for (var methodName in Validation.methods) {
-                        if (methodName.match(/^validate-datetime-.*/i)) {
-                            delete Validation.methods[methodName];
-                        }
-                    }
-
-                    if (this.validator.validate()) {
-                        if (url) {
-                            this.form.action = url;
-                        }
-                        this.form.submit();
-                    }
-                    Object.extend(Validation.methods, nv);
-                }
-            }.bind(productAddToCartForm);
-            //]]>
-        </script>
-    </div>
-
-
-
-
-
-
-    <!-- 产品参数 -->
-    <div class="productArgs">
-        <div class="productArgs_tit">产品参数</div>
-        <div class="productArgs_box">
-            <ul class="clearfix">
-                <li>货号：<?php echo $product_sku;?></li>
-                <li>篮球规格: <?php echo $product_norm;?></li>
-                <li>系列：<?php echo $product_catena;?></li>
-                <li>场地：<?php echo $product_side;?></li>
-                <li>材质：<?php echo $product_material;?></li>
-            </ul>
-        </div>
-    </div>
-    <!-- 产品详情 -->
-    <style>
-        .product-collateral-box-img img{
-            margin: 0 0 0 -60px;
-        }
-    </style>
-    <div class="product-collateral">
-        <div class="productDetail_collTit">
-            <img src='<?php echo $this->getSkinUrl("images/productDetail_collateralTit.png") ?>' alt="">
-        </div>
-        <?php
-        $urlkey = $_product->getUrlKey();
-        $sku = $_product->getSku();
-        $i = 0;
-        $arr = array( "正面/FRONT","反面/BACK","侧面/SIDE");
-        //----------------------------------------------------------------------------STA
-        $imgCount = $_product->getImageCount();
-        for($count = 0;$count <$imgCount;$count++){
-            //----------------------------------------------------------------------------END
-            $des = $arr[$i];
-            $i++;
-            ?>
-            <div class="product-collateral-wrap">
-                <div class="product-collateral-box">
-                    <h2 class="product-collateral-box-nam"><?php echo $des; ?></h2>
-                    <?php if($count == 0 && $sku == '74-582y'): ?>
-                        <div class="product-collateral-box-img">
-                            <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/74-582y/74-582-top1.jpg" alt=""/>
+                            <?php echo $this->getChildHtml('addto') ?>
+                        </div>
+                        <?php echo $this->getChildHtml('extra_buttons') ?>
+                    <?php elseif (!$_product->isSaleable()): ?>
+                        <div class="add-to-box">
+                            <?php echo $this->getChildHtml('addto') ?>
                         </div>
                     <?php endif; ?>
-                    <div class="product-collateral-box-img">
-                        <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku."/". $urlkey."-".($i+10) ?>.jpg" alt=""/>
+
+                    <?php echo $this->getChildHtml('other'); ?>
+
+                    <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                    <?php endif; ?>
+                    <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                        <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php endif; ?>
+                    <div class="short-description">
+                        <img alt="" src="<?php echo $this->getSkinUrl("images/productDetail_des.png") ?>">
                     </div>
                 </div>
-            </div>
 
-        <?php
-        }
-        ?>
-        <?php
-        if(($size_table_id != null)){
-            $size_table_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/".$size_table_id.".png";
+                <div class="product-img-box">
+                    <?php echo $this->getChildHtml('media') ?>
+                </div>
+
+                <div class="clear"></div>
+
+            </form>
+            <script type="text/javascript">
+                //<![CDATA[
+                var productAddToCartForm = new VarienForm('product_addtocart_form');
+                productAddToCartForm.submit = function (button, url) {
+
+                    if (this.validator.validate()) {
+                        var form = this.form;
+                        var oldUrl = form.action;
+                        var list = jQuery('input:radio[data-input="kinds"]:checked').val();
+                        if (list == null) {
+                            alert("请选择尺码");
+                            return false;
+                        }
+
+                        if (url) {
+                            form.action = url;
+                        }
+                        var e = null;
+                        try {
+                            this.form.submit();
+                        } catch (e) {
+                        }
+                        this.form.action = oldUrl;
+                        if (e) {
+                            throw e;
+                        }
+
+                        if (button && button != 'undefined') {
+                            button.disabled = true;
+                        }
+                    }
+                }.bind(productAddToCartForm);
+
+                productAddToCartForm.submitLight = function (button, url) {
+                    if (this.validator) {
+                        var nv = Validation.methods;
+                        delete Validation.methods['required-entry'];
+                        delete Validation.methods['validate-one-required'];
+                        delete Validation.methods['validate-one-required-by-name'];
+                        // Remove custom datetime validators
+                        for (var methodName in Validation.methods) {
+                            if (methodName.match(/^validate-datetime-.*/i)) {
+                                delete Validation.methods[methodName];
+                            }
+                        }
+
+                        if (this.validator.validate()) {
+                            if (url) {
+                                this.form.action = url;
+                            }
+                            this.form.submit();
+                        }
+                        Object.extend(Validation.methods, nv);
+                    }
+                }.bind(productAddToCartForm);
+                //]]>
+            </script>
+        </div>
+
+
+        <!-- 产品参数 -->
+        <div class="productArgs">
+            <div class="productArgs_tit">产品参数</div>
+            <div class="productArgs_box">
+                <ul class="clearfix">
+                    <li>货号：<?php echo $product_sku; ?></li>
+                    <li>篮球规格: <?php echo $product_norm; ?></li>
+                    <li>系列：<?php echo $product_catena; ?></li>
+                    <li>场地：<?php echo $product_side; ?></li>
+                    <li>材质：<?php echo $product_material; ?></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 产品详情 -->
+        <style>
+            .product-collateral-box-img img {
+                margin: 0 0 0 -60px;
+            }
+        </style>
+        <div class="product-collateral">
+            <div class="productDetail_collTit">
+                <img src='<?php echo $this->getSkinUrl("images/productDetail_collateralTit.png") ?>' alt="">
+            </div>
+            <?php
+            $urlkey = $_product->getUrlKey();
+            $sku = $_product->getSku();
+            $i = 0;
+            $arr = array("正面/FRONT", "反面/BACK", "侧面/SIDE");
+            //----------------------------------------------------------------------------STA
+            $imgCount = $_product->getImageCount();
+            for ($count = 0; $count < $imgCount; $count++) {
+                //----------------------------------------------------------------------------END
+                $des = $arr[$i];
+                $i++;
+                ?>
+                <div class="product-collateral-wrap">
+                    <div class="product-collateral-box">
+                        <h2 class="product-collateral-box-nam"><?php echo $des; ?></h2>
+                        <?php if ($count == 0 && $sku == '74-582y'): ?>
+                            <div class="product-collateral-box-img">
+                                <img
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/74-582y/74-582-top1.jpg"
+                                    alt=""/>
+                            </div>
+                        <?php endif; ?>
+                        <div class="product-collateral-box-img">
+                            <img
+                                src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 10) ?>.jpg"
+                                alt=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+            }
             ?>
-            <center><img src='<?php echo $size_table_url; ?>' alt=""></center>
-        <?php
-        }
-        ?>
-        <?php
-        if(($product_attributeSetName != null) && $product_attributeSetName == 72){
-            $view_bottom_url =  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') ."images/sizeTable/view_bottom.png";
+            <?php
+            if (($size_table_id != null)) {
+                $size_table_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') . "images/sizeTable/" . $size_table_id . ".png";
+                ?>
+                <center><img src='<?php echo $size_table_url; ?>' alt=""></center>
+                <?php
+            }
             ?>
-            <center><img src='<?php echo $view_bottom_url ?>' alt=""></center>
-        <?php
-        }
-        ?>
+            <?php
+            if (($product_attributeSetName != null) && $product_attributeSetName == 72) {
+                $view_bottom_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') . "images/sizeTable/view_bottom.png";
+                ?>
+                <center><img src='<?php echo $view_bottom_url ?>' alt=""></center>
+                <?php
+            }
+            ?>
+        </div>
+        <!-- 产品详情 e -->
+        <?php echo $this->getChildHtml('upsell_products') ?>
     </div>
-    <!-- 产品详情 e -->
-    <?php echo $this->getChildHtml('upsell_products') ?>
-</div>
-<?php
+    <?php
 endif;
 ?>
 <script type="text/javascript">
-jQuery(".saveMadeY_p1").click(function () {
-    // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
+    jQuery(".saveMadeY_p1").click(function () {
+        // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
 
-    var _comfBox = jQuery(".comfBox_1");
-    var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal"); 
-    alert(_madeValue);
+        var _comfBox = jQuery(".comfBox_1");
+        var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
+        var pic = jQuery("#avatar").attr("src");
+        var text = jQuery("#textInput_1").val().trim();
+        var size = 1;
+//    alert(_madeValue);
 
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#complete').val(),
+            data: {position: 1, type: _madeValue, originalImg: pic, text: text, size: size},
+            success: function (res) {
+                dataObj = ajaxEvalJson(res);
+                if (dataObj != null) {
+                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                }
+            }
+        });
+//    resetView_1(2, "abcdeft", 1);
+    });
 
-    resetView_1(2, "abcdeft", 1);
-});
+    jQuery(".saveMadeY_p2").click(function () {
+        var _comfBox = jQuery(".comfBox_2");
+        var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
+//    alert(_madeValue);
+        var pic = jQuery("#avatar").attr("src");
+        var text = jQuery("#textInput_2").val().trim();
+        var size = 2;
 
-jQuery(".saveMadeY_p2").click(function () {
-    var _comfBox = jQuery(".comfBox_2");
-    var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal"); 
-    alert(_madeValue);
-    
-    resetView_2(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
-    // resetView_2(2, "abcdeft", 3);
-});
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#complete').val(),
+            data: {position: 2, type: _madeValue, originalImg: pic, text: text, size: size},
+            success: function (res) {
+                dataObj = ajaxEvalJson(res);
+                if (dataObj != null) {
+                    resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                }
+            }
+        });
+//    resetView_2(1, "<?php //echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>//");
+        // resetView_2(2, "abcdeft", 3);
+    });
 
-var _resNow_1 = jQuery(".madeBoxCons_p1").find(".submitN");
-var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
+    var _resNow_1 = jQuery(".madeBoxCons_p1").find(".submitN");
+    var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
 
-jQuery(_resNow_1).click(function(){
-    resetView_1(3, "", "");
-});
+    jQuery(_resNow_1).click(function () {
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#reset').val(),
+            data: {position: 1},
+            success: function (res) {
+                resetView_1(3, "", "");
+            }
+        });
+    });
 
-jQuery(_resNow_2).click(function(){
-    resetView_2(3, "", "");
-});
+    jQuery(_resNow_2).click(function () {
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#reset').val(),
+            data: {position: 2},
+            success: function (res) {
+                resetView_2(3, "", "");
+            }
+        });
+    });
 
-function resetView_1(_dataType, value1, value2){
-    jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
-    jQuery('#customMade_fontSize_1 span').removeClass('checked');
-    jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
+    function resetView_1(_dataType, value1, value2) {
+        jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
+        jQuery('#customMade_fontSize_1 span').removeClass('checked');
+        jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
 
-    var _comfBox = jQuery(".comfBox_1");
-    var _resNow = _comfBox.siblings(".madeSubmit").find(".submitN");
-    jQuery(".viewPage_P2").css("display","none");//隐藏预览2
-    _comfBox.css("display","none");
-    _comfBox.siblings(".madeSubmit").css("display","block");
-    _comfBox.siblings(".madeBoxFuns").css("display","block");
-    _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
-    _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","block");
-    _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
-    _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
-    // jQuery(this).parents().find(".select_P2").css("display","block");
-    // jQuery(this).parents().find(".select_P1").css("display","none");
-    jQuery("#options_pos").val(2);
-    var type = jQuery("#options_type_p1").val();
-    var _viewPage1 = jQuery(".viewPage_P1"); //获取预览P1
-    var _bgZindx = _viewPage1.find(".viewPage_P1_bg");//获取预览P1背景，用以重置其Z-index值
-    var _viewPage1Bg = _bgZindx.find(".pageBg"); //获取预览P1背景，用以调整对应图片或文字背景
-    var _viewCons = _viewPage1.find(".viewPage_p1_wrap")//获取P1预览内容
-    // var _dataType = jQuery(".viewPage_P1").attr("dataType"); //获取传入定制类型 1-图片 2-文字 3-空白
-    /*if (type == 1) {
-        Opt.completeImg(1);
-    } else if (type == 2) {
-        Opt.completeTxt(1);
-    } else {
-        Opt.reset(1);
-    }*/
-    if(_dataType==1){//定制图片
-        //定位定制图案
-        var _dataImg=jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
-            value1);
+        var _comfBox = jQuery(".comfBox_1");
+        var _resNow = _comfBox.siblings(".madeSubmit").find(".submitN");
+        jQuery(".viewPage_P2").css("display", "none");//隐藏预览2
+        _comfBox.css("display", "none");
+        _comfBox.siblings(".madeSubmit").css("display", "block");
+        _comfBox.siblings(".madeBoxFuns").css("display", "block");
+        _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+        _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "block");
+        _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
+        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+        // jQuery(this).parents().find(".select_P2").css("display","block");
+        // jQuery(this).parents().find(".select_P1").css("display","none");
+        jQuery("#options_pos").val(2);
+        var type = jQuery("#options_type_p1").val();
+        var _viewPage1 = jQuery(".viewPage_P1"); //获取预览P1
+        var _bgZindx = _viewPage1.find(".viewPage_P1_bg");//获取预览P1背景，用以重置其Z-index值
+        var _viewPage1Bg = _bgZindx.find(".pageBg"); //获取预览P1背景，用以调整对应图片或文字背景
+        var _viewCons = _viewPage1.find(".viewPage_p1_wrap")//获取P1预览内容
+        // var _dataType = jQuery(".viewPage_P1").attr("dataType"); //获取传入定制类型 1-图片 2-文字 3-空白
+        /*if (type == 1) {
+         Opt.completeImg(1);
+         } else if (type == 2) {
+         Opt.completeTxt(1);
+         } else {
+         Opt.reset(1);
+         }*/
+        if (_dataType == 1) {//定制图片
+            //定位定制图案
+            var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
+                value1);
             // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
 
-        _viewCons.empty();
-        _viewCons.append(_dataImg);
+            _viewCons.empty();
+            _viewCons.append(_dataImg);
 
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow"); 
-        _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown(); 
-        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
-        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
+            _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
 
-        _viewPage1.css("display","block"); //显示P1画面
-        _bgZindx.css("z-index","2");   //重置P1背景z-index值
-        _viewPage1Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>");
+            _viewPage1.css("display", "block"); //显示P1画面
+            _bgZindx.css("z-index", "2");   //重置P1背景z-index值
+            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>");
 
-    }else if(_dataType==2){//定制文字
-        var _dataTxt=jQuery("<p class='viewTexWrap'></p>").text(value1);
-        var _zzT = jQuery(".zz_t");
+        } else if (_dataType == 2) {//定制文字
+            var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
+            var _zzT = jQuery(".zz_t");
 
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow"); 
-        _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
-        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
-        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","block");
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
+            _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "block");
 
-        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
-        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
 
-        _viewPage1.css("display","block"); //显示P1画面
-        _bgZindx.css("z-index","0");   //重置P1背景z-index值
-        _viewPage1Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
-        _viewCons.empty();
-        _viewCons.append(_dataTxt);
+            _viewPage1.css("display", "block"); //显示P1画面
+            _bgZindx.css("z-index", "0");   //重置P1背景z-index值
+            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+            _viewCons.empty();
+            _viewCons.append(_dataTxt);
 
-        if(value2==1) {
-            _viewPage1.find(".viewTexWrap").css("font-size","40px");
-            _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
-            jQuery("#attribute2096").attr('checked', 'checked');
-        }else if(value2==2){
-            _viewPage1.find(".viewTexWrap").css("font-size","60px");
+            if (value2 == 1) {
+                _viewPage1.find(".viewTexWrap").css("font-size", "40px");
+                _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
+                jQuery("#attribute2096").attr('checked', 'checked');
+            } else if (value2 == 2) {
+                _viewPage1.find(".viewTexWrap").css("font-size", "60px");
+                _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+                jQuery("#attribute2097").attr('checked', 'checked');
+            } else if (value2 == 3) {
+                _viewPage1.find(".viewTexWrap").css("font-size", "80px");
+                _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
+                jQuery("#attribute2098").attr('checked', 'checked');
+            }
+            // var
+        } else {//定制空白
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+            _viewPage1.css("display", "block"); //显示P1画面
+            _bgZindx.css("z-index", "0");   //重置P1背景z-index值
+            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+
+            _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
+            _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "none");
+
+            _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
+            _viewPage1.css("display", "none");
+            _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "none");
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("spalding");
+
+            _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
-            jQuery("#attribute2097").attr('checked', 'checked');
-        }else if(value2==3){
-            _viewPage1.find(".viewTexWrap").css("font-size","80px");
-            _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
-            jQuery("#attribute2098").attr('checked', 'checked');
         }
-        // var 
-    }else if(_dataType==3){//定制空白
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
-        _viewPage1.css("display","block"); //显示P1画面
-        _bgZindx.css("z-index","0");   //重置P1背景z-index值
-        _viewPage1Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
 
-        _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
-        _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
-        _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","none");
-        
-        _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
-        _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled","disabled");
-        _viewPage1.css("display","none");
-        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","none");
-        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("spalding");
+        //重置
 
-        _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
-        _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
     }
 
-    //重置
-    
-}
 
+    //P2
+    function resetView_2(_dataType, value1, value2) {
+        jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
+        jQuery('#customMade_fontSize_2 span').removeClass('checked');
+        jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
+        jQuery(".viewPage_P1").css("display", "none");//隐藏预览1
 
+        var _comfBox = jQuery(".comfBox_2");
+        var _resNow = _comfBox.siblings(".madeSubmit").find(".submitN");
 
-//P2
-function resetView_2(_dataType, value1, value2){
-    jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
-    jQuery('#customMade_fontSize_2 span').removeClass('checked');
-    jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
-    jQuery(".viewPage_P1").css("display","none");//隐藏预览1
+        _comfBox.css("display", "none");
+        _comfBox.siblings(".madeSubmit").css("display", "block");
+        _comfBox.siblings(".madeBoxFuns").css("display", "block");
+        _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+        _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "block");
+        _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
+        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+        jQuery("#options_pos").val(2);
+        var type = jQuery("#options_type_p1").val();
+        var _viewPage2 = jQuery(".viewPage_P2"); //获取预览P2
+        var _bgZindx = _viewPage2.find(".viewPage_P2_bg");//获取预览P2背景，用以重置其Z-index值
+        var _viewPage2Bg = _bgZindx.find(".pageBg"); //获取预览P2背景，用以调整对应图片或文字背景
+        var _viewCons = _viewPage2.find(".viewPage_p2_wrap")//获取P2预览内容
 
-    var _comfBox = jQuery(".comfBox_2");
-    var _resNow = _comfBox.siblings(".madeSubmit").find(".submitN");
-
-    _comfBox.css("display","none");
-    _comfBox.siblings(".madeSubmit").css("display","block");
-    _comfBox.siblings(".madeBoxFuns").css("display","block");
-    _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
-    _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","block");
-    _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
-    _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
-    _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
-    jQuery("#options_pos").val(2);
-    var type = jQuery("#options_type_p1").val();
-    var _viewPage2 = jQuery(".viewPage_P2"); //获取预览P2
-    var _bgZindx = _viewPage2.find(".viewPage_P2_bg");//获取预览P2背景，用以重置其Z-index值
-    var _viewPage2Bg = _bgZindx.find(".pageBg"); //获取预览P2背景，用以调整对应图片或文字背景
-    var _viewCons = _viewPage2.find(".viewPage_p2_wrap")//获取P2预览内容
-
-    if(_dataType==1){//定制图片
-        //定位定制图案
-        var _dataImg=jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
-            value1);
+        if (_dataType == 1) {//定制图片
+            //定位定制图案
+            var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
+                value1);
             // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
 
-        _viewCons.empty();
-        _viewCons.append(_dataImg);
+            _viewCons.empty();
+            _viewCons.append(_dataImg);
 
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow"); 
-        _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
 
-        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
-        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
 
-        _viewPage2.css("display","block"); //显示P1画面
-        _bgZindx.css("z-index","2");   //重置P1背景z-index值
-        _viewPage2Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>");
+            _viewPage2.css("display", "block"); //显示P1画面
+            _bgZindx.css("z-index", "2");   //重置P1背景z-index值
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>");
 
-    }else if(_dataType==2){//定制文字
-        var _dataTxt=jQuery("<p class='viewTexWrap'></p>").text(value1);
-        var _zzT = jQuery(".zz_t");
+        } else if (_dataType == 2) {//定制文字
+            var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
+            var _zzT = jQuery(".zz_t");
 
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow"); 
-        _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
-        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
-        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","block");
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
+            _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "block");
 
-        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
-        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
 
-        _viewPage2.css("display","block"); //显示P1画面
-        _bgZindx.css("z-index","0");   //重置P1背景z-index值
-        _viewPage2Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
-        _viewCons.empty();
-        _viewCons.append(_dataTxt);
+            _viewPage2.css("display", "block"); //显示P1画面
+            _bgZindx.css("z-index", "0");   //重置P1背景z-index值
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+            _viewCons.empty();
+            _viewCons.append(_dataTxt);
 
-        if(value2==1) {
-            _viewPage1.find(".viewTexWrap").css("font-size","40px");
-            _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
-            jQuery("#attribute2091").attr('checked', 'checked');
-        }else if(value2==2){
-            _viewPage1.find(".viewTexWrap").css("font-size","60px");
+            if (value2 == 1) {
+                _viewPage1.find(".viewTexWrap").css("font-size", "40px");
+                _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
+                jQuery("#attribute2091").attr('checked', 'checked');
+            } else if (value2 == 2) {
+                _viewPage1.find(".viewTexWrap").css("font-size", "60px");
+                _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+                jQuery("#attribute2092").attr('checked', 'checked');
+            } else if (value2 == 3) {
+                _viewPage1.find(".viewTexWrap").css("font-size", "80px");
+                _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
+                jQuery("#attribute2093").attr('checked', 'checked');
+            }
+
+        } else {//定制空白
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+            _viewPage2.css("display", "block"); //显示P1画面
+            _bgZindx.css("z-index", "0");   //重置P1背景z-index值
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+
+            _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
+            _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "none");
+
+            _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
+            _viewPage2.css("display", "none");
+            _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "none");
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("adfasdf");
+
+            _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
-            jQuery("#attribute2092").attr('checked', 'checked');
-        }else if(value2==3){
-            _viewPage1.find(".viewTexWrap").css("font-size","80px");
-            _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
-            jQuery("#attribute2093").attr('checked', 'checked');
         }
 
-    }else if(_dataType==3){//定制空白
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
-        _viewPage2.css("display","block"); //显示P1画面
-        _bgZindx.css("z-index","0");   //重置P1背景z-index值
-        _viewPage2Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+        //重置
 
-        _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
-        _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
-        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
-        _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","none");
-
-        _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
-        _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled","disabled");
-        _viewPage2.css("display","none");
-        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","none");
-        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("adfasdf");
-
-        _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
-        _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
     }
 
-    //重置
 
-}
+    jQuery(function () {
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#check').val(),
+            data: {position: 1},
+            success: function (res) {
+                dataObj = ajaxEvalJson(res);
+                if (dataObj != null) {
+                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                }
+            }
+        });
+//        resetView_1(2, "abcdeft", 1);
+    });
 
-
-jQuery(function(){
-    resetView_1(2, "abcdeft", 1);
-});
-
+    function ajaxEvalJson(data)
+    {
+        var dataObj = eval("("+jQuery.trim(data)+")");
+//        if (dataObj.status != "Success") {
+//            loadLight(dataObj.lightedCnt, 0);
+//            showAlert(dataObj.message);
+//        }
+        return dataObj;
+    }
 </script>

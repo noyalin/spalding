@@ -1,3 +1,8 @@
+<input id="complete" type="hidden" value="<?php echo $this->getUrl('custommade/index/complete'); ?>"/>
+<input id="reset" type="hidden" value="<?php echo $this->getUrl('custommade/index/reset'); ?>"/>
+<input id="preview" type="hidden" value="<?php echo $this->getUrl('custommade/index/preview'); ?>"/>
+<input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
+
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
 <?php $_product = $this->getProduct(); ?>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
