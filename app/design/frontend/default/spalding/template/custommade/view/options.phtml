@@ -1,22 +1,11 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
 
-<div class="select_P1">
-    <?php if ($this->getStep_P1() == 1): ?>
-        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
-    <?php else: ?>
-        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
-    <?php endif; ?>
-</div>
-
-<div class="select_P2" style="display: none;">
-    <?php if ($this->getStep_P2() == 1): ?>
-        <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
-    <?php else: ?>
-        <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
-    <?php endif; ?>
-</div>
-
+<?php if ($this->getStatus() == 1): ?>
+    <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+<?php else: ?>
+    <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+<?php endif; ?>
 
 <!-- 右侧设置通栏 s -->
 <div class="cusMadeBox cusMadeRig">
@@ -112,7 +101,7 @@
             <button type="button" class="submitY">完成P2定制
             </button>
             <button type="button" class="submitN"
-                    onclick="resetCustomMade('<?php echo $this->getUrl('custommade/index/reset') ?>','P2')">重置此次定制
+                    onclick="resetCustomMade()">重置此次定制
             </button>
         </div>
 

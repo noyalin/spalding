@@ -1,20 +1,20 @@
-var made_position = 0;
-var made_type = new Array(2);
+//var made_position = 0;
+//var made_type = new Array(2);
 function optioninit() {
     document.getElementsByName('super_attribute[2094]')[0].checked = 'checked';
 }
-function getPosition() {
-    return made_position;
-}
-function setPosition(position) {
-    made_position = position;
-}
-function getType() {
-    return made_type;
-}
-function setType(type) {
-    made_type[made_position] = type;
-}
+//function getPosition() {
+//    return made_position;
+//}
+//function setPosition(position) {
+//    made_position = position;
+//}
+//function getType() {
+//    return made_type;
+//}
+//function setType(type) {
+//    made_type[made_position] = type;
+//}
 
 jQuery(function() {
     var spanLen = jQuery('#customMade_fontSize_1 input[type="radio"]').length;
@@ -69,7 +69,7 @@ jQuery(function(){
             jQuery(this).siblings(".madeBoxCons_p2").css("display","none");
             jQuery(this).parents().find(".select_P1").css("display","block");
             jQuery(this).parents().find(".select_P2").css("display","none");
-            setPosition(0);
+            jQuery("#options_pos").val(1);
         }else{
             //已改动
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeBoxFuns").css("display","none");
@@ -89,7 +89,7 @@ jQuery(function(){
             jQuery(this).siblings(".madeBoxCons_p2").css("display","block");
             jQuery(this).parents().find(".select_P2").css("display","block");
             jQuery(this).parents().find(".select_P1").css("display","none");
-            setPosition(1);
+            jQuery("#options_pos").val(2);
         }else{
             //已改动
             jQuery(this).siblings(".madeBoxCons_p1").find(".madeBoxFuns").css("display","none");
@@ -119,7 +119,12 @@ jQuery(function(){
         jQuery(this).parents().find(".madeStepImg").css("display","block");
         jQuery(this).parents().find(".madeStepTex").css("display","none");
         jQuery(this).parents().find(".madeStepNone").css("display","none");
-        setType("图片");
+        var pos = jQuery("#options_pos").val();
+        if (pos == 1) {
+            jQuery("#options_type_p1").val(1);
+        } else if (pos == 2) {
+            jQuery("#options_type_p2").val(1);
+        }
     });
 
     //选择文本
@@ -137,8 +142,14 @@ jQuery(function(){
         jQuery(this).parents().find(".madeStepTex").css("display","block");
         jQuery(this).parents().find(".madeStepImg").css("display","none");
         jQuery(this).parents().find(".madeStepNone").css("display","none");
-        setType("文字");
+        var pos = jQuery("#options_pos").val();
+        if (pos == 1) {
+            jQuery("#options_type_p1").val(2);
+        } else if (pos == 2) {
+            jQuery("#options_type_p2").val(2);
+        }
     });
+
     //选择空白
     jQuery(".madeKindTitNon").click(function(){
         jQuery(this).addClass("madeNow");
@@ -149,7 +160,12 @@ jQuery(function(){
         jQuery(this).parents().find(".madeStepNone").css("display","block");
         jQuery(this).parents().find(".madeStepTex").css("display","none");
         jQuery(this).parents().find(".madeStepImg").css("display","none");
-        setType("无");
+        var pos = jQuery("#options_pos").val();
+        if (pos == 1) {
+            jQuery("#options_type_p1").val(null);
+        } else if (pos == 2) {
+            jQuery("#options_type_p2").val(null);
+        }
     });
 
     //设置字体
@@ -442,49 +458,6 @@ function avatarrotateright(){
     jQuery('#avatar').rotate({ animateTo:value});
 }
 
-//function completeCustomMade() {
-//    //var originalImg = document.getElementById('avatar').src;
-//    //jQuery.ajax({
-//    //    type: 'POST',
-//    //    url: url,
-//    //    data: {originalImg: originalImg},
-//    //    success: function (data) {
-//    //    }
-//    //
-//    //});
-//
-//    var select_type = made_type[0] + "-" + made_type[1];
-//    var options = jQuery(".super_attribute_2112");
-//    for (var i = 0; i < options.length; i++) {
-//        if (select_type == options[i].firstElementChild.innerHTML) {
-//            options[i].lastElementChild.checked = 'checked';
-//        }
-//    }
-//}
-function completeCustomMade(url, pos) {
-    var originalImg = document.getElementById('avatar').src;
-    jQuery.ajax({
-        type: 'POST',
-        url: url,
-        data: {cut_pos: getcutpos(), originalImg: originalImg, position: pos},
-        success: function (res) {
-            //jQuery('.madeStep_2').innerHTML(res);
-            window.location.reload();
-        }
-    });
-}
-
-function resetCustomMade(url, pos) {
-    jQuery.ajax({
-        type: 'POST',
-        url: url,
-        data: {position: pos},
-        success: function (res) {
-            window.location.reload();
-        }
-    });
-}
-
 var productAddToCartForm = new VarienForm('product_addtocart_form');
 productAddToCartForm.submit = function(button, url) {
 
@@ -568,6 +541,15 @@ jQuery(function() {
         _comfBox.parent(".madeBoxCons").siblings(".madeP_2_btn").addClass("madeP_btn_now");
         jQuery(this).parents().find(".select_P2").css("display","block");
         jQuery(this).parents().find(".select_P1").css("display","none");
+        jQuery("#options_pos").val(2);
+        var type = jQuery("#options_type_p1").val();
+        if (type == 1) {
+            Opt.completeImg(1);
+        } else if (type == 2) {
+            Opt.completeTxt(1);
+        } else {
+            Opt.reset(1);
+        }
     });
 
     jQuery(".saveMadeY_p2").click(function(){
@@ -576,10 +558,26 @@ jQuery(function() {
         _comfBox.parent(".madeBoxCons").siblings(".madeP_1_btn").addClass("madeP_btn_now");
         jQuery(this).parents().find(".select_P1").css("display","block");
         jQuery(this).parents().find(".select_P2").css("display","none");
+        jQuery("#options_pos").val(1);
+        var type = jQuery("#options_type_p2").val();
+        if (type == 1) {
+            Opt.completeImg(2);
+        } else if (type == 2) {
+            Opt.completeTxt(2);
+        } else {
+            Opt.reset(2);
+        }
     });
 
     jQuery(":text").focus(function(){
         jQuery(this).select();
+    });
+});
+
+//预览按钮
+jQuery(function(){
+    jQuery(".viewMade").click(function(){
+        Opt.preview();
     });
 });
 

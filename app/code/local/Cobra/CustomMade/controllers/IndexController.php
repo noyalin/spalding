@@ -14,41 +14,111 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     public function completeAction()
     {
         $params = Mage::app()->getRequest()->getParams();
-        if ($params[position] == 'P1') {
-            Mage::getSingleton('core/session')->setData('step_p1', 1);
-        } elseif ($params[position] == 'P2') {
-            Mage::getSingleton('core/session')->setData('step_p2', 1);
+        Mage::getSingleton('core/session')->setPos($params[position]);
+        $type = null;
+        $content1 = null;
+        $content2 = null;
+
+        if ($params[position] == 1) {
+            if ($params[type] == 1) {
+                $imgPath = 'media/custommade/tmp/';
+                $imgBaseName = time();
+                $img0 = $imgBaseName . '_p1_0.jpg';
+                $img1 = $imgBaseName . '_p1_1.jpg';
+                $img2 = $imgBaseName . '_p1_2.jpg';
+
+                $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
+                $data_decode = base64_decode($data);
+                file_put_contents($imgPath . $img0, $data_decode);
+
+
+                $imgresize = new ImageResize(); //创建图片缩放和裁剪类
+                $imgresize->load($data_decode); //载入原始图片
+
+                $posary = explode(',', $params['cut_pos']);
+                foreach ($posary as $k => $v) $posary[$k] = intval($v); //获得缩放比例和裁剪位置
+
+                if ($posary[2] > 0 && $posary[3] > 0) $imgresize->resize($posary[2], $posary[3]); //图片缩放
+
+                $imgresize->save($imgPath . $img1);
+                $content1 = Mage::getUrl($imgPath) . $img1;
+
+                $imgresize->cut(400, 186, intval($posary[0]), intval($posary[1]));
+
+                $imgresize->save($imgPath . $img2);
+                $content2 = Mage::getUrl($imgPath) . $img2;
+
+            } elseif ($params[type] == 2) {
+                $content1 = $params['text'];
+                $content2 = $params['size'];
+            }
+
+            Mage::getSingleton('core/session')->setTypeP1($params[type]);
+            Mage::getSingleton('core/session')->setContent1P1($content1);
+            Mage::getSingleton('core/session')->setContent2P1($content2);
+
+        } elseif ($params[position] == 2) {
+            if ($params[type] == 1) {
+                $imgPath = 'media/custommade/tmp/';
+                $imgBaseName = time();
+                $img0 = $imgBaseName . '_p2_0.jpg';
+                $img1 = $imgBaseName . '_p2_1.jpg';
+                $img2 = $imgBaseName . '_p2_2.jpg';
+
+                $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
+                $data_decode = base64_decode($data);
+                file_put_contents($imgPath . $img0, $data_decode);
+
+                $imgresize = new ImageResize(); //创建图片缩放和裁剪类
+                $imgresize->load($data_decode); //载入原始图片
+
+                $posary = explode(',', $params['cut_pos']);
+                foreach ($posary as $k => $v) $posary[$k] = intval($v); //获得缩放比例和裁剪位置
+
+                if ($posary[2] > 0 && $posary[3] > 0) $imgresize->resize($posary[2], $posary[3]); //图片缩放
+
+                $imgresize->save($imgPath . $img1);
+                $content1 = Mage::getUrl($imgPath) . $img1;
+
+                $imgresize->cut(400, 186, intval($posary[0]), intval($posary[1]));
+
+                $imgresize->save($imgPath . $img2);
+                $content2 = Mage::getUrl($imgPath) . $img2;
+            } elseif ($params[type] == 2) {
+                $content1 = $params['text'];
+                $content2 = $params['size'];
+            }
+
+            Mage::getSingleton('core/session')->setTypeP2($type);
+            Mage::getSingleton('core/session')->setContent1P2($content1);
+            Mage::getSingleton('core/session')->setContent2P2($content2);
+
         }
-
-        $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
-        $data_decode = base64_decode($data);
-        file_put_contents("media/tmp/img.jpg", $data_decode);
-
-
-        $imgresize = new ImageResize(); //创建图片缩放和裁剪类
-        $imgresize->load($data_decode); //载入原始图片
-
-        $posary=explode(',', $params['cut_pos']);
-        foreach($posary as $k=>$v) $posary[$k]=intval($v); //获得缩放比例和裁剪位置
-
-        if($posary[2]>0 && $posary[3]>0) $imgresize->resize($posary[2], $posary[3]); //图片缩放
-
-        $imgresize->save('media/tmp/img0.jpg');
-
-        $imgresize->cut(400, 186, intval($posary[0]), intval($posary[1]));
-        $imgresize->save('media/tmp/img1.jpg');
-
     }
 
     public function resetAction()
     {
         $params = Mage::app()->getRequest()->getParams();
-        if ($params[position] == 'P1') {
-            Mage::getSingleton('core/session')->setData('step_p1', 0);
-        } elseif ($params[position] == 'P2') {
-            Mage::getSingleton('core/session')->setData('step_p2', 0);
+        Mage::getSingleton('core/session')->setPos($params[position]);
+        if ($params[position] == 1) {
+            Mage::getSingleton('core/session')->setTypeP1(null);
+            Mage::getSingleton('core/session')->setContent1P1(null);
+            Mage::getSingleton('core/session')->setContent2P1(null);
+        } elseif ($params[position] == 2) {
+            Mage::getSingleton('core/session')->setTypeP2(null);
+            Mage::getSingleton('core/session')->setContent1P2(null);
+            Mage::getSingleton('core/session')->setContent2P2(null);
         }
+    }
 
+    public function previewAction()
+    {
+        $status = Mage::getSingleton('core/session')->getStatus();
+        if ($status == 1) {
+            Mage::getSingleton('core/session')->setStatus(0);
+        } else {
+            Mage::getSingleton('core/session')->setStatus(1);
+        }
     }
 }
 
@@ -57,7 +127,6 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 /**
  * 图片缩放和裁剪类
  */
-
 class ImageResize
 {
     //源图象
@@ -70,43 +139,44 @@ class ImageResize
     var $_height;
 
     //载入图片
-    function load($img_name, $img_type=''){
-        if(!empty($img_type)) $this->_imagetype = $img_type;
+    function load($img_name, $img_type = '')
+    {
+        if (!empty($img_type)) $this->_imagetype = $img_type;
         else $this->_imagetype = $this->get_type($img_name);
-        switch ($this->_imagetype){
+        switch ($this->_imagetype) {
             case 'gif':
-                if (function_exists('imagecreatefromgif'))	$this->_img=imagecreatefromgif($img_name);
+                if (function_exists('imagecreatefromgif')) $this->_img = imagecreatefromgif($img_name);
                 break;
             case 'jpg':
-                $this->_img=imagecreatefromjpeg($img_name);
+                $this->_img = imagecreatefromjpeg($img_name);
                 break;
             case 'png':
-                $this->_img=imagecreatefrompng($img_name);
+                $this->_img = imagecreatefrompng($img_name);
                 break;
             default:
-                $this->_img=imagecreatefromstring($img_name);
+                $this->_img = imagecreatefromstring($img_name);
                 break;
         }
         $this->getxy();
     }
 
     //缩放图片
-    function resize($width, $height, $percent=0)
+    function resize($width, $height, $percent = 0)
     {
-        if(!is_resource($this->_img)) return false;
-        if(empty($width) && empty($height)){
-            if(empty($percent)) return false;
-            else{
+        if (!is_resource($this->_img)) return false;
+        if (empty($width) && empty($height)) {
+            if (empty($percent)) return false;
+            else {
                 $width = round($this->_width * $percent);
                 $height = round($this->_height * $percent);
             }
-        }elseif(empty($width) && !empty($height)){
-            $width = round($height * $this->_width / $this->_height );
-        }else{
+        } elseif (empty($width) && !empty($height)) {
+            $width = round($height * $this->_width / $this->_height);
+        } else {
             $height = round($width * $this->_height / $this->_width);
         }
-        $tmpimg = imagecreatetruecolor($width,$height);
-        if(function_exists('imagecopyresampled')) imagecopyresampled($tmpimg, $this->_img, 0, 0, 0, 0, $width, $height, $this->_width, $this->_height);
+        $tmpimg = imagecreatetruecolor($width, $height);
+        if (function_exists('imagecopyresampled')) imagecopyresampled($tmpimg, $this->_img, 0, 0, 0, 0, $width, $height, $this->_width, $this->_height);
         else imagecopyresized($tmpimg, $this->_img, 0, 0, 0, 0, $width, $height, $this->_width, $this->_height);
         $this->destroy();
         $this->_img = $tmpimg;
@@ -114,13 +184,14 @@ class ImageResize
     }
 
     //裁剪图片
-    function cut($width, $height, $x=0, $y=0){
-        if(!is_resource($this->_img)) return false;
-        if($width > $this->_width) $width = $this->_width;
-        if($height > $this->_height) $height = $this->_height;
-        if($x < 0) $x = 0;
-        if($y < 0) $y = 0;
-        $tmpimg = imagecreatetruecolor($width,$height);
+    function cut($width, $height, $x = 0, $y = 0)
+    {
+        if (!is_resource($this->_img)) return false;
+        if ($width > $this->_width) $width = $this->_width;
+        if ($height > $this->_height) $height = $this->_height;
+        if ($x < 0) $x = 0;
+        if ($y < 0) $y = 0;
+        $tmpimg = imagecreatetruecolor($width, $height);
         imagecopy($tmpimg, $this->_img, 0, 0, $x, $y, $width, $height);
         $this->destroy();
         $this->_img = $tmpimg;
@@ -129,10 +200,10 @@ class ImageResize
 
 
     //显示图片
-    function display($destroy=true)
+    function display($destroy = true)
     {
-        if(!is_resource($this->_img)) return false;
-        switch($this->_imagetype){
+        if (!is_resource($this->_img)) return false;
+        switch ($this->_imagetype) {
             case 'jpg':
             case 'jpeg':
                 header("Content-type: image/jpeg");
@@ -148,41 +219,41 @@ class ImageResize
                 imagepng($this->_img);
                 break;
         }
-        if($destroy) $this->destroy();
+        if ($destroy) $this->destroy();
     }
 
     //保存图片 $destroy=true 是保存后销毁图片变量，false这不销毁，可以继续处理这图片
-    function save($fname, $destroy=false, $type='')
+    function save($fname, $destroy = false, $type = '')
     {
-        if(!is_resource($this->_img)) return false;
-        if(empty($type)) $type = $this->_imagetype;
-        switch($type){
+        if (!is_resource($this->_img)) return false;
+        if (empty($type)) $type = $this->_imagetype;
+        switch ($type) {
             case 'jpg':
             case 'jpeg':
-                $ret=imagejpeg($this->_img, $fname);
+                $ret = imagejpeg($this->_img, $fname);
                 break;
             case 'gif':
-                $ret=imagegif($this->_img, $fname);
+                $ret = imagegif($this->_img, $fname);
                 break;
             case 'png':
             default:
-                $ret=imagepng($this->_img, $fname);
+                $ret = imagepng($this->_img, $fname);
                 break;
         }
-        if($destroy) $this->destroy();
+        if ($destroy) $this->destroy();
         return $ret;
     }
 
     //销毁图像
     function destroy()
     {
-        if(is_resource($this->_img)) imagedestroy($this->_img);
+        if (is_resource($this->_img)) imagedestroy($this->_img);
     }
 
     //取得图像长宽
     function getxy()
     {
-        if(is_resource($this->_img)){
+        if (is_resource($this->_img)) {
             $this->_width = imagesx($this->_img);
             $this->_height = imagesy($this->_img);
         }
@@ -192,9 +263,9 @@ class ImageResize
     //获得图片的格式，包括jpg,png,gif
     function get_type($img_name)//获取图像文件类型
     {
-        if (preg_match("/\.(jpg|jpeg|gif|png)$/i", $img_name, $matches)){
+        if (preg_match("/\.(jpg|jpeg|gif|png)$/i", $img_name, $matches)) {
             $type = strtolower($matches[1]);
-        }else{
+        } else {
             $type = "string";
         }
         return $type;
