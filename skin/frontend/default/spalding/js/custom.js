@@ -22,7 +22,7 @@ jQuery(function() {
     jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
 
     jQuery('#customMade_fontSize_1 span').click(function(){
-        var radioId = jQuery(this).attr('name');
+        var radioId = jQuery(this).attr('id');
         jQuery('#customMade_fontSize_1 span').removeClass('checked') && jQuery(this).addClass('checked');
         jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
     });
@@ -45,8 +45,6 @@ jQuery(function() {
 jQuery(function(){
     //获取初始数据
     var _imgIni = jQuery("#avatar");
-    var _texIni1 = jQuery(".madeTexWrap").find(".select_P1").html();
-    var _texIni2 = jQuery(".madeTexWrap").find(".select_P2").html();
     var _imgIniVal = _imgIni.attr("src");
 
     //开始定制按钮
@@ -61,6 +59,8 @@ jQuery(function(){
     jQuery(".madeP_1_btn").click(function(){
         var _imgNowVal = _imgIni.attr("src");
         var _texNow = jQuery(".madeTexWrap").find(".select_P2").html();
+        var _texIni2 = jQuery(".select_N2").html();
+
         if(_imgNowVal == _imgIniVal && _texNow == _texIni2){
             //未改动
             jQuery(this).addClass("madeP_btn_now");
@@ -70,17 +70,23 @@ jQuery(function(){
             jQuery(this).parents().find(".select_P1").css("display","block");
             jQuery(this).parents().find(".select_P2").css("display","none");
             jQuery("#options_pos").val(1);
+
+            resetView_1(2, "abcdeft", 3);
         }else{
             //已改动
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeBoxFuns").css("display","none");
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeSubmit").css("display","none");
             jQuery(this).siblings(".madeBoxCons_p2").find(".comfBox").css("display","block");
         }
+
+
+
     });
     //点击P2按钮
     jQuery(".madeP_2_btn").click(function(){
         var _imgNowVal = _imgIni.attr("src");
         var _texNow = jQuery(".madeTexWrap").find(".select_P1").html();
+        var _texIni1 = jQuery(".select_N1").html();
         if(_imgNowVal == _imgIniVal && _texNow == _texIni1){
             //未改动
             jQuery(this).addClass("madeP_btn_now");
@@ -90,6 +96,10 @@ jQuery(function(){
             jQuery(this).parents().find(".select_P2").css("display","block");
             jQuery(this).parents().find(".select_P1").css("display","none");
             jQuery("#options_pos").val(2);
+
+            // TODO
+            resetView_2(1, "http://localhost/spalding/skin/frontend/default/spalding/images/customMade/imgPer_1.jpg", "");
+
         }else{
             //已改动
             jQuery(this).siblings(".madeBoxCons_p1").find(".madeBoxFuns").css("display","none");
@@ -519,7 +529,7 @@ jQuery(function() {
     });
 
     //保存 & 放弃定制
-    jQuery(".saveMadeY").click(function(){
+    /*jQuery(".saveMadeY").click(function(){
         var _comfBox = jQuery(this).parent().parent(".comfBox");
         var _btnClass = _comfBox.parent(".madeBoxCons").siblings(".madeP_btn").attr("class");
         _comfBox.css("display","none");
@@ -527,7 +537,7 @@ jQuery(function() {
         _comfBox.siblings(".madeBoxFuns").css("display","block");
         _comfBox.parent(".madeBoxCons").css("display","none");
         _comfBox.parent(".madeBoxCons").siblings(".madeBoxCons").css("display","block");        
-    });
+    });*/
 
     jQuery(".saveMadeN").click(function(){
         jQuery(this).parent().parent(".comfBox").css("display","none");
@@ -535,43 +545,11 @@ jQuery(function() {
         jQuery(this).parent().parent(".comfBox").siblings(".madeBoxFuns").css("display","block");
     });
 
-    jQuery(".saveMadeY_p1").click(function(){
-        var _comfBox = jQuery(this).parent().parent(".comfBox");
-        _comfBox.parent(".madeBoxCons").siblings(".madeP_1_btn").removeClass("madeP_btn_now");
-        _comfBox.parent(".madeBoxCons").siblings(".madeP_2_btn").addClass("madeP_btn_now");
-        jQuery(this).parents().find(".select_P2").css("display","block");
-        jQuery(this).parents().find(".select_P1").css("display","none");
-        jQuery("#options_pos").val(2);
-        var type = jQuery("#options_type_p1").val();
-        if (type == 1) {
-            Opt.completeImg(1);
-        } else if (type == 2) {
-            Opt.completeTxt(1);
-        } else {
-            Opt.reset(1);
-        }
-    });
 
-    jQuery(".saveMadeY_p2").click(function(){
-        var _comfBox = jQuery(this).parent().parent(".comfBox");
-        _comfBox.parent(".madeBoxCons").siblings(".madeP_2_btn").removeClass("madeP_btn_now");
-        _comfBox.parent(".madeBoxCons").siblings(".madeP_1_btn").addClass("madeP_btn_now");
-        jQuery(this).parents().find(".select_P1").css("display","block");
-        jQuery(this).parents().find(".select_P2").css("display","none");
-        jQuery("#options_pos").val(1);
-        var type = jQuery("#options_type_p2").val();
-        if (type == 1) {
-            Opt.completeImg(2);
-        } else if (type == 2) {
-            Opt.completeTxt(2);
-        } else {
-            Opt.reset(2);
-        }
-    });
 
-    jQuery(":text").focus(function(){
-        jQuery(this).select();
-    });
+    
+
+    
 });
 
 //预览按钮

@@ -264,3 +264,226 @@ if($currentCategoryId == 35):
 <?php
 endif;
 ?>
+<script type="text/javascript">
+jQuery(".saveMadeY_p1").click(function () {
+    // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
+    resetView_1(2, "abcdeft", 2);
+});
+
+jQuery(".saveMadeY_p2").click(function () {
+    resetView_2(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
+    // resetView_2(2, "abcdeft", 3);
+});
+
+var _resNow_1 = jQuery(".madeBoxCons_p1").find(".submitN");
+var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
+
+jQuery(_resNow_1).click(function(){
+    resetView_1(3, "", "");
+});
+
+jQuery(_resNow_2).click(function(){
+    resetView_2(3, "", "");
+});
+
+function resetView_1(_dataType, value1, value2){
+    jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
+
+    var _comfBox = jQuery(".comfBox_1");
+    var _resNow = _comfBox.siblings(".madeSubmit").find(".submitN");
+    jQuery(".viewPage_P2").css("display","none");//隐藏预览2
+    _comfBox.css("display","none");
+    _comfBox.siblings(".madeSubmit").css("display","block");
+    _comfBox.siblings(".madeBoxFuns").css("display","block");
+    _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+    _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","block");
+    _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
+    _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
+    // jQuery(this).parents().find(".select_P2").css("display","block");
+    // jQuery(this).parents().find(".select_P1").css("display","none");
+    jQuery("#options_pos").val(2);
+    var type = jQuery("#options_type_p1").val();
+    var _viewPage1 = jQuery(".viewPage_P1"); //获取预览P1
+    var _bgZindx = _viewPage1.find(".viewPage_P1_bg");//获取预览P1背景，用以重置其Z-index值
+    var _viewPage1Bg = _bgZindx.find(".pageBg"); //获取预览P1背景，用以调整对应图片或文字背景
+    var _viewCons = _viewPage1.find(".viewPage_p1_wrap")//获取P1预览内容
+    // var _dataType = jQuery(".viewPage_P1").attr("dataType"); //获取传入定制类型 1-图片 2-文字 3-空白
+    /*if (type == 1) {
+        Opt.completeImg(1);
+    } else if (type == 2) {
+        Opt.completeTxt(1);
+    } else {
+        Opt.reset(1);
+    }*/
+    if(_dataType==1){//定制图片
+        //定位定制图案
+        var _dataImg=jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
+            value1);
+            // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
+
+        _viewCons.empty();
+        _viewCons.append(_dataImg);
+
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow"); 
+        _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown(); 
+        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+
+        _viewPage1.css("display","block"); //显示P1画面
+        _bgZindx.css("z-index","2");   //重置P1背景z-index值
+        _viewPage1Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>");
+
+    }else if(_dataType==2){//定制文字
+        var _dataTxt=jQuery("<p class='viewTexWrap'></p>").text(value1);
+        var _zzT = jQuery(".zz_t");
+
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow"); 
+        _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
+        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
+        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","block");
+
+        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+
+        _viewPage1.css("display","block"); //显示P1画面
+        _bgZindx.css("z-index","0");   //重置P1背景z-index值
+        _viewPage1Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+        _viewCons.empty();
+        _viewCons.append(_dataTxt);
+
+        if(value2==1) {
+            _viewPage1.find(".viewTexWrap").css("font-size","40px");
+            _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
+        }else if(value2==2){
+            _viewPage1.find(".viewTexWrap").css("font-size","60px");
+            _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+        }else if(value2==3){
+            _viewPage1.find(".viewTexWrap").css("font-size","80px");
+            _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
+        }
+        // var 
+    }else if(_dataType==3){//定制空白
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+        _viewPage1.css("display","block"); //显示P1画面
+        _bgZindx.css("z-index","0");   //重置P1背景z-index值
+        _viewPage1Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+
+        _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
+        _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+        _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","none");
+        
+        _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled","disabled");
+        _viewPage1.css("display","none");
+        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","none");
+        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("spalding");
+
+        _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
+        _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+    }
+
+    //重置
+    
+}
+
+
+
+//P2
+function resetView_2(_dataType, value1, value2){
+    jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
+    jQuery(".viewPage_P1").css("display","none");//隐藏预览1
+
+    var _comfBox = jQuery(".comfBox_2");
+    var _resNow = _comfBox.siblings(".madeSubmit").find(".submitN");
+
+    _comfBox.css("display","none");
+    _comfBox.siblings(".madeSubmit").css("display","block");
+    _comfBox.siblings(".madeBoxFuns").css("display","block");
+    _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+    _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","block");
+    _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
+    _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
+    _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+    jQuery("#options_pos").val(2);
+    var type = jQuery("#options_type_p1").val();
+    var _viewPage2 = jQuery(".viewPage_P2"); //获取预览P2
+    var _bgZindx = _viewPage2.find(".viewPage_P2_bg");//获取预览P2背景，用以重置其Z-index值
+    var _viewPage2Bg = _bgZindx.find(".pageBg"); //获取预览P2背景，用以调整对应图片或文字背景
+    var _viewCons = _viewPage2.find(".viewPage_p2_wrap")//获取P2预览内容
+
+    if(_dataType==1){//定制图片
+        //定位定制图案
+        var _dataImg=jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
+            value1);
+            // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
+
+        _viewCons.empty();
+        _viewCons.append(_dataImg);
+
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow"); 
+        _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
+
+        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+
+        _viewPage2.css("display","block"); //显示P1画面
+        _bgZindx.css("z-index","2");   //重置P1背景z-index值
+        _viewPage2Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>");
+
+    }else if(_dataType==2){//定制文字
+        var _dataTxt=jQuery("<p class='viewTexWrap'></p>").text(value1);
+        var _zzT = jQuery(".zz_t");
+
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow"); 
+        _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
+        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
+        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","block");
+
+        _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled","disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+
+        _viewPage2.css("display","block"); //显示P1画面
+        _bgZindx.css("z-index","0");   //重置P1背景z-index值
+        _viewPage2Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+        _viewCons.empty();
+        _viewCons.append(_dataTxt);
+
+        if(value2==1) {
+            _viewPage1.find(".viewTexWrap").css("font-size","40px");
+            _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
+        }else if(value2==2){
+            _viewPage1.find(".viewTexWrap").css("font-size","60px");
+            _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+        }else if(value2==3){
+            _viewPage1.find(".viewTexWrap").css("font-size","80px");
+            _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
+        }
+
+    }else if(_dataType==3){//定制空白
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+        _viewPage2.css("display","block"); //显示P1画面
+        _bgZindx.css("z-index","0");   //重置P1背景z-index值
+        _viewPage2Bg.attr("src","<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+
+        _comfBox.siblings(".madeBoxFuns").find("dt").css("display","none");
+        _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+        _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+        _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display","none");
+
+        _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled","disabled");
+        _viewPage2.css("display","none");
+        _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display","none");
+        _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("adfasdf");
+
+        _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
+        _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+    }
+
+    //重置
+    
+
+
+}
+</script>

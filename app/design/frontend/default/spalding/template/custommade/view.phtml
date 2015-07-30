@@ -1,18 +1,4 @@
-<input id="options_status" type="hidden" value="<?php echo $this->getStatus(); ?>"/>
-<input id="options_pos" type="hidden" value="<?php echo $this->getPos(); ?>"/>
-<input id="options_type_p1" type="hidden" value="<?php echo $this->getTypeP1(); ?>"/>
-<input id="options_content1_p1" type="hidden" value="<?php echo $this->getContent1P1(); ?>"/>
-<input id="options_content2_p1" type="hidden" value="<?php echo $this->getContent2P1(); ?>"/>
-<input id="options_type_p2" type="hidden" value="<?php echo $this->getTypeP2(); ?>"/>
-<input id="options_content1_p2" type="hidden" value="<?php echo $this->getContent1P2(); ?>"/>
-<input id="options_content2_p2" type="hidden" value="<?php echo $this->getContent2P2(); ?>"/>
-
-<input id="complete" type="hidden" value="<?php echo $this->getUrl('custommade/index/complete'); ?>"/>
-<input id="reset" type="hidden" value="<?php echo $this->getUrl('custommade/index/reset'); ?>"/>
-<input id="preview" type="hidden" value="<?php echo $this->getUrl('custommade/index/preview'); ?>"/>
-
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/option.js'); ?>"></script>
 <?php $_product = $this->getProduct(); ?>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 定制背景 -->

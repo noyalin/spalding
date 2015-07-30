@@ -3555,12 +3555,31 @@ dl.madeBoxFuns dd.madeKindTit{
 dl.madeBoxFuns dd.madeNow{
 	background: url(../images/customMade/madenow.png) 230px 20px no-repeat #dddee3;
 }
+dl.madeBoxFuns dd.zz{
+	display: none;
+	cursor: pointer;
+	width: 255px;
+	height: 45px;
+	margin-top:-45px;
+	background: none;
+	z-index: 1;
+}
 dl.madeBoxFuns dt{
 	width:253px;
 	background: #201f1f;
 	padding:10px 0;
 	border:1px solid #3f3f3f;
 	border-top:none;
+}
+dl.madeBoxFuns dt.zz_t{
+	position: relative;
+	height:108px;
+	margin-top:-108px;
+	width:255px;
+	background: none;
+	z-index: 1;
+	display:none;
+	padding:0;
 }
 
 .madeKindTex{
@@ -3654,7 +3673,7 @@ dl.madeBoxFuns dt{
 	margin-top:190px;
 	text-align: center;
 	z-index: 2;
-	font-size:30px;
+	font-size:60px;
 	color:#000;
 }
 
@@ -3761,4 +3780,42 @@ dl.madeBoxFuns dt{
 	background: #eee;
 	color: #7c7c7c;
 	border-color:#cfcfcf;
+}
+
+
+/*单面预览*/
+.viewPage_P1 , .viewPage_P2{
+	display: none;
+	position: absolute;
+	left:50%;
+	margin-left:-200px;
+	margin-top:50px;
+	width:400px;
+	height:400px;
+	border-radius: 200px;
+	overflow:hidden;
+	z-index: 99999;
+}
+
+.viewPage_P1 .viewPage_P1_bg , .viewPage_P2 .viewPage_P2_bg{
+	position: absolute;
+}
+
+.viewPage_P1 .viewPage_p1_wrap , .viewPage_P2 .viewPage_p2_wrap{
+	z-index: 1;
+	position: absolute;
+	
+	width:400px;
+	height:400px;
+	line-height: 400px;
+}
+
+.viewImgWrap{
+	margin-top:100px;
+}
+
+.viewTexWrap{
+	top:100px;
+	text-align: center;
+	font-family: 'Conv_CustomGrotesque-Regular',Sans-Serif;
 }
