@@ -267,10 +267,20 @@ endif;
 <script type="text/javascript">
 jQuery(".saveMadeY_p1").click(function () {
     // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
-    resetView_1(2, "abcdeft", 2);
+
+    var _comfBox = jQuery(".comfBox_1");
+    var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal"); 
+    alert(_madeValue);
+
+
+    resetView_1(2, "abcdeft", 1);
 });
 
 jQuery(".saveMadeY_p2").click(function () {
+    var _comfBox = jQuery(".comfBox_2");
+    var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal"); 
+    alert(_madeValue);
+    
     resetView_2(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
     // resetView_2(2, "abcdeft", 3);
 });
@@ -288,6 +298,8 @@ jQuery(_resNow_2).click(function(){
 
 function resetView_1(_dataType, value1, value2){
     jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
+    jQuery('#customMade_fontSize_1 span').removeClass('checked');
+    jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
 
     var _comfBox = jQuery(".comfBox_1");
     var _resNow = _comfBox.siblings(".madeSubmit").find(".submitN");
@@ -354,12 +366,15 @@ function resetView_1(_dataType, value1, value2){
         if(value2==1) {
             _viewPage1.find(".viewTexWrap").css("font-size","40px");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
+            jQuery("#attribute2096").attr('checked', 'checked');
         }else if(value2==2){
             _viewPage1.find(".viewTexWrap").css("font-size","60px");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+            jQuery("#attribute2097").attr('checked', 'checked');
         }else if(value2==3){
             _viewPage1.find(".viewTexWrap").css("font-size","80px");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
+            jQuery("#attribute2098").attr('checked', 'checked');
         }
         // var 
     }else if(_dataType==3){//定制空白
@@ -392,6 +407,8 @@ function resetView_1(_dataType, value1, value2){
 //P2
 function resetView_2(_dataType, value1, value2){
     jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
+    jQuery('#customMade_fontSize_2 span').removeClass('checked');
+    jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
     jQuery(".viewPage_P1").css("display","none");//隐藏预览1
 
     var _comfBox = jQuery(".comfBox_2");
@@ -452,12 +469,15 @@ function resetView_2(_dataType, value1, value2){
         if(value2==1) {
             _viewPage1.find(".viewTexWrap").css("font-size","40px");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
+            jQuery("#attribute2091").attr('checked', 'checked');
         }else if(value2==2){
             _viewPage1.find(".viewTexWrap").css("font-size","60px");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+            jQuery("#attribute2092").attr('checked', 'checked');
         }else if(value2==3){
             _viewPage1.find(".viewTexWrap").css("font-size","80px");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
+            jQuery("#attribute2093").attr('checked', 'checked');
         }
 
     }else if(_dataType==3){//定制空白
@@ -482,8 +502,12 @@ function resetView_2(_dataType, value1, value2){
     }
 
     //重置
-    
-
 
 }
+
+
+jQuery(function(){
+    resetView_1(2, "abcdeft", 1);
+});
+
 </script>

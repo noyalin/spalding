@@ -18,11 +18,11 @@ function optioninit() {
 
 jQuery(function() {
     var spanLen = jQuery('#customMade_fontSize_1 input[type="radio"]').length;
-    jQuery('#customMade_fontSize_1 span').removeClass('checked');
-    jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
+    // jQuery('#customMade_fontSize_1 span').removeClass('checked');
+    // jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
 
     jQuery('#customMade_fontSize_1 span').click(function(){
-        var radioId = jQuery(this).attr('id');
+        var radioId = jQuery(this).attr('name');
         jQuery('#customMade_fontSize_1 span').removeClass('checked') && jQuery(this).addClass('checked');
         jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked') && jQuery('#' + radioId).attr('checked', 'checked');
     });
@@ -71,7 +71,10 @@ jQuery(function(){
             jQuery(this).parents().find(".select_P2").css("display","none");
             jQuery("#options_pos").val(1);
 
-            resetView_1(2, "abcdeft", 3);
+
+            // TODO
+
+            resetView_1(2, "abcdeft", 1);
         }else{
             //已改动
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeBoxFuns").css("display","none");
@@ -179,26 +182,26 @@ jQuery(function(){
     });
 
     //设置字体
-    jQuery(".madeBoxCons_p1 .setSize_20").click(function(){
+    jQuery(".madeBoxCons_p1 .setSize_40").click(function(){
         jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class","select_P1 size_40")
     });
-    jQuery(".madeBoxCons_p2 .setSize_20").click(function(){
+    jQuery(".madeBoxCons_p2 .setSize_40").click(function(){
         jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class","select_P2 size_40")
     });
 
     //中号
-    jQuery(".madeBoxCons_p1 .setSize_30").click(function(){
+    jQuery(".madeBoxCons_p1 .setSize_60").click(function(){
         jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class","select_P1 size_60")
     });
-    jQuery(".madeBoxCons_p2 .setSize_30").click(function(){
+    jQuery(".madeBoxCons_p2 .setSize_60").click(function(){
         jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class","select_P2 size_60")
     });
 
     //大号
-    jQuery(".madeBoxCons_p1 .setSize_40").click(function(){
+    jQuery(".madeBoxCons_p1 .setSize_80").click(function(){
         jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class","select_P1 size_80")
     });
-    jQuery(".madeBoxCons_p2 .setSize_40").click(function(){
+    jQuery(".madeBoxCons_p2 .setSize_80").click(function(){
         jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class","select_P2 size_80")
     });
 });
