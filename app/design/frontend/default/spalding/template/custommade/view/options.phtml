@@ -1,9 +1,11 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
 
-
-
-<?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+<?php if ($this->getCustomStatus() == 1): ?>
+    <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+<?php else: ?>
+    <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+<?php endif; ?>
 
 <!-- 右侧设置通栏 s -->
 <div class="cusMadeBox cusMadeRig">

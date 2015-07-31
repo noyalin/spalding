@@ -579,7 +579,14 @@ jQuery(function() {
 //预览按钮
 jQuery(function(){
     jQuery(".viewMade").click(function(){
-        Opt.preview();
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#preview').val(),
+            data: {},
+            success: function () {
+                document.location.reload();
+            }
+        });
     });
 });
 
