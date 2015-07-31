@@ -280,7 +280,7 @@ endif;
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 1, type: _madeValue, originalImg: pic, text: text, size: size},
+            data: {position: 1, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
@@ -302,7 +302,7 @@ endif;
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 2, type: _madeValue, originalImg: pic, text: text, size: size},
+            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
@@ -563,9 +563,8 @@ endif;
 //        resetView_1(2, "abcdeft", 1);
     });
 
-    function ajaxEvalJson(data)
-    {
-        var dataObj = eval("("+jQuery.trim(data)+")");
+    function ajaxEvalJson(data) {
+        var dataObj = eval("(" + jQuery.trim(data) + ")");
 //        if (dataObj.status != "Success") {
 //            loadLight(dataObj.lightedCnt, 0);
 //            showAlert(dataObj.message);

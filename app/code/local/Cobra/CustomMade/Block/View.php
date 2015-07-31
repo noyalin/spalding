@@ -2,7 +2,9 @@
 
 class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 {
+    private $sizeId = 0;
     private $sizeValue = 0;
+    private $customId = 0;
     private $customValue = 0;
     private $price;
 
