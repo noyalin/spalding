@@ -59,7 +59,9 @@ jQuery(function(){
     jQuery(".madeP_1_btn").click(function(){
         var _imgNowVal = _imgIni.attr("src");
         var _texNow = jQuery(".madeTexWrap").find(".select_P2").html();
+        var _imgNow = jQuery(".madeTexWrap").find(".select_P2").attr("src");
         var _texIni2 = jQuery(".select_N2").html();
+        var _imgIni2 = jQuery(".select_N2").attr("src");
 
         if(_imgNowVal == _imgIniVal && _texNow == _texIni2){
             //未改动
@@ -87,9 +89,30 @@ jQuery(function(){
             //resetView_1(2, "abcdeft", 1);
         }else{
             //已改动
+            var _comfBox = jQuery(this).siblings(".madeBoxCons_p2").find(".comfBox");
+            var _comfBoxN = _comfBox.find(".saveMadeN");
+            var _madeP1 = jQuery(this).siblings(".madeBoxCons_p1");
+            var _madeP2 = jQuery(this).siblings(".madeBoxCons_p2");
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeBoxFuns").css("display","none");
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeSubmit").css("display","none");
-            jQuery(this).siblings(".madeBoxCons_p2").find(".comfBox").css("display","block");
+            _comfBox.css("display","block");
+            _comfBoxN.click(function(){
+                
+                jQuery(".madeTexWrap").find(".select_P2").html(jQuery(".select_N2").html());
+                jQuery(".madeTexWrap").find(".select_P2").attr("src",jQuery(".select_N2").attr("src"));
+                _comfBox.css("display","none");
+                _madeP2.css("display","none");
+                _madeP1.css("display","block");
+                _madeP1.find("dt").css("display","none");
+                _madeP1.find("dd").removeClass("madeNow");
+                _madeP1.find("dd.madeKindTitNon").addClass("madeNow");
+                jQuery(this).parents().find(".madeP_2_btn").removeClass("madeP_btn_now");
+                jQuery(this).parents().find(".madeP_1_btn").addClass("madeP_btn_now");
+                jQuery(this).parents().find(".madeStepNone").css("display","block");
+                jQuery(this).parents().find("#img_grip").css("opacity","0");
+                jQuery(this).parents().find("#imgFuns").css("opacity","0");
+            });
+
         }
 
 
@@ -126,9 +149,28 @@ jQuery(function(){
 
         }else{
             //已改动
+            var _comfBox = jQuery(this).siblings(".madeBoxCons_p1").find(".comfBox");
+            var _comfBoxN = _comfBox.find(".saveMadeN");
+            var _madeP1 = jQuery(this).siblings(".madeBoxCons_p1");
+            var _madeP2 = jQuery(this).siblings(".madeBoxCons_p2");
             jQuery(this).siblings(".madeBoxCons_p1").find(".madeBoxFuns").css("display","none");
             jQuery(this).siblings(".madeBoxCons_p1").find(".madeSubmit").css("display","none");
-            jQuery(this).siblings(".madeBoxCons_p1").find(".comfBox").css("display","block");
+            _comfBox.css("display","block");
+            _comfBoxN.click(function(){
+                jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
+                jQuery(".madeTexWrap").find(".select_P1").attr("src",jQuery(".select_N1").attr("src"));
+                _comfBox.css("display","none");
+                _madeP1.css("display","none");
+                _madeP2.css("display","block");
+                _madeP2.find("dt").css("display","none");
+                _madeP2.find("dd").removeClass("madeNow");
+                _madeP2.find("dd.madeKindTitNon").addClass("madeNow");
+                jQuery(this).parents().find(".madeP_1_btn").removeClass("madeP_btn_now");
+                jQuery(this).parents().find(".madeP_2_btn").addClass("madeP_btn_now");
+                jQuery(this).parents().find(".madeStepNone").css("display","block");
+                jQuery(this).parents().find("#img_grip").css("opacity","0");
+                jQuery(this).parents().find("#imgFuns").css("opacity","0");
+            });
         }
     });
 
