@@ -1,9 +1,11 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
 
-
-
-<?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+<?php if ($this->getCustomStatus() == 1): ?>
+    <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+<?php else: ?>
+    <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+<?php endif; ?>
 
 <!-- 右侧设置通栏 s -->
 <div class="cusMadeBox cusMadeRig">
@@ -37,11 +39,11 @@
                 <p>请选择字号：</p>
                 <div id="customMade_fontSize_1" class="madeKindTexSpan">
                     <div class="sale-num">
-                        <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="aa" data-input="kinds" value="53">
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="size-p1" data-input="kinds" value="3">
                         <span class="size_kind setSize_80" for="attribute2098" name="attribute2098">大号字体</span>
-                        <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="aa" data-input="kinds" value="54" checked="checked">
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="size-p1" data-input="kinds" value="2" checked="checked">
                         <span class="size_kind setSize_60 checked" for="attribute2097" name="attribute2097">中号字体</span>
-                        <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="aa" data-input="kinds" value="55">
+                        <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="size-p1" data-input="kinds" value="1">
                         <span class="size_kind setSize_40" for="attribute2096" name="attribute2096">小号字体</span>
                     </div>
                 </div>
@@ -87,11 +89,11 @@
             </div>
             <div id="customMade_fontSize_2" class="madeKindTexSpan">
                 <div class="sale-num">
-                    <input type="radio" class="required-entry super-attribute-select" id="attribute2093" name="bb" data-input="kinds" value="53">
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2093" name="size-p2" data-input="kinds" value="3">
                     <span class="size_kind setSize_80" for="attribute2093" name="attribute2093">大号字体</span>
-                    <input type="radio" class="required-entry super-attribute-select" id="attribute2092" name="bb" data-input="kinds" value="54">
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2092" name="size-p2" data-input="kinds" value="2">
                     <span class="size_kind setSize_60 checked" for="attribute2092" name="attribute2092">中号字体</span>
-                    <input type="radio" class="required-entry super-attribute-select" id="attribute2091" name="bb" data-input="kinds" value="55">
+                    <input type="radio" class="required-entry super-attribute-select" id="attribute2091" name="size-p2" data-input="kinds" value="1">
                     <span class="size_kind setSize_40" for="attribute2091" name="attribute2091">小号字体</span>
                 </div>
             </div>
@@ -120,13 +122,14 @@
     <div style="display:none;">
         <input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
         <input type="hidden" name="related_product" id="related-products-field" value=""/>
-        <input type="hidden" name="super_attribute[2094]" value="<?php echo $this->getSize() ?>"/>
-        <input type="hidden" name="super_attribute[2112]" value="<?php echo $this->getCustomType() ?>"/>
+        <input type="hidden" name="super_attribute[<?php echo $this->getSizeId() ?>]" value="<?php echo $this->getSizeValue() ?>"/>
+        <input type="hidden" name="super_attribute[<?php echo $this->getCustomId() ?>]" value="<?php echo $this->getCustomValue() ?>"/>
     </div>
 
     <div class="madeFuns">
         <button type="submit" onclick="productAddToCartForm.submit(this)">加入购物车</button>
     </div>
+    <div class="viewMade"><button type="button">取消预览</button></div>
 </div>
 <!-- 右侧设置通栏 e -->
 

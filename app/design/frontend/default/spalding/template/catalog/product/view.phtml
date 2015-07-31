@@ -274,13 +274,13 @@ endif;
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
         var pic = jQuery("#avatar").attr("src");
         var text = jQuery("#textInput_1").val().trim();
-        var size = 1;
+        var size = getTxtSize(1);
 //    alert(_madeValue);
 
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 1, type: _madeValue, originalImg: pic, text: text, size: size},
+            data: {position: 1, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
@@ -297,12 +297,12 @@ endif;
 //    alert(_madeValue);
         var pic = jQuery("#avatar").attr("src");
         var text = jQuery("#textInput_2").val().trim();
-        var size = 2;
+        var size = getTxtSize(1);
 
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 2, type: _madeValue, originalImg: pic, text: text, size: size},
+            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
@@ -563,9 +563,8 @@ endif;
 //        resetView_1(2, "abcdeft", 1);
     });
 
-    function ajaxEvalJson(data)
-    {
-        var dataObj = eval("("+jQuery.trim(data)+")");
+    function ajaxEvalJson(data) {
+        var dataObj = eval("(" + jQuery.trim(data) + ")");
 //        if (dataObj.status != "Success") {
 //            loadLight(dataObj.lightedCnt, 0);
 //            showAlert(dataObj.message);

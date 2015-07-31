@@ -2,7 +2,9 @@
 
 class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 {
+    private $sizeId = 0;
     private $sizeValue = 0;
+    private $customId = 0;
     private $customValue = 0;
     private $price;
 
@@ -32,19 +34,20 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         foreach ($_attributes as $_attribute) {
             $attrName = $_attribute->getLabel();
             $attrValueArr = $_attribute->getPrices();
-            $attrId = $_attribute->getAttributeId();
             if ($attrName == '篮球型号') {
+                $this->sizeId = $_attribute->getAttributeId();
                 foreach ($attrValueArr as $optionValue) {
                     $this->sizeValue = $optionValue['value_index'];
                 }
-                $attributes[$attrId] = $this->sizeValue;
+                $attributes[$this->sizeId] = $this->sizeValue;
             } elseif ($attrName == '定制类型') {
+                $this->customId = $_attribute->getAttributeId();
                 foreach ($attrValueArr as $optionValue) {
                     if ($optionValue['label'] == $customType) {
                         $this->customValue = $optionValue['value_index'];
                     }
                 }
-                $attributes[$attrId] = $this->customValue;
+                $attributes[$this->customId] = $this->customValue;
             }
         }
         $subProduct = Mage::getSingleton('catalog/product_type_configurable')->getProductByAttributes($attributes, $_product);
@@ -92,12 +95,22 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return Mage::getSingleton('core/session')->getContent2P2();
     }
 
-    public function getSize()
+    public function getSizeId()
+    {
+        return $this->sizeId;
+    }
+
+    public function getSizeValue()
     {
         return $this->sizeValue;
     }
 
-    public function getCustomType()
+    public function getCustomId()
+    {
+        return $this->customId;
+    }
+
+    public function getCustomValue()
     {
         return $this->customValue;
     }
