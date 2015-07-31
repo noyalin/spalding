@@ -266,16 +266,13 @@ class ImageResize
             case 'jpg':
             case 'jpeg':
                 $ret = imagejpeg($this->_img, $fname);
-                Mage::log("Image Save---------------------".$ret);
                 break;
             case 'gif':
                 $ret = imagegif($this->_img, $fname);
-                Mage::log("Image Save---------------------".$ret);
                 break;
             case 'png':
             default:
                 $ret = imagepng($this->_img, $fname);
-                Mage::log("Image Save---------------------".$ret);
                 break;
         }
         if ($destroy) $this->destroy();
