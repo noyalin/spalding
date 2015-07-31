@@ -9,7 +9,7 @@
         <div class="prev_n"></div>
         <div class="next_z"></div>
 
-        
+
 
         <?php if ($this->getTypeP1() == 1 && $this->getTypeP2() == 1): ?>
         <!-- 第一套 s -->
@@ -442,11 +442,23 @@
             </li>
 
         </ul>
+
+        <?php elseif($this->getTypeP1() == 1 && $this->getTypeP2() != 1): ?>
+        <!-- 第三套 s -->
+
+
+
+
+
+        <!-- 第三套 e -->
         <?php else: ?>
+        <!-- 第四套 s -->
 
 
 
 
+
+        <!-- 第四套 e -->
         <?php endif; ?>
 
     </div>

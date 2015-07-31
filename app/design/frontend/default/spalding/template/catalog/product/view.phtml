@@ -356,8 +356,8 @@ endif;
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
         // jQuery(this).parents().find(".select_P2").css("display","block");
         // jQuery(this).parents().find(".select_P1").css("display","none");
-        jQuery("#options_pos").val(2);
-        var type = jQuery("#options_type_p1").val();
+//        jQuery("#options_pos").val(2);
+//        var type = jQuery("#options_type_p1").val();
         var _viewPage1 = jQuery(".viewPage_P1"); //获取预览P1
         var _bgZindx = _viewPage1.find(".viewPage_P1_bg");//获取预览P1背景，用以重置其Z-index值
         var _viewPage1Bg = _bgZindx.find(".pageBg"); //获取预览P1背景，用以调整对应图片或文字背景
@@ -464,8 +464,8 @@ endif;
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
         _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
-        jQuery("#options_pos").val(2);
-        var type = jQuery("#options_type_p1").val();
+//        jQuery("#options_pos").val(2);
+//        var type = jQuery("#options_type_p1").val();
         var _viewPage2 = jQuery(".viewPage_P2"); //获取预览P2
         var _bgZindx = _viewPage2.find(".viewPage_P2_bg");//获取预览P2背景，用以重置其Z-index值
         var _viewPage2Bg = _bgZindx.find(".pageBg"); //获取预览P2背景，用以调整对应图片或文字背景
@@ -548,20 +548,20 @@ endif;
     }
 
 
-    jQuery(function () {
-        jQuery.ajax({
-            type: 'POST',
-            url: jQuery('#check').val(),
-            data: {position: 1},
-            success: function (res) {
-                dataObj = ajaxEvalJson(res);
-                if (dataObj != null) {
-                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
-                }
-            }
-        });
-//        resetView_1(2, "abcdeft", 1);
-    });
+//    jQuery(function () {
+//        jQuery.ajax({
+//            type: 'POST',
+//            url: jQuery('#check').val(),
+//            data: {position: 1},
+//            success: function (res) {
+//                dataObj = ajaxEvalJson(res);
+//                if (dataObj != null) {
+//                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+//                }
+//            }
+//        });
+////        resetView_1(2, "abcdeft", 1);
+//    });
 
     function ajaxEvalJson(data) {
         var dataObj = eval("(" + jQuery.trim(data) + ")");

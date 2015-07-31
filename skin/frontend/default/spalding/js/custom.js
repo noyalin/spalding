@@ -1,21 +1,3 @@
-//var made_position = 0;
-//var made_type = new Array(2);
-function optioninit() {
-    document.getElementsByName('super_attribute[2094]')[0].checked = 'checked';
-}
-//function getPosition() {
-//    return made_position;
-//}
-//function setPosition(position) {
-//    made_position = position;
-//}
-//function getType() {
-//    return made_type;
-//}
-//function setType(type) {
-//    made_type[made_position] = type;
-//}
-
 jQuery(function () {
     var spanLen = jQuery('#customMade_fontSize_1 input[type="radio"]').length;
     // jQuery('#customMade_fontSize_1 span').removeClass('checked');
@@ -70,7 +52,7 @@ jQuery(function () {
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "none");
             jQuery(this).parents().find(".select_P1").css("display", "block");
             jQuery(this).parents().find(".select_P2").css("display", "none");
-            jQuery("#options_pos").val(1);
+            //jQuery("#options_pos").val(1);
 
 
             // TODO
@@ -129,7 +111,7 @@ jQuery(function () {
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "block");
             jQuery(this).parents().find(".select_P2").css("display", "block");
             jQuery(this).parents().find(".select_P1").css("display", "none");
-            jQuery("#options_pos").val(2);
+            //jQuery("#options_pos").val(2);
 
             // TODO
             jQuery.ajax({
@@ -193,12 +175,12 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepImg").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
-        var pos = jQuery("#options_pos").val();
-        if (pos == 1) {
-            jQuery("#options_type_p1").val(1);
-        } else if (pos == 2) {
-            jQuery("#options_type_p2").val(1);
-        }
+        //var pos = jQuery("#options_pos").val();
+        //if (pos == 1) {
+        //    jQuery("#options_type_p1").val(1);
+        //} else if (pos == 2) {
+        //    jQuery("#options_type_p2").val(1);
+        //}
     });
 
     //选择文本
@@ -216,12 +198,12 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepTex").css("display", "block");
         jQuery(this).parents().find(".madeStepImg").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
-        var pos = jQuery("#options_pos").val();
-        if (pos == 1) {
-            jQuery("#options_type_p1").val(2);
-        } else if (pos == 2) {
-            jQuery("#options_type_p2").val(2);
-        }
+        //var pos = jQuery("#options_pos").val();
+        //if (pos == 1) {
+        //    jQuery("#options_type_p1").val(2);
+        //} else if (pos == 2) {
+        //    jQuery("#options_type_p2").val(2);
+        //}
     });
 
     //选择空白
@@ -234,12 +216,12 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepNone").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepImg").css("display", "none");
-        var pos = jQuery("#options_pos").val();
-        if (pos == 1) {
-            jQuery("#options_type_p1").val(null);
-        } else if (pos == 2) {
-            jQuery("#options_type_p2").val(null);
-        }
+        //var pos = jQuery("#options_pos").val();
+        //if (pos == 1) {
+        //    jQuery("#options_type_p1").val(null);
+        //} else if (pos == 2) {
+        //    jQuery("#options_type_p2").val(null);
+        //}
     });
 
     //设置字体
@@ -502,7 +484,6 @@ function grip_Drag(clientX, clientY) {
 function avatarinit() {
     imageinit();
     gripinit();
-    optioninit();
 }
 
 if (document.all) {
