@@ -30,8 +30,8 @@ jQuery(function() {
 
 jQuery(function() {
     var spanLen = jQuery('#customMade_fontSize_2 input[type="radio"]').length;
-    jQuery('#customMade_fontSize_2 span').removeClass('checked');
-    jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
+    // jQuery('#customMade_fontSize_2 span').removeClass('checked');
+    // jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
 
     jQuery('#customMade_fontSize_2 span').click(function(){
         var radioId = jQuery(this).attr('name');

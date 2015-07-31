@@ -1,11 +1,9 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
 
-<?php if ($this->getStatus() == 1): ?>
-    <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
-<?php else: ?>
-    <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
-<?php endif; ?>
+
+
+<?php echo $this->getChildHtml('custommade_view_options_custom') ?>
 
 <!-- 右侧设置通栏 s -->
 <div class="cusMadeBox cusMadeRig">
@@ -90,11 +88,11 @@
             <div id="customMade_fontSize_2" class="madeKindTexSpan">
                 <div class="sale-num">
                     <input type="radio" class="required-entry super-attribute-select" id="attribute2093" name="bb" data-input="kinds" value="53">
-                    <span class="size_kind setSize_80" for="attribute2093" name="1">大号字体</span>
+                    <span class="size_kind setSize_80" for="attribute2093" name="attribute2093">大号字体</span>
                     <input type="radio" class="required-entry super-attribute-select" id="attribute2092" name="bb" data-input="kinds" value="54">
-                    <span class="size_kind setSize_60 checked" for="attribute2092" name="1">中号字体</span>
+                    <span class="size_kind setSize_60 checked" for="attribute2092" name="attribute2092">中号字体</span>
                     <input type="radio" class="required-entry super-attribute-select" id="attribute2091" name="bb" data-input="kinds" value="55">
-                    <span class="size_kind setSize_40" for="attribute2091" name="1">小号字体</span>
+                    <span class="size_kind setSize_40" for="attribute2091" name="attribute2091">小号字体</span>
                 </div>
             </div>
 
