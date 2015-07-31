@@ -122,8 +122,8 @@
     <div style="display:none;">
         <input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
         <input type="hidden" name="related_product" id="related-products-field" value=""/>
-        <input type="hidden" name="super_attribute[2094]" value="<?php echo $this->getSize() ?>"/>
-        <input type="hidden" name="super_attribute[2112]" value="<?php echo $this->getCustomType() ?>"/>
+        <input type="hidden" name="super_attribute[<?php echo $this->getSizeId() ?>]" value="<?php echo $this->getSizeValue() ?>"/>
+        <input type="hidden" name="super_attribute[<?php echo $this->getCustomId() ?>]" value="<?php echo $this->getCustomValue() ?>"/>
     </div>
 
     <div class="madeFuns">
