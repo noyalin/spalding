@@ -323,8 +323,8 @@ function previewImage(file, imgId) {
         var reader = new FileReader();
         reader.onload = function (evt) {
             img.src = evt.target.result;
-            avatarinit();
-            alert("reader.onload OK!!");
+            //avatarinit();
+            //alert("reader.onload OK!!");
         }
         reader.readAsDataURL(file.files[0]);
         _form.style.opacity = 1;
@@ -530,11 +530,11 @@ function avatarinit() {
     gripinit();
 }
 
-if (document.all) {
-    window.attachEvent('onload', avatarinit);
-} else {
-    window.addEventListener('load', avatarinit, false);
-}
+//if (document.all) {
+//    window.attachEvent('onload', avatarinit);
+//} else {
+//    window.addEventListener('load', avatarinit, false);
+//}
 
 jQuery(document).ready(function () {
     function adjust(el, selection) {
