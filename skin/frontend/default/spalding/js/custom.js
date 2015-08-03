@@ -495,7 +495,7 @@ if (document.all) {
 jQuery(document).ready(function () {
     function adjust(el, selection) {
         var scaleX = jQuery(el).width() / (selection.width || 1);
-        var scaleY = jQuery(el).height() / (selection.width || 1);
+        var scaleY = jQuery(el).height() / (selection.height || 1);
         jQuery(el + ' img').css({
             width: Math.round(scaleX * jQuery('#avatar').width()) + 'px',
             height: Math.round(scaleY * jQuery('#avatar').height()) + 'px',
