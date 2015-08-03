@@ -3823,8 +3823,15 @@ dl.madeBoxFuns dt.zz_t{
 	line-height: 400px;
 }
 
+.viewPage_P1 .viewPageZz{
+	position: absolute;
+	width:400px;
+	height:400px;
+	z-index: 3;
+}
+
 .viewImgWrap{
-	margin-top:100px;
+	margin-top:96px;
 }
 
 .viewTexWrap{
