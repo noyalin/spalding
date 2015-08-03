@@ -475,7 +475,7 @@ function gripinit() {
     track_pos = getPosition(img_track);
 
     grip_y = track_pos.y;
-    grip_minx = track_pos.x + 4;
+    grip_minx = track_pos.x + 1;
     grip_maxx = track_pos.x + img_track.clientWidth - img_grip.clientWidth - 5;
 
     // img_grip.style.left = (grip_minx + (grip_pos / 10 * (grip_maxx - grip_minx))) + "px";
