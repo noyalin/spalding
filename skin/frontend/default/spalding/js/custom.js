@@ -530,11 +530,11 @@ function avatarinit() {
     gripinit();
 }
 
-//if (document.all) {
-//    window.attachEvent('onload', avatarinit);
-//} else {
-//    window.addEventListener('load', avatarinit, false);
-//}
+if (document.all) {
+    window.attachEvent('onload', avatarinit);
+} else {
+    window.addEventListener('load', avatarinit, false);
+}
 
 jQuery(document).ready(function () {
     function adjust(el, selection) {
