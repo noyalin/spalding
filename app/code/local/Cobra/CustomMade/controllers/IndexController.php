@@ -4,11 +4,40 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
     {
-        $test = Mage::getModel('custommade/info')->getCollection();
-        foreach ($test as $data) {
-            echo $data->getOrderId() . "\n";
-            echo $data->getType() . "\n";
-        }
+//        $test = Mage::getModel('custommade/info')->getCollection();
+//        foreach ($test as $data) {
+//            echo $data->getOrderId() . "\n";
+//            echo $data->getType() . "\n";
+//        }
+
+        //////////////////////////////////////////////
+//        $type = 2;
+//        $content1 = "aaaaa";
+//        $content2 = "2";
+
+        $type = 1;
+        $content1 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p1_01.jpg';
+        $content2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p1_02.jpg';
+
+        Mage::getSingleton('core/session')->setTypeP1($type);
+        Mage::getSingleton('core/session')->setContent1P1($content1);
+        Mage::getSingleton('core/session')->setContent2P1($content2);
+
+
+//////////////////////////////////////////////////////////////////
+
+//        $type = 2;
+//        $content1 = "bbbb";
+//        $content2 = "1";
+        $type = 1;
+        $content1 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p2_01.jpg';
+        $content2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p2_02.jpg';
+
+
+        Mage::getSingleton('core/session')->setTypeP2($type);
+        Mage::getSingleton('core/session')->setContent1P2($content1);
+        Mage::getSingleton('core/session')->setContent2P2($content2);
+
     }
 
     public function completeAction()
