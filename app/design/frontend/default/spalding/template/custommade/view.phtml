@@ -351,6 +351,10 @@
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+<?php if ($this->getCustomStatus() == 1): ?>
+                    jQuery(".viewPage_P1").css("display","none");
+                    jQuery(".viewPage_P2").css("display","none");
+<?php endif; ?>
                 }
             }
         });
