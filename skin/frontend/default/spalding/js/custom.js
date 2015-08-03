@@ -290,7 +290,7 @@ function previewImage(file, imgId) {
 
         alert("图片最大尺寸为8M，请重新上传!");
         return false;
-    } else if (fileSize <= 2 * 1024) {
+    } else if (fileSize <= 500) {//2 * 1024
         _img.setAttribute("src", _imgSrc);
         _form.style.opacity = 0;
         _gripImg.style.opacity = 0;
@@ -570,26 +570,21 @@ jQuery(function () {
 
     //提交当前PAGE按钮
     jQuery(".submitY").click(function () {
+
         jQuery(this).parent(".madeSubmit").css("display", "none");
         jQuery(this).parent(".madeSubmit").siblings(".madeBoxFuns").css("display", "none");
         jQuery(this).parent(".madeSubmit").siblings(".comfBox").css("display", "block");
     });
 
-    //保存 & 放弃定制
-    /*jQuery(".saveMadeY").click(function(){
-     var _comfBox = jQuery(this).parent().parent(".comfBox");
-     var _btnClass = _comfBox.parent(".madeBoxCons").siblings(".madeP_btn").attr("class");
-     _comfBox.css("display","none");
-     _comfBox.siblings(".madeSubmit").css("display","block");
-     _comfBox.siblings(".madeBoxFuns").css("display","block");
-     _comfBox.parent(".madeBoxCons").css("display","none");
-     _comfBox.parent(".madeBoxCons").siblings(".madeBoxCons").css("display","block");
-     });*/
-
     jQuery(".saveMadeN").click(function () {
         jQuery(this).parent().parent(".comfBox").css("display", "none");
         jQuery(this).parent().parent(".comfBox").siblings(".madeSubmit").css("display", "block");
         jQuery(this).parent().parent(".comfBox").siblings(".madeBoxFuns").css("display", "block");
+    });
+
+    //预览
+    jQuery(".viewMade").click(function(){
+        jQuery(this).parents().find(".cusMadeRigZz").css("display","block")
     });
 });
 

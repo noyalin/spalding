@@ -3297,7 +3297,16 @@ ul.shopsList li span.shopsList_adrs{
 }
 
 
-
+.cusMadeRigZz{
+	display: none;
+	position:absolute;
+	top:-20px;
+	right:0;
+	width:340px;
+	height: 570px;
+	z-index: 9;
+	background: none;
+}
 .cusMadeRig{
 	position:absolute;
 	top:-20px;
@@ -3728,7 +3737,7 @@ dl.madeBoxFuns dt.zz_t{
 .viewMade{
 	position: absolute;
 	width:128px;
-	height:27px;
+	height:47px;
 	left:50%;
 	margin-left:-64px;
 	top:500px;
@@ -3742,6 +3751,10 @@ dl.madeBoxFuns dt.zz_t{
 
 .viewMade button:hover img{
 	opacity: .9;
+}
+.viewBack{
+	margin-top:-100px;
+	
 }
 
 
