@@ -62,7 +62,8 @@
         var _comfBox = jQuery(".comfBox_1");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
         var pic = jQuery("#avatar").attr("src");
-        var text = jQuery("#textInput_1").val().trim();
+//        var text = jQuery("#textInput_1").val().trim();
+        var text = getSwapTxt_1();
         var size = getTxtSize(1);
 //    alert(_madeValue);
 
@@ -88,7 +89,8 @@
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
 //    alert(_madeValue);
         var pic = jQuery("#avatar").attr("src");
-        var text = jQuery("#textInput_2").val().trim();
+//        var text = jQuery("#textInput_2").val().trim();
+        var text = getSwapTxt_2();
         var size = getTxtSize(1);
 
         jQuery.ajax({
@@ -229,7 +231,8 @@
             _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
             _viewPage1.css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "none");
-            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("spalding");
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("");
+            jQuery("#textMade_P1").html("");
 
             _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
@@ -298,20 +301,20 @@
 
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg2.png');  ?>");
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
             if (value2 == 1) {
-                _viewPage1.find(".viewTexWrap").css("font-size", "40px");
+                _viewPage2.find(".viewTexWrap").css("font-size", "40px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
                 jQuery("#attribute2091").attr('checked', 'checked');
             } else if (value2 == 2) {
-                _viewPage1.find(".viewTexWrap").css("font-size", "60px");
+                _viewPage2.find(".viewTexWrap").css("font-size", "60px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
                 jQuery("#attribute2092").attr('checked', 'checked');
             } else if (value2 == 3) {
-                _viewPage1.find(".viewTexWrap").css("font-size", "80px");
+                _viewPage2.find(".viewTexWrap").css("font-size", "80px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
                 jQuery("#attribute2093").attr('checked', 'checked');
             }
@@ -320,7 +323,7 @@
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg2.png');  ?>");
 
             _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
@@ -331,7 +334,8 @@
             _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
             _viewPage2.css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "none");
-            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("adfasdf");
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("");
+            jQuery("#textMade_P2").html("");
 
             _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");

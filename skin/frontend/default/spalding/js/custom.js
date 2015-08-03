@@ -230,26 +230,39 @@ jQuery(function () {
 
     //设置字体
     jQuery(".madeBoxCons_p1 .setSize_40").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_40")
+        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_40");
+        //jQuery("#textInput_1").attr("maxlength", "10");
+        SwapTxt_1();
     });
     jQuery(".madeBoxCons_p2 .setSize_40").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_40")
+        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_40");
+        //jQuery("#textInput_2").attr("maxlength", "10");
+        SwapTxt_2();
     });
 
     //中号
     jQuery(".madeBoxCons_p1 .setSize_60").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_60")
+        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_60");
+        //jQuery("#textInput_1").attr("maxlength", "8");
+        SwapTxt_1();
     });
     jQuery(".madeBoxCons_p2 .setSize_60").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_60")
+        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_60");
+        //jQuery("#textInput_2").attr("maxlength", "8");
+        SwapTxt_2();
     });
 
     //大号
     jQuery(".madeBoxCons_p1 .setSize_80").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_80")
+        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_80");
+        //jQuery("#textInput_1").attr("maxlength", "6");
+        SwapTxt_1();
+
     });
     jQuery(".madeBoxCons_p2 .setSize_80").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_80")
+        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_80");
+        //jQuery("#textInput_2").attr("maxlength", "6");
+        SwapTxt_2();
     });
 });
 
@@ -609,31 +622,57 @@ jQuery(function () {
 });
 
 function SwapTxt_1() {
-    var _txt_1 = document.getElementById("textInput_1").value;
-    var _textP1 = document.getElementById("textMade_P1")
-    var _swapTexLen = _txt_1.length;
+    var _txt = document.getElementById("textInput_1").value.trim();
+    var _text = document.getElementById("textMade_P1");
+    var _cnt = getTxtCnt(1);
 
-    if (_swapTexLen <= 8) {
-        _textP1.innerHTML = _txt_1;
-    } else {
-        alert("请不要超过8个英文字符")
-    }
+    setMadeText(_text, _txt, _cnt);
 }
 
 function SwapTxt_2() {
-    var _txt_2 = document.getElementById("textInput_2").value;
-    var _textP2 = document.getElementById("textMade_P2")
-    var _swapTexLen = _txt_2.length;
+    var _txt = document.getElementById("textInput_2").value.trim();
+    var _text = document.getElementById("textMade_P2");
+    var _cnt = getTxtCnt(2);
 
-    if (_swapTexLen <= 8) {
-        _textP2.innerHTML = _txt_2;
+    setMadeText(_text, _txt, _cnt);
+}
+
+function getSwapTxt_1() {
+    var _txt = document.getElementById("textInput_1").value.trim();
+    var _cnt = getTxtCnt(1);
+
+    return getMadeText(_txt, _cnt);
+}
+
+function getSwapTxt_2() {
+    var _txt = document.getElementById("textInput_2").value.trim();
+    var _cnt = getTxtCnt(2);
+
+    return getMadeText(_txt, _cnt);
+}
+
+function getMadeText(_txt, _cnt){
+    var _swapTexLen = _txt.length;
+    if (_swapTexLen < _cnt) {
+        return _txt;
     } else {
-        alert("请不要超过8个英文字符")
+        //alert("请不要超过8个英文字符")
+        return _txt.substr(0, _cnt);
+    }
+}
+
+function setMadeText(_text, _txt, _cnt){
+    var _swapTexLen = _txt.length;
+    if (_swapTexLen < _cnt) {
+        _text.innerHTML = _txt;
+    } else {
+        //alert("请不要超过8个英文字符")
+        _text.innerHTML = _txt.substr(0, _cnt);
     }
 }
 
 function getTxtSize(position) {
-    var size = null;
+    var size = 2;
     var obj = null;
     if (position == 1) {
         obj = document.getElementsByName("size-p1");
@@ -649,4 +688,15 @@ function getTxtSize(position) {
         }
     }
     return size;
+}
+
+function getTxtCnt(position) {
+    var size = getTxtSize(position);
+    if (size == 1) {
+        return 12;
+    }else if (size == 2) {
+        return 8;
+    } else {
+        return 6;
+    }
 }
