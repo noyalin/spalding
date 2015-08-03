@@ -306,6 +306,7 @@ function previewImage(file, imgId) {
         var reader = new FileReader();
         reader.onload = function (evt) {
             img.src = evt.target.result;
+            avatarinit();
         }
         reader.readAsDataURL(file.files[0]);
         _form.style.opacity = 1;
