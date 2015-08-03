@@ -286,6 +286,9 @@ endif;
                 if (dataObj != null) {
                     resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
                 }
+
+                jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
+                jQuery(".madeTexWrap").find(".select_P1").attr("src",jQuery(".select_N1").attr("src"));
             }
         });
 //    resetView_1(2, "abcdeft", 1);
@@ -308,6 +311,8 @@ endif;
                 if (dataObj != null) {
                     resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
                 }
+                jQuery(".madeTexWrap").find(".select_P2").html(jQuery(".select_N2").html());
+                jQuery(".madeTexWrap").find(".select_P2").attr("src",jQuery(".select_N2").attr("src"));
             }
         });
 //    resetView_2(1, "<?php //echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>//");

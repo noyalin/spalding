@@ -44,7 +44,7 @@ jQuery(function () {
         var _texIni2 = jQuery(".select_N2").html();
         var _imgIni2 = jQuery(".select_N2").attr("src");
 
-        if (_imgNowVal == _imgIniVal && _texNow == _texIni2) {
+        if (_imgNow == _imgIni2 && _texNow == _texIni2) {
             //未改动
             jQuery(this).addClass("madeP_btn_now");
             jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
@@ -103,7 +103,11 @@ jQuery(function () {
         var _imgNowVal = _imgIni.attr("src");
         var _texNow = jQuery(".madeTexWrap").find(".select_P1").html();
         var _texIni1 = jQuery(".select_N1").html();
-        if (_imgNowVal == _imgIniVal && _texNow == _texIni1) {
+
+        var _imgNow = jQuery(".madeTexWrap").find(".select_P1").attr("src");
+        var _imgIni1 = jQuery(".select_N1").attr("src");
+
+        if (_imgNow == _imgIni1 && _texNow == _texIni1) {
             //未改动
             jQuery(this).addClass("madeP_btn_now");
             jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
