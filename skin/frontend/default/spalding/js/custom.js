@@ -365,10 +365,22 @@ function imageinit() {
     avatar = document.getElementById('avatar');
     imgdefw = avatar.width;
     imgdefh = avatar.height;
-    if (imgdefw > divx) {
-        zoom = divx / imgdefw;
+
+    var zoomw = divx / imgdefw;
+    var zoomh = divy / imgdefh;
+
+    //if (imgdefw > divx) {
+    //    avatar.width = divx;
+    //    avatar.height = Math.round(imgdefh * zoomw);
+    //}
+
+    if (zoomw >= zoomh) {
         avatar.width = divx;
-        avatar.height = Math.round(imgdefh * zoom);
+        avatar.height = Math.round(imgdefh * zoomw);
+    }
+    else {
+        avatar.width = Math.round(imgdefw * zoomh);
+        avatar.height = divy;
     }
 
     avatar.style.left = Math.round((divx - avatar.width) / 2);
@@ -684,6 +696,7 @@ function getTxtSize(position) {
         for (var i = 0; i < obj.length; i++) {
             if (obj[i].checked) {
                 size = obj[i].value;
+                break;
             }
         }
     }
