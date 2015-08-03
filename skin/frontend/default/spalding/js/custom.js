@@ -363,6 +363,10 @@ var grip_maxx; //拖动块x最大值
 function imageinit() {
     cut_div = document.getElementById('cut_div');
     avatar = document.getElementById('avatar');
+
+    avatar.removeAttr('width');
+    avatar.removeAttr('height');
+
     imgdefw = avatar.width;
     imgdefh = avatar.height;
 
