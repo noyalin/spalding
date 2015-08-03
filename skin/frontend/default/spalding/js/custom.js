@@ -386,19 +386,32 @@ function imageinit() {
     avatar.style.left = Math.round((divx - avatar.width) / 2);
     avatar.style.top = Math.round((divy - avatar.height) / 2) - divy;
 
-    if (imgdefw > cutx) {
+    //if (imgdefw > cutx) {
+    //    zmin = cutx / imgdefw;
+    //} else {
+    //    zmin = 1;
+    //}
+    //zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
+    //if (imgdefw > cutx) {
+    //    zmin = cutx / imgdefw;
+    //    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
+    //} else {
+    //    zmin = 1;
+    //    grip_pos = 5;
+    //}
+
+    if (zoomw >= zoomh) {
         zmin = cutx / imgdefw;
     } else {
-        zmin = 1;
+        zmin = cuty / imgdefh;
     }
     zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
-    if (imgdefw > cutx) {
+    if (zoomw >= zoomh) {
         zmin = cutx / imgdefw;
-        grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
     } else {
-        zmin = 1;
-        grip_pos = 5;
+        zmin = cuty / imgdefh;
     }
+    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
 
     Drag.init(cut_div, avatar);
     avatar.onDrag = when_Drag;
