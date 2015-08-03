@@ -43,7 +43,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $imgresize->save($imgPath . $img1);
                 $content1 = Mage::getUrl($imgPath) . $img1;
 
-                $imgresize->cut(400, 186, intval($posary[0]), intval($posary[1]));
+                $imgresize->cut(400, 190, intval($posary[0]), intval($posary[1]));
 
                 $imgresize->save($imgPath . $img2);
                 $content2 = Mage::getUrl($imgPath) . $img2;
@@ -84,7 +84,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $imgresize->save($imgPath . $img1);
                 $content1 = Mage::getUrl($imgPath) . $img1;
 
-                $imgresize->cut(400, 186, intval($posary[0]), intval($posary[1]));
+                $imgresize->cut(400, 190, intval($posary[0]), intval($posary[1]));
 
                 $imgresize->save($imgPath . $img2);
                 $content2 = Mage::getUrl($imgPath) . $img2;
