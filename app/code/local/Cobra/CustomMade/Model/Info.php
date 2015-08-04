@@ -5,8 +5,8 @@
  */
 class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 {
-    const STATUS_APPROVED = 1;
-    const STATUS_APPROVING = 2;
+    const STATUS_APPROVING = 1;
+    const STATUS_APPROVED = 2;
     const STATUS_CANCEL = 3;
 
     protected function _construct()
@@ -42,7 +42,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             ->setMsg2P2($session->getContent2P2())
             ->setCreateTime($time)
             ->setUpdateTime($time)
-            ->setStatus(self::STATUS_APPROVED)
+            ->setStatus(self::STATUS_APPROVING)
             ->save();
         $this->clearSession();
     }
