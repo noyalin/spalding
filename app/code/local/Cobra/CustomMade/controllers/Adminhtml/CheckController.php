@@ -47,4 +47,11 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         $this->_redirect('*/*/index');
     }
 
+
+    public function exportCsvAction()
+    {
+        $fileName = 'custommade.csv';
+        $content = $this->getLayout()->createBlock('custommade/adminhtml_check_grid')->getCsv();
+        $this->_sendUploadResponse($fileName, $content);
+    }
 }
