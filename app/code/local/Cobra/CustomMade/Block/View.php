@@ -95,6 +95,29 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return Mage::getSingleton('core/session')->getContent2P2();
     }
 
+    public function getSizeClassP1()
+    {
+        $content2 = $this->getContent2P1();
+        return $this->getSizeClass($content2);
+    }
+
+    public function getSizeClassP2()
+    {
+        $content2 = $this->getContent2P2();
+        return $this->getSizeClass($content2);
+    }
+
+    private  function  getSizeClass($content2) {
+        if ($content2 == "3") {
+            $className = "size_80";
+        } elseif ($content2 == "2") {
+            $className = "size_60";
+        } else {
+            $className = "size_40";
+        }
+        return $className;
+    }
+
     public function getSizeId()
     {
         return $this->sizeId;

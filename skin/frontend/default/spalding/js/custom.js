@@ -22,6 +22,35 @@ jQuery(function () {
     });
 });
 
+//jQuery(function () {
+//    function onlyNumber(event){
+//        // 注意此处不要用keypress方法，否则不能禁用　Ctrl+V 与　Ctrl+V,具体原因请自行查找keyPress与keyDown区分，十分重要，请细查
+//        if ($.browser.msie) {  // 判断浏览器
+//            if (((event.keyCode > 47) && (event.keyCode < 58)) ||
+//                ((event.keyCode > 64) && (event.keyCode < 91)) ||
+//                ((event.keyCode > 96) && (event.keyCode < 123)) ||
+//                (event.keyCode == 8) || (event.keyCode == 32)
+//                ) { 　// 判断键值
+//                //return true;
+//            } else {
+//                event.keyCode = 0;
+//                //return false;
+//            }
+//        } else {
+//            if ( ((event.which > 47) && (event.which < 58)) ||
+//                ((event.which > 64) && (event.which < 91)) ||
+//                ((event.which > 96) && (event.which < 123)) ||
+//                (event.which == 8) || (event.which == 32) || (event.keyCode == 17) ) {
+//                //return true;
+//            } else {
+//                event.which = 0;
+//                //return false;
+//            }
+//        }
+//    }
+//    jQuery(".madeTextInpBox").keydown(onlyNumber);
+//});
+
 
 jQuery(function () {
     //获取初始数据
@@ -656,6 +685,7 @@ function SwapTxt_1() {
 
 function SwapTxt_2() {
     var _txt = document.getElementById("textInput_2").value.trim();
+    //value=value.replace(/[^\w\.\/]/ig,'');
     var _text = document.getElementById("textMade_P2");
     var _cnt = getTxtCnt(2);
 
@@ -719,10 +749,10 @@ function getTxtSize(position) {
 function getTxtCnt(position) {
     var size = getTxtSize(position);
     if (size == 1) {
-        return 12;
+        return 16;
     }else if (size == 2) {
-        return 8;
+        return 12;
     } else {
-        return 6;
+        return 8;
     }
 }
