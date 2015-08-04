@@ -26,7 +26,20 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
             $html .= 'style="width:100px"/>';
             $html .= '</a>';
         } else {
-            $html = '' . $msg;
+            if ($this->getColumn()->getIndex() == "msg2_p1" ||
+                $this->getColumn()->getIndex() == "msg2_p2") {
+                if ($msg == '1') {
+                    $html = '' . '小号字体';
+                } else if ($msg == '2') {
+                    $html = '' . '中号字体';
+                } else if ($msg == '3') {
+                    $html = '' . '大号字体';
+                } else {
+                    $html = '' . $msg;
+                }
+            } else {
+                $html = '' . $msg;
+            }
         }
         return $html;
     }

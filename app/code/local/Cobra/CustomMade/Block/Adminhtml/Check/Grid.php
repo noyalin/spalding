@@ -22,15 +22,15 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
     {
 
         $this->addColumn('order_id', array(
-            'header' => Mage::helper('custommade')->__('order_id'),
+            'header' => Mage::helper('custommade')->__('订单编号'),
             'align' => 'right',
             'width' => '50px',
             'index' => 'order_id',
         ));
 
         $this->addColumn('type_p1', array(
-            'header' => Mage::helper('custommade')->__('type_p1'),
-            'align' => 'left',
+            'header' => Mage::helper('custommade')->__('P1类型'),
+            'align' => 'center',
             'index' => 'type_p1',
             'sortable' => false,
             'type' => 'options',
@@ -41,8 +41,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('msg1_p1', array(
-                'header' => Mage::helper('custommade')->__('msg1_p1'),
-                'align' => 'left',
+                'header' => Mage::helper('custommade')->__('P1属性1'),
+                'align' => 'center',
                 'index' => 'msg1_p1',
                 'renderer' => 'custommade/adminhtml_check_renderer_content',
                 'filter' => false,
@@ -52,25 +52,19 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         );
 
         $this->addColumn('msg2_p1', array(
-                'header' => Mage::helper('custommade')->__('msg2_p1'),
-                'align' => 'left',
+                'header' => Mage::helper('custommade')->__('P1属性2'),
+                'align' => 'center',
                 'index' => 'msg2_p1',
                 'renderer' => 'custommade/adminhtml_check_renderer_content',
                 'filter' => false,
                 'sortable' => false,
                 'position' => 'P1',
-                'type' => 'options',
-                'options' => array(
-                    1 => '小号字体',
-                    2 => '中号字体',
-                    3 => '大号字体',
-                ),
             )
         );
 
         $this->addColumn('type_p2', array(
-            'header' => Mage::helper('custommade')->__('type_p2'),
-            'align' => 'left',
+            'header' => Mage::helper('custommade')->__('P2类型'),
+            'align' => 'center',
             'index' => 'type_p2',
             'sortable' => false,
             'type' => 'options',
@@ -81,8 +75,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('msg1_p2', array(
-            'header' => Mage::helper('custommade')->__('msg1_p2'),
-            'align' => 'left',
+            'header' => Mage::helper('custommade')->__('P2属性1'),
+            'align' => 'center',
             'index' => 'msg1_p2',
             'renderer' => 'custommade/adminhtml_check_renderer_content',
             'filter' => false,
@@ -91,50 +85,27 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('msg2_p2', array(
-            'header' => Mage::helper('custommade')->__('msg2_p2'),
-            'align' => 'left',
+            'header' => Mage::helper('custommade')->__('P2属性2'),
+            'align' => 'center',
             'index' => 'msg2_p2',
             'renderer' => 'custommade/adminhtml_check_renderer_content',
             'filter' => false,
             'sortable' => false,
             'position' => 'P2',
-            'type' => 'options',
-            'options' => array(
-                1 => '小号字体',
-                2 => '中号字体',
-                3 => '大号字体',
-            ),
         ));
 
-        $this->addColumn('type', array(
-            'header' => Mage::helper('custommade')->__('Status'),
-            'align' => 'left',
+
+        $this->addColumn('status', array(
+            'header' => Mage::helper('custommade')->__('审批状态'),
+            'align' => 'center',
             'width' => '80px',
             'index' => 'status',
             'type' => 'options',
             'options' => array(
-                1 => 'Approved',
-                2 => 'Approving',
-                3 => 'Cancel',
+                1 => '待审批',
+                2 => '审批通过',
+                3 => '取消订单',
             ),
-        ));
-
-        $this->addColumn('action', array(
-            'header' => Mage::helper('custommade')->__('Action'),
-            'width' => '100',
-            'type' => 'action',
-            'getter' => 'getId',
-            'actions' => array(
-                array(
-                    'caption' => Mage::helper('custommade')->__('Edit'),
-                    'url' => array('base' => '*/*/edit'),
-                    'field' => 'id'
-                )
-            ),
-            'filter' => false,
-            'sortable' => false,
-            'index' => 'stores',
-            'is_system' => true,
         ));
 
         $this->addExportType('*/*/exportCsv', Mage::helper('custommade')->__('CSV'));
