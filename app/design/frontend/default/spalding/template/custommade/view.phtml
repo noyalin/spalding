@@ -72,6 +72,7 @@
             url: jQuery('#complete').val(),
             data: {position: 1, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
             success: function (res) {
+                document.location.reload();
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
@@ -98,6 +99,7 @@
             url: jQuery('#complete').val(),
             data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
             success: function (res) {
+                document.location.reload();
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
