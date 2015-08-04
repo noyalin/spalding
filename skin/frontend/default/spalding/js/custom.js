@@ -23,18 +23,31 @@ jQuery(function () {
 });
 
 jQuery(function () {
-    function onlyCharNumber(event){
-        var keyCode = event.keyCode;
-        if ((keyCode >= 48 && keyCode <= 57) ||
-            (keyCode >= 65 && keyCode <= 90) ||
-            (keyCode >= 97 && keyCode <= 122)){
+    jQuery(".madeTextInpBox").keydown(function(e){
+        // 注意此处不要用keypress方法，否则不能禁用　Ctrl+V 与　Ctrl+V,具体原因请自行查找keyPress与keyDown区分，十分重要，请细查
+        if ($.browser.msie) {  // 判断浏览器
+            if (((event.keyCode > 47) && (event.keyCode < 58)) ||
+                ((event.keyCode > 64) && (event.keyCode < 91)) ||
+                ((event.keyCode > 96) && (event.keyCode < 123)) ||
+                (event.keyCode == 8)
+                ) { 　// 判断键值
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if ( ((e.which > 47) && (e.which < 58)) ||
+                ((e.which > 64) && (e.which < 91)) ||
+                ((e.which > 96) && (e.which < 123)) ||
+                (e.which == 8) || (event.keyCode == 17) ) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        else {
-            event.keyCode = 0;
-        }
-    }
-
-    jQuery(".madeTextInpBox").keydown(onlyCharNumber);
+    }).focus(function() {
+        this.style.imeMode='disabled';   // 禁用输入法,禁止输入中文字符
+    });
 });
 
 
