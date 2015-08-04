@@ -334,4 +334,5 @@ class ImageResize
         }
         return $type;
     }
+
 }
