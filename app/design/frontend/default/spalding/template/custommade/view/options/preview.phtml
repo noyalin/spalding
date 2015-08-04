@@ -274,7 +274,7 @@
             <!-- 2-1 -->
             <li style="z-index:1;">
                 <div class="zz"><img src="<?php echo $this->getSkinUrl("images/customMade/zz/01.png") ?>" alt="" /></div>
-                <div class="textBox textPag_1 textPag_1_1"><?php echo $this->getContent1P1() ?></div>
+                <div class="textBox textPag_1 textPag_1_1 "><?php echo $this->getContent1P1() ?></div>
                 <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/imgBall_n/01.png") ?>" alt="" /></div>
             </li>
 
@@ -529,3 +529,26 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+
+    jQuery(function () {
+
+        <?php if ($this->getContent2P1() == '3'): ?>
+            jQuery(".textPag_1").addClass("size_80");
+        <?php elseif($this->getContent2P1() == '2'): ?>
+            jQuery(".textPag_1").addClass("size_60");
+        <?php else: ?>
+            jQuery(".textPag_1").addClass("size_40");
+        <?php endif; ?>
+
+        <?php if ($this->getContent2P2() == '3'): ?>
+        jQuery(".textPag_2").addClass("size_80");
+        <?php elseif($this->getContent2P2() == '2'): ?>
+        jQuery(".textPag_2").addClass("size_60");
+        <?php else: ?>
+        jQuery(".textPag_2").addClass("size_40");
+        <?php endif; ?>
+    });
+
+</script>

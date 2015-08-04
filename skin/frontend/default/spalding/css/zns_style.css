@@ -30,6 +30,7 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	/*overflow: hidden; */
 	position: relative; 
 	font-family:'Conv_CustomGrotesque-Regular',Sans-Serif;
+	font-size: 40px;
 }
 .big_pic li { 
 	width: 400px; 
@@ -228,7 +229,6 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	line-height: 400px;
 	z-index:5;
 	text-align: center;
-	font-size: 40px;
 	color:#000;
 }
 /*遮罩*/
