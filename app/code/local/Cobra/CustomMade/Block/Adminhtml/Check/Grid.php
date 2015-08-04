@@ -31,7 +31,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 
         $this->addColumn('create_time', array(
             'header' => Mage::helper('custommade')->__('订单时间'),
-            'width' => '200px',
+            'width' => '150px',
             'index' => 'create_time',
             'type'              => 'datetime',
             'align'             => 'center',
