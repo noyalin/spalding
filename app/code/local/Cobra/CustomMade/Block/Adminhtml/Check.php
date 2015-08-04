@@ -9,6 +9,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check extends Mage_Adminhtml_Block_Widget
         $this->_headerText = Mage::helper('custommade')->__('定制球管理');
 //        $this->_addButtonLabel = Mage::helper('custommade')->__('Add Employee');
         parent::__construct();
+        $this->removeButton('add');
     }
 
 }
