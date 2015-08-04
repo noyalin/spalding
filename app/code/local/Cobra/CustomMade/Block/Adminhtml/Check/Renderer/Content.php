@@ -26,7 +26,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
             $html .= 'style="width:100px"/>';
             $html .= '</a>';
         } else {
-            $html = '<span>' . $msg . '</span>';
+            $html = '' . $msg;
         }
         return $html;
     }

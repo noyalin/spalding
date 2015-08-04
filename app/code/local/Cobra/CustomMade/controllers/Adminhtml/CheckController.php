@@ -55,6 +55,13 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         $this->_sendUploadResponse($fileName, $content);
     }
 
+    public function exportXmlAction()
+    {
+        $fileName = 'custommade.xml';
+        $content = $this->getLayout()->createBlock('custommade/adminhtml_check_grid')->getXml();
+        $this->_sendUploadResponse($fileName, $content);
+    }
+
     protected function _sendUploadResponse($fileName, $content, $contentType='application/octet-stream')
     {
         $response = $this->getResponse();
