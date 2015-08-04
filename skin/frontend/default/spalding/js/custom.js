@@ -22,44 +22,34 @@ jQuery(function () {
     });
 });
 
-jQuery(function () {
-
-    function onlyNumber(event){
-        var keyCode = event.keyCode;
-
-        if (((keyCode > 47) && (keyCode < 58)) ||
-            ((keyCode > 64) && (keyCode < 91)) ||
-            ((keyCode > 96) && (keyCode < 123)) ||
-            (keyCode == 8) || (keyCode == 32)
-        ) { 　// 判断键值
-            return true;
-        } else {
-            event.keyCode = 0;
-            return false;
-        }
-    }
-    jQuery(".madeTextInpBox").keydown(onlyNumber);
-
-    //jQuery(".madeTextInpBox")
-    //    .keydown(function(e){
-    //    // 注意此处不要用keypress方法，否则不能禁用　Ctrl+V 与　Ctrl+V,具体原因请自行查找keyPress与keyDown区分，十分重要，请细查
-    //    if ($.browser.msie) {  // 判断浏览器
-    //
-    //    } else {
-    //        if ( ((e.which > 47) && (e.which < 58)) ||
-    //            ((e.which > 64) && (e.which < 91)) ||
-    //            ((e.which > 96) && (e.which < 123)) ||
-    //            (e.which == 8) || (event.keyCode == 17) ) {
-    //            return true;
-    //        } else {
-    //            return false;
-    //        }
-    //    }
-    //})
-    //    .focus(function() {
-    //    this.style.imeMode='disabled';   // 禁用输入法,禁止输入中文字符
-    //});
-});
+//jQuery(function () {
+//    function onlyNumber(event){
+//        // 注意此处不要用keypress方法，否则不能禁用　Ctrl+V 与　Ctrl+V,具体原因请自行查找keyPress与keyDown区分，十分重要，请细查
+//        if ($.browser.msie) {  // 判断浏览器
+//            if (((event.keyCode > 47) && (event.keyCode < 58)) ||
+//                ((event.keyCode > 64) && (event.keyCode < 91)) ||
+//                ((event.keyCode > 96) && (event.keyCode < 123)) ||
+//                (event.keyCode == 8) || (event.keyCode == 32)
+//                ) { 　// 判断键值
+//                //return true;
+//            } else {
+//                event.keyCode = 0;
+//                //return false;
+//            }
+//        } else {
+//            if ( ((event.which > 47) && (event.which < 58)) ||
+//                ((event.which > 64) && (event.which < 91)) ||
+//                ((event.which > 96) && (event.which < 123)) ||
+//                (event.which == 8) || (event.which == 32) || (event.keyCode == 17) ) {
+//                //return true;
+//            } else {
+//                event.which = 0;
+//                //return false;
+//            }
+//        }
+//    }
+//    jQuery(".madeTextInpBox").keydown(onlyNumber);
+//});
 
 
 jQuery(function () {
