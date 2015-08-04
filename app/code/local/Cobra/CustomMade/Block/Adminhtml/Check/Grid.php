@@ -24,13 +24,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('order_id', array(
             'header' => Mage::helper('custommade')->__('订单编号'),
             'align' => 'right',
-            'width' => '50px',
+            'width' => '80px',
             'index' => 'order_id',
             'html_decorators'   => array('nobr')
         ));
 
         $this->addColumn('create_time', array(
             'header' => Mage::helper('custommade')->__('订单时间'),
+            'width' => '250px',
             'index' => 'create_time',
             'type'              => 'datetime',
             'align'             => 'center',
