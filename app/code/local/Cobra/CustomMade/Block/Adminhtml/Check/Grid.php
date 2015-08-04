@@ -35,8 +35,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'sortable' => false,
             'type' => 'options',
             'options' => array(
-                1 => 'Image',
-                2 => 'Text',
+                1 => '图片',
+                2 => '文字',
             ),
         ));
 
@@ -59,6 +59,12 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 'filter' => false,
                 'sortable' => false,
                 'position' => 'P1',
+                'type' => 'options',
+                'options' => array(
+                    1 => '小号字体',
+                    2 => '中号字体',
+                    3 => '大号字体',
+                ),
             )
         );
 
@@ -69,8 +75,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'sortable' => false,
             'type' => 'options',
             'options' => array(
-                1 => 'Image',
-                2 => 'Text',
+                1 => '图片',
+                2 => '文字',
             ),
         ));
 
@@ -92,6 +98,12 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'filter' => false,
             'sortable' => false,
             'position' => 'P2',
+            'type' => 'options',
+            'options' => array(
+                1 => '小号字体',
+                2 => '中号字体',
+                3 => '大号字体',
+            ),
         ));
 
 
