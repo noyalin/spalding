@@ -685,7 +685,7 @@ function SwapTxt_1() {
 
 function SwapTxt_2() {
     var _txt = document.getElementById("textInput_2").value.trim();
-    value=value.replace(/[^\w\.\/]/ig,'')
+    //value=value.replace(/[^\w\.\/]/ig,'');
     var _text = document.getElementById("textMade_P2");
     var _cnt = getTxtCnt(2);
 
