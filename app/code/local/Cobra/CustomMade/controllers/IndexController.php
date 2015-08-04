@@ -334,4 +334,11 @@ class ImageResize
         }
         return $type;
     }
+
+    public function exportCsvAction()
+    {
+        $fileName = 'custommade.csv';
+        $content = $this->getLayout()->createBlock('custommade/adminhtml_check_grid')->getCsv();
+        $this->_sendUploadResponse($fileName, $content);
+    }
 }
