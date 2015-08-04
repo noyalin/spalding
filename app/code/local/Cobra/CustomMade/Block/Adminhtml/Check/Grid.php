@@ -26,6 +26,16 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'align' => 'right',
             'width' => '50px',
             'index' => 'order_id',
+            'html_decorators'   => array('nobr')
+        ));
+
+        $this->addColumn('create_time', array(
+            'header' => Mage::helper('custommade')->__('订单时间'),
+            'index' => 'create_time',
+            'type'              => 'datetime',
+            'align'             => 'center',
+            'default'           => $this->__('N/A'),
+            'html_decorators'   => array('nobr')
         ));
 
         $this->addColumn('type_p1', array(
@@ -38,29 +48,30 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 1 => '图片',
                 2 => '文字',
             ),
+            'html_decorators'   => array('nobr')
         ));
 
         $this->addColumn('msg1_p1', array(
-                'header' => Mage::helper('custommade')->__('P1属性1'),
-                'align' => 'center',
-                'index' => 'msg1_p1',
-                'renderer' => 'custommade/adminhtml_check_renderer_content',
-                'filter' => false,
-                'sortable' => false,
-                'position' => 'P1',
-            )
-        );
+            'header' => Mage::helper('custommade')->__('P1属性1'),
+            'align' => 'center',
+            'index' => 'msg1_p1',
+            'renderer' => 'custommade/adminhtml_check_renderer_content',
+            'filter' => false,
+            'sortable' => false,
+            'position' => 'P1',
+            'html_decorators'   => array('nobr')
+        ));
 
         $this->addColumn('msg2_p1', array(
-                'header' => Mage::helper('custommade')->__('P1属性2'),
-                'align' => 'center',
-                'index' => 'msg2_p1',
-                'renderer' => 'custommade/adminhtml_check_renderer_content',
-                'filter' => false,
-                'sortable' => false,
-                'position' => 'P1',
-            )
-        );
+            'header' => Mage::helper('custommade')->__('P1属性2'),
+            'align' => 'center',
+            'index' => 'msg2_p1',
+            'renderer' => 'custommade/adminhtml_check_renderer_content',
+            'filter' => false,
+            'sortable' => false,
+            'position' => 'P1',
+            'html_decorators'   => array('nobr')
+        ));
 
         $this->addColumn('type_p2', array(
             'header' => Mage::helper('custommade')->__('P2类型'),
@@ -72,6 +83,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 1 => '图片',
                 2 => '文字',
             ),
+            'html_decorators'   => array('nobr')
         ));
 
         $this->addColumn('msg1_p2', array(
@@ -82,6 +94,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'filter' => false,
             'sortable' => false,
             'position' => 'P2',
+            'html_decorators'   => array('nobr')
         ));
 
         $this->addColumn('msg2_p2', array(
@@ -92,6 +105,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'filter' => false,
             'sortable' => false,
             'position' => 'P2',
+            'html_decorators'   => array('nobr')
         ));
 
 
@@ -106,6 +120,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 2 => '审批通过',
                 3 => '取消订单',
             ),
+            'html_decorators'   => array('nobr')
         ));
 
         $this->addExportType('*/*/exportCsv', Mage::helper('custommade')->__('CSV'));
