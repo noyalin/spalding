@@ -94,7 +94,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'position' => 'P2',
         ));
 
-
         $this->addColumn('type', array(
             'header' => Mage::helper('custommade')->__('Status'),
             'align' => 'left',
@@ -106,6 +105,24 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 2 => 'Approving',
                 3 => 'Cancel',
             ),
+        ));
+
+        $this->addColumn('action', array(
+            'header' => Mage::helper('custommade')->__('Action'),
+            'width' => '100',
+            'type' => 'action',
+            'getter' => 'getId',
+            'actions' => array(
+                array(
+                    'caption' => Mage::helper('custommade')->__('Edit'),
+                    'url' => array('base' => '*/*/edit'),
+                    'field' => 'id'
+                )
+            ),
+            'filter' => false,
+            'sortable' => false,
+            'index' => 'stores',
+            'is_system' => true,
         ));
 
         $this->addExportType('*/*/exportCsv', Mage::helper('custommade')->__('CSV'));
