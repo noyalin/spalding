@@ -31,7 +31,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 
         $this->addColumn('create_time', array(
             'header' => Mage::helper('custommade')->__('订单时间'),
-            'width' => '250px',
+            'width' => '200px',
             'index' => 'create_time',
             'type'              => 'datetime',
             'align'             => 'center',
@@ -42,6 +42,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('type_p1', array(
             'header' => Mage::helper('custommade')->__('P1类型'),
             'align' => 'center',
+            'width' => '80px',
             'index' => 'type_p1',
             'sortable' => false,
             'type' => 'options',
@@ -77,6 +78,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('type_p2', array(
             'header' => Mage::helper('custommade')->__('P2类型'),
             'align' => 'center',
+            'width' => '80px',
             'index' => 'type_p2',
             'sortable' => false,
             'type' => 'options',
