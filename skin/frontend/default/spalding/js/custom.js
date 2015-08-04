@@ -22,6 +22,21 @@ jQuery(function () {
     });
 });
 
+jQuery(function () {
+    function onlyCharNumber(event){
+        var keyCode = event.keyCode;
+        if ((keyCode >= 48 && keyCode <= 57) ||
+            (keyCode >= 65 && keyCode <= 90) ||
+            (keyCode >= 97 && keyCode <= 122)){
+        }
+        else {
+            event.keyCode = 0;
+        }
+    }
+
+    jQuery(".madeTextInpBox").keydown(onlyCharNumber);
+});
+
 
 jQuery(function () {
     //获取初始数据
