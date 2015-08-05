@@ -140,6 +140,9 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
 //                $model->post_new_order($order);
 //                $postMessage = Mage::getModel('sales/postmessage');
 //                $postMessage->saveDataAndSendWebservice($order);
+
+                $this->SavePaymentInfo($orderId);
+
                 try{
                     $order->save();
 //                    $this->sendMail($orderId);
@@ -233,5 +236,20 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         $weixinpay = Mage::getModel('weixinpay/weixinpay');
 //        $token = $weixinpay->getAccessToken();
         $list = $weixinpay->getList();
+    }
+
+    private function SavePaymentInfo($orderId)
+    {
+        try{
+            $orderCustom = Mage::getModel('custommade/info')->loadByIncrementId($orderId);
+            if ($orderCustom->getId()) {
+                $orderCustom->approving();
+                $orderCustom->save();
+            }
+        } catch(Exception $e){
+            Mage :: log( "WeixinPayment Error Message: orderId = ".$orderId);
+            Mage :: log( "WeixinPayment Error Message: ".$e->getMessage());
+//                    $this->sendMail();
+        }
     }
 }
