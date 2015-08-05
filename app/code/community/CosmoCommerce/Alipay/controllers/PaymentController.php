@@ -321,6 +321,9 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     $model->post_new_order($order);
 //                    $postMessage = Mage::getModel('sales/postmessage');
 //                    $postMessage->saveDataAndSendWebservice($order);
+
+                    $this->SavePaymentInfo($out_trade_no);
+
                     try{
                         $order->save();
                         Mage :: log("付款成功");
@@ -711,6 +714,9 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     $model->post_new_order($order);
                     //$postMessage = Mage::getModel('sales/postmessage');
                     //$postMessage->saveDataAndSendWebservice($order);
+
+                    $this->SavePaymentInfo($postData['out_trade_no']);
+
                     try{
                         $order->save();
 //                        echo "success";
@@ -742,5 +748,20 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
             return;
         }
 
+    }
+
+    private function SavePaymentInfo($orderId)
+    {
+        try{
+            $orderCustom = Mage::getModel('custommade/info')->loadByIncrementId($orderId);
+            if ($orderCustom->getId()) {
+                $orderCustom->approving();
+                $orderCustom->save();
+            }
+        } catch(Exception $e){
+            Mage :: log( "WeixinPayment Error Message: orderId = ".$orderId);
+            Mage :: log( "WeixinPayment Error Message: ".$e->getMessage());
+//                    $this->sendMail();
+        }
     }
 }

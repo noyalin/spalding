@@ -8,6 +8,19 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         $this->renderLayout();
     }
 
+    public function massNonPaymentAction()
+    {
+        $infoIds = $this->getRequest()->getParam('custommade');
+        if (!is_array($infoIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('Please select order(s)'));
+        }
+        foreach ($infoIds as $infoId) {
+            $subscriber = Mage::getModel('custommade/info')->load($infoId);
+            $subscriber->nonpayment();
+        }
+        $this->_redirect('*/*/index');
+    }
+
     public function massApprovedAction()
     {
         $infoIds = $this->getRequest()->getParam('custommade');

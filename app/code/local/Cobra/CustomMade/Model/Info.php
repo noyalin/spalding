@@ -5,6 +5,7 @@
  */
 class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 {
+    const STATUS_NON_PAYMENT = 0;
     const STATUS_APPROVING = 1;
     const STATUS_APPROVED = 2;
     const STATUS_CANCEL = 3;
@@ -14,9 +15,9 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $this->_init('custommade/info');
     }
 
-    public function approved()
+    public function nonpayment()
     {
-        $this->setStatus(self::STATUS_APPROVED)->save();
+        $this->setStatus(self::STATUS_NON_PAYMENT)->save();
     }
 
     public function approving()
@@ -24,9 +25,19 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $this->setStatus(self::STATUS_APPROVING)->save();
     }
 
+    public function approved()
+    {
+        $this->setStatus(self::STATUS_APPROVED)->save();
+    }
+
     public function cancel()
     {
         $this->setStatus(self::STATUS_CANCEL)->save();
+    }
+
+    public function loadByIncrementId($incrementId)
+    {
+        return $this->loadByAttribute('order_id', $incrementId);
     }
 
     public function saveCustomMade($orderId)
@@ -42,7 +53,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             ->setMsg2P2($session->getContent2P2())
             ->setCreateTime($time)
             ->setUpdateTime($time)
-            ->setStatus(self::STATUS_APPROVING)
+            ->setStatus(self::STATUS_NON_PAYMENT)
             ->save();
         $this->clearSession();
     }
