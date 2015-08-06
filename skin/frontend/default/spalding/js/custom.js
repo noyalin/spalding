@@ -642,11 +642,34 @@ productAddToCartForm.submitLight = function (button, url) {
 jQuery(function () {
 
     //提交当前PAGE按钮
-    jQuery(".submitY").click(function () {
+    jQuery("#submitYP1").click(function () {
 
-        jQuery(this).parent(".madeSubmit").css("display", "none");
-        jQuery(this).parent(".madeSubmit").siblings(".madeBoxFuns").css("display", "none");
-        jQuery(this).parent(".madeSubmit").siblings(".comfBox").css("display", "block");
+        var re = /^([A-Za-z0-9]|\s)*$/;
+        var txtInput = jQuery("#textInput_1");
+
+        if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
+            alert('只限输入字母，数字以及空格！');
+            txtInput.focus();
+        } else {
+            jQuery(this).parent(".madeSubmit").css("display", "none");
+            jQuery(this).parent(".madeSubmit").siblings(".madeBoxFuns").css("display", "none");
+            jQuery(this).parent(".madeSubmit").siblings(".comfBox").css("display", "block");
+        }
+    });
+
+    jQuery("#submitYP2").click(function () {
+
+        var re = /^([A-Za-z0-9]|\s)*$/;
+        var txtInput = jQuery("#textInput_2");
+
+        if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
+            alert('只限输入字母，数字以及空格！');
+            txtInput.focus();
+        } else {
+            jQuery(this).parent(".madeSubmit").css("display", "none");
+            jQuery(this).parent(".madeSubmit").siblings(".madeBoxFuns").css("display", "none");
+            jQuery(this).parent(".madeSubmit").siblings(".comfBox").css("display", "block");
+        }
     });
 
     jQuery(".saveMadeN").click(function () {
@@ -707,6 +730,7 @@ function getSwapTxt_2() {
 }
 
 function getMadeText(_txt, _cnt){
+
     var _swapTexLen = _txt.length;
     if (_swapTexLen < _cnt) {
         return _txt;
@@ -716,14 +740,30 @@ function getMadeText(_txt, _cnt){
     }
 }
 
-function setMadeText(_text, _txt, _cnt){
-    var _swapTexLen = _txt.length;
-    if (_swapTexLen < _cnt) {
-        _text.innerHTML = _txt;
-    } else {
-        //alert("请不要超过8个英文字符")
-        _text.innerHTML = _txt.substr(0, _cnt);
+function getMadeText(str,len){
+    if(!str) return "";
+    if(len<= 0) return "";
+    //if(!suffix) suffix = "";
+    var templen=0;
+    for(var i=0;i<str.length;i++){
+        if(str.charCodeAt(i)>255){
+            templen+=2;
+        }else{
+            templen++
+        }
+        if(templen == len){
+            //return str.substring(0,i+1)+suffix;
+            return str.substring(0,i+1);
+        }else if(templen >len){
+            //return str.substring(0,i)+suffix;
+            return str.substring(0,i);
+        }
     }
+    return str;
+}
+
+function setMadeText(_text, _txt, _cnt){
+    _text.innerHTML = getMadeText(_txt, _cnt);
 }
 
 function getTxtSize(position) {
