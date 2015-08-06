@@ -50,6 +50,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 'label' => Mage::helper('custommade')->__('P1属性2'),
                 'class' => 'required-entry',
                 'name' => 'msg2_p1',
+                'after_element_html' => '<br /><small>当类型为文字时，1：小，2：中，3：大</small>',
             )
         );
 
@@ -84,6 +85,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 'label' => Mage::helper('custommade')->__('P2属性2'),
                 'class' => 'required-entry',
                 'name' => 'msg2_p2',
+                'after_element_html' => '<br /><small>当类型为文字时，1：小，2：中，3：大</small>',
             )
         );
 
