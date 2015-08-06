@@ -11,8 +11,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit extends Mage_Adminhtml_Block_W
         $this->_controller = 'adminhtml_check';
 
         $this->_updateButton('save', 'label', Mage::helper('custommade')->__('Save'));
-        $this->_updateButton('delete', 'label', Mage::helper('custommade')->__('Delete'));
-        // $this->removeButton('reset');
+        $this->removeButton('delete');
 
         $this->_addButton('saveandcontinue', array(
             'label' => Mage::helper('adminhtml')->__('Save And Continue Edit'),
@@ -22,19 +21,19 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit extends Mage_Adminhtml_Block_W
             -100
         );
 
-//        $this->_formScripts[] = "
-//            function toggleEditor() {
-//                if (tinyMCE.getInstanceById('web_content') == null) {
-//                    tinyMCE.execCommand('mceAddControl', false, 'custommade_content');
-//                } else {
-//                    tinyMCE.execCommand('mceRemoveControl', false, 'custommade_content');
-//                }
-//            }
-//
-//            function saveAndContinueEdit(){
-//                editForm.submit($('edit_form').action+'back/edit/');
-//            }
-//        ";
+        $this->_formScripts[] = "
+            function toggleEditor() {
+                if (tinyMCE.getInstanceById('web_content') == null) {
+                    tinyMCE.execCommand('mceAddControl', false, 'custommade_content');
+                } else {
+                    tinyMCE.execCommand('mceRemoveControl', false, 'custommade_content');
+                }
+            }
+
+            function saveAndContinueEdit(){
+                editForm.submit($('edit_form').action+'back/edit/');
+            }
+        ";
     }
 
     public function getHeaderText()
