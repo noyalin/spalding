@@ -7,40 +7,90 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
         $form = new Varien_Data_Form();
         $this->setForm($form);
         $fieldset = $form->addFieldset('custommade_form', array(
-                'legend' => Mage::helper('custommade')->__('Employee information')
+                'legend' => Mage::helper('custommade')->__('篮球定制')
             )
         );
 
         $fieldset->addField('order_id', 'text', array(
-                'label' => Mage::helper('custommade')->__('order_id'),
+                'label' => Mage::helper('custommade')->__('订单号'),
                 'class' => 'required-entry',
-                'required' => true,
+                'disabled' => true,
                 'name' => 'order_id',
             )
         );
 
+        $fieldset->addField('type_p1', 'text', array(
+                'label' => Mage::helper('custommade')->__('P1类型'),
+                'class' => 'required-entry',
+                'name' => 'type_p1',
+            )
+        );
+
+        $fieldset->addField('msg1_p1', 'text', array(
+                'label' => Mage::helper('custommade')->__('P1属性1'),
+                'class' => 'required-entry',
+                'name' => 'msg1_p1',
+            )
+        );
+
+        $fieldset->addField('msg2_p1', 'text', array(
+                'label' => Mage::helper('custommade')->__('P1属性2'),
+                'class' => 'required-entry',
+                'name' => 'msg2_p1',
+            )
+        );
+
+        $fieldset->addField('type_p2', 'text', array(
+                'label' => Mage::helper('custommade')->__('P2类型'),
+                'class' => 'required-entry',
+                'name' => 'type_p2',
+            )
+        );
+
+        $fieldset->addField('msg1_p2', 'text', array(
+                'label' => Mage::helper('custommade')->__('P2属性1'),
+                'class' => 'required-entry',
+                'name' => 'msg1_p2',
+            )
+        );
+
+        $fieldset->addField('msg2_p2', 'text', array(
+                'label' => Mage::helper('custommade')->__('P2属性2'),
+                'class' => 'required-entry',
+                'name' => 'msg2_p2',
+            )
+        );
+
         $fieldset->addField('status', 'select', array(
-            'label' => Mage::helper('custommade')->__('status'),
+            'label' => Mage::helper('custommade')->__('订单状态'),
             'name' => 'status',
             'class' => 'required-entry',
             'required' => true,
             'values' => array(
                 array(
-                    'value' => 1,
-                    'label' => Mage::helper('custommade')->__('Yes'),
+                    'value' => 0,
+                    'label' => Mage::helper('custommade')->__('待付款'),
                 ),
                 array(
-                    'value' => 0,
-                    'label' => Mage::helper('custommade')->__('No'),
+                    'value' => 1,
+                    'label' => Mage::helper('custommade')->__('待审批'),
+                ),
+                array(
+                    'value' => 2,
+                    'label' => Mage::helper('custommade')->__('审批通过'),
+                ),
+                array(
+                    'value' => 3,
+                    'label' => Mage::helper('custommade')->__('取消订单'),
                 ),
             ),
         ));
 
-        if ( Mage::getSingleton('adminhtml/session')->getCustommadeData() )
-        {
+
+        if (Mage::getSingleton('adminhtml/session')->getCustommadeData()) {
             $form->setValues(Mage::getSingleton('adminhtml/session')->getCustommadeData());
             Mage::getSingleton('adminhtml/session')->getCustommadeData(null);
-        } elseif ( Mage::registry('custommade_data') ) {
+        } elseif (Mage::registry('custommade_data')) {
             $form->setValues(Mage::registry('custommade_data')->getData());
         }
         return parent::_prepareForm();
