@@ -751,8 +751,8 @@ function getTxtCnt(position) {
     if (size == 1) {
         return 16;
     }else if (size == 2) {
-        return 12;
+        return 10;
     } else {
-        return 8;
+        return 6;
     }
 }

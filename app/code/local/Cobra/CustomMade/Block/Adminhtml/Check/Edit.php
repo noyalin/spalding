@@ -7,7 +7,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit extends Mage_Adminhtml_Block_W
         parent::__construct();
 
         $this->_objectId = 'id';
-        $this->_blockGroup = 'check';
+        $this->_blockGroup = 'custommade';
         $this->_controller = 'adminhtml_check';
 
         $this->_updateButton('save', 'label', Mage::helper('custommade')->__('Save'));
