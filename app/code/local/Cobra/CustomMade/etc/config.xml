@@ -28,6 +28,34 @@
         </routers>
     </admin>
     <adminhtml>
+        <menu>
+            <custommade module="custommade">
+                <title>篮球定制1</title>
+                <sort_order>200</sort_order>
+                <children>
+                    <items module="custommade">
+                        <title>资料审核</title>
+                        <sort_order>1</sort_order>
+                        <action>custommade/adminhtml_check</action>
+                    </items>
+                </children>
+            </custommade>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Cobra_CustomMade>
+                            <title>资料审核</title>
+                            <sort_order>10</sort_order>
+                        </Cobra_CustomMade>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
         <layout>
             <updates>
                 <custommade>
