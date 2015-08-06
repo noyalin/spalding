@@ -39,6 +39,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit extends Mage_Adminhtml_Block_W
 
     public function getHeaderText()
     {
-        return Mage::helper('custommade')->__('My Form Container');
+        return Mage::helper('custommade')->__('篮球定制');
     }
 }

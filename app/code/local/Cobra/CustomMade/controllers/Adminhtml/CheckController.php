@@ -163,7 +163,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             }
 
 
-            $model = Mage::getModel('web/web');
+            $model = Mage::getModel('custommade/info');
             $model->setData($data)
                 ->setId($this->getRequest()->getParam('id'));
 
@@ -176,7 +176,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
                 }
 
                 $model->save();
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('web')->__('Item was successfully saved'));
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('custommade')->__('Item was successfully saved'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
 
                 if ($this->getRequest()->getParam('back')) {
@@ -192,7 +192,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
                 return;
             }
         }
-        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('web')->__('Unable to find item to save'));
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('Unable to find item to save'));
         $this->_redirect('*/*/');
     }
 }

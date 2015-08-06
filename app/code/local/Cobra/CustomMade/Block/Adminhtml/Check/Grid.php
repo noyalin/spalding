@@ -129,13 +129,13 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 
         $this->addColumn('action',
             array(
-                'header'    =>  Mage::helper('web')->__('Action'),
+                'header'    =>  Mage::helper('custommade')->__('Action'),
                 'width'     => '100',
                 'type'      => 'action',
                 'getter'    => 'getId',
                 'actions'   => array(
                     array(
-                        'caption'   => Mage::helper('web')->__('Edit'),
+                        'caption'   => Mage::helper('custommade')->__('Edit'),
                         'url'       => array('base'=> '*/*/edit'),
                         'field'     => 'id'
                     )
