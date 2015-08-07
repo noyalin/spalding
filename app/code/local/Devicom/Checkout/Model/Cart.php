@@ -24,6 +24,9 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
                     $productTmp =Mage::getModel('catalog/product')->load($tmpId);
                     $optionIdTmp = $productTmp->getCustomBall();
                     if(in_array($optionIdTmp,$superAttribute)){
+                        $itemIdCart = $itemCart->getItemId();
+                        $itemCart->setQty(1);
+                        $cartHelper->getCart()->save();
                         continue;
                     }
 
