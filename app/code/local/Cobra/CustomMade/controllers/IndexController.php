@@ -40,16 +40,21 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         Mage::getSingleton('core/session')->setContent1P2($content1);
         Mage::getSingleton('core/session')->setContent2P2($content2);
 
+        echo "indexAction Ok";
     }
 
     public function allAction()
     {
         Mage::getSingleton('core/session')->setTestMode(1);
+
+        echo "allAction Ok";
     }
 
     public function textAction()
     {
         Mage::getSingleton('core/session')->setTestMode(0);
+
+        echo "textAction Ok";
     }
 
     public function completeAction()
