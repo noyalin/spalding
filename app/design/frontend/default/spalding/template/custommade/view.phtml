@@ -161,8 +161,8 @@
         _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
-        // jQuery(this).parents().find(".select_P2").css("display","block");
-        // jQuery(this).parents().find(".select_P1").css("display","none");
+         jQuery(".select_P1").css("display","block");
+         jQuery(".select_P2").css("display","none");
 //        jQuery("#options_pos").val(2);
 //        var type = jQuery("#options_type_p1").val();
         var _viewPage1 = jQuery(".viewPage_P1"); //获取预览P1
@@ -276,6 +276,8 @@
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
         _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+        jQuery(".select_P2").css("display","block");
+        jQuery(".select_P1").css("display","none");
 //        jQuery("#options_pos").val(2);
 //        var type = jQuery("#options_type_p1").val();
         var _viewPage2 = jQuery(".viewPage_P2"); //获取预览P2
