@@ -52,6 +52,7 @@
     
     <div class="madeBotmSn">
         <h1>定制专属篮球</h1>
+        <p class="loadingTest">loadingTest</p>
         <p>斯伯丁74-604“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，<br>恰到好处的粘度让你轻松“掌控”比赛！</p>
     </div>
 
@@ -124,6 +125,7 @@
             url: jQuery('#reset').val(),
             data: {position: 1},
             success: function (res) {
+                document.location.reload();
                 resetView_1(3, "", "");
             }
         });
@@ -135,6 +137,7 @@
             url: jQuery('#reset').val(),
             data: {position: 2},
             success: function (res) {
+                document.location.reload();
                 resetView_2(3, "", "");
             }
         });
@@ -356,12 +359,17 @@
             type: 'POST',
             url: jQuery('#check').val(),
             data: {position: 1},
+            data: {position: <?php if ($this->getPos() != 1):?>2<?php else: ?>1<?php endif; ?>},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-
                     resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
 
+                    <?php if ($this->getPos() != 1):?>
+                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    <?php else: ?>
+                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    <?php endif; ?>
 <?php if ($this->getCustomStatus() == 1): ?>
                     jQuery(".viewPage_P1").css("display","none");
                     jQuery(".viewPage_P2").css("display","none");
