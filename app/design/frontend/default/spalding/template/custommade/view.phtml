@@ -4,7 +4,10 @@
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
-<?php $_product = $this->getProduct(); ?>
+<?php
+    $this->initView();
+    $_product = $this->getProduct();
+?>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
@@ -356,7 +359,9 @@
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
+
                     resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+
 <?php if ($this->getCustomStatus() == 1): ?>
                     jQuery(".viewPage_P1").css("display","none");
                     jQuery(".viewPage_P2").css("display","none");
