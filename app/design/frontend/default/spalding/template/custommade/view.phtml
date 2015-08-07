@@ -359,13 +359,13 @@
             type: 'POST',
             url: jQuery('#check').val(),
             data: {position: 1},
-            data: {position: <?php if ($this->getPos() != 1):?>2<?php else: ?>1<?php endif; ?>},
+            data: {position: <?php if ($this->getPos() == 2):?>2<?php else: ?>1<?php endif; ?>},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
 
-                    <?php if ($this->getPos() != 1):?>
+                    <?php if ($this->getPos() == 2):?>
                         resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
                     <?php else: ?>
                         resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
