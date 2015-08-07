@@ -42,6 +42,16 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     }
 
+    public function allAction()
+    {
+        Mage::getSingleton('core/session')->setTestMode(1);
+    }
+
+    public function textAction()
+    {
+        Mage::getSingleton('core/session')->setTestMode(0);
+    }
+
     public function completeAction()
     {
         $params = Mage::app()->getRequest()->getParams();
