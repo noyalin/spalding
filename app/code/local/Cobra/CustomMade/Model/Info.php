@@ -42,6 +42,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
     public function saveCustomMade($orderId)
     {
+        //保存定制信息
         $session = Mage::getSingleton('core/session');
         $time = time();
         $this->setOrderId($orderId)
