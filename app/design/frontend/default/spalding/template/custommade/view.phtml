@@ -369,8 +369,6 @@
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
-
                     <?php if ($this->getPos() == 2):?>
                         resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
                     <?php else: ?>
