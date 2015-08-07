@@ -31,6 +31,7 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         $allowAttributes = $_product->getTypeInstance(true)->getConfigurableAttributes($_product);
         $_attributes = Mage::helper('core')->decorateArray($allowAttributes);
 
+        //属性设置
         foreach ($_attributes as $_attribute) {
             $attrName = $_attribute->getLabel();
             $attrValueArr = $_attribute->getPrices();
