@@ -144,6 +144,12 @@
 
     function resetView_1(_dataType, value1, value2) {
 
+
+        jQuery(".madeBoxCons_p1").css("display", "block");
+        jQuery(".madeBoxCons_p2").css("display", "none");
+        jQuery(".select_P1").css("display", "block");
+        jQuery(".select_P2").css("display", "none");
+
         jQuery(".madeP_2_btn").removeClass("madeP_btn_now");
         jQuery(".madeP_1_btn").addClass("madeP_btn_now");
 
@@ -161,8 +167,6 @@
         _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
-         jQuery(".select_P1").css("display","block");
-         jQuery(".select_P2").css("display","none");
 //        jQuery("#options_pos").val(2);
 //        var type = jQuery("#options_type_p1").val();
         var _viewPage1 = jQuery(".viewPage_P1"); //获取预览P1
@@ -257,6 +261,11 @@
     //P2
     function resetView_2(_dataType, value1, value2) {
 
+        jQuery(".madeBoxCons_p1").css("display", "none");
+        jQuery(".madeBoxCons_p2").css("display", "block");
+        jQuery(".select_P2").css("display", "block");
+        jQuery(".select_P1").css("display", "none");
+
         jQuery(".madeP_1_btn").removeClass("madeP_btn_now");
         jQuery(".madeP_2_btn").addClass("madeP_btn_now");
 
@@ -276,8 +285,6 @@
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
         _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
-        jQuery(".select_P2").css("display","block");
-        jQuery(".select_P1").css("display","none");
 //        jQuery("#options_pos").val(2);
 //        var type = jQuery("#options_type_p1").val();
         var _viewPage2 = jQuery(".viewPage_P2"); //获取预览P2
