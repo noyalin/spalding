@@ -354,11 +354,15 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#check').val(),
-            data: {position: 1},
+            data: {position: <?php if ($this->getPos() != 1):?>2<? else: ?>1<? endif; ?>},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    <?php if ($this->getPos() != 1):?>
+                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    <? else: ?>
+                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    <? endif; ?>
 <?php if ($this->getCustomStatus() == 1): ?>
                     jQuery(".viewPage_P1").css("display","none");
                     jQuery(".viewPage_P2").css("display","none");
