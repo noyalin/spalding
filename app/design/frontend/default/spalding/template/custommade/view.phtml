@@ -358,7 +358,6 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#check').val(),
-            data: {position: 1},
             data: {position: <?php if ($this->getPos() == 2):?>2<?php else: ?>1<?php endif; ?>},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
