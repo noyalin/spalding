@@ -21,17 +21,20 @@
     <!-- p1 -->
     <div class="madeBoxCons madeBoxCons_p1">
         <h3>可定制球皮</h3>
-<!--        <p class="madeTs">选择添加图案或个性签名</p>-->
-<!--        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>-->
+<?php if ($this->getTestMode() == 1): ?>
+        <p class="madeTs">选择添加图案或个性签名</p>
+        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+<?php endif; ?>
         <!-- 定制参数 -->
         <dl class="madeBoxFuns">
-            <dd class="madeKindTit madeKindTitImg" dataVal='1' style="display: none;">定制图案</dd>
+<?php if ($this->getTestMode() == 1): ?>
+            <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
                 <h5>***注意***</h5>
                 <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
             </dt>
-
+<?php endif; ?>
             <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindTex">
@@ -56,7 +59,7 @@
         </dl>
 
         <div class="madeSubmit">
-            <button type="button" class="submitY">完成P1定制</button>
+            <button type="button" class="submitY" id="submitYP1">完成P1定制</button>
             <button type="button" class="submitN">重置此次定制</button>
         </div>
 
@@ -73,16 +76,20 @@
     <!-- p2 -->
     <div class="madeBoxCons madeBoxCons_p2" style="display:none;">
         <h3>可定制球皮</h3>
-<!--        <p class="madeTs">选择添加图案或个性签名</p>-->
-<!--        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>-->
+<?php if ($this->getTestMode() == 1): ?>
+        <p class="madeTs">选择添加图案或个性签名</p>
+        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+<?php endif; ?>
         <!-- 定制参数 -->
         <dl class="madeBoxFuns">
-            <dd class="madeKindTit madeKindTitImg" dataVal='1' style="display: none;">定制图案</dd>
+<?php if ($this->getTestMode() == 1): ?>
+            <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
             <h5>***注意***</h5>
             <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
             </dt>
+<?php endif; ?>
             <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindTex">
@@ -107,7 +114,7 @@
         </dl>
 
         <div class="madeSubmit">
-            <button type="button" class="submitY">完成P2定制</button>
+            <button type="button" class="submitY" id="submitYP2">完成P2定制</button>
             <button type="button" class="submitN">重置此次定制</button>
         </div>
 

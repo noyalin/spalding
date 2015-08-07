@@ -351,9 +351,11 @@ function previewImage(file, imgId) {
         var img = document.getElementById(imgId);
         var reader = new FileReader();
         reader.onload = function (evt) {
+            img.removeAttribute("width");
+            img.removeAttribute("height");
             img.src = evt.target.result;
             avatarinit();
-            alert("reader.onload OK!!");
+            //alert("reader.onload OK!!");
         }
         reader.readAsDataURL(file.files[0]);
         _form.style.opacity = 1;
@@ -392,55 +394,58 @@ var grip_maxx; //拖动块x最大值
 function imageinit() {
     cut_div = document.getElementById('cut_div');
     avatar = document.getElementById('avatar');
+
+
+
     imgdefw = avatar.width;
     imgdefh = avatar.height;
 
     var zoomw = divx / imgdefw;
     var zoomh = divy / imgdefh;
 
-    if (imgdefw > divx) {
-        avatar.width = divx;
-        avatar.height = Math.round(imgdefh * zoomw);
-    }
-
-    //if (zoomw >= zoomh) {
+    //if (imgdefw > divx) {
     //    avatar.width = divx;
     //    avatar.height = Math.round(imgdefh * zoomw);
     //}
-    //else {
-    //    avatar.width = Math.round(imgdefw * zoomh);
-    //    avatar.height = divy;
-    //}
+
+    if (zoomw >= zoomh) {
+        avatar.width = divx;
+        avatar.height = Math.round(imgdefh * zoomw);
+    }
+    else {
+        avatar.width = Math.round(imgdefw * zoomh);
+        avatar.height = divy;
+    }
 
     avatar.style.left = Math.round((divx - avatar.width) / 2);
     avatar.style.top = Math.round((divy - avatar.height) / 2) - divy;
 
-    if (imgdefw > cutx) {
-        zmin = cutx / imgdefw;
-    } else {
-        zmin = 1;
-    }
-    zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
-    if (imgdefw > cutx) {
-        zmin = cutx / imgdefw;
-        grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
-    } else {
-        zmin = 1;
-        grip_pos = 5;
-    }
-
-    //if (zoomw >= zoomh) {
+    //if (imgdefw > cutx) {
     //    zmin = cutx / imgdefw;
     //} else {
-    //    zmin = cuty / imgdefh;
+    //    zmin = 1;
     //}
     //zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
-    //if (zoomw >= zoomh) {
+    //if (imgdefw > cutx) {
     //    zmin = cutx / imgdefw;
+    //    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
     //} else {
-    //    zmin = cuty / imgdefh;
+    //    zmin = 1;
+    //    grip_pos = 5;
     //}
-    //grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
+
+    if (zoomw >= zoomh) {
+        zmin = cutx / imgdefw;
+    } else {
+        zmin = cuty / imgdefh;
+    }
+    zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
+    if (zoomw >= zoomh) {
+        zmin = cutx / imgdefw;
+    } else {
+        zmin = cuty / imgdefh;
+    }
+    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
 
     Drag.init(cut_div, avatar);
     avatar.onDrag = when_Drag;
@@ -642,12 +647,63 @@ productAddToCartForm.submitLight = function (button, url) {
 jQuery(function () {
 
     //提交当前PAGE按钮
-    jQuery(".submitY").click(function () {
+    jQuery("#submitYP1").click(function () {
 
-        jQuery(this).parent(".madeSubmit").css("display", "none");
-        jQuery(this).parent(".madeSubmit").siblings(".madeBoxFuns").css("display", "none");
-        jQuery(this).parent(".madeSubmit").siblings(".comfBox").css("display", "block");
+        var _comfBox = jQuery(".comfBox_1");
+        var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
+
+        if (_madeValue == 1) {
+            if (submitYP_CheckImg("")) {
+                showComfBox(this);
+            }
+        } else if (_madeValue == 2) {
+            if (submitYP_CheckText("#textInput_1")) {
+                showComfBox(this);
+            }
+        } else {
+            showComfBox(this);
+        }
     });
+
+    jQuery("#submitYP2").click(function () {
+        var _comfBox = jQuery(".comfBox_2");
+        var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
+
+        if (_madeValue == 1) {
+            if (submitYP_CheckImg("")) {
+                showComfBox(this);
+            }
+        } else if (_madeValue == 2) {
+            if (submitYP_CheckText("#textInput_2")) {
+                showComfBox(this);
+            }
+        } else {
+            showComfBox(this);
+        }
+    });
+
+    function submitYP_CheckText(txtInputId){
+
+        var re = /^([A-Za-z0-9]|\s)*$/;
+        var txtInput = jQuery(txtInputId);
+
+        if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
+            alert('只限输入字母，数字以及空格！');
+            txtInput.focus();
+            return false;
+        }
+        return true;
+    }
+    function submitYP_CheckImg(txtInputId){
+
+        return true;
+    }
+    function showComfBox(thisObj)
+    {
+        jQuery(thisObj).parent(".madeSubmit").css("display", "none");
+        jQuery(thisObj).parent(".madeSubmit").siblings(".madeBoxFuns").css("display", "none");
+        jQuery(thisObj).parent(".madeSubmit").siblings(".comfBox").css("display", "block");
+    }
 
     jQuery(".saveMadeN").click(function () {
         jQuery(this).parent().parent(".comfBox").css("display", "none");
@@ -707,6 +763,7 @@ function getSwapTxt_2() {
 }
 
 function getMadeText(_txt, _cnt){
+
     var _swapTexLen = _txt.length;
     if (_swapTexLen < _cnt) {
         return _txt;
@@ -716,14 +773,30 @@ function getMadeText(_txt, _cnt){
     }
 }
 
-function setMadeText(_text, _txt, _cnt){
-    var _swapTexLen = _txt.length;
-    if (_swapTexLen < _cnt) {
-        _text.innerHTML = _txt;
-    } else {
-        //alert("请不要超过8个英文字符")
-        _text.innerHTML = _txt.substr(0, _cnt);
+function getMadeText(str,len){
+    if(!str) return "";
+    if(len<= 0) return "";
+    //if(!suffix) suffix = "";
+    var templen=0;
+    for(var i=0;i<str.length;i++){
+        if(str.charCodeAt(i)>255){
+            templen+=2;
+        }else{
+            templen++
+        }
+        if(templen == len){
+            //return str.substring(0,i+1)+suffix;
+            return str.substring(0,i+1);
+        }else if(templen >len){
+            //return str.substring(0,i)+suffix;
+            return str.substring(0,i);
+        }
     }
+    return str;
+}
+
+function setMadeText(_text, _txt, _cnt){
+    _text.innerHTML = getMadeText(_txt, _cnt);
 }
 
 function getTxtSize(position) {
