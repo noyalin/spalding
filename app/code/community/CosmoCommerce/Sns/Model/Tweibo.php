@@ -51,15 +51,10 @@ class CosmoCommerce_Sns_Model_Tweibo extends Mage_Core_Model_Abstract{
 	 * @param mixed $refresh_token OAuth认证返回的token secret
 	 * @return void
 	 */
-	public function setKey( $akey, $skey, $access_token, $refresh_token = NULL)
+	public function setKey( $akey, $skey, $access_token=null, $refresh_token = NULL)
 	{
-
-
-//		$app_key=Mage::getStoreConfig('sns/sns_tweibo/app_key');
         $app_key="101182962";
-//		$debug=Mage::getStoreConfig('sns/sns_tweibo/debug');
         $debug=false;
-//        $app_secret=Mage::getStoreConfig('sns/sns_tweibo/app_secret');
 
         $app_secret="0c8f2519769a8a88ee2245f36fb761b6";
 
@@ -68,14 +63,11 @@ class CosmoCommerce_Sns_Model_Tweibo extends Mage_Core_Model_Abstract{
 			ini_set('display_errors', true);
 		}
 		$callback=Mage::getUrl('sns/callback/tweibo/');
-//        $callback=Mage::getUrl('customer/account/login/');
-		//$snsweibo=Mage::getModel('sns/tsns');
 
 		self::$client_id=$app_key;
 		self::$client_secret=$app_secret;
 		
 		
-		//$snsweibo->setKey( $app_key , $app_secret ,$access_token, $refresh_token);
 		self::set_debug( $debug );
 
 	}
@@ -224,7 +216,7 @@ class CosmoCommerce_Sns_Model_Tweibo extends Mage_Core_Model_Abstract{
         $url=self::$accessTokenURL.'?'.http_build_query($params);
         $r = self::request($url);
         parse_str($r, $out);
-        if ($out['access_token']) {//获取成功
+        if (isset($out['access_token']) && $out['access_token']) {//获取成功
             $_SESSION['t_access_token'] = $out['access_token'];
             $_SESSION['t_refresh_token'] = $out['refresh_token'];
             $_SESSION['t_expire_in'] = $out['expires_in'];

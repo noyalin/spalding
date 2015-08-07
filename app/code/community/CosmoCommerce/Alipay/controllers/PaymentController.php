@@ -205,10 +205,10 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$alipay = Mage::getModel('alipay/payment');
         $partner=$alipay->getConfigData('partner_id');
         $security_code=$alipay->getConfigData('security_code');
-        Mage::log("begin alipay");
-        Mage::log("Method: ".$method. "   trade_no: ".$postData['out_trade_no']);
-        Mage::log(print_r($postData,true));
-        Mage::log("end alipay");
+//        Mage::log("begin alipay");
+//        Mage::log("Method: ".$method. "   trade_no: ".$postData['out_trade_no']);
+//        Mage::log(print_r($postData,true));
+//        Mage::log("end alipay");
         $sendemail = null;
 
         //目前只有国内支付宝
@@ -326,7 +326,6 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 
                     try{
                         $order->save();
-                        Mage :: log("付款成功");
                         $this->sendMail($out_trade_no);
                         if($method == 'get'){
                             $this->_redirect("sales/order/view/order_id/".$order->getId());
@@ -340,6 +339,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 }else{
                     if($method == 'get'){
                         echo "订单已付款成功";
+                        Mage :: log("订单编号：".$order->getIncrementId()."， 支付宝付款成功。");
                         $this->_redirect("sales/order/view/order_id/".$order->getId());
                     }
                 }
@@ -350,22 +350,24 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         }
         if($method == 'get'){
             //否则 直接跳转
-            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
+//            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
             $this->_redirect("sales/order/view/order_id/".$order->getId());
         }
         return;
     }
     public function sendMail($orderId){
-//        $to = "davis.du@sneakerhead.com";
-        $to = "bale.wang@voyageone.cn";
-        $subject = "lala New order ".$orderId;
+//        $to = "davis.du@voyageone.cn;bob.chen@voyageone.cn";
+//        $subject = "lala New order ".$orderId;
+//        $message = "New Order come this order id is ".$orderId;
+//
+//        $headers = 'From: admin@snaekerhead.com '  . "\r\n" .
+//            'Reply-To: admin@snaekerhead.com ' . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+//
+//        mail($to, $subject, $message, $headers);
+
         $message = "New Order come this order id is ".$orderId;
-
-        $headers = 'From: admin@snaekerhead.com '  . "\r\n" .
-            'Reply-To: admin@snaekerhead.com ' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-        mail($to, $subject, $message, $headers);
+        Mage :: log($message);
     }
 	public function get_verify($url,$time_out = "60") {
 		$urlarr     = parse_url($url);
@@ -608,10 +610,10 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
             return;
         }
 
-        Mage::log("begin wap alipay");
-        Mage::log("Method: ".$method);
-        Mage::log(print_r($postData,true));
-        Mage::log("end wap alipay");
+//        Mage::log("begin wap alipay");
+//        Mage::log("Method: ".$method);
+//        Mage::log(print_r($postData,true));
+//        Mage::log("end wap alipay");
         $sendemail = null;
         $partner="2088711909431762";
         $security_code="qisngbnvaj4ydshzji1irosklki1y8jb";
@@ -636,7 +638,6 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         }
 
         $order = Mage::getModel('sales/order');
-        mage :: log($verify_result . "  POST  result");
         $paySuccessFromPost = false;
         if($verify_result){
             if($method == "post"){
@@ -719,9 +720,6 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 
                     try{
                         $order->save();
-//                        echo "success";
-                        Mage :: log("付款成功");
-//                        $this->sendMail($out_trade_no);
                         if($method == "get"){
                             $this->_redirect("sales/order/view/order_id/".$order->getId());
                             return;
@@ -732,6 +730,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 }else{
                     if($method == "get"){
                         echo "订单已付款成功";
+                        Mage :: log("订单编号：".$order->getIncrementId()."， 支付宝(wap)付款成功。");
                         $this->_redirect("sales/order/view/order_id/".$order->getId());
                     }
 
@@ -743,7 +742,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         }
         //否则 直接跳转
         if($method == "get"){
-            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
+//            Mage :: log("付款错误。直接跳转。，或者 没有 SIGN,直接跳转".$order->getId());
             $this->_redirect("sales/order/view/order_id/".$order->getId());
             return;
         }

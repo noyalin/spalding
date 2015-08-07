@@ -280,8 +280,9 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
        if($bank != "alipay" && $bank != "alipay_qrcode" ){
             $parameter['paymethod']="bankPay";
             $parameter['defaultbank']=$this->getBank();
-            $security_code = trim('qisngbnvaj4ydshzji1irosklki1y8jb');
         }
+        $security_code = trim('qisngbnvaj4ydshzji1irosklki1y8jb');
+
 		$parameter = $this->para_filter($parameter);
 
 		$sign_type = 'MD5';

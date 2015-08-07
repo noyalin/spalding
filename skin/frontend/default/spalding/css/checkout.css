@@ -29,10 +29,10 @@
 	margin-top:25px;
 }
 .checkoutSubTitleBall {
-	background: url(../images2/checkoutSubTitleBall.png) left center no-repeat;
-	
-	width:25px;
-	height:25px;
+	/*background: url(../images2/checkoutSubTitleBall.png) left center no-repeat;*/
+	/**/
+	/*width:25px;*/
+	/*height:25px;*/
 	
 	margin-left:54px;
 	display:inline-block;
@@ -383,6 +383,10 @@ input[type="text"] {
 	margin-bottom:6px;
 }
 
+.checkoutProductDiscountPrice {
+    font-size: 14px;
+    color:#fdb905;
+}
 .checkoutProductPriceTotalPrice {
 	font-size: 14px;
 	color:#fdb905;
@@ -396,6 +400,7 @@ input[type="text"] {
 	color:#fdb905;
 }
 
+.checkoutProductDiscountPrice,
 .checkoutProductPriceTotalPrice,
 .checkoutPriceTotalText,
 .checkoutPriceTotalPrice {

@@ -16,6 +16,8 @@ class  Shoe_Maker_Model_UpdateBase extends Shoe_Maker_Model_Base{
                 $this->run();
 
             }catch(Exception $e){
+                $this->sendNotification( 'Shoe_Maker_Model_UpdateBase Exception', $this->filename . " - " . $e->getMessage());
+
                 $this->transactionLogHandle(  "  ->ERROR         : See exception_log ");
 
                 //Append error to exception log file
@@ -82,17 +84,21 @@ class  Shoe_Maker_Model_UpdateBase extends Shoe_Maker_Model_Base{
     }
 
     public function transactionLogHandle($msg){
-        $msg .= " \n";
-        $root_dir = dirname(__FILE__);
-        fwrite($this->transactionLogHandle, $msg);
+        $str = date("YmdHis")."\t".$msg." \n";
+//        $msg .= " \n";
+//        $root_dir = dirname(__FILE__);
+        fwrite($this->transactionLogHandle, $str);
     }
     public function transactionCategoryXmlGeneratorLog($msg){
-        $msg .= " \n";
-        $root_dir = dirname(__FILE__);
-        fwrite($this->transactionCategoryXmlGeneratorLogHandle, $msg);
+        $str = date("YmdHis")."\t".$msg." \n";
+//        $msg .= " \n";
+//        $root_dir = dirname(__FILE__);
+        fwrite($this->transactionCategoryXmlGeneratorLogHandle, $str);
     }
     public function removeFile(){
-        rename($this->receivedDirectory . $this->filename, $this->processedDirectory . $this->filename);
+        if(file_exists($this->receivedDirectory . $this->filename)){
+            rename($this->receivedDirectory . $this->filename, $this->processedDirectory . $this->filename);
+        }
     }
 
 

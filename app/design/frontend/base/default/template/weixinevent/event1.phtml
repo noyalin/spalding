@@ -1,0 +1,546 @@
+<?php
+list($appId,$timestamp,$noncestr,$signature,$currentUrl) = $this->getVar();
+$title = "微信活动";
+$desc = "微信活动";
+$shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
+?>
+
+<style>
+    html{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    body{
+        position: relative;
+        width:100%;
+        height: 100%;
+        background-size: 100% 100%;
+        overflow: hidden;
+    }
+    #page{
+        height:100%;
+    }
+    .content-wrapper{
+        margin:0 auto;
+        height:100%;
+        position: relative;
+    }
+</style>
+<!-- alert -->
+<div class="wxAlert">
+    <div class="wxAlertWrap clearfix">
+        <p></p>
+        <span class="closeAlert">
+            <img src="<?php echo $this->getSkinUrl("images/weixin/popClose.png"); ?>" alt="">
+        </span>
+    </div>
+</div>
+<!-- 分享提示 -->
+<div class="shareWx">
+    <div class="shareWxWrap">
+<!--        <img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/weixin/shareWx.png'   ?><!--" alt="">-->
+        <img src="<?php echo $this->getSkinUrl("images/weixin/shareWx.png"); ?>" alt="">
+    </div>
+</div>
+<!-- 分享后 -->
+<div class="shareAf">
+    <div class="shareAfWrap">
+<!--        <img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/weixin/shareAf.png'   ?><!--" alt="">-->
+        <img src="<?php echo $this->getSkinUrl("images/weixin/shareAf.png"); ?>" alt="">
+    </div>
+</div>
+<!-- 手机验证 -->
+<div class="popPhone" style="display: none">
+    <div class="popPhoneWrap">
+        <div class="popPhoneClose clearfix">
+            <img src="<?php echo $this->getSkinUrl("images/weixin/popClose.png"); ?>" alt="">
+        </div>
+        <div class="popPhoneBox">
+            <div class="telTit">
+                <img src="<?php echo $this->getSkinUrl("images/weixin/telTit.png"); ?>" alt="">
+            </div>
+            <p>恭喜您点亮一颗球，获得斯伯丁官方商城<font style="color:#fc0">10元优惠券</font>【满100可使用】一张。</p>
+            <p>请输入您的手机号以领取:</p>
+            <div class="popPhoneInp">
+                <div class="phoneInpNum">
+                    <span class="telNum"><input type="text" placeholder="请输入手机号码" class="telWrap" maxlength="11"></span>
+                    <span class="clearTel">x</span>
+                    <span class="sendCdBox">
+                        <input type="button" class="sendCd" id="btnSendCode" value="发送验证码">
+                    </span>
+                    
+                </div>
+                <div class="phoneInpCd">
+                    <span class="cdInp"><input type="text" placeholder="请输入收到的验证码" maxlength="4"></span>
+                    <span class="popPhoneBtn">
+                        <button>验证</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 主框架 -->
+<div class="global ease" >
+    <div class="screen container"> 
+        <!-- page 1 /S -->
+        <div class="layout page0" id="layout_1" data-page-type="bigTxt" data-statics="info_list">
+            <div class="wxWrapBg">
+<!--                <img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/weixin/weix_bg1.jpg'   ?><!--" alt="">-->
+                <img src="<?php echo $this->getSkinUrl("images/weixin/weix_bg1.jpg"); ?>" alt="">
+            </div>
+            <div class="wxWrap">
+                <div class="wxTit"><img src="<?php echo $this->getSkinUrl("images/weixin/wxTitle.png"); ?>" alt=""></div>
+
+
+                <div class="wxBalls">
+                    <div class="wxBall wxBall_1">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_1.png"); ?>" alt=""></span>
+                    </div>
+
+                    <div class="wxBall wxBall_2">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_2.png"); ?>" alt=""></span>
+                    </div>
+
+                    <div class="wxBall wxBall_3">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_3.png"); ?>" alt=""></span>
+                    </div>
+
+                    <div class="wxBall wxBall_4">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_4.png"); ?>" alt=""></span>
+                    </div>
+
+                    <div class="wxBall wxBall_5">
+                        <span class="please">请点亮</span>
+                        <span class="wxBallGy wxBallGys"><img src="<?php echo $this->getSkinUrl("images/weixin/wxBallGy_2.png"); ?>" alt=""></span>
+                        <span class="wxBallCon"><img src="<?php echo $this->getSkinUrl("images/weixin/ball_5.png"); ?>" alt=""></span>
+                    </div>
+                </div>
+                <div class="ruls">
+                    <img src="<?php echo $this->getSkinUrl("images/weixin/rules.png"); ?>" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- page 1 /E --> 
+        
+        <!-- page 2 /S -->
+        <div class="layout page1" id="layout_2">
+            <div class="wxWrapBg">
+<!--                <img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/weixin/weix_bg2.jpg'   ?><!--" alt="">-->
+                <img src="<?php echo $this->getSkinUrl("images/weixin/weix_bg2.jpg"); ?>" alt="">
+            </div>
+          <div class="rulTit"><img src="<?php echo $this->getSkinUrl("images/weixin/rulTit.png"); ?>" alt=""></div>
+        <h3>【活动主规则】</h3>
+        <ul>
+            <li class="clearfix">
+                <span class="rulNum">1</span>
+                <span class="rulTex">在斯伯丁官方商城（Spaldingchina.com.cn）下单并分享至微信朋友圈或发送好友和群，即可获赠<font style="color:#ffba00">斯伯丁专业篮球袜一双</font></span>
+            </li>
+            <li class="clearfix">
+                <span class="rulNum">2</span>
+                <span class="rulTex">好友互动可为你点亮一颗篮球（一共五颗篮球可以被点亮），你的好友将获得斯伯丁官方商城<font style="color:#ffba00">10元优惠券</font>（满100元可以使用）</span>
+            </li>
+            <li class="clearfix">
+                <span class="rulNum">3</span>
+                <span class="rulTex">5颗篮球全部被点亮之后，你可获得官方商城<font style="color:#ffba00">10元无门槛优惠券</font>。</span>
+            </li>
+            <li class="clearfix">
+                <span class="rulNum">4</span>
+                <span class="rulTex">所有优惠券有效期为自发放日起的<font style="color:#ffba00">30天内</font>，一笔订单只能使用一张优惠券，券不可重叠使用。</span>
+            </li>
+            <li class="clearfix">
+                <span class="rulNum">5</span>
+                <span class="rulTex">未在斯伯丁官方商城购物，您也可以转发本次活动，但是无法获得袜子和无门槛优惠券的奖励。</span>
+            </li>
+        </ul>
+        <h5>*本次活动最终解释权归斯伯丁中国所有。</h5>
+        </div>
+        <!-- page 2 /E --> 
+    
+    </div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+<script>
+
+    function sharePromotion() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo $this->getUrl('weixinevent/index/updatePromotionData') ?>',
+            success: function (data) {
+                var dataObj = ajaxEvalJson(data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+//                alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
+            }
+        });
+    }
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo $appId  ?>', // 必填，公众号的唯一标识
+        timestamp:  '<?php echo $timestamp  ?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo $noncestr  ?>', // 必填，生成签名的随机串
+        signature: '<?php echo $signature  ?>',// 必填，签名，见附录1
+        jsApiList: ['checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'hideMenuItems',
+            'showMenuItems',
+            'hideAllNonBaseMenuItem',
+            'showAllNonBaseMenuItem',
+            'translateVoice',
+            'startRecord',
+            'stopRecord',
+            'onRecordEnd',
+            'playVoice',
+            'pauseVoice',
+            'stopVoice',
+            'uploadVoice',
+            'downloadVoice',
+            'chooseImage',
+            'previewImage',
+            'uploadImage',
+            'downloadImage',
+            'getNetworkType',
+            'openLocation',
+            'getLocation',
+            'hideOptionMenu',
+            'showOptionMenu',
+            'closeWindow',
+            'scanQRCode',
+            'chooseWXPay',
+            'openProductSpecificView',
+            'addCard',
+            'chooseCard',
+            'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+        wx.checkJsApi({
+            jsApiList: [
+                'onMenuShareTimeline',
+                'getNetworkType',
+                'hideMenuItems',
+                'previewImage'
+            ],
+            success: function (res) {
+                //alert(JSON.stringify(res));
+            }
+        });
+
+        // 2. 分享接口
+
+        // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+        wx.onMenuShareTimeline({
+            title: '<?php echo $title;  ?>',
+            link: "<?php echo $currentUrl;  ?>",
+            imgUrl: "<?php echo $shareimageurl;  ?>",
+            trigger: function (res) {
+                //alert('用户点击分享到朋友圈');
+            },
+            success: function (res) {
+                //如果分享成功
+                sharePromotion();
+            },
+            cancel: function (res) {
+                //alert('已取消');
+            },
+            fail: function (res) {
+                //alert(JSON.stringify(res));
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '<?php echo $title;  ?>',
+            desc:  '<?php echo $desc;  ?>',
+            link: '<?php echo $currentUrl;  ?>',
+            imgUrl: '<?php echo $shareimageurl;  ?>',
+            trigger: function (res) {
+//                alert('用户点击发送给朋友');
+            },
+            success: function (res) {
+                //如果分享成功
+                sharePromotion();
+            },
+            cancel: function (res) {
+//                alert('已取消');
+            },
+            fail: function (res) {
+//                alert(JSON.stringify(res));
+            }
+        });
+
+    });
+    wx.error(function (res) {
+//        alert(res.errMsg);
+    });
+
+</script>
+<script type="text/javascript">
+
+    jQuery(function(){
+        var InterValObj; //timer变量，控制时间
+        var count = 120; //间隔函数，1秒执行
+        var curCount;//当前剩余秒数
+
+        var _lightedCnt = <?php echo $this->getPromotionCount() ?>;
+        var _isPromotioned = <?php echo $this->isPromotioned() ?>;
+
+        var dataObj;
+
+        loadLight(_lightedCnt, _isPromotioned);
+
+        function ajaxEvalJson(data)
+        {
+            var dataObj = eval("("+jQuery.trim(data)+")");
+            if (dataObj.status != "Success") {
+                loadLight(dataObj.lightedCnt, 0);
+//                alert(dataObj.message);
+                showAlert(dataObj.message);
+            }
+            return dataObj;
+        }
+
+        //点亮球
+        jQuery(".please").on("click",function(){
+            var _wxBallGy = jQuery(".wxBallGys");
+            var _wxBallGyLen = _wxBallGy.length;
+            if(_wxBallGyLen>0){
+//                jQuery(this).children(".wxBallGys").remove();
+                jQuery(this).parents().find(".popPhone").show();
+            }else{
+                jQuery(this).off("click");
+            }
+
+        });
+
+        //关闭手机验证
+        jQuery(".popPhoneClose").on("click",function(){
+            jQuery(this).parents(".popPhone").hide();
+        });
+
+        //清除手机号码
+        jQuery(".clearTel").on("click",function(){
+            jQuery(this).siblings(".telNum").find(":text").val("").focus();
+        });
+
+        //发送验证码
+        jQuery(".sendCd").on("click", function () {
+            var telephone = jQuery(".telNum").find("input").val();
+            if (!checkTelNo(telephone)) {
+                return;
+            }
+            sendMessage();
+            jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('weixinevent/index/sendCaptcha') ?>',
+                data: {telephone: telephone},
+                success: function (data) {
+                    var dataObj = ajaxEvalJson(data);
+                    if (dataObj.status == "Success") {
+//                        alert(dataObj.data);
+                        showAlert("验证码已发送");
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+//                    alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
+                }
+            });
+
+        });
+
+
+        //验证验证码
+        jQuery(".popPhoneBtn button").on("click", function () {
+            var telephone = jQuery(".telNum").find("input").val();
+            var inputCaptcha = jQuery(".phoneInpCd").find("input").val();
+
+            if (!checkTelNo(telephone) || !checkCaptcha(inputCaptcha)) {
+                return;
+            }
+
+            jQuery(".popPhoneBtn button").attr("disabled", true);
+
+            jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
+                data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
+                success: function (data) {
+                    dataObj = ajaxEvalJson(data);
+                    if (dataObj.status == "Success") {
+                        loadLight(dataObj.data, 1);
+                        jQuery(".popPhone").hide();
+//                        alert("验证成功");
+                        jQuery(".shareAf").show();
+                    } else if (dataObj.status == "Joined") {
+                        jQuery(".popPhone").hide();
+                    }
+                    jQuery(".popPhoneBtn button").attr("disabled", false);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+//                    alert(XMLHttpRequest.status + '\n' + XMLHttpRequest.readyState + '\n' + textStatus);
+                    jQuery(".popPhoneBtn button").attr("disabled", false);
+                }
+            });
+        });
+
+        // 关闭分享后
+        jQuery(".shareAfWrap").on("click",function(){
+            jQuery(this).parents(".shareAf").hide();
+
+            //分享提示层
+            var sponsor_flag = <?php echo $this->isSponsor() ?>;
+            if (sponsor_flag == 1 && dataObj.data < 5) {
+                var _shareWx = jQuery(this).parents(".shareAf").siblings(".shareWx");
+                _shareWx.show();
+                _shareWx.on("click", function () {
+                    jQuery(this).hide();
+
+                });
+            }
+        });
+
+        // 关闭操作提示
+        jQuery(".closeAlert").on("click",function(){
+            jQuery(this).parents(".wxAlert").hide();
+        });
+
+        //timer处理函数
+        function loadLight(lightedCnt, flag) {
+            var i;
+            for (i = 0; i < lightedCnt; i++) {
+                var str = ".wxBall_" + (i + 1);
+                jQuery(str).children(".wxBallGys").remove();
+                jQuery(str).children(".please").remove();
+            }
+            for (; i < 5; i++) {
+                var str = ".wxBall_" + (i + 1);
+                if (i != lightedCnt || flag == 1) {
+                    jQuery(str).children(".please").remove();
+                }
+            }
+        }
+
+        function checkTelNo(telno) {
+            var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+            if(!reg.test(telno))
+            {
+                showAlert("手机号码格式不正确");
+                return false;
+            }
+            return true;
+        }
+
+        function checkCaptcha(code) {
+            var reg = /^\d{4}$/;
+            if(!reg.test(code))
+            {
+                showAlert("验证码不正确");
+                return false;
+            }
+            return true;
+        }
+
+        function sendMessage() {
+            curCount = count;
+            //设置button效果，开始计时
+            jQuery(".sendCd").attr("disabled", "true");
+            jQuery(".sendCd").val("( " + curCount + " ) 秒");
+            InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+        }
+
+        //timer处理函数
+        function SetRemainTime() {
+            if (curCount == 0) {
+                window.clearInterval(InterValObj);//停止计时器
+                jQuery(".sendCd").removeAttr("disabled");//启用按钮
+                jQuery(".sendCd").val("重新发送");
+                code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+            }
+            else {
+                curCount--;
+                jQuery(".sendCd").val("( " + curCount + " ) 秒");
+            }
+        }
+
+        function showAlert(content) {
+            jQuery(".wxAlert").find("p").html(content);
+            jQuery(".wxAlert").show();
+            setTimeout(function () {
+                jQuery(".wxAlert").hide()
+            }, 3000);
+        }
+
+    });
+
+</script>
+
+<!-- 整屏滑动 -->
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/zepto.min.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/touch.js"); ?>"></script>
+<script type="text/javascript">
+/* ua */
+var UA = function(){
+    var userAgent = navigator.userAgent.toLowerCase();
+    return {
+        ipad: /ipad/.test(userAgent),
+        iphone: /iphone/.test(userAgent),
+        android: /android/.test(userAgent),
+        qqnews: /qqnews/.test(userAgent),
+        weixin: /micromessenger/.test(userAgent)
+    };
+}
+
+/* page */
+var Layout = {
+    page: function (i, _h){
+        $(".global").css({ "-webkit-transform": "translate3d(0px, -" + _h * i +"px, 0px)" });
+    },
+    swipe: function(_h, _len){
+        var _this = this;
+        $(".layout").each(function(index, obj){
+            $(obj).on("swipeUp", function(){
+                index = 1;
+                _this.page(index, _h);
+            }).on("swipeDown", function(){
+                _this.page(index - 1, _h);
+            });
+        });
+    },
+    init: function(){
+        var _this = this,
+            _w = $(window).width(),
+            _h = $(window).height(),
+            _len = $(".layout").length;
+        var ua = UA();
+        if(ua.iphone && ua.qqnews){
+            _h = _h - 44;
+        }
+        $(".swipe_tip").addClass("fadeOutUp");
+        $(".global").width( _w ).height( _h * _len ).addClass("ease");
+        $(".screen").width( _w ).height( _h * _len );
+        $(".layout").width( _w ).height( _h );
+        $(".main,.wrapCon").height( _h - 65 );
+
+        _this.page(0, _h);
+        _this.swipe(_h, _len);
+        _this.Dialog.init();
+
+    }
+}
+
+Layout.init();
+
+</script>

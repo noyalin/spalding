@@ -175,7 +175,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 		if (isset($r['access_token'])) {
             $token=$r['access_token'];
 			Mage::getModel('core/session')->setData('t_access_token',$token);
-			Mage::getModel('core/cookie')->set('qqjs_'.$snsweibo->client_id, http_build_query($token));
+			Mage::getModel('core/cookie')->set('qqjs_'.$snsweibo->client_id, http_build_query(array($token)));
 	
             
             
@@ -231,7 +231,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 //  string(1) "0"
 //}
 
-        if($userdata->ret==0){
+        if(isset($userdata)  && $userdata->ret==0){
                 
                 $customer = Mage::getModel('customer/customer')
                   ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())

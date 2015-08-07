@@ -11,6 +11,9 @@ class Devicom_Checkout_AreaController extends Mage_Checkout_Controller_Action{
         if(!$id){
             $id = 485;
         }
+        if(!is_numeric($id)){
+            return ;
+        }
         $resource = Mage::getSingleton('core/resource');
         $writeConnection = $resource->getConnection('core_read');
         // Select all simple products with a qty > 0
@@ -32,7 +35,9 @@ WHERE region.region_id=$id";
         if(!$id){
             $id = 110100;
         }
-
+        if(!is_numeric($id)){
+            return ;
+        }
         $resource = Mage::getSingleton('core/resource');
         $writeConnection = $resource->getConnection('core_read');
 

@@ -40,6 +40,14 @@
 <div class="spalding_index weiduduan">
     <div class="spalding_index_slider kuzhan">
         <ul class="fix_flash">
+            <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex08.png'?>">
+                <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex08.png' ?>) center top no-repeat"
+                   href="<?php echo $this->getUrl('nba-nation-2015')  ?>" target="_blank"></a>
+            </li>
+            <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex06.png'?>">
+                <a style="background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex06.png' ?>) center top no-repeat"
+                   href="#" ></a>
+            </li>
             <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex03.png'?>">
                 <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex03.png' ?>) center top no-repeat"
                    href="<?php echo $this->getUrl('spalding-nba.html')  ?>" target="_blank"></a>
@@ -47,10 +55,6 @@
             <li imglink="<?php  echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex04.png' ?>">
                 <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex04.png' ?>) center top no-repeat"
                    href="<?php echo $this->getUrl('spalding-nba.html')  ?>" target="_blank"></a>
-            </li>
-            <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex05.png'  ?>">
-                <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex05.png' ?>) center top no-repeat"
-                   href="<?php echo $this->getUrl('spalding-nba.html')  ?>" target="_blank" ></a>
             </li>
         </ul>
     </div>
@@ -63,7 +67,7 @@
 <div class="spalding_index_plate" style="height:300px; background:url(<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/spalding_index_plate.png' ?>) left bottom no-repeat; margin-bottom:0;z-index: 0">
     <div class="spalding_plateWrap clearfix" style="padding-top:50px;">
         <div class="plateBox plateBox_01">
-            <span class="plateBoxImg"><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209004.png' ?>" alt=""></span>
+            <span class="plateBoxImg"><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20150625002.png' ?>" alt=""></span>
             <a href="<?php echo $this->getUrl('products.html') ?>" class="plateBoxImgHover"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/plateBoxHover_1.png' ?>" alt="" /></a>
         </div>
         <div class="plateBox plateBox_02">
@@ -82,67 +86,7 @@
         <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="javascript:void(0)"><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209007.png'?>" alt=""></a></div>
     </div>
 </div>
-<div id="dialog" style="display:none;">
-    <div class="aa" style="position:fixed; width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.8);z-index:100;">
-    <div class="dialogBg" style="position:fixed; width:100%; height:100%;"></div>
-    <div class="new_address" style="left: 50%;margin-left: -400px;margin-top: -270px;position: fixed;top: 50%;width: 723px; height:550px;">
-        <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="" class="closebutton" style="float: right;cursor: pointer;margin-top:100px;margin-right:50px;"/>
-        <table cellspacing="0" cellpadding="0" border="0" style="margin-top:250px;margin-left: 200px;">
-            <tbody>
-            <tr>
-                <th><label class="required " for="barcode" ><span class="rStar">*</span>
-                        <i class="barcodeLabel"></i>
-                    </label></th>
-                <td colspan="2">
-                    <input type="text" required="" class="input-text required-entry" value="" id="barcode" name="firstname" title="防伪码">
-                </td>
-               
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    
-                </td> 
-                <td></td>
-            </tr>
-            <tr>
-                <th><label class="required" for="verifycode"><span class="rStar">*</span><i class="verifycodeLabel"></i></label></th>
-                <td class="infoInput">
-                    <input type="text" id="verifycode" required="" class="input-text required-entry"  value="" name="验证码" style="width:140px;">
-                </td>
-                <td>
-                    <img style="cursor: pointer" src="<?php echo $this->getUrl('code_num.php', array('_secure'=>true)) ?>" id="getcode_num" title="看不清，点击换一张" align="absmiddle"></p>
-                </td>
-                
-            </tr>
-            <tr>
-                <td></td>
-               <td>
-                    
-                </td> 
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <div style="display: block;padding-top:10px;" class="ds_dialog_buttons">
-                        <i class="ds_dialog_yes"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" ><div id="checkmessage" style="color:#fff; font-size:12px; text-align:center;margin-top:5px;padding-top:55px;">所有的验证码只能验证一次,请输入后点击确认,耐心等待,不要重复点击确认按钮!</div></td>
-            </tr>
-            </tbody>
-        </table>
-        <div style="position:relative;margin-top:-265px;margin-left:290px; font-weight:bold;color:#fdb905;">
-            <em id="barcode_error" class="error_em"></em>
-            <em id="verifycode_error" class="error_em"></em>
-        </div>
-        <div id="barcodeVerifyResult"></div>
-    </div>
-    </div>
-    <div class="clear"></div>
-</div>
+
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery(".kuzhan li").css("width",jQuery("body").width()+"px");
@@ -159,17 +103,11 @@
         jQuery('.plateBox_tf').on("click",function(){
             jQuery(this).parents().find('#dialog').fadeIn();
         });
-        jQuery('#zhenweiyanzhengrukou').on("click",function(){
-            jQuery(this).parents().find('#dialog').fadeIn();
-        });
+
         jQuery('.closebutton').on("click",function(){
             jQuery(this).parent().parent().parent('#dialog').fadeOut();
         });
 
-        //点击空白处 隐藏“验证”
-        jQuery(".dialogBg").click(function(){
-            jQuery(this).parents("#dialog").css("display","none");
-        });
 
         setInterval("ballMove()",1000);
 
@@ -196,10 +134,6 @@
         jQuery('.plateBox_tf img') .animate({marginTop:"-=20px"},1000).animate({marginTop:"+=20px"},1000).animate({marginLeft:"+=20px"},1000).animate({marginLeft:"-=20px"},1000)
     };
 
-    function loading(){
-        var html = '<div><img src="<?php echo $this->getSkinUrl(); ?>images/auth/ajax-loader-tr.gif"/></div>';
-        jQuery('#barcodeVerifyResult').html(html);
-    }
 </script>
 
 <!-- 顶部 header e -->

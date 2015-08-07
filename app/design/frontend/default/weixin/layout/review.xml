@@ -68,7 +68,7 @@ Product reviews page
         </reference>
         <reference name="content">
             <block type="catalog/product_view" name="product.info" template="catalog/product/view.phtml">
-		<block type="rewardpoints/productpoints" name="points_product" as="points_product" template="rewardpoints/addtocart.phtml"/>
+		<!--<block type="rewardpoints/productpoints" name="points_product" as="points_product" template="rewardpoints/addtocart.phtml"/>-->
 		<block type="catalog/product_view_media" name="product.info.media" as="media" template="catalog/product/view/media.phtml"/>
                 <block type="core/text_list" name="alert.urls" as="alert_urls" translate="label">
                     <label>Alert Urls</label>

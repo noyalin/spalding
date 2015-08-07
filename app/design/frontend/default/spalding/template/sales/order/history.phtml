@@ -27,7 +27,8 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php $_orders = $this->getOrders(); ?>
 <div class="page-title">
-    <h1><?php echo $this->__('My Orders') ?></h1>
+<!--    <h1>--><?php //echo $this->__('My Orders') ?><!--</h1>-->
+    <img src="<?php echo $this->getSkinUrl('images/orderTop.png');  ?>" alt="">
 </div>
 <?php echo $this->getPagerHtml(); ?>
 <?php if($_orders->getSize()): ?>
@@ -94,7 +95,7 @@
                                     <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-14.jpg" alt=""/>
 <!--        							<img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=--><?php //echo $_product->getUrlKey() ?><!---1" alt=""/>-->
 <!--        							<h3>斯伯丁NBA热火队队徽球</h3>-->
-        							<h3><?php echo $_item_title ?></h3>
+        								<h3><a href="<?php echo $this->getUrl($_product->getUrlKey().'.html') ?>" ><?php echo $_item_title ?></a></h3>
                                     <?php if($attributeSetName=="ball"){?>
                                         <p>
 <!--                                            <span>产品材质：--><?php //echo $product_material;?><!--</span>-->
@@ -123,7 +124,7 @@
                                         $trackingid = getTrackingByOrderID($_order->getRealOrderId());
                                         if($trackingid !==""){
                                         ?>
-                                        <a href="http://www.baidu.com/baidu?tn=baidu&word=<?php echo $trackingid?>" target="_blank">查看物流</a>
+                                        <a href="http://www.sf-express.com/cn/sc/dynamic_functions/waybill/#search/bill-number/<?php echo $trackingid?>" target="_blank">查看物流</a>
                                     <?php }}?>
         						</span>
         </li>
