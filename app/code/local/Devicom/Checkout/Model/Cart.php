@@ -4,7 +4,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 {
     public function addProduct($productInfo, $requestInfo=null)
     {
-        $customCategoryId = 35;
+        $customCategoryId = 39;
         $product = $this->_getProduct($productInfo);
         $request = $this->_getProductRequest($requestInfo);
 
