@@ -148,6 +148,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             Mage::getSingleton('core/session')->setContent2P2($content2);
 
         }
+
+        Mage::getSingleton('core/session')->setPos($pos);
+
         echo self::getCustomMadeSession($pos);
     }
 
@@ -164,6 +167,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             Mage::getSingleton('core/session')->setContent1P2(null);
             Mage::getSingleton('core/session')->setContent2P2(null);
         }
+        Mage::getSingleton('core/session')->setPos($pos);
     }
 
     public function previewAction()
@@ -197,7 +201,6 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             $res['content1'] = $session->getContent1P2();
             $res['content2'] = $session->getContent2P2();
         }
-        $session->setPos($position);
         $resultString = json_encode($res);
         return $resultString;
     }
