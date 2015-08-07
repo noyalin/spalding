@@ -17,8 +17,9 @@
             <div class="clear"></div>
 
             <div class="checkoutSubTitleMain">
-                <span class="checkoutSubTitleBall"></span>
-                <span class="checkoutSubTitleText">选择收货地址</span>
+                <span class="checkoutSubTitleBall">
+                    <img src="<?php echo $this->getSkinUrl('images/select_ship_address.png');  ?>" alt="">
+                </span>
             </div>
             <div id="addressUl" class="  " style="margin-left: 70px;">
                 <form id="opc-address-form-billing" method="post">
@@ -32,8 +33,9 @@
 
             <div class="checkoutLine"></div>
             <div class="checkoutSubTitleMain">
-                <span class="checkoutSubTitleBall"></span>
-                <span class="checkoutSubTitleText">支付和配送</span>
+                <span class="checkoutSubTitleBall">
+                    <img src="<?php echo $this->getSkinUrl('images/payment_delivery.png');  ?>" alt="">
+                </span>
             </div>
             <div class="step_main one_step pay_step">
                 <div class="opc-col-center clearfix">
@@ -60,12 +62,21 @@
                 <!--  发票 s -->
 
                 <div class="checkoutSubTitleMain">
-                    <span class="checkoutSubTitleBall"></span>
-                    <span class="checkoutSubTitleText">发票服务</span>
+                    <span class="checkoutSubTitleBall">
+                    <img src="<?php echo $this->getSkinUrl('images/fapiao_invoice.png');  ?>" alt="">
+                    </span>
                 </div>
 
                 <div class="checkoutNewAddress clearfix">
-                    <div class="checkoutSmallTitle">
+                    <style>
+                        .bill{font-size:12px;color:#fff;margin-left:97px;color:#b4b4b4;}
+                        .choBill{color:#38f;cursor:pointer;}
+                    </style>
+                    <div class="bill">
+                        <span>不需要发票</span>
+                        <span class="choBill">[修改]</span>
+                    </div>
+                    <div class="checkoutSmallTitle" style="display:none;">
                         发票类型：
                         <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="1">普通发票
                         &nbsp;&nbsp;&nbsp;
@@ -191,17 +202,32 @@
                 </div>
                 <!-- 发票 e -->
 
-    <!--            <div class="discount-block">-->
-    <!--                <h3>--><?php //echo $this->__('Discount Codes')?><!--</h3>-->
-    <!--                <div  class="collapse-block hidden">-->
-    <!--                    --><?php //echo $this->getChildhtml('coupon');?>
-    <!--                </div>-->
-    <!--            </div>-->
+                <!-- 优惠券 s -->
+<!--<div style="display: none">-->
+<!--<div>-->
+<?php if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
                 <div class="checkoutLine"></div>
 
                 <div class="checkoutSubTitleMain">
-                    <span class="checkoutSubTitleBall"></span>
-                    <span class="checkoutSubTitleText">商品清单</span>
+                        <span class="checkoutSubTitleBall">
+                            <img src="<?php echo $this->getSkinUrl('images/shop_coupon.png');  ?>" alt="">
+                        </span>
+                </div>
+
+                <div  id="discount-coupon-block" class="collapse-block">
+                    <?php echo $this->getChildhtml('coupon');?>
+                </div>
+<?php endif;?>
+<!--</div>-->
+                <!-- 优惠券 e -->
+
+
+                <div class="checkoutLine"></div>
+
+                <div class="checkoutSubTitleMain">
+                    <span class="checkoutSubTitleBall">
+                        <img src="<?php echo $this->getSkinUrl('images/shop_list.png');  ?>" alt="">
+                    </span>
                 </div>
                  <?php echo $this->_getReviewHtml()?>
                 <div class="clear move-columns"></div>
@@ -215,16 +241,22 @@
                     </div>
 
                     <div class="checkoutSubTitleMain">
-                        <span class="checkoutSubTitleBall"></span>
-                        <span class="checkoutSubTitleText">结算信息</span>
+                        <span class="checkoutSubTitleBall">
+                            <img src="<?php echo $this->getSkinUrl('images/billing_info.png');  ?>" alt="">
+                        </span>
                     </div>
 
                     <div class="checkoutBalance">
                         <div class="checkoutBalanceItem">
                             商品总金额:&nbsp;
-                            <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getGrandTotal()?></div>
+                            <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getSubtotal()?></div>
                         </div>
-
+<?php if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
+                        <div class="checkoutBalanceItem">
+                            优惠金额:&nbsp;
+                            <div class="checkoutProductDiscountPrice"><?php echo Mage::helper('opc')->getSubtotalOfDiscount()?></div>
+                        </div>
+<?php endif;?>
                         <div class="checkoutBalanceItem">
                             配送费用:&nbsp;¥0.00
                         </div>
@@ -299,6 +331,11 @@
         </div>
     </div>
     <script>
+        // 初始为不需要发票，点击修改显示发票服务
+        jQuery(".choBill").click(function(){
+            jQuery(this).parent(".bill").hide();
+            jQuery(this).parent(".bill").siblings(".checkoutSmallTitle").show();
+        });
         // 发票服务
         // 当选择了普通发票, 只显示普通发票的内容
         // 当选择了增值税专用发票, 只显示增值税专用发票的内容
@@ -323,7 +360,12 @@
             jQuery('#checkoutInvoiceTax').hide();
             jQuery('#checkoutInvoiceCommand').hide();
 
+            jQuery('.spaninvoicetype').html('无需发票');
+            jQuery('.spaninvoicetitle').html('');
+            jQuery('.spaninvoicecontent').html('');
             jQuery('.checkoutSmallTitle input[type="radio"]').removeAttr('checked');
+            jQuery(".checkoutSmallTitle").hide();
+            jQuery(".bill").show();
         }
         function saveInvoice(){
     //        var invoiceType = jQuery('input[type="radio"].invoicetaitou:checked').val();

@@ -136,7 +136,7 @@
                 <div class="field">
                     <label class="required ms-fl" for="">设为默认</label>
                     <div class="input-box ms-fl">
-                        <?php if($this->isDefaultBilling()): ?>
+                        <?php if($this->isDefaultBilling() || $this->getCustomerAddressCount() < 1 ): ?>
                             <input type="hidden" name="default_billing" value="1" />
                             <strong><?php echo $this->__('Default Billing Address') ?></strong>
                         <?php elseif($this->canSetAsDefaultBilling()): ?>
@@ -144,7 +144,7 @@
                             <input type="checkbox" id="primary_billing" name="default_billing" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" />
                         <?php else: ?>
 <!--                            <input type="hidden" name="default_shipping" value="1" />-->
-                            <input type="hidden" name="default_billing" value="1" />
+                            <input type="checkbox" name="default_billing" value="1" readonly/>
                         <?php endif; ?>
                     </div>
                 </div>

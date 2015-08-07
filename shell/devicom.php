@@ -19,13 +19,14 @@ class Devicom_DB extends Mage_Shell_Abstract {
          //Reset taobao tag:  php shell/devicom.php  --type Tools:ResetImage
          //DownloadPicTask:  php shell/devicom.php  --type Tools:DownloadPicTask
          //Add image gallert  php shell/devicom.php  --type Tools:AddGallery
+         //Clear useless log php shell/devicom.php  --type Tools:LogClean
         //Stock Reindexer:  php shell/devicom.php  --type Tools:StockReindexer
         //Sitemap Generator:  php shell/devicom.php  --type Tools:SitemapGenerator
         //Catalog Process Tracker:  php shell/devicom.php  --type Tools:Tracker_CatalogProcessTracker
          //Error Tracker:  php shell/devicom.php  --type Tools:Tracker_ErrorTracker
          //Sale Log Tracker:  php shell/devicom.php  --type Tools:Tracker_SaleProcessTracker
 
-
+        //php shell/devicom.php  --type InventoryUpdate
         //php shell/devicom.php  --type IncrementalUpdate
         //php shell/devicom.php  --type CategoryUpdate
         //php shell/devicom.php  --type FullInventoryUpdate

@@ -791,7 +791,22 @@ final class Mage
         try {
             $logActive = self::getStoreConfig('dev/log/active');
             if (empty($file)) {
-                $file = self::getStoreConfig('dev/log/file');
+                $config_file = self::getStoreConfig('dev/log/file');
+                if ($config_file) {
+                    $fileList = explode('.', $config_file);
+                    $cnt = count($fileList);
+                    if ($cnt) {
+                        if ($cnt > 1) {
+                            $fileList[$cnt - 2] .= ('_' . date("Ymd"));
+                        } else {
+                            $fileList[0] .= ('_' . date("Ymd"));
+                        }
+                        $file = $fileList[0];
+                        for ($i = 1; $i < $cnt; $i++) {
+                            $file .= ('.' . $fileList[$i]);
+                        }
+                    }
+                }
             }
         }
         catch (Exception $e) {
@@ -805,7 +820,7 @@ final class Mage
         static $loggers = array();
 
         $level  = is_null($level) ? Zend_Log::DEBUG : $level;
-        $file = empty($file) ? 'system.log' : $file;
+        $file = empty($file) ? ('system'.'_'.date("Ymd").'.log') : $file;
 
         try {
             if (!isset($loggers[$file])) {
@@ -855,7 +870,23 @@ final class Mage
         if (!self::getConfig()) {
             return;
         }
-        $file = self::getStoreConfig('dev/log/exception_file');
+        $file = '';
+        $config_file = self::getStoreConfig('dev/log/exception_file');
+        if ($config_file) {
+            $fileList = explode('.', $config_file);
+            $cnt = count($fileList);
+            if ($cnt) {
+                if ($cnt > 1) {
+                    $fileList[$cnt - 2] .= ('_' . date("Ymd"));
+                } else {
+                    $fileList[0] .= ('_' . date("Ymd"));
+                }
+                $file = $fileList[0];
+                for ($i = 1; $i < $cnt; $i++) {
+                    $file .= ('.' . $fileList[$i]);
+                }
+            }
+        }
         self::log("\n" . $e->__toString(), Zend_Log::ERR, $file);
     }
 

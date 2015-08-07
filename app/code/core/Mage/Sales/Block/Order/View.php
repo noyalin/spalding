@@ -106,4 +106,14 @@ class Mage_Sales_Block_Order_View extends Mage_Core_Block_Template
         return Mage::getUrl('*/*/creditmemo', array('order_id' => $order->getId()));
     }
 
+    public function  getCheckCode($orderid) {
+        return Mage::getSingleton('weixinevent/promotion')->getCheckCode($orderid);
+    }
+
+    public function isPromotionOrderId($order)
+    {
+//        return (Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($order->getRealOrderId())) && (time() - strtotime($order->getData("updated_at")) < 7200);
+        return Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($order->getRealOrderId());
+    }
+
 }

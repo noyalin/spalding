@@ -450,7 +450,6 @@ $breadCrumbs = array();
                                 $className = "multi-view-img";
                             }
                             $shortDescription =  $_product->getShortDescription();
-                            mage :: log($shortDescription);
                             if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
                                 if( strstr($shortDescription,'，')  ){
                                     $tmpArr = explode("，",$shortDescription);

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Devicom_Weixindev>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Devicom_Weixindev>
+    </modules>
+</config>

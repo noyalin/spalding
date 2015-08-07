@@ -386,11 +386,11 @@ final class StoneEdge_MagentoImport {
 	}
 
 	private static function downloadorders() {
-		$lastDate = new DateTime();
+//		$lastDate = new DateTime();
 		$startnum = (isset($_REQUEST['startnum']) && ((int) $_REQUEST['startnum'] > 0) ? (int) $_REQUEST['startnum'] - 1 : 0);
 		$batchsize = (isset($_REQUEST['batchsize']) && (int) $_REQUEST['batchsize'] > 0 ? $_REQUEST['batchsize'] : 10000000);
 		$lastOrder = ((isset($_REQUEST['lastorder']) && strtolower($_REQUEST['lastorder']) != 'all') ? $_REQUEST['lastorder'] : 0);
-		$lastDate = ((isset($_REQUEST['lastdate']) && strtolower($_REQUEST['lastdate']) != 'all') ? date_create($_REQUEST['lastdate']) : date_create(date('Y-m-d')));
+//		$lastDate = ((isset($_REQUEST['lastdate']) && strtolower($_REQUEST['lastdate']) != 'all') ? date_create($_REQUEST['lastdate']) : date_create(date('Y-m-d')));
 
         $ordRows = array();
 		$res = Mage::getSingleton('core/resource');
@@ -405,20 +405,22 @@ final class StoneEdge_MagentoImport {
                 $storeId = 2;
             }
 		}
-        $entityStr = '';
-        $time = Date("Y-m-d H:i:s");
-        $gmtTime = $time;
-        if(isset($_REQUEST['lastdate'])){
-            $time = $_REQUEST['lastdate'];
-            $gmtTime = date("Y-m-d H:i:s",strtotime($time)-8*60*60);
-        }
-            $sql = $db->select()
-                ->from($ordersTable, 'entity_id')
-                ->where('store_id=?', $storeId, Zend_Db::INT_TYPE)
-                ->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"')
-                ->where(  "updated_at >= '$gmtTime' " ) // "entity_id > $lastEntityId"
-                ->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')")
-                ->limit($batchsize, $startnum);
+//        $entityStr = '';
+//        $time = Date("Y-m-d H:i:s");
+//        $gmtTime = $time;
+//        if(isset($_REQUEST['lastdate'])){
+//            $time = $_REQUEST['lastdate'];
+//            $gmtTime = date("Y-m-d H:i:s",strtotime($time)-8*60*60);
+//        }
+            $sql = $db->select();
+                $sql->from($ordersTable, 'entity_id');
+                if ($lastOrder) {
+                	$sql->where('store_id=?', $storeId, Zend_Db::INT_TYPE);
+                }
+                $sql->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"');
+//                $sql->where(  "updated_at >= '$gmtTime' " ); // "entity_id > $lastEntityId"
+                $sql->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')");
+                $sql->limit($batchsize, $startnum);
             if (self::$_debug) {
                 echo "Executing SQL: $sql\r\n";
             }
@@ -455,7 +457,7 @@ final class StoneEdge_MagentoImport {
 //PCN BEGIN
 		$orderDate->modify("+8 hours");
 //PCN END
-		self::xmlAppend("OrderDate", $orderDate->format('d-M-Y g:i:s A'), $ndOrder, $xd);
+		self::xmlAppend("OrderDate", $orderDate->format('Y-m-d H:i:s'), $ndOrder, $xd);
 
 		if (!$order->getBillingAddress()) {
 			if (self::$_debug) {

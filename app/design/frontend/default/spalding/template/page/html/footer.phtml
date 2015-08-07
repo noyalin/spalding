@@ -24,6 +24,67 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<div id="dialog" style="display:none;">
+    <div class="aa" style="position:fixed; width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.8);z-index:100;">
+        <div class="dialogBg" style="position:fixed; width:100%; height:100%;"></div>
+        <div class="new_address" style="left: 50%;margin-left: -400px;margin-top: -270px;position: fixed;top: 50%;width: 723px; height:550px;">
+            <img src="<?php echo $this->getSkinUrl("auth/close.png") ?>" id="" class="closebutton" style="float: right;cursor: pointer;margin-top:100px;margin-right:50px;"/>
+            <table cellspacing="0" cellpadding="0" border="0" style="margin-top:250px;margin-left: 200px;">
+                <tbody>
+                <tr>
+                    <th><label class="required " for="barcode" ><span class="rStar">*</span>
+                            <i class="barcodeLabel"></i>
+                        </label></th>
+                    <td colspan="2">
+                        <input type="text" required="" class="input-text required-entry" value="" id="barcode" name="firstname" title="防伪码">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th><label class="required" for="verifycode"><span class="rStar">*</span><i class="verifycodeLabel"></i></label></th>
+                    <td class="infoInput">
+                        <input type="text" id="verifycode" required="" class="input-text required-entry"  value="" name="验证码" style="width:140px;">
+                    </td>
+                    <td>
+                        <img style="cursor: pointer" src="<?php echo $this->getUrl('code_num.php', array('_secure'=>true)) ?>" id="getcode_num" title="看不清，点击换一张" align="absmiddle"></p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                       <div style="display: block;padding-top:10px;" class="ds_dialog_buttons">
+                            <i id="zy_check_ok" class="ds_dialog_yes" ></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" ><div id="checkmessage" style="color:#fff; font-size:12px; text-align:center;margin-top:5px;padding-top:55px;">所有的验证码只能验证一次,请输入后点击确认,耐心等待,不要重复点击确认按钮!</div></td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="position:relative;margin-top:-265px;margin-left:290px; font-weight:bold;color:#fdb905;">
+                <em id="barcode_error" class="error_em"></em>
+                <em id="verifycode_error" class="error_em"></em>
+            </div>
+            <div id="barcodeVerifyResult"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
 <!-- 底部 bottom s -->
 <div class="footer">
     <div class="top" id="top" style="position:absolute; bottom:160px; right:80px; z-index:9999; color:#fff; cursor:pointer;"><img src="<?php echo $this->getSkinUrl('images/toTop.jpg') ?>" alt=""></div>
@@ -109,8 +170,13 @@
             i++;
         }
     }
-    navGPS(aName_main, c_title)
+    navGPS(aName_main, c_title);
 
+
+    function loading(){
+        var html = '<div><img src="<?php echo $this->getSkinUrl(); ?>images/auth/ajax-loader-tr.gif"/></div>';
+        jQuery('#barcodeVerifyResult').html(html);
+    }
     jQuery(function () {
 
         var index = jQuery('.menu_wrap ul.side_nav>li').index(jQuery(".on"));
@@ -126,11 +192,22 @@
             });
         });
 
+
+        //点击空白处 隐藏“验证”
+        jQuery(".dialogBg").click(function(){
+            jQuery(this).parents("#dialog").css("display","none");
+        });
+        jQuery('.closebutton').on("click",function(){
+            jQuery(this).parent().parent().parent('#dialog').fadeOut();
+        });
+
 //鼠标经过子菜单时，停止下拉动画，仅显示
         jQuery('.lower_list').hover(function(){
             jQuery(this).stop(false,true).css("display","block");
         });
-
+        jQuery('#zhenweiyanzhengrukou').on("click",function(){
+            jQuery(this).parents().find('#dialog').fadeIn();
+        });
 
         jQuery('.menu_all').hover(function () {
         }, function () {

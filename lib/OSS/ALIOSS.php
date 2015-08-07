@@ -2061,8 +2061,6 @@ class OSS_ALIOSS{
         //read directory
         $file_list_array = $this->read_dir($directory,$exclude,$recursive);
 
-        mage :: log($sku ." begin scan file ".$directory."  exclude  ".$exclude."  recursive ".$recursive);
-        mage :: log($file_list_array);
 
         if(!$file_list_array){
             throw new OSS_Exception($directory.' is empty...');
@@ -2079,12 +2077,9 @@ class OSS_ALIOSS{
             $response = $this->create_mpu_object($bucket, (!empty($object)?$object.'/':'').$item['file'],$options);
             if($response->isOK()){
                 $i++;
-                mage :: log( "Upload file {".$item['path']." } successful.." );
             }else{
-                mage :: log( "Upload file {".$item['path']." } failed..");
                 continue;
             }
-            mage :: log($i);
         }
     }
 

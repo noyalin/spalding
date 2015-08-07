@@ -168,5 +168,31 @@ class IWD_Opc_Helper_Data extends Mage_Core_Helper_Abstract{
 	     
 	    return Mage::helper('checkout')->formatPrice($total);
 	}
-	
+
+    public  function getSubtotal(){
+        $quote = Mage::getModel('checkout/session')->getQuote();
+        $total = $quote->getSubtotal();
+
+        return Mage::helper('checkout')->formatPrice($total);
+    }
+
+    public function getSubtotalWithDiscount(){
+        $quote = Mage::getModel('checkout/session')->getQuote();
+        $total = $quote->getSubtotalWithDiscount();
+
+        return Mage::helper('checkout')->formatPrice($total);
+    }
+
+    public function getSubtotalOfDiscount(){
+        $quote = Mage::getModel('checkout/session')->getQuote();
+        $total = $quote->getSubtotal();
+        $totalWithDis = $quote->getSubtotalWithDiscount();
+
+        $discount = $total - $totalWithDis;
+        if ($discount < 0) {
+            $discount = 0;
+        }
+        return Mage::helper('checkout')->formatPrice($discount);
+    }
+
 }

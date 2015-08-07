@@ -1,0 +1,188 @@
+.msg_default_box {
+    background-color: #445F85;
+    border: 1px solid #2B4D69;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    letter-spacing: 6px;
+    padding: 12px 0;
+    text-align: center;
+    display: inline-block;
+    width: 258px;
+}
+.pay_msg .msg_box, .pay_msg .msg_default_box {
+    display: inline-block;
+    width: 258px;
+}
+.icon60_qr {
+    background: url("../../images/weixin/icon60_qr15b813.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 60px;
+    vertical-align: middle;
+    width: 60px;
+}
+.msg_default_box i {
+    margin-left: -16px;
+}
+.qr_succ .icon60_qr {
+    background-position: 0 0;
+}
+.msg_default_box p {
+    display: inline-block;
+    font-size: 16px;
+    letter-spacing: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+.pay_msg .msg_box, .pay_msg .msg_default_box {
+    display: inline-block;
+    width: 258px;
+}
+
+.header {
+    background: url("../../images/weixin/bg_pay_header15b813.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 66px;
+}
+
+.pay_logo {
+    padding-bottom: 0;
+    padding-top: 18px;
+    text-align: center;
+}
+.pay_logo .index_access {
+    display: inline-block;
+    height: 34px;
+    vertical-align: top;
+    width: 120px;
+}
+a {
+    color: #374673;
+}
+
+.pay_logo img {
+    height: 100%;
+    width: 100%;
+}
+.msg_box {
+    background-color: #4CA698;
+    border: 1px solid #259483;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    letter-spacing: 6px;
+    padding: 12px 0;
+    text-align: center;
+    display: inline-block;
+    width: 258px;
+    display: none;
+}
+.qr_succ .icon60_qr {
+    background-position: 0 0;
+}
+.msg_box i {
+    margin-left: -16px;
+}
+.icon60_qr {
+    background: url("../../images/weixin/icon60_qr15b813.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 60px;
+    vertical-align: middle;
+    width: 60px;
+}
+.msg_box p {
+    display: inline-block;
+    font-size: 16px;
+    letter-spacing: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+.area {
+    text-align: center;
+}
+
+.pay_bill .area_hd {
+    border-bottom: 3px solid #E0E3EB;
+    height: 60px;
+    padding-bottom: 4px;
+}
+.area_hd h2 {
+    display: none;
+}
+.pay_bill .area_hd .icon_wrapper {
+    background-color: #FFFFFF;
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 14px;
+    position: relative;
+    top: 34px;
+}
+
+.shopping .icon60_pay {
+    background-position: 0 0;
+}
+.icon60_pay {
+    background: url("../../images/weixin/icon60_pay15b813.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 60px;
+    vertical-align: middle;
+    width: 60px;
+}
+
+.pay_bill .area_bd {
+    display: block;
+}
+
+.pay_money {
+    border-bottom: 1px solid #D0D8E4;
+    color: #585858;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 68px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.pay_money span {
+    margin-right: -10px;
+}
+
+.pay_bill_unit.no_extra {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.pay_bill_unit {
+    background: url("../../images/weixin/bg_pay_bill_split1518d5.png") no-repeat scroll center bottom rgba(0, 0, 0, 0);
+    padding: 18px 0 40px;
+}
+.pay_bill_unit dl {
+    border-bottom: 1px solid #E5E7EA;
+}
+body, h1, h2, h3, h4, p, ul, ol, dl, dd {
+    margin: 0;
+}
+.pay_bill_unit dt {
+    color: #000000;
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 20px;
+}
+.msg_box a:hover{
+    color:#000000;
+}
+
+.pay_bill_info {
+    line-height: 26px;
+    padding-top: 10px;
+}
+
+.pay_bill_info p {
+    overflow: hidden;
+}
+.price{
+    color:#ffffff;
+}
+.pay_bill_info label {
+    color: #000000;
+    float: left;
+    font-size: 14px;
+}
+.pay_bill_info .pay_bill_value {
+    float: right;
+}
