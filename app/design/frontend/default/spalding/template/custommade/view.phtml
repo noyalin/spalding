@@ -4,7 +4,9 @@
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
-<?php $_product = $this->getProduct(); ?>
+<?php
+    $_product = $this->getProduct();
+?>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
@@ -355,11 +357,13 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#check').val(),
-            data: {position: <?php if ($this->getPos() != 1):?>2<?php else: ?>1<?php endif; ?>},
+            data: {position: <?php if ($this->getPos() == 2):?>2<?php else: ?>1<?php endif; ?>},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-                    <?php if ($this->getPos() != 1):?>
+                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+
+                    <?php if ($this->getPos() == 2):?>
                         resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
                     <?php else: ?>
                         resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);

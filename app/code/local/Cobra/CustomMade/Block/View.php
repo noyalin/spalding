@@ -8,7 +8,7 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
     private $customValue = 0;
     private $price;
 
-    public function __construct(array $args = array())
+    public function initView()
     {
         $customTypeP1 = '无';
         $customTypeP2 = '无';

@@ -187,8 +187,6 @@ jQuery(function () {
         }
     });
 
-
-
     //定制图案或文字时 另一定制收起
     var _madeImgDt = jQuery(".madeKindImg");
     var _madeTexDt = jQuery(".madeKindTex");
