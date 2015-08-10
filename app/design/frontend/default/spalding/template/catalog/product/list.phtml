@@ -40,7 +40,7 @@ $_helper = $this->helper('catalog/output');
 //get current category id
 $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
-$currentCategoryId= $_category->getId();
+$categoryUrlkey = $_category->getUrlKey();
 ?>
 <?php if(!$_productCollection->count()): ?>
     <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
@@ -96,7 +96,7 @@ $currentCategoryId= $_category->getId();
 
         <?php
         // Grid Mode
-        if($currentCategoryId == 39):
+        if ($categoryUrlkey == 'custom-made'):
             //专属定制
             ?>
             <div class="category-products">
