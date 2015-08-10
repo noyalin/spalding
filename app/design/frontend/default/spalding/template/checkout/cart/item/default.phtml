@@ -47,6 +47,7 @@ $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("produc
 $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
 $attributeSetModel->load($_product->getAttributeSetId());
 $attributeSetName = $attributeSetModel->getAttributeSetName();
+
 ?>
 <style>
      .spCarTit_name a:link{
@@ -58,7 +59,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
         <dd class="ms-fl">
             <?php if ($this->hasProductUrl()):?>
                 <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?>
-                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $product_sku."/". $urlKey ?>-14.jpg" alt=""/>
+                    <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ."/media/catalog/product/". $_product->getSku()."/". $urlKey."-14.jpg"   ?>" alt=""/>
                     <?php if ($this->hasProductUrl()):?>
                 </a>
             <?php endif;?>
