@@ -64,7 +64,7 @@ if (strstr($shortDescription, "直径") && stristr($shortDescription, "mm")) {
 $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
 $currentCategoryId = $_category->getId();
-if ($currentCategoryId == 35):
+if ($currentCategoryId == 39):
 //专属定制
     ?>
     <?php echo $this->getChildHtml('custommade_view') ?>
