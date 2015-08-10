@@ -56,7 +56,7 @@
             $msgStats .= $sParts[$i] . ($i == $c-1 ? '' : ($i == $c-2 ? $this->__(' and ') : ', '));
         }
 
-        $lates  tNoticeUrl = $this->getLatestNoticeUrl();
+        $latestNoticeUrl = $this->getLatestNoticeUrl();
     ?>
     <?php /*
     <span class="f-right"><?php echo $this->__('You have %s unread message(s). <a href="%s">Go to messages inbox</a>.', $msgStats, $this->getNoticesInboxUrl());?></span>
