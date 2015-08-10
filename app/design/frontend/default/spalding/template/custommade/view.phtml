@@ -62,6 +62,7 @@
 
 <script type="text/javascript">
     jQuery(".saveMadeY_p1").click(function () {
+        madeLoading("提交成功","拼命加载中，请耐心等待...");
         // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
 
         var _comfBox = jQuery(".comfBox_1");
@@ -91,6 +92,7 @@
     });
 
     jQuery(".saveMadeY_p2").click(function () {
+        madeLoading("提交成功","拼命加载中，请耐心等待...");
         var _comfBox = jQuery(".comfBox_2");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
 //    alert(_madeValue);
@@ -121,6 +123,7 @@
     var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
 
     jQuery(_resNow_1).click(function () {
+        madeLoading("提交成功","拼命加载中，请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
@@ -133,6 +136,7 @@
     });
 
     jQuery(_resNow_2).click(function () {
+        madeLoading("提交成功","拼命加载中，请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),

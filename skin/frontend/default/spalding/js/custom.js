@@ -596,6 +596,7 @@ function avatarrotateright() {
 var productAddToCartForm = new VarienForm('product_addtocart_form');
 productAddToCartForm.submit = function (button, url) {
 
+    madeLoading("提交成功","拼命加载中，请耐心等待...");
 //        if (this.validator.validate()) {
     var form = this.form;
     var oldUrl = form.action;
@@ -720,6 +721,7 @@ jQuery(function () {
 //预览按钮
 jQuery(function () {
     jQuery(".viewMade").click(function () {
+        madeLoading("提交成功","拼命加载中，请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#preview').val(),
