@@ -3970,3 +3970,12 @@ dl.madeBoxFuns dt.zz_t{
 	text-align: center;
 	cursor: pointer;
 }
+
+.madeSubmit .zz{
+	display: inline-block;
+	position: absolute;
+	z-index: 2;
+	width:104px;
+	height:32px;
+
+}
