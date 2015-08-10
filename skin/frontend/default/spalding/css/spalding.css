@@ -3368,7 +3368,7 @@ ul.shopsList li span.shopsList_adrs{
 	width:340px;
 	height: 500px;
 	z-index: 9;
-	background: none;
+	background: rgba(0,0,0,.8);
 }
 .cusMadeRig{
 	position:absolute;
