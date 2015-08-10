@@ -3972,6 +3972,7 @@ dl.madeBoxFuns dt.zz_t{
 }
 
 .madeSubmit .zz{
+	display: none;
 	display: inline-block;
 	position: absolute;
 	z-index: 2;

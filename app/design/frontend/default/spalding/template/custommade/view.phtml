@@ -4,9 +4,7 @@
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
-<?php
-    $_product = $this->getProduct();
-?>
+<?php $_product = $this->getProduct(); ?>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
@@ -51,9 +49,7 @@
     
     <div class="madeBotmSn">
         <h1>定制专属篮球</h1>
-<?php if ($this->getTestMode() == 1): ?>
         <p class="loadingTest">loadingTest</p>
-<?php endif; ?>
         <p>斯伯丁74-604“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，<br>恰到好处的粘度让你轻松“掌控”比赛！</p>
     </div>
 
@@ -62,7 +58,6 @@
 
 <script type="text/javascript">
     jQuery(".saveMadeY_p1").click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
         // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
 
         var _comfBox = jQuery(".comfBox_1");
@@ -92,7 +87,6 @@
     });
 
     jQuery(".saveMadeY_p2").click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
         var _comfBox = jQuery(".comfBox_2");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
 //    alert(_madeValue);
@@ -123,7 +117,6 @@
     var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
 
     jQuery(_resNow_1).click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
@@ -136,7 +129,6 @@
     });
 
     jQuery(_resNow_2).click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
@@ -149,16 +141,6 @@
     });
 
     function resetView_1(_dataType, value1, value2) {
-
-
-        jQuery(".madeBoxCons_p1").css("display", "block");
-        jQuery(".madeBoxCons_p2").css("display", "none");
-        jQuery(".select_P1").css("display", "block");
-        jQuery(".select_P2").css("display", "none");
-
-        jQuery(".madeP_2_btn").removeClass("madeP_btn_now");
-        jQuery(".madeP_1_btn").addClass("madeP_btn_now");
-
         jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
         jQuery('#customMade_fontSize_1 span').removeClass('checked');
         jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
@@ -171,8 +153,11 @@
         _comfBox.siblings(".madeBoxFuns").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
         _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "block");
+        _comfBox.siblings(".madeSubmit").find(".zz").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+        // jQuery(this).parents().find(".select_P2").css("display","block");
+        // jQuery(this).parents().find(".select_P1").css("display","none");
 //        jQuery("#options_pos").val(2);
 //        var type = jQuery("#options_type_p1").val();
         var _viewPage1 = jQuery(".viewPage_P1"); //获取预览P1
@@ -247,6 +232,7 @@
             _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "none");
+            _comfBox.siblings(".madeSubmit").find(".zz").css("display", "none");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
             _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
@@ -266,15 +252,6 @@
 
     //P2
     function resetView_2(_dataType, value1, value2) {
-
-        jQuery(".madeBoxCons_p1").css("display", "none");
-        jQuery(".madeBoxCons_p2").css("display", "block");
-        jQuery(".select_P2").css("display", "block");
-        jQuery(".select_P1").css("display", "none");
-
-        jQuery(".madeP_1_btn").removeClass("madeP_btn_now");
-        jQuery(".madeP_2_btn").addClass("madeP_btn_now");
-
         jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
         jQuery('#customMade_fontSize_2 span').removeClass('checked');
         jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
@@ -288,6 +265,7 @@
         _comfBox.siblings(".madeBoxFuns").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
         _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "block");
+        _comfBox.siblings(".madeSubmit").find(".zz").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
         _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
@@ -359,6 +337,7 @@
             _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find("dd.zz").css("display", "none");
+            _comfBox.siblings(".madeSubmit").find(".zz").css("display", "none");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
             _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
@@ -380,15 +359,11 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#check').val(),
-            data: {position: <?php if ($this->getPos() == 2):?>2<?php else: ?>1<?php endif; ?>},
+            data: {position: 1},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-                    <?php if ($this->getPos() == 2):?>
-                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
-                    <?php else: ?>
-                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
-                    <?php endif; ?>
+                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
 <?php if ($this->getCustomStatus() == 1): ?>
                     jQuery(".viewPage_P1").css("display","none");
                     jQuery(".viewPage_P2").css("display","none");
