@@ -873,6 +873,6 @@ jQuery(function(){
         notTodo("提示","退出预览后才能进行操作！");
     });
     jQuery(".zz").click(function(){
-        notTodo("提示","定制已提交，若要重新定置，请先“重置”！");
+        notTodo("提示","定制已提交，若要重新定制，请先“重置”！");
     });
 });
