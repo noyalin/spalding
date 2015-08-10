@@ -848,8 +848,31 @@ function madeLoadingClose(){
     _madeLoading.css("display","none");
 }
 
+// notDo
+function notTodo(tit,cons){
+    var _madeLoading = jQuery(".notTodo");
+    var _madeLoadingBox = jQuery("#noTodoBox");
+    var _h2 = _madeLoading.find("h2");
+    var _p = _madeLoading.find("p");
+    _madeLoading.css("display","block");
+    _h2.text(tit);
+    _p.text(cons);
+}
+
 jQuery(function(){
     jQuery(".loadingTest").click(function(){
         madeLoading("提交成功","数据加载中，由于上传图片体积较大，请耐心等待...");
+    });
+
+    // 关闭警告框
+    jQuery(".closeTodo").click(function(){
+        jQuery(this).parent(".notTodo").css("display","none");
+    });
+
+    jQuery(".cusMadeRigZz").click(function(){
+        notTodo("提示","退出预览后才能进行操作！");
+    });
+    jQuery(".zz").click(function(){
+        notTodo("提示","定制已提交，若要重新定置，请先“重置”！");
     });
 });

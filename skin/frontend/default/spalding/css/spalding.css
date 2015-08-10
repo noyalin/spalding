@@ -3910,7 +3910,7 @@ dl.madeBoxFuns dt.zz_t{
 }
 
 
-.madeLoading{
+.madeLoading , .notTodo{
 	display:none;
 	position: fixed;
 	z-index: 99999;
@@ -3921,7 +3921,7 @@ dl.madeBoxFuns dt.zz_t{
 	left:0;
 }
 
-.loadingBox{
+.loadingBox , .noTodoBox{
 	position: absolute;
 	width:340px;
 	height:220px;
@@ -3937,7 +3937,7 @@ dl.madeBoxFuns dt.zz_t{
 	box-shadow: 0 1px 0 #000;
 }
 
-.loadingBox h2{
+.loadingBox h2 , .noTodoBox h2{
 	font-size: 16px;
 	font-weight: bold;
 	padding-bottom:10px;
@@ -3945,11 +3945,28 @@ dl.madeBoxFuns dt.zz_t{
 	margin-top:10px;
 	border-bottom:1px solid #ccc;
 }
-.loadingBox p{
+.loadingBox p , .noTodoBox p{
 	height: 50px;
 	color:#666;
 }
 .loadingBox .loadingImg{
 	margin-top: 10px;
 	text-align: center;
+}
+
+.closeTodo{
+	left:50%;
+	top:50%;
+	margin-left:215px;
+	margin-top:-135px;
+	position:absolute;
+	background:#fff;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	border-radius: 15px;
+	z-index: 2;
+	text-align: center;
+	cursor: pointer;
 }
