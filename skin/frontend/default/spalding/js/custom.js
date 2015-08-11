@@ -353,15 +353,9 @@ function previewImage(file, imgId) {
         reader.onload = function (evt) {
             img.removeAttribute("width");
             img.removeAttribute("height");
-            img.onload = function () {
-                avatarinit();
-                img.onload = null;
-            }
             img.src = evt.target.result;
-            if (img.complete) {
-                avatarinit();
-            }
-            // avatarinit();
+            avatarinit();
+            //alert("reader.onload OK!!");
         }
         reader.readAsDataURL(file.files[0]);
         _form.style.opacity = 1;
@@ -570,10 +564,16 @@ function avatarinit() {
     gripinit();
 }
 
+function avatarinitLoad() {
+    avatarinit();
+    jQuery("#avatar").removeAttribute("width");
+    jQuery("#avatar").removeAttribute("height");
+}
+
 if (document.all) {
-    window.attachEvent('onload', avatarinit);
+    window.attachEvent('onload', avatarinitLoad);
 } else {
-    window.addEventListener('load', avatarinit, false);
+    window.addEventListener('load', avatarinitLoad, false);
 }
 
 jQuery(document).ready(function () {
