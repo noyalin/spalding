@@ -42,21 +42,22 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
     public function saveCustomMade($orderId)
     {
-        //保存定制信息
         $session = Mage::getSingleton('core/session');
-        $time = time();
-        $this->setOrderId($orderId)
-            ->setTypeP1($session->getTypeP1())
-            ->setMsg1P1($session->getContent1P1())
-            ->setMsg2P1($session->getContent2P1())
-            ->setTypeP2($session->getTypeP2())
-            ->setMsg1P2($session->getContent1P2())
-            ->setMsg2P2($session->getContent2P2())
-            ->setCreateTime($time)
-            ->setUpdateTime($time)
-            ->setStatus(self::STATUS_NON_PAYMENT)
-            ->save();
-        $this->clearSession();
+        if ($session->getTypeP1() != null ||
+            $session->getTypeP2() != null
+        ){
+            //保存定制信息
+            $this->setOrderId($orderId)
+                ->setTypeP1($session->getTypeP1())
+                ->setMsg1P1($session->getContent1P1())
+                ->setMsg2P1($session->getContent2P1())
+                ->setTypeP2($session->getTypeP2())
+                ->setMsg1P2($session->getContent1P2())
+                ->setMsg2P2($session->getContent2P2())
+                ->setStatus(self::STATUS_NON_PAYMENT)
+                ->save();
+            $this->clearSession();
+        }
     }
 
     private function clearSession()
