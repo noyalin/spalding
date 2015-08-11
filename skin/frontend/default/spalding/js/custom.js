@@ -354,8 +354,15 @@ function previewImage(file, imgId) {
             img.removeAttribute("width");
             img.removeAttribute("height");
             img.src = evt.target.result;
-            avatarinit();
-            //alert("reader.onload OK!!");
+            if (img.complete) {
+                avatarinit();
+            } else {
+                img.onload = function () {
+                    avatarinit();
+                    img.onload = null;
+                };
+            };
+            // avatarinit();
         }
         reader.readAsDataURL(file.files[0]);
         _form.style.opacity = 1;
