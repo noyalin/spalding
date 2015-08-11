@@ -353,15 +353,14 @@ function previewImage(file, imgId) {
         reader.onload = function (evt) {
             img.removeAttribute("width");
             img.removeAttribute("height");
+            img.onload = function () {
+                avatarinit();
+                img.onload = null;
+            }
             img.src = evt.target.result;
             if (img.complete) {
                 avatarinit();
-            } else {
-                img.onload = function () {
-                    avatarinit();
-                    img.onload = null;
-                };
-            };
+            }
             // avatarinit();
         }
         reader.readAsDataURL(file.files[0]);
