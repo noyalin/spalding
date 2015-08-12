@@ -4156,7 +4156,7 @@ span.sale_kind{
 	width:100%;
 }
 
-.popPhoneInp>div.phoneInpCd span.popPhoneBtn{
+.popPhoneInp span.popPhoneBtn{
 	text-align: center;
 	width:35%;
 	margin-left:5px;
