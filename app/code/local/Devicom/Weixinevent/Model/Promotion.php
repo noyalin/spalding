@@ -314,8 +314,13 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
                 return false;
             }
 
-            if (!strpos($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL) ||
-                !strstr($sales_order->getCustomerNote(), WEIXIN_PROMOTION_ORDEY_NOTE)) {
+//            if (!strpos($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL) ||
+//                !strstr($sales_order->getCustomerNote(), WEIXIN_PROMOTION_ORDEY_NOTE)) {
+//                return false;
+////                throw new Exception('测试验证不通过。');
+//            }
+
+            if (!strpos($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL)) {
                 return false;
 //                throw new Exception('测试验证不通过。');
             }
