@@ -49,7 +49,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         try {
             mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction Start ---- ",
                 Zend_Log::DEBUG);
-            $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
+//            $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
             $telephone = Mage::app()->getRequest()->getParam('telephone');
             $clickOrder = Mage::app()->getRequest()->getParam('clickOrder');
             $openId = Mage::getSingleton('customer/session')->getOpenId();
@@ -58,7 +58,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
             $result = array();
 
-            if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
+//            if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
                 $opt->setCaptchaData($telephone);
                 $isPromotioned = $opt->isPromotioned();
                 $promotion_opt = $opt->getPromotionCount();
@@ -99,9 +99,9 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                     $result["message"] = "您已参加过活动，不能再次点亮篮球";
                     $result["lightedCnt"] = $promotion_opt;
                 }
-            } else {
-                throw new Exception("SMS_Check::checkTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone, inputCaptcha=$inputCaptcha");
-            }
+//            } else {
+//                throw new Exception("SMS_Check::checkTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone, inputCaptcha=$inputCaptcha");
+//            }
         } catch (Exception $ex) {
             mage::log("Exception : " . $ex->getMessage(),
                 Zend_Log::ERR);

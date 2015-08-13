@@ -5,6 +5,7 @@ if (!defined('WEIXIN_PROMOTION_ACTIVITY_ID')) {
 }
 define('WEIXIN_PROMOTION_START_TIME',   '2015-08-12 00:00:00');
 define('WEIXIN_PROMOTION_END_TIME',   '2015-09-01 00:00:00');
+define('WEIXIN_PROMOTION_EXPIRE_TIME', '900');
 define('WEIXIN_PROMOTION_ORDEY_STATUS',   'alipay_wait_buyer_pay');
 define('WEIXIN_PROMOTION_ORDEY_EMAIL',   '@voyageone.cn');
 define('WEIXIN_PROMOTION_ORDEY_NOTE',   'test');
@@ -307,6 +308,10 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
                 strtotime($sales_order->getUpdatedAt())<strtotime(WEIXIN_PROMOTION_END_TIME))) {
                 return false;
 //                throw new Exception('订单时间在不正确。');
+            }
+
+            if ((time() - strtotime($sales_order->getUpdatedAt())) > WEIXIN_PROMOTION_EXPIRE_TIME) {
+                return false;
             }
 
             if (!strpos($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL) ||

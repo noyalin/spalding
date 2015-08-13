@@ -369,7 +369,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
             var telephone = jQuery(".telNum").find("input").val();
             var inputCaptcha = jQuery(".phoneInpCd").find("input").val();
 
-            if (!checkTelNo(telephone) || !checkCaptcha(inputCaptcha)) {
+            if (!checkTelNo(telephone)) {
                 return;
             }
 
@@ -378,7 +378,7 @@ $shareimageurl = $this->getSkinUrl("images/weixin/share.jpg");
             jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('weixinevent/index/checkCaptcha') ?>',
-                data: {inputCaptcha: inputCaptcha, telephone: telephone, clickOrder: 0},
+                data: {telephone: telephone, clickOrder: 0},
                 success: function (data) {
                     dataObj = ajaxEvalJson(data);
                     if (dataObj.status == "Success") {
