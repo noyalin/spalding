@@ -25,6 +25,15 @@
  */
 ?>
     <?php $_order = $this->getOrder() ?>
+
+	<?php
+	$activityId = '10000001';
+	if($this->isPromotionOrderId($_order)):?>
+		<div class="wxCD">
+			<img src="<?php echo $this->getUrl('weixinevent/index/qrcode/aid/'.$activityId.'/oid/'.$_order->getRealOrderId().'/cc/'.$this->getCheckCode($_order->getRealOrderId())).'/' ?>" >
+		</div>
+	<?php endif; ?>
+
     <div class="myAccountBox">
 <!--	<h2>Items Ordered</h2>-->
 	<h2>商品已下单</h2>
