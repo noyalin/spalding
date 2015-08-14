@@ -173,16 +173,16 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                 throw new Exception('活动ID不正确。');
             }
 
-            if (!Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($oid)) {
-                throw new Exception('活动ID不正确。');
-            }
-
             $oidCC = Mage::getSingleton('weixinevent/promotion')->getCheckCode($oid);
             if ($oidCC != $cc) {
                 throw new Exception('活动验证码不正确。('.$oidCC.' != '.$oid.')');
             }
 
-            $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
+            if (!Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($oid)) {
+                throw new Exception('订单不正确。');
+            }
+
+           $apidata = Mage::getSingleton('weixinevent/promotion')->getApidata();
             $appid = $apidata['appid'];
             $appsecret = $apidata['appsecret'];
             $redirectUrl = urlencode(Mage::helper('core/url')->getCurrentUrl());

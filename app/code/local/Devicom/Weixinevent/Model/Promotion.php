@@ -4,9 +4,11 @@ if (!defined('WEIXIN_PROMOTION_ACTIVITY_ID')) {
     define('WEIXIN_PROMOTION_ACTIVITY_ID',   '10000001');
 }
 define('WEIXIN_PROMOTION_START_TIME',   '2015-08-12 00:00:00');
-define('WEIXIN_PROMOTION_END_TIME',   '2015-09-01 00:00:00');
+define('WEIXIN_PROMOTION_END_TIME',   '2015-10-01 00:00:00');
 //define('WEIXIN_PROMOTION_EXPIRE_TIME', '900');
 define('WEIXIN_PROMOTION_ORDEY_STATUS',   'alipay_wait_buyer_pay');
+define('WEIXIN_PROMOTION_ORDEY_STATUS_1',   'weixin_wait_seller_send_goods');
+define('WEIXIN_PROMOTION_ORDEY_STATUS_2',   'alipay_wait_seller_send_goods');
 define('WEIXIN_PROMOTION_ORDEY_EMAIL',   '@voyageone.cn');
 define('WEIXIN_PROMOTION_ORDEY_NOTE',   'test');
 
@@ -298,6 +300,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
             $sales_order = Mage::getModel('sales/order')->load($oid_entity_id);
 
             if (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS, $sales_order->getStatus()) != 0) {
+//            if ((strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_1, $sales_order->getStatus()) != 0) && (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_2, $sales_order->getStatus()) != 0)) {
                 return false;
 //                throw new Exception('订单状态不正确 : '.$sales_order->getStatus().' != '.WEIXIN_PROMOTION_ORDEY_STATUS);
             }
