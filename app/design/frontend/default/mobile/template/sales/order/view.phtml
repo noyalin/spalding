@@ -29,8 +29,33 @@
 	<?php
 	$activityId = '10000001';
 	if($this->isPromotionOrderId($_order)):?>
+		<style>
+			.wxCD{
+				margin:0 10px;
+				position:relative;
+			}
+			.wxCDTit{
+				position:relative;
+				width:100%;
+			}
+
+			.wxCDsec span{
+				width:46%;
+				float:left;
+				margin:0 1%
+			}
+
+			.wxCD img{
+				width:100%;
+			}
+		</style>
 		<div class="wxCD">
-			<img src="<?php echo $this->getUrl('weixinevent/index/qrcode/aid/'.$activityId.'/oid/'.$_order->getRealOrderId().'/cc/'.$this->getCheckCode($_order->getRealOrderId())).'/' ?>" >
+
+			<div class="wxCDTit"><img src="<?php echo $this->getSkinUrl("images/weixin/mobile_01.png"); ?>" alt=""></div>
+			<div class="wxCDsec clearfix">
+				<span><img src="<?php echo $this->getUrl('weixinevent/index/qrcode/aid/'.$activityId.'/oid/'.$_order->getRealOrderId().'/cc/'.$this->getCheckCode($_order->getRealOrderId())).'/' ?>" ></span>
+				<span><img src="<?php echo $this->getSkinUrl("images/weixin/mobile_02.png"); ?>" alt=""></span>
+			</div>
 		</div>
 	<?php endif; ?>
 
