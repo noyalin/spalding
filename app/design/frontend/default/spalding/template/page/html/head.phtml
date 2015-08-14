@@ -39,6 +39,8 @@
     $spalding_mobile_en_store = getStoreByCode('sneakerhead_cn_mobile');
     $spalding_mobile_en_store_url = $spalding_mobile_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
     $spalding_mobile_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $spalding_mobile_en_store_url), '/');
+
+    $finalUrl = "http://".$spalding_mobile_en_store_url. $_SERVER['REQUEST_URI'];
 ?>
 <script type="text/javascript">
 
@@ -51,7 +53,7 @@
         isMobileDevice = false;
     }
     if (isMobileDevice) {
-        window.location.href="http://<?php echo $spalding_mobile_en_store_url;?>";
+        window.location.href="http://<?php echo $finalUrl;?>";
     }
 
     function setCookie(name, value, expire_days) {

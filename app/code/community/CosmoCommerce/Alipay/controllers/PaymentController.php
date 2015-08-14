@@ -305,7 +305,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                 //如果有做过处理，不执行商户的业务程序
 
-                if ($order->getStatus() == 'alipay_wait_buyer_pay' || $order->getState() == 'new'  ) {
+                if ($order->getStatus() == 'weixin_wait_buyer_pay' || $order->getState() == 'new' ||
+                    $order->getStatus() == 'alipay_wait_buyer_pay' || $order->getStatus() == 'canceled') {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING);
                     $order->setStatus("alipay_wait_seller_send_goods");
@@ -694,7 +695,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                 //如果有做过处理，不执行商户的业务程序
 
-                if ($order->getStatus() == 'alipay_wait_buyer_pay' || $order->getState() == 'new'  ) {
+                if ($order->getStatus() == 'alipay_wait_buyer_pay' || $order->getState() == 'new'  ||
+                    $order->getStatus() == 'weixin_wait_buyer_pay' || $order->getStatus() == 'canceled') {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING);
                     $order->setStatus("alipay_wait_seller_send_goods");

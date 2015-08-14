@@ -125,7 +125,8 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         if(!empty($arr)){
             $orderId = $arr[0];
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-            if ($order->getStatus() == 'weixin_wait_buyer_pay' || $order->getState() == 'new' ||$order->getStatus() == 'alipay_wait_buyer_pay' ) {
+            if ($order->getStatus() == 'weixin_wait_buyer_pay' || $order->getState() == 'new' ||
+                $order->getStatus() == 'alipay_wait_buyer_pay' || $order->getStatus() == 'canceled') {
                 //写LOG
                 $postDataFromPost['out_trade_no'] = $orderId;
                 $postDataFromPost['trade_no'] = (string)$xml->transaction_id;
