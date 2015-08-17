@@ -46,7 +46,7 @@ class Devicom_Weixinevent_Block_Adminhtml_Weixinadmin_Grid extends Mage_Adminhtm
         ));
 
         $this->addColumn('create_time', array(
-            'header' => Mage::helper('weixinevent')->__('订单时间'),
+            'header' => Mage::helper('weixinevent')->__('参与时间'),
             'width' => '150px',
             'index' => 'create_time',
             'type' => 'datetime',

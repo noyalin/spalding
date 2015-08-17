@@ -419,7 +419,7 @@ final class StoneEdge_MagentoImport {
                 }
                 $sql->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"');
 //                $sql->where(  "updated_at >= '$gmtTime' " ); // "entity_id > $lastEntityId"
-                $sql->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')");
+//                $sql->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')");
                 $sql->limit($batchsize, $startnum);
             if (self::$_debug) {
                 echo "Executing SQL: $sql\r\n";
@@ -499,7 +499,9 @@ final class StoneEdge_MagentoImport {
 		self::xmlAppend("IPHostName", $order->getData('remote_ip'), $ndOther, $xd);
 		self::xmlAppend("TotalOrderWeight", $order->getData('weight'), $ndOther, $xd);
 		self::xmlAppend("GiftMessage", self::getGiftMessage($order), $ndOther, $xd);
-		self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
+		// 微信活动，10/31前为了不让OMS 自动Approved，
+		self::xmlAppend("Comments", "微信扫一扫分享活动的订单。 ".$order->getData('customer_note'), $ndOther, $xd);
+//		self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
 		$ndOrder->appendChild($ndOther);
 		return true;
 	}

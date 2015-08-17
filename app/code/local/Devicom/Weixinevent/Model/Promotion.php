@@ -5,7 +5,6 @@ if (!defined('WEIXIN_PROMOTION_ACTIVITY_ID')) {
 }
 define('WEIXIN_PROMOTION_START_TIME',   '2015-08-12 00:00:00');
 define('WEIXIN_PROMOTION_END_TIME',   '2015-10-01 00:00:00');
-//define('WEIXIN_PROMOTION_EXPIRE_TIME', '900');
 define('WEIXIN_PROMOTION_ORDEY_STATUS',   'alipay_wait_buyer_pay');
 define('WEIXIN_PROMOTION_ORDEY_STATUS_1',   'weixin_wait_seller_send_goods');
 define('WEIXIN_PROMOTION_ORDEY_STATUS_2',   'alipay_wait_seller_send_goods');
@@ -308,14 +307,14 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
                 return false;
             }
 
-            if (!strpos($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL)) {
-                return false;
-            }
-
-//            $grand_total = $alldata[0]['grand_total'];
-//            if ($grand_total < 100) {
+//            if (!strpos($sales_order->getCustomerEmail(),WEIXIN_PROMOTION_ORDEY_EMAIL)) {
 //                return false;
 //            }
+
+            $grand_total = $alldata[0]['grand_total'];
+            if ($grand_total < 100) {
+                return false;
+            }
             
             return true;
         } catch (Exception $ex) {
@@ -354,10 +353,10 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
                 throw new Exception('订单时间在不正确。');
             }
 
-//            $grand_total = $alldata[0]['grand_total'];
-//            if ($grand_total < 100) {
-//                throw new Exception('订单数额不足');
-//            }
+            $grand_total = $alldata[0]['grand_total'];
+            if ($grand_total < 100) {
+                throw new Exception('订单数额不足');
+            }
 
             return true;
         } catch (Exception $ex) {
