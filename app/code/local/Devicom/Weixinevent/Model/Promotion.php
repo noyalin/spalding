@@ -139,7 +139,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 
     public function updatePromotionData($actId, $orderId)
     {
-        $sql = "update weixin_promotion set sponsor_flag = 1,modify_time = now()-3600*8 where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
+        $sql = "update weixin_promotion set sponsor_flag = 1,update_time = now()-3600*8 where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
         Mage::log("sql::" . $sql, Zend_Log::DEBUG);
         $result = $this->writeConnection->query($sql);
         Mage::log("result::" . $result, Zend_Log::DEBUG);
