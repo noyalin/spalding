@@ -128,9 +128,9 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 
         if ($flag == 0) {
             $sponsorTelephone = $this->getSponsorOrderTel($orderId);
-            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,telephone_no,create_time,update_time) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $sponsorTelephone . "', now()-(3600*1000*8), now()-(3600*1000*8))";
+            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,telephone_no,create_time,update_time) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $sponsorTelephone . "', date_add(now(), interval -8 hour), date_add(now(), interval -8 hour))";
         } else {
-            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,telephone_no,create_time,update_time) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $telephone . "', now()-(3600*1000*8), now()-(3600*1000*8));";
+            $sql = "insert into weixin_promotion(order_id,open_id,act_id,sponsor_flag,operation,telephone_no,create_time,update_time) values ('" . $orderId . "','" . $openId . "','" . $actId . "','" . $flag . "','" . $clickOrder . "','" . $telephone . "', date_add(now(), interval -8 hour), date_add(now(), interval -8 hour));";
             $sql .= " update weixin_promotion set telephone_no = '$telephone' where order_id = '" . $orderId . "' and openId = '" . $openId . "' and act_id = '" . $actId . "' and ( sponsor_flag = 0 || sponsor_flag = 1 );";
         }
 
@@ -139,7 +139,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 
     public function updatePromotionData($actId, $orderId)
     {
-        $sql = "update weixin_promotion set sponsor_flag = 1,update_time = now()-(3600*1000*8) where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
+        $sql = "update weixin_promotion set sponsor_flag = 1,update_time = date_add(now(), interval -8 hour) where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
         Mage::log("sql::" . $sql, Zend_Log::DEBUG);
         $result = $this->writeConnection->query($sql);
         Mage::log("result::" . $result, Zend_Log::DEBUG);
@@ -197,7 +197,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         $id = $this->readConnection->fetchOne($sql1);
 
         if ($id) {
-            $sql2 = "update weixin_coupon set status = 1 , update_time = now()-(3600*1000*8), uid = '" . $openId . "' where id = '" . $id . "'";
+            $sql2 = "update weixin_coupon set status = 1 , update_time = date_add(now(), interval -8 hour), uid = '" . $openId . "' where id = '" . $id . "'";
             $this->writeConnection->query($sql2);
             $sql3 = "select * from weixin_coupon where id = '" . $id . "'";
             $record = $this->readConnection->fetchRow($sql3);
