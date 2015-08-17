@@ -69,6 +69,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         if (!Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId2($orderId)) {
             return false;
         }
+        return true;
     }
 
     public function checkCaptchaAction()
