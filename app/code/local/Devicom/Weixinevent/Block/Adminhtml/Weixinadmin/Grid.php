@@ -37,6 +37,14 @@ class Devicom_Weixinevent_Block_Adminhtml_Weixinadmin_Grid extends Mage_Adminhtm
             'html_decorators' => array('nobr')
         ));
 
+        $this->addColumn('telephone_no', array(
+            'header' => Mage::helper('weixinevent')->__('手机号码'),
+            'align' => 'right',
+            'width' => '80px',
+            'index' => 'telephone_no',
+            'html_decorators' => array('nobr')
+        ));
+
         $this->addColumn('create_time', array(
             'header' => Mage::helper('weixinevent')->__('订单时间'),
             'width' => '150px',
