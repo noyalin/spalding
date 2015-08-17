@@ -11,23 +11,24 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
     public function sendCaptchaAction(){
         $result = array ();
         $opt = Mage::getSingleton('weixinevent/promotion');
+
         try {
             mage::log("Devicom_Weixinevent_IndexController sendCaptchaAction Start ---- ",
                 Zend_Log::DEBUG);
             $openId = Mage::getSingleton('customer/session')->getOpenId();
             $actId = Mage::getSingleton('customer/session')->getActId();
-            $telephone =  Mage::app()->getRequest()->getParam('telephone');
+            $telephone = Mage::app()->getRequest()->getParam('telephone');
             $signature = WEIXIN_PROMOTION_SIGNATURE;
             $captcha = SMS_Check::getTelephoneCode($openId, $actId, $telephone);
             if (!$captcha) {
                 throw new Exception("SMS_Check::getTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone");
             }
-            EMAY_SMS::sendSMS($telephone,$signature,$captcha);
+            EMAY_SMS::sendSMS($telephone, $signature, $captcha);
             $result["status"] = "Success";
             $result["data"] = $captcha;
             $result["lightedCnt"] = $opt->getPromotionCount();
         } catch (Exception $ex) {
-            mage::log("Exception : ".$ex->getMessage(),
+            mage::log("Exception : " . $ex->getMessage(),
                 Zend_Log::ERR);
             $result["status"] = "Fail";
             $result["message"] = "发送验证码失败。";
@@ -46,17 +47,20 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
         $opt = Mage::getSingleton('weixinevent/promotion');
 
         $result = array();
-        try {
-            mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction Start ---- ",
-                Zend_Log::DEBUG);
+        $code =  Mage::app()->getRequest()->getParam('code');
+        $state = Mage::app()->getRequest()->getParam('state');
+        if ($code && $state == 'spaldingchina') {//
+            try {
+                mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction Start ---- ",
+                    Zend_Log::DEBUG);
 //            $inputCaptcha = (int)Mage::app()->getRequest()->getParam('inputCaptcha');
-            $telephone = Mage::app()->getRequest()->getParam('telephone');
-            $clickOrder = Mage::app()->getRequest()->getParam('clickOrder');
-            $openId = Mage::getSingleton('customer/session')->getOpenId();
-            $actId = Mage::getSingleton('customer/session')->getActId();
-            $orderId = Mage::getSingleton('customer/session')->getOrderId();
+                $telephone = Mage::app()->getRequest()->getParam('telephone');
+                $clickOrder = Mage::app()->getRequest()->getParam('clickOrder');
+                $openId = Mage::getSingleton('customer/session')->getOpenId();
+                $actId = Mage::getSingleton('customer/session')->getActId();
+                $orderId = Mage::getSingleton('customer/session')->getOrderId();
 
-            $result = array();
+                $result = array();
 
 //            if (SMS_Check::checkTelephoneCode($openId, $actId, $telephone, $inputCaptcha)) {
                 $opt->setCaptchaData($telephone);
@@ -73,7 +77,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                         $promotion_opt++;
                         $record = $opt->updateCoupon($openId, "m100j10");
                         if ($record != -1) {
-                            EMAY_SMS::sendPromotionSMS($telephone, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得买100减10优惠券,优惠券号码：" . $record["code"] . "，有效期至：" . substr($record["end_time"], 0, 4)
+                            EMAY_SMS::sendPromotionSMS($telephone, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得10元优惠券（满100元可使用）,优惠券号码：" . $record["code"] . "，您可在官网购物结算时使用该券，有效期至：" . substr($record["end_time"], 0, 4)
                                 . "年" . substr($record["end_time"], 4, 2) . "月" . substr($record["end_time"], 6, 2) . "日");
                         } else {
                             $flag = false;
@@ -82,7 +86,8 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
                             $record2 = $opt->updateCoupon($openId, "lj10");
                             $sponsorTel = $opt->getSponsorTel($orderId);
                             if ($record2 != -1) {
-                                EMAY_SMS::sendPromotionSMS($sponsorTel, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得10元优惠券,优惠券号码：" . $record2["code"] . "，有效期至：" . substr($record2["end_time"], 0, 4)                                    . "年" . substr($record2["end_time"], 4, 2) . "月" . substr($record2["end_time"], 6, 2) . "日");
+                                EMAY_SMS::sendPromotionSMS($sponsorTel, WEIXIN_PROMOTION_SIGNATURE, "恭喜你获得10元优惠券（无使用门槛）,优惠券号码：" . $record2["code"] . "，您可在官网购物结算时使用该券，有效期至：" . substr($record2["end_time"], 0, 4)
+                                    . "年" . substr($record2["end_time"], 4, 2) . "月" . substr($record2["end_time"], 6, 2) . "日");
                             }
                         }
                         if ($flag) {
@@ -102,12 +107,17 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 //            } else {
 //                throw new Exception("SMS_Check::checkTelephoneCode == false: openId=$openId, actId=$actId, telephone=$telephone, inputCaptcha=$inputCaptcha");
 //            }
-        } catch (Exception $ex) {
-            mage::log("Exception : " . $ex->getMessage(),
-                Zend_Log::ERR);
-            $result["status"] = "Fail";
-            $result["message"] = "验证码不正确";
-            $result["lightedCnt"] = $opt->getPromotionCount();
+            } catch (Exception $ex) {
+                mage::log("Exception : " . $ex->getMessage(),
+                    Zend_Log::ERR);
+                $result["status"] = "Fail";
+                $result["message"] = "验证码不正确";
+                $result["lightedCnt"] = $opt->getPromotionCount();
+            }
+        } else {
+                $result["status"] = "Fail";
+                $result["message"] = "非法操作。";
+                $result["lightedCnt"] = $opt->getPromotionCount();
         }
 
         $resultString = json_encode($result);

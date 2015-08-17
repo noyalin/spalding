@@ -21,7 +21,7 @@ CREATE TABLE `{$this->getTable('weixin_appset')}` (
   `web_createtime` int(12)  NULL,
   `refresh_token_createtime` int(12)  NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `{$this->getTable('weixin_promotion')}` ;
 CREATE TABLE `{$this->getTable('weixin_promotion')}` (
@@ -35,7 +35,7 @@ CREATE TABLE `{$this->getTable('weixin_promotion')}` (
   `modify_time` varchar(14) NULL,
   `telephone_no` varchar(50) NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `{$this->getTable('weixin_captcha')}` ;
 CREATE TABLE `{$this->getTable('weixin_captcha')}` (
@@ -43,7 +43,7 @@ CREATE TABLE `{$this->getTable('weixin_captcha')}` (
   `open_id` varchar(50) NOT NULL,
   `telephone_no` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `{$this->getTable('weixin_coupon')}` ;
 CREATE TABLE `{$this->getTable('weixin_coupon')}` (
@@ -58,7 +58,7 @@ CREATE TABLE `{$this->getTable('weixin_coupon')}` (
   `uid` varchar(50) NULL,
   `act_id` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
     ");
 
 $installer->run("
