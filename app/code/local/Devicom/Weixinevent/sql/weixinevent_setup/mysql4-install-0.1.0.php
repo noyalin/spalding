@@ -31,8 +31,8 @@ CREATE TABLE `{$this->getTable('weixin_promotion')}` (
   `act_id` varchar(50) NOT NULL,
   `sponsor_flag` int(1)  NULL,
   `operation` varchar(800)  NULL,
-  `create_time` varchar(14) NULL,
-  `modify_time` varchar(14) NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT NULL,
   `telephone_no` varchar(50) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
@@ -53,8 +53,8 @@ CREATE TABLE `{$this->getTable('weixin_coupon')}` (
   `status` int(1) NOT NULL,
   `start_time` varchar(14) NOT NULL,
   `end_time` varchar(14) NOT NULL,
-  `create_time` varchar(14) NOT NULL,
-  `modify_time` varchar(14) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT NULL,
   `uid` varchar(50) NULL,
   `act_id` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)

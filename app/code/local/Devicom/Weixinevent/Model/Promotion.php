@@ -139,8 +139,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
 
     public function updatePromotionData($actId, $orderId)
     {
-        $modify_time = date("YmdHis", time());
-        $sql = "update weixin_promotion set sponsor_flag = 1,modify_time='" . $modify_time . "' where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
+        $sql = "update weixin_promotion set sponsor_flag = 1,modify_time = now() where order_id = '" . $orderId . "' and act_id = '" . $actId . "' and sponsor_flag = 0";
         Mage::log("sql::" . $sql, Zend_Log::DEBUG);
         $result = $this->writeConnection->query($sql);
         Mage::log("result::" . $result, Zend_Log::DEBUG);
@@ -194,13 +193,11 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
     public function updateCoupon($openId, $types)
     {
 
-        $modify_time = date("YmdHis", time());
-
         $sql1 = "select id from weixin_coupon where types = '" . $types . "' and status = 0 limit 1 for update";
         $id = $this->readConnection->fetchOne($sql1);
 
         if ($id) {
-            $sql2 = "update weixin_coupon set status = 1 , modify_time = '" . $modify_time . "', uid = '" . $openId . "' where id = '" . $id . "'";
+            $sql2 = "update weixin_coupon set status = 1 , modify_time = now(), uid = '" . $openId . "' where id = '" . $id . "'";
             $this->writeConnection->query($sql2);
             $sql3 = "select * from weixin_coupon where id = '" . $id . "'";
             $record = $this->readConnection->fetchRow($sql3);
