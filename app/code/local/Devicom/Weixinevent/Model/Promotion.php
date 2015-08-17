@@ -300,7 +300,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
             $sales_order = Mage::getModel('sales/order')->load($oid_entity_id);
 
 //            if (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS, $sales_order->getStatus()) != 0) {
-            if ((strcasecmp(WEIXIN_PROMOTION_ORDEY_ STATUS_1, $sales_order->getStatus()) != 0) && (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_2, $sales_order->getStatus()) != 0)) {
+            if ((strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_1, $sales_order->getStatus()) != 0) && (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_2, $sales_order->getStatus()) != 0)) {
                 return false;
             }
 
