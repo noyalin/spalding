@@ -42,6 +42,35 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
 
     }
 
+    private function checkPara() {
+
+        $openId = Mage::getSingleton('customer/session')->getOpenId();
+        $actId = Mage::getSingleton('customer/session')->getActId();
+        $orderId = Mage::getSingleton('customer/session')->getOrderId();
+
+        if (!isset($openId) || empty($openId)) {
+            mage::log("checkPara : openId异常",
+                Zend_Log::ERR);
+            return false;
+        }
+
+        if (!isset($actId) || $actId != WEIXIN_PROMOTION_ACTIVITY_ID) {
+            mage::log("checkPara : actId异常",
+                Zend_Log::ERR);
+            return false;
+        }
+
+        if (!isset($orderId) || empty($orderId)) {
+            mage::log("checkPara : orderId异常",
+                Zend_Log::ERR);
+            return false;
+        }
+
+        if (!Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId2($orderId)) {
+            return false;
+        }
+    }
+
     public function checkCaptchaAction()
     {
         $opt = Mage::getSingleton('weixinevent/promotion');
@@ -53,9 +82,7 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
             Zend_Log::DEBUG);
 
         $result = array();
-        $code =  Mage::app()->getRequest()->getParam('code');
-        $state = Mage::app()->getRequest()->getParam('state');
-        if ($code && $state == 'spaldingchina') {//
+        if ($this->checkPara()) {//
             try {
                 mage::log("Devicom_Weixinevent_IndexController checkCaptchaAction Start ---- ",
                     Zend_Log::DEBUG);
