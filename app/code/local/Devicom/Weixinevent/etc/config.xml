@@ -25,6 +25,26 @@
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <weixinevent>
+                <use>admin</use>
+                <args>
+                    <module>Devicom_Weixinevent</module>
+                    <frontName>weixinevent</frontName>
+                </args>
+            </weixinevent>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <weixinevent>
+                    <file>weixineventadmin.xml</file>
+                </weixinevent>
+            </updates>
+        </layout>
+    </adminhtml>
     <global>
         <models>
             <weixinevent>
@@ -36,6 +56,7 @@
                 <entities>
                     <log><table>weixin_log</table></log>
                     <api_debug><table>weixin_api_debug</table></api_debug>
+                    <weixin><table>weixin_promotion</table></weixin>
                 </entities>
             </weixinevent_mysql4>
         </models>

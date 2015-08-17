@@ -1,0 +1,33 @@
+<config>
+    <menu>
+        <weixinevent>
+            <title>微信活动</title>
+            <sort_order>300</sort_order>
+            <children>
+                <example>
+                    <title>订单查看</title>
+                    <sort_order>1</sort_order>
+                    <action>weixinevent/adminhtml_weixinadmin</action>
+                </example>
+            </children>
+        </weixinevent>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <weixinevent>
+                        <title>微信活动</title>
+                        <sort_order>300</sort_order>
+                        <children>
+                            <example>
+                                <title>订单查看</title>
+                                <sort_order>3</sort_order>
+                            </example>
+                        </children>
+                    </weixinevent>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
