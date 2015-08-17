@@ -104,22 +104,19 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
             foreach ($_productAvailableColorsCollection as $productColor) {
                 if ($i++ < 5) {
                     $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
+                    $eachSku = $_productColor->getSku();
                     $thisUrlkey = $_productColor->getUrlKey();
                     $availableColorPxNow = "";
                     $border = '';
                     if($pageUrlkey===$thisUrlkey){
                         $availableColorPxNow =  '<img src='.$this->getSkinUrl("images/productDetail_kind.png").'  class="availableColorPxNow"/>';
-//                        $border = "border:2px solid #FBB605";
                         $border = "";
                     }
-//                    $thisSmallImage = $this->helper('catalog/image')->init($_product, 'small_image')->resize(50, 50);
-//                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding45px?$image45px='.$thisUrlkey.'-1';
-                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$thisUrlkey.'-1';
+                    $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ."/media/catalog/product/$eachSku/$thisUrlkey-8.jpg";
 
                     echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.
                         '<div style="height:50px;padding-left:4px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
                         </a>';
-//                    echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.'<img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="" width="50" height="50"/></a>';
                 }
             }
             ?>
