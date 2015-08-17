@@ -46,6 +46,12 @@ class Devicom_Weixinevent_IndexController extends Mage_Core_Controller_Front_Act
     {
         $opt = Mage::getSingleton('weixinevent/promotion');
 
+        mage::log("checkCaptchaAction ",
+            Zend_Log::DEBUG);
+
+        mage::log(Mage::app()->getRequest(),
+            Zend_Log::DEBUG);
+
         $result = array();
         $code =  Mage::app()->getRequest()->getParam('code');
         $state = Mage::app()->getRequest()->getParam('state');
