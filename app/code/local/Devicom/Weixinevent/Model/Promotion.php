@@ -197,7 +197,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         $id = $this->readConnection->fetchOne($sql1);
 
         if ($id) {
-            $sql2 = "update weixin_coupon set status = 1 , modify_time = now()-3600*8, uid = '" . $openId . "' where id = '" . $id . "'";
+            $sql2 = "update weixin_coupon set status = 1 , update_time = now()-3600*8, uid = '" . $openId . "' where id = '" . $id . "'";
             $this->writeConnection->query($sql2);
             $sql3 = "select * from weixin_coupon where id = '" . $id . "'";
             $record = $this->readConnection->fetchRow($sql3);
