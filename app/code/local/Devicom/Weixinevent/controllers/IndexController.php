@@ -1,7 +1,7 @@
 <?php
 //include  Mage :: getBaseDir().'/lib/phpqrcode/phpqrcode.php';
 
-define('WEIXIN_PROMOTION_SIGNATURE',   '【Spalding官网】');
+define('WEIXIN_PROMOTION_SIGNATURE',   '【Spalding】');
 if (!defined('WEIXIN_PROMOTION_ACTIVITY_ID')) {
     define('WEIXIN_PROMOTION_ACTIVITY_ID',   '10000001');
 }
