@@ -174,7 +174,7 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
         $sql = "select count(*) from weixin_captcha where telephone_no = '" . $telephone . "' and open_id = '" . $openId . "'";
         $result = $this->readConnection->fetchOne($sql);
         if ($result == 0) {
-            $sql = "insert into weixin_captcha(open_id,telephone_no,create_time,update_time) values ('" . $openId . "','" . $telephone . "', now()-3600*8, now()-3600*8)";
+            $sql = "insert into weixin_captcha(open_id,telephone_no) values ('" . $openId . "','" . $telephone . "')";
             $this->writeConnection->query($sql);
             return true;
         }
