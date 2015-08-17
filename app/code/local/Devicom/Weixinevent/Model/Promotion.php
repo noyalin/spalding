@@ -357,10 +357,10 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
                 throw new Exception('订单时间在不正确。');
             }
 
-            $grand_total = $alldata[0]['grand_total'];
-            if ($grand_total < 100) {
-                throw new Exception('订单数额不足');
-            }
+//            $grand_total = $alldata[0]['grand_total'];
+//            if ($grand_total < 100) {
+//                throw new Exception('订单数额不足');
+//            }
 
             return true;
         } catch (Exception $ex) {
