@@ -3674,9 +3674,12 @@ dl.madeBoxFuns dt.zz_t{
 	text-indent: 11px;
 	margin-bottom:5px;
 }
+.madeFfsize{
+	margin:10px 10px;
+}
 
 .madeKindTexSpan{
-	margin-left:6px;
+	/*margin-left:6px;*/
 }
 .madeKindTexSpan input[type="radio"] {
   display: none;
@@ -3747,6 +3750,17 @@ dl.madeBoxFuns dt.zz_t{
 	z-index: 2;
 	font-size:60px;
 	color:#000;
+}
+
+.madeTexWrap .madeFfm0{
+	font-family:'Conv_CustomGrotesque-Regular';
+}
+.madeTexWrap .madeFfm1{
+	font-family:'Sans-Serif';
+}
+
+.madeTexWrap .madeFfm2{
+	font-family:'Arial';
 }
 
 .size_40{
@@ -3978,5 +3992,98 @@ dl.madeBoxFuns dt.zz_t{
 	z-index: 2;
 	width:104px;
 	height:32px;
+}
+
+
+.madeFontFamily{
+	margin:0 10px;
+	position: relative;
+	font-size: 12px;
+}
+
+.fontFamilySel{
+	width:155px;
+	position: relative;
+	text-align: left;
+}
+
+.fontFamilySel span.chosFam{
+	display:block;
+	width:143px;
+	padding:0 5px;
+	height:25px;
+	line-height: 25px;
+	border:1px solid #fcb805;
+	cursor: pointer;
+	color:#fcb805;
+}
+
+.fontFamilySel span.chosFam:before{
+	content: '';
+	position:absolute;
+	border:1px solid transparent;
+	right:10px;
+	top:10px;
+	border-width:6px; 
+	border-color:#fcb805;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.fontFamilySel ul{
+	width: 145px;
+	padding:0 5px;
+	position: absolute;
+	border-top:none;
+	background: rgba(101,101,101,.9);
+	display:none;
+	color:#000;
 
 }
+
+.fontFamilySel ul li{
+	cursor: pointer;
+	height:25px;
+	line-height: 25px;
+	border-bottom:1px solid #000;
+}
+
+.fontFamilySel ul li:hover{
+	color:#fcb805;
+}
+
+
+.madeTextInp > input.smaSizeInp{
+	display: none;
+	margin-top:5px;
+}
+
+.smalLine{
+	display: none;
+	margin:10px 10px;
+	color:#9b9b9b;
+}
+
+.lineOne{
+	color:#fcb805;
+	cursor: pointer;
+}
+
+.lineTwo{
+	cursor: pointer;
+}
+
+.twoLine{
+	margin-top:-25px;
+	text-align: left;
+	margin-left:80px;
+
+}
+
+.select_P3 , .select_P4{
+	text-align: left;
+	margin-top:20px;
+	margin-left:80px;
+}
+

@@ -121,6 +121,12 @@ jQuery(function () {
                 jQuery(this).parents().find(".madeStepNone").css("display","block");
                 jQuery(this).parents().find("#img_grip").css("opacity","0");
                 jQuery(this).parents().find("#imgFuns").css("opacity","0");
+
+                jQuery(this).parents().find(".select_P1").css("display", "block");
+                jQuery(this).parents().find(".select_P2").css("display", "none");
+
+                jQuery(this).parents().find(".select_P3").css("display", "none");
+                jQuery(this).parents().find(".select_P4").css("display", "none");
             });
 
         }
@@ -183,6 +189,12 @@ jQuery(function () {
                 jQuery(this).parents().find(".madeStepNone").css("display","block");
                 jQuery(this).parents().find("#img_grip").css("opacity","0");
                 jQuery(this).parents().find("#imgFuns").css("opacity","0");
+
+
+                jQuery(this).parents().find(".select_P2").css("display", "block");
+                jQuery(this).parents().find(".select_P1").css("display", "none");
+                jQuery(this).parents().find(".select_P3").css("display", "none");
+                jQuery(this).parents().find(".select_P4").css("display", "none");
             });
         }
     });
@@ -259,41 +271,212 @@ jQuery(function () {
 
     //设置字体
     jQuery(".madeBoxCons_p1 .setSize_40").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_40");
+        jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
+        jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_40");
+        jQuery(this).parents().find(".madeTexWrap .select_P3").addClass("size_40");
+        jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","block");
         //jQuery("#textInput_1").attr("maxlength", "10");
         SwapTxt_1();
+        SwapTxt_3();
+        
+        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
+
+        jQuery(".smalLine").find(".lineTwo_p1 input").removeAttr("checked");
+        jQuery(".smalLine").find(".lineOne_p1 input").attr("checked","checked");
+        jQuery(".madeTextInp").find(".smaSizeInp").css("display","none");
+        jQuery(".lineOne").css("color","#fcb805");
+        jQuery(".lineTwo").css("color","#9b9b9b");
+
+        
     });
     jQuery(".madeBoxCons_p2 .setSize_40").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_40");
-        //jQuery("#textInput_2").attr("maxlength", "10");
+        jQuery(this).parents().find(".madeTexWrap .select_P2").removeClass("size_40 size_60 size_80");
+        jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_40");
+        jQuery(this).parents().find(".madeTexWrap .select_P4").addClass("size_40");
+        jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","block");
+        
+        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
+        
+        jQuery(".smalLine").find(".lineTwo_p2 input").removeAttr("checked");
+        jQuery(".smalLine").find(".lineOne_p2 input").attr("checked","checked");
+        jQuery(".madeTextInp").find(".smaSizeInp").css("display","none");
+        jQuery(".lineOne").css("color","#fcb805");
+        jQuery(".lineTwo").css("color","#9b9b9b");
         SwapTxt_2();
+        SwapTxt_4();
     });
 
     //中号
     jQuery(".madeBoxCons_p1 .setSize_60").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_60");
-        //jQuery("#textInput_1").attr("maxlength", "8");
+        jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
+        jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_60");
         SwapTxt_1();
+
+        jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","none");
+        jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").css("display","none");
+        jQuery(this).parents().find(".select_P3 , .select_P4").css("display", "none");
+        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
+
+        jQuery(".lineOne").css("color","#fcb805");
+        jQuery(".lineTwo").css("color","#9b9b9b");
     });
     jQuery(".madeBoxCons_p2 .setSize_60").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_60");
-        //jQuery("#textInput_2").attr("maxlength", "8");
+        jQuery(this).parents().find(".madeTexWrap .select_P2").removeClass("size_40 size_60 size_80");
+        jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_60");
         SwapTxt_2();
+
+        jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","none");
+        jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").css("display","none");
+        jQuery(this).parents().find(".select_P3 , .select_P4").css("display", "none");
+        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
+        jQuery(".lineOne").css("color","#fcb805");
+        jQuery(".lineTwo").css("color","#9b9b9b");
     });
 
     //大号
     jQuery(".madeBoxCons_p1 .setSize_80").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P1").attr("class", "select_P1 size_80");
-        //jQuery("#textInput_1").attr("maxlength", "6");
+        jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
+        jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_80");
         SwapTxt_1();
+
+        jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","none");
+        jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").css("display","none");
+        jQuery(this).parents().find(".select_P3 , .select_P4").css("display", "none");
+        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
+        jQuery(".lineOne").css("color","#fcb805");
+        jQuery(".lineTwo").css("color","#9b9b9b");
 
     });
     jQuery(".madeBoxCons_p2 .setSize_80").click(function () {
-        jQuery(this).parents().find(".madeTexWrap .select_P2").attr("class", "select_P2 size_80");
-        //jQuery("#textInput_2").attr("maxlength", "6");
+        jQuery(this).parents().find(".madeTexWrap .select_P2").removeClass("size_40 size_60 size_80");
+        jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").css("display","none");
+        jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_80");
+        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
         SwapTxt_2();
+
+        jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","none");
+        jQuery(this).parents().find(".select_P3 , .select_P4").css("display", "none");
+        jQuery(".lineOne").css("color","#fcb805");
+        jQuery(".lineTwo").css("color","#9b9b9b");
     });
+
+
+    //单双行设置
+    jQuery(".lineOne").click(function(){
+        jQuery(this).parent().siblings(".madeTextInp").find(".smaSizeInp").css("display","none");
+        jQuery(this).css("color","#fcb805");
+        jQuery(this).siblings(".lineTwo").css("color","#9b9b9b");
+        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P3").css("display","none");
+        jQuery(".madeTexWrap").find(".select_P4").css("display","none");
+    });
+    jQuery(".lineTwo").click(function(){
+        jQuery(this).parent().siblings(".madeTextInp").find(".smaSizeInp").css("display","inline-block");
+        jQuery(this).css("color","#fcb805");
+        jQuery(this).siblings(".lineOne").css("color","#9b9b9b");
+    });
+
+    jQuery(".lineTwo_p1").click(function(){
+        jQuery(".madeTexWrap").find(".select_P1").addClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P4").css("display","none");
+        jQuery(".madeTexWrap").find(".select_P3").css("display","block");
+    });
+
+    jQuery(".lineTwo_p2").click(function(){
+        jQuery(".madeTexWrap").find(".select_P2").addClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P3").css("display","none");
+        jQuery(".madeTexWrap").find(".select_P4").css("display","block");
+    });
+
+    /*jQuery(".lineTwo_p2").click(function(){
+        var _text_4 = "<div class='select_P4' id='textMade_P4'></div>"
+        jQuery(this).parents().find(".madeTexWrap").append(_text_4);
+    });*/
+
+    //设置字体 显示字体
+    jQuery(".chosFam").click(function () {
+        jQuery(this).siblings("ul.fontFmList").slideToggle();
+    });
+
+    jQuery(".madeBoxCons_p1 .fontFamBox").click(function(){
+        var _dataFamVals = jQuery(this).attr("data-familys");
+        var _dataFamTex = jQuery(this).html();
+        jQuery(this).parent("ul").slideUp();
+        jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
+        jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
+
+        madeFamily_1();
+    });
+
+    jQuery(".madeBoxCons_p2 .fontFamBox").click(function(){
+        var _dataFamVals = jQuery(this).attr("data-familys");
+        var _dataFamTex = jQuery(this).html();
+        jQuery(this).parent("ul").slideUp();
+        jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
+        jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
+        
+        madeFamily_2();
+    });
+
 });
+
+//设置字体
+// 0 -- Conv_CustomGrotesque-Regular
+// 1 -- Sans-Serif
+// 2 -- Arial
+function madeFamily_1(){
+    var _dataFamVal = jQuery(".chosFam_p1").attr("data-family");
+
+    if(_dataFamVal==0){
+        jQuery("#textMade_P1").css("font-family","Conv_CustomGrotesque-Regular");
+        jQuery("#textMade_P3").css("font-family","Conv_CustomGrotesque-Regular");
+    }else if(_dataFamVal==1){
+        jQuery("#textMade_P1").css("font-family","Sans-Serif");
+        jQuery("#textMade_P3").css("font-family","Sans-Serif");
+    }else if(_dataFamVal==2){
+        jQuery("#textMade_P1").css("font-family","Arial");
+        jQuery("#textMade_P3").css("font-family","Arial");
+    }
+}
+
+function madeFamily_2(){
+    var _dataFamVal = jQuery(".chosFam_p2").attr("data-family");
+
+    if(_dataFamVal==0){
+        jQuery("#textMade_P2").css("font-family","Conv_CustomGrotesque-Regular");
+        jQuery("#textMade_P4").css("font-family","Conv_CustomGrotesque-Regular");
+    }else if(_dataFamVal==1){
+        jQuery("#textMade_P2").css("font-family","Sans-Serif");
+        jQuery("#textMade_P4").css("font-family","Sans-Serif");
+    }else if(_dataFamVal==2){
+        jQuery("#textMade_P2").css("font-family","Arial");
+        jQuery("#textMade_P4").css("font-family","Arial");
+    }
+}
+
+/*function madeFamily(name) {
+    var fontFamily = {
+        'Conv': function () {
+            return 'Conv_CustomGrotesque-Regular';
+        },
+        'Sans': function() {
+            return 'Sans-Serif';
+        },
+        'Ari': function() {
+            return 'Arial';
+        }
+    };
+    return (fontFamily.name || fontFamily.default)();
+}*/
+
+
 
 function previewImage(file, imgId) {
     var _formBtn = document.getElementById('formBtn');
@@ -752,6 +935,22 @@ function SwapTxt_2() {
     //value=value.replace(/[^\w\.\/]/ig,'');
     var _text = document.getElementById("textMade_P2");
     var _cnt = getTxtCnt(2);
+
+    setMadeText(_text, _txt, _cnt);
+}
+
+function SwapTxt_3() {
+    var _txt = document.getElementById("textInput_3").value.trim();
+    var _text = document.getElementById("textMade_P3");
+    var _cnt = getTxtCnt(3);
+
+    setMadeText(_text, _txt, _cnt);
+}
+
+function SwapTxt_4() {
+    var _txt = document.getElementById("textInput_4").value.trim();
+    var _text = document.getElementById("textMade_P4");
+    var _cnt = getTxtCnt(4);
 
     setMadeText(_text, _txt, _cnt);
 }
