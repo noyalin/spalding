@@ -5,6 +5,7 @@
 
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
 <?php $_product = $this->getProduct(); ?>
+<?php $_taxHelper = $this->helper('tax'); ?>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
@@ -21,8 +22,7 @@
         <div class="cusMadeBox cusMadeRig">
             <div class="madeBoxVal">
                 <h1>SPALDING <?php echo $_product->getSku() ?></h1>
-                <h2>价格：￥<?php echo $_product->getPrice() ?></h2>
-<!--                <h2>价格：￥200</h2>-->
+                <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $this->getPrice())?></h2>
             </div>
 
             <div class="madeBoxCons">

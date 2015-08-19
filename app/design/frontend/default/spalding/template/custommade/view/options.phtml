@@ -14,7 +14,7 @@
 <div class="cusMadeBox cusMadeRig">
     <div class="madeBoxVal">
         <h1>SPALDING <?php echo $_product->getSku() ?></h1>
-        <h2>价格：￥<?php echo $_product->getPrice() ?></h2>
+        <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $this->getPrice())?></h2>
     </div>
     <div class="madeP_btn madeP_1_btn madeP_btn_now">P1</div>
     <div class="madeP_btn madeP_2_btn">P2</div>
