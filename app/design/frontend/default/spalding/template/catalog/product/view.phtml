@@ -67,6 +67,7 @@ $categoryUrlkey = $_category->getUrlKey();
 if ($categoryUrlkey == 'custom-made'):
 //专属定制
     ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/'.$_product->getSku().'/zns_style_ball.css'); ?>">
     <?php echo $this->getChildHtml('custommade_view') ?>
 <?php else:
     ?>

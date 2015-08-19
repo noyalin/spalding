@@ -13,8 +13,8 @@
 <div class="cusMadeRigZz"></div>
 <div class="cusMadeBox cusMadeRig">
     <div class="madeBoxVal">
-        <h1>SPALDING 74-604 ID</h1>
-        <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $this->getPrice())?></h2>
+        <h1>SPALDING <?php echo $_product->getSku() ?></h1>
+        <h2>价格：￥<?php echo $_product->getPrice() ?></h2>
     </div>
     <div class="madeP_btn madeP_1_btn madeP_btn_now">P1</div>
     <div class="madeP_btn madeP_2_btn">P2</div>
@@ -33,7 +33,7 @@
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
                 <h5>***注意***</h5>
-                <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
+                <p>支持jpg、png格式，单张图片大小2M-8M</p>
             </dt>
 <?php endif; ?>
             <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
@@ -116,7 +116,7 @@
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
             <h5>***注意***</h5>
-            <p>支持jpg、gif、png格式，单张图片大小2M-8M</p>
+            <p>支持jpg、png格式，单张图片大小2M-8M</p>
             </dt>
 <?php endif; ?>
             <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
@@ -202,7 +202,7 @@
 
 <!-- 编辑后单面预览 P1 -->
 <div class="viewPage_P1" dataType="2">
-    <!-- <div class="viewPageZz"><img src="<?php  echo $this->getSkinUrl("images/customMade/zz/01.png") ?>" alt=""></div> -->
+    <!-- <div class="viewPageZz"><img src="<?php  echo $this->getSkinUrl("images/customMade/".$this->getSku()."/zz/01.png") ?>" alt=""></div> -->
     <div class="viewPage_P1_bg">
         <img class="pageBg" src="" alt="">
     </div>

@@ -15,25 +15,25 @@
     <!-- 第一步 开始定制 -->
     <div class="cusMadeCons madeStep_1" style="display:none;">
         <div class="cusMadeBox cusMadeCen">
-            <div class="step_1_ball"><img src="<?php echo $this->getSkinUrl('images/customMade/step_1_ball.png');  ?>" alt=""></div>
+            <div class="step_1_ball"><img src="<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_1_ball.png');  ?>" alt=""></div>
             <div class="step_1_Btn"><a href="javascript:;"><img src="<?php echo $this->getSkinUrl('images/customMade/step_1_ballBtn.png');  ?>" alt=""></a></div>
         </div>
         <div class="cusMadeBox cusMadeRig">
             <div class="madeBoxVal">
-                <h1>SPALDING 74-604 ID</h1>
-<!--                <h2>价格：￥--><?php //echo $_taxHelper->getPrice($_product, $_product->getPrice()) ?><!--</h2>-->
-                <h2>价格：￥200</h2>
+                <h1>SPALDING <?php echo $_product->getSku() ?></h1>
+                <h2>价格：￥<?php echo $_product->getPrice() ?></h2>
+<!--                <h2>价格：￥200</h2>-->
             </div>
 
             <div class="madeBoxCons">
                 <h3>可定制球皮</h3>
-                <p>“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，恰到好处的粘度让你轻松“掌控”比赛！</p>
+<!--                <p>“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，恰到好处的粘度让你轻松“掌控”比赛！</p>-->
+                <p><?php echo $_product->getShortDescription() ?></p>
                 <dl class="prods">
                     <dd>产品特点</dd>
                     <dt>添加图案</dt>
                     <dt>定制专属签名</dt>
                 </dl>
-                <div class="madeServ">斯伯丁定制退换货服务</div>
                 <div class="madeDate">该产品定制将在4-6周内送货上门</div>
             </div>
             <div class="madeFuns">
@@ -49,7 +49,8 @@
     
     <div class="madeBotmSn">
         <h1>定制专属篮球</h1>
-        <p>斯伯丁74-604“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，<br>恰到好处的粘度让你轻松“掌控”比赛！</p>
+<!--        <p>斯伯丁74-604“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，<br>恰到好处的粘度让你轻松“掌控”比赛！</p>-->
+        <p>斯伯丁 <?php echo $_product->getSku() ?> <?php echo $_product->getShortDescription() ?></p>
     </div>
 
 </form>
@@ -200,7 +201,7 @@
 
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
-            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/step_2_funball.png');  ?>");
+            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball.png');  ?>");
 
         } else if (_dataType == 2) {//定制文字
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
@@ -216,7 +217,7 @@
 
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg.png');  ?>");
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
@@ -238,7 +239,7 @@
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg.png');  ?>");
+            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg.png');  ?>");
 
             _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
@@ -314,7 +315,7 @@
 
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/step_2_funball2.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball2.png');  ?>");
 
         } else if (_dataType == 2) {//定制文字
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
@@ -330,7 +331,7 @@
 
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg2.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg2.png');  ?>");
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
@@ -352,7 +353,7 @@
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/madeTexBg2.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg2.png');  ?>");
 
             _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
