@@ -8,6 +8,8 @@ define('WEIXIN_PROMOTION_END_TIME',   '2015-10-01 00:00:00');
 define('WEIXIN_PROMOTION_ORDEY_STATUS',   'alipay_wait_buyer_pay');
 define('WEIXIN_PROMOTION_ORDEY_STATUS_1',   'weixin_wait_seller_send_goods');
 define('WEIXIN_PROMOTION_ORDEY_STATUS_2',   'alipay_wait_seller_send_goods');
+define('WEIXIN_PROMOTION_ORDEY_STATUS_3',   'shipped');
+define('WEIXIN_PROMOTION_ORDEY_STATUS_4',   'partially_shipped');
 define('WEIXIN_PROMOTION_ORDEY_EMAIL',   '@voyageone.cn');
 define('WEIXIN_PROMOTION_ORDEY_NOTE',   'test');
 
@@ -296,7 +298,10 @@ class Devicom_Weixinevent_Model_Promotion extends Mage_Core_Model_Abstract
             $sales_order = Mage::getModel('sales/order')->load($oid_entity_id);
 
 //            if (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS, $sales_order->getStatus()) != 0) {
-            if ((strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_1, $sales_order->getStatus()) != 0) && (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_2, $sales_order->getStatus()) != 0)) {
+            if ((strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_1, $sales_order->getStatus()) != 0) &&
+                (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_2, $sales_order->getStatus()) != 0) &&
+                (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_3, $sales_order->getStatus()) != 0) &&
+                (strcasecmp(WEIXIN_PROMOTION_ORDEY_STATUS_4, $sales_order->getStatus()) != 0)) {
                 return false;
             }
 
