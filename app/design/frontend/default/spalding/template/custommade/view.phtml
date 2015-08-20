@@ -58,23 +58,24 @@
 
 <script type="text/javascript">
     jQuery(".saveMadeY_p1").click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
+//        madeLoading("提交成功","拼命加载中，请耐心等待...");
         // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
 
         var _comfBox = jQuery(".comfBox_1");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
         var pic = jQuery("#avatar").attr("src");
 //        var text = jQuery("#textInput_1").val().trim();
-        var text = getSwapTxt_1();
+        var text1 = getSwapTxt_1();
+        var text3 = getSwapTxt_3();
         var size = getTxtSize(1);
 //    alert(_madeValue);
 
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 1, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
+            data: {position: 1, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text1: text1, text3: text3, size: size, font: font},
             success: function (res) {
-                document.location.reload();
+//                document.location.reload();
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
@@ -88,7 +89,7 @@
     });
 
     jQuery(".saveMadeY_p2").click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
+//        madeLoading("提交成功","拼命加载中，请耐心等待...");
         var _comfBox = jQuery(".comfBox_2");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
 //    alert(_madeValue);
@@ -102,7 +103,7 @@
             url: jQuery('#complete').val(),
             data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
             success: function (res) {
-                document.location.reload();
+//                document.location.reload();
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
@@ -119,26 +120,26 @@
     var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
 
     jQuery(_resNow_1).click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
+//        madeLoading("提交成功","拼命加载中，请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
             data: {position: 1},
             success: function (res) {
-                document.location.reload();
+//                document.location.reload();
                 resetView_1(3, "", "");
             }
         });
     });
 
     jQuery(_resNow_2).click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
+//        madeLoading("提交成功","拼命加载中，请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
             data: {position: 2},
             success: function (res) {
-                document.location.reload();
+//                document.location.reload();
                 resetView_2(3, "", "");
             }
         });

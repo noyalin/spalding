@@ -969,6 +969,20 @@ function getSwapTxt_2() {
     return getMadeText(_txt, _cnt);
 }
 
+function getSwapTxt_3() {
+    var _txt = document.getElementById("textInput_3").value.trim();
+    var _cnt = getTxtCnt(1);
+
+    return getMadeText(_txt, _cnt);
+}
+
+function getSwapTxt_4() {
+    var _txt = document.getElementById("textInput_4").value.trim();
+    var _cnt = getTxtCnt(2);
+
+    return getMadeText(_txt, _cnt);
+}
+
 function getMadeText(_txt, _cnt){
 
     var _swapTexLen = _txt.length;
