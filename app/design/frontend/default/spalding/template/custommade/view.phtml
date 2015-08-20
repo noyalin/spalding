@@ -68,6 +68,7 @@
         var text1 = getSwapTxt_1();
         var text3 = getSwapTxt_3();
         var size = getTxtSize(1);
+        var font = jQuery(".chosFam_p1").attr("data-family");
 //    alert(_madeValue);
 
         jQuery.ajax({
@@ -78,7 +79,7 @@
 //                document.location.reload();
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2'], dataObj['content3'], dataObj['content4']);
                 }
 
                 jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
@@ -95,18 +96,20 @@
 //    alert(_madeValue);
         var pic = jQuery("#avatar").attr("src");
 //        var text = jQuery("#textInput_2").val().trim();
-        var text = getSwapTxt_2();
+        var text2 = getSwapTxt_2();
+        var text4 = getSwapTxt_4();
         var size = getTxtSize(2);
+        var font = jQuery(".chosFam_p2").attr("data-family");
 
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text: text, size: size},
+            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text1: text2, text3: text4, size: size, font: font},
             success: function (res) {
 //                document.location.reload();
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-                    resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2'], dataObj['content3'], dataObj['content4']);
                 }
                 jQuery(".madeTexWrap").find(".select_P2").html(jQuery(".select_N2").html());
                 jQuery(".madeTexWrap").find(".select_P2").attr("src",jQuery(".select_N2").attr("src"));

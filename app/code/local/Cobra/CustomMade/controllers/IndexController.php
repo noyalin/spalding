@@ -64,6 +64,8 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         $type = $params['type'];
         $content1 = null;
         $content2 = null;
+        $content3 = null;
+        $content4 = null;
 
         if ($pos == 1) {
             if ($type == 1) {
@@ -95,17 +97,23 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $content2 = Mage::getUrl($imgPath) . $img2;
 
             } elseif ($type == 2) {
-                $content1 = $params['text'];
-                $content2 = $params['size'];
+                $content1 = $params['text1'];
+                $content2 = $params['text3'];
+                $content3 = $params['size'];
+                $content4 = $params['font'];
             } else {
                 $type = 3;
                 $content1 = null;
                 $content2 = null;
+                $content3 = null;
+                $content4 = null;
             }
 
             Mage::getSingleton('core/session')->setTypeP1($type);
             Mage::getSingleton('core/session')->setContent1P1($content1);
             Mage::getSingleton('core/session')->setContent2P1($content2);
+            Mage::getSingleton('core/session')->setContent3P1($content3);
+            Mage::getSingleton('core/session')->setContent4P1($content4);
 
         } elseif ($pos == 2) {
             if ($type == 1) {
@@ -135,17 +143,23 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $imgresize->save($imgPath . $img2);
                 $content2 = Mage::getUrl($imgPath) . $img2;
             } elseif ($type == 2) {
-                $content1 = $params['text'];
-                $content2 = $params['size'];
+                $content1 = $params['text2'];
+                $content2 = $params['text4'];
+                $content3 = $params['size'];
+                $content4 = $params['font'];
             } else {
                 $type = 3;
                 $content1 = null;
                 $content2 = null;
+                $content3 = null;
+                $content4 = null;
             }
 
             Mage::getSingleton('core/session')->setTypeP2($type);
             Mage::getSingleton('core/session')->setContent1P2($content1);
             Mage::getSingleton('core/session')->setContent2P2($content2);
+            Mage::getSingleton('core/session')->setContent3P2($content3);
+            Mage::getSingleton('core/session')->setContent4P2($content4);
 
         }
 
@@ -162,10 +176,14 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             Mage::getSingleton('core/session')->setTypeP1(null);
             Mage::getSingleton('core/session')->setContent1P1(null);
             Mage::getSingleton('core/session')->setContent2P1(null);
+            Mage::getSingleton('core/session')->setContent3P1(null);
+            Mage::getSingleton('core/session')->setContent4P1(null);
         } elseif ($pos == 2) {
             Mage::getSingleton('core/session')->setTypeP2(null);
             Mage::getSingleton('core/session')->setContent1P2(null);
             Mage::getSingleton('core/session')->setContent2P2(null);
+            Mage::getSingleton('core/session')->setContent3P2(null);
+            Mage::getSingleton('core/session')->setContent4P2(null);
         }
         Mage::getSingleton('core/session')->setPos($pos);
     }
@@ -196,10 +214,14 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             $res['type'] = $session->getTypeP1();
             $res['content1'] = $session->getContent1P1();
             $res['content2'] = $session->getContent2P1();
+            $res['content3'] = $session->getContent3P1();
+            $res['content4'] = $session->getContent4P1();
         } elseif ($position == 2) {
             $res['type'] = $session->getTypeP2();
             $res['content1'] = $session->getContent1P2();
             $res['content2'] = $session->getContent2P2();
+            $res['content3'] = $session->getContent3P2();
+            $res['content4'] = $session->getContent4P2();
         }
         $resultString = json_encode($res);
         return $resultString;

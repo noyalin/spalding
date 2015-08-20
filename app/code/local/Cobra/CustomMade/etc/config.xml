@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Cobra_CustomMade>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </Cobra_CustomMade>
     </modules>
     <frontend>

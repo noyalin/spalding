@@ -51,9 +51,13 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                 ->setTypeP1($session->getTypeP1())
                 ->setMsg1P1($session->getContent1P1())
                 ->setMsg2P1($session->getContent2P1())
+                ->setMsg3P1($session->getContent3P1())
+                ->setMsg4P1($session->getContent4P1())
                 ->setTypeP2($session->getTypeP2())
                 ->setMsg1P2($session->getContent1P2())
                 ->setMsg2P2($session->getContent2P2())
+                ->setMsg3P2($session->getContent3P2())
+                ->setMsg4P2($session->getContent4P2())
                 ->setStatus(self::STATUS_NON_PAYMENT)
                 ->save();
             $this->clearSession();
@@ -67,9 +71,13 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $session->setTypeP1(null);
         $session->setContent1P1(null);
         $session->setContent2P1(null);
+        $session->setContent3P1(null);
+        $session->setContent4P1(null);
         $session->setTypeP2(null);
         $session->setContent1P2(null);
         $session->setContent2P2(null);
+        $session->setContent3P2(null);
+        $session->setContent4P2(null);
         $session->setPos(null);
         $session->setCustomStatus(null);
     }
