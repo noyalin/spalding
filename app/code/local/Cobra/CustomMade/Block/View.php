@@ -6,26 +6,26 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
     private $sizeValue = 0;
     private $customId = 0;
     private $customValue = 0;
-    private $price;
+//    private $price;
 
     public function initView()
     {
-        $customTypeP1 = '无';
-        $customTypeP2 = '无';
+//        $customTypeP1 = '无';
+//        $customTypeP2 = '无';
         $attributes = null;
 
-        if ($this->getTypeP1() == 1) {
-            $customTypeP1 = '图片';
-        } elseif ($this->getTypeP1() == 2) {
-            $customTypeP1 = '文字';
-        }
-
-        if ($this->getTypeP2() == 1) {
-            $customTypeP2 = '图片';
-        } elseif ($this->getTypeP2() == 2) {
-            $customTypeP2 = '文字';
-        }
-        $customType = $customTypeP1 . '-' . $customTypeP2;
+//        if ($this->getTypeP1() == 1) {
+//            $customTypeP1 = '图片';
+//        } elseif ($this->getTypeP1() == 2) {
+//            $customTypeP1 = '文字';
+//        }
+//
+//        if ($this->getTypeP2() == 1) {
+//            $customTypeP2 = '图片';
+//        } elseif ($this->getTypeP2() == 2) {
+//            $customTypeP2 = '文字';
+//        }
+//        $customType = $customTypeP1 . '-' . $customTypeP2;
 
         $_product = $this->getProduct();
         $allowAttributes = $_product->getTypeInstance(true)->getConfigurableAttributes($_product);
@@ -41,19 +41,20 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
                     $this->sizeValue = $optionValue['value_index'];
                 }
                 $attributes[$this->sizeId] = $this->sizeValue;
-            } elseif ($attrName == '定制类型') {
-                $this->customId = $_attribute->getAttributeId();
-                foreach ($attrValueArr as $optionValue) {
-                    if ($optionValue['label'] == $customType) {
-                        $this->customValue = $optionValue['value_index'];
-                    }
-                }
-                $attributes[$this->customId] = $this->customValue;
             }
+//            elseif ($attrName == '定制类型') {
+//                $this->customId = $_attribute->getAttributeId();
+//                foreach ($attrValueArr as $optionValue) {
+//                    if ($optionValue['label'] == $customType) {
+//                        $this->customValue = $optionValue['value_index'];
+//                    }
+//                }
+//                $attributes[$this->customId] = $this->customValue;
+//            }
         }
-        $subProduct = Mage::getSingleton('catalog/product_type_configurable')->getProductByAttributes($attributes, $_product);
-        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $subProduct->getSku());
-        $this->price = $product->getPrice();
+//        $subProduct = Mage::getSingleton('catalog/product_type_configurable')->getProductByAttributes($attributes, $_product);
+//        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $subProduct->getSku());
+//        $this->price = $product->getPrice();
     }
 
     public function getCustomStatus()
@@ -144,9 +145,9 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return $this->customValue;
     }
 
-    public function getPrice()
-    {
-        return $this->price;
-    }
+//    public function getPrice()
+//    {
+//        return $this->price;
+//    }
 
 }
