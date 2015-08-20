@@ -79,7 +79,8 @@
 //                document.location.reload();
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
-                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2'], dataObj['content3'], dataObj['content4']);
+                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2'], 
+                        dataObj['content3'], dataObj['content4']);
                 }
 
                 jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
@@ -130,7 +131,7 @@
             data: {position: 1},
             success: function (res) {
 //                document.location.reload();
-                resetView_1(3, "", "");
+                resetView_1(3, "", "", "", "");
             }
         });
     });
@@ -143,12 +144,12 @@
             data: {position: 2},
             success: function (res) {
 //                document.location.reload();
-                resetView_2(3, "", "");
+                resetView_2(3, "", "", "", "");
             }
         });
     });
 
-    function resetView_1(_dataType, value1, value2) {
+    function resetView_1(_dataType, value1, value2, value3, value4) {
 
         jQuery(".madeBoxCons_p1").css("display", "block");
         jQuery(".madeBoxCons_p2").css("display", "none");
@@ -213,7 +214,8 @@
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
-            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
+            _comfBox.siblings(".madeBoxFuns").find("#textInput_1").val(value1);
+            _comfBox.siblings(".madeBoxFuns").find("#textInput_3").val(value2);
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "block");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
@@ -225,19 +227,22 @@
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
-            if (value2 == 1) {
+            if (value3 == 1) {
                 _viewPage1.find(".viewTexWrap").css("font-size", "40px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
                 jQuery("#attribute2096").attr('checked', 'checked');
-            } else if (value2 == 2) {
+            } else if (value3 == 2) {
                 _viewPage1.find(".viewTexWrap").css("font-size", "60px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
                 jQuery("#attribute2097").attr('checked', 'checked');
-            } else if (value2 == 3) {
+            } else if (value3 == 3) {
                 _viewPage1.find(".viewTexWrap").css("font-size", "80px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
                 jQuery("#attribute2098").attr('checked', 'checked');
             }
+
+            setFamily_1(value4);
+
             // var
         } else {//定制空白
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
@@ -268,7 +273,7 @@
 
 
     //P2
-    function resetView_2(_dataType, value1, value2) {
+    function resetView_2(_dataType, value1, value2, value3, value4) {
 
         jQuery(".madeBoxCons_p1").css("display", "none");
         jQuery(".madeBoxCons_p2").css("display", "block");
@@ -327,7 +332,8 @@
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
-            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val(value1);
+            _comfBox.siblings(".madeBoxFuns").find("#textInput_2").val(value1);
+            _comfBox.siblings(".madeBoxFuns").find("#textInput_4").val(value2);
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "block");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
@@ -339,19 +345,24 @@
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
-            if (value2 == 1) {
+            if (value3 == 1) {
                 _viewPage2.find(".viewTexWrap").css("font-size", "40px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
                 jQuery("#attribute2091").attr('checked', 'checked');
-            } else if (value2 == 2) {
+                //towline
+            } else if (value3 == 2) {
                 _viewPage2.find(".viewTexWrap").css("font-size", "60px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
                 jQuery("#attribute2092").attr('checked', 'checked');
-            } else if (value2 == 3) {
+                //oneLine
+            } else if (value3 == 3) {
                 _viewPage2.find(".viewTexWrap").css("font-size", "80px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_80").addClass("checked");
                 jQuery("#attribute2093").attr('checked', 'checked');
+                //oneLine
             }
+
+            setFamily_2(value4);
 
         } else {//定制空白
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
@@ -390,9 +401,11 @@
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     <?php if ($this->getPos() == 2):?>
-                    resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2'],
+                        dataObj['content3'], dataObj['content4']);
                     <?php else: ?>
-                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                    resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2'],
+                        dataObj['content3'], dataObj['content4']);
                     <?php endif; ?>
                     <?php if ($this->getCustomStatus() == 1): ?>
                     jQuery(".viewPage_P1").css("display","none");

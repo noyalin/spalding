@@ -92,7 +92,8 @@ jQuery(function () {
                 success: function (res) {
                     dataObj = ajaxEvalJson(res);
                     if (dataObj != null) {
-                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2'], 
+                            dataObj['content3'], dataObj['content4']);
                     }
                 }
             });
@@ -160,7 +161,8 @@ jQuery(function () {
                 success: function (res) {
                     dataObj = ajaxEvalJson(res);
                     if (dataObj != null) {
-                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2']);
+                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2'], 
+                            dataObj['content3'], dataObj['content4']);
                     }
                 }
             });
@@ -434,6 +436,11 @@ jQuery(function () {
 function madeFamily_1(){
     var _dataFamVal = jQuery(".chosFam_p1").attr("data-family");
 
+    setFamily_1(_dataFamVal);
+}
+
+function setFamily_1(_dataFamVal){
+
     if(_dataFamVal==0){
         jQuery("#textMade_P1").css("font-family","Conv_CustomGrotesque-Regular");
         jQuery("#textMade_P3").css("font-family","Conv_CustomGrotesque-Regular");
@@ -446,9 +453,7 @@ function madeFamily_1(){
     }
 }
 
-function madeFamily_2(){
-    var _dataFamVal = jQuery(".chosFam_p2").attr("data-family");
-
+function setFamily_2(_dataFamVal){
     if(_dataFamVal==0){
         jQuery("#textMade_P2").css("font-family","Conv_CustomGrotesque-Regular");
         jQuery("#textMade_P4").css("font-family","Conv_CustomGrotesque-Regular");
@@ -459,6 +464,12 @@ function madeFamily_2(){
         jQuery("#textMade_P2").css("font-family","Arial");
         jQuery("#textMade_P4").css("font-family","Arial");
     }
+}
+
+function madeFamily_2(){
+    var _dataFamVal = jQuery(".chosFam_p2").attr("data-family");
+
+    setFamily_2(_dataFamVal);
 }
 
 /*function madeFamily(name) {
