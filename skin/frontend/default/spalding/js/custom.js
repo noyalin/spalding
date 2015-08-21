@@ -290,6 +290,7 @@ jQuery(function () {
         jQuery(".lineOne").css("color","#fcb805");
         jQuery(".lineTwo").css("color","#9b9b9b");
 
+
         
     });
     jQuery(".madeBoxCons_p2 .setSize_40").click(function () {
@@ -386,12 +387,16 @@ jQuery(function () {
     });
 
     jQuery(".lineTwo_p1").click(function(){
+        jQuery(this).siblings(".lineTwo_p2").find("input").removeAttr("checked");
+        jQuery(this).find("input").attr("checked","checked");
         jQuery(".madeTexWrap").find(".select_P1").addClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P4").css("display","none");
         jQuery(".madeTexWrap").find(".select_P3").css("display","block");
     });
 
     jQuery(".lineTwo_p2").click(function(){
+        jQuery(this).siblings(".lineTwo_p1").find("input").removeAttr("checked");
+        jQuery(this).find("input").attr("checked","checked");
         jQuery(".madeTexWrap").find(".select_P2").addClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P3").css("display","none");
         jQuery(".madeTexWrap").find(".select_P4").css("display","block");
