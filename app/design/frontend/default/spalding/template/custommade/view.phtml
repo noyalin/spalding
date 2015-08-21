@@ -231,6 +231,19 @@
                 _viewPage1.find(".viewTexWrap").css("font-size", "40px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
                 jQuery("#attribute2096").attr('checked', 'checked');
+
+                //tow line
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").css("display","block");
+
+                jQuery(".madeTexWrap").find(".select_P1").addClass("twoLine");
+                jQuery(".madeTexWrap").find(".select_P2").addClass("twoLine");
+
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineOne_p1 input").removeAttr("checked");
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineTwo_p1 input").attr("checked","checked");
+                _comfBox.siblings(".madeBoxFuns").find(".madeTextInp").find(".smaSizeInp").css("display","block");
+                jQuery(".lineTwo").css("color","#fcb805");
+                jQuery(".lineOne").css("color","#9b9b9b");
+
             } else if (value3 == 2) {
                 _viewPage1.find(".viewTexWrap").css("font-size", "60px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
@@ -350,6 +363,17 @@
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
                 jQuery("#attribute2091").attr('checked', 'checked');
                 //towline
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").css("display","block");
+        
+                jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
+                jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
+                
+                jQuery(".smalLine").find(".lineTwo_p2 input").removeAttr("checked");
+                jQuery(".smalLine").find(".lineOne_p2 input").attr("checked","checked");
+                jQuery(".madeTextInp").find(".smaSizeInp").css("display","none");
+                jQuery(".lineOne").css("color","#fcb805");
+                jQuery(".lineTwo").css("color","#9b9b9b");
+
             } else if (value3 == 2) {
                 _viewPage2.find(".viewTexWrap").css("font-size", "60px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
