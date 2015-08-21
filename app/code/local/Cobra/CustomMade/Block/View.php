@@ -4,8 +4,8 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 {
     private $sizeId = 0;
     private $sizeValue = 0;
-    private $customId = 0;
-    private $customValue = 0;
+//    private $customId = 0;
+//    private $customValue = 0;
 //    private $price;
 
     public function initView()
@@ -82,6 +82,16 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return Mage::getSingleton('core/session')->getContent2P1();
     }
 
+    public function getContent3P1()
+    {
+        return Mage::getSingleton('core/session')->getContent3P1();
+    }
+
+    public function getContent4P1()
+    {
+        return Mage::getSingleton('core/session')->getContent4P1();
+    }
+
     public function getTypeP2()
     {
         return Mage::getSingleton('core/session')->getTypeP2();
@@ -97,6 +107,16 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return Mage::getSingleton('core/session')->getContent2P2();
     }
 
+    public function getContent3P2()
+    {
+        return Mage::getSingleton('core/session')->getContent3P2();
+    }
+
+    public function getContent4P2()
+    {
+        return Mage::getSingleton('core/session')->getContent4P2();
+    }
+
     public function getTestMode()
     {
         return Mage::getSingleton('core/session')->getTestMode();
@@ -104,20 +124,20 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 
     public function getSizeClassP1()
     {
-        $content2 = $this->getContent2P1();
-        return $this->getSizeClass($content2);
+        $content3 = $this->getContent3P1();
+        return $this->getSizeClass($content3);
     }
 
     public function getSizeClassP2()
     {
-        $content2 = $this->getContent2P2();
-        return $this->getSizeClass($content2);
+        $content3 = $this->getContent3P2();
+        return $this->getSizeClass($content3);
     }
 
-    private  function  getSizeClass($content2) {
-        if ($content2 == "3") {
+    private  function  getSizeClass($content3) {
+        if ($content3 == "3") {
             $className = "size_80";
-        } elseif ($content2 == "2") {
+        } elseif ($content3 == "2") {
             $className = "size_60";
         } else {
             $className = "size_40";
@@ -135,15 +155,15 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return $this->sizeValue;
     }
 
-    public function getCustomId()
-    {
-        return $this->customId;
-    }
-
-    public function getCustomValue()
-    {
-        return $this->customValue;
-    }
+//    public function getCustomId()
+//    {
+//        return $this->customId;
+//    }
+//
+//    public function getCustomValue()
+//    {
+//        return $this->customValue;
+//    }
 
 //    public function getPrice()
 //    {
