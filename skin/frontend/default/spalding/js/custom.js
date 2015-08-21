@@ -1059,6 +1059,22 @@ function getTxtSize(position) {
             }
         }
     }
+
+    if (size == 1) {
+        if (position == 1) {
+            obj1 = document.getElementsByName("smalSizeCho_p1");
+        } else if (position == 2) {
+            obj1 = document.getElementsByName("smalSizeCho_p2");
+        }
+        if (obj1 != null) {
+            for (var i = 0; i < obj1.length; i++) {
+                if (obj1[i].checked) {
+                    size += obj1[i].value;
+                    break;
+                }
+            }
+        }
+    }
     return size;
 }
 
