@@ -105,7 +105,7 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text1: text2, text3: text4, size: size, font: font},
+            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text2: text2, text4: text4, size: size, font: font},
             success: function (res) {
 //                document.location.reload();
                 dataObj = ajaxEvalJson(res);
