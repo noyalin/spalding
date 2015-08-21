@@ -444,12 +444,15 @@ function setFamily_1(_dataFamVal){
     if(_dataFamVal==0){
         jQuery("#textMade_P1").css("font-family","Conv_CustomGrotesque-Regular");
         jQuery("#textMade_P3").css("font-family","Conv_CustomGrotesque-Regular");
+        jQuery(".viewPage_p1_wrap").css("font-family","Conv_CustomGrotesque-Regular");
     }else if(_dataFamVal==1){
         jQuery("#textMade_P1").css("font-family","Sans-Serif");
         jQuery("#textMade_P3").css("font-family","Sans-Serif");
+        jQuery(".viewPage_p1_wrap").css("font-family","Sans-Serif");
     }else if(_dataFamVal==2){
         jQuery("#textMade_P1").css("font-family","Arial");
         jQuery("#textMade_P3").css("font-family","Arial");
+        jQuery(".viewPage_p1_wrap").css("font-family","Arial");
     }
 }
 
@@ -457,12 +460,15 @@ function setFamily_2(_dataFamVal){
     if(_dataFamVal==0){
         jQuery("#textMade_P2").css("font-family","Conv_CustomGrotesque-Regular");
         jQuery("#textMade_P4").css("font-family","Conv_CustomGrotesque-Regular");
+        jQuery(".viewPage_p2_wrap").css("font-family","Conv_CustomGrotesque-Regular");
     }else if(_dataFamVal==1){
         jQuery("#textMade_P2").css("font-family","Sans-Serif");
         jQuery("#textMade_P4").css("font-family","Sans-Serif");
+        jQuery(".viewPage_p2_wrap").css("font-family","Sans-Serif");
     }else if(_dataFamVal==2){
         jQuery("#textMade_P2").css("font-family","Arial");
         jQuery("#textMade_P4").css("font-family","Arial");
+        jQuery(".viewPage_p2_wrap").css("font-family","Arial");
     }
 }
 
