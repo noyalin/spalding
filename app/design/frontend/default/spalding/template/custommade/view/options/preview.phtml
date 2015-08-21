@@ -884,14 +884,30 @@
 
 
 
-
         <!-- 第五套 e -->
 
         <!-- 文字-空 -->
         <?php elseif($this->getTypeP1() == 2 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2)): ?>
         <!-- 第六套 s -->
 
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P1() ?></div>
+                <?php if($this->getContent3P1() == 4): ?>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent2P1() ?></div>
+                <?php endif; ?>
 
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P2() ?></div>
+                <?php if($this->getContent3P2() == 4): ?>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent2P2() ?></div>
+                <?php endif; ?>
+
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/21.png") ?>" alt="" /></div>
+            </li>
+
+
+        
+
+        
 
 
         <!-- 第六套 e -->
