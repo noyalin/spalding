@@ -4084,4 +4084,25 @@ dl.madeBoxFuns dt.zz_t{
 .select_P3 , .select_P4{
 	margin-top:20px;
 }
+.smalLine label{
+	padding-left: 15px;
+}
+
+.smalLine input{
+	display: none;
+}
+.smalLine label.lineOne{
+	background:url(../images/customMade/checked_2.png) left center no-repeat;
+	margin-right:5px;
+}
+
+.smalLine label.lineTwo{
+	background:url(../images/customMade/checked_1.png) left center no-repeat;
+}
+.smalLine label.labelNoc{
+	background:url(../images/customMade/checked_1.png) left center no-repeat;
+}
+.smalLine label.labelCheck {
+	background:url(../images/customMade/checked_2.png) left center no-repeat;
+}
 

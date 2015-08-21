@@ -379,33 +379,36 @@ jQuery(function () {
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P3").css("display","none");
         jQuery(".madeTexWrap").find(".select_P4").css("display","none");
+
+        jQuery(this).removeClass("labelNoc").addClass("labelCheck");
+        jQuery(this).siblings(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
+        jQuery(this).find("input").attr("checked","checked");
+        jQuery(this).siblings(".lineTwo").find("input").removeAttr("checked");
     });
     jQuery(".lineTwo").click(function(){
         jQuery(this).parent().siblings(".madeTextInp").find(".smaSizeInp").css("display","inline-block");
         jQuery(this).css("color","#fcb805");
         jQuery(this).siblings(".lineOne").css("color","#9b9b9b");
+
+        jQuery(this).removeClass("labelNoc").addClass("labelCheck");
+        jQuery(this).siblings(".lineOne").removeClass("labelCheck").addClass("labelNoc");
+        jQuery(this).find("input").attr("checked","checked");
+        jQuery(this).siblings(".lineOne").find("input").removeAttr("checked");
     });
 
     jQuery(".lineTwo_p1").click(function(){
-        jQuery(this).siblings(".lineTwo_p2").find("input").removeAttr("checked");
-        jQuery(this).find("input").attr("checked","checked");
         jQuery(".madeTexWrap").find(".select_P1").addClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P4").css("display","none");
         jQuery(".madeTexWrap").find(".select_P3").css("display","block");
     });
 
     jQuery(".lineTwo_p2").click(function(){
-        jQuery(this).siblings(".lineTwo_p1").find("input").removeAttr("checked");
-        jQuery(this).find("input").attr("checked","checked");
+        
         jQuery(".madeTexWrap").find(".select_P2").addClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P3").css("display","none");
         jQuery(".madeTexWrap").find(".select_P4").css("display","block");
     });
 
-    /*jQuery(".lineTwo_p2").click(function(){
-        var _text_4 = "<div class='select_P4' id='textMade_P4'></div>"
-        jQuery(this).parents().find(".madeTexWrap").append(_text_4);
-    });*/
 
     //设置字体 显示字体
     jQuery(".chosFam").click(function () {
