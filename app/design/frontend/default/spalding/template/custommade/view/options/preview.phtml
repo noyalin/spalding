@@ -13,7 +13,7 @@
         <div class="viewBack viewMade"><button type="button"><img src="<?php  echo $this->getSkinUrl("images/customMade/viewMadeBack.png") ?>" alt=""></button></div>
 
 
-
+        <!-- 图片-图片 -->
         <?php if ($this->getTypeP1() == 1 && $this->getTypeP2() == 1): ?>
         <!-- 第一套 s -->
         <ul class="big_pic">
@@ -231,10 +231,8 @@
         </ul>
         <!-- 第一套 e -->
 
-
-        <?php elseif($this->getTypeP1() != 1 && $this->getTypeP2() != 1): ?>
-
-
+        <!-- 文字-文字 -->
+        <?php elseif($this->getTypeP1() == 2 && $this->getTypeP2() == 2): ?>
         <!-- 第二套 s -->
         <ul class="big_pic">
             <!-- 遮罩 -->
@@ -444,8 +442,10 @@
             </li>
 
         </ul>
+        <!-- 第二套 e -->
 
-        <?php elseif($this->getTypeP1() == 1 && $this->getTypeP2() != 1): ?>
+        <!-- 图片-文字 -->
+        <?php elseif($this->getTypeP1() == 1 && $this->getTypeP2() == 2): ?>
         <!-- 第三套 s -->
         <ul class="big_pic">
 
@@ -661,7 +661,9 @@
             </li>
         </ul>
         <!-- 第三套 e -->
-        <?php else: ?>
+
+        <!-- 文字-图片 -->
+        <?php elseif($this->getTypeP1() == 2 && $this->getTypeP2() == 1): ?>
         <!-- 第四套 s -->
         <ul class="big_pic">
 
@@ -874,8 +876,53 @@
                 <div class="imgBox imgBall"><img src="<?php  echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zt/32.png") ?>" alt="" /></div>
             </li>
         </ul>
-
         <!-- 第四套 e -->
+
+        <!-- 图片-空 -->
+        <?php elseif($this->getTypeP1() == 1 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2)): ?>
+        <!-- 第五套 s -->
+
+
+
+
+        <!-- 第五套 e -->
+
+        <!-- 文字-空 -->
+        <?php elseif($this->getTypeP1() == 2 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2)): ?>
+        <!-- 第六套 s -->
+
+
+
+
+        <!-- 第六套 e -->
+
+        <!-- 空-图片 -->
+        <?php elseif(($this->getTypeP1() != 1 && $this->getTypeP1() != 2) && $this->getTypeP2() == 1): ?>
+        <!-- 第七套 s -->
+
+
+
+
+        <!-- 第七套 e -->
+
+        <!-- 空-文字 -->
+        <?php elseif(($this->getTypeP1() != 1 && $this->getTypeP1() != 2) && $this->getTypeP2() == 2): ?>
+        <!-- 第八套 s -->
+
+
+
+
+        <!-- 第八套 e -->
+
+        <!-- 空-空 -->
+        <?php else: ?>
+        <!-- 第九套 s -->
+
+
+
+
+        <!-- 第九套 e -->
+
         <?php endif; ?>
 
     </div>
