@@ -30,8 +30,8 @@ $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
 <?php
-$sku = $_item->getSku();
-$urlKey = $this->getProductUrlKey();
+$sku = $_item->getProduct()->getSku();
+$urlKey = $_item->getProduct()->getProductUrlKey();
 ?>
 <tr>
 	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $sku."/". $urlkey."-54.jpg" ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>"><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
