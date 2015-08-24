@@ -29,12 +29,12 @@ $_item = $this->getItem();
 $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
+<?php
+$sku = $_item->getSku();
+$urlKey = $this->getProductUrlKey();
+?>
 <tr>
-    <?php if (substr($this->htmlEscape($this->getProduct()->getUrlKey()), 0, 6) == 'promo-'):?>
-	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php if (Mage::app()->getStore()->isCurrentlySecure()) : ?><?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('text') ?><?php else : ?><?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') ?><?php endif ?>/<?php echo substr($this->htmlEscape($this->getProduct()->getUrlKey()), 6) ?>-1" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
-    <?php else: ?>
-	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php if (Mage::app()->getStore()->isCurrentlySecure()) : ?><?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('text') ?><?php else : ?><?php echo Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') ?><?php endif ?>/<?php echo $this->htmlEscape($this->getProduct()->getUrlKey()) ?>-1" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>"><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
-    <?php endif; ?>
+	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $sku."/". $urlkey."-54.jpg" ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>"><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
 	<td class="item-info">
 	<h2>
 	    <?php if ($this->hasProductUrl()):?>

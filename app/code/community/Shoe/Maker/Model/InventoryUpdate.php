@@ -19,39 +19,6 @@ class Shoe_Maker_Model_InventoryUpdate extends  Shoe_Maker_Model_UpdateBase{
 //        }
 //    }
 
-    public function execute(){
-        while(!$this->validate()) {
-
-            Mage::app('admin'); //admin defines default value for all stores including the Main Website
-            Mage::app()->loadArea('adminhtml');
-            $this->beginLog();
-            try {
-                //Main logic begin
-                $this->contents = file_get_contents($this->receivedDirectory . $this->filename);
-
-                $this->run();
-
-            } catch (Exception $e) {
-                $this->transactionLogHandle("  ->ERROR         : See exception_log ");
-
-                //Append error to exception log file
-                $exceptionLogHandle = fopen($this->catalogLogsDirectory . 'exception_log', 'a');
-                fwrite($exceptionLogHandle, '->' . $this->filename . " - " . $e->getMessage() . "\n");
-                fclose($exceptionLogHandle);
-                $this->removeXmlFileWhenFailed();
-
-
-                $this->removeCsvFile();
-            }
-
-            //remove lock file
-            $this->removeLockFile();
-            $this->removeFile();
-
-            sleep(1);
-        }
-    }
-
     public  function run(){
         list($rootXmlElement,$products) = self :: getXmlElementFromString($this->contents);
         if (isset($products['Simple'])) {

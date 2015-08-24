@@ -107,10 +107,14 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 
 			<!-- slider -->
 			<div class = 'slider'>
-			<?php $i = 0 ?>
+			<?php
+				$i = 0;
+				$urlkey = $_product->getUrlKey();
+				$sku = $_product->getSku();
+			?>
 			<?php while ($i++ < $imageCount) : ?>
 				<div class = 'slide'>
-					<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_detail_image')->getValue('html')?>/<?php echo ($_product->getDefaultCategory() == 213) ? substr($this->htmlEscape($_product->getUrlKey()), 6) /* Rewards */ : $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>">
+					<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $sku."/". $urlkey."-".($i+60) ?>.jpg" alt=""/>
 				</div>
 			<?php endwhile ?>
 			</div>
