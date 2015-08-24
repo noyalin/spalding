@@ -370,7 +370,7 @@ $breadCrumbs = array();
 							<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
 							<div class = 'button'>
 								<a href="<?php echo $_product->getProductUrl()?>" class="availableColorPx">
-									<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $sku."/". $urlkey."-54.jpg" ?>" />
+									<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $_product->getSku()."/". $_product->getUrlKey()."-54.jpg" ?>" />
 								</a>
 								<a class="product-name" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><br><?php echo $_helper->productAttribute($_product, $_product->getAbstract(), 'abstract') ?></a>
 								<p class="cat-price sku-<?php echo $_product->getSku() ?>">￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></p>
@@ -786,7 +786,7 @@ $breadCrumbs = array();
 			<div class="multi-view-box" id='multi-view-box-{{product_id}}' sku='{{product_sku}}'>
 				<div class="multi-view-img">
 					<a href='<?php echo $this->getUrl('');?>{{product_url_key}}.html'>
-						<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $sku."/". $urlkey."-54.jpg" ?>">
+						<img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $_product->getSku()."/". $_product->getUrlKey()."-54.jpg" ?>">
 					</a>
 				</div>
 				<h3><a href='<?php echo $this->getUrl('');?>{{product_url_key}}.html'><br>{{product_description}}</a></h3>
