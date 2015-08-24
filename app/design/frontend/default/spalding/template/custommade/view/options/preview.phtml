@@ -891,23 +891,27 @@
         <!-- 第六套 s -->
 
             <!-- <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P1() ?></div>
                 <?php if($this->getContent3P1() == 4): ?>
                 <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent2P1() ?></div>
                 <?php endif; ?>
             
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P2() ?></div>
+                
                 <?php if($this->getContent3P2() == 4): ?>
                 <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent2P2() ?></div>
                 <?php endif; ?>
             
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/21.png") ?>" alt="" /></div>
-            </li> -->
+                
+            </li>  -->
             
             <ul class="big_pic">
             <!-- 6-1 -->
             <li style="z-index:1;">
                 <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_1 "><?php echo $this->getContent1P1() ?></div>
+                <!-- 两行 s -->
+                <?php if($this->getContent3P1() == 4): ?>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_line2_1"><?php echo $this->getContent2P1() ?></div>
+                <?php endif; ?>
+                <!-- 两行 e -->
                 <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/01.png") ?>" alt="" /></div>
             </li>
 
