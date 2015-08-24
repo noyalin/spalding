@@ -1,7 +1,6 @@
 <?php
 class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalUpdate{
     public function executeJob($rootXmlElement){
-
         $refreshCache = true;
         //Step into entities array to access configurable products
         foreach ($rootXmlElement->Configurable as $configurableProducts) {
@@ -375,7 +374,14 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setUrlKey( $valueArr['urlKey'] );
         //根据URLKEY取得所有的图片
         $skuImage =$valueArr['sku'];
-        $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount'],$valueArr['productNorm']);
+
+        try{
+            $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount'],$valueArr['productNorm']);
+        }catch (Exception $e){
+            $exceptionLogHandle = fopen($this->catalogLogsDirectory . 'exception_log', 'a');
+            fwrite($exceptionLogHandle, '->' . $this->filename . " - " . $e->getMessage() . "\n");
+            fclose($exceptionLogHandle);
+        }
         $this->pushImageToOss($valueArr['sku'],$valueArr['urlKey']);
         //image gallery
         $imageCount = $valueArr['imageCount'] ;
@@ -494,6 +500,19 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         //detail page - view more other product
         $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/sku220px%2D1?$220x220$&$image220px='.$urlKey.'-1';
         $this->getImageVByUrl($urlProductList,$sku,$urlKey,16);
+
+
+        //手机
+        $urlProductList = 'http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$185m$&$img=sneakerhead/'.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,54);
+
+
+        for($m=1;$m<=$count;$m++){
+            $smallImageUnderLeftImage = 'http://image.sneakerhead.com/is/image/sneakerhead/mobile-detail?$260m$&$img=sneakerhead/'.$urlKey.'-'.$m;
+            $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,60+$m);
+        }
+
+
     }
 
     public function pushImageToOss($sku,$urlKey){
@@ -514,7 +533,13 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                 'object'	=> "media/catalog/product/$sku",
                 'directory' => $dir.$sku,
             );
-            $response = $oss_sdk_service->batch_upload_file($options,$urlKey,$sku);
+            try{
+                $response = $oss_sdk_service->batch_upload_file($options,$urlKey,$sku);
+            }catch (Exception $e){
+                $exceptionLogHandle = fopen($this->catalogLogsDirectory . 'exception_log', 'a');
+                fwrite($exceptionLogHandle, '->' . $this->filename . " - " . $e->getMessage() . "\n");
+                fclose($exceptionLogHandle);
+            }
             mage :: log($response);
         }else{
             $this->transactionLogHandle("    ->UPDATING    :".$sku." has been pushed to OSS, do nothing \n");
@@ -553,7 +578,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         ob_end_clean();
         $size = strlen($img);
         if($img && $size){
-            $fp2=@fopen($filename, "a");
+            $fp2=@fopen($filename, "w");
             fwrite($fp2,$img);
             fclose($fp2);
             return $filename;

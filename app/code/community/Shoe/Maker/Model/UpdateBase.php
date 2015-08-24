@@ -2,10 +2,8 @@
 class  Shoe_Maker_Model_UpdateBase extends Shoe_Maker_Model_Base{
 
     public function execute(){
-            if($this->validate()){
-                //can not execute
-                return;
-            }
+
+        while(!$this->validate()){
             Mage::app('admin'); //admin defines default value for all stores including the Main Website
             Mage::app()->loadArea('adminhtml');
             $this->beginLog();
@@ -33,6 +31,8 @@ class  Shoe_Maker_Model_UpdateBase extends Shoe_Maker_Model_Base{
             //remove lock file
             $this->removeLockFile();
             $this->removeFile();
+            sleep(2);
+        }
     }
     public function removeXmlFileWhenFailed(){
         //Move XML file to failed directory
@@ -84,13 +84,13 @@ class  Shoe_Maker_Model_UpdateBase extends Shoe_Maker_Model_Base{
     }
 
     public function transactionLogHandle($msg){
-        $str = date("YmdHis")."\t".$msg." \n";
+        $str = date("Y-m-d H:i:s")."\t".$msg." \n";
 //        $msg .= " \n";
 //        $root_dir = dirname(__FILE__);
         fwrite($this->transactionLogHandle, $str);
     }
     public function transactionCategoryXmlGeneratorLog($msg){
-        $str = date("YmdHis")."\t".$msg." \n";
+        $str = date("Y-m-d H:i:s")."\t".$msg." \n";
 //        $msg .= " \n";
 //        $root_dir = dirname(__FILE__);
         fwrite($this->transactionCategoryXmlGeneratorLogHandle, $str);
