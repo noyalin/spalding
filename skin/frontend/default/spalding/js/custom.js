@@ -81,6 +81,8 @@ jQuery(function () {
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "none");
             jQuery(this).parents().find(".select_P1").css("display", "block");
             jQuery(this).parents().find(".select_P2").css("display", "none");
+            jQuery(this).parents().find(".select_P3").css("display", "none");
+            jQuery(this).parents().find(".select_P4").css("display", "none");
             //jQuery("#options_pos").val(1);
 
 
@@ -151,6 +153,8 @@ jQuery(function () {
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "block");
             jQuery(this).parents().find(".select_P2").css("display", "block");
             jQuery(this).parents().find(".select_P1").css("display", "none");
+            jQuery(this).parents().find(".select_P3").css("display", "none");
+            jQuery(this).parents().find(".select_P4").css("display", "none");
             //jQuery("#options_pos").val(2);
 
             // TODO
@@ -1056,8 +1060,11 @@ function getTxtSize(position) {
     }
     if (obj != null) {
         for (var i = 0; i < obj.length; i++) {
-            if (obj[i].checked) {
-                size = obj[i].value;
+            var _checked = obj[i].getAttribute("checked");
+
+            if (_checked=="checked") {
+            // if (obj[i].checked) {
+                size = parseInt(obj[i].value);
                 break;
             }
         }
@@ -1071,8 +1078,10 @@ function getTxtSize(position) {
         }
         if (obj1 != null) {
             for (var i = 0; i < obj1.length; i++) {
-                if (obj1[i].checked) {
-                    size += obj1[i].value;
+                var _checked = obj1[i].getAttribute("checked");
+
+                if (_checked=="checked") {
+                    size += parseInt(obj1[i].value);
                     break;
                 }
             }
