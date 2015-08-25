@@ -1,14 +1,14 @@
 <?php
 $orderId = (int)Mage::getSingleton('core/session')->getOrderId();
 if(!$orderId){
-    echo '订单错误，请联系我们.商城客服电话：18017018167';
+    echo '订单错误，请联系我们.商城客服电话：15546229782';
     exit();
 }
 $_order = Mage::getModel('sales/order')->load($orderId);
 
 $realOrderId = $_order->getIncrementId();
 if (!$_order->getId()) {
-    echo '订单错误，请联系我们.商城客服电话：18017018167';
+    echo '订单错误，请联系我们.商城客服电话：15546229782';
     exit();
 }
 if ($_order->getStatus() == "alipay_wait_seller_send_goods" || 'weixin_wait_seller_send_goods' == $_order->getStatus()) {
