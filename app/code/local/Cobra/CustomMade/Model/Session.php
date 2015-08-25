@@ -25,6 +25,15 @@ class Cobra_CustomMade_Model_Session extends Mage_Core_Model_Abstract
         return $session;
     }
 
+    public function getOrderSession($customerId, $sku)
+    {
+        $session = $this->getCollection()
+            ->addFieldToFilter('customer_id', $customerId)
+            ->addFieldToFilter('sku', $sku)
+            ->getFirstItem();
+        return $session;
+    }
+
     public function setSession($session)
     {
         $sessionId = $this->getCollection()

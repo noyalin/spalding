@@ -112,7 +112,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         );
         $order->save();
 
-        Mage::getSingleton('custommade/info')->saveCustomMade($order->getRealOrderId());
+        Mage::getModel('custommade/info')->saveCustomMade($order);
 
         $storeCode = Mage::app()->getStore()->getCode();
 //        if('sneakerhead_cn_mobile' ==  $storeCode){
