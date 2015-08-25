@@ -4,61 +4,70 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
     {
-//        $test = Mage::getModel('custommade/info')->getCollection();
-//        foreach ($test as $data) {
-//            echo $data->getOrderId() . "\n";
-//            echo $data->getType() . "\n";
-//        }
+        $session = self::getSession();
 
-        //////////////////////////////////////////////
-//        $type = 2;
-//        $content1 = "aaaaa";
-//        $content2 = "2";
-
-        Mage::getSingleton('core/session')->setTestMode(0);
+//        Mage::getSingleton('core/session')->setTestMode(0);
+        $session->setTestMode(0);
 
         $type = 1;
         $content1 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p1_01.jpg';
         $content2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p1_02.jpg';
 
-        Mage::getSingleton('core/session')->setTypeP1($type);
-        Mage::getSingleton('core/session')->setContent1P1($content1);
-        Mage::getSingleton('core/session')->setContent2P1($content2);
+//        Mage::getSingleton('core/session')->setTypeP1($type);
+//        Mage::getSingleton('core/session')->setContent1P1($content1);
+//        Mage::getSingleton('core/session')->setContent2P1($content2);
+        $session->setTypeP1($type);
+        $session->setContent1P1($content1);
+        $session->setContent2P1($content2);
 
-
-//////////////////////////////////////////////////////////////////
-
-//        $type = 2;
-//        $content1 = "bbbb";
-//        $content2 = "1";
         $type = 1;
         $content1 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p2_01.jpg';
         $content2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p2_02.jpg';
 
 
-        Mage::getSingleton('core/session')->setTypeP2($type);
-        Mage::getSingleton('core/session')->setContent1P2($content1);
-        Mage::getSingleton('core/session')->setContent2P2($content2);
+//        Mage::getSingleton('core/session')->setTypeP2($type);
+//        Mage::getSingleton('core/session')->setContent1P2($content1);
+//        Mage::getSingleton('core/session')->setContent2P2($content2);
+        $session->setTypeP2($type);
+        $session->setContent1P2($content1);
+        $session->setContent2P2($content2);
+
+        self::setSession($session);
 
         echo "indexAction Ok";
     }
 
     public function allAction()
     {
-        Mage::getSingleton('core/session')->setTestMode(1);
+        $session = self::getSession();
+//        Mage::getSingleton('core/session')->setTestMode(1);
+        $session->setTestMode(1);
+        self::setSession($session);
 
         echo "allAction Ok";
     }
 
     public function textAction()
     {
-        Mage::getSingleton('core/session')->setTestMode(0);
+        $session = self::getSession();
+//        Mage::getSingleton('core/session')->setTestMode(0);
+        $session->setTestMode(0);
+        self::setSession($session);
 
         echo "textAction Ok";
     }
 
+    public function clearSessionAction()
+    {
+        Mage::getSingleton('core/session')->setCustomerId(null);
+        Mage::getSingleton('core/session')->getCurrentSku(null);
+
+        echo "Clear OK";
+    }
+
     public function completeAction()
     {
+        $session = self::getSession();
         $params = Mage::app()->getRequest()->getParams();
         $pos = $params['position'];
         $type = $params['type'];
@@ -109,11 +118,16 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $content4 = null;
             }
 
-            Mage::getSingleton('core/session')->setTypeP1($type);
-            Mage::getSingleton('core/session')->setContent1P1($content1);
-            Mage::getSingleton('core/session')->setContent2P1($content2);
-            Mage::getSingleton('core/session')->setContent3P1($content3);
-            Mage::getSingleton('core/session')->setContent4P1($content4);
+//            Mage::getSingleton('core/session')->setTypeP1($type);
+//            Mage::getSingleton('core/session')->setContent1P1($content1);
+//            Mage::getSingleton('core/session')->setContent2P1($content2);
+//            Mage::getSingleton('core/session')->setContent3P1($content3);
+//            Mage::getSingleton('core/session')->setContent4P1($content4);
+            $session->setTypeP1($type);
+            $session->setContent1P1($content1);
+            $session->setContent2P1($content2);
+            $session->setContent3P1($content3);
+            $session->setContent4P1($content4);
 
         } elseif ($pos == 2) {
             if ($type == 1) {
@@ -155,47 +169,72 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $content4 = null;
             }
 
-            Mage::getSingleton('core/session')->setTypeP2($type);
-            Mage::getSingleton('core/session')->setContent1P2($content1);
-            Mage::getSingleton('core/session')->setContent2P2($content2);
-            Mage::getSingleton('core/session')->setContent3P2($content3);
-            Mage::getSingleton('core/session')->setContent4P2($content4);
+//            Mage::getSingleton('core/session')->setTypeP2($type);
+//            Mage::getSingleton('core/session')->setContent1P2($content1);
+//            Mage::getSingleton('core/session')->setContent2P2($content2);
+//            Mage::getSingleton('core/session')->setContent3P2($content3);
+//            Mage::getSingleton('core/session')->setContent4P2($content4);
+            $session->setTypeP2($type);
+            $session->setContent1P2($content1);
+            $session->setContent2P2($content2);
+            $session->setContent3P2($content3);
+            $session->setContent4P2($content4);
 
         }
 
-        Mage::getSingleton('core/session')->setPos($pos);
+//        Mage::getSingleton('core/session')->setPos($pos);
+        $session->setPos($pos);
+        self::setSession($session);
 
         echo self::getCustomMadeSession($pos);
     }
 
     public function resetAction()
     {
+        $session = self::getSession();
         $params = Mage::app()->getRequest()->getParams();
         $pos = $params['position'];
         if ($pos == 1) {
-            Mage::getSingleton('core/session')->setTypeP1(null);
-            Mage::getSingleton('core/session')->setContent1P1(null);
-            Mage::getSingleton('core/session')->setContent2P1(null);
-            Mage::getSingleton('core/session')->setContent3P1(null);
-            Mage::getSingleton('core/session')->setContent4P1(null);
+//            Mage::getSingleton('core/session')->setTypeP1(null);
+//            Mage::getSingleton('core/session')->setContent1P1(null);
+//            Mage::getSingleton('core/session')->setContent2P1(null);
+//            Mage::getSingleton('core/session')->setContent3P1(null);
+//            Mage::getSingleton('core/session')->setContent4P1(null);
+            $session->setTypeP1(null);
+            $session->setContent1P1(null);
+            $session->setContent2P1(null);
+            $session->setContent3P1(null);
+            $session->setContent4P1(null);
         } elseif ($pos == 2) {
-            Mage::getSingleton('core/session')->setTypeP2(null);
-            Mage::getSingleton('core/session')->setContent1P2(null);
-            Mage::getSingleton('core/session')->setContent2P2(null);
-            Mage::getSingleton('core/session')->setContent3P2(null);
-            Mage::getSingleton('core/session')->setContent4P2(null);
+//            Mage::getSingleton('core/session')->setTypeP2(null);
+//            Mage::getSingleton('core/session')->setContent1P2(null);
+//            Mage::getSingleton('core/session')->setContent2P2(null);
+//            Mage::getSingleton('core/session')->setContent3P2(null);
+//            Mage::getSingleton('core/session')->setContent4P2(null);
+            $session->setTypeP2(null);
+            $session->setContent1P2(null);
+            $session->setContent2P2(null);
+            $session->setContent3P2(null);
+            $session->setContent4P2(null);
         }
-        Mage::getSingleton('core/session')->setPos($pos);
+//        Mage::getSingleton('core/session')->setPos($pos);
+        $session->setPos($pos);
+        self::setSession($session);
     }
 
     public function previewAction()
     {
-        $status = Mage::getSingleton('core/session')->getCustomStatus();
+        $session = self::getSession();
+//        $status = Mage::getSingleton('core/session')->getCustomStatus();
+        $status = $session->getCustomStatus();
         if ($status == 1) {
-            Mage::getSingleton('core/session')->setCustomStatus(0);
+//            Mage::getSingleton('core/session')->setCustomStatus(0);
+            $session->setCustomStatus(0);
         } else {
-            Mage::getSingleton('core/session')->setCustomStatus(1);
+//            Mage::getSingleton('core/session')->setCustomStatus(1);
+            $session->setCustomStatus(1);
         }
+        self::setSession($session);
     }
 
     public function checkAction()
@@ -208,7 +247,8 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     private function getCustomMadeSession($position)
     {
-        $session = Mage::getSingleton('core/session');
+//        $session = Mage::getSingleton('core/session');
+        $session = self::getSession();
         $res = array();;
         if ($position == 1) {
             $res['type'] = $session->getTypeP1();
@@ -225,6 +265,19 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         }
         $resultString = json_encode($res);
         return $resultString;
+    }
+
+    private function getSession()
+    {
+        $customerId = Mage::getSingleton('core/session')->getCustomerId();
+        $currentSku = Mage::getSingleton('core/session')->getCurrentSku();
+        $session = Mage::getModel('custommade/session')->getSession($customerId, $currentSku);
+        return $session;
+    }
+
+    private function setSession($session)
+    {
+        Mage::getModel('custommade/session')->setSession($session);
     }
 }
 
