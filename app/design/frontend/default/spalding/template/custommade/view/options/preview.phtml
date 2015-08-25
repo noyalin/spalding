@@ -878,7 +878,7 @@
             </li>
         </ul>
         <!-- 第四套 e -->
-
+        
         <!-- 图片-空 -->
         <?php elseif($this->getTypeP1() == 1 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2)): ?>
         <!-- 第五套 s -->
@@ -886,31 +886,216 @@
 
 
         <!-- 第五套 e -->
-
+        
         <!-- 文字-空 -->
         <?php elseif($this->getTypeP1() == 2 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2)): ?>
         <!-- 第六套 s -->
 
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P1() ?></div>
+            <!-- <li>
                 <?php if($this->getContent3P1() == 4): ?>
                 <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent2P1() ?></div>
                 <?php endif; ?>
-
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P2() ?></div>
+            
+                
                 <?php if($this->getContent3P2() == 4): ?>
                 <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent2P2() ?></div>
                 <?php endif; ?>
-
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/21.png") ?>" alt="" /></div>
+            
+                
+            </li>  -->
+            
+            <ul class="big_pic">
+            <!-- 6-1 -->
+            <li style="z-index:1;">
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_1 "><?php echo $this->getContent1P1() ?></div>
+                <!-- 两行 s -->
+                <?php if($this->getContent3P1() == 4): ?>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_line2_1"><?php echo $this->getContent2P1() ?></div>
+                <?php endif; ?>
+                <!-- 两行 e -->
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/01.png") ?>" alt="" /></div>
             </li>
 
+            <!-- 6-2 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_2"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/02.png") ?>" alt="" /></div>
+            </li>
 
-        
+            <!-- 6-3 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_3"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/03.png") ?>" alt="" /></div>
+            </li>
 
-        
+            <!-- 6-4 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_4"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/04.png") ?>" alt="" /></div>
+            </li>
 
+            <!-- 6-5 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_5"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/05.png") ?>" alt="" /></div>
+            </li>
 
+            <!-- 6-6 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_6"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/06.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-7 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_7"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/07.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-8 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_8"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/08.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-9 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_9"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/09.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-10 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_10"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/10.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-11 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_11"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/11.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-12 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_12"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/12.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-13 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_13"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/13.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-14 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/14.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-15 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/15.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-16 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/16.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-17 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/17.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-18 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/18.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-19 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/19.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-20 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/20.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-21 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/21.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-22 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_15"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/22.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-23 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_16"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/23.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-24 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_17"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/24.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-25 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_18"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/25.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-26 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_19"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/26.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-27 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_20"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/27.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-28 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_21"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/28.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-29 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_22"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/29.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-30 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_23"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/30.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-31 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_24"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/31.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 6-32 -->
+            <li>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_25"><?php echo $this->getContent1P1() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_zk/32.png") ?>" alt="" /></div>
+            </li>
+
+        </ul>
         <!-- 第六套 e -->
 
         <!-- 空-图片 -->
@@ -925,16 +1110,361 @@
         <!-- 空-文字 -->
         <?php elseif(($this->getTypeP1() != 1 && $this->getTypeP1() != 2) && $this->getTypeP2() == 2): ?>
         <!-- 第八套 s -->
+        <ul class="big_pic">
+            <!-- 遮罩 -->
 
+            <!-- 8-1 -->
+            <li style="z-index:1;">
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/01.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-2 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/02.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-3 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/03.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-4 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/04.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-5 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/05.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-6 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/06.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-7 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/07.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-8 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_1"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/08.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-9 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_2"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/09.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-10 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_3"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/10.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-11 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_4"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/11.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-12 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_5"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/12.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-13 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_6"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/13.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-14 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_7"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/14.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-15 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_8"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/15.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-16 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_9"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/16.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-17 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_10"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/17.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-18 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_11"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/18.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-19 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_12"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/19.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-20 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_13"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/20.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-21 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/21.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-22 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_15"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/22.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-23 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_16"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/23.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-24 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_17"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/24.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-25 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_18"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/25.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-26 -->
+            <li>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_19"><?php echo $this->getContent1P2() ?></div>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/26.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-27 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/27.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-28 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/28.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-29 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/29.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 2-30 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/30.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-31 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/31.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 8-32 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kz/32.png") ?>" alt="" /></div>
+            </li>
+
+        </ul>
 
 
 
         <!-- 第八套 e -->
-
+        
         <!-- 空-空 -->
         <?php else: ?>
         <!-- 第九套 s -->
+        <ul class="big_pic">
+            <!-- 遮罩 -->
 
+            <!-- 9-1 -->
+            <li style="z-index:1;">
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/01.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-2 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/02.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-3 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/03.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-4 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/04.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-5 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/05.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-6 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/06.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-7 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/07.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-8 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/08.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-9 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/09.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-10 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/10.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-11 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/11.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 2-12 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/12.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-13 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/13.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-14 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/14.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-15 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/15.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-16 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/16.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-17 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/17.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-18 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/18.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-19 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/19.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-20 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/20.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-21 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/21.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-22 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/22.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-23 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/23.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-24 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/24.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-25 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/25.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-26 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/26.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-27 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/27.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-28 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/28.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-29 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/29.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-30 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/30.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-31 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/31.png") ?>" alt="" /></div>
+            </li>
+
+            <!-- 9-32 -->
+            <li>
+                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_kk/32.png") ?>" alt="" /></div>
+            </li>
+
+        </ul>
 
 
 
