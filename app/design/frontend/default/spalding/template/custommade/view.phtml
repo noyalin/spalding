@@ -236,7 +236,6 @@
 
                 //tow line
                 //如果选择两行显示 执行...
-                var _towLineCheck = _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineTwo_p1 input");
                 if(value3 == 4){
                     _comfBox.siblings(".madeBoxFuns").find(".smalLine").css("display","block");
 
@@ -245,6 +244,9 @@
                     _comfBox.siblings(".madeBoxFuns").find(".madeTextInp").find(".smaSizeInp").css("display","block");
                     _comfBox.siblings(".madeBoxFuns").find(".lineTwo").css("color","#fcb805");
                     _comfBox.siblings(".madeBoxFuns").find(".lineOne").css("color","#9b9b9b");
+
+                    _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelNoc").addClass("labelCheck");
+                    _comfBox.siblings(".madeBoxFuns").find(".lineOne").removeClass("labelCheck").addClass("labelNoc");
 
                     //two line view textLineTwo block
                     _viewCons.append(_dataTxt2);
@@ -298,6 +300,9 @@
             _comfBox.siblings(".madeBoxFuns").find(".madeTextInp").find(".smaSizeInp").css("display","none");
             _comfBox.siblings(".madeBoxFuns").find(".lineOne").css("color","#fcb805");
             _comfBox.siblings(".madeBoxFuns").find(".lineTwo").css("color","#9b9b9b");
+
+            _comfBox.siblings(".madeBoxFuns").find(".lineOne").removeClass("labelNoc").addClass("labelCheck");
+            _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
         }
 
         //重置
@@ -379,15 +384,14 @@
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
-            if (value3 == 1) {
+            if (value3 == 1 || value3 == 4) {
                 _viewPage2.find(".viewPage_p2_wrap").css("font-size", "34px");
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_40").addClass("checked");
                 jQuery("#attribute2091").attr('checked', 'checked');
 
                 //towline 
                 //如果选择两行显示 执行...
-                var _towLineCheck = _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineTwo_p2 input");
-                if(_towLineCheck.attr("checked") == "checked"){
+                if(value3 == 4){
                     _comfBox.siblings(".madeBoxFuns").find(".smalLine").css("display","block");
 
                     _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineOne_p2 input").removeAttr("checked");
@@ -395,6 +399,9 @@
                     _comfBox.siblings(".madeBoxFuns").find(".madeTextInp").find(".smaSizeInp").css("display","block");
                     _comfBox.siblings(".madeBoxFuns").find(".lineTwo").css("color","#fcb805");
                     _comfBox.siblings(".madeBoxFuns").find(".lineOne").css("color","#9b9b9b");
+
+                    _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelNoc").addClass("labelCheck");
+                    _comfBox.siblings(".madeBoxFuns").find(".lineOne").removeClass("labelCheck").addClass("labelNoc");
 
                     //two line view textLineTwo block
                     _viewCons.append(_dataTxt2);
@@ -449,6 +456,9 @@
             _comfBox.siblings(".madeBoxFuns").find(".madeTextInp").find(".smaSizeInp").css("display","none");
             _comfBox.siblings(".madeBoxFuns").find(".lineOne").css("color","#fcb805");
             _comfBox.siblings(".madeBoxFuns").find(".lineTwo").css("color","#9b9b9b");
+
+            _comfBox.siblings(".madeBoxFuns").find(".lineOne").removeClass("labelNoc").addClass("labelCheck");
+            _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
         }
 
         //重置
