@@ -226,7 +226,8 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 .textBox{
 	position: absolute;
 	width:100%;
-	line-height: 400px;
+	/*line-height: 400px;*/
+	top:160px;
 	z-index:5;
 	text-align: center;
 	color:#000;
