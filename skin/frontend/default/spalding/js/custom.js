@@ -1056,8 +1056,9 @@ function getTxtSize(position) {
     }
     if (obj != null) {
         for (var i = 0; i < obj.length; i++) {
-            if (obj[i].checked) {
-                size = obj[i].value;
+            var _checked = obj1[i].getAttribute("checked");
+            if (_checked=="checked") {
+                size = parseInt(obj[i].value);
                 break;
             }
         }
@@ -1071,8 +1072,10 @@ function getTxtSize(position) {
         }
         if (obj1 != null) {
             for (var i = 0; i < obj1.length; i++) {
-                if (obj1[i].checked) {
-                    size += obj1[i].value;
+                var _checked = obj1[i].getAttribute("checked");
+
+                if (_checked=="checked") {
+                    size += parseInt(obj1[i].value);
                     break;
                 }
             }
