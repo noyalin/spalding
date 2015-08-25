@@ -1,12 +1,14 @@
-<?php $_product = $this->initView(); ?>
+<?php $this->initView(); ?>
 <input id="complete" type="hidden" value="<?php echo $this->getUrl('custommade/index/complete'); ?>"/>
 <input id="reset" type="hidden" value="<?php echo $this->getUrl('custommade/index/reset'); ?>"/>
 <input id="preview" type="hidden" value="<?php echo $this->getUrl('custommade/index/preview'); ?>"/>
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 
+
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
+<input id="sku" type="hidden" value="<?php echo $_product->getSku() ?>"/>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
@@ -75,7 +77,7 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 1, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text1: text1, text3: text3, size: size, font: font},
+            data: {position: 1, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text1: text1, text3: text3, size: size, font: font, sku:jQuery('#sku').val()},
             success: function (res) {
 //                document.location.reload();
                 dataObj = ajaxEvalJson(res);
@@ -106,7 +108,7 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
-            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text2: text2, text4: text4, size: size, font: font},
+            data: {position: 2, type: _madeValue, cut_pos: getcutpos(), originalImg: pic, text2: text2, text4: text4, size: size, font: font, sku:jQuery('#sku').val()},
             success: function (res) {
 //                document.location.reload();
                 dataObj = ajaxEvalJson(res);
@@ -129,7 +131,7 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
-            data: {position: 1},
+            data: {position: 1, sku:jQuery('#sku').val()},
             success: function (res) {
 //                document.location.reload();
                 resetView_1(3, "", "", "", "");
@@ -142,7 +144,7 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
-            data: {position: 2},
+            data: {position: 2, sku:jQuery('#sku').val()},
             success: function (res) {
 //                document.location.reload();
                 resetView_2(3, "", "", "", "");
@@ -474,7 +476,7 @@
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#check').val(),
-            data: {position: <?php if ($this->getPos() == 2):?>2<?php else: ?>1<?php endif; ?>},
+            data: {position: <?php if ($this->getPos() == 2):?>2<?php else: ?>1<?php endif; ?>, sku:jQuery('#sku').val()},
             success: function (res) {
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {

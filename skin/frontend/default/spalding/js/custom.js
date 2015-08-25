@@ -90,7 +90,7 @@ jQuery(function () {
             jQuery.ajax({
                 type: 'POST',
                 url: jQuery('#check').val(),
-                data: {position: 1},
+                data: {position: 1, sku:jQuery('#sku').val()},
                 success: function (res) {
                     dataObj = ajaxEvalJson(res);
                     if (dataObj != null) {
@@ -161,7 +161,7 @@ jQuery(function () {
             jQuery.ajax({
                 type: 'POST',
                 url: jQuery('#check').val(),
-                data: {position: 2},
+                data: {position: 2, sku:jQuery('#sku').val()},
                 success: function (res) {
                     dataObj = ajaxEvalJson(res);
                     if (dataObj != null) {
@@ -943,7 +943,7 @@ jQuery(function () {
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#preview').val(),
-            data: {},
+            data: {sku:jQuery('#sku').val()},
             success: function () {
                 document.location.reload();
             }
