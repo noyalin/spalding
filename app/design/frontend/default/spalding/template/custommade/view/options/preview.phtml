@@ -236,437 +236,46 @@
         <?php elseif($this->getTypeP1() == 2 && $this->getTypeP2() == 2): ?>
         <!-- 第二套 s -->
         <ul class="big_pic">
-            <!-- 遮罩 -->
+            <?php
+            $_arrP1 = array(1,2,5,7);
+            $_arrP2 = array(3,4,22);
+            for ($_i = 1; $_i <= 32; $_i++): ?>
 
-            <!-- 2-1 -->
-            <li style="z-index:1;">
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_1 "><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_1"><?php echo $this->getContent2P1() ?></div>
+                <?php if($_i == 1): ?>
+                    <li style="z-index:1;">
+                <?php else: ?>
+                    <li>
                 <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/01.png") ?>" alt="" /></div>
-            </li>
 
-            <!-- 2-2 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_2"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_2"><?php echo $this->getContent2P1() ?></div>
+                <!-- P1  -->
+                <?php if(in_array($_i, $_arrP1)): ?>
+                    <?php if($this->getContent3P1() == 4): ?>
+                        <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> "><?php echo $this->getContent1P1() ?></div>
+                        <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_<?php echo $_i ?> "><?php echo $this->getContent2P1() ?></div>
+                    <?php else: ?>
+                        <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> "><?php echo $this->getContent1P1() ?></div>
+                    <?php endif; ?>
                 <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/02.png") ?>" alt="" /></div>
-            </li>
 
-            <!-- 2-3 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_3"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_3"><?php echo $this->getContent2P1() ?></div>
+                <!-- P2  -->
+                <?php if(in_array($_i, $_arrP1)): ?>
+                    <?php if($this->getContent3P2() == 4): ?>
+                        <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>"><?php echo $this->getContent1P2() ?></div>
+                        <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>"><?php echo $this->getContent2P2() ?></div>
+                    <?php else: ?>
+                        <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>"><?php echo $this->getContent1P2() ?></div>
+                    <?php endif; ?>
                 <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/03.png") ?>" alt="" /></div>
-            </li>
 
-            <!-- 2-4 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_4"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_4"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/04.png") ?>" alt="" /></div>
-            </li>
+                    <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/".substr(strval($_i+100),1,3).".png") ?>" alt="" /></div>
+                </li>
 
-            <!-- 2-5 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_5"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_5"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/05.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-6 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_6"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_6"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/06.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-7 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_7"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_7"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/07.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-8 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_8"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_8"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_1"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_1"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/08.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-9 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_9"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_9"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_2"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_2"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/09.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-10 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_10"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_10"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_3"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_3"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/10.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-11 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_11"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_11"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_4"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_4"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/11.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-12 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_12"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_12"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_5"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_5"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/12.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-13 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_13"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_13"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_6"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_6"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/13.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-14 -->
-            <li>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_7"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_7"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/14.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-15 -->
-            <li>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_8"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_8"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/15.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-16 -->
-            <li>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_9"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_9"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/16.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-17 -->
-            <li>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_10"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_10"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/17.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-18 -->
-            <li>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_11"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_11"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/18.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-19 -->
-            <li>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_12"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_12"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/19.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-20 -->
-            <li>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_13"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_13"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/20.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-21 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_14"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_14"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_14"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/21.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-22 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_15"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_15"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_15"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_15"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/22.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-23 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_16"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_16"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_16"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_16"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/23.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-24 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_17"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_17"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_17"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_17"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/24.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-25 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_18"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_18"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_18"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_18"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/25.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-26 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_19"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_19"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_19"><?php echo $this->getContent1P2() ?></div>
-                <!-- 两行 p2 s -->
-                <?php if($this->getContent3P2() == 4): ?>
-                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_19"><?php echo $this->getContent2P2() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p2 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/26.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-27 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_20"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_20"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/27.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-28 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_21"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_21"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/28.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-29 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_22"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_22"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/29.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-30 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_23"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_23"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/30.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-31 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_24"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_24"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/31.png") ?>" alt="" /></div>
-            </li>
-
-            <!-- 2-32 -->
-            <li>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_25"><?php echo $this->getContent1P1() ?></div>
-                <!-- 两行 p1 s -->
-                <?php if($this->getContent3P1() == 4): ?>
-                <div class="textBox textPag_1 <?php echo $this->getSizeClassP2() ?> textPag_1_25"><?php echo $this->getContent2P1() ?></div>
-                <?php endif; ?>
-                <!-- 两行 p1 e -->
-                <div class="imgBox imgBall"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/imgBall_n/32.png") ?>" alt="" /></div>
-            </li>
-
+            <?php endfor; ?>
         </ul>
         <!-- 第二套 e -->
 
-        <!-- 图片-文字 -->
         <?php elseif($this->getTypeP1() == 1 && $this->getTypeP2() == 2): ?>
+        <!-- 图片-文字 -->
         <!-- 第三套 s -->
         <ul class="big_pic">
 
