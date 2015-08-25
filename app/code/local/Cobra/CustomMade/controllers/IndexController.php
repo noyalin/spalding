@@ -67,8 +67,10 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function completeAction()
     {
-        $session = self::getSession();
         $params = Mage::app()->getRequest()->getParams();
+        $sku = $params['sku'];
+        $session = self::getSession($sku);
+
         $pos = $params['position'];
         $type = $params['type'];
         $content1 = null;
@@ -186,13 +188,15 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         $session->setPos($pos);
         self::setSession($session);
 
-        echo self::getCustomMadeSession($pos);
+        echo self::getCustomMadeSession($pos, $sku);
     }
 
     public function resetAction()
     {
-        $session = self::getSession();
         $params = Mage::app()->getRequest()->getParams();
+        $sku = $params['sku'];
+        $session = self::getSession($sku);
+
         $pos = $params['position'];
         if ($pos == 1) {
 //            Mage::getSingleton('core/session')->setTypeP1(null);
@@ -224,7 +228,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function previewAction()
     {
-        $session = self::getSession();
+        $params = Mage::app()->getRequest()->getParams();
+        $sku = $params['sku'];
+        $session = self::getSession($sku);
 //        $status = Mage::getSingleton('core/session')->getCustomStatus();
         $status = $session->getCustomStatus();
         if ($status == 1) {
@@ -241,14 +247,15 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     {
         $params = Mage::app()->getRequest()->getParams();
         $position = $params['position'];
-        echo self::getCustomMadeSession($position);
+        $sku = $params['sku'];
+        echo self::getCustomMadeSession($position, $sku);
 
     }
 
-    private function getCustomMadeSession($position)
+    private function getCustomMadeSession($position ,$sku)
     {
 //        $session = Mage::getSingleton('core/session');
-        $session = self::getSession();
+        $session = self::getSession($sku);
         $res = array();;
         if ($position == 1) {
             $res['type'] = $session->getTypeP1();
@@ -267,11 +274,12 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         return $resultString;
     }
 
-    private function getSession()
+    private function getSession($sku)
     {
         $customerId = Mage::getSingleton('core/session')->getCustomerId();
-        $currentSku = Mage::getSingleton('core/session')->getCurrentSku();
-        $session = Mage::getModel('custommade/session')->getSession($customerId, $currentSku);
+//        $currentSku = Mage::getSingleton('core/session')->getCurrentSku();
+//        $session = Mage::getModel('custommade/session')->getSession($customerId, $currentSku);
+        $session = Mage::getModel('custommade/session')->getSession($customerId, $sku);
         return $session;
     }
 
