@@ -7,8 +7,23 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 //    private $customId = 0;
 //    private $customValue = 0;
 //    private $price;
+    private $customerId;
+    private $session;
 
     public function initView()
+    {
+        $_product = $this->getProduct();
+        if (Mage::getSingleton('core/session')->getCustomerId() == null) {
+            $this->customerId = Mage::getModel('custommade/customer')->createCustomer();
+            Mage::getSingleton('core/session')->setCustomerId($this->customerId);
+        } else {
+            $this->customerId = Mage::getSingleton('core/session')->getCustomerId();
+        }
+        Mage::getSingleton('core/session')->setCurrentSku($_product->getSku());
+        $this->session = Mage::getModel('custommade/session')->getSession($this->customerId, $_product->getSku());
+    }
+
+    public function initOptions()
     {
 //        $customTypeP1 = '无';
 //        $customTypeP2 = '无';
@@ -59,67 +74,80 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 
     public function getCustomStatus()
     {
-        return Mage::getSingleton('core/session')->getCustomStatus();
+//        return Mage::getSingleton('core/session')->getCustomStatus();
+        return $this->session->getCustomStatus();
     }
 
     public function getPos()
     {
-        return Mage::getSingleton('core/session')->getPos();
+//        return Mage::getSingleton('core/session')->getPos();
+        return $this->session->getPos();
     }
 
     public function getTypeP1()
     {
-        return Mage::getSingleton('core/session')->getTypeP1();
+//        return Mage::getSingleton('core/session')->getTypeP1();
+        return $this->session->getTypeP1();
     }
 
     public function getContent1P1()
     {
-        return Mage::getSingleton('core/session')->getContent1P1();
+//        return Mage::getSingleton('core/session')->getContent1P1();
+        return $this->session->getContent1P1();
     }
 
     public function getContent2P1()
     {
-        return Mage::getSingleton('core/session')->getContent2P1();
+//        return Mage::getSingleton('core/session')->getContent2P1();
+        return $this->session->getContent2P1();
     }
 
     public function getContent3P1()
     {
-        return Mage::getSingleton('core/session')->getContent3P1();
+//        return Mage::getSingleton('core/session')->getContent3P1();
+        return $this->session->getContent3P1();
     }
 
     public function getContent4P1()
     {
-        return Mage::getSingleton('core/session')->getContent4P1();
+//        return Mage::getSingleton('core/session')->getContent4P1();
+        return $this->session->getContent4P1();
     }
 
     public function getTypeP2()
     {
-        return Mage::getSingleton('core/session')->getTypeP2();
+//        return Mage::getSingleton('core/session')->getTypeP2();
+        return $this->session->getTypeP2();
     }
 
     public function getContent1P2()
     {
-        return Mage::getSingleton('core/session')->getContent1P2();
+//        return Mage::getSingleton('core/session')->getContent1P2();
+        return $this->session->getContent1P2();
     }
 
     public function getContent2P2()
     {
-        return Mage::getSingleton('core/session')->getContent2P2();
+//        return Mage::getSingleton('core/session')->getContent2P2();
+        return $this->session->getContent2P2();
     }
 
     public function getContent3P2()
     {
-        return Mage::getSingleton('core/session')->getContent3P2();
+//        return Mage::getSingleton('core/session')->getContent3P2();
+        return $this->session->getContent3P2();
     }
 
     public function getContent4P2()
     {
-        return Mage::getSingleton('core/session')->getContent4P2();
+//        return Mage::getSingleton('core/session')->getContent4P2();
+        return $this->session->getContent4P2();
     }
 
     public function getTestMode()
     {
-        return Mage::getSingleton('core/session')->getTestMode();
+//        return Mage::getSingleton('core/session')->getTestMode();
+        return $this->session->getTestMode();
     }
 
     public function getSizeClassP1()
