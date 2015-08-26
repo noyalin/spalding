@@ -3654,6 +3654,11 @@ dl.madeBoxFuns dt.zz_t{
 	padding:0;
 }
 
+dl.madeBoxFuns dt.zz_t_2{
+	height: 188px;
+	margin-top:-188px;
+}
+
 .madeKindTex{
 	display: none;
 }

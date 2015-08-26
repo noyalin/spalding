@@ -276,6 +276,7 @@ jQuery(function () {
     });
 
     //设置字体
+    // 小号
     jQuery(".madeBoxCons_p1 .setSize_40").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_40");
@@ -291,8 +292,9 @@ jQuery(function () {
         jQuery(".smalLine").find(".lineTwo_p1 input").removeAttr("checked");
         jQuery(".smalLine").find(".lineOne_p1 input").attr("checked","checked");
         jQuery(".madeTextInp").find(".smaSizeInp").css("display","none");
-        jQuery(".lineOne").css("color","#fcb805");
-        jQuery(".lineTwo").css("color","#9b9b9b");
+        jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
+        jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
+        jQuery(".zz_t").removeClass("zz_t_2");
 
 
         
@@ -309,8 +311,9 @@ jQuery(function () {
         jQuery(".smalLine").find(".lineTwo_p2 input").removeAttr("checked");
         jQuery(".smalLine").find(".lineOne_p2 input").attr("checked","checked");
         jQuery(".madeTextInp").find(".smaSizeInp").css("display","none");
-        jQuery(".lineOne").css("color","#fcb805");
-        jQuery(".lineTwo").css("color","#9b9b9b");
+        jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
+        jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
+        jQuery(".zz_t").removeClass("zz_t_2");
         SwapTxt_2();
         SwapTxt_4();
     });
@@ -327,8 +330,10 @@ jQuery(function () {
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
 
-        jQuery(".lineOne").css("color","#fcb805");
-        jQuery(".lineTwo").css("color","#9b9b9b");
+        jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
+        jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
+
+        jQuery(".zz_t").removeClass("zz_t_2");
     });
     jQuery(".madeBoxCons_p2 .setSize_60").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P2").removeClass("size_40 size_60 size_80");
@@ -340,8 +345,10 @@ jQuery(function () {
         jQuery(this).parents().find(".select_P3 , .select_P4").css("display", "none");
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
-        jQuery(".lineOne").css("color","#fcb805");
-        jQuery(".lineTwo").css("color","#9b9b9b");
+        jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
+        jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
+
+        jQuery(".zz_t").removeClass("zz_t_2");
     });
 
     //大号
@@ -355,8 +362,10 @@ jQuery(function () {
         jQuery(this).parents().find(".select_P3 , .select_P4").css("display", "none");
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
-        jQuery(".lineOne").css("color","#fcb805");
-        jQuery(".lineTwo").css("color","#9b9b9b");
+        jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
+        jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
+
+        jQuery(".zz_t").removeClass("zz_t_2");
 
     });
     jQuery(".madeBoxCons_p2 .setSize_80").click(function () {
@@ -369,8 +378,10 @@ jQuery(function () {
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","none");
         jQuery(this).parents().find(".select_P3 , .select_P4").css("display", "none");
-        jQuery(".lineOne").css("color","#fcb805");
-        jQuery(".lineTwo").css("color","#9b9b9b");
+        jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
+        jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
+
+        jQuery(".zz_t").removeClass("zz_t_2");
     });
 
 
@@ -388,6 +399,8 @@ jQuery(function () {
         jQuery(this).siblings(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
         jQuery(this).find("input").attr("checked","checked");
         jQuery(this).siblings(".lineTwo").find("input").removeAttr("checked");
+
+        jQuery(".zz_t").removeClass("zz_t_2");
     });
     jQuery(".lineTwo").click(function(){
         jQuery(this).parent().siblings(".madeTextInp").find(".smaSizeInp").css("display","inline-block");
@@ -398,6 +411,8 @@ jQuery(function () {
         jQuery(this).siblings(".lineOne").removeClass("labelCheck").addClass("labelNoc");
         jQuery(this).find("input").attr("checked","checked");
         jQuery(this).siblings(".lineOne").find("input").removeAttr("checked");
+
+        jQuery(".zz_t").addClass("zz_t_2");
     });
 
     jQuery(".lineTwo_p1").click(function(){
