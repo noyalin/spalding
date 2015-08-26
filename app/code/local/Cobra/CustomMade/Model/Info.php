@@ -66,8 +66,8 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                         ->setMsg2P2($session->getContent2P2())
                         ->setMsg3P2($session->getContent3P2())
                         ->setMsg4P2($session->getContent4P2())
-                        ->setMsg5P2(self::getP1Url($session,'show'))
-                        ->setMsg6P2(self::getP1Url($session,'print'))
+                        ->setMsg5P2(self::getP2Url($session,'show'))
+                        ->setMsg6P2(self::getP2Url($session,'print'))
                         ->setStatus(self::STATUS_NON_PAYMENT)
                         ->save();
                     $this->clearSession($customerId, $sku);
