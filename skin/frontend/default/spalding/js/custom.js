@@ -971,7 +971,7 @@ function SwapTxt_2() {
 function SwapTxt_3() {
     var _txt = document.getElementById("textInput_3").value.trim();
     var _text = document.getElementById("textMade_P3");
-    var _cnt = getTxtCnt(3);
+    var _cnt = getTxtCnt(1);
 
     setMadeText(_text, _txt, _cnt);
 }
@@ -979,7 +979,7 @@ function SwapTxt_3() {
 function SwapTxt_4() {
     var _txt = document.getElementById("textInput_4").value.trim();
     var _text = document.getElementById("textMade_P4");
-    var _cnt = getTxtCnt(4);
+    var _cnt = getTxtCnt(2);
 
     setMadeText(_text, _txt, _cnt);
 }
@@ -1092,9 +1092,9 @@ function getTxtSize(position) {
 
 function getTxtCnt(position) {
     var size = getTxtSize(position);
-    if (size == 1) {
+    if (size == 1 || size == 4) {
         return 16;
-    }else if (size == 2) {
+    } else if (size == 2) {
         return 10;
     } else {
         return 6;
