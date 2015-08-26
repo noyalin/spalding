@@ -48,7 +48,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg2_p1', 'text', array(
                 'label' => Mage::helper('custommade')->__('P1属性2'),
-                'class' => 'required-entry',
                 'name' => 'msg2_p1',
             )
         );
@@ -111,7 +110,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg2_p2', 'text', array(
                 'label' => Mage::helper('custommade')->__('P2属性2'),
-                'class' => 'required-entry',
                 'name' => 'msg2_p2',
             )
         );

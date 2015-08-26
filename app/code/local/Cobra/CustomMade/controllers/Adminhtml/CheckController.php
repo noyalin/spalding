@@ -168,7 +168,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
                 ->setId($this->getRequest()->getParam('id'));
 
             try {
-                if ($model->getCreatedTime == NULL || $model->getUpdateTime() == NULL) {
+                if ($model->getCreatedTime() == NULL || $model->getUpdateTime() == NULL) {
                     $model->setCreatedTime(now())
                         ->setUpdateTime(now());
                 } else {

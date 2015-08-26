@@ -9,14 +9,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
 
     public function render(Varien_Object $row)
     {
-        $position = $this->getColumn()->getData('position');
-        if ($position == self::POSITION_P1) {
-            $index = 'type_p1';
-        } else {
-            $index = 'type_p2';
-        }
+//        $position = $this->getColumn()->getData('position');
+//        if ($position == self::POSITION_P1) {
+//            $index = 'type_p1';
+//        } else {
+//            $index = 'type_p2';
+//        }
         $msg = $row->getData($this->getColumn()->getIndex());
-        if ($row[$index] == self::TYPE_IMAGE) {
+//        if ($row[$index] == self::TYPE_IMAGE) {
             $html = '<a ';
             $html .= 'target="_blank" ';
             $html .= 'href="' . $msg . '">';
@@ -25,22 +25,22 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
             $html .= 'src="' . $msg . '" ';
             $html .= 'style="width:100px"/>';
             $html .= '</a>';
-        } else {
-            if ($this->getColumn()->getIndex() == "msg2_p1" ||
-                $this->getColumn()->getIndex() == "msg2_p2") {
-                if ($msg == '1') {
-                    $html = '' . '小号字体';
-                } else if ($msg == '2') {
-                    $html = '' . '中号字体';
-                } else if ($msg == '3') {
-                    $html = '' . '大号字体';
-                } else {
-                    $html = '' . $msg;
-                }
-            } else {
-                $html = '' . $msg;
-            }
-        }
+//        } else {
+//            if ($this->getColumn()->getIndex() == "msg2_p1" ||
+//                $this->getColumn()->getIndex() == "msg2_p2") {
+//                if ($msg == '1') {
+//                    $html = '' . '小号字体';
+//                } else if ($msg == '2') {
+//                    $html = '' . '中号字体';
+//                } else if ($msg == '3') {
+//                    $html = '' . '大号字体';
+//                } else {
+//                    $html = '' . $msg;
+//                }
+//            } else {
+//                $html = '' . $msg;
+//            }
+//        }
         return $html;
     }
 }
