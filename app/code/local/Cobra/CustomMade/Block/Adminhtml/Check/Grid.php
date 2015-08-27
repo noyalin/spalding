@@ -182,7 +182,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->getMassactionBlock()->addItem('notapproved', array(
-            'label'     => Mage::helper('custommade')->__('审批通过'),
+            'label'     => Mage::helper('custommade')->__('审批不通过'),
             'url'       => $this->getUrl('*/*/massNotApproved')
         ));
 
