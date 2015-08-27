@@ -164,6 +164,16 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
 
 
             $model = Mage::getModel('custommade/info');
+
+            $urlShowP1 = $model->getP1Url($data->getTypeP1(), $data->getMsg1P1(), $data->getMsg2P1(), $data->getMsg3P1(), $data->getMsg4P1(), 'show');
+            $urlPrintP1 = $model->getP1Url($data->getTypeP1(), $data->getMsg1P1(), $data->getMsg2P1(), $data->getMsg3P1(), $data->getMsg4P1(), 'print');
+            $data->setMsg5P1($urlShowP1);
+            $data->setMsg6P1($urlPrintP1);
+            $urlShowP2 = $model->getP2Url($data->getTypeP2(), $data->getMsg1P2(), $data->getMsg2P2(), $data->getMsg3P2(), $data->getMsg4P2(), 'show');
+            $urlPrintP2 = $model->getP2Url($data->getTypeP2(), $data->getMsg1P2(), $data->getMsg2P2(), $data->getMsg3P2(), $data->getMsg4P2(), 'print');
+            $data->setMsg5P2($urlShowP2);
+            $data->setMsg6P2($urlPrintP2);
+
             $model->setData($data)
                 ->setId($this->getRequest()->getParam('id'));
 

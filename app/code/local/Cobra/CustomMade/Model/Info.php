@@ -59,15 +59,15 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                         ->setMsg2P1($session->getContent2P1())
                         ->setMsg3P1($session->getContent3P1())
                         ->setMsg4P1($session->getContent4P1())
-                        ->setMsg5P1(self::getP1Url($session,'show'))
-                        ->setMsg6P1(self::getP1Url($session,'print'))
+                        ->setMsg5P1(self::getP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'show'))
+                        ->setMsg6P1(self::getP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'print'))
                         ->setTypeP2($session->getTypeP2())
                         ->setMsg1P2($session->getContent1P2())
                         ->setMsg2P2($session->getContent2P2())
                         ->setMsg3P2($session->getContent3P2())
                         ->setMsg4P2($session->getContent4P2())
-                        ->setMsg5P2(self::getP2Url($session,'show'))
-                        ->setMsg6P2(self::getP2Url($session,'print'))
+                        ->setMsg5P2(self::getP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'show'))
+                        ->setMsg6P2(self::getP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'print'))
                         ->setStatus(self::STATUS_NON_PAYMENT)
                         ->save();
                     $this->clearSession($customerId, $sku);
@@ -76,63 +76,59 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         }
     }
 
-    private function getP1Url($session, $type)
+    public function getP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType)
     {
         $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
-        $textone = $session->getContent1P1();
-        $texttwo = $session->getContent2P1();
-        $size = $session->getContent3P1();
-//        $font = $session->getContent4P1();
-//        switch($font){
-//            case 0:
-//                break;
-//            default:
-//        }
-        switch ($size) {
+
+        switch ($content4P1) {
             case 1:
-                $url .= 'p1-small_one-' . $type . '?$1980pxx544px$&$textone=' . $textone;
+                $imgType .= '-arial';
+                break;
+            default:
+        }
+
+        switch ($content3P1) {
+            case 1:
+                $url .= 'p1-small_one-' . $imgType . '?$1980pxx544px$&$textone=' . $content1P1;
                 break;
             case 2:
-                $url .= 'p1-middle-' . $type . '?$1980pxx544px$&$text=' . $textone;
+                $url .= 'p1-middle-' . $imgType . '?$1980pxx544px$&$text=' . $content1P1;
                 break;
             case 3:
-                $url .= 'p1-big-' . $type . '?$1980pxx544px$&$text=' . $textone;
+                $url .= 'p1-big-' . $imgType . '?$1980pxx544px$&$text=' . $content1P1;
                 break;
             case 4:
             default:
-                $url .= 'p1-small_two-' . $type . '?$1980pxx544px$&$texttwo=' . $texttwo . '&$textone=' . $textone;
+                $url .= 'p1-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . $content2P1 . '&$textone=' . $content1P1;
         }
-
         return $url;
     }
 
-    private function getP2Url($session, $type)
+    public function getP2Url($typeP2, $content1P2, $content2P2, $content3P2, $content4P2, $imgType)
     {
         $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
-        $textone = $session->getContent1P2();
-        $texttwo = $session->getContent2P2();
-        $size = $session->getContent3P2();
-//        $font = $session->getContent4P2();
-//        switch($font){
-//            case 0:
-//                break;
-//            default:
-//        }
-        switch ($size) {
+
+        switch ($content4P2) {
             case 1:
-                $url .= 'p2-small_one-' . $type . '?$1980pxx544px$&$textone=' . $textone;
+                $imgType .= '-arial';
+                break;
+            default:
+        }
+
+        switch ($content3P2) {
+            case 1:
+                $url .= 'p2-small_one-' . $imgType . '?$1980pxx544px$&$textone=' . $content1P2;
                 break;
             case 2:
-                $url .= 'p2-middle-' . $type . '?$1980pxx544px$&$text=' . $textone;
+                $url .= 'p2-middle-' . $imgType . '?$1980pxx544px$&$text=' . $content1P2;
                 break;
             case 3:
-                $url .= 'p2-big-' . $type . '?$1980pxx544px$&$text=' . $textone;
+                $url .= 'p2-big-' . $imgType . '?$1980pxx544px$&$text=' . $content1P2;
                 break;
             case 4:
             default:
-                $url .= 'p2-small_two-' . $type . '?$1980pxx544px$&$texttwo=' . $texttwo . '&$textone=' . $textone;
+                $url .= 'p2-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . $content2P2 . '&$textone=' . $content1P2;
         }
-
         return $url;
     }
 

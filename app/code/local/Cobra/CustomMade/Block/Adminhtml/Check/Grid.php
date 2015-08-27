@@ -122,7 +122,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 0   => '待付款',
                 1   => '待审批',
                 2   => '审批通过',
-                3   => '取消订单',
+                3   => '审批不通过',
+                4   => '取消订单',
             ),
             'html_decorators'   => array('nobr')
         ));
