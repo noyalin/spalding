@@ -181,6 +181,11 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'url'       => $this->getUrl('*/*/massApproved')
         ));
 
+        $this->getMassactionBlock()->addItem('notapproved', array(
+            'label'     => Mage::helper('custommade')->__('审批通过'),
+            'url'       => $this->getUrl('*/*/massNotApproved')
+        ));
+
         $this->getMassactionBlock()->addItem('cancel', array(
             'label'     => Mage::helper('custommade')->__('取消订单'),
             'url'       => $this->getUrl('*/*/massCancel')

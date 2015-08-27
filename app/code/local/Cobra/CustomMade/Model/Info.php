@@ -8,7 +8,8 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     const STATUS_NON_PAYMENT = 0;
     const STATUS_APPROVING = 1;
     const STATUS_APPROVED = 2;
-    const STATUS_CANCEL = 3;
+    const STATUS_NOTAPPROVED = 3;
+    const STATUS_CANCEL = 4;
 
     protected function _construct()
     {
@@ -28,6 +29,11 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     public function approved()
     {
         $this->setStatus(self::STATUS_APPROVED)->save();
+    }
+
+    public function notapproved()
+    {
+        $this->setStatus(self::STATUS_NOTAPPROVED)->save();
     }
 
     public function cancel()
