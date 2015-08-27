@@ -45,7 +45,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg1_p1', 'text', array(
                 'label' => Mage::helper('custommade')->__('P1属性1'),
-                'class' => 'required-entry',
                 'name' => 'msg1_p1',
             )
         );
@@ -58,7 +57,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg3_p1', 'text', array(
                 'label' => Mage::helper('custommade')->__('P1属性3'),
-                'class' => 'required-entry',
                 'name' => 'msg3_p1',
                 'after_element_html' => '<br /><small>当类型为文字时，1：小（单行），2：中，3：大，4：小（双行）</small>',
             )
@@ -66,7 +64,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg4_p1', 'text', array(
                 'label' => Mage::helper('custommade')->__('P1属性4'),
-                'class' => 'required-entry',
                 'name' => 'msg4_p1',
             )
         );
@@ -105,7 +102,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg1_p2', 'text', array(
                 'label' => Mage::helper('custommade')->__('P2属性1'),
-                'class' => 'required-entry',
                 'name' => 'msg1_p2',
             )
         );
@@ -118,7 +114,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg3_p2', 'text', array(
                 'label' => Mage::helper('custommade')->__('P2属性3'),
-                'class' => 'required-entry',
                 'name' => 'msg3_p2',
                 'after_element_html' => '<br /><small>当类型为文字时，1：小（单行），2：中，3：大，4：小（双行）</small>',
             )
@@ -126,7 +121,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg4_p2', 'text', array(
                 'label' => Mage::helper('custommade')->__('P2属性4'),
-                'class' => 'required-entry',
                 'name' => 'msg4_p2',
             )
         );
