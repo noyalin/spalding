@@ -11,10 +11,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        $fieldset->addField('order_id', 'text', array(
+        $fieldset->addField('order_id', 'label', array(
                 'label' => Mage::helper('custommade')->__('订单号'),
-                'class' => 'required-entry',
-                'disabled' => true,
                 'name' => 'order_id',
             )
         );
@@ -68,18 +66,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
         );
 
         $fieldset->addField('msg5_p1', 'label', array(
-                'label' => Mage::helper('custommade')->__('预览图'),
-                'class' => 'required-entry',
+                'label' => Mage::helper('custommade')->__('预览图URL'),
                 'name' => 'msg5_p1',
-                'disabled' => true,
             )
         );
 
         $fieldset->addField('msg6_p1', 'label', array(
-                'label' => Mage::helper('custommade')->__('打印图'),
-                'class' => 'required-entry',
+                'label' => Mage::helper('custommade')->__('打印图URL'),
                 'name' => 'msg6_p1',
-                'disabled' => true,
             )
         );
 
@@ -131,19 +125,15 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        $fieldset->addField('msg5_p2', 'text', array(
-                'label' => Mage::helper('custommade')->__('预览图'),
-                'class' => 'required-entry',
+        $fieldset->addField('msg5_p2', 'label', array(
+                'label' => Mage::helper('custommade')->__('预览图URL'),
                 'name' => 'msg5_p2',
-                'disabled' => true,
             )
         );
 
-        $fieldset->addField('msg6_p2', 'text', array(
-                'label' => Mage::helper('custommade')->__('打印图'),
-                'class' => 'required-entry',
+        $fieldset->addField('msg6_p2', 'label', array(
+                'label' => Mage::helper('custommade')->__('打印图URL'),
                 'name' => 'msg6_p2',
-                'disabled' => true,
             )
         );
 
