@@ -33,7 +33,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'header'            => Mage::helper('custommade')->__('SKU'),
             'align'             => 'right',
             'width'             => '80px',
-            'index'             => 'order_id',
+            'index'             => 'sku',
             'html_decorators'   => array('nobr')
         ));
 
