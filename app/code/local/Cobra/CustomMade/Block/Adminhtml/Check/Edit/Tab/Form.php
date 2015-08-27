@@ -17,6 +17,12 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
+        $fieldset->addField('sku', 'label', array(
+                'label' => Mage::helper('custommade')->__('SKU'),
+                'name' => 'sku',
+            )
+        );
+
         $fieldset->addField('type_p1', 'select', array(
             'label' => Mage::helper('custommade')->__('P1类型'),
             'class' => 'required-entry',

@@ -54,6 +54,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                 ) {
                     //保存定制信息
                     Mage::getModel('custommade/info')->setOrderId($orderId)
+                        ->setSku($sku)
                         ->setTypeP1($session->getTypeP1())
                         ->setMsg1P1($session->getContent1P1())
                         ->setMsg2P1($session->getContent2P1())
