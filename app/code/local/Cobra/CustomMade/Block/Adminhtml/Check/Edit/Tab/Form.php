@@ -11,11 +11,15 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        $fieldset->addField('order_id', 'text', array(
+        $fieldset->addField('order_id', 'label', array(
                 'label' => Mage::helper('custommade')->__('订单号'),
-                'class' => 'required-entry',
-                'disabled' => true,
                 'name' => 'order_id',
+            )
+        );
+
+        $fieldset->addField('sku', 'label', array(
+                'label' => Mage::helper('custommade')->__('SKU'),
+                'name' => 'sku',
             )
         );
 
@@ -48,9 +52,34 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg2_p1', 'text', array(
                 'label' => Mage::helper('custommade')->__('P1属性2'),
-                'class' => 'required-entry',
                 'name' => 'msg2_p1',
-                'after_element_html' => '<br /><small>当类型为文字时，1：小，2：中，3：大</small>',
+            )
+        );
+
+        $fieldset->addField('msg3_p1', 'text', array(
+                'label' => Mage::helper('custommade')->__('P1属性3'),
+                'class' => 'required-entry',
+                'name' => 'msg3_p1',
+                'after_element_html' => '<br /><small>当类型为文字时，1：小（单行），2：中，3：大，4：小（双行）</small>',
+            )
+        );
+
+        $fieldset->addField('msg4_p1', 'text', array(
+                'label' => Mage::helper('custommade')->__('P1属性4'),
+                'class' => 'required-entry',
+                'name' => 'msg4_p1',
+            )
+        );
+
+        $fieldset->addField('msg5_p1', 'label', array(
+                'label' => Mage::helper('custommade')->__('预览图URL'),
+                'name' => 'msg5_p1',
+            )
+        );
+
+        $fieldset->addField('msg6_p1', 'label', array(
+                'label' => Mage::helper('custommade')->__('打印图URL'),
+                'name' => 'msg6_p1',
             )
         );
 
@@ -83,9 +112,34 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         $fieldset->addField('msg2_p2', 'text', array(
                 'label' => Mage::helper('custommade')->__('P2属性2'),
-                'class' => 'required-entry',
                 'name' => 'msg2_p2',
-                'after_element_html' => '<br /><small>当类型为文字时，1：小，2：中，3：大</small>',
+            )
+        );
+
+        $fieldset->addField('msg3_p2', 'text', array(
+                'label' => Mage::helper('custommade')->__('P2属性3'),
+                'class' => 'required-entry',
+                'name' => 'msg3_p2',
+                'after_element_html' => '<br /><small>当类型为文字时，1：小（单行），2：中，3：大，4：小（双行）</small>',
+            )
+        );
+
+        $fieldset->addField('msg4_p2', 'text', array(
+                'label' => Mage::helper('custommade')->__('P2属性4'),
+                'class' => 'required-entry',
+                'name' => 'msg4_p2',
+            )
+        );
+
+        $fieldset->addField('msg5_p2', 'label', array(
+                'label' => Mage::helper('custommade')->__('预览图URL'),
+                'name' => 'msg5_p2',
+            )
+        );
+
+        $fieldset->addField('msg6_p2', 'label', array(
+                'label' => Mage::helper('custommade')->__('打印图URL'),
+                'name' => 'msg6_p2',
             )
         );
 

@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS `{$this->getTable('custommade_info')}` ;
 CREATE TABLE `{$this->getTable('custommade_info')}` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` varchar(18) NOT NULL,
+  `sku` varchar(50) NOT NULL,
   `type_p1` int(1) DEFAULT NULL,
   `msg1_p1` varchar(800) DEFAULT NULL,
   `msg2_p1` varchar(800) DEFAULT NULL,
