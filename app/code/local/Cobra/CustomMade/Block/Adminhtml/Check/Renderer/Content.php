@@ -5,14 +5,16 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
     public function render(Varien_Object $row)
     {
         $msg = $row->getData($this->getColumn()->getIndex());
-        $html = '<a ';
-        $html .= 'target="_blank" ';
-        $html .= 'href="' . $msg . '">';
-        $html .= '<img ';
-        $html .= 'id="' . $this->getColumn()->getId() . '" ';
-        $html .= 'src="' . $msg . '" ';
-        $html .= 'style="width:100px"/>';
-        $html .= '</a>';
+        if ($msg != null) {
+            $html = '<a ';
+            $html .= 'target="_blank" ';
+            $html .= 'href="' . $msg . '">';
+            $html .= '<img ';
+            $html .= 'id="' . $this->getColumn()->getId() . '" ';
+            $html .= 'src="' . $msg . '" ';
+            $html .= 'style="width:100px"/>';
+            $html .= '</a>';
+        }
         return $html;
     }
 }
