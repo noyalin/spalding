@@ -81,7 +81,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
 
         switch ($content4P1) {
-            case 1:
+            case 2:
                 $imgType .= '-arial';
                 break;
             default:
