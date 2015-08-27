@@ -67,7 +67,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        $fieldset->addField('msg5_p1', 'text', array(
+        $fieldset->addField('msg5_p1', 'label', array(
                 'label' => Mage::helper('custommade')->__('预览图'),
                 'class' => 'required-entry',
                 'name' => 'msg5_p1',
@@ -75,7 +75,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        $fieldset->addField('msg6_p1', 'text', array(
+        $fieldset->addField('msg6_p1', 'label', array(
                 'label' => Mage::helper('custommade')->__('打印图'),
                 'class' => 'required-entry',
                 'name' => 'msg6_p1',
