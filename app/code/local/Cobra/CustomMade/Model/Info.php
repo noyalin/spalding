@@ -80,13 +80,14 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     public function createP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType)
     {
         $url = null;
-        switch($typeP1){
+        switch ($typeP1) {
             case 1:
                 break;
             case 2:
                 $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
                 break;
             default;
+                return $url;
         }
 
         switch ($content4P1) {
@@ -107,8 +108,9 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                 $url .= 'p1-big-' . $imgType . '?$1980pxx544px$&$text=' . $content1P1;
                 break;
             case 4:
-            default:
                 $url .= 'p1-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . $content2P1 . '&$textone=' . $content1P1;
+                break;
+            default:
         }
         return $url;
     }
@@ -116,13 +118,14 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     public function createP2Url($typeP2, $content1P2, $content2P2, $content3P2, $content4P2, $imgType)
     {
         $url = null;
-        switch($typeP2){
+        switch ($typeP2) {
             case 1:
                 break;
             case 2:
                 $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
                 break;
             default;
+                return $url;
         }
 
         switch ($content4P2) {
@@ -143,8 +146,9 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                 $url .= 'p2-big-' . $imgType . '?$1980pxx544px$&$text=' . $content1P2;
                 break;
             case 4:
-            default:
                 $url .= 'p2-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . $content2P2 . '&$textone=' . $content1P2;
+                break;
+            default;
         }
         return $url;
     }
