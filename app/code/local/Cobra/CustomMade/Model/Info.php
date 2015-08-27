@@ -59,15 +59,15 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                         ->setMsg2P1($session->getContent2P1())
                         ->setMsg3P1($session->getContent3P1())
                         ->setMsg4P1($session->getContent4P1())
-                        ->setMsg5P1(self::getP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'show'))
-                        ->setMsg6P1(self::getP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'print'))
+                        ->setMsg5P1(self::createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'show'))
+                        ->setMsg6P1(self::createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'print'))
                         ->setTypeP2($session->getTypeP2())
                         ->setMsg1P2($session->getContent1P2())
                         ->setMsg2P2($session->getContent2P2())
                         ->setMsg3P2($session->getContent3P2())
                         ->setMsg4P2($session->getContent4P2())
-                        ->setMsg5P2(self::getP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'show'))
-                        ->setMsg6P2(self::getP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'print'))
+                        ->setMsg5P2(self::createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'show'))
+                        ->setMsg6P2(self::createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'print'))
                         ->setStatus(self::STATUS_NON_PAYMENT)
                         ->save();
                     $this->clearSession($customerId, $sku);
@@ -76,7 +76,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         }
     }
 
-    public function getP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType)
+    public function createP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType)
     {
         $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
 
@@ -104,7 +104,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         return $url;
     }
 
-    public function getP2Url($typeP2, $content1P2, $content2P2, $content3P2, $content4P2, $imgType)
+    public function createP2Url($typeP2, $content1P2, $content2P2, $content3P2, $content4P2, $imgType)
     {
         $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
 
