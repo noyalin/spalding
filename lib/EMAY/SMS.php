@@ -18,17 +18,17 @@ final class EMAY_SMS {
     /**
      * 序列号,请通过亿美销售人员获取
      */
-    static private $serialNumber = '6SDK-EMY-6688-KFQMM';
+    static private $serialNumber = '6SDK-EMY-6688-JCTUN';
 
     /**
      * 密码,请通过亿美销售人员获取
      */
-    static private $password = '227325';
+    static private $password = '216500';
 
     /**
      * 登录后所持有的SESSION KEY，即可通过login方法时创建
      */
-    static private $sessionKey = '227325';
+    static private $sessionKey = '216500';
 
     /**
      * 连接超时时间，单位为秒
