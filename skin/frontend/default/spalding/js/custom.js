@@ -903,8 +903,17 @@ jQuery(function () {
                 showComfBox(this);
             }
         } else if (_madeValue == 2) {
-            if (submitYP_CheckText("#textInput_1")) {
-                showComfBox(this);
+            var size = getTxtSize(1);
+            if (size == 4) {
+                if (submitYP_CheckText_NO_Alert("#textInput_1") || submitYP_CheckText_NO_Alert("#textInput_3")) {
+                    showComfBox(this);
+                } else {
+                    alert('只限输入字母，数字以及空格！');
+                }
+            } else {
+                if (submitYP_CheckText("#textInput_1")) {
+                    showComfBox(this);
+                }
             }
         } else {
             showComfBox(this);
@@ -920,8 +929,17 @@ jQuery(function () {
                 showComfBox(this);
             }
         } else if (_madeValue == 2) {
-            if (submitYP_CheckText("#textInput_2")) {
-                showComfBox(this);
+            var size = getTxtSize(1);
+            if (size == 4) {
+                if (submitYP_CheckText_NO_Alert("#textInput_2") || submitYP_CheckText_NO_Alert("#textInput_4")) {
+                    showComfBox(this);
+                } else {
+                    alert('只限输入字母，数字以及空格！');
+                }
+            } else {
+                if (submitYP_CheckText("#textInput_2")) {
+                    showComfBox(this);
+                }
             }
         } else {
             showComfBox(this);
@@ -940,6 +958,19 @@ jQuery(function () {
         }
         return true;
     }
+
+    function submitYP_CheckText_NO_Alert(txtInputId){
+
+        var re = /^([A-Za-z0-9]|\s)*$/;
+        var txtInput = jQuery(txtInputId);
+
+        if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
+            txtInput.focus();
+            return false;
+        }
+        return true;
+    }
+
     function submitYP_CheckImg(txtInputId){
 
         return true;
