@@ -43,7 +43,9 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
     public function loadByIncrementId($incrementId)
     {
-        return $this->loadByAttribute('order_id', $incrementId);
+        $id = $this->getResource()
+            ->loadByField('order_id', $incrementId);
+        return $this->load($id);
     }
 
     public function saveCustomMade($order)
