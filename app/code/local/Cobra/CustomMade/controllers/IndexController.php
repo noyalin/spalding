@@ -39,20 +39,20 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function allAction()
     {
-        $session = self::getSession();
-//        Mage::getSingleton('core/session')->setTestMode(1);
-        $session->setTestMode(1);
-        self::setSession($session);
+//        $session = self::getSession();
+        Mage::getSingleton('core/session')->setTestMode(1);
+//        $session->setTestMode(1);
+//        self::setSession($session);
 
         echo "allAction Ok";
     }
 
     public function textAction()
     {
-        $session = self::getSession();
-//        Mage::getSingleton('core/session')->setTestMode(0);
-        $session->setTestMode(0);
-        self::setSession($session);
+//        $session = self::getSession();
+        Mage::getSingleton('core/session')->setTestMode(0);
+//        $session->setTestMode(0);
+//        self::setSession($session);
 
         echo "textAction Ok";
     }
