@@ -23,7 +23,7 @@ $post_data =  array (
     'AddrName' =>"",
 );
 //$url='http://180.166.202.70/kaixinwabao/index.php/api/user/login';
-$url='http://210.51.213.108/sbdfw/FwServices.asmx/QueryFw?';
+$url='http://api.t3315.com/sbdfw/FwServices.asmx/QueryFw?';//
 $o="";
 foreach ($post_data as $k=>$v)
 {
