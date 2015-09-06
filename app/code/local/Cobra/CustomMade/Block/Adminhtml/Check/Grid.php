@@ -132,6 +132,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 2   => '审批通过',
                 3   => '审批不通过',
                 4   => '取消订单',
+                5   => '已导出',
             ),
             'html_decorators'   => array('nobr')
         ));
@@ -189,6 +190,11 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->getMassactionBlock()->addItem('cancel', array(
             'label'     => Mage::helper('custommade')->__('取消订单'),
             'url'       => $this->getUrl('*/*/massCancel')
+        ));
+
+        $this->getMassactionBlock()->addItem('export', array(
+            'label'     => Mage::helper('custommade')->__('导出'),
+            'url'       => $this->getUrl('*/*/massExport')
         ));
 
         return $this;

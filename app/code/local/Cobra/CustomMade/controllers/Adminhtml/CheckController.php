@@ -73,6 +73,18 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         $this->_redirect('*/*/index');
     }
 
+    public function massExportAction()
+    {
+        $infoIds = $this->getRequest()->getParam('custommade');
+        if (!is_array($infoIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('Please select order(s)'));
+        }
+
+        $this->export($infoIds);
+
+        $this->_redirect('*/*/index');
+    }
+
     public function newAction()
     {
         $this->loadLayout();
@@ -217,5 +229,57 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         }
         Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('Unable to find item to save'));
         $this->_redirect('*/*/');
+    }
+
+    private function export($infoIds)
+    {
+        $time = date("dMYHis");
+        $dir = Mage::getBaseDir() . "/media/custommade/customlist/" . $time;
+        mkdir($dir);
+        $file = fopen($dir . "/" . $time . ".txt", "w");
+
+        foreach ($infoIds as $infoId) {
+            $subscriber = Mage::getModel('custommade/info')->load($infoId);
+            $content = $subscriber->getId() . "-" . $subscriber->getSku() . "-" . $subscriber->getOrderId() . "\r\n";
+            fwrite($file, $content);
+            $p1_preview_url = $subscriber->getMsg5P1();
+            $p1_print_url = $subscriber->getMsg6P1();
+            $p2_preview_url = $subscriber->getMsg5P2();
+            $p2_print_url = $subscriber->getMsg6P2();
+            $img_prefix = $dir . "/" . $subscriber->getSku() . "-" . $subscriber->getOrderId() . "-" . $time;
+            if ($p1_preview_url != null) {
+                $this->grabImage($p1_preview_url, $img_prefix . "-p1-preview.png");
+            }
+            if ($p1_print_url != null) {
+                $this->grabImage($p1_print_url, $img_prefix . "-p1-print.png");
+            }
+            if ($p2_preview_url != null) {
+                $this->grabImage($p2_preview_url, $img_prefix . "-p2-preview.png");
+            }
+            if ($p2_print_url != null) {
+                $this->grabImage($p2_print_url, $img_prefix . "-p2-print.png");
+            }
+            $subscriber->export();
+        }
+        fclose($file);
+    }
+
+    private function grabImage($url, $filename)
+    {
+        if ($url == ""):return false;endif;
+
+        ob_start();
+        readfile($url);
+        $img = ob_get_contents();
+        ob_end_clean();
+        $size = strlen($img);
+        if ($img && $size) {
+            $fp2 = @fopen($filename, "a");
+            fwrite($fp2, $img);
+            fclose($fp2);
+            return $filename;
+        } else {
+            return null;
+        }
     }
 }

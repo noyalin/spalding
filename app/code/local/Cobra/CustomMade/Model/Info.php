@@ -10,6 +10,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     const STATUS_APPROVED = 2;
     const STATUS_NOTAPPROVED = 3;
     const STATUS_CANCEL = 4;
+    const STATUS_EXPORT = 5;
 
     protected function _construct()
     {
@@ -39,6 +40,11 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     public function cancel()
     {
         $this->setStatus(self::STATUS_CANCEL)->save();
+    }
+
+    public function export()
+    {
+        $this->setStatus(self::STATUS_EXPORT)->save();
     }
 
     public function loadByIncrementId($incrementId)
