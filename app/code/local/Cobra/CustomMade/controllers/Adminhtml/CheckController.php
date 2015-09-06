@@ -234,7 +234,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
     private function export($infoIds)
     {
         $time = date("dMYHis");
-        $dir = Mage::getBaseDir() . "/media/custommade/customlist/" . $time;
+        $dir = "/usr/custommade/customlist/" . $time;
         mkdir($dir);
         $file = fopen($dir . "/" . $time . ".txt", "w");
 
