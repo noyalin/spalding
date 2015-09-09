@@ -17,9 +17,10 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        $fieldset->addField('sku', 'label', array(
+        $fieldset->addField('sku', 'text', array(
                 'label' => Mage::helper('custommade')->__('SKU'),
                 'name' => 'sku',
+                'disabled' => true,
             )
         );
 

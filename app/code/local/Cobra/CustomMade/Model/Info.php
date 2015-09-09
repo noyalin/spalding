@@ -74,15 +74,15 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                         ->setMsg2P1($session->getContent2P1())
                         ->setMsg3P1($session->getContent3P1())
                         ->setMsg4P1($session->getContent4P1())
-                        ->setMsg5P1(self::createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'show'))
-                        ->setMsg6P1(self::createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'print'))
+                        ->setMsg5P1($this->createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'show', $session->getSku()))
+                        ->setMsg6P1($this->createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'print', $session->getSku()))
                         ->setTypeP2($session->getTypeP2())
                         ->setMsg1P2($session->getContent1P2())
                         ->setMsg2P2($session->getContent2P2())
                         ->setMsg3P2($session->getContent3P2())
                         ->setMsg4P2($session->getContent4P2())
-                        ->setMsg5P2(self::createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'show'))
-                        ->setMsg6P2(self::createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'print'))
+                        ->setMsg5P2($this->createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'show', $session->getSku()))
+                        ->setMsg6P2($this->createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'print', $session->getSku()))
                         ->setStatus(self::STATUS_NON_PAYMENT)
                         ->save();
                     $this->clearSession($customerId, $sku);
@@ -91,14 +91,18 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         }
     }
 
-    public function createP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType)
+    public function createP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType, $sku)
     {
         $url = null;
         switch ($typeP1) {
             case 1:
                 break;
             case 2:
-                $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                if ($sku == '74-604yc') {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
+                } else {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                }
                 break;
             default;
                 return $url;
@@ -129,14 +133,18 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         return $url;
     }
 
-    public function createP2Url($typeP2, $content1P2, $content2P2, $content3P2, $content4P2, $imgType)
+    public function createP2Url($typeP2, $content1P2, $content2P2, $content3P2, $content4P2, $imgType, $sku)
     {
         $url = null;
         switch ($typeP2) {
             case 1:
                 break;
             case 2:
-                $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                if ($sku == '74-604yc') {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
+                } else {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                }
                 break;
             default;
                 return $url;

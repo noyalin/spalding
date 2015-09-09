@@ -190,12 +190,12 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
 
             $model = Mage::getModel('custommade/info');
 
-            $urlShowP1 = $model->createP1Url($data['type_p1'], $data['msg1_p1'], $data['msg2_p1'], $data['msg3_p1'], $data['msg4_p1'], 'show');
-            $urlPrintP1 = $model->createP1Url($data['type_p1'], $data['msg1_p1'], $data['msg2_p1'], $data['msg3_p1'], $data['msg4_p1'], 'print');
+            $urlShowP1 = $model->createP1Url($data['type_p1'], $data['msg1_p1'], $data['msg2_p1'], $data['msg3_p1'], $data['msg4_p1'], 'show', $data['sku']);
+            $urlPrintP1 = $model->createP1Url($data['type_p1'], $data['msg1_p1'], $data['msg2_p1'], $data['msg3_p1'], $data['msg4_p1'], 'print', $data['sku']);
             $data['msg5_p1'] = $urlShowP1;
             $data['msg6_p1'] = $urlPrintP1;
-            $urlShowP2 = $model->createP2Url($data['type_p2'], $data['msg1_p2'], $data['msg2_p2'], $data['msg3_p2'], $data['msg4_p2'], 'show');
-            $urlPrintP2 = $model->createP2Url($data['type_p2'], $data['msg1_p2'], $data['msg2_p2'], $data['msg3_p2'], $data['msg4_p2'], 'print');
+            $urlShowP2 = $model->createP2Url($data['type_p2'], $data['msg1_p2'], $data['msg2_p2'], $data['msg3_p2'], $data['msg4_p2'], 'show', $data['sku']);
+            $urlPrintP2 = $model->createP2Url($data['type_p2'], $data['msg1_p2'], $data['msg2_p2'], $data['msg3_p2'], $data['msg4_p2'], 'print', $data['sku']);
             $data['msg5_p2'] = $urlShowP2;
             $data['msg6_p2'] = $urlPrintP2;
 
