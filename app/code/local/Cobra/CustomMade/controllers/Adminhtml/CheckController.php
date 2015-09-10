@@ -199,6 +199,16 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $data['msg5_p2'] = $urlShowP2;
             $data['msg6_p2'] = $urlPrintP2;
 
+            if ($data['status'] == 1 || $data['status'] == 2 || $data['status'] == 3) {
+                if ($data['user1_approve'] == 0 || $data['user2_approve'] == 0 || $data['user3_approve'] == 0 || $data['user4_approve'] == 0) {
+                    $data['status'] = 1;
+                } elseif ($data['user1_approve'] == 1 && $data['user2_approve'] == 1 && $data['user3_approve'] == 1 && $data['user4_approve'] == 1) {
+                    $data['status'] = 2;
+                } else {
+                    $data['status'] = 3;
+                }
+            }
+
             $model->setData($data)
                 ->setId($this->getRequest()->getParam('id'));
 

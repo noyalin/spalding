@@ -6,6 +6,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
     {
         $form = new Varien_Data_Form();
         $this->setForm($form);
+        $username = Mage::getSingleton('admin/session')->getUser()->getUsername();
         $fieldset = $form->addFieldset('custommade_form', array(
                 'legend' => Mage::helper('custommade')->__('篮球定制')
             )
@@ -20,7 +21,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
         $fieldset->addField('sku', 'text', array(
                 'label' => Mage::helper('custommade')->__('SKU'),
                 'name' => 'sku',
-                'disabled' => false,
+                'readonly' => 'readonly',
             )
         );
 
@@ -137,6 +138,117 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 'name' => 'msg6_p2',
             )
         );
+        if ($username == 'admin' || $username == 'spalding1') {
+            $fieldset->addField('user1_approve', 'select', array(
+                    'label' => Mage::helper('custommade')->__('用户1'),
+                    'name' => 'user1_approve',
+                    'values' => array(
+                        array(
+                            'value' => 0,
+                            'label' => Mage::helper('custommade')->__('待审批'),
+                        ),
+                        array(
+                            'value' => 1,
+                            'label' => Mage::helper('custommade')->__('审批通过'),
+                        ),
+                        array(
+                            'value' => 2,
+                            'label' => Mage::helper('custommade')->__('审批不通过'),
+                        ),
+                    ),
+                )
+            );
+        } else {
+            $fieldset->addField('user1_approve', 'text', array(
+                    'name' => 'user1_approve',
+                    'style' => 'display:none',
+                )
+            );
+        }
+
+        if ($username == 'admin' || $username == 'spalding2') {
+            $fieldset->addField('user2_approve', 'select', array(
+                    'label' => Mage::helper('custommade')->__('用户2'),
+                    'name' => 'user2_approve',
+                    'values' => array(
+                        array(
+                            'value' => 0,
+                            'label' => Mage::helper('custommade')->__('待审批'),
+                        ),
+                        array(
+                            'value' => 1,
+                            'label' => Mage::helper('custommade')->__('审批通过'),
+                        ),
+                        array(
+                            'value' => 2,
+                            'label' => Mage::helper('custommade')->__('审批不通过'),
+                        ),
+                    ),
+                )
+            );
+        } else {
+            $fieldset->addField('user2_approve', 'text', array(
+                    'name' => 'user2_approve',
+                    'style' => 'display:none',
+                )
+            );
+        }
+
+        if ($username == 'admin' || $username == 'spalding3') {
+            $fieldset->addField('user3_approve', 'select', array(
+                    'label' => Mage::helper('custommade')->__('用户3'),
+                    'name' => 'user3_approve',
+                    'values' => array(
+                        array(
+                            'value' => 0,
+                            'label' => Mage::helper('custommade')->__('待审批'),
+                        ),
+                        array(
+                            'value' => 1,
+                            'label' => Mage::helper('custommade')->__('审批通过'),
+                        ),
+                        array(
+                            'value' => 2,
+                            'label' => Mage::helper('custommade')->__('审批不通过'),
+                        ),
+                    ),
+                )
+            );
+        } else {
+            $fieldset->addField('user3_approve', 'text', array(
+                    'name' => 'user3_approve',
+                    'style' => 'display:none',
+                )
+            );
+        }
+
+        if ($username == 'admin' || $username == 'spalding4') {
+            $fieldset->addField('user4_approve', 'select', array(
+                    'label' => Mage::helper('custommade')->__('用户4'),
+                    'name' => 'user4_approve',
+                    'values' => array(
+                        array(
+                            'value' => 0,
+                            'label' => Mage::helper('custommade')->__('待审批'),
+                        ),
+                        array(
+                            'value' => 1,
+                            'label' => Mage::helper('custommade')->__('审批通过'),
+                        ),
+                        array(
+                            'value' => 2,
+                            'label' => Mage::helper('custommade')->__('审批不通过'),
+                        ),
+                    ),
+                )
+            );
+        } else {
+            $fieldset->addField('user4_approve', 'text', array(
+                    'name' => 'user4_approve',
+                    'style' => 'display:none',
+                )
+            );
+        }
 
         $fieldset->addField('status', 'select', array(
             'label' => Mage::helper('custommade')->__('订单状态'),
@@ -169,7 +281,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         if (Mage::getSingleton('adminhtml/session')->getCustommadeData()) {
             $form->setValues(Mage::getSingleton('adminhtml/session')->getCustommadeData());
-            Mage::getSingleton('adminhtml/session')->getCustommadeData(null);
+            Mage::getSingleton('adminhtml/session')->setCustommadeData(null);
         } elseif (Mage::registry('custommade_data')) {
             $form->setValues(Mage::registry('custommade_data')->getData());
         }
