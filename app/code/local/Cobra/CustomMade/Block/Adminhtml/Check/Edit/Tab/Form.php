@@ -140,7 +140,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
         );
         if ($username == 'admin' || $username == 'spalding1') {
             $fieldset->addField('user1_approve', 'select', array(
-                    'label' => Mage::helper('custommade')->__('用户1'),
+                    'label' => Mage::helper('custommade')->__('用户1审批'),
                     'name' => 'user1_approve',
                     'values' => array(
                         array(
@@ -168,7 +168,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         if ($username == 'admin' || $username == 'spalding2') {
             $fieldset->addField('user2_approve', 'select', array(
-                    'label' => Mage::helper('custommade')->__('用户2'),
+                    'label' => Mage::helper('custommade')->__('用户2审批'),
                     'name' => 'user2_approve',
                     'values' => array(
                         array(
@@ -196,7 +196,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         if ($username == 'admin' || $username == 'spalding3') {
             $fieldset->addField('user3_approve', 'select', array(
-                    'label' => Mage::helper('custommade')->__('用户3'),
+                    'label' => Mage::helper('custommade')->__('用户3审批'),
                     'name' => 'user3_approve',
                     'values' => array(
                         array(
@@ -224,7 +224,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
 
         if ($username == 'admin' || $username == 'spalding4') {
             $fieldset->addField('user4_approve', 'select', array(
-                    'label' => Mage::helper('custommade')->__('用户4'),
+                    'label' => Mage::helper('custommade')->__('用户4审批'),
                     'name' => 'user4_approve',
                     'values' => array(
                         array(
@@ -251,10 +251,11 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
         }
 
         $fieldset->addField('status', 'select', array(
-            'label' => Mage::helper('custommade')->__('订单状态'),
+//            'label' => Mage::helper('custommade')->__('订单状态'),
             'name' => 'status',
             'class' => 'required-entry',
             'required' => true,
+            'style' => 'display:none',
             'values' => array(
                 array(
                     'value' => 0,
@@ -275,6 +276,10 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 array(
                     'value' => 4,
                     'label' => Mage::helper('custommade')->__('取消订单'),
+                ),
+                array(
+                    'value' => 5,
+                    'label' => Mage::helper('custommade')->__('已导出'),
                 ),
             ),
         ));
