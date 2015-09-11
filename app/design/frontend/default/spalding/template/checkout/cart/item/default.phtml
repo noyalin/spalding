@@ -180,7 +180,6 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 <!--                                <input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />-->
 
                                 <button class="reduce" type="submit" onclick="redQtyone(<?php echo $_item->getId() ?>);">-</button>
-                                <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" />
 
                                 <?php
                                 $res = true;
@@ -193,8 +192,10 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                                     }
                                 }
                                 if ($res == false):?>
+                                    <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" disabled="disabled"/>
                                     <button class="add" type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);" disabled="disabled">+ </button>
                                 <?php else: ?>
+                                    <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" />
                                     <button class="add" type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);">+ </button>
                                 <?php endif; ?>
 <!--                                <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>-->
