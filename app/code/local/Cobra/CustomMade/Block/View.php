@@ -150,6 +150,11 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 //        return $this->session->getTestMode();
     }
 
+    public function getCustommadeAgree()
+    {
+        return Mage::getSingleton('core/session')->getCustomermadeAgree();
+    }
+
     public function getSizeClassP1()
     {
         $content3 = $this->getContent3P1();

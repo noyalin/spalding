@@ -197,5 +197,6 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             Mage::getSingleton('core/session')->setCustomerId(null);
             Mage::getModel('custommade/customer')->load($customerId)->delete();
         }
+        Mage::getSingleton('core/session')->setCustomermadeAgree(null);
     }
 }

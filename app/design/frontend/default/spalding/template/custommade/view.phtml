@@ -3,6 +3,7 @@
 <input id="reset" type="hidden" value="<?php echo $this->getUrl('custommade/index/reset'); ?>"/>
 <input id="preview" type="hidden" value="<?php echo $this->getUrl('custommade/index/preview'); ?>"/>
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
+<input id="agree" type="hidden" value="<?php echo $this->getUrl('custommade/index/agree'); ?>"/>
 
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.css'); ?>" type="text/css" />
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
@@ -15,6 +16,7 @@
 <input id="sku" type="hidden" value="<?php echo $_product->getSku() ?>"/>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 法律条款 -->
+    <?php if($this->getCustommadeAgree() == null): ?>
     <div class="rows">
         <div class="rowsWrap">
             <h2 class="rowsTitle">服务协议及法律条款</h2>
@@ -72,6 +74,7 @@
             </div>
         </div>
     </div>
+    <?php endif; ?>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
         <img style="width:100%;" src="<?php echo $this->getSkinUrl('images/customMade/cBg2.jpg');  ?>" alt="">

@@ -3356,7 +3356,7 @@ ul.shopsList li span.shopsList_adrs{
 	left:0;
 	top:0;
 	background:rgba(0,0,0,.9);
-	z-index:99;
+	z-index:999999;
 }
 
 .rowsWrap{

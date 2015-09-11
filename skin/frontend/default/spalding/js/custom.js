@@ -1225,6 +1225,10 @@ jQuery(function(){
     //rows agree or refuse
     jQuery(".rowsAgr").click(function(){
         jQuery(this).parent().parent().parent(".rows").hide();
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#agree').val(),
+        });
     });
 
     jQuery('.jScrollbar, .jScrollbar2, .jScrollbar3, .jScrollbar4, .jScrollbar5').jScrollbar();

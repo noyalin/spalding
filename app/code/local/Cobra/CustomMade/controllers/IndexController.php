@@ -252,6 +252,11 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     }
 
+    public function agreeAction()
+    {
+        Mage::getSingleton('core/session')->setCustomermadeAgree(1);
+    }
+
     private function getCustomMadeSession($position ,$sku)
     {
 //        $session = Mage::getSingleton('core/session');
