@@ -85,6 +85,10 @@ jQuery(function () {
             jQuery(this).parents().find(".select_P4").css("display", "none");
             //jQuery("#options_pos").val(1);
 
+            //点亮对应icon
+            jQuery(".remind_1").css("opacity","1");
+            jQuery(".remind_2").css("opacity",".5");
+
 
             // TODO
             jQuery.ajax({
@@ -130,9 +134,15 @@ jQuery(function () {
 
                 jQuery(this).parents().find(".select_P3").css("display", "none");
                 jQuery(this).parents().find(".select_P4").css("display", "none");
+
+                //点亮对应icon
+                $(".remind_1").css("opacity","1");
+                $(".remind_2").css("opacity",".5");
             });
 
         }
+
+        
 
 
     });
@@ -156,6 +166,10 @@ jQuery(function () {
             jQuery(this).parents().find(".select_P3").css("display", "none");
             jQuery(this).parents().find(".select_P4").css("display", "none");
             //jQuery("#options_pos").val(2);
+
+            //点亮对应icon
+            jQuery(".remind_2").css("opacity","1");
+            jQuery(".remind_1").css("opacity",".5");
 
             // TODO
             jQuery.ajax({
@@ -201,6 +215,10 @@ jQuery(function () {
                 jQuery(this).parents().find(".select_P1").css("display", "none");
                 jQuery(this).parents().find(".select_P3").css("display", "none");
                 jQuery(this).parents().find(".select_P4").css("display", "none");
+
+                //点亮对应icon
+                jQuery(".remind_2").css("opacity","1");
+                jQuery(".remind_1").css("opacity",".5");
             });
         }
     });
@@ -1202,4 +1220,12 @@ jQuery(function(){
     jQuery(".zz").click(function(){
         notTodo("提示","定制已提交，若要重新定制，请先“重置”！");
     });
+
+
+    //rows agree or refuse
+    jQuery(".rowsAgr").click(function(){
+        jQuery(this).parent().parent().parent(".rows").hide();
+    });
+
+    jQuery('.jScrollbar, .jScrollbar2, .jScrollbar3, .jScrollbar4, .jScrollbar5').jScrollbar();
 });

@@ -4,12 +4,74 @@
 <input id="preview" type="hidden" value="<?php echo $this->getUrl('custommade/index/preview'); ?>"/>
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 
-
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.css'); ?>" type="text/css" />
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-ui.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-mousewheel.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.js'); ?>"></script>
+
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
 <input id="sku" type="hidden" value="<?php echo $_product->getSku() ?>"/>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+    <!-- 法律条款 -->
+    <div class="rows">
+        <div class="rowsWrap">
+            <h2 class="rowsTitle">服务协议及法律条款</h2>
+            <div class="rowsText jScrollbar3 clearfix">
+                <div class="jScrollbar_mask">
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                    <p>
+                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
+                    </p>
+                </div>
+                <div class="jScrollbar_draggable">
+                    <a href="#" class="draggable"></a>
+                    <span class="scrolBg"></span>
+                </div>
+            </div>
+            
+            <div class="rowsSub clearfix">
+                <span class="rowsAgr"><input type="button" value="我已阅读且同意"></span>
+                <span class="rowsRef" onclick="javascript:window.close();"><input type="button" value="不同意"></span>
+            </div>
+        </div>
+    </div>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
         <img style="width:100%;" src="<?php echo $this->getSkinUrl('images/customMade/cBg2.jpg');  ?>" alt="">
@@ -47,6 +109,10 @@
 
     <!-- 第二步  定制参数-->
     <div class="cusMadeCons madeStep_2">
+        <div class="cusRemind">
+            <div class="cusRemindBox remind_1"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_1.png") ?>" alt=""></div>
+            <div class="cusRemindBox remind_2"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_2.png") ?>" alt=""></div>
+        </div>
         <?php echo $this->getChildHtml('custommade_view_options') ?>
     </div>
     

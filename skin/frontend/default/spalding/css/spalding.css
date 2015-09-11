@@ -3334,6 +3334,97 @@ ul.shopsList li span.shopsList_adrs{
 	min-height: 570px;
 }
 
+.cusRemind{
+	position:absolute;
+	left:100px;
+	top:100px;
+	color:#fff;
+}
+
+.cusRemind .cusRemindBox{
+	margin-bottom:30px;
+}
+
+.cusRemind .remind_2{
+	opacity: .6;
+}
+
+.rows{
+	position:fixed;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background:rgba(0,0,0,.9);
+	z-index:99;
+}
+
+.rowsWrap{
+	position:absolute;
+	width:380px;
+	height:490px;
+	padding:20px;
+	left:50%;
+	top:50%;
+	margin-left:-205px;
+	margin-top:-260px;
+	background:#000;
+	border:1px solid #ccc;
+}
+.rowsWrap h2.rowsTitle{
+	text-align: center;
+	color:#fff;
+	font-size: 20px;
+	font-weight: bold;
+	height:30px;
+	line-height: 30px;
+	margin:10px 0;
+}
+.rowsText{
+	height:380px;
+	overflow:auto;
+	overflow-x:hidden;
+	color:#fff;
+	font-size: 12px;
+	line-height: 1.6em;
+	padding:0 10px;
+}
+.rowsSub{
+	width:230px;
+	margin:20px auto 0;
+}
+
+.rowsSub span{
+	display: inline-block;
+	border-radius:3px;
+	height:30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	float:left;
+	cursor:pointer;
+}
+
+.rowsSub span.rowsAgr{
+	width:140px;
+	background:#f4a108;
+	color:#000;
+	margin-right:20px;
+}
+
+.rowsSub span.rowsRef{
+	width:70px;
+	background:#d3d3d3;
+	color:#999;
+}
+
+.rowsSub span input{
+	border:none;
+	background:none;
+	cursor:pointer;
+}
+
 .cusMadeCen{
 	position: absolute;
 	width:400px;
