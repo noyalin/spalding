@@ -181,8 +181,22 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 
                                 <button class="reduce" type="submit" onclick="redQtyone(<?php echo $_item->getId() ?>);">-</button>
                                 <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" />
-                                <button class="add"  type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);" >+</button>
 
+                                <?php
+                                $res = true;
+                                $categoryIds = $_item->getProduct()->getCategoryIds();
+                                foreach ($categoryIds as $categoryId) {
+                                    $category = Mage::getModel('catalog/category')->load($categoryId);
+                                    $categoryUrlkey = $category->getUrlKey();
+                                    if ($categoryUrlkey == 'custom-made') {
+                                        $res = false;
+                                    }
+                                }
+                                if ($res == false):?>
+                                    <button class="add" type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);" disabled="disabled">+ </button>
+                                <?php else: ?>
+                                    <button class="add" type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);">+ </button>
+                                <?php endif; ?>
 <!--                                <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>-->
                             </div>
 
