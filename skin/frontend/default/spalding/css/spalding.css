@@ -3369,7 +3369,7 @@ ul.shopsList li span.shopsList_adrs{
 	margin-left:-205px;
 	margin-top:-260px;
 	background:#000;
-	border:1px solid #ccc;
+	border:1px solid #292929;
 }
 .rowsWrap h2.rowsTitle{
 	text-align: center;
@@ -3381,7 +3381,7 @@ ul.shopsList li span.shopsList_adrs{
 	margin:10px 0;
 }
 .rowsText{
-	height:380px;
+	height:370px;
 	overflow:auto;
 	overflow-x:hidden;
 	color:#fff;
