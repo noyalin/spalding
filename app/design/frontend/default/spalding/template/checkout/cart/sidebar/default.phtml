@@ -25,11 +25,12 @@
  */
 ?>
 <?php $_item = $this->getItem() ;
-$sku = $_item->getSku();
-$arr = explode('-', $sku);
-$size = end($arr);
-$configSku = substr($sku, 0, -(strlen($size) + 1));
-$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+//$sku = $_item->getSku();
+//$arr = explode('-', $sku);
+//$size = end($arr);
+//$configSku = substr($sku, 0, -(strlen($size) + 1));
+//$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+$_product = Mage::getModel('catalog/product')->load($_item->getProductId());
 ?>
 <li class="item last odd">
     <div class="product-image" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" href="<?php echo $this->getProductUrl()?>">
@@ -42,7 +43,8 @@ $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku
         <dd>
             <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>">
 <!--                <img src="--><?php //echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?><!--" width="50" height="50" alt="--><?php //echo $this->htmlEscape($this->getProductName()) ?><!--" />-->
-                <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=<?php echo $_product->getUrlKey();  ?>-1" width="50" height="50" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
+                <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-8.jpg" width="50" height="50" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
+<!--                <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=--><?php //echo $_product->getUrlKey();  ?><!---1" width="50" height="50" alt="--><?php //echo $this->htmlEscape($this->getProductName()) ?><!--" />-->
             </a>
         <dd>
 

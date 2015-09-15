@@ -34,8 +34,9 @@ $urlKey = $this->getProductUrlKey()
 $sku = $_item->getSku();
 $arr = explode('-', $sku);
 $size = end($arr);
-$configSku = substr($sku, 0, -(strlen($size) + 1));
-$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+//$configSku = substr($sku, 0, -(strlen($size) + 1));
+//$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+$_product = Mage::getModel('catalog/product')->load($_item->getProductId());
 
 $product_catena = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_catena",$_product->getProductCatena());//篮球系列
 $product_material = Mage::getModel('catalog/product')->getAttrNameByOptionId("product_material",$_product->getProductMaterial());//篮球材质;
@@ -46,6 +47,7 @@ $product_side = Mage::getModel('catalog/product')->getAttrNameByOptionId("produc
 $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
 $attributeSetModel->load($_product->getAttributeSetId());
 $attributeSetName = $attributeSetModel->getAttributeSetName();
+
 ?>
 <style>
      .spCarTit_name a:link{
@@ -57,7 +59,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
         <dd class="ms-fl">
             <?php if ($this->hasProductUrl()):?>
                 <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?>
-                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) ?>media/catalog/product/<?php echo $product_sku."/". $urlKey ?>-14.jpg" alt=""/>
+                    <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ."/media/catalog/product/". $_product->getSku()."/". $urlKey."-14.jpg"   ?>" alt=""/>
                     <?php if ($this->hasProductUrl()):?>
                 </a>
             <?php endif;?>
@@ -177,10 +179,23 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 <!--                                <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>-->
 <!--                                <input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />-->
 
-                                <button class="reduce" type="submit" onclick="redQtyone(<?php echo $_item->getId() ?>);">-</button>
-                                <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" />
-                                <button class="add"  type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);" >+</button>
-
+                                <?php
+                                $res = true;
+                                $categoryIds = $_item->getProduct()->getCategoryIds();
+                                foreach ($categoryIds as $categoryId) {
+                                    $category = Mage::getModel('catalog/category')->load($categoryId);
+                                    $categoryUrlkey = $category->getUrlKey();
+                                    if ($categoryUrlkey == 'custom-made') {
+                                        $res = false;
+                                    }
+                                }
+                                if ($res == false):?>
+                                    <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" disabled="disabled"/>
+                                <?php else: ?>
+                                    <button class="reduce" type="submit" onclick="redQtyone(<?php echo $_item->getId() ?>);">-</button>
+                                    <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" />
+                                    <button class="add" type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);">+ </button>
+                                <?php endif; ?>
 <!--                                <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>-->
                             </div>
 

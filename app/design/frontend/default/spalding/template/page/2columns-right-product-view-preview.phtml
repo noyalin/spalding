@@ -1,0 +1,142 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+
+<script src="<?php echo $this->getSkinUrl('js/move.js'); ?>"></script>
+<script>
+function getByClass(oParent, sClass)
+{
+	var aEle=oParent.getElementsByTagName('*');
+	var aResult=[];
+	
+	for(var i=0;i<aEle.length;i++)
+	{
+		if(aEle[i].className==sClass)
+		{
+			aResult.push(aEle[i]);
+		}
+	}
+	
+	return aResult;
+}
+
+window.onload=function ()
+{
+	var oDiv=document.getElementById('playimages');
+
+	var oBtnPrev=getByClass(oDiv, 'prev')[0];
+	var oBtnNext=getByClass(oDiv, 'next')[0];
+	var oBtnN=getByClass(oDiv, 'prev_n')[0];
+	var oBtnZ=getByClass(oDiv, 'next_z')[0];
+	var oMarkLeft=getByClass(oDiv, 'mark_left')[0];
+	var oMarkRight=getByClass(oDiv, 'mark_right')[0];
+	
+	
+	var oUlBig=getByClass(oDiv, 'big_pic')[0];
+	var aLiBig=oUlBig.getElementsByTagName('li');
+	
+	var nowZIndex=2;
+	var now=0;
+	var timer;
+
+	function tab(){
+		aLiBig[now].style.zIndex=nowZIndex++;
+		
+		if (now % 8 == 0) {
+			clearInterval(timer);			
+		}
+	}
+
+	function tab_1(){
+		
+		aLiBig[now].style.zIndex=nowZIndex++;
+		
+		if (now % 8 == 0) {
+			clearInterval(timer);
+		}
+	}
+	
+	oBtnPrev.onclick=function (){
+		now--;
+		if(now==-1)
+		{
+			now=aLiBig.length-1;
+		}
+		
+		tab_1();
+	};
+	
+	oBtnNext.onclick=function (){
+		now++;
+		if(now==aLiBig.length)
+		{
+			now=0;
+		}
+
+		
+		tab();
+	};
+	
+	oBtnZ.onclick = function(){
+		timer=setInterval(oBtnNext.onclick, 60);
+		//oBtnNext.onclick();
+	};
+
+	oBtnN.onclick = function(){
+		timer=setInterval(oBtnPrev.onclick, 100);
+		//oBtnPrev.onclick();
+	};
+};
+</script>
+</head>
+<body>
+<?php
+//get current category id
+$layer = Mage::getSingleton('catalog/layer');
+$_category = $layer->getCurrentCategory();
+$currentCategoryId= $_category->getId();
+?>
+    <!-- <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/customMade/cBg.jpg');  ?>" alt=""></div> -->
+    <script src="<?php echo $this->getSkinUrl('js/jQueryRotate.js'); ?>"></script>
+    <script src="<?php echo $this->getSkinUrl('js/drag.js'); ?>"></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/zns_style.css'); ?>">
+    
+
+<?php echo $this->getChildHtml('header') ?>
+<div style="height:110px; z-index:-2;"></div>
+<?php echo $this->getChildHtml('content') ?>
+
+</body>
+</html>

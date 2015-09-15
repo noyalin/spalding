@@ -4,10 +4,14 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 {
     public function addProduct($productInfo, $requestInfo=null)
     {
+        $customCategoryId = 39;
         $product = $this->_getProduct($productInfo);
         $request = $this->_getProductRequest($requestInfo);
 
         $productId = $product->getId();
+        $categoryIds = $product->getCategoryIds();
+    
+
 
         if ($product->getStockItem()) {
             $minimumQty = $product->getStockItem()->getMinSaleQty();
@@ -47,6 +51,44 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 
         Mage::dispatchEvent('checkout_cart_product_add_after', array('quote_item' => $result, 'product' => $product));
         $this->getCheckoutSession()->setLastAddedProductId($productId);
+
+        //开始删除已经存在的
+        $keyCustom = in_array($customCategoryId,$categoryIds);
+        if($keyCustom){
+            //此商品属于定制类商品
+            //remove from cart
+            $cartHelper = Mage::helper('checkout/cart');
+            $itemsCart = $cartHelper->getCart()->getItems();
+
+            $superAttribute = $requestInfo['super_attribute'];
+            foreach($itemsCart as $itemCart):
+                $tmpId = $itemCart->getProduct()->getId() ;
+                if($itemCart->getProduct()->getTypeID() == 'simple'){
+                    $productTmp =Mage::getModel('catalog/product')->load($tmpId);
+                    $optionIdTmp = $productTmp->getCustomBall();
+                    if(in_array($optionIdTmp,$superAttribute)){
+                        $itemCart->setQty(1);
+                        $cartHelper->getCart()->save();
+                        continue;
+                    }
+
+                    $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
+                        ->getParentIdsByChild($tmpId);
+                    $productParent = Mage::getModel('catalog/product')->load($parentIds[0]);
+                    $tmpCategoryIdArr = $productParent->getCategoryIds();
+                    if(in_array($customCategoryId,$tmpCategoryIdArr)){
+                        $itemIdCart = $itemCart->getItemId();
+                        mage :: log($itemCart->getItemId() .'  remove id  ');
+                        $cartHelper->getCart()->removeItem($itemIdCart)->save();
+                        break;
+                    }
+                }
+            endforeach;
+
+        }
+        //结束删除
+
+
         return $this;
     }
     
@@ -58,6 +100,8 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
      */
     public function updateItems($data)
     {
+
+
         Mage::dispatchEvent('checkout_cart_update_items_before', array('cart'=>$this, 'info'=>$data));
 
         /* @var $messageFactory Mage_Core_Model_Message */
