@@ -112,10 +112,12 @@
 
     <!-- 第二步  定制参数-->
     <div class="cusMadeCons madeStep_2">
+        <?php if($_product->getSku() == '74-602yc'): ?>
         <div class="cusRemind">
             <div class="cusRemindBox remind_1"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_1.png") ?>" alt=""></div>
             <div class="cusRemindBox remind_2"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_2.png") ?>" alt=""></div>
         </div>
+        <?php endif; ?>
         <?php echo $this->getChildHtml('custommade_view_options') ?>
     </div>
     
