@@ -87,7 +87,7 @@ jQuery(function () {
 
             //点亮对应icon
             jQuery(".remind_1").css("opacity","1");
-            jQuery(".remind_2").css("opacity",".5");
+            jQuery(".remind_2").css("opacity","0");
 
 
             // TODO
@@ -137,7 +137,7 @@ jQuery(function () {
 
                 //点亮对应icon
                 $(".remind_1").css("opacity","1");
-                $(".remind_2").css("opacity",".5");
+                $(".remind_2").css("opacity","0");
             });
 
         }
@@ -169,7 +169,7 @@ jQuery(function () {
 
             //点亮对应icon
             jQuery(".remind_2").css("opacity","1");
-            jQuery(".remind_1").css("opacity",".5");
+            jQuery(".remind_1").css("opacity","0");
 
             // TODO
             jQuery.ajax({
@@ -218,7 +218,7 @@ jQuery(function () {
 
                 //点亮对应icon
                 jQuery(".remind_2").css("opacity","1");
-                jQuery(".remind_1").css("opacity",".5");
+                jQuery(".remind_1").css("opacity","0");
             });
         }
     });

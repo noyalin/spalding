@@ -3342,11 +3342,12 @@ ul.shopsList li span.shopsList_adrs{
 }
 
 .cusRemind .cusRemindBox{
+	position:absolute;
 	margin-bottom:30px;
 }
 
 .cusRemind .remind_2{
-	opacity: .6;
+	opacity: 0;
 }
 
 .rows{
