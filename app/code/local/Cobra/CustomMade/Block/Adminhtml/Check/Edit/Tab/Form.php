@@ -46,13 +46,13 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
         ));
 
         $fieldset->addField('msg1_p1', 'label', array(
-                'label' => Mage::helper('custommade')->__('P1属性1'),
+                'label' => Mage::helper('custommade')->__('P1第一行文字'),
                 'name' => 'msg1_p1',
             )
         );
 
         $fieldset->addField('msg2_p1', 'label', array(
-                'label' => Mage::helper('custommade')->__('P1属性2'),
+                'label' => Mage::helper('custommade')->__('P1第二行文字'),
                 'name' => 'msg2_p1',
             )
         );
@@ -79,13 +79,13 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
         ));
 
         $fieldset->addField('msg1_p2', 'label', array(
-                'label' => Mage::helper('custommade')->__('P2属性1'),
+                'label' => Mage::helper('custommade')->__('P2第一行文字'),
                 'name' => 'msg1_p2',
             )
         );
 
         $fieldset->addField('msg2_p2', 'label', array(
-                'label' => Mage::helper('custommade')->__('P2属性2'),
+                'label' => Mage::helper('custommade')->__('P2第二行文字'),
                 'name' => 'msg2_p2',
             )
         );
