@@ -68,8 +68,7 @@ class CosmoCommerce_Sns_AlipayController extends Mage_Core_Controller_Front_Acti
                 return;
             }else{
                 Mage::getSingleton('customer/session')->loginById($customer->getId());
-//                $this->_redirect('customer/account');
-                $this->_redirectUrl(Mage::getSingleton('customer/session')->getBeforeAuthUrl(true));
+                $this->_redirect(Mage::getSingleton('customer/session')->getBeforeAuthUrl(true));
                 return;
             }
         }

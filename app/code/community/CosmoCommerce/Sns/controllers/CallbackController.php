@@ -125,7 +125,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 				return;
 			}else{
 				Mage::getSingleton('customer/session')->loginById($customer->getId());
-				$this->_redirect('customer/account');
+				$this->_redirect(Mage::getSingleton('customer/session')->getBeforeAuthUrl(true));
 				return;
 			}
 			
@@ -265,7 +265,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
                     return;
                 }else{
                     Mage::getSingleton('customer/session')->loginById($customer->getId());
-                    $this->_redirect('customer/account');
+					$this->_redirect(Mage::getSingleton('customer/session')->getBeforeAuthUrl(true));
                     return;
                 }
             }else{
