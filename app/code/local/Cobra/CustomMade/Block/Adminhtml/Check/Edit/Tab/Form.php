@@ -18,10 +18,9 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        $fieldset->addField('sku', 'text', array(
+        $fieldset->addField('sku', 'label', array(
                 'label' => Mage::helper('custommade')->__('SKU'),
                 'name' => 'sku',
-                'readonly' => 'readonly',
             )
         );
 
@@ -29,6 +28,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             'label' => Mage::helper('custommade')->__('P1类型'),
             'class' => 'required-entry',
             'name' => 'type_p1',
+            'disabled' => true,
             'values' => array(
                 array(
                     'value' => 0,
@@ -45,40 +45,15 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         ));
 
-        $fieldset->addField('msg1_p1', 'text', array(
+        $fieldset->addField('msg1_p1', 'label', array(
                 'label' => Mage::helper('custommade')->__('P1属性1'),
                 'name' => 'msg1_p1',
             )
         );
 
-        $fieldset->addField('msg2_p1', 'text', array(
+        $fieldset->addField('msg2_p1', 'label', array(
                 'label' => Mage::helper('custommade')->__('P1属性2'),
                 'name' => 'msg2_p1',
-            )
-        );
-
-        $fieldset->addField('msg3_p1', 'text', array(
-                'label' => Mage::helper('custommade')->__('P1属性3'),
-                'name' => 'msg3_p1',
-                'after_element_html' => '<br /><small>当类型为文字时，1：小（单行），2：中，3：大，4：小（双行）</small>',
-            )
-        );
-
-        $fieldset->addField('msg4_p1', 'text', array(
-                'label' => Mage::helper('custommade')->__('P1属性4'),
-                'name' => 'msg4_p1',
-            )
-        );
-
-        $fieldset->addField('msg5_p1', 'label', array(
-                'label' => Mage::helper('custommade')->__('预览图URL'),
-                'name' => 'msg5_p1',
-            )
-        );
-
-        $fieldset->addField('msg6_p1', 'label', array(
-                'label' => Mage::helper('custommade')->__('打印图URL'),
-                'name' => 'msg6_p1',
             )
         );
 
@@ -86,6 +61,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             'label' => Mage::helper('custommade')->__('P2类型'),
             'class' => 'required-entry',
             'name' => 'type_p2',
+            'disabled' => true,
             'values' => array(
                 array(
                     'value' => 0,
@@ -102,42 +78,18 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         ));
 
-        $fieldset->addField('msg1_p2', 'text', array(
+        $fieldset->addField('msg1_p2', 'label', array(
                 'label' => Mage::helper('custommade')->__('P2属性1'),
                 'name' => 'msg1_p2',
             )
         );
 
-        $fieldset->addField('msg2_p2', 'text', array(
+        $fieldset->addField('msg2_p2', 'label', array(
                 'label' => Mage::helper('custommade')->__('P2属性2'),
                 'name' => 'msg2_p2',
             )
         );
 
-        $fieldset->addField('msg3_p2', 'text', array(
-                'label' => Mage::helper('custommade')->__('P2属性3'),
-                'name' => 'msg3_p2',
-                'after_element_html' => '<br /><small>当类型为文字时，1：小（单行），2：中，3：大，4：小（双行）</small>',
-            )
-        );
-
-        $fieldset->addField('msg4_p2', 'text', array(
-                'label' => Mage::helper('custommade')->__('P2属性4'),
-                'name' => 'msg4_p2',
-            )
-        );
-
-        $fieldset->addField('msg5_p2', 'label', array(
-                'label' => Mage::helper('custommade')->__('预览图URL'),
-                'name' => 'msg5_p2',
-            )
-        );
-
-        $fieldset->addField('msg6_p2', 'label', array(
-                'label' => Mage::helper('custommade')->__('打印图URL'),
-                'name' => 'msg6_p2',
-            )
-        );
         if ($username == 'admin' || $username == 'spalding1') {
             $fieldset->addField('user1_approve', 'select', array(
                     'label' => Mage::helper('custommade')->__('用户1审批'),
