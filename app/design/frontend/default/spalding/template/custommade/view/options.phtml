@@ -1,0 +1,247 @@
+<?php $this->initView(); ?>
+<?php $this->initOptions();?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_taxHelper = $this->helper('tax'); ?>
+
+<?php if ($this->getCustomStatus() == 1): ?>
+    <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
+<?php else: ?>
+    <?php echo $this->getChildHtml('custommade_view_options_custom') ?>
+<?php endif; ?>
+
+
+<!-- 右侧设置通栏 s -->
+<div class="cusMadeRigZz"></div>
+<div class="cusMadeBox cusMadeRig">
+    <div class="madeBoxVal">
+        <h1>SPALDING <?php echo strtoupper($_product->getSku()) ?></h1>
+        <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></h2>
+    </div>
+    <div class="madeP_btn madeP_1_btn madeP_btn_now">P1</div>
+    <div class="madeP_btn madeP_2_btn">P2</div>
+
+    <!-- p1 -->
+    <div class="madeBoxCons madeBoxCons_p1">
+        <h3>可定制球皮</h3>
+<?php if ($this->getTestMode() == 1): ?>
+        <p class="madeTs">选择添加图案或个性签名</p>
+        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+<?php endif; ?>
+        <!-- 定制参数 -->
+        <dl class="madeBoxFuns">
+<?php if ($this->getTestMode() == 1): ?>
+            <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
+            <dd class="zz"></dd>
+            <dt class="madeKindCons madeKindImg" style="display: none">
+                <h5>***注意***</h5>
+                <p>支持jpg、png格式，单张图片大小2M-8M</p>
+            </dt>
+<?php endif; ?>
+            <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
+            <dd class="zz"></dd>
+            <dt class="madeKindCons madeKindTex">
+                
+                <div class="madeFontFamily clearfix">
+                    <p class="ms-fl">请选择字体：</p>
+                    <div class="fontFamilySel ms-fr">
+                        <span class="chosFam chosFam_p1" data-family="0">CustomGrotesque</span>
+                        <ul class="fontFmList">
+                            <li class="fontFamBox" data-familys="0">CustomGrotesque</li>
+                            <!-- <li class="fontFamBox" data-familys="1">SansSerif</li> -->
+                            <li class="fontFamBox" data-familys="2">Aril</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="madeFfsize clearfix">
+                    <p class="ms-fl">请选择字号：</p>
+                    <div id="customMade_fontSize_1" class="madeKindTexSpan ms-fr">
+                        <div class="sale-num">
+                            <input type="radio" class="required-entry super-attribute-select" id="attribute2098" name="size-p1" data-input="kinds" value="3">
+                            <span class="size_kind setSize_80" for="attribute2098" name="attribute2098">大号</span>
+                            <input type="radio" class="required-entry super-attribute-select" id="attribute2097" name="size-p1" data-input="kinds" value="2" checked="checked">
+                            <span class="size_kind setSize_60 checked" for="attribute2097" name="attribute2097">中号</span>
+                            <input type="radio" class="required-entry super-attribute-select" id="attribute2096" name="size-p1" data-input="kinds" value="1">
+                            <span class="size_kind setSize_40" for="attribute2096" name="attribute2096">小号</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="smalLine">
+                    <label class="lineOne lineOne_p1">
+                        <input type="radio" name="smalSizeCho_p1" value="0" id="smalSizeCho_1" checked="checked">
+                        文字内容单行展示
+                    </label>
+                    <label class="lineTwo lineTwo_p1">
+                        <input type="radio" name="smalSizeCho_p1" value="3" id="smalSizeCho_2">
+                        文字内容双行展示
+                    </label>
+                    
+                </div>
+                <div class="madeTextInp clearfix">
+                    <input type="text" class="madeTextInpBox" placeholder="请输入定制文字" id="textInput_1" onkeyup="SwapTxt_1()" maxlength="16" onpaste="return false;" style="ime-mode:disabled" >
+                    <input type="text" class="madeTextInpBox smaSizeInp" placeholder="请输入第二行定制文字" id="textInput_3" onkeyup="SwapTxt_3()" maxlength="16" onpaste="return false;" style="ime-mode:disabled" >
+                </div>
+            </dt>
+            <dt class="zz_t"></dt>
+            <dd class="madeKindTit madeKindTitNon madeNow"  dataVal='3'>空白</dd>
+            <dd class="zz"></dd>
+        </dl>
+
+        <div class="madeSubmit">
+            <span class="zz"></span>
+            <button type="button" class="submitY" id="submitYP1">完成P1定制</button>
+            <button type="button" class="submitN">重置此次定制</button>
+        </div>
+
+        <!-- 确认&放弃提示 P1 -->
+        <div class="comfBox comfBox_1">
+            <p>是否保存当前定制？</p>
+            <div class="confBtn">
+                <button type="button" class="saveMadeY saveMadeY_p1">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p1">否</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- p2 -->
+    <div class="madeBoxCons madeBoxCons_p2" style="display:none;">
+        <h3>可定制球皮</h3>
+<?php if ($this->getTestMode() == 1): ?>
+        <p class="madeTs">选择添加图案或个性签名</p>
+        <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+<?php endif; ?>
+        <!-- 定制参数 -->
+        <dl class="madeBoxFuns">
+<?php if ($this->getTestMode() == 1): ?>
+            <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
+            <dd class="zz"></dd>
+            <dt class="madeKindCons madeKindImg" style="display: none">
+            <h5>***注意***</h5>
+            <p>支持jpg、png格式，单张图片大小2M-8M</p>
+            </dt>
+<?php endif; ?>
+            <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
+            <dd class="zz"></dd>
+            <dt class="madeKindCons madeKindTex">
+                
+                <div class="madeFontFamily clearfix">
+                    <p class="ms-fl">请选择字体：</p>
+                    <div class="fontFamilySel ms-fr">
+                        <span class="chosFam chosFam_p2" data-family="0">CustomGrotesque</span>
+                        <ul class="fontFmList">
+                            <li class="fontFamBox" data-familys="0">CustomGrotesque</li>
+                            <!-- <li class="fontFamBox" data-familys="1">SansSerif</li> -->
+                            <li class="fontFamBox" data-familys="2">Aril</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="madeFfsize clearfix">
+                    <p class="ms-fl">请选择字号：</p>
+                    <div id="customMade_fontSize_2" class="madeKindTexSpan ms-fr">
+                        <div class="sale-num">
+                            <input type="radio" class="required-entry super-attribute-select" id="attribute2093" name="size-p2" data-input="kinds" value="3">
+                            <span class="size_kind setSize_80" for="attribute2093" name="attribute2093">大号</span>
+                            <input type="radio" class="required-entry super-attribute-select" id="attribute2092" name="size-p2" data-input="kinds" value="2">
+                            <span class="size_kind setSize_60 checked" for="attribute2092" name="attribute2092">中号</span>
+                            <input type="radio" class="required-entry super-attribute-select" id="attribute2091" name="size-p2" data-input="kinds" value="1">
+                            <span class="size_kind setSize_40" for="attribute2091" name="attribute2091">小号</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="smalLine">
+                    <label class="lineOne lineOne_p2">
+                        <input type="radio" name="smalSizeCho_p2" value="0" id="smalSizeCho_3" checked="checked">
+                        文字内容单行展示
+                    </label>
+                    <label class="lineTwo lineTwo_p2">
+                        <input type="radio" name="smalSizeCho_p2" value="3" id="smalSizeCho_4">
+                        文字内容双行展示
+                    </label>
+                </div>
+                <div class="madeTextInp clearfix">
+                    <input type="text" class="madeTextInpBox" placeholder="请输入定制文字" id="textInput_2" onkeyup="SwapTxt_2()" maxlength="16" onpaste="return false;" style="ime-mode:disabled" >
+                    <input type="text" class="madeTextInpBox smaSizeInp" placeholder="请输入第二行定制文字" id="textInput_4" onkeyup="SwapTxt_4()" maxlength="16" onpaste="return false;" style="ime-mode:disabled" >
+                </div>
+            </dt>
+            <dt class="zz_t"></dt>
+            <dd class="madeKindTit madeKindTitNon madeNow" dataVal='3'>空白</dd>
+            <dd class="zz"></dd>
+        </dl>
+
+        <div class="madeSubmit">
+            <span class="zz"></span>
+            <button type="button" class="submitY" id="submitYP2">完成P2定制</button>
+            <button type="button" class="submitN">重置此次定制</button>
+        </div>
+
+        <!-- 确认&放弃提示 P1 -->
+        <div class="comfBox comfBox_2">
+            <p>是否保存当前定制？</p>
+            <div class="confBtn">
+                <button type="button" class="saveMadeY saveMadeY_p2">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p2">否</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="display:none;">
+        <input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
+        <input type="hidden" name="related_product" id="related-products-field" value=""/>
+        <input type="hidden" name="super_attribute[<?php echo $this->getSizeId() ?>]" value="<?php echo $this->getSizeValue() ?>"/>
+<!--        <input type="hidden" name="super_attribute[--><?php //echo $this->getCustomId() ?><!--]" value="--><?php //echo $this->getCustomValue() ?><!--"/>-->
+    </div>
+
+    <div class="madeFuns">
+        <button type="submit" onclick="productAddToCartForm.submit(this)">加入购物车</button>
+    </div>
+<!--    <div class="viewMade"><button type="button">取消预览</button></div>-->
+</div>
+<!-- 右侧设置通栏 e -->
+
+
+
+<!-- 编辑后单面预览 P1 -->
+<div class="viewPage_P1" dataType="2">
+    <!-- <div class="viewPageZz"><img src="<?php  echo $this->getSkinUrl("images/customMade/".$this->getSku()."/zz/01.png") ?>" alt=""></div> -->
+    <div class="viewPage_P1_bg">
+        <img class="pageBg" src="" alt="">
+    </div>
+    <div class="viewPage_p1_wrap">
+        
+    </div>
+</div>
+<!-- 编辑后单面预览 P2 -->
+<div class="viewPage_P2" dataType="2">
+    <div class="viewPage_P2_bg">
+        <img class="pageBg" src="" alt="">
+    </div>
+    <div class="viewPage_p2_wrap">
+        
+    </div>
+</div>
+
+
+<!-- made loading -->
+<div class="madeLoading">
+    <div class="loadingBox" id="madeLoadingBox">
+        <h2 style="text-align: center"></h2>
+        <p style="text-align: center"></p>
+        <div class="loadingImg">
+            <img src="<?php  echo $this->getSkinUrl("images/customMade/madeLoading.gif") ?>" alt="loading...">
+        </div>
+    </div>
+</div>
+
+<!-- not to do sth -->
+<div class="notTodo">
+    <div class="closeTodo">X</div>
+    <div class="loadingBox" id="noTodoBox">
+        <h2 style="text-align: center"></h2>
+        <p style="text-align: center"></p>
+        <div class="loadingImg">
+            <img src="<?php  echo $this->getSkinUrl("images/customMade/noTodo.png") ?>" alt="">
+        </div>
+
+    </div>
+</div>

@@ -112,6 +112,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         );
         $order->save();
 
+        Mage::getModel('custommade/info')->saveCustomMade($order);
 
         $storeCode = Mage::app()->getStore()->getCode();
 //        if('sneakerhead_cn_mobile' ==  $storeCode){
@@ -319,6 +320,11 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     //create xml
                     $model = Mage::getModel('sales/postorder');
                     $model->post_new_order($order);
+//                    $postMessage = Mage::getModel('sales/postmessage');
+//                    $postMessage->saveDataAndSendWebservice($order);
+
+                    $this->SavePaymentInfo($out_trade_no);
+
                     try{
                         $order->save();
                         $this->sendMail($out_trade_no);
@@ -711,6 +717,9 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     $model->post_new_order($order);
                     //$postMessage = Mage::getModel('sales/postmessage');
                     //$postMessage->saveDataAndSendWebservice($order);
+
+                    $this->SavePaymentInfo($postData['out_trade_no']);
+
                     try{
                         $order->save();
                         if($method == "get"){
@@ -740,5 +749,20 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
             return;
         }
 
+    }
+
+    private function SavePaymentInfo($orderId)
+    {
+        try{
+            $orderCustom = Mage::getModel('custommade/info')->loadByIncrementId($orderId);
+            if ($orderCustom->getId()) {
+                $orderCustom->approving();
+                $orderCustom->save();
+            }
+        } catch(Exception $e){
+            Mage :: log( "WeixinPayment Error Message: orderId = ".$orderId);
+            Mage :: log( "WeixinPayment Error Message: ".$e->getMessage());
+//                    $this->sendMail();
+        }
     }
 }
