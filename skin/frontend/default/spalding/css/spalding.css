@@ -4204,5 +4204,20 @@ dl.madeBoxFuns dt.zz_t_2{
 	background:url(../images/customMade/checked_2.png) left center no-repeat;
 }
 
+@media screen and (min-width:1800px){
+	.cusRemind{
+		left:600px;
+	}
+}
 
+@media screen and (min-width:1040px) and (max-width:1300px){
+	.cusRemind{
+		left:250px;
+	}
+}
 
+@media screen and (max-width:1039px){
+	.cusRemind{
+		left:180px;
+	}
+}
