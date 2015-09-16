@@ -234,14 +234,14 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
 
     private function export($infoIds)
     {
-        $time = date("dMYHis");
+        $time = date("YmdHis");
         $dir = "/usr/custommade/customlist/" . $time;
         mkdir($dir);
         $file = fopen($dir . "/" . $time . ".txt", "w");
 
         foreach ($infoIds as $infoId) {
             $subscriber = Mage::getModel('custommade/info')->load($infoId);
-            $content = $subscriber->getId() . "-" . $subscriber->getSku() . "-" . $subscriber->getOrderId() . "\r\n";
+            $content = $subscriber->getSku() . "-" . $subscriber->getOrderId() . "\r\n";
             fwrite($file, $content);
             $p1_preview_url = $subscriber->getMsg5P1();
             $p1_print_url = $subscriber->getMsg6P1();
