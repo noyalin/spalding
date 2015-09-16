@@ -242,6 +242,9 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         foreach ($infoIds as $infoId) {
             $subscriber = Mage::getModel('custommade/info')->load($infoId);
             $content = $subscriber->getSku() . "-" . $subscriber->getOrderId() . "\r\n";
+            if ($subscriber->getStatus() != 2) {
+                continue;
+            }
             fwrite($file, $content);
             $p1_preview_url = $subscriber->getMsg5P1();
             $p1_print_url = $subscriber->getMsg6P1();
