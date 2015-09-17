@@ -178,10 +178,12 @@
 
     function showRestDlg(comfRes) {
         jQuery(".comfResBox").css("display","block");
+        jQuery(".resY").unbind("click");
         jQuery(".resY").click(function(){
             comfRes();
         });
 
+        jQuery(".resN").unbind("click");
         jQuery(".resN").click(function(){
             jQuery(this).parents(".comfResBox").css("display","none");
         });
@@ -234,7 +236,6 @@
         jQuery(".madeP_2_btn").removeClass("madeP_btn_now");
         jQuery(".madeP_1_btn").addClass("madeP_btn_now");
 
-        jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
         jQuery('#customMade_fontSize_1 span').removeClass('checked');
         jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
 
@@ -384,14 +385,15 @@
         }
 
         //重置
-
+        jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
+        
     }
 
 
     //P2
     function resetView_2(_dataType, value1, value2, value3, value4) {
         jQuery(".comfResBox").css("display","none");
-        
+
         jQuery(".madeBoxCons_p1").css("display", "none");
         jQuery(".madeBoxCons_p2").css("display", "block");
         jQuery(".select_P2").css("display", "block");
@@ -400,7 +402,6 @@
         jQuery(".madeP_1_btn").removeClass("madeP_btn_now");
         jQuery(".madeP_2_btn").addClass("madeP_btn_now");
 
-        jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
         jQuery('#customMade_fontSize_2 span').removeClass('checked');
         jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
         jQuery(".viewPage_P1").css("display", "none");//隐藏预览1
@@ -544,6 +545,7 @@
             _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
         }
 
+        jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
         //重置
 
     }
