@@ -77,10 +77,26 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
                     $productParent = Mage::getModel('catalog/product')->load($parentIds[0]);
                     $tmpCategoryIdArr = $productParent->getCategoryIds();
                     if(in_array($customCategoryId,$tmpCategoryIdArr)){
-                        $itemIdCart = $itemCart->getItemId();
-                        mage :: log($itemCart->getItemId() .'  remove id  ');
-                        $cartHelper->getCart()->removeItem($itemIdCart)->save();
-                        break;
+                        if(isset($parentIds[0]) &&  $parentIds[0] == $productId){
+                            //添加了同样的一个定制球，应该把数量置为1
+                            $itemCart->setQty(1);
+                            $cartHelper->getCart()->save();
+                        }else{
+                            $itemIdCart = $itemCart->getItemId();
+                            mage :: log($itemCart->getItemId() .'  remove id  ');
+                            $cartHelper->getCart()->removeItem($itemIdCart)->save();
+                            break;
+                        }
+                    }
+                }else{
+                    $productTmp =Mage::getModel('catalog/product')->load($tmpId);
+                    $tmpCategoryIdArr = $productTmp->getCategoryIds();
+                    if(in_array($customCategoryId,$tmpCategoryIdArr)){
+                        if( $tmpId == $productId ){
+                            //添加了同样的一个定制球，应该把数量置为1
+                            $itemCart->setQty(1);
+                            $cartHelper->getCart()->save();
+                        }
                     }
                 }
             endforeach;
