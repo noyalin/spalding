@@ -111,7 +111,11 @@
 
 </form>
 
-
+<div class="opc-menu">
+<!--    --><?php //if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+        <?php echo $this->getChildHtml('logincustom');?>
+<!--    --><?php //endif;?>
+</div>
 <script type="text/javascript">
     jQuery(".saveMadeY_p1").click(function () {
 //        madeLoading("提交成功","拼命加载中，请耐心等待...");
