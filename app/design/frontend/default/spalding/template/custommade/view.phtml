@@ -5,6 +5,7 @@
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 <input id="agree" type="hidden" value="<?php echo $this->getUrl('custommade/index/agree'); ?>"/>
 
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/iwd/opc/opc.css'); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.css'); ?>" type="text/css" />
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-ui.js'); ?>"></script>
@@ -112,9 +113,9 @@
 </form>
 
 <div class="opc-menu">
-<!--    --><?php //if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+    <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
         <?php echo $this->getChildHtml('logincustom');?>
-<!--    --><?php //endif;?>
+    <?php endif;?>
 </div>
 <script type="text/javascript">
     jQuery(".saveMadeY_p1").click(function () {

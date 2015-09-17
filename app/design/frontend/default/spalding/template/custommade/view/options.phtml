@@ -202,7 +202,18 @@
     </div>
 
     <div class="madeFuns">
-        <button type="submit" onclick="productAddToCartForm.submit(this)">加入购物车</button>
+        <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){
+            ?>
+            <button type="submit" onclick="jQuery('#modal-login').addClass('md-show');">加入购物车</button>
+        <?php }else{
+            ?>
+            <button type="submit" onclick="productAddToCartForm.submit(this)">加入购物车</button>
+        <?php
+        }?>
+
+
+
+
     </div>
 <!--    <div class="viewMade"><button type="button">取消预览</button></div>-->
 </div>
