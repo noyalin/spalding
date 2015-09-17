@@ -3936,7 +3936,16 @@ dl.madeBoxFuns dt.zz_t_2{
 	margin-top:-100px;
 	
 }
-
+.comfResBox{
+	display: none;
+	position:absolute;
+	width:100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: #000;
+	z-index:1;
+}
 
 .comfBox{
 	display: none;
@@ -3950,6 +3959,24 @@ dl.madeBoxFuns dt.zz_t_2{
 	font-size: 12px;
 	text-align: center;
 	border-radius: 4px;
+}
+
+.comfBoxRes{
+	
+	position: relative;
+	width: 170px;
+	height: 100px;
+	overflow: hidden;
+	margin:130px auto 0;
+	background: #e6e6e6;
+	color:#000;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 4px;
+}
+
+.comfBoxRes>p{
+	margin:20px 0 15px;
 }
 
 .comfBox>p{
@@ -3970,6 +3997,33 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .confBtn button.saveMadeN{
+	background: #eee;
+	color: #7c7c7c;
+	border-color:#cfcfcf;
+}
+
+
+
+
+
+
+
+
+
+.confResBtn button{
+	display: inline-block;
+	width:50px;
+	height: 30px;
+	border:1px solid #000;
+	border-radius: 2px;
+	cursor:pointer;
+}
+
+.confResBtn button.resY{
+	background: #f29d09;
+}
+
+.confResBtn button.resN{
 	background: #eee;
 	color: #7c7c7c;
 	border-color:#cfcfcf;
