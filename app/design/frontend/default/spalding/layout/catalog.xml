@@ -266,7 +266,7 @@ Product view
 
 
                 <block type="custommade/view" name="custommade.view" as="custommade_view" template="custommade/view.phtml">
-                    <block type="custommade/login" name="logincustom" as="logincustom" template="custommade/login.phtml">
+                    <block type="custommade/login" name="logincustom" as="logincustom" template="custommade/view/login.phtml">
                     </block>
                     <block type="custommade/view" name="custommade.view.options" as="custommade_view_options" template="custommade/view/options.phtml">
                         <block type="custommade/view" name="custommade.view.options.preview" as="custommade_view_options_preview" template="custommade/view/options/preview.phtml" />
