@@ -118,6 +118,11 @@
     <?php endif;?>
 </div>
 <script type="text/javascript">
+    jQuery(document).on('click','.md-modal .close', function(e){
+        e.preventDefault();
+        jQuery('.md-modal').removeClass('md-show');
+    });
+
     jQuery(".saveMadeY_p1").click(function () {
 //        madeLoading("提交成功","拼命加载中，请耐心等待...");
         // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
