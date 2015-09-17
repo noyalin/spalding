@@ -14,8 +14,7 @@ function getByClass(oParent, sClass)
     return aResult;
 }
 
-window.onload=function ()
-{
+window.onload=function (){
     var oDiv=document.getElementById('playimages');
 
     var oBtnPrev=getByClass(oDiv, 'prev')[0];
@@ -73,22 +72,22 @@ window.onload=function ()
         tab();
     };
 
-    oBtnZ.onclick = function(){
-        timer=setInterval(oBtnNext.onclick, 60);
-
-        oBtnZ_top.style.display = "block";
-        setTimeout(function(){
-            oBtnZ_top.style.display = "none";
-        },600);
-        // oBtnNext.onclick();
-    };
-
     oBtnN.onclick = function(){
-        timer=setInterval(oBtnPrev.onclick, 60);
+        timer=setInterval(oBtnNext.onclick, 60);
 
         oBtnN_top.style.display = "block";
         setTimeout(function(){
             oBtnN_top.style.display = "none";
+        },600);
+        // oBtnNext.onclick();
+    };
+
+    oBtnZ.onclick = function(){
+        timer=setInterval(oBtnPrev.onclick, 60);
+        
+        oBtnZ_top.style.display = "block";
+        setTimeout(function(){
+            oBtnZ_top.style.display = "none";
         },600);
         // oBtnPrev.onclick();
     };

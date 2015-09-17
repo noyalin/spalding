@@ -43,24 +43,6 @@
                     <p>
                         本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
                     </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
                 </div>
                 <div class="jScrollbar_draggable">
                     <a href="#" class="draggable"></a>
@@ -112,10 +94,12 @@
 
     <!-- 第二步  定制参数-->
     <div class="cusMadeCons madeStep_2">
+        <?php if($_product->getSku() == '74-602yc'): ?>
         <div class="cusRemind">
             <div class="cusRemindBox remind_1"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_1.png") ?>" alt=""></div>
             <div class="cusRemindBox remind_2"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_2.png") ?>" alt=""></div>
         </div>
+        <?php endif; ?>
         <?php echo $this->getChildHtml('custommade_view_options') ?>
     </div>
     
@@ -192,11 +176,25 @@
         // resetView_2(2, "abcdeft", 3);
     });
 
+    function showRestDlg(comfRes) {
+        jQuery(".comfResBox").css("display","block");
+        jQuery(".resY").click(function(){
+            comfRes();
+        });
+
+        jQuery(".resN").click(function(){
+            jQuery(this).parents(".comfResBox").css("display","none");
+        });
+    }
+
     var _resNow_1 = jQuery(".madeBoxCons_p1").find(".submitN");
     var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
 
     jQuery(_resNow_1).click(function () {
-//        madeLoading("提交成功","拼命加载中，请耐心等待...");
+        showRestDlg(resetNow1);
+    });
+
+    function resetNow1() {
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
@@ -206,10 +204,13 @@
                 resetView_1(3, "", "", "", "");
             }
         });
-    });
+    }
 
     jQuery(_resNow_2).click(function () {
-//        madeLoading("提交成功","拼命加载中，请耐心等待...");
+        showRestDlg(resetNow2);
+    });
+
+    function resetNow2() {
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
@@ -219,9 +220,11 @@
                 resetView_2(3, "", "", "", "");
             }
         });
-    });
+    }
 
     function resetView_1(_dataType, value1, value2, value3, value4) {
+
+        jQuery(".comfResBox").css("display","none");
 
         jQuery(".madeBoxCons_p1").css("display", "block");
         jQuery(".madeBoxCons_p2").css("display", "none");
