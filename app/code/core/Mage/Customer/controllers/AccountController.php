@@ -186,9 +186,6 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
     protected function _loginPostRedirect()
     {
         $session = $this->_getSession();
-//        mage :: log($session->getBeforeAuthUrl() .' aaaaaaaaaaaaaa');
-//        mage :: log( Mage::getBaseUrl() .' bbbbbbbbbb');
-//        mage :: log(  $this->_getHelper('customer')->getLogoutUrl() .' ccccccccccccc');
         if (!$session->getBeforeAuthUrl() || $session->getBeforeAuthUrl() == Mage::getBaseUrl()) {
             // Set default URL to redirect customer to
             $session->setBeforeAuthUrl($this->_getHelper('customer')->getAccountUrl());
@@ -222,7 +219,6 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
                 $session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
             }
         }
-//        mage :: log($session->getBeforeAuthUrl(true) .' last 00');
         $this->_redirectUrl($session->getBeforeAuthUrl(true));
     }
 
