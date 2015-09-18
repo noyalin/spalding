@@ -34,6 +34,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         self::setSession($session);
         Mage::getSingleton('customer/session')->setBeforeAuthUrl(Mage::getUrl('*/*/*', array('_secure' => true)));
+        mage :: log (Mage::getUrl('*/*/*', array('_secure' => true)) .' innnnnnnnnn  ');
         echo "indexAction Ok";
     }
 
