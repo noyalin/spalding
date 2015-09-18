@@ -3332,6 +3332,7 @@ ul.shopsList li span.shopsList_adrs{
 .cusMadeCons{
 	position: relative;
 	min-height: 570px;
+	z-index: 0;
 }
 
 .cusRemind{
@@ -3459,7 +3460,7 @@ ul.shopsList li span.shopsList_adrs{
 	right:0;
 	width:340px;
 	height: 500px;
-	z-index: 9;
+	z-index: 0;
 	background: rgba(0,0,0,.8);
 }
 .cusMadeRig{
@@ -3472,6 +3473,7 @@ ul.shopsList li span.shopsList_adrs{
 	background:#030403;
 	border:1px solid #323232;
 	border-right:none;
+	z-index: -1;
 }
 
 .madeBoxVal{
