@@ -3370,7 +3370,7 @@ ul.shopsList li span.shopsList_adrs{
 	top:50%;
 	margin-left:-205px;
 	margin-top:-260px;
-	background:#000;
+	background:url(../images/customMade/rowsBg.png) left top repeat-x #000;
 	border:1px solid #292929;
 }
 .rowsWrap h2.rowsTitle{
@@ -3380,7 +3380,7 @@ ul.shopsList li span.shopsList_adrs{
 	font-weight: bold;
 	height:30px;
 	line-height: 30px;
-	margin:10px 0;
+	margin:5px 0;
 }
 .rowsText{
 	height:370px;
