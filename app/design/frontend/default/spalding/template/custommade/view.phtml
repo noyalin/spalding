@@ -5,6 +5,7 @@
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 <input id="agree" type="hidden" value="<?php echo $this->getUrl('custommade/index/agree'); ?>"/>
 
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/iwd/opc/opc.css'); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.css'); ?>" type="text/css" />
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-ui.js'); ?>"></script>
@@ -22,24 +23,6 @@
             <h2 class="rowsTitle">服务协议及法律条款</h2>
             <div class="rowsText jScrollbar3 clearfix">
                 <div class="jScrollbar_mask">
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
-                    <p>
-                        本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
-                    </p>
                     <p>
                         本网站所提供的数据仅供一般性参考，本司并不对该等数据作任何保证，本司可以随时更改该等数据而毋 须事先通知。
                     </p>
@@ -127,8 +110,17 @@
 
 </form>
 
-
+<div class="opc-menu">
+    <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+        <?php echo $this->getChildHtml('logincustom');?>
+    <?php endif;?>
+</div>
 <script type="text/javascript">
+    jQuery(document).on('click','.md-modal .close', function(e){
+        e.preventDefault();
+        jQuery('.md-modal').removeClass('md-show');
+    });
+
     jQuery(".saveMadeY_p1").click(function () {
 //        madeLoading("提交成功","拼命加载中，请耐心等待...");
         // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
@@ -192,11 +184,27 @@
         // resetView_2(2, "abcdeft", 3);
     });
 
+    function showRestDlg(comfRes) {
+        jQuery(".comfResBox").css("display","block");
+        jQuery(".resY").unbind("click");
+        jQuery(".resY").click(function(){
+            comfRes();
+        });
+
+        jQuery(".resN").unbind("click");
+        jQuery(".resN").click(function(){
+            jQuery(this).parents(".comfResBox").css("display","none");
+        });
+    }
+
     var _resNow_1 = jQuery(".madeBoxCons_p1").find(".submitN");
     var _resNow_2 = jQuery(".madeBoxCons_p2").find(".submitN");
 
     jQuery(_resNow_1).click(function () {
-//        madeLoading("提交成功","拼命加载中，请耐心等待...");
+        showRestDlg(resetNow1);
+    });
+
+    function resetNow1() {
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
@@ -206,10 +214,13 @@
                 resetView_1(3, "", "", "", "");
             }
         });
-    });
+    }
 
     jQuery(_resNow_2).click(function () {
-//        madeLoading("提交成功","拼命加载中，请耐心等待...");
+        showRestDlg(resetNow2);
+    });
+
+    function resetNow2() {
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#reset').val(),
@@ -219,9 +230,11 @@
                 resetView_2(3, "", "", "", "");
             }
         });
-    });
+    }
 
     function resetView_1(_dataType, value1, value2, value3, value4) {
+
+        jQuery(".comfResBox").css("display","none");
 
         jQuery(".madeBoxCons_p1").css("display", "block");
         jQuery(".madeBoxCons_p2").css("display", "none");
@@ -231,7 +244,6 @@
         jQuery(".madeP_2_btn").removeClass("madeP_btn_now");
         jQuery(".madeP_1_btn").addClass("madeP_btn_now");
 
-        jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
         jQuery('#customMade_fontSize_1 span').removeClass('checked');
         jQuery('#customMade_fontSize_1 input[type="radio"]').removeAttr('checked');
 
@@ -246,6 +258,7 @@
         _comfBox.siblings(".madeSubmit").find(".zz").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
         // jQuery(this).parents().find(".select_P2").css("display","block");
         // jQuery(this).parents().find(".select_P1").css("display","none");
 //        jQuery("#options_pos").val(2);
@@ -274,7 +287,9 @@
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
             _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
             _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
 
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
@@ -292,7 +307,9 @@
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "block");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
             _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
 
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
@@ -357,7 +374,9 @@
             _comfBox.siblings(".madeSubmit").find(".zz").css("display", "none");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").css("display","block");
             _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").css("display","none");
             _viewPage1.css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("");
@@ -381,12 +400,14 @@
         }
 
         //重置
-
+        jQuery(".select_N1").html(jQuery(".madeTexWrap").find(".select_P1").html());
+        
     }
 
 
     //P2
     function resetView_2(_dataType, value1, value2, value3, value4) {
+        jQuery(".comfResBox").css("display","none");
 
         jQuery(".madeBoxCons_p1").css("display", "none");
         jQuery(".madeBoxCons_p2").css("display", "block");
@@ -396,7 +417,6 @@
         jQuery(".madeP_1_btn").removeClass("madeP_btn_now");
         jQuery(".madeP_2_btn").addClass("madeP_btn_now");
 
-        jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
         jQuery('#customMade_fontSize_2 span').removeClass('checked');
         jQuery('#customMade_fontSize_2 input[type="radio"]').removeAttr('checked');
         jQuery(".viewPage_P1").css("display", "none");//隐藏预览1
@@ -412,7 +432,9 @@
         _comfBox.siblings(".madeSubmit").find(".zz").css("display", "block");
         _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
         _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+        _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
 //        jQuery("#options_pos").val(2);
 //        var type = jQuery("#options_type_p1").val();
         var _viewPage2 = jQuery(".viewPage_P2"); //获取预览P2
@@ -433,7 +455,9 @@
             _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
 
             _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
             _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
 
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
@@ -451,7 +475,9 @@
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "block");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
             _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
 
             _viewPage2.css("display", "block"); //显示P2画面
             _bgZindx.css("z-index", "0");   //重置P2背景z-index值
@@ -516,7 +542,9 @@
             _comfBox.siblings(".madeSubmit").find(".zz").css("display", "none");
 
             _comfBox.siblings(".madeSubmit").find(".submitY").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").css("display","block");
             _comfBox.siblings(".madeSubmit").find(".submitN").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").css("display","none");
             _viewPage2.css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("");
@@ -540,6 +568,7 @@
             _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
         }
 
+        jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
         //重置
 
     }
@@ -570,6 +599,7 @@
 
 <?php if ($this->getCustomStatus() == 1): ?>
         jQuery(".cusMadeRigZz").css("display","block")
+        jQuery(".cusRemind").css("display","none");
 <?php endif; ?>
     });
 

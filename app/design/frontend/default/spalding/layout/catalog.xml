@@ -263,7 +263,11 @@ Product view
                 <action method="unsetCallChild"><child>container1</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
                 <action method="unsetCallChild"><child>container2</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
 
+
+
                 <block type="custommade/view" name="custommade.view" as="custommade_view" template="custommade/view.phtml">
+                    <block type="opc/onepage_login" name="logincustom" as="logincustom" template="opc/onepage/login.phtml">
+                    </block>
                     <block type="custommade/view" name="custommade.view.options" as="custommade_view_options" template="custommade/view/options.phtml">
                         <block type="custommade/view" name="custommade.view.options.preview" as="custommade_view_options_preview" template="custommade/view/options/preview.phtml" />
                         <block type="custommade/view" name="custommade.view.options.custom" as="custommade_view_options_custom" template="custommade/view/options/custom.phtml" />

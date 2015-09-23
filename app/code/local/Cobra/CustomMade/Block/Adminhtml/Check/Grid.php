@@ -47,22 +47,22 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'html_decorators'   => array('nobr')
         ));
 
-        $this->addColumn('type_p1', array(
-            'header'            => Mage::helper('custommade')->__('P1类型'),
-            'align'             => 'center',
-            'width'             => '80px',
-            'index'             => 'type_p1',
-            'sortable'          => false,
-            'type'              => 'options',
-            'options'           => array(
-                1   => '图片',
-                2   => '文字',
-            ),
-            'html_decorators'   => array('nobr')
-        ));
+//        $this->addColumn('type_p1', array(
+//            'header'            => Mage::helper('custommade')->__('P1类型'),
+//            'align'             => 'center',
+//            'width'             => '80px',
+//            'index'             => 'type_p1',
+//            'sortable'          => false,
+//            'type'              => 'options',
+//            'options'           => array(
+//                1   => '图片',
+//                2   => '文字',
+//            ),
+//            'html_decorators'   => array('nobr')
+//        ));
 
         $this->addColumn('msg5_p1', array(
-            'header'            => Mage::helper('custommade')->__('预览图'),
+            'header'            => Mage::helper('custommade')->__('P1预览图'),
             'align'             => 'center',
             'index'             => 'msg5_p1',
             'renderer'          => 'custommade/adminhtml_check_renderer_content',
@@ -73,7 +73,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('msg6_p1', array(
-            'header'            => Mage::helper('custommade')->__('打印图'),
+            'header'            => Mage::helper('custommade')->__('P1打印图'),
             'align'             => 'center',
             'index'             => 'msg6_p1',
             'renderer'          => 'custommade/adminhtml_check_renderer_content',
@@ -83,22 +83,22 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'html_decorators'   => array('nobr')
         ));
 
-        $this->addColumn('type_p2', array(
-            'header'            => Mage::helper('custommade')->__('P2类型'),
-            'align'             => 'center',
-            'width'             => '80px',
-            'index'             => 'type_p2',
-            'sortable'          => false,
-            'type'              => 'options',
-            'options'           => array(
-                1   => '图片',
-                2   => '文字',
-            ),
-            'html_decorators'   => array('nobr')
-        ));
+//        $this->addColumn('type_p2', array(
+//            'header'            => Mage::helper('custommade')->__('P2类型'),
+//            'align'             => 'center',
+//            'width'             => '80px',
+//            'index'             => 'type_p2',
+//            'sortable'          => false,
+//            'type'              => 'options',
+//            'options'           => array(
+//                1   => '图片',
+//                2   => '文字',
+//            ),
+//            'html_decorators'   => array('nobr')
+//        ));
 
         $this->addColumn('msg5_p2', array(
-            'header'            => Mage::helper('custommade')->__('预览图'),
+            'header'            => Mage::helper('custommade')->__('P2预览图'),
             'align'             => 'center',
             'index'             => 'msg5_p2',
             'renderer'          => 'custommade/adminhtml_check_renderer_content',
@@ -109,7 +109,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('msg6_p2', array(
-            'header'            => Mage::helper('custommade')->__('打印图'),
+            'header'            => Mage::helper('custommade')->__('P2打印图'),
             'align'             => 'center',
             'index'             => 'msg6_p2',
             'renderer'          => 'custommade/adminhtml_check_renderer_content',
@@ -119,6 +119,61 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'html_decorators'   => array('nobr')
         ));
 
+        $this->addColumn('user1_approve', array(
+            'header'            => Mage::helper('custommade')->__('用户1'),
+            'align'             => 'center',
+            'width'             => '80px',
+            'index'             => 'user1_approve',
+            'type'              => 'options',
+            'options' => array(
+                0   => '待审批',
+                1   => '审批通过',
+                2   => '审批不通过',
+            ),
+            'html_decorators'   => array('nobr')
+        ));
+
+        $this->addColumn('user2_approve', array(
+            'header'            => Mage::helper('custommade')->__('用户2'),
+            'align'             => 'center',
+            'width'             => '80px',
+            'index'             => 'user2_approve',
+            'type'              => 'options',
+            'options' => array(
+                0   => '待审批',
+                1   => '审批通过',
+                2   => '审批不通过',
+            ),
+            'html_decorators'   => array('nobr')
+        ));
+
+        $this->addColumn('user3_approve', array(
+            'header'            => Mage::helper('custommade')->__('用户3'),
+            'align'             => 'center',
+            'width'             => '80px',
+            'index'             => 'user3_approve',
+            'type'              => 'options',
+            'options' => array(
+                0   => '待审批',
+                1   => '审批通过',
+                2   => '审批不通过',
+            ),
+            'html_decorators'   => array('nobr')
+        ));
+
+        $this->addColumn('user4_approve', array(
+            'header'            => Mage::helper('custommade')->__('用户4'),
+            'align'             => 'center',
+            'width'             => '80px',
+            'index'             => 'user4_approve',
+            'type'              => 'options',
+            'options' => array(
+                0   => '待审批',
+                1   => '审批通过',
+                2   => '审批不通过',
+            ),
+            'html_decorators'   => array('nobr')
+        ));
 
         $this->addColumn('status', array(
             'header'            => Mage::helper('custommade')->__('订单状态'),

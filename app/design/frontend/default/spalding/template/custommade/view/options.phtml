@@ -17,8 +17,12 @@
         <h1>SPALDING <?php echo strtoupper($_product->getSku()) ?></h1>
         <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></h2>
     </div>
-    <div class="madeP_btn madeP_1_btn madeP_btn_now">P1</div>
-    <div class="madeP_btn madeP_2_btn">P2</div>
+    <div class="madeP_btn madeP_1_btn madeP_btn_now">
+        定<br>制<br>1
+    </div>
+    <div class="madeP_btn madeP_2_btn">
+        定<br>制<br>2
+    </div>
 
     <!-- p1 -->
     <div class="madeBoxCons madeBoxCons_p1">
@@ -83,14 +87,13 @@
                 </div>
             </dt>
             <dt class="zz_t"></dt>
-            <dd class="madeKindTit madeKindTitNon madeNow"  dataVal='3'>空白</dd>
+            <dd class="madeKindTit madeKindTitNon madeNow"  dataVal='3'>原始球皮</dd>
             <dd class="zz"></dd>
         </dl>
 
         <div class="madeSubmit">
-            <span class="zz"></span>
             <button type="button" class="submitY" id="submitYP1">完成P1定制</button>
-            <button type="button" class="submitN">重置此次定制</button>
+            <button type="button" class="submitN">重置P1定制</button>
         </div>
 
         <!-- 确认&放弃提示 P1 -->
@@ -165,14 +168,13 @@
                 </div>
             </dt>
             <dt class="zz_t"></dt>
-            <dd class="madeKindTit madeKindTitNon madeNow" dataVal='3'>空白</dd>
+            <dd class="madeKindTit madeKindTitNon madeNow" dataVal='3'>原始球皮</dd>
             <dd class="zz"></dd>
         </dl>
 
         <div class="madeSubmit">
-            <span class="zz"></span>
             <button type="button" class="submitY" id="submitYP2">完成P2定制</button>
-            <button type="button" class="submitN">重置此次定制</button>
+            <button type="button" class="submitN">重置P2定制</button>
         </div>
 
         <!-- 确认&放弃提示 P1 -->
@@ -184,7 +186,16 @@
             </div>
         </div>
     </div>
-
+    <div class="comfResBox">
+        <div class="comResBg"></div>
+        <div class="comfBoxRes">
+            <p>确定重置定制？</p>
+            <div class="confResBtn">
+                <button type="button" class="resY resY_p2">是</button>
+                <button type="button" class="resN resN_p2">否</button>
+            </div>
+        </div>
+    </div>
     <div style="display:none;">
         <input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
         <input type="hidden" name="related_product" id="related-products-field" value=""/>
@@ -193,7 +204,18 @@
     </div>
 
     <div class="madeFuns">
-        <button type="submit" onclick="productAddToCartForm.submit(this)">加入购物车</button>
+        <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){
+            ?>
+            <button type="button" onclick="jQuery('#modal-login').addClass('md-show');">加入购物车</button>
+        <?php }else{
+            ?>
+            <button type="submit" onclick="productAddToCartForm.submit(this)">加入购物车</button>
+        <?php
+        }?>
+
+
+
+
     </div>
 <!--    <div class="viewMade"><button type="button">取消预览</button></div>-->
 </div>

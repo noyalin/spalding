@@ -186,7 +186,6 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
     protected function _loginPostRedirect()
     {
         $session = $this->_getSession();
-
         if (!$session->getBeforeAuthUrl() || $session->getBeforeAuthUrl() == Mage::getBaseUrl()) {
             // Set default URL to redirect customer to
             $session->setBeforeAuthUrl($this->_getHelper('customer')->getAccountUrl());
