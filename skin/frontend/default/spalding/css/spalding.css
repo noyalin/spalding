@@ -3606,14 +3606,15 @@ ul.shopsList li span.shopsList_adrs{
 .madeP_btn{
 	position: absolute;
 	margin-left:-35px;
+	padding:60px 0;
 	border:1px solid #323232;
 	color:#fff;
 	width:33px;
-	height:190px;
+	height:70px;
 	background: #191a1c;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-	line-height: 190px;
+	line-height: 22px;
 	text-align: center;
 	cursor: pointer;
 }
@@ -3708,18 +3709,19 @@ dl.madeBoxFuns{
 	font-size: 12px;
 }
 dl.madeBoxFuns dd.madeKindTit{
-	background:#1e1e1e;
+	background:#dddee3;
 	color:#787878;
-	border:1px solid #303030 ;
-	width:255px;
-	height:45px;
-	line-height: 45px;
+	border:2px solid #303030 ;
+	width:253px;
+	height:43px;
+	line-height: 43px;
 	text-indent:15px;
 	margin-top:8px;
 	cursor: pointer;
 }
 dl.madeBoxFuns dd.madeNow{
 	background: url(../images/customMade/madenow.png) 230px 20px no-repeat #dddee3;
+	border-color:#fcb805;
 }
 dl.madeBoxFuns dd.zz{
 	display: none;
@@ -3812,25 +3814,25 @@ dl.madeBoxFuns dt.zz_t_2{
 	border:none;
 	color:#717171;
 	text-align: center;
-	width:104px;
+	width:208px;
 	height:32px;
 	line-height: 32px;
 	background:#dfe2e4; 
-	display: inline-block;
-	opacity: .9
+	display: block;
+	opacity: .9;
+	border-radius:15px;
 }
 .madeSubmit button:hover{
 	opacity: 1;
+	color:#000;
 }
 
 .madeSubmit button.submitY{
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
+	
 }
 
 .madeSubmit button.submitN{
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 15px;
+	display: none;
 }
 
 
