@@ -11,6 +11,16 @@
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-ui.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-mousewheel.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.js'); ?>"></script>
+<script language="JavaScript">
+    document.onkeydown = function(){
+        var event = event||window.event;
+        if (event.keyCode == 13) {
+            event.returnValue = false;
+            event.cancelBubble = true;
+            return false;
+        }
+    }
+</script>
 
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
@@ -88,7 +98,7 @@
                 <div class="madeDate">该产品定制将在4-6周内送货上门</div>
             </div>
             <div class="madeFuns">
-                <button>开始定制</button>
+                <button type="button">开始定制</button>
             </div>
         </div>
     </div>
