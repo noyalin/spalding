@@ -11,16 +11,6 @@
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-ui.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-mousewheel.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.js'); ?>"></script>
-<script language="JavaScript">
-    document.onkeydown = function(){
-        var event = event||window.event;
-        if (event.keyCode == 13) {
-            event.returnValue = false;
-            event.cancelBubble = true;
-            return false;
-        }
-    }
-</script>
 
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
