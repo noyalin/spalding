@@ -251,17 +251,32 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $p2_preview_url = $subscriber->getMsg5P2();
             $p2_print_url = $subscriber->getMsg6P2();
             $img_prefix = $dir . "/" . $subscriber->getSku() . "-" . $subscriber->getOrderId() . "-" . $time;
-            if ($p1_preview_url != null) {
-                $this->grabImage($p1_preview_url, $img_prefix . "-p1-preview.png");
-            }
-            if ($p1_print_url != null) {
-                $this->grabImage($p1_print_url, $img_prefix . "-p1-print.png");
-            }
-            if ($p2_preview_url != null) {
-                $this->grabImage($p2_preview_url, $img_prefix . "-p2-preview.png");
-            }
-            if ($p2_print_url != null) {
-                $this->grabImage($p2_print_url, $img_prefix . "-p2-print.png");
+            if($subscriber->getSku() == '74-602yc') {
+                if ($p1_preview_url != null) {
+                    $this->grabImage($p1_preview_url, $img_prefix . "-2-preview.png");
+                }
+                if ($p1_print_url != null) {
+                    $this->grabImage($p1_print_url, $img_prefix . "-2-print.png");
+                }
+                if ($p2_preview_url != null) {
+                    $this->grabImage($p2_preview_url, $img_prefix . "-6-preview.png");
+                }
+                if ($p2_print_url != null) {
+                    $this->grabImage($p2_print_url, $img_prefix . "-6-print.png");
+                }
+            } else {
+                if ($p1_preview_url != null) {
+                    $this->grabImage($p1_preview_url, $img_prefix . "-4-preview.png");
+                }
+                if ($p1_print_url != null) {
+                    $this->grabImage($p1_print_url, $img_prefix . "-4-print.png");
+                }
+                if ($p2_preview_url != null) {
+                    $this->grabImage($p2_preview_url, $img_prefix . "-8-preview.png");
+                }
+                if ($p2_print_url != null) {
+                    $this->grabImage($p2_print_url, $img_prefix . "-8-print.png");
+                }
             }
             $subscriber->export();
         }

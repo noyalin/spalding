@@ -3711,17 +3711,18 @@ dl.madeBoxFuns{
 dl.madeBoxFuns dd.madeKindTit{
 	background:#dddee3;
 	color:#787878;
-	border:2px solid #303030 ;
-	width:253px;
-	height:43px;
-	line-height: 43px;
+	border:1px solid #303030 ;
+	width:255px;
+	height:45px;
+	line-height: 45px;
 	text-indent:15px;
 	margin-top:8px;
 	cursor: pointer;
 }
 dl.madeBoxFuns dd.madeNow{
-	background: url(../images/customMade/madenow.png) 230px 20px no-repeat #dddee3;
-	border-color:#fcb805;
+	background: url(../images/customMade/madenow.png) 230px 20px no-repeat #dfdee4;
+	font-size:14px;
+	font-weight: bold;
 }
 dl.madeBoxFuns dd.zz{
 	display: none;
@@ -3808,23 +3809,27 @@ dl.madeBoxFuns dt.zz_t_2{
 
 
 .madeSubmit{
-	margin-left:20px;
+	padding-left:20px;
+	margin-top:10px;
+	padding-top:10px;
+	border-top:1px dashed #717171;
 }
 .madeSubmit button{
 	border:none;
-	color:#717171;
+	color:#bfbfbf;
 	text-align: center;
 	width:208px;
 	height:32px;
 	line-height: 32px;
-	background:#dfe2e4; 
+	background:#2b292a; 
 	display: block;
 	opacity: .9;
 	border-radius:15px;
+	box-shadow:0 1px 2px #ccc;
 }
 .madeSubmit button:hover{
 	opacity: 1;
-	color:#000;
+	color:#fff;
 }
 
 .madeSubmit button.submitY{
@@ -3894,7 +3899,7 @@ dl.madeBoxFuns dt.zz_t_2{
 	height:20px;
 	line-height: 20px;
 	padding:2px 5px;
-	background: #1b1b1b;
+	background: #ffffff;
 	color:#565656;
 	float: left;
 }
