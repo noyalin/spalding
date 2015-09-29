@@ -12,11 +12,49 @@
 	top:0;
 	float:left
 }
-	.jScrollbar3 .jScrollbar_mask p {
-		margin:10px 0;
-		padding:0;
-		font-size:12px;
-	}
+.jScrollbar3 .jScrollbar_mask p {
+	margin:10px 0;
+	padding:0;
+	font-size:12px;
+}
+
+.jScrollbar3 .jScrollbar_mask dl{
+	margin-bottom:10px;
+}
+
+.jScrollbar3 .jScrollbar_mask dd{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.jScrollbar3 .jScrollbar_mask dt{
+	margin-left:20px;
+	text-indent:10px;
+}
+
+.jScrollbar3 .jScrollbar_mask dt:before{
+	content: '';
+	position:absolute;
+	width:0;
+	height:0;
+	border:3px solid #fff;
+	border-radius: 6px;
+	color:#fff;
+	left:15px;
+	margin-top:4px;
+}
+.jScrollbar3 .jScrollbar_mask h3{
+	font-size: 14px;
+	font-weight: bold;
+}
+.jScrollbar3 .jScrollbar_mask .maskRulTop{
+	margin-bottom:10px;
+	color:#f4a108;
+}
+.jScrollbar3 .jScrollbar_mask .maskRulTop p{
+	margin:0;
+	line-height: 1.4em;
+}
 .jScrollbar3 .jScrollbar_draggable {
 	float:left;
 	width:10px;
