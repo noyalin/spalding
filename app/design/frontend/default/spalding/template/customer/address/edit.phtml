@@ -37,7 +37,7 @@
     </div>
 <?php endif; ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate" style="margin-left:10px;">
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate" style="margin-left:10px;" onsubmit="return checkInput();">
     <div class="fieldset">
         <?php echo $this->getBlockHtml('formkey')?>
         <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
@@ -161,6 +161,21 @@
     var dataForm = new VarienForm('form-validate', true);
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
     //]]>
+    function checkInput() {
+        var tel = document.getElementById("telephone").value;
+        var regTel = /^1\d{10}$/;
+        var postcode = document.getElementById("zip").value;
+        var regPostcode = /^\d{6}$/;
+        if (!regTel.test(tel)) {
+            alert("手机号码错误");
+            return false;
+        }
+        if (!regPostcode.test(postcode)) {
+            alert("邮政编码错误");
+            return false;
+        }
+        return true;
+    }
 </script>
 <script>
     jQuery(document).ready(function(){
