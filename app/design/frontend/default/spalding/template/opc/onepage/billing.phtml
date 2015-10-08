@@ -545,6 +545,8 @@ $defaultBillingId = $this->getDefaultBilling();
 //        jQuery('#checkoutNewAddressForm').show();
 //    }
     jQuery("#create_new_addr").click(function(){
+            jQuery('#checkoutNewAddressForm').find(".error").removeClass("error");
+            jQuery('#checkoutNewAddressForm').find(".error_em").text("");
             jQuery('#checkoutNewAddressForm').toggle();
         }
     );
@@ -567,6 +569,8 @@ $defaultBillingId = $this->getDefaultBilling();
     }
     jQuery(".btnedit").click(function(e){
         e.preventDefault();
+        jQuery('#checkoutNewAddressForm').find(".error").removeClass("error");
+        jQuery('#checkoutNewAddressForm').find(".error_em").text("");
         jQuery('#checkoutNewAddressForm').toggle();
         var addressId = jQuery(this).attr('data-addrid');
 

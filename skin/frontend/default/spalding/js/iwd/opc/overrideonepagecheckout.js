@@ -89,6 +89,12 @@ function checkAddressForm(){
         jQuery("#postcode").addClass("error");
         flag = false;
     }
+    var regPostcode = /^\d{6}$/;
+    if (!regPostcode.test(postcode)) {
+        jQuery("#postcode_error").html("邮政编码不正确");
+        jQuery("#postcode").addClass("error");
+        flag = false;
+    }
     var streetJQ = jQuery("#street_1");
     if (isEmpty(streetJQ.val())){
         jQuery("#street_error").html("街道地址不能为空");
@@ -98,6 +104,12 @@ function checkAddressForm(){
     var phoneJQ = jQuery("#telephone1");
     if (isEmpty(phoneJQ.val())){
         jQuery("#phone_error").html("电话不能为空");
+        phoneJQ.addClass("error");
+        flag = false;
+    }
+    var regPhoneJQ = /^1\d{10}$/;
+    if (!regPhoneJQ.test(phoneJQ.val())) {
+        jQuery("#phone_error").html("电话号码不正确");
         phoneJQ.addClass("error");
         flag = false;
     }
