@@ -458,6 +458,8 @@ $defaultBillingId = $this->getDefaultBilling();
         });
 
         jQuery('.ds_dialog_yes').click(function(event){
+            jQuery('#checkoutNewAddressForm').find(".error").removeClass("error");
+            jQuery('#checkoutNewAddressForm').find(".error_em").text("");
             flag = checkAddressForm();
             if(!flag){
                 return;
