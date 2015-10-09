@@ -49,4 +49,13 @@ Supported layout update handles (special):
             </block>
         </reference>
     </tools_index_confirm>
+    <tools_index_tracking translate="label">
+        <reference name="head">
+            <action method="setTitle"><title>物流查询</title></action>
+        </reference>
+        <reference name="content">
+            <block type="tools/list" name="storelist" as="storelist"  template="tools/tracking.phtml" >
+            </block>
+        </reference>
+    </tools_index_tracking>
 </layout>

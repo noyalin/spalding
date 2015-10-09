@@ -167,6 +167,11 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
+    public function trackingAction(){
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
     public function noticeAction(){
         $this->loadLayout();
         $this->renderLayout();
