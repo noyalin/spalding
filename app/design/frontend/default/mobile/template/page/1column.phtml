@@ -16,7 +16,10 @@
 <head>
 	<?php echo $this->getChildHtml('head') ?>
 </head>
-<?php if(Mage::helper('core/url')->getCurrentUrl()=='http://localhost/spalding_mobile/store/index/tracking'): ?>
+<?php
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+$urlSuffix = explode('spalding_mobile', $currentUrl)[1];
+if ($urlSuffix == '/store/index/tracking'): ?>
 <body style="background: #000000">
 <?php else: ?>
 <body>
