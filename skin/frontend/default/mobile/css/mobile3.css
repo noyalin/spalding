@@ -4468,14 +4468,23 @@ span.sale_kind{
 .checkConfirm .confirmBox .infoInput{
 	border-top-right-radius:0;
 	border-bottom-right-radius:0;
+	height:40px;
+	line-height: 40px;
+	padding:0;
 }
 .checkConfirm .confirmBtn{
 	width:30%;
 	margin:0;
+	height:40px;
+	line-height: 40px;
+	background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) repeat scroll 0 0;
+	border-radius: 5px;
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
 }
 
 .checkConfirm .confirmBtn i{
-	padding:9px 0;
+	padding:0;
 	border-top-left-radius:0;
 	border-bottom-left-radius:0;
 	vertical-align: top;
@@ -4487,7 +4496,7 @@ span.checkError{
 }
 
 #checkBag{
-	min-height: 420px;
+	min-height: 400px;
 }
 
 /*
