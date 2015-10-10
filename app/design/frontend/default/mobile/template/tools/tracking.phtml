@@ -5,19 +5,20 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
 <script type="text/javascript">
     jQuery(document).ready(function () {
         jQuery('.confirmBtn').delegate(".ds_dialog_yes", "click", function () {
-            var orderId = jQuery("#orderId").val();
-            var trackingResult = "";
-            jQuery.ajax({
-                async:false,
-                type: 'POST',
-                url: '<?php echo $home_url;?>trackingSearch.php',
-                data: {orderId:orderId},
-                success: function (data) {
-                    jQuery('#checkBag').html(data);
-                },
-                error: function () {
-                }
-            });
+            var orderId = jQuery("#orderId").val().trim();
+            if (orderId != "") {
+                jQuery.ajax({
+                    async: false,
+                    type: 'POST',
+                    url: '<?php echo $home_url;?>trackingSearch.php',
+                    data: {orderId: orderId},
+                    success: function (data) {
+                        jQuery('#checkBag').html(data);
+                    },
+                    error: function () {
+                    }
+                });
+            }
         });
     })
 </script>

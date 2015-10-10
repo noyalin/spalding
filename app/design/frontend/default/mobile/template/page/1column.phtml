@@ -18,8 +18,7 @@
 </head>
 <?php
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-$urlSuffix = explode('spalding_mobile', $currentUrl)[1];
-if ($urlSuffix == '/store/index/tracking'): ?>
+if (stristr($currentUrl,'/store/index/tracking')): ?>
 <body style="background: #000000">
 <?php else: ?>
 <body>
