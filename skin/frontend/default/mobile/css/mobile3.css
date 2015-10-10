@@ -4410,7 +4410,7 @@ span.sale_kind{
 	position:absolute;
 	z-index:0;
 	width:100%;
-	height:100%;
+
 	left:0;
 	top:0;
 }
@@ -4484,6 +4484,10 @@ span.sale_kind{
 
 span.checkError{
 	color:#fab600;
+}
+
+#checkBag{
+	min-height: 420px;
 }
 
 /*
