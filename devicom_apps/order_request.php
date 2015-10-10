@@ -499,9 +499,7 @@ final class StoneEdge_MagentoImport {
 		self::xmlAppend("IPHostName", $order->getData('remote_ip'), $ndOther, $xd);
 		self::xmlAppend("TotalOrderWeight", $order->getData('weight'), $ndOther, $xd);
 		self::xmlAppend("GiftMessage", self::getGiftMessage($order), $ndOther, $xd);
-		// 微信活动，10/31前为了不让OMS 自动Approved，
-		self::xmlAppend("Comments", "微信扫一扫分享活动的订单。 ".$order->getData('customer_note'), $ndOther, $xd);
-//		self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
+		self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
 		$ndOrder->appendChild($ndOther);
 		return true;
 	}
