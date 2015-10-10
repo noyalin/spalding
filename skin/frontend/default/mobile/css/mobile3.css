@@ -4404,6 +4404,88 @@ span.sale_kind{
   overflow: hidden;
 }
 
+
+/*查看物流*/
+.check_bg{
+	position:absolute;
+	z-index:0;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}
+
+.check_bg img{
+	width:100%;
+	height: 100%;
+}
+
+#my-account-wrapper{
+	position: relative;
+	z-index:1;
+}
+
+.confirmSn{
+	position: relative;
+	padding-left:10px;
+	border-left:2px solid #3f3f3f;
+	margin-top:20px;
+	margin-left:5px;
+}
+
+.confirmSn li{
+	margin-bottom:10px;
+	position: relative;
+	color:#666;
+}
+
+.confirmSn li:before{
+	content: '';
+	width:0;
+	height:0;
+	position: absolute;
+	margin-left:-16px;
+	top:0;
+	margin-top:2px;
+	border:5px solid #3f3f3f;
+	border-radius:5px;
+}
+.confirmSn li.conNow:before{
+	border-color:#ffb400;
+	border-width: 7px;
+	border-radius: 7px;
+	margin-left:-18px;
+}
+.checkTitBox{
+	margin:80px 50px 20px;
+}
+.checkTitBox img{
+	width:100%;
+}
+.checkConfirm .confirmBox{
+	width:70%;
+}
+.checkConfirm .confirmBox .infoInput{
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+}
+.checkConfirm .confirmBtn{
+	width:30%;
+	margin:0;
+}
+
+.checkConfirm .confirmBtn i{
+	padding:9px 0;
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
+	vertical-align: top;
+	color:#000;
+}
+
+span.checkError{
+	color:#fab600;
+}
+
 /*
 ***iphone 4 以下 小屏css
 ***屏幕高度小于480px
