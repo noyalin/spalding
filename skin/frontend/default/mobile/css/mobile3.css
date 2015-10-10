@@ -4427,7 +4427,7 @@ span.sale_kind{
 
 .confirmSn{
 	position: relative;
-	padding-left:10px;
+	padding-left:20px;
 	border-left:2px solid #3f3f3f;
 	margin-top:20px;
 	margin-left:5px;
@@ -4437,6 +4437,11 @@ span.sale_kind{
 	margin-bottom:10px;
 	position: relative;
 	color:#666;
+	font-size: 14px;
+}
+
+.confirmSn li.conNow{
+	color:#fff;
 }
 
 .confirmSn li:before{
@@ -4444,17 +4449,18 @@ span.sale_kind{
 	width:0;
 	height:0;
 	position: absolute;
-	margin-left:-16px;
+	margin-left:-26px;
 	top:0;
 	margin-top:2px;
 	border:5px solid #3f3f3f;
 	border-radius:5px;
 }
+
 .confirmSn li.conNow:before{
 	border-color:#ffb400;
 	border-width: 7px;
 	border-radius: 7px;
-	margin-left:-18px;
+	margin-left:-28px;
 }
 .checkTitBox{
 	margin:80px 50px 20px;
@@ -4506,6 +4512,11 @@ span.checkError{
 #checkBag{
 	min-height: 380px;
 }
+#checkBag p.checkErrorP{
+	margin-top:20px;
+	line-height: 1.5em;
+}
+
 
 /*
 ***iphone 4 以下 小屏css
