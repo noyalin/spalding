@@ -613,7 +613,7 @@ function previewImage(file, imgId) {
             img.src = evt.target.result;
             avatarinit();
             //alert("reader.onload OK!!");
-        }
+        };
         reader.readAsDataURL(file.files[0]);
         _form.style.opacity = 1;
         _gripImg.style.opacity = 1;
@@ -823,8 +823,8 @@ function avatarinit() {
 
 function avatarinitLoad() {
     avatarinit();
-    jQuery("#avatar").removeAttribute("width");
-    jQuery("#avatar").removeAttribute("height");
+    document.getElementById("avatar").removeAttribute("width");
+    document.getElementById("avatar").removeAttribute("height");
 }
 
 if (document.all) {
