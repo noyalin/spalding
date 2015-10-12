@@ -630,10 +630,10 @@ var avatar;  //裁减图片
 var imgdefw;  //图片默认宽度
 var imgdefh;  //图片默认高度
 var offsetx = 0; //图片位置位移x
-var offsety = -305; //图片位置位移y
-var divx = 400; //外框宽度
-var divy = 400; //外框高度
-var cutx = 400;  //裁减宽度
+var offsety = -352; //图片位置位移y
+var divx = 705; //外框宽度
+var divy = 330; //外框高度
+var cutx = 705;  //裁减宽度
 var cuty = 186;  //裁减高度
 var zoom = 1; //缩放比例
 
