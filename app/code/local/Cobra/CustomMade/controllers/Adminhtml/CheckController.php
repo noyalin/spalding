@@ -288,7 +288,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         if ($url == ""):return false;endif;
 
         ob_start();
-        readfile($url);
+        readfile(str_replace(' ', '%20', $url));
         $img = ob_get_contents();
         ob_end_clean();
         $size = strlen($img);

@@ -5,6 +5,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
     public function render(Varien_Object $row)
     {
         $msg = $row->getData($this->getColumn()->getIndex());
+        $html = null;
         if ($msg != null) {
             $html = '<a ';
             $html .= 'target="_blank" ';
