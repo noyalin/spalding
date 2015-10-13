@@ -281,14 +281,37 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $subscriber->export();
         }
         fclose($file);
+
+        $zip = new ZipArchive();
+        $zip_name = $dir . '.zip';
+        if ($zip->open($zip_name, ZipArchive::OVERWRITE) === TRUE) {
+            $handler = opendir($dir);
+            while (($filename = readdir($handler)) !== false) {
+                if (is_file($dir . "/" . $filename)) {
+                    $zip->addFile($dir . "/" . $filename);
+                }
+            }
+            closedir($handler);
+        }
+        $zip->close();
+
+        header("Cache-Control: public");
+        header("Content-Description: File Transfer");
+        header('Content-disposition: attachment; filename='.basename($zip_name));
+        header("Content-Type: application/zip");
+        header("Content-Transfer-Encoding: binary");
+        header('Content-Length: '. filesize($zip_name));
+        readfile($zip_name);
     }
 
     private function grabImage($url, $filename)
     {
-        if ($url == ""):return false;endif;
+        if ($url == "") {
+            return false;
+        }
 
         ob_start();
-        readfile($url);
+        readfile(str_replace(' ', '%20', $url));
         $img = ob_get_contents();
         ob_end_clean();
         $size = strlen($img);
