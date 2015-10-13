@@ -68,18 +68,20 @@ if (strpos($agent, "MicroMessenger")) {
 ?>
         <p>点击选择支付平台前往付款：</p>
         <ul>
+        <?php if ($weixinPay): ?>
             <li>
                 <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">
                 <label for="payment_4">
                     <img  id="payimg4" alt="微信支付" title="微信支付" src="<?php echo $weixinImageSrc; ?>">
                 </label>
             </li>
-                <li>
-                    <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('alipay_mobile');">
-                    <label for="payment_2">
-                        <img  id="payimg2" alt="支付宝" title="支付宝" src="<?php echo $alipayImageSrc; ?>">
-                    </label>
-                </li>
+        <?php endif; ?>
+            <li>
+                <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('alipay_mobile');">
+                <label for="payment_2">
+                    <img  id="payimg2" alt="支付宝" title="支付宝" src="<?php echo $alipayImageSrc; ?>">
+                </label>
+            </li>
         </ul>
         <div style="text-align: left">
             <button type="submit" title="我要付款" class="button btn-checkout btn-next" id="submitbutton"><span><span>我要付款</span></span></button>
