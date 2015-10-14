@@ -1,25 +1,38 @@
 <?php
 $home_url = Mage::helper('core/url')->getHomeUrl();
+$oid = '';
+if(is_array($_GET)&&count($_GET)>0){
+    if(isset($_GET["oid"])){
+		$oid=$_GET["oid"];
+    }
+}
+
 ?>
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
         jQuery('.confirmBtn').delegate(".ds_dialog_yes", "click", function () {
-            var orderId = jQuery("#orderId").val().trim();
-            if (orderId != "") {
-                jQuery.ajax({
-                    async: false,
-                    type: 'POST',
-                    url: '<?php echo $home_url;?>trackingSearch.php',
-                    data: {orderId: orderId},
-                    success: function (data) {
-                        jQuery('#checkBag').html(data);
-                    },
-                    error: function () {
-                    }
-                });
-            }
+			searchTracking();
         });
+
+		function searchTracking(){
+			var orderId = jQuery("#orderId").val().trim();
+			if (orderId != "") {
+				jQuery.ajax({
+					async: false,
+					type: 'POST',
+					url: '<?php echo $home_url;?>trackingSearch.php',
+					data: {orderId: orderId},
+					success: function (data) {
+						jQuery('#checkBag').html(data);
+					},
+					error: function () {
+					}
+				});
+			}
+		}
+
+		searchTracking();
     })
 </script>
 <div class="check_bg">
@@ -35,7 +48,7 @@ $home_url = Mage::helper('core/url')->getHomeUrl();
             <form action="">
                 <div class="confirmBox ms-fl">
 
-                    <div class="infoInput"><input type="text" name="" id="orderId" placeholder="请输入官网或天猫订单号"></div>
+                    <div class="infoInput"><input type="text" name="" id="orderId" placeholder="请输入官网或天猫订单号" value="<?php echo $oid;?>"></div>
                 </div>
                 <div class="confirmBtn ms-fl">
                     <i id="zy_check_ok" class="ds_dialog_yes">查询</i>
