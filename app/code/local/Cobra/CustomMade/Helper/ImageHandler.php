@@ -1,6 +1,6 @@
 <?php
 
-class Cobra_CustomMade_Helper_ImageResize extends Mage_Core_Helper_Abstract
+class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
 {
     //源图象
     var $_img;
@@ -11,23 +11,44 @@ class Cobra_CustomMade_Helper_ImageResize extends Mage_Core_Helper_Abstract
     //实际高度
     var $_height;
 
-    //载入图片
-    function load($img_name, $img_type = '')
+    //获得图片的格式
+    private function imageType($img_url)
     {
-        if (!empty($img_type)) $this->_imagetype = $img_type;
-        else $this->_imagetype = $this->get_type($img_name);
+        $this->_imagetype = exif_imagetype($img_url);
+    }
+
+    public function createImages($sku, $position, $img_data, $info)
+    {
+        $_path = '/usr/custommade/tmp/';
+        $watermark_show = Mage::getDesign()->getSkinUrl('images/customMade/'.$sku.'/'.$position.'_show.png');
+        $watermark_print = Mage::getDesign()->getSkinUrl('images/customMade/'.$sku.'/'.$position.'_print.png');
+
+        //原图
+        $data = explode(',',$img_data);
+        $data_decode = base64_decode($data[1]);
+//        file_put_contents($_path.'1.jpg', $data_decode);
+        $aa = exif_imagetype($data_decode);
+        $this->load($data_decode);
+
+        $this->save($_path.'1.jpg');
+        $this->resize(4000,2000);
+        $this->save($_path.'2.jpg');
+
+    }
+
+    //载入图片
+    function load($img, $img_type = '')
+    {
+
         switch ($this->_imagetype) {
-            case 'gif':
-                if (function_exists('imagecreatefromgif')) $this->_img = imagecreatefromgif($img_name);
-                break;
             case 'jpg':
-                $this->_img = imagecreatefromjpeg($img_name);
+                $this->_img = imagecreatefromjpeg($img);
                 break;
             case 'png':
-                $this->_img = imagecreatefrompng($img_name);
+                $this->_img = imagecreatefrompng($img);
                 break;
             default:
-                $this->_img = imagecreatefromstring($img_name);
+                $this->_img = imagecreatefromstring($img);
                 break;
         }
         $this->getxy();
@@ -71,31 +92,6 @@ class Cobra_CustomMade_Helper_ImageResize extends Mage_Core_Helper_Abstract
         $this->getxy();
     }
 
-
-    //显示图片
-    function display($destroy = true)
-    {
-        if (!is_resource($this->_img)) return false;
-        switch ($this->_imagetype) {
-            case 'jpg':
-            case 'jpeg':
-                header("Content-type: image/jpeg");
-                imagejpeg($this->_img);
-                break;
-            case 'gif':
-                header("Content-type: image/gif");
-                imagegif($this->_img);
-                break;
-            case 'png':
-            default:
-                header("Content-type: image/png");
-                imagepng($this->_img);
-                break;
-        }
-        if ($destroy) $this->destroy();
-    }
-
-    //保存图片 $destroy=true 是保存后销毁图片变量，false这不销毁，可以继续处理这图片
     function save($fname, $destroy = false, $type = '')
     {
         if (!is_resource($this->_img)) return false;
@@ -130,18 +126,6 @@ class Cobra_CustomMade_Helper_ImageResize extends Mage_Core_Helper_Abstract
             $this->_width = imagesx($this->_img);
             $this->_height = imagesy($this->_img);
         }
-    }
-
-
-    //获得图片的格式，包括jpg,png,gif
-    function get_type($img_name)//获取图像文件类型
-    {
-        if (preg_match("/\.(jpg|jpeg|gif|png)$/i", $img_name, $matches)) {
-            $type = strtolower($matches[1]);
-        } else {
-            $type = "string";
-        }
-        return $type;
     }
 
 }

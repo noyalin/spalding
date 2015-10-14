@@ -80,32 +80,35 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         if ($pos == 1) {
             if ($type == 1) {
-                $imgPath = 'media/custommade/tmp/';
-                $imgBaseName = time();
-                $img0 = $imgBaseName . '_p1_0.jpg';
-                $img1 = $imgBaseName . '_p1_1.jpg';
-                $img2 = $imgBaseName . '_p1_2.jpg';
+//                $imgPath = 'media/custommade/tmp/';
+//                $imgBaseName = time();
+//                $img0 = $imgBaseName . '_p1_0.jpg';
+//                $img1 = $imgBaseName . '_p1_1.jpg';
+//                $img2 = $imgBaseName . '_p1_2.jpg';
+//
+//                $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
+//                $data_decode = base64_decode($data);
+//                file_put_contents($imgPath . $img0, $data_decode);
+//
+//
+//                $imgresize =  Mage::helper('custommade/imageresize'); //创建图片缩放和裁剪类
+//                $imgresize->load($data_decode); //载入原始图片
+//
+//                $posary = explode(',', $params['cut_pos']);
+//                foreach ($posary as $k => $v) $posary[$k] = intval($v); //获得缩放比例和裁剪位置
+//
+//                if ($posary[2] > 0 && $posary[3] > 0) $imgresize->resize($posary[2], $posary[3]); //图片缩放
+//
+//                $imgresize->save($imgPath . $img1);
+//                $content1 = Mage::getUrl($imgPath) . $img1;
+//
+//                $imgresize->cut(400, 190, intval($posary[0]), intval($posary[1]));
+//
+//                $imgresize->save($imgPath . $img2);
+//                $content2 = Mage::getUrl($imgPath) . $img2;
 
-                $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
-                $data_decode = base64_decode($data);
-                file_put_contents($imgPath . $img0, $data_decode);
+                Mage::helper('custommade/imagehandler')->createImages($sku,$pos,$params['originalImg'],$params['cut_pos']);
 
-
-                $imgresize =  Mage::helper('custommade/imageresize'); //创建图片缩放和裁剪类
-                $imgresize->load($data_decode); //载入原始图片
-
-                $posary = explode(',', $params['cut_pos']);
-                foreach ($posary as $k => $v) $posary[$k] = intval($v); //获得缩放比例和裁剪位置
-
-                if ($posary[2] > 0 && $posary[3] > 0) $imgresize->resize($posary[2], $posary[3]); //图片缩放
-
-                $imgresize->save($imgPath . $img1);
-                $content1 = Mage::getUrl($imgPath) . $img1;
-
-                $imgresize->cut(400, 190, intval($posary[0]), intval($posary[1]));
-
-                $imgresize->save($imgPath . $img2);
-                $content2 = Mage::getUrl($imgPath) . $img2;
 
             } elseif ($type == 2) {
                 $content1 = $params['text1'];
