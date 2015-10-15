@@ -102,6 +102,10 @@
 			</fieldset>
 		</form>
 
+		<div class="cart-content logInInfoBox">
+			<?php echo $this->getChildHtml('coupon') ?>
+		</div>
+		
 		<div class="totals">
 			<?php echo $this->getChildHtml('totals'); ?>
 		</div>
@@ -144,9 +148,6 @@
 	<?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
 
 <!--	<h1>Discount / Giftcard</h1>-->
-	<div class="cart-content logInInfoBox">
-		<?php echo $this->getChildHtml('coupon') ?>
-	</div>
 	<div class="cart-content logInInfoBox">
 		<?php echo $this->getChildHtml('giftcards') ?>
 	</div>
