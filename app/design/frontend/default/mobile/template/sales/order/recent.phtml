@@ -57,11 +57,13 @@
                         <!-- bale test END-->
                         <span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>">查看订单</a></span>
                         <?php if($_order->getStatus() === 'shipped'){
-                            $trackingid = getTrackingByOrderID($_order->getRealOrderId());
-                            if($trackingid !==""){
+//                            $trackingid = getTrackingByOrderID($_order->getRealOrderId());
+//                            if($trackingid !==""){
                                 ?>
-                                <a href="http://www.baidu.com/baidu?tn=baidu&word=<?php echo $trackingid?>" target="_blank">查看物流</a>
-                            <?php }}?>
+                        <br/><span class="nobr"><a href="<?php echo Mage::helper('core/url')->getHomeUrl().'/store/index/tracking?oid='.$_order->getRealOrderId();?>" target="_blank">查看物流</a></span>
+                            <?php
+//                                }
+                                }?>
                     </td>
                 </tr>
             <?php endforeach; ?>
