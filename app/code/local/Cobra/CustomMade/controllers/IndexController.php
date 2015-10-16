@@ -2,32 +2,6 @@
 
 class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 {
-    public function indexAction()
-    {
-        $session = self::getSession();
-
-        $session->setTestMode(0);
-
-        $type = 1;
-        $content1 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p1_01.jpg';
-        $content2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p1_02.jpg';
-
-        $session->setTypeP1($type);
-        $session->setContent1P1($content1);
-        $session->setContent2P1($content2);
-
-        $type = 1;
-        $content1 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p2_01.jpg';
-        $content2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/custommade/tmp/test_p2_02.jpg';
-
-        $session->setTypeP2($type);
-        $session->setContent1P2($content1);
-        $session->setContent2P2($content2);
-
-        self::setSession($session);
-
-        echo "indexAction Ok";
-    }
 
     public function allAction()
     {
@@ -72,9 +46,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         if ($pos == 1) {
             if ($type == 1) {
-                $ret = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
-                if ($ret) {
-
+                $url_array = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
+                if ($url_array) {
+                    $content1 = $url_array['effect'];
                 }
             } elseif ($type == 2) {
                 $content1 = $params['text1'];
@@ -96,9 +70,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         } elseif ($pos == 2) {
             if ($type == 1) {
-                $ret = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
-                if ($ret) {
-
+                $url_array = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
+                if ($url_array) {
+                    $content1 = $url_array['effect'];
                 }
             } elseif ($type == 2) {
                 $content1 = $params['text2'];

@@ -54,13 +54,14 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
 
                     $new_info = $this->getNewInfo($cut_x, $cut_y, $resize_w, $original_w);
                     // 保存预览图
-                    $this->addCoverJPG($img, $cover_show, self::PATH . $date . '-show', $new_info);
+                    $show_name = self::PATH . $date . '-show' . self::EXTENSION_JPG;
+                    $this->addCoverJPG($img, $cover_show, $show_name, $new_info);
                     // 保存打印图
-                    $this->addCoverJPG($img, $cover_print, self::PATH . $date . '-print', $new_info);
+                    $print_name = self::PATH . $date . '-print' . self::EXTENSION_JPG;
+                    $this->addCoverJPG($img, $cover_print, $print_name, $new_info);
 
                     imagedestroy($img);
-                    break;
-
+                    return array("effect" => $effect_name);
                 case IMAGETYPE_PNG:
                     $date = Mage::getModel('core/date')->date('YmdHis');
                     $img = imagecreatefromstring($data_decode);
@@ -85,12 +86,14 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
 
                     $new_info = $this->getNewInfo($cut_x, $cut_y, $resize_w, $original_w);
                     // 保存预览图
-                    $this->addCoverPNG($img, $cover_show, self::PATH . $date . '-show', $new_info);
+                    $show_name = self::PATH . $date . '-show' . self::EXTENSION_PNG;
+                    $this->addCoverPNG($img, $cover_show, $show_name, $new_info);
                     // 保存打印图
-                    $this->addCoverPNG($img, $cover_print, self::PATH . $date . '-print', $new_info);
+                    $print_name = self::PATH . $date . '-print' . self::EXTENSION_PNG;
+                    $this->addCoverPNG($img, $cover_print, $print_name, $new_info);
 
                     imagedestroy($img);
-                    break;
+                    return array("effect" => $effect_name);
                 default:
                     return false;
             }
@@ -107,7 +110,7 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
         imagecopyresampled($new_resize_img, $new_cut_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT, $new_info["new_cut_w"], $new_info["new_cut_h"]);
         $cover_img = imagecreatefrompng($url);
         imagecopy($new_resize_img, $cover_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT);
-        imagejpeg($new_resize_img, $name . self::EXTENSION_JPG);
+        imagejpeg($new_resize_img, $name);
         imagedestroy($new_cut_img);
         imagedestroy($cover_img);
         imagedestroy($new_resize_img);
@@ -123,7 +126,7 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
         imagecopyresampled($new_resize_img, $new_cut_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT, $new_info["new_cut_w"], $new_info["new_cut_h"]);
         $cover_img = imagecreatefrompng($url);
         imagecopy($new_resize_img, $cover_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT);
-        imagepng($new_resize_img, $name . self::EXTENSION_JPG);
+        imagepng($new_resize_img, $name);
         imagedestroy($new_cut_img);
         imagedestroy($cover_img);
         imagedestroy($new_resize_img);
