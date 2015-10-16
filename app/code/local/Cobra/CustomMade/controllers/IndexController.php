@@ -49,6 +49,8 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $url_array = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
                 if ($url_array) {
                     $content1 = $url_array['effect'];
+                } else {
+                    $content1 = "error";
                 }
             } elseif ($type == 2) {
                 $content1 = $params['text1'];
@@ -152,7 +154,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         Mage::getSingleton('core/session')->setCustomermadeAgree(1);
     }
 
-    private function getCustomMadeSession($position ,$sku)
+    private function getCustomMadeSession($position, $sku)
     {
         $session = self::getSession($sku);
         $res = array();;

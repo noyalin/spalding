@@ -295,25 +295,28 @@
          Opt.reset(1);
          }*/
         if (_dataType == 1) {//定制图片
-            //定位定制图案
-            var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
-                value1);
-            // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
+            if (value1 == "error") {
+                alert("图片格式错误");
+            } else {
+                //定位定制图案
+                var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
+                    value1);
+                // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
 
-            _viewCons.empty();
-            _viewCons.append(_dataImg);
+                _viewCons.empty();
+                _viewCons.append(_dataImg);
 
-            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
-            _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
-            _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
-            _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
-            _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
-            _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
+                _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
+                _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
+                _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+                _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
+                _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+                _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
 
-            _viewPage1.css("display", "block"); //显示P1画面
-            _bgZindx.css("z-index", "2");   //重置P1背景z-index值
-            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball.png');  ?>");
-
+                _viewPage1.css("display", "block"); //显示P1画面
+                _bgZindx.css("z-index", "2");   //重置P1背景z-index值
+                _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball.png');  ?>");
+            }
         } else if (_dataType == 2) {//定制文字
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
             var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:20px;'></p>").text(value2);
@@ -462,25 +465,29 @@
         var _viewCons = _viewPage2.find(".viewPage_p2_wrap")//获取P2预览内容
 
         if (_dataType == 1) {//定制图片
-            //定位定制图案
-            var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
-                value1);
-            // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
+            if (value1 == "error") {
+                alert("图片格式错误");
+            } else {
+                //定位定制图案
+                var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
+                    value1);
+                // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
 
-            _viewCons.empty();
-            _viewCons.append(_dataImg);
+                _viewCons.empty();
+                _viewCons.append(_dataImg);
 
-            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
-            _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
+                _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
+                _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
 
-            _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
-            _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
-            _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
-            _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
+                _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+                _comfBox.siblings(".madeSubmit").find(".submitY").css("display", "none");
+                _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+                _comfBox.siblings(".madeSubmit").find(".submitN").css("display", "block");
 
-            _viewPage2.css("display", "block"); //显示P1画面
-            _bgZindx.css("z-index", "2");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball2.png');  ?>");
+                _viewPage2.css("display", "block"); //显示P1画面
+                _bgZindx.css("z-index", "2");   //重置P1背景z-index值
+                _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball2.png');  ?>");
+            }
 
         } else if (_dataType == 2) {//定制文字
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
