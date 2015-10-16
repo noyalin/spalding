@@ -6,12 +6,13 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
     const SHOW_HEIGHT = 186;// 显示高度
     const PRINT_WIDTH = 1980;// 打印宽度
     const PRINT_HEIGHT = 544;// 打印高度
-    const PATH = '/usr/custommade/tmp/';
     const EXTENSION_JPG = '.jpg';
     const EXTENSION_PNG = '.png';
 
     public function createImages($sku, $position, $img_data, $info)
     {
+        $path = Mage::getBaseDir() . '/media/custommade/tmp/';
+        $url = Mage::getBaseUrl() . 'media/custommade/tmp/';
         $cover_show = Mage::getDesign()->getSkinUrl('images/customMade/' . $sku . '/' . $position . '_show.png');
         $cover_print = Mage::getDesign()->getSkinUrl('images/customMade/' . $sku . '/' . $position . '_print.png');
 
@@ -39,40 +40,40 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
                     $img = imagecreatefromstring($data_decode);
 
                     // 保存原图
-                    $original_name = self::PATH . $date . '-original' . self::EXTENSION_JPG;
-                    imagejpeg($img, $original_name);
+                    $original_name = $date . '-original' . self::EXTENSION_JPG;
+                    imagejpeg($img, $path . $original_name);
 
                     // 保存效果图
-                    $effect_name = self::PATH . $date . '-effect' . self::EXTENSION_JPG;
+                    $effect_name = $date . '-effect' . self::EXTENSION_JPG;
                     $resize_img = imagecreatetruecolor($resize_w, $resize_h);
                     imagecopyresampled($resize_img, $img, 0, 0, 0, 0, $resize_w, $resize_h, $original_w, $original_h);
                     $cut_img = imagecreatetruecolor(self::SHOW_WIDTH, self::SHOW_HEIGHT);
                     imagecopy($cut_img, $resize_img, 0, 0, $cut_x, $cut_y, self::SHOW_WIDTH, self::SHOW_HEIGHT);
-                    imagejpeg($cut_img, $effect_name);
+                    imagejpeg($cut_img, $path . $effect_name);
                     imagedestroy($resize_img);
                     imagedestroy($cut_img);
 
                     $new_info = $this->getNewInfo($cut_x, $cut_y, $resize_w, $original_w);
                     // 保存预览图
-                    $show_name = self::PATH . $date . '-show' . self::EXTENSION_JPG;
-                    $this->addCoverJPG($img, $cover_show, $show_name, $new_info);
+                    $show_name = $date . '-show' . self::EXTENSION_JPG;
+                    $this->addCoverJPG($img, $cover_show, $path . $show_name, $new_info);
                     // 保存打印图
-                    $print_name = self::PATH . $date . '-print' . self::EXTENSION_JPG;
-                    $this->addCoverJPG($img, $cover_print, $print_name, $new_info);
+                    $print_name = $date . '-print' . self::EXTENSION_JPG;
+                    $this->addCoverJPG($img, $cover_print, $path . $print_name, $new_info);
 
                     imagedestroy($img);
-                    return array("effect" => $effect_name);
+                    return array("effect" => $url . $effect_name);
                 case IMAGETYPE_PNG:
                     $date = Mage::getModel('core/date')->date('YmdHis');
                     $img = imagecreatefromstring($data_decode);
 
                     // 保存原图
-                    $original_name = self::PATH . $date . '-original' . self::EXTENSION_PNG;
+                    $original_name = $date . '-original' . self::EXTENSION_PNG;
                     $this->setAlpha($img);
-                    imagepng($img, $original_name);
+                    imagepng($img, $path . $original_name);
 
                     // 保存效果图
-                    $effect_name = self::PATH . $date . '-effect' . self::EXTENSION_PNG;
+                    $effect_name = $date . '-effect' . self::EXTENSION_PNG;
                     $resize_img = imagecreatetruecolor($resize_w, $resize_h);
                     $this->setAlpha($resize_img);
                     imagecopyresampled($resize_img, $img, 0, 0, 0, 0, $resize_w, $resize_h, $original_w, $original_h);
@@ -80,20 +81,20 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
                     $cut_img = imagecreatetruecolor(self::SHOW_WIDTH, self::SHOW_HEIGHT);
                     $this->setAlpha($cut_img);
                     imagecopy($cut_img, $resize_img, 0, 0, $cut_x, $cut_y, self::SHOW_WIDTH, self::SHOW_HEIGHT);
-                    imagepng($cut_img, $effect_name);
+                    imagepng($cut_img, $path . $effect_name);
                     imagedestroy($resize_img);
                     imagedestroy($cut_img);
 
                     $new_info = $this->getNewInfo($cut_x, $cut_y, $resize_w, $original_w);
                     // 保存预览图
-                    $show_name = self::PATH . $date . '-show' . self::EXTENSION_PNG;
-                    $this->addCoverPNG($img, $cover_show, $show_name, $new_info);
+                    $show_name = $date . '-show' . self::EXTENSION_PNG;
+                    $this->addCoverPNG($img, $cover_show, $path . $show_name, $new_info);
                     // 保存打印图
-                    $print_name = self::PATH . $date . '-print' . self::EXTENSION_PNG;
-                    $this->addCoverPNG($img, $cover_print, $print_name, $new_info);
+                    $print_name = $date . '-print' . self::EXTENSION_PNG;
+                    $this->addCoverPNG($img, $cover_print, $path . $print_name, $new_info);
 
                     imagedestroy($img);
-                    return array("effect" => $effect_name);
+                    return array("effect" => $url . $effect_name);
                 default:
                     return false;
             }
