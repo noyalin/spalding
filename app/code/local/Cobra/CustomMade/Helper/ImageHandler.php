@@ -2,22 +2,18 @@
 
 class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
 {
-    const SHOW_WIDTH = 705;//显示宽度
-    const SHOW_HEIGHT = 186;//显示高度
-    const PRINT_WIDTH = 1980;//打印宽度
-    const PRINT_HEIGHT = 544;//打印高度
-
-    //获得图片的格式
-    private function imageType($img_url)
-    {
-        $this->_imagetype = exif_imagetype($img_url);
-    }
+    const SHOW_WIDTH = 705;// 显示宽度
+    const SHOW_HEIGHT = 186;// 显示高度
+    const PRINT_WIDTH = 1980;// 打印宽度
+    const PRINT_HEIGHT = 544;// 打印高度
+    const PATH = '/usr/custommade/tmp/';
+    const EXTENSION_JPG = '.jpg';
+    const EXTENSION_PNG = '.png';
 
     public function createImages($sku, $position, $img_data, $info)
     {
-        $path = '/usr/custommade/tmp/';
-        $watermark_show = Mage::getDesign()->getSkinUrl('images/customMade/'.$sku.'/'.$position.'_show.png');
-        $watermark_print = Mage::getDesign()->getSkinUrl('images/customMade/'.$sku.'/'.$position.'_print.png');
+        $cover_show = Mage::getDesign()->getSkinUrl('images/customMade/' . $sku . '/' . $position . '_show.png');
+        $cover_print = Mage::getDesign()->getSkinUrl('images/customMade/' . $sku . '/' . $position . '_print.png');
 
         // 获取定制信息
         $info_array = explode(',', $info);
@@ -39,141 +35,118 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
 
             switch ($img_type) {
                 case IMAGETYPE_JPEG:
+                    $date = Mage::getModel('core/date')->date('YmdHis');
                     $img = imagecreatefromstring($data_decode);
 
                     // 保存原图
-                    $original_name = $path . 'image1' . image_type_to_extension($img_type);
+                    $original_name = self::PATH . $date . '-original' . self::EXTENSION_JPG;
                     imagejpeg($img, $original_name);
 
                     // 保存效果图
-                    $effect_name = $path . 'image2' . image_type_to_extension($img_type);
+                    $effect_name = self::PATH . $date . '-effect' . self::EXTENSION_JPG;
+                    $resize_img = imagecreatetruecolor($resize_w, $resize_h);
+                    imagecopyresampled($resize_img, $img, 0, 0, 0, 0, $resize_w, $resize_h, $original_w, $original_h);
+                    $cut_img = imagecreatetruecolor(self::SHOW_WIDTH, self::SHOW_HEIGHT);
+                    imagecopy($cut_img, $resize_img, 0, 0, $cut_x, $cut_y, self::SHOW_WIDTH, self::SHOW_HEIGHT);
+                    imagejpeg($cut_img, $effect_name);
+                    imagedestroy($resize_img);
+                    imagedestroy($cut_img);
 
+                    $new_info = $this->getNewInfo($cut_x, $cut_y, $resize_w, $original_w);
+                    // 保存预览图
+                    $this->addCoverJPG($img, $cover_show, self::PATH . $date . '-show', $new_info);
+                    // 保存打印图
+                    $this->addCoverJPG($img, $cover_print, self::PATH . $date . '-print', $new_info);
+
+                    imagedestroy($img);
                     break;
+
                 case IMAGETYPE_PNG:
+                    $date = Mage::getModel('core/date')->date('YmdHis');
+                    $img = imagecreatefromstring($data_decode);
+
+                    // 保存原图
+                    $original_name = self::PATH . $date . '-original' . self::EXTENSION_PNG;
+                    $this->setAlpha($img);
+                    imagepng($img, $original_name);
+
+                    // 保存效果图
+                    $effect_name = self::PATH . $date . '-effect' . self::EXTENSION_PNG;
+                    $resize_img = imagecreatetruecolor($resize_w, $resize_h);
+                    $this->setAlpha($resize_img);
+                    imagecopyresampled($resize_img, $img, 0, 0, 0, 0, $resize_w, $resize_h, $original_w, $original_h);
+
+                    $cut_img = imagecreatetruecolor(self::SHOW_WIDTH, self::SHOW_HEIGHT);
+                    $this->setAlpha($cut_img);
+                    imagecopy($cut_img, $resize_img, 0, 0, $cut_x, $cut_y, self::SHOW_WIDTH, self::SHOW_HEIGHT);
+                    imagepng($cut_img, $effect_name);
+                    imagedestroy($resize_img);
+                    imagedestroy($cut_img);
+
+                    $new_info = $this->getNewInfo($cut_x, $cut_y, $resize_w, $original_w);
+                    // 保存预览图
+                    $this->addCoverPNG($img, $cover_show, self::PATH . $date . '-show', $new_info);
+                    // 保存打印图
+                    $this->addCoverPNG($img, $cover_print, self::PATH . $date . '-print', $new_info);
+
+                    imagedestroy($img);
                     break;
                 default:
                     return false;
             }
-
         } else {
             return false;
         }
-
-
-
-
-
-        //保存原图
-        $original_name = $path.'image1.png';
-        $this->save($img, $original_name, $original_w, $original_h, $original_w, $original_h, 0, 0, $original_w, $original_h);
-
-        // 获取定制信息
-        $info_array = explode(',', $info);
-        $cut_x = intval($info_array[0]);
-        $cut_y = intval($info_array[1]);
-        $resize_w = intval($info_array[2]);
-        $resize_h = intval($info_array[3]);
-
-        //保存效果图
-        $effect_name = $path.'image2.png';
-        $this->save($img, $effect_name, $resize_w, $resize_h, $original_w, $original_h, $cut_x, $cut_y, self::SHOW_WIDTH, self::SHOW_HEIGHT);
-//        $this->load($data_decode);
-
-//        $this->save($_path.'1.jpg');
-//        $this->resize(4000,2000);
-//        $this->save($_path.'2.jpg');
-
     }
 
-    //载入图片
-    function load($img, $img_type = '')
+    private function addCoverJPG($img, $url, $name, $new_info)
     {
-
-        switch ($this->_imagetype) {
-            case 'jpg':
-                $this->_img = imagecreatefromjpeg($img);
-                break;
-            case 'png':
-                $this->_img = imagecreatefrompng($img);
-                break;
-            default:
-                $this->_img = imagecreatefromstring($img);
-                break;
-        }
-        $this->getxy();
+        $new_cut_img = imagecreatetruecolor($new_info["new_cut_w"], $new_info["new_cut_h"]);
+        imagecopy($new_cut_img, $img, 0, 0, $new_info["new_cut_x"], $new_info["new_cut_y"], $new_info["new_cut_w"], $new_info["new_cut_h"]);
+        $new_resize_img = imagecreatetruecolor(self::PRINT_WIDTH, self::PRINT_HEIGHT);
+        imagecopyresampled($new_resize_img, $new_cut_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT, $new_info["new_cut_w"], $new_info["new_cut_h"]);
+        $cover_img = imagecreatefrompng($url);
+        imagecopy($new_resize_img, $cover_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT);
+        imagejpeg($new_resize_img, $name . self::EXTENSION_JPG);
+        imagedestroy($new_cut_img);
+        imagedestroy($cover_img);
+        imagedestroy($new_resize_img);
     }
 
-    //缩放图片
-    private function save($img, $name, $dst_w, $dst_h, $src_w, $src_h, $cut_x, $cut_y, $cut_w, $cut_h)
+    private function addCoverPNG($img, $url, $name, $new_info)
     {
-//        if (!is_resource($this->_img)) return false;
-//        if (empty($width) && empty($height)) {
-//            if (empty($percent)) return false;
-//            else {
-//                $width = round($this->_width * $percent);
-//                $height = round($this->_height * $percent);
-//            }
-//        } elseif (empty($width) && !empty($height)) {
-//            $width = round($height * $this->_width / $this->_height);
-//        } else {
-//            $height = round($width * $this->_height / $this->_width);
-//        }
-//        $tmpimg = imagecreatetruecolor($width, $height);
-//        if (function_exists('imagecopyresampled')) imagecopyresampled($tmpimg, $this->_img, 0, 0, 0, 0, $width, $height, $this->_width, $this->_height);
-//        else imagecopyresized($tmpimg, $this->_img, 0, 0, 0, 0, $width, $height, $this->_width, $this->_height);
-//        $this->destroy();
-//        $this->_img = $tmpimg;
-//        $this->getxy();
-
-        $resize_img = imagecreatetruecolor($dst_w, $dst_h);
-        $alpha = imagecolorallocatealpha($resize_img, 0, 0, 0, 127);
-        imagefill($resize_img, 0, 0, $alpha);
-        imagecopyresampled($resize_img, $img, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
-        imagesavealpha($resize_img, true);
-
-
-        $cut_img = imagecreatetruecolor($cut_w,$cut_h);
-        $alpha1 = imagecolorallocatealpha($cut_img, 0, 0, 0, 127);
-        imagefill($cut_img, 0, 0, $alpha1);
-        imagecopy($cut_img, $resize_img, 0, 0, $cut_x, $cut_y, $cut_w, $cut_h);
-        imagesavealpha($cut_img, true);
-        imagepng($cut_img, $name);
-
-        imagedestroy($cut_img);
-        imagedestroy($resize_img);
-
+        $new_cut_img = imagecreatetruecolor($new_info["new_cut_w"], $new_info["new_cut_h"]);
+        $this->setAlpha($new_cut_img);
+        imagecopy($new_cut_img, $img, 0, 0, $new_info["new_cut_x"], $new_info["new_cut_y"], $new_info["new_cut_w"], $new_info["new_cut_h"]);
+        $new_resize_img = imagecreatetruecolor(self::PRINT_WIDTH, self::PRINT_HEIGHT);
+        $this->setAlpha($new_resize_img);
+        imagecopyresampled($new_resize_img, $new_cut_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT, $new_info["new_cut_w"], $new_info["new_cut_h"]);
+        $cover_img = imagecreatefrompng($url);
+        imagecopy($new_resize_img, $cover_img, 0, 0, 0, 0, self::PRINT_WIDTH, self::PRINT_HEIGHT);
+        imagepng($new_resize_img, $name . self::EXTENSION_JPG);
+        imagedestroy($new_cut_img);
+        imagedestroy($cover_img);
+        imagedestroy($new_resize_img);
     }
 
-    //裁剪图片
-    function cut($width, $height, $x = 0, $y = 0)
+    private function getNewInfo($cut_x, $cut_y, $resize_w, $original_w)
     {
-        if (!is_resource($this->_img)) return false;
-        if ($width > $this->_width) $width = $this->_width;
-        if ($height > $this->_height) $height = $this->_height;
-        if ($x < 0) $x = 0;
-        if ($y < 0) $y = 0;
-        $tmpimg = imagecreatetruecolor($width, $height);
-        imagecopy($tmpimg, $this->_img, 0, 0, $x, $y, $width, $height);
-        $this->destroy();
-        $this->_img = $tmpimg;
-        $this->getxy();
+        $new_cut_x = round($cut_x * $original_w / $resize_w);
+        $new_cut_y = round($cut_y * $original_w / $resize_w);
+        $new_cut_w = round(self::SHOW_WIDTH * $original_w / $resize_w);
+        $new_cut_h = round($new_cut_w * self::PRINT_HEIGHT / self::PRINT_WIDTH);
+        return array(
+            "new_cut_x" => $new_cut_x,
+            "new_cut_y" => $new_cut_y,
+            "new_cut_w" => $new_cut_w,
+            "new_cut_h" => $new_cut_h,
+        );
     }
 
-
-
-    //销毁图像
-    function destroy()
+    private function setAlpha($img)
     {
-        if (is_resource($this->_img)) imagedestroy($this->_img);
+        $effect_cut_alpha = imagecolorallocatealpha($img, 0, 0, 0, 127);
+        imagefill($img, 0, 0, $effect_cut_alpha);
+        imagesavealpha($img, true);
     }
-
-    //取得图像长宽
-    function getxy()
-    {
-        if (is_resource($this->_img)) {
-            $this->_width = imagesx($this->_img);
-            $this->_height = imagesy($this->_img);
-        }
-    }
-
 }
