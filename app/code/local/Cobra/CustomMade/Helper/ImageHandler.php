@@ -62,7 +62,7 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
                     $this->addCoverJPG($img, $cover_print, $path . $print_name, $new_info);
 
                     imagedestroy($img);
-                    return array("effect" => $url . $effect_name);
+                    return array("effect" => $url . $effect_name, "show" => $url . $show_name, "print" => $url . $print_name);
                 case IMAGETYPE_PNG:
                     $date = Mage::getModel('core/date')->date('YmdHis');
                     $img = imagecreatefromstring($data_decode);
@@ -94,7 +94,7 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
                     $this->addCoverPNG($img, $cover_print, $path . $print_name, $new_info);
 
                     imagedestroy($img);
-                    return array("effect" => $url . $effect_name);
+                    return array("effect" => $url . $effect_name, "show" => $url . $show_name, "print" => $url . $print_name);
                 default:
                     return false;
             }

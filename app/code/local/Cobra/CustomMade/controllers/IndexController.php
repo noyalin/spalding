@@ -49,6 +49,8 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $url_array = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
                 if ($url_array) {
                     $content1 = $url_array['effect'];
+                    $content2 = $url_array['show'];
+                    $content3 = $url_array['print'];
                 } else {
                     $content1 = "error";
                 }
@@ -75,6 +77,10 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $url_array = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
                 if ($url_array) {
                     $content1 = $url_array['effect'];
+                    $content2 = $url_array['show'];
+                    $content3 = $url_array['print'];
+                } else {
+                    $content1 = "error";
                 }
             } elseif ($type == 2) {
                 $content1 = $params['text2'];
