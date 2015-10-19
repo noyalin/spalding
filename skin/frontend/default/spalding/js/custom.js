@@ -244,6 +244,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepImg").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
+        jQuery(".cusRemindBox").css("display","none");
         //var pos = jQuery("#options_pos").val();
         //if (pos == 1) {
         //    jQuery("#options_type_p1").val(1);
@@ -267,6 +268,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepTex").css("display", "block");
         jQuery(this).parents().find(".madeStepImg").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
+        jQuery(".cusRemindBox").css("display","block");
         //var pos = jQuery("#options_pos").val();
         //if (pos == 1) {
         //    jQuery("#options_type_p1").val(2);
@@ -285,6 +287,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepNone").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepImg").css("display", "none");
+        jQuery(".cusRemindBox").css("display","block");
         //var pos = jQuery("#options_pos").val();
         //if (pos == 1) {
         //    jQuery("#options_type_p1").val(null);
@@ -630,7 +633,7 @@ var avatar;  //裁减图片
 var imgdefw;  //图片默认宽度
 var imgdefh;  //图片默认高度
 var offsetx = 0; //图片位置位移x
-var offsety = -352; //图片位置位移y
+var offsety = -332; //图片位置位移y
 var divx = 705; //外框宽度
 var divy = 330; //外框高度
 var cutx = 705;  //裁减宽度
@@ -936,6 +939,8 @@ jQuery(function () {
         } else {
             showComfBox(this);
         }
+
+        jQuery(".select_P1").css("display","none");
     });
 
     jQuery("#submitYP2").click(function () {
