@@ -47,8 +47,12 @@ class Infinitech_Weixinpay_Model_Commonutilpub
             {
                 $v = urlencode($v);
             }
-            //$buff .= strtolower($k) . "=" . $v . "&";
-            $buff .= $k . "=" . $v . "&";
+
+            if ($v != null) {
+                //$buff .= strtolower($k) . "=" . $v . "&";
+                $buff .= $k . "=" . $v . "&";
+            }
+
         }
         $reqPar = null;
         if (strlen($buff) > 0)

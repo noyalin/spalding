@@ -121,6 +121,16 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
     public function updateOrder($str){
         $xml = simplexml_load_string($str);
         $orderId = (string)$xml->out_trade_no;
+
+        // 增加订单支付状态再验证的步骤 S +++
+        $wxOrderQuery = Mage::getModel('weixinpay/Orderquerypub');
+        $ret = $wxOrderQuery->orderQuery($orderId);
+        if ($ret != "SUCCESS") {
+            Mage :: log("订单支付状态验证失败，订单号：".$orderId);
+            echo "订单支付状态验证失败，订单号：".$orderId;
+            return;
+        }
+        // 增加订单支付状态再验证的步骤 E +++
         $arr = explode('_',$orderId);
         if(!empty($arr)){
             $orderId = $arr[0];
