@@ -940,7 +940,7 @@ jQuery(function () {
             showComfBox(this);
         }
 
-        jQuery(".select_P1").css("display","none");
+        //jQuery(".select_P1").css("display","none");
     });
 
     jQuery("#submitYP2").click(function () {
