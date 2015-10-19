@@ -40,7 +40,7 @@ if($pieces) {
 	foreach($pieces as $ruleId) {
 		$couponCode = null;
 		$ruleLabel = '';
-		if ($ruleId != 1 && $ruleId != 4 && $ruleId != 6) {//skip military and rewards and free shipping
+//		if ($ruleId != 1 && $ruleId != 4 && $ruleId != 6) {//skip military and rewards and free shipping
 			$i++;
 			$couponCode = $this->getQuote()->getCouponCode();
 			$ruleObject = Mage::getModel('salesrule/rule')->load($ruleId);
@@ -48,12 +48,12 @@ if($pieces) {
 			if ($couponCode) {
 				$discountLabel1 = $ruleLabel . ' - ' . $couponCode;
 			}
-		} elseif ($ruleId != 6) { //skip free shipping
-			$i++;
-			$ruleObject = Mage::getModel('salesrule/rule')->load($ruleId);
-			$ruleLabel = $ruleObject->getStoreLabel();
-			$discountLabel2 = $ruleLabel;
-		}
+//		} elseif ($ruleId != 6) { //skip free shipping
+//			$i++;
+//			$ruleObject = Mage::getModel('salesrule/rule')->load($ruleId);
+//			$ruleLabel = $ruleObject->getStoreLabel();
+//			$discountLabel2 = $ruleLabel;
+//		}
 	}
 	if ($i > 1) {
 		$discountLabel = $discountLabel2 . ', ' . $discountLabel1;
@@ -67,9 +67,9 @@ if($pieces) {
 <tr>
     <td class="align-right" colspan="3">
 		<?php if ($controller != 'onepage') : ?>
-			<a href="javascript:void(0)" class="btn-remove" onclick="discountForm.submit(true)">Remove</a>
+			<a href="javascript:void(0)" class="btn-remove" onclick="discountForm.submit(true)">删除</a>
 		<?php endif ?>
-		<span class="subTotal"><?php echo 'Discount (' . $this->escapeHtml($discountLabel) . ')'; ?></span>
+		<span class="subTotal"><?php echo '优惠券 (' . $this->escapeHtml($discountLabel) . ')'; ?></span>
     </td>
     <td class="align-right">
 		<span class="price"><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></span>
