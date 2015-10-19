@@ -3432,11 +3432,13 @@ ul.shopsList li span.shopsList_adrs{
 	width:705px;
 	height:400px;
 	left:50%;
-	margin-left:-200px;
+	margin-left:-480px;
 	margin-top:50px;
 	color:#fff;
 	z-index: 0;
 }
+
+
 .step_1_ball{
 	position: absolute;
 }
@@ -3631,8 +3633,12 @@ ul.shopsList li span.shopsList_adrs{
 }
 
 /*fun ball*/
+.step_2_Fun{
+	margin-left: 280px;
+}
 .step_2_FunBg{
 	position: absolute;
+	
 }
 
 .step_2_funBtn{
@@ -3845,6 +3851,7 @@ dl.madeBoxFuns dt.zz_t_2{
 .madeTex_ball{
 	position: absolute;
 	z-index: 1;
+	margin-left:280px;
 }
 
 .madeTexWrap{
@@ -4048,7 +4055,6 @@ dl.madeBoxFuns dt.zz_t_2{
 	margin-top:50px;
 	width:705px;
 	height:400px;
-	border-radius: 200px;
 	overflow:hidden;
 	z-index: 99999;
 }
