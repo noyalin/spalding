@@ -110,6 +110,11 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                     ),
                 )
             );
+            $fieldset->addField('user1_reason', 'text', array(
+                    'label' => Mage::helper('custommade')->__('用户1理由'),
+                    'name' => 'user1_reason',
+                )
+            );
         } else {
             $fieldset->addField('user1_approve', 'text', array(
                     'name' => 'user1_approve',
@@ -136,6 +141,11 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                             'label' => Mage::helper('custommade')->__('审批不通过'),
                         ),
                     ),
+                )
+            );
+            $fieldset->addField('user2_reason', 'text', array(
+                    'label' => Mage::helper('custommade')->__('用户2理由'),
+                    'name' => 'user2_reason',
                 )
             );
         } else {
@@ -166,6 +176,11 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                     ),
                 )
             );
+            $fieldset->addField('user3_reason', 'text', array(
+                    'label' => Mage::helper('custommade')->__('用户3理由'),
+                    'name' => 'user3_reason',
+                )
+            );
         } else {
             $fieldset->addField('user3_approve', 'text', array(
                     'name' => 'user3_approve',
@@ -192,6 +207,11 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                             'label' => Mage::helper('custommade')->__('审批不通过'),
                         ),
                     ),
+                )
+            );
+            $fieldset->addField('user4_reason', 'text', array(
+                    'label' => Mage::helper('custommade')->__('用户4理由'),
+                    'name' => 'user4_reason',
                 )
             );
         } else {

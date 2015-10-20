@@ -29,6 +29,10 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             ->setUser2Approve(0)
             ->setUser3Approve(0)
             ->setUser4Approve(0)
+            ->setUser1Reason(null)
+            ->setUser2Reason(null)
+            ->setUser3Reason(null)
+            ->setUser4Reason(null)
             ->save();
     }
 
