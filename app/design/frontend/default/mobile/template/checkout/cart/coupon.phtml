@@ -24,23 +24,44 @@
  * @license     http://www.magentocommerce.com/license/enterprise-edition
  */
 ?>
-    <form id="discountForm" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
-        <fieldset>
-		<table class="form-horizontal">
-		<tr>
-		    <td colspan="2" class="infoLabel">
-			<label for="coupon_code">优惠券</label>
-		    </td>
-		</tr>
-		<tr>
-			<td class="form-horizontal-input">
-				<input type="hidden" name="remove" id="remove-coupone" value="0" />
-			    <input class="input-text required-entry" id="coupon_code" name="coupon_code" value="" />
-		    </td>
-			<td class="form-horizontal-btn" onclick="jQuery('#giftcard-form .form-horizontal-input').find('div').remove(); return validateForm('#discountForm');">
-				<button class="button" type="submit" onclick="jQuery('#giftcard-form .form-horizontal-input').find('div').remove(); return validateForm('#discountForm');" value="<?php echo $this->__('Apply Coupon') ?>">应用</button>
-		    </td>
-		</tr>
-	    </table>
-        </fieldset>
-    </form>
+
+<div>
+	<style>
+		.no-use-discount-coupon{font-size:12px;color:#fff;margin-left:10px;color:#b4b4b4;}
+		.no-use-discount-coupon-modify{color:#38f;cursor:pointer;}
+	</style>
+	<?php if(!strlen($this->getCouponCode())): ?>
+	<div class="no-use-discount-coupon">
+		<span>不使用优惠券</span>
+		<span class="no-use-discount-coupon-modify">[修改]</span>
+	</div>
+	<?php endif;?>
+	<div id="discount-coupon" style="display:none;">
+		<form id="discountForm" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
+			<fieldset>
+				<table class="form-horizontal">
+					<tr>
+						<td colspan="2" class="infoLabel">
+						<label for="coupon_code">优惠券</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-horizontal-input">
+							<input type="hidden" name="remove" id="remove-coupone" value="0" />
+							<input class="input-text required-entry" id="coupon_code" name="coupon_code" value="" />
+						</td>
+						<td class="form-horizontal-btn" onclick="jQuery('#giftcard-form .form-horizontal-input').find('div').remove(); return validateForm('#discountForm');">
+							<button class="button" type="submit" onclick="jQuery('#giftcard-form .form-horizontal-input').find('div').remove(); return validateForm('#discountForm');" value="<?php echo $this->__('Apply Coupon') ?>">应用</button>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</form>
+	</div>
+</div>
+<script>
+	jQuery(".no-use-discount-coupon-modify").click(function(){
+		jQuery(this).parent(".no-use-discount-coupon").hide();
+		jQuery(this).parent(".no-use-discount-coupon").siblings("#discount-coupon").show();
+	});
+</script>

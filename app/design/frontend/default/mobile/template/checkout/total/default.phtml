@@ -67,7 +67,7 @@ if($pieces) {
 <tr>
     <td class="align-right" colspan="3">
 		<?php if ($controller != 'onepage') : ?>
-			<a href="javascript:void(0)" class="btn-remove" onclick="discountForm.submit(true)">删除</a>
+			<a href="javascript:void(0)" class="btn-remove" style="color: #38f" onclick="discountForm.submit(true)">[删除]</a>
 		<?php endif ?>
 		<span class="subTotal"><?php echo '优惠券 (' . $this->escapeHtml($discountLabel) . ')'; ?></span>
     </td>

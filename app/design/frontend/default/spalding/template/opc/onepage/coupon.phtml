@@ -1,21 +1,44 @@
-<form id="opc-discount-coupon-form" action="<?php echo $this->getUrl('Opc/Coupon/couponPost', array('_secure' => $this->getRequest()->isSecure())) ?>" method="post">
-    <div class="discount checkoutWrapContent">
-        <div class="discount-form checkoutWrapContentItem clearfix">
-            <div class="checkoutWrapContentItemLeft">
-                <label for="coupon_code"><?php echo $this->__('Enter your coupon code:') ?></label>
-            </div>
-                        
-            <div class="input-box checkoutWrapContentItemLeft" style="width:350px; margin-left:20px;">
-                <input class="input-text" id="coupon_code" type="text" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" autocomplete="off"/>
-            </div>
-            <div class="buttons-set checkoutWrapContentItemLeft" style="width:260px; text-align:left; margin:0 10px;">
-                <button type="button" title="<?php echo $this->__('Apply') ?>" class="button apply-coupon"  value="<?php echo $this->__('Apply') ?>"><?php echo $this->__('Apply') ?></button>
-                <?php if(strlen($this->getCouponCode())): ?>
-                    &nbsp; <button type="button" style="background:#333; color:#fff;" title="<?php echo $this->__('Cancel') ?>" class="button remove-coupon"  value="<?php echo $this->__('Cancel') ?>"><?php echo $this->__('Cancel') ?></button>
-                <?php endif;?>
-            </div>
-        </div>
 
-        
+<?php $aaa = $this;?>
+<div>
+    <style>
+        .no-use-discount-coupon{font-size:12px;color:#fff;margin-left:97px;color:#b4b4b4;}
+        .no-use-discount-coupon-modify{color:#38f;cursor:pointer;}
+    </style>
+    <?php if(!strlen($this->getCouponCode())): ?>
+    <div class="no-use-discount-coupon">
+        <span>不使用优惠券</span>
+        <span class="no-use-discount-coupon-modify">[修改]</span>
     </div>
-</form>
+    <div id="discount-coupon" style="display:none;">
+    <?php else: ?>
+    <div id="discount-coupon" >
+    <?php endif;?>
+        <form id="opc-discount-coupon-form" action="<?php echo $this->getUrl('Opc/Coupon/couponPost', array('_secure' => $this->getRequest()->isSecure())) ?>" method="post">
+            <div class="discount checkoutWrapContent">
+                <div class="discount-form checkoutWrapContentItem clearfix">
+
+                    <div class="checkoutWrapContentItemLeft">
+                        <label for="coupon_code"><?php echo $this->__('Enter your coupon code:') ?></label>
+                    </div>
+
+                    <div class="input-box checkoutWrapContentItemLeft" style="width:350px; margin-left:20px;">
+                        <input class="input-text" id="coupon_code" type="text" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" autocomplete="off"/>
+                    </div>
+                    <div class="buttons-set checkoutWrapContentItemLeft" style="width:260px; text-align:left; margin:0 10px;">
+                        <button type="button" title="<?php echo $this->__('Apply') ?>" class="button apply-coupon"  value="<?php echo $this->__('Apply') ?>"><?php echo $this->__('Apply') ?></button>
+                        <?php if(strlen($this->getCouponCode())): ?>
+                            &nbsp; <button type="button" style="background:#333; color:#fff;" title="<?php echo $this->__('Cancel') ?>" class="button remove-coupon"  value="<?php echo $this->__('Cancel') ?>"><?php echo $this->__('Cancel') ?></button>
+                        <?php endif;?>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    jQuery(".no-use-discount-coupon-modify").click(function(){
+        jQuery(this).parent(".no-use-discount-coupon").hide();
+        jQuery(this).parent(".no-use-discount-coupon").siblings("#discount-coupon").show();
+    });
+</script>

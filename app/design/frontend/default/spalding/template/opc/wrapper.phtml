@@ -202,26 +202,6 @@
                 </div>
                 <!-- 发票 e -->
 
-                <!-- 优惠券 s -->
-<!--<div style="display: none">-->
-<!--<div>-->
-<?php //if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
-                <div class="checkoutLine"></div>
-
-                <div class="checkoutSubTitleMain">
-                        <span class="checkoutSubTitleBall">
-                            <img src="<?php echo $this->getSkinUrl('images/shop_coupon.png');  ?>" alt="">
-                        </span>
-                </div>
-
-                <div  id="discount-coupon-block" class="collapse-block">
-                    <?php echo $this->getChildhtml('coupon');?>
-                </div>
-<?php //endif;?>
-<!--</div>-->
-                <!-- 优惠券 e -->
-
-
                 <div class="checkoutLine"></div>
 
                 <div class="checkoutSubTitleMain">
@@ -234,7 +214,19 @@
 
                     <?php echo $this->getChildhtml('customer.comment');?>
 
+                <!-- 优惠券 s -->
+                <div class="checkoutLine"></div>
 
+                <div class="checkoutSubTitleMain">
+                                <span class="checkoutSubTitleBall">
+                                    <img src="<?php echo $this->getSkinUrl('images/shop_coupon.png');  ?>" alt="">
+                                </span>
+                </div>
+
+                <div  id="discount-coupon-block" class="collapse-block">
+                    <?php echo $this->getChildhtml('coupon');?>
+                </div>
+                <!-- 优惠券 e -->
 
                 <div class="opc-review-actions">
                     <div class="checkoutLine">
