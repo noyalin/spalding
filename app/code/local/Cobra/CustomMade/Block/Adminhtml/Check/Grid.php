@@ -133,6 +133,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'html_decorators'   => array('nobr')
         ));
 
+        $this->addColumn('user1_reason', array(
+            'header'            => Mage::helper('custommade')->__('用户1理由'),
+            'align'             => 'right',
+            'width'             => '80px',
+            'index'             => 'user1_reason',
+            'html_decorators'   => array('nobr')
+        ));
+
         $this->addColumn('user2_approve', array(
             'header'            => Mage::helper('custommade')->__('用户2'),
             'align'             => 'center',
@@ -144,6 +152,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 1   => '审批通过',
                 2   => '审批不通过',
             ),
+            'html_decorators'   => array('nobr')
+        ));
+
+        $this->addColumn('user2_reason', array(
+            'header'            => Mage::helper('custommade')->__('用户2理由'),
+            'align'             => 'right',
+            'width'             => '80px',
+            'index'             => 'user2_reason',
             'html_decorators'   => array('nobr')
         ));
 
@@ -161,6 +177,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'html_decorators'   => array('nobr')
         ));
 
+        $this->addColumn('user3_reason', array(
+            'header'            => Mage::helper('custommade')->__('用户3理由'),
+            'align'             => 'right',
+            'width'             => '80px',
+            'index'             => 'user3_reason',
+            'html_decorators'   => array('nobr')
+        ));
+
         $this->addColumn('user4_approve', array(
             'header'            => Mage::helper('custommade')->__('用户4'),
             'align'             => 'center',
@@ -172,6 +196,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
                 1   => '审批通过',
                 2   => '审批不通过',
             ),
+            'html_decorators'   => array('nobr')
+        ));
+
+        $this->addColumn('user4_reason', array(
+            'header'            => Mage::helper('custommade')->__('用户4理由'),
+            'align'             => 'right',
+            'width'             => '80px',
+            'index'             => 'user4_reason',
             'html_decorators'   => array('nobr')
         ));
 
