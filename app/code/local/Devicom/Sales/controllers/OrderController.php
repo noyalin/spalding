@@ -54,4 +54,17 @@ class Devicom_Sales_OrderController extends Mage_Sales_OrderController
         $session = Mage::getSingleton('core/session');
         $session->addSuccess('The order has been canceld.');
     }
+
+    public function trackingAction()
+    {
+        $this->loadLayout();
+
+        $this->getLayout()->getBlock('head')->setTitle('物流查询');
+
+        if ($block = $this->getLayout()->getBlock('customer.account.link.back')) {
+            $block->setRefererUrl($this->_getRefererUrl());
+        }
+        $this->renderLayout();
+
+    }
 }

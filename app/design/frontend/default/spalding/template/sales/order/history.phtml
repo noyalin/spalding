@@ -120,12 +120,12 @@
                                     <?php if($_order->getStatus() === 'alipay_wait_buyer_pay'){?>
         							<a href="<?php echo $this->getCancelUrl($_order) ?>">取消订单</a>
                                     <?php }?>
-                                    <?php if($_order->getStatus() === 'shipped'){
-                                        $trackingid = getTrackingByOrderID($_order->getRealOrderId());
-                                        if($trackingid !==""){
-                                        ?>
-                                        <a href="http://www.sf-express.com/cn/sc/dynamic_functions/waybill/#search/bill-number/<?php echo $trackingid?>" target="_blank">查看物流</a>
-                                    <?php }}?>
+<!--                                    --><?php //if($_order->getStatus() === 'shipped'){
+//                                        $trackingid = getTrackingByOrderID($_order->getRealOrderId());
+//                                        if($trackingid !==""){
+//                                        ?>
+                                        <a href="<?php echo $this->getTrackingUrl($_order) ?>" target="_blank">查看物流</a>
+<!--                                    --><?php //}}?>
         						</span>
         </li>
         <?php endforeach; ?>

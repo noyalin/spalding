@@ -82,6 +82,10 @@ class Devicom_Sales_Block_Order_History extends Mage_Core_Block_Template
     {
         return $this->getUrl('*/*/track', array('order_id' => $order->getId()));
     }
+    public function getTrackingUrl($order)
+    {
+        return $this->getUrl('*/*/tracking')."?orderId=".$order->getRealOrderId();
+    }
 
     public function getReorderUrl($order)
     {
