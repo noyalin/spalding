@@ -4267,6 +4267,54 @@ dl.madeBoxFuns dt.zz_t_2{
 	background:url(../images/customMade/checked_2.png) left center no-repeat;
 }
 
+
+.count-active-tit {
+    border-bottom: 5px solid #fff;
+    color: #ffba00;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+}
+
+.confirmSn{
+	position: relative;
+	padding-left:20px;
+	border-left:2px solid #3f3f3f;
+	margin-top:20px;
+	margin-left:5px;
+}
+
+.confirmSn li{
+	margin-bottom:10px;
+	position: relative;
+	color:#666;
+	font-size: 14px;
+}
+
+.confirmSn li.conNow{
+	color:#fff;
+}
+
+.confirmSn li:before{
+	content: '';
+	width:0;
+	height:0;
+	position: absolute;
+	margin-left:-26px;
+	top:0;
+	margin-top:2px;
+	border:5px solid #3f3f3f;
+	border-radius:5px;
+}
+
+.confirmSn li.conNow:before{
+	border-color:#ffb400;
+	border-width: 7px;
+	border-radius: 7px;
+	margin-left:-28px;
+}
+
 @media screen and (min-width:1800px){
 	.cusRemind{
 		left:600px;
