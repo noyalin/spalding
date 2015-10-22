@@ -153,6 +153,10 @@
         var size = getTxtSize(1);
         var font = jQuery(".chosFam_p1").attr("data-family");
 
+        //重置图片定制
+        jQuery("#img_grip").css("opacity","0");
+        jQuery("#imgFuns").css("opacity","0");
+        jQuery("#formBtn").css("display","block");
 
         jQuery.ajax({
             type: 'POST',
@@ -184,6 +188,11 @@
         var text4 = getSwapTxt_4();
         var size = getTxtSize(2);
         var font = jQuery(".chosFam_p2").attr("data-family");
+
+        //重置图片定制
+        jQuery("#img_grip").css("opacity","0");
+        jQuery("#imgFuns").css("opacity","0");
+        // jQuery("#formBtn").css("display","block");
 
         jQuery.ajax({
             type: 'POST',
@@ -302,6 +311,10 @@
 
             _viewCons.empty();
             _viewCons.append(_dataImg);
+
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
@@ -470,6 +483,10 @@
 
             _viewCons.empty();
             _viewCons.append(_dataImg);
+
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();

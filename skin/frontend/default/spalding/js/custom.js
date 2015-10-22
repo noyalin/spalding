@@ -89,6 +89,11 @@ jQuery(function () {
             jQuery(".remind_1").css("opacity","1");
             jQuery(".remind_2").css("opacity","0");
 
+            //重置图片定制
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
+
 
             // TODO
             jQuery.ajax({
@@ -170,6 +175,11 @@ jQuery(function () {
             //点亮对应icon
             jQuery(".remind_2").css("opacity","1");
             jQuery(".remind_1").css("opacity","0");
+
+            //重置图片定制
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
 
             // TODO
             jQuery.ajax({

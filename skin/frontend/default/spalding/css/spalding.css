@@ -3429,13 +3429,17 @@ ul.shopsList li span.shopsList_adrs{
 
 .cusMadeCen{
 	position: absolute;
-	width:705px;
+	width:400px;
 	height:400px;
 	left:50%;
-	margin-left:-480px;
+	margin-left:-200px;
 	margin-top:50px;
 	color:#fff;
 	z-index: 0;
+}
+.cusMadeCen.cusMadeCen_img{
+	width:705px;
+	margin-left:-480px;
 }
 
 
@@ -3851,7 +3855,6 @@ dl.madeBoxFuns dt.zz_t_2{
 .madeTex_ball{
 	position: absolute;
 	z-index: 1;
-	margin-left:280px;
 }
 
 .madeTexWrap{
@@ -4051,10 +4054,11 @@ dl.madeBoxFuns dt.zz_t_2{
 	display: none;
 	position: absolute;
 	left:50%;
-	margin-left:-480px;
+	margin-left:-200px;
 	margin-top:50px;
-	width:705px;
+	width:400px;
 	height:400px;
+	border-radius: 200px;
 	overflow:hidden;
 	z-index: 99999;
 }
@@ -4066,9 +4070,8 @@ dl.madeBoxFuns dt.zz_t_2{
 .viewPage_P1 .viewPage_p1_wrap , .viewPage_P2 .viewPage_p2_wrap{
 	z-index: 1;
 	position: absolute;
-	margin-top:-25px;
-	width:705px;
-	height:190px;
+	width:400px;
+	height:400px;
 	text-align: center;
 
 	font-family: "Conv_CustomGrotesque-Regular",sans-serif;
@@ -4088,7 +4091,10 @@ dl.madeBoxFuns dt.zz_t_2{
 .viewTexWrap{
 	top:100px;
 	text-align: center;
+	line-height: 400px;
 }
+
+
 
 
 .madeLoading , .notTodo{
