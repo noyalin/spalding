@@ -65,35 +65,36 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
     public function saveCustomMade($order)
     {
+        $customerId = Mage::getSingleton('core/session')->getCustomerId();
         $orderId = $order->getRealOrderId();
-        $customerId = $order->getCustomerId();
         $_items = $order->getItemsCollection();
         foreach ($_items as $_item) {
             if (!$_item->getParentItem()) {
-                $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
-                if ($customMsg->getTypeP1() != null ||
-                    $customMsg->getTypeP2() != null
+                $sku = $_item->getProduct()->getSku();
+                $session = Mage::getModel('custommade/session')->getOrderSession($customerId, $sku);
+                if ($session->getTypeP1() != null ||
+                    $session->getTypeP2() != null
                 ) {
                     //保存定制信息
                     Mage::getModel('custommade/info')->setOrderId($orderId)
-                        ->setSku($customMsg->getSku())
-                        ->setTypeP1($customMsg->getTypeP1())
-                        ->setMsg1P1($customMsg->getMsg1P1())
-                        ->setMsg2P1($customMsg->getMsg2P1())
-                        ->setMsg3P1($customMsg->getMsg3P1())
-                        ->setMsg4P1($customMsg->getMsg4P1())
-                        ->setMsg5P1($this->createP1Url($customMsg->getTypeP1(), $customMsg->getMsg1P1(), $customMsg->getMsg2P1(), $customMsg->getMsg3P1(), $customMsg->getMsg4P1(), 'show', $customMsg->getSku()))
-                        ->setMsg6P1($this->createP1Url($customMsg->getTypeP1(), $customMsg->getMsg1P1(), $customMsg->getMsg2P1(), $customMsg->getMsg3P1(), $customMsg->getMsg4P1(), 'print', $customMsg->getSku()))
-                        ->setTypeP2($customMsg->getTypeP2())
-                        ->setMsg1P2($customMsg->getMsg1P2())
-                        ->setMsg2P2($customMsg->getMsg2P2())
-                        ->setMsg3P2($customMsg->getMsg3P2())
-                        ->setMsg4P2($customMsg->getMsg4P2())
-                        ->setMsg5P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'show', $customMsg->getSku()))
-                        ->setMsg6P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'print', $customMsg->getSku()))
+                        ->setSku($session->getSku())
+                        ->setTypeP1($session->getTypeP1())
+                        ->setMsg1P1($session->getContent1P1())
+                        ->setMsg2P1($session->getContent2P1())
+                        ->setMsg3P1($session->getContent3P1())
+                        ->setMsg4P1($session->getContent4P1())
+                        ->setMsg5P1($this->createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'show', $session->getSku()))
+                        ->setMsg6P1($this->createP1Url($session->getTypeP1(), $session->getContent1P1(), $session->getContent2P1(), $session->getContent3P1(), $session->getContent4P1(), 'print', $session->getSku()))
+                        ->setTypeP2($session->getTypeP2())
+                        ->setMsg1P2($session->getContent1P2())
+                        ->setMsg2P2($session->getContent2P2())
+                        ->setMsg3P2($session->getContent3P2())
+                        ->setMsg4P2($session->getContent4P2())
+                        ->setMsg5P2($this->createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'show', $session->getSku()))
+                        ->setMsg6P2($this->createP2Url($session->getTypeP2(), $session->getContent1P2(), $session->getContent2P2(), $session->getContent3P2(), $session->getContent4P2(), 'print', $session->getSku()))
                         ->setStatus(self::STATUS_NON_PAYMENT)
                         ->save();
-                    Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
+                    $this->clearSession($customerId, $sku);
                 }
             }
         }
