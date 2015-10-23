@@ -4,15 +4,12 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 {
     public function addProduct($productInfo, $requestInfo=null)
     {
-        $customCategoryId = 39;
         $product = $this->_getProduct($productInfo);
         $request = $this->_getProductRequest($requestInfo);
 
         $productId = $product->getId();
         $categoryIds = $product->getCategoryIds();
     
-
-
         if ($product->getStockItem()) {
             $minimumQty = $product->getStockItem()->getMinSaleQty();
             //If product was not found in cart and there is set minimal qty for it
@@ -53,58 +50,59 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
         $this->getCheckoutSession()->setLastAddedProductId($productId);
 
         //开始删除已经存在的
-        $keyCustom = in_array($customCategoryId,$categoryIds);
-        if($keyCustom){
+        if ($this->checkCustomMade($categoryIds)) {
             //此商品属于定制类商品
             //remove from cart
             $cartHelper = Mage::helper('checkout/cart');
             $itemsCart = $cartHelper->getCart()->getItems();
-
+            $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();;
             $superAttribute = $requestInfo['super_attribute'];
-            foreach($itemsCart as $itemCart):
-                $tmpId = $itemCart->getProduct()->getId() ;
-                if($itemCart->getProduct()->getTypeID() == 'simple'){
-                    $productTmp =Mage::getModel('catalog/product')->load($tmpId);
-                    $optionIdTmp = $productTmp->getCustomBall();
-                    if(in_array($optionIdTmp,$superAttribute)){
-                        $itemCart->setQty(1);
-                        $cartHelper->getCart()->save();
-                        continue;
-                    }
-
-                    $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
-                        ->getParentIdsByChild($tmpId);
-                    $productParent = Mage::getModel('catalog/product')->load($parentIds[0]);
-                    $tmpCategoryIdArr = $productParent->getCategoryIds();
-                    if(in_array($customCategoryId,$tmpCategoryIdArr)){
-                        if(isset($parentIds[0]) &&  $parentIds[0] == $productId){
-                            //添加了同样的一个定制球，应该把数量置为1
+            if (!empty($itemsCart)) {
+                foreach ($itemsCart as $itemCart) {
+                    $tmpId = $itemCart->getProduct()->getId();
+                    if ($itemCart->getProduct()->getTypeID() == 'simple') {
+                        $productTmp = Mage::getModel('catalog/product')->load($tmpId);
+                        $optionIdTmp = $productTmp->getCustomBall();
+                        if (in_array($optionIdTmp, $superAttribute)) {
                             $itemCart->setQty(1);
                             $cartHelper->getCart()->save();
-                        }else{
-                            $itemIdCart = $itemCart->getItemId();
-                            mage :: log($itemCart->getItemId() .'  remove id  ');
-                            $cartHelper->getCart()->removeItem($itemIdCart)->save();
-                            break;
+                            continue;
                         }
-                    }
-                }else{
-                    $productTmp =Mage::getModel('catalog/product')->load($tmpId);
-                    $tmpCategoryIdArr = $productTmp->getCategoryIds();
-                    if(in_array($customCategoryId,$tmpCategoryIdArr)){
-                        if( $tmpId == $productId ){
-                            //添加了同样的一个定制球，应该把数量置为1
-                            $itemCart->setQty(1);
-                            $cartHelper->getCart()->save();
+
+                        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
+                            ->getParentIdsByChild($tmpId);
+                        $productParent = Mage::getModel('catalog/product')->load($parentIds[0]);
+                        $tmpCategoryIdArr = $productParent->getCategoryIds();
+                        if ($this->checkCustomMade($tmpCategoryIdArr)) {
+                            if (isset($parentIds[0]) && $parentIds[0] == $productId) {
+                                //添加了同样的一个定制球，应该把数量置为1
+                                $itemCart->setQty(1);
+                                $cartHelper->getCart()->save();
+                            } else {
+                                $itemIdCart = $itemCart->getItemId();
+                                mage:: log($itemCart->getItemId() . '  remove id  ');
+                                $cartHelper->getCart()->removeItem($itemIdCart)->save();
+                                break;
+                            }
+                        }
+                    } else {
+                        $productTmp = Mage::getModel('catalog/product')->load($tmpId);
+                        $tmpCategoryIdArr = $productTmp->getCategoryIds();
+                        if ($this->checkCustomMade($tmpCategoryIdArr)) {
+                            if ($tmpId == $productId) {
+                                //添加了同样的一个定制球，应该把数量置为1
+                                $itemCart->setQty(1);
+                                $cartHelper->getCart()->save();
+                                Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id);
+                            }
                         }
                     }
                 }
-            endforeach;
-
+            } else {
+                Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id);
+            }
         }
         //结束删除
-
-
         return $this;
     }
     
@@ -201,5 +199,16 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 
         Mage::dispatchEvent('checkout_cart_update_items_after', array('cart'=>$this, 'info'=>$data));
         return $this;
+    }
+
+    private function checkCustomMade($ids)
+    {
+        foreach ($ids as $id) {
+            $urlKey = Mage::getModel('catalog/category')->load($id)->getUrlKey();
+            if ($urlKey == 'custom-made') {
+                return true;
+            }
+        }
+        return false;
     }
 }
