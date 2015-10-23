@@ -47,6 +47,7 @@ class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
             ->setMsg2P2($session->getContent2P2())
             ->setMsg3P2($session->getContent3P2())
             ->setMsg4P2($session->getContent4P2())
+            ->setCreateTime(time())
             ->save();
         $this->clearSession($customerIdsession, $sku);
     }

@@ -31,7 +31,7 @@ CREATE TABLE `{$this->getTable('custommade_info')}` (
   `user3_reason` varchar(800) DEFAULT NULL,
   `user4_approve` int(1) DEFAULT 0,
   `user4_reason` varchar(800) DEFAULT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT NULL,
   `update_time` timestamp NULL DEFAULT NULL,
   `status` int(1) NOT NULL,
   PRIMARY KEY (`id`)
@@ -52,7 +52,7 @@ CREATE TABLE `{$this->getTable('custommade_temp')}` (
   `msg2_p2` varchar(800) DEFAULT NULL,
   `msg3_p2` varchar(800) DEFAULT NULL,
   `msg4_p2` varchar(800) DEFAULT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT NULL,
   `update_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

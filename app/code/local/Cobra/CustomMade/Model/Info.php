@@ -91,6 +91,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                         ->setMsg4P2($customMsg->getMsg4P2())
                         ->setMsg5P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'show', $customMsg->getSku()))
                         ->setMsg6P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'print', $customMsg->getSku()))
+                        ->setCreateTime(time())
                         ->setStatus(self::STATUS_NON_PAYMENT)
                         ->save();
                     Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
