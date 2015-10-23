@@ -48,6 +48,9 @@
                     <info>
                         <table>custommade_info</table>
                     </info>
+                    <temp>
+                        <table>custommade_temp</table>
+                    </temp>
                     <session>
                         <table>custommade_session</table>
                     </session>
