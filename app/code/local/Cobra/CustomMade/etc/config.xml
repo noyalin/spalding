@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Cobra_CustomMade>
-            <version>0.1.5</version>
+            <version>0.1.6</version>
         </Cobra_CustomMade>
     </modules>
     <frontend>
@@ -48,6 +48,9 @@
                     <info>
                         <table>custommade_info</table>
                     </info>
+                    <temp>
+                        <table>custommade_temp</table>
+                    </temp>
                     <session>
                         <table>custommade_session</table>
                     </session>
