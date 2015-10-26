@@ -251,7 +251,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $p2_preview_url = $subscriber->getMsg5P2();
             $p2_print_url = $subscriber->getMsg6P2();
             $img_prefix = $dir . "/" . $subscriber->getSku() . "-" . $subscriber->getOrderId() . "-" . $time;
-            if($subscriber->getSku() == '74-602yc') {
+            if($subscriber->getSku() == '74-602yc-ID02') {
                 if ($p1_preview_url != null) {
                     $this->grabImage($p1_preview_url, $img_prefix . "-2-preview.png");
                 }
