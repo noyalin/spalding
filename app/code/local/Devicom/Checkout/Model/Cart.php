@@ -9,7 +9,13 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 
         $productId = $product->getId();
         $categoryIds = $product->getCategoryIds();
-    
+
+        if ($this->checkCustomMade($categoryIds)) {
+            $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
+            Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id);
+        }
+
+
         if ($product->getStockItem()) {
             $minimumQty = $product->getStockItem()->getMinSaleQty();
             //If product was not found in cart and there is set minimal qty for it
@@ -55,7 +61,6 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
             //remove from cart
             $cartHelper = Mage::helper('checkout/cart');
             $itemsCart = $cartHelper->getCart()->getItems();
-            $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();;
             $superAttribute = $requestInfo['super_attribute'];
             if (!empty($itemsCart)) {
                 foreach ($itemsCart as $itemCart) {
@@ -93,13 +98,10 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
                                 //添加了同样的一个定制球，应该把数量置为1
                                 $itemCart->setQty(1);
                                 $cartHelper->getCart()->save();
-                                Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id);
                             }
                         }
                     }
                 }
-            } else {
-                Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id);
             }
         }
         //结束删除
