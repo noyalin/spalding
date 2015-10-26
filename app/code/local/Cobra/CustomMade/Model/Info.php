@@ -132,16 +132,16 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
         switch ($content3P1) {
             case 1:
-                $url .= 'p1-small_one-' . $imgType . '?$1980pxx544px$&$textone=' . $content1P1;
+                $url .= 'p1-small_one-' . $imgType . '?$1980pxx544px$&$textone=' . urlencode($content1P1);
                 break;
             case 2:
-                $url .= 'p1-middle-' . $imgType . '?$1980pxx544px$&$text=' . $content1P1;
+                $url .= 'p1-middle-' . $imgType . '?$1980pxx544px$&$text=' . urlencode($content1P1);
                 break;
             case 3:
-                $url .= 'p1-big-' . $imgType . '?$1980pxx544px$&$text=' . $content1P1;
+                $url .= 'p1-big-' . $imgType . '?$1980pxx544px$&$text=' . urlencode($content1P1);
                 break;
             case 4:
-                $url .= 'p1-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . $content2P1 . '&$textone=' . $content1P1;
+                $url .= 'p1-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . urlencode($content2P1) . '&$textone=' . urlencode($content1P1);
                 break;
             default:
         }
@@ -174,16 +174,16 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
         switch ($content3P2) {
             case 1:
-                $url .= 'p2-small_one-' . $imgType . '?$1980pxx544px$&$textone=' . $content1P2;
+                $url .= 'p2-small_one-' . $imgType . '?$1980pxx544px$&$textone=' . urlencode($content1P2);
                 break;
             case 2:
-                $url .= 'p2-middle-' . $imgType . '?$1980pxx544px$&$text=' . $content1P2;
+                $url .= 'p2-middle-' . $imgType . '?$1980pxx544px$&$text=' . urlencode($content1P2);
                 break;
             case 3:
-                $url .= 'p2-big-' . $imgType . '?$1980pxx544px$&$text=' . $content1P2;
+                $url .= 'p2-big-' . $imgType . '?$1980pxx544px$&$text=' . urlencode($content1P2);
                 break;
             case 4:
-                $url .= 'p2-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . $content2P2 . '&$textone=' . $content1P2;
+                $url .= 'p2-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . urlencode($content2P2) . '&$textone=' . urlencode($content1P2);
                 break;
             default;
         }

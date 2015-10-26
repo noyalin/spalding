@@ -923,10 +923,10 @@ jQuery(function () {
         } else if (_madeValue == 2) {
             var size = getTxtSize(1);
             if (size == 4) {
-                if (submitYP_CheckText_NO_Alert("#textInput_1") || submitYP_CheckText_NO_Alert("#textInput_3")) {
+                if (submitYP_CheckText_NO_Alert("#textInput_1") && submitYP_CheckText_NO_Alert("#textInput_3")) {
                     showComfBox(this);
                 } else {
-                    alert('只限输入字母，数字以及空格！');
+                    alert('只限输入字母，数字，空格以及@-_.&:');
                 }
             } else {
                 if (submitYP_CheckText("#textInput_1")) {
@@ -949,10 +949,10 @@ jQuery(function () {
         } else if (_madeValue == 2) {
             var size = getTxtSize(1);
             if (size == 4) {
-                if (submitYP_CheckText_NO_Alert("#textInput_2") || submitYP_CheckText_NO_Alert("#textInput_4")) {
+                if (submitYP_CheckText_NO_Alert("#textInput_2") && submitYP_CheckText_NO_Alert("#textInput_4")) {
                     showComfBox(this);
                 } else {
-                    alert('只限输入字母，数字以及空格！');
+                    alert('只限输入字母，数字，空格以及@-_.&:');
                 }
             } else {
                 if (submitYP_CheckText("#textInput_2")) {
@@ -966,11 +966,11 @@ jQuery(function () {
 
     function submitYP_CheckText(txtInputId){
 
-        var re = /^([A-Za-z0-9]|\s)*$/;
+        var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
         var txtInput = jQuery(txtInputId);
 
         if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
-            alert('只限输入字母，数字以及空格！');
+            alert('只限输入字母，数字，空格以及@-_.&:');
             txtInput.focus();
             return false;
         }
@@ -979,7 +979,7 @@ jQuery(function () {
 
     function submitYP_CheckText_NO_Alert(txtInputId){
 
-        var re = /^([A-Za-z0-9]|\s)*$/;
+        var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
         var txtInput = jQuery(txtInputId);
 
         if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
