@@ -68,35 +68,41 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $orderId = $order->getRealOrderId();
         $customerId = $order->getCustomerId();
         $_items = $order->getItemsCollection();
-        foreach ($_items as $_item) {
-            if (!$_item->getParentItem()) {
-                $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
-                if ($customMsg->getTypeP1() != null ||
-                    $customMsg->getTypeP2() != null
-                ) {
-                    //保存定制信息
-                    Mage::getModel('custommade/info')->setOrderId($orderId)
-                        ->setSku($customMsg->getSku())
-                        ->setTypeP1($customMsg->getTypeP1())
-                        ->setMsg1P1($customMsg->getMsg1P1())
-                        ->setMsg2P1($customMsg->getMsg2P1())
-                        ->setMsg3P1($customMsg->getMsg3P1())
-                        ->setMsg4P1($customMsg->getMsg4P1())
-                        ->setMsg5P1($this->createP1Url($customMsg->getTypeP1(), $customMsg->getMsg1P1(), $customMsg->getMsg2P1(), $customMsg->getMsg3P1(), $customMsg->getMsg4P1(), 'show', $customMsg->getSku()))
-                        ->setMsg6P1($this->createP1Url($customMsg->getTypeP1(), $customMsg->getMsg1P1(), $customMsg->getMsg2P1(), $customMsg->getMsg3P1(), $customMsg->getMsg4P1(), 'print', $customMsg->getSku()))
-                        ->setTypeP2($customMsg->getTypeP2())
-                        ->setMsg1P2($customMsg->getMsg1P2())
-                        ->setMsg2P2($customMsg->getMsg2P2())
-                        ->setMsg3P2($customMsg->getMsg3P2())
-                        ->setMsg4P2($customMsg->getMsg4P2())
-                        ->setMsg5P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'show', $customMsg->getSku()))
-                        ->setMsg6P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'print', $customMsg->getSku()))
-                        ->setCreateTime(time())
-                        ->setStatus(self::STATUS_NON_PAYMENT)
-                        ->save();
-                    Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
+        try {
+            foreach ($_items as $_item) {
+                if (!$_item->getParentItem()) {
+                    $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
+                    if ($customMsg->getTypeP1() != null ||
+                        $customMsg->getTypeP2() != null
+                    ) {
+                        //保存定制信息
+                        Mage::getModel('custommade/info')->setOrderId($orderId)
+                            ->setSku($customMsg->getSku())
+                            ->setTypeP1($customMsg->getTypeP1())
+                            ->setMsg1P1($customMsg->getMsg1P1())
+                            ->setMsg2P1($customMsg->getMsg2P1())
+                            ->setMsg3P1($customMsg->getMsg3P1())
+                            ->setMsg4P1($customMsg->getMsg4P1())
+                            ->setMsg5P1($this->createP1Url($customMsg->getTypeP1(), $customMsg->getMsg1P1(), $customMsg->getMsg2P1(), $customMsg->getMsg3P1(), $customMsg->getMsg4P1(), 'show', $customMsg->getSku()))
+                            ->setMsg6P1($this->createP1Url($customMsg->getTypeP1(), $customMsg->getMsg1P1(), $customMsg->getMsg2P1(), $customMsg->getMsg3P1(), $customMsg->getMsg4P1(), 'print', $customMsg->getSku()))
+                            ->setTypeP2($customMsg->getTypeP2())
+                            ->setMsg1P2($customMsg->getMsg1P2())
+                            ->setMsg2P2($customMsg->getMsg2P2())
+                            ->setMsg3P2($customMsg->getMsg3P2())
+                            ->setMsg4P2($customMsg->getMsg4P2())
+                            ->setMsg5P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'show', $customMsg->getSku()))
+                            ->setMsg6P2($this->createP2Url($customMsg->getTypeP2(), $customMsg->getMsg1P2(), $customMsg->getMsg2P2(), $customMsg->getMsg3P2(), $customMsg->getMsg4P2(), 'print', $customMsg->getSku()))
+                            ->setCreateTime(time())
+                            ->setStatus(self::STATUS_NON_PAYMENT)
+                            ->save();
+                        Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
+                    }
                 }
             }
+        } catch (Exception $e) {
+            Mage::log('Save CustomMade Error,Order Id=' . $orderId . ',Customer Id=' . $customerId);
+            Mage::log($e->getMessage());
+
         }
     }
 
