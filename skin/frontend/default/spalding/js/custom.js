@@ -923,10 +923,14 @@ jQuery(function () {
         } else if (_madeValue == 2) {
             var size = getTxtSize(1);
             if (size == 4) {
-                if (submitYP_CheckText_NO_Alert("#textInput_1") && submitYP_CheckText_NO_Alert("#textInput_3")) {
-                    showComfBox(this);
+                if (jQuery("#textInput_1").val().length == 0 && jQuery("#textInput_3").val().length == 0) {
+                    alert('至少输入一行内容');
                 } else {
-                    alert('只限输入字母，数字，空格以及@-_.&:');
+                    if (submitYP_CheckText_NO_Alert("#textInput_1") && submitYP_CheckText_NO_Alert("#textInput_3")) {
+                        showComfBox(this);
+                    } else {
+                        alert('只限输入字母，数字，空格以及@-_.&:');
+                    }
                 }
             } else {
                 if (submitYP_CheckText("#textInput_1")) {
@@ -949,10 +953,14 @@ jQuery(function () {
         } else if (_madeValue == 2) {
             var size = getTxtSize(1);
             if (size == 4) {
-                if (submitYP_CheckText_NO_Alert("#textInput_2") && submitYP_CheckText_NO_Alert("#textInput_4")) {
-                    showComfBox(this);
+                if (jQuery("#textInput_2").val().length == 0 && jQuery("#textInput_4").val().length == 0) {
+                    alert('至少输入一行内容');
                 } else {
-                    alert('只限输入字母，数字，空格以及@-_.&:');
+                    if (submitYP_CheckText_NO_Alert("#textInput_2") && submitYP_CheckText_NO_Alert("#textInput_4")) {
+                        showComfBox(this);
+                    } else {
+                        alert('只限输入字母，数字，空格以及@-_.&:');
+                    }
                 }
             } else {
                 if (submitYP_CheckText("#textInput_2")) {
@@ -969,7 +977,12 @@ jQuery(function () {
         var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
         var txtInput = jQuery(txtInputId);
 
-        if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
+        if (txtInput.val().length == 0 ){
+            alert('输入内容不能为空！');
+            txtInput.focus();
+            return false;
+        }
+        if (!re.exec(txtInput.val())){
             alert('只限输入字母，数字，空格以及@-_.&:');
             txtInput.focus();
             return false;
@@ -982,7 +995,7 @@ jQuery(function () {
         var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
         var txtInput = jQuery(txtInputId);
 
-        if (txtInput.val().length == 0 || !re.exec(txtInput.val())){
+        if (!re.exec(txtInput.val())){
             txtInput.focus();
             return false;
         }
