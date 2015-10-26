@@ -23,9 +23,9 @@ abstract class  Task_Tools_Model_Base{
     // This is a global configuration for system notifications. All on/off
     const CONF_SYSTEM_NOTIFICATION_ENABLED = true;
     //const CONF_SYSTEM_NOTIFICATION_TO_ADDRESS = "scott.crain@sneakerhead.com";
-    const CONF_SYSTEM_NOTIFICATION_TO_ADDRESS = "davis.du@voyageone.cn;bob.chen@voyageone.cn";
-    const CONF_SYSTEM_NOTIFICATION_CC_ADDRESS =  "davis.du@voyageone.cn";
-    const CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS = "admin@sneakerhead.cn";
+    const CONF_SYSTEM_NOTIFICATION_TO_ADDRESS = "bob.chen@voyageone.cn";
+    const CONF_SYSTEM_NOTIFICATION_CC_ADDRESS =  "buchun.gu@voyageone.cn";
+    const CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS = "admin@spaldingchina.cn";
 
     public $coreDir;
     public $catalogLogsDirectory;
