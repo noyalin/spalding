@@ -44,12 +44,21 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
     </div>
     <?php
+    $_customError = false;
     $_overSold = false;
     $_items = $_order->getItemsCollection();
     $_index = 0;
     $_count = $_items->count();
     foreach ($_items as $_item){
         if ($_item->getParentItem()) {
+            if ($_item->getSku() == '74-602yc-ID02') {
+                $customOrder = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId());
+                $customOrderId = $customOrder->getId();
+                if (!$customOrderId) {
+                    $_customError = true;
+                }
+            }
+
             $itemQty = (int)Mage::getModel('inventory/physical')->getQtyBySku($_item->getSku());
             if ($itemQty  < 1) {
                 $_overSold .= ("<br><h4>商品名称：".$_item->getName()." (".$_item->getSku().")</h4>");
@@ -57,7 +66,12 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
         }
     }
 
-    if ($_overSold) {
+    if ($_customError) {
+        $_shopUrl = $this->getUrl('custom-made.html');
+        $_goto = ('<div class="box"><h3>非常抱歉，定制数据异常。请前往 <a target="_blank" href="'.$_shopUrl.'" style="cursor:pointer;"> 》》Spalding定制《《 </a> 重新定制您的商品。</h3>');
+        $_goto .= ($_overSold.'</div>');
+        echo $_goto;
+    }else if($_overSold){
         $_shopUrl = $this->getUrl('products.html');
         $_goto = ('<div class="box"><h3>非常抱歉，订单中以下的商品被抢光了。请前往 <a target="_blank" href="'.$_shopUrl.'" style="cursor:pointer;"> 》》斯伯丁商城《《 </a> 重新选购您所中意的商品。</h3>');
         $_goto .= ($_overSold.'</div>');
