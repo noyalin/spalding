@@ -9,6 +9,9 @@ class Cobra_CustomMade_Model_Session extends Mage_Core_Model_Abstract
 
     public function getSession($customerId, $sku)
     {
+        if (!$customerId) {
+            $customerId = Mage::getModel('custommade/customer')->createCustomer();
+        }
         $session = $this->getCollection()
             ->addFieldToFilter('customer_id', $customerId)
             ->addFieldToFilter('sku', $sku)
