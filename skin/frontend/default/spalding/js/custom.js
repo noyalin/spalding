@@ -73,6 +73,7 @@ function inputCart(){
     }else{
         //已改动
         // alert("已改动");
+        console.log('false');
         notTodo("提示","定制条件已变更，请先保存定制，才可以加入购物车，为您带来的不便，还请谅解！");
         return false;
     }
@@ -88,6 +89,7 @@ function cartSub_out(){
 }
 
 function cartSub_login() {
+    console.log('cartSub_login');
     if (inputCart()) {
         console.log('true');
         return true;
