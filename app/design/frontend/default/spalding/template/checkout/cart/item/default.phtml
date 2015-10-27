@@ -68,7 +68,15 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
         <div class="spListInfTop clearfix">
             <span class="spCarTit_name">
                 <?php if ($this->hasProductUrl()):?>
-                    <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
+                    <a href="<?php
+                                    if ($this->getProduct()->getSku() == '74-602yc') {
+                                        echo $this->getUrl('custom-made/74-602y-74602yc.html');
+                                    } else if ($this->getProduct()->getSku() == '74-604yc') {
+                                        echo $this->getUrl('custom-made/74-604y-74604yc.html');
+                                    } else {
+                                        echo $this->getProductUrl();
+                                    }
+                            ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
                 <?php else: ?>
                     <?php echo $this->escapeHtml($this->getProductName()) ?>
                 <?php endif; ?>

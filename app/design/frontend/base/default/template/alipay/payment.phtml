@@ -113,12 +113,12 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
 
     if ($_customError) {
         $_shopUrl = $this->getUrl('custom-made.html');
-        $_goto = ('<div class="box"><h3>非常抱歉，定制数据异常。请前往 <a target="_blank" href="'.$_shopUrl.'" style="cursor:pointer;"> 》》Spalding定制《《 </a> 重新定制您的商品。</h3>');
+        $_goto = ('<div class="box"><h3>非常抱歉，您的定制信息异常。请前往 <a id="custommadehtml" href="＃" style="cursor:pointer;"> 》》Spalding定制《《 </a> 重新定制您的商品。</h3>');
         $_goto .= ($_overSold.'</div>');
         echo $_goto;
     }else if($_overSold){
         $_shopUrl = $this->getUrl('products.html');
-        $_goto = ('<div class="box"><h3>非常抱歉，订单中以下的商品被抢光了。请前往 <a target="_blank" href="'.$_shopUrl.'" style="cursor:pointer;"> 》》斯伯丁商城《《 </a> 重新选购您所中意的商品。</h3>');
+        $_goto = ('<div class="box"><h3>非常抱歉，订单中以下的商品被抢光了。请前往 <a id="productshtml" href="＃"  style="cursor:pointer;"> 》》斯伯丁商城《《 </a> 重新选购您所中意的商品。</h3>');
         $_goto .= ($_overSold.'</div>');
         echo $_goto;
     //需要判断订单状态 如果已经付款成功，直接显示付款成功的提示
@@ -226,6 +226,14 @@ $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
             }else{
                 go_pay("<?php echo $this->getUrl('alipay/payment/redirect');?>",globalbank);
             }
+        });
+        jQuery('#custommadehtml').click(function(){
+            setLocation('<?php echo $this->getUrl('custom-made.html'); ?>');
+            return false;
+        });
+        jQuery('#productshtml').click(function(){
+            setLocation('<?php echo $this->getUrl('products.html'); ?>');
+            return false;
         });
     });
 </script>
