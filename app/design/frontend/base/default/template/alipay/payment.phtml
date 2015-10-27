@@ -1,4 +1,4 @@
- 
+
 <?php
 
 $alipay = Mage::getModel('alipay/payment');
@@ -15,15 +15,15 @@ if (!$orderId) {
     $_order->loadByIncrementId($session->getLastRealOrderId());
 }else{
 
-    
+
     $_order =Mage::getModel('sales/order')->load($orderId);
-    
+
     $order_cid=$_order->getCustomerId();
     $current_cid=0;
     if(Mage::helper('customer')->getCustomer()){
         $current_cid=Mage::helper('customer')->getCustomer()->getId();
     }
-    
+
     if ($current_cid!=$order_cid)
     {
         echo '订单错误，请联系我们';
@@ -37,7 +37,7 @@ if (!$_order->getId())
     exit();
 }
 $warnImageSrc =$this->getSkinUrl( "images/warn.png");
-?>      
+?>
 <div class="shortcut_wrapper">
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
@@ -47,12 +47,12 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
                 color:#fff;
                 width:930px;
                 font-size: 14px;
-                
+
             }
             .madeCens th, .madeCens td{
                 border:1px solid #666;
                 padding:5px;
-                
+
             }
             .madeCens th{
                 font-weight: bold;
@@ -62,14 +62,29 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
                 color:#f4b201;
             }
         </style>
+        <?php $customMsg = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId()) ?>
         <table class="madeCens">
             <tr>
                 <th>定制1内容</th>
                 <th>定制2内容</th>
             </tr>
             <tr>
-                <td>jfdadfafsdf</td>
-                <td>klasdfsalfk</td>
+                <td>
+                    <?php if ($customMsg->getMsg3P1() == 4): ?>
+                        <?php echo '第一行：' . $customMsg->getMsg1P1() ?><br />
+                        <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
+                    <?php else: ?>
+                        <?php echo $customMsg->getMsg1P1() ?>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <?php if ($customMsg->getMsg3P2() == 4): ?>
+                        <?php echo '第一行：' . $customMsg->getMsg1P2() ?><br />
+                        <?php echo '第二行：' . $customMsg->getMsg2P2() ?>
+                    <?php else: ?>
+                        <?php echo $customMsg->getMsg1P2() ?>
+                    <?php endif; ?>
+                </td>
             </tr>
         </table>
     </div>

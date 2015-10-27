@@ -126,14 +126,30 @@
                 color:#f4b201;
             }
         </style>
+
+        <?php $customMsg = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId()) ?>
         <table class="madeCens">
             <tr>
                 <th>定制1内容</th>
                 <th>定制2内容</th>
             </tr>
             <tr>
-                <td>jfdadfafsdf</td>
-                <td>klasdfsalfk</td>
+                <td>
+                <?php if ($customMsg->getMsg3P1() == 4): ?>
+                    <?php echo '第一行：' . $customMsg->getMsg1P1() ?><br />
+                    <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
+                <?php else: ?>
+                    <?php echo $customMsg->getMsg1P1() ?>
+                <?php endif; ?>
+                </td>
+                <td>
+                <?php if ($customMsg->getMsg3P2() == 4): ?>
+                    <?php echo '第一行：' . $customMsg->getMsg1P2() ?><br />
+                    <?php echo '第二行：' . $customMsg->getMsg2P2() ?>
+                <?php else: ?>
+                    <?php echo $customMsg->getMsg1P2() ?>
+                <?php endif; ?>
+                </td>
             </tr>
         </table>
     <div class="orderPrice">
