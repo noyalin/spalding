@@ -43,6 +43,9 @@ $categoryUrlkey = $_category->getUrlKey();
     <script src="<?php echo $this->getSkinUrl('js/move.js'); ?>"></script>
     
 <?php endif; ?>
+    <script>
+        window.opener.location.reload();
+    </script>
 </head>
 <body>
 <?php if ($categoryUrlkey == 'custom-made')://专属定制 ?>
