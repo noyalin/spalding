@@ -42,6 +42,36 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
+        <style>
+            .madeCens{
+                color:#fff;
+                width:930px;
+                font-size: 14px;
+                
+            }
+            .madeCens th, .madeCens td{
+                border:1px solid #666;
+                padding:5px;
+                
+            }
+            .madeCens th{
+                font-weight: bold;
+                background: #333;
+            }
+            .madeCens td{
+                color:#f4b201;
+            }
+        </style>
+        <table class="madeCens">
+            <tr>
+                <th>定制1内容</th>
+                <th>定制2内容</th>
+            </tr>
+            <tr>
+                <td>jfdadfafsdf</td>
+                <td>klasdfsalfk</td>
+            </tr>
+        </table>
     </div>
     <?php
     $_customError = false;
