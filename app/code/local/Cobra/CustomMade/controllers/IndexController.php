@@ -67,6 +67,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function completeAction()
     {
+        Mage::log('completeAction');
         $params = Mage::app()->getRequest()->getParams();
         $sku = $params['sku'];
         $session = self::getSession($sku);
@@ -193,6 +194,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function resetAction()
     {
+        Mage::log('resetAction');
         $params = Mage::app()->getRequest()->getParams();
         $sku = $params['sku'];
         $session = self::getSession($sku);
@@ -228,6 +230,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function previewAction()
     {
+        Mage::log('previewAction');
         $params = Mage::app()->getRequest()->getParams();
         $sku = $params['sku'];
         $session = self::getSession($sku);
@@ -260,6 +263,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     private function getCustomMadeSession($position ,$sku)
     {
 //        $session = Mage::getSingleton('core/session');
+        Mage::log('getCustomMadeSession');
         $session = self::getSession($sku);
         $res = array();;
         if ($position == 1) {
