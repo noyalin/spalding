@@ -42,9 +42,9 @@ $_product = Mage::getModel('catalog/product')->load($_item->getProductId());
     <dl class="product-detail clearfix">
         <dd>
             <a href="<?php
-            if ($this->getProduct()->getSku() == '74-602yc') {
+            if ($_product->getSku() == '74-602yc') {
                 echo $this->getUrl('custom-made/74-602y-74602yc.html');
-            } else if ($this->getProduct()->getSku() == '74-604yc') {
+            } else if ($_product->getSku() == '74-604yc') {
                 echo $this->getUrl('custom-made/74-604y-74604yc.html');
             } else {
                 echo $this->getProductUrl();
