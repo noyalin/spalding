@@ -203,5 +203,21 @@
             return false;
         });
 
+        jQuery('#customerlogout').click(function(e){
+            jQuery.ajax({
+                async:false,
+                type: 'POST',
+                url: '/customer/account/logouta/',
+                success: function(data, textStatus){
+                    window.location = '/customer/account/logoutSuccess/';
+                },
+                //  dataType: "json",
+                error: function(){
+                    //alert('error');
+                }
+            });
+            //jQuery('html,body').animate({scrollTop: '0px'}, 600);
+            return false;
+        });
     });
 </script>

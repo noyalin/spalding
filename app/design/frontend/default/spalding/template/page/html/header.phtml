@@ -56,12 +56,12 @@
                         echo "欢迎 $customerName";
 
                     ?>
-                        <a href="<?php echo $this->getUrl('customer/account/logout/', array('_secure'=>true)) ?>" target="_blank">注销</a>&nbsp;|&nbsp;
+                        <a id="customerlogout" href="<?php echo $this->getUrl('customer/account/logout/', array('_secure'=>true)) ?>">注销</a>&nbsp;|&nbsp;
                     <?php
                     }else{
                         ?>
-                        <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>" target="_blank">登录</a>&nbsp;|&nbsp;
-                        <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>" target="_blank">注册</a>&nbsp;|&nbsp;
+                        <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
+                        <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
                     <?php
                     }
                     ?>

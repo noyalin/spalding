@@ -82,14 +82,19 @@ function inputCart(){
 function cartSub_out(){
     if (inputCart()) {
         jQuery('#modal-login').addClass('md-show');
+    } else {
+        return false;
     }
 }
 
-function cartSub_login(){
+function cartSub_login() {
     if (inputCart()) {
         productAddToCartForm.submit(this);
+    } else {
+        return false;
     }
 }
+
 
 jQuery(function () {
     //获取初始数据

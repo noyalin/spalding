@@ -46,4 +46,11 @@ class Devicom_Customer_AccountController extends Mage_Customer_AccountController
         $this->_initLayoutMessages('catalog/session');
         $this->renderLayout();
     }
+
+    public function logoutaAction()
+    {
+        $this->_getSession()->logout()
+            ->renewSession()
+            ->setBeforeAuthUrl($this->_getRefererUrl());
+    }
 }
