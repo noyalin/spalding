@@ -43,8 +43,11 @@ $categoryUrlkey = $_category->getUrlKey();
     <script src="<?php echo $this->getSkinUrl('js/move.js'); ?>"></script>
     
 <?php endif; ?>
+    <script>
+        window.opener.location.reload();
+    </script>
 </head>
-<body onload="opener.location.reload()">
+<body>
 <?php if ($categoryUrlkey == 'custom-made')://专属定制 ?>
     <!-- <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/customMade/cBg.jpg');  ?>" alt=""></div> -->
     <script src="<?php echo $this->getSkinUrl('js/jQueryRotate.js'); ?>"></script>
