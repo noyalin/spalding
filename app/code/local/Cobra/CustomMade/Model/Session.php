@@ -9,6 +9,7 @@ class Cobra_CustomMade_Model_Session extends Mage_Core_Model_Abstract
 
     public function getSession($customerId, $sku)
     {
+        Mage::log("getSession before ($customerId, $sku)");
         if (!$customerId) {
             $customerId = Mage::getModel('custommade/customer')->createCustomer();
         }
@@ -25,7 +26,7 @@ class Cobra_CustomMade_Model_Session extends Mage_Core_Model_Abstract
                 ->addFieldToFilter('sku', $sku)
                 ->getFirstItem();
         }
-        Mage::log("getSession ($customerId, $sku)");
+        Mage::log("getSession after ($customerId, $sku)");
         return $session;
     }
 
