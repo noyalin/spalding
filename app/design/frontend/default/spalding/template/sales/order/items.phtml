@@ -82,11 +82,15 @@
         <span class="order_data_tit_state order_ifts_tit_state">订单状态</span>
     </div>
     <ul class="order_data_list">
+        <?php $_flag = false;?>
         <?php $_items = $_order->getItemsCollection(); ?>
         <?php $_index = 0; ?>
         <?php $_count = $_items->count(); ?>
         <?php foreach ($_items as $_item): ?>
             <?php if ($_item->getParentItem()) continue; ?>
+            <?php if ($_item->getSku() == '74-602yc-ID02'):?>
+                <?php $_flag = true;?>
+            <?php endif;?>
             <tbody>
             <?php echo $this->getItemHtml($_item) ?>
             <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
@@ -106,7 +110,8 @@
         <?php endforeach; ?>
 
     </ul>
-    <style>
+    <?php if ($_flag): ?>
+        <style>
             .madeCens{
                 color:#fff;
                 width:700px;
@@ -152,6 +157,7 @@
                 </td>
             </tr>
         </table>
+    <?php endif; ?>
     <div class="orderPrice">
         <?php echo $this->getChildHtml('order_totals') ?>
     </div>

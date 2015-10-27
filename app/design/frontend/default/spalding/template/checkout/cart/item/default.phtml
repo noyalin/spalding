@@ -211,6 +211,27 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                 <?php if($attributeSetName=="ball"){?>
                 <p><span>产品材质：<?php echo $product_material;?></span> <span>产品规格： <?php echo $product_norm;?></span></p>
                 <p>场地： <?php echo $product_side;?></p>
+                    <?php if ($res == false): ?>
+                        <?php
+                        $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+                        $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
+                        ?>
+                        <p>定制一内容：
+                            <?php if ($customMsg->getMsg3P1() == 4): ?>
+                                <?php echo '第一行：' . $customMsg->getMsg1P1() ?>
+                                <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
+                            <?php else: ?>
+                                <?php echo $customMsg->getMsg1P1() ?>
+                            <?php endif; ?>
+                        ,定制二内容：
+                            <?php if ($customMsg->getMsg3P2() == 4): ?>
+                                <?php echo '第一行：' . $customMsg->getMsg1P2() ?>
+                                <?php echo '第二行：' . $customMsg->getMsg2P2() ?>
+                            <?php else: ?>
+                                <?php echo $customMsg->getMsg1P2() ?>
+                            <?php endif; ?>
+                        </p>
+                    <?php endif; ?>
                 <?php
                 }else {;?>
                 <p>尺码： <?php echo $size;?></p>
