@@ -13,7 +13,7 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
     public function initView()
     {
         $_product = $this->getProduct();
-        if (!Mage::getSingleton('core/session')->getCustomerId()) {
+        if (Mage::getSingleton('core/session')->getCustomerId()) {
             $this->customerId = Mage::getSingleton('core/session')->getCustomerId();
             Mage::log('CustomMade initView--aaaaaaaa--customerId='.$this->customerId);
         } else {
