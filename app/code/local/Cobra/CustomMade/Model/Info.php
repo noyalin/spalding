@@ -68,6 +68,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $orderId = $order->getRealOrderId();
         $customerId = $order->getCustomerId();
         $_items = $order->getItemsCollection();
+        Mage::log('saveCustomMade------customerId='.$customerId);
         try {
             foreach ($_items as $_item) {
                 if (!$_item->getParentItem()) {
@@ -95,7 +96,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                             ->setCreateTime(time())
                             ->setStatus(self::STATUS_NON_PAYMENT)
                             ->save();
-                        Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
+//                        Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
                     }
                 }
             }
