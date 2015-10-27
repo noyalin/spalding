@@ -49,27 +49,28 @@ class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
             ->setMsg4P2($session->getContent4P2())
             ->setCreateTime(time())
             ->save();
-//        $this->clearSession($customerIdsession, $sku);
+        $this->clearSession($customerIdsession, $sku);
         Mage::log('saveCustomMadeTemp-----customerId='.$customerId.',customerIdsession='.$customerIdsession);
     }
 
     private function clearSession($customerIdsession, $sku)
     {
-        $session = Mage::getModel('custommade/session');
-        $sessionId = $session->getCollection()
-            ->addFieldToFilter('customer_id', $customerIdsession)
-            ->addFieldToFilter('sku', $sku)
-            ->getFirstItem()
-            ->getSessionId();
-        $session->load($sessionId)->delete();
-
-        $item = $session->getCollection()
-            ->addFieldToFilter('customer_id', $customerIdsession)
-            ->getFirstItem();
-        if ($item->getData() == null) {
-            Mage::getSingleton('core/session')->setCustomerId(null);
-            Mage::getModel('custommade/customer')->load($customerIdsession)->delete();
-        }
+//        $session = Mage::getModel('custommade/session');
+//        $sessionId = $session->getCollection()
+//            ->addFieldToFilter('customer_id', $customerIdsession)
+//            ->addFieldToFilter('sku', $sku)
+//            ->getFirstItem()
+//            ->getSessionId();
+//        $session->load($sessionId)->delete();
+//
+//        $item = $session->getCollection()
+//            ->addFieldToFilter('customer_id', $customerIdsession)
+//            ->getFirstItem();
+//        if ($item->getData() == null) {
+//            Mage::getSingleton('core/session')->setCustomerId(null);
+//            Mage::getModel('custommade/customer')->load($customerIdsession)->delete();
+//        }
+        Mage::getSingleton('core/session')->setCustomerId(null);
         Mage::getSingleton('core/session')->setCustomermadeAgree(null);
     }
 }

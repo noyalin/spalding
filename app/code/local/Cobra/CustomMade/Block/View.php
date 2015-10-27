@@ -13,11 +13,11 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
     public function initView()
     {
         $_product = $this->getProduct();
-        if (Mage::getSingleton('core/session')->getCustomerId() == null) {
+        if (!Mage::getSingleton('core/session')->getCustomerId()) {
+            $this->customerId = Mage::getSingleton('core/session')->getCustomerId();
+        } else {
             $this->customerId = Mage::getModel('custommade/customer')->createCustomer();
             Mage::getSingleton('core/session')->setCustomerId($this->customerId);
-        } else {
-            $this->customerId = Mage::getSingleton('core/session')->getCustomerId();
         }
 //        Mage::getSingleton('core/session')->setCurrentSku($_product->getSku());
         $this->session = Mage::getModel('custommade/session')->getSession($this->customerId, $_product->getSku());

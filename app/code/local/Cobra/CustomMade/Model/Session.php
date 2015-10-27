@@ -22,6 +22,8 @@ class Cobra_CustomMade_Model_Session extends Mage_Core_Model_Abstract
                 ->addFieldToFilter('sku', $sku)
                 ->getFirstItem();
         }
+        Mage::log("getSession ($customerId, $sku)");
+        Mage::log($session);
         return $session;
     }
 
