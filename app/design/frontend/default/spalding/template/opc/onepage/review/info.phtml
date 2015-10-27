@@ -46,10 +46,71 @@
                 数量
             </div>
         </div>
+        <?php $res = true; ?>
         <?php foreach($this->getItems() as $_item): ?>
             <?php echo $this->getItemHtml($_item)?>
+            <?php
+            $categoryIds = $_item->getProduct()->getCategoryIds();
+            foreach ($categoryIds as $categoryId) {
+                $category = Mage::getModel('catalog/category')->load($categoryId);
+                $categoryUrlkey = $category->getUrlKey();
+                if ($categoryUrlkey == 'custom-made') {
+                    $res = false;
+                }
+            } ?>
         <?php endforeach ?>
     </div>
+    <?php if ($res == false): ?>
+        <?php
+        $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+        $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
+        ?>
+        <style>
+            .madeCens{
+                color:#fff;
+                width:826px;
+                font-size: 14px;
+                margin-left:100px;
+                margin-top:15px;
+            }
+            .madeCens th, .madeCens td{
+                border:1px solid #666;
+                padding:5px;
+
+            }
+            .madeCens th{
+                font-weight: bold;
+                background: #333;
+            }
+            .madeCens td{
+                color:#f4b201;
+            }
+        </style>
+        <table class="madeCens">
+            <tr>
+                <th>定制1内容</th>
+                <th>定制2内容</th>
+            </tr>
+            <tr>
+                <td>
+                    <?php if ($customMsg->getMsg3P1() == 4): ?>
+                        <?php echo '第一行：' . $customMsg->getMsg1P1() ?><br />
+                        <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
+                    <?php else: ?>
+                        <?php echo $customMsg->getMsg1P1() ?>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <?php if ($customMsg->getMsg3P2() == 4): ?>
+                        <?php echo '第一行：' . $customMsg->getMsg1P2() ?><br />
+                        <?php echo '第二行：' . $customMsg->getMsg2P2() ?>
+                    <?php else: ?>
+                        <?php echo $customMsg->getMsg1P2() ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        </table>
+    <?php endif; ?>
     <!--
     <table class="opc-data-table" id="checkout-review-table">
         <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2; else: $colspan = $rowspan = 1; endif; ?>
