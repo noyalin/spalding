@@ -89,9 +89,11 @@ function cartSub_out(){
 
 function cartSub_login() {
     if (inputCart()) {
+        console.log('true');
         return true;
         //jQuery('#product_addtocart_form').submit();
     } else {
+        console.log('false');
         return false;
     }
 }
