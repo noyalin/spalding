@@ -51,6 +51,45 @@ jQuery(function () {
 //    jQuery(".madeTextInpBox").keydown(onlyNumber);
 //});
 
+function inputCart(){
+    var _imgIni = jQuery("#avatar");
+    //p2判断
+    var _imgNowVal = _imgIni.attr("src");
+    var _texNow_2 = jQuery(".madeTexWrap").find(".select_P2").html();
+    var _imgNow_2 = jQuery(".madeTexWrap").find(".select_P2").attr("src");
+    var _texIni2 = jQuery(".select_N2").html();
+    var _imgIni2 = jQuery(".select_N2").attr("src");
+
+    //p1 判断
+    var _imgNowVal = _imgIni.attr("src");
+    var _texNow_1 = jQuery(".madeTexWrap").find(".select_P1").html();
+    var _imgNow_1 = jQuery(".madeTexWrap").find(".select_P1").attr("src");
+    var _texIni1 = jQuery(".select_N1").html();
+    var _imgIni1 = jQuery(".select_N1").attr("src");
+
+    if (_imgNow_2 == _imgIni2 && _texNow_2 == _texIni2 && _imgNow_1 == _imgIni1 && _texNow_1 == _texIni1) {
+        //未改动
+        return true;
+    }else{
+        //已改动
+        // alert("已改动");
+        notTodo("提示","定制条件已变更，请先保存定制，才可以加入购物车，为您带来的不便，还请谅解！");
+        return false;
+    }
+
+}
+
+function cartSub_out(){
+    if (inputCart()) {
+        jQuery('#modal-login').addClass('md-show');
+    }
+}
+
+function cartSub_login(){
+    if (inputCart()) {
+        productAddToCartForm.submit(this);
+    }
+}
 
 jQuery(function () {
     //获取初始数据
