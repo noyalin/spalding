@@ -80,8 +80,19 @@ function inputCart(){
 
 }
 
-function cartSub_out(){
-    if (inputCart()) {
+function isCustom() {
+    var _texIni1 = jQuery(".select_N1").html();
+    var _texIni2 = jQuery(".select_N2").html();
+    if (_texIni1 == "" && _texIni2 == "") {
+        notTodo("提示", "请先进行定制，才可以加入购物车，为您带来的不便，还请谅解！");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function cartSub_out() {
+    if (inputCart() && isCustom()) {
         jQuery('#modal-login').addClass('md-show');
     } else {
         return false;
@@ -89,9 +100,7 @@ function cartSub_out(){
 }
 
 function cartSub_login() {
-    console.log('cartSub_login');
-    if (inputCart()) {
-        console.log('true');
+    if (inputCart() && isCustom()) {
         return true;
         //jQuery('#product_addtocart_form').submit();
     } else {
