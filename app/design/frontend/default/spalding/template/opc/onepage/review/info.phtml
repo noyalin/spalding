@@ -65,6 +65,27 @@
         $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
         ?>
+        <style>
+            .madeCens{
+                color:#fff;
+                width:826px;
+                font-size: 14px;
+                margin-left:100px;
+                margin-top:15px;
+            }
+            .madeCens th, .madeCens td{
+                border:1px solid #666;
+                padding:5px;
+
+            }
+            .madeCens th{
+                font-weight: bold;
+                background: #333;
+            }
+            .madeCens td{
+                color:#f4b201;
+            }
+        </style>
         <table class="madeCens">
             <tr>
                 <th>定制1内容</th>
