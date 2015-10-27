@@ -5,6 +5,9 @@
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 <input id="agree" type="hidden" value="<?php echo $this->getUrl('custommade/index/agree'); ?>"/>
 
+<input id="custom_flag1" type="hidden" value="0"/>
+<input id="custom_flag2" type="hidden" value="0"/>
+
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/iwd/opc/opc.css'); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.css'); ?>" type="text/css" />
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
@@ -295,6 +298,7 @@
          Opt.reset(1);
          }*/
         if (_dataType == 1) {//定制图片
+            jQuery("#custom_flag1").val("1");
             //定位定制图案
             var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
                 value2);
@@ -315,6 +319,7 @@
             _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball.png');  ?>");
 
         } else if (_dataType == 2) {//定制文字
+            jQuery("#custom_flag1").val("2");
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
             var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:40px;'></p>").text(value2);
             var _zzT = jQuery(".zz_t");
@@ -381,6 +386,7 @@
 
             // var
         } else {//定制空白
+            jQuery("#custom_flag1").val("0");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
@@ -462,6 +468,9 @@
         var _viewCons = _viewPage2.find(".viewPage_p2_wrap")//获取P2预览内容
 
         if (_dataType == 1) {//定制图片
+
+            jQuery("#custom_flag2").val("1");
+
             //定位定制图案
             var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
                 value2);
@@ -483,6 +492,9 @@
             _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball2.png');  ?>");
 
         } else if (_dataType == 2) {//定制文字
+
+            jQuery("#custom_flag2").val("2");
+
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
             var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:40px;'></p>").text(value2);
             var _zzT = jQuery(".zz_t");
@@ -549,6 +561,7 @@
             setFamily_2(value4);
 
         } else {//定制空白
+            jQuery("#custom_flag2").val("0");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
