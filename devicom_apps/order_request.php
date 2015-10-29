@@ -477,10 +477,19 @@ final class StoneEdge_MagentoImport {
 		$ndShip = $xd->createElement("Shipping");
 		self::writeOrderAddress($ndShip, $order->getBillingAddress(), '', $xd);
 
+		$customMadeFlag = false;
+		$testFlag = false;
 		foreach ($order->getAllItems() as $orderItem) {
 			if ($orderItem->getData('product_type') == 'configurable') {
 				continue;
 			}
+			if ($orderItem->getData('sku') == '74-602yc-ID01' ||
+				$orderItem->getData('sku') == '74-602yc-ID02') {
+				$customMadeFlag = true;
+			} else if ($orderItem->getData('sku') == 'price-difference-001-OneSize') {
+				$testFlag = true;
+			}
+
 			$ndProd = $xd->createElement("Product");
 			self::writeOrderItem($ndProd, $orderItem, $order, $xd);
 			$ndShip->appendChild($ndProd);
@@ -499,7 +508,15 @@ final class StoneEdge_MagentoImport {
 		self::xmlAppend("IPHostName", $order->getData('remote_ip'), $ndOther, $xd);
 		self::xmlAppend("TotalOrderWeight", $order->getData('weight'), $ndOther, $xd);
 		self::xmlAppend("GiftMessage", self::getGiftMessage($order), $ndOther, $xd);
-		self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
+
+		if ($testFlag) {
+			self::xmlAppend("Comments", "这一单是测试订单，请客服不要APP\n".$order->getData('customer_note'), $ndOther, $xd);
+		} else if ($customMadeFlag) {
+			self::xmlAppend("Comments", "这一单有定制球，请客服在审批后在APP\n".$order->getData('customer_note'), $ndOther, $xd);
+		} else {
+			self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
+		}
+
 		$ndOrder->appendChild($ndOther);
 		return true;
 	}
