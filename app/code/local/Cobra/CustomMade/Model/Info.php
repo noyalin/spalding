@@ -95,7 +95,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                             ->setCreateTime(time())
                             ->setStatus(self::STATUS_NON_PAYMENT)
                             ->save();
-//                        Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
+                        Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
                         Mage::log('saveCustomMade------customerId='.$customerId.',order id='.$orderId);
                     }
                 }

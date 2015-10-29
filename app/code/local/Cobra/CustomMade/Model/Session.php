@@ -26,7 +26,7 @@ class Cobra_CustomMade_Model_Session extends Mage_Core_Model_Abstract
                 ->addFieldToFilter('sku', $sku)
                 ->getFirstItem();
         }
-        Mage::log($session);
+//        Mage::log($session);
         Mage::log("getSession after ($customerId, $sku)");
         return $session;
     }
@@ -63,5 +63,28 @@ class Cobra_CustomMade_Model_Session extends Mage_Core_Model_Abstract
             ->setContent4P2($session->getContent4P2())
             ->setTestMode($session->getTestMode())
             ->save();
+    }
+
+    public function rewriteSession($customerId, $sku, $userCustomerId)
+    {
+        Mage::log("rewriteSession before ($customerId, $sku, $userCustomerId)");
+        $orderSession = Mage::getModel('custommade/temp')->loadByCustomerId($userCustomerId);
+        $session = $this->getSession($customerId, $sku);
+        $session->setCustomerId($customerId);
+        $session->setSku($sku);
+        $session->setPos(1);
+        $session->setTypeP1($orderSession->getTypeP1());
+        $session->setContent1P1($orderSession->getMsg1P1());
+        $session->setContent2P1($orderSession->getMsg2P1());
+        $session->setContent3P1($orderSession->getMsg3P1());
+        $session->setContent4P1($orderSession->getMsg4P1());
+        $session->setTypeP2($orderSession->getTypeP2());
+        $session->setContent1P2($orderSession->getMsg1P2());
+        $session->setContent2P2($orderSession->getMsg2P2());
+        $session->setContent3P2($orderSession->getMsg3P2());
+        $session->setContent4P2($orderSession->getMsg4P2());
+        $this->setSession($session);
+        Mage::log("rewriteSession after ($customerId, $sku, $userCustomerId)");
+        return $session;
     }
 }
