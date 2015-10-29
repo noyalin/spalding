@@ -206,13 +206,15 @@
             return false;
         });
 
+        
+        
         jQuery('#customerlogout').click(function(e){
             jQuery.ajax({
                 async:false,
                 type: 'POST',
                 url: '/customer/account/logouta/',
                 success: function(data, textStatus){
-                    window.location = '/customer/account/logoutSuccess/';
+                	setLocation('<?php echo $this->getUrl('customer/account/logoutSuccess/'); ?>');
                 },
                 //  dataType: "json",
                 error: function(){
@@ -224,11 +226,11 @@
         });
 
         jQuery('#customerAccount').click(function(){
-            window.location = '/customer/account/';
+        	setLocation('<?php echo $this->getUrl('customer/account/'); ?>');
             return false;
         });
         jQuery('#customerOrderHistory').click(function(){
-            window.location = '/sales/order/history/';
+        	setLocation('<?php echo $this->getUrl('sales/order/history/'); ?>');
             return false;
         });
     });
