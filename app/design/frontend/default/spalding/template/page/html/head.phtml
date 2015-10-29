@@ -212,7 +212,7 @@
             jQuery.ajax({
                 async:false,
                 type: 'POST',
-                url: '/customer/account/logouta/',
+                url: '<?php echo $this->getUrl('customer/account/logouta/'); ?>',
                 success: function(data, textStatus){
                 	setLocation('<?php echo $this->getUrl('customer/account/logoutSuccess/'); ?>');
                 },
