@@ -72,5 +72,6 @@ class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
 //        }
         Mage::getSingleton('core/session')->setCustomerId(null);
         Mage::getSingleton('core/session')->setCustomermadeAgree(null);
+        Mage::log('clearSession CustomerId =null');
     }
 }

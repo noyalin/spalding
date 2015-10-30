@@ -36,10 +36,8 @@ $_product = Mage::getModel('catalog/product')->load($_item->getProductId());
     <div class="product-image" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" href="<?php echo $this->getProductUrl()?>">
         <p class="product-name clearfix">
             <a href="<?php
-            if ($_product->getSku() == '74-602yc') {
-                echo $this->getUrl('custom-made/74-602y-74602yc.html');
-            } else if ($_product->getSku() == '74-604yc') {
-                echo $this->getUrl('custom-made/74-604y-74604yc.html');
+            if ($_product->getSku() == '74-602yc'|| $_product->getSku() == '74-604yc') {
+                echo $this->getUrl('custommade/index/review/').'sku/'.$_product->getSku();
             } else {
                 echo $this->getProductUrl();
             }
@@ -50,10 +48,8 @@ $_product = Mage::getModel('catalog/product')->load($_item->getProductId());
     <dl class="product-detail clearfix">
         <dd>
             <a href="<?php
-            if ($_product->getSku() == '74-602yc') {
-                echo $this->getUrl('custom-made/74-602y-74602yc.html');
-            } else if ($_product->getSku() == '74-604yc') {
-                echo $this->getUrl('custom-made/74-604y-74604yc.html');
+            if ($_product->getSku() == '74-602yc'|| $_product->getSku() == '74-604yc') {
+                echo $this->getUrl('custommade/index/review/').'sku/'.$_product->getSku();
             } else {
                 echo $this->getProductUrl();
             }

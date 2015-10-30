@@ -92,7 +92,7 @@
         </dl>
 
         <div class="madeSubmit">
-            <button type="button" class="submitY" id="submitYP1">完成P1定制</button>
+            <button type="button" class="submitY" id="submitYP1">暂存P1定制</button>
             <button type="button" class="submitN">重置P1定制</button>
         </div>
 
@@ -173,7 +173,7 @@
         </dl>
 
         <div class="madeSubmit">
-            <button type="button" class="submitY" id="submitYP2">完成P2定制</button>
+            <button type="button" class="submitY" id="submitYP2">暂存P2定制</button>
             <button type="button" class="submitN">重置P2定制</button>
         </div>
 
@@ -207,10 +207,10 @@
     <div class="madeFuns">
         <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){
             ?>
-            <button type="button" onclick="cartSub_out();">加入购物车</button>
+            <button type="button" onclick="cartSub_out();">完成定制</button>
         <?php }else{
             ?>
-            <button type="submit" >加入购物车</button>
+            <button type="submit" >完成定制</button>
         <?php
         }?>
 

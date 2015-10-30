@@ -52,5 +52,10 @@ class Devicom_Customer_AccountController extends Mage_Customer_AccountController
         $this->_getSession()->logout()
             ->renewSession()
             ->setBeforeAuthUrl($this->_getRefererUrl());
+
+        Mage::getSingleton('core/session')->setCustomerId(null);
+        Mage::getSingleton('core/session')->setCustomermadeAgree(null);
+
+        Mage::log('logoutaAction $customerId=null');
     }
 }
