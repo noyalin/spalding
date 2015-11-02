@@ -234,6 +234,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
 
     private function export($infoIds)
     {
+        Mage::log("CustomMade start export");
         $time = date('YmdHis', Mage::getModel('core/date')->timestamp(time()));
         $dir = "/usr/custommade/customlist/" . $time;
         mkdir($dir);
@@ -279,6 +280,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
                 }
             }
             $subscriber->export();
+            Mage::log("export id=".$infoId);
         }
         fclose($file);
 
@@ -302,6 +304,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         header("Content-Transfer-Encoding: binary");
         header('Content-Length: '. filesize($zip_name));
         readfile($zip_name);
+        Mage::log("CustomMade end export");
     }
 
     private function grabImage($url, $filename)
