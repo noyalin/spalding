@@ -10,6 +10,7 @@ class Cobra_CustomMade_Model_Customer extends Mage_Core_Model_Abstract
     {
         $id = $this->setCustomerId(null)->save()->getCustomerId();
         Mage::log('createCustomer id=' . $id);
+        Mage::log(session_id());
         return $id;
     }
 }

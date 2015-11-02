@@ -69,10 +69,8 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
             <span class="spCarTit_name">
                 <?php if ($this->hasProductUrl()):?>
                     <a href="<?php
-                                    if ($_product->getSku() == '74-602yc') {
-                                        echo $this->getUrl('custom-made/74-602y-74602yc.html');
-                                    } else if ($_product->getSku() == '74-604yc') {
-                                        echo $this->getUrl('custom-made/74-604y-74604yc.html');
+                                    if ($_product->getSku() == '74-602yc'|| $_product->getSku() == '74-604yc') {
+                                        echo $this->getUrl('custommade/index/review/').'sku/'.$_product->getSku();
                                     } else {
                                         echo $this->getProductUrl();
                                     }

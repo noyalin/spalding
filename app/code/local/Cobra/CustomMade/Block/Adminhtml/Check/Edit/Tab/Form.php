@@ -90,7 +90,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             )
         );
 
-        if ($username == 'admin' || $username == 'spalding1') {
+        if ($username == 'admin' || $username == 'customer' || $username == 'spalding1') {
             $fieldset->addField('user1_approve', 'select', array(
                     'label' => Mage::helper('custommade')->__('用户1审批'),
                     'name' => 'user1_approve',
@@ -123,7 +123,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             );
         }
 
-        if ($username == 'admin' || $username == 'spalding2') {
+        if ($username == 'admin' || $username == 'customer' || $username == 'spalding2') {
             $fieldset->addField('user2_approve', 'select', array(
                     'label' => Mage::helper('custommade')->__('用户2审批'),
                     'name' => 'user2_approve',
@@ -156,7 +156,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             );
         }
 
-        if ($username == 'admin' || $username == 'spalding3') {
+        if ($username == 'admin' || $username == 'customer' || $username == 'spalding3') {
             $fieldset->addField('user3_approve', 'select', array(
                     'label' => Mage::helper('custommade')->__('用户3审批'),
                     'name' => 'user3_approve',
@@ -189,7 +189,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
             );
         }
 
-        if ($username == 'admin' || $username == 'spalding4') {
+        if ($username == 'admin' || $username == 'customer' || $username == 'spalding4') {
             $fieldset->addField('user4_approve', 'select', array(
                     'label' => Mage::helper('custommade')->__('用户4审批'),
                     'name' => 'user4_approve',

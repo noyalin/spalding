@@ -109,10 +109,11 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $content2 = Mage::getUrl($imgPath) . $img2;
 
             } elseif ($type == 2) {
-                $content1 = $params['text1'];
-                $content2 = $params['text3'];
+                $content1 = $this->getCheckedText($params['text1']);
+                $content2 = $this->getCheckedText($params['text3']);
                 $content3 = $params['size'];
                 $content4 = $params['font'];
+                Mage::log('1111111111111'.$content1.$content2.$content3.$content4);
             } else {
                 $type = 3;
                 $content1 = null;
@@ -160,8 +161,8 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $imgresize->save($imgPath . $img2);
                 $content2 = Mage::getUrl($imgPath) . $img2;
             } elseif ($type == 2) {
-                $content1 = $params['text2'];
-                $content2 = $params['text4'];
+                $content1 = $this->getCheckedText($params['text2']);
+                $content2 = $this->getCheckedText($params['text4']);
                 $content3 = $params['size'];
                 $content4 = $params['font'];
             } else {
@@ -248,6 +249,8 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function checkAction()
     {
+        $customerId = Mage::getSingleton('core/session')->getCustomerId();
+        Mage::log('checkAction $customerId='.$customerId);
         $params = Mage::app()->getRequest()->getParams();
         $position = $params['position'];
         $sku = $params['sku'];
@@ -260,10 +263,29 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         Mage::getSingleton('core/session')->setCustomermadeAgree(1);
     }
 
+    public function reviewAction()
+    {
+        if (Mage::getSingleton('core/session')->getCustomerId()) {
+            $customerId = Mage::getSingleton('core/session')->getCustomerId();
+            Mage::log('CustomMade reviewAction--aaaaaaaa--customerId='.$customerId);
+        } else {
+            $customerId = Mage::getModel('custommade/customer')->createCustomer();
+            Mage::getSingleton('core/session')->setCustomerId($customerId);
+            Mage::log('CustomMade reviewAction--bbbbbbb--customerId='.$customerId);
+        }
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $params = Mage::app()->getRequest()->getParams();
+            $userCustomerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+            Mage::getModel('custommade/session')->rewriteSession($customerId, $params['sku'], $userCustomerId);
+        }
+        Mage::getSingleton('core/session')->setCustomermadeAgree(1);
+        $this->_redirect('custom-made/74-602y-74602yc.html');
+    }
+
     private function getCustomMadeSession($position ,$sku)
     {
 //        $session = Mage::getSingleton('core/session');
-        Mage::log('getCustomMadeSession');
+        Mage::log("getCustomMadeSession($position ,$sku)");
         $session = self::getSession($sku);
         $res = array();;
         if ($position == 1) {
@@ -286,6 +308,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     private function getSession($sku)
     {
         $customerId = Mage::getSingleton('core/session')->getCustomerId();
+        Mage::log('getSession $customerId='.$customerId);
 //        $currentSku = Mage::getSingleton('core/session')->getCurrentSku();
 //        $session = Mage::getModel('custommade/session')->getSession($customerId, $currentSku);
         $session = Mage::getModel('custommade/session')->getSession($customerId, $sku);
@@ -295,6 +318,13 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     private function setSession($session)
     {
         Mage::getModel('custommade/session')->setSession($session);
+    }
+
+    private function getCheckedText($str)
+    {
+        $pattern = '/[^A-Za-z0-9\s\-\.@_&:]*/';
+        $str = preg_replace($pattern, '', $str);
+        return $str;
     }
 }
 
