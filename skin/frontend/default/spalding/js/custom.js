@@ -80,8 +80,8 @@ function inputCart(){
 }
 
 function isCustom() {
-    var _custom_flag1 = jQuery(".custom_flag1").val();
-    var _custom_flag2 = jQuery(".custom_flag2").val();
+    var _custom_flag1 = jQuery("#custom_flag1").val();
+    var _custom_flag2 = jQuery("#custom_flag2").val();
     if (_custom_flag1 == "0" && _custom_flag2 == "0") {
         notTodo("提示", "请先进行定制，才可以加入购物车，为您带来的不便，还请谅解！");
         return false;
