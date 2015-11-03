@@ -155,7 +155,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 )
             );
         }
-
+/*
         if ($username == 'admin' || $username == 'customer' || $username == 'spalding3') {
             $fieldset->addField('user3_approve', 'select', array(
                     'label' => Mage::helper('custommade')->__('用户3审批'),
@@ -221,7 +221,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 )
             );
         }
-
+*/
         $fieldset->addField('status', 'select', array(
 //            'label' => Mage::helper('custommade')->__('订单状态'),
             'name' => 'status',

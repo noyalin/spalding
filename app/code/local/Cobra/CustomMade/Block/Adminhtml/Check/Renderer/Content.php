@@ -4,18 +4,58 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
 {
     public function render(Varien_Object $row)
     {
-        $msg = $row->getData($this->getColumn()->getIndex());
+        $link = $row->getData($this->getColumn()->getIndex());
         $html = null;
-        if ($msg != null) {
+        $message = $this->getMessage($row);
+        if($message == null){
+            $message = '>>空<<';
+        }
+        $content = $this->getColumn()->getContent();
+        if ($content == 1) {
+            $title = '预览图';
+        } else {
+            $title = '打印图';
+        }
+        if ($link != null) {
             $html = '<a ';
             $html .= 'target="_blank" ';
-            $html .= 'href="' . $msg . '">';
-            $html .= '<img ';
-            $html .= 'id="' . $this->getColumn()->getId() . '" ';
-            $html .= 'src="' . $msg . '" ';
-            $html .= 'style="width:100px"/>';
+            $html .= 'title="' . $title . '"';
+            $html .= 'style="text-decoration:none"';
+            $html .= 'href="' . $link . '">';
+            $html .= $message;
             $html .= '</a>';
+            return $html;
         }
-        return $html;
     }
+
+    private function getMessage(Varien_Object $row)
+    {
+        $position = $this->getColumn()->getPosition();
+        $content = $this->getColumn()->getContent();
+        $message = null;
+        if ($position == 1) {
+            switch ($content) {
+                case 1:
+                    $message = $row->getMsg1P1();
+                    break;
+                case 2:
+                    $message = $row->getMsg2P1();
+                    break;
+                default:
+            }
+        } else {
+            switch ($content) {
+                case 1:
+                    $message = $row->getMsg1P2();
+                    break;
+                case 2:
+                    $message = $row->getMsg2P2();
+                    break;
+                default:
+            }
+
+        }
+        return $message;
+    }
+
 }
