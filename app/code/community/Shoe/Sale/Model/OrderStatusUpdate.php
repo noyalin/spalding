@@ -525,6 +525,14 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
                     $state = 'canceled';
                     $log_status = 'CANCEL';
                     $this->salesOrderStatusUpdate($orderUpdate, $log_status, $status, $state, $writeConnection);
+
+                    $orderCustom = Mage::getModel('custommade/info')->loadByIncrementId($orderUpdate['orderNumber']);
+                    if ($orderCustom->getId()) {
+                        $orderCustom->cancel();
+                        $orderCustom->save();
+                        Mage::log("CustomMade cancel orderid=" . $orderUpdate['orderNumber']);
+                    }
+
                 } catch (Exception $e) {
                     throw $e;
                 }
