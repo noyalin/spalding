@@ -70,6 +70,13 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         return $items;
     }
 
+    public function loadByTime($time1, $time2, $status)
+    {
+        $items = $this->getResource()
+            ->loadByTime($time1, $time2, $status);
+        return $items;
+    }
+
     public function saveCustomMade($order)
     {
         $orderId = $order->getRealOrderId();
