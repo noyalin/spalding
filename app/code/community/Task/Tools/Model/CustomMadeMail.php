@@ -5,8 +5,8 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     public function execute()
     {
         $subject = '待审批订单';
-        $message = "截止到今天中午十二点尚未审批订单号：\r\n";
-        $orderIds = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time()) . ' 12:00:00', 1);
+        $message = "截止到今天0点尚未审批订单号：\r\n";
+        $orderIds = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time()) . ' 00:00:00', 1);
         if (empty($orderIds)) {
             $message .= '无' . "\r\n";
         } else {
@@ -16,7 +16,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
         }
 
         $message .= "三天前尚未审批订单号：\r\n";
-        $orderIdThreeDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time() - 72 * 60 * 60) . ' 12:00:00', 1);
+        $orderIdThreeDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time() - 72 * 60 * 60) . ' 00:00:00', 1);
         if (empty($orderIdThreeDay)) {
             $message .= '无' . "\r\n";
         } else {
