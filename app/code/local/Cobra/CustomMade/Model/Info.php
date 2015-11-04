@@ -63,6 +63,13 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         return $this->load($id);
     }
 
+    public function loadByConditions($time, $status)
+    {
+        $items = $this->getResource()
+            ->loadByConditions($time, $status);
+        return $items;
+    }
+
     public function saveCustomMade($order)
     {
         $orderId = $order->getRealOrderId();
