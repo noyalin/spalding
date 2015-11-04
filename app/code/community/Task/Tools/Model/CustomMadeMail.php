@@ -5,11 +5,26 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     public function execute()
     {
         $subject = '待审批订单';
-        $message = '订单号：';
+        $message = "截止到今天中午十二点尚未审批订单号：\r\n";
         $orderIds = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time()) . ' 12:00:00', 1);
-        foreach ($orderIds as $orderId) {
-            $message .= $orderId['order_id'] . "\r\n\r\n";
+        if (empty($orderIds)) {
+            $message .= '无' . "\r\n";
+        } else {
+            foreach ($orderIds as $orderId) {
+                $message .= $orderId['order_id'] . "\r\n";
+            }
         }
+
+        $message .= "三天前尚未审批订单号：\r\n";
+        $orderIdThreeDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time() - 72 * 60 * 60) . ' 12:00:00', 1);
+        if (empty($orderIdThreeDay)) {
+            $message .= '无' . "\r\n";
+        } else {
+            foreach ($orderIdThreeDay as $orderId) {
+                $message .= $orderId['order_id'] . "\r\n";
+            }
+        }
+
         $this->sendNotification($subject, $message, true);
     }
 
@@ -20,19 +35,18 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
 
     public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
     {
-
-        $to = self :: CONF_SYSTEM_NOTIFICATION_TO_ADDRESS;
-        $to .= ($cc) ? "," . self :: CONF_SYSTEM_NOTIFICATION_CC_ADDRESS : "";
+        $to = self :: CONF_SYSTEM_NOTIFICATION_CC_ADDRESS;
+        $to .= ($cc) ? "," . 'pisces.bian@voyageone.cn' : "";
         $subject = ($subject_override) ? $this_subject : "System Notification - $this_subject";
+        $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
+
         $message = "This is a system notification.\r\n\r\n";
         $message .= "$this_message";
         $message .= "\r\n\r\n";
 
         $headers = 'From: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" .
-            'Reply-To: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" .
-            'X-Mailer: PHP/' . phpversion()."\r\n";
+            'Reply-To: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n";
         $headers .= "Content-type: text/plain; charset=utf-8\r\n";
-        $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
         if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED) {
             mail($to, $subject, $message, $headers);
