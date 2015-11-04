@@ -18,7 +18,8 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
         return false;
     }
 
-    public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false) {
+    public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
+    {
 
         $to = self :: CONF_SYSTEM_NOTIFICATION_TO_ADDRESS;
         $to .= ($cc) ? "," . self :: CONF_SYSTEM_NOTIFICATION_CC_ADDRESS : "";
@@ -29,11 +30,13 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
 
         $headers = 'From: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" .
             'Reply-To: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
+            'X-Mailer: PHP/' . phpversion()."\r\n";
+        $headers .= "Content-type: text/plain; charset=utf-8\r\n";
+        $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
-        if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED){
+        if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED) {
             mail($to, $subject, $message, $headers);
         }
-        echo "\n". $message."\n";
+        echo "\n" . $message . "\n";
     }
 }
