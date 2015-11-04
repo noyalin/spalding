@@ -6,7 +6,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     {
         $subject = '待审批订单';
         $message = "截止到今天0点尚未审批订单号：\r\n";
-        $orderIds = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time()) . ' 00:00:00', 1);
+        $orderIds = Mage::getModel('custommade/info')->loadByTime(date("Y-m-d", time()) . ' 00:00:00', date("Y-m-d", time() - 24 * 60 * 60) . ' 00:00:00', 1);
         if (empty($orderIds)) {
             $message .= '无' . "\r\n";
         } else {
