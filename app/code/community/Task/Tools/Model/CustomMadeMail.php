@@ -25,6 +25,8 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
             }
         }
         $message .= "审批链接：http://www.spaldingchina.com.cn/index.php/backendspalding\r\n";
+        $message .= "审批用户一：\r\n用户名：spalding1  密码：fgdjbwb11\r\n";
+        $message .= "审批用户二：\r\n用户名：spalding2  密码：ngjefhk22\r\n";
         $this->sendNotification($subject, $message, true, true);
     }
 
