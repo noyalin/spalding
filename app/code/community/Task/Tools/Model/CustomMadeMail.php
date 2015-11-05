@@ -5,7 +5,11 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     public function execute()
     {
         $subject = '斯伯丁官网定制球待审批订单';
-        $message = date("Y年m月d日", time() - 24 * 60 * 60)."尚未审批订单号：\r\n";
+        $message = "审批链接：http://www.spaldingchina.com.cn/index.php/backendspalding\r\n";
+        $message .= "审批用户一：\r\n用户名：spalding1  密码：fgdjbwb11\r\n";
+        $message .= "审批用户二：\r\n用户名：spalding2  密码：ngjefhk22\r\n";
+
+        $message .= date("Y年m月d日", time() - 24 * 60 * 60)."尚未审批订单号：\r\n";
         $orderIds = Mage::getModel('custommade/info')->loadByTime(date("Y-m-d", time()) . ' 00:00:00', date("Y-m-d", time() - 24 * 60 * 60) . ' 00:00:00', 1);
         if (empty($orderIds)) {
             $message .= '无' . "\r\n";
@@ -24,9 +28,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
-        $message .= "审批链接：http://www.spaldingchina.com.cn/index.php/backendspalding\r\n";
-        $message .= "审批用户一：\r\n用户名：spalding1  密码：fgdjbwb11\r\n";
-        $message .= "审批用户二：\r\n用户名：spalding2  密码：ngjefhk22\r\n";
+
         $this->sendNotification($subject, $message, true, true);
     }
 
@@ -43,13 +45,10 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
         $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
         $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 
-        $message = "This is a system notification.\r\n\r\n";
-        $message .= "$this_message";
+        $message = "$this_message";
         $message .= "\r\n\r\n";
 
         $headers = 'From: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" ;
-          //  'Reply-To: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n";
-       // $headers .= "Content-type: text/plain; charset=utf-8\r\n";
 
         if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED) {
             mail($to, $subject, $message, $headers);
