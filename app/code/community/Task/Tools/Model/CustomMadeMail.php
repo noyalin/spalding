@@ -5,10 +5,11 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     public function execute()
     {
         $subject = '斯伯丁官网定制球待审批订单';
-        $message = "审批链接：http://www.spaldingchina.com.cn/index.php/backendspalding\r\n";
+
+        $message = "\r\n审批链接：http://www.spaldingchina.com.cn/index.php/backendspalding\r\n";
         $message .= "审批用户一：\r\n用户名：spalding1  密码：fgdjbwb11\r\n";
         $message .= "审批用户二：\r\n用户名：spalding2  密码：ngjefhk22\r\n";
-
+        $message .= "\r\n";
         $message .= date("Y年m月d日", time() - 24 * 60 * 60)."尚未审批订单号：\r\n";
         $orderIds = Mage::getModel('custommade/info')->loadByTime(date("Y-m-d", time()) . ' 00:00:00', date("Y-m-d", time() - 24 * 60 * 60) . ' 00:00:00', 1);
         if (empty($orderIds)) {
@@ -18,7 +19,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
-
+        $message .= "\r\n";
         $message .= "三天前尚未审批订单号：\r\n";
         $orderIdThreeDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time() - 72 * 60 * 60) . ' 00:00:00', 1);
         if (empty($orderIdThreeDay)) {
@@ -28,7 +29,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
-
+        $message .= "\r\n";
         $this->sendNotification($subject, $message, true, true);
     }
 
