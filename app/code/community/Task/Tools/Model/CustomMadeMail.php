@@ -19,7 +19,6 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
-        $message .= "\r\n";
         $message .= "三天前尚未审批订单号：\r\n";
         $orderIdThreeDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time() - 72 * 60 * 60) . ' 00:00:00', 1);
         if (empty($orderIdThreeDay)) {
@@ -40,9 +39,8 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
 
     public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
     {
-//        $to = 'pisces.bian@voyageone.cn';
-//        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,aaron.deng@voyageone.cn,bob.chen@voyageone.cn,buchun.gu@voyageone.cn' : "";
-        $to = 'buchun.gu@voyageone.cn';
+        $to = 'pisces.bian@voyageone.cn';
+        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,aaron.deng@voyageone.cn,bob.chen@voyageone.cn,buchun.gu@voyageone.cn' : "";
         $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
         $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 
