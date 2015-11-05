@@ -47,12 +47,12 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
         $message .= "$this_message";
         $message .= "\r\n\r\n";
 
-        $headers = 'From: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" .
-            'Reply-To: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n";
-        $headers .= "Content-type: text/plain; charset=utf-8\r\n";
+        $headers = 'From: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" ;
+          //  'Reply-To: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n";
+       // $headers .= "Content-type: text/plain; charset=utf-8\r\n";
 
         if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED) {
-            mail($to, $subject, $message,null);
+            mail($to, $subject, $message, $headers);
         }
         echo "\n" . $message . "\n";
     }
