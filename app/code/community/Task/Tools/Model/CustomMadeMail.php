@@ -52,7 +52,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
         $headers .= "Content-type: text/plain; charset=utf-8\r\n";
 
         if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED) {
-            mail($to, $subject, $message, $headers);
+            mail($to, $subject, $message,null);
         }
         echo "\n" . $message . "\n";
     }
