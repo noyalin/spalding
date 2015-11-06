@@ -30,6 +30,7 @@ class Cobra_CustomMade_Model_Mysql4_Info extends Mage_Core_Model_Mysql4_Abstract
             ->where($where1)
             ->where($where2);
         $items = $this->_getReadAdapter()->fetchAll($sql);
+        Mage::log("CustomMade Send Mail loadByConditions time=" . $time);
         return $items;
     }
 
@@ -46,6 +47,7 @@ class Cobra_CustomMade_Model_Mysql4_Info extends Mage_Core_Model_Mysql4_Abstract
             ->where($where2)
             ->where($where3);
         $items = $this->_getReadAdapter()->fetchAll($sql);
+        Mage::log("CustomMade Send Mail loadByTime time1=" . $time1 . ", time2=" . $time2);
         return $items;
     }
 }
