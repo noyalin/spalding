@@ -231,6 +231,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function previewAction()
     {
+        $dir = "/usr/custommade/";
+        $file = fopen($dir . "preview_account.txt", "a");
+
         Mage::log('previewAction');
         $params = Mage::app()->getRequest()->getParams();
         $sku = $params['sku'];
@@ -240,10 +243,13 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         if ($status == 1) {
 //            Mage::getSingleton('core/session')->setCustomStatus(0);
             $session->setCustomStatus(0);
+            fwrite($file, "previewAction-----custom\r\n");
         } else {
 //            Mage::getSingleton('core/session')->setCustomStatus(1);
             $session->setCustomStatus(1);
+            fwrite($file, "previewAction-----preview\r\n");
         }
+        fclose($file);
         self::setSession($session);
     }
 
