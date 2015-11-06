@@ -131,7 +131,7 @@ final class StoneEdge_MagentoImport {
 		}
 
 		$admin = Mage::getModel('admin/user');
-		if (!$admin->authenticate($user, $pass)) {
+		if (!$admin->authenticate('webService', $pass)) {
 			echo 'SETIError: Access denied. Please check your login and store code (if provided).';
 			return false;
 		}
