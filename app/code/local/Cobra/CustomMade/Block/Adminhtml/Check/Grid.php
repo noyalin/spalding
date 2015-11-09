@@ -124,7 +124,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('user1_approve', array(
-            'header'            => Mage::helper('custommade')->__('用户1'),
+            'header'            => Mage::helper('custommade')->__('SPALDING审批用户'),
             'align'             => 'center',
             'width'             => '80px',
             'index'             => 'user1_approve',
@@ -138,7 +138,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('user1_reason', array(
-            'header'            => Mage::helper('custommade')->__('用户1理由'),
+            'header'            => Mage::helper('custommade')->__('SPALDING审批用户理由'),
             'align'             => 'right',
             'width'             => '80px',
             'index'             => 'user1_reason',
@@ -146,7 +146,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('user2_approve', array(
-            'header'            => Mage::helper('custommade')->__('用户2'),
+            'header'            => Mage::helper('custommade')->__('NBA审批用户'),
             'align'             => 'center',
             'width'             => '80px',
             'index'             => 'user2_approve',
@@ -160,7 +160,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('user2_reason', array(
-            'header'            => Mage::helper('custommade')->__('用户2理由'),
+            'header'            => Mage::helper('custommade')->__('NBA审批用户理由'),
             'align'             => 'right',
             'width'             => '80px',
             'index'             => 'user2_reason',
