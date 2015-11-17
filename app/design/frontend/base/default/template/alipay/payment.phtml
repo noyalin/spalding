@@ -64,7 +64,43 @@ foreach ($_items as $_item){
     }
 }
 ?>
-
+<style>
+    .payCustomPopUp{position:absolute; z-index:999999;background: rgba(0,0,0,.9);width:960px;height:340px;left:0; top:140px;overflow: hidden;}
+    .payPopUpCons{
+        color:#cf0000;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        margin:100px 20px 50px;
+    }
+    .payPopUpConf{
+        width:200px;
+        height:40px;
+        text-align: center;
+        background: #cf0000;
+        color:#fff;
+        line-height: 40px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left:350px;
+    }
+</style>
+<script>
+    jQuery(function(){
+        jQuery(".payPopUpConf").click(function(){
+            jQuery(this).parent(".payCustomPopUp").css("display","none");
+        });
+    });
+    
+</script>
+<div class="payCustomPopUp">
+    <div class="payPopUpCons">
+        温馨提示：由于此款球为按个人要求的特别订制球，适合范围仅于您个人，因此，一旦付款，将不于退款服务。
+    </div>
+    <div class="payPopUpConf">确认</div>
+</div>
 <div class="shortcut_wrapper">
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
