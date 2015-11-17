@@ -67,24 +67,32 @@ foreach ($_items as $_item){
 <style>
     .payCustomPopUp{position:absolute; z-index:999999;background: rgba(0,0,0,.9);width:960px;height:340px;left:0; top:140px;overflow: hidden;}
     .payPopUpCons{
-        color:#cf0000;
-        font-size: 18px;
+        color:#f4b201;
+        font-size: 16px;
+        margin:60px 20px 50px;
+    }
+    .payPopUpCons h2{
+        font-size: 22px;
         font-weight: bold;
         text-align: center;
-        margin:100px 20px 50px;
+        margin:20px 0;
+    }
+    .payPopUpCons p{
+        line-height: 1.6em;
+        margin-left:240px;
     }
     .payPopUpConf{
         width:200px;
         height:40px;
         text-align: center;
-        background: #cf0000;
-        color:#fff;
+        background: #f4b201;
+        color:#000;
         line-height: 40px;
         font-size: 16px;
         font-weight: bold;
         border-radius: 4px;
         cursor: pointer;
-        margin-left:350px;
+        margin-left:380px;
     }
 </style>
 <script>
@@ -97,7 +105,10 @@ foreach ($_items as $_item){
 </script>
 <div class="payCustomPopUp">
     <div class="payPopUpCons">
-        温馨提示：由于此款球为按个人要求的特别订制球，适合范围仅于您个人，因此，一旦付款，将不于退款服务。
+        <h2>温馨提示</h2>
+        <p>1，由于是个性化定制商品，订单付款后将不再进行退换操作。</p>
+        <p>2，审核后的订单预计将在20个工作日左右生产完成并发货。</p>
+        <p>3，定制内容易磨损，建议将定制球作为观赏收藏使用。</p>
     </div>
     <div class="payPopUpConf">确认</div>
 </div>
