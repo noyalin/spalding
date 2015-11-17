@@ -94,6 +94,18 @@ foreach ($_items as $_item){
         cursor: pointer;
         margin-left:380px;
     }
+    .payPopBack{
+        font-size: 14px;
+        margin-left:450px;
+        margin-top:10px;
+    }
+    .payPopBack a{
+        color:#fff;
+        text-decoration: underline;
+    }
+    .payPopBack a:hover{
+        color:#f4b201;
+    }
 </style>
 <script>
     jQuery(function(){
@@ -106,11 +118,12 @@ foreach ($_items as $_item){
 <div class="payCustomPopUp">
     <div class="payPopUpCons">
         <h2>温馨提示</h2>
-        <p>1，由于是个性化定制商品，订单付款后将不再进行退换操作。</p>
+        <p>1，由于是个性化定制商品，订单付款后概不退换。</p>
         <p>2，审核后的订单预计将在20个工作日左右生产完成并发货。</p>
         <p>3，定制内容易磨损，建议将定制球作为观赏收藏使用。</p>
     </div>
     <div class="payPopUpConf">确认</div>
+    <div class="payPopBack"><a href="<?php echo $this->getUrl('sales/order/history/') ?>">暂不付款</a></div>
 </div>
 <div class="shortcut_wrapper">
     <div class="shortcut_price">
