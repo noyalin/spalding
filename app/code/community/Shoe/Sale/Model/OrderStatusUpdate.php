@@ -39,6 +39,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
                     $sku = (string) $xmlItemElement->Sku;
 
                     $orderUpdates[$orderNumber]['items'][$sku]['sku'] = $sku;
+                    $orderUpdates[$orderNumber]['items'][$sku]['status'] =  $xmlItemElement->Status;
                     $orderUpdates[$orderNumber]['items'][$sku]['quantityOrdered'] = $xmlItemElement->QuantityOrdered;
                     $orderUpdates[$orderNumber]['items'][$sku]['quantityShipped'] = $xmlItemElement->QuantityShipped;
                     $orderUpdates[$orderNumber]['items'][$sku]['quantityReturned'] = $xmlItemElement->QuantityReturned;
@@ -162,6 +163,28 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
             }
         }
     }
+
+
+    public function updateCustomMadeOrderItem($order, $orderUpdate)
+    {
+        foreach ($orderUpdate['items'] as $itemUpdate) {
+            $str = substr($itemUpdate['sku'], -5);
+            if ($str == '-ID01' || $str == '-ID02') {
+                foreach ($order->getAllItems() as $orderItem) {
+                    if ($orderItem->getSku() == $itemUpdate['sku'] && $itemUpdate['status'] == 'Canceled') {
+                        $orderCustom = Mage::getModel('custommade/info')->loadByIncrementId($orderUpdate['orderNumber']);
+                        if ($orderCustom->getId()) {
+                            $orderCustom->cancel();
+                            $orderCustom->save();
+                            $this->transactionLogHandle("  ->CustomMade cancel orderid=" . $orderUpdate['orderNumber'] . "\n");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public function update($elements,$orderUpdates){
         if ( $elements != 'Orders') {
             throw new Exception('No Orders Found');
@@ -224,6 +247,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
                 } else {
                     //UPDATE
                     $this->updateTableDevicomOrderItem($order,$orderUpdate,$writeConnection);
+                    $this->updateCustomMadeOrderItem($order,$orderUpdate);
                 }
 
                 // Create/Update Shipment regardless of status if tracking number provided

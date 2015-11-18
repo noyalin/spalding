@@ -1,8 +1,5 @@
 <?php
 
-/**
- * @method Cobra_CustomMade_Model_Info setStatus(int $value)
- */
 class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
 {
 
