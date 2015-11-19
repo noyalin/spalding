@@ -88,9 +88,11 @@
         <?php $_count = $_items->count(); ?>
         <?php foreach ($_items as $_item): ?>
             <?php if ($_item->getParentItem()) continue; ?>
-            <?php if ($_item->getSku() == '74-602yc-ID02'):?>
-                <?php $_flag = true;?>
-            <?php endif;?>
+            <?php
+            $str = substr($_item->getSku(), -5);
+            if ($str == '-ID01' || $str == '-ID02'): ?>
+                <?php $_flag = true; ?>
+            <?php endif; ?>
             <tbody>
             <?php echo $this->getItemHtml($_item) ?>
             <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
