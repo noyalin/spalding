@@ -563,7 +563,7 @@ function setFamily_1(_dataFamVal){
     }
 }
 
-function setFamily_1(_dataFamVal){
+function setFamily_2(_dataFamVal){
 
     if(_dataFamVal==0){
         jQuery("#textMade_P1").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
