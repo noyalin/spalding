@@ -86,6 +86,11 @@ function isCustom() {
         notTodo("提示", "请先进行定制，才可以加入购物车，为您带来的不便，还请谅解！");
         return false;
     } else {
+        if (_custom_flag1 != "0" && _custom_flag2 != "0") {
+            jQuery("#custom_num").val(jQuery("#double").val());
+        } else {
+            jQuery("#custom_num").val(jQuery("#single").val());
+        }
         return true;
     }
 }

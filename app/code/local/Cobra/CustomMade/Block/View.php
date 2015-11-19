@@ -4,8 +4,8 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 {
     private $sizeId = 0;
     private $sizeValue = 0;
-//    private $customId = 0;
-//    private $customValue = 0;
+    private $customId = 0;
+    private $customValue = null;
 //    private $price;
     private $customerId;
     private $session;
@@ -29,22 +29,7 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 
     public function initOptions()
     {
-//        $customTypeP1 = '无';
-//        $customTypeP2 = '无';
         $attributes = null;
-
-//        if ($this->getTypeP1() == 1) {
-//            $customTypeP1 = '图片';
-//        } elseif ($this->getTypeP1() == 2) {
-//            $customTypeP1 = '文字';
-//        }
-//
-//        if ($this->getTypeP2() == 1) {
-//            $customTypeP2 = '图片';
-//        } elseif ($this->getTypeP2() == 2) {
-//            $customTypeP2 = '文字';
-//        }
-//        $customType = $customTypeP1 . '-' . $customTypeP2;
 
         $_product = $this->getProduct();
         $allowAttributes = $_product->getTypeInstance(true)->getConfigurableAttributes($_product);
@@ -60,16 +45,13 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
                     $this->sizeValue = $optionValue['value_index'];
                 }
                 $attributes[$this->sizeId] = $this->sizeValue;
+            } elseif ($attrName == '定制数量') {
+                $this->customId = $_attribute->getAttributeId();
+                $i = 0;
+                foreach ($attrValueArr as $optionValue) {
+                    $this->customValue[$i++] = $optionValue['value_index'];
+                }
             }
-//            elseif ($attrName == '定制类型') {
-//                $this->customId = $_attribute->getAttributeId();
-//                foreach ($attrValueArr as $optionValue) {
-//                    if ($optionValue['label'] == $customType) {
-//                        $this->customValue = $optionValue['value_index'];
-//                    }
-//                }
-//                $attributes[$this->customId] = $this->customValue;
-//            }
         }
 //        $subProduct = Mage::getSingleton('catalog/product_type_configurable')->getProductByAttributes($attributes, $_product);
 //        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $subProduct->getSku());
@@ -78,80 +60,67 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
 
     public function getCustomStatus()
     {
-//        return Mage::getSingleton('core/session')->getCustomStatus();
         return $this->session->getCustomStatus();
     }
 
     public function getPos()
     {
-//        return Mage::getSingleton('core/session')->getPos();
         return $this->session->getPos();
     }
 
     public function getTypeP1()
     {
-//        return Mage::getSingleton('core/session')->getTypeP1();
         return $this->session->getTypeP1();
     }
 
     public function getContent1P1()
     {
-//        return Mage::getSingleton('core/session')->getContent1P1();
         return $this->session->getContent1P1();
     }
 
     public function getContent2P1()
     {
-//        return Mage::getSingleton('core/session')->getContent2P1();
         return $this->session->getContent2P1();
     }
 
     public function getContent3P1()
     {
-//        return Mage::getSingleton('core/session')->getContent3P1();
         return $this->session->getContent3P1();
     }
 
     public function getContent4P1()
     {
-//        return Mage::getSingleton('core/session')->getContent4P1();
         return $this->session->getContent4P1();
     }
 
     public function getTypeP2()
     {
-//        return Mage::getSingleton('core/session')->getTypeP2();
         return $this->session->getTypeP2();
     }
 
     public function getContent1P2()
     {
-//        return Mage::getSingleton('core/session')->getContent1P2();
         return $this->session->getContent1P2();
     }
 
     public function getContent2P2()
     {
-//        return Mage::getSingleton('core/session')->getContent2P2();
         return $this->session->getContent2P2();
     }
 
     public function getContent3P2()
     {
-//        return Mage::getSingleton('core/session')->getContent3P2();
         return $this->session->getContent3P2();
     }
 
     public function getContent4P2()
     {
-//        return Mage::getSingleton('core/session')->getContent4P2();
         return $this->session->getContent4P2();
     }
 
     public function getTestMode()
     {
         return Mage::getSingleton('core/session')->getTestMode();
-//        return $this->session->getTestMode();
     }
 
     public function getCustommadeAgree()
@@ -192,15 +161,15 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return $this->sizeValue;
     }
 
-//    public function getCustomId()
-//    {
-//        return $this->customId;
-//    }
-//
-//    public function getCustomValue()
-//    {
-//        return $this->customValue;
-//    }
+    public function getCustomId()
+    {
+        return $this->customId;
+    }
+
+    public function getCustomValue()
+    {
+        return $this->customValue;
+    }
 
 //    public function getPrice()
 //    {

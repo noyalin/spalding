@@ -200,8 +200,10 @@
         <input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
         <input type="hidden" name="related_product" id="related-products-field" value=""/>
         <input type="hidden" name="super_attribute[<?php echo $this->getSizeId() ?>]" value="<?php echo $this->getSizeValue() ?>"/>
+        <input type="hidden" name="super_attribute[<?php echo $this->getCustomId() ?>]" id="custom_num" value=""/>
         <input type="hidden" name="sku" id="sku"  value="<?php echo $_product->getSku() ?>"/>
-<!--        <input type="hidden" name="super_attribute[--><?php //echo $this->getCustomId() ?><!--]" value="--><?php //echo $this->getCustomValue() ?><!--"/>-->
+        <input type="hidden" id="single" value="<?php echo $this->getCustomValue()[1]; ?>"/>
+        <input type="hidden" id="double" value="<?php echo $this->getCustomValue()[0]; ?>"/>
     </div>
 
     <div class="madeFuns">
