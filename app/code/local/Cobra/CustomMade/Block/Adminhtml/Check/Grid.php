@@ -262,12 +262,12 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 //            'label'     => Mage::helper('custommade')->__('待付款'),
 //            'url'       => $this->getUrl('*/*/massNonPayment')
 //        ));
-
-        $this->getMassactionBlock()->addItem('approving', array(
-            'label'     => Mage::helper('custommade')->__('待审批'),
-            'url'       => $this->getUrl('*/*/massApproving')
-        ));
-
+//
+//        $this->getMassactionBlock()->addItem('approving', array(
+//            'label'     => Mage::helper('custommade')->__('待审批'),
+//            'url'       => $this->getUrl('*/*/massApproving')
+//        ));
+//
 //        $this->getMassactionBlock()->addItem('approved', array(
 //            'label'     => Mage::helper('custommade')->__('审批通过'),
 //            'url'       => $this->getUrl('*/*/massApproved')
