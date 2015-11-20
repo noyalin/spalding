@@ -89,8 +89,8 @@
         <?php foreach ($_items as $_item): ?>
             <?php if ($_item->getParentItem()) continue; ?>
             <?php
-            $str = substr($_item->getSku(), -5);
-            if ($str == '-ID01' || $str == '-ID02'): ?>
+            $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $_item->getSku());
+            if ($_product->getIsCustom()): ?>
                 <?php $_flag = true; ?>
             <?php endif; ?>
             <tbody>
