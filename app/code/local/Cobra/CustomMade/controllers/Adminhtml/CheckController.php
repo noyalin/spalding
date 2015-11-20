@@ -65,10 +65,11 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         $infoIds = $this->getRequest()->getParam('custommade');
         if (!is_array($infoIds)) {
             Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('Please select order(s)'));
-        }
-        foreach ($infoIds as $infoId) {
-            $subscriber = Mage::getModel('custommade/info')->load($infoId);
-            $subscriber->cancel();
+        } else {
+            foreach ($infoIds as $infoId) {
+                $subscriber = Mage::getModel('custommade/info')->load($infoId);
+                $subscriber->cancel();
+            }
         }
         $this->_redirect('*/*/index');
     }
@@ -78,10 +79,21 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         $infoIds = $this->getRequest()->getParam('custommade');
         if (!is_array($infoIds)) {
             Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('Please select order(s)'));
+        } else {
+            $ret = $this->export($infoIds);
+            if ($ret == 1) {
+                // Success
+                //Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('custommade')->__('订单导出:文件下载成功。'));
+            } else if ($ret == -1) {
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('订单导出:文件下载异常，请重新导出。'));
+            } else if ($ret == -2) {
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('订单导出:没有符合审批通过的订单。'));
+            } else if ($ret == -3) {
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('订单导出:下载目录读写异常，请联系IT处理。'));
+            } else {
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('custommade')->__('订单导出:发生未知异常，请联系IT处理。'));
+            }
         }
-
-        $this->export($infoIds);
-
         $this->_redirect('*/*/index');
     }
 
@@ -191,12 +203,14 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $model = Mage::getModel('custommade/info');
 
             if ($data['status'] == 1 || $data['status'] == 2 || $data['status'] == 3) {
-                if ($data['user1_approve'] == 0 || $data['user2_approve'] == 0 /*|| $data['user3_approve'] == 0 || $data['user4_approve'] == 0*/) {
+                if ($data['user1_approve'] == 0 && $data['user2_approve'] == 0 /*|| $data['user3_approve'] == 0 || $data['user4_approve'] == 0*/) {
                     $data['status'] = 1;
                 } elseif ($data['user1_approve'] == 1 && $data['user2_approve'] == 1 /*&& $data['user3_approve'] == 1 && $data['user4_approve'] == 1*/) {
                     $data['status'] = 2;
-                } else {
+                } elseif ($data['user1_approve'] == 2 || $data['user2_approve'] == 2 /*&& $data['user3_approve'] == 1 && $data['user4_approve'] == 1*/) {
                     $data['status'] = 3;
+                } elseif ($data['user1_approve'] == 0 || $data['user2_approve'] == 0 /*&& $data['user3_approve'] == 1 && $data['user4_approve'] == 1*/) {
+                    $data['status'] = 1;
                 }
             }
 
@@ -236,95 +250,168 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
     {
         Mage::log("CustomMade start export");
         $time = date('YmdHis', Mage::getModel('core/date')->timestamp(time()));
-        $dir = "/usr/custommade/customlist/" . $time;
-        mkdir($dir);
-        $file = fopen($dir . "/" . $time . ".txt", "w");
+        $dir = "/tmp/custommade/customlist/" . $time;
+        if (!mkdir($dir)) {
+            Mage::log("CustomMade end export return = －3");
+            return -3;
+        }
+
+        $exportFlag = false;
+        $exportError = false;
 
         foreach ($infoIds as $infoId) {
+            Mage::log("export id=".$infoId." Start");
             $subscriber = Mage::getModel('custommade/info')->load($infoId);
-            $content = $subscriber->getSku() . "-" . $subscriber->getOrderId() . "\r\n";
             if ($subscriber->getStatus() != 2) {
+                Mage::log("export id=".$infoId." Status != 2");
                 continue;
             }
-            fwrite($file, $content);
             $p1_preview_url = $subscriber->getMsg5P1();
             $p1_print_url = $subscriber->getMsg6P1();
             $p2_preview_url = $subscriber->getMsg5P2();
             $p2_print_url = $subscriber->getMsg6P2();
             $img_prefix = $dir . "/" . $subscriber->getSku() . "-" . $subscriber->getOrderId() . "-" . $time;
             if($subscriber->getSku() == '74-602yc-ID02') {
-                if ($p1_preview_url != null) {
-                    $this->grabImage($p1_preview_url, $img_prefix . "-2-preview.png");
+                if ($p1_preview_url) {
+                    if (!$this->grabImage($p1_preview_url, $img_prefix . "-2-preview.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
-                if ($p1_print_url != null) {
-                    $this->grabImage($p1_print_url, $img_prefix . "-2-print.png");
+                if ($p1_print_url) {
+                    if (!$this->grabImage($p1_print_url, $img_prefix . "-2-print.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
-                if ($p2_preview_url != null) {
-                    $this->grabImage($p2_preview_url, $img_prefix . "-6-preview.png");
+                if ($p2_preview_url) {
+                    if (!$this->grabImage($p2_preview_url, $img_prefix . "-6-preview.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
-                if ($p2_print_url != null) {
-                    $this->grabImage($p2_print_url, $img_prefix . "-6-print.png");
+                if ($p2_print_url) {
+                    if (!$this->grabImage($p2_print_url, $img_prefix . "-6-print.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
             } else {
-                if ($p1_preview_url != null) {
-                    $this->grabImage($p1_preview_url, $img_prefix . "-4-preview.png");
+                if ($p1_preview_url) {
+                    if (!$this->grabImage($p1_preview_url, $img_prefix . "-4-preview.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
-                if ($p1_print_url != null) {
-                    $this->grabImage($p1_print_url, $img_prefix . "-4-print.png");
+                if ($p1_print_url) {
+                    if (!$this->grabImage($p1_print_url, $img_prefix . "-4-print.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
-                if ($p2_preview_url != null) {
-                    $this->grabImage($p2_preview_url, $img_prefix . "-8-preview.png");
+                if ($p2_preview_url) {
+                    if (!$this->grabImage($p2_preview_url, $img_prefix . "-8-preview.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
-                if ($p2_print_url != null) {
-                    $this->grabImage($p2_print_url, $img_prefix . "-8-print.png");
-                }
-            }
-            $subscriber->export();
-            Mage::log("export id=".$infoId);
-        }
-        fclose($file);
-
-        $zip = new ZipArchive();
-        $zip_name = $dir . '.zip';
-        if ($zip->open($zip_name, ZipArchive::OVERWRITE) === TRUE) {
-            $handler = opendir($dir);
-            while (($filename = readdir($handler)) !== false) {
-                if (is_file($dir . "/" . $filename)) {
-                    $zip->addFile($dir . "/" . $filename);
+                if ($p2_print_url) {
+                    if (!$this->grabImage($p2_print_url, $img_prefix . "-8-print.png")) {
+                        $exportError = true;
+                        break;
+                    }
                 }
             }
-            closedir($handler);
+            $exportFlag = true;
+            Mage::log("export id=".$infoId." End");
         }
-        $zip->close();
 
-        header("Cache-Control: public");
-        header("Content-Description: File Transfer");
-        header('Content-disposition: attachment; filename='.basename($zip_name));
-        header("Content-Type: application/zip");
-        header("Content-Transfer-Encoding: binary");
-        header('Content-Length: '. filesize($zip_name));
-        readfile($zip_name);
-        Mage::log("CustomMade end export");
+        if ($exportError) {
+            $ret = -1;
+        }
+        else if (!$exportFlag) {
+            $ret = -2;
+        }
+        else {
+
+            $file = fopen($dir . "/" . $time . ".txt", "w");
+            if (!$file) {
+                Mage::log("CustomMade end export return = －3");
+                return -3;
+            }
+            foreach ($infoIds as $infoId) {
+                $subscriber = Mage::getModel('custommade/info')->load($infoId);
+                $content = $subscriber->getSku() . "-" . $subscriber->getOrderId() . "\r\n";
+                if ($subscriber->getStatus() != 2) {
+                    continue;
+                }
+                $subscriber->export();
+                fwrite($file, $content);
+            }
+            fclose($file);
+
+            $zip = new ZipArchive();
+            $zip_name = $dir . '.zip';
+            if ($zip->open($zip_name, ZipArchive::OVERWRITE) === TRUE) {
+                $handler = opendir($dir);
+                while (($filename = readdir($handler)) !== false) {
+                    if (is_file($dir . "/" . $filename)) {
+                        $zip->addFile($dir . "/" . $filename);
+                    }
+                }
+                closedir($handler);
+            }
+            $zip->close();
+
+            header("Cache-Control: public");
+            header("Content-Description: File Transfer");
+            header('Content-disposition: attachment; filename='.basename($zip_name));
+            header("Content-Type: application/zip");
+            header("Content-Transfer-Encoding: binary");
+            header('Content-Length: '. filesize($zip_name));
+            readfile($zip_name);
+
+            $ret = 1;
+        }
+
+        Mage::log("CustomMade end export return = ".$ret);
+
+        return $ret;
     }
 
     private function grabImage($url, $filename)
     {
-        if ($url == "") {
-            return false;
-        }
-
         ob_start();
-        readfile(str_replace(' ', '%20', $url));
+        $downloadUrl = str_replace(' ', '%20', $url);
+        Mage::log("grabImage url=" . $downloadUrl . ", filename=" . $filename);
+
+        $tryFlg = 0;
+
+        while (true) {
+            if ($tryFlg > 3) {
+                return false;
+            }
+            if (readfile($downloadUrl)) {
+                break;
+            }
+            $tryFlg++;
+            Mage::log("grabImage err readfile == false, Try:".$tryFlg);
+        }
         $img = ob_get_contents();
         ob_end_clean();
         $size = strlen($img);
         if ($img && $size) {
             $fp2 = @fopen($filename, "a");
+            if (!$fp2) {
+                Mage::log("grabImage fp2 == null");
+                return false;
+            }
             fwrite($fp2, $img);
             fclose($fp2);
             return $filename;
         } else {
-            return null;
+            Mage::log("grabImage err size == 0");
+            return false;
         }
     }
 }

@@ -123,6 +123,23 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'html_decorators'   => array('nobr')
         ));
 
+        $this->addColumn('status', array(
+            'header'            => Mage::helper('custommade')->__('订单状态'),
+            'align'             => 'center',
+            'width'             => '80px',
+            'index'             => 'status',
+            'type'              => 'options',
+            'options' => array(
+                0   => '待付款',
+                1   => '待审批',
+                2   => '审批通过',
+                3   => '审批不通过',
+                4   => '取消订单',
+                5   => '已导出',
+            ),
+            'html_decorators'   => array('nobr')
+        ));
+
         $this->addColumn('user1_approve', array(
             'header'            => Mage::helper('custommade')->__('SPALDING审批用户'),
             'align'             => 'center',
@@ -139,7 +156,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 
         $this->addColumn('user1_reason', array(
             'header'            => Mage::helper('custommade')->__('SPALDING审批用户理由'),
-            'align'             => 'right',
+            'align'             => 'left',
             'width'             => '80px',
             'index'             => 'user1_reason',
             'html_decorators'   => array('nobr')
@@ -161,7 +178,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 
         $this->addColumn('user2_reason', array(
             'header'            => Mage::helper('custommade')->__('NBA审批用户理由'),
-            'align'             => 'right',
+            'align'             => 'left',
             'width'             => '80px',
             'index'             => 'user2_reason',
             'html_decorators'   => array('nobr')
@@ -211,23 +228,6 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'html_decorators'   => array('nobr')
         ));
 */
-        $this->addColumn('status', array(
-            'header'            => Mage::helper('custommade')->__('订单状态'),
-            'align'             => 'center',
-            'width'             => '80px',
-            'index'             => 'status',
-            'type'              => 'options',
-            'options' => array(
-                0   => '待付款',
-                1   => '待审批',
-                2   => '审批通过',
-                3   => '审批不通过',
-                4   => '取消订单',
-                5   => '已导出',
-            ),
-            'html_decorators'   => array('nobr')
-        ));
-
         $this->addColumn('action',
             array(
                 'header'    =>  Mage::helper('custommade')->__('Action'),
