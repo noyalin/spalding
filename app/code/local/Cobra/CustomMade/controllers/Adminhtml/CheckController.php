@@ -250,7 +250,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
     {
         Mage::log("CustomMade start export");
         $time = date('YmdHis', Mage::getModel('core/date')->timestamp(time()));
-        $dir = "/tmp/custommade/customlist/" . $time;
+        $dir = "/usr/custommade/customlist/" . $time;
         if (!mkdir($dir)) {
             Mage::log("CustomMade end export return = －3");
             return -3;
