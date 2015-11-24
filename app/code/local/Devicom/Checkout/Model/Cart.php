@@ -12,7 +12,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 
         if ($this->checkCustomMade($categoryIds)) {
             $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
-            Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id);
+            Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id, $request->getSubSku());
         }
 
 

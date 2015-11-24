@@ -42,6 +42,7 @@ CREATE TABLE `{$this->getTable('custommade_temp')}` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` varchar(18) NOT NULL,
   `sku` varchar(50) NOT NULL,
+  `sub_sku` varchar(20) DEFAULT NULL,
   `type_p1` int(1) DEFAULT NULL,
   `msg1_p1` varchar(800) DEFAULT NULL,
   `msg2_p1` varchar(800) DEFAULT NULL,
