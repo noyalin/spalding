@@ -88,7 +88,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $customerId = $order->getCustomerId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
 
-        if (!$customMsg) {
+        if (!$customMsg->getId()) {
             return;
         }
 
@@ -100,6 +100,13 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
         if (!$this->checkCustomByOrderId($orderId, $new_sku)) {
             Mage::log('saveCustomMade Error : id=NewId, order_id=' . $orderId . ', SKU=' . $new_sku);
+            return;
+        }
+
+        // 如果订单存在则不保存
+        $infoOrder = Mage::getModel('custommade/info')->loadByIncrementId($orderId);
+        if ($infoOrder->getId()) {
+            Mage::log('saveCustomMade Error : order is exist, order_id=' . $orderId . ', SKU=' . $new_sku);
             return;
         }
 
