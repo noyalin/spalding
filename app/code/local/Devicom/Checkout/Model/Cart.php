@@ -12,7 +12,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 
         if ($this->checkCustomMade($categoryIds)) {
             $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
-            Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id);
+            Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id, $request->getSubSku());
         }
 
 
@@ -79,7 +79,8 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
                         $productParent = Mage::getModel('catalog/product')->load($parentIds[0]);
                         $tmpCategoryIdArr = $productParent->getCategoryIds();
                         if ($this->checkCustomMade($tmpCategoryIdArr)) {
-                            if (isset($parentIds[0]) && $parentIds[0] == $productId) {
+                            $simple_sku = $request->getSku() . $request->getSubSku();
+                            if (isset($parentIds[0]) && $parentIds[0] == $productId && $itemCart->getSku() == $simple_sku) {
                                 //添加了同样的一个定制球，应该把数量置为1
                                 $itemCart->setQty(1);
                                 $cartHelper->getCart()->save();

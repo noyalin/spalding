@@ -86,6 +86,13 @@ function isCustom() {
         notTodo("提示", "请先进行定制，才可以加入购物车，为您带来的不便，还请谅解！");
         return false;
     } else {
+        if (_custom_flag1 != "0" && _custom_flag2 != "0") {
+            jQuery("#custom_num").val(jQuery("#double").val());
+            jQuery("#sub_sku").val("-ID02");
+        } else {
+            jQuery("#custom_num").val(jQuery("#single").val());
+            jQuery("#sub_sku").val("-ID01");
+        }
         return true;
     }
 }
@@ -135,15 +142,26 @@ jQuery(function () {
             jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
             jQuery(this).siblings(".madeBoxCons_p1").css("display", "block");
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "none");
-            jQuery(this).parents().find(".select_P1").css("display", "block");
-            jQuery(this).parents().find(".select_P2").css("display", "none");
-            jQuery(this).parents().find(".select_P3").css("display", "none");
-            jQuery(this).parents().find(".select_P4").css("display", "none");
+            /*jQuery(this).parents().find(".select_P1").css("display", "block");
+             jQuery(this).parents().find(".select_P2").css("display", "none");
+             jQuery(this).parents().find(".select_P3").css("display", "none");
+             jQuery(this).parents().find(".select_P4").css("display", "none");*/
+            //重置图片定制
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
+
+            //初始化到原始球皮
+            jQuery(this).parents().find(".madeStepNone").css("display", "block");
+            jQuery(this).parents().find(".madeStepImg").css("display", "none");
+            jQuery(this).parents().find(".madeStepTex").css("display", "none");
             //jQuery("#options_pos").val(1);
 
             //点亮对应icon
             jQuery(".remind_1").css("opacity","1");
             jQuery(".remind_2").css("opacity","0");
+
+
 
 
             // TODO
@@ -154,7 +172,7 @@ jQuery(function () {
                 success: function (res) {
                     dataObj = ajaxEvalJson(res);
                     if (dataObj != null) {
-                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2'], 
+                        resetView_1(dataObj['type'], dataObj['content1'], dataObj['content2'],
                             dataObj['content3'], dataObj['content4']);
                     }
                 }
@@ -170,7 +188,7 @@ jQuery(function () {
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeSubmit").css("display","none");
             _comfBox.css("display","block");
             _comfBoxN.click(function(){
-                
+
                 jQuery(".madeTexWrap").find(".select_P2").html(jQuery(".select_N2").html());
                 jQuery(".madeTexWrap").find(".select_P2").attr("src",jQuery(".select_N2").attr("src"));
                 _comfBox.css("display","none");
@@ -198,7 +216,7 @@ jQuery(function () {
 
         }
 
-        
+
 
 
     });
@@ -217,15 +235,27 @@ jQuery(function () {
             jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
             jQuery(this).siblings(".madeBoxCons_p1").css("display", "none");
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "block");
-            jQuery(this).parents().find(".select_P2").css("display", "block");
-            jQuery(this).parents().find(".select_P1").css("display", "none");
-            jQuery(this).parents().find(".select_P3").css("display", "none");
-            jQuery(this).parents().find(".select_P4").css("display", "none");
+            /*jQuery(this).parents().find(".select_P2").css("display", "block");
+             jQuery(this).parents().find(".select_P1").css("display", "none");
+             jQuery(this).parents().find(".select_P3").css("display", "none");
+             jQuery(this).parents().find(".select_P4").css("display", "none");*/
+
+            //重置图片定制
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
+
+            //初始化到原始球皮
+            jQuery(this).parents().find(".madeStepNone").css("display", "block");
+            jQuery(this).parents().find(".madeStepImg").css("display", "none");
+            jQuery(this).parents().find(".madeStepTex").css("display", "none");
             //jQuery("#options_pos").val(2);
 
             //点亮对应icon
             jQuery(".remind_2").css("opacity","1");
             jQuery(".remind_1").css("opacity","0");
+
+
 
             // TODO
             jQuery.ajax({
@@ -235,7 +265,7 @@ jQuery(function () {
                 success: function (res) {
                     dataObj = ajaxEvalJson(res);
                     if (dataObj != null) {
-                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2'], 
+                        resetView_2(dataObj['type'], dataObj['content1'], dataObj['content2'],
                             dataObj['content3'], dataObj['content4']);
                     }
                 }
@@ -300,6 +330,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepImg").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
+        jQuery(".cusRemindBox").css("display","none");
         //var pos = jQuery("#options_pos").val();
         //if (pos == 1) {
         //    jQuery("#options_type_p1").val(1);
@@ -323,6 +354,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepTex").css("display", "block");
         jQuery(this).parents().find(".madeStepImg").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
+        jQuery(".cusRemindBox").css("display","block");
         //var pos = jQuery("#options_pos").val();
         //if (pos == 1) {
         //    jQuery("#options_type_p1").val(2);
@@ -341,6 +373,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepNone").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepImg").css("display", "none");
+        jQuery(".cusRemindBox").css("display","block");
         //var pos = jQuery("#options_pos").val();
         //if (pos == 1) {
         //    jQuery("#options_type_p1").val(null);
@@ -359,7 +392,7 @@ jQuery(function () {
         //jQuery("#textInput_1").attr("maxlength", "10");
         SwapTxt_1();
         SwapTxt_3();
-        
+
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
 
@@ -371,17 +404,17 @@ jQuery(function () {
         jQuery(".zz_t").removeClass("zz_t_2");
 
 
-        
+
     });
     jQuery(".madeBoxCons_p2 .setSize_40").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P2").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_40");
         jQuery(this).parents().find(".madeTexWrap .select_P4").addClass("size_40");
         jQuery(this).parent().parent().parent().siblings(".smalLine").css("display","block");
-        
+
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
-        
+
         jQuery(".smalLine").find(".lineTwo_p2 input").removeAttr("checked");
         jQuery(".smalLine").find(".lineOne_p2 input").attr("checked","checked");
         jQuery(".madeTextInp").find(".smaSizeInp").css("display","none");
@@ -496,7 +529,7 @@ jQuery(function () {
     });
 
     jQuery(".lineTwo_p2").click(function(){
-        
+
         jQuery(".madeTexWrap").find(".select_P2").addClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P3").css("display","none");
         jQuery(".madeTexWrap").find(".select_P4").css("display","block");
@@ -524,7 +557,7 @@ jQuery(function () {
         jQuery(this).parent("ul").slideUp();
         jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
         jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
-        
+
         madeFamily_2();
     });
 
@@ -543,10 +576,10 @@ function madeFamily_1(){
 function setFamily_1(_dataFamVal){
 
     if(_dataFamVal==0){
-        jQuery("#textMade_P1").css("font-family","Conv_CustomGrotesque-Regular");
-        jQuery("#textMade_P3").css("font-family","Conv_CustomGrotesque-Regular");
-        jQuery(".viewPage_p1_wrap").css("font-family","Conv_CustomGrotesque-Regular");
-        jQuery(".big_pic").css("font-family","Conv_CustomGrotesque-Regular");
+        jQuery("#textMade_P1").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery("#textMade_P3").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery(".viewPage_p1_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery(".big_pic").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".chosFam_p1").html("CustomGrotesque");
     }else if(_dataFamVal==1){
         jQuery("#textMade_P1").css("font-family","Sans-Serif");
@@ -555,10 +588,10 @@ function setFamily_1(_dataFamVal){
         jQuery(".big_pic").css("font-family","Sans-Serif");
         jQuery(".chosFam_p1").html("SansSerif");
     }else if(_dataFamVal==2){
-        jQuery("#textMade_P1").css("font-family","Arial");
-        jQuery("#textMade_P3").css("font-family","Arial");
-        jQuery(".viewPage_p1_wrap").css("font-family","Arial");
-        jQuery(".big_pic").css("font-family","Arial");
+        jQuery("#textMade_P1").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery("#textMade_P3").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery(".viewPage_p1_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery(".big_pic").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".chosFam_p1").html("Aril");
     }
 }
@@ -583,7 +616,6 @@ function setFamily_2(_dataFamVal){
         jQuery(".viewPage_p1_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".big_pic").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".chosFam_p1").html("Aril");
-
     }
 }
 
@@ -594,19 +626,19 @@ function madeFamily_2(){
 }
 
 /*function madeFamily(name) {
-    var fontFamily = {
-        'Conv': function () {
-            return 'Conv_CustomGrotesque-Regular';
-        },
-        'Sans': function() {
-            return 'Sans-Serif';
-        },
-        'Ari': function() {
-            return 'Arial';
-        }
-    };
-    return (fontFamily.name || fontFamily.default)();
-}*/
+ var fontFamily = {
+ 'Conv': function () {
+ return 'Conv_CustomGrotesque-Regular';
+ },
+ 'Sans': function() {
+ return 'Sans-Serif';
+ },
+ 'Ari': function() {
+ return 'Arial';
+ }
+ };
+ return (fontFamily.name || fontFamily.default)();
+ }*/
 
 
 
@@ -671,7 +703,7 @@ function previewImage(file, imgId) {
             img.src = evt.target.result;
             avatarinit();
             //alert("reader.onload OK!!");
-        }
+        };
         reader.readAsDataURL(file.files[0]);
         _form.style.opacity = 1;
         _gripImg.style.opacity = 1;
@@ -688,10 +720,10 @@ var avatar;  //裁减图片
 var imgdefw;  //图片默认宽度
 var imgdefh;  //图片默认高度
 var offsetx = 0; //图片位置位移x
-var offsety = -305; //图片位置位移y
-var divx = 400; //外框宽度
-var divy = 400; //外框高度
-var cutx = 400;  //裁减宽度
+var offsety = -332; //图片位置位移y
+var divx = 705; //外框宽度
+var divy = 330; //外框高度
+var cutx = 705;  //裁减宽度
 var cuty = 186;  //裁减高度
 var zoom = 1; //缩放比例
 
@@ -881,8 +913,8 @@ function avatarinit() {
 
 function avatarinitLoad() {
     avatarinit();
-    jQuery("#avatar").removeAttribute("width");
-    jQuery("#avatar").removeAttribute("height");
+    document.getElementById("avatar").removeAttribute("width");
+    document.getElementById("avatar").removeAttribute("height");
 }
 
 if (document.all) {
@@ -998,6 +1030,8 @@ jQuery(function () {
         } else {
             showComfBox(this);
         }
+
+        //jQuery(".select_P1").css("display","none");
     });
 
     jQuery("#submitYP2").click(function () {
@@ -1210,7 +1244,7 @@ function getTxtSize(position) {
             var _checked = obj[i].getAttribute("checked");
 
             if (_checked=="checked") {
-            // if (obj[i].checked) {
+                // if (obj[i].checked) {
                 size = parseInt(obj[i].value);
                 break;
             }

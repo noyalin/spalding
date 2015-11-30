@@ -23,9 +23,10 @@ class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
             ->loadByField('customer_id', $customerId);
         return $this->load($id[0]);
     }
-    public function saveCustomMadeTemp($customerId)
+    public function saveCustomMadeTemp($customerId, $sub_sku)
     {
         $sku = $_POST['sku'];
+        $subSku = $sub_sku;
         $customerIdsession = Mage::getSingleton('core/session')->getCustomerId();
         $session = Mage::getModel('custommade/session')->getOrderSession($customerIdsession, $sku);
 
@@ -34,6 +35,7 @@ class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
         //保存定制信息
         Mage::getModel('custommade/temp')->setCustomerId($customerId)
             ->setSku($session->getSku())
+            ->setSubSku($subSku)
             ->setTypeP1($session->getTypeP1())
             ->setMsg1P1($session->getContent1P1())
             ->setMsg2P1($session->getContent2P1())

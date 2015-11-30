@@ -88,9 +88,11 @@
         <?php $_count = $_items->count(); ?>
         <?php foreach ($_items as $_item): ?>
             <?php if ($_item->getParentItem()) continue; ?>
-            <?php if ($_item->getSku() == '74-602yc-ID02'):?>
-                <?php $_flag = true;?>
-            <?php endif;?>
+            <?php
+            $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $_item->getSku());
+            if ($_product->getIsCustom()): ?>
+                <?php $_flag = true; ?>
+            <?php endif; ?>
             <tbody>
             <?php echo $this->getItemHtml($_item) ?>
             <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>

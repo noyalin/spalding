@@ -214,7 +214,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
         </div>
         <div class="spListInfsBotm clearfix">
             <div class="spListInfsBotm_lef ms-fl">
-                <?php if($attributeSetName=="ball"){?>
+                <?php if ($attributeSetName == "ball" || $attributeSetName == "customball"){?>
                 <p><span>产品材质：<?php echo $product_material;?></span> <span>产品规格： <?php echo $product_norm;?></span></p>
                 <p>场地： <?php echo $product_side;?></p>
                     <?php if ($res == false): ?>
