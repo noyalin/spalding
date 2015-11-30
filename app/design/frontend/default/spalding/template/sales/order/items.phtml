@@ -89,7 +89,7 @@
         <?php foreach ($_items as $_item): ?>
             <?php if ($_item->getParentItem()) continue; ?>
             <?php
-            $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $_item->getSku());
+            $_product = $_item->getProduct();
             if ($_product->getIsCustom()): ?>
                 <?php $_flag = true; ?>
             <?php endif; ?>

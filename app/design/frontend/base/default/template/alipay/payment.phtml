@@ -47,8 +47,9 @@ $_index = 0;
 $_count = $_items->count();
 $_flag = false;
 foreach ($_items as $_item){
-    if ($_item->getParentItem()) {
-        if ($_item->getSku() == '74-602yc-ID01' || $_item->getSku() == '74-602yc-ID02') {
+    if (!($_item->getParentItem())) {
+        $_product = $_item->getProduct();
+        if ($_product->getIsCustom()) {
             $_flag = true;
             $customOrder = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId());
             $customOrderId = $customOrder->getId();

@@ -58,10 +58,17 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
     <dl class="clearfix">
         <dd class="ms-fl">
             <?php if ($this->hasProductUrl()):?>
-                <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?>
-                    <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ."/media/catalog/product/". $_product->getSku()."/". $urlKey."-14.jpg"   ?>" alt=""/>
-                    <?php if ($this->hasProductUrl()):?>
-                </a>
+            <a href="<?php
+            if ($_product->getIsCustom()) {
+                echo $this->getUrl('custommade/index/review/') . 'sku/' . $_product->getSku();
+            } else {
+                echo $this->getProductUrl();
+            }
+            ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image">
+            <?php endif;?>
+            <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ."/media/catalog/product/". $_product->getSku()."/". $urlKey."-14.jpg"   ?>" alt=""/>
+            <?php if ($this->hasProductUrl()):?>
+            </a>
             <?php endif;?>
         </dd>
         <dt class="ms-fl">
@@ -69,12 +76,12 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
             <span class="spCarTit_name">
                 <?php if ($this->hasProductUrl()):?>
                     <a href="<?php
-                                    if ($_product->getSku() == '74-602yc'|| $_product->getSku() == '74-604yc') {
-                                        echo $this->getUrl('custommade/index/review/').'sku/'.$_product->getSku();
-                                    } else {
-                                        echo $this->getProductUrl();
-                                    }
-                            ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
+                    if ($_product->getIsCustom()) {
+                        echo $this->getUrl('custommade/index/review/') . 'sku/' . $_product->getSku();
+                    } else {
+                        echo $this->getProductUrl();
+                    }
+                    ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
                 <?php else: ?>
                     <?php echo $this->escapeHtml($this->getProductName()) ?>
                 <?php endif; ?>
