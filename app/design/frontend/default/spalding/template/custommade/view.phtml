@@ -5,8 +5,8 @@
 <input id="check" type="hidden" value="<?php echo $this->getUrl('custommade/index/check'); ?>"/>
 <input id="agree" type="hidden" value="<?php echo $this->getUrl('custommade/index/agree'); ?>"/>
 
-<input id="custom_flag1" type="hidden" value="0"/>
-<input id="custom_flag2" type="hidden" value="0"/>
+<input id="custom_flag1" type="hidden" value="<?php echo $this->getP1Status()?>"/>
+<input id="custom_flag2" type="hidden" value="<?php echo $this->getP2Status()?>"/>
 
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/iwd/opc/opc.css'); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.css'); ?>" type="text/css" />
