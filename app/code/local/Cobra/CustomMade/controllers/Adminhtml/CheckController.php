@@ -203,14 +203,12 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $model = Mage::getModel('custommade/info');
 
             if ($data['status'] == 1 || $data['status'] == 2 || $data['status'] == 3) {
-                if ($data['user1_approve'] == 0 && $data['user2_approve'] == 0 /*|| $data['user3_approve'] == 0 || $data['user4_approve'] == 0*/) {
+                if ($data['user1_approve'] == 0) {
                     $data['status'] = 1;
-                } elseif ($data['user1_approve'] == 1 && $data['user2_approve'] == 1 /*&& $data['user3_approve'] == 1 && $data['user4_approve'] == 1*/) {
+                } elseif ($data['user1_approve'] == 1) {
                     $data['status'] = 2;
-                } elseif ($data['user1_approve'] == 2 || $data['user2_approve'] == 2 /*&& $data['user3_approve'] == 1 && $data['user4_approve'] == 1*/) {
+                } elseif ($data['user1_approve'] == 2) {
                     $data['status'] = 3;
-                } elseif ($data['user1_approve'] == 0 || $data['user2_approve'] == 0 /*&& $data['user3_approve'] == 1 && $data['user4_approve'] == 1*/) {
-                    $data['status'] = 1;
                 }
             }
 

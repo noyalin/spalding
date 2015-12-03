@@ -161,7 +161,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'index'             => 'user1_reason',
             'html_decorators'   => array('nobr')
         ));
-
+/*
         $this->addColumn('user2_approve', array(
             'header'            => Mage::helper('custommade')->__('NBA审批用户'),
             'align'             => 'center',
@@ -183,7 +183,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'index'             => 'user2_reason',
             'html_decorators'   => array('nobr')
         ));
-/*
+
         $this->addColumn('user3_approve', array(
             'header'            => Mage::helper('custommade')->__('用户3'),
             'align'             => 'center',
