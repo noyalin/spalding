@@ -122,10 +122,10 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 )
             );
         }
-/*
+
         if ($username == 'admin' || $username == 'customer' || $username == 'spalding2') {
             $fieldset->addField('user2_approve', 'select', array(
-                    'label' => Mage::helper('custommade')->__('NBA审批用户'),
+                    'label' => Mage::helper('custommade')->__('VoyageOne审批用户'),
                     'name' => 'user2_approve',
                     'values' => array(
                         array(
@@ -144,7 +144,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 )
             );
             $fieldset->addField('user2_reason', 'text', array(
-                    'label' => Mage::helper('custommade')->__('NBA审批用户理由'),
+                    'label' => Mage::helper('custommade')->__('VoyageOne审批用户理由'),
                     'name' => 'user2_reason',
                 )
             );
@@ -155,7 +155,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                 )
             );
         }
-
+/*
         if ($username == 'admin' || $username == 'customer' || $username == 'spalding3') {
             $fieldset->addField('user3_approve', 'select', array(
                     'label' => Mage::helper('custommade')->__('用户3审批'),

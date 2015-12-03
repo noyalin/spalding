@@ -161,9 +161,9 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
             'index'             => 'user1_reason',
             'html_decorators'   => array('nobr')
         ));
-/*
+
         $this->addColumn('user2_approve', array(
-            'header'            => Mage::helper('custommade')->__('NBA审批用户'),
+            'header'            => Mage::helper('custommade')->__('VoyageOne审批用户'),
             'align'             => 'center',
             'width'             => '80px',
             'index'             => 'user2_approve',
@@ -177,13 +177,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('user2_reason', array(
-            'header'            => Mage::helper('custommade')->__('NBA审批用户理由'),
+            'header'            => Mage::helper('custommade')->__('VoyageOne审批用户理由'),
             'align'             => 'left',
             'width'             => '80px',
             'index'             => 'user2_reason',
             'html_decorators'   => array('nobr')
         ));
 
+/*
         $this->addColumn('user3_approve', array(
             'header'            => Mage::helper('custommade')->__('用户3'),
             'align'             => 'center',
