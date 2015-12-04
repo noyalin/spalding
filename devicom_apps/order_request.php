@@ -826,6 +826,7 @@ final class StoneEdge_MagentoImport {
 				$nd = $xd->createElement("Generic1");
 				self::xmlAppend("Name", $payMeth, $nd, $xd);
 				self::xmlAppend("Description", "Unrecognized payment type: '{$payMeth}'", $nd, $xd);
+				self::xmlAppend("TradeNo",0, $nd, $xd);
 				$ndPay->appendChild($nd);
 				break;
 		}
