@@ -109,11 +109,15 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $content2 = Mage::getUrl($imgPath) . $img2;
 
             } elseif ($type == 2) {
-                $content1 = $this->getCheckedText($params['text1']);
-                $content2 = $this->getCheckedText($params['text3']);
                 $content3 = $params['size'];
                 $content4 = $params['font'];
-                Mage::log('1111111111111'.$content1.$content2.$content3.$content4);
+                $content1 = $this->getCheckedText($params['text1']);
+                if ($content3 == '4') {
+                    $content2 = $this->getCheckedText($params['text3']);
+                } else {
+                    $content2 = '';
+                }
+                Mage::log('completeAction P1 ： '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             } else {
                 $type = 3;
                 $content1 = null;
@@ -161,10 +165,15 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $imgresize->save($imgPath . $img2);
                 $content2 = Mage::getUrl($imgPath) . $img2;
             } elseif ($type == 2) {
-                $content1 = $this->getCheckedText($params['text2']);
-                $content2 = $this->getCheckedText($params['text4']);
                 $content3 = $params['size'];
                 $content4 = $params['font'];
+                $content1 = $this->getCheckedText($params['text2']);
+                if ($content3 == '4') {
+                    $content2 = $this->getCheckedText($params['text4']);
+                } else {
+                    $content2 = '';
+                }
+                Mage::log('completeAction P2 ： '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             } else {
                 $type = 3;
                 $content1 = null;
