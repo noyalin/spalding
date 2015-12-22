@@ -294,7 +294,13 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             Mage::getModel('custommade/session')->rewriteSession($customerId, $params['sku'], $userCustomerId);
         }
         Mage::getSingleton('core/session')->setCustomermadeAgree(1);
-        $this->_redirect('custom-made/74-602y-74602yc.html');
+        $sku = $params['sku'];
+        $productModel = Mage::getModel('catalog/product');
+        $product = $productModel->load($productModel->getIdBySku($sku));
+        $url = $product->getProductUrl();
+        header("Location:".$url);
+        exit;
+        //$this->_redirect($product->getProductUrl());
     }
 
     private function getCustomMadeSession($position ,$sku)
