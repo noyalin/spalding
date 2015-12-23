@@ -64,7 +64,7 @@ if (strstr($shortDescription, "直径") && stristr($shortDescription, "mm")) {
 $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
 $categoryUrlkey = $_category->getUrlKey();
-if ($categoryUrlkey == 'custom-made'):
+if($_product->getIsCustom() != null && $_product->getIsCustom() == 1):
 //专属定制
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/'.$_product->getSku().'/zns_style_ball.css'); ?>">
