@@ -296,7 +296,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
                         break;
                     }
                 }
-            } else {
+            } else if ($subscriber->getSku() == '74-604yc-ID01' || $subscriber->getSku() == '74-604yc-ID02') {
                 if ($p1_preview_url) {
                     if (!$this->grabImage($p1_preview_url, $img_prefix . "-4-preview.png")) {
                         $exportError = true;
@@ -321,6 +321,10 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
                         break;
                     }
                 }
+            } else {
+                Mage::log("sku error ".$subscriber->getSku());
+                $exportError = true;
+                break;
             }
             $exportFlag = true;
             Mage::log("export id=".$infoId." End");
