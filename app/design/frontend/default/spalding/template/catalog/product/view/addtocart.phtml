@@ -79,7 +79,7 @@
                     }
                 </script>
         <?php
-            }else if($sku == '74-604yc' || $sku == '74-602yc'){
+            }else if($_product->getIsCustom() != null && $_product->getIsCustom() == 1){
         ?>
 <!--            <div class="add-to-car-button">-->
 <!--                <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" style="background: #333;color: #fff" ><span><span></span></span></button>-->

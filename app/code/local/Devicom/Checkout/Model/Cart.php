@@ -10,7 +10,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
         $productId = $product->getId();
         $categoryIds = $product->getCategoryIds();
 
-        if ($this->checkCustomMade($categoryIds)) {
+        if ($this->checkCustomMade($product)) {
             $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
             Mage::getModel('custommade/temp')->saveCustomMadeTemp($customer_id, $request->getSubSku());
         }
@@ -56,7 +56,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
         $this->getCheckoutSession()->setLastAddedProductId($productId);
 
         //开始删除已经存在的
-        if ($this->checkCustomMade($categoryIds)) {
+        if ($this->checkCustomMade($product)) {
             //此商品属于定制类商品
             //remove from cart
             $cartHelper = Mage::helper('checkout/cart');
@@ -77,8 +77,8 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
                         $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
                             ->getParentIdsByChild($tmpId);
                         $productParent = Mage::getModel('catalog/product')->load($parentIds[0]);
-                        $tmpCategoryIdArr = $productParent->getCategoryIds();
-                        if ($this->checkCustomMade($tmpCategoryIdArr)) {
+                        //$tmpCategoryIdArr = $productParent->getCategoryIds();
+                        if ($this->checkCustomMade($productParent)) {
                             $simple_sku = $request->getSku() . $request->getSubSku();
                             if (isset($parentIds[0]) && $parentIds[0] == $productId && $itemCart->getSku() == $simple_sku) {
                                 //添加了同样的一个定制球，应该把数量置为1
@@ -93,8 +93,8 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
                         }
                     } else {
                         $productTmp = Mage::getModel('catalog/product')->load($tmpId);
-                        $tmpCategoryIdArr = $productTmp->getCategoryIds();
-                        if ($this->checkCustomMade($tmpCategoryIdArr)) {
+                        //$tmpCategoryIdArr = $productTmp->getCategoryIds();
+                        if ($this->checkCustomMade($productTmp)) {
                             if ($tmpId == $productId) {
                                 //添加了同样的一个定制球，应该把数量置为1
                                 $itemCart->setQty(1);
@@ -204,14 +204,11 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
         return $this;
     }
 
-    private function checkCustomMade($ids)
+    private function checkCustomMade($product)
     {
-        foreach ($ids as $id) {
-            $urlKey = Mage::getModel('catalog/category')->load($id)->getUrlKey();
-            if ($urlKey == 'custom-made') {
-                return true;
-            }
-        }
+    	if($product->getIsCustom() != null && $product->getIsCustom() == 1){
+    		return true;
+    	}
         return false;
     }
 }
