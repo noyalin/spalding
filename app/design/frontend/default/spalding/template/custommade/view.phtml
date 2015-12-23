@@ -330,7 +330,7 @@
         } else if (_dataType == 2) {//定制文字
             jQuery("#custom_flag1").val("2");
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
-            var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:40px;'></p>").text(value2);
+            var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:10px;'></p>").text(value2);
             var _zzT = jQuery(".zz_t");
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow");
@@ -371,7 +371,7 @@
 
                     //two line view textLineTwo block
                     _viewCons.append(_dataTxt2);
-                    _viewPage1.find(".viewTexWrap").css("margin-top","-20px");
+                    _viewPage1.find(".viewTexWrap").css({"margin-top":"-25px","height":"40px"});
                     setFamily_1(value4);
 
                     //预览两行处理
@@ -505,7 +505,7 @@
             jQuery("#custom_flag2").val("2");
 
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
-            var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:40px;'></p>").text(value2);
+            var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:10px;'></p>").text(value2);
             var _zzT = jQuery(".zz_t");
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow");
@@ -546,7 +546,7 @@
 
                     //two line view textLineTwo block
                     _viewCons.append(_dataTxt2);
-                    _viewPage2.find(".viewTexWrap").css("margin-top","-20px");
+                    _viewPage2.find(".viewTexWrap").css({"margin-top":"-25px","height":"40px"});
                     setFamily_2(value4);
 
                     //预览两行处理

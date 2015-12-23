@@ -146,6 +146,8 @@ jQuery(function () {
              jQuery(this).parents().find(".select_P2").css("display", "none");
              jQuery(this).parents().find(".select_P3").css("display", "none");
              jQuery(this).parents().find(".select_P4").css("display", "none");*/
+            jQuery(this).parents().find("#textMade_P3").css("display", "none");
+            jQuery(this).parents().find("#textMade_P4").css("display", "none");
             //重置图片定制
             jQuery("#img_grip").css("opacity","0");
             jQuery("#imgFuns").css("opacity","0");
@@ -239,6 +241,8 @@ jQuery(function () {
              jQuery(this).parents().find(".select_P1").css("display", "none");
              jQuery(this).parents().find(".select_P3").css("display", "none");
              jQuery(this).parents().find(".select_P4").css("display", "none");*/
+            jQuery(this).parents().find("#textMade_P3").css("display", "none");
+            jQuery(this).parents().find("#textMade_P4").css("display", "none");
 
             //重置图片定制
             jQuery("#img_grip").css("opacity","0");

@@ -3851,7 +3851,7 @@ dl.madeBoxFuns dt.zz_t_2{
 	font-family:'Conv_CustomGrotesque-Regular',Sans-Serif;
 	position: absolute;
 	width: 400px;
-	margin-top:185px;
+	margin-top:200px;
 	text-align: center;
 	z-index: 2;
 	font-size:60px;
@@ -3877,13 +3877,13 @@ dl.madeBoxFuns dt.zz_t_2{
 
 .size_60{
 	font-size: 60px;
-	margin-top:-5px;
-	top:-5px;
+	margin-top:-10px;
+	/*top:-5px;*/
 }
 
 .size_80{
 	font-size: 84px;
-	top:-10px;
+	margin-top:-10px;
 }
 
 .madeTextInp{
@@ -4080,7 +4080,7 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .viewTexWrap{
-	top:100px;
+	top:95px;
 	text-align: center;
 }
 
@@ -4236,7 +4236,7 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .twoLine{
-	margin-top:-20px;
+	margin-top:-35px;
 	height:40px;
 
 }
