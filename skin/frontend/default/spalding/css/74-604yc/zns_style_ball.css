@@ -1,4 +1,9 @@
-
+.madeTexWrap{
+	margin-top:185px;
+}
+.viewPage_P1 .viewPage_p1_wrap, .viewPage_P2 .viewPage_p2_wrap{
+	margin-top:175px;
+}
 /*1-1*/
 .big_pic li .imgPag_1.imgPag_1_1{
 	margin-left:-300px;
