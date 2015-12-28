@@ -603,23 +603,23 @@ function setFamily_1(_dataFamVal){
 function setFamily_2(_dataFamVal){
 
     if(_dataFamVal==0){
-        jQuery("#textMade_P1").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery("#textMade_P3").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery(".viewPage_p1_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery("#textMade_P2").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery("#textMade_P4").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery(".viewPage_p2_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".big_pic").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery(".chosFam_p1").html("CustomGrotesque");
+        jQuery(".chosFam_p2").html("CustomGrotesque");
     }else if(_dataFamVal==1){
-        jQuery("#textMade_P1").css("font-family","Sans-Serif");
-        jQuery("#textMade_P3").css("font-family","Sans-Serif");
-        jQuery(".viewPage_p1_wrap").css("font-family","Sans-Serif");
+        jQuery("#textMade_P2").css("font-family","Sans-Serif");
+        jQuery("#textMade_P4").css("font-family","Sans-Serif");
+        jQuery(".viewPage_p2_wrap").css("font-family","Sans-Serif");
         jQuery(".big_pic").css("font-family","Sans-Serif");
-        jQuery(".chosFam_p1").html("SansSerif");
+        jQuery(".chosFam_p2").html("SansSerif");
     }else if(_dataFamVal==2){
-        jQuery("#textMade_P1").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery("#textMade_P3").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery(".viewPage_p1_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery("#textMade_P2").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery("#textMade_P4").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery(".viewPage_p2_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".big_pic").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery(".chosFam_p1").html("Aril");
+        jQuery(".chosFam_p2").html("Aril");
     }
 }
 
