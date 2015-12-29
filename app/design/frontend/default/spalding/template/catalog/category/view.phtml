@@ -47,7 +47,12 @@ $_imgUrl = null;
     }else if(isset($_GET['attribute_set_name']) && ($_GET['attribute_set_name'] == 69 || $_GET['attribute_set_name'] == 76) ){
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_stands')->toHtml();
     }else{
-        echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner')->toHtml();
+		if($_category && $_category->getId() == 39):
+			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_made')->toHtml();
+		else:
+			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner')->toHtml();
+		endif;
+       
     }
     ?>
 </div>
