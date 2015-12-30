@@ -483,8 +483,10 @@ final class StoneEdge_MagentoImport {
 			if ($orderItem->getData('product_type') == 'configurable') {
 				continue;
 			}
-			if ($orderItem->getData('sku') == '74-602yc-ID01' ||
-				$orderItem->getData('sku') == '74-602yc-ID02') {
+			$productItem = Mage::getModel('catalog/product')->load($orderItem->getProductId());
+			if ($productItem->getIsCustom() && $productItem->getIsCustom() == 1) {
+//			if ($orderItem->getData('sku') == '74-602yc-ID01' ||
+//				$orderItem->getData('sku') == '74-602yc-ID02') {
 				$customMadeFlag = true;
 			} else if ($orderItem->getData('sku') == 'price-difference-001-OneSize') {
 				$testFlag = true;
