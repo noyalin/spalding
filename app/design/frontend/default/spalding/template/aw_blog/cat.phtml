@@ -1,0 +1,23 @@
+<!-- 主框架 s -->
+<div style="height:90px; z-index:-2; background:#000;"></div>
+<div class="newsWrap">
+    <div class="newsWrapBg">
+        <div class="newsWrapBgTop"><img src="<?php echo $this->getSkinUrl('images/news_bg.jpg'); ?>" alt=""></div>
+    </div>
+    <div class="newsWrapBox">
+        <div class="newsWrapTit"><img src="<?php echo $this->getSkinUrl('images/newsList_title.png');?>" alt=""></div>
+        <div class="newsList clearfix">
+		<?php $posts = $this->getPosts(); ?>
+		<?php if (count($posts)): ?>
+    		<?php foreach ($posts as $post): ?>
+        		<?php echo $post->getPostContent(); ?>
+    		<?php endforeach; ?>
+		<?php endif; ?>
+        </div>
+    </div>
+</div>
+<script>
+	jQuery(document).ready(function($){
+		jQuery(".aw-blog-read-more").remove();
+   	});
+</script>
