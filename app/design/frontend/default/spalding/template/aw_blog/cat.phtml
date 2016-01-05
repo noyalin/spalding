@@ -16,7 +16,10 @@
         </div>
     </div>
 </div>
-<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+<div class="bolgPages" style="width:970px;margin:10px auto;position:relative;z-index:99999;">
+	<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+</div>
+
 <script>
 	jQuery(document).ready(function($){
 		jQuery(".aw-blog-read-more").remove();
