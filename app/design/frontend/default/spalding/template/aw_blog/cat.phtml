@@ -16,8 +16,10 @@
         </div>
     </div>
 </div>
+<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
 <script>
 	jQuery(document).ready(function($){
 		jQuery(".aw-blog-read-more").remove();
+		jQuery(".sorter").remove();
    	});
 </script>
