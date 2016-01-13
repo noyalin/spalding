@@ -69,9 +69,9 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
        		'sortable'          => false,
        		'type'              => 'options',
        		'options'           => array(
-       			1   => '大号',
+       			3   => '大号',
        			2   => '中号',
-       			3   => '小号单行',
+       			1   => '小号单行',
        			4   => '小号双行',
        		),
        		'html_decorators'   => array('nobr')
@@ -85,7 +85,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         	'sortable'          => false,
         	'type'              => 'options',
         	'options'           => array(
-        		0   => 'CustomGrotesque',
+        		0   => 'NBA字体',
         	    2	=> 'Aril',
         	),
         	'html_decorators'   => array('nobr')
@@ -137,9 +137,9 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         		'sortable'          => false,
         		'type'              => 'options',
         		'options'           => array(
-        			1   => '大号',
+        			3   => '大号',
        				2   => '中号',
-       				3   => '小号单行',
+       				1   => '小号单行',
        				4   => '小号双行',
         		),
         		'html_decorators'   => array('nobr')
@@ -153,7 +153,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         		'sortable'          => false,
         		'type'              => 'options',
         		'options'           => array(
-        			0   => 'CustomGrotesque',
+        			0   => 'NBA字体',
         	    	2	=> 'Aril',
         		),
         		'html_decorators'   => array('nobr')
