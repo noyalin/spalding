@@ -61,6 +61,36 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 //            'html_decorators'   => array('nobr')
 //        ));
 
+        $this->addColumn('msg3_p1', array(
+       		'header'            => Mage::helper('custommade')->__('P1字号'),
+       		'align'             => 'center',
+       		'width'             => '80px',
+       		'index'             => 'msg3_p1',
+       		'sortable'          => false,
+       		'type'              => 'options',
+       		'options'           => array(
+       			1   => '大号',
+       			2   => '中号',
+       			3   => '小号单行',
+       			4   => '小号双行',
+       		),
+       		'html_decorators'   => array('nobr')
+        ));
+       
+        $this->addColumn('msg4_p1', array(
+        	'header'            => Mage::helper('custommade')->__('P1字体'),
+        	'align'             => 'center',
+        	'width'             => '80px',
+        	'index'             => 'msg4_p1',
+        	'sortable'          => false,
+        	'type'              => 'options',
+        	'options'           => array(
+        		0   => 'CustomGrotesque',
+        	    2	=> 'Aril',
+        	),
+        	'html_decorators'   => array('nobr')
+        ));
+        
         $this->addColumn('msg5_p1', array(
             'header'            => Mage::helper('custommade')->__('P1文字1'),
             'align'             => 'center',
@@ -99,6 +129,36 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
 //            'html_decorators'   => array('nobr')
 //        ));
 
+        $this->addColumn('msg3_p2', array(
+        		'header'            => Mage::helper('custommade')->__('P2字号'),
+        		'align'             => 'center',
+        		'width'             => '80px',
+        		'index'             => 'msg3_p2',
+        		'sortable'          => false,
+        		'type'              => 'options',
+        		'options'           => array(
+        			1   => '大号',
+       				2   => '中号',
+       				3   => '小号单行',
+       				4   => '小号双行',
+        		),
+        		'html_decorators'   => array('nobr')
+        ));
+         
+        $this->addColumn('msg4_p2', array(
+        		'header'            => Mage::helper('custommade')->__('P2字体'),
+        		'align'             => 'center',
+        		'width'             => '80px',
+        		'index'             => 'msg4_p2',
+        		'sortable'          => false,
+        		'type'              => 'options',
+        		'options'           => array(
+        			0   => 'CustomGrotesque',
+        	    	2	=> 'Aril',
+        		),
+        		'html_decorators'   => array('nobr')
+        ));
+        
         $this->addColumn('msg5_p2', array(
             'header'            => Mage::helper('custommade')->__('P2文字1'),
             'align'             => 'center',
