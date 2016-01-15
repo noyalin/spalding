@@ -455,6 +455,7 @@ $defaultBillingId = $this->getDefaultBilling();
             if (addressId!='' && addressId!=undefined ){
 //                IWD.OPC.Billing.save();
             }
+            jQuery("#shipping_address_id").val(addressId);
         });
 
         jQuery('.ds_dialog_yes').click(function(event){
