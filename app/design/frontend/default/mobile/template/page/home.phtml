@@ -11,6 +11,19 @@
 	<?php echo $this->getChildHtml('head') ?>
 
 <script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/swipe.js"></script>
+<script>
+	jQuery(function(){
+		new Swipe(document.getElementById('banner_box'), {
+			speed:500,
+			auto:3000,
+			callback: function(){
+				var lis = jQuery(this.element).next("ol").children();
+				lis.removeClass("on").eq(this.index).addClass("on");
+			}
+		});
+	});
+</script>
 </head>
 
 <body>
@@ -33,8 +46,17 @@
 		$_helper = $this->helper('catalog/output');
 		?>
 
-        <div class="checktf">
-            <a href="<?php echo Mage::getUrl(''); ?>store/index/confirm"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/verify.jpg"></a>
+        <div class="checktf" style="-webkit-transform:translate3d(0,0,0);">
+			<div id="banner_box" class="box_swipe">
+				<ul>
+					<li><a href="<?php echo Mage::getUrl(''); ?>store/index/confirm"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/verify.jpg"></a></li>
+					<li><a href="<?php echo Mage::getUrl(''); ?>store/index/confirm"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?>images/verify.jpg"></a></li>
+				</ul>
+				<ol>
+					<li class="on"></li>
+					<li class=""></li>
+				</ol>
+			</div>
         </div>
 	<!-- main category entrance banner -->
 	<section class="banner-main-wrapper clearfix" style>

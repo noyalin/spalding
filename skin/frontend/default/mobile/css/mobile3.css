@@ -4518,6 +4518,44 @@ span.checkError{
 }
 
 
+/*index new top slide imgs*/
+
+.box_swipe{
+	overflow:hidden;
+	position:relative;
+	width:100%;
+}
+.box_swipe ul{
+	-webkit-padding-start: 0px;
+	width:100%;
+}
+
+.box_swipe ul li a img{width:100%;}
+
+/*bananSlide cirle*/
+.box_swipe>ol{
+	height:20px;
+	position: relative;
+	z-index:10;
+	margin-top:-25px;
+	text-align:right;
+	padding-right:20px;
+	background-color:rgba(0,0,0,0.3);
+}
+
+.box_swipe>ol>li{
+	display:inline-block;
+	margin:5px;
+	width:10px;
+	height:10px;
+	background-color:#757575;
+	border-radius: 10px;
+
+}
+.box_swipe>ol>li.on{
+	background-color:#ffffff;
+}
+
 /*
 ***iphone 4 以下 小屏css
 ***屏幕高度小于480px
