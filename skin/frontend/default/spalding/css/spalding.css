@@ -3437,6 +3437,12 @@ ul.shopsList li span.shopsList_adrs{
 	color:#fff;
 	z-index: 0;
 }
+.cusMadeCen.cusMadeCen_img{
+	width:705px;
+	margin-left:-480px;
+}
+
+
 .step_1_ball{
 	position: absolute;
 }
@@ -3469,7 +3475,7 @@ ul.shopsList li span.shopsList_adrs{
 	right:0;
 	color:#fff;
 	width:305px;
-	height: 570px;
+	height: 600px;
 	background:#030403;
 	border:1px solid #323232;
 	border-right:none;
@@ -3499,7 +3505,7 @@ ul.shopsList li span.shopsList_adrs{
 
 .madeBoxCons{
 	padding:10px 25px;
-	height:390px;
+	height:430px;
 }
 
 .madeBoxCons>h3{
@@ -3631,8 +3637,12 @@ ul.shopsList li span.shopsList_adrs{
 }
 
 /*fun ball*/
+.step_2_Fun{
+	margin-left: 280px;
+}
 .step_2_FunBg{
 	position: absolute;
+	
 }
 
 .step_2_funBtn{
@@ -3659,7 +3669,7 @@ ul.shopsList li span.shopsList_adrs{
 
 .imgFuns{
 	position:absolute;
-	width:400px;
+	width:700px;
 	margin-top:290px;
 	z-index:99;
 	margin-left:80px;
@@ -3675,8 +3685,8 @@ ul.shopsList li span.shopsList_adrs{
 .portrait_revolve{
 	position:absolute;
 	width:290px;
-	margin-left:60px;
-	margin-top:50px;
+	margin-left:200px;
+	margin-top:20px;
 	z-index:99;
 	text-align: center;
 }
@@ -4059,10 +4069,8 @@ dl.madeBoxFuns dt.zz_t_2{
 .viewPage_P1 .viewPage_p1_wrap , .viewPage_P2 .viewPage_p2_wrap{
 	z-index: 1;
 	position: absolute;
-	
 	width:400px;
 	height:400px;
-	margin-top:190px;
 	text-align: center;
 
 	font-family: "Conv_CustomGrotesque-Regular",sans-serif;
@@ -4082,7 +4090,10 @@ dl.madeBoxFuns dt.zz_t_2{
 .viewTexWrap{
 	top:95px;
 	text-align: center;
+	line-height: 400px;
 }
+
+
 
 
 .madeLoading , .notTodo{

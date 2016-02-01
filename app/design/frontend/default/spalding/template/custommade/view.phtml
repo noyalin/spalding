@@ -159,12 +159,16 @@
         var _comfBox = jQuery(".comfBox_1");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
         var pic = jQuery("#avatar").attr("src");
-//        var text = jQuery("#textInput_1").val().trim();
+
         var text1 = getSwapTxt_1();
         var text3 = getSwapTxt_3();
         var size = getTxtSize(1);
         var font = jQuery(".chosFam_p1").attr("data-family");
-//    alert(_madeValue);
+
+        //重置图片定制
+        jQuery("#img_grip").css("opacity","0");
+        jQuery("#imgFuns").css("opacity","0");
+        jQuery("#formBtn").css("display","block");
 
         jQuery.ajax({
             type: 'POST',
@@ -182,7 +186,7 @@
                 jQuery(".madeTexWrap").find(".select_P1").attr("src",jQuery(".select_N1").attr("src"));
             }
         });
-//    resetView_1(2, "abcdeft", 1);
+
     });
 
     jQuery(".saveMadeY_p2").click(function () {
@@ -196,6 +200,11 @@
         var text4 = getSwapTxt_4();
         var size = getTxtSize(2);
         var font = jQuery(".chosFam_p2").attr("data-family");
+
+        //重置图片定制
+        jQuery("#img_grip").css("opacity","0");
+        jQuery("#imgFuns").css("opacity","0");
+        // jQuery("#formBtn").css("display","block");
 
         jQuery.ajax({
             type: 'POST',
@@ -310,11 +319,15 @@
             jQuery("#custom_flag1").val("1");
             //定位定制图案
             var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
-                value2);
+                value1);
             // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
 
             _viewCons.empty();
             _viewCons.append(_dataImg);
+
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
@@ -326,6 +339,7 @@
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
             _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball.png');  ?>");
+            jQuery(".select_P1").css("display","none");
 
         } else if (_dataType == 2) {//定制文字
             jQuery("#custom_flag1").val("2");
@@ -482,11 +496,15 @@
 
             //定位定制图案
             var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
-                value2);
+                value1);
             // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
 
             _viewCons.empty();
             _viewCons.append(_dataImg);
+
+            jQuery("#img_grip").css("opacity","0");
+            jQuery("#imgFuns").css("opacity","0");
+            jQuery("#formBtn").css("display","block");
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitImg").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindImg").slideDown();
@@ -499,6 +517,7 @@
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
             _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball2.png');  ?>");
+            jQuery(".select_P2").css("display","none");
 
         } else if (_dataType == 2) {//定制文字
 

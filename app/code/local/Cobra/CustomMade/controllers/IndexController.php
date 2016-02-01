@@ -70,9 +70,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         Mage::log('completeAction');
         $params = Mage::app()->getRequest()->getParams();
         //params
-        //position ç¬¬ä¸€é¢æˆ–è€…ç¬¬äºŒé¢
-        //font å­—ä½“æ ¼å¼
-        //size å­—ä½“å¤§å°
+        //position µÚÒ»Ãæ»òÕßµÚ¶şÃæ
+        //font ×ÖÌå¸ñÊ½
+        //size ×ÖÌå´óĞ¡
         $sku = $params['sku'];
         $session = self::getSession($sku);
 
@@ -85,33 +85,14 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         if ($pos == 1) {
             if ($type == 1) {
-                $imgPath = 'media/custommade/tmp/';
-                $imgBaseName = time();
-                $img0 = $imgBaseName . '_p1_0.jpg';
-                $img1 = $imgBaseName . '_p1_1.jpg';
-                $img2 = $imgBaseName . '_p1_2.jpg';
-
-                $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
-                $data_decode = base64_decode($data);
-                file_put_contents($imgPath . $img0, $data_decode);
-
-
-                $imgresize = new ImageResize(); //åˆ›å»ºå›¾ç‰‡ç¼©æ”¾å’Œè£å‰ªç±»
-                $imgresize->load($data_decode); //è½½å…¥åŸå§‹å›¾ç‰‡
-
-                $posary = explode(',', $params['cut_pos']);
-                foreach ($posary as $k => $v) $posary[$k] = intval($v); //è·å¾—ç¼©æ”¾æ¯”ä¾‹å’Œè£å‰ªä½ç½®
-
-                if ($posary[2] > 0 && $posary[3] > 0) $imgresize->resize($posary[2], $posary[3]); //å›¾ç‰‡ç¼©æ”¾
-
-                $imgresize->save($imgPath . $img1);
-                $content1 = Mage::getUrl($imgPath) . $img1;
-
-                $imgresize->cut(400, 190, intval($posary[0]), intval($posary[1]));
-
-                $imgresize->save($imgPath . $img2);
-                $content2 = Mage::getUrl($imgPath) . $img2;
-
+                $url_array = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
+                if ($url_array) {
+                    $content1 = $url_array['effect'];
+                    $content2 = $url_array['show'];
+                    $content3 = $url_array['print'];
+                } else {
+                    $content1 = "error";
+                }
             } elseif ($type == 2) {
                 $content3 = $params['size'];
                 $content4 = $params['font'];
@@ -121,18 +102,12 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 } else {
                     $content2 = '';
                 }
-                Mage::log('completeAction P1 ï¼š '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
+                Mage::log('completeAction P1 £º '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             } elseif ($type == 4) {
             	$content1 = $params['text1'];;
             } else {
                 $type = 3;
             }
-
-//            Mage::getSingleton('core/session')->setTypeP1($type);
-//            Mage::getSingleton('core/session')->setContent1P1($content1);
-//            Mage::getSingleton('core/session')->setContent2P1($content2);
-//            Mage::getSingleton('core/session')->setContent3P1($content3);
-//            Mage::getSingleton('core/session')->setContent4P1($content4);
             $session->setTypeP1($type);
             $session->setContent1P1($content1);
             $session->setContent2P1($content2);
@@ -141,31 +116,14 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         } elseif ($pos == 2) {
             if ($type == 1) {
-                $imgPath = 'media/custommade/tmp/';
-                $imgBaseName = time();
-                $img0 = $imgBaseName . '_p2_0.jpg';
-                $img1 = $imgBaseName . '_p2_1.jpg';
-                $img2 = $imgBaseName . '_p2_2.jpg';
-
-                $data = str_replace("data:image/jpeg;base64,", "", $params['originalImg']);
-                $data_decode = base64_decode($data);
-                file_put_contents($imgPath . $img0, $data_decode);
-
-                $imgresize = new ImageResize(); //åˆ›å»ºå›¾ç‰‡ç¼©æ”¾å’Œè£å‰ªç±»
-                $imgresize->load($data_decode); //è½½å…¥åŸå§‹å›¾ç‰‡
-
-                $posary = explode(',', $params['cut_pos']);
-                foreach ($posary as $k => $v) $posary[$k] = intval($v); //è·å¾—ç¼©æ”¾æ¯”ä¾‹å’Œè£å‰ªä½ç½®
-
-                if ($posary[2] > 0 && $posary[3] > 0) $imgresize->resize($posary[2], $posary[3]); //å›¾ç‰‡ç¼©æ”¾
-
-                $imgresize->save($imgPath . $img1);
-                $content1 = Mage::getUrl($imgPath) . $img1;
-
-                $imgresize->cut(400, 190, intval($posary[0]), intval($posary[1]));
-
-                $imgresize->save($imgPath . $img2);
-                $content2 = Mage::getUrl($imgPath) . $img2;
+                $url_array = Mage::helper('custommade/imagehandler')->createImages($sku, $pos, $params['originalImg'], $params['cut_pos']);
+                if ($url_array) {
+                    $content1 = $url_array['effect'];
+                    $content2 = $url_array['show'];
+                    $content3 = $url_array['print'];
+                } else {
+                    $content1 = "error";
+                }
             } elseif ($type == 2) {
                 $content3 = $params['size'];
                 $content4 = $params['font'];
@@ -175,19 +133,13 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 } else {
                     $content2 = '';
                 }
-                Mage::log('completeAction P2 ï¼š '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
+                Mage::log('completeAction P2 £º '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             }elseif ($type == 4) {
             	$content1 = $params['text2'];;
             }
             else {
                 $type = 3;
             }
-
-//            Mage::getSingleton('core/session')->setTypeP2($type);
-//            Mage::getSingleton('core/session')->setContent1P2($content1);
-//            Mage::getSingleton('core/session')->setContent2P2($content2);
-//            Mage::getSingleton('core/session')->setContent3P2($content3);
-//            Mage::getSingleton('core/session')->setContent4P2($content4);
             $session->setTypeP2($type);
             $session->setContent1P2($content1);
             $session->setContent2P2($content2);
@@ -196,7 +148,6 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         }
 
-//        Mage::getSingleton('core/session')->setPos($pos);
         $session->setPos($pos);
         self::setSession($session);
 
@@ -212,29 +163,18 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         $pos = $params['position'];
         if ($pos == 1) {
-//            Mage::getSingleton('core/session')->setTypeP1(null);
-//            Mage::getSingleton('core/session')->setContent1P1(null);
-//            Mage::getSingleton('core/session')->setContent2P1(null);
-//            Mage::getSingleton('core/session')->setContent3P1(null);
-//            Mage::getSingleton('core/session')->setContent4P1(null);
             $session->setTypeP1(null);
             $session->setContent1P1(null);
             $session->setContent2P1(null);
             $session->setContent3P1(null);
             $session->setContent4P1(null);
         } elseif ($pos == 2) {
-//            Mage::getSingleton('core/session')->setTypeP2(null);
-//            Mage::getSingleton('core/session')->setContent1P2(null);
-//            Mage::getSingleton('core/session')->setContent2P2(null);
-//            Mage::getSingleton('core/session')->setContent3P2(null);
-//            Mage::getSingleton('core/session')->setContent4P2(null);
             $session->setTypeP2(null);
             $session->setContent1P2(null);
             $session->setContent2P2(null);
             $session->setContent3P2(null);
             $session->setContent4P2(null);
         }
-//        Mage::getSingleton('core/session')->setPos($pos);
         $session->setPos($pos);
         self::setSession($session);
     }
@@ -248,14 +188,11 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         $params = Mage::app()->getRequest()->getParams();
         $sku = $params['sku'];
         $session = self::getSession($sku);
-//        $status = Mage::getSingleton('core/session')->getCustomStatus();
         $status = $session->getCustomStatus();
         if ($status == 1) {
-//            Mage::getSingleton('core/session')->setCustomStatus(0);
             $session->setCustomStatus(0);
             fwrite($file, "previewAction-----custom\r\n");
         } else {
-//            Mage::getSingleton('core/session')->setCustomStatus(1);
             $session->setCustomStatus(1);
             fwrite($file, "previewAction-----preview\r\n");
         }
@@ -277,6 +214,27 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     public function agreeAction()
     {
         Mage::getSingleton('core/session')->setCustomermadeAgree(1);
+    }
+
+    private function getCustomMadeSession($position ,$sku)    {
+        Mage::log("getCustomMadeSession($position ,$sku)");
+        $session = self::getSession($sku);
+        $res = array();;
+        if ($position == 1) {
+            $res['type'] = $session->getTypeP1();
+            $res['content1'] = $session->getContent1P1();
+            $res['content2'] = $session->getContent2P1();
+            $res['content3'] = $session->getContent3P1();
+            $res['content4'] = $session->getContent4P1();
+        } elseif ($position == 2) {
+            $res['type'] = $session->getTypeP2();
+            $res['content1'] = $session->getContent1P2();
+            $res['content2'] = $session->getContent2P2();
+            $res['content3'] = $session->getContent3P2();
+            $res['content4'] = $session->getContent4P2();
+        }
+        $resultString = json_encode($res);
+        return $resultString;
     }
 
     public function reviewAction()
@@ -304,28 +262,6 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         //$this->_redirect($product->getProductUrl());
     }
 
-    private function getCustomMadeSession($position ,$sku)
-    {
-//        $session = Mage::getSingleton('core/session');
-        Mage::log("getCustomMadeSession($position ,$sku)");
-        $session = self::getSession($sku);
-        $res = array();;
-        if ($position == 1) {
-            $res['type'] = $session->getTypeP1();
-            $res['content1'] = $session->getContent1P1();
-            $res['content2'] = $session->getContent2P1();
-            $res['content3'] = $session->getContent3P1();
-            $res['content4'] = $session->getContent4P1();
-        } elseif ($position == 2) {
-            $res['type'] = $session->getTypeP2();
-            $res['content1'] = $session->getContent1P2();
-            $res['content2'] = $session->getContent2P2();
-            $res['content3'] = $session->getContent3P2();
-            $res['content4'] = $session->getContent4P2();
-        }
-        $resultString = json_encode($res);
-        return $resultString;
-    }
 
     private function getSession($sku)
     {
@@ -353,20 +289,20 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 //--------------------------------------------------------
 
 /**
- * å›¾ç‰‡ç¼©æ”¾å’Œè£å‰ªç±»
+ * Í¼Æ¬Ëõ·ÅºÍ²Ã¼ôÀà
  */
 class ImageResize
 {
-    //æºå›¾è±¡
+    //Ô´Í¼Ïó
     var $_img;
-    //å›¾ç‰‡ç±»å‹
+    //Í¼Æ¬ÀàĞÍ
     var $_imagetype;
-    //å®é™…å®½åº¦
+    //Êµ¼Ê¿í¶È
     var $_width;
-    //å®é™…é«˜åº¦
+    //Êµ¼Ê¸ß¶È
     var $_height;
 
-    //è½½å…¥å›¾ç‰‡
+    //ÔØÈëÍ¼Æ¬
     function load($img_name, $img_type = '')
     {
         if (!empty($img_type)) $this->_imagetype = $img_type;
@@ -388,7 +324,7 @@ class ImageResize
         $this->getxy();
     }
 
-    //ç¼©æ”¾å›¾ç‰‡
+    //Ëõ·ÅÍ¼Æ¬
     function resize($width, $height, $percent = 0)
     {
         if (!is_resource($this->_img)) return false;
@@ -411,7 +347,7 @@ class ImageResize
         $this->getxy();
     }
 
-    //è£å‰ªå›¾ç‰‡
+    //²Ã¼ôÍ¼Æ¬
     function cut($width, $height, $x = 0, $y = 0)
     {
         if (!is_resource($this->_img)) return false;
@@ -427,7 +363,7 @@ class ImageResize
     }
 
 
-    //æ˜¾ç¤ºå›¾ç‰‡
+    //ÏÔÊ¾Í¼Æ¬
     function display($destroy = true)
     {
         if (!is_resource($this->_img)) return false;
@@ -450,7 +386,7 @@ class ImageResize
         if ($destroy) $this->destroy();
     }
 
-    //ä¿å­˜å›¾ç‰‡ $destroy=true æ˜¯ä¿å­˜åé”€æ¯å›¾ç‰‡å˜é‡ï¼Œfalseè¿™ä¸é”€æ¯ï¼Œå¯ä»¥ç»§ç»­å¤„ç†è¿™å›¾ç‰‡
+    //±£´æÍ¼Æ¬ $destroy=true ÊÇ±£´æºóÏú»ÙÍ¼Æ¬±äÁ¿£¬falseÕâ²»Ïú»Ù£¬¿ÉÒÔ¼ÌĞø´¦ÀíÕâÍ¼Æ¬
     function save($fname, $destroy = false, $type = '')
     {
         if (!is_resource($this->_img)) return false;
@@ -472,13 +408,13 @@ class ImageResize
         return $ret;
     }
 
-    //é”€æ¯å›¾åƒ
+    //Ïú»ÙÍ¼Ïñ
     function destroy()
     {
         if (is_resource($this->_img)) imagedestroy($this->_img);
     }
 
-    //å–å¾—å›¾åƒé•¿å®½
+    //È¡µÃÍ¼Ïñ³¤¿í
     function getxy()
     {
         if (is_resource($this->_img)) {
@@ -488,8 +424,8 @@ class ImageResize
     }
 
 
-    //è·å¾—å›¾ç‰‡çš„æ ¼å¼ï¼ŒåŒ…æ‹¬jpg,png,gif
-    function get_type($img_name)//è·å–å›¾åƒæ–‡ä»¶ç±»å‹
+    //»ñµÃÍ¼Æ¬µÄ¸ñÊ½£¬°üÀ¨jpg,png,gif
+    function get_type($img_name)//»ñÈ¡Í¼ÏñÎÄ¼şÀàĞÍ
     {
         if (preg_match("/\.(jpg|jpeg|gif|png)$/i", $img_name, $matches)) {
             $type = strtolower($matches[1]);

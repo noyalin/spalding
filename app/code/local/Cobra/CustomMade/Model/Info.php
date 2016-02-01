@@ -153,7 +153,12 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $url = null;
         switch ($typeP1) {
             case 1:
-                break;
+                if ($imgType == 'show') {
+                    $url = $content2P1;
+                } else {
+                    $url = $content3P1;
+                }
+                return $url;
             case 2:
                 if ($sku == '74-604yc') {
                     $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
@@ -195,7 +200,12 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $url = null;
         switch ($typeP2) {
             case 1:
-                break;
+                if ($imgType == 'show') {
+                    $url = $content2P2;
+                } else {
+                    $url = $content3P2;
+                }
+                return $url;
             case 2:
                 if ($sku == '74-604yc') {
                     $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
