@@ -136,7 +136,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
             $orderId = $arr[0];
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
             if ($order->getStatus() == 'weixin_wait_buyer_pay' || $order->getState() == 'new' ||
-                $order->getStatus() == 'alipay_wait_buyer_pay' || $order->getStatus() == 'canceled') {
+                $order->getStatus() == 'alipay_wait_buyer_pay') {
                 //写LOG
                 $postDataFromPost['out_trade_no'] = $orderId;
                 $postDataFromPost['trade_no'] = (string)$xml->transaction_id;
@@ -162,6 +162,8 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
                 } catch(Exception $e){
                     Mage :: log( "Erro Message: ".$e->getMessage());
                 }
+            } else if ($order->getStatus() == 'canceled') {
+                $this->sendMailForOrder($orderId, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
             }
         }
 
@@ -180,6 +182,20 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         $message = "New Order come this order id is ".$orderId;
         Mage :: log($message);
     }
+
+    public function sendMailForOrder($orderId, $msg){
+        $to = "terry.yao@voyageone.cn;bob.chen@voyageone.cn";
+        $subject = "Spalding Order Job : ".$orderId;
+        $message = $msg."\r\norder id is ".$orderId;
+
+        $headers = 'From: admin@spaldingchina.com.cn '  . "\r\n" .
+            'Reply-To: admin@spaldingchina.com.cn ' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
+        Mage :: log($message);
+    }
+
     public function logTrans($trans,$type){
         $log = Mage::getModel('alipay/log');
         $log->setLogAt(time());

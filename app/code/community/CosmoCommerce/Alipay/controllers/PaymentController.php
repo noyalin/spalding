@@ -307,12 +307,12 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 //如果有做过处理，不执行商户的业务程序
 
                 if ($order->getStatus() == 'weixin_wait_buyer_pay' || $order->getState() == 'new' ||
-                    $order->getStatus() == 'alipay_wait_buyer_pay' || $order->getStatus() == 'canceled') {
+                    $order->getStatus() == 'alipay_wait_buyer_pay') {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING);
                     $order->setStatus("alipay_wait_seller_send_goods");
-                    if($sendemail){
-                        $order->sendOrderUpdateEmail(true,Mage::helper('alipay')->__('TRADE SUCCESS'));
+                    if ($sendemail) {
+                        $order->sendOrderUpdateEmail(true, Mage::helper('alipay')->__('TRADE SUCCESS'));
                     }
                     $order->addStatusToHistory(
                         'alipay_wait_seller_send_goods',
@@ -325,19 +325,21 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 
                     $this->SavePaymentInfo($out_trade_no);
 
-                    try{
+                    try {
                         $order->save();
                         $this->sendMail($out_trade_no);
-                        if($method == 'get'){
-                            $this->_redirect("sales/order/view/order_id/".$order->getId());
-                        }else{
+                        if ($method == 'get') {
+                            $this->_redirect("sales/order/view/order_id/" . $order->getId());
+                        } else {
                             echo "success";
                         }
                         return;
-                    } catch(Exception $e){
-                        Mage :: log( "Erro Message: ".$e->getMessage());
+                    } catch (Exception $e) {
+                        Mage:: log("Erro Message: " . $e->getMessage());
                     }
-                }else{
+                } else if ($order->getStatus() == 'canceled') {
+                    $this->sendMailForOrder($out_trade_no, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
+                } else {
                     if($method == 'get'){
                         echo "订单已付款成功";
                         Mage :: log("订单编号：".$order->getIncrementId()."， 支付宝付款成功。");
@@ -370,6 +372,20 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         $message = "New Order come this order id is ".$orderId;
         Mage :: log($message);
     }
+
+    public function sendMailForOrder($orderId, $msg){
+        $to = "terry.yao@voyageone.cn;bob.chen@voyageone.cn";
+        $subject = "Spalding Order Job : ".$orderId;
+        $message = $msg."\r\norder id is ".$orderId;
+
+        $headers = 'From: admin@spaldingchina.com.cn '  . "\r\n" .
+            'Reply-To: admin@spaldingchina.com.cn ' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
+        Mage :: log($message);
+    }
+
 	public function get_verify($url,$time_out = "60") {
 		$urlarr     = parse_url($url);
 		$errno      = "";
@@ -702,7 +718,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 //如果有做过处理，不执行商户的业务程序
 
                 if ($order->getStatus() == 'alipay_wait_buyer_pay' || $order->getState() == 'new'  ||
-                    $order->getStatus() == 'weixin_wait_buyer_pay' || $order->getStatus() == 'canceled') {
+                    $order->getStatus() == 'weixin_wait_buyer_pay') {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING);
                     $order->setStatus("alipay_wait_seller_send_goods");
@@ -729,6 +745,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     } catch(Exception $e){
                         Mage :: log( "Erro Message: ".$e->getMessage());
                     }
+                } else if ($order->getStatus() == 'canceled') {
+                    $this->sendMailForOrder($out_trade_no, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
                 }else{
                     if($method == "get"){
                         echo "订单已付款成功";
