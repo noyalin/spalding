@@ -339,7 +339,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     }
                 } else if ($order->getStatus() == 'canceled') {
                     $this->sendMailForOrder($out_trade_no, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
-                    echo "success";
+//                    echo "success";
                 } else {
                     if($method == 'get'){
                         echo "success";
@@ -748,7 +748,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     }
                 } else if ($order->getStatus() == 'canceled') {
                     $this->sendMailForOrder($out_trade_no, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
-                    echo "success";
+//                    echo "success";
                 }else{
                     if($method == "get"){
                         echo "success";

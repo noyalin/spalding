@@ -164,7 +164,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
                 }
             } else if ($order->getStatus() == 'canceled') {
                 $this->sendMailForOrder($orderId, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
-                echo "success";
+//                echo "success";
             }
         }
 
