@@ -25,16 +25,20 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             Mage::log('approving Error : id=' . $this->getId() . ', order_id=' . $this->getOrderId() . ', SKU=' . $this->getSku());
             return;
         }
-        $this->setStatus(self::STATUS_APPROVING)
-            ->setUser1Approve(0)
-            ->setUser2Approve(0)
-            ->setUser3Approve(0)
-            ->setUser4Approve(0)
-            ->setUser1Reason(null)
-            ->setUser2Reason(null)
-            ->setUser3Reason(null)
-            ->setUser4Reason(null)
-            ->save();
+        if ($this->getStatus() === self::STATUS_NON_PAYMENT) {
+            $this->setStatus(self::STATUS_APPROVING)
+                ->setUser1Approve(0)
+                ->setUser2Approve(0)
+                ->setUser3Approve(0)
+                ->setUser4Approve(0)
+                ->setUser1Reason(null)
+                ->setUser2Reason(null)
+                ->setUser3Reason(null)
+                ->setUser4Reason(null)
+                ->save();
+        } else {
+            Mage::log('custommade approving Error : Order_id=' . $this->getOrderId() . 'Status : ' .  $this->getStatus() . " -> Approving" );
+        }
     }
 
     public function approved()
