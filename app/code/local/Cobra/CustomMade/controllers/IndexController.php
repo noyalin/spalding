@@ -69,12 +69,16 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
     {
         Mage::log('completeAction');
         $params = Mage::app()->getRequest()->getParams();
+        //params
+        //position 第一面或者第二面
+        //font 字体格式
+        //size 字体大小
         $sku = $params['sku'];
         $session = self::getSession($sku);
 
         $pos = $params['position'];
         $type = $params['type'];
-        $content1 = null;
+        $content1 = null; 
         $content2 = null;
         $content3 = null;
         $content4 = null;
@@ -118,12 +122,10 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                     $content2 = '';
                 }
                 Mage::log('completeAction P1 ： '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
+            } elseif ($type == 4) {
+            	$content1 = $params['text1'];;
             } else {
                 $type = 3;
-                $content1 = null;
-                $content2 = null;
-                $content3 = null;
-                $content4 = null;
             }
 
 //            Mage::getSingleton('core/session')->setTypeP1($type);
@@ -174,12 +176,11 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                     $content2 = '';
                 }
                 Mage::log('completeAction P2 ： '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
-            } else {
+            }elseif ($type == 4) {
+            	$content1 = $params['text2'];;
+            }
+            else {
                 $type = 3;
-                $content1 = null;
-                $content2 = null;
-                $content3 = null;
-                $content4 = null;
             }
 
 //            Mage::getSingleton('core/session')->setTypeP2($type);

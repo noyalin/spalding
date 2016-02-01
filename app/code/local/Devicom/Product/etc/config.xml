@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Devicom_Product>
+            <version>0.1.0</version>
+        </Devicom_Product>
+    </modules>
+    <global>
+        <helpers>
+   			<product>
+          		<class>Devicom_Product_Helper</class>
+    		</product>
+		</helpers>
+		<!-- <blocks>
+            <addblock>
+                <class>Devicom_Product_Block</class>
+            </addblock>
+        </blocks>-->
+    </global>
+    <!--<frontend>
+        <layout>
+            <updates>
+                <addblock>
+                    <file>product.xml</file>
+                </addblock>
+            </updates>
+        </layout>
+    </frontend>-->
+</config>
