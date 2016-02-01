@@ -339,9 +339,10 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     }
                 } else if ($order->getStatus() == 'canceled') {
                     $this->sendMailForOrder($out_trade_no, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
+                    echo "success";
                 } else {
                     if($method == 'get'){
-                        echo "订单已付款成功";
+                        echo "success";
                         Mage :: log("订单编号：".$order->getIncrementId()."， 支付宝付款成功。");
                         $this->_redirect("sales/order/view/order_id/".$order->getId());
                     }
@@ -747,9 +748,10 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                     }
                 } else if ($order->getStatus() == 'canceled') {
                     $this->sendMailForOrder($out_trade_no, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
+                    echo "success";
                 }else{
                     if($method == "get"){
-                        echo "订单已付款成功";
+                        echo "success";
                         Mage :: log("订单编号：".$order->getIncrementId()."， 支付宝(wap)付款成功。");
                         $this->_redirect("sales/order/view/order_id/".$order->getId());
                     }
