@@ -341,7 +341,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepImg").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
-        jQuery(".cusRemindBox").css("display","none");
+        jQuery(".cusRemindBox").css("display","block");
         //var pos = jQuery("#options_pos").val();
         //if (pos == 1) {
         //    jQuery("#options_type_p1").val(1);
