@@ -3465,7 +3465,7 @@ ul.shopsList li span.shopsList_adrs{
 	top:-20px;
 	right:0;
 	width:340px;
-	height: 500px;
+	height: 600px;
 	z-index: 0;
 	background: rgba(0,0,0,.8);
 }
@@ -3475,7 +3475,7 @@ ul.shopsList li span.shopsList_adrs{
 	right:0;
 	color:#fff;
 	width:305px;
-	height: 600px;
+	height: 660px;
 	background:#030403;
 	border:1px solid #323232;
 	border-right:none;
@@ -3505,7 +3505,7 @@ ul.shopsList li span.shopsList_adrs{
 
 .madeBoxCons{
 	padding:10px 25px;
-	height:430px;
+	height:490px;
 }
 
 .madeBoxCons>h3{
@@ -4069,6 +4069,7 @@ dl.madeBoxFuns dt.zz_t_2{
 .viewPage_P1 .viewPage_p1_wrap , .viewPage_P2 .viewPage_p2_wrap{
 	z-index: 1;
 	position: absolute;
+	margin-top: 190px;
 	width:400px;
 	height:400px;
 	text-align: center;
@@ -4084,13 +4085,12 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .viewImgWrap{
-	margin-top:96px;
+	margin-top:-84px;
 }
 
 .viewTexWrap{
 	top:95px;
 	text-align: center;
-	line-height: 400px;
 }
 
 
