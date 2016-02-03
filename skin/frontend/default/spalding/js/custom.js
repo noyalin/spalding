@@ -142,10 +142,7 @@ jQuery(function () {
             jQuery(this).siblings(".madeP_2_btn").removeClass("madeP_btn_now");
             jQuery(this).siblings(".madeBoxCons_p1").css("display", "block");
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "none");
-            /*jQuery(this).parents().find(".select_P1").css("display", "block");
-             jQuery(this).parents().find(".select_P2").css("display", "none");
-             jQuery(this).parents().find(".select_P3").css("display", "none");
-             jQuery(this).parents().find(".select_P4").css("display", "none");*/
+
             jQuery(this).parents().find("#textMade_P3").css("display", "none");
             jQuery(this).parents().find("#textMade_P4").css("display", "none");
             //重置图片定制
@@ -216,8 +213,8 @@ jQuery(function () {
                 jQuery(this).parents().find(".select_P4").css("display", "none");
 
                 //点亮对应icon
-                $(".remind_1").css("opacity","1");
-                $(".remind_2").css("opacity","0");
+                jQuery(".remind_1").css("opacity","1");
+                jQuery(".remind_2").css("opacity","0");
             });
 
         }
@@ -228,12 +225,12 @@ jQuery(function () {
     });
     //点击P2按钮
     jQuery(".madeP_2_btn").click(function () {
-        var _imgNowVal = _imgIni.attr("src");
+
         var _texNow = jQuery(".madeTexWrap").find(".select_P1").html();
         var _texIni1 = jQuery(".select_N1").html();
 
-        var _imgNow = jQuery(".madeTexWrap").find(".select_P1").attr("src");
-        var _imgIni1 = jQuery(".select_N1").attr("src");
+        var _imgNow = jQuery("#avatar").attr("src");                      //获取浏览图片后的新src
+        var _imgIni1 = jQuery(".select_N1").html();                       //获取点击定制图片时暂存的初始化src值
 
         if (_imgNow == _imgIni1 && _texNow == _texIni1) {
             //未改动
@@ -241,10 +238,7 @@ jQuery(function () {
             jQuery(this).siblings(".madeP_1_btn").removeClass("madeP_btn_now");
             jQuery(this).siblings(".madeBoxCons_p1").css("display", "none");
             jQuery(this).siblings(".madeBoxCons_p2").css("display", "block");
-            /*jQuery(this).parents().find(".select_P2").css("display", "block");
-             jQuery(this).parents().find(".select_P1").css("display", "none");
-             jQuery(this).parents().find(".select_P3").css("display", "none");
-             jQuery(this).parents().find(".select_P4").css("display", "none");*/
+
             jQuery(this).parents().find("#textMade_P3").css("display", "none");
             jQuery(this).parents().find("#textMade_P4").css("display", "none");
 
@@ -293,8 +287,10 @@ jQuery(function () {
             jQuery(this).siblings(".madeBoxCons_p1").find(".madeSubmit").css("display","none");
             _comfBox.css("display","block");
             _comfBoxN.click(function(){
+                jQuery(".select_N1").empty();
+                jQuery("#avatar").attr("src" , _imgIni1);
                 jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
-                jQuery(".madeTexWrap").find(".select_P1").attr("src",jQuery(".select_N1").attr("src"));
+                jQuery(".madeTexWrap").find(".select_P1").attr("src",jQuery(".select_N1").html());
                 _comfBox.css("display","none");
                 _madeP1.css("display","none");
                 _madeP2.css("display","block");
@@ -348,6 +344,10 @@ jQuery(function () {
         //} else if (pos == 2) {
         //    jQuery("#options_type_p2").val(1);
         //}
+
+        //获取存储图片初始值
+        var _imgInitial = jQuery("#avatar").attr("src");
+        jQuery(".select_N1").html(_imgInitial);
     });
 
     //选择文本
@@ -652,6 +652,7 @@ function madeFamily_2(){
  }*/
 
 
+
 function previewImage(file, imgId) {
     var _formBtn = document.getElementById('formBtn');
     var _gripImg = document.getElementById('img_grip');
@@ -659,6 +660,7 @@ function previewImage(file, imgId) {
 
     var _img = document.getElementById(imgId);
     var _imgSrc = _img.getAttribute("src");
+
 
     //size & format
     photoExt = file.value.substr(file.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
@@ -710,12 +712,7 @@ function previewImage(file, imgId) {
             img.removeAttribute("width");
             img.removeAttribute("height");
             img.src = evt.target.result;
-            jQuery("#customImageHidden").attr("src", evt.target.result);
-            var t= setTimeout(function(){
-            	naturalWidth = jQuery("#customImageHidden").width();
-                naturalHeight = jQuery("#customImageHidden").height();
-                avatarinit();
-            },1000)
+            avatarinit();
             //alert("reader.onload OK!!");
         };
         reader.readAsDataURL(file.files[0]);
@@ -750,97 +747,66 @@ var grip_y; //拖动块y值
 var grip_minx; //拖动块x最小值
 var grip_maxx; //拖动块x最大值
 
-var naturalWidth = 0;
-var naturalHeight = 0;
-
 
 //图片初始化
 function imageinit() {
-	avatar = document.getElementById('avatar');
-
-
-//    var zoomw = divx / imgdefw;
-//    var zoomh = divy / imgdefh;
-//
-//    //if (imgdefw > divx) {
-//    //    avatar.width = divx;
-//    //    avatar.height = Math.round(imgdefh * zoomw);
-//    //}
-//
-//    if (zoomw >= zoomh) {
-//        avatar.width = divx;
-//        avatar.height = Math.round(imgdefh * zoomw);
-//    }
-//    else {
-//        avatar.width = Math.round(imgdefw * zoomh);
-//        avatar.height = divy;
-//    }
-//
-//
-//    //if (imgdefw > cutx) {
-//    //    zmin = cutx / imgdefw;
-//    //} else {
-//    //    zmin = 1;
-//    //}
-//    //zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
-//    //if (imgdefw > cutx) {
-//    //    zmin = cutx / imgdefw;
-//    //    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
-//    //} else {
-//    //    zmin = 1;
-//    //    grip_pos = 5;
-//    //}
-//
-//    if (zoomw >= zoomh) {
-//        zmin = cutx / imgdefw;
-//    } else {
-//        zmin = cuty / imgdefh;
-//    }
-//    zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
-//    if (zoomw >= zoomh) {
-//        zmin = cutx / imgdefw;
-//    } else {
-//        zmin = cuty / imgdefh;
-//    }
-//    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
-//
-    
-    
-
-
-    //1.jpg
     cut_div = document.getElementById('cut_div');
-	cut_img = document.getElementById('avatar');
-	imgdefw = naturalWidth; //默认402  //正确2100  //错误402
-	imgdefh = naturalHeight; //默认402 //正确 768   //错误402
-	if(imgdefw > divx){
-		//正确时候会进次判断
-		zoom = divx / imgdefw;
-		cut_img.width = divx;
-		cut_img.height = Math.round(imgdefh * zoom);
-	}
-	cut_img.style.left = Math.round((divx - cut_img.width) / 2); //正常时候  0  //错误时候 152
-	cut_img.style.top = Math.round((divy - cut_img.height) / 2) - divy;//正常时候 -294 //错误时候 -549
+    avatar = document.getElementById('avatar');
 
-	if(imgdefw > cutx){
-		zmin = cutx / imgdefw;
-	}else{
-		zmin = 1;
-	}
-	zmax =  zmin > 0.25 ? 8.0: 4.0 / Math.sqrt(zmin);
-	if(imgdefw > cutx){
-		zmin = cutx / imgdefw;
-		grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
-	}else{
-		zmin = 1;
-		grip_pos = 5;
-	}
 
-	
-	Drag.init(cut_div, cut_img);
-	cut_img.onDrag = when_Drag;
-    
-    
+
+    imgdefw = avatar.width;
+    imgdefh = avatar.height;
+
+    var zoomw = divx / imgdefw;
+    var zoomh = divy / imgdefh;
+
+    //if (imgdefw > divx) {
+    //    avatar.width = divx;
+    //    avatar.height = Math.round(imgdefh * zoomw);
+    //}
+
+    if (zoomw >= zoomh) {
+        avatar.width = divx;
+        avatar.height = Math.round(imgdefh * zoomw);
+    }
+    else {
+        avatar.width = Math.round(imgdefw * zoomh);
+        avatar.height = divy;
+    }
+
+    avatar.style.left = Math.round((divx - avatar.width) / 2);
+    avatar.style.top = Math.round((divy - avatar.height) / 2) - divy;
+
+    //if (imgdefw > cutx) {
+    //    zmin = cutx / imgdefw;
+    //} else {
+    //    zmin = 1;
+    //}
+    //zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
+    //if (imgdefw > cutx) {
+    //    zmin = cutx / imgdefw;
+    //    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
+    //} else {
+    //    zmin = 1;
+    //    grip_pos = 5;
+    //}
+
+    if (zoomw >= zoomh) {
+        zmin = cutx / imgdefw;
+    } else {
+        zmin = cuty / imgdefh;
+    }
+    zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
+    if (zoomw >= zoomh) {
+        zmin = cutx / imgdefw;
+    } else {
+        zmin = cuty / imgdefh;
+    }
+    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
+
+    Drag.init(cut_div, avatar);
+    avatar.onDrag = when_Drag;
 }
 
 //图片逐步缩放
