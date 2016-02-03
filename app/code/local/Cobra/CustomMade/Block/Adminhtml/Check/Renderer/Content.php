@@ -10,6 +10,9 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
         if($message == null){
             $message = '>>空<<';
         }
+        if(strpos($message, 'media/custommade') !== false){
+        	$message = "浏览图片";
+        }      
         $content = $this->getColumn()->getContent();
         if ($content == 1) {
             $title = '预览图';

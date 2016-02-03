@@ -652,7 +652,6 @@ function madeFamily_2(){
  }*/
 
 
-
 function previewImage(file, imgId) {
     var _formBtn = document.getElementById('formBtn');
     var _gripImg = document.getElementById('img_grip');
@@ -660,7 +659,6 @@ function previewImage(file, imgId) {
 
     var _img = document.getElementById(imgId);
     var _imgSrc = _img.getAttribute("src");
-
 
     //size & format
     photoExt = file.value.substr(file.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
@@ -712,7 +710,12 @@ function previewImage(file, imgId) {
             img.removeAttribute("width");
             img.removeAttribute("height");
             img.src = evt.target.result;
-            avatarinit();
+            jQuery("#customImageHidden").attr("src", evt.target.result);
+            var t= setTimeout(function(){
+            	naturalWidth = jQuery("#customImageHidden").width();
+                naturalHeight = jQuery("#customImageHidden").height();
+                avatarinit();
+            },1000)
             //alert("reader.onload OK!!");
         };
         reader.readAsDataURL(file.files[0]);
@@ -747,66 +750,97 @@ var grip_y; //拖动块y值
 var grip_minx; //拖动块x最小值
 var grip_maxx; //拖动块x最大值
 
+var naturalWidth = 0;
+var naturalHeight = 0;
+
 
 //图片初始化
 function imageinit() {
+	avatar = document.getElementById('avatar');
+
+
+//    var zoomw = divx / imgdefw;
+//    var zoomh = divy / imgdefh;
+//
+//    //if (imgdefw > divx) {
+//    //    avatar.width = divx;
+//    //    avatar.height = Math.round(imgdefh * zoomw);
+//    //}
+//
+//    if (zoomw >= zoomh) {
+//        avatar.width = divx;
+//        avatar.height = Math.round(imgdefh * zoomw);
+//    }
+//    else {
+//        avatar.width = Math.round(imgdefw * zoomh);
+//        avatar.height = divy;
+//    }
+//
+//
+//    //if (imgdefw > cutx) {
+//    //    zmin = cutx / imgdefw;
+//    //} else {
+//    //    zmin = 1;
+//    //}
+//    //zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
+//    //if (imgdefw > cutx) {
+//    //    zmin = cutx / imgdefw;
+//    //    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
+//    //} else {
+//    //    zmin = 1;
+//    //    grip_pos = 5;
+//    //}
+//
+//    if (zoomw >= zoomh) {
+//        zmin = cutx / imgdefw;
+//    } else {
+//        zmin = cuty / imgdefh;
+//    }
+//    zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
+//    if (zoomw >= zoomh) {
+//        zmin = cutx / imgdefw;
+//    } else {
+//        zmin = cuty / imgdefh;
+//    }
+//    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
+//
+    
+    
+
+
+    //1.jpg
     cut_div = document.getElementById('cut_div');
-    avatar = document.getElementById('avatar');
+	cut_img = document.getElementById('avatar');
+	imgdefw = naturalWidth; //默认402  //正确2100  //错误402
+	imgdefh = naturalHeight; //默认402 //正确 768   //错误402
+	if(imgdefw > divx){
+		//正确时候会进次判断
+		zoom = divx / imgdefw;
+		cut_img.width = divx;
+		cut_img.height = Math.round(imgdefh * zoom);
+	}
+	cut_img.style.left = Math.round((divx - cut_img.width) / 2); //正常时候  0  //错误时候 152
+	cut_img.style.top = Math.round((divy - cut_img.height) / 2) - divy;//正常时候 -294 //错误时候 -549
 
+	if(imgdefw > cutx){
+		zmin = cutx / imgdefw;
+	}else{
+		zmin = 1;
+	}
+	zmax =  zmin > 0.25 ? 8.0: 4.0 / Math.sqrt(zmin);
+	if(imgdefw > cutx){
+		zmin = cutx / imgdefw;
+		grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
+	}else{
+		zmin = 1;
+		grip_pos = 5;
+	}
 
-
-    imgdefw = avatar.width;
-    imgdefh = avatar.height;
-
-    var zoomw = divx / imgdefw;
-    var zoomh = divy / imgdefh;
-
-    //if (imgdefw > divx) {
-    //    avatar.width = divx;
-    //    avatar.height = Math.round(imgdefh * zoomw);
-    //}
-
-    if (zoomw >= zoomh) {
-        avatar.width = divx;
-        avatar.height = Math.round(imgdefh * zoomw);
-    }
-    else {
-        avatar.width = Math.round(imgdefw * zoomh);
-        avatar.height = divy;
-    }
-
-    avatar.style.left = Math.round((divx - avatar.width) / 2);
-    avatar.style.top = Math.round((divy - avatar.height) / 2) - divy;
-
-    //if (imgdefw > cutx) {
-    //    zmin = cutx / imgdefw;
-    //} else {
-    //    zmin = 1;
-    //}
-    //zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
-    //if (imgdefw > cutx) {
-    //    zmin = cutx / imgdefw;
-    //    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
-    //} else {
-    //    zmin = 1;
-    //    grip_pos = 5;
-    //}
-
-    if (zoomw >= zoomh) {
-        zmin = cutx / imgdefw;
-    } else {
-        zmin = cuty / imgdefh;
-    }
-    zmax = zmin > 0.25 ? 8.0 : 4.0 / Math.sqrt(zmin);
-    if (zoomw >= zoomh) {
-        zmin = cutx / imgdefw;
-    } else {
-        zmin = cuty / imgdefh;
-    }
-    grip_pos = 5 * (Math.log(zoom * zmax) / Math.log(zmax));
-
-    Drag.init(cut_div, avatar);
-    avatar.onDrag = when_Drag;
+	
+	Drag.init(cut_div, cut_img);
+	cut_img.onDrag = when_Drag;
+    
+    
 }
 
 //图片逐步缩放
