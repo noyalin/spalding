@@ -130,11 +130,12 @@ jQuery(function () {
     //判断数据是否改动，进行相应的操作
     //点击P1按钮
     jQuery(".madeP_1_btn").click(function () {
-        var _imgNowVal = _imgIni.attr("src");
+
         var _texNow = jQuery(".madeTexWrap").find(".select_P2").html();
-        var _imgNow = jQuery(".madeTexWrap").find(".select_P2").attr("src");
         var _texIni2 = jQuery(".select_N2").html();
-        var _imgIni2 = jQuery(".select_N2").attr("src");
+
+        var _imgNow = jQuery("#avatar").attr("src");
+        var _imgIni2 = jQuery(".select_N2").html();
 
         if (_imgNow == _imgIni2 && _texNow == _texIni2) {
             //未改动
@@ -191,6 +192,9 @@ jQuery(function () {
             jQuery(this).siblings(".madeBoxCons_p2").find(".madeSubmit").css("display","none");
             _comfBox.css("display","block");
             _comfBoxN.click(function(){
+                jQuery(".select_N2").empty();
+                jQuery("#avatar").attr("src" , "<?php echo $this->getSkinUrl('images/customMade/74-602yc/step_2_Bgball.png');  ?>");
+                jQuery("#customImageHidden").attr("src" , "");
 
                 jQuery(".madeTexWrap").find(".select_P2").html(jQuery(".select_N2").html());
                 jQuery(".madeTexWrap").find(".select_P2").attr("src",jQuery(".select_N2").attr("src"));
@@ -288,7 +292,9 @@ jQuery(function () {
             _comfBox.css("display","block");
             _comfBoxN.click(function(){
                 jQuery(".select_N1").empty();
-                jQuery("#avatar").attr("src" , _imgIni1);
+                jQuery("#avatar").attr("src" , "<?php echo $this->getSkinUrl('images/customMade/74-602yc/step_2_Bgball.png');  ?>");
+                jQuery("#customImageHidden").attr("src" , "");
+
                 jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
                 jQuery(".madeTexWrap").find(".select_P1").attr("src",jQuery(".select_N1").html());
                 _comfBox.css("display","none");
@@ -334,6 +340,7 @@ jQuery(function () {
             jQuery(this).siblings(".madeKindImg").slideDown()
         }
         //隐藏显示编辑
+        jQuery("#formBtn").css("display","block");
         jQuery(this).parents().find(".madeStepImg").css("display", "block");
         jQuery(this).parents().find(".madeStepTex").css("display", "none");
         jQuery(this).parents().find(".madeStepNone").css("display", "none");
@@ -344,10 +351,11 @@ jQuery(function () {
         //} else if (pos == 2) {
         //    jQuery("#options_type_p2").val(1);
         //}
-
         //获取存储图片初始值
         var _imgInitial = jQuery("#avatar").attr("src");
         jQuery(".select_N1").html(_imgInitial);
+
+
     });
 
     //选择文本
