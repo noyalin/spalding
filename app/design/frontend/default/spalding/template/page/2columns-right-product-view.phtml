@@ -34,6 +34,7 @@
 $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
 $categoryUrlkey = $_category->getUrlKey();
+$productImageHelper = Mage::helper('product');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
@@ -45,7 +46,7 @@ $categoryUrlkey = $_category->getUrlKey();
 </head>
 <body>
 <?php if ($categoryUrlkey == 'custom-made')://专属定制 ?>
-    <!-- <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images/customMade/cBg.jpg');  ?>" alt=""></div> -->
+    <!-- <div class="bodyBg"><img src="<?php echo $productImageHelper->getCustomMadeImage('cBg.jpg');  ?>" alt=""></div> -->
     <script src="<?php echo $this->getSkinUrl('js/jQueryRotate.js'); ?>"></script>
     <script src="<?php echo $this->getSkinUrl('js/drag.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/load3D.js'); ?>"></script>

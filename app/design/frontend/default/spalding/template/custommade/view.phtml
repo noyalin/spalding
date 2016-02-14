@@ -1,4 +1,7 @@
 <?php $this->initView(); ?>
+<?php 
+	$productImageHelper = Mage::helper('product');
+?>
 <input id="complete" type="hidden" value="<?php echo $this->getUrl('custommade/index/complete'); ?>"/>
 <input id="reset" type="hidden" value="<?php echo $this->getUrl('custommade/index/reset'); ?>"/>
 <input id="preview" type="hidden" value="<?php echo $this->getUrl('custommade/index/preview'); ?>"/>
@@ -92,15 +95,15 @@
     <?php endif; ?>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
-        <img style="width:100%;" src="<?php echo $this->getSkinUrl('images/customMade/cBg2.jpg');  ?>" alt="">
+        <img style="width:100%;" src="<?php echo $productImageHelper->getCustomMadeImage('cBg2.jpg');  ?>" alt="">
     </div>
 
     <!-- 定制主框架 -->
     <!-- 第一步 开始定制 -->
     <div class="cusMadeCons madeStep_1" style="display:none;">
         <div class="cusMadeBox cusMadeCen">
-            <div class="step_1_ball"><img src="<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_1_ball.png');  ?>" alt=""></div>
-            <div class="step_1_Btn"><a href="javascript:;"><img src="<?php echo $this->getSkinUrl('images/customMade/step_1_ballBtn.png');  ?>" alt=""></a></div>
+            <div class="step_1_ball"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_1_ball.png');  ?>" alt=""></div>
+            <div class="step_1_Btn"><a href="javascript:;"><img src="<?php echo $productImageHelper->getCustomMadeImage('step_1_ballBtn.png');  ?>" alt=""></a></div>
         </div>
         <div class="cusMadeBox cusMadeRig">
             <div class="madeBoxVal">
@@ -128,8 +131,8 @@
     <!-- 第二步  定制参数-->
     <div class="cusMadeCons madeStep_2">
         <div class="cusRemind">
-            <div class="cusRemindBox remind_1"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_1.png") ?>" alt=""></div>
-            <div class="cusRemindBox remind_2"><img src="<?php echo $this->getSkinUrl("images/customMade/".$_product->getSku()."/remind_2.png") ?>" alt=""></div>
+            <div class="cusRemindBox remind_1"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/remind_1.png") ?>" alt=""></div>
+            <div class="cusRemindBox remind_2"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/remind_2.png") ?>" alt=""></div>
         </div>
         <?php echo $this->getChildHtml('custommade_view_options') ?>
     </div>
@@ -155,7 +158,7 @@
 
     jQuery(".saveMadeY_p1").click(function () {
 //        madeLoading("提交成功","拼命加载中，请耐心等待...");
-        // resetView(1, "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>", "");
+        // resetView(1, "<?php echo $productImageHelper->getCustomMadeImage('imgPer_1.jpg');  ?>", "");
 
         var _comfBox = jQuery(".comfBox_1");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
@@ -221,7 +224,7 @@
                 jQuery(".madeTexWrap").find(".select_P2").attr("src",jQuery(".select_N2").attr("src"));
             }
         });
-//    resetView_2(1, "<?php //echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>//");
+//    resetView_2(1, "<?php //echo $productImageHelper->getCustomMadeImage('imgPer_1.jpg');  ?>//");
         // resetView_2(2, "abcdeft", 3);
     });
 
@@ -321,7 +324,7 @@
             //定位定制图案
             var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
                 value1);
-            // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
+            // "<?php echo $productImageHelper->getCustomMadeImage('imgPer_1.jpg');  ?>");
 
             _viewCons.empty();
             _viewCons.append(_dataImg);
@@ -339,7 +342,7 @@
 
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
-            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball.png');  ?>");
+            _viewPage1Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_funball.png');  ?>");
             jQuery(".select_P1").css("display","none");
 
         } else if (_dataType == 2) {//定制文字
@@ -361,7 +364,7 @@
 
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg.png');  ?>");
+            _viewPage1Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg.png');  ?>");
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
@@ -414,7 +417,7 @@
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _viewPage1.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage1Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg.png');  ?>");
+            _viewPage1Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg.png');  ?>");
 
             _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
@@ -498,7 +501,7 @@
             //定位定制图案
             var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
                 value1);
-            // "<?php echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>");
+            // "<?php echo $productImageHelper->getCustomMadeImage('imgPer_1.jpg');  ?>");
 
             _viewCons.empty();
             _viewCons.append(_dataImg);
@@ -517,7 +520,7 @@
 
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "2");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/step_2_funball2.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_funball2.png');  ?>");
             jQuery(".select_P2").css("display","none");
 
         } else if (_dataType == 2) {//定制文字
@@ -541,7 +544,7 @@
 
             _viewPage2.css("display", "block"); //显示P2画面
             _bgZindx.css("z-index", "0");   //重置P2背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg2.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg2.png');  ?>");
             _viewCons.empty();
             _viewCons.append(_dataTxt);
 
@@ -594,7 +597,7 @@
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             _viewPage2.css("display", "block"); //显示P1画面
             _bgZindx.css("z-index", "0");   //重置P1背景z-index值
-            _viewPage2Bg.attr("src", "<?php echo $this->getSkinUrl('images/customMade/'.$_product->getSku().'/madeTexBg2.png');  ?>");
+            _viewPage2Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg2.png');  ?>");
 
             _comfBox.siblings(".madeBoxFuns").find("dt").css("display", "none");
             _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
