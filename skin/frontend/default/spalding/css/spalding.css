@@ -3370,7 +3370,7 @@ ul.shopsList li span.shopsList_adrs{
 	top:50%;
 	margin-left:-205px;
 	margin-top:-260px;
-	background:url(../images/customMade/rowsBg.png) left top repeat-x #000;
+	background:url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/rowsBg.png) left top repeat-x #000;
 	border:1px solid #292929;
 }
 .rowsWrap h2.rowsTitle{
@@ -3484,7 +3484,7 @@ ul.shopsList li span.shopsList_adrs{
 
 .madeBoxVal{
 	height:80px;
-	background: url(../images/customMade/step_1_valBg.jpg) left top no-repeat;
+	background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/step_1_valBg.jpg) left top no-repeat;
 
 	border-bottom:1px solid #323232;
 	text-align: center;
@@ -3550,7 +3550,7 @@ ul.shopsList li span.shopsList_adrs{
 .madeBoxCons .madeServ{
 	font-size: 12px;
 	color:#808080;
-	background:url(../images/customMade/step_1_coin1.png) left top no-repeat;
+	background:url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/step_1_coin1.png) left top no-repeat;
 	line-height: 24px;
 	text-indent:40px;
 	margin-top:20px;
@@ -3560,7 +3560,7 @@ ul.shopsList li span.shopsList_adrs{
 .madeBoxCons .madeDate{
 	font-size: 12px;
 	color:#808080;
-	background:url(../images/customMade/step_1_coin2.png) left top no-repeat;
+	background:url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/step_1_coin2.png) left top no-repeat;
 	line-height: 24px;
 	text-indent:40px;
 	margin-left:10px;
@@ -3658,7 +3658,7 @@ ul.shopsList li span.shopsList_adrs{
 	width:163px;
 	height: 63px;
 	border:none;
-	background: url(../images/customMade/step_2_funBtn.png) left top no-repeat;
+	background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/step_2_funBtn.png) left top no-repeat;
 	cursor:pointer;
 }
 
@@ -3730,7 +3730,7 @@ dl.madeBoxFuns dd.madeKindTit{
 	cursor: pointer;
 }
 dl.madeBoxFuns dd.madeNow{
-	background: url(../images/customMade/madenow.png) 230px 20px no-repeat #dfdee4;
+	background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/madenow.png) 230px 20px no-repeat #dfdee4;
 	font-size:14px;
 	font-weight: bold;
 }
@@ -4263,18 +4263,18 @@ dl.madeBoxFuns dt.zz_t_2{
 	display: none;
 }
 .smalLine label.lineOne{
-	background:url(../images/customMade/checked_2.png) left center no-repeat;
+	background:url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/checked_2.png) left center no-repeat;
 	margin-right:5px;
 }
 
 .smalLine label.lineTwo{
-	background:url(../images/customMade/checked_1.png) left center no-repeat;
+	background:url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/checked_1.png) left center no-repeat;
 }
 .smalLine label.labelNoc{
-	background:url(../images/customMade/checked_1.png) left center no-repeat;
+	background:url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/checked_1.png) left center no-repeat;
 }
 .smalLine label.labelCheck {
-	background:url(../images/customMade/checked_2.png) left center no-repeat;
+	background:url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/checked_2.png) left center no-repeat;
 }
 
 
