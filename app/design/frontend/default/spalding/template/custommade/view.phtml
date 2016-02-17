@@ -292,7 +292,7 @@
             data: {position: position, sku:jQuery('#sku').val()},
             success: function (res) {
 //                document.location.reload();
-                resetView(3, "", "", "", "", "");
+                resetView(3, "", "", "", "");
             }
         });
     }
@@ -515,6 +515,7 @@
         } else {    //定制空白
             jQuery("#custom_flag1").val("0");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+            jQuery(".madeStepNone").show();
 
             if(isClickOne){
                 _viewPage1.hide();
