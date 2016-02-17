@@ -37,6 +37,7 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
             switch ($img_type) {
                 case IMAGETYPE_JPEG:
                     $date = Mage::getModel('core/date')->date('YmdHis').uniqid();
+                    Mage::log('date = '.$date);
                     //$date = uniqid();
                     $img = imagecreatefromstring($data_decode);
 
