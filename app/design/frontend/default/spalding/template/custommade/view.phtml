@@ -191,7 +191,7 @@
         if(isClickOne){
             var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
             if(nowKind == 1){
-                var _now_1 = jQuery(".madeTexWrap").find(".select_P1").html();
+                var _now_1 = jQuery("#avatar").attr("src");
                 jQuery(".select_N1").html(_now_1);
             }
             var text1 = getSwapTxt_1();
@@ -214,8 +214,8 @@
         }else{
             var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
             if(nowKind == 1){
-                var _now_2 = jQuery(".madeTexWrap").find(".select_P2").html();
-                jQuery(".select_N1").html(_now_2);
+                var _now_2 = jQuery("#avatar").attr("src");
+                jQuery(".select_N2").html(_now_2);
             }
             var text2 = getSwapTxt_2();
             var text4 = getSwapTxt_4();
@@ -248,19 +248,19 @@
             success: function (res) {
 //                document.location.reload();
                 dataObj = ajaxEvalJson(res);
-                if (dataObj != null) {
-                    resetView(dataObj['type'], dataObj['content1'], dataObj['content2'], dataObj['content3'], dataObj['content4']);
-                }
+
                 if(isClickOne){
                     jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
-                    jQuery(".madeTexWrap").find(".select_P1").attr("src",jQuery(".select_N1").attr("src"));
                 }else{
                     jQuery(".madeTexWrap").find(".select_P2").html(jQuery(".select_N2").html());
-                    jQuery(".madeTexWrap").find(".select_P2").attr("src",jQuery(".select_N2").attr("src"));
+                }
+                if (dataObj != null) {
+                    resetView(dataObj['type'], dataObj['content1'], dataObj['content2'], dataObj['content3'], dataObj['content4']);
                 }
 
             }
         });
+
 //    resetView_2(1, "<?php //echo $this->getSkinUrl('images/customMade/imgPer_1.jpg');  ?>//");
         // resetView_2(2, "abcdeft", 3);
     });
@@ -409,8 +409,15 @@
 
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitTex").addClass("madeNow");
             _comfBox.siblings(".madeBoxFuns").find(".madeKindTex").slideDown();
-            _comfBox.siblings(".madeBoxFuns").find("#textInput_1").val(value1);
-            _comfBox.siblings(".madeBoxFuns").find("#textInput_3").val(value2);
+            if(isClickOne){
+                _comfBox.siblings(".madeBoxFuns").find("#textInput_1").val(value1);
+                _comfBox.siblings(".madeBoxFuns").find("#textInput_3").val(value2);
+            }else{
+                _comfBox.siblings(".madeBoxFuns").find("#textInput_2").val(value1);
+                _comfBox.siblings(".madeBoxFuns").find("#textInput_4").val(value2);
+            }
+
+
             _comfBox.siblings(".madeBoxFuns").find(".zz_t").show();
 
             _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
@@ -582,11 +589,11 @@
                 dataObj = ajaxEvalJson(res);
                 if (dataObj != null) {
                     <?php if ($this->getPos() == 2):?>
-                    isClickOne = false;
+                        isClickOne = false;
                     resetView(dataObj['type'], dataObj['content1'], dataObj['content2'],
                         dataObj['content3'], dataObj['content4']);
                     <?php else: ?>
-                    isClickOne = true;
+                        isClickOne = true;
                     resetView(dataObj['type'], dataObj['content1'], dataObj['content2'],
                         dataObj['content3'], dataObj['content4']);
                     <?php endif; ?>

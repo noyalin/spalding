@@ -113,7 +113,6 @@ jQuery(function () {
         clickInit(_pageBtnId);
         var _init_1 = jQuery(".select_N1").html();                       //获取存储在暂存N1里以备比较数据是否改变的P1数据
         var _init_2 = jQuery(".select_N2").html();                       //获取存储在暂存N2里以备比较数据是否改变的P2数据
-
         var _now_1 = jQuery(".madeTexWrap").find(".select_P1").html();   //获取当前P1数据
         var _now_2 = jQuery(".madeTexWrap").find(".select_P2").html();   //获取当前P2数据
         var _imgIntSrc = jQuery("#imgIntSrc").val();             //当是图片定制时，获取图片初始地址的值
@@ -125,7 +124,8 @@ jQuery(function () {
                 if (_init_2 == "") {
                     _init_2 = _imgIntSrc;
                 }
-
+                console.log(1);
+                console.log(_init_2);
             } else if (nowKind == 2){
                 _now_2 = jQuery(".madeTexWrap").find(".select_P2").html();
             } else if (nowKind == 3){
@@ -142,8 +142,9 @@ jQuery(function () {
             if (nowKind == 1) {
                 _now_1 = jQuery("#avatar").attr("src");
                 if (_init_1 == "") {
-                    _init_1 = _imgIntSrc;
+                    _init_1 = _imgIntSrc
                 }
+
             } else if (nowKind == 2){
                 _now_1 = jQuery(".madeTexWrap").find(".select_P1").html();
             } else if (nowKind == 3){
@@ -223,19 +224,12 @@ jQuery(function () {
         function isChange(){
             if(isClickOne){
                 var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
-                if(nowKind == 1){
-                    _init_2 = jQuery("#avatar").attr("src");
-                    var _now_2 = jQuery(".madeTexWrap").find(".select_P2").html();
-                }
                 var _comfBox = jQuery(".madeBoxCons_p2").find(".comfBox");
 
                 jQuery(".madeBoxCons_p2").find(".madeBoxFuns").hide();
                 jQuery(".madeBoxCons_p2").find(".madeSubmit").hide();
             }else{
                 var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
-                if(nowKind == 1){
-                    _init_1 = jQuery("#avatar").attr("src");
-                }
                 var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
 
                 jQuery(".madeBoxCons_p1").find(".madeBoxFuns").hide();
