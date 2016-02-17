@@ -979,9 +979,16 @@ productAddToCartForm.submitLight = function (button, url) {
 jQuery(function () {
 
     //提交当前PAGE按钮
-    jQuery("#submitYP1").click(function () {
+    jQuery(".submitY").click(function () {
+        var subId = jQuery(this).attr("id");
+        if(subId == "submitYP1"){
+            clickStatusChange(true);
+            var _comfBox = jQuery(".comfBox_1");
+        }else if(subId == "submitYP2"){
+            clickStatusChange(false);
+            var _comfBox = jQuery(".comfBox_2");
+        }
 
-        var _comfBox = jQuery(".comfBox_1");
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
 
         if (_madeValue == 1) {
@@ -991,55 +998,45 @@ jQuery(function () {
         } else if (_madeValue == 2) {
             var size = getTxtSize(1);
             if (size == 4) {
-                if (jQuery("#textInput_1").val().length == 0 && jQuery("#textInput_3").val().length == 0) {
-                    alert('至少输入一行内容');
-                } else {
-                    if (submitYP_CheckText_NO_Alert("#textInput_1") && submitYP_CheckText_NO_Alert("#textInput_3")) {
-                        showComfBox(this);
+                if(isClickOne){
+                    if (jQuery("#textInput_1").val().length == 0 && jQuery("#textInput_3").val().length == 0) {
+                        alert('至少输入一行内容');
                     } else {
-                        alert('只限输入字母，数字，空格以及@-_.&:');
+                        if (submitYP_CheckText_NO_Alert("#textInput_1") && submitYP_CheckText_NO_Alert("#textInput_3")) {
+                            showComfBox(this);
+                        } else {
+                            alert('只限输入字母，数字，空格以及@-_.&:');
+                        }
+                    }
+                }else{
+                    if (jQuery("#textInput_2").val().length == 0 && jQuery("#textInput_4").val().length == 0) {
+                        alert('至少输入一行内容');
+                    } else {
+                        if (submitYP_CheckText_NO_Alert("#textInput_2") && submitYP_CheckText_NO_Alert("#textInput_4")) {
+                            showComfBox(this);
+                        } else {
+                            alert('只限输入字母，数字，空格以及@-_.&:');
+                        }
                     }
                 }
+
             } else {
-                if (submitYP_CheckText("#textInput_1")) {
-                    showComfBox(this);
+                if(isClickOne){
+                    if (submitYP_CheckText("#textInput_1")) {
+                        showComfBox(this);
+                    }
+                }else{
+                    if (submitYP_CheckText("#textInput_2")) {
+                        showComfBox(this);
+                    }
                 }
+
             }
         } else {
             showComfBox(this);
         }
 
         //jQuery(".select_P1").hide();
-    });
-
-    jQuery("#submitYP2").click(function () {
-        var _comfBox = jQuery(".comfBox_2");
-        var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
-
-        if (_madeValue == 1) {
-            if (submitYP_CheckImg("")) {
-                showComfBox(this);
-            }
-        } else if (_madeValue == 2) {
-            var size = getTxtSize(1);
-            if (size == 4) {
-                if (jQuery("#textInput_2").val().length == 0 && jQuery("#textInput_4").val().length == 0) {
-                    alert('至少输入一行内容');
-                } else {
-                    if (submitYP_CheckText_NO_Alert("#textInput_2") && submitYP_CheckText_NO_Alert("#textInput_4")) {
-                        showComfBox(this);
-                    } else {
-                        alert('只限输入字母，数字，空格以及@-_.&:');
-                    }
-                }
-            } else {
-                if (submitYP_CheckText("#textInput_2")) {
-                    showComfBox(this);
-                }
-            }
-        } else {
-            showComfBox(this);
-        }
     });
 
     function submitYP_CheckText(txtInputId){
