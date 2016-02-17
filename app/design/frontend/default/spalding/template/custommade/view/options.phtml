@@ -17,15 +17,15 @@
         <h1>SPALDING <?php echo strtoupper($_product->getSku()) ?></h1>
         <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></h2>
     </div>
-    <div class="madeP_btn madeP_1_btn madeP_btn_now">
+    <div class="madeP_btn madeP_1_btn madeP_btn_now" id="btn_page1">
         定<br>制<br>1
     </div>
-    <div class="madeP_btn madeP_2_btn">
+    <div class="madeP_btn madeP_2_btn" id="btn_page2">
         定<br>制<br>2
     </div>
 
     <!-- p1 -->
-    <div class="madeBoxCons madeBoxCons_p1">
+    <div class="madeBoxCons madeBoxCons_p1" id="made_p1">
         <h3>可定制球皮</h3>
         <p class="madeTs">选择添加图案或个性签名</p>
         <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
@@ -89,21 +89,21 @@
 
         <div class="madeSubmit">
             <button type="button" class="submitY" id="submitYP1">暂存P1定制</button>
-            <button type="button" class="submitN">重置P1定制</button>
+            <button type="button" class="submitN" id="submitN_1">重置P1定制</button>
         </div>
 
         <!-- 确认&放弃提示 P1 -->
         <div class="comfBox comfBox_1">
             <p>是否保存当前定制？</p>
             <div class="confBtn">
-                <button type="button" class="saveMadeY saveMadeY_p1">是</button>
-                <button type="button" class="saveMadeN saveMadeN_p1">否</button>
+                <button type="button" class="saveMadeY saveMadeY_p1" id="saveYesId_1">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p1" id="saveNoId_1">否</button>
             </div>
         </div>
     </div>
 
     <!-- p2 -->
-    <div class="madeBoxCons madeBoxCons_p2" style="display:none;">
+    <div class="madeBoxCons madeBoxCons_p2" id="made_p2" style="display:none;">
         <h3>可定制球皮</h3>
         <p class="madeTs">选择添加图案或个性签名</p>
         <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
@@ -166,15 +166,15 @@
 
         <div class="madeSubmit">
             <button type="button" class="submitY" id="submitYP2">暂存P2定制</button>
-            <button type="button" class="submitN">重置P2定制</button>
+            <button type="button" class="submitN" id="submitN_2">重置P2定制</button>
         </div>
 
         <!-- 确认&放弃提示 P1 -->
         <div class="comfBox comfBox_2">
             <p>是否保存当前定制？</p>
             <div class="confBtn">
-                <button type="button" class="saveMadeY saveMadeY_p2">是</button>
-                <button type="button" class="saveMadeN saveMadeN_p2">否</button>
+                <button type="button" class="saveMadeY saveMadeY_p2" id="saveYesId_2">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p2" id="saveNoId_2">否</button>
             </div>
         </div>
     </div>
