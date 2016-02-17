@@ -88,6 +88,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
     public function saveCustomMade($order)
     {
+        Mage::log("saveCustomMade before ($order)");
         $orderId = $order->getRealOrderId();
         $customerId = $order->getCustomerId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
