@@ -25,7 +25,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             Mage::log('approving Error : id=' . $this->getId() . ', order_id=' . $this->getOrderId() . ', SKU=' . $this->getSku());
             return;
         }
-        if ($this->getStatus() === self::STATUS_NON_PAYMENT) {
+        if (intval($this->getStatus()) === self::STATUS_NON_PAYMENT) {
             $this->setStatus(self::STATUS_APPROVING)
                 ->setUser1Approve(0)
                 ->setUser2Approve(0)
