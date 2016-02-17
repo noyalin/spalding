@@ -37,7 +37,7 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
             switch ($img_type) {
                 case IMAGETYPE_JPEG:
                     $date = Mage::getModel('core/date')->date('YmdHis').uniqid();
-                    Mage::log('date = '.$date);
+                    Mage::log('IMAGETYPE_JPEG date = '.$date);
                     //$date = uniqid();
                     $img = imagecreatefromstring($data_decode);
 
@@ -67,6 +67,7 @@ class Cobra_CustomMade_Helper_ImageHandler extends Mage_Core_Helper_Abstract
                     return array("effect" => $url . $effect_name, "show" => $url . $show_name, "print" => $url . $print_name);
                 case IMAGETYPE_PNG:
                     $date = Mage::getModel('core/date')->date('YmdHis').uniqid();
+                    Mage::log('IMAGETYPE_PNG date = '.$date);
                     $img = imagecreatefromstring($data_decode);
 
                     // 保存原图
