@@ -124,8 +124,6 @@ jQuery(function () {
                 if (_init_2 == "") {
                     _init_2 = _imgIntSrc;
                 }
-                console.log(1);
-                console.log(_init_2);
             } else if (nowKind == 2){
                 _now_2 = jQuery(".madeTexWrap").find(".select_P2").html();
             } else if (nowKind == 3){
