@@ -2,7 +2,9 @@
 <?php $this->initOptions();?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
-
+<?php 
+	$productImageHelper = Mage::helper('product');
+?>
 <?php if ($this->getCustomStatus() == 1): ?>
     <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
 <?php else: ?>
@@ -221,7 +223,7 @@
 
 <!-- 编辑后单面预览 P1 -->
 <div class="viewPage_P1" dataType="2">
-    <!-- <div class="viewPageZz"><img src="<?php  echo $this->getSkinUrl("images/customMade/".$this->getSku()."/zz/01.png") ?>" alt=""></div> -->
+    <!-- <div class="viewPageZz"><img src="<?php  echo $productImageHelper->getCustomMadeImage($this->getSku()."/zz/01.png") ?>" alt=""></div> -->
     <div class="viewPage_P1_bg">
         <img class="pageBg" src="" alt="">
     </div>
@@ -246,7 +248,7 @@
         <h2 style="text-align: center"></h2>
         <p style="text-align: center"></p>
         <div class="loadingImg">
-            <img src="<?php  echo $this->getSkinUrl("images/customMade/madeLoading.gif") ?>" alt="loading...">
+            <img src="<?php  echo $productImageHelper->getCustomMadeImage("madeLoading.gif") ?>" alt="loading...">
         </div>
     </div>
 </div>
@@ -258,7 +260,7 @@
         <h2 style="text-align: center"></h2>
         <p style="text-align: center"></p>
         <div class="loadingImg">
-            <img src="<?php  echo $this->getSkinUrl("images/customMade/noTodo.png") ?>" alt="">
+            <img src="<?php  echo $productImageHelper->getCustomMadeImage("noTodo.png") ?>" alt="">
         </div>
 
     </div>
