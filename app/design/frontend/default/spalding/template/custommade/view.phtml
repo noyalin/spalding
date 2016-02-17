@@ -517,7 +517,7 @@
         } else {    //定制空白
             jQuery("#custom_flag1").val("0");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
-
+            jQuery(".madeStepNone").show();
             if(isClickOne){
                 _viewPage1.hide();
                 _viewPage1Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg.png');  ?>");
