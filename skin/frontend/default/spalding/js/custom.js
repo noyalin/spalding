@@ -160,8 +160,6 @@ jQuery(function () {
         //数据没有改动时，执行操作
         //noChange
         function noChange(_PageBtn){
-
-
             jQuery(_PageBtn).addClass("madeP_btn_now");
             if(isClickOne){
                 var _position = 1;
@@ -226,6 +224,7 @@ jQuery(function () {
 
                 jQuery(".madeBoxCons_p2").find(".madeBoxFuns").hide();
                 jQuery(".madeBoxCons_p2").find(".madeSubmit").hide();
+
             }else{
                 var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
                 var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
@@ -263,6 +262,12 @@ jQuery(function () {
                     //点亮对应icon
                     jQuery(".remind_1").css("opacity","1");
                     jQuery(".remind_2").css("opacity","0");
+
+                    var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
+                    if(nowKind == 1){
+                        var _imgIntSrc = jQuery("#imgIntSrc").val();
+                        jQuery("#avatar").attr("src",_imgIntSrc);
+                    }
                 }else{
                     var _select_N = "select_N1";
                     _madeP1.hide();
@@ -280,6 +285,12 @@ jQuery(function () {
                     //点亮对应icon
                     jQuery(".remind_2").css("opacity","1");
                     jQuery(".remind_1").css("opacity","0");
+
+                    var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
+                    if(nowKind == 1){
+                        var _imgIntSrc = jQuery("#imgIntSrc").val();
+                        jQuery("#avatar").attr("src",_imgIntSrc);
+                    }
                 }
                 var selectNObject = jQuery("."+_select_N);
                 var _imgIntSrc = jQuery("#imgIntSrc").attr("value");
@@ -301,6 +312,27 @@ jQuery(function () {
 
                 jQuery(this).parents().find(".select_P3").hide();
                 jQuery(this).parents().find(".select_P4").hide();
+
+                // TODO
+                var _position;
+                if(isClickOne){
+                    _position =1;
+                }else{
+                    _position =2;
+                }
+                jQuery.ajax({
+                    type: 'POST',
+                    url: jQuery('#check').val(),
+                    data: {position: _position, sku:jQuery('#sku').val()},
+                    success: function (res) {
+                        dataObj = ajaxEvalJson(res);
+
+                        if (dataObj != null) {
+                            resetView(dataObj['type'], dataObj['content1'], dataObj['content2'],
+                                dataObj['content3'], dataObj['content4']);
+                        }
+                    }
+                });
 
             });
         }//isChange() end

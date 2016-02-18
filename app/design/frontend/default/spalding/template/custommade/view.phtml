@@ -193,7 +193,9 @@
         if(isClickOne){
             var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
             if(nowKind == 1){
-                var _now_1 = jQuery("#avatar").attr("src");
+                var _imgIntSrc = jQuery("#imgIntSrc").val();
+                jQuery("#avatar").attr("src",_imgIntSrc);
+                var _now_1 = _imgIntSrc
                 jQuery(".select_N1").html(_now_1);
             }
             var text1 = getSwapTxt_1();
@@ -216,7 +218,9 @@
         }else{
             var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
             if(nowKind == 1){
-                var _now_2 = jQuery("#avatar").attr("src");
+                var _imgIntSrc = jQuery("#imgIntSrc").val();
+                jQuery("#avatar").attr("src",_imgIntSrc);
+                var _now_2 = _imgIntSrc;
                 jQuery(".select_N2").html(_now_2);
             }
             var text2 = getSwapTxt_2();
