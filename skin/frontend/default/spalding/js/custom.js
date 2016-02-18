@@ -333,6 +333,7 @@ jQuery(function () {
                         }
                     }
                 });
+                jQuery("#viewMadeFun").show();        //显示预览按钮
 
             });
         }//isChange() end
@@ -362,15 +363,15 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepTex").hide();
         jQuery(this).parents().find(".madeStepNone").hide();
         jQuery(".cusRemindBox").show();
-        //var pos = jQuery("#options_pos").val();
-        //if (pos == 1) {
-        //    jQuery("#options_type_p1").val(1);
-        //} else if (pos == 2) {
-        //    jQuery("#options_type_p2").val(1);
-        //}
+        jQuery("#viewMadeFun").show();
+
         //获取存储图片初始值
-        var _imgInitial = jQuery("#avatar").attr("src");
-        jQuery(".select_N1").html(_imgInitial);
+        var _imgIntSrc = jQuery("#imgIntSrc").val();
+        jQuery("#avatar").attr("src" , _imgIntSrc);
+        jQuery("#img_grip").css("opacity",0);
+        jQuery("#imgFuns").css("opacity",0);
+
+
 
 
     });
@@ -391,6 +392,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepImg").hide();
         jQuery(this).parents().find(".madeStepNone").hide();
         jQuery(".cusRemindBox").show();
+        jQuery("#viewMadeFun").show();
     });
 
     //选择空白
@@ -404,6 +406,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepTex").hide();
         jQuery(this).parents().find(".madeStepImg").hide();
         jQuery(".cusRemindBox").show();
+        jQuery("#viewMadeFun").show();
     });
 
     //设置字体
@@ -649,23 +652,6 @@ function madeFamily_2(){
     setFamily_2(_dataFamVal);
 }
 
-/*function madeFamily(name) {
- var fontFamily = {
- 'Conv': function () {
- return 'Conv_CustomGrotesque-Regular';
- },
- 'Sans': function() {
- return 'Sans-Serif';
- },
- 'Ari': function() {
- return 'Arial';
- }
- };
- return (fontFamily.name || fontFamily.default)();
- }*/
-
-
-
 function previewImage(file, imgId) {
     var _formBtn = document.getElementById('formBtn');
     var _gripImg = document.getElementById('img_grip');
@@ -673,6 +659,8 @@ function previewImage(file, imgId) {
 
     var _img = document.getElementById(imgId);
     var _imgSrc = _img.getAttribute("src");
+
+    var _viewMadeFun = document.getElementById('viewMadeFun');
 
     //size & format
     photoExt = file.value.substr(file.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
@@ -736,6 +724,7 @@ function previewImage(file, imgId) {
         _form.style.opacity = 1;
         _gripImg.style.opacity = 1;
         _formBtn.style.display = "none";
+        _viewMadeFun.style.display = "none";
     } else {
         file.select();
         var src = document.selection.createRange().text;

@@ -245,7 +245,7 @@
         //重置图片定制
         jQuery("#img_grip").css("opacity","0");
         jQuery("#imgFuns").css("opacity","0");
-        // jQuery("#formBtn").show();
+
 
         jQuery.ajax({
             type: 'POST',
@@ -266,6 +266,8 @@
 
             }
         });
+
+        jQuery("#viewMadeFun").show();        //显示预览按钮
 
 //    resetView_2(1, "<?php //echo $productImageHelper->getCustomMadeImage('imgPer_1.jpg');  ?>//");
         // resetView_2(2, "abcdeft", 3);
