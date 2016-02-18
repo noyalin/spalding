@@ -1125,15 +1125,63 @@ jQuery(function () {
 //预览按钮
 jQuery(function () {
     jQuery(".viewMade").click(function () {
-        madeLoading("提交成功","拼命加载中，请耐心等待...");
-        jQuery.ajax({
-            type: 'POST',
-            url: jQuery('#preview').val(),
-            data: {sku:jQuery('#sku').val()},
-            success: function () {
-                document.location.reload();
+        var pageData_init;
+        var pageData_now;
+        var nowPageKind;
+        var nowPageId = jQuery(".madeP_btn_now").attr("id");
+
+        var _imgIntSrc = jQuery("#imgIntSrc").val();
+        if(nowPageId == "btn_page1"){
+            pageData_init = jQuery(".select_N1").html();
+            nowPageKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
+            if(nowPageKind == 1){
+                if (pageData_init == "") {
+                    pageData_init = _imgIntSrc;
+                }
+                pageData_now = jQuery("#avatar").attr("src");
+            }else if(nowPageKind == 2){
+                pageData_now = jQuery(".madeTexWrap").find(".select_P1").html();
+            }else if(nowPageKind == 3){
+                pageData_now = ""
             }
-        });
+        }else if(nowPageId == "btn_page2"){
+            pageData_init = jQuery(".select_N2").html();
+            nowPageKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
+            if(nowPageKind == 1){
+                if (pageData_init == "") {
+                    pageData_init = _imgIntSrc;
+                }
+                pageData_now = jQuery("#avatar").attr("src");
+            }else if(nowPageKind == 2){
+                pageData_now = jQuery(".madeTexWrap").find(".select_P2").html();
+            }else if(nowPageKind == 3){
+                pageData_now = ""
+            }
+        }
+        if(pageData_init == pageData_now){
+            madeLoading("提交成功","拼命加载中，请耐心等待...");
+            jQuery.ajax({
+                type: 'POST',
+                url: jQuery('#preview').val(),
+                data: {sku:jQuery('#sku').val()},
+                success: function () {
+                    document.location.reload();
+                }
+            });
+        }else{
+            if(nowPageId == "btn_page1"){
+                var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
+                jQuery(".madeBoxCons_p1").find(".madeBoxFuns").hide();
+                jQuery(".madeBoxCons_p1").find(".madeSubmit").hide();
+            }else if(nowPageId == "btn_page2"){
+                jQuery(".madeBoxCons_p2").find(".madeBoxFuns").hide();
+                jQuery(".madeBoxCons_p2").find(".madeSubmit").hide();
+                var _comfBox = jQuery(".madeBoxCons_p2").find(".comfBox");
+            }
+            jQuery(this).parents().find(".cusMadeRigZz").hide()
+            _comfBox.show();
+        }
+
     });
 });
 
