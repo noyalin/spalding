@@ -245,8 +245,8 @@
         //重置图片定制
         jQuery("#img_grip").css("opacity","0");
         jQuery("#imgFuns").css("opacity","0");
-
-
+        // jQuery("#formBtn").show();
+        madeLoading("提交成功","数据加载中,请耐心等待...");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#complete').val(),
@@ -264,10 +264,11 @@
                     resetView(dataObj['type'], dataObj['content1'], dataObj['content2'], dataObj['content3'], dataObj['content4']);
                 }
 
-            }
+            },
+            complete:function(){
+            	madeLoadingClose();
+           	}
         });
-
-        jQuery("#viewMadeFun").show();        //显示预览按钮
 
 //    resetView_2(1, "<?php //echo $productImageHelper->getCustomMadeImage('imgPer_1.jpg');  ?>//");
         // resetView_2(2, "abcdeft", 3);
