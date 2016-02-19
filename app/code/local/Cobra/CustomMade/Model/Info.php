@@ -87,7 +87,12 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $orderId = $order->getRealOrderId();
         $customerId = $order->getCustomerId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
-
+        
+        $path = Mage::getBaseDir() . '/media/custommade/production/'.$orderId;
+        if(file_exists($path)){
+        	Mage::log('order path exists:'.$path);
+        	return;
+        }
         if (!$customMsg->getId()) {
             return;
         }
@@ -109,11 +114,15 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             Mage::log('saveCustomMade Error : order is exist, order_id=' . $orderId . ', SKU=' . $new_sku);
             return;
         }
-
         try {
             if ($customMsg->getTypeP1() != null ||
                 $customMsg->getTypeP2() != null
             ) {
+            	//将tmp中的图片转到正式文件夹
+            	$viewUrl = Mage::getBaseUrl() . 'media/custommade/production/'.$orderId .'/';
+            	if(!file_exists($path)){
+            		$this->moveImagePath($path,$customMsg,$viewUrl);
+            	}
                 //保存定制信息
                 Mage::getModel('custommade/info')->setOrderId($orderId)
                     ->setSku($new_sku)
@@ -134,6 +143,8 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                     ->setCreateTime(time())
                     ->setStatus(self::STATUS_NON_PAYMENT)
                     ->save();
+                
+                
                 Mage::getModel('custommade/temp')->deleteByCustomerId($customerId);
                 Mage::log('saveCustomMade------customerId=' . $customerId . ',order id=' . $orderId);
                 return;
@@ -148,6 +159,60 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         }
     }
 
+    public function moveImagePath($path,&$customMsg,$viewUrl){
+		if($customMsg->getTypeP1() == 1 || $customMsg->getTypeP2() == 1){
+			mkdir($path);
+			$path .= '/';
+		}
+    	$oldPath = Mage::getBaseDir() . '/media/custommade/tmp/';
+    	if($customMsg->getTypeP1() == 1){
+    		$this->moveImage($customMsg,$oldPath,$path,$viewUrl,1);
+    	}
+    	if($customMsg->getTypeP2() == 1){
+    		$this->moveImage($customMsg,$oldPath,$path,$viewUrl,2);
+    	}
+    }
+    
+    public function moveImage(&$customMsg,$oldPath,$newPath,$viewUrl,$switchPage){
+    	if($switchPage == 1){
+    		$imagePath = $customMsg->getMsg1P1();
+    	}elseif($switchPage == 2){
+    		$imagePath = $customMsg->getMsg1P2();
+    	}
+    	//分别对应数据库中的  
+    	//第一面  effect => msg1_p1 show => msg2_p1 print => msg3_p1  
+    	//第二面  effect => msg1_p2 show => msg2_p2 print => msg3_p2
+     	$typeArray = array('effect','show','print','original');
+    	$imageArray = explode('/', $imagePath);
+    	$image = end($imageArray);
+    	$imageTmp = explode('-', $image);
+    	$imagePrex = $imageTmp[0];
+    	foreach ($typeArray as $key => $type){
+    		$image = $imagePrex."-".$type.".jpg";
+    		$nPath = $newPath . $image;
+    		$oPath = $oldPath . $image;
+    		$vPath = $viewUrl . $image;
+    		rename($oPath, $nPath);
+    		if($switchPage == 1){
+    			if($type == 'effect'){
+    				$customMsg->setMsg1P1($vPath);
+    			}elseif($type == 'show'){
+    				$customMsg->setMsg2P1($vPath);
+    			}elseif($type == 'print'){
+    				$customMsg->setMsg3P1($vPath);
+    			}
+    		}elseif($switchPage == 2){
+    			if($type == 'effect'){
+    				$customMsg->setMsg1P2($vPath);
+    			}elseif($type == 'show'){
+    				$customMsg->setMsg2P2($vPath);
+    			}elseif($type == 'print'){
+    				$customMsg->setMsg3P2($vPath);
+    			}
+    		}
+    	}
+    }
+    
     public function createP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType, $sku)
     {
         $url = null;

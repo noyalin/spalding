@@ -95,6 +95,14 @@
                 <td>
                 	<?php 
                        	if($customMsg->getTypeP1() == 1):
+                       		$imagePath = $customMsg->getMsg2P1();
+                       		$imagesArray = explode('/', $imagePath);
+                       		$imageName = end($imagesArray);
+                       		$imageFile = Mage::getBaseDir() . '/media/custommade/tmp/'.$imageName;
+                       		if(!file_exists($imageFile)){
+                       			Zend_Registry::set('showButton', false);
+                       		}
+                       		
                     ?>
                    		<a target="_blank" href="<?php echo $customMsg->getMsg2P1();?>">浏览图片</a>	
                     <?php
@@ -114,6 +122,13 @@
                 <td>
                 	<?php 
                        	if($customMsg->getTypeP2() == 1):
+	                       	$imagePath = $customMsg->getMsg2P2();
+	                       	$imagesArray = explode('/', $imagePath);
+	                       	$imageName = end($imagesArray);
+	                       	$imageFile = Mage::getBaseDir() . '/media/custommade/tmp/'.$imageName;
+	                       	if(!file_exists($imageFile)){
+	                       		Zend_Registry::set('showButton', false);
+	                       	}
                     ?>
                     	<a target="_blank" href="<?php echo $customMsg->getMsg2P2();?>">浏览图片</a>	
                     <?php
