@@ -1113,7 +1113,7 @@ jQuery(function () {
 
 //预览按钮
 jQuery(function () {
-    jQuery(".viewMade").click(function () {
+    jQuery("#viewMadeFun").click(function () {
         var pageData_init;
         var pageData_now;
         var nowPageKind;
@@ -1148,15 +1148,7 @@ jQuery(function () {
             }
         }
         if(pageData_init == pageData_now){
-            madeLoading("提交成功","拼命加载中，请耐心等待...");
-            jQuery.ajax({
-                type: 'POST',
-                url: jQuery('#preview').val(),
-                data: {sku:jQuery('#sku').val()},
-                success: function () {
-                    document.location.reload();
-                }
-            });
+            SubView();
         }else{
             if(nowPageId == "btn_page1"){
                 var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
@@ -1174,6 +1166,23 @@ jQuery(function () {
     });
 });
 
+//退出预览
+jQuery(function () {
+    jQuery("#exitView").click(function () {
+        SubView();
+    });
+});
+function SubView(){
+    madeLoading("提交成功","拼命加载中，请耐心等待...");
+    jQuery.ajax({
+        type: 'POST',
+        url: jQuery('#preview').val(),
+        data: {sku:jQuery('#sku').val()},
+        success: function () {
+            document.location.reload();
+        }
+    });
+}
 function SwapTxt_1() {
     var _txt = document.getElementById("textInput_1").value.trim();
     var _text = document.getElementById("textMade_P1");
