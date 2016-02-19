@@ -163,7 +163,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
                     Mage :: log( "Erro Message: ".$e->getMessage());
                 }
             } else if ($order->getStatus() == 'canceled') {
-                $this->sendMailForOrder($orderId, "订单支付状态异常，当前订单已经canceled。请IT及时处理。");
+                $this->sendMailForOrder($orderId, "微信支付 订单支付状态异常，当前订单已经canceled。请IT及时处理。");
             }
         }
 
@@ -189,6 +189,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
         $message = $msg."\r\norder id is ".$orderId;
 
         $headers = 'From: admin@spaldingchina.com.cn '  . "\r\n" .
+          	'Content-type: text/html; charset=utf-8' . "\r\n".
             'Reply-To: admin@spaldingchina.com.cn ' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 

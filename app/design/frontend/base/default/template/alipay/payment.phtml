@@ -208,6 +208,9 @@ foreach ($_items as $_item){
     }else if($_order->getStatus() == 'alipay_wait_seller_send_goods'){
         //已经付款成功
         echo '<div class="box">订单已经付款成功</div>';
+    }else if($_order->getStatus() == 'canceled'){
+        //已经付款成功
+        echo '<div class="box">订单已经付款成功</div>';
     }else{
 
     ?>
