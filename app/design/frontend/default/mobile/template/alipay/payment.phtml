@@ -51,7 +51,10 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
     if($_order->getStatus() == 'alipay_wait_seller_send_goods'){
         //已经付款成功
         echo '<div class="box">订单已经付款成功</div>';
-    }else{
+    }else if($_order->getStatus() == 'canceled'){
+        	//已经付款成功
+       	echo '<div class="box">订单已经取消</div>';    
+	}else{
     ?>
     <div class="box" style="width: 400px;">
 <?php
