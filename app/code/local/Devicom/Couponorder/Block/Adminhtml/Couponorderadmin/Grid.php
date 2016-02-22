@@ -6,7 +6,7 @@ class Devicom_Couponorder_Block_Adminhtml_Couponorderadmin_Grid extends Mage_Adm
     {
         parent::__construct();
         $this->setId('couponorderGrid');
-        $this->setDefaultSort('create_time');
+        $this->setDefaultSort('id');
         $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
     }
