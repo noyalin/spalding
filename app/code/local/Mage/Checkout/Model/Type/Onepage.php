@@ -802,6 +802,10 @@ class Mage_Checkout_Model_Type_Onepage
 
         $order = $service->getOrder();
         if ($order) {
+        	
+        	//coupon order 保存
+        	Mage::getModel('couponorder/couponorder')->updateDataByOrder($order);
+        	
             Mage::dispatchEvent('checkout_type_onepage_save_order_after',
                 array('order'=>$order, 'quote'=>$this->getQuote()));
 
