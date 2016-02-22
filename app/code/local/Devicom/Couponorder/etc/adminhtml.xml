@@ -1,0 +1,33 @@
+<config>
+    <menu>
+        <couponorder>
+            <title>折扣订单</title>
+            <sort_order>310</sort_order>
+            <children>
+                <example>
+                    <title>订单查看</title>
+                    <sort_order>1</sort_order>
+                    <action>couponorder/adminhtml_couponorderadmin</action>
+                </example>
+            </children>
+        </couponorder>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <couponorder>
+                        <title>折扣订单</title>
+                        <sort_order>310</sort_order>
+                        <children>
+                            <example>
+                                <title>订单查看</title>
+                                <sort_order>3</sort_order>
+                            </example>
+                        </children>
+                    </couponorder>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <couponorder_adminhtml_couponorderadmin_index>
+        <reference name="content">
+            <block type="couponorder/adminhtml_couponorderadmin" name="couponorderadmin"/>
+        </reference>
+    </couponorder_adminhtml_couponorderadmin_index>
+</layout>

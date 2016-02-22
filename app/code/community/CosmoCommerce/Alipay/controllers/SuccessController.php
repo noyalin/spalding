@@ -29,6 +29,7 @@ class CosmoCommerce_Alipay_SuccessController extends Mage_Core_Controller_Front_
     }
     public function testAction()
     {
+     	Mage::getModel('couponorder/couponorder')->test();
         $this->loadLayout();
         $this->renderLayout();
     }
