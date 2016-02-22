@@ -20,7 +20,7 @@ class Devicom_Couponorder_Model_Couponorder extends Mage_Core_Model_Abstract
     			$oRule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
     			$this->setCouponRuleName($oRule->getName());
     			$this->setCouponRuleId($oCoupon->getRuleId());
-    			$this->setCreateTime(date('Y-m-d H:i:s'));
+    			$this->setCreateTime($orderInfo->getCreatedAt());
      			$this->save();
     		}
     	}
