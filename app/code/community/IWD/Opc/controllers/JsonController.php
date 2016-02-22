@@ -610,6 +610,15 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 
 			$this->getOnepage()->saveOrder();
 			
+			// get the customers last order
+			$orders = Mage::getResourceModel('sales/order_collection')
+			->addFieldToSelect('*')
+			->addFieldToFilter('customer_id', Mage::getSingleton('customer/session')->getCustomer()->getId())
+			->addAttributeToSort('created_at', 'DESC')
+			->setPageSize(1);
+			$lastOrder = $orders->getFirstItem();
+			Mage::getModel('couponorder/couponorder')->updateDataByOrder($lastOrder);
+			
 			/** Magento CE 1.6 version**/
 			if ($version['minor']==6){
 				$storeId = Mage::app()->getStore()->getId();
