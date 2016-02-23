@@ -1,6 +1,6 @@
 <?php
 
-class Devicom_Couponorder_Block_Adminhtml_Check_Renderer_Content extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
+class Devicom_Couponorder_Block_Adminhtml_Couponorderadmin_Renderer_Content extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {
     public function render(Varien_Object $row)
     {
