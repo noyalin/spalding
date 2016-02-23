@@ -33,8 +33,13 @@ class Devicom_Couponorder_Block_Adminhtml_Couponorderadmin_Grid extends Mage_Adm
             'header' => Mage::helper('couponorder')->__('订单编号'),
             'align' => 'right',
             'width' => '80px',
-            'index' => 'order_id',
-            'html_decorators' => array('nobr')
+            'index' => 'order_increment_id',
+        	'renderer'	=> 'couponorder/adminhtml_check_renderer_content',
+        	'position'          => 1,
+        	'content'           => 1,
+        	'filter'            => false,
+        	'sortable'          => false,
+          	'html_decorators' => array('nobr')
         ));
 
         $this->addColumn('coupon_rule_id', array(
