@@ -28,6 +28,10 @@ class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
         $sku = $_POST['sku'];
         $subSku = $sub_sku;
         $customerIdsession = Mage::getSingleton('core/session')->getCustomerId();
+        if (!$customerIdsession) {
+            Mage::log('saveCustomMadeTemp--Error--customerId='.$customerId.',customerIdsession='.$customerIdsession);
+            return;
+        }
         $session = Mage::getModel('custommade/session')->getOrderSession($customerIdsession, $sku);
 
         $this->deleteByCustomerId($customerId);
