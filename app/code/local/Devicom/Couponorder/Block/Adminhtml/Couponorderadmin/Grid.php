@@ -34,14 +34,14 @@ class Devicom_Couponorder_Block_Adminhtml_Couponorderadmin_Grid extends Mage_Adm
             'align' => 'right',
             'width' => '80px',
             'index' => 'order_increment_id',
-        	'renderer'	=> 'couponorder/adminhtml_check_renderer_content',
+        	'renderer'	=> 'couponorder/adminhtml_couponorderadmin_renderer_content',
         	'position'          => 1,
         	'content'           => 1,
         	'filter'            => false,
         	'sortable'          => false,
           	'html_decorators' => array('nobr')
         ));
-
+        
         $this->addColumn('coupon_rule_id', array(
         		'header' => Mage::helper('couponorder')->__('规则ID'),
         		'align' => 'right',
@@ -75,5 +75,26 @@ class Devicom_Couponorder_Block_Adminhtml_Couponorderadmin_Grid extends Mage_Adm
             'default' => $this->__('N/A'),
             'html_decorators' => array('nobr')
         ));
+        
+        
+//         $this->addColumn('action',
+//         		array(
+//         				'header'    => Mage::helper('sales')->__('Action'),
+//         				'width'     => '50px',
+//         				'type'      => 'action',
+//         				'getter'     => 'getId',
+//         				'actions'   => array(
+//         						array(
+//         								'caption' => Mage::helper('sales')->__('View'),
+//         								'url'     => array('base'=>'backendspalding/sales_order/view'),
+//         								'field'   => 'order_id'
+//         						)
+//         				),
+//         				'filter'    => false,
+//         				'sortable'  => false,
+//         				'index'     => 'stores',
+//         				'is_system' => true,
+//         		));
+        
     }
 }

@@ -5,13 +5,8 @@ class Devicom_Couponorder_Block_Adminhtml_Couponorderadmin_Renderer_Content exte
     public function render(Varien_Object $row)
     {
         $id = $row->getData($this->getColumn()->getIndex());
-        
-        $url = Mage::helper("adminhtml")->getUrl('sales_order/view/',
-        		array(
-        			'order_id'=> $id,
-        		)
-        );
-
+    	$orderId = $row->getOrderId();
+        $url = Mage::getModel('adminhtml/url')->getUrl('backendspalding/sales_order/view/',array('order_id'=>$orderId));
         $html = "<a href=".$url.">$id</a>";
         return $html;
     }
