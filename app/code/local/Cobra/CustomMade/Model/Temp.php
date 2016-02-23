@@ -21,7 +21,12 @@ class Cobra_CustomMade_Model_Temp extends Mage_Core_Model_Abstract
     {
         $id = $this->getResource()
             ->loadByField('customer_id', $customerId);
-        return $this->load($id[0]);
+        if($id){
+        	return $this->load($id[0]);
+        }else{
+        	return array();
+        }
+        
     }
     public function saveCustomMadeTemp($customerId, $sub_sku)
     {

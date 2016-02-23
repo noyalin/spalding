@@ -67,4 +67,11 @@ class Devicom_Sales_OrderController extends Mage_Sales_OrderController
         $this->renderLayout();
 
     }
+    
+    public function checkstatusAction(){
+    	$orderId = (int) $this->getRequest()->getParam('order_id');
+    	$order = Mage::getModel('sales/order')->load($orderId);
+    	echo json_encode($order->getStatus());
+    	exit;
+    }
 }

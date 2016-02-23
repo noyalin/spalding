@@ -296,13 +296,30 @@ $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
     </div>
 </div>
 <script>
+
     jQuery(document).ready(function(){
         jQuery("#submitbutton").click(function(){
-            if(globalbank == "weixin_pay"){
-                go_pay_with_weixin("<?php echo $this->getUrl('weixinpay/payment/pay');?>",globalbank,"<?php echo $orderId;?>");
-            }else{
-                go_pay("<?php echo $this->getUrl('alipay/payment/redirect');?>",globalbank);
-            }
+        	var orderId = <?php echo $orderId;?>;
+        	jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('sales/order/checkstatus');?>',
+                data:{
+                	order_id:orderId,
+                },
+                dataType: 'json',
+                success: function(data){
+                     if(data == 'alipay_wait_buyer_pay'){
+                    	 if(globalbank == "weixin_pay"){
+                             go_pay_with_weixin("<?php echo $this->getUrl('weixinpay/payment/pay');?>",globalbank,"<?php echo $orderId;?>");
+                         }else{
+                             go_pay("<?php echo $this->getUrl('alipay/payment/redirect');?>",globalbank);
+                         }
+                     }else{
+                    	 alert('该订单不能支付');
+                     }
+                }
+            });
+            
         });
         jQuery('#custommadehtml').click(function(){
             setLocation('<?php echo $this->getUrl('custom-made.html'); ?>');

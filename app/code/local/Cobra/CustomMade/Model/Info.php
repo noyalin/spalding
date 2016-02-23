@@ -93,9 +93,14 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $customerId = $order->getCustomerId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
 
-        if (!$customMsg->getId()) {
-            return;
+        if($customMsg){
+        	if (!$customMsg->getId()) {
+        		return;
+        	}	
+        }else{
+        	return;
         }
+        
 
         $new_sku = $this->transformSku($customMsg);
         if (!$new_sku) {
