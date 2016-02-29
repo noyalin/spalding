@@ -230,19 +230,39 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
                         ?>
                         <p>定制一内容：
-                            <?php if ($customMsg->getMsg3P1() == 4): ?>
-                                <?php echo '第一行：' . $customMsg->getMsg1P1() ?>
-                                <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
-                            <?php else: ?>
-                                <?php echo $customMsg->getMsg1P1() ?>
-                            <?php endif; ?>
+                        	<?php 
+                        		if($customMsg->getTypeP1() == 1):
+                        	?>
+                        	<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>	
+                        	<?php
+                        		else:
+                        	?>
+	                            <?php if ($customMsg->getMsg3P1() == 4): ?>
+	                                <?php echo '第一行：' . $customMsg->getMsg1P1() ?>
+	                                <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
+	                            <?php else: ?>
+	                                <?php echo $customMsg->getMsg1P1() ?>
+	                            <?php endif; ?>
+                            <?php 
+                            	endif;
+                            ?>
                         ,定制二内容：
-                            <?php if ($customMsg->getMsg3P2() == 4): ?>
-                                <?php echo '第一行：' . $customMsg->getMsg1P2() ?>
-                                <?php echo '第二行：' . $customMsg->getMsg2P2() ?>
-                            <?php else: ?>
-                                <?php echo $customMsg->getMsg1P2() ?>
-                            <?php endif; ?>
+                        	<?php 
+                        		if($customMsg->getTypeP2() == 1):
+                        	?>
+                        	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>	
+                        	<?php
+                        		else:
+                        	?>
+                        		<?php if ($customMsg->getMsg3P2() == 4): ?>
+                                	<?php echo '第一行：' . $customMsg->getMsg1P2() ?>
+                                	<?php echo '第二行：' . $customMsg->getMsg2P2() ?>
+                            	<?php else: ?>
+                                	<?php echo $customMsg->getMsg1P2() ?>
+                            	<?php endif; ?>
+                        	<?php 
+                        		endif;
+                        	?>
                         </p>
                     <?php endif; ?>
                 <?php

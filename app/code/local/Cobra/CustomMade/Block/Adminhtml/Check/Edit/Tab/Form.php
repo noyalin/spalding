@@ -42,6 +42,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                     'value' => 2,
                     'label' => Mage::helper('custommade')->__('文字'),
                 ),
+            	array(
+            		'value' => 3,
+            		'label' => Mage::helper('custommade')->__('无'),
+            	),
+            	array(
+            		'value' => 4,
+            		'label' => Mage::helper('custommade')->__('定制图片'),
+            	),
             )
         ));
 
@@ -75,6 +83,14 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Edit_Tab_Form extends Mage_Adminhtm
                     'value' => 2,
                     'label' => Mage::helper('custommade')->__('文字'),
                 ),
+            	array(
+            		'value' => 3,
+            		'label' => Mage::helper('custommade')->__('无'),
+            	),
+            	array(
+            		'value' => 4,
+            		'label' => Mage::helper('custommade')->__('定制图片'),
+            	),
             )
         ));
 

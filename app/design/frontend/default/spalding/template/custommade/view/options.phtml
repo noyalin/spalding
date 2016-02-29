@@ -2,7 +2,9 @@
 <?php $this->initOptions();?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
-
+<?php 
+	$productImageHelper = Mage::helper('product');
+?>
 <?php if ($this->getCustomStatus() == 1): ?>
     <?php echo $this->getChildHtml('custommade_view_options_preview') ?>
 <?php else: ?>
@@ -17,30 +19,26 @@
         <h1>SPALDING <?php echo strtoupper($_product->getSku()) ?></h1>
         <h2>价格：￥<?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></h2>
     </div>
-    <div class="madeP_btn madeP_1_btn madeP_btn_now">
+    <div class="madeP_btn madeP_1_btn madeP_btn_now" id="btn_page1">
         定<br>制<br>1
     </div>
-    <div class="madeP_btn madeP_2_btn">
+    <div class="madeP_btn madeP_2_btn" id="btn_page2">
         定<br>制<br>2
     </div>
 
     <!-- p1 -->
-    <div class="madeBoxCons madeBoxCons_p1">
+    <div class="madeBoxCons madeBoxCons_p1" id="made_p1">
         <h3>可定制球皮</h3>
-<?php if ($this->getTestMode() == 1): ?>
         <p class="madeTs">选择添加图案或个性签名</p>
         <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
-<?php endif; ?>
         <!-- 定制参数 -->
         <dl class="madeBoxFuns">
-<?php if ($this->getTestMode() == 1): ?>
             <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
                 <h5>***注意***</h5>
                 <p>支持jpg、png格式，单张图片大小2M-8M</p>
             </dt>
-<?php endif; ?>
             <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindTex">
@@ -93,36 +91,32 @@
 
         <div class="madeSubmit">
             <button type="button" class="submitY" id="submitYP1">暂存P1定制</button>
-            <button type="button" class="submitN">重置P1定制</button>
+            <button type="button" class="submitN" id="submitN_1">重置P1定制</button>
         </div>
 
         <!-- 确认&放弃提示 P1 -->
         <div class="comfBox comfBox_1">
             <p>是否保存当前定制？</p>
             <div class="confBtn">
-                <button type="button" class="saveMadeY saveMadeY_p1">是</button>
-                <button type="button" class="saveMadeN saveMadeN_p1">否</button>
+                <button type="button" class="saveMadeY saveMadeY_p1" id="saveYesId_1">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p1" id="saveNoId_1">否</button>
             </div>
         </div>
     </div>
 
     <!-- p2 -->
-    <div class="madeBoxCons madeBoxCons_p2" style="display:none;">
+    <div class="madeBoxCons madeBoxCons_p2" id="made_p2" style="display:none;">
         <h3>可定制球皮</h3>
-<?php if ($this->getTestMode() == 1): ?>
         <p class="madeTs">选择添加图案或个性签名</p>
         <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
-<?php endif; ?>
         <!-- 定制参数 -->
         <dl class="madeBoxFuns">
-<?php if ($this->getTestMode() == 1): ?>
             <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
             <h5>***注意***</h5>
             <p>支持jpg、png格式，单张图片大小2M-8M</p>
             </dt>
-<?php endif; ?>
             <dd class="madeKindTit madeKindTitTex" dataVal='2'>定制文字</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindTex">
@@ -174,15 +168,15 @@
 
         <div class="madeSubmit">
             <button type="button" class="submitY" id="submitYP2">暂存P2定制</button>
-            <button type="button" class="submitN">重置P2定制</button>
+            <button type="button" class="submitN" id="submitN_2">重置P2定制</button>
         </div>
 
         <!-- 确认&放弃提示 P1 -->
         <div class="comfBox comfBox_2">
             <p>是否保存当前定制？</p>
             <div class="confBtn">
-                <button type="button" class="saveMadeY saveMadeY_p2">是</button>
-                <button type="button" class="saveMadeN saveMadeN_p2">否</button>
+                <button type="button" class="saveMadeY saveMadeY_p2" id="saveYesId_2">是</button>
+                <button type="button" class="saveMadeN saveMadeN_p2" id="saveNoId_2">否</button>
             </div>
         </div>
     </div>
@@ -229,7 +223,7 @@
 
 <!-- 编辑后单面预览 P1 -->
 <div class="viewPage_P1" dataType="2">
-    <!-- <div class="viewPageZz"><img src="<?php  echo $this->getSkinUrl("images/customMade/".$this->getSku()."/zz/01.png") ?>" alt=""></div> -->
+    <!-- <div class="viewPageZz"><img src="<?php  echo $productImageHelper->getCustomMadeImage($this->getSku()."/zz/01.png") ?>" alt=""></div> -->
     <div class="viewPage_P1_bg">
         <img class="pageBg" src="" alt="">
     </div>
@@ -254,7 +248,7 @@
         <h2 style="text-align: center"></h2>
         <p style="text-align: center"></p>
         <div class="loadingImg">
-            <img src="<?php  echo $this->getSkinUrl("images/customMade/madeLoading.gif") ?>" alt="loading...">
+            <img src="<?php  echo $productImageHelper->getCustomMadeImage("madeLoading.gif") ?>" alt="loading...">
         </div>
     </div>
 </div>
@@ -266,7 +260,7 @@
         <h2 style="text-align: center"></h2>
         <p style="text-align: center"></p>
         <div class="loadingImg">
-            <img src="<?php  echo $this->getSkinUrl("images/customMade/noTodo.png") ?>" alt="">
+            <img src="<?php  echo $productImageHelper->getCustomMadeImage("noTodo.png") ?>" alt="">
         </div>
 
     </div>

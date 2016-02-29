@@ -150,20 +150,41 @@ foreach ($_items as $_item){
             </tr>
             <tr>
                 <td>
-                    <?php if ($customMsg->getMsg3P1() == 4): ?>
-                        <?php echo '第一行：' . $customMsg->getMsg1P1() ?><br />
-                        <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
-                    <?php else: ?>
-                        <?php echo $customMsg->getMsg1P1() ?>
-                    <?php endif; ?>
+                	<?php 
+                       	if($customMsg->getTypeP1() == 1):
+                    ?>
+                   		<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>	
+                    <?php
+                        else:
+	                		if ($customMsg->getMsg3P1() == 4):
+                        		echo '第一行：' . $customMsg->getMsg1P1(); 
+                    ?>
+                    			<br />
+                        <?php 
+                        		echo '第二行：' . $customMsg->getMsg2P1();
+                    		else: 
+                        		echo $customMsg->getMsg1P1();
+                    		endif; 
+                    	endif;
+                    ?>
                 </td>
                 <td>
-                    <?php if ($customMsg->getMsg3P2() == 4): ?>
-                        <?php echo '第一行：' . $customMsg->getMsg1P2() ?><br />
-                        <?php echo '第二行：' . $customMsg->getMsg2P2() ?>
-                    <?php else: ?>
-                        <?php echo $customMsg->getMsg1P2() ?>
-                    <?php endif; ?>
+                	<?php 
+                       	if($customMsg->getTypeP2() == 1):
+                    ?>
+                    	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>	
+                    <?php
+                    	else:
+                    		if ($customMsg->getMsg3P2() == 4):
+                        		echo '第一行：' . $customMsg->getMsg1P2();
+                     ?><br />
+                        	<?php 
+                        		echo '第二行：' . $customMsg->getMsg2P2();
+                    		else: 
+                        		echo $customMsg->getMsg1P2();
+                    		endif;
+                       	endif;
+                    ?>
                 </td>
             </tr>
         </table>
@@ -173,7 +194,13 @@ foreach ($_items as $_item){
 
 
     <?php
-    if ($_customError) {
+    if($_order->getStatus() == 'alipay_wait_seller_send_goods'){
+        //已经付款成功
+        echo '<div class="box">订单已经付款成功</div>';
+    }else if($_order->getStatus() == 'canceled'){
+        //已经付款成功
+        echo '<div class="box">订单已经取消</div>';
+    }else if ($_customError) {
         $_shopUrl = $this->getUrl('custom-made.html');
         $_goto = ('<div class="box"><h3>非常抱歉，您的定制信息异常。请前往 <a id="custommadehtml" href="＃" style="cursor:pointer;"> 》》Spalding定制《《 </a> 重新定制您的商品。</h3>');
         $_goto .= ($_overSold.'</div>');
@@ -184,13 +211,7 @@ foreach ($_items as $_item){
         $_goto .= ($_overSold.'</div>');
         echo $_goto;
     //需要判断订单状态 如果已经付款成功，直接显示付款成功的提示
-    }else if($_order->getStatus() == 'alipay_wait_seller_send_goods'){
-        //已经付款成功
-        echo '<div class="box">订单已经付款成功</div>';
-    }else if($_order->getStatus() == 'canceled'){
-        //已经付款成功
-        echo '<div class="box">订单已经取消</div>';
-    }else{
+    }else {
 
     ?>
         <?php if ($_flag): ?>
@@ -296,7 +317,6 @@ $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
     </div>
 </div>
 <script>
-
     jQuery(document).ready(function(){
         jQuery("#submitbutton").click(function(){
         	var orderId = <?php echo $orderId;?>;

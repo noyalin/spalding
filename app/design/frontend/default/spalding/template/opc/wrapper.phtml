@@ -1,5 +1,6 @@
     <script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
     <?php
+    Zend_Registry::set('showButton', true);
     $package = Mage::getDesign()->getPackageName();
     $theme = Mage::getDesign()->getTheme('frontend');
     ?>
@@ -286,6 +287,9 @@
     <!--                        </a>-->
     <!--                    </div>-->
     <!--                </div>-->
+    				<?php 
+    					if(Zend_Registry::isRegistered('showButton') && Zend_Registry::get('showButton') == true):
+    				?>
                     <div class="checkoutCommit">
                         <div class="add_addr">
                             <a href="javascript:;" class="btn" muse_scanned="true">
@@ -293,6 +297,9 @@
                             </a>
                         </div>
                     </div>
+                    <?php 
+                    	endif;
+                    ?>
             </div>
     <script>
         var vopc = '<?php echo Mage::getConfig()->getModuleConfig("IWD_Opc")->version;?>';

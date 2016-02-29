@@ -81,8 +81,19 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 	<div class="category-filter clearfix">
 		<?php if ($_currentCategory): ?>
 		<div class="detail-site-map cat-site-map-arrow-bak">
+		<?php 
+			if($parentCategoryUrlKey != ''):
+		?>
+		<a class="back-category-title" href="<?php echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName ?>">搜索 <?php echo $parentCategoryName ?></a>
+		<?php
+			else:
+		?>
+		<a class="back-category-title" href="/" title="' . $parentCategoryName ?>">搜索 <?php echo $parentCategoryName ?></a>
+		<?php
+			endif;
+		?>
 <!--			<a class="back-category-title" href="--><?php //echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName ?><!--">Back to --><?php //echo $parentCategoryName ?><!--</a>-->
-            <a class="back-category-title" href="<?php echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName ?>">搜索 <?php echo $parentCategoryName ?></a>
+            
 		</div>
 		<?php endif; ?>
 		<header class="global-header detail-title">

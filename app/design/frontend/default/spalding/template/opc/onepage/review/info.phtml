@@ -93,20 +93,56 @@
             </tr>
             <tr>
                 <td>
-                    <?php if ($customMsg->getMsg3P1() == 4): ?>
-                        <?php echo '第一行：' . $customMsg->getMsg1P1() ?><br />
-                        <?php echo '第二行：' . $customMsg->getMsg2P1() ?>
-                    <?php else: ?>
-                        <?php echo $customMsg->getMsg1P1() ?>
-                    <?php endif; ?>
+                	<?php 
+                       	if($customMsg->getTypeP1() == 1):
+                       		$imagePath = $customMsg->getMsg2P1();
+                       		$imagesArray = explode('/', $imagePath);
+                       		$imageName = end($imagesArray);
+                       		$imageFile = Mage::getBaseDir() . '/media/custommade/tmp/'.$imageName;
+                       		if(!file_exists($imageFile)){
+                       			Zend_Registry::set('showButton', false);
+                       		}
+                       		
+                    ?>
+                   		<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>	
+                    <?php
+                        else:
+	                		if ($customMsg->getMsg3P1() == 4):
+                        		echo '第一行：' . $customMsg->getMsg1P1(); 
+                    ?>
+                    			<br />
+                        <?php 
+                        		echo '第二行：' . $customMsg->getMsg2P1();
+                    		else: 
+                        		echo $customMsg->getMsg1P1();
+                    		endif; 
+                    	endif;
+                    ?>
                 </td>
                 <td>
-                    <?php if ($customMsg->getMsg3P2() == 4): ?>
-                        <?php echo '第一行：' . $customMsg->getMsg1P2() ?><br />
-                        <?php echo '第二行：' . $customMsg->getMsg2P2() ?>
-                    <?php else: ?>
-                        <?php echo $customMsg->getMsg1P2() ?>
-                    <?php endif; ?>
+                	<?php 
+                       	if($customMsg->getTypeP2() == 1):
+	                       	$imagePath = $customMsg->getMsg2P2();
+	                       	$imagesArray = explode('/', $imagePath);
+	                       	$imageName = end($imagesArray);
+	                       	$imageFile = Mage::getBaseDir() . '/media/custommade/tmp/'.$imageName;
+	                       	if(!file_exists($imageFile)){
+	                       		Zend_Registry::set('showButton', false);
+	                       	}
+                    ?>
+                    	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>	
+                    <?php
+                    	else:
+                    		if ($customMsg->getMsg3P2() == 4):
+                        		echo '第一行：' . $customMsg->getMsg1P2();
+                     ?><br />
+                        	<?php 
+                        		echo '第二行：' . $customMsg->getMsg2P2();
+                    		else: 
+                        		echo $customMsg->getMsg1P2();
+                    		endif;
+                       	endif;
+                    ?>
                 </td>
             </tr>
         </table>
