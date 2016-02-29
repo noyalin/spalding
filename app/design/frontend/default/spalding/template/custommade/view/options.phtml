@@ -2,7 +2,8 @@
 <?php $this->initOptions();?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>
-<?php 
+<?php
+    $isTestUrl = false;
 	$productImageHelper = Mage::helper('product');
 ?>
 <?php if ($this->getCustomStatus() == 1): ?>
@@ -29,11 +30,13 @@
     <!-- p1 -->
     <div class="madeBoxCons madeBoxCons_p1" id="made_p1">
         <h3>可定制球皮</h3>
+<?php if ($isTestUrl): ?>
         <p class="madeTs">选择添加图案或个性签名</p>
         <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+<?php endif; ?>
         <!-- 定制参数 -->
         <dl class="madeBoxFuns">
-<?php if (false): ?>
+<?php if ($isTestUrl): ?>
             <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
@@ -109,11 +112,13 @@
     <!-- p2 -->
     <div class="madeBoxCons madeBoxCons_p2" id="made_p2" style="display:none;">
         <h3>可定制球皮</h3>
+<?php if ($isTestUrl): ?>
         <p class="madeTs">选择添加图案或个性签名</p>
         <p class="madeSn">（每块定制球皮只可选择以下一种定制）</p>
+<?php endif; ?>
         <!-- 定制参数 -->
         <dl class="madeBoxFuns">
-<?php if (false): ?>
+<?php if ($isTestUrl): ?>
             <dd class="madeKindTit madeKindTitImg" dataVal='1' >定制图案</dd>
             <dd class="zz"></dd>
             <dt class="madeKindCons madeKindImg" style="display: none">
