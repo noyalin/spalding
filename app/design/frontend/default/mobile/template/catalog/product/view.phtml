@@ -150,6 +150,19 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 			<?php if (!is_null($_product->getJ2tRewardvalue())): ?>
 				<?php echo $_helper->productAttribute($_product, $_product->getJ2tRewardvalue(), 'j2t_rewardvalue') . ' Points' ?>
 			<?php else: ?>
+				<?php 
+            		$msrp = number_format($_product->getMsrp(), '2', '.', ',');
+            		$currentPrice = number_format($_product->getFinalPrice(), '2', '.', ',');
+            		if($msrp != $currentPrice):
+            	?>
+            	<span class="detailPricVm">
+					<em></em>
+					￥<?php echo $msrp; ?>
+				</span>
+            <?php 
+            	endif;
+            ?>
+			
 				<?php echo $this->getPriceHtml($_product) ?>
 			<?php endif; ?>
 		</p>

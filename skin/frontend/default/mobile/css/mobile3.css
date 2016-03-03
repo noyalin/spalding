@@ -1578,19 +1578,60 @@ section#category-wrapper header h1{
 .multi-view-box a:hover{
 	color:#F3AC00;
 }
+
 .multi-view-box p.cat-price{
-	font-size:10px;
-	color: #BBBBBB;
+	font-size:16px;
+	color: #fff;
 	font-weight: bold;
 	margin: 0 auto 10px;
 	max-width: 185px;
+	position:relative;
 }
+.multi-view-box p.cat-price span.cat-price-bbb{
+	color:#bbb;
+	text-decoration:line-through;
+	font-size:12px;
+}
+/* .multi-view-box p.cat-price em{
+	position:absolute;
+	width:40px;
+	height:1px;
+	border-top:1px solid #ccc;
+	margin-top:7px;
+	margin-left:-5px;
+} */
 .multi-view-box p.category-available-color{
 	font-size:10px;
 	font-weight:bold;
 	color:#FFF;
 	margin:0 auto;
 	max-width:185px;
+}
+p.detail-price span.detailPricVm{
+	font-size:12px;
+	color:#ccc;
+	font-weight:normal;
+	text-decoration:line-through;
+}
+/* p.detail-price em{
+	position:absolute;
+	width:40px;
+	height:1px;
+	border-top:1px solid #ccc;
+	margin-top:12px;
+	margin-left:-5px;
+} */
+
+/* span.checkOutVm em{
+	position:absolute;
+	width:40px;
+	height:1px;
+	border-top:1px solid #ccc;
+	margin-top:7px;
+	margin-left:-5px;
+} */
+span.checkOutVm{
+	text-decoration:line-through;
 }
 
 
@@ -2148,7 +2189,7 @@ Scrolling is automated IF there is an overflow of the width */
 .detail-price{
 	color:#F3AC00;
 	font-weight:bold;
-	font-size:13px;
+	font-size:18px;
 }
 .detail-percent{
 	font-weight:normal;

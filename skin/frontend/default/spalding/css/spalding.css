@@ -938,6 +938,24 @@ button.rulAgree{
 	color:#333;
 }
 
+.products-grid li.item .divpric{
+	position:relative;
+	text-align:center;
+}
+.products-grid li.item .divpric span.pricVm{
+	font-size:12px;
+	font-family:Arial;
+	color:#666;
+	positoin:relative;
+	text-decoration:line-through;
+}
+
+.products-grid li.item .divpric span.pricPro{
+	font-size:16px;
+	font-family:Arial;
+	color:#000;
+	font-weight: bold;	
+}
 .products-grid li.item h4{
 	font-size: 14px;
 	font-weight: bold;
@@ -1146,13 +1164,19 @@ button.rulAgree{
 }
 
 span.spCarTit_name{
-	width:490px;
+	width:430px;
 	text-indent: 20px;
 }
 
 span.spCarTit_price{
-	width:90px;
+	width:150px;
 	text-indent: 20px;
+}
+span.spCarTit_price em.cartPricVm{
+	text-decoration:line-through;
+}
+em.cartPricVm_2{
+	text-decoration:line-through;
 }
 span.spCarTit_num{
 	width:120px;
@@ -4323,6 +4347,17 @@ dl.madeBoxFuns dt.zz_t_2{
 	border-width: 7px;
 	border-radius: 7px;
 	margin-left:-28px;
+}
+
+
+
+.priceVm_3{
+	position:relative;
+	margin:20px 10px;
+	color:#ccc;
+	font-size:12px;
+	font-family:Arial;
+	text-decoration:line-through;
 }
 
 @media screen and (min-width:1800px){

@@ -54,8 +54,10 @@
         <?php $_weeeTaxAmount = $_weeeHelper->getAmount($_product); ?>
         <?php $_weeeTaxAttributes = $_weeeHelper->getProductWeeeAttributesForDisplay($_product); ?>
     <?php endif; ?>
-
-    <div class="price-box prodetail-box">
+	<div class="clearfix">
+	
+	
+    <div class="price-box prodetail-box" style="float:left;">
     <?php $_price = $_taxHelper->getPrice($_product, $_product->getPrice()) ?>
     <?php $_regularPrice = $_taxHelper->getPrice($_product, $_product->getPrice(), $_simplePricesTax) ?>
     <?php $_finalPrice = $_taxHelper->getPrice($_product, $_product->getFinalPrice()) ?>
@@ -394,7 +396,18 @@
         <?php endif?>
     <?php endif; /* if ($this->getDisplayMinimalPrice() && $_minimalPrice && $_minimalPrice < $_finalPrice): */ ?>
     </div>
-
+    	<?php 
+            $msrp = number_format($_product->getMsrp(), '2', '.', ',');
+            $currentPrice = number_format($_product->getFinalPrice(), '2', '.', ',');
+            if($msrp != $currentPrice):
+        ?>
+        <div style="float:left;" class="priceVm_3">
+			<em></em>￥ <?php echo $msrp; ?>
+		</div>
+        <?php 
+          	endif;
+        ?>
+    </div>
 <?php else: /* if (!$_product->isGrouped()): */ ?>
     <?php
     $_exclTax = $_taxHelper->getPrice($_product, $_minimalPriceValue, $includingTax = null);

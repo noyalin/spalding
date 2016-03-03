@@ -476,7 +476,24 @@ $breadCrumbs = array();
 								</a>
 							</div>
 								<h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_productNameStripped ." ". $shortDescription ?></a></h3>
-								<p class="cat-price sku-<?php echo $_product->getSku() ?>">￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></p>
+								<p class="cat-price sku-<?php echo $_product->getSku() ?>">
+								<?php 
+            						$msrp = number_format($_product->getMsrp(), '2', '.', ',');
+            						$currentPrice = number_format($_product->getPrice(), '2', '.', ',');
+            						if($msrp != $currentPrice):
+            					?>
+            					<span class="cat-price-bbb">
+									<em></em>
+									￥<?php echo $msrp; ?>
+								</span>
+            					<?php 
+            						endif;
+            					?>
+								
+								
+								<span>￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></span>
+								
+								</p>
 						</div>
 					<?php endforeach; ?>
 				</div>

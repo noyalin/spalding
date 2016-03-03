@@ -198,7 +198,21 @@ $categoryUrlkey = $_category->getUrlKey();
                     <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') . "<br/>" .$shortDescription?>
                 </a>
             </h2>
-            <h4>￥ <?php echo number_format($_product->getFinalPrice(), '2', '.', ','); ?></h4>
+            <div class="divpric">
+            <?php 
+            	$msrp = number_format($_product->getMsrp(), '2', '.', ',');
+            	$currentPrice = number_format($_product->getFinalPrice(), '2', '.', ',');
+            	if($msrp != $currentPrice):
+            ?>
+            	<span class="pricVm">
+            		<em></em>
+            		￥ <?php echo $msrp; ?>
+            	</span>
+            <?php 
+            	endif;
+            ?>
+            	<span class="pricPro">￥ <?php echo number_format($_product->getFinalPrice(), '2', '.', ','); ?></span>
+            </div>
             <?php if($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
             <?php endif; ?>
