@@ -26,6 +26,11 @@
 ?>
 <?php /** @var $this Mage_Checkout_Block_Onepage_Shipping_Method_Available */ ?>
 <?php $_shippingRateGroups = $this->getShippingRates(); ?>
+<?php 
+	$quote = Mage::getModel('checkout/session')->getQuote();
+    //购物车中的总价格
+	$total = $quote->getSubtotal();
+?>
 <?php if (!$_shippingRateGroups): ?>
     <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
 <?php else: ?>
@@ -54,7 +59,7 @@
                             <?php if ($_sole) : ?>
                             <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
                             <?php else: ?>
-                            <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio"/>
+                            <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php //if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> checked="checked" class="radio"/>
 
                             <?php if ($_rate->getCode() === $this->getAddressShippingMethod()): ?>
                             <script type="text/javascript">
@@ -88,6 +93,16 @@
 //<![CDATA[
     <?php if (!empty($shippingCodePrice)): ?>
         var shippingCodePrice = {<?php echo implode(',',$shippingCodePrice); ?>};
+        jQuery(document).ready(function () {
+            var form = jQuery('#opc-co-shipping-method-form').serializeArray();
+            form = IWD.OPC.Checkout.applySubscribed(form);
+            if (IWD.OPC.Checkout.xhr!=null){
+                IWD.OPC.Checkout.xhr.abort();
+            }
+            IWD.OPC.Checkout.showLoader();
+            IWD.OPC.Checkout.xhr = jQuery.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/saveShippingMethod',form, IWD.OPC.Checkout.prepareShippingMethodResponse);
+        //        IWD.OPC.Billing.saveBillingOneStep();
+        });
     <?php endif; ?>
 
     $$('input[type="radio"][name="shipping_method"]').each(function(el){

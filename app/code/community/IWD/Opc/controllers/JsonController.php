@@ -464,6 +464,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 				$responseData['review'] = $this->_getReviewHtml();
 				$responseData['grandTotal'] = Mage::helper('opc')->getGrandTotal();
                 $responseData['subtotalOfDiscount'] = Mage::helper('opc')->getSubtotalOfDiscount();
+                $responseData['shippingPrice'] = Mage::helper('opc')->getShippingPrice();
 				/*$result['update_section'] = array(
 						'name' => 'payment-method',
 						'html' => $this->_getPaymentMethodsHtml()
@@ -486,7 +487,8 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$responseData['review'] = $this->_getReviewHtml();
 		$responseData['grandTotal'] = Mage::helper('opc')->getGrandTotal();
         $responseData['subtotalOfDiscount'] = Mage::helper('opc')->getSubtotalOfDiscount();
-
+        $responseData['shippingPrice'] = Mage::helper('opc')->getShippingPrice();
+        
         $this->getResponse()->setHeader('Content-type','application/json', true);
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($responseData));
 	}

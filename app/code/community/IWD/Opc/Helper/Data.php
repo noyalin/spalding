@@ -195,4 +195,15 @@ class IWD_Opc_Helper_Data extends Mage_Core_Helper_Abstract{
         return Mage::helper('checkout')->formatPrice($discount);
     }
 
+    public function getShippingPrice(){
+    	$quote = Mage::getModel('checkout/session')->getQuote();
+    	$total = $quote->getTotals();
+    	if ($total["shipping"]) {
+    		$price = $total["shipping"]->getValue();
+    	} else {
+    		$price = "0.00";
+    	}
+    	return Mage::helper('checkout')->formatPrice($price);
+    }
+    
 }

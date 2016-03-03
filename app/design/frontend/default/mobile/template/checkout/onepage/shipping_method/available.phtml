@@ -31,16 +31,29 @@
 <?php if (!$_shippingRateGroups): ?>
     <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
 <?php else: ?>
+
+<?php 
+	$quote = Mage::getModel('checkout/session')->getQuote();
+    //购物车中的总价格
+	$total = $quote->getSubtotal();
+?>
+
 			<table id="step4-method">
     <?php $shippingCodePrice = array(); ?>
     <?php $_sole = count($_shippingRateGroups) == 1; ?>
 	<?php $shippingCount = 0; ?>
 	<?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+			<?php 
+				if($code != 'freeshipping'):
+					continue;
+				endif;
+			?>
             <?php $_sole = $_sole && count($_rates) == 1; ?>
 			<?php foreach ($_rates as $_rate): ?>
 				<?php $shippingCount++ ?>
                 <?php $shippingCodePrice[] = "'".$_rate->getCode()."':".(float)$_rate->getPrice(); ?>
-				<?php $checked = ($_rate->getCode() === $this->getAddressShippingMethod() || $_sole) ? ' checked="checked"' : ''; ?>
+				<?php //$checked = ($_rate->getCode() === $this->getAddressShippingMethod() || $_sole) ? ' checked="checked"' : ''; ?>
+				<?php $checked = ''; ?>
                 <tr>
                    <?php if ($_rate->getErrorMessage()): ?>
 					<td>

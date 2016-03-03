@@ -401,6 +401,7 @@ input[type="text"] {
 }
 
 .checkoutProductDiscountPrice,
+.checkoutShippingPrice,
 .checkoutProductPriceTotalPrice,
 .checkoutPriceTotalText,
 .checkoutPriceTotalPrice {

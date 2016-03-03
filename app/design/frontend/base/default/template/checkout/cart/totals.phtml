@@ -39,10 +39,24 @@
         <col />
         <col width="1" />
         <tfoot>
-            <?php echo $this->renderTotals('footer'); ?>
+            <tr>
+    			<td colspan="3" class="align-right" style="">
+					<span class="grandTotal">总计</span>
+    			</td>
+    			<td class="align-right" style="">
+					<span class="grandPrice"><?php echo Mage::helper('checkout')->formatPrice($this->GetQuote()->getSubtotal()); ?></span>
+    			</td>
+			</tr>
         </tfoot>
         <tbody>
-            <?php echo $this->renderTotals(); ?>
+            <tr>
+			    <td colspan="3" class="align-right">
+			        <span class="subTotal">小计</span>
+			    </td>
+    			<td class="align-right">
+        			<span class="price"><?php echo Mage::helper('checkout')->formatPrice($this->GetQuote()->getSubtotal()); ?></span>
+        		</td>
+			</tr>
         </tbody>
-    </table>
+    </table> 
 <?php endif; ?>

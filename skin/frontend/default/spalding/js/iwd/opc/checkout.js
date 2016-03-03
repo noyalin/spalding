@@ -1228,6 +1228,7 @@ IWD.OPC.Decorator = {
 		updateGrandTotal: function(response){
 				$j('.checkoutProductDiscountPrice').html(response.subtotalOfDiscount);
 				$j('.checkoutPriceTotalPrice').html(response.grandTotal);
+				$j('.checkoutShippingPrice').html(response.shippingPrice)
 				
 		}
 }
