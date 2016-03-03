@@ -1,6 +1,5 @@
     <script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
     <?php
-    Zend_Registry::set('showButton', true);
     $package = Mage::getDesign()->getPackageName();
     $theme = Mage::getDesign()->getTheme('frontend');
     ?>
@@ -250,10 +249,11 @@
                             <div class="checkoutProductDiscountPrice"><?php echo Mage::helper('opc')->getSubtotalOfDiscount()?></div>
                         </div>
 <?php //endif;?>
-                        <div class="checkoutBalanceItem">
-                            配送费用:&nbsp;¥0.00
+                         <div class="checkoutBalanceItem">
+                            配送费用:&nbsp;		
+                            <div class="checkoutShippingPrice"><?php echo Mage::helper('opc')->getShippingPrice()?></div>
                         </div>
-
+                        
                         <div class="checkoutBalanceItem">
                             税金:&nbsp;¥0.00
                         </div>
@@ -287,9 +287,7 @@
     <!--                        </a>-->
     <!--                    </div>-->
     <!--                </div>-->
-    				<?php 
-    					if(Zend_Registry::isRegistered('showButton') && Zend_Registry::get('showButton') == true):
-    				?>
+
                     <div class="checkoutCommit">
                         <div class="add_addr">
                             <a href="javascript:;" class="btn" muse_scanned="true">
@@ -297,9 +295,7 @@
                             </a>
                         </div>
                     </div>
-                    <?php 
-                    	endif;
-                    ?>
+                    
             </div>
     <script>
         var vopc = '<?php echo Mage::getConfig()->getModuleConfig("IWD_Opc")->version;?>';
