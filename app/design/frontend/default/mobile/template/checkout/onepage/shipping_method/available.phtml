@@ -44,6 +44,12 @@
 	<?php $shippingCount = 0; ?>
 	<?php foreach ($_shippingRateGroups as $code => $_rates): ?>
 			<?php 
+				if($total >= 228 && $code != 'freeshipping'):
+					continue;
+				endif;
+				if($total < 228 && $code == 'freeshipping'):
+					continue;				
+				endif;
 				if($code != 'freeshipping'):
 					continue;
 				endif;

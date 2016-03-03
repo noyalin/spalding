@@ -38,13 +38,19 @@
     <?php $shippingCodePrice = array(); ?>
     <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates):?>
         <?php
-        $selected = null;
-        if("freeshipping" == $code){//圆通
-            $img = '<img src="'.$this->getSkinUrl('images2/carryYT.jpg') .'">';
-        }else if( "flatrate" == $code){//申通
-            $img = '<img src="'.$this->getSkinUrl('images2/carrySF.jpg') .'">'.'<i class="arrow"></i>';
-            $selected = "selected";
-        }
+        	if($total >= 228 && $code != 'freeshipping'):
+        		continue;
+        	endif;
+        	if($total < 228 && $code == 'freeshipping'):
+        		continue;
+        	endif;
+	        $selected = null;
+	        if("freeshipping" == $code){//圆通
+	            $img = '<img src="'.$this->getSkinUrl('images2/carryYT.jpg') .'">';
+	        }else if( "flatrate" == $code){//申通
+	            $img = '<img src="'.$this->getSkinUrl('images2/carrySF.jpg') .'">'.'<i class="arrow"></i>';
+	            $selected = "selected";
+	        }
         ?>
         <div class="step_radio <?php echo $selected?>">
 <!--        <dt>--><?php //echo $this->escapeHtml($this->getCarrierName($code)) ?><!--</dt>-->
