@@ -144,7 +144,7 @@ if (strpos($agent, "MicroMessenger")) {
                              go_pay("<?php echo $this->getUrl('alipay/payment/wapredirect');?>",globalbank);
                          }
                      }else{
-                    	 alert('该订单不能支付');
+                    	 alert('该订单已经取消');
                      }
                 }
             });

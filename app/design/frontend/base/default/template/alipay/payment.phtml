@@ -335,7 +335,7 @@ $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
                              go_pay("<?php echo $this->getUrl('alipay/payment/redirect');?>",globalbank);
                          }
                      }else{
-                    	 alert('该订单不能支付');
+                    	 alert('该订单已经取消');
                      }
                 }
             });
