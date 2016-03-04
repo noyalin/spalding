@@ -1170,7 +1170,7 @@ span.spCarTit_name{
 
 span.spCarTit_price{
 	width:150px;
-	text-indent: 20px;
+	/*text-indent: 20px;*/
 }
 span.spCarTit_price em.cartPricVm{
 	text-decoration:line-through;
