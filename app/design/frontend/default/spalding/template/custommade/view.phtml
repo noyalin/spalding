@@ -499,6 +499,7 @@
                     jQuery("#attribute2092").attr('checked', 'checked');
                 }
 
+
                 _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
 
 
@@ -566,6 +567,15 @@
 
             _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
             _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+
+            if(isClickOne){
+                jQuery("#textMade_P1").removeClass("size_40 size_60 size_80 twoLine").addClass("size_60");
+            }else{
+                jQuery("#textMade_P2").removeClass("size_40 size_60 size_80 twoLine").addClass("size_60");
+            }
+
+            jQuery("#textMade_P3").hide();
+            jQuery("#textMade_P4").hide();
 
             //重置后隐藏小字第二行相关内容
             _comfBox.siblings(".madeBoxFuns").find(".smalLine").hide();
