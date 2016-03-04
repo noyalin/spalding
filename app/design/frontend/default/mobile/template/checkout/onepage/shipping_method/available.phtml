@@ -118,7 +118,7 @@
                             $shippingMethod = $this->escapeHtml($_rate->getMethodTitle());
 				    }
 				?>
-				<?php echo $shippingMethod ?>
+				<?php // echo $shippingMethod ?>
 				<?php if ($estimatedDelivery) :?>
 				    <?php echo '<br>' . $estimatedDelivery ?>
 				<?php elseif ($shippingNumberOfDays) : ?>
