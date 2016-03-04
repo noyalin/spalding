@@ -114,7 +114,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 
 
 
-            	<span class="pricPro" style="float:right;">￥ <?php echo number_format($_item->getCalculationPrice(), '2', '.', ','); ?></span>
+            	<span class="pricPro">￥ <?php echo number_format($_item->getCalculationPrice(), '2', '.', ','); ?></span>
                 <?php
                 $msrp = number_format($_product->getMsrp(), '2', '.', ',');
                 $currentPrice = number_format($_item->getCalculationPrice(), '2', '.', ',');
