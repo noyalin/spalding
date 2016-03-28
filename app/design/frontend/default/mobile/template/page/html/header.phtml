@@ -101,12 +101,15 @@ if ($_currentCategory) {
 }
 ?>
 
+<div class="ui-main-con">
 <header id="masterheader">
 	<div class="top-nav-wrapper">
-		<a class="splading" href="<?php echo Mage::getUrl(''); ?>"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html').'images/logo_s.png';?>" border="0"></a>
-		<div id="sneakerheadLogo">
-			<a href="<?php echo $this->getUrl('') ?>"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html').'images/logo.png' ;?>" border="0"></a>
-		</div>
+		<a class="menu e-menu" href="javascript:void(0)"></a>
+<!--		<a class="splading" href="--><?php //echo Mage::getUrl(''); ?><!--"><img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html').'images/logo_s.png';?><!--" border="0"></a>-->
+		<a class="splading" href="<?php echo Mage::getUrl(''); ?>"><img src="<?php echo $this->getSkinUrl('images/logo-2016.png');?>" border="0"></a>
+		<!--<div id="sneakerheadLogo">
+			<a href="<?php /*echo $this->getUrl('') */?>"><img src="<?php /*echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html').'images/logo.png' ;*/?>" border="0"></a>
+		</div>-->
 		<a class="bag" href="<?php echo Mage::getUrl('checkout/cart/', array('_secure'=>true)) ?>" onClick="jQuery('#search_bar').toggleClass('open', false);">
 		<?php if (Mage::app()->getStore()->isCurrentlySecure()): /* https only */ ?>
 			<span><?php echo Mage::helper('checkout/cart')->getItemsCount(); ?></span>
@@ -114,12 +117,13 @@ if ($_currentCategory) {
 <!--		<a class="account" href="--><?php //echo Mage::getUrl('customer/account/'); ?><!--" onClick="jQuery('#search_bar').toggleClass('open', false);">Account</a>-->
 <!--		<a class="search">Search</a>-->
 <!--		<a class="menu" href="javascript:void(0)">Menu</a>-->
-            <a class="account" href="<?php echo Mage::getUrl('customer/account/'); ?>" onClick="jQuery('#search_bar').toggleClass('open', false);">用户中心</a>
-            <a class="search">搜索</a>
-            <a class="menu" href="javascript:void(0)">菜单</a>
+<!--            <a class="account" href="--><?php //echo Mage::getUrl('customer/account/'); ?><!--" onClick="jQuery('#search_bar').toggleClass('open', false);">用户中心</a>-->
+            <a class="search"></a>
+
 		</div>
 
 </header>
+</div>
 <script>
 	function checkKeywords(){
 		if (jQuery('#search-keywords').val() == '') {
@@ -148,56 +152,649 @@ if ($_currentCategory) {
 	// Add Customer Service to the "do not show" list
 	$mobile_exclude_categories[] = 200;
 ?>
-
-<nav id="category-menu" class="nav-container">
-	<?php if (count($_categories) > 0): ?>
+<!--menu left old-->
+<!--nav id="category-menu" class="nav-container">
+	<?php /*if (count($_categories) > 0): */?>
 	<ul class="level-1">
-		<?php foreach ($_categories as $_category): ?>
-			<?php if (in_array($_category->getId(), $mobile_exclude_categories)) continue; ?>
-			<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-			<?php $_subcategories = $_category->getChildrenCategories() ?>
-			<?php $isLevel2 = (array_key_exists(2, $parentCategoryArray) && $_category->getId() == $parentCategoryArray[2]) ? true : false; ?>
-			<li><a href="javascript:void(0)" onClick="jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php echo $_helper->getCategoryUrl($_category); ?>')"<?php echo ($isLevel2 && !array_key_exists(3, $parentCategoryArray)) ? ' class="selected"' : ''; ?>><?php echo $_category->getName() ?></a>
-				<?php if ($isLevel2): ?>
+		<?php /*foreach ($_categories as $_category): */?>
+			<?php /*if (in_array($_category->getId(), $mobile_exclude_categories)) continue; */?>
+			<?php /*$_category = Mage::getModel('catalog/category')->load($_category->getId()) */?>
+			<?php /*$_subcategories = $_category->getChildrenCategories() */?>
+			<?php /*$isLevel2 = (array_key_exists(2, $parentCategoryArray) && $_category->getId() == $parentCategoryArray[2]) ? true : false; */?>
+			<li><a href="javascript:void(0)" onClick="jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php /*echo $_helper->getCategoryUrl($_category); */?>')"<?php /*echo ($isLevel2 && !array_key_exists(3, $parentCategoryArray)) ? ' class="selected"' : ''; */?>><?php /*echo $_category->getName() */?></a>
+				<?php /*if ($isLevel2): */?>
 					<ul class="level-2">
-						<?php foreach ($_subcategories as $_subcategory): ?>
-						<?php $_subcategory = Mage::getModel('catalog/category')->load($_subcategory->getId()) ?>
-						<?php $_subsubcategories = $_subcategory->getChildrenCategories() ?>
-						<?php $isLevel3 = (array_key_exists(3, $parentCategoryArray) && $_subcategory->getId() == $parentCategoryArray[3]) ? true : false; ?>
-						<li><a href="javascript:void(0)" onClick="jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php echo $_helper->getCategoryUrl($_subcategory); ?>')"<?php echo ($isLevel3 && !array_key_exists(4, $parentCategoryArray)) ? ' class="selected"' : ''; ?>><?php echo $_subcategory->getName() ?></a>
-						<?php if ($isLevel3): ?>
+						<?php /*foreach ($_subcategories as $_subcategory): */?>
+						<?php /*$_subcategory = Mage::getModel('catalog/category')->load($_subcategory->getId()) */?>
+						<?php /*$_subsubcategories = $_subcategory->getChildrenCategories() */?>
+						<?php /*$isLevel3 = (array_key_exists(3, $parentCategoryArray) && $_subcategory->getId() == $parentCategoryArray[3]) ? true : false; */?>
+						<li><a href="javascript:void(0)" onClick="jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php /*echo $_helper->getCategoryUrl($_subcategory); */?>')"<?php /*echo ($isLevel3 && !array_key_exists(4, $parentCategoryArray)) ? ' class="selected"' : ''; */?>><?php /*echo $_subcategory->getName() */?></a>
+						<?php /*if ($isLevel3): */?>
 							<ul class="level-3">
-								<?php foreach ($_subsubcategories as $_subsubcategory): ?>
-								<?php $_subsubcategory = Mage::getModel('catalog/category')->load($_subsubcategory->getId()) ?>
-								<?php $_subsubsubcategories = $_subsubcategory->getChildrenCategories() ?>
-								<?php $isLevel4 = (array_key_exists(4, $parentCategoryArray) && $_subsubcategory->getId() == $parentCategoryArray[4]) ? true : false; ?>
-								<li><a href="javascript:void(0)" onClick="jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php echo $_helper->getCategoryUrl($_subsubcategory); ?>')"<?php echo ($isLevel4 && !array_key_exists(5, $parentCategoryArray)) ? ' class="selected"' : ''; ?>><?php echo $_subsubcategory->getName() ?></a></li>
-								<?php if ($isLevel4): ?>
+								<?php /*foreach ($_subsubcategories as $_subsubcategory): */?>
+								<?php /*$_subsubcategory = Mage::getModel('catalog/category')->load($_subsubcategory->getId()) */?>
+								<?php /*$_subsubsubcategories = $_subsubcategory->getChildrenCategories() */?>
+								<?php /*$isLevel4 = (array_key_exists(4, $parentCategoryArray) && $_subsubcategory->getId() == $parentCategoryArray[4]) ? true : false; */?>
+								<li><a href="javascript:void(0)" onClick="jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php /*echo $_helper->getCategoryUrl($_subsubcategory); */?>')"<?php /*echo ($isLevel4 && !array_key_exists(5, $parentCategoryArray)) ? ' class="selected"' : ''; */?>><?php /*echo $_subsubcategory->getName() */?></a></li>
+								<?php /*if ($isLevel4): */?>
 									<ul class="level-4">
-										<?php foreach ($_subsubsubcategories as $_subsubsubcategory): ?>
-										<?php $_subsubsubcategory = Mage::getModel('catalog/category')->load($_subsubsubcategory->getId()) ?>
-										<?php $isLevel5 = (array_key_exists(5, $parentCategoryArray) && $_subsubsubcategory->getId() == $parentCategoryArray[5]) ? true : false; ?>
-										<li><a href="javascript:void(0)" onClick="javascript:jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php echo $_helper->getCategoryUrl($_subsubsubcategory); ?>')"<?php echo ($isLevel5) ? ' class="selected"' : ''; ?>><?php echo $_subsubsubcategory->getName() ?></a></li>
-										<?php endforeach; ?>
+										<?php /*foreach ($_subsubsubcategories as $_subsubsubcategory): */?>
+										<?php /*$_subsubsubcategory = Mage::getModel('catalog/category')->load($_subsubsubcategory->getId()) */?>
+										<?php /*$isLevel5 = (array_key_exists(5, $parentCategoryArray) && $_subsubsubcategory->getId() == $parentCategoryArray[5]) ? true : false; */?>
+										<li><a href="javascript:void(0)" onClick="javascript:jQuery(this).parent().toggleClass('selected', true);jQuery('#category-menu').toggleClass('open', false);updateLocation('<?php /*echo $_helper->getCategoryUrl($_subsubsubcategory); */?>')"<?php /*echo ($isLevel5) ? ' class="selected"' : ''; */?>><?php /*echo $_subsubsubcategory->getName() */?></a></li>
+										<?php /*endforeach; */?>
 									</ul>
-								<?php endif; ?>
-								<?php endforeach; ?>
+								<?php /*endif; */?>
+								<?php /*endforeach; */?>
 							</ul>
-						<?php endif; ?>
+						<?php /*endif; */?>
 						</li>
-						<?php endforeach; ?>
-					</ul><?php endif; ?>
-			</li><?php endforeach; ?>
+						<?php /*endforeach; */?>
+					</ul><?php /*endif; */?>
+			</li><?php /*endforeach; */?>
 
 			<li class="Selected"><a href="javascript:void(0)">&nbsp;</a></li>
 	</ul>
-	<?php endif; ?>
-</nav>
+	<?php /*endif; */?>
+</nav>-->
+<!--menu left new-->
+<div class="ui-png-mask e-png-mask"></div>
+<aside class="ui-menu-left e-menu-left">
+	<div class="ui-menu-leftcon">
+		<!-- category  -->
+		<div class="ui-menu-list e-menu-list">
+			<div class="ui-menu-level-01 e-menu-level-01">
+				<h3 class="level01-title">
+					<span>男士</span> <i class="icon-arrow-right-white"></i>
+				</h3>
+				<!-- level02 -->
+				<div class="ui-menu-level-02 e-menu-level-02">
+					<h3 class="level02-back-title">
+						<i class="icon-arrow-right-white left"></i> <span>男士</span>
+					</h3>
+					<ul>
+						<h3 class="level02-title"><a class="level02-title-a" href="/collections/men">所有男士</a></h3>
+						<li>
+							<h3 class="level02-title">
+								精选<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>精选</span>
+								</h3>
+								<ul>
+									<li><a href="/men/featured">所有精选</a></li>
+									<li><a href="/men/new-arrivals">新品上架</a></li>
+									<li><a href="/men/best-sellers">热销单品</a></li>
+									<li><a href="/men/ignite">IGNITE</a></li>
+									<li><a href="/men/evopower">evoPOWER</a></li>
+									<li><a href="/men/evospeed">evoSPEED</a></li>
+									<li><a href="/men/arsenal">Arsenal</a></li>
+									<li><a href="/men/bvb">BVB</a></li>
+									<li><a href="/men/italia">Italia</a></li>
+									<li><a href="/men/ferrari">Ferrari</a></li>
+									<li><a href="/men/trinomic">Trinomic</a></li>
+									<li><a href="/men/suede">Suede</a></li>
+									<li><a href="/men/pwrwarm">PWRWARM</a></li>
+									<li><a href="/men/pwrcool">PWRCOOL</a></li>
+								</ul>
+							</div>
 
+						</li>
+						<li>
+							<h3 class="level02-title">
+								鞋<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>鞋</span>
+								</h3>
+								<ul>
+									<li><a href="/men/sneakers">所有鞋</a></li>
+									<li><a href="/men/board_shoes">休闲鞋</a></li>
+									<li><a href="/men/motorsport">赛车鞋</a></li>
+									<li><a href="/men/footballshoes">足球鞋</a></li>
+									<li><a href="/men/runningshoes">跑步鞋</a></li>
+									<li><a href="/men/slipper">拖鞋</a></li>
+									<li><a href="/men/golfshoes">高尔夫球鞋</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								服装<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>服装</span>
+								</h3>
+								<ul>
+									<li><a href="/men/clothing">所有服装</a></li>
+									<li><a href="/men/down-jacket">羽绒服</a></li>
+									<li><a href="/men/sweatshirts">卫衣</a></li>
+									<li><a href="/men/tees">T恤</a></li>
+									<li><a href="/men/polos">Polo衫</a></li>
+									<li><a href="/men/jersey">球衣</a></li>
+									<li><a href="/men/jackets">夹克</a></li>
+									<li><a href="/men/bottoms">长裤</a></li>
+									<li><a href="/men/jams">短裤</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								配饰<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>配饰</span>
+								</h3>
+								<ul>
+									<li><a href="/men/accessories">所有配饰</a></li>
+									<li><a href="/men/backpacks">双肩背包</a></li>
+									<li><a href="/men/bags">单肩背包</a></li>
+									<li><a href="/men/sport-equipment">专业足球装备</a></li>
+									<li><a href="/men/handbag">手提包</a></li>
+									<li><a href="/men/scarf">围巾</a></li>
+									<li><a href="/men/caps">帽子</a></li>
+									<li><a href="/men/fitness-bag">健身袋</a></li>
+									<li><a href="/men/socks">袜子</a></li>
+									<li><a href="/men/balls">球</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								运动<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>运动</span>
+								</h3>
+								<ul>
+									<li><a href="/men/sports">所有运动</a></li>
+									<li><a href="/men/football">足球</a></li>
+									<li><a href="/men/running">跑步</a></li>
+									<li><a href="/men/training">训练</a></li>
+									<li><a href="/men/motosport">赛车</a></li>
+									<li><a href="/men/golf">高尔夫</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								SELECT<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>SELECT</span>
+								</h3>
+								<ul>
+									<li><a href="/men/select">所有SELECT</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								SALE<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>SALE</span>
+								</h3>
+								<ul>
+									<li><a href="/men/sales">所有SALE</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="ui-menu-level-01 e-menu-level-01">
+				<h3 class="level01-title">
+					<span>女士</span> <i class="icon-arrow-right-white"></i>
+				</h3>
+				<!-- level02 -->
+				<div class="ui-menu-level-02 e-menu-level-02">
+					<h3 class="level02-back-title">
+						<i class="icon-arrow-right-white left"></i> <span>女士</span>
+					</h3>
+					<ul>
+						<h3 class="level02-title"><a class="level02-title-a" href="/collections/women">所有女士</a></h3>
+						<li>
+							<h3 class="level02-title">
+								精选<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>精选</span>
+								</h3>
+								<ul>
+									<li><a href="/women/featured">所有精选</a></li>
+									<li><a href="/women/new-arrivals">新品上架</a></li>
+									<li><a href="/women/best-sellers">热销单品</a></li>
+									<li><a href="/rihanna-1">Rihanna's Picks</a></li>
+									<li><a href="/women/ferrari">Ferrari</a></li>
+									<li><a href="/women/trinomic">Trinomic</a></li>
+									<li><a href="/women/ignite">IGNITE</a></li>
+									<li><a href="/women/pwrwarm">PWRWARM</a></li>
+									<li><a href="/women/pwrcool">PWRCOOL</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								鞋<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>鞋</span>
+								</h3>
+								<ul>
+									<li><a href="/women/sneakers">所有鞋</a></li>
+									<li><a href="#">休闲鞋</a></li>
+									<li><a href="#">赛车鞋</a></li>
+									<li><a href="#">跑步鞋</a></li>
+									<li><a href="#">训练鞋</a></li>
+									<li><a href="#">拖鞋</a></li>
+									<li><a href="#">高尔夫球鞋</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								服装<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>服装</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有服装</a></li>
+									<li><a href="#">羽绒服</a></li>
+									<li><a href="#">卫衣</a></li>
+									<li><a href="#">T恤</a></li>
+									<li><a href="#">Polo衫</a></li>
+									<li><a href="#">夹克</a></li>
+									<li><a href="#">长裤</a></li>
+									<li><a href="#">短裤</a></li>
+									<li><a href="#">运动内衣</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								配饰<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>配饰</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有配饰</a></li>
+									<li><a href="#">双肩背包</a></li>
+									<li><a href="#">单肩背包</a></li>
+									<li><a href="#">手提包</a></li>
+									<li><a href="#">围巾</a></li>
+									<li><a href="#">帽子</a></li>
+									<li><a href="#">健身袋</a></li>
+									<li><a href="#">袜子</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								运动<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>运动</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有运动</a></li>
+									<li><a href="#">跑步</a></li>
+									<li><a href="#">训练</a></li>
+									<li><a href="#">足球</a></li>
+									<li><a href="#">赛车</a></li>
+									<li><a href="#">高尔夫</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								SELECT<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>SELECT</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有SELECT</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								SALE<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>SALE</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有SALE</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="ui-menu-level-01 e-menu-level-01">
+				<h3 class="level01-title">
+					<span>儿童</span> <i class="icon-arrow-right-white"></i>
+				</h3>
+				<!-- level02 -->
+				<div class="ui-menu-level-02 e-menu-level-02">
+					<h3 class="level02-back-title">
+						<i class="icon-arrow-right-white left"></i> <span>儿童</span>
+					</h3>
+					<ul>
+						<h3 class="level02-title"><a class="level02-title-a" href="/kids">所有儿童</a></h3>
+						<li>
+							<h3 class="level02-title">
+								男童<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>男童</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有男童</a></li>
+									<li><a href="#">鞋</a></li>
+									<li><a href="#">服装</a></li>
+									<li><a href="#">配饰</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								女童<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>女童</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有女童</a></li>
+									<li><a href="#">鞋</a></li>
+									<li><a href="#">服装</a></li>
+									<li><a href="#">配饰</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								精选<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>精选</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有精选</a></li>
+									<li><a href="#">TOM &amp; JERRY</a></li>
+									<li><a href="#">Superman™</a></li>
+									<li><a href="#">PUMA Bao</a></li>
+									<li><a href="#">Sesame Street®</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								SALE<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>SALE</span>
+								</h3>
+								<ul>
+									<li><a href="#">所有SALE</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="ui-menu-level-01 e-menu-level-01">
+				<h3 class="level01-title">
+					<span>运动</span> <i class="icon-arrow-right-white"></i>
+				</h3>
+				<!-- level02 -->
+				<div class="ui-menu-level-02 e-menu-level-02">
+					<h3 class="level02-back-title">
+						<i class="icon-arrow-right-white left"></i> <span>运动</span>
+					</h3>
+					<ul>
+						<li>
+							<h3 class="level02-title">
+								运动<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>运动</span>
+								</h3>
+								<ul>
+									<li><a href="#">足球</a></li>
+									<li><a href="#">跑步</a></li>
+									<li><a href="#">训练</a></li>
+									<li><a href="#">高尔夫</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								球队<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>球队</span>
+								</h3>
+								<ul>
+									<li><a href="#">阿森纳</a></li>
+									<li><a href="#">意大利</a></li>
+									<li><a href="#">多特蒙德</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								代言人<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>代言人</span>
+								</h3>
+								<ul>
+									<li><a href="#">博尔特</a></li>
+									<li><a href="#">蕾哈娜</a></li>
+									<li><a href="#">鹿晗</a></li>
+									<li><a href="#">塞尔吉奥·阿奎罗</a></li>
+									<li><a href="#">塞斯克·法布雷加斯</a></li>
+									<li><a href="#">马里奥·巴洛特利</a></li>
+									<li><a href="#">马尔科·罗伊斯</a></li>
+									<li><a href="#">瑞奇·福勒</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="ui-menu-level-01 e-menu-level-01">
+				<h3 class="level01-title">
+					<span>系列</span> <i class="icon-arrow-right-white"></i>
+				</h3>
+				<!-- level02 -->
+				<div class="ui-menu-level-02 e-menu-level-02">
+					<h3 class="level02-back-title">
+						<i class="icon-arrow-right-white left"></i> <span>系列</span>
+					</h3>
+					<ul>
+						<li>
+							<h3 class="level02-title">
+								产品<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>产品</span>
+								</h3>
+								<ul>
+									<li><a href="#">EVOPOWER</a></li>
+									<li><a href="#">EVOSPEED</a></li>
+									<li><a href="#">IGNITE</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li>
+							<h3 class="level02-title">
+								赛车运动<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>赛车运动</span>
+								</h3>
+								<ul>
+									<li><a href="#">FERRARI</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="ui-menu-level-01 e-menu-level-01">
+				<h3 class="level01-title">
+					<span>SELECT</span> <i class="icon-arrow-right-white"></i>
+				</h3>
+				<!-- level02 -->
+				<div class="ui-menu-level-02 e-menu-level-02">
+					<h3 class="level02-back-title">
+						<i class="icon-arrow-right-white left"></i> <span>SELECT</span>
+					</h3>
+					<ul>
+						<h3 class="level02-title"><a class="level02-title-a" href="/select">所有SELECT</a></h3>
+						<li>
+							<h3 class="level02-title">
+								SELECT<i class="icon-arrow-right-white"></i>
+							</h3> <!-- level 03 -->
+							<div class="ui-menu-level-03 e-menu-level-03">
+								<h3 class="level03-back-title">
+									<i class="icon-arrow-right-white left"></i> <span>SELECT</span>
+								</h3>
+								<ul>
+									<li><a href="#">SWASH</a></li>
+									<li><a href="#">MCQ</a></li>
+									<li><a href="#">STAMPD</a></li>
+									<li><a href="#">VASHTIE</a></li>
+									<li><a href="#">CREEPER</a></li>
+									<li><a href="#">ALIFE</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- link for member-->
+		<div id="p1" class="ui-menu-link" style="display: none;">
+			<ul>
+				<li>
+					<p>
+
+					</p>
+				</li>
+				<li class="e-book-mail-btn">
+					<a href="javascript:void(0);">
+						<p>订阅电子邮件</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">品牌动态</a>
+				</li>
+				<li class="online">
+					<a href="javascript:void(0);" class="puma_live800">
+						在线客服
+						<i class="icon-online"></i>
+					</a>
+				</li>
+				<li class="store">
+					<a href="3">
+						实体店查询
+						<i class="icon-loca"></i>
+					</a>
+				</li>
+				<li>
+
+				</li>
+			</ul>
+		</div>
+		<!-- line for no login -->
+		<div id="p2" class="ui-menu-link" style="">
+			<div class="ui-menu-line-store">
+				<a href="#">
+					<span><img src="<?php echo $this->getSkinUrl('images/adress-icon.png');?>" border="0"></span>
+					<p>实体店查询</p>
+				</a>
+			</div>
+			<p class="ui-menu-link-line"></p>
+			<ul>
+				<li>
+					<a href="#">登录</a>
+				</li>
+				<li>
+					<a href="#">注册</a>
+				</li>
+				<li>
+					<a href="#">订单查询</a>
+				</li>
+
+				<li class="online">
+					<a href="javascript:void(0);" class="puma_live800">
+						在线客服
+<!--						<i class="icon-online"></i>-->
+						<span><img src="<?php echo $this->getSkinUrl('images/message-icon.png');?>" border="0"></span>
+					</a>
+				</li>
+			</ul>
+			<p class="ui-menu-link-line"></p>
+		</div>
+	</div>
+</aside>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 
-		jQuery('[class^=menu]').click(function(){
+		/*jQuery('[class^=menu]').click(function(){
 			jQuery('#search-filter').toggleClass('open', false);
 			jQuery('#category-menu').toggleClass('open');
 			jQuery('#search_blocker').css('z-index', '9999');
@@ -214,7 +811,7 @@ if ($_currentCategory) {
 				setTimeout("jQuery('html, body').toggleClass('open', false)", 500);
 				canMove = true;
 			}
-		});
+		});*/
 
 
 		jQuery('.search').click(function(){
@@ -261,8 +858,8 @@ if ($_currentCategory) {
 			iNavAdjust();
 		} else {
 			jQuery('.top-nav-wrapper').toggleClass('iphone', false);
-			jQuery('.content-wrapper').css('width', '100%');
-			jQuery('.top-nav-wrapper').css('width', '100%');
+//			jQuery('.content-wrapper').css('width', '100%');
+//			jQuery('.top-nav-wrapper').css('width', '100%');
 		}
 		window.addEventListener("orientationchange", function() {
 			if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
@@ -292,5 +889,109 @@ if ($_currentCategory) {
 		jQuery('#search_blocker').click()
 		window.location = url;
 	}
+
+
+
+	//menu new js
+	jQuery(function(){
+
+		var windowH=jQuery(window).height();
+		// menu effect
+
+		// 汉堡包菜单点击
+		jQuery('.menu').click(function(){
+//			 alert(9)
+			jQuery('.e-page').addClass('swiper');
+			jQuery('.e-png-mask').show();
+			// 让侧滑栏以及页面的总高度等于屏幕的高度
+			menuHeightControl();
+		});
+		// 侧滑区域外透明背景点击
+		jQuery('.e-png-mask').click(function(){
+			jQuery(this).hide();
+			jQuery('.e-page').removeClass('swiper');
+			// 让页面的高度自适应
+			menuHeightControl();
+		})
+		// 一级菜单点击出现二级菜单
+		jQuery('.e-menu-level-01').find('h3.level01-title').click(function(){
+			jQuery(this).siblings('div.e-menu-level-02').addClass('swiper');
+			menuListH();
+		});
+		// 二级菜单返回一级菜单
+		jQuery('.e-menu-level-02').find('h3.level02-back-title').click(function(){
+			jQuery(this).parent('div.e-menu-level-02').removeClass('swiper');
+			menuListH();
+		});
+		//二级菜单点击出现三级菜单
+		jQuery('.e-menu-level-02').find('h3.level02-title').click(function(){
+			jQuery(this).siblings('.e-menu-level-03').addClass('swiper');
+			menuListH();
+		});
+		//三级菜单返回二级菜单
+		jQuery('.e-menu-level-03').find('h3.level03-back-title').click(function(){
+			jQuery(this).parent('div.e-menu-level-03').removeClass('swiper');
+			menuListH();
+		})
+
+
+
+		// 控制侧滑栏的总高度
+		function menuHeightControl() {
+			if(jQuery('.e-page').hasClass('swiper')) {
+				jQuery('.e-whole-page').css('height',windowH+'px');
+				jQuery('.e-menu-left').css('height',windowH+'px');
+				jQuery('.e-png-mask').css('height',windowH+'px');
+			}
+			else {
+				jQuery('.e-whole-page').css('height','auto');
+			}
+		}
+
+
+		// home category 展开与合起效果
+		function homeCategory() {
+			jQuery('.e-category-level01-title').click(function(){
+				var self=jQuery(this)
+				jQuery(this).parent().siblings().find('.e-category-level01-title').removeClass('active');
+				jQuery(this).parent().siblings().find('.e-category-level02').slideUp(200);
+				jQuery(this).siblings('.e-category-level02').slideToggle(300,function(){
+					var distence = self.offset().top;
+					jQuery('body,html').animate({
+						scrollTop: distence-54
+					}, 300);
+				});
+				jQuery(this).toggleClass('active');
+				jQuery(this).children('i').toggleClass('active');
+			})
+			jQuery('.e-category-level02').find('h3.level02-title').click(function(){
+				jQuery(this).parent().siblings().find('h3.level02-title').removeClass('active');
+				jQuery(this).parent().siblings().find('.e-category-level03').slideUp();
+				jQuery(this).toggleClass('active');
+				jQuery(this).siblings('.e-category-level03').slideToggle(200,function(){});
+			})
+		}
+		homeCategory();
+
+
+		// 控制分类菜单的高度
+		function menuListH(){
+			var menuLevel02H=jQuery('.e-menu-level-02.swiper').outerHeight();
+			var menuLevel03H=jQuery('.e-menu-level-03.swiper').outerHeight();
+			if(jQuery('.e-menu-level-03').hasClass('swiper')){
+				jQuery('.e-menu-list').css('height',menuLevel03H+'px');
+				jQuery('.e-menu-list').css('overflow','hidden');
+			}
+			else if(jQuery('.e-menu-level-02').hasClass('swiper')) {
+				jQuery('.e-menu-list').css('height',menuLevel02H+'px');
+				jQuery('.e-menu-list').css('overflow','hidden');
+			}
+			else {
+				jQuery('.e-menu-list').css('height','auto');
+			}
+		}
+
+
+	});
 </script>
 

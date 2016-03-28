@@ -34,14 +34,52 @@ $sneakerhead_en_store = getStoreByCode('sneakerhead_cn');
 $sneakerhead_en_store_url = $sneakerhead_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
 $sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_en_store_url), '/');
 ?>
-<footer style="margin: 0 !important;">
-    <p style="padding-top:15px;">Copyright© <?php echo date('Y');?> Spalding 中国 版权所有</p>
+<!--<footer style="margin: 0 !important;">
+    <p style="padding-top:15px;">Copyright© <?php /*echo date('Y');*/?> Spalding 中国 版权所有</p>
     <p>备案编号：<a href="http://www.miitbeian.gov.cn/" target="_blank">沪ICP备14046632号-1 </a><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254012265'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254012265%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></p></p>
     <div class="footer-call"><a href="tel:15546229782">点击联系我们:15546229782</a></div>
 </footer>
 
 <div id="alert" title="Alert">
 	<p></p>
+</div>-->
+<div class="footer-16">
+	<div class="footer-top clearfix">
+		<div class="footer-top-box ms-fl">
+			<a href="#">
+				<img src="<?php echo $this->getSkinUrl('images/bottom-login.jpg');?>" border="0">
+			</a>
+		</div>
+		<div class="footer-top-box ms-fr">
+			<a href="#">
+				<img src="<?php echo $this->getSkinUrl('images/bottom-shopLink.jpg');?>" border="0">
+			</a>
+		</div>
+	</div>
+	<div class="footer-infs clearfix">
+		<div class="footer-infs-phone ms-fl">
+			<a href="tel:15546229782"><img src="<?php echo $this->getSkinUrl('images/bottom-phone.jpg');?>" border="0"></a>
+		</div>
+		<div class="footer-infs-wx ms-fl">
+			<img src="<?php echo $this->getSkinUrl('images/bottom-wx.jpg');?>" border="0">
+		</div>
+		<div class="footer-infs-wb ms-fl">
+			<img src="<?php echo $this->getSkinUrl('images/bottom-wb.jpg');?>" border="0">
+		</div>
+	</div>
+	<div class="bottom-last">
+		<div class="bottom-last-box bottom-last-logo">
+			<img src="<?php echo $this->getSkinUrl('images/bottom-logos.jpg');?>" border="0">
+		</div>
+		<div class="bottom-last-box bottom-last-links">
+			<a href="#">订单管理</a>
+			<span>|</span>
+			<a href="#">隐私政策</a>
+			<span>|</span>
+			<a href="#">法律条款</a>
+		</div>
+		<p>© 2016-2017 Russell Brands, LLC All Rights Reserved.</p>
+	</div>
 </div>
 
 <script type="text/javascript">
