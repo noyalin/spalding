@@ -410,6 +410,7 @@ $breadCrumbs = array();
 
 
 			<div class="category-filter clearfix">
+				<h3 class="category-title">篮球</h3>
 				<div class="detail-site-map cat-site-map-arrow">
 					<?php
 						$n = 1;
@@ -438,7 +439,7 @@ $breadCrumbs = array();
 				</div>
 				</div>
 			<?php else: ?>
-				<div class="multi-view-wrapper<?php echo (count($parentCategoryArray) > 3) ? ' sub' : '' ?>">
+				<div class="multi-view-wrapper<?php echo (count($parentCategoryArray) > 3) ? ' sub' : '' ?> clearfix">
 					<?php
 
                         foreach ($_productCollection as $_product):
@@ -477,7 +478,7 @@ $breadCrumbs = array();
 							</div>
 								<h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_productNameStripped ." ". $shortDescription ?></a></h3>
 								<p class="cat-price sku-<?php echo $_product->getSku() ?>">
-								<?php 
+								<?php
             						$msrp = number_format($_product->getMsrp(), '2', '.', ',');
             						$currentPrice = number_format($_product->getPrice(), '2', '.', ',');
             						if($msrp != $currentPrice):
@@ -486,13 +487,13 @@ $breadCrumbs = array();
 									<em></em>
 									￥<?php echo $msrp; ?>
 								</span>
-            					<?php 
+            					<?php
             						endif;
             					?>
-								
-								
+
+								<span class="price-emp">$123.00</span>
 								<span>￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></span>
-								
+
 								</p>
 						</div>
 					<?php endforeach; ?>
@@ -655,7 +656,7 @@ $breadCrumbs = array();
 
 		<?php if (!$isLandingPage): ?>
 		var categoryWrapperTop = jQuery('.category-filter').height() + 80;
-		jQuery('#category-wrapper').css('margin-top', categoryWrapperTop);
+//		jQuery('#category-wrapper').css('margin-top', categoryWrapperTop);
 		<?php endif; ?>
 	}
 

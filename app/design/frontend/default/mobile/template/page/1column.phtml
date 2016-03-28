@@ -23,7 +23,8 @@ if (stristr($currentUrl,'/store/index/tracking')): ?>
 <?php else: ?>
 <body>
 <?php endif; ?>
-<div id="page">
+<div id="page" class="ui-whole-page e-whole-page">
+	<div class="ui-page e-page">
 	<a name="page"></a>
 	<?php echo $this->getChildHtml('after_body_start') ?>
 	<?php echo $this->getChildHtml('header') ?>
@@ -42,6 +43,8 @@ if (stristr($currentUrl,'/store/index/tracking')): ?>
 		<div class="clearfloats"></div>
 		<?php echo $this->getChildHtml('footer') ?>
 	</div>
+	</div>
+
 </div>
 <div id="to-top-btn" style="display:none">
 	<span><a href="#page"></a></span>
