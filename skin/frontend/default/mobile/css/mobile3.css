@@ -1356,7 +1356,7 @@ h3.category-title{
 }
 .detail-site-map .search_total_count,
 .detail-site-map .catalog_total_count {
-	color: #F3AC00;
+	color: #666;
 	position: relative;
 	top: 1px;
 }
