@@ -5264,16 +5264,73 @@ span.checkError{
 	text-align:center;
 }
 
+/*推荐商品*/
+.prosTit{
+	margin:30px 0 0;
+	text-align:center;
+}
+.prosTit h2{
+	font-size:20px;
+	font-weight:bold;
+	color:#000;
+}
+.picScroll-left{overflow:hidden; position:relative;  margin:10px 0px;  color:#000; }
+/*.picScroll-left .hd{ overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px; position:relative; }*/
+.picScroll-left .hd{z-index:999;height:50px;position:absolute;width:100%; top:50%; margin-top:-25px;}
+.picScroll-left .hd .prev{position:absolute; width:30px; height:50px; left:0 ;display:block; background:url(../images/product-left.jpg) left top no-repeat; background-size:100%;  color:#000;}
+.picScroll-left .hd .next{position:absolute; width:30px; height:50px; right:0;display:block; background:url(../images/product-right.jpg) right top no-repeat; background-size:100%; color:#000;}
 
+.picScroll-left .hd ul{ float:right; overflow:hidden; zoom:1; margin-top:10px; zoom:1; }
+.picScroll-left .hd ul li{ float:left;  width:9px; height:9px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background:url("images/icoCircle.gif") 0 -9px no-repeat; }
+.picScroll-left .hd ul li.on{ background-position:0 0; }
+.picScroll-left .bd{ padding:10px 17px;}
+.tempWrap{
+	margin:0 auto;
+}
+.picScroll-left .bd ul{ overflow:hidden; zoom:1; }
+.picScroll-left .bd ul li{ margin:0 8px; float:left; _display:inline; overflow:hidden; text-align:center;  }
+.picScroll-left .bd ul li .pic{ text-align:center; }
+.picScroll-left .bd ul li .pic img{ width:135px;  display:block;  padding:2px; }
+.picScroll-left .bd ul li .pic a:hover img{ border-color:#999;  }
+.picScroll-left .bd ul li .title{ width:135px;line-height:1.4em; overflow:hidden;}
 
+.picScroll-left .bd ul li .title h3{
+	font-size:12px;
+	font-weight:bold;
+	color:#060606;
 
+}
+.picScroll-left .bd ul li .title p span{
+	display:inline-block;
+}
 
+.picScroll-left .bd ul li .title p span.price-emp{
+	font-size:12px;
+	color:#4a4a4a;
+	text-decoration:line-through;
+}
 
-
-
-
-
-
+.picScroll-left .bd ul li .title p span.price-now{
+	font-size:14px;
+	color:#060606;
+}
+/*iphone4 ,5 */
+@media only screen and (min-width: 320px) and (max-width: 374px){
+	.picScroll-left .bd ul li .pic img{ width:120px;}
+	.picScroll-left .bd ul li .title{ width:120px;}
+}
+/*iphoe 6*/
+@media only screen and (min-width: 375px) and (max-width: 413px){
+	.picScroll-left .bd ul li .pic img{ width:152px;}
+	.picScroll-left .bd ul li .title{ width:152px;}
+	.picScroll-left .bd{ padding:10px 17px;}
+}
+/*iphoe plus*/
+@media only screen and (min-width: 414px){
+	.picScroll-left .bd ul li .pic img{ width:170px;}
+	.picScroll-left .bd ul li .title{ width:170px;}
+	.picScroll-left .bd{ padding:10px 17px;}
+}
 
 /*
 ***iphone 4 以下 小屏css
