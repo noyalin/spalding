@@ -80,11 +80,19 @@
             <a href="<?php echo $this->getUrl('tech') ?>" class="plateBoxImgHover"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/plateBoxHover_2.png' ?>" alt="" /></a>
         </div>
         <div class="plateBox plateBox_03">
-            <a href="<?php echo $this->getUrl('news') ?>" target="_blank" style="display:inline-block; width:200px;height:50px; margin-top:15px;"></a>
+            <?php
+            $blogPosts = Mage::getModel('blog/blog')->getCollection()
+                ->setOrder('created_time', 'desc')
+                ->setPageSize(3);
+            ?>
+            <a href="<?php echo $this->getUrl('blog/cat/news') ?>" target="_blank" style="display:inline-block; width:200px;height:50px; margin-top:15px;"></a>
             <ul style="margin-top:10px;">
-                <li><a href="<?php echo $this->getUrl('news20160216') ?>" target="_blank">斯伯丁NBA全明星赛系列篮球亮相多伦多</a></li>
-                <li><a href="<?php echo $this->getUrl('news20160126') ?>" target="_blank">2016猴年新年特别款1号篮球发售</a></li>
-                <li><a href="<?php echo $this->getUrl('news20160121') ?>" target="_blank">NBA关怀行动：NBA球星肖恩-马里昂驾驶斯伯丁篮球巴士爱心送球</a></li>
+                <?php
+                foreach ($blogPosts as $post){
+                    $str = '<li><a href="blog/'.$post->getIdentifier().'" target="_blank">'.$post->getMetaDescription().'</a></li>';
+                    echo $str;
+                }
+                ?>
             </ul>
         </div>
         <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="javascript:void(0)"><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209007.png'?>" alt=""></a></div>
