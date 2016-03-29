@@ -32,13 +32,45 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <div id="my-account-wrapper">
-    <h1>用户中心</h1>
+<!--    <h1>用户中心</h1>-->
 	<div id="my-account-login-wrapper">
 		<div class="my-account-content">
-            <h2>登录信息</h2>
+<!--            <h2>登录信息</h2>-->
 				<form action="<?php echo $this->getUrl('customer/account/loginPost/');?>" method="post" id="login-form">
                     <?php echo $this->getBlockHtml('formkey'); ?>
-				<table id="my-account-login">
+
+
+					<div class="registerTit clearfix">
+						<h3>登录官方网站</h3>
+					</div>
+					<div class="logBox-sub">
+						<div class="registerBox">
+							<label for="email" class="required">
+								<input name="login[username]" placeholder="用户名/E-mail" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" type="email" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+							</label>
+						</div>
+						<div class="registerBox">
+							<label for="pass" class="required">
+								<input name="login[password]" placeholder="密码" type="password" class="marLoginInput input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+							</label>
+						</div>
+						<p class="login-forgot">忘记密码?</p>
+						<div class="loginButton">
+							<button type="submit" class="login-submit" onclick="return validateForm('#login-form')"></button>
+						</div>
+					</div>
+					<div class="logBox-forPasw">
+						<p>请输入您的电子邮箱，您将受到一封包含重置把密码链接的邮件。</p>
+						<div class="registerBox">
+							<label for="forPasw-email" class="required">
+								<input placeholder="电子邮件地址" value="" id="forPasw-email" type="email" />
+							</label>
+						</div>
+						<div class="loginButton">
+							<button type="submit" class="login-forgotPasw"></button>
+						</div>
+					</div>
+				<!--<table id="my-account-login">
 					<tbody>
 						<tr>
 							<td class="infoLabel">
@@ -47,7 +79,7 @@
 						</tr>
 						<tr>
 							<td class="infoInput">
-								<input name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" type="email" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+
 							</td>
 						</tr>
 						<tr>
@@ -57,13 +89,13 @@
 						</tr>
 						<tr>
 							<td class="infoInput">
-								<input name="login[password]" type="password" class="marLoginInput input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+								<input name="login[password]" type="password" class="marLoginInput input-text required-entry validate-password" id="pass" title="<?php /*echo $this->__('Password') */?>" />
 							</td>
 						</tr>
-						<?php echo $this->getChildHtml('form.additional.info'); ?>
+						<?php /*echo $this->getChildHtml('form.additional.info'); */?>
 						<tr>
 							<td align="right" style="padding-top: 10px;">
-                                <a href="<?php echo $this->getForgotPasswordUrl() ?>">忘记密码?</a>
+                                <a href="<?php /*echo $this->getForgotPasswordUrl() */?>">忘记密码?</a>
 							</td>
 						</tr>
 						<tr>
@@ -72,7 +104,7 @@
 							</td>
 						</tr>
 					</tbody>
-				</table>
+				</table>-->
 			</form>
 		</div>
 
@@ -92,13 +124,29 @@
 	<?php if (Mage::helper('checkout')->isContextCheckout()): ?>
 		<input name="context" type="hidden" value="checkout" />
 	<?php endif; ?>
-	<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
-		<div class="accountbenefits">
+	<?php //if ($this->helper('customer')->isRegistrationAllowed()): ?>
+		<!--<div class="accountbenefits">
             <h2>我是新用户!</h2>
-                <button class="button" onclick="location.href='<?php echo $this->getUrl('customer/account/create/'); ?>'">创建我的账户</button>
-		</div>
-	<?php endif; ?>
+                <button class="button" onclick="location.href='<?php /*echo $this->getUrl('customer/account/create/'); */?>'">创建我的账户</button>
+		</div>-->
+	<?php //endif; ?>
 
 
 	</div>
 </div>
+<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
+<div class="accountbenefits">
+	<div class="accountBenefitsBox">
+		<h2>创建账户</h2>
+		<p>只需要一个账号，便可安全快捷支付定单，随时跟踪订单状态即时收到打折优惠及新品发布信息。</p>
+		<button class="button" onclick="location.href='<?php echo $this->getUrl('customer/account/create/'); ?>'"></button>
+	</div>
+</div>
+<?php endif; ?>
+<script>
+	jQuery(function () {
+		jQuery(".login-forgot").click(function () {
+			jQuery(".logBox-forPasw").slideToggle();
+		});
+	});
+</script>

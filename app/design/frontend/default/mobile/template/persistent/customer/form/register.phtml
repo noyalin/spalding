@@ -34,7 +34,7 @@
 
 <div id="my-account-wrapper">
 <!--	<h1>Create an Account</h1>-->
-    <h1>创建新用户</h1>
+<!--    <h1>创建新用户</h1>-->
 	<div id="my-account-login-wrapper">
 		<div class="my-account-content" style="border-bottom:none !important">
 
@@ -42,20 +42,53 @@
 				<div class="logInInfoBox">
 					<input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
 					<input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
-<!--					<h2>Personal Information</h2>-->
-                    <h2>个人信息</h2>
-					<table>
+
+                    <div class="registerTit clearfix">
+						<h2 class="registerTitH2 ms-fl">注册信息</h2>
+						<p class="registerTitSm ms-fr">请填写以下信息,*为必填</p>
+					</div>
+					<!--<table>
 						<tbody>
-							<?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+							<?php /*echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() */?>
 							<tr>
-<!--								<td class="infoLabel"><label for="email_address" class="required"><span class="rStar">*</span>Email Address</label></td>-->
+								<td class="infoLabel"><label for="email_address" class="required"><span class="rStar">*</span>Email Address</label></td>
                                 <td class="infoLabel"><label for="email_address" class="required"><span class="rStar">*</span>电子邮箱</label></td>
 							</tr>
 							<tr>
-								<td class="infoInput"><input type="email" name="email" id="email_address" value="<?php echo (strlen($this->getRequest()->getParam('email'))) ? $this->getRequest()->getParam('email') : $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" /></td>
+								<td class="infoInput"><input type="email" name="email" id="email_address" value="<?php /*echo (strlen($this->getRequest()->getParam('email'))) ? $this->getRequest()->getParam('email') : $this->escapeHtml($this->getFormData()->getEmail()) */?>" title="<?php /*echo $this->__('Email Address') */?>" class="input-text validate-email required-entry" /></td>
 							</tr>
 						</tbody>
-					</table>
+					</table>-->
+					<div class="registerBox">
+						<label for="email_address" class="required">
+							<input type="email" name="email" id="email_address" placeholder="*电子邮箱" value="<?php echo (strlen($this->getRequest()->getParam('email'))) ? $this->getRequest()->getParam('email') : $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+						</label>
+					</div>
+					<div class="registerBox">
+						<label for="cus_name">
+							<input type="text" name="name" id="cus_name" placeholder="*用户名" value="" class="" />
+						</label>
+					</div>
+					<div class="registerBox">
+						<label for="password">
+							<input autocomplete="off" type="password" name="password" placeholder="*密码" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+						</label>
+					</div>
+					<div class="registerBox">
+						<label for="confirmation">
+							<input autocomplete="off" type="password" placeholder="*确认密码" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" />
+						</label>
+					</div>
+					<div class="registerBox">
+						<label for="true_name">
+							<input type="text" name="truename" id="true_name" placeholder="*真实姓名" value="" />
+						</label>
+					</div>
+					<div class="registerBox">
+						<label for="mobile_number">
+							<input type="text" name="phone" id="mobile_number" placeholder="*手机号码" value="" />
+						</label>
+					</div>
 				</div>
 
 
@@ -143,45 +176,70 @@
 					<div class="divider"></div>
 				<?php endif; ?>
 
-				<div class="logInInfoBox">
-<!--					<h2>Login Information</h2>-->
+				<div class="registerOther">
+					<div class="registerOther_box clearfix">
+						<p>出生日期</p>
+						<select name="date-year" id="date-year">
+							<option value="">年</option>
+						</select>
+						<select name="date-mon" id="date-mon">
+							<option value="">月</option>
+						</select>
+						<select name="date-day" id="date-day">
+							<option value="">日</option>
+						</select>
+					</div>
+
+					<div class="registerOther_box clearfix">
+						<p>出生日期</p>
+						<label><input type="radio" name="cus-sex" id="">女</label>
+						<label><input type="radio" name="cus-sex" id="" checked>男</label>
+					</div>
+				</div>
+				<div class="registerRules clearfix">
+					<label>
+						<span class="rulChe"><input type="checkbox" name="registerRule" id=""></span>
+						<span class="rulTex">我接受注册用户协议并承认点击（注册）按钮即表示我已阅读并接受注册用户协议</span>
+					</label>
+				</div>
+				<!--<div class="logInInfoBox">
                     <h2>登录信息</h2>
 					<table>
 						<tbody>
 							<tr>
-<!--								<td class="infoLabel"><label for="password" class="required"><span class="rStar">*</span>Password</label></td>-->
-                                <td class="infoLabel"><label for="password" class="required"><span class="rStar">*</span>密码</label></td>
+								<td class="infoLabel"><label for="password" class="required"><span class="rStar">*</span>密码</label></td>
 							</tr>
 							<tr>
-								<td class="infoInput"><input autocomplete="off" type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" /></td>
+								<td class="infoInput"><input autocomplete="off" type="password" name="password" id="password" title="<?php /*echo $this->__('Password') */?>" class="input-text required-entry validate-password" /></td>
 							</tr>
 							<tr>
-<!--								<td class="infoLabel"><label for="confirmation" class="required"><span class="rStar">*</span>Confirm Password</label></td>-->
-                                <td class="infoLabel"><label for="confirmation" class="required"><span class="rStar">*</span>确认密码</label></td>
+								<td class="infoLabel"><label for="confirmation" class="required"><span class="rStar">*</span>确认密码</label></td>
 							</tr>
 							<tr>
-								<td class="infoInput"><input autocomplete="off" type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" /></td>
+								<td class="infoInput"><input autocomplete="off" type="password" name="confirmation" title="<?php /*echo $this->__('Confirm Password') */?>" id="confirmation" class="input-text required-entry validate-cpassword" /></td>
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				</div>-->
 
-				<div class="logInInfoBox">
+				<!--<div class="logInInfoBox">
 					<table class="logInInfoBtn">
 						<tr>
 							<td class="submitBtn register">
-<!--								<button type="submit" class="button" title="Submit" onClick="return validateForm('#form-validate')">Save Account</button>-->
-                                <button type="submit" class="button" title="Submit" onClick="return validateForm('#form-validate')">注册用户</button>
+								<button type="submit" class="button" title="Submit" onClick="return validateForm('#form-validate')">Save Account</button>
+
 							</td>
 						</tr>
 					</table>
 					<div class="clearfloats"></div>
+				</div>-->
+				<div class="registerSubmit">
+					<button type="submit" class="button" title="Submit" onClick="return validateForm('#form-validate')"></button>
 				</div>
 
-				<div class="logInInfoBox">
-<!--					<p class="required">* Required Fields</p>-->
+				<!--<div class="logInInfoBox">
                     <p class="required">* 为必填项</p>
-				</div>
+				</div>-->
 			</form>
 		</div>
 	</div>
