@@ -410,7 +410,7 @@ $breadCrumbs = array();
 
 
 			<div class="category-filter clearfix">
-				<h3 class="category-title">篮球</h3>
+				<h3 class="category-title"><?php echo Mage::getModel('catalog/category')->load($_category->getId())->getName() ?></h3>
 				<div class="detail-site-map cat-site-map-arrow">
 					<?php
 						$n = 1;
