@@ -5341,6 +5341,21 @@ span.checkError{
 	font-size:14px;
 	color:#060606;
 }
+
+
+ul.messages{
+	z-index: 9999;
+	color: #fff;
+	padding:15px 0;
+	font-size:14px;
+	line-height:1.5em;
+	text-align:center;
+	position: fixed;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	background: rgba(0,0,0,.8);
+}
 /*iphone4 ,5 */
 @media only screen and (min-width: 320px) and (max-width: 374px){
 	.picScroll-left .bd ul li .pic img{ width:120px;}
