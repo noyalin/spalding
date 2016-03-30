@@ -1307,6 +1307,9 @@ p.login-forgot{
 	text-align:right;
 	margin-bottom:15px;
 }
+p.login-forgot a{
+	color:#333;
+}
 .logBox-forPasw{
 	margin-top:15px;
 	padding-top:15px;
