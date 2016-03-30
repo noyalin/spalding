@@ -53,22 +53,10 @@
 								<input name="login[password]" placeholder="密码" type="password" class="marLoginInput input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
 							</label>
 						</div>
-						<p class="login-forgot">忘记密码?</p>
-						<div class="loginButton">
-                            <a href="<?php echo $this->getForgotPasswordUrl() ?>">忘记密码?</a>
-						</div>
+						<p class="login-forgot"><a href="<?php echo $this->getForgotPasswordUrl() ?>">忘记密码?</a>?</p>
+
 					</div>
-					<div class="logBox-forPasw">
-						<p>请输入您的电子邮箱，您将受到一封包含重置把密码链接的邮件。</p>
-						<div class="registerBox">
-							<label for="forPasw-email" class="required">
-								<input placeholder="电子邮件地址" value="" id="forPasw-email" type="email" />
-							</label>
-						</div>
-						<div class="loginButton">
-							<button type="submit" class="login-forgotPasw"></button>
-						</div>
-					</div>
+
 				<!--<table id="my-account-login">
 					<tbody>
 						<tr>

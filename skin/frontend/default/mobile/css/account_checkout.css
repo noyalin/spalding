@@ -1310,8 +1310,8 @@ p.login-forgot{
 .logBox-forPasw{
 	margin-top:15px;
 	padding-top:15px;
-	border-top:1px solid #ddd;
-	display:none;
+	/*border-top:1px solid #ddd;*/
+	/*display:none;*/
 }
 .logBox-forPasw p{
 	color:#333;
