@@ -153,35 +153,16 @@ if ($_currentCategory) {
 		<!-- category  -->
 		<div class="ui-menu-list e-menu-list">
             <?php
-                $currentCategory = Mage::Registry('current_category');
-                $categoryParent = null;
-                if ($currentCategory):
-                    if($currentCategory->getLevel() == 3):
-                        $categoryParent = $currentCategory->getParentCategory();
-                    elseif($currentCategory->getLevel() == 2):
-                        $categoryParent = $currentCategory;
-                    endif;
-                endif;
                 $_helper = Mage::helper('catalog/category');
                 $_categories = $_helper->getStoreCategories();
-                if (count($_categories) > 0):
-                $width = intval(990 / (count($_categories) + 1));
-                foreach($_categories as $_category):
-                $select = false;
-                $categoryUrl = $_helper->getCategoryUrl($_category);
-                $_categoryTmp = Mage::getModel('catalog/category')->load($_category->getId());
-                $subcategoryTmp = $_categoryTmp->getChildrenCategories();
-                if (count($subcategoryTmp) > 0):
-                    foreach ($subcategoryTmp as $c):
-                        //$categoryUrl = $_helper->getCategoryUrl($c);
+			    foreach ($_categories as $_category){
+                    if($_category->getUrlKey() == 'products'){
+                        $_firstLevelCategorise = Mage::getModel('catalog/category')->load($_category->getId())->getChildrenCategories();
                         break;
-                    endforeach;
-                endif;
-                if($categoryParent):
-                    if($categoryParent->getId() == $_category->getId()):
-                        $select = true;
-                    endif;
-                endif;
+                    }
+                }
+                if (count($_firstLevelCategorise) > 0):
+                	foreach($_firstLevelCategorise as $_category):
             ?>
 			<div class="ui-menu-level-01 e-menu-level-01">
 				<h3 class="level01-title">
