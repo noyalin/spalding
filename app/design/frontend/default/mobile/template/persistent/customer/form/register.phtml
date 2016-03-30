@@ -45,26 +45,14 @@
 						<h2 class="registerTitH2 ms-fl">注册信息</h2>
 						<p class="registerTitSm ms-fr">请填写以下信息,*为必填</p>
 					</div>
-					<!--<table>
-						<tbody>
-							<?php /*echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() */?>
-							<tr>
-								<td class="infoLabel"><label for="email_address" class="required"><span class="rStar">*</span>Email Address</label></td>
-                                <td class="infoLabel"><label for="email_address" class="required"><span class="rStar">*</span>电子邮箱</label></td>
-							</tr>
-							<tr>
-								<td class="infoInput"><input type="email" name="email" id="email_address" value="<?php /*echo (strlen($this->getRequest()->getParam('email'))) ? $this->getRequest()->getParam('email') : $this->escapeHtml($this->getFormData()->getEmail()) */?>" title="<?php /*echo $this->__('Email Address') */?>" class="input-text validate-email required-entry" /></td>
-							</tr>
-						</tbody>
-					</table>-->
 					<div class="registerBox">
 						<label for="email_address" class="required">
 							<input type="email" name="email" id="email_address" placeholder="*电子邮箱" value="<?php echo (strlen($this->getRequest()->getParam('email'))) ? $this->getRequest()->getParam('email') : $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
 						</label>
 					</div>
 					<div class="registerBox">
-						<label for="cus_name" class="required">
-							<input type="text" name="name" id="cus_name" placeholder="*用户名" value="" class="" />
+						<label for="name" class="required">
+							<input type="text" name="firstname" id="name" placeholder="*用户名" value="" class="" />
 						</label>
 					</div>
 					<div class="registerBox">
