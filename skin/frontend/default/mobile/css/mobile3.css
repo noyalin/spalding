@@ -3645,8 +3645,7 @@ h3 a.headerToggle {
 .logInInfoBox table{
 	width:100%;
 	border-collapse:collapse;
-	margin:10px 0 0 0;
-	margin: 30px 0 0;
+	margin: 10px 0 0;
 }
 
 /* log in info page */
@@ -3663,7 +3662,7 @@ h3 a.headerToggle {
 	text-align:left;
 }
 .logInInfoBox table td.infoLabel{
-	color:#FFF;
+	color:#222;
 	font-size:12px;
 	padding:10px 0 4px 0;
 	font-weight:bold;
@@ -3673,7 +3672,7 @@ h3 a.headerToggle {
 	border-radius:5px;
 	background:rgba(255,255,255,1);
 	overflow:hidden;
-	padding:10px 0;
+	/*padding:10px 0;*/
 	text-align:center;
 }
 
@@ -3685,6 +3684,8 @@ h3 a.headerToggle {
 	outline:none;
 	border:none;
 	width:95%;
+	border:1px solid #ddd;
+	padding:8px 0;
 }
 
 .logInInfoBox select {

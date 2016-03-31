@@ -26,19 +26,19 @@
 ?>
 <div id="my-account-all">
 <!--	<h1 id="my-account-info">Edit Account Information</h1>-->
-	<h1 id="my-account-info">编辑账户信息</h1>
+<!--	<h1 id="my-account-info">编辑账户信息</h1>-->
 
-	<div class="my-account-top clearfix">
+	<!--<div class="my-account-top clearfix">
 		<div class="my-account-welcome">
 			<span>
-				<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-				<?php echo '欢迎, ' . $customerName ?>
+				<?php /*$customerName = Mage::helper('customer')->getCustomerName() */?>
+				<?php /*echo '欢迎, ' . $customerName */?>
 			</span>
 		</div>
 		<div class="my-account-logout">
-			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">退出</a>
+			<a class="logout-link" href="<?php /*echo $this->getUrl('customer/account/logout', array('_secure'=>true)) */?>">退出</a>
 		</div>
-	</div>
+	</div>-->
 
 	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
@@ -49,29 +49,101 @@
 			<div class="logInInfoBox">
 				<?php echo $this->getBlockHtml('formkey') ?>
 <!--				<h2>Login Information</h2>-->
-				<h2>登录信息</h2>
-				<table>
+<!--				<h2>登录信息</h2>-->
+				<div class="customTit clearfix">
+					<h2 class="ms-fl">个人信息中心</h2>
+					<p class="ms-fr">请填写以下信息,*为必填</p>
+				</div>
+				<div class="registerBox">
+					<h4>*电子邮箱</h4>
+					<label for="email_address" class="required">
+						<input type="email" name="email" id="email_address" placeholder="电子邮箱" />
+					</label>
+				</div>
+				<div class="registerBox">
+					<h4>*用户名</h4>
+					<label for="name" class="required">
+						<input type="text" name="firstname" id="name" placeholder="用户名" value="" class="" />
+					</label>
+				</div>
+
+				<div class="registerBox">
+					<h4>*真实姓名</h4>
+					<label for="true_name" class="required">
+						<input type="text" name="truename" id="true_name" placeholder="真实姓名" value="" />
+					</label>
+				</div>
+				<div class="registerBox">
+					<h4>*手机号码</h4>
+					<label for="mobile_number" class="required">
+						<input type="text" name="phone" id="mobile_number" placeholder="手机号码" value="" />
+					</label>
+				</div>
+				<div class="registerOther" style="border-top:none; padding-top:0; margin-top:0">
+					<div class="registerOther_box clearfix">
+						<p>出生日期</p>
+						<select name="date-year" id="date-year">
+							<?php
+							$currentYear = date('Y');
+							for($i = 1950; $i <= $currentYear; $i++):
+								?>
+								<option value="<?php echo $i;?>"><?php echo $i;?></option>
+								<?php
+							endfor;
+							?>
+						</select>
+						<select name="date-mon" id="date-mon">
+							<?php
+							for($i = 1; $i <= 12; $i++):
+								?>
+								<option value="<?php echo $i;?>"><?php echo $i;?></option>
+								<?php
+							endfor;
+							?>
+						</select>
+						<select name="date-day" id="date-day">
+							<?php
+							for($i = 1; $i <= 31; $i++):
+								?>
+								<option value="<?php echo $i;?>"><?php echo $i;?></option>
+								<?php
+							endfor;
+							?>
+						</select>
+					</div>
+
+					<div class="registerOther_box clearfix">
+						<p>性别</p>
+						<label><input type="radio" name="cus-sex" id="">女</label>
+						<label><input type="radio" name="cus-sex" id="" checked>男</label>
+					</div>
+				</div>
+				<div class="registerBox" style="border-top:1px solid #ddd; padding-top:10px; margin-top:10px;">
+					<label for="change_password">修改密码</label>
+					<input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="Change Password"<?php if ($this->getCustomer()->getChangePassword() == 1): ?> checked="checked"<?php endif; ?> class="checkbox" />
+				</div>
+				<!--<table>
 					<tbody>
-						<?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() ?>
+						<?php /*echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() */?>
 					<tr>
 						<td class="infoLabel" colspan="2"><label for="email" class="required"><span class="rStar">*</span>Email 地址</label></td>
 					</tr>
 					<tr>
-						<td class="infoInput" colspan="2"><input type="email" name="email" id="email" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="Email Address" class="input-text required-entry validate-email"></td>
+						<td class="infoInput" colspan="2"><input type="email" name="email" id="email" value="<?php /*echo $this->htmlEscape($this->getCustomer()->getEmail()) */?>" title="Email Address" class="input-text required-entry validate-email"></td>
 					</tr>
 					<tr>
-<!--						<td class="infoLabel"><label for="change_password">Change Password</label></td>-->
+						<td class="infoLabel"><label for="change_password">Change Password</label></td>
 						<td class="infoLabel"><label for="change_password">是否更改密码</label></td>
 						<td class="infoCheck">
-							<input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="Change Password"<?php if ($this->getCustomer()->getChangePassword() == 1): ?> checked="checked"<?php endif; ?> class="checkbox" />
+							<input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="Change Password"<?php /*if ($this->getCustomer()->getChangePassword() == 1): */?> checked="checked"<?php /*endif; */?> class="checkbox" />
 						</td>
 					</tr>
 					</tbody>
-				</table>
+				</table>-->
 			</div>
 			<div class="logInInfoBox change-password" style="display:none;">
 <!--				<h2>Change Password</h2>-->
-				<h2>更改密码</h2>
+<!--				<h2>更改密码</h2>-->
 				<table>
 					<tbody>
 						<tr>
@@ -95,11 +167,11 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="logInInfoBox">
+			<!--<div class="logInInfoBox">
 				<table class="logInInfoBtn">
 					<tbody><tr>
 							<td class="backBtn">
-								<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account/')) ?>" class="backBtn">返回用户中心</a>
+								<a href="<?php /*echo $this->escapeUrl($this->getUrl('customer/account/')) */?>" class="backBtn">返回用户中心</a>
 							</td>
 							<td class="submitBtn">
 								<button type="submit" class="button" title="Save" onClick="return validateForm('#account-edit-form')">保存修改</button>
@@ -107,10 +179,11 @@
 						</tr>
 					</tbody></table>
 				<div class="clearfloats"></div>
+			</div>-->
+			<div class="cusEditSubmit">
+				<button type="submit" class="button" title="Save" onClick="return validateForm('#account-edit-form')"></button>
 			</div>
-			<div class="logInInfoBox clearfix">
-				<p class="required">* 必填项</p>
-			</div>
+			<p class="backCus"><a href="<?php /*echo $this->escapeUrl($this->getUrl('customer/account/')) */?>" class="backBtn">返回用户中心</a></p>
 		</form>
 	</div>
     <script type="text/javascript">
