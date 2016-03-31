@@ -37,37 +37,8 @@
 <body style="background:#000; margin-top:-15px;">
 <!-- 顶部 header s -->
 <?php echo $this->getChildHtml('header') ?>
-<div class="spalding_index weiduduan">
-    <div class="spalding_index_slider kuzhan">
-        <ul class="fix_flash">
-            
-            <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex12.png'?>">
-                <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex12.png' ?>) center top no-repeat"
-                   href="<?php echo $this->getUrl('65-621-65621y.html')  ?>" target="_blank"></a>
-            </li>
-            <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex10.png'?>">
-                <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex10.png' ?>) center top no-repeat"
-                   href="<?php echo $this->getUrl('custom-made.html')  ?>" target="_blank"></a>
-            </li>
-            <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex06.png'?>">
-                <a style="background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex06.png' ?>) center top no-repeat"
-                   href="#" ></a>
-            </li>
-            <li imglink="<?php  echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex11.png' ?>">
-                <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex11.png' ?>) center top no-repeat"
-                   href="<?php echo $this->getUrl('news20160107')  ?>" target="_blank"></a>
-            </li>
-            <li imglink="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex03.png'?>">
-                <a style="cursor:pointer;background:url(<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/banIndex03.png' ?>) center top no-repeat"
-                   href="<?php echo $this->getUrl('spalding-nba.html')  ?>" target="_blank"></a>
-            </li>
-        </ul>
-    </div>
-    <div class="kuzhan_center">
-        <div class="kuzhan_flash_s"></div>
-    </div>
 
-</div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_banner')->toHtml() ?>
 
 <div class="spalding_index_plate" style="height:300px; background:url(<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/spalding_index_plate.png' ?>) left bottom no-repeat; margin-bottom:0;z-index: 0">
     <div class="spalding_plateWrap clearfix" style="padding-top:50px;">

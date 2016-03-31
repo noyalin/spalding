@@ -51,38 +51,9 @@
 
 
 	<div class="home-wrapper">
-		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_page_sections')->toHtml(); ?>
 
-		<?php
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_banner')->toHtml() ?>
 
-		$_category = Mage::getModel('catalog/category')->load(573);
-		$_productCollection = Mage::getResourceModel('catalog/product_collection')
-			->addCategoryFilter($_category)
-			->addAttributeToSelect('*')
-			->addAttributeToFilter('status', 1)
-			->addAttributeToFilter('visibility', 4);
-		$_helper = $this->helper('catalog/output');
-		?>
-
-		<!-- 包邮 -->
-		<div class="by">
-			<span><img src="<?php echo $this->getSkinUrl('images/by.png');?>" border="0"></span>
-			<span>全场满228名邮费</span>
-		</div>
-        <div class="checktf" style="-webkit-transform:translate3d(0,0,0);">
-			<div id="banner_box" class="box_swipe">
-				<ul>
-<!--					<li><a href="--><?php //echo Mage::getUrl('65-621-65621y.html'); ?><!--"><img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?><!--images/banIndex01.jpg"></a></li>-->
-					<li><a href="<?php echo Mage::getUrl('65-621-65621y.html'); ?>"><img src="<?php echo $this->getSkinUrl('images/banana-2016-1.jpg');?>" border="0"></a></li>
-					<li><a href="<?php echo Mage::getUrl('65-621-65621y.html'); ?>"><img src="<?php echo $this->getSkinUrl('images/banana-2016-2.jpg');?>" border="0"></a></li>
-<!--					<li><a href="--><?php //echo Mage::getUrl('store/index/confirm'); ?><!--"><img src="--><?php //echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); ?><!--images/verify.jpg"></a></li>-->
-				</ul>
-				<ol>
-					<li class="on"></li>
-					<li class=""></li>
-				</ol>
-			</div>
-        </div>
 	<!-- main category entrance banner -->
 	<!--<section class="banner-main-wrapper clearfix" style>
 		<div class="banner-sub">
