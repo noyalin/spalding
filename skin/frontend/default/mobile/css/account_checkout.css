@@ -1362,7 +1362,7 @@ p.login-forgot a{
 }
 
 .customTit{
-	margin:55px 0 30px;
+	margin:55px 0 20px;
 	padding-bottom:10px;
 	border-bottom:1px solid #ddd;
 }
@@ -1391,6 +1391,59 @@ p.backCus{
 }
 p.backCus a{
 	color:#333;
+}
+
+.accountPage{
+	margin:55px 0 20px;
+	position:relative;
+	font-size:14px;
+	line-height: 14px;
+	color:#333;
+	min-height:320px;
+}
+.accountPage a{
+	color:#333;
+}
+.accountTit{
+	padding:15px 0;
+	border-bottom:1px solid #ddd;
+}
+.accountTit span.accountBox-go{
+	width:5%;
+	margin-right:5%;
+}
+.accountTit span.accountTit-name{
+	width:90%;
+	text-align: center;
+}
+.accountTit span img{
+	height:14px;
+}
+.accountBox{
+	width:100%;
+	position:relative;
+	padding:15px 0;
+	border-bottom:1px solid #ddd;
+	background:#f7f7f7;
+}
+.accountBox span{
+	display:block;
+	float:left;
+	height:15px;
+}
+.accountBox span.accountBox-icon{
+	width:10%;
+	margin-left:5%
+}
+.accountBox span.accountBox-name{
+	width:75%;
+}
+.accountBox span.accountBox-go{
+	width:5%;
+	margin-right:5%;
+}
+.accountBox span img{
+	height:14px;
 }
 @media screen and (min-width:550px){
 		.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset {

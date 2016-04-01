@@ -25,22 +25,61 @@
  */
 ?>
 <div class="dashboard">
-    <div class="page-title">
-        <h1><?php echo $this->__('My Dashboard') ?></h1>
+    <!--<div class="page-title">
+        <h1><?php /*echo $this->__('My Dashboard') */?></h1>
     </div>
-    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-    <?php echo $this->getChildHtml('hello') ?>
+    <?php /*echo $this->getMessagesBlock()->getGroupedHtml() */?>
+    --><?php /*echo $this->getChildHtml('hello') */?>
 
-    <?php //echo $this->getChildHtml('top') ?><!--  �����б�-->
-    <div class="box-account box-info">
+    <?php //echo $this->getChildHtml('top') ?><!--  �����б�-->
+    <!--<div class="box-account box-info">
         <div class="box-head">
-            <h2><?php echo $this->__('Account Information') ?></h2>
+            <h2><?php /*echo $this->__('Account Information') */?></h2>
         </div>
         <?php /* Extensions placeholder */ ?>
-        <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
-        <?php echo $this->getChildHtml('info') ?>
-        <?php echo $this->getChildHtml('address') ?>
+        <?php /*echo $this->getChildHtml('customer.account.dashboard.extra') */?>
+        <?php /*echo $this->getChildHtml('info') */?>
+        <?php /*echo $this->getChildHtml('address') */?>
+    </div>-->
+    <?php //echo $this->getChildHtml('info1') ?>
+    <?php //echo $this->getChildHtml('info2') ?>
+
+
+
+
+    <!-- new design -->
+    <div class="accountPage">
+        <div class="accountTit clearfix">
+            <span class="accountTit-name ms-fl">账户</span>
+            <span class="accountBox-go ms-fl"><img src="<?php echo $this->getSkinUrl('images/account-icon-close.png');?>" border="0"></span>
+        </div>
+        <a href="#">
+            <div class="accountBox clearfix">
+                <span class="accountBox-icon"><img src="<?php echo $this->getSkinUrl('images/account-icon-1.png');?>" border="0"></span>
+                <span class="accountBox-name">个人中心设置</span>
+                <span class="accountBox-go"><img src="<?php echo $this->getSkinUrl('images/account-icon-go.png');?>" border="0"></span>
+            </div>
+        </a>
+        <a href="#">
+            <div class="accountBox clearfix">
+                <span class="accountBox-icon"><img src="<?php echo $this->getSkinUrl('images/account-icon-2.png');?>" border="0"></span>
+                <span class="accountBox-name">收货地址</span>
+                <span class="accountBox-go"><img src="<?php echo $this->getSkinUrl('images/account-icon-go.png');?>" border="0"></span>
+            </div>
+        </a>
+        <a href="#">
+            <div class="accountBox clearfix">
+                <span class="accountBox-icon"><img src="<?php echo $this->getSkinUrl('images/account-icon-3.png');?>" border="0"></span>
+                <span class="accountBox-name">我的订单</span>
+                <span class="accountBox-go"><img src="<?php echo $this->getSkinUrl('images/account-icon-go.png');?>" border="0"></span>
+            </div>
+        </a>
+        <a href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">
+            <div class="accountBox clearfix">
+                <span class="accountBox-icon"></span>
+                <span class="accountBox-name">注销</span>
+                <span class="accountBox-go"><img src="<?php echo $this->getSkinUrl('images/account-icon-go.png');?>" border="0"></span>
+            </div>
+        </a>
     </div>
-    <?php echo $this->getChildHtml('info1') ?>
-    <?php echo $this->getChildHtml('info2') ?>
 </div>

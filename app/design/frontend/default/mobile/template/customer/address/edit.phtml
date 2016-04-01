@@ -32,27 +32,33 @@
  */
 ?>
 <div id="my-account-all">
-	<div class="my-account-top clearfix">
+	<!--<div class="my-account-top clearfix">
 		<div class="my-account-welcome">
 			<span>
-				<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-				<?php echo 'Welcome, ' . $customerName ?>
+				<?php /*$customerName = Mage::helper('customer')->getCustomerName() */?>
+				<?php /*echo 'Welcome, ' . $customerName */?>
 			</span>
 		</div>
 		<div class="my-account-logout">
-			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">Log Out</a>
+			<a class="logout-link" href="<?php /*echo $this->getUrl('customer/account/logout', array('_secure'=>true)) */?>">Log Out</a>
 		</div>
-	</div>
+	</div>-->
 
 	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
 
-<h1 id="my-account-address">Edit Address</h1>
+<!--<h1 id="my-account-address">Edit Address</h1>-->
+
 <div id="my-account-address-content">
 <form action="<?php echo $this->getSaveUrl() ?>" method="post" id="address-form" enctype="multipart/form-data">
+
     <div class="logInInfoBox">
-        <h2 class="legend"><?php echo $this->__('Contact Information') ?></h2>
+		<div class="customTit clearfix">
+			<h2 class="ms-fl">编辑收货地址</h2>
+			<p class="ms-fr">请填写以下信息,*为必填</p>
+		</div>
+<!--        <h2 class="legend">--><?php //echo $this->__('Contact Information') ?><!--</h2>-->
         <?php echo $this->getBlockHtml('formkey')?>
         <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
         <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
@@ -81,7 +87,7 @@
 	</table>
     </div>
     <div class="logInInfoBox">
-	<h2><?php echo $this->__('Address') ?></h2>
+<!--	<h2>--><?php //echo $this->__('Address') ?><!--</h2>-->
 	<table>
 	    <tbody>
 		<?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
@@ -126,7 +132,8 @@
 		    <td class="infoLabel"><label for="zip" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
 		</tr>
 		<tr>
-		    <td class="infoInput"><input type="number" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text required-entry validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
+<!--		    <td class="infoInput"><input type="number" name="postcode" value="--><?php //echo $this->escapeHtml($this->getAddress()->getPostcode()) ?><!--" title="--><?php //echo $this->__('Zip/Postal Code') ?><!--" id="zip" class="input-text required-entry validate-zip-international --><?php //echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?><!--" /></td>-->
+				<td class="infoInput"><input type="text" name="" id=""></td>
 		</tr>
 		<tr>
 		    <td class="infoLabel"><label for="country" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
@@ -171,22 +178,28 @@
 	    </tbody>
 	</table>
     </div>
-    <div class="logInInfoBox">
+    <!--<div class="logInInfoBox">
 	<table class="logInInfoBtn">
 	    <tr>
 		<td class="backBtn">
-		    <a href="<?php echo $this->escapeUrl($this->getBackUrl('customer/account')) ?>" class="backBtn">Back To Address Book</a>
+		    <a href="<?php /*echo $this->escapeUrl($this->getBackUrl('customer/account')) */?>" class="backBtn">Back To Address Book</a>
 		</td>
 		<td class="submitBtn address">
-		    <button type="submit" class="button" onClick="jQuery('#region').toggleClass('required-entry', false); return validateForm('#address-form')" title="<?php echo $this->__('Save Address') ?>"><?php echo $this->__('Save Address') ?></button>
+		    <button type="submit" class="button" onClick="jQuery('#region').toggleClass('required-entry', false); return validateForm('#address-form')" title="<?php /*echo $this->__('Save Address') */?>"><?php /*echo $this->__('Save Address') */?></button>
 		</td>
 	    </tr>
 	</table>
 	<div class="clearfloats"></div>
-    </div>
-    <div class="logInInfoBox">
-	<p class="required"><?php echo $this->__('* Required Fields') ?></p>
-    </div>
+    </div>-->
+
+	<div class="cusEditSubmit">
+		<button type="submit" class="button" title="Save" onClick="return validateForm('#address-form')"></button>
+	</div>
+	<p class="backCus">
+<!--		<a href="--><?php //echo $this->escapeUrl($this->getUrl('customer/account/')) ?><!--" class="backBtn">返回用户中心</a>-->
+		<a href="<?php echo $this->escapeUrl($this->getBackUrl('customer/account')) ?>" class="backBtn">返回地址薄</a>
+	</p>
+
 </form>
 </div>
 </div>
