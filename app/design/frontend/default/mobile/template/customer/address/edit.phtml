@@ -132,8 +132,7 @@
 		    <td class="infoLabel"><label for="zip" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
 		</tr>
 		<tr>
-<!--		    <td class="infoInput"><input type="number" name="postcode" value="--><?php //echo $this->escapeHtml($this->getAddress()->getPostcode()) ?><!--" title="--><?php //echo $this->__('Zip/Postal Code') ?><!--" id="zip" class="input-text required-entry validate-zip-international --><?php //echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?><!--" /></td>-->
-				<td class="infoInput"><input type="text" name="" id=""></td>
+		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text required-entry validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
 		</tr>
 		<tr>
 		    <td class="infoLabel"><label for="country" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
@@ -193,7 +192,7 @@
     </div>-->
 
 	<div class="cusEditSubmit">
-		<button type="submit" class="button" title="Save" onClick="return validateForm('#address-form')"></button>
+		<button type="submit" class="button" title="Save" onClick="jQuery('#region').toggleClass('required-entry', false); return validateForm('#address-form')"></button>
 	</div>
 	<p class="backCus">
 <!--		<a href="--><?php //echo $this->escapeUrl($this->getUrl('customer/account/')) ?><!--" class="backBtn">返回用户中心</a>-->
