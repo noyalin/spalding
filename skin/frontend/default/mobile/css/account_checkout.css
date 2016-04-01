@@ -46,10 +46,12 @@ MY ACCOUNT
 	}
 	.my-account-content table td.infoInput{
 		border-radius:5px;
-		background:#222;
+		/*background:#222;*/
 		overflow:hidden;
-		padding:12px 0;
+		padding:8px 0;
 		text-align:center;
+		color:#222;
+		border:1px solid #ddd;
 	}
 	.my-account-content table input{
 		border:none;
