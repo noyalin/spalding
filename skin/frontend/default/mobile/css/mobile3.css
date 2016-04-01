@@ -991,7 +991,7 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
    Links
    ========================================================================== */
 
-a, a:link, a:visited { color: #E9E9E9; }
+a, a:link, a:visited { color: #333; }
 a:hover { color: #F3AC00; }
 a:focus { outline:none; }
 
