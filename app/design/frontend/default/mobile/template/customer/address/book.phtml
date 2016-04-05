@@ -32,36 +32,50 @@
 ?>
 <div id="my-account-all">
 
-	<div class="my-account-top clearfix">
+	<!--<div class="my-account-top clearfix">
 		<div class="my-account-welcome">
 			<span>
-				<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-				<?php echo 'Welcome, ' . $customerName ?>
+				<?php /*$customerName = Mage::helper('customer')->getCustomerName() */?>
+				<?php /*echo 'Welcome, ' . $customerName */?>
 			</span>
 		</div>
 		<div class="my-account-logout">
-			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">Log Out</a>
+			<a class="logout-link" href="<?php /*echo $this->getUrl('customer/account/logout', array('_secure'=>true)) */?>">Log Out</a>
 		</div>
-	</div>
+	</div>-->
 
 	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
 
-<h1 id="my-account-address">Address Book</h1>
+<h1 id="my-account-address">地址管理</h1>
 <div id="my-account-address-content">
-	<div class="myAccountBox">
+	<div class="myAccountBox myAccountBox-addressBook">
 		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-		<h2>Default Addresses</h2>
+<!--		<h2>Default Addresses</h2>-->
 		<table class="logInInfo">
 		<tbody>
 			<tr>
 			<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
 				<td>
-				<h3>Default Billing Address&nbsp;|&nbsp;<a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">Change Billing Address</a></h3>
-				<p>
-					<?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>
-				</p>
+					<div class="addressTit clearfix">
+						<span class="addressTit-name ms-fl">用户名</span>
+						<span class="addressTit-icon ms-fr">默认地址</span>
+					</div>
+<!--				<h3>Default Billing Address&nbsp;|&nbsp;<a href="--><?php //echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?><!--">Change Billing Address</a></h3>-->
+
+					<div class="addressWrap">
+						<!--<p>
+					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>
+				</p>-->
+						<p>上海市 -- 徐汇区 -- 200000</p>
+						<p>郭守敬路2123号浦东软件园20号101室</p>
+					</div>
+
+					<div class="addressFuns clearfix">
+						<span class="address-edit"><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">修改</a></span>
+						<span><a href="#">删除</a></span>
+					</div>
 				</td>
 			<?php else: ?>
 				<td>
@@ -79,10 +93,23 @@
 		<tbody>
 			<tr>
 				<td>
-				<h3>Default Shipping Address&nbsp;|&nbsp;<a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">Change Shipping Address</a></h3>
-				<p>
-					<?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>
-				</p>
+					<div class="addressTit clearfix">
+						<span class="addressTit-name ms-fl">用户名</span>
+						<span class="addressTit-icon ms-fr">收货地址</span>
+					</div>
+				<!--<h3>Default Shipping Address&nbsp;|&nbsp;<a href="<?php /*echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>">Change Shipping Address</a></h3>-->
+
+					<div class="addressWrap">
+						<!--<p>
+					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>
+				</p>-->
+						<p>上海市 -- 徐汇区 -- 200000</p>
+						<p>郭守敬路2123号浦东软件园20号101室</p>
+					</div>
+					<div class="addressFuns clearfix">
+						<span class="address-edit"><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">修改</a></span>
+						<span><a href="#">删除</a></span>
+					</div>
 				</td>
 			<?php else: ?>
 				<td>
@@ -96,27 +123,27 @@
 		</tbody>
 		</table>
 	</div>
-	<div class="myAccountBox">
+	<!--<div class="myAccountBox">
 		<h2>Additional Address Entries</h2>
 		<div class="clearfloats"></div>
-		<?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
-		<?php $i = 0 ?>
-		<?php foreach($_pAddsses as $_address): ?>
-			<?php $i++ ?>
+		<?php /*if($_pAddsses = $this->getAdditionalAddresses()): */?>
+		<?php /*$i = 0 */?>
+		<?php /*foreach($_pAddsses as $_address): */?>
+			<?php /*$i++ */?>
 			<table class="logInInfo">
 				<tbody>
 					<tr>
 					<td>
-						<h3><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></h3>
+						<h3><a href="<?php /*echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) */?>"><?php /*echo $this->__('Edit Address') */?></a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="return deleteAddress('<?php /*echo $_address->getId() */?>');"><?php /*echo $this->__('Delete Address') */?></a></h3>
 						<p>
-						<?php echo $this->getAddressHtml($_address) ?>
+						<?php /*echo $this->getAddressHtml($_address) */?>
 						</p>
 					</td>
 					</tr>
 				</tbody>
 			</table>
-		<?php endforeach; ?>
-		<?php else: ?>
+		<?php /*endforeach; */?>
+		<?php /*else: */?>
 		<table class="logInInfo">
 			<tbody>
 			<tr>
@@ -126,10 +153,11 @@
 			</tr>
 			</tbody>
 		</table>
-		<?php endif ?>
-		<div class="myAccountBtn">
-		<button type="button" title="Add New Address" class="button" onclick="window.location='<?php echo $this->getAddAddressUrl() ?>';">Add New Address</button>
-		</div>
+		<?php /*endif */?>
+
+	</div>-->
+	<div class="myAccountBtn creatAddressBtn">
+		<button type="button" title="Add New Address" class="button" onclick="window.location='<?php echo $this->getAddAddressUrl() ?>';"></button>
 	</div>
 	<div class="logInInfoBox">
 		<table class="logInInfoBtn">

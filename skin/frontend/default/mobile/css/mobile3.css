@@ -1592,6 +1592,7 @@ section#category-wrapper header h1{
 .multi-view-img-big img{
     /*width: 185px;*/
 	width:100%;
+	max-height:120px;
 }
 .multi-view-box h3{
 	font-size:10px;

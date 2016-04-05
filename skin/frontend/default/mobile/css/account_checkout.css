@@ -278,8 +278,7 @@ MY ACCOUNT
 	.myAccountBox table{
 		width:100%;
 		border-collapse:collapse;
-		margin:10px 0 0 0;
-		margin: 30px 0 0;
+		margin: 15px 0 0;
 	}
 	.myAccountBox table td{
 		border:1px solid #3E3E3E;
@@ -287,7 +286,6 @@ MY ACCOUNT
 		font-size:11px;
 		text-align:center;
 		vertical-align:middle;
-		background:#252525;
 	}
 	.myAccountBox table thead td{
 		background:#303030;
@@ -305,6 +303,72 @@ MY ACCOUNT
 		text-align:right;
 		padding:12px 10px;
 	}
+
+	h1#my-account-address{
+		padding-bottom:10px;
+		border-bottom:1px solid #ddd;
+		color:#222;
+		font-size:14px;
+		font-weight:bold;
+		padding-top:60px;
+	}
+
+.myAccountBox-addressBook table td{
+	background:#f5f5f5;
+	border:1px solid #ddd;
+	color:#333;
+	padding:0;
+	text-align:left;
+
+	width:100%:
+}
+
+.addressFuns span{
+	display:inline-block;
+	width:50%;
+	float:left;
+	height:34px;
+	line-height:34px;
+	text-align:center;
+	border-top:1px solid #ddd;
+	margin-top:10px;
+}
+.addressFuns span.address-edit{
+	border-right:1px solid #ddd;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.addressTit{
+	margin:10px;
+}
+.addressTit span{
+	display:inline-block;
+}
+.addressTit span.addressTit-name{
+	font-size:14px;
+	color:#333;
+	font-weight:bold;
+}
+.addressTit span.addressTit-icon{
+	padding:2px 5px;
+	background:#333;
+	color:#fff;
+	font-size:12px;
+}
+.creatAddressBtn button.button{
+	background:url(../images/creatNewAddress.jpg) left top no-repeat;
+	background-size:100%;
+	height:50px;
+	width:100%;
+	border:none;
+}
+.addressWrap{
+	font-size:12px;
+	line-height:1.5em;
+	margin:0 10px;
+}
 	.rewardPoints tbody td{
 		font-weight:bold;
 		font-size:16px;
@@ -344,13 +408,13 @@ MY ACCOUNT
 		margin:10px 0 0 0;
 	}
 	.logInInfoBox table .validation-advice{
-		color:#FFF;
-		background:#A80000;
-		text-align:center;
+		color:#cf0000;
+		/*background:#A80000;*/
+		text-align:left;
 		padding:5px 10px;
 		font-size:11px;
 		position:relative;
-		top:10px;
+		/*top:10px;*/
 		border-radius:0 0 4px 4px ;
 	}
 	.logInInfoBox .logInInfoBtn button, .logInInfoBox table.logInInfoBtn button, .myAccountBox .myAccountBtn button, #my-account-giftcard-content .logInInfoBox .giftBtn button{
@@ -1425,13 +1489,26 @@ SHOPPING BAG/CHECKOUT
 .registerOther .registerOther_box label input{
 	margin-right:5px;
 }
-
+.registerSubmit{
+	position:relative;
+}
+.registerSubmit span{
+	position:absolute;
+	width:100%;
+	height:50px;
+	z-index:2;
+	background: rgba(255,255,255,.7);
+}
+.registerSubmit span.greyNone{
+	display:none;
+}
 .registerSubmit button.button{
 	background:url(../images/register-button.jpg) left top no-repeat;
 	background-size:100%;
 	border: none;
 	width: 100%;
 	height: 50px;
+	z-index:1;
 }
 .registerRules{
 	margin-bottom: 15px;

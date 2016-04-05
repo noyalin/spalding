@@ -202,7 +202,7 @@
 					</div>
 				</div>
 				<div class="registerRules clearfix">
-					<label>
+					<label class="registerLabel">
 						<span class="rulChe"><input type="checkbox" name="registerRule" id=""></span>
 						<span class="rulTex">我接受注册用户协议并承认点击（注册）按钮即表示我已阅读并接受注册用户协议</span>
 					</label>
@@ -239,6 +239,7 @@
 					<div class="clearfloats"></div>
 				</div>-->
 				<div class="registerSubmit">
+					<span class="registerGrey"></span>
 					<button type="submit" class="button" title="Submit" onClick="return validateForm('#form-validate')"></button>
 				</div>
 
@@ -249,3 +250,19 @@
 		</div>
 	</div>
 </div>
+<script>
+	jQuery(function(){
+		var evTimeStamp = 0;
+		jQuery(".registerLabel").click(function(e){
+			var now = +new Date();
+			if (now - evTimeStamp < 100) {
+				return;
+			}
+			evTimeStamp = now;
+			console.log(2);
+			jQuery(this).parents().find(".registerGrey").toggleClass("greyNone");
+		});
+
+	});
+
+</script>
