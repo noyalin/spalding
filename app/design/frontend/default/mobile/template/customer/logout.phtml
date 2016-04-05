@@ -40,6 +40,7 @@
 <!--			<h2>Login</h2>-->
 <!--            <h2>登录</h2>-->
 				<form action="<?php echo $this->getUrl('customer/account/loginPost/');?>" method="post" id="login-form">
+                <?php echo $this->getBlockHtml('formkey'); ?>
 				<table id="my-account-login">
 					<tbody>
 						<tr>
