@@ -144,7 +144,7 @@
         <?php endfor; ?>
 
 		<tr>
-		    <td class="infoLabel"><label for="zip"><?php echo $this->__('Zip/Postal Code') ?></label></td>
+		    <td class="infoLabel"><label for="zip" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
 		</tr>
 		<tr>
 		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>

@@ -53,7 +53,7 @@
             <span class="accountTit-name ms-fl">账户</span>
             <span class="accountBox-go ms-fl"><img src="<?php echo $this->getSkinUrl('images/account-icon-close.png');?>" border="0"></span>
         </div>
-        <a href="#">
+        <a href="<?php echo $this->getUrl('customer/account/edit') ?>">
             <div class="accountBox clearfix">
                 <span class="accountBox-icon"><img src="<?php echo $this->getSkinUrl('images/account-icon-1.png');?>" border="0"></span>
                 <span class="accountBox-name">个人中心设置</span>
@@ -67,7 +67,7 @@
                 <span class="accountBox-go"><img src="<?php echo $this->getSkinUrl('images/account-icon-go.png');?>" border="0"></span>
             </div>
         </a>
-        <a href="#">
+        <a href="<?php echo $this->getUrl('sales/order/history') ?>">
             <div class="accountBox clearfix">
                 <span class="accountBox-icon"><img src="<?php echo $this->getSkinUrl('images/account-icon-3.png');?>" border="0"></span>
                 <span class="accountBox-name">我的订单</span>

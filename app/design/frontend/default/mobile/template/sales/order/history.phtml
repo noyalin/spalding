@@ -42,7 +42,6 @@
 
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
 
-<!--	<h1 id="my-account-orders">My Orders</h1>-->
     <h1 id="my-account-orders">我的订单</h1>
 	<div id="my-account-orders-content">
 	<div class="myAccountBox">
@@ -52,11 +51,6 @@
 		<table>
 			<thead>
 			<tr>
-<!--				<td>Order#</td>-->
-<!--				<td>Date</td>-->
-<!--				<td>Order Total</td>-->
-<!--				<td>Status</td>-->
-<!--				<td>&nbsp;</td>-->
                 <td>订单号</td>
                 <td>日期</td>
                 <td>订单金额</td>
@@ -73,7 +67,7 @@
 				<td><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
 				<td><?php echo $_order->getStatusLabel() ?></td>
 				<td class="a-center">
-					<span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>"><?php echo $this->__('View Order') ?></a></span>
+					<span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>">查看订单</a></span>
 				</td>
 				</tr>
 			<?php endforeach; ?>

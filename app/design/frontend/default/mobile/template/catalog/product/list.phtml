@@ -483,16 +483,13 @@ $breadCrumbs = array();
             						$currentPrice = number_format($_product->getPrice(), '2', '.', ',');
             						if($msrp != $currentPrice):
             					?>
-            					<span class="cat-price-bbb">
-									<em></em>
+            					<span class="cat-price-bbb price-emp">
 									￥<?php echo $msrp; ?>
 								</span>
             					<?php
             						endif;
             					?>
-
-								<span class="price-emp">$123.00</span>
-								<span>￥<?php echo number_format($_product->getPrice(), '2', '.', ','); ?></span>
+								<span>￥<?php echo $currentPrice; ?></span>
 
 								</p>
 						</div>
