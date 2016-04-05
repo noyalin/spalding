@@ -41,7 +41,7 @@
 	<div id="my-account-login-wrapper">
 		<div class="my-account-content">
 <!--			<h2>Login</h2>-->
-            <h2>登录</h2>
+<!--            <h2>登录</h2>-->
 				<form action="<?php echo $this->getUrl('customer/account/loginPost/');?>" method="post" id="login-form">
 				<table id="my-account-login">
 					<tbody>
@@ -77,7 +77,7 @@
 						<tr>
 							<td class="submit-btn">
 <!--								<button type="submit" onclick="return validateForm('#login-form')">Log In</button>-->
-                                <button type="submit" onclick="return validateForm('#login-form')">登录</button>
+                                <button class="loginOut-login" type="submit" onclick="return validateForm('#login-form')"></button>
 							</td>
 						</tr>
 					</tbody>
@@ -88,12 +88,7 @@
 	<?php if (Mage::helper('checkout')->isContextCheckout()): ?>
 		<input name="context" type="hidden" value="checkout" />
 	<?php endif; ?>
-	<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
-		<div class="accountbenefits">
-            <h2>我是一个新用户!</h2>
-                <button class="button" onclick="location.href='<?php echo $this->getUrl('customer/account/create/'); ?>'">注册新账户</button>
-		</div>
-	<?php endif; ?>
+
         <?php
         $agent = $_SERVER['HTTP_USER_AGENT'];
         if(strpos($agent, "MicroMessenger")){
@@ -107,3 +102,9 @@
         ?>
 	</div>
 </div>
+<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
+	<div class="accountbenefits">
+		<h2>我是一个新用户!</h2>
+		<button class="button" onclick="location.href='<?php echo $this->getUrl('customer/account/create/'); ?>'"></button>
+	</div>
+<?php endif; ?>

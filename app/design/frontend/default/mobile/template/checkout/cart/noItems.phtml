@@ -24,31 +24,34 @@
  * @license     http://www.magentocommerce.com/license/enterprise-edition
  */
 ?>
-<div id="my-account-all">
+<!--<div id="my-account-all">
 
-	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
+	<?php /*if ($this->helper('customer')->isLoggedIn()) : */?>
 		<div class="my-account-top clearfix">
 			<div class="my-account-welcome">
 				<span>
-					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-					<?php echo '欢迎, ' . $customerName ?>
+					<?php /*$customerName = Mage::helper('customer')->getCustomerName() */?>
+					<?php /*echo '欢迎, ' . $customerName */?>
 				</span>
 			</div>
 			<div class="my-account-logout">
-				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">退出</a>
+				<a class="logout-link" href="<?php /*echo $this->getUrl('customer/account/logout', array('_secure' => true)) */?>">退出</a>
 			</div>
 		</div>
 
 
-	<?php endif; ?>
-</div>
+	<?php /*endif; */?>
+</div>-->
 
 	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <div id="cart-wrapper">
-	<h1>购物车为空</h1>
-	<div class="cart-content">
-		<p>您的购物车是空的.</p>
-		<p><a href="<?php echo $this->getContinueShoppingUrl() ?>">点击这里</a> 继续购物.</p>
+	<h1>我的购物车</h1>
+	<div class="newBox">
+		购物满288RMB免邮
+	</div>
+	<div class="cart-content cart-empty">
+		<span>您的购物车是空的.</span>
+		<span><a href="<?php echo $this->getContinueShoppingUrl() ?>">点击这里</a> 继续购物.</span>
 	</div>
 </div>

@@ -998,6 +998,10 @@ a:focus { outline:none; }
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
 a:hover, a:active { outline: 0; }
 
+.top-nav-wrapper a{
+	color:#fff;
+}
+
 
 /* =============================================================================
    Typography
@@ -3911,6 +3915,7 @@ h3 a.headerToggle {
 .checktf{
 	width:100%;
 	/*margin:3px 0;*/
+	padding-top:50px;
 }
 
 .checktf img{
@@ -5356,6 +5361,113 @@ ul.messages{
 	left: 0;
 	width: 100%;
 	background: rgba(0,0,0,.8);
+}
+
+
+
+
+
+
+/*法律条文*/
+.rules{
+	margin:0 10px;
+	padding-bottom:20px;
+}
+.rules h1{
+	font-size:16px;
+	color:#333;
+	font-weight:bold;
+	text-align:center;
+	border:none;
+}
+.rules p{
+	text-indent:24px;
+	font-size:12px;
+	line-height:1.6em;
+	margin-bottom:20px;
+	color:#222;
+}
+.rules dl dd{
+	font-size:14px;
+	font-weight:bold;
+	margin-top:20px;
+	margin-bottom:5px;
+}
+.rules dl dt{
+	font-size:12px;
+	color:#222;
+	line-height:1.6em;
+}
+
+
+.regSus{
+	/*margin:150px 10px;*/
+	padding-top:150px;
+	margin-bottom:200px;
+	text-align:center;
+}
+.regSus h2{
+	font-size:16px;
+	color:#333;
+	font-weight:bold;
+}
+.regSus a{
+	display:block;
+	width:30%;
+	margin:20px auto;
+	background:url(../images/regSus.jpg) left top no-repeat;
+	background-size:100%;
+	height:50px;
+
+}
+
+
+
+/*实体店查询*/
+.shops{
+	margin:0 10px;
+	padding-top:50px;
+}
+.shops h2{
+	margin:10px 0;
+	padding-bottom:15px;
+	border-bottom:1px solid #ddd;
+	font-size:14px;
+	color:#333;
+}
+.shops .shopsSlects{
+	margin:10px 0;
+	color:#333;
+}
+.shops .shopsSlects select{
+	color:#222;
+}
+.shops .shopsSlects span{
+	display:inline-block;
+	font-size:12px;
+	color:#222;
+}
+.shops .shopsTable{
+	border-collapse: collapse;
+	width:100%;
+	margin-bottom:20px;
+}
+.shops .shopsTable th{
+	background:#000;
+	color:#fff;
+	height:24px;
+	line-height:24px;
+	padding:5px 0;
+	font-weight:bold;
+	border:1px solid #000;
+	text-indent:10px;
+}
+.shops .shopsTable td{
+	height:24px;
+	line-height:24px;
+	padding:5px 0;
+	border:1px solid #ddd;
+	text-indent:10px;
 }
 /*iphone4 ,5 */
 @media only screen and (min-width: 320px) and (max-width: 374px){

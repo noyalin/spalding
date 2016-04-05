@@ -32,29 +32,32 @@
  */
 ?>
 
-<div id="my-account-all">
+<!--<div id="my-account-all">
 
-	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
+	<?php /*if ($this->helper('customer')->isLoggedIn()) : */?>
 		<div class="my-account-top clearfix">
 			<div class="my-account-welcome">
 				<span>
-					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-					<?php echo '欢迎, ' . $customerName ?>
+					<?php /*$customerName = Mage::helper('customer')->getCustomerName() */?>
+					<?php /*echo '欢迎, ' . $customerName */?>
 				</span>
 			</div>
 			<div class="my-account-logout">
-				<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">Log Out</a>
+				<a class="logout-link" href="<?php /*echo $this->getUrl('customer/account/logout', array('_secure' => true)) */?>">Log Out</a>
 			</div>
 		</div>
 
 
-	<?php endif; ?>
-</div>
+	<?php /*endif; */?>
+</div>-->
 
 <?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <div id="cart-wrapper">
 	<h1>购物车</h1>
+	<div class="cart-box-full">
+		购物满288RMB免邮
+	</div>
 	<div class="cart-content">
 		<?php echo $this->getChildHtml('form_before') ?>
 		<form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
@@ -142,6 +145,36 @@
 			<?php endforeach; ?>
 			</table>
 		<?php endif; ?>
+		<div class="contuShopping">
+			<a href="#">继续购物</a>
+		</div>
+	</div>
+
+
+
+	<div class="backItem">
+		<div class="backItemBox">
+			<h3>配送和退换货</h3>
+			<ul>
+				<li>30天退换货政策</li>
+				<li>订单满228元或以上，可享受免费配送服务</li>
+				<li>注册会员可享受免费退换货服务</li>
+			</ul>
+		</div>
+		<div class="backItemBox">
+			<h3>联系我们</h3>
+			<p>斯伯丁体育用品（中国）有限公司</p>
+			<p>上海市徐汇区肇嘉浜路789号16楼A单元</p>
+			<p>联系电话：021-61610547</p>
+			<p>EMAIL：customer.service@spaldingchina.com.cn</p>
+			<p>工作时间：周一至周五，9:00-22:00</p>
+		</div>
+		<div class="backItemBox" style="border-bottom:none;">
+			<h3>快捷在线咨询</h3>
+			<p>在线咨询</p>
+			<p>(工作时间: 9:00 - 22:00)</p>
+			<p><a href="#">在线客服</a></p>
+		</div>
 	</div>
 </div>
 <div id="cart-wrapper">
