@@ -237,12 +237,21 @@ if ($_currentCategory) {
 			</div>
 			<p class="ui-menu-link-line"></p>
 			<ul>
+				<?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                <li>
+                    <a href="<?php echo $this->getUrl('customer/account/login/'); ?>"><?php echo Mage::helper('customer')->getCustomerName() ?></a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">注销</a>
+                </li>
+                <?php else: ?>
 				<li>
 					<a href="<?php echo $this->getUrl('customer/account/login/'); ?>">登录</a>
 				</li>
 				<li>
 					<a href="<?php echo $this->getUrl('customer/account/create/'); ?>">注册</a>
 				</li>
+                <?php endif; ?>
 				<li>
 					<a href="<?php echo $this->getUrl('sales/order/history') ?>">订单查询</a>
 				</li>

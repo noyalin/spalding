@@ -66,73 +66,88 @@
 	    <tbody>
 		<?php echo $this->getNameBlockHtml() ?>
 		<tr>
-		    <td class="infoLabel"><label for="company"><?php echo $this->__('Company') ?></label></td>
-		</tr>
-		<tr>
-		    <td class="infoInput"><input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" /></td>
-		</tr>
-		<tr>
 		    <td class="infoLabel"><label for="telephone" class="required"><span class="rStar">*</span><?php echo $this->__('Telephone') ?></label></td>
 		</tr>
 		<tr>
 		    <td class="infoInput"><input type="tel" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" /></td>
 		</tr>
-		<tr>
-		    <td class="infoLabel"><label for="fax"><?php echo $this->__('Fax') ?></label></td>
-		</tr>
-		<tr>
-		    <td class="infoInput"><input type="tel" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" /></td>
-		</tr>
 	    </tbody>
 	</table>
     </div>
     <div class="logInInfoBox">
-<!--	<h2>--><?php //echo $this->__('Address') ?><!--</h2>-->
 	<table>
 	    <tbody>
-		<?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
-		<tr>
-		    <td class="infoLabel"><label for="street_1" class="required"><span class="rStar">*</span><?php echo $this->__('Street Address') ?></label></td>
-		</tr>
-		<tr>
-		    <td class="infoInput"><input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?>" /></td>
-		</tr>
-		<?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
-		<?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
-			<tr>
-				<td class="infoLabel"><label></label></td>
-			</tr>
-		    <tr>
-			<td class="infoInput"><input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="input-text <?php echo $_streetValidationClass ?>" /></td>
-		    </tr>
-		<?php endfor; ?>
+        <tr>
+            <td class="infoLabel"><label for="region_id" class="required"><span class="rStar">*</span><?php echo $this->__('State/Province') ?></label></td>
+        </tr>
+        <tr>
+            <td class="infoInput">
+                <label class="for-select" id="label-for-region-id">
+                    <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select">
+                        <option value="">请选择</option>
+                    </select>
+                </label>
+                <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" style="display:none;"/>
+            </td>
+        </tr>
+
 		<tr>
 		    <td class="infoLabel"><label for="city" class="required"><span class="rStar">*</span><?php echo $this->__('City') ?></label></td>
 		</tr>
+        <tr>
+            <td class="infoInput">
+                <label class="for-select" id="label-for-region-id">
+                    <select id="city_id" name="city_id" title="<?php echo $this->__('City') ?>" class="validate-select">
+                        <option value="">请选择</option>
+                    </select>
+                </label>
+                <input type="text" id="city" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  title="<?php echo $this->__('City') ?>" style="display:none;"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="infoLabel"><label for="district" class="required"><span class="rStar">*</span>区</label></td>
+        </tr>
+        <tr>
+            <td class="infoInput">
+                <label class="for-select" id="label-for-region-id">
+                    <select id="district_id" name="district_id" title="区" class="validate-select">
+                        <option value="">请选择</option>
+                    </select>
+                </label>
+                <input type="text" id="district" name="district" value="<?php echo $this->escapeHtml($this->getAddress()->getDistrict()) ?>"  title="区" style="display:none;"/>
+            </td>
+        </tr>
+        <script type="text/javascript">
+            $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+            $('city_id').update("<?php echo $this->getCityList($this->getAddress()->getRegionId())  ?>");
+            $('district_id').update("<?php echo $this->getDistrictList($this->getAddress()->getCityId())  ?>");
+            $('city_id').value = "<?php echo $this->getAddress()->getCityId() ?>";
+            $('district_id').value = "<?php echo $this->getAddress()->getDistrictId() ?>";
+        </script>
+
+        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+        <tr>
+            <td class="infoLabel"><label for="street_1" class="required"><span class="rStar">*</span><?php echo $this->__('Street Address') ?></label></td>
+        </tr>
+        <tr>
+            <td class="infoInput"><input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?>" /></td>
+        </tr>
+        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+            <tr>
+                <td class="infoLabel"><label></label></td>
+            </tr>
+            <tr>
+                <td class="infoInput"><input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="input-text <?php echo $_streetValidationClass ?>" /></td>
+            </tr>
+        <?php endfor; ?>
+
 		<tr>
-		    <td class="infoInput"><input type="text" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" title="<?php echo $this->__('City') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" /></td>
+		    <td class="infoLabel"><label for="zip"><?php echo $this->__('Zip/Postal Code') ?></label></td>
 		</tr>
 		<tr>
-		    <td class="infoLabel"><label for="region_id" class="required"><span class="rStar">*</span><?php echo $this->__('State/Province') ?></label></td>
-		</tr>
-		<tr>
-		    <td class="infoInput">
-			<label class="for-select" id="label-for-region-id">
-			<select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
-			    <option value=""><?php echo $this->__('Please select...') ?></option>
-			</select>
-			</label>
-			<script type="text/javascript">
-			    $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
-			</script>
-			<input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" />
-		    </td>
-		</tr>
-		<tr>
-		    <td class="infoLabel"><label for="zip" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
-		</tr>
-		<tr>
-		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text required-entry validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
+		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
 		</tr>
 		<tr>
 		    <td class="infoLabel"><label for="country" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
@@ -177,25 +192,11 @@
 	    </tbody>
 	</table>
     </div>
-    <!--<div class="logInInfoBox">
-	<table class="logInInfoBtn">
-	    <tr>
-		<td class="backBtn">
-		    <a href="<?php /*echo $this->escapeUrl($this->getBackUrl('customer/account')) */?>" class="backBtn">Back To Address Book</a>
-		</td>
-		<td class="submitBtn address">
-		    <button type="submit" class="button" onClick="jQuery('#region').toggleClass('required-entry', false); return validateForm('#address-form')" title="<?php /*echo $this->__('Save Address') */?>"><?php /*echo $this->__('Save Address') */?></button>
-		</td>
-	    </tr>
-	</table>
-	<div class="clearfloats"></div>
-    </div>-->
 
 	<div class="cusEditSubmit">
 		<button type="submit" class="button" title="Save" onClick="jQuery('#region').toggleClass('required-entry', false); return validateForm('#address-form')"></button>
 	</div>
 	<p class="backCus">
-<!--		<a href="--><?php //echo $this->escapeUrl($this->getUrl('customer/account/')) ?><!--" class="backBtn">返回用户中心</a>-->
 		<a href="<?php echo $this->escapeUrl($this->getBackUrl('customer/account')) ?>" class="backBtn">返回地址薄</a>
 	</p>
 
@@ -216,4 +217,44 @@
 		}
 	});
 //]]>
+</script>
+
+<script>
+	jQuery(document).ready(function(){
+		jQuery('#region_id').change(
+			function(){
+				var id = this.value;
+				jQuery.ajax({
+					type: 'POST',
+					url: '<?php echo $this->getUrl('checkout/area/getCityList') ?>',
+					data: {id:id},
+					success: function(data, textStatus){
+						jQuery('#city_id').html(data);
+					}
+				});
+			}
+		);
+		jQuery('#city_id').change(
+			function(){
+				var id = this.value;
+				var text = jQuery('#city_id option:selected').text();
+				jQuery('#city').val(text);
+				jQuery.ajax({
+					type: 'POST',
+					url: '<?php echo $this->getUrl('checkout/area/getDistrictList') ?>',
+					data: {id:id},
+					success: function(data, textStatus){
+						jQuery('#district_id').html(data);
+					}
+				});
+			}
+		);
+		jQuery('#district_id').change(
+			function(){
+				var id = this.value;
+				var text = jQuery('#district_id option:selected').text();
+				jQuery('#district').val(text);
+			}
+		);
+	});
 </script>

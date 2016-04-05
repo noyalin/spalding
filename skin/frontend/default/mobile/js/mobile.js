@@ -10,7 +10,7 @@ function validateForm(selector) {
 		}
 		jQuery(this).parent().find('div').remove();
 		if (jQuery(this).val() == '' || jQuery(this).val() == 0) {
-			jQuery(this).parent().append('<div class="validation-advice">This is a required field.</div>');
+			jQuery(this).parent().append('<div class="validation-advice">必填项不能为空！</div>');
 			validateOk = false;
 		}
 	});
@@ -20,7 +20,7 @@ function validateForm(selector) {
 	if (selector === '#shipping-zip-form') {
 		jQuery('#country').parent().find('div').remove();
 		if (jQuery('#country').val() == '' || jQuery('#country').val() == 0) {
-			jQuery('#country').parent().append('<div class="validation-advice">This is a required field.</div>');
+			jQuery('#country').parent().append('<div class="validation-advice">必填项不能为空！</div>');
 			validateOk = false;
 		}
 	}
