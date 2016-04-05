@@ -57,19 +57,19 @@
 		<tbody>
 			<tr>
 			<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
+					<?php $address = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses) ?>
 				<td>
 					<div class="addressTit clearfix">
-						<span class="addressTit-name ms-fl">用户名</span>
+						<span class="addressTit-name ms-fl"><?php echo $address->getName()?></span>
 						<span class="addressTit-icon ms-fr">默认地址</span>
 					</div>
 <!--				<h3>Default Billing Address&nbsp;|&nbsp;<a href="--><?php //echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?><!--">Change Billing Address</a></h3>-->
 
 					<div class="addressWrap">
 						<!--<p>
-					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>
+					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses))*/ ?>
 				</p>-->
-						<p>上海市 -- 徐汇区 -- 200000</p>
-						<p>郭守敬路2123号浦东软件园20号101室</p>
+						<p><?php echo $address->getRegion().' -- '.$address->getCity().' -- '.$address->getDistrict().' -- '.$address->getPostcode()?></p>
 					</div>
 
 					<div class="addressFuns clearfix">
@@ -89,12 +89,13 @@
 		</tbody>
 		</table>
 		<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): ?>
+            <?php $address = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses) ?>
 		<table class="logInInfo">
 		<tbody>
 			<tr>
 				<td>
 					<div class="addressTit clearfix">
-						<span class="addressTit-name ms-fl">用户名</span>
+						<span class="addressTit-name ms-fl"><?php echo $address->getName()?></span>
 						<span class="addressTit-icon ms-fr">收货地址</span>
 					</div>
 				<!--<h3>Default Shipping Address&nbsp;|&nbsp;<a href="<?php /*echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>">Change Shipping Address</a></h3>-->
@@ -103,8 +104,7 @@
 						<!--<p>
 					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>
 				</p>-->
-						<p>上海市 -- 徐汇区 -- 200000</p>
-						<p>郭守敬路2123号浦东软件园20号101室</p>
+						<p><?php echo $address->getRegion().' -- '.$address->getCity().' -- '.$address->getDistrict().' -- '.$address->getPostcode()?></p>
 					</div>
 					<div class="addressFuns clearfix">
 						<span class="address-edit"><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">修改</a></span>
@@ -123,27 +123,27 @@
 		</tbody>
 		</table>
 	</div>
-	<!--<div class="myAccountBox">
+	<div class="myAccountBox">
 		<h2>Additional Address Entries</h2>
 		<div class="clearfloats"></div>
-		<?php /*if($_pAddsses = $this->getAdditionalAddresses()): */?>
-		<?php /*$i = 0 */?>
-		<?php /*foreach($_pAddsses as $_address): */?>
-			<?php /*$i++ */?>
+		<?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
+		<?php $i = 0 ?>
+		<?php foreach($_pAddsses as $_address): ?>
+			<?php $i++ ?>
 			<table class="logInInfo">
 				<tbody>
 					<tr>
 					<td>
-						<h3><a href="<?php /*echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) */?>"><?php /*echo $this->__('Edit Address') */?></a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="return deleteAddress('<?php /*echo $_address->getId() */?>');"><?php /*echo $this->__('Delete Address') */?></a></h3>
+						<h3><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></h3>
 						<p>
-						<?php /*echo $this->getAddressHtml($_address) */?>
+						<?php echo $this->getAddressHtml($_address) ?>
 						</p>
 					</td>
 					</tr>
 				</tbody>
 			</table>
-		<?php /*endforeach; */?>
-		<?php /*else: */?>
+		<?php endforeach; ?>
+		<?php else: ?>
 		<table class="logInInfo">
 			<tbody>
 			<tr>
@@ -153,9 +153,9 @@
 			</tr>
 			</tbody>
 		</table>
-		<?php /*endif */?>
+		<?php endif ?>
 
-	</div>-->
+	</div>
 	<div class="myAccountBtn creatAddressBtn">
 		<button type="button" title="Add New Address" class="button" onclick="window.location='<?php echo $this->getAddAddressUrl() ?>';"></button>
 	</div>
@@ -163,7 +163,7 @@
 		<table class="logInInfoBtn">
 		<tr>
 			<td class="backBtn">
-			<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account')) ?>" class="backBtn">Back To My Profile</a>
+			<a href="<?php echo $this->escapeUrl($this->getUrl('customer/account')) ?>" class="backBtn">返回用户中心</a>
 			</td>
 		</tr>
 		</table>
