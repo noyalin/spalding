@@ -70,14 +70,12 @@
 						<?php endforeach ?>
 					</tbody>
 				</table>
-                <tr>
-                    <td colspan="2">
-                        <?php if ($this->getContinueShoppingUrl()): ?>
-                            <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="location.href='<?php echo Mage::getUrl(''); ?>products.html'"><?php echo $this->__('Continue Shopping') ?></button>
-                        <?php endif;?>
-                        <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Bag'); ?>" class="button btn-update"><?php echo $this->__('Update Shopping Bag'); ?></button>
-                    </td>
-                </tr>
+
+				<div class="cart-update">
+					<button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Bag'); ?>" class="button btn-update"><?php echo $this->__('Update Shopping Bag'); ?></button>
+				</div>
+
+
 			</fieldset>
 		</form>
 

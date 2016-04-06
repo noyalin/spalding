@@ -592,6 +592,16 @@ SHOPPING BAG/CHECKOUT
 	.cart-content a {
 		text-decoration:underline;
 	}
+
+	.cart-update{
+		text-align:right;
+	}
+	button.btn-update{
+		background:none;
+		border:none;
+		text-decoration:underline;
+		color:#333;
+	}
 	/* page 2 steps */
 	#checkoutSteps {list-style:none; width:100%; min-width:320px;}
 	#checkoutSteps table{margin:0; padding:0; width:100%;}
@@ -1217,7 +1227,37 @@ SHOPPING BAG/CHECKOUT
 	}
 	#cart-wrapper .step-content{
 		padding:20px 0;
+		color:#333;
+		margin:0 10px;
 	}
+#cart-wrapper h1.step-title{
+	border-bottom:1px solid #ddd;
+}
+#cart-wrapper .step-content select{
+	color:#333;
+	width:100%;
+}
+#cart-wrapper .step-content input{
+	color:#333;
+	vertical-align:middle;
+}
+
+.bill-kinds-tax input{
+	margin-top:10px;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	text-indent:10px;
+	border:1px solid #ddd;
+}
+
+.bill-kinds-default{
+	width:100%;
+	position:relative;
+}
+.bill-kinds-default>div{
+
+}
 
 	.logInInfoBox .shopping-cart-shipping-tax label.account-select:after {
 		background: none repeat scroll 0 0 #FFFFFF;
