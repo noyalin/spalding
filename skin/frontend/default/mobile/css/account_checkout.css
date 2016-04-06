@@ -592,6 +592,16 @@ SHOPPING BAG/CHECKOUT
 	.cart-content a {
 		text-decoration:underline;
 	}
+
+	.cart-update{
+		text-align:right;
+	}
+	button.btn-update{
+		background:none;
+		border:none;
+		text-decoration:underline;
+		color:#333;
+	}
 	/* page 2 steps */
 	#checkoutSteps {list-style:none; width:100%; min-width:320px;}
 	#checkoutSteps table{margin:0; padding:0; width:100%;}
