@@ -51,7 +51,7 @@ $sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $snea
 			</a>
 		</div>
 		<div class="footer-top-box ms-fr">
-			<a href="#">
+			<a href="<?php echo Mage::getUrl('mobile_shop')?>">
 				<img src="<?php echo $this->getSkinUrl('images/bottom-shopLink.jpg');?>" border="0">
 			</a>
 		</div>
@@ -72,7 +72,7 @@ $sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $snea
 			<img src="<?php echo $this->getSkinUrl('images/bottom-logos.jpg');?>" border="0">
 		</div>
 		<div class="bottom-last-box bottom-last-links">
-			<a href="#">订单管理</a>
+			<a href="<?php echo Mage::getUrl('sales/order/history') ?>">订单管理</a>
 			<span>|</span>
 			<a href="<?php echo Mage::getUrl('mobile_policy')?>">隐私政策</a>
 			<span>|</span>
