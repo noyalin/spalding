@@ -125,8 +125,8 @@
 		</tbody>
 		</table>
 	</div>
-	<div class="myAccountBox">
-		<h2>Additional Address Entries</h2>
+	<div class="myAccountBox myAccountBox-addressBook">
+		<h2>备用地址管理</h2>
 		<div class="clearfloats"></div>
 		<?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
 		<?php $i = 0 ?>
@@ -136,10 +136,22 @@
 				<tbody>
 					<tr>
 					<td>
-						<h3><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></h3>
-						<p>
-						<?php echo $this->getAddressHtml($_address) ?>
-						</p>
+						<div class="addressTit clearfix">
+							<span class="addressTit-name ms-fl"><?php echo $address->getName()?></span>
+						</div>
+						<!--<h3><a href="<?php /*echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) */?>"><?php /*echo $this->__('Edit Address') */?></a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="return deleteAddress('<?php /*echo $_address->getId() */?>');"><?php /*echo $this->__('Delete Address') */?></a></h3>-->
+						<!--<p>
+						<?php /*echo $this->getAddressHtml($_address) */?>
+						</p>-->
+
+						<div class="addressWrap">
+							<p>密云县, 北京市, 北京市 123123, 中国 </p>
+							<p>街道地址</p>
+						</div>
+						<div class="addressFuns clearfix">
+							<span class="address-edit"><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>">修改</a></span>
+							<span><a href="javascript:void(0)" onclick="return deleteAddress('<?php echo $_address->getId() ?>');">删除</a></span>
+						</div>
 					</td>
 					</tr>
 				</tbody>

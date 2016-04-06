@@ -322,7 +322,11 @@ MY ACCOUNT
 
 	width:100%;
 }
-
+.myAccountBox-addressBook h2{
+	font-size:14px;
+	color:#333;
+	font-weight:bold;
+}
 .addressFuns span{
 	display:inline-block;
 	width:50%;
