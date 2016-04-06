@@ -69,7 +69,8 @@
 						<!--<p>
 					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses))*/ ?>
 				</p>-->
-						<p><?php echo $address->getRegion().' -- '.$address->getCity().' -- '.$address->getDistrict().' -- '.$address->getPostcode()?></p>
+						<p><?php echo $address->getRegion().' -- '.$address->getCity().' -- '.$address->getDistrict().' -- '.$address->getPostcode() ?></p>
+						<p><?php echo $address->getStreet()[0] ?></p>
 					</div>
 
 					<div class="addressFuns clearfix">
@@ -105,6 +106,7 @@
 					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>
 				</p>-->
 						<p><?php echo $address->getRegion().' -- '.$address->getCity().' -- '.$address->getDistrict().' -- '.$address->getPostcode()?></p>
+                        <p><?php echo $address->getStreet()[0] ?></p>
 					</div>
 					<div class="addressFuns clearfix">
 						<span class="address-edit"><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">修改</a></span>

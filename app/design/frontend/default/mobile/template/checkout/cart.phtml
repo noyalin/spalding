@@ -61,6 +61,7 @@
 	<div class="cart-content">
 		<?php echo $this->getChildHtml('form_before') ?>
 		<form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+			<?php echo $this->getBlockHtml('formkey'); ?>
 			<fieldset>
 				<table id="shopping-cart-table" class="data-table cart-table">
 					<tbody>
@@ -72,32 +73,9 @@
 						<tr>
 							<td colspan="2">
 							<?php if ($this->getContinueShoppingUrl()): ?>
-								<button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="location.href='<?php echo $this->getContinueShoppingUrl() ?>'"><?php echo $this->__('Continue Shopping') ?></button>
+								<button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="location.href='<?php echo Mage::getUrl(''); ?>products.html'"><?php echo $this->__('Continue Shopping') ?></button>
 							<?php endif;?>
 								<button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Bag'); ?>" class="button btn-update"><?php echo $this->__('Update Shopping Bag'); ?></button>
-								<!--[if lt IE 8]>
-								<input type="hidden" id="update_cart_action_container" />
-								<script type="text/javascript">
-								//<![CDATA[
-									Event.observe(window, 'load', function()
-									{
-										// Internet Explorer (lt 8) does not support value attribute in button elements
-										$emptyCartButton = $('empty_cart_button');
-										$cartActionContainer = $('update_cart_action_container');
-										if ($emptyCartButton && $cartActionContainer) {
-											Event.observe($emptyCartButton, 'click', function()
-											{
-												$emptyCartButton.setAttribute('name', 'update_cart_action_temp');
-												$cartActionContainer.setAttribute('name', 'update_cart_action');
-												$cartActionContainer.setValue('empty_cart');
-											});
-										}
-
-									});
-								//]]>
-								</script>
-								<![endif]-->
-
 							</td>
 						</tr>
 					</tfoot>
@@ -146,7 +124,7 @@
 			</table>
 		<?php endif; ?>
 		<div class="contuShopping">
-			<a href="#">继续购物</a>
+			<a href="<?php echo Mage::getUrl(''); ?>products.html">继续购物</a>
 		</div>
 	</div>
 
@@ -169,19 +147,19 @@
 			<p>EMAIL：customer.service@spaldingchina.com.cn</p>
 			<p>工作时间：周一至周五，9:00-22:00</p>
 		</div>
-		<div class="backItemBox" style="border-bottom:none;">
-			<h3>快捷在线咨询</h3>
-			<p>在线咨询</p>
-			<p>(工作时间: 9:00 - 22:00)</p>
-			<p><a href="#">在线客服</a></p>
-		</div>
+<!--		<div class="backItemBox" style="border-bottom:none;">-->
+<!--			<h3>快捷在线咨询</h3>-->
+<!--			<p>在线咨询</p>-->
+<!--			<p>(工作时间: 9:00 - 22:00)</p>-->
+<!--			<p><a href="#">在线客服</a></p>-->
+<!--		</div>-->
 	</div>
 </div>
-<div id="cart-wrapper">
-	<?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
-
+<!--<div id="cart-wrapper">-->
+<!--	--><?php //if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+<!---->
 <!--	<h1>Discount / Giftcard</h1>-->
-	<div class="cart-content logInInfoBox">
-		<?php echo $this->getChildHtml('giftcards') ?>
-	</div>
-</div>
+<!--	<div class="cart-content logInInfoBox">-->
+<!--		--><?php //echo $this->getChildHtml('giftcards') ?>
+<!--	</div>-->
+<!--</div>-->
