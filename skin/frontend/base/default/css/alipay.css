@@ -1,3 +1,7 @@
+.col-main{
+	width:100%;
+	margin:0;
+}
 .masks{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;_position:absolute;_top:expression(eval(document.documentElement.scrollTop));_height:expression(eval(document.documentElement.clientHeight));background-color:#000;filter:alpha(opacity=20);opacity:0.2;}
 /*public*/
 .red{color:#f4b201;}
@@ -11,9 +15,9 @@
 .shortcut_bank_list h5,.shortcut_bank_list .bank,.shortcut_bank_table td p,.shortcut_bank_box{zoom:1;}
 
 /*shortcut_wrapper*/
-.shortcut_wrapper{width:100%;margin:0 auto; font-size: 14px;}
+.shortcut_wrapper{width:100%;margin:0 auto;padding-top:55px; font-size: 14px;}
 /*.shortcut_wrapper .shortcut_price{width:100%;padding:0;color:#ffffff;}*/
-.shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;color:#fff;}
+.shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;color:#333;}
 /*.shortcut_wrapper .shortcut_price .price{color:#ffffff;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}*/
 .shortcut_wrapper .shortcut_price span{display:inline-block;padding-right:50px;}
 .shortcut_wrapper .shortcut_price .red{font:bold 20px 'Arial';}
@@ -58,7 +62,7 @@ margin: 0;}
 .shortcut_bank_list .bank .pic .gray{margin:10px 0 0 8px;}
 .shortcut_bank_list .bank .pic .icon{padding-left:2px;height:14px;width:27px;line-height:12px;line-height:14px\9;*line-height:16px;text-align:center;color:#fff;background-color:#f60;border-radius:2px;position:absolute;bottom:-1px;right:-1px;margin:0;overflow:hidden;}
 /*bottom_hint*/
-.bottom_hint{color:#646464;padding:20px 20px 0;line-height:20px;}
+.bottom_hint{color:#646464;line-height:20px; margin:20px 10px;}
 .bottom_hint .title{margin:12px 0 -6px;font-weight:bold;}
 .bottom_hint p{padding:13px 0 7px;}
 .bottom_hint p .gray{display:block;}
@@ -347,7 +351,7 @@ z-index: 1;
     cursor: pointer;
 }
 .btn-next, .btn-nextun {
-    background-color: #fd5419;
+    background-color: #000;
     border:none;
     display: inline-block;
     font-size: 14px;
@@ -356,10 +360,8 @@ z-index: 1;
     line-height: 37px;
     overflow: hidden;
     vertical-align: middle;
-    width: 159px;
-    margin:0 0 30px 130px;
     color:#fff;
-    border-radius: 5px;
+	padding:0 15px;
 }
 a {
     color: #666666;
@@ -392,12 +394,12 @@ a {
     height: 0;
 }
 .box {
-    background: none repeat scroll 0 0 #F2F2F2;
-    border: 1px solid #D6D6D6;
-    margin: 20px 0 0;
-    padding:15px 15px 15px 35px;
+    background: none repeat scroll 0 0 #f5f5f5;
+    border: 1px solid #ddd;
+    margin: 20px 10px;
+    padding:15px;
     color:#333;
-    width:880px;
+
 }
 .box p {
     clear: both;
