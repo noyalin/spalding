@@ -126,7 +126,7 @@
 			    <td class="infoLabel"><label for="billing:postcode" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
 			</tr>
 			<tr>
-			    <td class="infoInput"><input type="number" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
+			    <td class="infoInput"><input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
 			</tr>
 			<tr>
 			    <td class="infoLabel"><label for="billing:country_id" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
@@ -229,7 +229,7 @@
 					<td colspan="2">
 						<div id="billing-buttons-container">
 						<img id="billing-please-wait" class="please-wait" src="<?php echo $this->getSkinUrl('images/loader.gif', array('_secure'=>true)) ?>" style="display:none"/>
-						<button type="button" class="button" onclick="checkBillingForm();"><span><?php echo $this->__('Continue') ?></span></button>
+						<button type="button" class="button" onclick="checkBillingForm();"></button>
 						</div>
 					</td>
 				</tr>

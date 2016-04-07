@@ -43,7 +43,7 @@
                 <tr>
 					<td>
 						<button id="onepage-guest-register-button" type="button" class="button" onclick="jQuery('[alt=login-guest]').attr('checked', true); checkout.setMethod(); jQuery('#checkout-login-box').hide(); jQuery('#onepage-customer-login-button').show(); " >
-							<span><span>我是一个新客户</span></span></button>
+							<span><span></span></span></button>
 						<?php /* Set to "register" to enable automated display of "password" block in billing section */ ?>
 						<input style="display:none;" type="radio" name="checkout_method" id="login:guest" alt="login-guest" value="guest"/>
 						<input style="display:none;" type="radio" name="checkout_method" id="login:register" value="register"/>
@@ -52,7 +52,7 @@
                 <tr>
 					<td>
 						<button id="onepage-customer-login-button" type="button" class="button" onClick="jQuery(this).fadeOut(); jQuery('#checkout-login-box').fadeIn()">
-							<span><span>我是老客户</span></span></button>
+							<span><span></span></span></button>
 					</td>
 				</tr>
                 <?php
@@ -104,14 +104,13 @@
 						</tbody>
 						<tfoot>
 						<tr>
-							<td>
+							<td colspan="2">
+								<input name="context" type="hidden" value="checkout" />
+								<button type="submit" class="button" onclick="return validateForm('#login-form')"></button>
 								<a href="<?php echo $this->helper('customer')->getForgotPasswordUrl()?>">忘记密码?</a>
 							</td>
-							<td>
-								<input name="context" type="hidden" value="checkout" />
-								<button type="submit" class="button" onclick="return validateForm('#login-form')"><span><span><?php echo $this->__('Login') ?></span></span></button>
-							</td>
 						</tr>
+
 					</tfoot>
 				</table>
 			</fieldset>
