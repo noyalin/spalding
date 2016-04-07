@@ -49,7 +49,11 @@ $sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $snea
 		<div class="footer-top-box ms-fl">
 
 				<img src="<?php echo $this->getSkinUrl('images/footer-login-icon.jpg');?>" border="0">
-				登录/注册
+            <?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+				我的账号 / 退出
+            <?php else: ?>
+                登录/注册
+            <?php endif; ?>
 
 		</div></a>
 		<a href="<?php echo Mage::getUrl('mobile_shop')?>">

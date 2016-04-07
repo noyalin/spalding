@@ -92,12 +92,12 @@
         </tr>
 
 		<tr>
-		    <td class="infoLabel"><label for="city" class="required"><span class="rStar">*</span><?php echo $this->__('City') ?></label></td>
+		    <td class="infoLabel"><label for="city_id" class="required"><span class="rStar">*</span><?php echo $this->__('City') ?></label></td>
 		</tr>
         <tr>
             <td class="infoInput">
-                <label class="for-select" id="label-for-region-id">
-                    <select id="city_id" name="city_id" title="<?php echo $this->__('City') ?>" class="validate-select">
+                <label class="for-select">
+                    <select id="city_id" name="city_id" title="<?php echo $this->__('City') ?>" class="validate-select required-entry">
                         <option value="">请选择</option>
                     </select>
                 </label>
@@ -106,12 +106,12 @@
         </tr>
 
         <tr>
-            <td class="infoLabel"><label for="district" class="required"><span class="rStar">*</span>区</label></td>
+            <td class="infoLabel"><label for="district_id" class="required"><span class="rStar">*</span>区</label></td>
         </tr>
         <tr>
             <td class="infoInput">
-                <label class="for-select" id="label-for-region-id">
-                    <select id="district_id" name="district_id" title="区" class="validate-select">
+                <label class="for-select">
+                    <select id="district_id" name="district_id" title="区" class="validate-select required-entry">
                         <option value="">请选择</option>
                     </select>
                 </label>
@@ -144,15 +144,15 @@
         <?php endfor; ?>
 
 		<tr>
-		    <td class="infoLabel"><label for="zip" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
+		    <td class="infoLabel"><label for="postcode" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
 		</tr>
 		<tr>
-		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
+		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="postcode" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
 		</tr>
-		<tr>
+		<tr style="display: none">
 		    <td class="infoLabel"><label for="country" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
 		</tr>
-		<tr>
+		<tr style="display: none">
 		    <td class="infoInput">
 			<label class="for-select">
 			<?php echo $this->getCountryHtmlSelect() ?>
@@ -181,14 +181,14 @@
 			<td><input type="hidden" name="default_billing" value="1" /></td>
 		    <?php endif; ?>
 		</tr>
-		<tr>
-		    <?php if($this->canSetAsDefaultShipping()): ?>
-			<td class="infoLabel  defaultCheck"><label for="primary_shipping"><?php echo $this->__('Use as my default shipping address') ?></label></td>
-			<td class="infoCheck"><input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox" /></td>
-		    <?php else: ?>
-			<td><input type="hidden" name="default_shipping" value="1" /></td>
-		    <?php endif; ?>
-		</tr>
+<!--		<tr>-->
+<!--		    --><?php //if($this->canSetAsDefaultShipping()): ?>
+<!--			<td class="infoLabel  defaultCheck"><label for="primary_shipping">--><?php //echo $this->__('Use as my default shipping address') ?><!--</label></td>-->
+<!--			<td class="infoCheck"><input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox" /></td>-->
+<!--		    --><?php //else: ?>
+<!--			<td><input type="hidden" name="default_shipping" value="1" /></td>-->
+<!--		    --><?php //endif; ?>
+<!--		</tr>-->
 	    </tbody>
 	</table>
     </div>

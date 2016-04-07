@@ -56,8 +56,11 @@
 		<table class="logInInfo">
 		<tbody>
 			<tr>
-			<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
-					<?php $address = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses) ?>
+			<?php if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBillingAddress()): ?>
+				<?php
+                    $_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling();
+                    $address = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)
+                ?>
 				<td>
 					<div class="addressTit clearfix">
 						<span class="addressTit-name ms-fl"><?php echo $address->getName()?></span>
@@ -66,58 +69,22 @@
 <!--				<h3>Default Billing Address&nbsp;|&nbsp;<a href="--><?php //echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?><!--">Change Billing Address</a></h3>-->
 
 					<div class="addressWrap">
-						<!--<p>
-					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses))*/ ?>
-				</p>-->
-						<p><?php echo $address->getRegion().' -- '.$address->getCity().' -- '.$address->getDistrict().' -- '.$address->getPostcode() ?></p>
+<!--					<p>--><?php //echo $this->getAddressHtml($address) ?><!--</p>-->
+						<p><?php echo $address->getRegion().', '.$address->getCity().', '.$address->getDistrict().', '.$address->getPostcode() ?></p>
 						<p><?php echo $address->getStreet()[0] ?></p>
+						<p><?php echo $address->getTelephone() ?></p>
 					</div>
 
 					<div class="addressFuns clearfix">
 						<span class="address-edit"><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">修改</a></span>
-						<span><a href="#">删除</a></span>
+                        <span><a href="javascript:void(0)" onclick="return deleteAddress('<?php echo $address->getId() ?>');">删除</a></span>
 					</div>
 				</td>
 			<?php else: ?>
 				<td>
-				<h3>Default Billing Address</h3>
+				<h3>默认地址</h3>
 				<p>
-					You have no default billing address in your address book.
-				</p>
-				</td>
-			<?php endif ?>
-			</tr>
-		</tbody>
-		</table>
-		<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): ?>
-            <?php $address = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses) ?>
-		<table class="logInInfo">
-		<tbody>
-			<tr>
-				<td>
-					<div class="addressTit clearfix">
-						<span class="addressTit-name ms-fl"><?php echo $address->getName()?></span>
-						<span class="addressTit-icon ms-fr">收货地址</span>
-					</div>
-				<!--<h3>Default Shipping Address&nbsp;|&nbsp;<a href="<?php /*echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>">Change Shipping Address</a></h3>-->
-
-					<div class="addressWrap">
-						<!--<p>
-					<?php /*echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) */?>
-				</p>-->
-						<p><?php echo $address->getRegion().' -- '.$address->getCity().' -- '.$address->getDistrict().' -- '.$address->getPostcode()?></p>
-                        <p><?php echo $address->getStreet()[0] ?></p>
-					</div>
-					<div class="addressFuns clearfix">
-						<span class="address-edit"><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>">修改</a></span>
-						<span><a href="#">删除</a></span>
-					</div>
-				</td>
-			<?php else: ?>
-				<td>
-				<h3>Default Shipping Address</h3>
-				<p>
-					You have no default shipping address in your address book.
+					你未设置默认地址
 				</p>
 				</td>
 			<?php endif ?>
@@ -137,7 +104,7 @@
 					<tr>
 					<td>
 						<div class="addressTit clearfix">
-							<span class="addressTit-name ms-fl"><?php echo $address->getName()?></span>
+							<span class="addressTit-name ms-fl"><?php echo $_address->getName()?></span>
 						</div>
 						<!--<h3><a href="<?php /*echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) */?>"><?php /*echo $this->__('Edit Address') */?></a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="return deleteAddress('<?php /*echo $_address->getId() */?>');"><?php /*echo $this->__('Delete Address') */?></a></h3>-->
 						<!--<p>
@@ -145,8 +112,9 @@
 						</p>-->
 
 						<div class="addressWrap">
-							<p>密云县, 北京市, 北京市 123123, 中国 </p>
-							<p>街道地址</p>
+                            <p><?php echo $_address->getRegion().', '.$_address->getCity().', '.$_address->getDistrict().', '.$_address->getPostcode() ?></p>
+                            <p><?php echo $_address->getStreet()[0] ?></p>
+                            <p><?php echo $_address->getTelephone() ?></p>
 						</div>
 						<div class="addressFuns clearfix">
 							<span class="address-edit"><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>">修改</a></span>
@@ -162,7 +130,7 @@
 			<tbody>
 			<tr>
 				<td>
-				<p>You have no additional address entries in your address book.</p>
+				<p>你没有备用地址</p>
 				</td>
 			</tr>
 			</tbody>
