@@ -55,77 +55,21 @@
 		<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
 		<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
 
-		<!--<ol class="opc" id="checkoutSteps">
-			<?php /*$i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): */?>
-			<?php /*if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ */?>
-			<li id="opc-<?php /*echo $_stepId */?>" class="section<?php /*echo !empty($_stepInfo['allow'])?' allow':'' */?><?php /*echo !empty($_stepInfo['complete'])?' saved':'' */?>">
+		<ol class="opc" id="checkoutSteps">
+			<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+			<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+			<li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
 				<div class="step-title">
-				<span class="number"><?php /*echo $i */?></span>
-				<h2><?php /*echo $_stepInfo['label'] */?></h2>
+				<span class="number"><?php echo $i ?></span>
+				<h2><?php echo $_stepInfo['label'] ?></h2>
 				</div>
-				<div id="checkout-step-<?php /*echo $_stepId */?>" class="step a-item logInInfoBox" style="display:none;">
-				<?php /*echo $this->getChildHtml($_stepId) */?>
+				<div id="checkout-step-<?php echo $_stepId ?>" class="step a-item logInInfoBox" style="display:none;">
+				<?php echo $this->getChildHtml($_stepId) ?>
 				</div>
 			</li>
-			<?php /*endforeach */?>
-		</ol>-->
-		<div class="step-address">
-			请选择您的收货地址
-			<select name="" id="">
-				<option value="">配送地址选择一个1</option>
-				<option value="">配送地址选择一个2</option>
-				<option value="">新地址</option>
-			</select>
-		</div>
-		<div class="step-payment">
-			<div class="step-payment-tit">
-				<span>支付方式</span>
-				<span>运费：￥10.00</span>
-			</div>
-			<div class="step-payment-kinds">
-				在线支付img-调整，两种方式
-			</div>
-		</div>
-		<div class="step-setbill">
-			<div class="step-nobill">
-				<label><input type="checkbox">需要发票</label>
-			</div>
-			<div class="step-havebill">
-				<div class="bill-kinds">
-					<label><input type="radio" name="billKinds" id="">普通发票</label>
-					<label><input type="radio" name="billKinds" id="">增值税发票</label>
-				</div>
-				<div class="bill-kinds-default clearfix">
-					<div class="bill-default-title">
-						<span>抬头：</span>
-						<span><input type="text"></span>
+			<?php endforeach ?>
+		</ol>
 
-					</div>
-					<div class="bill-default-name">
-						<span>内容：</span>
-						<select name="" id="">
-							<option value="">篮球</option>
-							<option value="">产品信息</option>
-							<option value="">办公用品</option>
-						</select>
-					</div>
-					<p class="billRed">温馨提示：您所填的信息将被系统自动打印到发票上，请仔细核对所填发票信息。</p>
-				</div>
-				<div class="bill-kinds-tax">
-					<input type="text" placeholder="公司名称">
-					<input type="text" placeholder="纳税人识别号">
-					<input type="text" placeholder="公司地址">
-					<input type="text" placeholder="公司电话">
-					<input type="text" placeholder="开户行名称">
-					<input type="text" placeholder="开户行账号">
-					<p class="billRed">温馨提示：您所填的信息将被系统自动打印到发票上，请仔细核对所填发票信息。</p>
-				</div>
-				<div class="bill-funs">
-					<span class="bill-funs-submit">保存</span>
-					<span class="bill-funs-back">取消</span>
-				</div>
-			</div>
-		</div>
 		<script type="text/javascript">
 		//<![CDATA[
 			var accordion = new Accordion('checkoutSteps', '.step-title', true);
