@@ -57,67 +57,61 @@
 				<div class="registerBox">
 					<h4>*电子邮箱</h4>
 					<label for="email_address" class="required">
-						<input type="email" name="email" id="email_address" placeholder="电子邮箱" />
+						<input type="email" name="email" id="email_address" placeholder="电子邮箱" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" class="input-text required-entry validate-email"/>
 					</label>
 				</div>
-				<div class="registerBox">
-					<h4>*用户名</h4>
-					<label for="name" class="required">
-						<input type="text" name="firstname" id="name" placeholder="用户名" value="" class="" />
-					</label>
-				</div>
-
 				<div class="registerBox">
 					<h4>*真实姓名</h4>
-					<label for="true_name" class="required">
-						<input type="text" name="truename" id="true_name" placeholder="真实姓名" value="" />
+					<label for="name" class="required">
+						<input type="text" name="firstname" id="name" placeholder="真实姓名" value="<?php echo $this->htmlEscape($this->getCustomer()->getFirstname()) ?>" class="input-text required-entry" />
 					</label>
 				</div>
-				<div class="registerBox">
-					<h4>*手机号码</h4>
-					<label for="mobile_number" class="required">
-						<input type="text" name="phone" id="mobile_number" placeholder="手机号码" value="" />
-					</label>
-				</div>
-				<div class="registerOther" style="border-top:none; padding-top:0; margin-top:0">
-					<div class="registerOther_box clearfix">
-						<p>出生日期</p>
-						<select name="date-year" id="date-year">
-							<?php
-							$currentYear = date('Y');
-							for($i = 1950; $i <= $currentYear; $i++):
-								?>
-								<option value="<?php echo $i;?>"><?php echo $i;?></option>
-								<?php
-							endfor;
-							?>
-						</select>
-						<select name="date-mon" id="date-mon">
-							<?php
-							for($i = 1; $i <= 12; $i++):
-								?>
-								<option value="<?php echo $i;?>"><?php echo $i;?></option>
-								<?php
-							endfor;
-							?>
-						</select>
-						<select name="date-day" id="date-day">
-							<?php
-							for($i = 1; $i <= 31; $i++):
-								?>
-								<option value="<?php echo $i;?>"><?php echo $i;?></option>
-								<?php
-							endfor;
-							?>
-						</select>
-					</div>
 
-					<div class="registerOther_box clearfix">
-						<p>性别</p>
-						<label><input type="radio" name="cus-sex" id="">女</label>
-						<label><input type="radio" name="cus-sex" id="" checked>男</label>
-					</div>
-				</div>
+<!--				<div class="registerBox">-->
+<!--					<h4>*手机号码</h4>-->
+<!--					<label for="mobile_number" class="required">-->
+<!--						<input type="text" name="phone" id="mobile_number" placeholder="手机号码" value="" />-->
+<!--					</label>-->
+<!--				</div>-->
+<!--				<div class="registerOther" style="border-top:none; padding-top:0; margin-top:0">-->
+<!--					<div class="registerOther_box clearfix">-->
+<!--						<p>出生日期</p>-->
+<!--						<select name="date-year" id="date-year">-->
+<!--							--><?php
+//							$currentYear = date('Y');
+//							for($i = 1950; $i <= $currentYear; $i++):
+//								?>
+<!--								<option value="--><?php //echo $i;?><!--">--><?php //echo $i;?><!--</option>-->
+<!--								--><?php
+//							endfor;
+//							?>
+<!--						</select>-->
+<!--						<select name="date-mon" id="date-mon">-->
+<!--							--><?php
+//							for($i = 1; $i <= 12; $i++):
+//								?>
+<!--								<option value="--><?php //echo $i;?><!--">--><?php //echo $i;?><!--</option>-->
+<!--								--><?php
+//							endfor;
+//							?>
+<!--						</select>-->
+<!--						<select name="date-day" id="date-day">-->
+<!--							--><?php
+//							for($i = 1; $i <= 31; $i++):
+//								?>
+<!--								<option value="--><?php //echo $i;?><!--">--><?php //echo $i;?><!--</option>-->
+<!--								--><?php
+//							endfor;
+//							?>
+<!--						</select>-->
+<!--					</div>-->
+<!---->
+<!--					<div class="registerOther_box clearfix">-->
+<!--						<p>性别</p>-->
+<!--						<label><input type="radio" name="cus-sex" id="">女</label>-->
+<!--						<label><input type="radio" name="cus-sex" id="" checked>男</label>-->
+<!--					</div>-->
+<!--				</div>-->
 				<div class="registerBox" style="border-top:1px solid #ddd; padding-top:10px; margin-top:10px;">
 					<label for="change_password">修改密码</label>
 					<input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="Change Password"<?php if ($this->getCustomer()->getChangePassword() == 1): ?> checked="checked"<?php endif; ?> class="checkbox" />

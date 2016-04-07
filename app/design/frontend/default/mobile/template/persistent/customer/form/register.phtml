@@ -40,12 +40,12 @@
 					</div>
 					<div class="registerBox">
 						<label for="email_address" class="required">
-							<input type="email" name="email" id="email_address" placeholder="*电子邮箱" value="<?php echo (strlen($this->getRequest()->getParam('email'))) ? $this->getRequest()->getParam('email') : $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+							<input type="email" name="email" id="email_address" placeholder="*电子邮箱" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
 						</label>
 					</div>
 					<div class="registerBox">
 						<label for="name" class="required">
-							<input type="text" name="firstname" id="name" placeholder="*用户名" value="" class="" />
+							<input type="text" name="firstname" id="name" placeholder="*真实姓名" title="<?php echo $this->__('First Name') ?>" class="input-text required-entry" />
 						</label>
 					</div>
 					<div class="registerBox">
@@ -55,19 +55,14 @@
 					</div>
 					<div class="registerBox">
 						<label for="confirmation" class="required">
-							<input autocomplete="off" type="password" placeholder="*确认密码" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" />
+							<input autocomplete="off" type="password" placeholder="*确认密码" name="confirmation" id="confirmation" title="<?php echo $this->__('Confirm Password') ?>" class="input-text required-entry validate-both-passwords" />
 						</label>
 					</div>
-					<div class="registerBox">
-						<label for="true_name" class="required">
-							<input type="text" name="truename" id="true_name" placeholder="*真实姓名" value="" />
-						</label>
-					</div>
-					<div class="registerBox">
-						<label for="mobile_number" class="required">
-							<input type="text" name="phone" id="mobile_number" placeholder="*手机号码" value="" />
-						</label>
-					</div>
+<!--					<div class="registerBox">-->
+<!--						<label for="mobile_number" class="required">-->
+<!--							<input type="text" name="phone" id="mobile_number" placeholder="*手机号码" class="input-text required-entry validate-password" />-->
+<!--						</label>-->
+<!--					</div>-->
 				</div>
 
 
@@ -155,45 +150,45 @@
 					<div class="divider"></div>
 				<?php endif; ?>
 
-				<div class="registerOther">
-					<div class="registerOther_box clearfix">
-						<p>出生日期</p>
-						<select name="date-year" id="date-year">
-                            <?php
-                            $currentYear = date('Y');
-                            for($i = 1950; $i <= $currentYear; $i++):
-                                ?>
-                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                                <?php
-                            endfor;
-                            ?>
-						</select>
-						<select name="date-mon" id="date-mon">
-                            <?php
-                            for($i = 1; $i <= 12; $i++):
-                                ?>
-                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                                <?php
-                            endfor;
-                            ?>
-						</select>
-						<select name="date-day" id="date-day">
-                            <?php
-                            for($i = 1; $i <= 31; $i++):
-                                ?>
-                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                                <?php
-                            endfor;
-                            ?>
-						</select>
-					</div>
-
-					<div class="registerOther_box clearfix">
-						<p>性别</p>
-						<label><input type="radio" name="cus-sex" id="">女</label>
-						<label><input type="radio" name="cus-sex" id="" checked>男</label>
-					</div>
-				</div>
+<!--				<div class="registerOther">-->
+<!--					<div class="registerOther_box clearfix">-->
+<!--						<p>出生日期</p>-->
+<!--						<select name="date-year" id="date-year">-->
+<!--                            --><?php
+//                            $currentYear = date('Y');
+//                            for($i = 1950; $i <= $currentYear; $i++):
+//                                ?>
+<!--                                <option value="--><?php //echo $i;?><!--">--><?php //echo $i;?><!--</option>-->
+<!--                                --><?php
+//                            endfor;
+//                            ?>
+<!--						</select>-->
+<!--						<select name="date-mon" id="date-mon">-->
+<!--                            --><?php
+//                            for($i = 1; $i <= 12; $i++):
+//                                ?>
+<!--                                <option value="--><?php //echo $i;?><!--">--><?php //echo $i;?><!--</option>-->
+<!--                                --><?php
+//                            endfor;
+//                            ?>
+<!--						</select>-->
+<!--						<select name="date-day" id="date-day">-->
+<!--                            --><?php
+//                            for($i = 1; $i <= 31; $i++):
+//                                ?>
+<!--                                <option value="--><?php //echo $i;?><!--">--><?php //echo $i;?><!--</option>-->
+<!--                                --><?php
+//                            endfor;
+//                            ?>
+<!--						</select>-->
+<!--					</div>-->
+<!---->
+<!--					<div class="registerOther_box clearfix">-->
+<!--						<p>性别</p>-->
+<!--						<label><input type="radio" name="gender" value="1">男</label>-->
+<!--						<label><input type="radio" name="gender" value="2" checked>女</label>-->
+<!--					</div>-->
+<!--				</div>-->
 				<div class="registerRules clearfix">
 					<label class="registerLabel">
 						<span class="rulChe"><input type="checkbox" name="registerRule" id=""></span>
