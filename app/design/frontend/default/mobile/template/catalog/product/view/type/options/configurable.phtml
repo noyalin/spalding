@@ -53,6 +53,31 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 $stockStatus = '';
 ?>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
+
+<dl>
+    <?php foreach($_attributes as $_attribute): ?>
+    <?php $valueArr = $_attribute->getPrices();?>
+        <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+        <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+            <div class="input-box">
+                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                    <option><?php echo $this->__('Choose an Option...') ?></option>
+                    <?php 
+                    	foreach($valueArr as $optionValue):
+                    ?>
+                    <option value="<?php echo $optionValue['value_index']?>"><?php echo $optionValue['label']; ?></option>
+                    <?php
+                    	endforeach;
+                    ?>
+                </select>
+              </div>
+        </dd>
+    <?php endforeach; ?>
+    </dl>
+    <script type="text/javascript">
+        var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+    </script>
+
     <!--    <div class="sale-num prodetail-box">-->
     <!--        <span>篮球类型：</span>-->
     <!--        --><?php //foreach($_attributes as $_attribute): ?>
@@ -63,48 +88,14 @@ $stockStatus = '';
 
 
 
-    <?php foreach($_attributes as $_attribute): ?>
-        <?php
-        $valueArr = $_attribute->getPrices();
-        ?>
-        <div class="sale-num prodetail-box clearfix">
-            <!--                <span>--><?php //echo $_attribute->getLabel() ?><!--：</span>-->
-            <div class="proboxTit ms-fl"><label><?php echo $_attribute->getLabel() ?>：</label></div>
-            
-            <?php $sizeIndex = 1;?>
-            <?php foreach($valueArr as $optionValue):?>
-                <?php
-                if($attributeSetName == 'ball'){
-                    $simpleSku = $sku."-OneSize";
-                    $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
-                    $qtyStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleSku)->getQty();
-                    $stockStatus = "";
-                    if($qtyStock == 0){
-                        $stockStatus = "目前无货";
-                    }
-                }else{
-                    $simpleSku = $sku."-".$optionValue['default_label'];
-                    $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
-                    $qtyStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleSku)->getQty();
-                    if($qtyStock == 0){
-                        continue;
-                    }
-                }
-                ?>
-                <?php $sizeIndex  = $sizeIndex + 1;?>
-                <div class="proboxCons ms-fl">
-                <span class="sale_kind sale_kindChos" for=attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" name="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>"><?php echo $optionValue['label']; ?></span>
-                <input type="radio"  data-input="kinds" value="<?php echo $optionValue['value_index']?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId().$sizeIndex ?>" class="required-entry super-attribute-select validation-passed" style="display: none">
-                <label><?php echo $stockStatus; ?></label>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endforeach; ?>
+
+    
 <?php endif;?>
 
 
 
 <?php
+
 $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter(array(array('attribute'=> 'model','eq' => $_product->getModel())));
 ?>
 <?php if ($attributeSetName=='apparel' && count($_productAvailableColorsCollection) > 1) : ?>
@@ -120,6 +111,7 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
                 if ($i++ < 5) {
                     $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
                     $thisUrlkey = $_productColor->getUrlKey();
+                    $eachSku = $_product->getSku();
                     $availableColorPxNow = "";
                     $border = '';
                     if($pageUrlkey===$thisUrlkey){
@@ -127,6 +119,7 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
 //                        $border = "border:2px solid #FBB605";
                         $border = "";
                     }
+                    
 //                    $thisSmallImage = $this->helper('catalog/image')->init($_product, 'small_image')->resize(50, 50);
 //                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding45px?$image45px='.$thisUrlkey.'-1';
 //                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$thisUrlkey.'-1';
