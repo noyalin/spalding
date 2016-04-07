@@ -45,16 +45,21 @@ $sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $snea
 </div>-->
 <div class="footer-16">
 	<div class="footer-top clearfix">
+		<a href="<?php echo $this->getUrl('customer/account/'); ?>">
 		<div class="footer-top-box ms-fl">
-			<a href="<?php echo $this->getUrl('customer/account/'); ?>">
-				<img src="<?php echo $this->getSkinUrl('images/bottom-login.jpg');?>" border="0">
-			</a>
-		</div>
+
+				<img src="<?php echo $this->getSkinUrl('images/footer-login-icon.jpg');?>" border="0">
+				登录/注册
+
+		</div></a>
+		<a href="<?php echo Mage::getUrl('mobile_shop')?>">
 		<div class="footer-top-box ms-fr">
-			<a href="<?php echo Mage::getUrl('mobile_shop')?>">
-				<img src="<?php echo $this->getSkinUrl('images/bottom-shopLink.jpg');?>" border="0">
-			</a>
+
+				<img src="<?php echo $this->getSkinUrl('images/footer-shop-icon.jpg');?>" border="0">
+				实体店查询
+
 		</div>
+		</a>
 	</div>
 	<div class="footer-infs clearfix">
 		<div class="footer-infs-phone ms-fl">

@@ -5231,9 +5231,20 @@ span.checkError{
 }
 .footer-top .footer-top-box{
 	width:50%;
+	height:50px;
+	line-height:50px;
+}
+.footer-top a .footer-top-box{
+	color:#fff;
+	font-size:12px;
+	/*line-height:16px;*/
 }
 .footer-top .footer-top-box img{
-	width:100%;
+	/*width:100%;*/
+	vertical-align:middle;
+	height:16px;
+	line-height:16px;
+	margin:0 5px 0 15px;
 }
 
 .footer-top:before{
