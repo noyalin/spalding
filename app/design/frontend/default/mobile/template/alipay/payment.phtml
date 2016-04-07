@@ -56,7 +56,7 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
         echo '<div class="box">订单已经取消</div>';
     }else{
     ?>
-    <div class="box" style="width: 400px;">
+    <div class="box">
 <?php
 
 $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
@@ -70,7 +70,7 @@ if (strpos($agent, "MicroMessenger")) {
 }
 ?>
         <p>点击选择支付平台前往付款：</p>
-        <ul>
+        <ul class="clearfix">
         <?php if ($weixinPay): ?>
             <li>
                 <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">
@@ -86,7 +86,7 @@ if (strpos($agent, "MicroMessenger")) {
                 </label>
             </li>
         </ul>
-        <div style="text-align: left">
+        <div style="text-align: right;">
             <button type="submit" title="我要付款" class="button btn-checkout btn-next" id="submitbutton"><span><span>我要付款</span></span></button>
         </div>
     </div>
