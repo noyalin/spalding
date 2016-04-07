@@ -1307,7 +1307,7 @@ header.global-header.detail-title {
 	text-align:center !important;
 	padding: 12px 0;
 	letter-spacing: 1px;
-	color: #FFF;
+	color: #333;
 	font-weight: bold;
 }
 header.global-header.detail-title .title {
@@ -1323,7 +1323,36 @@ header.global-header p{
 	font-size:12px;
     color: #E0E0E0;
 }
-
+header.global-header .global-header-infs{
+	position:relative;
+	margin:5px 0;
+}
+header.global-header .global-header-infs:before{
+	content: '';
+	height:25px;
+	width:1px;
+	position:absolute;
+	background:#999;
+	left:50%;
+	top:3px;
+}
+header.global-header .global-header-infs>div{
+	height:30px;
+	line-height: 30px;
+	font-size:12px;
+	width:50%;
+	font-weight:normal;
+}
+.global-header-infs .global-header-price span{
+	display:inline-block;
+}
+.global-header-infs .global-header-price span.price-msvp{
+	text-decoration:line-through;
+	color:#666;
+}
+.global-header-infs .global-header-price span.price-now{
+	font-size:14px;
+}
 /* Sitemap area */
 .detail-section .category-filter{
 	border-bottom:1px solid	rgba(0,0,0,0.4);
@@ -1592,7 +1621,7 @@ section#category-wrapper header h1{
 .multi-view-img-big img{
     /*width: 185px;*/
 	width:100%;
-	max-height:120px;
+	max-height:140px;
 }
 .multi-view-box h3{
 	font-size:10px;
@@ -1787,7 +1816,8 @@ PRODUCT DETAIL
 /* Slider Container */
 /********************/
 .sliderContainer {
-	margin: 0;
+	margin: 100px 0 0;
+	width:100%;
 }
 
 .sliderContainerWrapper {
@@ -1843,22 +1873,20 @@ Scrolling is automated IF there is an overflow of the width */
 }
 .iosSliderButtons .button {
 	display:inline-block;
-	background:#FFF;
-	border-radius:50%;
-	box-shadow:inset 1px 1px 2px rgba(0,0,0,0.5);
-	width:8px;
-	height:8px;
+	background:#c1c4c5;
+	width:20px;
+	height:3px;
 	margin:2px;
 	padding:0;
 }
-.iosSliderButtons .button.first {background:#F3AC00;}
+.iosSliderButtons .button.first {background:#010101;}
 
 /* Selected buttons. ".small" class is for reduced media query */
 .iosSliderButtons .selected,
 .iosSliderButtons.small .selected,
 .iosSliderButtons .button:hover,
 .iosSliderButtons.small .button:hover {
-	background:#F3AC00;
+	background:#010101;
 }
 
 .iosSliderButtons.moreStyles {
@@ -1949,7 +1977,7 @@ Scrolling is automated IF there is an overflow of the width */
 	}
 	.iosSlider .slider img {
 		width: 210px;
-		height: 150px;
+		height: 160px;
 	}
 
 	.iosSliderStyles {
@@ -1985,16 +2013,14 @@ Scrolling is automated IF there is an overflow of the width */
 /* Detail Accordions Sections        */
 /*************************************/
 #detailAccordion h3 {
-	background: url("../images/bg-title.png") repeat scroll 0 0 rgba(255, 255, 255, 0.03);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-	color: #FFFFFF;
+	color: #333;
 	font-family:Arial, sans-serif;
-	font-size: 13px;
-	padding: 15px 20px 0;
+	font-size: 14px;
 	position: relative;
 	text-transform: uppercase;
-	width: 95%;
-	line-height: 1.1;
+	margin:10px;
+
 }
 
 #detailTabDescriptionContent,
@@ -2080,6 +2106,16 @@ Scrolling is automated IF there is an overflow of the width */
 	color:#FFF;
 }
 
+
+#detailTabDescriptionContent{
+	padding:0;
+}
+#detailTabDescriptionContent .detailConNew img{
+	width:100%;
+}
+#detailTabDescriptionContent .productOthers img{
+	width:100%;
+}
 /* Ratings */
 .rating-box {
 	width:75px;

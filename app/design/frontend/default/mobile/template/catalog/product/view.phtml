@@ -80,25 +80,33 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 
 	<div class="category-filter clearfix">
 		<?php if ($_currentCategory): ?>
-		<div class="detail-site-map cat-site-map-arrow-bak">
-		<?php 
+		<!--<div class="detail-site-map cat-site-map-arrow-bak">
+		<?php /*
 			if($parentCategoryUrlKey != ''):
-		?>
-		<a class="back-category-title" href="<?php echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName ?>">搜索 <?php echo $parentCategoryName ?></a>
+		*/?>
+		<a class="back-category-title" href="<?php /*echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName */?>">搜索 <?php /*echo $parentCategoryName */?></a>
 		<?php
-			else:
-		?>
-		<a class="back-category-title" href="/" title="' . $parentCategoryName ?>">搜索 <?php echo $parentCategoryName ?></a>
+/*			else:
+		*/?>
+		<a class="back-category-title" href="/" title="' . $parentCategoryName ?>">搜索 <?php /*echo $parentCategoryName */?></a>
 		<?php
-			endif;
-		?>
-<!--			<a class="back-category-title" href="--><?php //echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName ?><!--">Back to --><?php //echo $parentCategoryName ?><!--</a>-->
+/*			endif;
+		*/?>
             
-		</div>
+		</div>-->
 		<?php endif; ?>
 		<header class="global-header detail-title">
 			<div class="clearfix title">
 				<div class="clearfix"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
+			</div>
+			<div class="global-header-infs clearfix">
+				<div class="global-header-price ms-fl">
+					<span class="price-msvp">$9999.00</span>
+					<span class="price-now">$9999.00</span>
+				</div>
+				<div class="global-header-kind ms-fl">
+					款号: <?php echo $_product->getSku() ?>
+				</div>
 			</div>
 		</header>
 	</div>
@@ -169,7 +177,7 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 
 
 <!--		<p>Style Number: --><?php //echo $_product->getSku() ?><!--</p>-->
-        <p>款号: <?php echo $_product->getSku() ?></p>
+<!--        <p>款号: --><?php //echo $_product->getSku() ?><!--</p>-->
 <!--		--><?php //if ($_product->getColorSn()) : ?><!--<p>Color: --><?php //echo $_product->getColorSn() ?><!----><?php //endif; ?>
         <?php if ($_product->getColorSn()) : ?><p>颜色: <?php echo $_product->getColorSn() ?><?php endif; ?>
 		</p>
@@ -220,6 +228,45 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 		<div>
 			<div class='title'><?php echo $_helper->productAttribute($_product, nl2br($_product->getName()), 'name') ?></div>
 			<p><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></p>
+		</div>
+
+		<!--商品詳情 -- 模板-->
+		<div class="detailConNew">
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-1.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/product-info-title.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-2.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-3.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-4.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-5.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-6.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-7.jpg');?>" border="0">
+			</div>
+		</div>
+		<div class="productOthers">
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-8.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-9.jpg');?>" border="0">
+			</div>
+			<div class="detailBoxNew detail-sn">
+				<img src="<?php echo $this->getSkinUrl('images/produce-info-10.jpg');?>" border="0">
+			</div>
 		</div>
 	</div>
 
