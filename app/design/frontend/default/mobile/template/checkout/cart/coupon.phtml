@@ -30,12 +30,12 @@
 		.no-use-discount-coupon{font-size:12px;color:#b4b4b4; margin:10px 0;}
 		.no-use-discount-coupon-modify{color:#38f;cursor:pointer;}
 	</style>
-	<?php if(!strlen($this->getCouponCode())): ?>
+
 	<div class="no-use-discount-coupon">
 		<span>不使用优惠券</span>
 		<span class="no-use-discount-coupon-modify">[修改]</span>
 	</div>
-	<?php endif;?>
+
 	<div id="discount-coupon" style="display:none;">
 		<form id="discountForm" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
 			<!--<fieldset>
@@ -62,10 +62,10 @@
 			<div class="cart-coupon clearfix">
 				<span class="couponInput">
 					<input type="hidden" name="remove" id="remove-coupone" value="0" />
-					<input class="input-text required-entry" id="coupon_code" name="coupon_code" value="" />
+                    <input class="input-text required-entry" id="coupon_code" name="coupon_code" value="<?php echo $this->getCouponCode() ?>" <?php if (strlen($this->getCouponCode())): ?>disabled<?php endif; ?>/>
 				</span>
 				<span class="couponSubmit">
-					<button class="button" type="submit" onclick="/*jQuery('#giftcard-form .form-horizontal-input').find('div').remove();*/ return validateForm('#discountForm');" value="<?php echo $this->__('Apply Coupon') ?>"></button>
+					<button class="button" type="submit" onclick="return validateForm('#discountForm');" value="<?php echo $this->__('Apply Coupon') ?>" <?php if (strlen($this->getCouponCode())): ?>disabled<?php endif; ?>></button>
 				</span>
 			</div>
 		</form>
