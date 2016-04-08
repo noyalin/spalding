@@ -71,15 +71,19 @@
 				<td class="a-center">
 <!--					<span class="nobr"><a href="--><?php //echo $this->getViewUrl($_order) ?><!--">查看订单</a></span>-->
 					<span class="nobr">
-                        <?php if($this->getOrderStatus($_order)) : ?>
-                            <a href="<?php echo $this->getPayUrl($_order) ?>">立即支付</a><?php endif ?>
+                        <?php if($this->getOrderStatus($_order)): ?>
+                            <a href="<?php echo $this->getPayUrl($_order) ?>">立即支付</a>
+                            <br />
+                        <?php endif ?>
                             <a class="order_data_list_fun_che" href="<?php echo $this->getViewUrl($_order) ?>">查看订单</a>
-                        <?php if($_order->getStatus() === 'alipay_wait_buyer_pay'){?>
+                        <?php if($_order->getStatus() === 'alipay_wait_buyer_pay'):?>
+                            <br />
                             <a href="<?php echo $this->getCancelUrl($_order) ?>">取消订单</a>
-                        <?php }?>
-                        <?php if($_order->getStatus() === 'shipped'){ ?>
+                        <?php endif; ?>
+                        <?php if($_order->getStatus() === 'shipped'): ?>
+                            <br />
                             <a href="<?php echo $this->getTrackingUrl($_order) ?>">查看物流</a>
-                        <?php }?>
+                        <?php endif; ?>
         			</span>
 				</td>
 				</tr>

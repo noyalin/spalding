@@ -24,15 +24,16 @@
  * @license     http://www.magentocommerce.com/license/enterprise-edition
  */
 ?>
+<?php  $_order = $this->getOrder() ?>
 	<div class="orderInfo-productHeader clearfix">
-		<span>订单编号：</span>
-		<span>下单时间：</span>
+		<span>订单编号：<?php echo $_order->getRealOrderId() ?></span>
+		<span>下单时间：<?php echo $_order->getCreatedAt() ?></span>
 	</div>
     <table cellpadding="0" cellspacing="0" border="0" class="orderInfo-prouductList">
 	<tbody>
-	<?php  $_order = $this->getOrder() ?>
-        <?php $_items = $_order->getItemsCollection(); ?>
-        <?php $_index = 0; ?>
+
+    <?php $_items = $_order->getItemsCollection(); ?>
+    <?php $_index = 0; ?>
 	<?php $_count = $_items->count(); ?>
 	<?php $i = 1 ?>
         <?php foreach ($_items as $_item): ?>
