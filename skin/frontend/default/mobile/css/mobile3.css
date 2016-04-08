@@ -972,7 +972,7 @@ audio:not([controls]) { display: none; }
 
 html { font-size:87.5%; -webkit-text-size-adjust:87.5%; -ms-text-size-adjust:87.5%; }
 
-html, button, input, select, textarea { font-family:Arial, Pt Sans,sans-serif; color: #FFF; }
+html, button, input, select, textarea { font-family:Arial, Pt Sans,sans-serif; color: #333; }
 
 body { margin: 0; font-size: 1em; line-height: 1.4; }
 
@@ -2301,8 +2301,9 @@ Scrolling is automated IF there is an overflow of the width */
 /* Detail Add to Cart */
 
 .detailCheckOutWrap{
-	text-align:center;
-	border-bottom:1px solid rgba(0,0,0,0.5);
+	text-align:left;
+	color:#333;
+	margin:10px;
 }
 .detailSelectBox{
 	margin:0 0 12px 0;
@@ -2367,7 +2368,7 @@ Scrolling is automated IF there is an overflow of the width */
 	}
 }
 .detailSelectBtn{
-	margin:10px;
+	margin:10px 0;
 }
 .detailSelectBtn button{
 	width:100%;
@@ -3970,7 +3971,9 @@ span.sale_kind{
 }
 
 .add-to-cart{
-	margin-bottom:20px;
+	width:50%;
+	float:right;
+	margin-top:-30px;
 }
 
 .add-to-cart a{
@@ -3982,7 +3985,7 @@ span.sale_kind{
 
 }
 .add-to-cart input.proNum{
-	padding:5px 3px;
+	padding:6px 3px;
 	color:#333;
 	width:50px;
 }
@@ -3990,12 +3993,27 @@ span.sale_kind{
 
 .proboxTit{
 	width:25%;
-	text-align: right;
+	text-align: left;
 }
 .proboxCons span{
 	margin-right:5px;
 }
 
+.proboxTit label{
+	vertical-align:middle;
+	line-height:30px;
+}
+dl.addToCartSize{
+	position: relative;
+	width: 50%;
+}
+dl.addToCartSize dd select{
+	height:30px;
+	line-height:30px;
+}
+dl.addToCartSize dt{
+	line-height:30px;
+}
 
 .bigImg{
 	width:100%;

@@ -27,18 +27,18 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
-    <div class="add-to-box">
+    <div class="add-to-box clearfix">
         <div class="add-to-cart clearfix">
             <?php if(!$_product->isGrouped()): ?>
                 <!--        <label for="qty">--><?php //echo $this->__('Qty:') ?><!--</label>-->
-                <div class="proboxTit ms-fl"><label for="qty">数量：</label></div>
+
                 <!--        <input type="text" name="qty" id="qty" maxlength="12" value="--><?php //echo $this->getProductDefaultQty() * 1 ?><!--" title="--><?php //echo $this->__('Qty') ?><!--" class="input-text qty" />-->
-                <div class="proboxCons ms-fl">
+                <div class="proboxCons ms-fr">
                 <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
                 <input type="text" name="qty" id="qty_item_1" value="<?php echo $this->getProductDefaultQty() * 1 ?>" onKeyUp="setAmount.modify('#qty_item_1')" class="proNum input-text qty" />
                 <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>
                 </div>
-                
+                <div class="proboxTit ms-fr"><label for="qty">数量：</label></div>
             <?php endif; ?>
             <!--        <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>--><?php //echo $buttonTitle ?><!--</span></span></button>-->
             
@@ -46,7 +46,23 @@
         </div>
         <div class="detailSelectBtn">
 <!--                <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>加入购物车</span></span></button>-->
-                <button type="submit" class="addToBag" onclick="return validateForm('.giftcard-form')"/></button>
+                <button type="submit" class="addToBag" id="addToBag" onclick="return validateForm('.giftcard-form')" /></button>
             </div>
     </div>
 <?php endif; ?>
+<script>
+    //添加购物车时判断是否选择了商品尺寸
+    /*jQuery(function(){
+        jQuery("#addToBag").click(function(){
+            //onclick="return validateForm('.giftcard-form')"
+            var options = jQuery(".super-attribute-select option:selected");
+            alert(options.val());
+            if(options == 0){
+                return false;
+            }else{
+                return validateForm('.giftcard-form');
+            }
+
+        });
+    });*/
+</script>
