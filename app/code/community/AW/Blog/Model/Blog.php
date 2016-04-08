@@ -40,6 +40,23 @@ class AW_Blog_Model_Blog extends Mage_Core_Model_Abstract {
         return $content;
     }
 
+    public function getMobileShortContent() {
+        $content = $this->getData('mobile_short_content');
+        if (Mage::getStoreConfig(AW_Blog_Helper_Config::XML_BLOG_PARSE_CMS)) {
+            $processor = Mage::getModel('core/email_template_filter');
+            $content = $processor->filter($content);
+        }
+        return $content;
+    }
+
+    public function getMobileContent() {
+        $content = $this->getData('mobile_content');
+        if (Mage::getStoreConfig(AW_Blog_Helper_Config::XML_BLOG_PARSE_CMS)) {
+            $processor = Mage::getModel('core/email_template_filter');
+            $content = $processor->filter($content);
+        }
+        return $content;
+    }
     public function _beforeSave() {
         if (is_array($this->getData('tags'))) {
             $this->setData('tags', implode(",", $this->getData('tags')));

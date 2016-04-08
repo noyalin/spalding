@@ -181,15 +181,14 @@
 	<div class="checktf" style="-webkit-transform:translate3d(0,0,0);">
 		<div id="news_box" class="box_swipe news-swipe">
 			<ul>
-				<li>
-					<img src="<?php echo $this->getSkinUrl('images/news-box-img-1.png');?>" border="0">
-					<div class="news-swipe-box">
-						<h3>2016-03-26</h3>
-						<h2>SPALDING NBA全明星赛系列篮球亮相多伦多!</h2>
-						<p>北京时间2月12日，2015-2016NBA赛季全明星周末在加拿大多伦多拉开了序幕。作为全球顶级的篮球装备供应商之一、世界篮球品牌斯伯丁，为本届NBA全明星赛事专属打造的官方比赛系列篮球正式在赛场上公布亮相。</p>
-						<a href="#">了解更多</a>
-					</div>
-				</li>
+                <?php
+                $blogPosts = Mage::getModel('blog/blog')->getCollection()
+                    ->setOrder('created_time', 'desc')
+                    ->setPageSize(3);
+                foreach ($blogPosts as $post){
+                    echo $post->getMobileShortContent();
+                }
+                ?>
 			</ul>
 		</div>
 	</div>

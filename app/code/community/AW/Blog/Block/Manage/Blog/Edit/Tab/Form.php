@@ -151,6 +151,23 @@ class AW_Blog_Block_Manage_Blog_Edit_Tab_Form extends Mage_Adminhtml_Block_Widge
             'config' => $config
         ));
 
+        if (Mage::getStoreConfig('blog/blog/useshortcontent')) {
+            $fieldset->addField('mobile_short_content', 'editor', array(
+                'name' => 'mobile_short_content',
+                'label' => Mage::helper('blog')->__('Mobile Short Content'),
+                'title' => Mage::helper('blog')->__('Mobile Short Content'),
+                'style' => 'width:700px; height:100px;',
+                'config' => $config,
+            ));
+        }
+        $fieldset->addField('mobile_content', 'editor', array(
+            'name' => 'mobile_content',
+            'label' => Mage::helper('blog')->__('Mobile Content'),
+            'title' => Mage::helper('blog')->__('Mobile Content'),
+            'style' => 'width:700px; height:500px;',
+            'config' => $config
+        ));
+
         if (Mage::getSingleton('adminhtml/session')->getBlogData()) {
             $form->setValues(Mage::getSingleton('adminhtml/session')->getBlogData());
             Mage::getSingleton('adminhtml/session')->setBlogData(null);
