@@ -101,8 +101,28 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 			</div>
 			<div class="global-header-infs clearfix">
 				<div class="global-header-price ms-fl">
-					<span class="price-msvp">$9999.00</span>
-					<span class="price-now">$9999.00</span>
+<!--                    <p class="detail-price">-->
+                        <?php if (!is_null($_product->getJ2tRewardvalue())): ?>
+                            <?php echo $_helper->productAttribute($_product, $_product->getJ2tRewardvalue(), 'j2t_rewardvalue') . ' Points' ?>
+                        <?php else: ?>
+                            <?php
+                            $msrp = number_format($_product->getMsrp(), '2', '.', ',');
+                            $currentPrice = number_format($_product->getFinalPrice(), '2', '.', ',');
+                            if($msrp != $currentPrice):
+                                ?>
+                                <span class="price-msvp">
+<!--                                <span class="detailPricVm">-->
+<!--					            <em></em>-->
+					            ￥<?php echo $msrp; ?>
+				                </span>
+                                <?php
+                            endif;
+                            ?>
+                            <span class="price-now">
+                            <?php echo $this->getPriceHtml($_product) ?>
+                            </span>
+                        <?php endif; ?>
+<!--                    </p>-->
 				</div>
 				<div class="global-header-kind ms-fl">
 					款号: <?php echo $_product->getSku() ?>
@@ -154,33 +174,8 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 	<?php endif; ?>
 
 	<section class="detail-style-info<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) echo ' moreStyles'; ?>">
-		<p class="detail-price">
-			<?php if (!is_null($_product->getJ2tRewardvalue())): ?>
-				<?php echo $_helper->productAttribute($_product, $_product->getJ2tRewardvalue(), 'j2t_rewardvalue') . ' Points' ?>
-			<?php else: ?>
-				<?php 
-            		$msrp = number_format($_product->getMsrp(), '2', '.', ',');
-            		$currentPrice = number_format($_product->getFinalPrice(), '2', '.', ',');
-            		if($msrp != $currentPrice):
-            	?>
-            	<span class="detailPricVm">
-					<em></em>
-					￥<?php echo $msrp; ?>
-				</span>
-            <?php 
-            	endif;
-            ?>
-			
-				<?php echo $this->getPriceHtml($_product) ?>
-			<?php endif; ?>
-		</p>
 
-
-<!--		<p>Style Number: --><?php //echo $_product->getSku() ?><!--</p>-->
-<!--        <p>款号: --><?php //echo $_product->getSku() ?><!--</p>-->
-<!--		--><?php //if ($_product->getColorSn()) : ?><!--<p>Color: --><?php //echo $_product->getColorSn() ?><!----><?php //endif; ?>
-        <?php if ($_product->getColorSn()) : ?><p>颜色: <?php echo $_product->getColorSn() ?><?php endif; ?>
-		</p>
+        <?php if ($_product->getColorSn()) : ?><p>颜色: <?php echo $_product->getColorSn() ?></p><?php endif; ?>
 
 	</section>
 
