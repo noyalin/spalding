@@ -46,23 +46,7 @@
         </div>
         <div class="detailSelectBtn">
 <!--                <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>加入购物车</span></span></button>-->
-                <button type="submit" class="addToBag" id="addToBag" onclick="return validateForm('.giftcard-form')" /></button>
+                <button type="submit" class="addToBag" id="addToBag" onclick="return validateForm('#product_addtocart_form')" /></button>
             </div>
     </div>
 <?php endif; ?>
-<script>
-    //添加购物车时判断是否选择了商品尺寸
-    /*jQuery(function(){
-        jQuery("#addToBag").click(function(){
-            //onclick="return validateForm('.giftcard-form')"
-            var options = jQuery(".super-attribute-select option:selected");
-            alert(options.val());
-            if(options == 0){
-                return false;
-            }else{
-                return validateForm('.giftcard-form');
-            }
-
-        });
-    });*/
-</script>
