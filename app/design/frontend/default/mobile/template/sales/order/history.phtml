@@ -26,25 +26,27 @@
 ?>
 <?php $_orders = $this->getOrders(); ?>
 <div id="my-account-all">
-	<div class="my-account-top clearfix">
+	<!--<div class="my-account-top clearfix">
 		<div class="my-account-welcome">
 			<span>
-				<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-				<?php echo '欢迎, ' . $customerName ?>
+				<?php /*$customerName = Mage::helper('customer')->getCustomerName() */?>
+				<?php /*echo '欢迎, ' . $customerName */?>
 			</span>
 		</div>
 		<div class="my-account-logout">
-			<a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure'=>true)) ?>">退出</a>
+			<a class="logout-link" href="<?php /*echo $this->getUrl('customer/account/logout', array('_secure'=>true)) */?>">退出</a>
 		</div>
-	</div>
+	</div>-->
 
 	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_my_account_menu')->toHtml(); ?>
 
-    <h1 id="my-account-orders">我的订单</h1>
+
 	<div id="my-account-orders-content">
-	<div class="myAccountBox">
+
+	<div class="myAccountBox orderInfo-content">
+		<h2>我的订单</h2>
 		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 		<?php echo $this->getChildHtml('info');?>
 		<?php if($_orders->getSize()): ?>

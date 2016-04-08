@@ -61,7 +61,7 @@
 
     <div class="myAccountBox">
 <!--	<h2>Items Ordered</h2>-->
-	<h2>商品已下单</h2>
+	<h2>商品信息</h2>
         <?php echo $this->getChildHtml('order_items') ?>
     </div>
     <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order', $_order) && $_order->getGiftMessageId()): ?>
