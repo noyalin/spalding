@@ -24,48 +24,78 @@
  * @license     http://www.magentocommerce.com/license/enterprise-edition
  */
 ?>
-    <table>
-	<thead>
-	    <tr>
-<!--		<td>Product Name</td>-->
-<!--		<td>SKU</td>-->
-<!--		<td>Price</td>-->
-<!--		<td>Qty</td>-->
-<!--		<td>Sub Total</td>-->
-            <td>产品名称</td>
-            <td>产品SKU</td>
-            <td>价格</td>
-            <td>数量</td>
-            <td>总计</td>
-	    </tr>
-	</thead>
+	<div class="orderInfo-productHeader clearfix">
+		<span>订单编号：</span>
+		<span>下单时间：</span>
+	</div>
+    <!--<table cellpadding="0" cellspacing="0" border="0" class="orderInfo-prouductList">
 	<tbody>
-	<?php  $_order = $this->getOrder() ?>
-        <?php $_items = $_order->getItemsCollection(); ?>
-        <?php $_index = 0; ?>
-	<?php $_count = $_items->count(); ?>
-	<?php $i = 1 ?>
-        <?php foreach ($_items as $_item): ?>
-	    <?php if ($_item->getParentItem()) continue; ?>
-	    <tr class="<?php if(++$i % 2 == 0) : ?>tableBgEven<?php else:?>tableBgOdd<?php endif;?>">
-		<?php echo $this->getItemHtml($_item) ?>
+	<?php /* $_order = $this->getOrder() */?>
+        <?php /*$_items = $_order->getItemsCollection(); */?>
+        <?php /*$_index = 0; */?>
+	<?php /*$_count = $_items->count(); */?>
+	<?php /*$i = 1 */?>
+        <?php /*foreach ($_items as $_item): */?>
+	    <?php /*if ($_item->getParentItem()) continue; */?>
+	    <tr class="<?php /*if(++$i % 2 == 0) : */?>tableBgEven<?php /*else:*/?>tableBgOdd<?php /*endif;*/?>">
+		<?php /*echo $this->getItemHtml($_item) */?>
 	    </tr>
-	    <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
-	    <tr class="border<?php echo ($_index++ > $_count ?' last':'') ?>" id="order-item-gift-message-<?php echo $_item->getId() ?>" style="display:none;">
-		<?php $_giftMessage=$this->helper('giftmessage/message')->getGiftMessageForEntity($_item); ?>
+	    <?php /*if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): */?>
+	    <tr class="border<?php /*echo ($_index++ > $_count ?' last':'') */?>" id="order-item-gift-message-<?php /*echo $_item->getId() */?>" style="display:none;">
+		<?php /*$_giftMessage=$this->helper('giftmessage/message')->getGiftMessageForEntity($_item); */?>
 		<td class="gift-message-row" colspan="7">
-		    <a href="javascript:void(0)" title="<?php echo $this->__('Close') ?>" onclick="return giftMessageToogle('<?php echo $_item->getId() ?>');" class="btn-close"><?php echo $this->__('Close') ?></a>
+		    <a href="javascript:void(0)" title="<?php /*echo $this->__('Close') */?>" onclick="return giftMessageToogle('<?php /*echo $_item->getId() */?>');" class="btn-close"><?php /*echo $this->__('Close') */?></a>
 		    <dl class="gift-message">
-			<dt><strong><?php echo $this->__('From:') ?></strong> <?php echo $this->htmlEscape($_giftMessage->getRecipient()) ?></dt>
-			<dt><strong><?php echo $this->__('To:') ?></strong> <?php echo $this->htmlEscape($_giftMessage->getSender()) ?></dt>
-			<dd><?php echo $this->helper('giftmessage/message')->getEscapedGiftMessage($_item) ?></dd>
+			<dt><strong><?php /*echo $this->__('From:') */?></strong> <?php /*echo $this->htmlEscape($_giftMessage->getRecipient()) */?></dt>
+			<dt><strong><?php /*echo $this->__('To:') */?></strong> <?php /*echo $this->htmlEscape($_giftMessage->getSender()) */?></dt>
+			<dd><?php /*echo $this->helper('giftmessage/message')->getEscapedGiftMessage($_item) */?></dd>
 		    </dl>
 		</td>
 	    </tr>
-	    <?php endif ?>
-        <?php endforeach; ?>
+	    <?php /*endif */?>
+        <?php /*endforeach; */?>
 	</tbody>
 	<tfoot>
-	    <?php echo $this->getChildHtml('order_totals') ?>
+	    <?php /*echo $this->getChildHtml('order_totals') */?>
 	</tfoot>
-    </table>
+    </table>-->
+
+<table cellpadding="0" cellspacing="0" border="0" class="orderInfo-prouductList">
+	<tr>
+		<td class="productList-img"><img src="" alt=""></td>
+		<td class="productList-tex">
+			<p>NBA撑控篮球NBA撑控篮球74-604</p>
+			<p>材质：牛皮</p>
+			<p>场地：室内</p>
+			<p>型号：7号球</p>
+		</td>
+		<td class="productList-fun">
+			<p>1</p>
+			<p>￥9999.00</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="productList-img"><img src="" alt=""></td>
+		<td class="productList-tex">
+			<p>NBA撑控篮球NBA撑控篮球74-605</p>
+			<p>材质：牛皮</p>
+			<p>场地：室内</p>
+			<p>型号：7号球</p>
+		</td>
+		<td class="productList-fun">
+			<p>1</p>
+			<p>￥9999.00</p>
+		</td>
+	</tr>
+	<tfoot>
+		<tr>
+			<td colspan="3">
+				总计：$9999.00
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<div class="orderFuns clearfix">
+	<button class="orderPay ms-fl">立即支付</button>
+	<button class="orderCac ms-fr">取消订单</button>
+</div>

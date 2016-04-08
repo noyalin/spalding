@@ -28,25 +28,24 @@
 <?php $_order = $this->getOrder() ?>
 <div id="my-account-all">
 
-    <?php if ($this->helper('customer')->isLoggedIn()) : ?>
+    <?php /*if ($this->helper('customer')->isLoggedIn()) : */?><!--
         <div class="my-account-top clearfix">
             <div class="my-account-welcome">
 				<span>
-					<?php $customerName = Mage::helper('customer')->getCustomerName() ?>
-                    <!--					--><?php //echo 'Welcome, ' . $customerName ?>
-                    <?php echo '欢迎, ' . $customerName ?>
+					<?php /*$customerName = Mage::helper('customer')->getCustomerName() */?>
+                    <?php /*echo '欢迎, ' . $customerName */?>
 				</span>
             </div>
             <div class="my-account-logout">
-                <!--				<a class="logout-link" href="--><?php //echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?><!--">Log Out</a>-->
-                <a class="logout-link" href="<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)) ?>">退出</a>
+
+                <a class="logout-link" href="<?php /*echo $this->getUrl('customer/account/logout', array('_secure' => true)) */?>">退出</a>
             </div>
         </div>
-    <?php else: ?>
+    <?php /*else: */?>
         <div style="margin-bottom: 50px;">
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_cs_return_to_menu')->toHtml(); ?>
+            <?php /*echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_cs_return_to_menu')->toHtml(); */?>
         </div>
-    <?php endif; ?>
+    --><?php /*endif; */?>
 
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
@@ -70,12 +69,12 @@
 //    $popupLink = preg_replace("/^http:\/\/$sneakerhead_en_store_url/", "http://$sneakerhead_mobile_en_store_url", $popupLink);
 
     ?>
-    <h1 id="my-account-orders"><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+
     <div id="my-account-orders-content">
-        <div class="myAccountBox">
-            <!--			<h2>Order Information</h2>-->
+        <div class="myAccountBox orderInfo-content">
             <h2>订单详情</h2>
-            <table class="logInInfo">
+            <h3 id="my-account-orders"><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h3>
+            <table class="logInInfo orderInfoTable">
                 <tbody>
                 <tr>
                     <td colspan="2" class="orderMsg">

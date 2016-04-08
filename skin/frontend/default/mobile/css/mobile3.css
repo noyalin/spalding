@@ -2922,7 +2922,6 @@ CUSTOMER SERVICE PAGES
 .content-wrapper h1{
 	font-weight:bold;
 	font-size:14px;
-	margin: 50px auto 0;
 	border-bottom:1px solid #333;
 	border-top: 1px solid #000;
 	background:url(../images/bg-title.png) repeat rgba(0,0,0,00);
@@ -2974,7 +2973,7 @@ CUSTOMER SERVICE PAGES
 	font-weight:bold;
 	font-size:13px;
 	margin:0 0 5px 0;
-	color:#F3AC00;
+	color:#333;
 }
 .serviceTextWrap{
 	padding:12px 15px;
@@ -5386,6 +5385,7 @@ ul.messages{
 .rules{
 	margin:0 10px;
 	padding-bottom:20px;
+	color:#333;
 }
 .rules h1{
 	font-size:16px;
@@ -5393,6 +5393,7 @@ ul.messages{
 	font-weight:bold;
 	text-align:center;
 	border:none;
+	padding-top:60px;
 }
 .rules p{
 	text-indent:24px;

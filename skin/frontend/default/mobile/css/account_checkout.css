@@ -266,10 +266,20 @@ MY ACCOUNT
 		padding:10px;
 		overflow:hidden;
 	}
+
+
 	#my-account-all .logInInfoBox h2, #my-account-all .myAccountBox h2{
 		/*color:#F3AC00;*/
 		/*font-size:13px;*/
 		/*padding-left: 10px;*/
+	}
+
+	.orderInfo-content h2{
+		padding-top:50px;
+		color:#333;
+		font-size:14px;
+		border-bottom:1px solid #ddd;
+		padding-bottom:10px;
 	}
 	/* my profile page */
 	.myAccountBox{
@@ -287,6 +297,7 @@ MY ACCOUNT
 		text-align:center;
 		vertical-align:middle;
 	}
+
 	.myAccountBox table thead td{
 		background:#303030;
 		font-weight:bold;
@@ -304,6 +315,73 @@ MY ACCOUNT
 		padding:12px 10px;
 	}
 
+.myAccountBox table.orderInfoTable td{
+	border:none;
+	text-align:left;
+	padding:0;
+	color:#333;
+	line-height: 1.8em;
+}
+
+span.orderMsgTitle{
+	color:#666;
+}
+
+.orderInfo-content h3{
+	font-size:14px;
+	color:#333;
+	margin:10px 0;
+}
+
+.orderInfo-productHeader{
+	height:30px;
+	line-height:30px;
+	background:#000;
+	color:#fff;
+	font-size:12px;
+	font-weight:bold;
+}
+.orderInfo-productHeader span{
+	display:inline-block;
+	width:50%;
+	text-indent:10px;
+	float:left;
+}
+
+table.orderInfo-prouductList{
+	margin:0;
+	text-align:left;
+	border-collapse: collapse;
+	border:1px solid #ddd;
+	border-top:none;
+	border-bottom:none;
+}
+table.orderInfo-prouductList tr td{
+	text-align:left;
+	border:none;
+	border-bottom:1px solid #ddd;
+	vertical-align:top;
+}
+
+table.orderInfo-prouductList tr td.productList-fun{
+	text-align:center;
+}
+table.orderInfo-prouductList tr td.productList-img{
+	width:30%;
+}
+table.orderInfo-prouductList tr td.productList-img img{
+	width:100%;
+}
+table.orderInfo-prouductList tr td.productList-tex{
+	width:50%;
+}
+table.orderInfo-prouductList tr td.productList-fun{
+	width:20%;
+}
+
+table.orderInfo-prouductList tr td p{
+	margin-bottom:5px;
+}
 	h1#my-account-address{
 		padding-bottom:10px;
 		border-bottom:1px solid #ddd;
@@ -321,6 +399,36 @@ MY ACCOUNT
 	text-align:left;
 
 	width:100%;
+}
+
+table.orderInfo-prouductList tfoot td{
+	text-align:right;
+	background:#fff;
+	font-size:16px;
+	font-weight:bold;
+	color:#fe5907;
+
+}
+
+.orderFuns button{
+	display:inline-block;
+	width:45%;
+	border:none;
+	color:#fff;
+	height:36px;
+	line-height:36px;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+}
+.orderFuns{
+	margin:10px 0;
+}
+.orderFuns button.orderPay{
+	background:#ff5b06;
+}
+.orderFuns button.orderCac{
+	background:#000;
 }
 .myAccountBox-addressBook h2{
 	font-size:14px;
