@@ -78,7 +78,7 @@
                             <a href="<?php echo $this->getCancelUrl($_order) ?>">取消订单</a>
                         <?php }?>
                         <?php if($_order->getStatus() === 'shipped'){ ?>
-                            <a href="<?php echo $this->getTrackingUrl($_order) ?>" target="_blank">查看物流</a>
+                            <a href="<?php echo $this->getTrackingUrl($_order) ?>">查看物流</a>
                         <?php }?>
         			</span>
 				</td>
