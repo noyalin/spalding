@@ -88,11 +88,13 @@
 	</div>
     <?php endif; ?>
 
-    <?php if($this->getOrderStatus($_order)): ?>
-        <a href="<?php echo $this->getPayUrl($_order) ?>">立即支付</a>
-    <?php elseif($_order->getStatus() === 'shipped'): ?>
-        <a href="<?php echo $this->getTrackingUrl($_order) ?>">查看物流</a>
-    <?php endif; ?>
+    <div class="orderFuns clearfix">
+        <?php if($this->getOrderStatus($_order)): ?>
+            <button onClick="location.href='<?php echo $this->getPayUrl($_order) ?>'" class="orderPay ms-fr">立即支付</button>
+        <?php elseif($_order->getStatus() === 'shipped'): ?>
+            <button onClick="location.href='<?php echo $this->getTrackingUrl($_order) ?>'" class="orderCac ms-fr">查看物流</button>
+        <?php endif; ?>
+    </div>
 
 	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
     <div class="logInInfoBox">
