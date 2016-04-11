@@ -8,6 +8,10 @@ MY ACCOUNT
 		margin:0 10px;
 		color:#222;
 	}
+#my-account-login-wrapper .validation-advice{
+	color:#cf0000;
+	margin-bottom:10px;
+}
 	#my-account-wrapper .detail-back {
 		margin-bottom: 0 !important;
 	}
@@ -321,6 +325,7 @@ MY ACCOUNT
 	padding:0;
 	color:#333;
 	line-height: 1.8em;
+	padding-top:10px;
 }
 
 span.orderMsgTitle{
@@ -340,6 +345,7 @@ span.orderMsgTitle{
 	color:#fff;
 	font-size:12px;
 	font-weight:bold;
+	overflow: hidden;
 }
 .orderInfo-productHeader span{
 	display:inline-block;
@@ -367,7 +373,8 @@ table.orderInfo-prouductList tr td.productList-fun{
 	text-align:center;
 }
 table.orderInfo-prouductList tr td.productList-img{
-	width:30%;
+	width:28%;
+	padding:1%;
 }
 table.orderInfo-prouductList tr td.productList-img img{
 	width:100%;
@@ -381,6 +388,30 @@ table.orderInfo-prouductList tr td.productList-fun{
 
 table.orderInfo-prouductList tr td p{
 	margin-bottom:5px;
+}
+.orderTotalsBox{
+	margin:10px;
+	position:relative;
+}
+table.orderTotals{
+	font-size:12px;
+}
+table.orderTotals tr td{
+	border:none;
+	text-align:right;
+	height:30px;
+	line-height: 30px;
+	padding:0;
+}
+
+
+table.orderTotals tr td.a-right{
+	width:70%;
+}
+
+table.orderTotals tr td strong{
+	font-size:14px;
+	color:#cf3a00;
 }
 	h1#my-account-address{
 		padding-bottom:10px;
@@ -504,7 +535,9 @@ table.orderInfo-prouductList tfoot td{
 	}
 	.myAccountBox table.logInInfo td h3{
 		font-size:12px;
-		margin:0 0 15px 0;
+		margin:10px 0 0 0;
+		font-weight:normal;
+		color:#666;
 	}
 	.myAccountBox table.logInInfo td p a{
 		margin:15px 0 0 0;
@@ -1699,10 +1732,10 @@ SHOPPING BAG/CHECKOUT
 }
 .registerSubmit button.button{
 	background:url(../images/register-button.jpg) left top no-repeat;
-	background-size:100%;
+	background-size:100% 100%;
 	border: none;
 	width: 100%;
-	height: 50px;
+	min-height: 50px;
 	z-index:1;
 }
 .registerRules{

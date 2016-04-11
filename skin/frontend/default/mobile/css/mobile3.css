@@ -291,7 +291,7 @@ body{
 	color:#97D324;
 }
 .yellowText{
-	color:#F3AC00;
+	color:#cf3a00;
 }
 .clearFloats {clear: both;}
 
@@ -3710,7 +3710,9 @@ h3 a.headerToggle {
 	border:1px solid #ddd;
 	padding:8px 0;
 }
-
+.logInInfoBox table td.infoInput input{
+	text-indent:5px;
+}
 .logInInfoBox select {
 	padding:0;
 	width:95%;
