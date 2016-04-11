@@ -103,7 +103,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td class="borderNone">收件人：ABCDEFG</td>
+					<td class="borderNone">收件人：<?php echo $_order->getBillingAddress()->getFirstname() ?></td>
 					<td class="borderNone" align="right">订单金额：<?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
 				</tr>
 				<tr>
