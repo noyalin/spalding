@@ -88,6 +88,12 @@
 	</div>
     <?php endif; ?>
 
+    <?php if($this->getOrderStatus($_order)): ?>
+        <a href="<?php echo $this->getPayUrl($_order) ?>">立即支付</a>
+    <?php elseif($_order->getStatus() === 'shipped'): ?>
+        <a href="<?php echo $this->getTrackingUrl($_order) ?>">查看物流</a>
+    <?php endif; ?>
+
 	<?php if ($this->helper('customer')->isLoggedIn()) : ?>
     <div class="logInInfoBox">
 	<table class="logInInfoBtn">
@@ -102,5 +108,3 @@
 	<?php endif; ?>
 
 	<?php /* These blocks opened in info.phtml */ ?>
-	</div>
-</div>

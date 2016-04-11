@@ -106,6 +106,16 @@ class Mage_Sales_Block_Order_View extends Mage_Core_Block_Template
         return Mage::getUrl('*/*/creditmemo', array('order_id' => $order->getId()));
     }
 
+    public function getTrackingUrl($order)
+    {
+        return $this->getUrl('*/*/tracking')."?orderId=".$order->getRealOrderId();
+    }
+
+    public function getPayUrl($order)
+    {
+        return $this->getUrl('alipay/payment/pay', array('order_id' => $order->getId()));
+    }
+
     public function  getCheckCode($orderid) {
         return Mage::getSingleton('weixinevent/promotion')->getCheckCode($orderid);
     }
@@ -116,4 +126,12 @@ class Mage_Sales_Block_Order_View extends Mage_Core_Block_Template
 //        return Mage::getSingleton('weixinevent/promotion')->isPromotionOrderId($order->getRealOrderId());
     }
 
+    public function getOrderStatus($order){
+        $status = $order->getStatus();
+        $payMethod = $order->getPayment()->getMethodInstance()->getCode();
+        if($status=="alipay_wait_buyer_pay" && $payMethod=="alipay_payment"){
+            return true;
+        }
+        return false;
+    }
 }
