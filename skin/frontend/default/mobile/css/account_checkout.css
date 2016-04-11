@@ -1923,6 +1923,10 @@ p.backCus a{
 	background:#ddd;
 	left:50%;
 }
+.historyNew table.historyTable tfoot.oneTd:before{
+	width:0;
+	height:0;
+}
 @media screen and (min-width:550px){
 		.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset {
 			margin: 0 auto !important;
