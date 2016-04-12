@@ -70,7 +70,7 @@ if (strpos($agent, "MicroMessenger")) {
 }
 ?>
         <p>点击选择支付平台前往付款：</p>
-        <ul>
+        <ul class="clearfix">
         <?php if ($weixinPay): ?>
             <li>
                 <input type="radio"  name="bank" id="payment_4" onclick="setBank('<?php echo $this->getUrl('weixinpay/payment/wappay')?>','weixin_pay','<?php echo $orderId ?>')">
@@ -86,12 +86,10 @@ if (strpos($agent, "MicroMessenger")) {
                 </label>
             </li>
         </ul>
-<!--        <form id="pay" target="_blank">-->
+
         <div style="text-align: left">
-<!--            <button type="button" title="我要付款" class="button btn-checkout btn-next" id="submitbutton"><span><span>我要付款</span></span></button>-->
-            <a id="submitbutton" target="_blank">我要付款</a>
+            <a id="submitbutton" class="paymentBtn" target="_blank">我要付款</a>
         </div>
-<!--        </form>-->
     </div>
     <?php
     }
@@ -130,27 +128,21 @@ if (strpos($agent, "MicroMessenger")) {
 </div>
 <script>
     jQuery(document).ready(function(){
+        setBank('<?php echo $this->getUrl('alipay/payment/wapredirect')?>','alipay_mobile','<?php echo $orderId ?>');
         jQuery("#submitbutton").click(function(){
-        	var orderId = <?php echo $_order->getId();?>;
         	jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('sales/order/checkstatus');?>',
                 data:{
-                	order_id:orderId
+                	order_id:<?php echo $_order->getId();?>
                 },
                 dataType: 'json',
                 success: function(data){
-                     if(data == 'alipay_wait_buyer_pay'){
-//                    	 if(globalbank == "weixin_pay"){
-//                             go_pay_with_weixin("<?php //echo $this->getUrl('weixinpay/payment/wappay');?>//",globalbank,"<?php //echo $orderId;?>//");
-//                             go_pay_with_weixin();
-//                         }else{
-//                             go_pay("<?php //echo $this->getUrl('alipay/payment/wapredirect');?>//",globalbank);
-                             go_pay();
-//                         }
-                     }else{
-                    	 alert('该订单已经取消');
-                     }
+                    if (data == 'alipay_wait_buyer_pay') {
+                        go_pay();
+                    } else {
+                        alert('该订单已经取消');
+                    }
                 }
             });
         });

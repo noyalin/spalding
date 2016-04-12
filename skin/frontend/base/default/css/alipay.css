@@ -361,6 +361,27 @@ z-index: 1;
     color:#fff;
     border-radius: 5px;
 }
+
+a.paymentBtn{
+    background-color: #fd5419;
+    border:none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 37px;
+    line-height: 37px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 159px;
+    margin:20px 0 10px 130px;
+    color:#fff;
+    text-align:center;
+    text-decoration:none;
+}
+a.paymentBtn:hover{
+    color:#fff;
+    cursor:pointer;
+}
 a {
     color: #666666;
     text-decoration: none;
