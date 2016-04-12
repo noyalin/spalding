@@ -1,12 +1,19 @@
-var globalbank=0;
-function setBank(bank){
-    globalbank=bank;
+function setBank(url, bank, order_id) {
+    if (bank == "weixin_pay") {
+        jQuery("#submitbutton").attr('href', url + "?bank=" + bank + "&orderid=" + order_id);
+    } else {
+        if (bank) {
+            jQuery("#submitbutton").attr('href', url + "?bank=" + bank);
+        } else {
+            jQuery("#submitbutton").attr('href', url);
+        }
+    }
 }
 function setLocation(url){
     window.location.href = url;
 }
  
-function go_pay(a,bank) {
+function go_pay() {
     jQuery("body").append("<div id='overlay' style='background:#000;display:block;z-index:300;width:1200px;position:absolute;top:0;left:0;'></div>"), jQuery(document).scrollTop();
     var c = jQuery(document).scrollLeft(),
         d = jQuery(window).height() ,h = jQuery(document).height() ,//jQuery(document).height(),
@@ -17,13 +24,17 @@ function go_pay(a,bank) {
         left: c,
         width: e
     });
-    if(bank){
-        // window.open(a+"?bank="+bank);
-        jQuery("#pay").attr('action',a+"?bank="+bank).submit();
-    }else{
-        // window.open(a);
-        jQuery("#pay").attr('action',a).submit();
-    }
+    // if(bank){
+    //     // window.open(a+"?bank="+bank);
+    //     var link = jQuery("#pay");
+    //     link.attr('href',a+"?bank="+bank);
+    //     // link.triggerHandler("click");
+    // }else{
+    //     // window.open(a);
+    //     var link = jQuery("#pay");
+    //     link.attr('href',a);
+    //     // link.triggerHandler("click");
+    // }
     //console.log(jQuery('.col-main').offset().left);
     //console.log(e);
     //console.log(jQuery('#go_pay_window').outerWidth());
@@ -44,13 +55,13 @@ function go_pay_with_weixin(a,bank,order_id) {
         left: c,
         width: e
     });
-    if(bank){
-        // window.open(a+"?bank="+bank+"&orderid="+order_id);
-        jQuery("#pay").attr('action',a+"?bank="+bank+"&orderid="+order_id).submit();
-    }else{
-        // window.open(a);
-        jQuery("#pay").attr('action',a).submit();
-    }
+    // if(bank){
+    //     // window.open(a+"?bank="+bank+"&orderid="+order_id);
+    //     jQuery("#pay").attr('action',a+"?bank="+bank+"&orderid="+order_id).submit();
+    // }else{
+    //     // window.open(a);
+    //     jQuery("#pay").attr('action',a).submit();
+    // }
     //console.log(jQuery('.col-main').offset().left);
     //console.log(e);
     //console.log(jQuery('#go_pay_window').outerWidth());

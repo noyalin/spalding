@@ -73,24 +73,25 @@ if (strpos($agent, "MicroMessenger")) {
         <ul>
         <?php if ($weixinPay): ?>
             <li>
-                <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">
+                <input type="radio"  name="bank" id="payment_4" onclick="setBank('<?php echo $this->getUrl('weixinpay/payment/wappay')?>','weixin_pay','<?php echo $orderId ?>')">
                 <label for="payment_4">
                     <img  id="payimg4" alt="微信支付" title="微信支付" src="<?php echo $weixinImageSrc; ?>">
                 </label>
             </li>
         <?php endif; ?>
             <li>
-                <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('alipay_mobile');">
+                <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('<?php echo $this->getUrl('alipay/payment/wapredirect')?>','alipay_mobile','<?php echo $orderId ?>')">
                 <label for="payment_2">
                     <img  id="payimg2" alt="支付宝" title="支付宝" src="<?php echo $alipayImageSrc; ?>">
                 </label>
             </li>
         </ul>
-        <form id="pay" target="_blank">
+<!--        <form id="pay" target="_blank">-->
         <div style="text-align: left">
-            <button type="button" title="我要付款" class="button btn-checkout btn-next" id="submitbutton"><span><span>我要付款</span></span></button>
+<!--            <button type="button" title="我要付款" class="button btn-checkout btn-next" id="submitbutton"><span><span>我要付款</span></span></button>-->
+            <a id="submitbutton" target="_blank">我要付款</a>
         </div>
-        </form>
+<!--        </form>-->
     </div>
     <?php
     }
@@ -135,16 +136,18 @@ if (strpos($agent, "MicroMessenger")) {
                 type: 'POST',
                 url: '<?php echo $this->getUrl('sales/order/checkstatus');?>',
                 data:{
-                	order_id:orderId,
+                	order_id:orderId
                 },
                 dataType: 'json',
                 success: function(data){
                      if(data == 'alipay_wait_buyer_pay'){
-                    	 if(globalbank == "weixin_pay"){
-                             go_pay_with_weixin("<?php echo $this->getUrl('weixinpay/payment/wappay');?>",globalbank,"<?php echo $orderId;?>");
-                         }else{
-                             go_pay("<?php echo $this->getUrl('alipay/payment/wapredirect');?>",globalbank);
-                         }
+//                    	 if(globalbank == "weixin_pay"){
+//                             go_pay_with_weixin("<?php //echo $this->getUrl('weixinpay/payment/wappay');?>//",globalbank,"<?php //echo $orderId;?>//");
+//                             go_pay_with_weixin();
+//                         }else{
+//                             go_pay("<?php //echo $this->getUrl('alipay/payment/wapredirect');?>//",globalbank);
+                             go_pay();
+//                         }
                      }else{
                     	 alert('该订单已经取消');
                      }
