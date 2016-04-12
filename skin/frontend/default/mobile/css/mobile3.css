@@ -532,9 +532,12 @@ section header{
 	color:#FFF;
 }
 .top-nav-wrapper a.splading {
-	float:left;
+	/*float:left;*/
+	position:absolute;
+	left:50%;
+	margin-left:-15%;
 	border: none !important;
-	width:56%;
+	width:30%;
 	text-align:center;
 }
 
@@ -2368,7 +2371,7 @@ Scrolling is automated IF there is an overflow of the width */
 	}
 }
 .detailSelectBtn{
-	margin:10px 0;
+	margin:30px 0 5px;
 }
 .detailSelectBtn button{
 	width:100%;
@@ -5237,6 +5240,7 @@ span.checkError{
 	padding:5px 15px;
 	border:1px solid #fff;
 	margin-top:15px;
+	color:#fff;
 }
 
 .e-back-top{
@@ -5567,7 +5571,10 @@ ul.messages{
 	font-size:12px;
 	color:#333;
 }
-
+#product-options-wrapper .validation-advice{
+	position:absolute;
+	color:#cf0000;
+}
 /*iphone4 ,5 */
 @media only screen and (min-width: 320px) and (max-width: 374px){
 	.picScroll-left .bd ul li .pic img{ width:120px;}

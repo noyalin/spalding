@@ -57,7 +57,7 @@ $stockStatus = '';
 <dl class="addToCartSize clearfix">
     <?php foreach($_attributes as $_attribute): ?>
     <?php $valueArr = $_attribute->getPrices();?>
-        <dt class="ms-fl"><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+        <dt class="ms-fl"><label class="required"><?php echo $_attribute->getLabel() ?></label></dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last ms-fl"<?php }?>>
             <div class="input-box">
                 <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
