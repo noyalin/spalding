@@ -201,21 +201,21 @@
 		<?php if ($_finalPrice == $_price): ?>
 
 		    <?php if ($_currentProduct): //Product page ?>
-				<?php if ($_price <= $_msrp - ($_msrp * .05)): //5% ?>
-					<?php echo $_coreHelper->currency($_price, true, true) ?><span class="detail-percent"><?php echo " ( You save " . round((1 - ($_price / $_msrp)) * 100) ?> % )</span>
-				<?php else: ?>
+<!--				--><?php //if ($_price <= $_msrp - ($_msrp * .05)): //5% ?>
+<!--					--><?php //echo $_coreHelper->currency($_price, true, true) ?><!--<span class="detail-percent">--><?php //echo " ( You save " . round((1 - ($_price / $_msrp)) * 100) ?><!-- % )</span>-->
+<!--				--><?php //else: ?>
 				   <?php echo $_coreHelper->currency($_price, true, true) ?></span>
-				<?php endif; ?>
+<!--				--><?php //endif; ?>
 
 		    <?php elseif (is_null($_currentProduct) && !is_null($_currentCategory)): // Category page ?>
 				<?php if ($_currentCategory->getId() == 534 || $_currentCategory->getId() == 539 || $_currentCategory->getId() == 540 || $_currentCategory->getId() == 541 || $_currentCategory->getId() == 573): //New Arrivals ?>
 					<?php echo $_coreHelper->currency($_price, true, true) ?>
 				<?php else: ?>
-					<?php if ($_price <= $_msrp - ($_msrp * .05)): //5% ?>
-						<?php echo $_coreHelper->currency($_price, true, true) ?> <span class="detail-percent">Now: <?php echo $_coreHelper->currency($_price, true, true) ?></span>
-					<?php else: ?>
+<!--					--><?php //if ($_price <= $_msrp - ($_msrp * .05)): //5% ?>
+<!--						--><?php //echo $_coreHelper->currency($_price, true, true) ?><!-- <span class="detail-percent">Now: --><?php //echo $_coreHelper->currency($_price, true, true) ?><!--</span>-->
+<!--					--><?php //else: ?>
 						<?php echo $_coreHelper->currency($_price, true, true) ?>
-					<?php endif; ?>
+<!--					--><?php //endif; ?>
 				<?php endif; ?>
 
 		    <?php else: ?>
