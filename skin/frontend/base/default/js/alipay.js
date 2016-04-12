@@ -18,9 +18,11 @@ function go_pay(a,bank) {
         width: e
     });
     if(bank){
-        window.open(a+"?bank="+bank);
+        // window.open(a+"?bank="+bank);
+        jQuery("#pay").attr('action',a+"?bank="+bank);
     }else{
-        window.open(a);
+        // window.open(a);
+        jQuery("#pay").attr('action',a);
     }
     //console.log(jQuery('.col-main').offset().left);
     //console.log(e);
@@ -43,9 +45,11 @@ function go_pay_with_weixin(a,bank,order_id) {
         width: e
     });
     if(bank){
-        window.open(a+"?bank="+bank+"&orderid="+order_id);
+        // window.open(a+"?bank="+bank+"&orderid="+order_id);
+        jQuery("#pay").attr('action',a+"?bank="+bank+"&orderid="+order_id);
     }else{
-        window.open(a);
+        // window.open(a);
+        jQuery("#pay").attr('action',a);
     }
     //console.log(jQuery('.col-main').offset().left);
     //console.log(e);
