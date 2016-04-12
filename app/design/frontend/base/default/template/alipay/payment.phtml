@@ -231,8 +231,8 @@ foreach ($_items as $_item){
 
         <ul>
 <?php
-$pay_url = $this->getUrl('alipay/payment/wapredirect');
-$weixinpay_url = $this->getUrl('weixinpay/payment/wappay');
+$pay_url = $this->getUrl('alipay/payment/redirect');
+$weixinpay_url = $this->getUrl('weixinpay/payment/pay');
 $banks_options = Mage::getModel("alipay/source_banks")->getMixed();
 $bankChineseTranslate = Mage::getModel("alipay/source_banks")->getChineseTranslate();
 foreach($banks_options as $banks_option){
