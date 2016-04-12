@@ -231,8 +231,8 @@ foreach ($_items as $_item){
 
         <ul>
 <?php
-
-
+$pay_url = $this->getUrl('alipay/payment/wapredirect');
+$weixinpay_url = $this->getUrl('weixinpay/payment/wappay');
 $banks_options = Mage::getModel("alipay/source_banks")->getMixed();
 $bankChineseTranslate = Mage::getModel("alipay/source_banks")->getChineseTranslate();
 foreach($banks_options as $banks_option){
@@ -243,7 +243,7 @@ foreach($banks_options as $banks_option){
     $imageSrc = $this->getSkinUrl( "images/bankico/". $code.".gif");
     echo <<<HTML
                         <li>
-                        <input id="$id" type="radio" onclick="setBank('$value');" name="bank" value="$value">
+                        <input id="$id" type="radio" onclick="setBank('$pay_url','$value','$orderId');" name="bank" value="$value">
                         <label for="$id">
                             <img alt="$label" title="$label" src="$imageSrc">
                         </label>
@@ -259,19 +259,19 @@ $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
         <p>点击选择支付平台前往付款：</p>
         <ul>
             <li>
-                <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('alipay');">
+                <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('<?php echo $pay_url; ?>','alipay','<?php echo $orderId; ?>');">
                 <label for="payment_2">
                     <img  id="payimg2" alt="支付宝" title="支付宝" src="<?php echo $alipayImageSrc; ?>">
                 </label>
             </li>
             <li>
-                <input type="radio"  name="bank" id="payment_3" onclick="setBank('alipay_qrcode');">
+                <input type="radio"  name="bank" id="payment_3" onclick="setBank('<?php echo $pay_url; ?>','alipay_qrcode','<?php echo $orderId; ?>');">
                 <label for="payment_3">
                     <img  id="payimg3" alt="支付宝扫码支付" title="支付宝扫码支付" src="<?php echo $alipayQrImageSrc; ?>">
                 </label>
             </li>
             <li>
-                <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">
+                <input type="radio"  name="bank" id="payment_4" onclick="setBank('<?php echo $weixinpay_url; ?>','weixin_pay','<?php echo $orderId; ?>');">
                 <label for="payment_4">
                     <img  id="payimg4" alt="微信支付" title="微信支付" src="<?php echo $weixinImageSrc; ?>">
                 </label>
@@ -318,29 +318,25 @@ $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");
 </div>
 <script>
     jQuery(document).ready(function(){
+        setBank('<?php echo $pay_url; ?>','alipay','<?php echo $orderId; ?>');
         jQuery("#submitbutton").click(function(){
-        	var orderId = <?php echo $orderId;?>;
-        	jQuery.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: '<?php echo $this->getUrl('sales/order/checkstatus');?>',
                 data:{
-                	order_id:orderId,
+                    order_id:<?php echo $orderId;?>
                 },
                 dataType: 'json',
                 success: function(data){
-                     if(data == 'alipay_wait_buyer_pay'){
-                    	 if(globalbank == "weixin_pay"){
-                             go_pay_with_weixin("<?php echo $this->getUrl('weixinpay/payment/pay');?>",globalbank,"<?php echo $orderId;?>");
-                         }else{
-                             go_pay("<?php echo $this->getUrl('alipay/payment/redirect');?>",globalbank);
-                         }
-                     }else{
-                    	 alert('该订单已经取消');
-                     }
+                    if (data == 'alipay_wait_buyer_pay') {
+                        go_pay();
+                    } else {
+                        alert('该订单已经取消');
+                    }
                 }
             });
-            
         });
+
         jQuery('#custommadehtml').click(function(){
             setLocation('<?php echo $this->getUrl('custom-made.html'); ?>');
             return false;
