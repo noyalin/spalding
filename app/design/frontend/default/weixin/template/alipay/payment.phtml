@@ -72,20 +72,20 @@ if (strpos($agent, "MicroMessenger")) {
         <p>点击选择支付平台前往付款：</p>
         <ul>
             <li>
-                <input type="radio"  name="bank" id="payment_4" onclick="setBank('weixin_pay');">
+                <input type="radio"  name="bank" id="payment_4" onclick="setBank('<?php echo $this->getUrl('weixinpay/payment/wappay')?>','weixin_pay','<?php echo $_order->getId();?>')">
                 <label for="payment_4">
                     <img  id="payimg4" alt="微信支付" title="微信支付" src="<?php echo $weixinImageSrc; ?>">
                 </label>
             </li>
                 <li>
-                    <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('alipay_mobile');">
+                    <input type="radio"  name="bank" checked="checked" id="payment_2" onclick="setBank('<?php echo $this->getUrl('alipay/payment/wapredirect')?>','alipay_mobile','<?php echo $_order->getId();?>')">
                     <label for="payment_2">
                         <img  id="payimg2" alt="支付宝" title="支付宝" src="<?php echo $alipayImageSrc; ?>">
                     </label>
                 </li>
         </ul>
         <div style="text-align: left">
-            <button type="submit" title="下订单" class="button btn-checkout btn-next" id="submitbutton"><span><span>下订单</span></span></button>
+            <a id="submitbutton" class="paymentBtn" target="_blank">我要付款</a>
         </div>
     </div>
     <?php
@@ -125,12 +125,9 @@ if (strpos($agent, "MicroMessenger")) {
 </div>
 <script>
     jQuery(document).ready(function(){
+        setBank('<?php echo $this->getUrl('alipay/payment/wapredirect')?>','alipay_mobile','<?php echo $_order->getId();?>');
         jQuery("#submitbutton").click(function(){
-            if(globalbank == "weixin_pay"){
-                go_pay_with_weixin("<?php echo $this->getUrl('weixinpay/payment/wappay');?>",globalbank,"<?php echo $orderId;?>");
-            }else{
-                go_pay("<?php echo $this->getUrl('alipay/payment/wapredirect');?>",globalbank);
-            }
+            go_pay();
         });
     });
 </script>
