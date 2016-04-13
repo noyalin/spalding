@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td class="infoInput">
-                    <select id="billing:city_id"  name="billing[city_id]" title="市" class="validate-select" required>-->
+                    <select id="billing:city_id"  name="billing[city_id]" title="市" class="validate-select required-entry">
                         <option value="">请选择</option>
                     </select>
                     <input type="text" id="billing:city" name="billing[city]" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  style="display:none;" />
@@ -95,7 +95,7 @@
             </tr>
             <tr>
                 <td class="infoInput">
-                    <select id="billing:district_id"  name="billing[district_id]" title="区" class="validate-select" required>-->
+                    <select id="billing:district_id"  name="billing[district_id]" title="区" class="validate-select required-entry">
                         <option value="">请选择</option>
                     </select>
                     <input type="text" id="billing:district" name="billing[district]" value="<?php echo $this->escapeHtml($this->getAddress()->getDistrict()) ?>"  style="display:none;" />
@@ -123,15 +123,16 @@
                         <td class="infoInput"><input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="billing[street][]" id="billing:street<?php echo $_i ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" class="input-text <?php echo $_streetValidationClass ?>" /></td>
                     </tr>
                 <?php endfor; ?>
+            <tr>
 			    <td class="infoLabel"><label for="billing:postcode" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
 			</tr>
 			<tr>
-			    <td class="infoInput"><input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
+			    <td class="infoInput"><input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international required-entry" /></td>
 			</tr>
-			<tr>
+			<tr style="display: none">
 			    <td class="infoLabel"><label for="billing:country_id" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
 			</tr>
-			<tr>
+			<tr style="display: none">
 			    <td class="infoInput">
 					<label class="for-select">
 						<?php echo $this->getCountryHtmlSelect('billing') ?>

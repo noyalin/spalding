@@ -415,7 +415,7 @@ Validation.addAllThese([
     ['validate-no-html-tags', 'HTML tags are not allowed', function(v) {
 				return !/<(\/)?\w+/.test(v);
 			}],
-	['validate-select', 'Please select an option.', function(v) {
+	['validate-select', '请选择一项', function(v) {
                 return ((v != "none") && (v != null) && (v.length != 0));
             }],
     ['required-entry', '请输入必填项', function(v) {
