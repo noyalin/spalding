@@ -5242,6 +5242,11 @@ span.checkError{
 	margin-top:15px;
 	color:#fff;
 }
+.news-swipe .news-swipe-box h2 a{
+	border:none;
+	padding:0;
+	margin:0;
+}
 
 .e-back-top{
 	margin:0;
