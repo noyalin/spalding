@@ -27,8 +27,8 @@ function go_pay() {
     });
     var left  = (e/2)-(jQuery('#go_pay_window').outerWidth()/2),
     top   = (jQuery(window).height()/2)-(160/2);
-    jQuery('#go_pay_window').css('left',left+"px");
-    jQuery('#go_pay_window').css('top',top+"px");
+    //jQuery('#go_pay_window').css('left',left+"px");
+    //jQuery('#go_pay_window').css('top',top+"px");
     jQuery('#go_pay_window').fadeIn();
 }
 
