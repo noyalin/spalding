@@ -388,7 +388,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                         'html' => $this->_getShippingMethodsHtml()
                     );
 
-                    $result['allow_sections'] = array('shipping');
+//                    $result['allow_sections'] = array('shipping');
                     $result['duplicateBillingInfo'] = 'true';
                 } else {
                     $result['goto_section'] = 'shipping';
