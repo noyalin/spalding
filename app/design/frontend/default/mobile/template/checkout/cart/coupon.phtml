@@ -68,6 +68,7 @@
 					<button class="button" type="submit" onclick="return validateForm('#discountForm');" value="<?php echo $this->__('Apply Coupon') ?>" <?php if (strlen($this->getCouponCode())): ?>disabled<?php endif; ?>></button>
 				</span>
 			</div>
+			<div class="cancelCoupon"><button>取消使用优惠券</button></div>
 		</form>
 	</div>
 </div>
@@ -75,5 +76,9 @@
 	jQuery(".no-use-discount-coupon-modify").click(function(){
 		jQuery(this).parent(".no-use-discount-coupon").hide();
 		jQuery(this).parent(".no-use-discount-coupon").siblings("#discount-coupon").show();
+	});
+	jQuery(".cancelCoupon").click(function(){
+		jQuery(".no-use-discount-coupon").show();
+		jQuery("#discount-coupon").hide();
 	});
 </script>
