@@ -1412,6 +1412,17 @@ SHOPPING BAG/CHECKOUT
 		color:#333;
 		/*margin:0 10px;*/
 	}
+
+	.cancelCoupon{
+		text-align:right;
+		margin-bottom:20px;
+	}
+.cancelCoupon button{
+	color:#333;
+	text-decoration:underline;
+	border:none;
+	background:none;
+}
 #cart-wrapper h1.step-title{
 	border-bottom:1px solid #ddd;
 }
