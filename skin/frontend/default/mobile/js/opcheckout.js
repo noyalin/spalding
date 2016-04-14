@@ -36,7 +36,7 @@ Checkout.prototype = {
         this.method = '';
         this.payment = '';
         this.loadWaiting = false;
-        this.steps = ['login', 'billing', 'shipping', 'shipping_method', 'payment', 'review'];
+        this.steps = ['login', 'billing', 'shipping_method', 'payment', 'review'];
 
         this.accordion.sections.each(function(section) {
             Event.observe($(section).down('.step-title'), 'click', this._onSectionClick.bindAsEventListener(this));
@@ -206,10 +206,10 @@ Checkout.prototype = {
             });
         }
 
-        if(response.duplicateBillingInfo)
-        {
-            shipping.setSameAsBilling(true);
-        }
+        // if(response.duplicateBillingInfo)
+        // {
+        //     shipping.setSameAsBilling(true);
+        // }
 
         if (response.goto_section) {
             this.gotoSection(response.goto_section);
