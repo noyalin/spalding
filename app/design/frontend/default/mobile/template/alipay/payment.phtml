@@ -40,7 +40,7 @@ if (!$_order->getId())
 }
 $warnImageSrc =$this->getSkinUrl( "images/warn.png");
 ?>      
-<div class="shortcut_wrapper">
+<div class="shortcut_wrapper shorturt_mobile">
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
@@ -97,7 +97,7 @@ if (strpos($agent, "MicroMessenger")) {
     <div><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>" target="_blank">查看订单详情&gt;&gt;</a></div>
     <div class="title">付款遇到问题：</div>
     <!--<p>联系我们 <span class="gray"> 客服帮助您解决支付过程中遇到的困难 <a href="<?php /*echo $this->getUrl('contacts'); */?>" target="_blank" >客服中心</a> </span></p>-->
-    <div><a href="http://help.alipay.com/lab/index.htm" target="_blank">支付宝帮助中心&nbsp;&gt;&gt;</a></div>
+    <div style="margin-top:15px;"><a href="http://help.alipay.com/lab/index.htm" target="_blank">支付宝帮助中心&nbsp;&gt;&gt;</a></div>
   </div>
 </div>
 
