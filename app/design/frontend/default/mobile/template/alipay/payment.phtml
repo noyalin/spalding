@@ -40,7 +40,7 @@ if (!$_order->getId())
 }
 $warnImageSrc =$this->getSkinUrl( "images/warn.png");
 ?>      
-<div class="shortcut_wrapper">
+<div class="shortcut_wrapper shorturt_mobile">
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
