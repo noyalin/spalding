@@ -352,7 +352,7 @@ z-index: 1;
     cursor: pointer;
 }
 .btn-next, .btn-nextun {
-    background-color: #000;
+    background-color: #cf3a00;
     border:none;
     display: inline-block;
     font-size: 14px;
