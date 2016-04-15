@@ -52,10 +52,6 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
-            <!-- Magento -->
-            <!--<block type="catalog/category_view" name="head_url" as="head_url" template="catalog/category/head.phtml" />-->
-
-            <!-- Devicom -->
             <action method="addItem"><type>skin_js</type><name>js/catalog.js</name></action>
             <action method="addCss"><stylesheet>css/catalog.css</stylesheet></action>
             <action method="removeItem"><type>skin_css</type><name>css/service.css</name><params /></action>
@@ -67,7 +63,20 @@
         </reference>
         <reference name="content">
             <block type="catalogsearch/result" name="search.result" template="catalogsearch/result.phtml">
-                <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml"/>
+                <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+                <action method="setListOrders"/>
+                <action method="setListModes"/>
+                <action method="setListCollection"/>
             </block>
         </reference>
     </catalogsearch_result_index>
