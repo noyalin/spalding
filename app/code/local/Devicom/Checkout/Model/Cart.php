@@ -181,7 +181,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 		    $storage[$productId]['notice'] = 1;
 		} elseif ($productMaxQuantity && $storage[$productId]['notice'] == 0) {
 		    $session->addNotice(
-			Mage::helper('checkout')->__('%s 每位顾客每件商品最多购买6双.', Mage::helper('core')->escapeHtml($product->getName()))
+			Mage::helper('checkout')->__('%s 每位顾客每件商品最多购买6件.', Mage::helper('core')->escapeHtml($product->getName()))
 		    );
 		    $storage[$productId]['notice'] = 1;
 		}
