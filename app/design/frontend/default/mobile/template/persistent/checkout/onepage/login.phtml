@@ -88,7 +88,7 @@
 						</tr>
 						<tr>
 							<td class="infoInput" colspan="2">
-								<input name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="login-email" type="email" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+								<input name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="login-email" type="email" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" maxlength="30"/>
 							</td>
 						</tr>
 						<tr>
@@ -98,7 +98,7 @@
 						</tr>
 						<tr>
 							<td class="infoInput" colspan="2">
-								<input name="login[password]" type="password" class="marLoginInput input-text required-entry validate-password" id="login-password" title="<?php echo $this->__('Password') ?>" />
+								<input name="login[password]" type="password" class="marLoginInput input-text required-entry validate-password" id="login-password" title="<?php echo $this->__('Password') ?>" maxlength="20"/>
 							</td>
 						</tr>
 						</tbody>

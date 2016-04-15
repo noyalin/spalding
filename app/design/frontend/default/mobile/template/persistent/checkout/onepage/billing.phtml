@@ -54,7 +54,7 @@
 				<td class="infoLabel"><label for="billing:email" class="required"><span class="rStar">*</span><?php echo $this->__('Email Address') ?></label></td>
 			</tr>
 			<tr>
-				<td class="infoInput"><input type="email" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" /></td>
+				<td class="infoInput"><input type="email" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" maxlength="30"/></td>
 			</tr>
 			<tr>
 			    <?php endif; ?>
@@ -112,7 +112,7 @@
                     <td class="infoLabel"><label for="billing:street1" class="required"><span class="rStar">*</span><?php echo $this->__('Address') ?></label></td>
                 </tr>
                 <tr>
-                    <td class="infoInput"><input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" /></td>
+                    <td class="infoInput"><input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" maxlength="50"/></td>
                 </tr>
                 <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
                 <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
@@ -127,7 +127,7 @@
 			    <td class="infoLabel"><label for="billing:postcode" class="required"><?php echo $this->__('Zip/Postal Code') ?></label></td>
 			</tr>
 			<tr>
-			    <td class="infoInput"><input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-number" /></td>
+			    <td class="infoInput"><input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-number" maxlength="10"/></td>
 			</tr>
 			<tr style="display: none">
 			    <td class="infoLabel"><label for="billing:country_id" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
@@ -144,7 +144,7 @@
 			</tr>
 			<tr>
 			    <td class="infoInput"><input type="tel" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>"
-                                             class="input-text validate-number <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" /></td>
+                                             class="input-text validate-number <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" maxlength="20"/></td>
 			</tr>
 			</table>
 
@@ -171,13 +171,13 @@
 						<td class="infoLabel"><label for="billing:customer_password" class="required">密码<i style="font-weight:normal">(必填)</i></label></td>
 					</tr>
 					<tr>
-						<td class="infoInput"><input type="password" name="billing[customer_password]" id="billing:customer_password" title="密码" class="input-text" /></td>
+						<td class="infoInput"><input type="password" name="billing[customer_password]" id="billing:customer_password" title="密码" class="input-text" maxlength="20"/></td>
 					</tr>
 					<tr>
 						<td class="infoLabel"><label for="billing:confirm_password" class="required">请再次输入密码<i style="font-weight:normal">(必填)</i></label></td>
 					</tr>
 					<tr>
-						<td class="infoInput"><input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text" /></td>
+						<td class="infoInput"><input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text" maxlength="20"/></td>
 					</tr>
 					</tbody>
 				</table>

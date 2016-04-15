@@ -40,22 +40,22 @@
 					</div>
 					<div class="registerBox">
 						<label for="email_address" class="required">
-							<input type="email" name="email" id="email_address" placeholder="*电子邮箱" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+							<input type="email" name="email" id="email_address" placeholder="*电子邮箱" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" maxlength="30"/>
 						</label>
 					</div>
 					<div class="registerBox">
 						<label for="name" class="required">
-							<input type="text" name="firstname" id="name" placeholder="*真实姓名" title="<?php echo $this->__('First Name') ?>" class="input-text required-entry" />
+							<input type="text" name="firstname" id="name" placeholder="*真实姓名" title="<?php echo $this->__('First Name') ?>" class="input-text required-entry" maxlength="20"/>
 						</label>
 					</div>
 					<div class="registerBox">
 						<label for="password" class="required">
-							<input autocomplete="off" type="password" name="password" placeholder="*密码" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+							<input autocomplete="off" type="password" name="password" placeholder="*密码" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" maxlength="20"/>
 						</label>
 					</div>
 					<div class="registerBox">
 						<label for="confirmation" class="required">
-							<input autocomplete="off" type="password" placeholder="*确认密码" name="confirmation" id="confirmation" title="<?php echo $this->__('Confirm Password') ?>" class="input-text required-entry validate-both-passwords" />
+							<input autocomplete="off" type="password" placeholder="*确认密码" name="confirmation" id="confirmation" title="<?php echo $this->__('Confirm Password') ?>" class="input-text required-entry validate-both-passwords" maxlength="20"/>
 						</label>
 					</div>
 <!--					<div class="registerBox">-->

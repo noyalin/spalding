@@ -45,12 +45,12 @@
 					<div class="logBox-sub">
 						<div class="registerBox">
 							<label for="email" class="required">
-								<input name="login[username]" placeholder="用户名/E-mail" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" type="email" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+								<input name="login[username]" placeholder="用户名/E-mail" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" type="email" class="marLoginInput input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" maxlength="30"/>
 							</label>
 						</div>
 						<div class="registerBox">
 							<label for="pass" class="required">
-								<input name="login[password]" placeholder="密码" type="password" class="marLoginInput input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+								<input name="login[password]" placeholder="密码" type="password" class="marLoginInput input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" maxlength="20"/>
 							</label>
 						</div>
 						<p class="login-forgot"><a href="<?php echo $this->getForgotPasswordUrl() ?>">忘记密码?</a>?</p>
