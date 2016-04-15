@@ -46,7 +46,7 @@
                     <input class="input-text required-entry" id="coupon_code" name="coupon_code" value="<?php echo $this->getCouponCode() ?>" <?php if (strlen($this->getCouponCode())): ?>disabled<?php endif; ?>/>
 				</span>
                 <?php if (strlen($this->getCouponCode())): ?>
-                    <span class="couponSubmit">
+                    <span class="couponSubmit couponCancel">
                         <input type="hidden" name="remove" id="remove-coupone" value="1" />
                         <button class="button" type="submit" onclick="return validateForm('#discountForm');" value="<?php echo $this->__('Cancel Coupon') ?>"></button>
 				    </span>
