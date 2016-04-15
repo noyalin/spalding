@@ -410,7 +410,13 @@ $breadCrumbs = array();
 
 
 			<div class="category-filter clearfix">
-				<h3 class="category-title"><?php echo Mage::getModel('catalog/category')->load($_category->getId())->getName() ?></h3>
+				<h3 class="category-title">
+                    <?php if($_category): ?>
+                        <?php echo Mage::getModel('catalog/category')->load($_category->getId())->getName() ?>
+                    <?php else: ?>
+                        <?php echo '检索："'.$_REQUEST['q'] .'"'?>
+                    <?php endif; ?>
+                </h3>
 				<div class="detail-site-map cat-site-map-arrow">
 					<?php
 						$n = 1;
