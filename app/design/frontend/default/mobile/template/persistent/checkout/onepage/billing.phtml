@@ -124,10 +124,10 @@
                     </tr>
                 <?php endfor; ?>
             <tr>
-			    <td class="infoLabel"><label for="billing:postcode" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
+			    <td class="infoLabel"><label for="billing:postcode" class="required"><?php echo $this->__('Zip/Postal Code') ?></label></td>
 			</tr>
 			<tr>
-			    <td class="infoInput"><input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international required-entry" /></td>
+			    <td class="infoInput"><input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-number" /></td>
 			</tr>
 			<tr style="display: none">
 			    <td class="infoLabel"><label for="billing:country_id" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
@@ -143,7 +143,8 @@
 			    <td class="infoLabel"><label for="billing:telephone" class="required"><span class="rStar">*</span><?php echo $this->__('Telephone') ?></label></td>
 			</tr>
 			<tr>
-			    <td class="infoInput"><input type="tel" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" /></td>
+			    <td class="infoInput"><input type="tel" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>"
+                                             class="input-text validate-number <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" /></td>
 			</tr>
 			</table>
 
