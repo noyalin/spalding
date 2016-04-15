@@ -45,7 +45,7 @@
 "Stock Status","Stock Status"
 "The maximum quantity allowed for purchase is %s.","The maximum quantity allowed for purchase is %s."
 "The minimum quantity allowed for purchase is %s.","The minimum quantity allowed for purchase is %s."
-"The requested quantity for ""%s"" is not available.","The requested quantity for ""%s"" is not available."
+"The requested quantity for ""%s"" is not available.","%s 库存不足"
 "The stock item for Product in option is not valid.","The stock item for Product in option is not valid."
 "The stock item for Product is not valid.","The stock item for Product is not valid."
 "This product is available for purchase in increments of %s only.","This product is available for purchase in increments of %s only."
