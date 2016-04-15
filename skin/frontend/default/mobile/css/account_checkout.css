@@ -1139,11 +1139,16 @@ SHOPPING BAG/CHECKOUT
 	margin-bottom:10px;
 }
 #shopping-cart-table td.item-funs>div.item-funs-nums input{
-	width:100%;
+	width:60%;
+	padding:3px 0;
+	text-indent:10px;
 }
 #shopping-cart-table td.item-funs>div.item-funs-price{
 	color:#ff5a05;
 	font-size:14px;
+}
+#shopping-cart-table td.item-funs>div.item-funs-price span.checkOutVm{
+	color:#666;
 }
 #shopping-cart-table td.item-funs>div.item-del a{
 	color:#fff;
@@ -1400,6 +1405,10 @@ SHOPPING BAG/CHECKOUT
 	background:url(../images/cart-yhq.jpg) left top no-repeat;
 	background-size:100% 30px;
 	border:none;
+}
+.cart-coupon span.couponSubmit.couponCancel button.button{
+	background:url(../images/couCancel.png) left top no-repeat;
+	background-size:100% 30px;
 }
 	.discount{
 		margin:0 0 15px 0;
