@@ -52,8 +52,8 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>js/catalog.js</name></action>
-            <action method="addCss"><stylesheet>css/catalog.css</stylesheet></action>
+            <!--<action method="addItem"><type>skin_js</type><name>js/catalog.js</name></action>-->
+            <!--<action method="addCss"><stylesheet>css/catalog.css</stylesheet></action>-->
             <action method="removeItem"><type>skin_css</type><name>css/service.css</name><params /></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.ias.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.iosslider.min.js</name></action>
