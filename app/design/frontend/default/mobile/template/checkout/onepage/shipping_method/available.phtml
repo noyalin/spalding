@@ -177,6 +177,14 @@
 					?>
 					<?php echo '<br>Estimated Delivery ' . $startEstimatedDelivery . ' - ' . $endEstimatedDelivery ?>
 				<?php endif ?>
+				<?php 
+					if($total < 228):
+				?>
+					<br>
+					单笔订单满228元包邮，未满228元将收取配送费用。您还可以继续购物。<a style="color:#f3ac00" href="<?php echo $this->getUrl('products.html')?>">去凑单包邮</a>
+				<?php 
+					endif;
+				?>
 			    </label>
 				</td>
                 </tr>

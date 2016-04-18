@@ -178,7 +178,7 @@ span.pic img{cursor:pointer;}
 	.popup-payArea .filter-bar { height:22px; line-height:22px; margin:10px 0 0 0}
 	.popup-payArea .filter-bar .btn { vertical-align:top;}
 	.popup-payArea .area-data { position:relative; width:750px; height:275px; overflow-y:auto; margin-top:10px;}
-	.popup-orderEnd { width:390px; border:1px solid #B6ACA2}
+	.popup-orderEnd { width:390px; border:1px solid #B6ACA2; left:50%; margin-left:-185px;top:50%;margin-top:-120px;}
 	.popup-orderEnd .popup-cont { padding:0 0 30px 50px;}
 	.popup-orderEnd .popup-cont p { position:relative; width:270px; font-size:14px; line-height:22px; margin:0px auto;}
 	.popup-orderEnd .popup-cont .p-f12 { font-size:12px; margin-top:5px;}
@@ -363,6 +363,27 @@ z-index: 1;
     vertical-align: middle;
     color:#fff;
 	padding:0 15px;
+}
+
+a.paymentBtn{
+    background-color: #fd5419;
+    border:none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 37px;
+    line-height: 37px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 159px;
+    margin:20px 0 10px 130px;
+    color:#fff;
+    text-align:center;
+    text-decoration:none;
+}
+a.paymentBtn:hover{
+    color:#fff;
+    cursor:pointer;
 }
 a {
     color: #666666;

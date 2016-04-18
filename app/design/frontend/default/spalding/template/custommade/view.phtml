@@ -314,9 +314,10 @@
 
 
     function resetView(_dataType, value1, value2, value3, value4) {
-
+        var custom_flag;
         jQuery(".comfResBox").hide();
         if(isClickOne){
+            custom_flag = jQuery("#custom_flag1");
             jQuery(".madeBoxCons_p1").show();
             jQuery(".madeBoxCons_p2").hide();
 
@@ -339,6 +340,7 @@
             var _viewCons = _viewPage1.find(".viewPage_p1_wrap");    //获取P1预览内容
 
         }else{
+            custom_flag = jQuery("#custom_flag2");
             jQuery(".madeBoxCons_p1").hide();
             jQuery(".madeBoxCons_p2").show();
 
@@ -378,7 +380,7 @@
         }
 
         if (_dataType == 1) {     //定制图片
-            jQuery("#custom_flag1").val("1");
+            custom_flag.val("1");
             //定位定制图案
             var _dataImg = jQuery("<img class='viewImgWrap' src='' alt=''/>").attr("src",
                 value1);
@@ -412,7 +414,7 @@
             jQuery(".select_P1").hide();
 
         } else if (_dataType == 2) {   //定制文字
-            jQuery("#custom_flag1").val("2");
+            custom_flag.val("2");
             var _dataTxt = jQuery("<p class='viewTexWrap'></p>").text(value1);
             var _dataTxt2 = jQuery("<p class='viewTexWrap2' style='margin-top:10px;'></p>").text(value2);
             var _zzT = jQuery(".zz_t");
@@ -524,7 +526,7 @@
 
 
         } else {    //定制空白
-            jQuery("#custom_flag1").val("0");
+            custom_flag.val("0");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
             jQuery(".madeStepNone").show();
             if(isClickOne){
