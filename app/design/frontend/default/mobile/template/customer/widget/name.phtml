@@ -4,7 +4,7 @@
 </tr>
 <tr>
 	<td class="infoInput" colspan="2">
-		<input type="text" id="<?php echo $this->getFieldId('firstname')?>" name="<?php echo $this->getFieldName('firstname')?>" value="<?php echo (strlen($this->getRequest()->getParam('fname'))) ? $this->getRequest()->getParam('fname') : $this->escapeHtml($this->getObject()->getFirstname()) ?>" title="<?php echo $this->getStoreLabel('firstname') ?>" maxlength="255" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?> required-entry" <?php echo $this->getFieldParams() ?> />
+		<input type="text" id="<?php echo $this->getFieldId('firstname')?>" name="<?php echo $this->getFieldName('firstname')?>" value="<?php echo (strlen($this->getRequest()->getParam('fname'))) ? $this->getRequest()->getParam('fname') : $this->escapeHtml($this->getObject()->getFirstname()) ?>" title="<?php echo $this->getStoreLabel('firstname') ?>" maxlength="20" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?> required-entry" <?php echo $this->getFieldParams() ?> />
 	</td>
 </tr>
 <!--<tr>-->

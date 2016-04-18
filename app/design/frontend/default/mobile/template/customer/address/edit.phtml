@@ -147,7 +147,7 @@
 		    <td class="infoLabel"><label for="postcode" class="required"><span class="rStar">*</span><?php echo $this->__('Zip/Postal Code') ?></label></td>
 		</tr>
 		<tr>
-		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="postcode" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" /></td>
+		    <td class="infoInput"><input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="postcode" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" maxlength="10"/></td>
 		</tr>
 		<tr style="display: none">
 		    <td class="infoLabel"><label for="country" class="required"><span class="rStar">*</span><?php echo $this->__('Country') ?></label></td>
