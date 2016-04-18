@@ -49,7 +49,7 @@ Default layout, loads most of the pages
 				<block type="page/html_welcome" name="welcome" as="welcome"/>
             </block>
 
-            <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+            <!--<block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>-->
 
             <block type="core/text_list" name="sidebar" as="sidebar" translate="label">
                 <label>Sidebar</label>
