@@ -165,27 +165,30 @@ if ($_currentCategory) {
                 	foreach($_firstLevelCategorise as $_category):
             ?>
 			<div class="ui-menu-level-01 e-menu-level-01">
-				<h3 class="level01-title">
-					<span><?php echo $_category->getName() ?></span> <i class="icon-arrow-right-white"></i>
-				</h3>
-				<!-- level02 -->
-				<div class="ui-menu-level-02 e-menu-level-02">
-					<h3 class="level02-back-title">
-						<i class="icon-arrow-right-white left"></i> <span><?php echo $_category->getName() ?></span>
-					</h3>
-						<h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_category) ?>">所有商品</a></h3>
-                        <?php
-                            $_categoryTmp = Mage::getModel('catalog/category')->load($_category->getId());
-                            $_subcategories = $_categoryTmp->getChildrenCategories();
-                            if (count($_subcategories) > 0):
-                                foreach($_subcategories as $_subcategory):
-                        ?>
-                        <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>"><?php echo $_subcategory->getName() ?></a></h3>
-                        <?php
-                                endforeach;
-                            endif;
-                        ?>
-				</div>
+
+            <!-- level02 -->
+            <?php
+            $_categoryTmp = Mage::getModel('catalog/category')->load($_category->getId());
+            $_subcategories = $_categoryTmp->getChildrenCategories();
+            if (count($_subcategories) > 0):
+            ?>
+                <h3 class="level01-title">
+                    <span><?php echo $_category->getName() ?></span> <i class="icon-arrow-right-white"></i>
+                </h3>
+                <div class="ui-menu-level-02 e-menu-level-02">
+                    <h3 class="level02-back-title">
+                        <i class="icon-arrow-right-white left"></i> <span><?php echo $_category->getName() ?></span>
+                    </h3>
+                    <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_category) ?>">所有商品</a></h3>
+                    <?php foreach($_subcategories as $_subcategory): ?>
+                    <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>"><?php echo $_subcategory->getName() ?></a></h3>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <h3 class="level01-title">
+                    <a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_category) ?>"><?php echo $_category->getName() ?></a>
+                </h3>
+            <?php endif; ?>
 			</div>
             <?php
                     endforeach;
