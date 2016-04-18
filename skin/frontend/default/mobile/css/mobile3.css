@@ -5407,8 +5407,21 @@ ul.messages{
 
 
 
+.no-search{
+	padding-top:55px;
+}
+.no-search h1{
+	border-top:none;
+	border-bottom:1px solid #ddd;
+}
 
-
+.no-search-msg{
+	text-align:center;
+	padding:20px 0;
+	font-size:18px;
+	font-weight:bold;
+	min-height:280px;
+}
 
 /*法律条文*/
 .rules{

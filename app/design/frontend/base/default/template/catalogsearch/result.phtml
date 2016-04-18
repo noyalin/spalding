@@ -41,10 +41,10 @@
     <?php endif; ?>
     <?php echo $this->getProductListHtml() ?>
 <?php else: ?>
-<div class="page-title">
+<div class="page-title no-search">
     <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
 </div>
-<p class="note-msg">
+<p class="note-msg no-search-msg">
     <?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?>
     <?php if ($messages = $this->getNoteMessages()):?>
         <?php foreach ($messages as $message):?>
