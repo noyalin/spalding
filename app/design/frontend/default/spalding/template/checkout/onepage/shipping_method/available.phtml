@@ -38,10 +38,10 @@
     <?php $shippingCodePrice = array(); ?>
     <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates):?>
         <?php
-        	if($total >= 228 && $code != 'freeshipping'):
+        	if(($total >= 228 || $total <= 0.01) && $code != 'freeshipping'):
         		continue;
         	endif;
-        	if($total < 228 && $code == 'freeshipping'):
+        	if(($total < 228 && $total > 0.01) && $code == 'freeshipping'):
         		continue;
         	endif;
 	        $selected = null;
