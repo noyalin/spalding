@@ -3468,13 +3468,13 @@ input[type=checkbox]:checked+label#search-color-swatch-purple,
 input[type=checkbox]:checked+label#search-color-swatch-brown{
 	border:2px solid rgba(243,172,0,1) !important;
 }
-.category-filter{
+/*.category-filter{
 	background:rgba(0,0,0,0.4);
 	border-bottom:1px solid	rgba(0,0,0,1);
 	padding:15px 15px;
 	text-align:left;
 	width:auto;
-}
+}*/
 
 /* Hide filter categories by default */
 .filter-button-reset,
@@ -5251,11 +5251,11 @@ span.checkError{
 	padding:0;
 	margin:0;
 }
-.box_swipe ul li a.pic{
+/*.box_swipe ul li a.pic{
 	display:block;
 	height:200px;
 	overflow:hidden;
-}
+}*/
 .e-back-top{
 	margin:0;
 }
