@@ -4951,6 +4951,7 @@ span.checkError{
 	font-size:12px;
 }
 .ui-menu-link a{
+	display:block;
 	color:#333;
 }
 
@@ -5244,6 +5245,11 @@ span.checkError{
 	border:1px solid #fff;
 	margin-top:15px;
 	color:#fff;
+}
+.news-swipe .news-swipe-box a.pic{
+	display:block;
+	height:200px;
+	overflow:hidden;
 }
 .news-swipe .news-swipe-box h2 a{
 	border:none;
@@ -5613,7 +5619,10 @@ ul.messages{
 	.picScroll-left .bd ul li .title{ width:170px;}
 	.picScroll-left .bd{ padding:10px 17px;}
 }
-
+/*ipad*/
+@media only screen and (min-width: 768px){
+	.multi-view-img-big img{ max-height: 140px;width: auto;}
+}
 /*
 ***iphone 4 以下 小屏css
 ***屏幕高度小于480px
