@@ -5598,11 +5598,11 @@ ul.messages{
 	color:#333;
 }
 .newsArtsFun {
-	font-size: 12px;
 	margin: 10px 10px 0;
-}
-.newsArtsFun .newsArtsLas a {
-	color: #666;
+	padding-top:10px;
+	font-size: 14px;
+	font-weight: bold;
+	border-top:1px solid #666666;
 }
 #product-options-wrapper .validation-advice{
 	position:absolute;
