@@ -821,7 +821,7 @@ section.nav-btm input{
 	background:rgba(255,255,255,0.85);
 	border-radius:5px 0 0 5px;
 	color:#000;
-	font-size:12x;
+	font-size:12px;
 	outline:none;
 	border:none;
 	font-family:Arial;
@@ -3468,7 +3468,7 @@ input[type=checkbox]:checked+label#search-color-swatch-purple,
 input[type=checkbox]:checked+label#search-color-swatch-brown{
 	border:2px solid rgba(243,172,0,1) !important;
 }
-category-filter{
+.category-filter{
 	background:rgba(0,0,0,0.4);
 	border-bottom:1px solid	rgba(0,0,0,1);
 	padding:15px 15px;
@@ -5246,17 +5246,16 @@ span.checkError{
 	margin-top:15px;
 	color:#fff;
 }
-.news-swipe .news-swipe-box a.pic{
-	display:block;
-	height:200px;
-	overflow:hidden;
-}
 .news-swipe .news-swipe-box h2 a{
 	border:none;
 	padding:0;
 	margin:0;
 }
-
+.box_swipe ul li a.pic{
+	display:block;
+	height:200px;
+	overflow:hidden;
+}
 .e-back-top{
 	margin:0;
 }
