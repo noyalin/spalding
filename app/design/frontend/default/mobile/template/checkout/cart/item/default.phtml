@@ -57,7 +57,6 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 		<?php echo $this->htmlEscape($this->getProductName()) ?>
 	    <?php endif; ?>
 	</h2>
-	<?php //print_r($_item->getProduct()->getData()); ?>
 
         <?php if ($_options = $this->getOptionList()):?>
         <dl class="item-options">
@@ -77,41 +76,12 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 				</dd>
 				<?php endforeach; ?>
 
-
 			<dt>材质:</dt>
-			<dd>牛皮</dd>
+			<dd><?php echo $product_material ?></dd>
 
 			<dt>场地:</dt>
-			<dd>室内</dd>
+			<dd><?php echo $product_side ?></dd>
 
-			<!--<dt>单价:</dt>
-			<dd>
-				
-				
-				<?php /*if ($this->helper('tax')->displayCartPriceExclTax()): */?>
-					<?php /*if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): */?>
-						<?php /*echo $this->helper('checkout')->formatPrice($_item->getCalculationPrice()+$_item->getWeeeTaxAppliedAmount()+$_item->getWeeeTaxDisposition()); */?>
-					<?php /*else: */?>
-						<?php /*echo $this->helper('checkout')->formatPrice($_item->getCalculationPrice()) */?>
-					<?php /*endif; */?>
-				<?php /*endif; */?>
-				<?php /*
-            		$msrp = number_format($_product->getMsrp(), '2', '.', ',');
-            		$currentPrice = number_format($_item->getCalculationPrice(), '2', '.', ',');
-            		if($msrp != $currentPrice):
-        		*/?>
-        			&nbsp;&nbsp;
-					<span class="checkOutVm">
-						<em></em>
-						￥<?php /*echo $msrp; */?>
-					</span>
-        		<?php /*
-          			endif;
-        		*/?>
-			</dd>-->
-
-			<!--<dt>数量:</dt>
-			<dd><input name="cart[<?php /*echo $_item->getId() */?>][qty]" value="<?php /*echo $this->getQty() */?>" size="3" title="<?php /*echo $this->__('Qty') */?>" class="input-text qty" maxlength="3" /></dd>-->
         </dl>
         <?php endif;?>
 
