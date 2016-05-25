@@ -553,7 +553,7 @@ jQuery(function () {
     });
 
 
-    //设置字体 显示字体
+    //start 选择字体
     jQuery(".chosFam").click(function () {
         jQuery(this).siblings("ul.fontFmList").slideToggle();
     });
@@ -564,6 +564,11 @@ jQuery(function () {
         jQuery(this).parent("ul").slideUp();
         jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
         jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
+        if(_dataFamVals==3||_dataFamVals==4){
+           jQuery("#textInput_1,#textInput_3").attr("placeholder","只限输入中文及全角标点符号");
+        }else{
+            jQuery("#textInput_1,#textInput_3").attr("placeholder","只限输入字母，数字，空格以及@-_.&:");
+        }
 
         madeFamily_1();
     });
@@ -574,71 +579,83 @@ jQuery(function () {
         jQuery(this).parent("ul").slideUp();
         jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
         jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
-
+        if(_dataFamVals==3||_dataFamVals==4){
+            jQuery("#textInput_2,#textInput_4").attr("placeholder","只限输入中文及全角标点符号");
+        }else{
+            jQuery("#textInput_2,#textInput_4").attr("placeholder","只限输入字母，数字，空格以及@-_.&:");
+        }
         madeFamily_2();
     });
+    //end 选择字体
 
 });
 
-//设置字体
+//设置字体-
 // 0 -- Conv_CustomGrotesque-Regular
 // 1 -- Sans-Serif
 // 2 -- Arial
+// 3 -- 宋体
+// 4 --楷体
+
 
 
 function setFamily_1(_dataFamVal){
 
     if(_dataFamVal==0){
-        jQuery("#textMade_P1").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery("#textMade_P3").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery(".viewPage_p1_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".big_pic").find(".textPag_1").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".chosFam_p1").html("CustomGrotesque");
     }else if(_dataFamVal==1){
-        jQuery("#textMade_P1").css("font-family","Sans-Serif");
-        jQuery("#textMade_P3").css("font-family","Sans-Serif");
-        jQuery(".viewPage_p1_wrap").css("font-family","Sans-Serif");
+        jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","Sans-Serif");
         jQuery(".big_pic").find(".textPag_1").css("font-family","Sans-Serif");
         jQuery(".chosFam_p1").html("SansSerif");
     }else if(_dataFamVal==2){
-        jQuery("#textMade_P1").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery("#textMade_P3").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery(".viewPage_p1_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".big_pic").find(".textPag_1").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".chosFam_p1").html("Aril");
+    }else if(_dataFamVal==3){
+        jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","宋体");
+        jQuery(".big_pic").find(".textPag_1").css("font-family","宋体");
+        jQuery(".chosFam_p1").html("宋体");
+    }
+    else if(_dataFamVal==4){
+        jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","楷体");
+        jQuery(".big_pic").find(".textPag_1").css("font-family","楷体");
+        jQuery(".chosFam_p1").html("楷体");
     }
 }
 
 function setFamily_2(_dataFamVal){
 
     if(_dataFamVal==0){
-        jQuery("#textMade_P2").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery("#textMade_P4").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery(".viewPage_p2_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
+        jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".big_pic").find(".textPag_2").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".chosFam_p2").html("CustomGrotesque");
     }else if(_dataFamVal==1){
-        jQuery("#textMade_P2").css("font-family","Sans-Serif");
-        jQuery("#textMade_P4").css("font-family","Sans-Serif");
-        jQuery(".viewPage_p2_wrap").css("font-family","Sans-Serif");
+        jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css("font-family","Sans-Serif");
         jQuery(".big_pic").find(".textPag_2").css("font-family","Sans-Serif");
         jQuery(".chosFam_p2").html("SansSerif");
     }else if(_dataFamVal==2){
-        jQuery("#textMade_P2").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery("#textMade_P4").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery(".viewPage_p2_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
+        jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".big_pic").find(".textPag_2").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".chosFam_p2").html("Aril");
+    }else if(_dataFamVal==3){
+        jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css("font-family","宋体");
+        jQuery(".big_pic").find(".textPag_2").css("font-family","宋体");
+        jQuery(".chosFam_p2").html("宋体");
+    }else if(_dataFamVal==4){
+        jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css("font-family","楷体");
+        jQuery(".big_pic").find(".textPag_2").css("font-family","楷体");
+        jQuery(".chosFam_p2").html("楷体");
     }
+
 }
 function madeFamily_1(){
     var _dataFamVal = jQuery(".chosFam_p1").attr("data-family");
-
     setFamily_1(_dataFamVal);
 }
 function madeFamily_2(){
     var _dataFamVal = jQuery(".chosFam_p2").attr("data-family");
-
     setFamily_2(_dataFamVal);
 }
 
@@ -1014,7 +1031,8 @@ jQuery(function () {
                         if (submitYP_CheckText_NO_Alert("#textInput_1") && submitYP_CheckText_NO_Alert("#textInput_3")) {
                             showComfBox(this);
                         } else {
-                            alert('只限输入字母，数字，空格以及@-_.&:');
+                            var tip=jQuery("#textInput_1").attr("placeholder")
+                            alert(tip);
                         }
                     }
                 }else{
@@ -1024,7 +1042,8 @@ jQuery(function () {
                         if (submitYP_CheckText_NO_Alert("#textInput_2") && submitYP_CheckText_NO_Alert("#textInput_4")) {
                             showComfBox(this);
                         } else {
-                            alert('只限输入字母，数字，空格以及@-_.&:');
+                            var tip=jQuery("#textInput_2").attr("placeholder")
+                            alert(tip);
                         }
                     }
                 }
@@ -1051,30 +1070,48 @@ jQuery(function () {
     function submitYP_CheckText(txtInputId){
 
         var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
+        var zre= /[^\uFF00-\uFFFF\u4E00-\u9FA5]/;//中文全角字符匹配
         var txtInput = jQuery(txtInputId);
-
+        var _placeholder = jQuery(txtInputId).attr("placeholder");
         if (txtInput.val().length == 0 ){
             alert('输入内容不能为空！');
             txtInput.focus();
             return false;
         }
-        if (!re.exec(txtInput.val())){
-            alert('只限输入字母，数字，空格以及@-_.&:');
-            txtInput.focus();
-            return false;
+        if(_placeholder=="只限输入字母，数字，空格以及@-_.&:"){
+            if (!re.exec(txtInput.val())){
+                alert('只限输入字母，数字，空格以及@-_.&:');
+                txtInput.focus();
+                return false;
+            }
+        }else{
+            if (zre.exec(txtInput.val())){
+                alert('只限输入中文及全角标点符号');
+                txtInput.focus();
+                return false;
+            }
         }
+
         return true;
     }
 
     function submitYP_CheckText_NO_Alert(txtInputId){
-
         var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
+        var zre=/[^\uFF00-\uFFFF\u4E00-\u9FA5]/;
+        var _placeholder = jQuery(txtInputId).attr("placeholder");
         var txtInput = jQuery(txtInputId);
-
-        if (!re.exec(txtInput.val())){
-            txtInput.focus();
-            return false;
+        if(_placeholder=="只限输入字母，数字，空格以及@-_.&:"){
+            if (!re.exec(txtInput.val())){
+                txtInput.focus();
+                return false;
+            }
+        }else{
+            if (zre.exec(txtInput.val())){
+                txtInput.focus();
+                return false;
+            }
         }
+
         return true;
     }
 
@@ -1265,11 +1302,12 @@ function setMadeText(_text, _txt, _cnt){
     _text.innerHTML = getMadeText(_txt, _cnt);
 }
 
+//选中字号大小
 function getTxtSize(position) {
     var size = 2;
     var obj = null;
     if (position == 1) {
-        obj = document.getElementsByName("size-p1");
+        obj = document.getElementsByName("size-p1");//position 1.定制1 2.定制2
 
     } else if (position == 2) {
         obj = document.getElementsByName("size-p2");
@@ -1280,15 +1318,15 @@ function getTxtSize(position) {
 
             if (_checked=="checked") {
                 // if (obj[i].checked) {
-                size = parseInt(obj[i].value);
+                size = parseInt(obj[i].value);//获取input的vaule; 1小号 2中号 3大号
                 break;
             }
         }
     }
 
-    if (size == 1) {
+    if (size == 1) {//小号
         if (position == 1) {
-            obj1 = document.getElementsByName("smalSizeCho_p1");
+            obj1 = document.getElementsByName("smalSizeCho_p1");//文字内容单双行显示
         } else if (position == 2) {
             obj1 = document.getElementsByName("smalSizeCho_p2");
         }
@@ -1297,7 +1335,7 @@ function getTxtSize(position) {
                 var _checked = obj1[i].getAttribute("checked");
 
                 if (_checked=="checked") {
-                    size += parseInt(obj1[i].value);
+                    size += parseInt(obj1[i].value); //size =4双行 size=1单行
                     break;
                 }
             }
@@ -1305,7 +1343,7 @@ function getTxtSize(position) {
     }
     return size;
 }
-
+//文字获取的内容长度
 function getTxtCnt(position) {
     var size = getTxtSize(position);
     if (size == 1 || size == 4) {
