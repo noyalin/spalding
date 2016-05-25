@@ -1137,6 +1137,7 @@ jQuery(function () {
             }
         }
     }
+
     function submitYP_CheckImg(txtInputId){
 
         return true;
