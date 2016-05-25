@@ -96,9 +96,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             } elseif ($type == 2) {
                 $content3 = $params['size'];
                 $content4 = $params['font'];
-                $content1 = $this->getCheckedText($params['text1']);
+                $content1 = $this->getCheckedText($params['text1'], $content4);
                 if ($content3 == '4') {
-                    $content2 = $this->getCheckedText($params['text3']);
+                    $content2 = $this->getCheckedText($params['text3'], $content4);
                 } else {
                     $content2 = '';
                 }
@@ -127,9 +127,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             } elseif ($type == 2) {
                 $content3 = $params['size'];
                 $content4 = $params['font'];
-                $content1 = $this->getCheckedText($params['text2']);
+                $content1 = $this->getCheckedText($params['text2'], $content4);
                 if ($content3 == '4') {
-                    $content2 = $this->getCheckedText($params['text4']);
+                    $content2 = $this->getCheckedText($params['text4'], $content4);
                 } else {
                     $content2 = '';
                 }
@@ -278,9 +278,13 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
         Mage::getModel('custommade/session')->setSession($session);
     }
 
-    private function getCheckedText($str)
+    private function getCheckedText($str, $font)
     {
-        $pattern = '/[^A-Za-z0-9\s\-\.@_&:]*/';
+        if ($font == 3 || $font == 4) {
+            $pattern = '/[^\xFF00-\xFFFF\x4E00-\x9FA5]*/';
+        } else {
+            $pattern = '/[^A-Za-z0-9\s\-\.@_&:]*/';
+        }
         $str = preg_replace($pattern, '', $str);
         return $str;
     }
