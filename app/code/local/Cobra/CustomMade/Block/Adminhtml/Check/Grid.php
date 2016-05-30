@@ -88,6 +88,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         	'options'           => array(
         		0   => 'NBA字体',
         	    2	=> 'Aril',
+                3	=> '宋体',
+                4	=> '楷体',
         	),
         	'html_decorators'   => array('nobr')
         ));
@@ -157,6 +159,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         		'options'           => array(
         			0   => 'NBA字体',
         	    	2	=> 'Aril',
+                    3	=> '宋体',
+                    4	=> '楷体',
         		),
         		'html_decorators'   => array('nobr')
         ));

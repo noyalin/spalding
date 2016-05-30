@@ -234,10 +234,18 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                 }
                 return $url;
             case 2:
-                if ($sku == '74-604yc') {
-                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
+                if ($content4P1 == 3 || $content4P1 == 4) {
+                    if ($sku == '74-604yc') {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-74-604-';
+                    } else {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-74-602-';
+                    }
                 } else {
-                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                    if ($sku == '74-604yc') {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
+                    } else {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                    }
                 }
                 break;
             default;
@@ -247,6 +255,12 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         switch ($content4P1) {
             case 2:
                 $imgType .= '-arial';
+                break;
+            case 3:
+                $imgType .= '-simsun';
+                break;
+            case 4:
+                $imgType .= '-simkai';
                 break;
             default:
         }
@@ -281,10 +295,18 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                 }
                 return $url;
             case 2:
-                if ($sku == '74-604yc') {
-                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
+                if ($content4P2 == 3 || $content4P2 == 4) {
+                    if ($sku == '74-604yc') {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-74-604-';
+                    } else {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-74-602-';
+                    }
                 } else {
-                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                    if ($sku == '74-604yc') {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
+                    } else {
+                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
+                    }
                 }
                 break;
             default;
@@ -294,6 +316,12 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         switch ($content4P2) {
             case 2:
                 $imgType .= '-arial';
+                break;
+            case 3:
+                $imgType .= '-simsun';
+                break;
+            case 4:
+                $imgType .= '-simkai';
                 break;
             default:
         }
