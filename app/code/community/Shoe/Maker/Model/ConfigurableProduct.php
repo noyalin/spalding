@@ -229,7 +229,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
     }
 
     public function checkProductExist($sku){
-        
+
         $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
         return $product;
     }
@@ -376,7 +376,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $skuImage =$valueArr['sku'];
 
         try{
-            $this->getAllImagesByUrlkey($valueArr['sku'],$valueArr['urlKey'],$valueArr['imageCount'],$valueArr['productNorm']);
+            $this->getAllImagesByUrlkey($valueArr);
         }catch (Exception $e){
             $exceptionLogHandle = fopen($this->catalogLogsDirectory . 'exception_log', 'a');
             fwrite($exceptionLogHandle, '->' . $this->filename . " - " . $e->getMessage() . "\n");
@@ -431,7 +431,12 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setAttributeSetName ( $this->getAttributeOptionId('attribute_set_name',$valueArr['attributeSetName']) );
     }
 
-    public function getAllImagesByUrlkey($sku,$urlKey,$count,$norm){
+    public function getAllImagesByUrlkey($valueArr){
+
+        $sku = $valueArr['sku'];
+        $urlKey = $valueArr['urlKey'];
+        $count = $valueArr['imageCount'];
+        $norm = $valueArr['productNorm'];
         $dir = Mage::getBaseDir()."/media/catalog/product/";
 
         //取得详情页三个大图
@@ -503,15 +508,17 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 
 
         //手机
-        $urlProductList = 'http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$185m$&$img=sneakerhead/'.$urlKey.'-1';
-        $this->getImageVByUrl($urlProductList,$sku,$urlKey,54);
-
-
         for($m=1;$m<=$count;$m++){
             $smallImageUnderLeftImage = 'http://image.sneakerhead.com/is/image/sneakerhead/mobile-detail?$260m$&$img=sneakerhead/'.$urlKey.'-'.$m;
             $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,60+$m);
         }
 
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_1242_2?$spalding_1242_1000$&$location='.$valueArr['location']
+            .'?&$series='.$valueArr['series'].'?&$number=%20'.$valueArr['number'].'&$size='.$valueArr['size'].'&$texture='.$valueArr['texture']
+            . '&$intro='.$valueArr['intro'].'&$title='.$valueArr['title'].'&$inorout='.$valueArr['inorout'].'&$images='.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,60);
+
+        $this->transactionLogHandle("    ->DEBUG AAA   :".$valueArr);
 
     }
 
