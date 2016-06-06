@@ -385,7 +385,7 @@ if ( typeof Object.create !== 'function' ) {
 						self.currentLoc = e;
 					}   
 					self.lastX = e.clientX;
-					self.lastY = e.clientY;    
+					self.lastY = e.clientY;
 
 				});  	
 
@@ -399,8 +399,9 @@ if ( typeof Object.create !== 'function' ) {
 						self.currentLoc = e;
 					}   
 					self.lastX = e.clientX;
-					self.lastY = e.clientY;    
-				});  	
+					self.lastY = e.clientY;
+					self.zoomWindow.css({ backgroundImage: "url('"+ self.$elem.attr("data-zoom-image") + "')" });
+				});
 				if(self.options.zoomType != "inner") {
 					self.zoomLens.bind('mousemove', function(e){      
 						//make sure on orientation change the setposition is not fired
@@ -1203,9 +1204,10 @@ if ( typeof Object.create !== 'function' ) {
 
 				//swaps the main image
 				//self.$elem.attr("src",smallimage);
-				//swaps the zoom image     
+				//swaps the zoom image
+				self.currentImage = largeimage;
 				if(self.options.zoomType == "lens") {
-					self.zoomLens.css({ backgroundImage: "url('" + largeimage + "')" }); 
+					self.zoomLens.css({ backgroundImage: "url('" + largeimage + "')"});
 				}
 				if(self.options.zoomType == "window") {
 					self.zoomWindow.css({ backgroundImage: "url('" + largeimage + "')" }); 
@@ -1216,7 +1218,7 @@ if ( typeof Object.create !== 'function' ) {
 
 
 
-				self.currentImage = largeimage;
+
 
 				if(self.options.imageCrossfade){
 					var oldImg = self.$elem;
