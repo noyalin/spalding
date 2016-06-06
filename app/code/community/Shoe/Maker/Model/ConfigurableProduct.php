@@ -376,6 +376,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $skuImage =$valueArr['sku'];
 
         try{
+            $this->transactionLogHandle("    ->DEBUG BBB   :".$valueArr);
             $this->getAllImagesByUrlkey($valueArr);
         }catch (Exception $e){
             $exceptionLogHandle = fopen($this->catalogLogsDirectory . 'exception_log', 'a');
@@ -432,6 +433,8 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
     }
 
     public function getAllImagesByUrlkey($valueArr){
+
+        $this->transactionLogHandle("    ->DEBUG AAA   :".$valueArr);
 
         $sku = $valueArr['sku'];
         $urlKey = $valueArr['urlKey'];
@@ -517,8 +520,6 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             .'?&$series='.$valueArr['series'].'?&$number=%20'.$valueArr['number'].'&$size='.$valueArr['size'].'&$texture='.$valueArr['texture']
             . '&$intro='.$valueArr['intro'].'&$title='.$valueArr['title'].'&$inorout='.$valueArr['inorout'].'&$images='.$urlKey.'-1';
         $this->getImageVByUrl($urlProductList,$sku,$urlKey,60);
-
-        $this->transactionLogHandle("    ->DEBUG AAA   :".$valueArr);
 
     }
 
