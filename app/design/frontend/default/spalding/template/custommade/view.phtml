@@ -144,7 +144,7 @@
     </div>
 
 </form>
-
+<div style="display:none" class="blacklist" id="blacklist"><?php echo Mage::getModel('core/variable')->loadByCode('blacklist')->getValue('html')?></div>
 <div class="opc-menu">
     <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
         <?php echo $this->getChildHtml('logincustom');?>
@@ -215,7 +215,6 @@
                 font: font,
                 sku: sku
             };
-            console.log(datas)
         }else{
             var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
             if(nowKind == 1){
@@ -272,17 +271,27 @@
         });
         jQuery("#viewMadeFun").show();        //保存定制后显示预览按钮
 
-//    resetView_2(1, "<?php //echo $productImageHelper->getCustomMadeImage('imgPer_1.jpg');  ?>//");
-        // resetView_2(2, "abcdeft", 3);
     });
 
     //显示重置后初始化数据
     //comfRes --> this --> showResDlg(this)--> _resNow.click()
+    function _wordinit(idx){
+        var id="";
+        if(idx=="submitN_1"){
+            id=1;
+        }else{
+            id=2;
+        }
+        jQuery("#made_p"+id).find(".chosFam").attr("data-family","0");
+        jQuery("#made_p"+id).find(".chosFam").html("CustomGrotesque");
+        jQuery("#made_p"+id).find(".madeTextInp input").attr("placeholder","只限输入字母，数字，空格以及@-_.&:");
+    }
     function showRestDlg(comfRes) {
-        var _id = jQuery(comfRes).attr("id");              //获取当前点击“重置”的page下的重置按钮
+        var _id = jQuery(comfRes).attr("id");             //获取当前点击“重置”的page下的重置按钮
         jQuery(".comfResBox").show();
         jQuery(".resY").unbind("click");
         jQuery(".resY").click(function(){
+            _wordinit(_id);
             comfResh(_id);                                 //传入当前重置page 重置按钮ID 重置对应div内page数据
         });
 
@@ -590,6 +599,7 @@
 
             _comfBox.siblings(".madeBoxFuns").find(".lineOne").removeClass("labelNoc").addClass("labelCheck");
             _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
+
         }
 
         //重置

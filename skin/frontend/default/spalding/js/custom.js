@@ -103,12 +103,14 @@ jQuery(function () {
         clickInit(_pageBtnId);
         var _init_1 = jQuery(".select_N1").html();                       //获取存储在暂存N1里以备比较数据是否改变的P1数据
         var _init_2 = jQuery(".select_N2").html();                       //获取存储在暂存N2里以备比较数据是否改变的P2数据
+
         var _now_1 = jQuery(".madeTexWrap").find(".select_P1").html();   //获取当前P1数据
         var _now_2 = jQuery(".madeTexWrap").find(".select_P2").html();   //获取当前P2数据
         var _imgIntSrc = jQuery("#imgIntSrc").val();             //当是图片定制时，获取图片初始地址的值
 
         if(isClickOne){                                                       //点击page 1按钮
             var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
+            console.log("按钮1")
             if (nowKind == 1) {
                 _now_2 = jQuery("#avatar").attr("src");
                 if (_init_2 == "") {
@@ -123,9 +125,11 @@ jQuery(function () {
                 noChange(_PageBtn);
             }else{
                 isChange();
+
             }
         }else{                                                  //点击page 2按钮
             //alert(_pageBtnId);
+            console.log("按钮2")
             var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
             if (nowKind == 1) {
                 _now_1 = jQuery("#avatar").attr("src");
@@ -196,10 +200,10 @@ jQuery(function () {
                     dataObj = ajaxEvalJson(res);
 
                     if (dataObj != null) {
-                resetView(dataObj['type'], dataObj['content1'], dataObj['content2'],
-                    dataObj['content3'], dataObj['content4']);
-            }
-        }
+                        resetView(dataObj['type'], dataObj['content1'], dataObj['content2'],
+                            dataObj['content3'], dataObj['content4']);
+                    }
+                }
             });
             //resetView_1(2, "abcdeft", 1);
         }//noChange() end
@@ -208,7 +212,18 @@ jQuery(function () {
         //数据有改动时，执行操作
         //isChange
         function isChange(){
+            //isClickOne true 按钮1 false按钮2
             if(isClickOne){
+                jQuery('#made_p2 .submitY').trigger("click");
+            }else{
+                jQuery('#made_p1 .submitY').trigger("click");
+            }
+        }
+    }
+/*        function isChange(){
+           //isClickOne true 按钮1 false按钮2
+            if(isClickOne){
+                jQuery('#made_p2 .submitY').trigger("click");
                 var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
                 var _comfBox = jQuery(".madeBoxCons_p2").find(".comfBox");
 
@@ -216,18 +231,19 @@ jQuery(function () {
                 jQuery(".madeBoxCons_p2").find(".madeSubmit").hide();
 
             }else{
+                jQuery('#made_p1 .submitY').trigger("click");
                 var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
                 var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
 
                 jQuery(".madeBoxCons_p1").find(".madeBoxFuns").hide();
                 jQuery(".madeBoxCons_p1").find(".madeSubmit").hide();
-            }
 
+            }
+            _comfBox.show();
             var _comfBoxN = _comfBox.find(".saveMadeN");
             var _madeP1 = jQuery(".madeBoxCons_p1");
             var _madeP2 = jQuery(".madeBoxCons_p2");
-
-            _comfBox.show();
+            //_comfBox.show();
             _comfBoxN.click(function(){
                 var noSaveId = jQuery(this).attr("id");
                 if(noSaveId == "saveNoId_1"){
@@ -328,7 +344,7 @@ jQuery(function () {
             });
         }//isChange() end
 
-    }//clickPageBtn() end
+    }*/
 
     //定制图案或文字时 另一定制收起
     var _madeImgDt = jQuery(".madeKindImg");
@@ -514,10 +530,8 @@ jQuery(function () {
         jQuery(this).parent().siblings(".madeTextInp").find(".smaSizeInp").hide();
         jQuery(this).css("color","#fcb805");
         jQuery(this).siblings(".lineTwo").css("color","#9b9b9b");
-        jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
-        jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
-        jQuery(".madeTexWrap").find(".select_P3").hide();
-        jQuery(".madeTexWrap").find(".select_P4").hide();
+        jQuery(".madeTexWrap").find(".select_P1,.select_P2").removeClass("twoLine");
+        jQuery(".madeTexWrap").find(".select_P3,.select_P4").hide();
 
         jQuery(this).removeClass("labelNoc").addClass("labelCheck");
         jQuery(this).siblings(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
@@ -546,7 +560,6 @@ jQuery(function () {
     });
 
     jQuery(".lineTwo_p2").click(function(){
-
         jQuery(".madeTexWrap").find(".select_P2").addClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P3").hide();
         jQuery(".madeTexWrap").find(".select_P4").show();
@@ -565,7 +578,7 @@ jQuery(function () {
         jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
         jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
         if(_dataFamVals==3||_dataFamVals==4){
-           jQuery("#textInput_1,#textInput_3").attr("placeholder","只限输入中文及全角标点符号");
+            jQuery("#textInput_1,#textInput_3").attr("placeholder","只限输入中文及全角标点符号");
         }else{
             jQuery("#textInput_1,#textInput_3").attr("placeholder","只限输入字母，数字，空格以及@-_.&:");
         }
@@ -574,6 +587,7 @@ jQuery(function () {
     });
 
     jQuery(".madeBoxCons_p2 .fontFamBox").click(function(){
+        var word=jQuery("#blacklist").html();
         var _dataFamVals = jQuery(this).attr("data-familys");
         var _dataFamTex = jQuery(this).html();
         jQuery(this).parent("ul").slideUp();
@@ -1014,107 +1028,103 @@ jQuery(function () {
             clickStatusChange(false);
             var _comfBox = jQuery(".comfBox_2");
         }
-
+        console.log("0")
         var _madeValue = _comfBox.siblings(".madeBoxFuns").find("dd.madeNow").attr("dataVal");
-
         if (_madeValue == 1) {
             if (submitYP_CheckImg("")) {
                 showComfBox(this);
             }
         } else if (_madeValue == 2) {
             var size = getTxtSize(1);
-            if (size == 4) {
+            if (size == 4) {//双行
                 if(isClickOne){
                     if (jQuery("#textInput_1").val().length == 0 && jQuery("#textInput_3").val().length == 0) {
                         alert('至少输入一行内容');
-                    } else {
-                        if (submitYP_CheckText_NO_Alert("#textInput_1") && submitYP_CheckText_NO_Alert("#textInput_3")) {
-                            showComfBox(this);
-                        } else {
-                            var tip=jQuery("#textInput_1").attr("placeholder")
-                            alert(tip);
-                        }
+                    } else if(!submitYP_CheckText("#textInput_1")) {
+                        console.log("1")
+
+                    } else if(!submitYP_CheckText("#textInput_3")) {
+                        console.log("2")
+
+                    }else{
+                        showComfBox(this);
                     }
                 }else{
                     if (jQuery("#textInput_2").val().length == 0 && jQuery("#textInput_4").val().length == 0) {
                         alert('至少输入一行内容');
-                    } else {
-                        if (submitYP_CheckText_NO_Alert("#textInput_2") && submitYP_CheckText_NO_Alert("#textInput_4")) {
-                            showComfBox(this);
-                        } else {
-                            var tip=jQuery("#textInput_2").attr("placeholder")
-                            alert(tip);
-                        }
+                    }else if(!submitYP_CheckText("#textInput_2")) {
+
+
+                    } else if(!submitYP_CheckText("#textInput_4")) {
+
+                    }else{
+                        showComfBox(this);
                     }
                 }
-
-            } else {
+            } else {//一行
                 if(isClickOne){
-                    if (submitYP_CheckText("#textInput_1")) {
+                    if (jQuery("#textInput_1").val()=="") {
+                        alert('输入内容不能为空！');
+
+                    }else if(!submitYP_CheckText("#textInput_1")){
+
+                    }
+                    else{
                         showComfBox(this);
                     }
                 }else{
-                    if (submitYP_CheckText("#textInput_2")) {
+                    if (jQuery("#textInput_2").val()=="") {
+                        alert('输入内容不能为空！');
+
+                    }else if(!submitYP_CheckText("#textInput_2")){
+
+                    }
+                    else{
                         showComfBox(this);
                     }
                 }
-
             }
-        } else {
-            showComfBox(this);
         }
-
-        //jQuery(".select_P1").hide();
     });
-
-    function submitYP_CheckText(txtInputId){
-
-        var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
-        var zre= /[^\uFF00-\uFFFF\u4E00-\u9FA5]/;//中文全角字符匹配
-        var txtInput = jQuery(txtInputId);
-        var _placeholder = jQuery(txtInputId).attr("placeholder");
-        if (txtInput.val().length == 0 ){
-            alert('输入内容不能为空！');
-            txtInput.focus();
-            return false;
-        }
-        if(_placeholder=="只限输入字母，数字，空格以及@-_.&:"){
-            if (!re.exec(txtInput.val())){
-                alert('只限输入字母，数字，空格以及@-_.&:');
-                txtInput.focus();
-                return false;
-            }
-        }else{
-            if (zre.exec(txtInput.val())){
-                alert('只限输入中文及全角标点符号');
-                txtInput.focus();
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    function submitYP_CheckText_NO_Alert(txtInputId){
+    function submitYP_CheckText(txtInputId){//判断文字是否满足条件
         var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
         var zre=/[^\uFF00-\uFFFF\u4E00-\u9FA5]/;
         var _placeholder = jQuery(txtInputId).attr("placeholder");
         var txtInput = jQuery(txtInputId);
         if(_placeholder=="只限输入字母，数字，空格以及@-_.&:"){
             if (!re.exec(txtInput.val())){
+                alert('只限输入字母，数字，空格以及@-_.&:');
                 txtInput.focus();
                 return false;
+
+            }else{
+                return true;
             }
         }else{
-            if (zre.exec(txtInput.val())){
+            //判断中文字黑名单;
+            var count=[];//存放敏感词的个数；
+            var arr = jQuery("#blacklist").html().split(';')
+            jQuery.each(arr,function(i){
+                if(jQuery(txtInput).val().indexOf(arr[i])>=0)
+                {
+                    count.push(arr[i]);
+                }
+            });
+            if(count.length>0){
+                alert('"'+jQuery(txtInput).val()+'"包含"'+count[0]+'"敏感词！');
                 txtInput.focus();
                 return false;
+            }else{
+                if (zre.exec(txtInput.val())){
+                    alert('只限输入中文及全角标点符号');
+                    txtInput.focus();
+                    return false;
+                }else{
+                    return true;
+                }
             }
         }
-
-        return true;
     }
-
     function submitYP_CheckImg(txtInputId){
 
         return true;
