@@ -433,8 +433,6 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 
     public function getAllImagesByUrlkey($valueArr){
 
-        $this->transactionLogHandle("    ->DEBUG AAA   :".json_encode($valueArr));
-
         $sku = $valueArr['sku'];
         $urlKey = $valueArr['urlKey'];
         $count = $valueArr['imageCount'];
@@ -515,10 +513,83 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,60+$m);
         }
 
-        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_1242_2?$spalding_1242_1000$&$location='.$valueArr['location']
-            .'?&$series='.$valueArr['series'].'?&$number=%20'.$valueArr['number'].'&$size='.$valueArr['size'].'&$texture='.$valueArr['texture']
-            . '&$intro='.$valueArr['intro'].'&$title='.$valueArr['title'].'&$inorout='.$valueArr['inorout'].'&$images='.$urlKey.'-1';
-        $this->getImageVByUrl($urlProductList,$sku,$urlKey,60);
+        if ($valueArr['attributeSetName'] == 'ball') {
+
+            switch ($valueArr['productNorm']) {
+                case '7#':
+                    $size = 'size_seven';
+                    break;
+                case '6#':
+                    $size = 'size_six';
+                    break;
+                case '5#':
+                    $size = 'size_five';
+                    break;
+                default:
+                    $size = 'size_one';
+            }
+
+            switch ($valueArr['productMaterial']) {
+                case 'PU':
+                    $material = 'texture_pu';
+                    break;
+                case '牛皮':
+                    $material = 'texture_niupi';
+                    break;
+                default:
+                    $material = 'texture_xiangjiao';
+            }
+
+            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_1242_2?$spalding_1242_1000$&$location=' . urlencode($valueArr['productSide'])
+                . '&$series=' . urlencode($valueArr['productCatena']) . '&$number=%20' . strtoupper($valueArr['sku']) . '&$size=' . $size . '&$texture=' . $material
+                . '&$intro='. urlencode($valueArr['description']) . '&$title=' . urlencode($valueArr['abstract']) . '&$inorout=' . urlencode($valueArr['productSide'].'篮球')
+                . '&$images=' . $urlKey . '-1';
+            $this->getImageVByUrl($urlProductList, $sku, $urlKey, 65);
+
+            if ($size == 'size_one') {
+                //正面
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqinye_1242_third_1_small?$spalding_1242_1030$&$images=' . $urlKey . '-1';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 66);
+
+                //反面
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqinye_1242_third_2_small?$spalding_1242_1030$&$images=' . $urlKey . '-2';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 67);
+
+                //侧面
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqinye_1242_third_3_small?$spalding_1242_1030$&$images=' . $urlKey . '-3';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 68);
+            } else {
+                //正面
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqinye_1242_third_1?$spalding_1242_1030$&$images=' . $urlKey . '-1';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 66);
+
+                //反面
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqinye_1242_third_2?$spalding_1242_1030$&$images=' . $urlKey . '-2';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 67);
+
+                //侧面
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqinye_1242_third_3?$spalding_1242_1030$&$images=' . $urlKey . '-3';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 68);
+            }
+
+            if ($material == 'texture_xiangjiao') {
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_details_1?$spalding_1242_620$&$images=' . $urlKey . '-4';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 69);
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_details_1?$spalding_1242_620$&$images=' . $urlKey . '-1';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 70);
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_details_1?$spalding_1242_620$&$images=' . $urlKey . '-2';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 71);
+
+            } else {
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xianqgingye_details_2?$spalding_1242_620$&$images=' . $urlKey . '-4';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 69);
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xianqgingye%5Fdetails%5F3?$spalding%5F1242%5F620$&$images=' . $urlKey . '-1';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 70);
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_details_1?$spalding_1242_620$&$images=' . $urlKey . '-2';
+                $this->getImageVByUrl($urlProductList, $sku, $urlKey, 71);
+            }
+
+        }
 
     }
 
