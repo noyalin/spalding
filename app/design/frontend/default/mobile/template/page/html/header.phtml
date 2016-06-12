@@ -414,6 +414,17 @@ if ($_currentCategory) {
 			menuListH();
 		});
 
+        // 二级菜单点击出现三级菜单
+        jQuery('.e-menu-level-02').find('h3.level02-title').click(function(){
+            jQuery(this).siblings('div.e-menu-level-03').addClass('swiper');
+            menuListH();
+        });
+        // 三级菜单返回二级菜单
+        jQuery('.e-menu-level-03').find('h3.level03-back-title').click(function(){
+            jQuery(this).parent('div.e-menu-level-03').removeClass('swiper');
+            menuListH();
+        });
+
 		// 控制侧滑栏的总高度
 		function menuHeightControl() {
 			if(jQuery('.e-page').hasClass('swiper')) {
