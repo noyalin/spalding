@@ -1406,7 +1406,6 @@ function notTodo(tit,cons){
     _h2.text(tit);
     _p.text(cons);
 }
-
 jQuery(function(){
     jQuery(".loadingTest").click(function(){
         madeLoading("提交成功","数据加载中，由于上传图片体积较大，请耐心等待...");
@@ -1415,6 +1414,9 @@ jQuery(function(){
     // 关闭警告框
     jQuery(".closeTodo").click(function(){
         jQuery(this).parent(".notTodo").hide();
+        if(jQuery("#noTodoBox").hasClass("fonttips")){
+            jQuery("#noTodoBox").removeClass("fonttips");
+        }
     });
 
     jQuery(".cusMadeRigZz").click(function(){
