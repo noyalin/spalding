@@ -4120,7 +4120,8 @@ dl.madeBoxFuns dt.zz_t_2{
 
 
 
-.madeLoading , .notTodo{
+.madeLoading ,
+.notTodo{
 	display:none;
 	position: fixed;
 	z-index: 99999;
@@ -4163,7 +4164,8 @@ dl.madeBoxFuns dt.zz_t_2{
 	margin-top: 10px;
 	text-align: center;
 }
-
+.fonttips{height:auto}
+.fonttips .loadingImg{display:none;}
 .closeTodo{
 	left:50%;
 	top:50%;

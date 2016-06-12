@@ -110,7 +110,7 @@ jQuery(function () {
 
         if(isClickOne){                                                       //点击page 1按钮
             var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
-            console.log("按钮1")
+            console.log("按钮1");
             if (nowKind == 1) {
                 _now_2 = jQuery("#avatar").attr("src");
                 if (_init_2 == "") {
@@ -129,7 +129,7 @@ jQuery(function () {
             }
         }else{                                                  //点击page 2按钮
             //alert(_pageBtnId);
-            console.log("按钮2")
+            console.log("按钮2");
             var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
             if (nowKind == 1) {
                 _now_1 = jQuery("#avatar").attr("src");
@@ -1040,10 +1040,10 @@ jQuery(function () {
                 if(isClickOne){
                     if (jQuery("#textInput_1").val().length == 0 && jQuery("#textInput_3").val().length == 0) {
                         alert('至少输入一行内容');
-                    } else if(!submitYP_CheckText("#textInput_1")) {
+                    } else if(!submitYP_CheckText("#textInput_1","#made_p1")) {
                         console.log("1")
 
-                    } else if(!submitYP_CheckText("#textInput_3")) {
+                    } else if(!submitYP_CheckText("#textInput_3","#made_p1")) {
                         console.log("2")
 
                     }else{
@@ -1052,10 +1052,10 @@ jQuery(function () {
                 }else{
                     if (jQuery("#textInput_2").val().length == 0 && jQuery("#textInput_4").val().length == 0) {
                         alert('至少输入一行内容');
-                    }else if(!submitYP_CheckText("#textInput_2")) {
+                    }else if(!submitYP_CheckText("#textInput_2","#made_p2")) {
 
 
-                    } else if(!submitYP_CheckText("#textInput_4")) {
+                    } else if(!submitYP_CheckText("#textInput_4","#made_p2")) {
 
                     }else{
                         showComfBox(this);
@@ -1066,7 +1066,7 @@ jQuery(function () {
                     if (jQuery("#textInput_1").val()=="") {
                         alert('输入内容不能为空！');
 
-                    }else if(!submitYP_CheckText("#textInput_1")){
+                    }else if(!submitYP_CheckText("#textInput_1","#made_p1")){
 
                     }
                     else{
@@ -1076,7 +1076,7 @@ jQuery(function () {
                     if (jQuery("#textInput_2").val()=="") {
                         alert('输入内容不能为空！');
 
-                    }else if(!submitYP_CheckText("#textInput_2")){
+                    }else if(!submitYP_CheckText("#textInput_2","#made_p2")){
 
                     }
                     else{
@@ -1086,14 +1086,18 @@ jQuery(function () {
             }
         }
     });
-    function submitYP_CheckText(txtInputId){//判断文字是否满足条件
+    function submitYP_CheckText(txtInputId,madeId){//判断文字是否满足条件
         var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
         var zre=/[^\uFF00-\uFFFF\u4E00-\u9FA5]/;
         var _placeholder = jQuery(txtInputId).attr("placeholder");
         var txtInput = jQuery(txtInputId);
         if(_placeholder=="只限输入字母，数字，空格以及@-_.&:"){
             if (!re.exec(txtInput.val())){
-                alert('只限输入字母，数字，空格以及@-_.&:');
+                jQuery("#noTodoBox").addClass("fonttips");
+                var font_family=jQuery(madeId).find(".chosFam").text();
+                var tips="当前英文字体："+font_family;
+                notTodo(tips,'只限输入字母，数字，空格以及@-_.&:')
+                //alert('只限输入字母，数字，空格以及@-_.&:');
                 txtInput.focus();
                 return false;
 
@@ -1111,12 +1115,20 @@ jQuery(function () {
                 }
             });
             if(count.length>0){
-                alert('"'+jQuery(txtInput).val()+'"包含"'+count[0]+'"敏感词！');
+                var font_family=jQuery(madeId).find(".chosFam").text();
+                var tips="当前中文字体："+font_family;
+                jQuery("#noTodoBox").addClass("fonttips");
+                var tips2='"'+jQuery(txtInput).val()+'"包含"'+count[0]+'"敏感词！'
+                notTodo(tips,tips2)
                 txtInput.focus();
                 return false;
             }else{
                 if (zre.exec(txtInput.val())){
-                    alert('只限输入中文及全角标点符号');
+                    var font_family=jQuery(madeId).find(".chosFam").text();
+                    var tips="当前中文字体："+font_family;
+                    jQuery("#noTodoBox").addClass("fonttips");
+                    notTodo(tips,'只限输入中文及全角标点符号')
+                    //alert('只限输入中文及全角标点符号');
                     txtInput.focus();
                     return false;
                 }else{
@@ -1391,7 +1403,6 @@ function notTodo(tit,cons){
     _h2.text(tit);
     _p.text(cons);
 }
-
 jQuery(function(){
     jQuery(".loadingTest").click(function(){
         madeLoading("提交成功","数据加载中，由于上传图片体积较大，请耐心等待...");
@@ -1400,6 +1411,9 @@ jQuery(function(){
     // 关闭警告框
     jQuery(".closeTodo").click(function(){
         jQuery(this).parent(".notTodo").hide();
+        if(jQuery("#noTodoBox").hasClass("fonttips")){
+            jQuery("#noTodoBox").removeClass("fonttips");
+        }
     });
 
     jQuery(".cusMadeRigZz").click(function(){
