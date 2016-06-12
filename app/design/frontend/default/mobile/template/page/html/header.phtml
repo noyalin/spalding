@@ -183,13 +183,13 @@ if ($_currentCategory) {
                     <?php foreach($_subcategories as $_subcategory): ?>
                         <!-- level03 -->
                         <?php
-                        $_categoryTmp = Mage::getModel('catalog/category')->load($_category->getId());
-                        $_subcategories = $_categoryTmp->getChildrenCategories();
-                        if (count($_subcategories) > 0):
+                        $_thirdCategory = Mage::getModel('catalog/category')->load($_subcategory->getId());
+                        $_thirdCategories = $_thirdCategory->getChildrenCategories();
+                        if (count($_thirdCategories) > 0):
                         ?>
-                            <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">所有商品</a></h3>
+                            <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_thirdCategory) ?>">所有商品</a></h3>
                         <?php else: ?>
-                            <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>"><?php echo $_subcategory->getName() ?></a></h3>
+                            <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_thirdCategory) ?>"><?php echo $_thirdCategory->getName() ?></a></h3>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
