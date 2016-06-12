@@ -181,7 +181,16 @@ if ($_currentCategory) {
                     </h3>
                     <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_category) ?>">所有商品</a></h3>
                     <?php foreach($_subcategories as $_subcategory): ?>
-                    <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>"><?php echo $_subcategory->getName() ?></a></h3>
+                        <!-- level03 -->
+                        <?php
+                        $_categoryTmp = Mage::getModel('catalog/category')->load($_category->getId());
+                        $_subcategories = $_categoryTmp->getChildrenCategories();
+                        if (count($_subcategories) > 0):
+                        ?>
+                            <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">所有商品</a></h3>
+                        <?php else: ?>
+                            <h3 class="level02-title"><a class="level02-title-a" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>"><?php echo $_subcategory->getName() ?></a></h3>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
             <?php else: ?>
