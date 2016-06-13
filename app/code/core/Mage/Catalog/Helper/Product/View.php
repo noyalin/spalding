@@ -143,7 +143,7 @@ class Mage_Catalog_Helper_Product_View extends Mage_Core_Helper_Abstract
 
         $this->initProductLayout($product, $controller);
 
-        $controller->initLayoutMessages(array('catalog/session', 'tag/session', 'checkout/session'))
+        $controller->initLayoutMessages(array('catalog/session', 'tag/session', 'checkout/session','customer/session'))
             ->renderLayout();
 
         return $this;

@@ -21,6 +21,8 @@
 <?php $_taxHelper = $this->helper('tax'); ?>
 <input id="imgIntSrc" type="hidden" value="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_Bgball.png');  ?>"/>
 
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
 <form onsubmit="return cartSub_login();" action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     <!-- 法律条款 -->
     <img id="customImageHidden" style="display:none;">
