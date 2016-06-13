@@ -4940,6 +4940,7 @@ span.checkError{
 	font-weight: normal;
 	font-size: 12px;
 	font-family: "Microsoft YaHei", "SimHei", Arial, Helvetica, sans-serif, "黑体", "微软雅黑";
+	cursor: pointer;
 }
 
 .ui-menu-level-01 h3.level01-title i {
@@ -5069,6 +5070,9 @@ span.checkError{
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	font-size:12px;
+	line-height:40px;
+	height:40px;
 }
 
 .ui-menu-level-02 ul li a i {
@@ -5103,6 +5107,7 @@ span.checkError{
 
 .ui-menu-level-03 h3.level03-back-title {
 	border-bottom: 1px solid #fff;
+	cursor: pointer;
 }
 .ui-menu-level-03 h3.level03-back-title i{
 	position: absolute;
@@ -5127,7 +5132,7 @@ span.checkError{
 }
 
 .ui-menu-level-03 ul li {
-	line-height: 55px;
+	line-height: 40px;
 	border-bottom: 1px dotted #fff;
 }
 
