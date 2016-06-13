@@ -36,9 +36,6 @@ if ($_currentCategory) {
 
 	if (count($parentCategoryArray) > 2) {
 		$parentId = $parentCategoryArray[count($parentCategoryArray) - 2];
-		if ($_currentCategoryId == 10) $_currentCategoryName = "Big Kids'";
-		if ($_currentCategoryId == 542) $_currentCategoryName = "Kids'";
-		if ($_currentCategoryId == 150) $_currentCategoryName = "Outlet";
 		$_parentCategory = Mage::getModel('catalog/category')->load($parentId);
 	}
 
@@ -47,20 +44,7 @@ if ($_currentCategory) {
 		if ($breadCrumbId <= 2) continue;
 		$breadCrumbCategory = Mage::getModel('catalog/category')->load($breadCrumbId);
 		$breadCrumbUrlKey = $breadCrumbCategory->getUrlKey() . '.html';
-		switch((int)$breadCrumbId) {
-			case 10:
-				$breadCrumbName = "Big Kids'";
-				break;
-			case 542:
-				$breadCrumbName = "Kids'";
-				break;
-			case 150:
-				$breadCrumbName = "Outlet";
-				break;
-			default:
-				$breadCrumbName = $breadCrumbCategory->getName();
-		}
-
+		$breadCrumbName = $breadCrumbCategory->getName();
 		$bannerPathName = strtolower(preg_replace('/[^A-Za-z0-9\s]/', '', $breadCrumbName));
 		$bannerPathArray[$breadCrumbId] = preg_replace('/\s+/', '_', $bannerPathName);
 
@@ -92,121 +76,6 @@ $attributeOptions = array();
 $attributeLabel = NULL;
 $attributeFilter = array();
 
-/* Filter out uncommon sizes from "Shop by Size" list */
-switch ($parentCategoryArray[2]) {
-	case '6'://Mens
-		$attributeLabel = 'mensize';
-		foreach ($attributeOptionsConfig[2006]['options'] as $value => $option) {
-			$optionValues = explode(' ', $option['label']);
-			$optionSize = $optionValues[1];
-//			if ((float)$optionSize < 8 || (float)$optionSize > 14) continue;
-			$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-			$attributeFilters[] = "$attributeLabel = '" .  ($option['label']) . "'";
-		}
-		break;
-	case '9'://Womens
-		$attributeLabel = 'womensize';
-		foreach ($attributeOptionsConfig[2009]['options'] as $value => $option) {
-			$optionValues = explode(' ', $option['label']);
-			$optionSize = $optionValues[1];
-//			if ((float)$optionSize < 6.5 || (float)$optionSize > 10.5) continue;
-			$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-		}
-		break;
-	case '542'://Kids
-		$attributeLabel = 'bigkidssize';
-		foreach ($attributeOptionsConfig[2002]['options'] as $value => $option) {
-			$optionValues = explode(' ', $option['label']);
-			$optionSize = $optionValues[1];
-//			if ((float)$optionSize < 4 || (float)$optionSize > 7) continue;
-			$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-		}
-		if (array_key_exists(3, $parentCategoryArray)) {
-			if ($parentCategoryArray[3] == 60) {//Preschool
-				$attributeLabel = 'preschoolsize';
-				$attributeOptions = array();
-				foreach ($attributeOptionsConfig[2008]['options'] as $value => $option) {
-					$optionValues = explode(' ', $option['label']);
-					$optionSize = $optionValues[1];
-					if ((float)$optionSize == 3) continue;
-					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-				}
-			} else if ($parentCategoryArray[3] == 2800) {//Toddler
-				$attributeLabel = 'toddlersize';
-				$attributeOptions = array();
-				foreach ($attributeOptionsConfig[2083]['options'] as $value => $option) {
-					$optionValues = explode(' ', $option['label']);
-					$optionSize = $optionValues[1];
-					if ((float)$optionSize == 3) continue;
-					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-				}
-			}
-		}
-		break;
-	case '75'://Gear
-		$attributeLabel = 'apparelsize';
-        if(!isset($parentCategoryArray[3])){$parentCategoryArray[3]=0;}
-        switch ($parentCategoryArray[3]) {
-			case '123'://Mens Apparel
-				if (array_key_exists(4, $parentCategoryArray)) {
-					if ($parentCategoryArray[4] != 2722) {// Not Bottoms
-						foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
-							$optionSize = $option['label'];
-							if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXXL') continue;
-							$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-						}
-					} else {// Bottoms only
-						foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
-							$optionSize = $option['label'];
-							if (!ctype_digit("$optionSize")) continue;
-							$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-						}
-					}
-				}
-				break;
-			case '2724'://Womens Apparel
-				foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
-					$optionSize = $option['label'];
-					if (ctype_digit("$optionSize") || $optionSize == 'XXL' || $optionSize == 'XXXL') continue;
-					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-				}
-				break;
-			case '124'://Watches
-				if (array_key_exists(4, $parentCategoryArray)) {
-					switch ($parentCategoryArray[4]) {
-						case '104'://O Clock
-							foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
-								$optionSize = $option['label'];
-								if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXXL') continue;
-								$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-							}
-							break;
-					}
-				}
-				break;
-			case '126'://Socks
-				foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
-					$optionSize = $option['label'];
-					if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXL' || $optionSize == 'XXXL') continue;
-					$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-				}
-				break;
-			case '128'://Sneakerhead
-				if (array_key_exists(4, $parentCategoryArray)) {
-					switch ($parentCategoryArray[4]) {
-						case '115'://Apparel
-							foreach ($attributeOptionsConfig[2012]['options'] as $value => $option) {
-								$optionSize = $option['label'];
-								if (ctype_digit("$optionSize") || $optionSize == 'XS' || $optionSize == 'XXS' || $optionSize == 'XXXL') continue;
-								$attributeOptions[$value] = array('label' => $option['label'], 'size' => $optionSize);
-							}
-							break;
-					}
-				}
-			default:
-		}
-}
-
 /******************************************************************************
  * @ $landingPageCategories array values:
  * infiniteSlider: whether the slider will loop or show "More New Arrivals" image
@@ -220,59 +89,6 @@ switch ($parentCategoryArray[2]) {
 
 $landingPageCategories = array(
 
-	/* Men's -> Use Men's New Arrivals */
-	6 => array(
-		'infiniteSlider' => 'false',
-		'special_category_id' => 539,
-		'url_key' => 'sneakerhead-new-arrivals-men.html',
-		'include_set' => array(301),
-	),
-	/* Men's -> Use Men's New Arrivals, filter by Nike */
-	7 => array(
-		'infiniteSlider' => 'true',
-		'special_category_id' => 539,
-		'include_set' => array(301),
-		'filter' => 'Nike'
-	),
-	/* Women's -> Use Women's New Arrivals */
-	9 => array(
-		'infiniteSlider' => 'false',
-		'special_category_id' => 540,
-		'url_key' => 'sneakerhead-new-arrivals-women.html',
-		'include_set' => array(303),
-	),
-	/* Kids' -> Use Kids' New Arrivals */
-	542 => array(
-		'infiniteSlider' => 'false',
-		'special_category_id' => 541,
-		'url_key' => 'sneakerhead-new-arrivals-kids.html',
-		'include_set' => array(300, 302, 306),
-	),
-	/* Gear -> Use (Main) New Arrivals, filter non-apparel only */
-	75 => array(
-		'infiniteSlider' => 'true',
-		'special_category_id' => 534,
-		'exclude_cats' => array(6,7,9,542,123,2724),
-	),
-	/* Apparel Men -> Use (Main) New Arrivals, filter Apparel Men */
-	123 => array(
-		'infiniteSlider' => 'true',
-		'special_category_id' => 534,
-		'include_cats' => array(123),
-		'exclude_cats' => array(6,7,9,542),
-	),
-	/* Apparel Women -> Use (Main) New Arrivals, filter Apparel Women */
-	2724 => array(
-		'infiniteSlider' => 'true',
-		'special_category_id' => 534,
-		'include_cats' => array(2724),
-		'exclude_cats' => array(6,7,9,542),
-	),
-	/* Outlet Home */
-	150 => array(
-		'infiniteSlider' => 'true',
-		'special_category_id' => 2764,
-	),
 );
 
 $isLandingPage = ($_currentCategory && array_key_exists($_currentCategoryId, $landingPageCategories)) ? true : false;
@@ -450,12 +266,6 @@ $breadCrumbs = array();
 
                         foreach ($_productCollection as $_product):
                             $className = "multi-view-img-big";
-                            $skuConfig = $_product->getSku();
-                            $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
-                            $productNorm = $configurableProduct->getProductNorm();
-                            if($productNorm == 6){
-                                $className = "multi-view-img";
-                            }
                             $shortDescription =  $_product->getShortDescription();
                             if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
                                 if( strstr($shortDescription,'，')  ){
