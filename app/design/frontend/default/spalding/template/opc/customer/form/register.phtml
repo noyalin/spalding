@@ -34,9 +34,8 @@
                 <span class="regBoxTit ms-fl">电子邮件E-mail *</span>
 			<span class="regBoxWrap ms-fl emailspan">
                 <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" />
-                <br>
                 <input type="hidden" id="form_key" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>">
-				<span class="regBoxWrapSn emailspanhtml"></span>
+				<!--<span class="regBoxWrapSn emailspanhtml"></span>-->
 			</span>
             </div>
 
