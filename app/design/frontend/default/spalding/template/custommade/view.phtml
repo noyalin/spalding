@@ -153,6 +153,14 @@
     <?php endif;?>
 </div>
 <script type="text/javascript">
+    function login_mes(){
+        var opc_message=jQuery(".opc-menu .error-msg span").text();
+        if(opc_message){
+            jQuery(".messages .error-msg").hide();
+            alert(opc_message);
+        }
+    }
+    login_mes();
     var isClickOne = false;
     //var isClickTwo = false;
     function clickInit(id){
