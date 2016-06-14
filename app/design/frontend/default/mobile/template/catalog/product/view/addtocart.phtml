@@ -44,9 +44,14 @@
             
             <?php echo $this->getChildHtml('', true, true) ?>
         </div>
-        <div class="detailSelectBtn">
-<!--                <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>加入购物车</span></span></button>-->
+        <?php if($_product->getSku() == '76-006y'): ?>
+            <div class="detailSelectBtnPre">
                 <button type="submit" class="addToBag" id="addToBag" onclick="return validateForm('#product_addtocart_form')" /></button>
             </div>
+        <?php else: ?>
+            <div class="detailSelectBtn">
+                <button type="submit" class="addToBag" id="addToBag" onclick="return validateForm('#product_addtocart_form')" /></button>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endif; ?>
