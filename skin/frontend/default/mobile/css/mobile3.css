@@ -2391,7 +2391,7 @@ Scrolling is automated IF there is an overflow of the width */
 		padding-right:18px;
 	}
 }
-.detailSelectBtn{
+.detailSelectBtn,.detailSelectBtnPre{
 	margin:30px 0 5px;
 }
 .detailSelectBtn button{
