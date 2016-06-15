@@ -1196,16 +1196,18 @@ jQuery(function () {
             SubView();
         }else{
             if(nowPageId == "btn_page1"){
-                var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
+                jQuery('#made_p1 .submitY').trigger("click");
+            /*    var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
                 jQuery(".madeBoxCons_p1").find(".madeBoxFuns").hide();
-                jQuery(".madeBoxCons_p1").find(".madeSubmit").hide();
+                jQuery(".madeBoxCons_p1").find(".madeSubmit").hide();*/
             }else if(nowPageId == "btn_page2"){
-                jQuery(".madeBoxCons_p2").find(".madeBoxFuns").hide();
+                jQuery('#made_p2 .submitY').trigger("click");
+              /*  jQuery(".madeBoxCons_p2").find(".madeBoxFuns").hide();
                 jQuery(".madeBoxCons_p2").find(".madeSubmit").hide();
-                var _comfBox = jQuery(".madeBoxCons_p2").find(".comfBox");
+                var _comfBox = jQuery(".madeBoxCons_p2").find(".comfBox");*/
             }
             jQuery(this).parents().find(".cusMadeRigZz").hide()
-            _comfBox.show();
+          /*  _comfBox.show();*/
         }
 
     });
