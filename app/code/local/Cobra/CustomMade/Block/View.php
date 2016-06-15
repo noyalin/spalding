@@ -68,51 +68,56 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         return $this->session->getPos();
     }
 
+    //P1表示球第一面 1图片 2文字
     public function getTypeP1()
     {
         return $this->session->getTypeP1();
     }
 
+    // 第一行内容
     public function getContent1P1()
     {
         return $this->session->getContent1P1();
     }
 
+    // 双行显示的文字内容
     public function getContent2P1()
     {
         return $this->session->getContent2P1();
     }
 
+    // 字体
     public function getContent3P1()
     {
         return $this->session->getContent3P1();
     }
 
+    // P1字号
     public function getContent4P1()
     {
         return $this->session->getContent4P1();
     }
-
+    //P2表示球第二面文字和pic
     public function getTypeP2()
     {
         return $this->session->getTypeP2();
     }
-
+    // 内容
     public function getContent1P2()
     {
         return $this->session->getContent1P2();
     }
-
+    // 双行显示内容
     public function getContent2P2()
     {
         return $this->session->getContent2P2();
     }
-
+    // 字体类型
     public function getContent3P2()
     {
         return $this->session->getContent3P2();
     }
-
+    //字号
     public function getContent4P2()
     {
         return $this->session->getContent4P2();
@@ -191,9 +196,29 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
         }
     }
 
-//    public function getPrice()
-//    {
-//        return $this->price;
-//    }
+
+    public function getP1Font()
+    {
+        return $this->getFontString($this->getContent4P1());
+    }
+
+    public function getP2Font()
+    {
+        return $this->getFontString($this->getContent4P2());
+    }
+
+    public function getFontString($font){
+        if ($font == 0) {
+            return 'style="font-family: Conv_CustomGrotesque-Regular;letter-spacing:0"';
+        } elseif ($font == 2) {
+            return 'style="font-family: Arial;letter-spacing:-4px"';
+        }elseif ($font == 3) {
+            return 'style="font-family: 宋体;"';
+        } elseif ($font == 4) {
+            return 'style="font-family: 楷体;"';
+        }
+
+    }
+
 
 }
