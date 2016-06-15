@@ -161,6 +161,9 @@ if ($_currentCategory) {
             }
             if (count($_firstLevelCategorise) > 0):
             foreach($_firstLevelCategorise as $_category):
+                $category = Mage::getModel('catalog/category')->load($_category->getId());
+                if($category->getIncludeInMenu() == '0')
+                    continue;
             ?>
                 <div class="ui-menu-level-01 e-menu-level-01">
                 <?php

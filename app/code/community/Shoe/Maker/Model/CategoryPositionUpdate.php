@@ -85,7 +85,7 @@ class Shoe_Maker_Model_CategoryPositionUpdate extends Shoe_Maker_Model_UpdateBas
             $count = count($productCodesArray);
 
             //Check for correct count on home page and what's hot categories
-            if (($categoryArray['category_id'] == 573 && $count == 12) || ($categoryArray['category_id'] == 543 && $count == 15) || ($categoryArray['category_id'] == 544 && $count == 15) || ($categoryArray['category_id'] == 545 && $count == 15) || ($categoryArray['category_id'] == 2764 && $count == 16)) {
+//            if (($categoryArray['category_id'] == 573 && $count == 12) || ($categoryArray['category_id'] == 543 && $count == 15) || ($categoryArray['category_id'] == 544 && $count == 15) || ($categoryArray['category_id'] == 545 && $count == 15) || ($categoryArray['category_id'] == 2764 && $count == 16)) {
                 $i = 0;
                 while ($i < $count) {
                     if ($productCodesArray[$i]) {
@@ -114,7 +114,7 @@ class Shoe_Maker_Model_CategoryPositionUpdate extends Shoe_Maker_Model_UpdateBas
                     }
                     $i++;
                 }
-            }
+//            }
         }
     }
 
@@ -131,58 +131,32 @@ class Shoe_Maker_Model_CategoryPositionUpdate extends Shoe_Maker_Model_UpdateBas
             $count = count($productCodesArray);
             $finalString = '';
 
-            //Update home page or what's hot
-            if (($categoryArray['category_id'] == 573 && $count == 12) || ($categoryArray['category_id'] == 543 && $count == 15) || ($categoryArray['category_id'] == 544 && $count == 15) || ($categoryArray['category_id'] == 545 && $count == 15) || ($categoryArray['category_id'] == 2764 && $count == 16)) {
-                $i = 0;
-                //Delete existing mappings only for special categories
-                $query = "DELETE FROM `catalog_category_product` WHERE `category_id` = " . $categoryArray['category_id'];
-                $writeConnection->query($query);
-                while ($i < $count) {
-                    if ($productCodesArray[$i]) {
-                        //Straight insert since products were already tested for existence
-                        $query = "INSERT INTO `catalog_category_product` (`category_id`, `product_id`, `position`) VALUES (" . $categoryArray['category_id'] . ", (SELECT `cpe`.`entity_id` FROM `catalog_product_entity` AS `cpe` WHERE `cpe`.`sku` = '" . $productCodesArray[$i] . "'), " . $i . ")";
-                        $writeConnection->query($query);
-                    }
-                    $i++;
-                }
-                $this->reindex = 1;
-                $this->transactionLogHandle( "    ->UPDATED               ->" . $categoryArray['category_id'] . "\n");
-            } elseif ($categoryArray['category_id'] != 573 && $categoryArray['category_id'] != 543 && $categoryArray['category_id'] != 544 && $categoryArray['category_id'] != 545 && $categoryArray['category_id'] != 2764) {
+            $productCodes = str_replace(",", "','", $categoryArray['product_codes']);
+            $finalString .= "'" . $productCodes . "'";
+            $deleteCategoryProductQuery = "DELETE `ccp` FROM `catalog_category_product` AS `ccp`
+            LEFT JOIN `catalog_product_entity` AS `cpe` ON `ccp`.`product_id` = `cpe`.`entity_id`
+            where category_id = " . $categoryArray['category_id'] . " AND `cpe`.`sku` NOT IN (" . $finalString . ")";
+            $writeConnection->query($deleteCategoryProductQuery);
 
-                //Find mapping not in new list
-                $productCodes = str_replace(",", "','", $categoryArray['product_codes']);
-                $finalString .= "'" . $productCodes . "'";
-                $deleteCategoryProductQuery = "DELETE `ccp` FROM `catalog_category_product` AS `ccp`
-                LEFT JOIN `catalog_product_entity` AS `cpe` ON `ccp`.`product_id` = `cpe`.`entity_id`
-                where category_id = " . $categoryArray['category_id'] . " AND `cpe`.`sku` NOT IN (" . $finalString . ")";
-                $writeConnection->query($deleteCategoryProductQuery);
-
-                $i = 0;
-                while ($i < $count) {
-                    if ($productCodesArray[$i]) {
-                        $testProductQuery = "SELECT COUNT(*) AS `count` FROM `catalog_product_entity` AS `cpe` WHERE `cpe`.`sku` = '" . $productCodesArray[$i] . "'";
-                        $testProductResults = $readConnection->query($testProductQuery);
-                        foreach ($testProductResults as $testProductResult) {
-                            if ($testProductResult['count']) {
-                                $query = "REPLACE INTO `catalog_category_product` (`category_id`, `product_id`, `position`) VALUES (" . $categoryArray['category_id'] . ", (SELECT `cpe`.`entity_id` FROM `catalog_product_entity` AS `cpe` WHERE `cpe`.`sku` = '" . $productCodesArray[$i] . "'), " . $i . ")";
-                                $writeConnection->query($query);
-                            } else {
-                                $this->transactionLogHandle($productCodesArray[$i]. "    ->PRODUCT NOT FOUND   ->" . $categoryArray['category_id'] );
-                            }
+            $i = 0;
+            while ($i < $count) {
+                if ($productCodesArray[$i]) {
+                    $testProductQuery = "SELECT COUNT(*) AS `count` FROM `catalog_product_entity` AS `cpe` WHERE `cpe`.`sku` = '" . $productCodesArray[$i] . "'";
+                    $testProductResults = $readConnection->query($testProductQuery);
+                    foreach ($testProductResults as $testProductResult) {
+                        if ($testProductResult['count']) {
+                            $query = "REPLACE INTO `catalog_category_product` (`category_id`, `product_id`, `position`) VALUES (" . $categoryArray['category_id'] . ", (SELECT `cpe`.`entity_id` FROM `catalog_product_entity` AS `cpe` WHERE `cpe`.`sku` = '" . $productCodesArray[$i] . "'), " . $i . ")";
+                            $writeConnection->query($query);
+                        } else {
+                            $this->transactionLogHandle($productCodesArray[$i]. "    ->PRODUCT NOT FOUND   ->" . $categoryArray['category_id'] );
                         }
                     }
-                    $i++;
                 }
-                $this->reindex = 1;
-                $this->transactionLogHandle( "    ->UPDATED               ->" . $categoryArray['category_id']  );
-            } elseif (($categoryArray['category_id'] == 573 && $count != 12) || ($categoryArray['category_id'] == 543 && $count != 15) || ($categoryArray['category_id'] == 544 && $count != 15) || ($categoryArray['category_id'] == 545 && $count != 15) || ($categoryArray['category_id'] == 2764 && $count != 16)) {
-                $this->transactionLogHandle( "    ->WRONG COUNT           ->" . $categoryArray['category_id'] );
-            } else {
-                $this->transactionLogHandle( "    ->ERROR       : UNKNOWN");
-
-                $message = "Category Positiong: " . $this->filename . "\r\n\r\nCategory " . $categoryArray['category_id'] . " could not be matched for updating. I have no idea what this would indicate. That is why I am making a notiifcation.";
-                $this->sendNotification('Criteria Not Matched - Not Updated', $message);
+                $i++;
             }
+            $this->reindex = 1;
+            $this->transactionLogHandle( "    ->UPDATED               ->" . $categoryArray['category_id']  );
+
         }
         $this->transactionLogHandle( "  ->POSITIONING UPDATED... ");
     }
