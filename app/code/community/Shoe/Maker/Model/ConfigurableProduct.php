@@ -508,6 +508,9 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
 
 
         //手机
+        $urlProductList = 'http://image.sneakerhead.com/is/image/sneakerhead/cat-single?$185m$&$img=sneakerhead/'.$urlKey.'-1';
+        $this->getImageVByUrl($urlProductList,$sku,$urlKey,54);
+
         for($m=1;$m<=$count;$m++){
             $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_first?$spalding_1242$&$images=sneakerhead/'.$urlKey.'-'.$m;
             $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,60+$m);
