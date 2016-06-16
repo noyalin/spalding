@@ -33,6 +33,9 @@
 <?php
 $_helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
+$attributeSetModel = Mage::getModel("eav/entity_attribute_set");
+$attributeSetModel->load($_product->getAttributeSetId());
+$attributeSetName = $attributeSetModel->getAttributeSetName();
 $_currentCategory = Mage::Registry('current_category');
 
 /* If navigated directly to product page, default category for back link */
@@ -205,20 +208,34 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
             <div class="detailBoxNew detail-sn">
                 <img src="<?php echo $this->getSkinUrl('images/product-info-title.jpg') ?>" border="0">
             </div>
-            <?php
-            $urlkey = $_product->getUrlKey();
-            $sku = $_product->getSku();
-            $imgCount = $_product->getImageCount();
-            $i = 0;
-            for ($count = 0; $count < $imgCount; $count++) :
-                $i++;
-            ?>
-            <div class="detailBoxNew detail-sn">
-                <img
-                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 10) ?>.jpg"
-                    border="0" />
-            </div>
-            <?php endfor; ?>
+            <?php if($attributeSetName == 'ball'): ?>
+                <?php
+                $urlkey = $_product->getUrlKey();
+                $sku = $_product->getSku();
+                for ($i = 0; $i < 7; $i++) :
+                    ?>
+                    <div class="detailBoxNew detail-sn">
+                        <img
+                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 65) ?>.jpg"
+                            border="0" />
+                    </div>
+                <?php endfor; ?>
+            <?php else:?>
+                <?php
+                $urlkey = $_product->getUrlKey();
+                $sku = $_product->getSku();
+                $imgCount = $_product->getImageCount();
+                $i = 0;
+                for ($count = 0; $count < $imgCount; $count++) :
+                    $i++;
+                ?>
+                <div class="detailBoxNew detail-sn">
+                    <img
+                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 10) ?>.jpg"
+                        border="0" />
+                </div>
+                <?php endfor; ?>
+            <?php endif; ?>
 
 		</div>
 		<div class="productOthers">
