@@ -513,7 +513,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
             $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,60+$m);
         }
 
-        if ($valueArr['attributeSetName'] == 'ball') {
+        if ($valueArr['attributeSetName'] == 'ball' or $valueArr['attributeSetName'] == 'football') {
 
             switch ($valueArr['productNorm']) {
                 case '7#':
@@ -524,6 +524,12 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                     break;
                 case '5#':
                     $size = 'size_five';
+                    break;
+                case '4#':
+                    $size = 'size_four';
+                    break;
+                case '3#':
+                    $size = 'size_three';
                     break;
                 default:
                     $size = 'size_one';
@@ -540,10 +546,18 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                     $material = 'texture_xiangjiao';
             }
 
-            $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_1242_2?$spalding_1242_1000$&$location=' . urlencode($valueArr['productSide'])
-                . '&$series=' . urlencode($valueArr['productCatena']) . '&$number=%20' . strtoupper($valueArr['sku']) . '&$size=' . $size . '&$texture=' . $material
-                . '&$intro='. urlencode($valueArr['description']) . '&$title=' . urlencode($valueArr['abstract']) . '&$inorout=' . urlencode($valueArr['productSide'].'篮球')
-                . '&$images=' . $urlKey . '-1';
+            if ($valueArr['attributeSetName'] == 'football') {
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/zuqiu_1200x1000?$spalding_1242_1000$&$location=' . urlencode($valueArr['productSide'])
+                    . '&$series=' . urlencode($valueArr['productCatena']) . '&$number=%20' . strtoupper($valueArr['sku']) . '&$size=' . $size . '&$texture=' . $material
+                    . '&$intro=' . urlencode($valueArr['description']) . '&$title=' . urlencode($valueArr['abstract']) . '&$inorout=' . urlencode($valueArr['productSide'] . '足球')
+                    . '&$images=' . $urlKey . '-1';
+            } else {
+                $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_1242_2?$spalding_1242_1000$&$location=' . urlencode($valueArr['productSide'])
+                    . '&$series=' . urlencode($valueArr['productCatena']) . '&$number=%20' . strtoupper($valueArr['sku']) . '&$size=' . $size . '&$texture=' . $material
+                    . '&$intro=' . urlencode($valueArr['description']) . '&$title=' . urlencode($valueArr['abstract']) . '&$inorout=' . urlencode($valueArr['productSide'] . '篮球')
+                    . '&$images=' . $urlKey . '-1';
+            }
+
             $this->getImageVByUrl($urlProductList, $sku, $urlKey, 65);
 
             if ($size == 'size_one') {
