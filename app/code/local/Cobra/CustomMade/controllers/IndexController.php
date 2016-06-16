@@ -67,12 +67,12 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
     public function completeAction()
     {
-        Mage::log('completeAction');
+         Mage::log('completeAction');
         $params = Mage::app()->getRequest()->getParams();
         //params
-        //position µÚÒ»Ãæ»òÕßµÚ¶þÃæ
-        //font ×ÖÌå¸ñÊ½
-        //size ×ÖÌå´óÐ¡
+        //position ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ßµÚ¶ï¿½ï¿½ï¿½
+        //font ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+        //size ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
         $sku = $params['sku'];
         $session = self::getSession($sku);
 
@@ -96,13 +96,15 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             } elseif ($type == 2) {
                 $content3 = $params['size'];
                 $content4 = $params['font'];
-                $content1 = $this->getCheckedText($params['text1'], $content4);
+//                $content1 = $this->getCheckedText($params['text1'], $content4);
+                $content1 = $params['text1'];
                 if ($content3 == '4') {
-                    $content2 = $this->getCheckedText($params['text3'], $content4);
+//                    $content2 = $this->getCheckedText($params['text3'], $content4);
+                $content1 = $params['text3'];
                 } else {
                     $content2 = '';
                 }
-                Mage::log('completeAction P1 £º '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
+                Mage::log('completeAction P1 ï¿½ï¿½ '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             } elseif ($type == 4) {
             	$content1 = $params['text1'];;
             } else {
@@ -127,13 +129,15 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
             } elseif ($type == 2) {
                 $content3 = $params['size'];
                 $content4 = $params['font'];
-                $content1 = $this->getCheckedText($params['text2'], $content4);
+//                $content1 = $this->getCheckedText($params['text2'], $content4);
+                $content1 = $params['text2'];
                 if ($content3 == '4') {
-                    $content2 = $this->getCheckedText($params['text4'], $content4);
+//                    $content2 = $this->getCheckedText($params['text4'], $content4);
+                    $content2 = $params['text4'];
                 } else {
                     $content2 = '';
                 }
-                Mage::log('completeAction P2 £º '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
+                Mage::log('completeAction P2 ï¿½ï¿½ '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             }elseif ($type == 4) {
             	$content1 = $params['text2'];;
             }
@@ -293,20 +297,20 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 //--------------------------------------------------------
 
 /**
- * Í¼Æ¬Ëõ·ÅºÍ²Ã¼ôÀà
+ * Í¼Æ¬ï¿½ï¿½ï¿½ÅºÍ²Ã¼ï¿½ï¿½ï¿½
  */
 class ImageResize
 {
-    //Ô´Í¼Ïó
+    //Ô´Í¼ï¿½ï¿½
     var $_img;
-    //Í¼Æ¬ÀàÐÍ
+    //Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
     var $_imagetype;
-    //Êµ¼Ê¿í¶È
+    //Êµï¿½Ê¿ï¿½ï¿½
     var $_width;
-    //Êµ¼Ê¸ß¶È
+    //Êµï¿½Ê¸ß¶ï¿½
     var $_height;
 
-    //ÔØÈëÍ¼Æ¬
+    //ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
     function load($img_name, $img_type = '')
     {
         if (!empty($img_type)) $this->_imagetype = $img_type;
@@ -328,7 +332,7 @@ class ImageResize
         $this->getxy();
     }
 
-    //Ëõ·ÅÍ¼Æ¬
+    //ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
     function resize($width, $height, $percent = 0)
     {
         if (!is_resource($this->_img)) return false;
@@ -351,7 +355,7 @@ class ImageResize
         $this->getxy();
     }
 
-    //²Ã¼ôÍ¼Æ¬
+    //ï¿½Ã¼ï¿½Í¼Æ¬
     function cut($width, $height, $x = 0, $y = 0)
     {
         if (!is_resource($this->_img)) return false;
@@ -367,7 +371,7 @@ class ImageResize
     }
 
 
-    //ÏÔÊ¾Í¼Æ¬
+    //ï¿½ï¿½Ê¾Í¼Æ¬
     function display($destroy = true)
     {
         if (!is_resource($this->_img)) return false;
@@ -390,7 +394,7 @@ class ImageResize
         if ($destroy) $this->destroy();
     }
 
-    //±£´æÍ¼Æ¬ $destroy=true ÊÇ±£´æºóÏú»ÙÍ¼Æ¬±äÁ¿£¬falseÕâ²»Ïú»Ù£¬¿ÉÒÔ¼ÌÐø´¦ÀíÕâÍ¼Æ¬
+    //ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ $destroy=true ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½falseï¿½â²»ï¿½ï¿½ï¿½Ù£ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
     function save($fname, $destroy = false, $type = '')
     {
         if (!is_resource($this->_img)) return false;
@@ -412,13 +416,13 @@ class ImageResize
         return $ret;
     }
 
-    //Ïú»ÙÍ¼Ïñ
+    //ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
     function destroy()
     {
         if (is_resource($this->_img)) imagedestroy($this->_img);
     }
 
-    //È¡µÃÍ¼Ïñ³¤¿í
+    //È¡ï¿½ï¿½Í¼ï¿½ñ³¤¿ï¿½
     function getxy()
     {
         if (is_resource($this->_img)) {
@@ -428,8 +432,8 @@ class ImageResize
     }
 
 
-    //»ñµÃÍ¼Æ¬µÄ¸ñÊ½£¬°üÀ¨jpg,png,gif
-    function get_type($img_name)//»ñÈ¡Í¼ÏñÎÄ¼þÀàÐÍ
+    //ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jpg,png,gif
+    function get_type($img_name)//ï¿½ï¿½È¡Í¼ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         if (preg_match("/\.(jpg|jpeg|gif|png)$/i", $img_name, $matches)) {
             $type = strtolower($matches[1]);

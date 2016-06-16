@@ -220,131 +220,6 @@ jQuery(function () {
             }
         }
     }
-/*        function isChange(){
-           //isClickOne true 按钮1 false按钮2
-            if(isClickOne){
-                jQuery('#made_p2 .submitY').trigger("click");
-                var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
-                var _comfBox = jQuery(".madeBoxCons_p2").find(".comfBox");
-
-                jQuery(".madeBoxCons_p2").find(".madeBoxFuns").hide();
-                jQuery(".madeBoxCons_p2").find(".madeSubmit").hide();
-
-            }else{
-                jQuery('#made_p1 .submitY').trigger("click");
-                var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
-                var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
-
-                jQuery(".madeBoxCons_p1").find(".madeBoxFuns").hide();
-                jQuery(".madeBoxCons_p1").find(".madeSubmit").hide();
-
-            }
-            _comfBox.show();
-            var _comfBoxN = _comfBox.find(".saveMadeN");
-            var _madeP1 = jQuery(".madeBoxCons_p1");
-            var _madeP2 = jQuery(".madeBoxCons_p2");
-            //_comfBox.show();
-            _comfBoxN.click(function(){
-                var noSaveId = jQuery(this).attr("id");
-                if(noSaveId == "saveNoId_1"){
-                    clickStatusChange(false);
-                }else if(noSaveId == "saveNoId_2"){
-                    clickStatusChange(true);
-                }
-                if(isClickOne){
-                    var _select_N = "select_N2";
-                    _madeP2.hide();
-                    _madeP1.show();
-                    _madeP1.find("dt").hide();
-                    _madeP1.find("dd").removeClass("madeNow");
-                    _madeP1.find("dd.madeKindTitNon").addClass("madeNow");
-
-                    jQuery(this).parents().find(".madeP_2_btn").removeClass("madeP_btn_now");
-                    jQuery(this).parents().find(".madeP_1_btn").addClass("madeP_btn_now");
-
-                    jQuery(this).parents().find(".select_P1").show();
-                    jQuery(this).parents().find(".select_P2").hide();
-
-                    //点亮对应icon
-                    jQuery(".remind_1").css("opacity","1");
-                    jQuery(".remind_2").css("opacity","0");
-
-                    var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
-                    if(nowKind == 1){
-                        var _imgIntSrc = jQuery("#imgIntSrc").val();
-                        jQuery("#avatar").attr("src",_imgIntSrc);
-                    }
-                }else{
-                    var _select_N = "select_N1";
-                    _madeP1.hide();
-                    _madeP2.show();
-                    _madeP2.find("dt").hide();
-                    _madeP2.find("dd").removeClass("madeNow");
-                    _madeP2.find("dd.madeKindTitNon").addClass("madeNow");
-
-                    jQuery(this).parents().find(".madeP_1_btn").removeClass("madeP_btn_now");
-                    jQuery(this).parents().find(".madeP_2_btn").addClass("madeP_btn_now");
-
-                    jQuery(this).parents().find(".select_P2").show();
-                    jQuery(this).parents().find(".select_P1").hide();
-
-                    //点亮对应icon
-                    jQuery(".remind_2").css("opacity","1");
-                    jQuery(".remind_1").css("opacity","0");
-
-                    var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
-                    if(nowKind == 1){
-                        var _imgIntSrc = jQuery("#imgIntSrc").val();
-                        jQuery("#avatar").attr("src",_imgIntSrc);
-                    }
-                }
-                var selectNObject = jQuery("."+_select_N);
-                var _imgIntSrc = jQuery("#imgIntSrc").attr("value");
-                selectNObject.empty();
-
-                jQuery("#avatar").attr("src" , _imgIntSrc);
-                jQuery("#customImageHidden").attr("src" , "");
-
-                jQuery(".madeTexWrap").find(".select_P2").html(selectNObject.html());
-                jQuery(".madeTexWrap").find(".select_P2").attr("src",selectNObject.attr("src"));
-                _comfBox.hide();
-
-
-                jQuery(this).parents().find(".madeStepNone").show();
-                jQuery(this).parents().find("#img_grip").css("opacity","0");
-                jQuery(this).parents().find("#imgFuns").css("opacity","0");
-
-
-
-                jQuery(this).parents().find(".select_P3").hide();
-                jQuery(this).parents().find(".select_P4").hide();
-
-                // TODO
-                var _position;
-                if(isClickOne){
-                    _position =1;
-                }else{
-                    _position =2;
-                }
-                jQuery.ajax({
-                    type: 'POST',
-                    url: jQuery('#check').val(),
-                    data: {position: _position, sku:jQuery('#sku').val()},
-                    success: function (res) {
-                        dataObj = ajaxEvalJson(res);
-
-                        if (dataObj != null) {
-                            resetView(dataObj['type'], dataObj['content1'], dataObj['content2'],
-                                dataObj['content3'], dataObj['content4']);
-                        }
-                    }
-                });
-                jQuery("#viewMadeFun").show();        //显示预览按钮
-
-            });
-        }//isChange() end
-
-    }*/
 
     //定制图案或文字时 另一定制收起
     var _madeImgDt = jQuery(".madeKindImg");
@@ -577,12 +452,6 @@ jQuery(function () {
         jQuery(this).parent("ul").slideUp();
         jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
         jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
-        if(_dataFamVals==3||_dataFamVals==4){
-            jQuery("#textInput_1,#textInput_3").attr("placeholder","只限输入中文及全角标点符号");
-        }else{
-            jQuery("#textInput_1,#textInput_3").attr("placeholder","只限输入字母，数字，空格以及@-_.&:");
-        }
-
         madeFamily_1();
     });
 
@@ -593,11 +462,6 @@ jQuery(function () {
         jQuery(this).parent("ul").slideUp();
         jQuery(this).parent("ul").siblings(".chosFam").html(_dataFamTex);
         jQuery(this).parent("ul").siblings(".chosFam").attr("data-family",_dataFamVals);
-        if(_dataFamVals==3||_dataFamVals==4){
-            jQuery("#textInput_2,#textInput_4").attr("placeholder","只限输入中文及全角标点符号");
-        }else{
-            jQuery("#textInput_2,#textInput_4").attr("placeholder","只限输入字母，数字，空格以及@-_.&:");
-        }
         madeFamily_2();
     });
     //end 选择字体
@@ -1086,7 +950,30 @@ jQuery(function () {
             }
         }
     });
-    function submitYP_CheckText(txtInputId,madeId){//判断文字是否满足条件
+    function submitYP_CheckText(txtInputId,madeId){
+        var txtInput = jQuery(txtInputId);
+        //判断中文字黑名单;
+        var count=[];//存放敏感词的个数；
+        var arr = jQuery("#blacklist").html().split(';')
+        jQuery.each(arr,function(i){
+            if(jQuery(txtInput).val().indexOf(arr[i])>=0)
+            {
+                count.push(arr[i]);
+            }
+        });
+        if(count.length>0){
+            var font_family=jQuery(madeId).find(".chosFam").text();
+            var tips="当前中文字体："+font_family;
+            jQuery("#noTodoBox").addClass("fonttips");
+            var tips2='"'+jQuery(txtInput).val()+'"包含"'+count[0]+'"敏感词！'
+            notTodo(tips,tips2)
+            txtInput.focus();
+            return false;
+        }else{
+            return true;
+        }
+    }
+   /* function submitYP_CheckText(txtInputId,madeId){//判断文字是否满足条件
         var re = /^([A-Za-z0-9]|\s|@|-|_|\.|&|:)*$/;
         var zre=/[^\uFF00-\uFFFF\u4E00-\u9FA5]/;
         var _placeholder = jQuery(txtInputId).attr("placeholder");
@@ -1136,8 +1023,7 @@ jQuery(function () {
                 }
             }
         }
-    }
-
+    }*/
     function submitYP_CheckImg(txtInputId){
 
         return true;
@@ -1288,17 +1174,6 @@ function getSwapTxt_4() {
     var _cnt = getTxtCnt(2);
 
     return getMadeText(_txt, _cnt);
-}
-
-function getMadeText(_txt, _cnt){
-
-    var _swapTexLen = _txt.length;
-    if (_swapTexLen < _cnt) {
-        return _txt;
-    } else {
-        //alert("请不要超过8个英文字符")
-        return _txt.substr(0, _cnt);
-    }
 }
 
 function getMadeText(str,len){
