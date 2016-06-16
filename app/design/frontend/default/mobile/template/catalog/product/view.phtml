@@ -208,7 +208,7 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
             <div class="detailBoxNew detail-sn">
                 <img src="<?php echo $this->getSkinUrl('images/product-info-title.jpg') ?>" border="0">
             </div>
-            <?php if($attributeSetName == 'ball'): ?>
+            <?php if($attributeSetName == 'ball' or $attributeSetName == 'football'): ?>
                 <?php
                 $urlkey = $_product->getUrlKey();
                 $sku = $_product->getSku();
