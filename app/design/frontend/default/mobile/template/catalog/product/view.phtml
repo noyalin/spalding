@@ -79,22 +79,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 <section id="product_wrapper">	
 
 	<div class="category-filter clearfix">
-		<?php if ($_currentCategory): ?>
-		<!--<div class="detail-site-map cat-site-map-arrow-bak">
-		<?php /*
-			if($parentCategoryUrlKey != ''):
-		*/?>
-		<a class="back-category-title" href="<?php /*echo $this->getUrl() . $parentCategoryUrlKey . '.html" title="' . $parentCategoryName */?>">搜索 <?php /*echo $parentCategoryName */?></a>
-		<?php
-/*			else:
-		*/?>
-		<a class="back-category-title" href="/" title="' . $parentCategoryName ?>">搜索 <?php /*echo $parentCategoryName */?></a>
-		<?php
-/*			endif;
-		*/?>
-            
-		</div>-->
-		<?php endif; ?>
 		<header class="global-header detail-title">
 			<div class="clearfix title">
 				<div class="clearfix"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
@@ -111,8 +95,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
                             if($msrp != $currentPrice):
                                 ?>
                                 <span class="price-msvp">
-<!--                                <span class="detailPricVm">-->
-<!--					            <em></em>-->
 					            ￥<?php echo $msrp; ?>
 				                </span>
                                 <?php
@@ -122,7 +104,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
                             <?php echo $this->getPriceHtml($_product) ?>
                             </span>
                         <?php endif; ?>
-<!--                    </p>-->
 				</div>
 				<div class="global-header-kind ms-fl">
 					款号: <?php echo $_product->getSku() ?>
@@ -131,9 +112,7 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 		</header>
 	</div>
 
-<!--	<header class="">
-		<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><br>
-	</header>-->
+	<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><br>
 
 	<?php $imageCount = floor($_product->getImageCount()) ?>
 
@@ -217,7 +196,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 
 <!-- Accordion Sections -->
 <section id="detailAccordion">
-<!--	<h3 id="detailTabDescription">Description <a class="headerToggle"></a></h3>-->
     <h3 id="detailTabDescription">商品简介 <a class="headerToggle"></a></h3>
 	<div id="detailTabDescriptionContent">
 
@@ -230,39 +208,16 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
             <?php
             $urlkey = $_product->getUrlKey();
             $sku = $_product->getSku();
-            $imgCount = $_product->getImageCount();
-            $i = 0;
-            for ($count = 0; $count < $imgCount; $count++) :
-                $i++;
+
+            for ($i = 0; $i < 7; $i++) :
             ?>
             <div class="detailBoxNew detail-sn">
                 <img
-                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 10) ?>.jpg"
+                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 65) ?>.jpg"
                     border="0" />
             </div>
             <?php endfor; ?>
 
-<!--			<div class="detailBoxNew detail-sn">-->
-<!--				<img src="--><?php //echo $this->getSkinUrl('images/produce-info-1.jpg');?><!--" border="0">-->
-<!--			</div>-->
-<!--			<div class="detailBoxNew detail-sn">-->
-<!--				<img src="--><?php //echo $this->getSkinUrl('images/produce-info-2.jpg');?><!--" border="0">-->
-<!--			</div>-->
-<!--			<div class="detailBoxNew detail-sn">-->
-<!--				<img src="--><?php //echo $this->getSkinUrl('images/produce-info-3.jpg');?><!--" border="0">-->
-<!--			</div>-->
-<!--			<div class="detailBoxNew detail-sn">-->
-<!--				<img src="--><?php //echo $this->getSkinUrl('images/produce-info-4.jpg');?><!--" border="0">-->
-<!--			</div>-->
-<!--			<div class="detailBoxNew detail-sn">-->
-<!--				<img src="--><?php //echo $this->getSkinUrl('images/produce-info-5.jpg');?><!--" border="0">-->
-<!--			</div>-->
-<!--			<div class="detailBoxNew detail-sn">-->
-<!--				<img src="--><?php //echo $this->getSkinUrl('images/produce-info-6.jpg');?><!--" border="0">-->
-<!--			</div>-->
-<!--			<div class="detailBoxNew detail-sn">-->
-<!--				<img src="--><?php //echo $this->getSkinUrl('images/produce-info-7.jpg');?><!--" border="0">-->
-<!--			</div>-->
 		</div>
 		<div class="productOthers">
 			<div class="detailBoxNew detail-sn">
@@ -276,23 +231,6 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 			</div>
 		</div>
 	</div>
-
-
-<?php //if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
-<!--	<h3 id="detailTabStyles">Available Colors <a class="headerToggle"></a></h3>-->
-<!--	<div id="detailTabStylesContent">-->
-<!--		<div id="detailAvailColor">-->
-<!--			--><?php
-//			$i = 0;
-//			foreach ($_productAvailableColorsCollection as $productColor) {
-//				$i++;
-//				$_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
-//				echo '<a href="' . $_productColor->getProductUrl() . '" class="availableColorPx"><img src="' . Mage::getModel('core/variable')->loadByCode('catalog_category_product_image')->getValue('html') . '/' . $this->htmlEscape($_productColor->getUrlKey()) . '-1" alt="' . $_helper->productAttribute($_productColor, $_productColor->getName(), 'name') . '" width="125"/></a>';
-//			}
-//			?>
-<!--		</div>-->
-<!--	</div>-->
-<!--	--><?php //endif; ?>
 
 </section>
 
