@@ -126,7 +126,7 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
         $attributeSetModel->load($configurableProduct->getAttributeSetId());
         $attributeSetName = $attributeSetModel->getAttributeSetName();
         //如果是篮球 使用product_material
-        if($attributeSetName == 'ball'){
+        if($attributeSetName == 'ball' or $attributeSetName == 'football'){
             $labelProductNorm = $this->getProductNormLabel($productNorm);
         }else{
             $labelProductNorm = $eursize;
