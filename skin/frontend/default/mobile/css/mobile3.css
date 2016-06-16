@@ -1869,6 +1869,7 @@ Scrolling is automated IF there is an overflow of the width */
 }*/
 .iosSlider {
 	width:100%;
+	height:100vw;
 }
 
 /* Slider Table Cells to guarantee positioning/layout */
