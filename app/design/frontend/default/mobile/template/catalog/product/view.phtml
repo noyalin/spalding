@@ -239,15 +239,30 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
 
 		</div>
 		<div class="productOthers">
-			<div class="detailBoxNew detail-sn">
-				<img src="<?php echo $this->getSkinUrl('images/produce-info-8.jpg');?>" border="0">
-			</div>
-			<div class="detailBoxNew detail-sn">
-				<img src="<?php echo $this->getSkinUrl('images/produce-info-9.jpg');?>" border="0">
-			</div>
-			<div class="detailBoxNew detail-sn">
-				<img src="<?php echo $this->getSkinUrl('images/produce-info-10.jpg');?>" border="0">
-			</div>
+            <?php if($attributeSetName == 'football'): ?>
+                <div class="detailBoxNew detail-sn">
+                    <img src="<?php echo $this->getSkinUrl('images/football-produce-info-8.jpg');?>" border="0">
+                </div>
+                <div class="detailBoxNew detail-sn">
+                    <img src="<?php echo $this->getSkinUrl('images/football-produce-info-9jpg');?>" border="0">
+                </div>
+                <div class="detailBoxNew detail-sn">
+                    <img src="<?php echo $this->getSkinUrl('images/football-produce-info-10.jpg');?>" border="0">
+                </div>
+                <div class="detailBoxNew detail-sn">
+                    <img src="<?php echo $this->getSkinUrl('images/football-produce-info-11.jpg');?>" border="0">
+                </div>
+            <?php else: ?>
+                <div class="detailBoxNew detail-sn">
+                    <img src="<?php echo $this->getSkinUrl('images/produce-info-8.jpg');?>" border="0">
+                </div>
+                <div class="detailBoxNew detail-sn">
+                    <img src="<?php echo $this->getSkinUrl('images/produce-info-9.jpg');?>" border="0">
+                </div>
+            <?php endif; ?>
+            <div class="detailBoxNew detail-sn">
+                <img src="<?php echo $this->getSkinUrl('images/produce-info-10.jpg');?>" border="0">
+            </div>
 		</div>
 	</div>
 
