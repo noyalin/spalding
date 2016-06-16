@@ -1882,10 +1882,10 @@ Scrolling is automated IF there is an overflow of the width */
 	width: 450px;
 	height: 189px;
 }
-.iosSlider .slider img {
+/*.iosSlider .slider img {
 	width: 260px;
 	height: 189px;
-}
+}*/
 .iosSlider .slider .slide {
 	margin: 0 50px;
 }
@@ -2000,8 +2000,8 @@ Scrolling is automated IF there is an overflow of the width */
 		margin: 0 25px;
 	}
 	.iosSlider .slider img {
-		width: 210px;
-		height: 160px;
+		max-width: 210px;
+		max-height: 160px;
 	}
 
 	.iosSliderStyles {
