@@ -586,7 +586,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                 $this->getImageVByUrl($urlProductList, $sku, $urlKey, 68);
             }
 
-            if ($material == 'texture_xiangjiao') {
+            if ($valueArr['attributeSetName'] == 'football' or $material == 'texture_xiangjiao') {
                 $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_details_1?$spalding_1242_620$&$images=' . $urlKey . '-4';
                 $this->getImageVByUrl($urlProductList, $sku, $urlKey, 69);
                 $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_details_1?$spalding_1242_620$&$images=' . $urlKey . '-1';
