@@ -208,12 +208,14 @@ $parentCategoryName = ($_currentCategory->getUrlKey() == 'sneakerhead-gift-card-
             <?php
             $urlkey = $_product->getUrlKey();
             $sku = $_product->getSku();
-
-            for ($i = 0; $i < 7; $i++) :
+            $imgCount = $_product->getImageCount();
+            $i = 0;
+            for ($count = 0; $count < $imgCount; $count++) :
+                $i++;
             ?>
             <div class="detailBoxNew detail-sn">
                 <img
-                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 65) ?>.jpg"
+                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 10) ?>.jpg"
                     border="0" />
             </div>
             <?php endfor; ?>
