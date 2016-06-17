@@ -13,6 +13,7 @@ class Task_Tools_Model_ResetImage extends Task_Tools_Model_Base{
                 $smallImageUnderLeftImage = 'http://s7d5.scene7.com/is/image/sneakerhead/xiangqingye_first?$spalding_1242$&$images=sneakerhead/'.$urlKey.'-'.$m;
                 $this->getImageVByUrl($smallImageUnderLeftImage,$sku,$urlKey,60+$m);
             }
+            $this->pushImageToOss($sku,$urlKey);
         }
 
     }
@@ -53,6 +54,38 @@ class Task_Tools_Model_ResetImage extends Task_Tools_Model_Base{
         }else{
             return null;
         }
+    }
+
+    public function pushImageToOss($sku,$urlKey){
+        //首先判断此SKU是否存在
+        $oss_sdk_service = new OSS_ALIOSS();
+
+        //设置是否打开curl调试模式
+        $oss_sdk_service->set_debug_mode(FALSE);
+        $bucket = 'spalding-products';
+        $object = "media/catalog/product/$sku/$urlKey-1.jpg";
+
+        $response = $oss_sdk_service->is_object_exist($bucket,$object);
+        if(true){//$response->status != 200
+            $dir = Mage::getBaseDir()."/media/catalog/product/";
+            //上传这个文件夹到OSS
+            $options = array(
+                'bucket' 	=> 'spalding-products',
+                'object'	=> "media/catalog/product/$sku",
+                'directory' => $dir.$sku,
+            );
+            try{
+                $response = $oss_sdk_service->batch_upload_file($options,$urlKey,$sku);
+            }catch (Exception $e){
+                $exceptionLogHandle = fopen($this->catalogLogsDirectory . 'exception_log', 'a');
+                fwrite($exceptionLogHandle, '->' . $this->filename . " - " . $e->getMessage() . "\n");
+                fclose($exceptionLogHandle);
+            }
+            Mage :: log($response);
+        }else{
+            $this->transactionLogHandle("    ->UPDATING    :".$sku." has been pushed to OSS, do nothing \n");
+        }
+
     }
 
     public function validate(){
