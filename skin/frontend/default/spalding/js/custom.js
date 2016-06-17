@@ -482,24 +482,24 @@ function setFamily_1(_dataFamVal){
     if(_dataFamVal==0){
         jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".big_pic").find(".textPag_1").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery(".chosFam_p1").html("CustomGrotesque");
+       // jQuery(".chosFam_p1").html("CustomGrotesque");
     }else if(_dataFamVal==1){
         jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","Sans-Serif");
         jQuery(".big_pic").find(".textPag_1").css("font-family","Sans-Serif");
-        jQuery(".chosFam_p1").html("SansSerif");
+        //jQuery(".chosFam_p1").html("SansSerif");
     }else if(_dataFamVal==2){
         jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".big_pic").find(".textPag_1").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery(".chosFam_p1").html("Aril");
+        //jQuery(".chosFam_p1").html("Aril");
     }else if(_dataFamVal==3){
         jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","宋体");
         jQuery(".big_pic").find(".textPag_1").css("font-family","宋体");
-        jQuery(".chosFam_p1").html("宋体");
+        //jQuery(".chosFam_p1").html("宋体");
     }
     else if(_dataFamVal==4){
         jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","楷体");
         jQuery(".big_pic").find(".textPag_1").css("font-family","楷体");
-        jQuery(".chosFam_p1").html("楷体");
+        //jQuery(".chosFam_p1").html("楷体");
     }
 }
 
@@ -508,23 +508,23 @@ function setFamily_2(_dataFamVal){
     if(_dataFamVal==0){
         jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
         jQuery(".big_pic").find(".textPag_2").css({"font-family":"Conv_CustomGrotesque-Regular","letter-spacing":"0"});
-        jQuery(".chosFam_p2").html("CustomGrotesque");
+       // jQuery(".chosFam_p2").html("CustomGrotesque");
     }else if(_dataFamVal==1){
         jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css("font-family","Sans-Serif");
         jQuery(".big_pic").find(".textPag_2").css("font-family","Sans-Serif");
-        jQuery(".chosFam_p2").html("SansSerif");
+        //jQuery(".chosFam_p2").html("SansSerif");
     }else if(_dataFamVal==2){
         jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css({"font-family":"Arial","letter-spacing":"-4px"});
         jQuery(".big_pic").find(".textPag_2").css({"font-family":"Arial","letter-spacing":"-4px"});
-        jQuery(".chosFam_p2").html("Aril");
+        //jQuery(".chosFam_p2").html("Aril");
     }else if(_dataFamVal==3){
         jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css("font-family","宋体");
         jQuery(".big_pic").find(".textPag_2").css("font-family","宋体");
-        jQuery(".chosFam_p2").html("宋体");
+        //jQuery(".chosFam_p2").html("宋体");
     }else if(_dataFamVal==4){
         jQuery("#textMade_P2,#textMade_P4,.viewPage_p2_wrap").css("font-family","楷体");
         jQuery(".big_pic").find(".textPag_2").css("font-family","楷体");
-        jQuery(".chosFam_p2").html("楷体");
+        //jQuery(".chosFam_p2").html("楷体");
     }
 
 }
