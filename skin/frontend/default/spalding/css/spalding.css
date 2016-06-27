@@ -3882,7 +3882,7 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .madeTexWrap{
-	font-family:'Conv_CustomGrotesque-Regular',Sans-Serif;
+	font-family:'宋体',Sans-Serif;
 	position: absolute;
 	width: 400px;
 	margin-top:200px;
@@ -3890,17 +3890,6 @@ dl.madeBoxFuns dt.zz_t_2{
 	z-index: 2;
 	font-size:60px;
 	color:#000;
-}
-
-.madeTexWrap .madeFfm0{
-	font-family:'Conv_CustomGrotesque-Regular';
-}
-.madeTexWrap .madeFfm1{
-	font-family:'Sans-Serif';
-}
-
-.madeTexWrap .madeFfm2{
-	font-family:'Arial';
 }
 
 .size_40{

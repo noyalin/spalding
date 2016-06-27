@@ -100,7 +100,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 $content1 = $params['text1'];
                 if ($content3 == '4') {
 //                    $content2 = $this->getCheckedText($params['text3'], $content4);
-                $content1 = $params['text3'];
+                    $content2 = $params['text3'];
                 } else {
                     $content2 = '';
                 }
