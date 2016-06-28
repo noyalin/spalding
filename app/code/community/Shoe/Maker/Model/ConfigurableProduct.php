@@ -808,15 +808,15 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $price = $entity->SalePrice;
         $valueArr['price'] =$price;
 
-        if($attributeSetName == 'ball'){
-            $defaultCategory = "6,10";//篮球规格 和 系列 -
-        }else if($attributeSetName == 'accessories'){//配件
-            $defaultCategory = "26";
-        }else if($attributeSetName == 'apparel'){//衣服
-            $defaultCategory = "10,24";
-        }else{
+        //if($attributeSetName == 'ball'){
+        //    $defaultCategory = "6,10";//篮球规格 和 系列 -
+        //}else if($attributeSetName == 'accessories'){//配件
+        //    $defaultCategory = "26";
+        //}else if($attributeSetName == 'apparel'){//衣服
+        //    $defaultCategory = "10,24";
+        //}else{
             $defaultCategory = (string) $entity->PrimaryCategoryId;
-        }
+        //}
         $valueArr['defaultCategory'] =$defaultCategory;
 
         $limitQuantity = $entity->OrderLimitCount;
