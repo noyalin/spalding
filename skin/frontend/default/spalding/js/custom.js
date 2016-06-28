@@ -111,6 +111,9 @@ jQuery(function () {
         if(isClickOne){                                                       //点击page 1按钮
             var nowKind = jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
             console.log("按钮1");
+            //点亮对应icon
+            jQuery(".remind_1").css("opacity","1");
+            jQuery(".remind_2").css("opacity","0");
             if (nowKind == 1) {
                 _now_2 = jQuery("#avatar").attr("src");
                 if (_init_2 == "") {
@@ -131,6 +134,8 @@ jQuery(function () {
             //alert(_pageBtnId);
             console.log("按钮2");
             var nowKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
+            jQuery(".remind_1").css("opacity","0");
+            jQuery(".remind_2").css("opacity","1");
             if (nowKind == 1) {
                 _now_1 = jQuery("#avatar").attr("src");
                 if (_init_1 == "") {
@@ -181,15 +186,6 @@ jQuery(function () {
             jQuery(_PageBtn).parents().find(".madeStepImg").hide();
             jQuery(_PageBtn).parents().find(".madeStepTex").hide();
             //jQuery("#options_pos").val(1);
-
-            //点亮对应icon
-            jQuery(".remind_1").css("opacity","1");
-            jQuery(".remind_2").css("opacity","0");
-
-            //重置图片定制
-            jQuery("#img_grip").css("opacity","0");
-            jQuery("#imgFuns").css("opacity","0");
-            jQuery("#formBtn").show();
 
             // TODO
             jQuery.ajax({
