@@ -338,6 +338,8 @@
         var custom_flag;
         jQuery(".comfResBox").hide();
         if(isClickOne){
+            jQuery(".remind_1").css("opacity","1");
+            jQuery(".remind_2").css("opacity","0");
             custom_flag = jQuery("#custom_flag1");
             jQuery(".madeBoxCons_p1").show();
             jQuery(".madeBoxCons_p2").hide();
@@ -361,6 +363,8 @@
             var _viewCons = _viewPage1.find(".viewPage_p1_wrap");    //获取P1预览内容
 
         }else{
+            jQuery(".remind_1").css("opacity","0");
+            jQuery(".remind_2").css("opacity","1");
             custom_flag = jQuery("#custom_flag2");
             jQuery(".madeBoxCons_p1").hide();
             jQuery(".madeBoxCons_p2").show();
