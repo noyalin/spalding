@@ -50,4 +50,18 @@ class Cobra_CustomMade_Model_Mysql4_Info extends Mage_Core_Model_Mysql4_Abstract
         Mage::log("CustomMade Send Mail loadByTime time1=" . $time1 . ", time2=" . $time2);
         return $items;
     }
+        public function OrderAutoApprove($satus1, $satus2){
+        $table = $this->getMainTable();
+        $where1 = $this->_getReadAdapter()->quoteInto("status= ?", $satus1);
+        $where2 = $this->_getReadAdapter()->quoteInto("user1_approve=?", $satus2);
+        $sql = $this->_getReadAdapter()
+            ->select()
+            ->from($table,array('id','order_id','sku','msg6_p1','msg6_p2'))
+            ->where($where1)
+            ->where($where2);
+        $items = $this->_getReadAdapter()->fetchAll($sql);
+        Mage::log($items);
+        return $items;
+
+    }
 }

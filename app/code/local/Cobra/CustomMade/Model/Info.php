@@ -49,6 +49,22 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         }
         $this->setStatus(self::STATUS_APPROVED)->save();
     }
+    public function autoApproved()
+    {
+        if (!$this->checkCustomByOrderId($this->getOrderId(), $this->getSku())) {
+            Mage::log('approved Error : id=' . $this->getId() . ', order_id=' . $this->getOrderId() . ', SKU=' . $this->getSku());
+            return;
+        }
+        $this->setStatus(2)//2.审批通过
+            ->setUser2Approve(1)//1.审批通过
+            ->save();
+    }
+    public function OrderAutoApprove($satus1, $satus2)
+    {
+        $items = $this->getResource()
+            ->OrderAutoApprove($satus1, $satus2);
+        return $items;
+    }
 
     public function notapproved()
     {
