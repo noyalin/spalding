@@ -62,7 +62,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                 <?php $sizeIndex = 1;$stockStatus = "";?>
                 <?php foreach($valueArr as $optionValue):?>
                     <?php
-                        if($attributeSetName == 'ball'){
+                        if($attributeSetName == 'ball' || $attributeSetName == 'football'){
                             $simpleSku = $sku."-OneSize";
                             $simpleSku = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
                             $qtyStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleSku)->getQty();
