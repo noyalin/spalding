@@ -7,7 +7,7 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
     public function executeJob($rootXmlElement){
 
         $this->_mailMessage = "";
-
+        $isException = false;
         try{
             //Step into entities array to access simple products
             foreach ($rootXmlElement->Simple as $simpleProducts) {
@@ -21,14 +21,18 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
             }
         } catch (Exception $ex) {
             $this->_mailMessage .= ("\r\nexecuteJob Exception: ".$ex->getMessage());
+            $isException = true;
         }
 
         if ($this->_mailMessage != "") {
             $this->_mailMessage = ("executeJob ( 1 ) Incremental Update: " . $this->filename .$this->_mailMessage);
             $this->sendNotification( 'Configurable product Error ', $this->_mailMessage);
+            if ($isException) {
+                throw new Exception($this->_mailMessage);
+            }
         }
 
-
+        $isException = false;
         $this->_mailMessage = "";
         try{
             //Process Simple products to update quantities
@@ -42,11 +46,15 @@ class Shoe_Maker_Model_SimpleProduct extends Shoe_Maker_Model_IncrementalUpdate{
             }
         } catch (Exception $ex) {
             $this->_mailMessage .= ("\r\nexecuteJob Exception: ".$ex->getMessage());
+            $isException = true;
         }
 
         if ($this->_mailMessage != "") {
             $this->_mailMessage = ("executeJob ( 2 ) Incremental Update: " . $this->filename .$this->_mailMessage);
             $this->sendNotification( 'Configurable product UpdateQuantity Error ', $this->_mailMessage);
+            if ($isException) {
+                throw new Exception($this->_mailMessage);
+            }
         }
     }
 

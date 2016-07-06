@@ -23,10 +23,12 @@ class Shoe_Maker_Model_IncrementalUpdate extends  Shoe_Maker_Model_UpdateBase{
         list($rootXmlElement,$products) = self :: getXmlElementFromString($this->contents);
         if (isset($products['Configurable'])) {
             $configurableProduct = new Shoe_Maker_Model_ConfigurableProduct();
+            $configurableProduct->filename = $this->filename;
             $configurableProduct->executeJob($rootXmlElement);
         }
         if (isset($products['Simple'])) {
             $simpleProduct = new Shoe_Maker_Model_SimpleProduct();
+            $simpleProduct->filename = $this->filename;
             $simpleProduct->executeJob($rootXmlElement);
         }
     }

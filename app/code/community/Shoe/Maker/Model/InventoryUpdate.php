@@ -23,6 +23,7 @@ class Shoe_Maker_Model_InventoryUpdate extends  Shoe_Maker_Model_UpdateBase{
         list($rootXmlElement,$products) = self :: getXmlElementFromString($this->contents);
         if (isset($products['Simple'])) {
             $simpleProduct = new Shoe_Maker_Model_SimpleProduct();
+            $simpleProduct->filename = $this->filename;
             $simpleProduct->executeJob($rootXmlElement);
         }
     }
