@@ -18,6 +18,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
+
         $message .= "三天前尚未审批订单号：\r\n";
         $orderIdThreeDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time() - 72 * 60 * 60) . ' 00:00:00', 1);
         if (empty($orderIdThreeDay)) {
@@ -27,6 +28,17 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
+
+        $message .= "审批不通过订单号：\r\n";
+        $orderIdoneDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time()) . ' 00:00:00', 3);
+        if (empty($orderIdoneDay)) {
+            $message .= '无' . "\r\n";
+        } else {
+            foreach ($orderIdoneDay as $orderId) {
+                $message .= $orderId['order_id'] . "\r\n";
+            }
+        }
+
         $message .= "\r\n";
         $this->sendNotification($subject, $message, true, true);
     }
