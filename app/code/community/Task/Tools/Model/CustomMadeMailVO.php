@@ -1,30 +1,39 @@
 <?php
 
-class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
+class Task_Tools_Model_CustomMadeMailVO extends Task_Tools_Model_Base
 {
     public function execute()
     {
-        $subject = '斯伯丁官网定制球待审批订单';
+        $subject = '斯伯丁官网定制球待审批订单 VoyageOne';
 
         $message = "\r\n审批链接：http://www.spaldingchina.com.cn/index.php/backendspalding\r\n";
-        $message .= "SPALDING审批用户：\r\n用户名：spalding1  密码：spalding123\r\n";
-        $message .= "\r\n";
-        $message .= date("Y年m月d日", time() - 24 * 60 * 60)."尚未审批订单号：\r\n";
-        $orderIds = Mage::getModel('custommade/info')->loadByTime(date("Y-m-d", time()) . ' 00:00:00', date("Y-m-d", time() - 24 * 60 * 60) . ' 00:00:00', 1);
-        if (empty($orderIds)) {
+
+        $message .= "审批不通过订单号：\r\n";
+        $orderIdoneDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time()) . ' 00:00:00', 3);
+        if (empty($orderIdoneDay)) {
             $message .= '无' . "\r\n";
         } else {
-            foreach ($orderIds as $orderId) {
+            foreach ($orderIdoneDay as $orderId) {
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
 
-        $message .= "三天前尚未审批订单号：\r\n";
-        $orderIdThreeDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time() - 72 * 60 * 60) . ' 00:00:00', 1);
-        if (empty($orderIdThreeDay)) {
+        $message .= "Spalding审批通过，等待VoyageOne审批的订单号：\r\n";
+        $orderIdoneDay = Mage::getModel('custommade/info')->loadByConditions2(date("Y-m-d", time()) . ' 00:00:00',1,1,0);
+        if (empty($orderIdoneDay)) {
             $message .= '无' . "\r\n";
         } else {
-            foreach ($orderIdThreeDay as $orderId) {
+            foreach ($orderIdoneDay as $orderId) {
+                $message .= $orderId['order_id'] . "\r\n";
+            }
+        }
+
+        $message .= "等待导出的订单号：\r\n";
+        $orderIdoneDay = Mage::getModel('custommade/info')->loadByConditions2(date("Y-m-d", time()) . ' 00:00:00',2,1,1);
+        if (empty($orderIdoneDay)) {
+            $message .= '无' . "\r\n";
+        } else {
+            foreach ($orderIdoneDay as $orderId) {
                 $message .= $orderId['order_id'] . "\r\n";
             }
         }
@@ -40,8 +49,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
 
     public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
     {
-        $to = 'alan.zhou@fotlinc.com,Jessica.Guo@fotlinc.com,cynthia.zhu@spaldingchina.com.cn,pisces.bian@voyageone.cn';
-        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,aaron.deng@voyageone.cn,bob.chen@voyageone.cn,fly.zhao@voyageone.cn,terry.yao@voyageone.cn' : "";
+        $to = self::CONF_SYSTEM_NOTIFICATION_TO_ADDRESS;
         $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
         $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 
