@@ -49,7 +49,7 @@ class Task_Tools_Model_CustomMadeMailVO extends Task_Tools_Model_Base
 
     public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
     {
-        $to = 'pisces.bian@voyageone.cn,steven.ouyang@voyageone.cn,aaron.deng@voyageone.cn,bob.chen@voyageone.cn,fly.zhao@voyageone.cn,terry.yao@voyageone.cn';
+        $to = 'website-development@voyageone.cn,markting-spalding@voyageone.cn';
         $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
         $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 

@@ -40,8 +40,8 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
 
     public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
     {
-        $to = 'alan.zhou@fotlinc.com,Jessica.Guo@fotlinc.com,cynthia.zhu@spaldingchina.com.cn,pisces.bian@voyageone.cn';
-        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,aaron.deng@voyageone.cn,bob.chen@voyageone.cn,fly.zhao@voyageone.cn,terry.yao@voyageone.cn' : "";
+        $to = 'alan.zhou@fotlinc.com,Jessica.Guo@fotlinc.com,cynthia.zhu@spaldingchina.com.cn';
+        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,markting-spalding@voyageone.cn,website-development@voyageone.cn' : "";
         $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
         $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 
