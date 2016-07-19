@@ -294,8 +294,8 @@ jQuery(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P3").addClass("size_40");
         jQuery(this).parent().parent().parent().siblings(".smalLine").show();
         //jQuery("#textInput_1").attr("maxlength", "10");
-        SwapTxt_1();
-        SwapTxt_3();
+        //SwapTxt_1();
+        //SwapTxt_3();
 
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
@@ -325,15 +325,15 @@ jQuery(function () {
         jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
         jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
         jQuery(".zz_t").removeClass("zz_t_2");
-        SwapTxt_2();
-        SwapTxt_4();
+        //SwapTxt_2();
+       // SwapTxt_4();
     });
 
     //中号
     jQuery(".madeBoxCons_p1 .setSize_60").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_60");
-        SwapTxt_1();
+        //SwapTxt_1();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").hide();
@@ -349,7 +349,7 @@ jQuery(function () {
     jQuery(".madeBoxCons_p2 .setSize_60").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P2").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_60");
-        SwapTxt_2();
+        //SwapTxt_2();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").hide();
@@ -366,7 +366,7 @@ jQuery(function () {
     jQuery(".madeBoxCons_p1 .setSize_80").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_80");
-        SwapTxt_1();
+        //SwapTxt_1();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").hide();
@@ -385,7 +385,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_80");
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
-        SwapTxt_2();
+        //SwapTxt_2();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".select_P3 , .select_P4").hide();
@@ -1113,8 +1113,18 @@ function SubView(){
         }
     });
 }
+
+function formatInputString(key){
+    str = document.getElementById(key).value;
+    str = str.replace(/　　*/g," ");
+    str = str.replace(/   */g," ");
+    document.getElementById(key).value = str;
+    return str;
+}
+
 function SwapTxt_1() {
-    var _txt = document.getElementById("textInput_1").value.trim();
+    str = formatInputString("textInput_1");
+    var _txt = str.trim();
     var _text = document.getElementById("textMade_P1");
     var _cnt = getTxtCnt(1);
 
@@ -1122,8 +1132,8 @@ function SwapTxt_1() {
 }
 
 function SwapTxt_2() {
-    var _txt = document.getElementById("textInput_2").value.trim();
-    //value=value.replace(/[^\w\.\/]/ig,'');
+    str = formatInputString("textInput_2");
+    var _txt = str.trim();
     var _text = document.getElementById("textMade_P2");
     var _cnt = getTxtCnt(2);
 
@@ -1131,7 +1141,8 @@ function SwapTxt_2() {
 }
 
 function SwapTxt_3() {
-    var _txt = document.getElementById("textInput_3").value.trim();
+    str = formatInputString("textInput_3");
+    var _txt = str.trim();
     var _text = document.getElementById("textMade_P3");
     var _cnt = getTxtCnt(1);
 
@@ -1139,7 +1150,8 @@ function SwapTxt_3() {
 }
 
 function SwapTxt_4() {
-    var _txt = document.getElementById("textInput_4").value.trim();
+    str = formatInputString("textInput_4");
+    var _txt = str.trim();
     var _text = document.getElementById("textMade_P4");
     var _cnt = getTxtCnt(2);
 
@@ -1197,7 +1209,7 @@ function getMadeText(str,len){
 }
 
 function setMadeText(_text, _txt, _cnt){
-    _text.innerHTML = getMadeText(_txt, _cnt);
+    _text.innerText = getMadeText(_txt, _cnt);
 }
 
 //选中字号大小
