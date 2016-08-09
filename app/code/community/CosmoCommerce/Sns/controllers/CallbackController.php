@@ -261,7 +261,13 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
                         Mage::log($ex->getMessage());
                     }
                     Mage::getSingleton('customer/session')->loginById($customer->getId());
-                    $this->_redirect('sns/callback/success');
+                    
+                    if (Mage::getSingleton('customer/session')->getBeforeAuthUrl()) {
+                    	$this->_redirectUrl(Mage::getSingleton('customer/session')->getBeforeAuthUrl(true));
+                    }else{
+                    	$this->_redirect('sns/callback/success');
+                    }
+                    
                     return;
                 }else{
                     Mage::getSingleton('customer/session')->loginById($customer->getId());

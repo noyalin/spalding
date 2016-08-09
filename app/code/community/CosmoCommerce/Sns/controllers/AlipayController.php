@@ -48,7 +48,7 @@ class CosmoCommerce_Sns_AlipayController extends Mage_Core_Controller_Front_Acti
             if(!$customer->getId()){
                 $customer->setEmail("Spalding_".$userId."@spaldingchina.com.cn");
                 //$lastname='lastname';
-                $customer->setFirstname($_GET['real_name']);
+                $customer->setFirstname($userId);
                 //$customer->setAvatar($profile_image_url);
                 //$customer->setLastname($lastname);
                 $customer->setAlipayUserId($userId);
@@ -64,7 +64,13 @@ class CosmoCommerce_Sns_AlipayController extends Mage_Core_Controller_Front_Acti
                     Mage::log($ex->getMessage());
                 }
                 Mage::getSingleton('customer/session')->loginById($customer->getId());
-                $this->_redirect('sns/callback/success');
+
+                if (Mage::getSingleton('customer/session')->getBeforeAuthUrl()) {
+                	$this->_redirectUrl(Mage::getSingleton('customer/session')->getBeforeAuthUrl(true));
+                }else{
+                	 $this->_redirect('sns/callback/success');
+                }
+                
                 return;
             }else{
                 Mage::getSingleton('customer/session')->loginById($customer->getId());
