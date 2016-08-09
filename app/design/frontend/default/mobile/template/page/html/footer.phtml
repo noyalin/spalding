@@ -41,25 +41,19 @@ $sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $snea
 <!--</div>-->
 <div class="footer-16">
 	<div class="footer-top clearfix">
-		<a href="<?php echo $this->getUrl('customer/account/'); ?>">
 		<div class="footer-top-box ms-fl">
-
-				<img src="<?php echo $this->getSkinUrl('images/footer-login-icon.jpg');?>" border="0">
+			<img src="<?php echo $this->getSkinUrl('images/footer-login-icon.jpg');?>" border="0">
             <?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-				我的账号 / 退出
+				<a href="<?php echo $this->getUrl('customer/account/'); ?>">我的账号 / </a>  
+				<a href="<?php echo $this->getUrl('customer/account/logout/'); ?>">退出</a>
             <?php else: ?>
-                登录/注册
+            <a href="<?php echo $this->getUrl('customer/account/'); ?>">登录/注册</a>
             <?php endif; ?>
-
-		</div></a>
-		<a href="<?php echo Mage::getUrl('mobile_shop')?>">
-		<div class="footer-top-box ms-fr">
-
-				<img src="<?php echo $this->getSkinUrl('images/footer-shop-icon.jpg');?>" border="0">
-			授权经销商查询
-
 		</div>
-		</a>
+		<div class="footer-top-box ms-fr">
+			<img src="<?php echo $this->getSkinUrl('images/footer-shop-icon.jpg');?>" border="0">
+			<a href="<?php echo Mage::getUrl('mobile_shop')?>">授权经销商查询</a>
+		</div>
 	</div>
 	<div class="footer-infs clearfix">
 		<div class="footer-infs-phone ms-fl">

@@ -5318,7 +5318,7 @@ span.checkError{
 	height:50px;
 	line-height:50px;
 }
-.footer-top a .footer-top-box{
+.footer-top .footer-top-box a {
 	color:#fff;
 	font-size:12px;
 	/*line-height:16px;*/
