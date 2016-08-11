@@ -273,7 +273,15 @@ Product view
                         <block type="custommade/view" name="custommade.view.options.custom" as="custommade_view_options_custom" template="custommade/view/options/custom.phtml" />
                     </block>
                 </block>
-
+                
+				<block type="customclothes/view" name="customclothes.view" as="customclothes_view" template="customclothes/view.phtml">
+                    <block type="opc/onepage_login" name="logincustom" as="logincustom" template="opc/onepage/login.phtml">
+                    </block>
+                    <block type="customclothes/view" name="customclothes.view.options" as="customclothes_view_options" template="customclothes/view/options.phtml">
+                        <block type="customclothes/view" name="customclothes.view.options.preview" as="customclothes_view_options_preview" template="customclothes/view/options/preview.phtml" />
+                        <block type="customclothes/view" name="customclothes.view.options.custom" as="customclothes_view_options_custom" template="customclothes/view/options/custom.phtml" />
+                    </block>
+                </block>
             </block>
         </reference>
         <reference name="right">

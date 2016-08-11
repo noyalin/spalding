@@ -113,7 +113,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         $order->save();
 
         Mage::getModel('custommade/info')->saveCustomMade($order);
-
+        
+        Mage::getModel('customclothes/order')->saveCustomClothes($order);
         $storeCode = Mage::app()->getStore()->getCode();
 //        if('sneakerhead_cn_mobile' ==  $storeCode){
 //            $agent = $_SERVER['HTTP_USER_AGENT'];
@@ -739,6 +740,10 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 
                     try{
                         $order->save();
+                        $message = Mage::getModel('customclothes/customClothes')->updateCustomClothesOrderStatus($postData['out_trade_no']);
+                        if($message){
+                        	$this->sendMailForOrder($out_trade_no, $message);
+                        }
                         if($method == "get"){
                             $this->_redirect("sales/order/view/order_id/".$order->getId());
                             return;
@@ -769,7 +774,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         }
 
     }
-
+    
     private function SavePaymentInfo($orderId)
     {
         try{
@@ -785,4 +790,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 //                    $this->sendMail();
         }
     }
+    
+    
+    
 }

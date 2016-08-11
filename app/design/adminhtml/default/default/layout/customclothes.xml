@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <customclothes_adminhtml_check_index>
+        <reference name="content">
+            <block type="customclothes/adminhtml_check" name="check" />
+        </reference>
+    </customclothes_adminhtml_check_index>
+</layout>

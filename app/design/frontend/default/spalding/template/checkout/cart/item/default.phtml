@@ -74,13 +74,16 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
         <dt class="ms-fl">
         <div class="spListInfTop clearfix">
             <span class="spCarTit_name">
-                <?php if ($this->hasProductUrl()):?>
-                    <a href="<?php
-                    if ($_product->getIsCustom()) {
-                        echo $this->getUrl('custommade/index/review/') . 'sku/' . $_product->getSku();
-                    } else {
-                        echo $this->getProductUrl();
-                    }
+            	<?php 
+            		if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
+            			echo $this->escapeHtml($this->getProductName());
+                 	elseif ($this->hasProductUrl()):?>
+	                    <a href="<?php
+	                    if ($_product->getIsCustom()) {
+	                        echo $this->getUrl('custommade/index/review/') . 'sku/' . $_product->getSku();
+	                    } else {
+	                        echo $this->getProductUrl();
+	                    }
                     ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
                 <?php else: ?>
                     <?php echo $this->escapeHtml($this->getProductName()) ?>
@@ -207,12 +210,16 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 
                                 <?php
                                 $res = true;
+                                $isCustomClothes = false;
                                 $categoryIds = $_item->getProduct()->getCategoryIds();
                                 foreach ($categoryIds as $categoryId) {
                                     $category = Mage::getModel('catalog/category')->load($categoryId);
                                     $categoryUrlkey = $category->getUrlKey();
-                                    if ($categoryUrlkey == 'custom-made') {
+                                    if ($categoryUrlkey == 'custom-made' || $categoryUrlkey == 'custom-clothes') {
                                         $res = false;
+                                    }
+                                    if ($categoryUrlkey == 'custom-clothes') {
+                                    	$isCustomClothes = true;
                                     }
                                 }
                                 if ($res == false):?>
@@ -227,14 +234,27 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 
 						</span>
             <span class="spCarTit_fun">
-                <?php if ($isVisibleProduct): ?>
-                    <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax">删除</a>
-                <?php endif ?>
+                <?php 
+                	if ($isVisibleProduct):
+                	
+                		if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
+                	
+                		else:
+                			$removeUrl = $this->helper('wishlist')->getMoveFromCartUrl($_item->getId());
+                			if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'clothes'):
+                				$removeUrl = $this->getProductUrl();
+                			endif;
+               	?>
+               	<a href="<?php echo $removeUrl; ?>" class="link-wishlist use-ajax">删除</a>
+               	<?php
+                		endif;
+                	endif; 
+                ?>
             </span>
         </div>
         <div class="spListInfsBotm clearfix">
             <div class="spListInfsBotm_lef ms-fl">
-                <?php if ($attributeSetName == "ball" || $attributeSetName == "customball"){?>
+                <?php if ($attributeSetName == "ball" || $attributeSetName == "customball"):?>
                 <p><span>产品材质：<?php echo $product_material;?></span> <span>产品规格： <?php echo $product_norm;?></span></p>
                 <p>场地： <?php echo $product_side;?></p>
                     <?php if ($res == false): ?>
@@ -291,9 +311,17 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                         </p>
                     <?php endif; ?>
                 <?php
-                }else {;?>
+                //定制球衣确认预留
+                elseif($attributeSetName == 'customclothes'):
+                	$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+                	$dataRow = Mage::getModel('customclothes/temp')->loadByCustomerId($customerId);
+                ?>
+                <p><span><a target="_blank" href="<?php echo $dataRow->result_image;?>">定制浏览</a></span>&nbsp;&nbsp;<span>尺码： <?php echo $size;?></span></p>
+                <?php
+                else:?>
                 <p>尺码： <?php echo $size;?></p>
-                <?php }
+                <?php 
+                endif;
                 ?>
             </div>
             <div class="spListInfsBotm_rig ms-fl">

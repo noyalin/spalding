@@ -1,0 +1,151 @@
+input,
+button{border:0;outline: none}
+.ullist li{position:relative;width:38px;height:38px;line-height: 38px;cursor:pointer;text-align: center;background: #eee;margin-right:12px;display:inline-block;color:#afafaf;border:2px solid #686868;border-radius:3px;}
+.ullist li:after{position:absolute;content:"";right:-4px;top:-4px;width:42px;height:42px;border:2px solid #000;border-radius:3px;}
+.ullist li.active{border:2px solid #e8ab08}
+.ullist li.active:before{position:absolute;content:"";right:0;bottom:0px;width:22px;height:22px;background: url(../images/shirtmade/icon.png) no-repeat;}
+
+.cusMadeShirt{position: relative;min-height:735px;}
+.viewMadebox{padding:84px 0 70px 0;}
+ .slideshow{width:532px;height:516px;background:#fff;position:relative;margin:0 auto;overflow:hidden;}
+ .slideshow ul{position: absolute;left:0;top:0;}
+ .slideshow ul li{width:532px;height:516px;float:left}
+ .slideshow a.aBtn{position:absolute;top:260px;width:40px;height:51px;background: #000;}
+ .slideshow a.prev{left:0;}
+ .slideshow a.next{right:0;}
+.message{text-align: center;color:#fff;font-size:12px;}
+.message span{display:inline-block;margin:0 18px;}
+.message span.service{background: url(../images/shirtmade/icon.png) no-repeat left center;padding-left:36px;}
+.message span.time{background: url(../images/shirtmade/icon.png) no-repeat left center;padding-left:31px;}
+.cusMadeBox{position:absolute;width:400px;min-height:600px;top:4px;right:11px;text-align: left;}
+.cusMadeBox .madeBoxCont1{background:#171717;padding-bottom:92px;}
+.cusMadeBox .madeBoxTitle{height:90px;overflow: hidden;text-align:center;background: url(../images/shirtmade/title.jpg) no-repeat;}
+.cusMadeBox .madeBoxTitle h1{font-size:24px;line-height:26px;font-weight:bold;color:#fff;margin:20px 0 5px;}
+.cusMadeBox .madeBoxTitle h2{font-size:16px;color:#fdb905;}
+.cusMadeBox .madeBoxTitle h2 span{font-size:28px;font-weight:bold;font-family:import}
+.cusMadeBox .madeName{height:36px;line-height: 36px;padding-left:8px;font-size:16px;color:#abb0b4;}
+.cusMadeBox .madeBoxCont{display:none;}
+.cusMadeBox .madeBoxCont.active{display:block}
+.cusMadeBox .styleBox{border-bottom:1px solid #000;}
+.cusMadeBox .styleBox h2.title{position:relative;height:47px;line-height: 47px;padding-left:8px;font-size:16px;color:#878b8d;background:#272727;cursor: pointer}
+.cusMadeBox .styleBox h2.title:after{position: absolute;content:"";right:10px;top:16px;width:14px;height:14px;background:url(../images/shirtmade/arrow.png) no-repeat 0 0}
+.cusMadeBox .styleBox.active h2.title{color:#fefefe}
+.cusMadeBox .styleBox.active h2.title:after{background:url(../images/shirtmade/arrow.png) no-repeat 0 100%}
+.cusMadeBox .styleBox .cont{border-top:1px solid #000;padding:10px 0 14px 18px;background: #303030;display:none}
+.cusMadeBox .styleBox.active .cont{display:block}
+.cusMadeBox .styleBox .cont .title{font-size:14px;height:30px;line-height:30px;color:#eee;}
+.cusMadeBox .styleBox .ullist{padding-bottom:5px;}
+.cusMadeBox .styleBox .ullist li{position:relative;width:38px;height:38px;line-height: 38px;cursor:pointer;text-align: center;background: #eee;margin-right:12px;display:inline-block;color:#afafaf;border:2px solid #686868;border-radius:3px;}
+.cusMadeBox .styleBox .ullist li:after{position:absolute;content:"";right:-4px;top:-4px;width:42px;height:42px;border:2px solid #000;border-radius:3px;}
+.cusMadeBox .styleBox .ullist li.active{border:2px solid #e8ab08}
+.cusMadeBox .styleBox .ullist li.active:before{position:absolute;content:"";right:0;bottom:0;width:22px;height:22px;background: url(../images/shirtmade/icon.png) no-repeat;}
+.cusMadeBox .styleBox .madeStyle .ullist li{width:153px;height:38px;}
+.cusMadeBox .styleBox .madeStyle .ullist li:after{width:157px;}
+.cusMadeBox .styleBox .madeInpBox{overflow:hidden;padding-bottom:22px;}
+.cusMadeBox .styleBox .madeInpBox input{width:352px;height:42px;line-height:42px;padding:0 5px;background:#ebebeb;border-radius:7px;font-size:14px;}
+.cusMadeBox .styleBox .line{margin:0 10px 4px -8px;height:0;font:0;border-top:1px solid #404040;border-bottom:1px solid #161616}
+.cusMadeBox .madeBtn{position:absolute;bottom:30px;left:0;width:100%;text-align: center;}
+.cusMadeBox .madeBtn button{width:143px;height:44px;background: url(../images/shirtmade/submitbtn.png) no-repeat;overflow:hidden;text-indent:-99999px;}
+.cusMadeBox .madeNameTwo{text-align: left;margin-top:6px;height:40px;line-height:40px;padding:0 18px;color:#4c4c4c;background: #0b0b0b;position:relative}
+.cusMadeBox .madeNameTwo:before{position:absolute;content:"";left:-27px;top:12px;}
+.cusMadeBox .madeNameTwo a{font-size:16px;color:#fdb905;float:right;}
+.cusMadeBox .madeBoxCont2 .list-item{padding:5px 24px; background:#171717;}
+.cusMadeBox .madeBoxCont2 .list-item li{height:30px;line-height: 30px;font-size:14px;color:#6e6e6e;text-align: left}
+.cusMadeBox .madeBoxCont2 .list-item li span{float:right;}
+.cusMadeBox .madeBoxCont2 .list-item .size2{display:none;}
+.cusMadeBox .addBtn{margin-top:40px;text-align: center;}
+.cusMadeBox .addBtn button{width:300px;height:52px;background: #000}
+.cusMadeBox .addBtn2{margin-top:93px;text-align:center;}
+.cusMadeBox .addBtn2 button{width:400px;height:52px;background: #fab106}
+.cusMadeBox .madeBoxCont3{background:#171717;padding-bottom:92px;text-align: center;}
+.cusMadeBox .madeBoxCont3 .madeNamethree{height:50px;line-height: 50px;color:#a6a6a6;font-size:20px;}
+.cusMadeBox .madeBoxCont3 .madeitembox{height:450px;padding:0 20px;overflow:auto;}
+.cusMadeBox .madeBoxCont3 .totalbox{height:44px;line-height:44px;margin:0 20px;font-size:16px;color:#929292;text-align: center;border-bottom:1px solid #727272}
+.cusMadeBox .madeBoxCont3 .totalbox b{font-size:18px;color:#fdb905}
+.cusMadeBox .madeBoxCont3 table{width:100%;color:#9f9f9f}
+.cusMadeBox .madeBoxCont3 table th{border-bottom:1px solid #727272}
+.cusMadeBox .madeBoxCont3 table th,
+.cusMadeBox .madeBoxCont3 table td{text-align: center;height:40px;line-height: 40px;}
+.cusMadeBox .madeBoxCont3 table td{border-bottom:1px dashed #727272}
+.cusMadeBox .btnbox{text-align: center;position:relative}
+.cusMadeBox .btnbox a{display:inline-block;margin:10px 5px;width:104px;height:28px;background: #00aa00}
+.cusMadeBox .additemBox{position: absolute;bottom:48px;padding:15px;width:338px;left:20px;background: #1d1d1d;margin-top:10px;display:none;}
+.cusMadeBox .additemBox .close{position:absolute;width:24px;height:24px;background: #008800;right:0;top:0;margin:0;}
+.cusMadeBox .additemBox .title{display:none;position:absolute;left:0;font-size:12px;color:#fff;width:24px;padding:10px 0;background:#000;}
+.cusMadeBox .additemBox .title1{top:29px;}
+.cusMadeBox .additemBox .title2{top:155px;}
+.cusMadeBox .additemBox .madeInpBox{width:100%;overflow:hidden;}
+.cusMadeBox .additemBox .madeInpBox input{height:32px;border-radius: 5px;padding:0 5px;}
+.cusMadeBox .additemBox .madeInpBox .player{float:left}
+.cusMadeBox .additemBox .madeInpBox .player input{width:166px;}
+.cusMadeBox .additemBox .madeInpBox .num{margin-left:10px;float:left}
+.cusMadeBox .additemBox .madeInpBox .num input{width:120px;}
+.cusMadeBox .additemBox .ullist{margin-top:10px;}
+.cusMadeBox .additemBox .ullist li{width:28px;height:28px;line-height: 28px;font-size:12px;}
+.cusMadeBox .additemBox .ullist li:after{position:absolute;content:"";right:-4px;top:-4px;width:32px;height:32px;border:2px solid #000;border-radius:3px;}
+.cusMadeBox .additemBox .size2{display:none;border-top:1px solid #000;padding-top:16px;}
+.cusMadeBox .additemBox .confirm{margin-top:10px;}
+.cusMadeBox .additemBox .confirm button{width:92px;height:24px;}
+.cusMadeBox .additemBox.active{padding:15px 40px;width:288px;}
+.cusMadeBox .additemBox.active .title{display:block}
+.cusMadeBox .additemBox.active .madeInpBox .player{float:none;}
+.cusMadeBox .additemBox.active .madeInpBox .player input{width:266px;}
+.cusMadeBox .additemBox.active .madeInpBox .num{float:none;margin:10px 0 0 ;}
+.cusMadeBox .additemBox.active .madeInpBox .num input{width:266px;}
+.cusMadeBox .additemBox.active .size2{display:block;}
+
+.cusMadeBox .madeBoxCont4 .madeNameTwo{margin:0}
+.cusMadeBox .madeBoxCont4 .list-item{padding:5px 24px; background:#171717;}
+.cusMadeBox .madeBoxCont4 .list-item li{height:30px;line-height: 30px;font-size:14px;color:#6e6e6e;text-align: left}
+.cusMadeBox .madeBoxCont4 .list-item li span{float:right;}
+.cusMadeBox .madeBoxCont4 .list-item .size2{display:none;}
+.cusMadeBox .madeBoxCont4 .madeNameTwo .totalbox{position: absolute;left:50%;transform:translate(-50%,0)}
+.cusMadeBox .madeBoxCont4 .madeNameTwo .totalbox b{font-size:18px;color:#fdb905}
+.cusMadeBox .madeBoxCont4 .cplist{background: #171717;color: #6e6e6e;padding:10px;}
+.cusMadeBox .madeBoxCont4 .cplist table{width:100%;text-align: center}
+.cusMadeBox .madeBoxCont4 .cplist table td{height:25px;line-height: 25px;}
+.submitBox{margin-top:20px; background: #f7aa07;height:52px;}
+.submitBox button{width:100%;height:52px;}
+.maskbg{display:none;position: absolute;left:0;right:0;width:100%;height:100%;background: rgba(0,0,0,0.5)}
+.comfBox{
+    display: none;
+    position:absolute;
+    width: 170px;
+    height: 100px;
+    overflow: hidden;
+    left:50%;
+    top:50%;
+    margin:-50px 0 0 -85px;
+    background: #e6e6e6;
+    color:#000;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.comfBox>p{
+    margin:20px 0 15px;
+}
+
+.confBtn button{
+    display: inline-block;
+    width:50px;
+    height: 30px;
+    border:1px solid #000;
+    border-radius: 2px;
+    cursor:pointer;
+}
+
+.confBtn button.saveMadeY{
+    background: #f29d09;
+}
+
+.confBtn button.saveMadeN{
+    background: #eee;
+    color: #7c7c7c;
+    border-color:#cfcfcf;
+}
+
+
+
+

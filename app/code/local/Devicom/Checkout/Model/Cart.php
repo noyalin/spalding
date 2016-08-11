@@ -2,6 +2,7 @@
 
 class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 {
+	
     public function addProduct($productInfo, $requestInfo=null)
     {
         $product = $this->_getProduct($productInfo);
@@ -203,10 +204,11 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
         Mage::dispatchEvent('checkout_cart_update_items_after', array('cart'=>$this, 'info'=>$data));
         return $this;
     }
-
+	
+    
     private function checkCustomMade($product)
     {
-    	if($product->getIsCustom() != null && $product->getIsCustom() == 1){
+    	if($product->getIsCustom() == 1){
     		return true;
     	}
         return false;

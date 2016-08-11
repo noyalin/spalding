@@ -429,6 +429,11 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $product->setApparelType( $this->getAttributeOptionId('apparel_type',$valueArr['apparelType']) );
         $product->setSizeTable( $this->getAttributeOptionId('size_table',$valueArr['sizeTable']) );
         $product->setAttributeSetName ( $this->getAttributeOptionId('attribute_set_name',$valueArr['attributeSetName']) );
+        
+        //定制球衣
+        if(isset($valueArr['pantsSku'])){
+        	$product->setPantsSku($valueArr['pantsSku']);
+        }
     }
 
     public function getAllImagesByUrlkey($valueArr){
@@ -880,6 +885,10 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $sizeTable = $entity->CNMagentoSizeTable;//尺码表
         $valueArr['sizeTable'] =$sizeTable;
 
+        if($entity->PantsSku){
+        	$valueArr['pantsSku'] = $entity->PantsSku;
+        }
+        
         return $valueArr;
     }
 

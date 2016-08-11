@@ -85,6 +85,8 @@
 <!--                <button type="button" title="--><?php //echo $buttonTitle ?><!--" class="button btn-cart" style="background: #333;color: #fff" ><span><span></span></span></button>-->
 <!--            </div>-->
         <?php
+        	}else if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product)){	
+        
             }else{
         ?>
             <div class="add-to-car-button">

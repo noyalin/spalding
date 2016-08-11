@@ -40,6 +40,11 @@ class Devicom_Customer_AccountController extends Mage_Customer_AccountController
             $this->_redirect('*/*/');
             return;
         }
+        
+        if(Mage::getSingleton('customer/session')->getAfterAuthUrl()){
+        	Mage::getSingleton ('customer/session' )->setBeforeAuthUrl(Mage::getSingleton('customer/session')->getAfterAuthUrl());
+        }
+        
         $this->getResponse()->setHeader('Login-Required', 'true');
         $this->loadLayout();
         $this->_initLayoutMessages('customer/session');

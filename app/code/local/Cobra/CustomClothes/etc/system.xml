@@ -1,0 +1,19 @@
+<config>
+<tabs>
+    <customclothesconfig translate="label" module="customclothes">
+        <label>Custom Clothes</label>
+        <sort_order>99999</sort_order>
+    </customclothesconfig>
+</tabs>
+<sections>
+    <customclothes_options translate="label" module="customclothes">
+        <label>Custom Clothes Options</label>
+        <tab>customclothesconfig</tab>
+        <frontend_type>text</frontend_type>
+        <sort_order>1000</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+    </customclothes_options>
+</sections>
+</config>

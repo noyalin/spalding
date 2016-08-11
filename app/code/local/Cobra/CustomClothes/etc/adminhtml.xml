@@ -1,0 +1,33 @@
+<config>
+    <menu>
+        <customclothes>
+            <title>球衣定制</title>
+            <sort_order>220</sort_order>
+            <children>
+                <example>
+                    <title>资料审核</title>
+                    <sort_order>1</sort_order>
+                    <action>customclothes/adminhtml_check</action>
+                </example>
+            </children>
+        </customclothes>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <customclothes>
+                        <title>球衣定制</title>
+                        <sort_order>200</sort_order>
+                        <children>
+                            <example>
+                                <title>资料审核</title>
+                                <sort_order>3</sort_order>
+                            </example>
+                        </children>
+                    </customclothes>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

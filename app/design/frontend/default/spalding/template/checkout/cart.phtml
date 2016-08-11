@@ -75,8 +75,9 @@
     		//购物车中的总价格
 			$total = $quote->getSubtotal();
 			$total = sprintf("%.2f", $total);
+	
 	?>
-            <p class="getSpNum ms-fr">购物车<?php echo $_item->getQty();?>&nbsp;件商品总计：小计<?php echo "￥".$total; //echo $this->getChildHtml('totals'); ?></p>
+            <p class="getSpNum ms-fr">购物车<?php echo intval($quote->getItemsQty());?>&nbsp;件商品总计：小计<?php echo "￥".$total; //echo $this->getChildHtml('totals'); ?></p>
         </div>
         <div class="spListSubmit">
             <p class="spListSubmitMoy ms-fl">总计（不含运费）：小计<span class="price"><?php echo "￥".$total; //echo $this->getChildHtml('totals'); ?></span></p>

@@ -96,7 +96,7 @@ $categoryUrlkey = $_category->getUrlKey();
 
         <?php
         // Grid Mode
-        if ($categoryUrlkey == 'custom-made'):
+        if (in_array($categoryUrlkey,array('custom-clothes','custom-made'))):
             //专属定制
             ?>
             <div class="category-products">

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cobra_CustomClothes>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Cobra_CustomClothes>
+    </modules>
+</config>

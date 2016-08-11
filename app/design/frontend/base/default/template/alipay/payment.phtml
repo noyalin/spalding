@@ -8,6 +8,7 @@ $alipay = Mage::getModel('alipay/payment');
 
 
 $orderId = (int) $this->getRequest()->getParam('order_id');
+
 if (!$orderId) {
     $session = Mage::getSingleton('checkout/session');
     $_order = Mage::getModel('sales/order');
@@ -46,9 +47,16 @@ $_items = $_order->getItemsCollection();
 $_index = 0;
 $_count = $_items->count();
 $_flag = false;
+$isCustomClothes = false;
 foreach ($_items as $_item){
     if (!($_item->getParentItem())) {
-        $_product = $_item->getProduct();
+        
+		$_product = $_item->getProduct();        
+        
+        if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product)){
+        	$isCustomClothes = true;
+        }
+        
         if ($_product->getIsCustom()) {
             $_flag = true;
             $customOrder = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId());
@@ -175,6 +183,45 @@ foreach ($_items as $_item){
         </div>
         <p class="madeCens"><span>注：定制篮球区别于普通产品，订单审核、生产约需20个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
         <?php endif; ?>
+        
+        <?php if ($isCustomClothes): ?>
+        <style>
+            .madeCens{
+                color:#fff;
+                width:930px;
+                font-size: 14px;
+
+            }
+            .madeCens th, .madeCens td{
+                border:1px solid #666;
+                padding:5px;
+
+            }
+            .madeCens th{
+                font-weight: bold;
+                background: #333;
+            }
+            .madeCens td{
+                color:#f4b201;
+            }
+        </style>
+        
+        <table class="madeCens">
+            <tr>
+                <th>定制内容</th>
+            </tr>
+              <?php 
+        		$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+            	$dataRow = Mage::getModel('customclothes/order')->loadByIncrementId($_order->getRealOrderId());
+        	?>
+            <tr>
+                <td>
+                   	<a target="_blank" href="<?php echo $dataRow->result_image;?>">定制浏览</a>	
+                </td>
+            </tr>
+        </table>
+        <?php endif; ?>
+        
     </div>
 
 

@@ -46,7 +46,10 @@
                 数量
             </div>
         </div>
-        <?php $res = true; ?>
+        <?php 
+        	$res = true;
+        	$isCustomClothes = false;
+        ?>
         <?php foreach($this->getItems() as $_item): ?>
             <?php echo $this->getItemHtml($_item)?>
             <?php
@@ -56,6 +59,9 @@
                 $categoryUrlkey = $category->getUrlKey();
                 if ($categoryUrlkey == 'custom-made') {
                     $res = false;
+                }
+                if ($categoryUrlkey == 'custom-clothes') {
+                	$isCustomClothes = true;
                 }
             } ?>
         <?php endforeach ?>
@@ -129,8 +135,47 @@
             ?>
         </div>
         <p style="padding-top:18px;font-size:12px;"><span>注：定制篮球区别于普通产品，订单审核、生产约需20个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
-    </div>
     <?php endif; ?>
+    </div>
+    
+    <?php if ($isCustomClothes): 
+        $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+        $dataRow = Mage::getModel('customclothes/temp')->loadByCustomerId($customerId);
+   	?>
+        <style>
+            .madeCens{
+                color:#fff;
+                width:826px;
+                font-size: 14px;
+                margin-left:100px;
+                margin-top:15px;
+            }
+            .madeCens th, .madeCens td{
+                border:1px solid #666;
+                padding:5px;
+
+            }
+            .madeCens th{
+                font-weight: bold;
+                background: #333;
+            }
+            .madeCens td{
+                color:#f4b201;
+            }
+        </style>
+        <table class="madeCens">
+            <tr>
+                <th>定制内容</th>
+            </tr>
+            <tr>
+                <td>
+                	<a target="_blank" href="<?php echo $dataRow->getResultImage();?>">定制浏览</a>
+                </td>
+            </tr>
+        </table>
+        <!--  <p class="madeCens"><span>注：定制篮球区别于普通产品，订单审核、生产约需20个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>-->
+    <?php endif; ?>
+    
     <!--
     <table class="opc-data-table" id="checkout-review-table">
         <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2; else: $colspan = $rowspan = 1; endif; ?>

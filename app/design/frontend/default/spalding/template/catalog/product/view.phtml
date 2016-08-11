@@ -64,12 +64,16 @@ if (strstr($shortDescription, "直径") && stristr($shortDescription, "mm")) {
 $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
 $categoryUrlkey = $_category->getUrlKey();
-if($_product->getIsCustom() != null && $_product->getIsCustom() == 1):
+//定制球衣确认预留   $categoryUrlkey == 'custom-clothes' 这个判断需要删除 并且在后天将产品 is_custom 设置成1
+if($_product->getIsCustom() == 1):
 //专属定制
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/'.$_product->getSku().'/zns_style_ball.css'); ?>">
-    <?php echo $this->getChildHtml('custommade_view') ?>
-<?php else:
+    <?php
+    	echo $this->getChildHtml('custommade_view');
+   	elseif(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'clothes'):
+   		echo $this->getChildHtml('customclothes_view');
+	else:
     ?>
     <div class="product-view">
         <div class="product-essential">
