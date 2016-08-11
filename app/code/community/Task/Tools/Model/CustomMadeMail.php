@@ -55,9 +55,9 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     	);
     
     	$transport = new Zend_Mail_Transport_Smtp('smtp.exmail.qq.com', $config);
-    	$mail = new Zend_Mail();
+    	$mail = new Zend_Mail("UTF-8");
     	$mail->setBodyText($message);
-    	$mail->setFrom('system@snkh.com.cn', 'SneakerheadCN');
+    	$mail->setFrom('system@snkh.com.cn', 'SpaldingCN');
     	$to = 'website-development@voyageone.cn,markting-spalding@voyageone.cn';
     	$emailArr = explode(',',$to);
     	$toArr = array();
