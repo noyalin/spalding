@@ -66,7 +66,7 @@ foreach ($_items as $_item){
 }
 ?>
 <style>
-    .payCustomPopUp{position:absolute; z-index:999999;background: rgba(0,0,0,.9);width:960px;height:400px;left:0; top:245px;overflow: hidden;}
+    .payCustomPopUp{position:absolute; z-index:999999;background: rgba(0,0,0,.9);width:960px;height:400px;left:0; top:280px;overflow: hidden;}
     .payPopUpCons{
         color:#f4b201;
         font-size: 16px;
@@ -114,7 +114,6 @@ foreach ($_items as $_item){
             jQuery(this).parent(".payCustomPopUp").css("display","none");
         });
     });
-    
 </script>
 
 <div class="shortcut_wrapper">
@@ -122,72 +121,58 @@ foreach ($_items as $_item){
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
         <?php if ($_flag): ?>
-        <style>
-            .madeCens{
-                color:#fff;
-                width:930px;
-                font-size: 14px;
-
-            }
-            .madeCens th, .madeCens td{
-                border:1px solid #666;
-                padding:5px;
-
-            }
-            .madeCens th{
-                font-weight: bold;
-                background: #333;
-            }
-            .madeCens td{
-                color:#f4b201;
-            }
-        </style>
         <?php $customMsg = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId()) ?>
-        <table class="madeCens">
-            <tr>
-                <th>定制1内容</th>
-                <th>定制2内容</th>
-            </tr>
-            <tr>
-                <td>
-                	<?php 
+        <div style="color:#f4b201;padding:10px;font-size:12px;border:1px solid #999;">
+            定制一：
+            <?php
                        	if($customMsg->getTypeP1() == 1):
                     ?>
-                   		<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>	
+                   		<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
                     <?php
                         else:
+                        if(trim($customMsg->getMsg4P1()) != ''):
+                            echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg);
+                        endif;
+                        if(trim($customMsg->getMsg3P1()) != ''):
+                            echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg).'， ';
+                        endif;
 	                		if ($customMsg->getMsg3P1() == 4):
-                        		echo '第一行：' . $customMsg->getMsg1P1(); 
+                        		echo '第一行：' . $customMsg->getMsg1P1();
                     ?>
                     			<br />
-                        <?php 
+                        <?php
                         		echo '第二行：' . $customMsg->getMsg2P1();
-                    		else: 
+                    		else:
                         		echo $customMsg->getMsg1P1();
-                    		endif; 
+                    		endif;
                     	endif;
                     ?>
-                </td>
-                <td>
-                	<?php 
+        </div>
+         <div class="productsListRow" style="color:#f4b201;padding:10px;font-size:12px;border:1px solid #999;border-top:0;">
+            定制二：
+            <?php
                        	if($customMsg->getTypeP2() == 1):
                     ?>
-                    	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>	
+                    	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
                     <?php
-                    	else:
+                        else:
+                            if(trim($customMsg->getMsg4P2()) != ''):
+                                echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg,2);
+                            endif;
+                            if(trim($customMsg->getMsg3P2()) != ''):
+                                echo '， '.Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg,2).'， ';
+                            endif;
                     		if ($customMsg->getMsg3P2() == 4):
                         		echo '第一行：' . $customMsg->getMsg1P2();
                      ?><br />
-                        	<?php 
+                        	<?php
                         		echo '第二行：' . $customMsg->getMsg2P2();
-                    		else: 
+                    		else:
                         		echo $customMsg->getMsg1P2();
                     		endif;
                        	endif;
                     ?>
-                </td>
-            </tr>
-        </table>
+        </div>
         <p class="madeCens"><span>注：定制篮球区别于普通产品，订单审核、生产约需20个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
         <?php endif; ?>
     </div>

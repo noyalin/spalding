@@ -39,11 +39,134 @@ if (!$_order->getId())
     exit();
 }
 $warnImageSrc =$this->getSkinUrl( "images/warn.png");
-?>      
+?>
+
+
+<?php
+$_customError = false;
+$_items = $_order->getItemsCollection();
+$_flag = false;
+foreach ($_items as $_item){
+    if (!($_item->getParentItem())) {
+        $_product = $_item->getProduct();
+        if ($_product->getIsCustom()) {
+            $_flag = true;
+            $customOrder = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId());
+            $customOrderId = $customOrder->getId();
+            if (!$customOrderId) {
+                $_customError = true;
+            }
+        }
+    }
+}
+?>
+<style>
+    .payCustomPopUp{position:absolute; z-index:999999;background: rgba(0,0,0,.9);width:100%;height:100%;left:0; top:0; padding:10px;overflow: hidden;}
+    .payPopUpCons{
+        color:#f4b201;
+        font-size: 12px;
+    }
+    .payPopUpCons h2{
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .payPopUpCons p{
+        line-height: 2em;
+        height:auto;
+        margin:0;
+    }
+    .payPopUpConf{
+        text-align: center;
+        background: #f4b201;
+        color:#000;
+        font-size: 13px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 10px auto 5px;
+        padding: 5px 0;
+        width: 100px;
+    }
+    .payPopBack{
+        font-size: 12px;
+        text-align: center;
+        padding-top: 5px;
+    }
+    .payPopBack a{
+        color:#fff;
+        text-decoration: underline;
+    }
+    .payPopBack a:hover{
+        color:#f4b201;
+    }
+</style>
+<script>
+    jQuery(function(){
+        jQuery(".payPopUpConf").click(function(){
+            jQuery(this).parent(".payCustomPopUp").css("display","none");
+        });
+    });
+</script>
 <div class="shortcut_wrapper shorturt_mobile">
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
+        <?php if ($_flag): ?>
+            <?php $customMsg = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId()) ?>
+            <div style="color:#f4b201;padding:10px;font-size:12px;border:1px solid #999;margin:0 10px;">
+                定制一：
+                <?php
+                if($customMsg->getTypeP1() == 1):
+                    ?>
+                    <a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
+                    <?php
+                else:
+                    if(trim($customMsg->getMsg4P1()) != ''):
+                        echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg);
+                    endif;
+                    if(trim($customMsg->getMsg3P1()) != ''):
+                        echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg).'， ';
+                    endif;
+                    if ($customMsg->getMsg3P1() == 4):
+                        echo '第一行：' . $customMsg->getMsg1P1();
+                        ?>
+                        <br />
+                        <?php
+                        echo '第二行：' . $customMsg->getMsg2P1();
+                    else:
+                        echo $customMsg->getMsg1P1();
+                    endif;
+                endif;
+                ?>
+            </div>
+            <div class="productsListRow" style="color:#f4b201;padding:10px;font-size:12px;border:1px solid #999;border-top:0;margin:0 10px;">
+                定制二：
+                <?php
+                if($customMsg->getTypeP2() == 1):
+                    ?>
+                    <a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
+                    <?php
+                else:
+                    if(trim($customMsg->getMsg4P2()) != ''):
+                        echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg,2);
+                    endif;
+                    if(trim($customMsg->getMsg3P2()) != ''):
+                        echo '， '.Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg,2).'， ';
+                    endif;
+                    if ($customMsg->getMsg3P2() == 4):
+                        echo '第一行：' . $customMsg->getMsg1P2();
+                        ?><br />
+                        <?php
+                        echo '第二行：' . $customMsg->getMsg2P2();
+                    else:
+                        echo $customMsg->getMsg1P2();
+                    endif;
+                endif;
+                ?>
+            </div>
+            <p class="madeCens"><span>注：定制篮球区别于普通产品，订单审核、生产约需20个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
+        <?php endif; ?>
     </div>
 
     <?php
@@ -56,7 +179,19 @@ $warnImageSrc =$this->getSkinUrl( "images/warn.png");
         echo '<div class="box">订单已经取消</div>';
     }else{
     ?>
-    <div class="box">
+    <div class="box" style="position:relative">
+        <?php if ($_flag): ?>
+            <div class="payCustomPopUp">
+                <div class="payPopUpCons">
+                    <h2>温馨提示</h2>
+                    <p>1，由于是个性化定制商品，订单付款后概不退换。</p>
+                    <p>2，审核后的订单预计将在20个工作日左右生产完成并发货。</p>
+                    <p>3，定制内容易磨损，建议将定制球作为观赏收藏使用。</p>
+                </div>
+                <div class="payPopUpConf">确认</div>
+                <div class="payPopBack"><a href="<?php echo $this->getUrl('sales/order/history/') ?>">暂不付款</a></div>
+            </div>
+        <?php endif; ?>
 <?php
 
 $weixinImageSrc = $this->getSkinUrl( "images/pay_weixin.gif");

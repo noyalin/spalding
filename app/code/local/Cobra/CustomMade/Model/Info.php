@@ -431,4 +431,25 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             return false;
         }
     }
+
+    public function getMsg4PositionResult($customMsg,$position = 1){
+        $fontArray = array(0 => 'NBA字体',2 => 'Aril',3 => '字体一',4 => '字体二');
+        if(trim($customMsg->getMsg4P1()) != '' && $position == 1){
+            return $fontArray[$customMsg->getMsg4P1()];
+        }
+        if(trim($customMsg->getMsg4P2()) != '' && $position == 2){
+            return $fontArray[$customMsg->getMsg4P2()];
+        }
+    }
+
+    public function getMsg4SizeResult($customMsg,$position = 1){
+        $sizeArray = array(1 => '小号单行',2 => '中号',3 => '大号',4 => '小号双行');
+        if(trim($customMsg->getMsg3P1()) != '' && $position == 1){
+            return $sizeArray[$customMsg->getMsg3P1()];
+        }
+        if(trim($customMsg->getMsg3P2()) != '' && $position == 2){
+            return $sizeArray[$customMsg->getMsg3P2()];
+        }
+    }
+
 }

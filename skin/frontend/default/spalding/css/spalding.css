@@ -1192,7 +1192,7 @@ span.spCarTit_fun{
 	padding:0 10px;
 }
 .spListWrap dl{
-	height:110px;
+	min-height:110px;
 	margin-bottom:10px;
 	padding-bottom:10px;
 	border-bottom:1px solid #c1c0c0;

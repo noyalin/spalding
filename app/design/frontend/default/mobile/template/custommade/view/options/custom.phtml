@@ -1,0 +1,132 @@
+<?php $this->initView(); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<?php 
+	$productImageHelper = Mage::helper('product');
+?>
+<div class="madeBallBox">
+<!-- 定制图案 -->
+<div class="cusRemind">
+    <div class="cusRemindBox remind_1" style="opacity:1;"></div>
+    <div class="cusRemindBox remind_2"></div>
+</div>
+<div class="madeStepImg" style="display:none;">
+    <img id="img_grip" style="position:absolute;opacity:0; z-index:100; cursor:pointer;" src="<?php echo $productImageHelper->getCustomMadeImage('grip.png');  ?>" />
+    <div class="cusMadeBox cusMadeCen cusMadeCen_img">
+        <div class="step_2_Fun" id="formBtn">
+            <div class="step_2_FunBg">
+                <div class="select_P1">
+                    <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_Bgball.png');  ?>" alt="">
+                </div>
+                <div class="select_P2" style="display: none;">
+                    <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_Bgball2.png');  ?>" alt="">
+                </div>
+            </div>
+            <div class="step_2_funBtn">
+                <input type="file" onchange="previewImage(this,'avatar')" id="shopSetFile_1" name="file" style="display:none ">
+                <input type="button" onclick="shopSetFile_1.click();" class="step_2_funBtn_1">
+            </div>
+
+        </div>
+        <div class="step_2_wrap" id="imgFuns" style="opacity:0; position:relative;">
+            <div class="funBall">
+                <div class="select_P1">
+                    <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_funbal-1.png');  ?>" alt="">
+                </div>
+                <div class="select_P2" style="display: none;">
+                    <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_funbal-2.png');  ?>" alt="">
+                </div>
+            </div>
+
+            <div id="cut_div" style="width:705px; height:329px; position:absolute;cursor:pointer;overflow:hidden;">
+                <table style="border-collapse: collapse; z-index: 10; filter: alpha(opacity=65); position: relative; left: 0px; top: 0px; width: 705px;  height: 400px; opacity: 0.65; " cellspacing="0" cellpadding="0" border="0" unselectable="on">
+                    <tr>
+                        <td style="height: 50px;" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 52px;"></td>
+                        <td style="width: 316px; height: 186px;"></td>
+                        <td style="width: 52px;"></td>
+                    </tr>
+                    <tr>
+                        <td style="height: 117px;" colspan="3"></td>
+                    </tr>
+                </table>
+                <img id="avatar" style="position:relative; top:-332px; left:0"  src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/step_2_Bgball.png');  ?>"  />
+            </div>
+
+
+            <div class="imgFuns">
+
+                <div style="position:absolute;">
+                    <span><img style="margin-top: 5px; cursor:pointer;"  src="<?php echo $productImageHelper->getCustomMadeImage('tomin.png');  ?>" alt="图片缩小" onclick="imageresize(false)" /></span>
+                    <span><img id="img_track" style="width: 500px; height: 4px;" src="<?php echo $productImageHelper->getCustomMadeImage('track.png');  ?>" /></span>
+                    <span><img style="margin-top: 5px; cursor:pointer;" src="<?php echo $productImageHelper->getCustomMadeImage('tomax.png');  ?>" alt="图片放大" onclick="imageresize(true)" /></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- 定制文本 -->
+<div class="madeStepTex" style="display:none;">
+    <div class="cusMadeBox cusMadeCen">
+        <div class="madeTex_ball">
+            <div class="select_P1">
+                <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg.png'); ?>" alt="">
+            </div>
+            <div class="select_P2" style="display: none;">
+                <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg2.png'); ?>" alt="">
+            </div>
+        </div>
+        <div class="madeTexBox">
+            <div class="madeTexWrap">
+                <div class="select_P1 size_80"></div>
+                <div class="select_P2"></div>
+            </div>
+            <div class="madeTexWrap" style="display:none">
+                <div class="select_P1 size_80"></div>
+                <div class="select_P2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 空白 -->
+<div class="madeStepNone">
+    <div class="cusMadeBox cusMadeCen">
+        <div class="madeTex_ball">
+            <div class="select_P1">
+                <img src="<?php echo $this -> getSkinUrl ('images/customMade/'.$_product->getSku().'/madeNone_1.png')?>" alt="">
+            </div>
+            <div class="select_P2" style="display: none;">
+                <img src="<?php echo $this -> getSkinUrl ('images/customMade/'.$_product->getSku().'/madeNone_2.png')?>" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 字体1 -->
+    <div class="madeStepFont" style="display:none;">
+        <div class="cusMadeBox cusMadeCen">
+            <div class="madeTex_ball">
+                <div class="select_P1">
+                    <img src="<?php echo $this -> getSkinUrl ('images/customMade/'.$_product->getSku().'/madeFont1_1.png') ?>"/>
+                </div>
+                <div class="select_P2" style="display: none;">
+                    <img src="<?php echo $this -> getSkinUrl ('images/customMade/'.$_product->getSku().'/madeFont1_2.png')?>"/>
+                </div>
+            </div>
+        </div>
+        <div class="cusMadeBox cusMadeCen" style="display:none">
+            <div class="madeTex_ball">
+                <div class="select_P1">
+                    <img src="<?php echo $this -> getSkinUrl ('images/customMade/'.$_product->getSku().'/madeFont2_1.png')?>"/>
+                </div>
+                <div class="select_P2" style="display: none;">
+                    <img src="<?php echo $this -> getSkinUrl ('images/customMade/'.$_product->getSku().'/madeFont2_2.png')?>"/>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
