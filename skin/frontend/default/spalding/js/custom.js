@@ -945,30 +945,34 @@ jQuery(function () {
     function submitYP_CheckText(txtInputId,madeId){
         var reg = new RegExp("^[(\u0000-\u00ff|\u4e00-\u9fa5|\uff00-\uffff)]+$","g");
         var txtInput = jQuery(txtInputId);
-        //判断中文字黑名单;
-        var count=[];//存放敏感词的个数；
-        var arr = jQuery("#blacklist").html().split(';')
-        jQuery.each(arr,function(i){
-            if(jQuery(txtInput).val().indexOf(arr[i])>=0)
-            {
-                count.push(arr[i]);
-            }
-        });
-        if(!reg.test(txtInput.val())){
-            alert("不能输入特殊符号！");
-            txtInput.focus();
+        if(jQuery(txtInput).val()){
+	        //判断中文字黑名单;
+	        var count=[];//存放敏感词的个数；
+	        var arr = jQuery("#blacklist").html().split(';')
+	        jQuery.each(arr,function(i){
+	            if(jQuery(txtInput).val().indexOf(arr[i])>=0)
+	            {
+	                count.push(arr[i]);
+	            }
+	        });
+	        if(!reg.test(txtInput.val())){
+	            alert("不能输入特殊符号！");
+	            txtInput.focus();
+	        }else{
+	            if(count.length>0){
+	                var font_family=jQuery(madeId).find(".chosFam").text();
+	                var tips="当前中文字体："+font_family;
+	                jQuery("#noTodoBox").addClass("fonttips");
+	                var tips2='"'+jQuery(txtInput).val()+'"包含"'+count[0]+'"敏感词！'
+	                notTodo(tips,tips2)
+	                txtInput.focus();
+	                return false;
+	            }else{
+	                return true;
+	            }
+	        }
         }else{
-            if(count.length>0){
-                var font_family=jQuery(madeId).find(".chosFam").text();
-                var tips="当前中文字体："+font_family;
-                jQuery("#noTodoBox").addClass("fonttips");
-                var tips2='"'+jQuery(txtInput).val()+'"包含"'+count[0]+'"敏感词！'
-                notTodo(tips,tips2)
-                txtInput.focus();
-                return false;
-            }else{
-                return true;
-            }
+            return true;
         }
     }
    /* function submitYP_CheckText(txtInputId,madeId){//判断文字是否满足条件
