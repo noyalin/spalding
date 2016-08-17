@@ -294,8 +294,8 @@ jQuery(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P3").addClass("size_40");
         jQuery(this).parent().parent().parent().siblings(".smalLine").show();
         //jQuery("#textInput_1").attr("maxlength", "10");
-        //SwapTxt_1();
-        //SwapTxt_3();
+        SwapTxt_1();
+        SwapTxt_3();
 
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
@@ -325,15 +325,15 @@ jQuery(function () {
         jQuery(".lineOne").css("color","#fcb805").removeClass("labelNoc").addClass("labelCheck");
         jQuery(".lineTwo").css("color","#9b9b9b").removeClass("labelCheck").addClass("labelNoc");
         jQuery(".zz_t").removeClass("zz_t_2");
-        //SwapTxt_2();
-       // SwapTxt_4();
+        SwapTxt_2();
+        SwapTxt_4();
     });
 
     //中号
     jQuery(".madeBoxCons_p1 .setSize_60").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_60");
-        //SwapTxt_1();
+        SwapTxt_1();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").hide();
@@ -349,7 +349,7 @@ jQuery(function () {
     jQuery(".madeBoxCons_p2 .setSize_60").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P2").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_60");
-        //SwapTxt_2();
+        SwapTxt_2();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").hide();
@@ -366,7 +366,7 @@ jQuery(function () {
     jQuery(".madeBoxCons_p1 .setSize_80").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
         jQuery(this).parents().find(".madeTexWrap .select_P1").addClass("size_80");
-        //SwapTxt_1();
+        SwapTxt_1();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".madeTextInp").find(".smaSizeInp").hide();
@@ -385,7 +385,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P2").addClass("size_80");
         jQuery(".madeTexWrap").find(".select_P1").removeClass("twoLine");
         jQuery(".madeTexWrap").find(".select_P2").removeClass("twoLine");
-        //SwapTxt_2();
+        SwapTxt_2();
 
         jQuery(this).parent().parent().parent().siblings(".smalLine").hide();
         jQuery(this).parents().find(".select_P3 , .select_P4").hide();
