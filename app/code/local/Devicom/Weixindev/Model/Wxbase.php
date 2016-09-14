@@ -364,6 +364,7 @@ EOF;
                 return $res['access_token'];
             }
         }
+        Mage::log("Wxbase.php getAccessToken()");
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url);
@@ -384,6 +385,37 @@ EOF;
         }
 
     }
+
+    public function getAccessTokenArray(){
+        $appid = $this->appid;
+        $appsecret = $this->appsecret;
+        $res = $this->readConnection->fetchRow("select *  FROM weixin_appset where id=1");
+        if(!empty($res) && $res['access_token']){
+            $createtime = $res['createtime'];
+            if(time()-$createtime < 2*3500){
+                return $res;
+            }
+        }
+        Mage::log("Wxbase.php getAccessTokenArray()");
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); // 对认证证书来源的检查，0表示阻止对证书的合法性的检查。
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1); // 从证书中检查SSL加密算法是否存在
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $r = curl_exec($ch);
+        $result = json_decode ($r ,true);
+        if($result && $result['access_token']){
+            $token = $result['access_token'];
+            $time = time();
+            $result['createtime'] = $time;
+            $sql = "update weixin_appset set access_token='$token',createtime=$time where id=1";
+            $this->writeConnection->query($sql,array($token));
+        }
+        return $result;
+    }
+
     //获取用户信息
     public function getUserInfo($accessToken,$openId){
         $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$accessToken&openid=$openId";
