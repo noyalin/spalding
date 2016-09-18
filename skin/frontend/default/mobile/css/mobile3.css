@@ -3901,7 +3901,7 @@ h3 a.headerToggle {
 
 
 .confirmBox input{
-	border:0;
+	border:1px solid #ddd;
 	color:#333;
 	height:36px;
 	line-height: 36px;
@@ -3910,7 +3910,7 @@ h3 a.headerToggle {
 	outline:none;
 	width:98%;
 	font-size:12px;
-	color:#000;
+	color:rgba(0,0,0,1.00);
 }
 
 
