@@ -1,0 +1,322 @@
+<?php //$this->initView(); ?>
+<?php
+	if(!Mage::getSingleton( 'customer/session')->isLoggedIn()){
+		Mage::getSingleton ('customer/session' )->setAfterAuthUrl(Mage::helper ('core/url' )->getCurrentUrl());
+		Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account' ));
+	}
+	
+	$_product = $this->getProduct();
+	$sku = $_product->getSku();
+	$_taxHelper = $this->helper('tax');
+	//$productImageHelper = Mage::helper('product');
+	
+	$pantsSku = $_product->getPantsSku();
+	//var_dump($_product->getPantsSku());exit;
+	
+	$pantsId = Mage::getModel('catalog/product')->getResource()->getIdBySku($pantsSku);
+	$productModel = Mage::getModel('catalog/product');
+	$pantsProduct = $productModel->load($pantsId);
+	$pantsPrice = number_format($pantsProduct->getPrice(), 2, '.', '');
+	$productId = $_product->getEntityId();
+?>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/swiper.min.css'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/animate.min.css'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/perfectscrollbar/perfect-scrollbar.css'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/customclothes.css'); ?>" type="text/css" />
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/perfectscrollbar/jquery.mousewheel.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/perfectscrollbar/perfect-scrollbar.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.arctext.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/swiper.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/customclothes.js'); ?>"></script>
+<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="customclothes_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+	<input name="mainData" id="mainData" type="hidden">
+	<input name="secondData" id="secondData" type="hidden">
+	<input value="<?php echo $pantsPrice;?>" id="pantsPrice" type="hidden">
+	<input value="<?php echo $productId;?>" id="productId" type="hidden">
+	<input name="deleteData" id="deleteData" type="hidden" value="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customclothes/index/delete">
+	<div class="checkoutMain">
+		<div class="h50"></div>
+		<div class="madeBoxVal">篮球比赛精英系列 <span class="font_yel">价格：￥<b><?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></b></span></div>
+		<div class="cusMadeShirt">
+			<div class="headbtn">
+				<ul>
+					<li><img src="<?php echo $this -> getSkinUrl("images/shirtmade/singlebtn.png");?>"></li>
+					<li><img src="<?php echo $this -> getSkinUrl("images/shirtmade/morebtn.png");?>"></li>
+				</ul>
+			</div>
+			<div class="arrowBtn">
+				<a class="btn aprev active" href="javascript:void(0);"></a>
+				<a class="btn anext" href="javascript:void(0);"></a>
+			</div>
+			<div class="viewbox red font1">
+				<div class="viewMadebox">
+					<div class="slideshow">
+						<ul>
+							<?php
+							$imageSfrontUrl = "images/shirtmade/img/".$sku."/1-1.png";
+							$imageSbackUrl = "images/shirtmade/img/".$sku."/1-2.png";
+							$imageDfrontUrl= "images/shirtmade/img/".$sku."/2-1.png";
+							$imageDbackUrl= "images/shirtmade/img/".$sku."/2-2.png";
+							?>
+							<li class="active">
+								<div class="single">
+									<div class="fontpic">
+										<b><img src="<?php echo $this -> getSkinUrl("images/shirtmade/font1_team.png");?>"></b>
+										<b><img src="<?php echo $this -> getSkinUrl("images/shirtmade/font2_team.png");?>"></b>
+									</div>
+									<img src="<?php echo $this -> getSkinUrl($imageSfrontUrl);?>" class="img">
+									<div class="textMadeA"></div><div  class="textMadeC"></div>
+								</div>
+								<div class="double" style="display:none">
+									<div class="fontpic">
+										<b><img src="<?php echo $this -> getSkinUrl("images/shirtmade/font1_num.png");?>"></b>
+										<b><img src="<?php echo $this -> getSkinUrl("images/shirtmade/font2_num.png");?>"></b>
+									</div>
+									<img src="<?php echo $this -> getSkinUrl($imageDfrontUrl);?>" class="img">
+									<div class="textMadeE"></div>
+								</div>
+							</li>
+							<li>
+								<div class="single">
+									<div class="fontpic">
+											<b><img src="<?php echo $this -> getSkinUrl("images/shirtmade/font1_player.png");?>"></b>
+											<b><img src="<?php echo $this -> getSkinUrl("images/shirtmade/font2_player.png");?>"></b>
+									</div>
+									<img src="<?php echo $this -> getSkinUrl($imageSbackUrl);?>" class="img">
+									<div class="textMadeB"></div><div  class="textMadeD"></div>
+								</div>
+								<div class="double" style="display:none">
+									<img src="<?php echo $this -> getSkinUrl($imageDbackUrl);?>" class="img">
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="cusContBox">
+				<div class="custompage active">
+					<div class="startBtn" id="startBtn"><button type="button"></button></div>
+				</div>
+				<div class="custompage cusMadeBox shirtRig">
+					<div class="tipgif">
+						<img src="<?php echo $this -> getSkinUrl("images/shirtmade/arrow.gif");?>">
+					</div>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide active">选择颜色</div><div class="swiper-slide">选择尺码</div><div class="swiper-slide">选择字体</div><div class="swiper-slide">选择样式</div><div class="swiper-slide">个性签名</div><div class="swiper-slide">添加球裤</div>
+						</div>
+					</div>
+					<div class="tabContslide">
+						<div class="tabCont active">
+							<ul class="color col_five">
+								<?php
+								$productColorArray = Mage::getModel('customclothes/customClothes')->getProductColorArrayBySku($sku);
+								foreach ($productColorArray as $key => $value):
+									?>
+									<li data-productId="<?php echo $key;?>" sku="<?php echo $value['sku'];?>" color="<?php echo $value['color'];?>" <?php if($productId == $key):?> class="active" <?php endif;?>><span></span></li>
+									<?php
+								endforeach;
+								?>
+							</ul>
+						</div>
+						<div class="tabCont">
+							<ul class="size col_four">
+								<li  class="active" data-value="98" size="M"><span>M</span></li>
+								<li data-value="99" size="L"><span>L</span></li>
+								<li data-value="100" size="XL"><span>XL</span></li>
+								<li data-value="101" size="2XL"><span>2XL</span></li>
+								<li data-value="103" size="3XL"><span>3XL</span></li>
+								<li data-value="105" size="4XL"><span>4XL</span></li>
+							</ul>
+						</div>
+						<div class="tabCont">
+							<ul class="font">
+								<li  class="active" data="1"><span  class="style1"></span></li>
+								<li data="2"><span class="style2"></li>
+							</ul>
+						</div>
+						<div class="tabCont">
+							<ul class="style">
+								<li class="active" data="1"><span class="style1"><img src="<?php echo $this -> getSkinUrl('/images/shirtmade/style1.png')?>"/></span></li>
+								<li data="2"><span  class="style2"><img src="<?php echo $this -> getSkinUrl('/images/shirtmade/style2.png')?>"/></span></span></li>
+							</ul>
+						</div>
+						<div class="tabCont">
+							<ul class="styleBox">
+								<li><div class="madeTeam"><input  name="team" autocomplete="off" onpaste="return false;" onkeydown="if(event.keyCode==13) return false;" placeholder="请输入球队名称" type="text"></div><b class="red" id="setColor" color="红色"></b></li>
+								<li>
+									<div class="madePlayer">
+										<input name="player" autocomplete="off" onpaste="return false;" onkeydown="if(event.keyCode==13) return false;" placeholder="请输入球员名称" type="text">
+									</div>
+									<div class="madeNum">
+										<input name="num" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="仅限数字" maxlength="2" autocomplete="off" onpaste="return false;" onkeydown="if(event.keyCode==13) return false;" type="text">
+									</div>
+								</li>
+							</ul>
+							<div class="fontcolor">
+								<ul class="col_five">
+									<li class="active" color="红色" data="red"><span  class="red"></span></li>
+									<li color="黑色" data="black"><span  class="black"></span></li>
+									<li color="白色" data="white"><span  class="white"></span></li>
+									<li color="灰色" data="gray"><span  class="gray"></span></li>
+									<li color="深蓝" data="deepBlue"><span  class="deepBlue"></span></li>
+									<li color="橙色" data="orange"><span  class="orange"></span></li>
+									<li color="黄色" data="yellow"><span  class="yellow"></span></li>
+								</ul>
+								<div class="sureBtn" href="javascript:void(0);" id="getColor">
+									<button type="button"></button>
+								</div>
+							</div>
+						</div>
+						<div class="tabCont ovhid">
+							<ul class="pant col_two p25"><li  class="active"><span>否</span></li><li><span>是</span></li></ul>
+							<p class="madeSize2"><span>请选择您所需球裤尺码</span></p>
+							<div class="size2">
+								<ul class="col_four">
+									<li  class="active" data-value="98" size="M"><span>M</span></li>
+									<li data-value="99" size="L"><span>L</span></li>
+									<li data-value="100" size="XL"><span>XL</span></li>
+									<li data-value="101" size="2XL"><span>2XL</span></li>
+									<li data-value="103" size="3XL"><span>3XL</span></li>
+									<li data-value="105" size="4XL"><span>4XL</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="saveBtn" id="saveBtn"><button  type="button"></button></div>
+				</div>
+				<div class="custompage">
+					<p class="addMoreBtn"><button type="button"></button></p>
+					<p class="submitBox">
+						<button class="submit" type="button"></button>
+						<button class="cancelcustom" type="button"></button>
+					</p>
+				</div>
+				<div class="custompage listBox">
+					<div class="madeNamethree">添加多件</div>
+					<div class="cusmoreBox itemBox">
+						<div class="totalbox">共 <b class="num"> 1 </b> 件&nbsp&nbsp&nbsp总价<b class="total"><?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></b>元</div>
+						<div class="madeitembox" id="scrollbar">
+							<div class="content" >
+								<table  class="madeTable">
+									<thead>
+									<th width="30%">球员名称</th><th>球员号码</th><th>尺码</th>
+									</thead>
+									<thead class="thead2" style="display:none">
+									<th width="30%">球员名称</th><th>球员号码</th><th>尺码<br>(球衣)</th><th>尺码<br>(球裤)</th>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="editbtn" id="editBtn"><span>编辑</span></div>
+						<div class="saveBtn" id="confirm4"><button  type="button"></button></div>
+					</div>
+					<div class="editmoreBox itemBox">
+						<div class="maskbg"></div>
+						<div class="comfBox">
+							<p>是否删除定制？</p>
+							<div class="confBtn">
+								<button type="button" class="saveMadeY" id="saveYesId">是</button>
+								<button type="button" class="saveMadeN" id="saveNoId">否</button>
+							</div>
+						</div>
+						<div class="totalbox">共 <b class="num"> 1 </b> 件&nbsp&nbsp&nbsp总价<b class="total"><?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></b>元</div>
+						<div class="madeitembox" id="scrollbar1">
+							<div class="content" >
+								<table  class="madeTable">
+									<thead>
+									<th width="30%">球员名称</th><th>球员号码</th><th>尺码</th><th style="width:5%"></th>
+									</thead>
+									<thead class="thead2" style="display:none">
+									<th width="30%">球员名称</th><th>球员号码</th><th>尺码<br>(球衣)</th><th>尺码<br>(球裤)</th><th style="width:5%"></th>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="addbtn" id="addbtn"><span>添加</span></div>
+						<div class="sureBtn" id="confirm3"><button  type="button"></button></div>
+					</div>
+					<div class="additemBox itemBox">
+						<p><a href="javascript:void(0);" class="close"></a></p>
+						<div class="madeInpBox">
+							<div class="player">
+								<input type="text"  autocomplete="off" onpaste="return false;"  onkeydown="if(event.keyCode==13) return false;"  placeholder="请输入球员名称">
+							</div>
+							<div class="num">
+								<input type="num"  onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="仅限数字" maxlength="2">
+							</div>
+						</div>
+						<div class="box1">
+							<h3 class="name">球衣尺码</h3>
+							<ul class="size col_four">
+								<li class="active"><span>M</span></li>
+								<li><span>L</span></li>
+								<li><span>XL</span></li>
+								<li><span>2XL</span></li>
+								<li><span>3XL</span></li>
+								<li><span>4XL</span></li>
+							</ul>
+						</div>
+						<div class="box2">
+							<h3  class="name">球裤尺码</h3>
+							<ul class="size2 col_four">
+								<li class="active"><span>M</span></li>
+								<li><span>L</span></li>
+								<li><span>XL</span></li>
+								<li><span>2XL</span></li>
+								<li><span>3XL</span></li>
+								<li><span>4XL</span></li>
+							</ul>
+						</div>
+						<p class="sureBtn">
+							<button  type="button" id="confirm2"></button>
+						</p>
+					</div>
+				</div>
+				<div class="custompage">
+						<p class="submitBox">
+							<button class="submit" type="button"></button>
+							<button class="cancelcustom" type="button"></button>
+						</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<div style="display:none" class="blacklist" id="blacklist"><?php echo Mage::getModel('core/variable')->loadByCode('blacklist')->getValue('html')?></div>
+<!-- made loading -->
+<div class="madeLoading">
+	<div class="loadingBox" id="madeLoadingBox">
+		<h2 style="text-align: center"></h2>
+		<p style="text-align: center"></p>
+		<div class="loadingImg">
+			<img src="http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/madeLoading.gif" alt="loading...">
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var teamFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getTeamFontRangeArray());?>;
+	var memberFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getMemberFontRangeArray());?>;
+	//页面刷新时初始化页面数据
+	jQuery(function (){
+		madeLoading("","数据加载中,请耐心等待...");
+		jQuery.ajax({
+			type: 'POST',
+			url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customclothes/index/all',
+			dataType: 'json',
+			success: function (res) {
+				mageAttr=res.mainData;
+				detailData=res.secondData;
+				previewData();
+			},
+			complete:function(){
+				madeLoadingClose();
+			}
+		})
+	});
+</script>
+

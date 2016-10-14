@@ -37,21 +37,28 @@
         </thead>
         <?php echo $this->getChildHtml('totals'); ?>
         <tbody>
-        <?php foreach($this->getItems() as $_item): ?>
-            <?php echo $this->getItemHtml($_item)?>
-        <?php endforeach ?>
-        <?php
-            $res = true;
+        	
+        <?php foreach($this->getItems() as $_item): 
+        	echo $this->getItemHtml($_item);
+
+        $res = true;
+        $isCustomClothes = false;
+        
             $categoryIds = $_item->getProduct()->getCategoryIds();
             foreach ($categoryIds as $categoryId) {
                 $category = Mage::getModel('catalog/category')->load($categoryId);
                 $categoryUrlkey = $category->getUrlKey();
                 if ($categoryUrlkey == 'custom-made') {
-                $res = false;
+                	$res = false;
+                }
+                if ($categoryUrlkey == 'custom-clothes') {
+                	$isCustomClothes = true;
                 }
             }
-        ?>
-        <?php if ($res == false): ?>
+            ?>
+            
+            
+            <?php if ($res == false): ?>
         <?php
         $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
@@ -64,8 +71,8 @@
                     ?>
                 <a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
                     <?php
-                    else:
-                     if(trim($customMsg->getMsg4P1()) != ''):
+                else:
+                    if(trim($customMsg->getMsg4P1()) != ''):
                         echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg);
                     endif;
                     if(trim($customMsg->getMsg3P1()) != ''):
@@ -109,9 +116,50 @@
                     <?php
                 endif;
                 ?>
-                <?php endif; ?>
+        	
             </td>
         </tr>
+        <?php endif; ?>
+            
+            <?php if ($isCustomClothes): 
+        $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+        $dataRow = Mage::getModel('customclothes/temp')->loadByCustomerId($customerId);
+   	?>
+        <style>
+            .madeCens{
+                color:#fff;
+                width:826px;
+                font-size: 14px;
+                margin-left:100px;
+                margin-top:15px;
+            }
+            .madeCens th, .madeCens td{
+                border:1px solid #666;
+                padding:5px;
+
+            }
+            .madeCens th{
+                font-weight: bold;
+                background: #333;
+            }
+            .madeCens td{
+                color:#f4b201;
+            }
+        </style>
+            <tr>
+            	<td class="last" colspan="4">定制内容 : <a target="_blank" href="<?php echo $dataRow->getResultImage();?>">定制浏览</a></td>
+            </tr>
+        <!--  <p class="madeCens"><span>注：定制篮球区别于普通产品，订单审核、生产约需20个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>-->
+    <?php endif; ?>
+            
+            <?php 
+            endforeach;?>
+        
+        
+        
+        
+     
+        
         </tbody>
     </table>
     <p style="padding-top:10px;"><span>注：定制篮球区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>

@@ -305,6 +305,7 @@
 	}
     //页面刷新时初始化页面数据
 	jQuery(function (){
+		madeLoading("","数据加载中,请耐心等待...");
 		jQuery.ajax({
 			type: 'POST',
 			url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customclothes/index/all',		

@@ -161,7 +161,6 @@ Supported layout update handles (special):
         <label>Catalog Product View (Any)</label>
         <reference name="head">
             <!-- Devicom -->
-            <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.iosslider.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/payfor.js</name></action>
             <action method="addCss"><stylesheet>css/zns_style.css</stylesheet></action>
@@ -231,6 +230,14 @@ Supported layout update handles (special):
                     <block type="custommade/view" name="custommade.view.options" as="custommade_view_options" template="custommade/view/options.phtml">
                         <block type="custommade/view" name="custommade.view.options.preview" as="custommade_view_options_preview" template="custommade/view/options/preview.phtml" />
                         <block type="custommade/view" name="custommade.view.options.custom" as="custommade_view_options_custom" template="custommade/view/options/custom.phtml" />
+                    </block>
+                </block>
+                <block type="customclothes/view" name="customclothes.view" as="customclothes_view" template="customclothes/view.phtml">
+                    <block type="opc/onepage_login" name="logincustom" as="logincustom" template="opc/onepage/login.phtml">
+                    </block>
+                    <block type="customclothes/view" name="customclothes.view.options" as="customclothes_view_options" template="customclothes/view/options.phtml">
+                        <block type="customclothes/view" name="customclothes.view.options.preview" as="customclothes_view_options_preview" template="customclothes/view/options/preview.phtml" />
+                        <block type="customclothes/view" name="customclothes.view.options.custom" as="customclothes_view_options_custom" template="customclothes/view/options/custom.phtml" />
                     </block>
                 </block>
             </block>

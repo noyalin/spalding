@@ -267,7 +267,9 @@ class Devicom_Checkout_CartController extends Mage_Checkout_CartController
          	$tmpMain['font_style'] = $mainData->style;
          	$tmpMain['team_name'] = trim($mainData->team);
          	$tmpMain['order_count'] = count($secondData);
-         	$tmpMain['color'] = $mainData->color;
+         	//$selectColor = $mainData->color;
+         	$array = $customClothesModel->getProductColorArrayBySku($configurableProductSku);
+         	$tmpMain['color'] = $array[$productId]['color'];
          	$tmpMain['font_color'] = $mainData->fontColor;
          	$tmpMain['double'] = $mainData->double;
          	$imageUrl = $customClothesModel->getTemplate($mainData,$secondData,$productId);
@@ -322,11 +324,11 @@ class Devicom_Checkout_CartController extends Mage_Checkout_CartController
          			}else{
          				$clothesSizeQtyArray[$data->size] = $clothesSizeQtyArray[$data->size] + 1;
          			}
-         			if(!isset($pantsSizeQtyArray[$data->size2]) && $data->size2 != ''){
-         				$pantsSizeQtyArray[$data->size2] = 1;
-         			}else{
-         				$pantsSizeQtyArray[$data->size2] = $pantsSizeQtyArray[$data->size2] + 1;
-         			}
+					if(!isset($pantsSizeQtyArray[$data->size2]) && $data->size2 != ''){
+						$pantsSizeQtyArray[$data->size2] = 1;
+					}elseif($data->size2 != ''){
+						$pantsSizeQtyArray[$data->size2] = $pantsSizeQtyArray[$data->size2] + 1;
+					}
          		}
          		foreach ($secondData as $data){
          			

@@ -35,6 +35,7 @@
 	$_items = $_order->getItemsCollection();
 	foreach ($_items as $_item):
 		$_flag = false;
+		$isCustomClothes = false;
 		if($_item->getParentItem()) continue;
 		$sku = $_item->getSku();
 		$arr = explode('-', $sku);
@@ -43,6 +44,9 @@
 		$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
 		if ($_product->getIsCustom()):
 			$_flag = true;
+		endif;
+		if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product)):
+			$isCustomClothes = true;
 		endif;
 	?>
 
@@ -150,6 +154,49 @@
 		</td>
 	</tr>
 	<?php endif; ?>
+	
+	
+	<?php if ($isCustomClothes): 
+       // $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+        $dataRow = Mage::getModel('customclothes/order')->loadByIncrementId($_order->getRealOrderId());
+   	?>
+        <style>
+            .madeCens{
+                color:#fff;
+                width:700px;
+                font-size: 14px;
+                
+            }
+            .madeCens th, .madeCens td{
+                border:1px solid #666;
+                padding:5px;
+                
+            }
+            .madeCens th{
+                font-weight: bold;
+                background: #333;
+            }
+            .madeCens td{
+                color:#f4b201;
+            }
+        </style>
+	<tr>
+		<td colspan="3">
+	        <table class="madeCens">
+	            <tr>
+	                <th>定制内容</th>
+	            </tr>
+	            <tr>
+	                <td>
+	                	<a target="_blank" href="<?php echo $dataRow->getResultImage();?>">定制浏览</a>
+	                </td>
+	            </tr>
+	        </table>
+        </td>
+    </tr>    
+    <?php endif; ?>
+	
+	
     <?php endforeach; ?>
 	<tfoot>
 

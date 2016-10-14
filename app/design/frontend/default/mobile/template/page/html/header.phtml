@@ -13,42 +13,42 @@
 
 <?php
 /* Get the current "actual" requested url and create the alternate site url */
-function getStoreByCode($storeCode) {
-	$stores = array_keys(Mage::app()->getStores());
-	foreach ($stores as $id) {
-		$store = Mage::app()->getStore($id);
-		if ($store->getCode() == $storeCode) {
-			return $store;
-		}
-	}
-	return null;
-}
+//function getStoreByCode($storeCode) {
+//	$stores = array_keys(Mage::app()->getStores());
+//	foreach ($stores as $id) {
+//		$store = Mage::app()->getStore($id);
+//		if ($store->getCode() == $storeCode) {
+//			return $store;
+//		}
+//	}
+//	return null;
+//}
 
 $module = $this->getRequest()->getModuleName();
 $controller = $this->getRequest()->getControllerName();
 $server_script_url = Mage::helper('core/url')->getCurrentUrl();
-$sneakerhead_en_store = getStoreByCode('sneakerhead_cn');
-$sneakerhead_en_store_url = $sneakerhead_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
-$sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_en_store_url), '/');
+//$sneakerhead_en_store = getStoreByCode('sneakerhead_cn');
+//$sneakerhead_en_store_url = $sneakerhead_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+//$sneakerhead_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_en_store_url), '/');
 
-$sneakerhead_mobile_en_store = getStoreByCode('sneakerhead_cn_mobile');
-$sneakerhead_mobile_en_store_url = $sneakerhead_mobile_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
-$sneakerhead_mobile_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_mobile_en_store_url), '/');
+//$sneakerhead_mobile_en_store = getStoreByCode('sneakerhead_cn_mobile');
+//$sneakerhead_mobile_en_store_url = $sneakerhead_mobile_en_store->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+//$sneakerhead_mobile_en_store_url = rtrim(preg_replace('/^(http|https):\/\//', '', $sneakerhead_mobile_en_store_url), '/');
 
 $MageUrl = (Mage::app()->getStore()->isCurrentlySecure()) ? Mage::getUrl('', array('_secure'=>true)) : Mage::getUrl('');
-$finalUrl = str_replace($sneakerhead_mobile_en_store_url, $sneakerhead_en_store_url, rtrim($MageUrl, '/') . $_SERVER['REQUEST_URI']);
+//$finalUrl = str_replace($sneakerhead_mobile_en_store_url, $sneakerhead_en_store_url, rtrim($MageUrl, '/') . $_SERVER['REQUEST_URI']);
 $orderId = (int) $this->getRequest()->getParam('order_id');
 /* If shipping/tracking, we need to adjust the site-switching destination, since
  * the desktop version is a popup only. Redirect to the order's view page instead. */
-if ($module == 'shipping' && $controller == 'tracking') {
-	$finalUrl = "https://$sneakerhead_en_store_url/sales/order/view/order_id/$orderId/";
-}
+//if ($module == 'shipping' && $controller == 'tracking') {
+//	$finalUrl = "https://$sneakerhead_en_store_url/sales/order/view/order_id/$orderId/";
+//}
 
 ?>
 
 <script type="text/javascript">
 
-var finalUrl = (window.location.hash) ? '<?php echo $finalUrl; ?>' + window.location.hash : '<?php echo $finalUrl; ?>';
+//var finalUrl = (window.location.hash) ? '<?php //echo $finalUrl; ?>//' + window.location.hash : '<?php //echo $finalUrl; ?>//';
 var currentPath = '<?php echo $server_script_url;?>';
 var currentModule = '<?php echo $module; ?>';
 var currentController = '<?php echo $controller; ?>';

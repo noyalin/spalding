@@ -1,0 +1,747 @@
+/*专属定制衣服*/
+button {
+    border: 0;
+}
+
+.cusMadeShirt img {
+    width: 100%;
+}
+
+.madeBoxVal {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.cusMadeShirt {
+    position: relative;
+    padding-top: 58px;
+    max-width: 414px;
+    margin: 0 auto;
+    background: url(../images/shirtmade/bg.jpg) no-repeat 50% 0;
+    background-size: 100% auto;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+
+.cusMadeShirt.active {
+    padding-top: 40px;
+}
+.cusMadeShirt .slideshow {
+    position: relative;
+    overflow: hidden;
+    background: url(../images/shirtmade/shadow.png) no-repeat bottom center;
+    background-size: 70% auto;
+}
+.cusMadeShirt .fontpic{position:absolute;left:0;top:0}
+.cusMadeShirt .slideshow ul{font-size:0;}
+.cusMadeShirt .slideshow ul li {
+    width: 100%;
+    padding-bottom: 28px;
+    text-align: center;
+    display: none;
+    position: relative
+}
+
+.cusMadeShirt .slideshow ul li.active {
+    display: block;
+}
+.cusMadeShirt .slideshow ul li.active .fontpic ul li {
+    display: block;
+}
+.cusMadeShirt .slideshow ul li .single {
+    width: 142px;
+    display: inline-block;
+    position: relative
+}
+
+.cusMadeShirt .slideshow ul li .double {
+    display: none;
+    width: 142px;
+    display: inline-block;
+    position: relative
+}
+
+.cusMadeShirt .slideshow ul li .double img {
+    margin-bottom: -40px;
+}
+
+.cusMadeShirt .slideshow .textMadeA {
+    position: absolute;
+    left: 0;
+    top:43px;
+    width: 100%;
+    line-height: 40px;
+}
+.cusMadeShirt .slideshow .dom{font-size:80%}
+.cusMadeShirt .slideshow .textMadeC {
+    position: absolute;
+    left: 0;
+    top: 79px;
+    width: 100%;
+    font-size: 48px;
+}
+
+.cusMadeShirt .slideshow .textMadeB {
+    position: absolute;
+    left: 0;
+    top: 57px;
+    width: 100%;
+}
+
+.cusMadeShirt .slideshow .textMadeD {
+    position: absolute;
+    left: 0;
+    top: 101px;
+    width: 100%;
+    font-size: 48px;
+}
+
+.cusMadeShirt .slideshow .textMadeE {
+    font-size: 34px;
+    left: 0;
+    position: absolute;
+    top: 169px;
+    width: 50%;
+}
+
+.cusMadeShirt .arrowBtn {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    display: none
+}
+
+.cusMadeShirt .arrowBtn .btn {
+    position: absolute;
+    width: 55px;
+    height: 20px;
+    background-image: url(../images/shirtmade/arrow.png);
+}
+
+.cusMadeShirt .arrowBtn .aprev.active {
+    background-position: 0 0;
+}
+
+.cusMadeShirt .arrowBtn .anext.active {
+    background-position: 100% 0;
+}
+
+.cusMadeShirt .arrowBtn .aprev {
+    left: 0;
+    background-position: 0 -20px;
+    background-size: auto 40px;
+}
+
+.cusMadeShirt .arrowBtn .anext {
+    right: 0;
+    background-position: 100% -20px;
+    background-size: auto 40px;
+}
+
+.fontyellow {
+    color: #ffef10;
+}
+
+.viewbox.black {
+    color: #181717;
+}
+
+.viewbox.white {
+    color: #ffffff;
+}
+
+.viewbox.gray {
+    color: #acacac;
+}
+
+.viewbox.blue {
+    color: #3648f9;
+}
+
+.viewbox.red {
+    color: #e4322b;
+}
+
+.viewbox.orange {
+    color: #e95931;
+}
+
+.viewbox.yellow {
+    color: #ffef10;
+}
+
+.viewbox.deepBlue {
+    color: #362e3a;
+}
+
+.viewbox.pink {
+    color: #fa97d8;
+}
+
+.custompage {
+    display: none;
+}
+
+.custompage.active {
+    display: block;
+}
+
+.shirtRig .black {
+    background: #181717;
+}
+
+.shirtRig .white {
+    background: #ffffff;
+}
+
+.shirtRig .gray {
+    background: #acacac;
+}
+
+.shirtRig .blue {
+    background: #3648f9;
+}
+
+.shirtRig .red {
+    background: #e4322b;
+}
+
+.shirtRig .orange {
+    background: #e95931;
+}
+
+.shirtRig .yellow {
+    background: #ffef10;
+}
+
+.shirtRig .deepBlue {
+    background: #362e3a;
+}
+
+.shirtRig .pink {
+    background: #fa97d8;
+}
+
+.cusMadeShirt .startBtn {
+    background: url("../images/shirtmade/btn_style.png") no-repeat 50% 50%;
+    height: 52px;
+    width: 100%;
+    background-size: auto 52px;
+}
+
+.shirtRig {
+    background: #030403;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #323232;
+    border-bottom: 0;
+    margin: -50px 10px 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+    display: none;
+}
+
+.swiper-container {
+    height: 37px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    border-top: 3px solid #434343;
+    color: #525252;
+    text-align: center;
+    background: #282828;
+    height: 37px;
+    line-height: 37px;
+    border-right: 1px solid #000;
+    font-weight: bold;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide.active {
+    color: #fcac00;
+    background: url(../images/shirtmade/tab_seleted.jpg) no-repeat;
+    border-color: #000;
+    background-size: 100% 100%;
+}
+
+.tabContslide .tabCont {
+    display: none;
+    height: 120px;
+    padding-top: 20px;
+    position: relative;
+}
+
+.tabContslide .tabCont.ovhid {
+    overflow: hidden;
+}
+
+.tabContslide .tabCont.active {
+    display: block;
+}
+
+.headbtn {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    z-index: 5;
+    display: none;
+}
+
+.headbtn ul li {
+    height: 39px;
+}
+
+.headbtn ul li img {
+    width: auto;
+    height: 39px;
+}
+
+.cusMadeBox li.active span,
+.additemBox li.active span {
+    border: 2px solid #e8ab08;
+    position: relative;
+}
+
+.cusMadeBox li.active span:before,
+.additemBox li.active span:before {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: -1px;
+    width: 15px;
+    height: 15px;
+    background: url(../images/shirtmade/selected.png) no-repeat;
+    background-size: 100% auto;
+}
+
+.cusMadeBox ul {
+    padding: 0 8px;
+    overflow: hidden;
+}
+
+.custompage ul li {
+    float: left;
+    padding: 5px 0;
+}
+
+.custompage ul li span {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border: 2px solid #515151;
+    position: relative;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    background:-webkit-linear-gradient(top,#1e1e1e,#080808);
+    background:-moz-linear-gradient(top,#1e1e1e,#080808);
+    background:linear-gradient(top,#1e1e1e,#080808);
+}
+
+.custompage .col_two li {
+    width: 50%;
+}
+
+.custompage .col_five li {
+    width: 20%;
+}
+
+.custompage .col_four li {
+    width: 25%;
+}
+
+.cusMadeBox .font li,
+.cusMadeBox .style li {
+    float: none;
+}
+
+.cusMadeBox .font .style1 {
+    background: url(../images/shirtmade/font1.png) no-repeat 50% 50%;
+    background-size: auto 37px;
+}
+
+.cusMadeBox .font .style2 {
+    background: url(../images/shirtmade/font2.png) no-repeat 50% 50%;
+    background-size: auto 37px;
+}
+.cusMadeBox .style span{
+    background:-webkit-linear-gradient(top,#1e1e1e,#080808);
+    background:-moz-linear-gradient(top,#1e1e1e,#080808);
+    background:linear-gradient(top,#1e1e1e,#080808);
+}
+.cusMadeBox .style span img{
+    width:auto;
+    height:100%;
+    vertical-align:top;
+}
+
+.cusMadeBox .styleBox li {
+    float: none;
+    position: relative;
+}
+
+.cusMadeBox .styleBox li b#setColor {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    right: 4px;
+    top: 8px;
+    border: 1px solid #000;
+
+}
+
+.cusMadeBox .styleBox input,
+.madeInpBox input {
+    background: #ebebeb;
+    border-radius: 3px;
+    font-size: 14px;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.additemBox,
+.editmoreBox {
+    display: none;
+}
+
+.additemBox .player,
+.additemBox .num {
+    padding: 7px 0
+}
+
+.additemBox .madeInpBox {
+    margin: 0 5%;
+}
+
+.additemBox h3.name {
+    padding: 7px 0;
+    color: #fff;
+    margin: 0 5%;
+}
+
+.additemBox p {
+    overflow: hidden;
+}
+
+.additemBox p a {
+    float: right;
+    width: 39px;
+    height: 39px;
+    background: url(../images/shirtmade/back.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.additemBox .sureBtn {
+    margin-top: 10px;
+}
+
+.additemBox ul {
+    overflow: hidden;
+    margin: 0 4%;
+}
+
+.additemBox .box2 {
+    display: none;
+}
+
+.additemBox.active .box2 {
+    display: block;
+}
+
+.cusMadeBox .styleBox .madePlayer {
+    float: left;
+    width: 70%;
+}
+
+.cusMadeBox .styleBox .madeNum {
+    float: left;
+    width: 25%;
+    margin-left: 5%
+}
+
+.cusMadeBox .pant.p25 {
+    padding-top: 23px;
+}
+
+.cusMadeBox .madeSize2 {
+    padding: 5px 8px;
+    display: none;
+    overflow: hidden;
+}
+
+.cusMadeBox .madeSize2 span {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    height: 37px;
+    line-height: 37px;
+    border: 2px solid #515151;
+    margin: 0 auto;
+    text-align: center;
+    width: 90%;
+}
+
+.cusMadeBox .fontcolor,
+.cusMadeBox .size2 {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    background: #000;
+    z-index: 10;
+}
+
+.cusMadeBox .fontcolor ul {
+    height: 120px;
+}
+
+.saveBtn,
+.sureBtn {
+    height:39px;
+    background: url(../images/shirtmade/savebj.jpg) repeat-x;
+    background-size: auto 39px;
+}
+
+.saveBtn button,
+.sureBtn button {
+    width: 100%;
+    height: 39px;
+}
+
+.sureBtn  button {
+    background: url(../images/shirtmade/surebtn.png) no-repeat 50% 50%;
+    background-size: auto 16px;
+}
+
+.saveBtn button {
+    background: url(../images/shirtmade/savebtn.png) no-repeat 50% 50%;
+    background-size: auto 16px;
+}
+
+.listBox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #121314;
+    z-index: 10
+}
+
+.custompage .madeitembox {
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+    margin: 0 10px;
+}
+
+.cusmoreBox .editbtn,
+.editmoreBox .addbtn {
+    text-align: center;
+    width: 158px;
+    border: 1px solid #f9b605;
+    margin: 20px auto 10px;
+}
+
+.cusmoreBox .editbtn:hover,
+.editmoreBox .addbtn:hover {
+    background: #f9b605;
+}
+
+.editmoreBox .addbtn span {
+    display: inline-block;
+    padding: 10px 0 10px 20px;
+    font-size: 12px;
+    background: url(../images/shirtmade/nav1.png) no-repeat 0 50%;
+    background-size: auto 13px;
+    color: #fff;
+}
+
+.editmoreBox .addbtn:hover span {
+    color: #000;
+    background: url(../images/shirtmade/nav1_p.png) no-repeat 0 50%;
+    background-size: auto 13px;
+}
+
+.cusmoreBox .editbtn:hover span {
+    color: #000;
+    background: url(../images/shirtmade/nav_p.png) no-repeat 0 50%;
+    background-size: auto 13px;
+}
+
+.cusmoreBox .editbtn span {
+    display: inline-block;
+    padding: 10px 0 10px 20px;
+    font-size: 12px;
+    background: url(../images/shirtmade/nav2.png) no-repeat 0 50%;
+    background-size: auto 13px;
+    color: #fff;
+}
+
+.custompage .madeNamethree {
+    padding-bottom: 7px;
+    height: 44px;
+    line-height: 44px;
+    border-top: 1px solid #464646;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    background: url(../images/shirtmade/bgtitle.jpg) repeat-x;
+    background-size: auto 51px;
+}
+
+.custompage .madeTable {
+    width: 100%;
+}
+
+.madeTable .thead2 th {
+    padding: 5px 0;
+    line-height: 15px;
+}
+
+.madeTable th,
+.madeTable td {
+    line-height: 20px;
+    padding: 10px 0;
+    vertical-align: middle;
+    text-align: center;
+    color: #eee;
+    border-bottom: 1px dashed #727272;
+}
+
+.madeTable th {
+    border-bottom: 1px solid #727272;
+}
+
+.custompage .totalbox {
+    height: 31px;
+    line-height: 31px;
+    margin: 0 10px;
+    font-size: 14px;
+    color: #eee;
+    text-align: center;
+    border-bottom: 1px solid #454646;
+}
+
+.custompage .totalbox b {
+    font-size: 18px;
+    color: #fdb905
+}
+
+.editmoreBox .icon {
+    background: url(../images/shirtmade/pencil.png) no-repeat 0% 50%;
+    background-size: auto 15px;
+    padding-left: 15px;
+}
+
+.editmoreBox .delRow {
+    background: url("../images/shirtmade/closed.png") no-repeat 0% 50%;
+    background-size: auto 15px;
+    padding: 10px 15px 10px 11px;
+    display: block;
+
+}
+
+.maskbg {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999
+}
+
+.comfBox {
+    display: none;
+    position: absolute;
+    width: 170px;
+    height: 100px;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    margin: -50px 0 0 -85px;
+    background: #e6e6e6;
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.comfBox > p {
+    margin: 20px 0 15px;
+}
+
+.confBtn button {
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.confBtn button.saveMadeY {
+    background: #f29d09;
+}
+
+.confBtn button.saveMadeN {
+    background: #eee;
+    color: #7c7c7c;
+    border-color: #cfcfcf;
+}
+
+.submitBox button.submit {
+    background: url("../images/shirtmade/btn_now.png") no-repeat 50% 50%;
+    height: 52px;
+    width: 100%;
+    background-size: auto 52px;
+}
+
+.submitBox button.cancelcustom {
+    background: url("../images/shirtmade/btn_none.png") no-repeat 50% 50%;
+    height: 52px;
+    width: 100%;
+    background-size: auto 52px;
+}
+
+.addMoreBtn button {
+    background: url("../images/shirtmade/btn_move.png") no-repeat 50% 50%;
+    height: 52px;
+    width: 100%;
+    background-size: auto 52px;
+}
+.tipgif{position:absolute;right:0;top:0;z-index:6;width:100px;display:none;}
+.tipgif img{width:100%;}
+
+/*scrollbar*/
+.ps-container .ps-scrollbar-y-rail {
+    right: 0;
+    width: 4px
+}
+
+.ps-container .ps-scrollbar-y {
+    width:4px
+}

@@ -134,7 +134,7 @@ function deleteCustomOrder(){
             document.location.reload();
         },
         complete:function(){
-            madeLoadingClose();
+           // madeLoadingClose();
         }
     })
 }
@@ -216,15 +216,15 @@ function checkTextYN(obj1,obj2,obj3){
         return false;
     }else{
         var _val=jQuery(obj3).val();
-        if(_val==0){
+        if(_val=='0' || _val=='00'){
             alert("球员号码不能为0");
             return false;
         }
-        var fdStart = _val.indexOf("0");
+/*        var fdStart = _val.indexOf("0");
         if(fdStart == 0){
             _val = _val.substring(1,2);
             jQuery(obj3).val(_val);
-        }
+        }*/
     }
     return true;
 }

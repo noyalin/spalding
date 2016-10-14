@@ -84,11 +84,10 @@ $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
 $categoryUrlkey = $_category->getUrlKey();
 if($_product->getIsCustom() != null && $_product->getIsCustom() == 1):
-//专属定制
-	?>
-	<?php echo $this->getChildHtml('custommade_view') ?>
-
-<?php else:
+	echo $this->getChildHtml('custommade_view');
+elseif(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'clothes'):
+	echo $this->getChildHtml('customclothes_view');
+else:
 ?>
 	<section id="product_wrapper">
 
@@ -297,21 +296,21 @@ if($_product->getIsCustom() != null && $_product->getIsCustom() == 1):
 			keyboardControls: true
 		});
 
-	<?php if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
-
-		jQuery('.iosSliderStyles').iosSlider({
-			startAtSlide: <?php echo (count($_productAvailableColorsCollection) < 4) ? 1 : $startingSlide ?>,
-			snapToChildren: true,
-			snapSlideCenter: <?php echo (count($_productAvailableColorsCollection) < 4) ? "false" : "true" ?>,
-			snapVelocityThreshold: 1,
-			desktopClickDrag: true,
-			infiniteSlider: true,
-			navPrevSelector: '#product_wrapper a.sliderMiniPrev',
-			navNextSelector: '#product_wrapper a.sliderMiniNext',
-			keyboardControls: false
-		});
-
-	<?php endif ?>
+<!--	--><?php //if ($_currentCategory && count($_productAvailableColorsCollection) > 1) : ?>
+//
+//		jQuery('.iosSliderStyles').iosSlider({
+//			startAtSlide: <?php //echo (count($_productAvailableColorsCollection) < 4) ? 1 : $startingSlide ?>//,
+//			snapToChildren: true,
+//			snapSlideCenter: <?php //echo (count($_productAvailableColorsCollection) < 4) ? "false" : "true" ?>//,
+//			snapVelocityThreshold: 1,
+//			desktopClickDrag: true,
+//			infiniteSlider: true,
+//			navPrevSelector: '#product_wrapper a.sliderMiniPrev',
+//			navNextSelector: '#product_wrapper a.sliderMiniNext',
+//			keyboardControls: false
+//		});
+//
+//	<?php //endif ?>
 
 		// Allowing it to be visible when drawing causes all four slides to be visible momentarily.
 		// 'display: none' would cause the page jump. This method maintains the placeholder position.

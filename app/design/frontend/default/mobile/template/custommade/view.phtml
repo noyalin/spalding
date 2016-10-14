@@ -17,6 +17,7 @@ $productImageHelper = Mage::helper('product');
 
 <input id="custom_flag1" type="hidden" value="<?php echo $this->getP1Status()?>"/>
 <input id="custom_flag2" type="hidden" value="<?php echo $this->getP2Status()?>"/>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/custom.js'); ?>"></script>
 
 <?php $_product = $this->getProduct(); ?>
 <?php $_taxHelper = $this->helper('tax'); ?>

@@ -331,7 +331,13 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                         
                         $this->savePayLog($order);
                         
-                        $this->sendMail($out_trade_no);
+                        $message = Mage::getModel('customclothes/customClothes')->updateCustomClothesOrderStatus($postData['out_trade_no']);
+                        //$this->sendMail($out_trade_no);
+                        if($message){
+                        	$this->sendMailForOrder($out_trade_no, $message);
+                        }
+                        
+                        //$this->sendMail($out_trade_no);
                         if ($method == 'get') {
                             $this->_redirect("sales/order/view/order_id/" . $order->getId());
                         } else {

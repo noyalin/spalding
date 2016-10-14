@@ -51,7 +51,10 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $product_sku."/". $urlKey."-54.jpg" ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>"><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
 	<td class="item-info">
 	<h2>
-	    <?php if ($this->hasProductUrl()):?>
+		<?php 
+       		if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
+           		echo $this->escapeHtml($this->getProductName());
+           	elseif ($this->hasProductUrl()):?>
 		<a href="<?php
             if ($_product->getIsCustom()) {
                 echo $this->getUrl('custommade/index/review/').'sku/'.$_product->getSku();
@@ -110,13 +113,13 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                         	?>
                         	<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
                         	<?php
-							else:
-							 if(trim($customMsg->getMsg4P1()) != ''):
-								echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg);
-							endif;
-							if(trim($customMsg->getMsg3P1()) != ''):
-								echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg).'， ';
-							endif;
+								else:
+							 		if(trim($customMsg->getMsg4P1()) != ''):
+										echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg);
+								endif;
+								if(trim($customMsg->getMsg3P1()) != ''):
+									echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg).'， ';
+								endif;
 							?>
 	                            <?php if ($customMsg->getMsg3P1() == 4): ?>
 	                                <?php echo '第一行：' . $customMsg->getMsg1P1() ?>
@@ -129,18 +132,19 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                             ?>
 						</dd>
 						<dt>定制二：</dt>
-                        <dd><br><?php
-                        		if($customMsg->getTypeP2() == 1):
+                        <dd><br>
+                        <?php
+                        	if($customMsg->getTypeP2() == 1):
                         	?>
                         	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
                         	 <?php
 							else:
-							if(trim($customMsg->getMsg4P2()) != ''):
-								echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg,2);
-							endif;
-							if(trim($customMsg->getMsg3P2()) != ''):
-								echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg,2).'， ';
-							endif;
+								if(trim($customMsg->getMsg4P2()) != ''):
+									echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg,2);
+								endif;
+								if(trim($customMsg->getMsg3P2()) != ''):
+									echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg,2).'， ';
+								endif;
 							?>
                         		<?php if ($customMsg->getMsg3P2() == 4): ?>
                                 	<?php echo '第一行：' . $customMsg->getMsg1P2() ?>
@@ -148,10 +152,18 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                             	<?php else: ?>
                                 	<?php echo $customMsg->getMsg1P2() ?>
                             	<?php endif; ?>
-                        	<?php
-                        		endif;
-                        	?>
+                        <?php
+                        	endif;
+                        ?>
                      	</dd>
+                    
+              		<?php
+                		elseif($attributeSetName == 'customclothes'):
+                			$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+                			$dataRow = Mage::getModel('customclothes/temp')->loadByCustomerId($customerId);
+                	?>
+                		<p><span><a target="_blank" href="<?php echo $dataRow->result_image;?>">定制浏览</a></span></p>
+                    
                     <?php endif; ?>
 
         </dl>
@@ -199,10 +211,25 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 			endif;
 			?>
 		</div>
+		
+		<?php 
+			if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
+
+			else:
+				$removeUrl = $this->getDeleteUrl();
+				if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'clothes'):
+					$removeUrl = $this->getProductUrl();
+				endif;
+		?>
+		
 		<!--删除-->
 		<div class="item-del">
-			<a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php //echo $this->__('Remove item')?>删除</a>
+			<a href="<?php echo $removeUrl;?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php //echo $this->__('Remove item')?>删除</a>
 		</div>
+		<?php 
+			endif;
+		?>
+	
 	</td>
 </tr>
 
