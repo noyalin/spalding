@@ -55,6 +55,22 @@ class Cobra_CustomClothes_IndexController extends Mage_Core_Controller_Front_Act
     	
     	$tempInfoModel = Mage::getModel('customclothes/tempInfo');
     	$tempInfoModel->deleteByCustomerId($customerId);
+    	
+    	$cart = Mage::getSingleton('checkout/cart');
+    	$customClothesModel = Mage::getModel('customclothes/customClothes');
+    	$itemsCart = $cart->getItems();
+    	if(count($itemsCart) > 0){
+    		foreach ($itemsCart as $itemCart) {
+    			$itemIdCart = $itemCart->getItemId();
+    			$tmpId = $itemCart->getProduct()->getId();
+    			$productInCart = Mage::getModel('catalog/product')->load($tmpId);
+    			if($customClothesModel->checkCustomClothesByProdcut($productInCart)){
+    				$cart->removeItem($itemIdCart);
+    			}
+    		}
+    		$cart->save();
+    	}
+    	
     	echo "success";
     	exit;
     }
