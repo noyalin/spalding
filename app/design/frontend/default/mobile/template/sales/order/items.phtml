@@ -31,16 +31,20 @@
 </div>
 
 <table cellpadding="0" cellspacing="0" border="0" class="orderInfo-prouductList">
-        <?php
-        $_items = $_order->getItemsCollection();
-        foreach ($_items as $_item):
-            if($_item->getParentItem()) continue;
-            $sku = $_item->getSku();
-            $arr = explode('-', $sku);
-            $size = end($arr);
-            $configSku = substr($sku, 0, -(strlen($size) + 1));
-            $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
-        ?>
+	<?php
+	$_items = $_order->getItemsCollection();
+	foreach ($_items as $_item):
+		$_flag = false;
+		if($_item->getParentItem()) continue;
+		$sku = $_item->getSku();
+		$arr = explode('-', $sku);
+		$size = end($arr);
+		$configSku = substr($sku, 0, -(strlen($size) + 1));
+		$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku);
+		if ($_product->getIsCustom()):
+			$_flag = true;
+		endif;
+	?>
 
 	<tr>
 		<td class="productList-img">
@@ -71,6 +75,81 @@
 			<p><?php echo $_order->formatPrice($_item->getPrice()) ?></p>
 		</td>
 	</tr>
+	<?php if ($_flag): ?>
+	<tr>
+		<td colspan="3" style="padding:0">
+			<style>
+				.madeCens{
+					font-size: 12px;
+					padding:12px;
+				}
+				.madeCens span{color:#000}
+				.madeCens th, .madeCens td{
+					border:1px solid #666;
+					padding:5px;
+				}
+				.madeCens th{
+					font-weight: bold;
+					background: #333;
+					color:#fff
+				}
+				.madeCens td{
+					color:#f4b201;
+				}
+				table.orderInfo-prouductList tr td{padding:10px 2px}
+				.myAccountBox table{margin:0}
+			</style>
+
+			<?php $customMsg = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId()) ?>
+			<table class="madeCens">
+				<tr>
+					<th>定制1内容</th>
+					<th>定制2内容</th>
+				</tr>
+				<tr>
+					<td>
+						<?php
+						if($customMsg->getTypeP1() == 1):
+							?>
+							<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
+							<?php
+						else:
+							if ($customMsg->getMsg3P1() == 4):
+								echo '第一行：' . $customMsg->getMsg1P1();
+								?>
+								<br />
+								<?php
+								echo '第二行：' . $customMsg->getMsg2P1();
+							else:
+								echo $customMsg->getMsg1P1();
+							endif;
+						endif;
+						?>
+					</td>
+					<td>
+						<?php
+						if($customMsg->getTypeP2() == 1):
+							?>
+							<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
+							<?php
+						else:
+							if ($customMsg->getMsg3P2() == 4):
+								echo '第一行：' . $customMsg->getMsg1P2();
+								?><br />
+								<?php
+								echo '第二行：' . $customMsg->getMsg2P2();
+							else:
+								echo $customMsg->getMsg1P2();
+							endif;
+						endif;
+						?>
+					</td>
+				</tr>
+			</table>
+			<p class="madeCens"><span>注：定制篮球区别于普通产品，订单审核、生产约需20个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
+		</td>
+	</tr>
+	<?php endif; ?>
     <?php endforeach; ?>
 	<tfoot>
 
