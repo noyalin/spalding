@@ -62,6 +62,15 @@
 	</div>
 </div>
 <script>
+	<?php 
+		if (strlen($this->getCouponCode())): 
+	?>
+		jQuery(".no-use-discount-coupon-modify").parent(".no-use-discount-coupon").hide();
+		jQuery(".no-use-discount-coupon-modify").parent(".no-use-discount-coupon").siblings("#discount-coupon").show();
+	<?php 
+		endif;
+	?>
+
 	jQuery(".no-use-discount-coupon-modify").click(function(){
 		jQuery(this).parent(".no-use-discount-coupon").hide();
 		jQuery(this).parent(".no-use-discount-coupon").siblings("#discount-coupon").show();
