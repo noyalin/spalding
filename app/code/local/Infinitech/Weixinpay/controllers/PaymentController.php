@@ -155,6 +155,7 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
 
                 try{
                     $order->save();
+                    $this->savePayLog($order);
                     $message = Mage::getModel('customclothes/customClothes')->updateCustomClothesOrderStatus($orderId);
                     if($message){
                     	$this->sendMailForOrder($orderId, $message);
@@ -285,5 +286,26 @@ class Infinitech_Weixinpay_PaymentController extends Mage_Core_Controller_Front_
             Mage :: log( "WeixinPayment Error Message: ".$e->getMessage());
 //                    $this->sendMail();
         }
+    }
+    
+    private function savePayLog($order){
+    	try{
+    		$resource = Mage::getSingleton('core/resource');
+    		$writeConnection = $resource->getConnection('core_write');
+    		$readConnection = $resource->getConnection('core_read');
+    		$now = date('Y-m-d H:i:s');
+    		$status = $order->getStatus();
+    		$entityId = $order->getEntityId();
+    		$storeId = intval($order->getStoreId());
+    		$orderId = $order->getIncrementId();
+    		$sql = "select id from order_pay_log where entity_id = ".$entityId;
+    		$row = $readConnection->fetchOne($sql);
+    		if($row == false){
+    			$sql = "insert into order_pay_log values(null,$storeId,$entityId,$orderId,'$now','$status');";
+    			$writeConnection->query($sql);
+    		}
+    	} catch(Exception $e){
+    		Mage :: log( "Order pay log Error Message: ".$e->getMessage());
+    	}
     }
 }
