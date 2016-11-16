@@ -57,6 +57,8 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
+        $collection->getSelect()
+        ->joinleft( array('co' => 'couponorder'), 'main_table.increment_id = co.order_increment_id', array('coupon_code' => 'co.coupon_code','coupon_type'=>'co.coupon_rule_name'));
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -112,18 +114,18 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
             'currency' => 'order_currency_code',
         ));
 
-        $this->addColumn('order_coupon', array(
+        $this->addColumn('coupon_code', array(
         	'header' => Mage::helper('sales')->__('折扣'),
         	'width' => '100px',
-        	'index' => 'coupon',
-        	'renderer'	=> 'Mage_Adminhtml_Block_Sales_Order_Renderer_Content',
+        	'index' => 'coupon_code',
+        	'filter_index'=>'co.coupon_code',
         ));
         
         $this->addColumn('coupon_type', array(
-        		'header' => Mage::helper('sales')->__('折扣类型'),
-        		'width' => '100px',
-        		'index' => 'coupon_type',
-        		'renderer'	=> 'Mage_Adminhtml_Block_Sales_Order_Renderer_Content',
+        	'header' => Mage::helper('sales')->__('折扣类型'),
+        	'width' => '100px',
+        	'index' => 'coupon_type',
+        	'filter_index'=>'co.coupon_rule_name',
         ));
         
         $this->addColumn('status', array(
@@ -229,5 +231,4 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
     {
         return $this->getUrl('*/*/grid', array('_current'=>true));
     }
-
 }
