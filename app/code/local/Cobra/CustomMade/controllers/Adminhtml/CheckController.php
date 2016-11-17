@@ -270,7 +270,12 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $p1_print_url = $subscriber->getMsg6P1();
             $p2_preview_url = $subscriber->getMsg5P2();
             $p2_print_url = $subscriber->getMsg6P2();
-            $img_prefix = $dir . "/" . $subscriber->getSku() . "-" . $subscriber->getOrderId() . "-" . $time;
+            if (!mkdir($dir . "/" .$subscriber->getOrderId())) {
+            	Mage::log("CustomMade end export return = －3");
+            	return -3;
+            }
+            
+            $img_prefix = $dir . "/" .$subscriber->getOrderId()."/". $subscriber->getSku() . "-" . $subscriber->getOrderId() . "-" . $time;
             if ($subscriber->getSku() == '74-602yc-ID01' || $subscriber->getSku() == '74-602yc-ID02') {
                 if ($p1_preview_url) {
                     if (!$this->grabImage($p1_preview_url, $img_prefix . "-2-preview.png")) {
@@ -357,13 +362,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $zip = new ZipArchive();
             $zip_name = $dir . '.zip';
             if ($zip->open($zip_name, ZipArchive::OVERWRITE) === TRUE) {
-                $handler = opendir($dir);
-                while (($filename = readdir($handler)) !== false) {
-                    if (is_file($dir . "/" . $filename)) {
-                        $zip->addFile($dir . "/" . $filename);
-                    }
-                }
-                closedir($handler);
+                $this->folderToZip($dir,$zip);
             }
             $zip->close();
 
@@ -383,6 +382,35 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         return $ret;
     }
 
+    
+    private function folderToZip($folder, &$zipFile, $subfolder = null) {
+    	
+    	// we check if $folder has a slash at its end, if not, we append one
+    	$folder .= end(str_split($folder)) == "/" ? "" : "/";
+    	$subfolder .= end(str_split($subfolder)) == "/" ? "" : "/";
+    	// we start by going through all files in $folder
+    	$handle = opendir($folder);
+    	while ($f = readdir($handle)) {
+    		if ($f != "." && $f != "..") {
+    			if (is_file($folder . $f)) {
+    				// if we find a file, store it
+    				// if we have a subfolder, store it there
+    				if ($subfolder != null)
+    					$zipFile->addFile($folder . $f, $subfolder . $f);
+    				else
+    					$zipFile->addFile($folder . $f);
+    			} elseif (is_dir($folder . $f)) {
+    				// if we find a folder, create a folder in the zip
+    				$zipFile->addEmptyDir($f);
+    				// and call the function again
+    				$this->folderToZip($folder . $f, $zipFile, $f);
+    			}
+    		}
+    	}
+    	closedir($handle);
+    }
+    
+    
     private function grabImage($url, $filename)
     {
         ob_start();
