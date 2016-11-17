@@ -388,23 +388,24 @@ final class StoneEdge_MagentoImport {
 	private static function downloadorders() {
 //		$lastDate = new DateTime();
 		$startnum = (isset($_REQUEST['startnum']) && ((int) $_REQUEST['startnum'] > 0) ? (int) $_REQUEST['startnum'] - 1 : 0);
-		$batchsize = (isset($_REQUEST['batchsize']) && (int) $_REQUEST['batchsize'] > 0 ? $_REQUEST['batchsize'] : 10000000);
-		$lastOrder = ((isset($_REQUEST['lastorder']) && strtolower($_REQUEST['lastorder']) != 'all') ? $_REQUEST['lastorder'] : 0);
+		$batchsize = (isset($_REQUEST['batchsize']) && (int) $_REQUEST['batchsize'] > 0 ? $_REQUEST['batchsize'] : 500);
+//		$lastOrder = ((isset($_REQUEST['lastorder']) && strtolower($_REQUEST['lastorder']) != 'all') ? $_REQUEST['lastorder'] : 0);
+		$lastId = (isset($_REQUEST['order_cursor']) ? $_REQUEST['order_cursor'] : 0);
 //		$lastDate = ((isset($_REQUEST['lastdate']) && strtolower($_REQUEST['lastdate']) != 'all') ? date_create($_REQUEST['lastdate']) : date_create(date('Y-m-d')));
 
         $ordRows = array();
 		$res = Mage::getSingleton('core/resource');
-		$ordersTable = $res->getTableName('sales/order');
+//		$ordersTable = $res->getTableName('sales/order');
 		$db = $res->getConnection('sales_read');
-		$lastEntityId = 0;
+//		$lastEntityId = 0;
 		$sql = new Varien_Db_Select($db);
-        $storeId = 1;
-		if ($lastOrder) {
-            $beginWord = substr($lastOrder, 0, 2);
-            if( $beginWord == 11 || $beginWord == 20){
-                $storeId = 2;
-            }
-		}
+//         $storeId = 1;
+// 		if ($lastOrder) {
+//             $beginWord = substr($lastOrder, 0, 2);
+//             if( $beginWord == 11 || $beginWord == 20){
+//                 $storeId = 2;
+//             }
+// 		}
 //        $entityStr = '';
 //        $time = Date("Y-m-d H:i:s");
 //        $gmtTime = $time;
@@ -413,12 +414,11 @@ final class StoneEdge_MagentoImport {
 //            $gmtTime = date("Y-m-d H:i:s",strtotime($time)-8*60*60);
 //        }
             $sql = $db->select();
-                $sql->from($ordersTable, 'entity_id');
-                if ($lastOrder) {
-                	$sql->where('store_id=?', $storeId, Zend_Db::INT_TYPE);
-                }
-                $sql->where('status="alipay_wait_seller_send_goods" || status="weixin_wait_seller_send_goods"');
-//                $sql->where(  "updated_at >= '$gmtTime' " ); // "entity_id > $lastEntityId"
+                $sql->from('order_pay_log', array('entity_id','id'));
+                //if ($lastOrder) {
+                	//$sql->where('store_id=?', $storeId, Zend_Db::INT_TYPE);
+                //}
+                $sql->where( "id > ?", $lastId, Zend_Db::INT_TYPE ); // "entity_id > $lastEntityId"
 //                $sql->where("coalesce(`customer_email`, '') NOT IN ('alertbot@sneakerhead.com')");
                 $sql->limit($batchsize, $startnum);
             if (self::$_debug) {
@@ -435,9 +435,10 @@ final class StoneEdge_MagentoImport {
 			$ndOrders = self::writeResponse($xd, 'Orders');
 			foreach ($ordRows as $ordRow) {
 				$orderId = $ordRow['entity_id'];
+				$id = $ordRow['id'];
 				$order = Mage::getModel('sales/order')->load($orderId);
 				$ndOrd = $xd->createElement("Order");
-				if (self::writeOrder($ndOrd, $order, $xd)) {
+				if (self::writeOrder($ndOrd, $order, $xd,$id)) {
 					$ndOrders->appendChild($ndOrd);
 				}
 			}
@@ -449,9 +450,9 @@ final class StoneEdge_MagentoImport {
 		echo $xd->saveXML();
 	}
 
-	private static function writeOrder(DOMElement $ndOrder, Mage_Sales_Model_Order $order, DOMDocument $xd) {
+	private static function writeOrder(DOMElement $ndOrder, Mage_Sales_Model_Order $order, DOMDocument $xd,$id) {
+		self::xmlAppend("OrderCursor", $id, $ndOrder, $xd);
 		self::xmlAppend("OrderNumber", $order->getData('increment_id'), $ndOrder, $xd);
-
 		$orderDate = new DateTime();
 		$orderDate = date_create($order->getData('updated_at'));
 //PCN BEGIN
