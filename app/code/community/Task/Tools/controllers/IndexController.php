@@ -206,18 +206,18 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     }
 
     public function saveContactUsAction(){
-        $params = $this->getRequest()->getParams();
-        $resource = Mage::getSingleton('core/resource');
-        $writeConnection = $resource->getConnection('core_write');
-        $readConnection = $resource->getConnection('core_read');
-        $uid = 1;
-        $name = $params['name'];
-        $telephone = $params['telephone'];
-        $content = $params['content'];
-        $region_id = $params['region_id'];
-        $city_id = $params['city_id'];
-        $query = "insert into `contactus` ( `name`, `phone`, `province`,city,content,uid) values ('$name','$telephone','$region_id','$city_id','$content',$uid)";
-        $writeConnection->query($query);
+//         $params = $this->getRequest()->getParams();
+//         $resource = Mage::getSingleton('core/resource');
+//         $writeConnection = $resource->getConnection('core_write');
+//         $readConnection = $resource->getConnection('core_read');
+//         $uid = 1;
+//         $name = addslashes($params['name']);
+//         $telephone = addslashes($params['telephone']);
+//         $content = addslashes($params['content']);
+//         $region_id = addslashes($params['region_id']);
+//         $city_id = addslashes($params['city_id']);
+//         $query = "insert into `contactus` ( `name`, `phone`, `province`,city,content,uid) values ('$name','$telephone','$region_id','$city_id','$content',$uid)";
+//         $writeConnection->query($query);
         echo "success";
     }
     function imageAction(){
@@ -538,6 +538,49 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
     public function previewAction(){
         $this->loadLayout();
         $this->renderLayout();
+    }
+    
+    
+    public function saveAuthenticationAction(){
+    	$params = $this->getRequest()->getParams();
+    	$resource = Mage::getSingleton('core/resource');
+    	$writeConnection = $resource->getConnection('core_write');
+    	
+    	$name = trim($this->getRequest()->getParam('name'));
+    	$tel = trim($this->getRequest()->getParam('tel'));
+    	$email = trim($this->getRequest()->getParam('email'));
+    	$questionType = trim($this->getRequest()->getParam('questionType'));
+    	$store = trim($this->getRequest()->getParam('store'));
+    	$country = trim($this->getRequest()->getParam('country'));
+    	$desc = trim($this->getRequest()->getParam('desc'));
+    	
+    	$patternEmail = '/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/'; 
+    	$patternMobile = '/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(14[0-9]{1}))+\d{8})$/';
+    	$patternPhone = '/^(?:(?:0\d{2,3})-)?(?:\d{7,8})(-(?:\d{3,}))?$/';
+    	if($name == '' || $questionType == '' || $store == '' || $country == '' || $desc == ''){
+    		echo "信息必须填写";
+    	}elseif(!preg_match($patternEmail, $email)){
+    		echo "邮箱格式不正确";
+    	}elseif(!preg_match($patternMobile, $tel) && !preg_match($patternPhone, $tel)){
+    		echo "电话号码格式不正确";
+    	}else{
+    		$name = addslashes($name);
+    		$tel = addslashes($tel);
+    		$email = addslashes($email);
+    		$questionType = addslashes($questionType);
+    		$store = addslashes($store);
+    		$country = addslashes($country);
+    		$desc = addslashes($desc);
+    		$time = date('Y-m-d H:i:s');
+    		$query = "insert into `verify_code_data` ( `name`, `tel`, `email`,`question_type`,`store`,`country`,`desc`,`status`,`create_time`,`update_time`) values ('$name','$tel','$email','$questionType','$store','$country','$desc','0','$time','$time')";
+    		try {
+    			$writeConnection->query($query);
+    			echo "success";
+    		}catch (Exception $ex) {
+            	echo $ex->getMessage();
+            }
+    	}
+    	exit;
     }
 
 }

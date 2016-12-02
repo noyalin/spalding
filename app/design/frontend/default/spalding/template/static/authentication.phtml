@@ -1,0 +1,958 @@
+<style>
+    /* 防伪验证页面的样式 by Sofia*/
+    .header{
+        background:#000!important;
+    }
+    .header_fix{
+        background: #000;
+        position: absolute;
+        top: 90px;
+        width: 100%;
+        height: 7px;
+    }
+    div.std *, div.std *::before, div.std *::after {
+        box-sizing: border-box;
+        transition: all 0.5s ease 0s;
+    }
+
+    .position_re{
+        position:relative;
+    }
+    div.std{
+
+        background: url('<?php echo $this->getSkinUrl('images/authentication/bg.jpg');?>') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+        position:absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-height: 900px;
+        overflow: hidden;
+    }
+
+    div.slide-group{
+        top: 90px;
+        height: 3840px;
+    }
+    .slide{height:960px;}
+    #step1{
+        background: url('<?php echo $this->getSkinUrl('images/authentication/img_01.png');?>') no-repeat scroll 0 -110px;
+    }
+    #step2{
+        background: url('<?php echo $this->getSkinUrl('images/authentication/img_01.png');?>') no-repeat scroll 0 -30px;
+    }
+    #step3{
+        background: url('<?php echo $this->getSkinUrl('images/authentication/img_03.png');?>') no-repeat scroll 0 -10px;
+    }
+    #step4{
+        background: url('<?php echo $this->getSkinUrl('images/authentication/img_03.png');?>') no-repeat scroll 0 -18px;
+    }
+    #step1,#step2,#step3,#step4{background-size:100% 100%;}
+    .authen_step .container_step{
+        text-align: center;
+    }
+    .main-container {
+        width: 930px;
+        padding: 10px 20px;
+        margin: 0 auto;
+        color: #fff;
+        min-height: 528px;
+    }
+    .authen_step .content{
+        padding-top:12px;
+        height: 688px;
+        overflow: hidden;
+    }
+    .content .content_detail{
+        display:inline-block;
+        top: -410px;
+        text-align:center;
+        padding: 0 109px;
+    }
+    .content h2{
+        font-size:14px;
+        color:#afafb6;
+        padding: 12px 45px 28px 45px;
+    }
+    .content .validate_type{
+        float:left;
+        width:50%;
+    }
+    .content .validate_type h2{
+        padding: 4px 47px 18px 47px!important;
+    }
+    .content .validate_type button{
+        text-decoration: none;
+        border: 1px solid #f1c400;
+        color: #000;
+        font-size: 16px;
+        padding: 7px 38px;
+        margin: 0 auto;
+        width: 148px;
+        background: none;
+        z-index:22!important;
+
+        position: relative;
+        overflow: hidden;
+        display: block;
+    }
+    .content .validate_type button.validate_type_new{
+        color:#f9f9f9!important;
+    }
+    .content .validate_type button.validate_type_old{
+        background:#f1c400!important;
+    }
+    /* 新/旧版验证 按钮  CSS特效 */
+    .content .validate_type>button:after {
+        content: '';
+        width: 0;
+        height: 0;
+        -webkit-transform: rotate(360deg);
+        border-style: solid;
+        border-width: 0 0 0 0;
+        border-color: transparent #3f444e transparent transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .content .validate_type>button:before {
+        content: '';
+        width: 0;
+        height: 0;
+        -webkit-transform: rotate(360deg);
+        border-style: solid;
+        border-width: 0 0 0 0;
+        border-color: transparent transparent transparent #3f444e;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .content .validate_type button:hover {
+        color: #dadce0;
+    }
+    .content .validate_type button:hover:before, .content .validate_type button:hover:after {
+        border-width: 38px 185px;
+        z-index:-1;
+    }
+    .content .validate_type button:active {
+        background: #697182;
+    }
+
+    /* 验证第二步的样式 */
+    #step2 .content .content_detail{
+        top: -435px;
+        padding: 0 98px 0 96px;
+    }
+    #step2 .content{
+        padding-top: 200px;
+    }
+    #step2 .code_area input{
+        background: #222227;
+        border: none;
+        color:#787876;
+        padding:0 10px 0 78px;
+    }
+    #step2 .code_area input:focus{
+        color:#fdfdfd;
+    }
+    .code_area b{
+        left:62px;
+        color:#767676;
+        font-size:14px;
+    }
+    .code_area  ::-webkit-input-placeholder{
+        font-size: 14px;
+        line-height: 30px;
+        color:#767676;
+    }
+    .code_area  ::-moz-placeholder{
+        font-size: 14px;
+        color:#767676;
+    }
+    .code_area input.valid_check_code{
+        width: 469px;
+        height: 50px;
+        font-size:24px;
+    }
+    .code_area input.valid_code{
+        width: 304px;
+        height: 44px;
+        font-size:20px;
+    }
+    .code_area img{
+        cursor: pointer;
+        padding: 0;
+        margin-left: 17px;
+        margin-top:-6px;
+    }
+    .btn_valid{
+        padding: 8.5px 0;
+        margin-top:10px;
+        font-size: 20px;
+        width: 680px;
+        background: #f1c400;
+        border: 1px solid #ffe500;
+    }
+    .btn_valid:hover{
+        background: #f4e109;
+    }
+    .auth_box{
+        position: relative;
+        top: 0;
+    }
+    .activeBarCode,.activeVerifyCode{
+        opacity: 1!important;
+        color:#f60936;
+        text-align: left;
+        margin-left: 156px;
+        padding:4px 0;
+    }
+    .errorMsg{
+        color:#f60936;
+        padding: 5px 0;
+        font-size: 14px;
+        margin-bottom: -7px;
+    }
+    /* 验证第三步的样式 */
+    #step3 .content .content_detail{
+        padding: 22px 120px 0px 102px;
+        top: -395px;
+    }
+    #step3 .content{
+        padding-top:200px;
+    }
+    #step3 .auth_logo{
+        padding-bottom:12px;
+    }
+    .selection_area{
+        padding: 0 113px;
+        line-height: 20px;
+        font-size: 12px;
+        color:#f9f9f9;
+    }
+    .sel_checkbox{
+        padding:10px 0 12px 0;
+    }
+    .sel_checkbox span{
+        border: 1px solid #1e1e23;
+        background:#1e1e23;
+        width: 22px;
+        height: 22px;
+        cursor:pointer;
+        margin: 0 8px 0 0;
+    }
+    .sel_checkbox #q_1_false,.sel_checkbox #q_2_false{
+        margin: 0 8px 0 60px;
+    }
+    .sel_checkbox span img{
+        width: 22px;
+        height: 21px;
+    }
+    .sel_checkbox b{
+        position: relative;
+        left: 122px;
+        color:#f60936;
+    }
+    .btn_submit{
+        padding: 6.5px 0;
+        font-size: 18px;
+        width: 680px;
+        background: #f1c400;
+        border: 1px solid #ffe500;
+    }
+    /* 验证第四步的样式 */
+    #step4 .content{
+        padding-top: 200px;
+    }
+    #step4 .content .content_detail{
+        top: -395px;
+        padding: 30px 107px 0 102px;
+    }
+    #step4 h3{
+        padding: 0 120px 85px 120px;
+        font-size: 24px;
+        line-height: 40px;
+    }
+    .selection_btn_area a{
+        padding: 9.5px 48px;
+        font-size: 20px;
+        color:#151515;
+        margin: 15px 7px;
+        border:1px solid #ffe500;
+    }
+    .selection_btn_area .btn_edit,
+    .selection_btn_area .btn_return{
+        background:#cbcbd4;
+        border:1px solid #f2f2f7;
+    }
+    .selection_btn_area .btn_edit:hover,
+    .selection_btn_area .btn_return:hover{
+        background:#f2f2f7;
+    }
+    .selection_btn_area .btn_contact{
+        background:#f1c400;
+    }
+    .selection_btn_area .btn_contact:hover{
+        background:#f4e109;
+    }
+
+    /* jQuery modal弹出框样式 */
+    .reveal-modal-bg {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background: #000;
+        background: rgba(0,0,0,.8);
+        z-index: 100;
+        display: none;
+        top: 0;
+        left: 0;
+    }
+
+    .reveal-modal {
+        visibility: hidden;
+        color:#000;
+        top: 105px;
+        left: 50%;
+        margin-left: -300px;
+        width: 520px;
+        background: #f9f9f9 no-repeat -200px -80px;
+        position: absolute;
+        z-index: 101;
+        padding: 60px 74px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 4px;
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+        -box-shadow: 0 0 10px rgba(0,0,0,.4);
+    }
+
+    .reveal-modal.small { width: 200px; margin-left: -140px;}
+    .reveal-modal.medium { width: 400px; margin-left: -240px;}
+    .reveal-modal.large { width: 564px; margin-left: -322px;}
+    .reveal-modal.xlarge { width: 800px; margin-left: -440px;}
+
+    .reveal-modal .close-reveal-modal {
+        font-size: 22px;
+        line-height: .5;
+        position: absolute;
+        top: 8px;
+        right: 11px;
+        color: #aaa;
+        text-shadow: 0 -1px 1px rgba(0,0,0,.6);
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .reveal-modal h1{
+        padding:16px 0;
+        font-size:15px;
+        text-align: center;
+        color:#545457;
+        border-top: 1px solid #a7a6ae;
+        border-bottom: 1px solid #a7a6ae;
+    }
+    .reveal-modal h1 span{
+        color:#f60936;
+    }
+    .reveal-modal a{
+        display: block;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        line-height: 16px;
+    }
+    #alertContactUs{
+        padding:20px;
+        text-align: center;
+        /*display: block;*/
+    }
+    #alertContactUs h2{
+        margin-bottom: 24px;
+    }
+    #alertContactUs #valid_check_code{
+        color:#f60936;
+        width: 28%;
+        font-size: 20px;
+    }
+    #alertContactUs span{
+        color:#f60936;
+        font-size: 12px;
+        width: 61px;
+    }
+    #alertContactUs ul li{
+        padding-bottom: 14px;
+        font-size: 14px;
+        color: #545457;
+    }
+    #alertContactUs ul li label{
+        width: 75px;
+        display: inline-block;
+    }
+    #alertContactUs ul li input{
+        background: #e9e9e9;
+        border: 1px solid #e1e1e1;
+        width: 280px;
+        height: 28px;
+        padding-left:12px;
+    }
+    #alertContactUs ul li input[value] {
+        color: #9e9e9e;
+    }
+    #alertContactUs ul li input[value]:hover {
+        color: #545457;
+    }
+    #alertContactUs ul li:last-child input{
+        width: 120px;
+        margin-right: 15px;
+    }
+    #alertContactUs ul li textarea{
+        background: #e9e9e9;
+        border: 1px solid #e1e1e1;
+        width: 280px;
+    }
+    #alertContactUs button{
+        width: 564px;
+        margin:12px 0 1px -20px;
+        padding: 9.5px 0;
+        font-size: 16px;
+        color: #f9f9f9;
+        background: #f60a36;
+        border: none;
+    }
+    #alertContactUs button:hover{
+        background:#ff2549;
+    }
+    #alertContactUs b{
+        font-size: 12px;
+        font-weight: normal;
+        color: #9e9e9e;
+    }
+    #alertContactUs b span{
+        font-weight: bold;
+    }
+    .high{
+        color：#f60a36;
+    }
+</style>
+
+<?php
+$homeUrl = Mage::helper('core/url')->getHomeUrl();
+?>
+<div class="header_fix position_re"></div>
+<div class="slide-group position_re">
+    <div id="step1" class="slide authen_step position_re">
+        <div class="main-container container_step position_re">
+            <div class="content">
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_01.png') . "'>"; ?>
+                <div class="content_detail position_re">
+                    <?php echo "<img class='auth_title position_re' src='" . $this->getSkinUrl('images/authentication/font.png') . "'>"; ?>
+                    <h2>自2017年1月1日起，斯伯丁体育用品（中国）有限公司正式启用新版防伪标签，请按您购买的标签类型选取如下不同的验证方式</h2>
+
+                    <div class="validate_type">
+                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('images/authentication/code_01.png') . "'>"; ?>
+                        <h2 class=" ">新防伪码</h2>
+                        <button id="newAuthenticationButton" class="validate_type_new">新版验证</button>
+                    </div>
+                    <div class="validate_type">
+                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('images/authentication/code_02.png') . "'>"; ?>
+                        <h2 class=" ">旧防伪码</h2>
+                        <button id="oldAuthenticationButton" class="validate_type_old"
+                                data-reveal-id='alertOldValidation'>旧版验证
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="step2" class="slide authen_step position_re">
+        <div class="main-container container_step position_re">
+            <div class="content">
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_02.png') . "'>"; ?>
+                <div class="content_detail position_re">
+                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images/authentication/icon.png') . "'>"; ?>
+                    <form class="code_area position_re" name="valid_code_input">
+                        <b class="position_re">防伪码:</b><input type="text" id="barCode" class="valid_check_code"
+                                                              maxlength="12" placeholder="请输入12位的防伪码">
+                        <span id="barCodeMSG" style="opacity: 0;width:100%;padding: 4px 0;">必填</span>
+                        <b class="position_re">验证码:</b><input type="text" id="verifyCode" class="verifyCode valid_code"
+                                                              maxlength="4" placeholder="请输入4位的验证码">
+                        <img src="<?php echo $this->getUrl('code_num.php', array('_secure' => true)) ?>" id="getCodeNum"
+                             align="absmiddle">
+                        <span id="verifyCodeMSG" style="opacity: 0;width:100%;padding: 4px 0;">必填</span>
+                    </form>
+                    <button id="authenticationSubmitButton" class="btn_valid position_re"
+                            data-reveal-id="alertValidRightNow">立即验证
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="step3" class="slide authen_step position_re">
+        <div class="main-container container_step position_re">
+            <div class="content">
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_03.png') . "'>"; ?>
+                <div class="content_detail position_re">
+                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images/authentication/code.gif') . "'>"; ?>
+                    <div class="selection_area position_re">
+                        <p>您购买商品的防伪标签上，在转动不同角度观看方框内褐色部分内容时，能否看到如下图所示 “S”英文字母的隐藏效果？</p>
+
+                        <p class="sel_checkbox">
+                            <span
+                                id="q_1_true"><?php echo "<img class='q_1_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
+                            <span
+                                id="q_1_false"><?php echo "<img class='q_1_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
+                            <b id="isQ1Selected" style="opacity: 0">必填</b>
+                        </p>
+
+                        <p>您购买商品的防伪标签上，以手指触摸方框内褐色部分内容时，是否有明显凹凸感？</p>
+
+                        <p class="sel_checkbox">
+                            <span
+                                id="q_2_true"><?php echo "<img class='q_2_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
+                            <span
+                                id="q_2_false"><?php echo "<img class='q_2_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
+                            <b id="isQ2Selected" style="opacity: 0">必填</b>
+                        </p>
+                    </div>
+                    <button id="authenticationCommitButton" class="btn_submit position_re">提交验证</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="step4" class="slide authen_step position_re">
+        <div class="main-container container_step position_re">
+            <div class="content">
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_03.png') . "'>"; ?>
+                <div class="content_detail position_re">
+                    <h3 id="validResultContent"></h3>
+
+                    <div class="selection_btn_area position_re">
+                        <a id="reEditButton" class="btn_edit position_re">修改答案</a>
+                        <a href="<?php echo $this->getUrl('/'); ?>" class="btn_return position_re">返回首页</a>
+                        <a id="contactUsButton" class="btn_contact position_re" data-reveal-id="alertContactUs">
+                            联系我们
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="alertOldValidation" class="reveal-modal xlarge">
+    <h1>旧版防伪标签请拨打电话<span>4000801876</span>进行自助查询</h1>
+    <a class="close-reveal-modal">×</a>
+</div>
+<div id="alertValidRightNow" class="reveal-modal xlarge">
+    <h1></h1>
+    <a class="close-reveal-modal">×</a>
+</div>
+<div id="alertContactUs" class="reveal-modal large">
+    <h2>商品验证序列:<span id="valid_check_code">&nbsp;&nbsp;</span></h2>
+
+    <form action="">
+        <ul>
+            <li>
+                <label for="username">* 姓&nbsp;&nbsp;&nbsp;&nbsp;名</label>
+                <input type="text" id="username" class="required">
+                <span class="formTips_username"></span>
+            </li>
+            <li>
+                <label for="tel">* 电话号码</label>
+                <input type="text" id="tel" class="required" maxlength="12" placeholder="请正确填写电话号码">
+                <span class="formTips_tel"></span>
+            </li>
+            <li>
+                <label for="email">* 电子邮件</label>
+                <input type="email" id="email" class="required" placeholder="请正确填写电子邮件">
+                <span class="formTips_email"></span>
+            </li>
+            <li>
+                <label>* 问题类型</label>
+                <input type="text" value="防伪验证" id="question_type" class="required" readonly>
+                <span class="formTips_type"></span>
+            </li>
+            <li>
+                <label>* 购买商店</label>
+                <input type="text" id="purchase_shop" class="required">
+                <span class="formTips_shop"></span>
+            </li>
+            <li>
+                <label>* 购买国家</label>
+                <input type="text" value="China" id="purchase_countury" class="required" readonly>
+                <span class="formTips_countury"></span>
+            </li>
+            <li>
+                <label>* 问题描述</label>
+                <textarea rows="3" cols="" id="question_desc" class="required" style="resize: none;"></textarea>
+                <span class="formTips_desc"></span>
+            </li>
+            <li>
+                <label>*&nbsp;验&nbsp;证&nbsp;码</label>
+                <input type="text" id="validCode" class="required" maxlength="4">
+                <img style="cursor: pointer"
+                     src="<?php echo $this->getUrl('code_num_verify.php', array('_secure' => true)) ?>"
+                     id="getCodeNumContact" align="absmiddle">
+                <span class="formTips_validCode"></span>
+            </li>
+        </ul>
+        <button type="submit" value="提交" id="send">发送问题</button>
+        <b>有任何问题？请填写虾面数据我们会尽快回复您或者拨打客服热线：<span>4000801876</span></b>
+    </form>
+    <a class="close-reveal-modal">×</a>
+</div>
+<script>
+    jQuery('#send').on('click', function (e) {
+        var verifyCode = jQuery('#validCode').val();
+        var verifyCodeCheck = false;
+        //check 验证码
+        jQuery.ajax({
+            async: false,
+            type: 'POST',
+            url: '<?php echo $homeUrl;?>barcodeVerifyCode.php',
+            data: {verifyCode: verifyCode},
+            success: function (data) {
+                if (data == 'success') {
+                    //验证码正确
+                    verifyCodeCheck = true;
+                } else {
+                    //验证码不正确
+                    jQuery('.formTips_validCode')[0].innerHTML = verifyCode == ''? '必填' : '验证码错误';
+                    getCodeNumContact();
+                }
+            },
+            error: function () {
+                getCodeNumContact();
+            }
+        });
+        if (verifyCodeCheck) {
+            jQuery('.formTips_validCode')[0].innerHTML = '';
+            //验证数据
+            var name = jQuery("#username").val();
+            var tel = jQuery("#tel").val();
+            var email = jQuery("#email").val();
+            var questionType = jQuery("#question_type").val();
+            var store = jQuery("#purchase_shop").val();
+            var country = jQuery("#purchase_countury").val();
+            var desc = jQuery("#question_desc").val();
+            var inputData = {
+                name: name,
+                email: email,
+                tel: tel,
+                questionType: questionType,
+                store: store,
+                country: country,
+                desc: desc
+            };
+
+            //需要验证
+            contact_validation(inputData);
+            //验证通过提交数据
+
+            jQuery(this).attr('disabled', 'disabled');
+
+            jQuery.ajax({
+                type: 'POST',
+                url: '<?php echo $this->getUrl('store/index/saveAuthentication'); ?>',
+                data: {
+                    name: name,
+                    email: email,
+                    tel: tel,
+                    questionType: questionType,
+                    store: store,
+                    country: country,
+                    desc: desc
+                },
+                success: function (result) {
+                    if (result == 'success') {
+//                        alert(result);
+                        jQuery('#alertContactUs')[0].style.display='none';
+                        jQuery('.reveal-modal-bg')[0].style.display='none';
+                    }else{
+                        alert(result);
+                    }
+                    jQuery('#send').removeAttr("disabled");
+
+                },
+                error: function () {
+                    jQuery('##send').removeAttr("disabled");
+                }
+            });
+
+        }
+
+        return false;
+    });
+    jQuery('#newAuthenticationButton').on('click', function (e) {
+        //	新版验证 只是调到下一步 不弹出modal框架
+        jQuery('.slide-group').animate({'top': '-960px'});
+    });
+    jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
+        jQuery('#alertContactUs')[0].style.display='block';
+        jQuery('#valid_check_code')[0].innerHTML = jQuery.trim(jQuery('#barCode').val());
+        var modalLocation = jQuery(this).attr('data-reveal-id');
+        jQuery('#' + modalLocation).reveal(jQuery(this).data());
+    });
+    jQuery('#authenticationSubmitButton').on('click', function (e) {
+        //验证数据
+        var barCode = jQuery.trim(jQuery('#barCode').val());
+        var verifyCode = jQuery.trim(jQuery('#verifyCode').val());
+        if (barCode == '' || verifyCode == '' || barCode.length < 12 || verifyCode.length < 4) {
+            //提示错误信息
+            if (barCode == '') {
+                if (jQuery('.activeBarCode').length == 0 || jQuery('.activeBarCode')[0].innerHTML != '防伪码必填') {
+                    jQuery('#barCodeMSG').addClass('activeBarCode');
+                    jQuery('.activeBarCode')[0].innerHTML = '防伪码必填';
+                }
+            }
+            if (verifyCode == '') {
+                if (jQuery('.activeVerifyCode').length == 0 || jQuery('.activeVerifyCode')[0].innerHTML != '验证码必填') {
+                    jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
+                    jQuery('.activeVerifyCode')[0].innerHTML = '验证码必填';
+                }
+            }
+            if (barCode != '' && barCode.length < 12) {
+                jQuery('#barCodeMSG').addClass('activeBarCode');
+                jQuery('.activeBarCode')[0].innerHTML = '请输入12位的防伪码';
+            }
+            if (verifyCode != '' && verifyCode.length < 4) {
+                jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
+                jQuery('.activeVerifyCode')[0].innerHTML = '请输入4位的验证码';
+            }
+
+            // 页面停止跳转下一页
+            jQuery('.slide-group').animate({'top': '-960px'});
+        } else {
+            jQuery('#barCodeMSG')[0].innerHTML = jQuery('#verifyCodeMSG')[0].innerHTML = '';
+
+            //var verifyResult = "";
+            jQuery.ajax({
+                async: false,
+                type: 'POST',
+                url: '<?php echo $homeUrl;?>barcodeVerify.php',
+                data: {barcode: barCode, verifycode: verifyCode},
+                success: function (data, textStatus) {
+                    jQuery('#authenticationSubmitButton').removeAttr("disabled");
+                    if (data == "1") {
+                        //验证码不正确
+//                        alert("验证码不正确");
+                        jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
+                        jQuery('.activeVerifyCode')[0].innerHTML = '验证码错误';
+                    } else if (data == "2") {
+                        //验证码正确
+                        switchCondition(jQuery("#authenticationSubmitButton"));
+                    } else {
+                        //弹出错误信息
+                        jQuery('#alertValidRightNow>h1')[0].innerHTML = data;
+                        jQuery('#alertValidRightNow').reveal(data);
+                    }
+                    //switchCondition(jQuery("#authenticationSubmitButton"));
+                },
+                error: function () {
+                    jQuery('#authenticationSubmitButton').removeAttr("disabled");
+                },
+                complete: function (XMLHttpRequest, textStatus) {
+                    getCodeNum();
+                }
+            });
+        }
+
+    });
+    //刷新验证码
+    jQuery('#getCodeNum').on('click', function (e) {
+        getCodeNum();
+    });
+    function getCodeNum() {
+        jQuery('#getCodeNum').attr("src", '<?php echo $homeUrl;?>code_num.php?' + Math.random());
+    }
+    function getCodeNumContact() {
+        jQuery("#getCodeNumContact").attr("src", '<?php echo $homeUrl;?>code_num_verify.php?' + Math.random());
+    }
+    jQuery('#getCodeNumContact').on('click', function (e) {
+        getCodeNumContact();
+    });
+    jQuery('#authenticationCommitButton').click(function () {
+        // 验证有没有选则，如果没有显示提示信息，如果选择了，跳转下一步
+        var q1TrueIsSelected = jQuery('.q_1_true')[0].style.display;
+        var q1FalseIsSelected = jQuery('.q_1_false')[0].style.display;
+        var q2TrueIsSelected = jQuery('.q_2_true')[0].style.display;
+        var q2FalseIsSelected = jQuery('.q_2_false')[0].style.display;
+
+        if (q1TrueIsSelected == q1FalseIsSelected || q2TrueIsSelected == q2FalseIsSelected) {
+            jQuery('#isQ1Selected')[0].style.opacity = q1TrueIsSelected == q1FalseIsSelected ? 1 : 0;
+            jQuery('#isQ2Selected')[0].style.opacity = q2TrueIsSelected == q2FalseIsSelected ? 1 : 0;
+            jQuery('.slide-group').animate({'top': '-1920px'});
+        } else {
+            jQuery('#isQ1Selected')[0].style.opacity = jQuery('#isQ2Selected')[0].style.opacity = 0;
+            if (q1TrueIsSelected == q2TrueIsSelected && q2TrueIsSelected == 'inline') {
+                jQuery('#validResultContent')[0].innerHTML = '感谢您的购买，系统判定此为原厂正品，请放心使用。'
+            }
+            if (q1TrueIsSelected == q2FalseIsSelected && q2FalseIsSelected == 'inline') {
+                jQuery('#validResultContent')[0].innerHTML = '感谢您的耐心配合，请拨打400电话或点击『联络我们』留下您的联络方式，我们将有专人协助您做进一步鉴定。'
+            }
+            if (q1FalseIsSelected == q2TrueIsSelected && q2TrueIsSelected == 'inline') {
+                jQuery('#validResultContent')[0].innerHTML = '感谢您的耐心配合，请点击『联络我们』留下您的联络方式，我们将有专人协助您做进一步鉴定。'
+            }
+            if (q1FalseIsSelected == q2FalseIsSelected && q2FalseIsSelected == 'inline') {
+                jQuery('#validResultContent')[0].innerHTML = '感谢您的耐心配合，请点击『联络我们』留下您的联络方式，我们将有专人协助您做进一步鉴定。'
+            }
+            jQuery('.slide-group').animate({'top': '-2880px'});
+        }
+    })
+    jQuery('#reEditButton').click(function () {
+        jQuery('.slide-group').animate({'top': '-1920px'});
+    })
+    jQuery.fn.reveal = function (options) {
+
+        var defaults = {
+            animation: 'fadeAndPop',
+            animationspeed: 100,
+            closeonbackgroundclick: true,
+            dismissmodalclass: 'close-reveal-modal'
+        };
+
+        var options = jQuery.extend({}, defaults, options);
+
+        return this.each(function () {
+            var modal = jQuery(this),
+                topMeasure = parseInt(modal.css('top')),
+                topOffset = modal.height() + topMeasure,
+                locked = false,
+                modalBG = jQuery('.reveal-modal-bg');
+
+            if (modalBG.length == 0) {
+                modalBG = jQuery('<div class="reveal-modal-bg">').insertAfter(modal);
+            }
+
+            modal.on('reveal:open', function () {
+                modalBG.off('click.modalEvent');
+                jQuery('.' + options.dismissmodalclass).off('click.modalEvent');
+                if (!locked) {
+                    lockModal();
+                    modal.css({'top': jQuery(document).scrollTop() - topOffset, 'opacity': 0, 'visibility': 'visible'});
+                    modalBG.fadeIn(options.animationspeed / 2);
+                    modal.delay(options.animationspeed / 2).animate({
+                        "top": jQuery(document).scrollTop() + topMeasure + 'px',
+                        "opacity": 1
+                    }, options.animationspeed, unlockModal());
+                }
+                modal.off('reveal:open');
+            });
+
+            modal.on('reveal:close', function () {
+                if (!locked) {
+                    lockModal();
+                    modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
+                    modal.animate({
+                        "top": jQuery(document).scrollTop() - topOffset + 'px',
+                        "opacity": 0
+                    }, options.animationspeed / 2, function () {
+                        modal.css({'top': topMeasure, 'opacity': 0, 'visibility': 'hidden'});
+                        unlockModal();
+                    });
+                }
+                modal.off('reveal:close');
+            });
+
+
+            modal.trigger('reveal:open')
+
+            var closeButton = jQuery('.' + options.dismissmodalclass).on('click.modalEvent', function () {
+                modal.trigger('reveal:close')
+            });
+
+            if (options.closeonbackgroundclick) {
+                modalBG.css({"cursor": "pointer"})
+                modalBG.on('click.modalEvent', function () {
+                    modal.trigger('reveal:close')
+                });
+            }
+
+
+            function unlockModal() {
+                locked = false;
+            }
+
+            function lockModal() {
+                locked = true;
+            }
+
+        });
+    }
+    /* 联系我们表单验证 */
+    function contact_validation(sourceData) {
+
+        //验证姓名为空
+        jQuery('.formTips_username')[0].innerHTML = sourceData.name == '' ? '必填' : '';
+        if (sourceData.email == ''){
+            jQuery('.formTips_email')[0].innerHTML = '必填';
+        }else if (sourceData.email != '' && !sourceData.email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/)) {
+            jQuery('.formTips_email')[0].innerHTML = '格式错误';
+        } else {
+            jQuery('.formTips_email')[0].innerHTML = '';
+        }
+        jQuery('.formTips_type')[0].innerHTML = sourceData.questionType == '' ? '必填' : '';
+        jQuery('.formTips_shop')[0].innerHTML = sourceData.store == '' ? '必填' : '';
+        jQuery('.formTips_countury')[0].innerHTML = sourceData.country == '' ? '必填' : '';
+        jQuery('.formTips_desc')[0].innerHTML = sourceData.desc == '' ? '必填' : '';
+
+        //验证手机号码
+        var mobile = sourceData.tel;
+        var isMobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(14[0-9]{1}))+\d{8})$/;
+        var isPhone = /^(?:(?:0\d{2,3})-)?(?:\d{7,8})(-(?:\d{3,}))?$/;
+
+        var errorMsg = "格式错误";
+        if (sourceData.tel == '') {
+            jQuery('.formTips_tel')[0].innerHTML = '必填';
+            return false;
+        } else {
+            jQuery('.formTips_tel')[0].innerHTML = '';
+        }
+        //如果为1开头则验证手机号码
+        if (mobile.substring(0, 1) == 1) {
+            if (!isMobile.exec(mobile) && mobile.length != 11) {
+                jQuery('.formTips_tel')[0].innerHTML = errorMsg;
+                return false;
+            }
+        }
+        //如果为0开头则验证固定电话号码
+        else if (mobile.substring(0, 1) == 0) {
+            if (!isPhone.test(mobile)) {
+                jQuery('.formTips_tel')[0].innerHTML = errorMsg;
+                return false;
+            }
+        } else {
+            jQuery('.formTips_tel')[0].innerHTML = errorMsg;
+            return false;
+        }
+    }
+    /* 处理立即验证按钮，默认是直接翻页下一步， 如果返回错误值，则停止翻页，弹出modal框 */
+    function switchCondition(item) {
+        if (item.attr('data-reveal-id') == 'alertValidRightNow') {
+            if (jQuery('.btn_valid').attr('disabled') == undefined) {
+                jQuery('.slide-group').animate({'top': '-1920px'});
+            }
+        } else {
+            return false;
+        }
+    }
+    jQuery(function () {
+        jQuery('.q_1_true, .q_1_false, .q_2_true, .q_2_false').hide();
+        jQuery('#q_1_true').click(function () {
+            jQuery('.q_1_true').toggle();
+            jQuery('.q_1_false').hide();
+        });
+        jQuery('#q_1_false').click(function () {
+            jQuery('.q_1_false').toggle();
+            jQuery('.q_1_true').hide();
+        });
+        jQuery('#q_2_true').click(function () {
+            jQuery('.q_2_true').toggle();
+            jQuery('.q_2_false').hide();
+        });
+        jQuery('#q_2_false').click(function () {
+            jQuery('.q_2_false').toggle();
+            jQuery('.q_2_true').hide();
+        });
+    });
+</script>

@@ -1,140 +1,52 @@
-<?php
-$home_url = Mage::helper('core/url')->getHomeUrl();
+<style>
+    #slideGroup {
+        background: #000;
+        text-align: center;
+    }
 
-?>
-<script text="text/javascript" >
-    jQuery(document).ready(function(){
-        jQuery("#getcode_num").click(function(){
-            jQuery(this).attr("src",'<?php echo $home_url;?>code_num.php?' + Math.random());
-        });
-        jQuery(".confirmBtn").delegate(".ds_dialog_yes","click",function(){
-            var flag =  checkAddressForm();
-            if(flag == true){
-                jQuery(this).html("正在查询中...");
-                jQuery(this).addClass("ds_dialog_process");
-                jQuery(this).removeClass("ds_dialog_yes");
-                var barcode = jQuery("#barcode");
-                var verifycode = jQuery("#verifycode");
-                jQuery("#barcode_error").html("");
-                jQuery("#verifycode_error").html("");
-                barcode.removeClass("error");
-                verifycode.removeClass("error");
-                sure_button_onclick();
+    #slideGroup li img {
+        width: 70%;
+    }
+
+    #slideGroup > ol > li, #slideGroup > ol > li.on {
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        margin: 0 4px;
+        background: #fff;
+    }
+
+    #slideGroup > ol > li.on {
+        background: #fdb803;
+    }
+</style>
+<div class="checktf" style="-webkit-transform:translate3d(0,0,0);">
+    <div id="slideGroup" class="box_swipe">
+        <ul>
+            <li><img id="img01" src="<?php echo $this->getSkinUrl("images/authentication/img01.png") ?>" /></li>
+            <li><img id="img02" src="<?php echo $this->getSkinUrl("images/authentication/img02.png") ?>" /></li>
+            <li><img id="img03" src="<?php echo $this->getSkinUrl("images/authentication/img03.png") ?>" /></li>
+        </ul>
+        <ol>
+            <li class="on"></li>
+            <li class=""></li>
+            <li class=""></li>
+        </ol>
+    </div>
+</div>
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/swipe.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+    jQuery(function(){
+        new Swipe(document.getElementById('slideGroup'), {
+            speed:1000,
+            auto:0,
+            callback: function(){
+                var lis = jQuery(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
             }
         });
-        function checkAddressForm(){
-            var flag = true;
-            var barcode = jQuery("#barcode");
-            var verifycode = jQuery("#verifycode");
-            if (isEmpty(barcode.val())){
-                jQuery("#barcode_error").html("防伪码不能为空");
-                barcode.addClass("error");
-                flag = false;
-            }
-            if (isEmpty(verifycode.val())){
-                jQuery("#verifycode_error").html("验证码不能为空");
-                verifycode.addClass("error");
-                flag = false;
-            }
-            return flag;
-        }
-        function sure_button_onclick(){
-            var barcode =jQuery("#barcode").val();
-            var verifycode =jQuery("#verifycode").val();
-            var verifyResult = "";
-            jQuery.ajax({
-                async:false,
-                type: 'POST',
-                url: '<?php echo $home_url;?>barcodeVerify.php',
-                beforeSend:loading,
-                data: {barcode:barcode,verifycode:verifycode},
-                success: function(data, textStatus){
-                    verifyResult = data.replace("防伪码系统升级中","由于此款防伪码为老款");
-//                    jQuery(this).addClass("ds_dialog_process_second");
-//                    jQuery(this).removeClass("ds_dialog_process");
-                },
-                //  dataType: "json",
-                error: function(){
-                   // alert('error');
-                }
-            });
-            if(verifyResult != "1"){
-                document.getElementById("barcodeVerifyResult").innerHTML = verifyResult;
-                if(verifyResult.indexOf("没有此数码，请当心该产品是假冒产品")>=0  ||   verifyResult.indexOf("该防伪码已超过规定查询次数")>=0 ||  verifyResult.indexOf("没有此防伪码，请当心该产品是假冒产品")>=0){
-                }else{
-                    jQuery("#checkmessage").html("");
-                }
-            }else{
-                jQuery("#verifycode_error").html("验证码不符");
-                jQuery("#verifycode").addClass("error");
-                jQuery('#barcodeVerifyResult').html("");
-            }
-
-            jQuery("#zy_check_ok").html("验证完成");
-            jQuery("#zy_check_ok").addClass("ds_dialog_complete");
-            jQuery("#zy_check_ok").removeClass("ds_dialog_process");
-            window.setTimeout(function () {
-
-                jQuery("#zy_check_ok").html("确认");
-                jQuery("#zy_check_ok").addClass("ds_dialog_yes");
-                jQuery("#zy_check_ok").removeClass("ds_dialog_complete");
-            }, 5000);
-
-        }
-        function isEmpty (s) {
-            return s == '';
-        }
-
-        function loading(){
-            var html = '<div><img src="<?php echo $this->getSkinUrl(); ?>images/auth/ajax-loader-tr.gif"/></div>';
-            jQuery('#barcodeVerifyResult').html(html);
-        }
-
-    });
+    })
 </script>
-
-<div class="detail-back">
-	<p><a href="<?php echo $home_url;?>">返回首页</a></p>
-</div>
-<div id="my-account-wrapper">
-	<h1>防伪码验证</h1>
-	<div id="my-confirm-login-wrapper">
-		<div class="my-account-content confirm-content">
-			<form action="">
-				<div class="confirmBox">
-					<p>防伪码</p>
-					<div class="infoInput"><input type="text" name="" id="barcode" ></div>
-				</div>
-				<div class="confirmBox">
-					<p>验证码</p>
-					<div class="infoInput">
-
-                        <span><img style="cursor: pointer" src="<?php echo $this->getUrl('code_num.php', array('_secure'=>true)) ?>" id="getcode_num" title="看不清，点击换一张" align="absmiddle"/>
-						</span>
-                            <input type="text" name="" id="verifycode" class="verImg" >
-					</div>
-				</div>
-<!--				<h3>-->
-<!--					<span>防伪码不能为空</span>-->
-<!--					<span>验证码不能为空</span>-->
-<!--				</h3>-->
-				<div class="confirmBtn">
-					<i id="zy_check_ok" class="ds_dialog_yes"></i>
-				</div>
-				<div class="confirmSn">
-					
-<!--					<h2>没有此数码，请当心该产品是假冒产品。如有疑问，请拨打咨询电话4008-155-999。</h2>-->
-					<p>所有的验证码只能验证一次,请输入后点击确认,耐心等待,不要重复点击确认按钮!</p>
-					<p>为避免假冒产品，我们建议您通过斯伯丁官方授权经销商购买并保留相应发票。</p>
-                    <div style="font-weight:bold;color:#fdb905;">
-                        <em id="barcode_error" class="error_em"></em>
-                        <em id="verifycode_error" class="error_em"></em>
-                        <div id="barcodeVerifyResult"></div>
-                    </div>
-
-
-				</div>
-			</form>
-		</div>
-	</div>
-</div>

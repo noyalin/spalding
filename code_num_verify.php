@@ -16,6 +16,7 @@ function getCode($num,$w,$h) {
             unset($strArr[$key]);
         }
     }
+
     for($j = 2;$j <= 9;$j++){
     	$strArr[] = $j;
     }
@@ -31,7 +32,7 @@ function getCode($num,$w,$h) {
     //}
     //4位验证码也可以用rand(1000,9999)直接生成
     //将生成的验证码写入session，备验证时用
-    $_SESSION["helloweba_num"] = $code;
+    $_SESSION["helloweba_num_validcode"] = $code;
     //创建图片，定义颜色值
     header("Content-type: image/PNG");
     $im = imagecreate($w, $h);

@@ -66,7 +66,7 @@
                 ?>
             </ul>
         </div>
-        <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="javascript:void(0)"><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209007.png'?>" alt=""></a></div>
+        <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="<?php echo $this->getUrl('authentication') ?>" target="_blank" ><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209007.png'?>" alt=""></a></div>
     </div>
 </div>
 
@@ -83,13 +83,13 @@
         jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5-250+"px");
         jQuery(".kuzhan_flash_s").html(str);
         jQuery(".kuzhan_sele").eq(0).addClass("kuzhan_over")
-        jQuery('.plateBox_tf').on("click",function(){
-            jQuery(this).parents().find('#dialog').fadeIn();
-        });
-
-        jQuery('.closebutton').on("click",function(){
-            jQuery(this).parent().parent().parent('#dialog').fadeOut();
-        });
+//        jQuery('.plateBox_tf').on("click",function(){
+//            jQuery(this).parents().find('#dialog').fadeIn();
+//        });
+//
+//        jQuery('.closebutton').on("click",function(){
+//            jQuery(this).parent().parent().parent('#dialog').fadeOut();
+//        });
         
         setInterval("ballMove()",1000);
 
