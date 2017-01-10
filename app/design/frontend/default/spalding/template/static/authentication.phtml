@@ -7,18 +7,18 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <div id="step1" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_01.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_01.png') . "'>"; ?>
                 <div class="content_detail position_re">
-                    <?php echo "<img class='auth_title position_re' src='" . $this->getSkinUrl('/images/authentication/font.png') . "'>"; ?>
+                    <?php echo "<img class='auth_title position_re' src='" . $this->getSkinUrl('images/authentication/font.png') . "'>"; ?>
                     <h2>自2017年1月1日起，斯伯丁体育用品（中国）有限公司正式启用新版防伪标签，请按您购买的标签类型选取如下不同的验证方式</h2>
 
                     <div class="validate_type">
-                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('/images/authentication/code_01.png') . "'>"; ?>
+                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('images/authentication/code_01.png') . "'>"; ?>
                         <h2 class=" ">新防伪码</h2>
                         <button id="newAuthenticationButton" class="validate_type_new">新版验证</button>
                     </div>
                     <div class="validate_type">
-                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('/images/authentication/code_02.png') . "'>"; ?>
+                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('images/authentication/code_02.png') . "'>"; ?>
                         <h2 class=" ">旧防伪码</h2>
                         <button id="oldAuthenticationButton" class="validate_type_old"
                                 data-reveal-id='alertOldValidation'>旧版验证
@@ -32,9 +32,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <div id="step2" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_02.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_02.png') . "'>"; ?>
                 <div class="content_detail position_re">
-                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('/images/authentication/icon.png') . "'>"; ?>
+                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images/authentication/icon.png') . "'>"; ?>
                     <form class="code_area position_re" name="valid_code_input">
                         <b class="position_re">防伪码:</b><input type="text" id="barCode" class="valid_check_code"
                                                               maxlength="14" placeholder="请输入12或14位的防伪码">
@@ -55,17 +55,17 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <div id="step3" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_03.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_03.png') . "'>"; ?>
                 <div class="content_detail position_re">
-                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('/images/authentication/code.gif') . "'>"; ?>
+                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images/authentication/code.gif') . "'>"; ?>
                     <div class="selection_area position_re">
                         <p>您购买商品的防伪标签上，在转动不同角度观看方框内褐色部分内容时，能否看到如下图所示 “S”英文字母的隐藏效果？</p>
 
                         <p class="sel_checkbox">
                             <span
-                                id="q_1_true"><?php echo "<img class='q_1_true' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>是
+                                id="q_1_true"><?php echo "<img class='q_1_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
                             <span
-                                id="q_1_false"><?php echo "<img class='q_1_false' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>否
+                                id="q_1_false"><?php echo "<img class='q_1_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
                             <b id="isQ1Selected" style="opacity: 0">必填</b>
                         </p>
 
@@ -73,9 +73,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
                         <p class="sel_checkbox">
                             <span
-                                id="q_2_true"><?php echo "<img class='q_2_true' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>是
+                                id="q_2_true"><?php echo "<img class='q_2_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
                             <span
-                                id="q_2_false"><?php echo "<img class='q_2_false' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>否
+                                id="q_2_false"><?php echo "<img class='q_2_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
                             <b id="isQ2Selected" style="opacity: 0">必填</b>
                         </p>
                     </div>
@@ -87,7 +87,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <div id="step4" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_03.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_03.png') . "'>"; ?>
                 <div class="content_detail position_re">
                     <h3 id="validResultContent"></h3>
 
