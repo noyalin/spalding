@@ -11,20 +11,21 @@ if($verifycode != strtolower($_SESSION["helloweba_num"])){
     echo '1';
     exit;
 }
-$barcode = trim($_POST['barcode']);
-$barcode = str_replace(" ","",$barcode);
+exit;
+// $barcode = trim($_POST['barcode']);
+// $barcode = str_replace(" ","",$barcode);
 
-$barcodeLast = substr($barcode, strlen($barcode) - 1,1);
-if($barcodeLast == '1'){
-	echo '2';
-	exit;
-}else if($barcodeLast == '2'){
-	echo '<注意!!> XXXXXXXXXXXX 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。';
-	exit;
-}else{
-	echo '<注意!!> XXXXXXXXXXXX您查询的商品验证码不存在，谨防假冒!!如有疑问请拨打咨询电话4000801876。';
-	exit;
-}
+// $barcodeLast = substr($barcode, strlen($barcode) - 1,1);
+// if($barcodeLast == '1'){
+// 	echo '2';
+// 	exit;
+// }else if($barcodeLast == '2'){
+// 	echo '<注意!!> XXXXXXXXXXXX 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。';
+// 	exit;
+// }else{
+// 	echo '<注意!!> XXXXXXXXXXXX您查询的商品验证码不存在，谨防假冒!!如有疑问请拨打咨询电话4000801876。';
+// 	exit;
+// }
 // $post_data =  array (
 //     'QryChannel' => '10000',
 //     'FwCode' =>$barcode,

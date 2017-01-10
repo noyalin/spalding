@@ -1,460 +1,24 @@
-<style>
-    /* 防伪验证页面的样式 by Sofia*/
-    .header{
-        background:#000!important;
-    }
-    .header_fix{
-        background: #000;
-        position: absolute;
-        top: 90px;
-        width: 100%;
-        height: 7px;
-    }
-    div.std *, div.std *::before, div.std *::after {
-        box-sizing: border-box;
-        transition: all 0.5s ease 0s;
-    }
-
-    .position_re{
-        position:relative;
-    }
-    div.std{
-
-        background: url('<?php echo $this->getSkinUrl('images/authentication/bg.jpg');?>') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-        position:absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        max-height: 900px;
-        overflow: hidden;
-    }
-
-    div.slide-group{
-        top: 90px;
-        height: 3840px;
-    }
-    .slide{height:960px;}
-    #step1{
-        background: url('<?php echo $this->getSkinUrl('images/authentication/img_01.png');?>') no-repeat scroll 0 -110px;
-    }
-    #step2{
-        background: url('<?php echo $this->getSkinUrl('images/authentication/img_01.png');?>') no-repeat scroll 0 -30px;
-    }
-    #step3{
-        background: url('<?php echo $this->getSkinUrl('images/authentication/img_03.png');?>') no-repeat scroll 0 -10px;
-    }
-    #step4{
-        background: url('<?php echo $this->getSkinUrl('images/authentication/img_03.png');?>') no-repeat scroll 0 -18px;
-    }
-    #step1,#step2,#step3,#step4{background-size:100% 100%;}
-    .authen_step .container_step{
-        text-align: center;
-    }
-    .main-container {
-        width: 930px;
-        padding: 10px 20px;
-        margin: 0 auto;
-        color: #fff;
-        min-height: 528px;
-    }
-    .authen_step .content{
-        padding-top:12px;
-        height: 688px;
-        overflow: hidden;
-    }
-    .content .content_detail{
-        display:inline-block;
-        top: -410px;
-        text-align:center;
-        padding: 0 109px;
-    }
-    .content h2{
-        font-size:14px;
-        color:#afafb6;
-        padding: 12px 45px 28px 45px;
-    }
-    .content .validate_type{
-        float:left;
-        width:50%;
-    }
-    .content .validate_type h2{
-        padding: 4px 47px 18px 47px!important;
-    }
-    .content .validate_type button{
-        text-decoration: none;
-        border: 1px solid #f1c400;
-        color: #000;
-        font-size: 16px;
-        padding: 7px 38px;
-        margin: 0 auto;
-        width: 148px;
-        background: none;
-        z-index:22!important;
-
-        position: relative;
-        overflow: hidden;
-        display: block;
-    }
-    .content .validate_type button.validate_type_new{
-        color:#f9f9f9!important;
-    }
-    .content .validate_type button.validate_type_old{
-        background:#f1c400!important;
-    }
-    /* 新/旧版验证 按钮  CSS特效 */
-    .content .validate_type>button:after {
-        content: '';
-        width: 0;
-        height: 0;
-        -webkit-transform: rotate(360deg);
-        border-style: solid;
-        border-width: 0 0 0 0;
-        border-color: transparent #3f444e transparent transparent;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    .content .validate_type>button:before {
-        content: '';
-        width: 0;
-        height: 0;
-        -webkit-transform: rotate(360deg);
-        border-style: solid;
-        border-width: 0 0 0 0;
-        border-color: transparent transparent transparent #3f444e;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-    }
-    .content .validate_type button:hover {
-        color: #dadce0;
-    }
-    .content .validate_type button:hover:before, .content .validate_type button:hover:after {
-        border-width: 38px 185px;
-        z-index:-1;
-    }
-    .content .validate_type button:active {
-        background: #697182;
-    }
-
-    /* 验证第二步的样式 */
-    #step2 .content .content_detail{
-        top: -435px;
-        padding: 0 98px 0 96px;
-    }
-    #step2 .content{
-        padding-top: 200px;
-    }
-    #step2 .code_area input{
-        background: #222227;
-        border: none;
-        color:#787876;
-        padding:0 10px 0 78px;
-    }
-    #step2 .code_area input:focus{
-        color:#fdfdfd;
-    }
-    .code_area b{
-        left:62px;
-        color:#767676;
-        font-size:14px;
-    }
-    .code_area  ::-webkit-input-placeholder{
-        font-size: 14px;
-        line-height: 30px;
-        color:#767676;
-    }
-    .code_area  ::-moz-placeholder{
-        font-size: 14px;
-        color:#767676;
-    }
-    .code_area input.valid_check_code{
-        width: 469px;
-        height: 50px;
-        font-size:24px;
-    }
-    .code_area input.valid_code{
-        width: 304px;
-        height: 44px;
-        font-size:20px;
-    }
-    .code_area img{
-        cursor: pointer;
-        padding: 0;
-        margin-left: 17px;
-        margin-top:-6px;
-    }
-    .btn_valid{
-        padding: 8.5px 0;
-        margin-top:10px;
-        font-size: 20px;
-        width: 680px;
-        background: #f1c400;
-        border: 1px solid #ffe500;
-    }
-    .btn_valid:hover{
-        background: #f4e109;
-    }
-    .auth_box{
-        position: relative;
-        top: 0;
-    }
-    .activeBarCode,.activeVerifyCode{
-        opacity: 1!important;
-        color:#f60936;
-        text-align: left;
-        margin-left: 156px;
-        padding:4px 0;
-    }
-    .errorMsg{
-        color:#f60936;
-        padding: 5px 0;
-        font-size: 14px;
-        margin-bottom: -7px;
-    }
-    /* 验证第三步的样式 */
-    #step3 .content .content_detail{
-        padding: 22px 120px 0px 102px;
-        top: -395px;
-    }
-    #step3 .content{
-        padding-top:200px;
-    }
-    #step3 .auth_logo{
-        padding-bottom:12px;
-    }
-    .selection_area{
-        padding: 0 113px;
-        line-height: 20px;
-        font-size: 12px;
-        color:#f9f9f9;
-    }
-    .sel_checkbox{
-        padding:10px 0 12px 0;
-    }
-    .sel_checkbox span{
-        border: 1px solid #1e1e23;
-        background:#1e1e23;
-        width: 22px;
-        height: 22px;
-        cursor:pointer;
-        margin: 0 8px 0 0;
-    }
-    .sel_checkbox #q_1_false,.sel_checkbox #q_2_false{
-        margin: 0 8px 0 60px;
-    }
-    .sel_checkbox span img{
-        width: 22px;
-        height: 21px;
-    }
-    .sel_checkbox b{
-        position: relative;
-        left: 122px;
-        color:#f60936;
-    }
-    .btn_submit{
-        padding: 6.5px 0;
-        font-size: 18px;
-        width: 680px;
-        background: #f1c400;
-        border: 1px solid #ffe500;
-    }
-    /* 验证第四步的样式 */
-    #step4 .content{
-        padding-top: 200px;
-    }
-    #step4 .content .content_detail{
-        top: -395px;
-        padding: 30px 107px 0 102px;
-    }
-    #step4 h3{
-        padding: 0 120px 85px 120px;
-        font-size: 24px;
-        line-height: 40px;
-    }
-    .selection_btn_area a{
-        padding: 9.5px 48px;
-        font-size: 20px;
-        color:#151515;
-        margin: 15px 7px;
-        border:1px solid #ffe500;
-    }
-    .selection_btn_area .btn_edit,
-    .selection_btn_area .btn_return{
-        background:#cbcbd4;
-        border:1px solid #f2f2f7;
-    }
-    .selection_btn_area .btn_edit:hover,
-    .selection_btn_area .btn_return:hover{
-        background:#f2f2f7;
-    }
-    .selection_btn_area .btn_contact{
-        background:#f1c400;
-    }
-    .selection_btn_area .btn_contact:hover{
-        background:#f4e109;
-    }
-
-    /* jQuery modal弹出框样式 */
-    .reveal-modal-bg {
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        background: #000;
-        background: rgba(0,0,0,.8);
-        z-index: 100;
-        display: none;
-        top: 0;
-        left: 0;
-    }
-
-    .reveal-modal {
-        visibility: hidden;
-        color:#000;
-        top: 105px;
-        left: 50%;
-        margin-left: -300px;
-        width: 520px;
-        background: #f9f9f9 no-repeat -200px -80px;
-        position: absolute;
-        z-index: 101;
-        padding: 60px 74px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border-radius: 4px;
-        -moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
-        -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
-        -box-shadow: 0 0 10px rgba(0,0,0,.4);
-    }
-
-    .reveal-modal.small { width: 200px; margin-left: -140px;}
-    .reveal-modal.medium { width: 400px; margin-left: -240px;}
-    .reveal-modal.large { width: 564px; margin-left: -322px;}
-    .reveal-modal.xlarge { width: 800px; margin-left: -440px;}
-
-    .reveal-modal .close-reveal-modal {
-        font-size: 22px;
-        line-height: .5;
-        position: absolute;
-        top: 8px;
-        right: 11px;
-        color: #aaa;
-        text-shadow: 0 -1px 1px rgba(0,0,0,.6);
-        font-weight: bold;
-        cursor: pointer;
-    }
-    .reveal-modal h1{
-        padding:16px 0;
-        font-size:15px;
-        text-align: center;
-        color:#545457;
-        border-top: 1px solid #a7a6ae;
-        border-bottom: 1px solid #a7a6ae;
-    }
-    .reveal-modal h1 span{
-        color:#f60936;
-    }
-    .reveal-modal a{
-        display: block;
-        width: 16px;
-        height: 16px;
-        text-align: center;
-        line-height: 16px;
-    }
-    #alertContactUs{
-        padding:20px;
-        text-align: center;
-        /*display: block;*/
-    }
-    #alertContactUs h2{
-        margin-bottom: 24px;
-    }
-    #alertContactUs #valid_check_code{
-        color:#f60936;
-        width: 28%;
-        font-size: 20px;
-    }
-    #alertContactUs span{
-        color:#f60936;
-        font-size: 12px;
-        width: 61px;
-    }
-    #alertContactUs ul li{
-        padding-bottom: 14px;
-        font-size: 14px;
-        color: #545457;
-    }
-    #alertContactUs ul li label{
-        width: 75px;
-        display: inline-block;
-    }
-    #alertContactUs ul li input{
-        background: #e9e9e9;
-        border: 1px solid #e1e1e1;
-        width: 280px;
-        height: 28px;
-        padding-left:12px;
-    }
-    #alertContactUs ul li input[value] {
-        color: #9e9e9e;
-    }
-    #alertContactUs ul li input[value]:hover {
-        color: #545457;
-    }
-    #alertContactUs ul li:last-child input{
-        width: 120px;
-        margin-right: 15px;
-    }
-    #alertContactUs ul li textarea{
-        background: #e9e9e9;
-        border: 1px solid #e1e1e1;
-        width: 280px;
-    }
-    #alertContactUs button{
-        width: 564px;
-        margin:12px 0 1px -20px;
-        padding: 9.5px 0;
-        font-size: 16px;
-        color: #f9f9f9;
-        background: #f60a36;
-        border: none;
-    }
-    #alertContactUs button:hover{
-        background:#ff2549;
-    }
-    #alertContactUs b{
-        font-size: 12px;
-        font-weight: normal;
-        color: #9e9e9e;
-    }
-    #alertContactUs b span{
-        font-weight: bold;
-    }
-    .high{
-        color：#f60a36;
-    }
-</style>
-
 <?php
 $homeUrl = Mage::helper('core/url')->getHomeUrl();
 ?>
+<input type="hidden" id="codeMessageReturn">
 <div class="header_fix position_re"></div>
 <div class="slide-group position_re">
     <div id="step1" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_01.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_01.png') . "'>"; ?>
                 <div class="content_detail position_re">
-                    <?php echo "<img class='auth_title position_re' src='" . $this->getSkinUrl('images/authentication/font.png') . "'>"; ?>
+                    <?php echo "<img class='auth_title position_re' src='" . $this->getSkinUrl('/images/authentication/font.png') . "'>"; ?>
                     <h2>自2017年1月1日起，斯伯丁体育用品（中国）有限公司正式启用新版防伪标签，请按您购买的标签类型选取如下不同的验证方式</h2>
 
                     <div class="validate_type">
-                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('images/authentication/code_01.png') . "'>"; ?>
+                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('/images/authentication/code_01.png') . "'>"; ?>
                         <h2 class=" ">新防伪码</h2>
                         <button id="newAuthenticationButton" class="validate_type_new">新版验证</button>
                     </div>
                     <div class="validate_type">
-                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('images/authentication/code_02.png') . "'>"; ?>
+                        <?php echo "<img class=' ' src='" . $this->getSkinUrl('/images/authentication/code_02.png') . "'>"; ?>
                         <h2 class=" ">旧防伪码</h2>
                         <button id="oldAuthenticationButton" class="validate_type_old"
                                 data-reveal-id='alertOldValidation'>旧版验证
@@ -468,12 +32,12 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <div id="step2" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_02.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_02.png') . "'>"; ?>
                 <div class="content_detail position_re">
-                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images/authentication/icon.png') . "'>"; ?>
+                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('/images/authentication/icon.png') . "'>"; ?>
                     <form class="code_area position_re" name="valid_code_input">
                         <b class="position_re">防伪码:</b><input type="text" id="barCode" class="valid_check_code"
-                                                              maxlength="12" placeholder="请输入12位的防伪码">
+                                                              maxlength="14" placeholder="请输入12或14位的防伪码">
                         <span id="barCodeMSG" style="opacity: 0;width:100%;padding: 4px 0;">必填</span>
                         <b class="position_re">验证码:</b><input type="text" id="verifyCode" class="verifyCode valid_code"
                                                               maxlength="4" placeholder="请输入4位的验证码">
@@ -491,17 +55,17 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <div id="step3" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_03.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_03.png') . "'>"; ?>
                 <div class="content_detail position_re">
-                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images/authentication/code.gif') . "'>"; ?>
+                    <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('/images/authentication/code.gif') . "'>"; ?>
                     <div class="selection_area position_re">
                         <p>您购买商品的防伪标签上，在转动不同角度观看方框内褐色部分内容时，能否看到如下图所示 “S”英文字母的隐藏效果？</p>
 
                         <p class="sel_checkbox">
                             <span
-                                id="q_1_true"><?php echo "<img class='q_1_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
+                                id="q_1_true"><?php echo "<img class='q_1_true' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>是
                             <span
-                                id="q_1_false"><?php echo "<img class='q_1_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
+                                id="q_1_false"><?php echo "<img class='q_1_false' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>否
                             <b id="isQ1Selected" style="opacity: 0">必填</b>
                         </p>
 
@@ -509,9 +73,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
                         <p class="sel_checkbox">
                             <span
-                                id="q_2_true"><?php echo "<img class='q_2_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
+                                id="q_2_true"><?php echo "<img class='q_2_true' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>是
                             <span
-                                id="q_2_false"><?php echo "<img class='q_2_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
+                                id="q_2_false"><?php echo "<img class='q_2_false' src='" . $this->getSkinUrl('/images/authentication/true.png') . "'>"; ?></span>否
                             <b id="isQ2Selected" style="opacity: 0">必填</b>
                         </p>
                     </div>
@@ -523,7 +87,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <div id="step4" class="slide authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images/authentication/box_03.png') . "'>"; ?>
+                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('/images/authentication/box_03.png') . "'>"; ?>
                 <div class="content_detail position_re">
                     <h3 id="validResultContent"></h3>
 
@@ -697,7 +261,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         //验证数据
         var barCode = jQuery.trim(jQuery('#barCode').val());
         var verifyCode = jQuery.trim(jQuery('#verifyCode').val());
-        if (barCode == '' || verifyCode == '' || barCode.length < 12 || verifyCode.length < 4) {
+        if (barCode == '' || verifyCode == '' || (barCode.length != 12 && barCode.length != 14) || verifyCode.length < 4) {
             //提示错误信息
             if (barCode == '') {
                 if (jQuery('.activeBarCode').length == 0 || jQuery('.activeBarCode')[0].innerHTML != '防伪码必填') {
@@ -711,15 +275,15 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     jQuery('.activeVerifyCode')[0].innerHTML = '验证码必填';
                 }
             }
-            if (barCode != '' && barCode.length < 12) {
+            if (barCode != '' && barCode.length != 12 && barCode.length != 14) {
                 jQuery('#barCodeMSG').addClass('activeBarCode');
-                jQuery('.activeBarCode')[0].innerHTML = '请输入12位的防伪码';
+                jQuery('.activeBarCode')[0].innerHTML = '请输入12或14位或的防伪码';
             }
             if (verifyCode != '' && verifyCode.length < 4) {
                 jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
                 jQuery('.activeVerifyCode')[0].innerHTML = '请输入4位的验证码';
             }
-
+            
             // 页面停止跳转下一页
             jQuery('.slide-group').animate({'top': '-960px'});
         } else {
@@ -738,14 +302,55 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 //                        alert("验证码不正确");
                         jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
                         jQuery('.activeVerifyCode')[0].innerHTML = '验证码错误';
-                    } else if (data == "2") {
-                        //验证码正确
-                        switchCondition(jQuery("#authenticationSubmitButton"));
-                    } else {
-                        //弹出错误信息
-                        jQuery('#alertValidRightNow>h1')[0].innerHTML = data;
-                        jQuery('#alertValidRightNow').reveal(data);
+                    } 
+                    else{
+                    	if(barCode.length == 12){
+                        	var url = "http://query.t-secu.net/frontPages/jsp/customers/spalding.jsp";
+						}else if(barCode.length == 14){
+							var url = "http://query.t-secu.net/frontPages/jsp/customers/spalding.jsp";
+						}
+                    	jQuery.ajax({
+                            headers: {
+                                Accept : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                            },
+                            url: url,
+                            crossDomain: true,
+                            type: "POST",
+                            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                            data: {
+                                code: barCode
+                            },
+                            error : function(){
+                                alert('Error');
+                            },
+                            success: function(msg){                            	
+                                 var append = "<html><body><div>" + msg + "</div></body></html>";
+                                 var myJSON = jQuery(append).find("#decryString").text();
+                                 var data = jQuery.parseJSON(myJSON);
+                                 if(data.detemVal == 'F'){
+                                	 if(myJSON.indexOf("防偽碼正確") > 0 )   
+                                	 {   
+                                    	 var messageShow = "<注意!!> XXXXXXXXXXXX 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。";
+                                	 }else{
+                                		 var messageShow = "<注意!!> XXXXXXXXXXXX您查询的商品验证码不存在，谨防假冒!!如有疑问请拨打咨询电话4000801876。";
+                                   	 }
+                                	 jQuery('#alertValidRightNow>h1')[0].innerHTML = messageShow;
+                                	 jQuery('#alertValidRightNow').reveal(messageShow);
+                                 }else{
+                                	 switchCondition(jQuery("#authenticationSubmitButton"));
+                                 }
+                            }
+                    	});
                     }
+//                     else if (data == "2") {
+//                         //验证码正确
+//                         switchCondition(jQuery("#authenticationSubmitButton"));
+//                     } else {
+                        
+//                         //弹出错误信息
+//                         jQuery('#alertValidRightNow>h1')[0].innerHTML = data;
+//                         jQuery('#alertValidRightNow').reveal(data);
+//                     }
                     //switchCondition(jQuery("#authenticationSubmitButton"));
                 },
                 error: function () {
