@@ -330,9 +330,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                                  if(data.detemVal == 'F'){
                                 	 if(myJSON.indexOf("防偽碼正確") > 0 )   
                                 	 {   
-                                    	 var messageShow = "<注意!!> XXXXXXXXXXXX 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。";
+                                    	 var messageShow = "<注意!!> "+data.authCode+" 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。";
                                 	 }else{
-                                		 var messageShow = "<注意!!> XXXXXXXXXXXX您查询的商品验证码不存在，谨防假冒!!如有疑问请拨打咨询电话4000801876。";
+                                		 var messageShow = "<注意!!> "+data.authCode+" 您查询的商品验证码不存在，谨防假冒!!如有疑问请拨打咨询电话4000801876。";
                                    	 }
                                 	 jQuery('#alertValidRightNow>h1')[0].innerHTML = messageShow;
                                 	 jQuery('#alertValidRightNow').reveal(messageShow);

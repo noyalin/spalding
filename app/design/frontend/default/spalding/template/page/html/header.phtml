@@ -48,7 +48,7 @@
 
             <div class="header_nav ms-fr">
                 <div class="header_nav_funs">
-                    <a href="javascript:;"  id="zhenweiyanzhengrukou"><strong>防伪码验证</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="<?php echo $this->getUrl('authentication', array('_secure'=>true)) ?>"><strong>防伪码验证</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds" target="_blank">授权经销商</a>
                     <?php
                     if(Mage::getSingleton('customer/session')->isLoggedIn()){
