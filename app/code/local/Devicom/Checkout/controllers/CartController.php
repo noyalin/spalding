@@ -285,7 +285,7 @@ class Devicom_Checkout_CartController extends Mage_Checkout_CartController
          		$tmpInfo = array();
          		$tmpInfo['customer_id'] = $customerId;
          		$tmpInfo['member_name'] = trim($data->player);
-         		$tmpInfo['member_number'] = intval($data->num);
+         		$tmpInfo['member_number'] = $data->num;
          		$clothesSize = $data->size;
          		$clothesProductSku = $configurableProductSku."-".$clothesSize;
          		$tmpInfo['clothes_sku'] = $clothesProductSku;

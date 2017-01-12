@@ -174,7 +174,25 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
     }
     
     public function renameOrderRow($data){
-    	$renameRow = array('order_id' => '订单号','font' => '字体','font_style' => '字体样式','double'=>'是否定制裤子');
+    	$renameRow = array('order_id' => '订单号'
+    						,'font' => '字体'
+    						,'font_style' => '字体样式'
+    						,'double'=>'是否定制裤子'
+    						,'create_time'=>'下单时间'
+    						,'update_time'=>'最后更新时间'
+    						,'color'=>'球衣颜色'
+    						,'font_color'=>'字体颜色'
+    						,'order_count'=>'定制数量'
+    						,'result_image'=>'定制浏览图'
+    						,'sku'=>'款式'
+    						,'team_name'=>'球队名称'
+    						,'clothes_sku'=>'球衣款式'
+    						,'pants_sku'=>'球裤款号'
+    						,'member_name'=>'球员名称'
+    						,'member_number'=>'球员号码'
+    						,'clothes_size'=>'球衣尺码 '
+    						,'pants_size'=>'球裤尺码'	
+    					);
     	$data = $this->getRowValueByKey($data);
     	foreach ($data as $key => $value){
     		if(isset($renameRow[$key])){
@@ -205,6 +223,19 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
     	}
     	$resultRow[] = $this->renameOrderRow($this->chooseOrderRow($row));
     	$resultRow[] = $this->chooseOrderRow($mainData);
+    	$resultRow[0]['font_number_style'] = '数字字体样式';
+    	
+    	if($resultRow[1]['font_style'] == 1){
+    		$fontStyleShow = '汉仪楷体－简';
+    		$fontNumberStyleShow = 'Helvetica Neue';
+    	}
+    	if($resultRow[1]['font_style'] == 2){
+    		$fontStyleShow = '汉仪超粗圆体';
+    		$fontNumberStyleShow = 'Pop Warner';
+    	}
+    	$resultRow[1]['font_style'] = $fontStyleShow;
+    	$resultRow[1]['font_number_style'] = $fontNumberStyleShow;
+    	
     	$orderFile = $dir . '/order.csv';
     	$fp = fopen($orderFile, 'w');
     	fwrite($fp, chr(0xEF).chr(0xBB).chr(0xBF)); // 添加 BOM

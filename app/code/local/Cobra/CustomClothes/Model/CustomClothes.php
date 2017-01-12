@@ -153,7 +153,7 @@ class Cobra_CustomClothes_Model_CustomClothes
 		foreach ($secondData as $data){
 			$value = "\$name".$i."=".urlencode($data->player)."&";
 			$str .= $value;
-			$value = "\$number".$i."=".intval($data->num)."&";
+			$value = "\$number".$i."=".$data->num."&";
 			$str .= $value;
 			$value = "\$size".$i."=".$data->size."&";
 			$str .= $value;

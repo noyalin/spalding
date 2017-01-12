@@ -79,7 +79,7 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
         $this->addColumn('font_style', array(
        		'header'            => Mage::helper('customclothes')->__('样式'),
        		'align'             => 'center',
-       		'width'             => '120px',
+       		'width'             => '60px',
        		'index'             => 'font_style',
        		'sortable'          => false,
        		'type'              => 'options',
@@ -89,7 +89,21 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
        		),
        		'html_decorators'   => array('nobr')
         ));
-               
+
+        $this->addColumn('font_number_style', array(
+        		'header'            => Mage::helper('customclothes')->__('数字字体样式'),
+        		'align'             => 'center',
+        		'width'             => '60px',
+        		'index'             => 'font_style',
+        		'sortable'          => false,
+        		'type'              => 'options',
+        		'options'           => array(
+        				1   => 'Helvetica Neue',
+        				2   => 'Pop Warner',
+        		),
+        		'html_decorators'   => array('nobr')
+        ));
+        
         $this->addColumn('result_image', array(
             'header'            => Mage::helper('customclothes')->__('效果图'),
             'align'             => 'center',
