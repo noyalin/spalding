@@ -171,14 +171,20 @@ class Cobra_CustomClothes_Adminhtml_CheckController extends Mage_Adminhtml_Contr
             $zip = new ZipArchive();
             $zip_name = $dir . '.zip';
             if ($zip->open($zip_name, ZipArchive::OVERWRITE) === TRUE) {
-                $handler = opendir($dir);
-                while (($filename = readdir($handler)) !== false) {
-                    if (is_file($dir . "/" . $filename)) {
-                        $zip->addFile($dir . "/" . $filename);
-                    }
-                }
-                closedir($handler);
+            	$this->folderToZip($dir,$zip);
             }
+            
+//             $zip = new ZipArchive();
+//             $zip_name = $dir . '.zip';
+//             if ($zip->open($zip_name, ZipArchive::OVERWRITE) === TRUE) {
+//                 $handler = opendir($dir);
+//                 while (($filename = readdir($handler)) !== false) {
+//                     if (is_file($dir . "/" . $filename)) {
+//                         $zip->addFile($dir . "/" . $filename);
+//                     }
+//                 }
+//                 closedir($handler);
+//             }
             $zip->close();
 
             header("Cache-Control: public");
@@ -197,6 +203,33 @@ class Cobra_CustomClothes_Adminhtml_CheckController extends Mage_Adminhtml_Contr
         return $ret;
     }
 
+    private function folderToZip($folder, &$zipFile, $subfolder = null) {
+    	 
+    	// we check if $folder has a slash at its end, if not, we append one
+    	$folder .= end(str_split($folder)) == "/" ? "" : "/";
+    	$subfolder .= end(str_split($subfolder)) == "/" ? "" : "/";
+    	// we start by going through all files in $folder
+    	$handle = opendir($folder);
+    	while ($f = readdir($handle)) {
+    		if ($f != "." && $f != "..") {
+    			if (is_file($folder . $f)) {
+    				// if we find a file, store it
+    				// if we have a subfolder, store it there
+    				if ($subfolder != null)
+    					$zipFile->addFile($folder . $f, $subfolder . $f);
+    				else
+    					$zipFile->addFile($folder . $f);
+    			} elseif (is_dir($folder . $f)) {
+    				// if we find a folder, create a folder in the zip
+    				$zipFile->addEmptyDir($f);
+    				// and call the function again
+    				$this->folderToZip($folder . $f, $zipFile, $f);
+    			}
+    		}
+    	}
+    	closedir($handle);
+    }
+    
     private function grabImage($url, $filename)
     {
         ob_start();
