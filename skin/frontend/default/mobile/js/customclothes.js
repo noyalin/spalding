@@ -43,9 +43,12 @@
             return false;
         }
         // 检查球员名称
-        if (!checkinput(obj2, "球员名称不能为空")) {
+        if(!submitYP_CheckText(obj2)) {
             return false;
         }
+      /*  if (!checkinput(obj2, "球员名称不能为空")) {
+            return false;
+        }*/
         // 检查球员号码
         if (!checkinput(obj3, "球员号码不能为空")) {
             return false;
@@ -628,6 +631,7 @@ jQuery(function () {
         showTxt(this,".viewbox .textMadeB",memberFontRange);
     })
     jQuery(".madeNum input").keyup(function(){
+        jQuery(".fontpic").hide();
         var text=jQuery(this).val();
         jQuery(".viewbox .textMadeC,.viewbox .textMadeD,.viewbox .textMadeE").text(text);
     })
