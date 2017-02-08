@@ -304,26 +304,27 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                         jQuery('.activeVerifyCode')[0].innerHTML = '验证码错误';
                     } 
                     else{
-                    	if(barCode.length == 12){
-                        	var url = "http://query.t-secu.net/frontPages/jsp/customers/spalding.jsp";
-						}else if(barCode.length == 14){
-							var url = "http://query.t-secu.net/frontPages/jsp/customers/spalding.jsp";
-						}
-                    	jQuery.ajax({
-                            headers: {
-                                Accept : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
-                            },
-                            url: url,
-                            crossDomain: true,
-                            type: "POST",
-                            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                            data: {
-                                code: barCode
-                            },
-                            error : function(){
-                                alert('Error');
-                            },
-                            success: function(msg){                            	
+                        var msg = data;
+//                    	if(barCode.length == 12){
+//                        	var url = "http://query.t-secu.net/frontPages/jsp/customers/spalding.jsp";
+//						}else if(barCode.length == 14){
+//							var url = "http://query.t-secu.net/frontPages/jsp/customers/spalding.jsp";
+//						}
+//                    	jQuery.ajax({
+//                            headers: {
+//                                Accept : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+//                            },
+//                            url: url,
+//                            crossDomain: true,
+//                            type: "POST",
+//                            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+//                            data: {
+//                                code: barCode
+//                            },
+//                            error : function(){
+//                                alert('Error');
+//                            },
+//                            success: function(msg){
                                  var append = "<html><body><div>" + msg + "</div></body></html>";
                                  var myJSON = jQuery(append).find("#decryString").text();
                                  var data = jQuery.parseJSON(myJSON);
@@ -339,8 +340,8 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                                  }else{
                                 	 switchCondition(jQuery("#authenticationSubmitButton"));
                                  }
-                            }
-                    	});
+//                            }
+//                    	});
                     }
 //                     else if (data == "2") {
 //                         //验证码正确
@@ -354,6 +355,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     //switchCondition(jQuery("#authenticationSubmitButton"));
                 },
                 error: function () {
+                    alert('Error');
                     jQuery('#authenticationSubmitButton').removeAttr("disabled");
                 },
                 complete: function (XMLHttpRequest, textStatus) {
