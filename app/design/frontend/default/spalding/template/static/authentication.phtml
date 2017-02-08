@@ -38,12 +38,12 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     <form class="code_area position_re" name="valid_code_input">
                         <b class="position_re">防伪码:</b><input type="text" id="barCode" class="valid_check_code"
                                                               maxlength="14" placeholder="请输入12或14位的防伪码">
-                        <span id="barCodeMSG" style="opacity: 0;width:100%;padding: 4px 0;">必填</span>
+                        <span id="barCodeMSG" style="opacity: 0;width:100%;height:28px;line-height:28px;padding:0;">必填</span>
                         <b class="position_re">验证码:</b><input type="text" id="verifyCode" class="verifyCode valid_code"
                                                               maxlength="4" placeholder="请输入4位的验证码">
                         <img src="<?php echo $this->getUrl('code_num.php', array('_secure' => true)) ?>" id="getCodeNum"
                              align="absmiddle">
-                        <span id="verifyCodeMSG" style="opacity: 0;width:100%;padding: 4px 0;">必填</span>
+                        <span id="verifyCodeMSG" style="opacity: 0;width:100%;height:28px;line-height:28px;padding:0;">必填</span>
                     </form>
                     <button id="authenticationSubmitButton" class="btn_valid position_re"
                             data-reveal-id="alertValidRightNow">立即验证
@@ -181,7 +181,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     verifyCodeCheck = true;
                 } else {
                     //验证码不正确
-                    jQuery('.formTips_validCode')[0].innerHTML = verifyCode == ''? '必填' : '验证码错误';
+                    jQuery('.formTips_validCode')[0].innerHTML = verifyCode == '' ? '必填' : '验证码错误';
                     getCodeNumContact();
                 }
             },
@@ -230,9 +230,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                 success: function (result) {
                     if (result == 'success') {
 //                        alert(result);
-                        jQuery('#alertContactUs')[0].style.display='none';
-                        jQuery('.reveal-modal-bg')[0].style.display='none';
-                    }else{
+                        jQuery('#alertContactUs')[0].style.display = 'none';
+                        jQuery('.reveal-modal-bg')[0].style.display = 'none';
+                    } else {
                         alert(result);
                     }
                     jQuery('#send').removeAttr("disabled");
@@ -252,12 +252,14 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         jQuery('.slide-group').animate({'top': '-960px'});
     });
     jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
-        jQuery('#alertContactUs')[0].style.display='block';
+        jQuery('#alertContactUs')[0].style.display = 'block';
         jQuery('#valid_check_code')[0].innerHTML = jQuery.trim(jQuery('#barCode').val());
         var modalLocation = jQuery(this).attr('data-reveal-id');
         jQuery('#' + modalLocation).reveal(jQuery(this).data());
     });
     jQuery('#authenticationSubmitButton').on('click', function (e) {
+        jQuery('#barCodeMSG').removeClass('activeBarCode');
+        jQuery('#verifyCodeMSG').removeClass('activeVerifyCode');
         //验证数据
         var barCode = jQuery.trim(jQuery('#barCode').val());
         var verifyCode = jQuery.trim(jQuery('#verifyCode').val());
@@ -277,13 +279,13 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
             }
             if (barCode != '' && barCode.length != 12 && barCode.length != 14) {
                 jQuery('#barCodeMSG').addClass('activeBarCode');
-                jQuery('.activeBarCode')[0].innerHTML = '请输入12或14位或的防伪码';
+                jQuery('.activeBarCode')[0].innerHTML = '请输入12或14位的防伪码';
             }
             if (verifyCode != '' && verifyCode.length < 4) {
                 jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
                 jQuery('.activeVerifyCode')[0].innerHTML = '请输入4位的验证码';
             }
-            
+
             // 页面停止跳转下一页
             jQuery('.slide-group').animate({'top': '-960px'});
         } else {
@@ -302,8 +304,8 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 //                        alert("验证码不正确");
                         jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
                         jQuery('.activeVerifyCode')[0].innerHTML = '验证码错误';
-                    } 
-                    else{
+                    }
+                    else {
                         var msg = data;
 //                    	if(barCode.length == 12){
 //                        	var url = "http://query.t-secu.net/frontPages/jsp/customers/spalding.jsp";
@@ -325,21 +327,20 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 //                                alert('Error');
 //                            },
 //                            success: function(msg){
-                                 var append = "<html><body><div>" + msg + "</div></body></html>";
-                                 var myJSON = jQuery(append).find("#decryString").text();
-                                 var data = jQuery.parseJSON(myJSON);
-                                 if(data.detemVal == 'F'){
-                                	 if(myJSON.indexOf("防偽碼正確") > 0 )   
-                                	 {   
-                                    	 var messageShow = "<注意!!> "+data.authCode+" 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。";
-                                	 }else{
-                                		 var messageShow = "<注意!!> "+data.authCode+" 您查询的商品验证码不存在，谨防假冒!!如有疑问请拨打咨询电话4000801876。";
-                                   	 }
-                                	 jQuery('#alertValidRightNow>h1')[0].innerHTML = messageShow;
-                                	 jQuery('#alertValidRightNow').reveal(messageShow);
-                                 }else{
-                                	 switchCondition(jQuery("#authenticationSubmitButton"));
-                                 }
+                        var append = "<html><body><div>" + msg + "</div></body></html>";
+                        var myJSON = jQuery(append).find("#decryString").text();
+                        var data = jQuery.parseJSON(myJSON);
+                        if (data.detemVal == 'F') {
+                            if (myJSON.indexOf("防偽碼正確") > 0) {
+                                var messageShow = "<注意!!> " + data.authCode + " 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。";
+                            } else {
+                                var messageShow = "<注意!!> " + data.authCode + " 您查询的商品验证码不存在，谨防假冒!!如有疑问请拨打咨询电话4000801876。";
+                            }
+                            jQuery('#alertValidRightNow>h1')[0].innerHTML = messageShow;
+                            jQuery('#alertValidRightNow').reveal(messageShow);
+                        } else {
+                            switchCondition(jQuery("#authenticationSubmitButton"));
+                        }
 //                            }
 //                    	});
                     }
@@ -347,7 +348,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 //                         //验证码正确
 //                         switchCondition(jQuery("#authenticationSubmitButton"));
 //                     } else {
-                        
+
 //                         //弹出错误信息
 //                         jQuery('#alertValidRightNow>h1')[0].innerHTML = data;
 //                         jQuery('#alertValidRightNow').reveal(data);
@@ -491,9 +492,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
         //验证姓名为空
         jQuery('.formTips_username')[0].innerHTML = sourceData.name == '' ? '必填' : '';
-        if (sourceData.email == ''){
+        if (sourceData.email == '') {
             jQuery('.formTips_email')[0].innerHTML = '必填';
-        }else if (sourceData.email != '' && !sourceData.email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/)) {
+        } else if (sourceData.email != '' && !sourceData.email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/)) {
             jQuery('.formTips_email')[0].innerHTML = '格式错误';
         } else {
             jQuery('.formTips_email')[0].innerHTML = '';
