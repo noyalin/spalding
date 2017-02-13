@@ -53,12 +53,15 @@ class CosmoCommerce_Sns_Model_Tweibo extends Mage_Core_Model_Abstract{
 	 */
 	public function setKey( $akey, $skey, $access_token=null, $refresh_token = NULL)
 	{
-        $app_key="101182962";
+//        $app_key="101182962";
         $debug=false;
 
-        $app_secret="0c8f2519769a8a88ee2245f36fb761b6";
+//        $app_secret="0c8f2519769a8a88ee2245f36fb761b6";
 
-		if($debug){
+        $app_key="101365345";
+        $app_secret="6a3de69bffa24bbb1285bc1f98054d5b";
+
+        if($debug){
 			error_reporting(E_ALL);
 			ini_set('display_errors', true);
 		}

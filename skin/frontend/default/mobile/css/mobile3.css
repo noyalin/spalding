@@ -6752,7 +6752,7 @@ ul.messages {
 }
 
 .cusMadeCons {
-    background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/cBg2.jpg) no-repeat left top;
+    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/cBg2.jpg) no-repeat left top;
     background-size: cover;
 }
 
@@ -7223,7 +7223,7 @@ ul.messages {
     width: 163px;
     height: 63px;
     border: none;
-    background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/step_2_funBtn.png) left top no-repeat;
+    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/step_2_funBtn.png) left top no-repeat;
     cursor: pointer;
 }
 
@@ -7301,7 +7301,7 @@ dl.madeBoxFuns dd.madeKindTit {
 }
 
 dl.madeBoxFuns dd.madeNow {
-    background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/madenow.png) 230px 20px no-repeat #dfdee4;
+    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/madenow.png) 230px 20px no-repeat #dfdee4;
     font-size: 14px;
     font-weight: bold;
 }

@@ -37,27 +37,27 @@ class Devicom_Weixindev_MenuController extends Mage_Core_Controller_Front_Action
             {
                "type":"view",
                "name":"商城首页",
-                "url":"http://www.m.spaldingchina.com.cn/"
+                "url":"http://www.m.spalding.com.cn/"
             },
  		   {
                "type":"view",
                "name":"经典篮球",
-                "url":"http://www.m.spaldingchina.com.cn/products.html?attribute_set_name=72&product_catena=14"
+                "url":"http://www.m.spalding.com.cn/products.html?attribute_set_name=72&product_catena=14"
             },
              {
                "type":"view",
                "name":"运动背包",
-                "url":"http://www.m.spaldingchina.com.cn/catalogsearch/result/?q=%E5%8C%85"
+                "url":"http://www.m.spalding.com.cn/catalogsearch/result/?q=%E5%8C%85"
             },
  		    {
                "type":"view",
                "name":"专业配件",
-                "url":"http://www.m.spaldingchina.com.cn/products/accessories.html"
+                "url":"http://www.m.spalding.com.cn/products/accessories.html"
             },
             {
                "type":"view",
                "name":"专业篮球架",
-                "url":"http://www.m.spaldingchina.com.cn/catalogsearch/result/?q=%E7%AF%AE%E7%90%83%E6%9E%B6"
+                "url":"http://www.m.spalding.com.cn/catalogsearch/result/?q=%E7%AF%AE%E7%90%83%E6%9E%B6"
             }
             ]
        },
@@ -72,7 +72,7 @@ class Devicom_Weixindev_MenuController extends Mage_Core_Controller_Front_Action
              {
                "type":"view",
                "name":"All4Real",
-               "url":"http://www.nba.spaldingchina.com.cn"
+               "url":"http://www.nba.spalding.com.cn"
              }
             ]
        }

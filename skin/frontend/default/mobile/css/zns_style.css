@@ -52,7 +52,7 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 .prev {
 	width: 60px;
 	height: 60px;
-	background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/btn.gif) no-repeat;
+	background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/btn.gif) no-repeat;
 	position: absolute;
 	top: 150px;
 	left: 10px;
@@ -62,7 +62,7 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 .next {
 	width: 60px;
 	height: 60px;
-	background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/btn.gif) no-repeat 0 -60px;
+	background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/btn.gif) no-repeat 0 -60px;
 	position: absolute;
 	top: 150px;
 	right: 10px;
@@ -133,7 +133,7 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 
 }
 .prev_n {
-	background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/btnR.png) left top no-repeat;
+	background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/btnR.png) left top no-repeat;
 	background-size: 100% 100%;
 	left: 10px;
 }
@@ -151,7 +151,7 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	cursor: pointer;
 }
 .next_z {
-	background: url(http://images.spaldingchina.com.cn/skin/frontend/default/spalding/images/customMade/btnL.png) left top no-repeat;
+	background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/btnL.png) left top no-repeat;
 	background-size: 100% 100%;
 	right: 10px;
 }
