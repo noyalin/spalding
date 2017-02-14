@@ -6,7 +6,7 @@ class Task_Tools_Model_CustomMadeMailVO extends Task_Tools_Model_Base
     {
         $subject = '斯伯丁官网定制球待审批订单 VoyageOne';
 
-        $message = "\r\n审批链接：http://www.spaldingchina.com.cn/index.php/backendspalding\r\n";
+        $message = "\r\n审批链接：http://www.spalding.com.cn/index.php/backendspalding\r\n";
 
         $message .= "审批不通过订单号：\r\n";
         $orderIdoneDay = Mage::getModel('custommade/info')->loadByConditions(date("Y-m-d", time()) . ' 00:00:00', 3);

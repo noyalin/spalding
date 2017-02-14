@@ -22,7 +22,7 @@ class Infinitech_Weixinpay_IndexController extends Mage_Core_Controller_Front_Ac
     }
 
     public function h5Action(){
-        $url = 'http://h5.spaldingchina.com.cn/auth.php';
+        $url = 'http://h5.spalding.com.cn/auth.php';
         $queryStr = $_SERVER['QUERY_STRING'];
         if($queryStr != ''){
             $url.= "?".$queryStr;
