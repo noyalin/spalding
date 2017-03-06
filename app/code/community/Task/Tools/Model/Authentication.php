@@ -67,7 +67,7 @@ class Task_Tools_Model_Authentication extends Task_Tools_Model_Base{
     	$mail = new Zend_Mail("UTF-8");
     	$mail->setBodyText($message);
     	$mail->setFrom('system@snkh.com.cn', 'SpaldingCN');
-    	$to = 'website-development@voyageone.cn,markting-spalding@voyageone.cn';
+    	$to = 'website_development@voyageone.cn,markting_spalding@voyageone.cn';
     	$emailArr = explode(',',$to);
     	$toArr = array();
     	foreach ($emailArr as $email){

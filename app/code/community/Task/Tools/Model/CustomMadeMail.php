@@ -58,7 +58,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     	$mail = new Zend_Mail("UTF-8");
     	$mail->setBodyText($message);
     	$mail->setFrom('system@snkh.com.cn', 'SpaldingCN');
-    	$to = 'website-development@voyageone.cn,markting-spalding@voyageone.cn';
+    	$to = 'website_development@voyageone.cn,markting_spalding@voyageone.cn';
     	$emailArr = explode(',',$to);
     	$toArr = array();
     	foreach ($emailArr as $email){
@@ -73,7 +73,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
     {
         $to = 'alan.zhou@fotlinc.com,Jessica.Guo@fotlinc.com,cynthia.zhu@spaldingchina.com.cn';
-        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,markting-spalding@voyageone.cn,website-development@voyageone.cn' : "";
+        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,markting_spalding@voyageone.cn,website_development@voyageone.cn' : "";
         $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
         $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 
