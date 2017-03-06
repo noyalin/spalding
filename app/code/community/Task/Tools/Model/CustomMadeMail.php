@@ -72,19 +72,19 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     
     public function sendNotification($this_subject, $this_message, $cc = false, $subject_override = false)
     {
-        $to = 'alan.zhou@fotlinc.com,Jessica.Guo@fotlinc.com,cynthia.zhu@spaldingchina.com.cn';
-        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,markting_spalding@voyageone.cn,website_development@voyageone.cn' : "";
-        $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
-        $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
-
-        $message = "$this_message";
-        $message .= "\r\n\r\n";
-
-        $headers = 'From: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" ;
-
-        if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED) {
-            mail($to, $subject, $message, $headers);
-        }
-        echo "\n" . $message . "\n";
+//        $to = 'alan.zhou@fotlinc.com,Jessica.Guo@fotlinc.com,cynthia.zhu@spaldingchina.com.cn';
+//        $to .= ($cc) ? "," . 'kobe.xin@voyageone.cn,markting_spalding@voyageone.cn,website_development@voyageone.cn' : "";
+//        $subject = ($subject_override) ? $this_subject : "Spalding System Notification - $this_subject";
+//        $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
+//
+//        $message = "$this_message";
+//        $message .= "\r\n\r\n";
+//
+//        $headers = 'From: ' . self :: CONF_SYSTEM_NOTIFICATION_FROM_ADDRESS . "\r\n" ;
+//
+//        if (self :: CONF_SYSTEM_NOTIFICATION_ENABLED) {
+//            mail($to, $subject, $message, $headers);
+//        }
+//        echo "\n" . $message . "\n";
     }
 }
