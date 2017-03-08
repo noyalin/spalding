@@ -60,7 +60,7 @@ class Task_Tools_Model_CustomMadeMail extends Task_Tools_Model_Base
     	$mail->setFrom('system@snkh.com.cn', 'SpaldingCN');
 //    	$to = 'website_development@voyageone.cn,markting_spalding@voyageone.cn';
         $to = 'alan.zhou@fotlinc.com,Jessica.Guo@fotlinc.com,cynthia.zhu@spaldingchina.com.cn';
-        $to .= 'kobe.xin@voyageone.cn,markting_spalding@voyageone.cn,website_development@voyageone.cn';
+        $to .= ',kobe.xin@voyageone.cn,markting_spalding@voyageone.cn,website_development@voyageone.cn';
     	$emailArr = explode(',',$to);
     	$toArr = array();
     	foreach ($emailArr as $email){
