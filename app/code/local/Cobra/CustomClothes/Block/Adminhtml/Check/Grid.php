@@ -62,8 +62,8 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
            'sortable'          => false,
            'type'              => 'options',
            'options'           => array(
-               1   => '直线',
-               2   => '曲线',
+               1   => 'font1(楷体)',
+               2   => 'font2(圆体)',
            ),
            'html_decorators'   => array('nobr')
         ));
@@ -83,8 +83,8 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
        		'sortable'          => false,
        		'type'              => 'options',
        		'options'           => array(
-       			1   => 'font1(楷体)',
-       			2   => 'font2(圆体)',
+                1   => '直线',
+                2   => '曲线',
        		),
        		'html_decorators'   => array('nobr')
         ));
