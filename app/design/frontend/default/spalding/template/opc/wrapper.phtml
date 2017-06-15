@@ -131,7 +131,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
                         发票内容：&nbsp;
                     </div>
                     <div class="checkoutWrapContentItemRight">
-                        <select class="invoiceneirong" disabled="disabled">
+                        <select class="invoiceneirong" disabled="disabled" style="background: #fff;color:#000">
                             <option>明细</option>
                         </select>
                         <br>
@@ -204,7 +204,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
                         发票内容:
                     </div>
                     <div class="checkoutWrapContentItemRight">
-                        <select class="invoiceneirong" id="zengzhi_invoiceneirong" disabled="disabled">
+                        <select class="invoiceneirong" id="zengzhi_invoiceneirong" disabled="disabled" style="background: #fff;color:#000">
                             <option>明细</option>
                         </select>
                         <br>
@@ -400,6 +400,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
             jQuery('.spaninvoicetype').html('无需发票');
             jQuery('.spaninvoicetitle').html('');
             jQuery('.spaninvoicecontent').html('');
+            jQuery("#customer_invoice").val("");
 //            jQuery('#checkoutSmallTitle input[type="radio"]').removeAttr('checked');
             jQuery("#checkoutSmallTitle").hide();
             jQuery(".bill").show();
