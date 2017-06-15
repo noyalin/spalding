@@ -480,11 +480,29 @@ final class StoneEdge_MagentoImport {
 
 		$customMadeFlag = false;
 		$testFlag = false;
+		$strTmp = "开票内容: \n";
+
+		$attributeSetModel = Mage::getModel("eav/entity_attribute_set");
 		foreach ($order->getAllItems() as $orderItem) {
 			if ($orderItem->getData('product_type') == 'configurable') {
+				$productItem = Mage::getModel('catalog/product')->load($orderItem->getProductId());
+				$code = $productItem->getData('sku');
+				$typeSetName = $attributeSetModel->load($productItem->getAttributeSetId())->getAttributeSetName();
+				if ($typeSetName) {
+					if ($typeSetName == 'ball' || $typeSetName == 'customball') {
+						$strTmp .= ("斯伯丁篮球 ".$code."\n");
+					} else if ($typeSetName == 'football') {
+						$strTmp .= ("斯伯丁足球 ".$code."\n");
+					} else if ($typeSetName == 'stand') {
+						$strTmp .= ("斯伯丁篮球架 ".$code."\n");
+					} else {
+						$strTmp .= ("斯伯丁体育用品 ".$code."\n");
+					}
+				}
 				continue;
 			}
 			$productItem = Mage::getModel('catalog/product')->load($orderItem->getProductId());
+
 			if ($productItem->getIsCustom() && $productItem->getIsCustom() == 1) {
 //			if ($orderItem->getData('sku') == '74-602yc-ID01' ||
 //				$orderItem->getData('sku') == '74-602yc-ID02') {
@@ -513,13 +531,17 @@ final class StoneEdge_MagentoImport {
 		self::xmlAppend("GiftMessage", self::getGiftMessage($order), $ndOther, $xd);
 
 		if ($testFlag) {
-			self::xmlAppend("Comments", "这一单是测试订单，请客服不要APP\n".$order->getData('customer_note'), $ndOther, $xd);
+			$comments = "这一单是测试订单，请客服不要APP\n".$order->getData('customer_note');
 		} else if ($customMadeFlag) {
-			self::xmlAppend("Comments", "这一单有定制球，请客服在审批后在APP\n".$order->getData('customer_note'), $ndOther, $xd);
+			$comments = "这一单有定制球，请客服在审批后在APP\n".$order->getData('customer_note');
 		} else {
-			self::xmlAppend("Comments", $order->getData('customer_note'), $ndOther, $xd);
+			$comments = $order->getData('customer_note');
 		}
+		// 将”开票内容: 篮球“ 替换成新的
+		$strTmp = trim($strTmp,",");
+		$comments = str_replace("开票内容: 明细",$strTmp,$comments);
 
+		self::xmlAppend("Comments", $comments, $ndOther, $xd);
 		$ndOrder->appendChild($ndOther);
 		return true;
 	}
