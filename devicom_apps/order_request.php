@@ -388,7 +388,7 @@ final class StoneEdge_MagentoImport {
 	private static function downloadorders() {
 //		$lastDate = new DateTime();
 		$startnum = (isset($_REQUEST['startnum']) && ((int) $_REQUEST['startnum'] > 0) ? (int) $_REQUEST['startnum'] - 1 : 0);
-		$batchsize = (isset($_REQUEST['batchsize']) && (int) $_REQUEST['batchsize'] > 0 ? $_REQUEST['batchsize'] : 500);
+		$batchsize = (isset($_REQUEST['batchsize']) && (int) $_REQUEST['batchsize'] > 0 ? $_REQUEST['batchsize'] : 100);
 //		$lastOrder = ((isset($_REQUEST['lastorder']) && strtolower($_REQUEST['lastorder']) != 'all') ? $_REQUEST['lastorder'] : 0);
 		$lastId = (isset($_REQUEST['order_cursor']) ? $_REQUEST['order_cursor'] : 0);
 //		$lastDate = ((isset($_REQUEST['lastdate']) && strtolower($_REQUEST['lastdate']) != 'all') ? date_create($_REQUEST['lastdate']) : date_create(date('Y-m-d')));
