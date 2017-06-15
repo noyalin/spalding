@@ -435,7 +435,6 @@ $theme = Mage::getDesign()->getTheme('frontend');
                 }
             } else {
                 invoice_neirong = jQuery('#zengzhi_invoiceneirong option:selected').val();
-                spaninvoicecontent = invoice_neirong;
                 invoiceTypeName = "增值税专用发票";
                 if (!jQuery("#zengzhi_companyname").val()) {
                     alert('公司名称不能为空');
@@ -473,9 +472,9 @@ $theme = Mage::getDesign()->getTheme('frontend');
             }
 
             if (invoiceType == 1) {
-                jQuery("#customer_invoice").val("发票类型: " + invoiceTypeName + "  发票抬头: " + invoice_title + invoice_content + " 开票内容: " + invoice_neirong);
+                jQuery("#customer_invoice").val("  \n发票类型: " + invoiceTypeName + "  发票抬头: " + invoice_title + invoice_content + " 开票内容: " + invoice_neirong);
             } else {
-                jQuery("#customer_invoice").val("发票类型: " + invoiceTypeName + invoice_content + " 开票内容: " + invoice_neirong);
+                jQuery("#customer_invoice").val("  \n发票类型: " + invoiceTypeName + invoice_content + " 开票内容: " + invoice_neirong);
             }
             jQuery('.spaninvoicetype').html(invoiceTypeName);
             jQuery('.spaninvoicetitle').html(invoice_title);

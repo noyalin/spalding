@@ -509,6 +509,12 @@ final class StoneEdge_MagentoImport {
 				$customMadeFlag = true;
 			} else if ($orderItem->getData('sku') == 'price-difference-001-OneSize') {
 				$testFlag = true;
+			} else if (strcasecmp('76-219y-OneSize', $orderItem->getData('sku')) == 0) {
+				$zero1=date("y-m-d h:i:s");
+				$zero2="2017-07-05 00:00:00";
+				if(strtotime($zero1)<strtotime($zero2)){
+					$customMadeFlag = true;
+				}
 			}
 
 			$ndProd = $xd->createElement("Product");
@@ -531,9 +537,9 @@ final class StoneEdge_MagentoImport {
 		self::xmlAppend("GiftMessage", self::getGiftMessage($order), $ndOther, $xd);
 
 		if ($testFlag) {
-			$comments = "这一单是测试订单，请客服不要APP\n".$order->getData('customer_note');
+			$comments = "这一单是测试订单，请客服不要APP。\n".$order->getData('customer_note');
 		} else if ($customMadeFlag) {
-			$comments = "这一单有定制球，请客服在审批后在APP\n".$order->getData('customer_note');
+			$comments = "这一单有定制球或预售球，请客服人工处理。\n".$order->getData('customer_note');
 		} else {
 			$comments = $order->getData('customer_note');
 		}
