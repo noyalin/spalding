@@ -1,302 +1,329 @@
-    <script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
-    <?php
-    $package = Mage::getDesign()->getPackageName();
-    $theme = Mage::getDesign()->getTheme('frontend');
-    ?>
-    <div>
-            <div class="checkoutTitleMain">
-                填写并核对订单信息
-            </div>
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+<?php
+$package = Mage::getDesign()->getPackageName();
+$theme = Mage::getDesign()->getTheme('frontend');
+?>
+<div>
+    <div class="checkoutTitleMain">
+        填写并核对订单信息
+    </div>
 
-            <div class="opc-menu">
-                <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
-                    <?php echo $this->getChildHtml('login');?>
-                <?php endif;?>
-            </div>
+    <div class="opc-menu">
+        <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+            <?php echo $this->getChildHtml('login'); ?>
+        <?php endif; ?>
+    </div>
 
-            <div class="clear"></div>
+    <div class="clear"></div>
 
-            <div class="checkoutSubTitleMain">
+    <div class="checkoutSubTitleMain">
                 <span class="checkoutSubTitleBall">
-                    <img src="<?php echo $this->getSkinUrl('images/select_ship_address.png');  ?>" alt="">
+                    <img src="<?php echo $this->getSkinUrl('images/select_ship_address.png'); ?>" alt="">
                 </span>
-            </div>
-            <div id="addressUl" class="  " style="margin-left: 70px;">
-                <form id="opc-address-form-billing" method="post">
-                    <?php echo $this->getChildHtml('billing')?>
-                </form>
+    </div>
+    <div id="addressUl" class="  " style="margin-left: 70px;">
+        <form id="opc-address-form-billing" method="post">
+            <?php echo $this->getChildHtml('billing') ?>
+        </form>
 
-                <form id="opc-address-form-shipping" class="hidden" method="post">
-                    <?php echo $this->getChildHtml('shipping')?>
-                </form>
-            </div>
+        <form id="opc-address-form-shipping" class="hidden" method="post">
+            <?php echo $this->getChildHtml('shipping') ?>
+        </form>
+    </div>
 
-            <div class="checkoutLine"></div>
-            <div class="checkoutSubTitleMain">
+    <div class="checkoutLine"></div>
+    <div class="checkoutSubTitleMain">
                 <span class="checkoutSubTitleBall">
-                    <img src="<?php echo $this->getSkinUrl('images/payment_delivery.png');  ?>" alt="">
+                    <img src="<?php echo $this->getSkinUrl('images/payment_delivery.png'); ?>" alt="">
                 </span>
+    </div>
+    <div class="step_main one_step pay_step">
+        <div class="opc-col-center clearfix">
+            <div
+                class="payment-block <?php if ($this->getOnepage()->getQuote()->isVirtual()): ?>clear-margin<?php endif; ?>">
+                <?php echo $this->getChildHtml('payment')//$this->_getPaymentMethodsHtml();?>
             </div>
-            <div class="step_main one_step pay_step">
-                <div class="opc-col-center clearfix">
-                    <div class="payment-block <?php if ($this->getOnepage()->getQuote()->isVirtual()):?>clear-margin<?php endif;?>">
-                        <?php echo $this->getChildHtml('payment')//$this->_getPaymentMethodsHtml();?>
+        </div>
+        <?php if (!$this->getOnepage()->getQuote()->isVirtual()): ?>
+            <div class="shipping-block clearfix">
+                <div class="checkoutWrapContent">
+                    <div class="checkoutWrapContentItem clearfix">
+                        运送方式
                     </div>
                 </div>
-                <?php if (!$this->getOnepage()->getQuote()->isVirtual()):?>
-                    <div class="shipping-block clearfix">
-                        <div class="checkoutWrapContent">
-                            <div class="checkoutWrapContentItem clearfix">
-                                运送方式
-                            </div>
-                        </div>
-                        <div id="shipping-block-methods">
-                            <?php echo $this->getChildHtml('shipping_method');//$this->_getShippingMethodsHtml();?>
-                        </div>
-                    </div>
-                <?php endif;?>
+                <div id="shipping-block-methods">
+                    <?php echo $this->getChildHtml('shipping_method');//$this->_getShippingMethodsHtml();?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <div class="checkoutLine"></div>
+
+    <!--  发票 s -->
+
+    <div class="checkoutSubTitleMain">
+                    <span class="checkoutSubTitleBall">
+                    <img src="<?php echo $this->getSkinUrl('images/fapiao_invoice.png'); ?>" alt="">
+                    </span>
+    </div>
+
+    <div class="checkoutNewAddress clearfix">
+        <style>
+            .bill {
+                font-size: 12px;
+                color: #fff;
+                margin-left: 97px;
+                color: #b4b4b4;
+            }
+
+            .choBill {
+                color: #38f;
+                cursor: pointer;
+            }
+        </style>
+        <div class="bill">
+            <span>不需要发票</span>
+            <span class="choBill">[修改]</span>
+        </div>
+        <div class="checkoutSmallTitle" id="checkoutSmallTitle" style="display:none;">
+            发票类型：
+            <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio"
+                   value="1">普通发票
+            &nbsp;&nbsp;&nbsp;
+            <input id="chkCheckoutInvoiceTax" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="2">增值税专用发票
+        </div>
+
+        <br/>
+
+        <div id="checkoutInvoiceNormal" class="checkoutWrapContent">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    发票抬头：&nbsp;
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <select class="invoicetaitou">
+                        <option>个人</option>
+                        <option>公司</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="checkoutWrapContentItem clearfix Jinvoicecxt" style="display: none">
+                <div class="checkoutWrapContentItemLeft">
+                    公司名称：&nbsp;
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="invoicecontent" placeholder="请输入公司名称"><br>
+                </div>
+            </div>
+            <div class="checkoutWrapContentItem clearfix Jinvoicecxt" style="display: none">
+                <div class="checkoutWrapContentItemLeft">
+                    纳税人识别号：&nbsp;
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="shibiehao" placeholder="请输入纳税人识别号"><br>
+                </div>
+            </div>
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    发票内容：&nbsp;
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <select class="invoiceneirong">
+                        <option>明细</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+            <div class="checkoutWrapContentItemSave add_addr">
+                温馨提示：您所填的信息将被系统自动打印到发票上，请仔细核对所填发票信息！
+                <br/><br/>
             </div>
 
-            <div class="checkoutLine"></div>
+        </div>
+        <div id="checkoutInvoiceTax" class="checkoutWrapContent">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    公司名称：
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="zengzhi_companyname" name="zengzhi_companyname"><br>
+                </div>
+            </div>
 
-                <!--  发票 s -->
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    纳税人识别号：
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="zengzhi_shibiehao" name="zengzhi_shibiehao"><br>
+                </div>
+            </div>
 
-                <div class="checkoutSubTitleMain">
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    公司地址：
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="zengzhi_companyaddress" name="zengzhi_companyaddress"><br>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    公司电话：
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="zengzhi_companyphone" name="zengzhi_companyphone"><br>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    开户行名称：
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="zengzhi_bankname" name="zengzhi_bankname"><br>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemLeft">
+                    开户行帐号：
+                </div>
+                <div class="checkoutWrapContentItemRight">
+                    <input type="text" class="regBoxInp" id="zengzhi_bankaccount" name="zengzhi_bankaccount"><br>
+                </div>
+            </div>
+
+            <div class="checkoutWrapContentItemSave add_addr">
+                完成请将以下加盖了公章的企业资质证书的彩色扫描件发送至customer.service@spaldingchina.com.cn；
+                <br/>
+                （1）营业执照副本（2）税务登记证副本（3）开户许可证（4）一般纳税人认定通知书
+                <br/><br/>
+            </div>
+
+        </div>
+
+        <div id="checkoutInvoiceCommand" class="checkoutWrapContent">
+
+            <div class="checkoutWrapContentItem clearfix">
+                <div class="checkoutWrapContentItemSave add_addr">
+
+                    <a href="javascript:;" class="btn" muse_scanned="true" id="saveInvoice" onclick="saveInvoice()">
+                        <i class="add"></i>
+                        <span>保存发票信息</span>
+                    </a>
+                    <a href="javascript:;" onclick="doHideInvoiceForm();" class="btn btngrey" muse_scanned="true">
+                        <i class="add"></i>
+                        <span>暂不需要发票</span>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- 发票 e -->
+
+    <div class="checkoutLine"></div>
+
+    <div class="checkoutSubTitleMain">
                     <span class="checkoutSubTitleBall">
-                    <img src="<?php echo $this->getSkinUrl('images/fapiao_invoice.png');  ?>" alt="">
+                        <img src="<?php echo $this->getSkinUrl('images/shop_list.png'); ?>" alt="">
                     </span>
-                </div>
+    </div>
+    <?php echo $this->_getReviewHtml() ?>
+    <div class="clear move-columns"></div>
 
-                <div class="checkoutNewAddress clearfix">
-                    <style>
-                        .bill{font-size:12px;color:#fff;margin-left:97px;color:#b4b4b4;}
-                        .choBill{color:#38f;cursor:pointer;}
-                    </style>
-                    <div class="bill">
-                        <span>不需要发票</span>
-                        <span class="choBill">[修改]</span>
-                    </div>
-                    <div class="checkoutSmallTitle" style="display:none;">
-                        发票类型：
-                        <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="1">普通发票
-                        &nbsp;&nbsp;&nbsp;
-                        <input id="chkCheckoutInvoiceTax" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="2">增值税专用发票
-                    </div>
+    <?php echo $this->getChildhtml('customer.comment'); ?>
 
-                    <br />
+    <!-- 优惠券 s -->
+    <div class="checkoutLine"></div>
 
-                    <div id="checkoutInvoiceNormal" class="checkoutWrapContent">
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                发票抬头：&nbsp;
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <select class="invoicetaitou">
-                                    <option>个人</option>
-                                    <option>公司</option>
-                                </select>
-                                <input type="text" class="regBoxInp" id="invoicecontent" style="display: none" placeholder="请输入公司名称">
-                                <br>
-                            </div>
-                        </div>
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                发票内容：&nbsp;
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <select class="invoiceneirong">
-                                    <option>篮球</option>
-                                    <option>体育用品</option>
-                                </select>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="checkoutWrapContentItemSave add_addr">
-                            温馨提示：您所填的信息将被系统自动打印到发票上，请仔细核对所填发票信息！
-                            <br /><br />
-                        </div>
-
-                    </div>
-                    <div id="checkoutInvoiceTax" class="checkoutWrapContent">
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                公司名称：
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp" id="zengzhi_companyname" name="zengzhi_companyname"><br>
-                            </div>
-                        </div>
-
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                纳税人识别号：
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp" id="zengzhi_shibiehao" name="zengzhi_shibiehao"><br>
-                            </div>
-                        </div>
-
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                公司地址：
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp" id="zengzhi_companyaddress" name="zengzhi_companyaddress"><br>
-                            </div>
-                        </div>
-
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                公司电话：
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp" id="zengzhi_companyphone" name="zengzhi_companyphone"><br>
-                            </div>
-                        </div>
-
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                开户行名称：
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp" id="zengzhi_bankname" name="zengzhi_bankname"><br>
-                            </div>
-                        </div>
-
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemLeft">
-                                开户行帐号：
-                            </div>
-                            <div class="checkoutWrapContentItemRight">
-                                <input type="text" class="regBoxInp" id="zengzhi_bankaccount" name="zengzhi_bankaccount"><br>
-                            </div>
-                        </div>
-
-                        <div class="checkoutWrapContentItemSave add_addr">
-                            完成请将以下加盖了公章的企业资质证书的彩色扫描件发送至customer.service@spaldingchina.com.cn；
-                            <br />
-                            （1）营业执照副本（2）税务登记证副本（3）开户许可证（4）一般纳税人认定通知书
-                            <br /><br />
-                        </div>
-
-                    </div>
-
-                    <div id="checkoutInvoiceCommand" class="checkoutWrapContent">
-
-                        <div class="checkoutWrapContentItem clearfix">
-                            <div class="checkoutWrapContentItemSave add_addr">
-
-                                <a href="javascript:;" class="btn" muse_scanned="true" id="saveInvoice" onclick="saveInvoice()">
-                                    <i class="add"></i>
-                                    <span>保存发票信息</span>
-                                </a>
-                                <a href="javascript:;" onclick="doHideInvoiceForm();" class="btn btngrey" muse_scanned="true">
-                                    <i class="add"></i>
-                                    <span>暂不需要发票</span>
-                                </a>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- 发票 e -->
-
-                <div class="checkoutLine"></div>
-
-                <div class="checkoutSubTitleMain">
-                    <span class="checkoutSubTitleBall">
-                        <img src="<?php echo $this->getSkinUrl('images/shop_list.png');  ?>" alt="">
-                    </span>
-                </div>
-                 <?php echo $this->_getReviewHtml()?>
-                <div class="clear move-columns"></div>
-
-                    <?php echo $this->getChildhtml('customer.comment');?>
-
-                <!-- 优惠券 s -->
-                <div class="checkoutLine"></div>
-
-                <div class="checkoutSubTitleMain">
+    <div class="checkoutSubTitleMain">
                                 <span class="checkoutSubTitleBall">
-                                    <img src="<?php echo $this->getSkinUrl('images/shop_coupon.png');  ?>" alt="">
+                                    <img src="<?php echo $this->getSkinUrl('images/shop_coupon.png'); ?>" alt="">
                                 </span>
-                </div>
+    </div>
 
-                <div  id="discount-coupon-block" class="collapse-block">
-                    <?php echo $this->getChildhtml('coupon');?>
-                </div>
-                <!-- 优惠券 e -->
+    <div id="discount-coupon-block" class="collapse-block">
+        <?php echo $this->getChildhtml('coupon'); ?>
+    </div>
+    <!-- 优惠券 e -->
 
-                <div class="opc-review-actions">
-                    <div class="checkoutLine">
-                    </div>
+    <div class="opc-review-actions">
+        <div class="checkoutLine">
+        </div>
 
-                    <div class="checkoutSubTitleMain">
+        <div class="checkoutSubTitleMain">
                         <span class="checkoutSubTitleBall">
-                            <img src="<?php echo $this->getSkinUrl('images/billing_info.png');  ?>" alt="">
+                            <img src="<?php echo $this->getSkinUrl('images/billing_info.png'); ?>" alt="">
                         </span>
-                    </div>
+        </div>
 
-                    <div class="checkoutBalance">
-                        <div class="checkoutBalanceItem">
-                            商品总金额:&nbsp;
-                            <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getSubtotal()?></div>
-                        </div>
-<?php //if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
-                        <div class="checkoutBalanceItem">
-                            优惠金额:&nbsp;
-                            <div class="checkoutProductDiscountPrice"><?php echo Mage::helper('opc')->getSubtotalOfDiscount()?></div>
-                        </div>
-<?php //endif;?>
-                         <div class="checkoutBalanceItem">
-                            配送费用:&nbsp;		
-                            <div class="checkoutShippingPrice"><?php echo Mage::helper('opc')->getShippingPrice()?></div>
-                        </div>
-                        
-                        <div class="checkoutBalanceItem">
-                            税金:&nbsp;¥0.00
-                        </div>
-
-                        <div class="checkoutBalanceItem">
-                            发票类型:&nbsp;<span class="spaninvoicetype">无需发票</span>
-                        </div>
-
-                        <div class="checkoutBalanceItem">
-                            发票抬头:&nbsp;<span class="spaninvoicetitle"></span>
-                        </div>
-
-                        <div class="checkoutBalanceItem">
-                            开票内容:&nbsp;<span class="spaninvoicecontent"></span>
-                        </div>
-
-                        <div class="checkoutBalanceItem">
-                            <div class="checkoutPriceTotalText">订单总金额:</div>&nbsp;
-                            <div class="checkoutPriceTotalPrice"><?php echo Mage::helper('opc')->getGrandTotal()?></div>
-                        </div>
-
-                        <?php echo $this->getChildHtml('agreements')?>
-                    <?php echo $this->getChildHtml('opc.newsletters');?>
-
-
-                </div>
-    <!--                <div class="checkoutCommit">-->
-    <!--                    <div class="add_addr">-->
-    <!--                        <a href="javascript:;" class="btn" muse_scanned="true">-->
-    <!--                            <button type="button" title="提交订单" class="button btn-checkout opc-btn-checkout"><span><span>提交订单</span></span></button>-->
-    <!--                        </a>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-                    <div class="checkoutCommit">
-                        <div class="add_addr">
-                            <a href="javascript:;" class="btn" muse_scanned="true">
-                                <span  class="button btn-checkout opc-btn-checkout">提交订单</span>
-                            </a>
-                        </div>
-                    </div>
-                    
+        <div class="checkoutBalance">
+            <div class="checkoutBalanceItem">
+                商品总金额:&nbsp;
+                <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getSubtotal() ?></div>
             </div>
+            <?php //if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
+            <div class="checkoutBalanceItem">
+                优惠金额:&nbsp;
+                <div
+                    class="checkoutProductDiscountPrice"><?php echo Mage::helper('opc')->getSubtotalOfDiscount() ?></div>
+            </div>
+            <?php //endif;?>
+            <div class="checkoutBalanceItem">
+                配送费用:&nbsp;
+                <div class="checkoutShippingPrice"><?php echo Mage::helper('opc')->getShippingPrice() ?></div>
+            </div>
+
+            <div class="checkoutBalanceItem">
+                税金:&nbsp;¥0.00
+            </div>
+
+            <div class="checkoutBalanceItem">
+                发票类型:&nbsp;<span class="spaninvoicetype">无需发票</span>
+            </div>
+
+            <div class="checkoutBalanceItem">
+                发票抬头:&nbsp;<span class="spaninvoicetitle"></span>
+            </div>
+
+            <div class="checkoutBalanceItem">
+                开票内容:&nbsp;<span class="spaninvoicecontent"></span>
+            </div>
+
+            <div class="checkoutBalanceItem">
+                <div class="checkoutPriceTotalText">订单总金额:</div>
+                &nbsp;
+                <div class="checkoutPriceTotalPrice"><?php echo Mage::helper('opc')->getGrandTotal() ?></div>
+            </div>
+
+            <?php echo $this->getChildHtml('agreements') ?>
+            <?php echo $this->getChildHtml('opc.newsletters'); ?>
+
+
+        </div>
+        <!--                <div class="checkoutCommit">-->
+        <!--                    <div class="add_addr">-->
+        <!--                        <a href="javascript:;" class="btn" muse_scanned="true">-->
+        <!--                            <button type="button" title="提交订单" class="button btn-checkout opc-btn-checkout"><span><span>提交订单</span></span></button>-->
+        <!--                        </a>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+
+        <div class="checkoutCommit">
+            <div class="add_addr">
+                <a href="javascript:;" class="btn" muse_scanned="true">
+                    <span class="button btn-checkout opc-btn-checkout">提交订单</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
     <script>
         var vopc = '<?php echo Mage::getConfig()->getModuleConfig("IWD_Opc")->version;?>';
         IWD.OPC.Checkout.config = '<?php echo $this->getJsonConfig()?>';
@@ -317,36 +344,39 @@
             <div class="f_circleG" id="frotateG_08"></div>
         </div>
     </div>
-    <div class="opc-message-wrapper design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+    <div class="opc-message-wrapper design_package_<?php echo $package; ?> design_theme_<?php echo $theme; ?>">
 
         <div class="opc-messages">
             <a class="close-message-wrapper"></a>
+
             <div class="opc-message-container"></div>
-            <div class="opc-messages-action"><button class="button"><span><span><?php echo $this->__('Close')?></span></span></button></div>
+            <div class="opc-messages-action">
+                <button class="button"><span><span><?php echo $this->__('Close') ?></span></span></button>
+            </div>
         </div>
     </div>
     <script>
         // 初始为不需要发票，点击修改显示发票服务
-        jQuery(".choBill").click(function(){
+        jQuery(".choBill").click(function () {
             jQuery(this).parent(".bill").hide();
-            jQuery(this).parent(".bill").siblings(".checkoutSmallTitle").show();
+            jQuery(this).parent(".bill").siblings("#checkoutSmallTitle").show();
         });
         // 发票服务
         // 当选择了普通发票, 只显示普通发票的内容
         // 当选择了增值税专用发票, 只显示增值税专用发票的内容
-        jQuery('.checkoutInvoice').click(function() {
+        jQuery('.checkoutInvoice').click(function () {
             var thisId = jQuery(this).attr('id');
 
             jQuery('#checkoutInvoiceNormal').hide();
             jQuery('#checkoutInvoiceTax').hide();
             jQuery('#checkoutInvoiceCommand').hide();
-                if (thisId == "chkCheckoutInvoiceNormal") {
-                    jQuery('#checkoutInvoiceNormal').show();
-                } else if (thisId = "chkCheckoutInvoiceTax") {
-                    jQuery('#checkoutInvoiceTax').show();
-                }
+            if (thisId == "chkCheckoutInvoiceNormal") {
+                jQuery('#checkoutInvoiceNormal').show();
+            } else if (thisId = "chkCheckoutInvoiceTax") {
+                jQuery('#checkoutInvoiceTax').show();
+            }
 
-                jQuery('#checkoutInvoiceCommand').show();
+            jQuery('#checkoutInvoiceCommand').show();
         });
 
         // 暂不需要发票按钮按下
@@ -358,39 +388,59 @@
             jQuery('.spaninvoicetype').html('无需发票');
             jQuery('.spaninvoicetitle').html('');
             jQuery('.spaninvoicecontent').html('');
-            jQuery('.checkoutSmallTitle input[type="radio"]').removeAttr('checked');
-            jQuery(".checkoutSmallTitle").hide();
+            jQuery('#checkoutSmallTitle input[type="radio"]').removeAttr('checked');
+            jQuery("#checkoutSmallTitle").hide();
             jQuery(".bill").show();
         }
-        function saveInvoice(){
-    //        var invoiceType = jQuery('input[type="radio"].invoicetaitou:checked').val();
+        function saveInvoice() {
+            //        var invoiceType = jQuery('input[type="radio"].invoicetaitou:checked').val();
             var invoiceType = jQuery("input[name='chkCheckoutInvoice']:checked").val();
             var invoiceTypeName = "普通发票";
             var invoice_neirong = jQuery('select.invoiceneirong option:selected').val();
             spaninvoicecontent = invoice_neirong;
-            if(invoiceType == 1){//普通发票
+            var invoice_content;
+            if (invoiceType == 1) {//普通发票
                 var invoice_title = jQuery('select.invoicetaitou option:selected').val();
-
-                var invoice_content = "  名称为： " + jQuery("#invoicecontent").val();
-                if(invoice_title == "个人"){
+                if (invoice_title == "个人") {
                     invoice_content = '';
+                } else {
+                    if (!jQuery("#invoicecontent").val()) {
+                        alert('公司名称不能为空');
+                        return false;
+                    }
+                    if (!jQuery("#shibiehao").val()) {
+                        alert('纳税人识别号不能为空');
+                        return false;
+                    }
+                    invoice_content = "  名称为： " + jQuery("#invoicecontent").val()
+                        + "  纳税人识别号: " + jQuery("#shibiehao").val();
+
+
                 }
-            }else{
+            } else {
                 invoiceTypeName = "增值税专用发票";
+                if (!jQuery("#zengzhi_companyname").val()) {
+                    alert('公司名称不能为空');
+                    return false;
+                }
+                if (!jQuery("#zengzhi_shibiehao").val()) {
+                    alert('纳税人识别号不能为空');
+                    return false;
+                }
                 invoice_content = ""
                     + "  公司名称: " + jQuery("#zengzhi_companyname").val()
-                    + "  纳税人识别号: "+ jQuery("#zengzhi_shibiehao").val()
-                    + "  公司地址: "+ jQuery("#zengzhi_companyaddress").val()
-                    + "  公司电话: "+ jQuery("#zengzhi_companyphone").val()
-                    + "  开户行名称: "+ jQuery("#zengzhi_bankname").val()
-                    + "  开户行帐号: "+ jQuery("#zengzhi_bankaccount").val();
+                    + "  纳税人识别号: " + jQuery("#zengzhi_shibiehao").val()
+                    + "  公司地址: " + jQuery("#zengzhi_companyaddress").val()
+                    + "  公司电话: " + jQuery("#zengzhi_companyphone").val()
+                    + "  开户行名称: " + jQuery("#zengzhi_bankname").val()
+                    + "  开户行帐号: " + jQuery("#zengzhi_bankaccount").val();
                 spaninvoicecontent = invoice_content;
             }
 
-            if(invoiceType  ==  1){
-                jQuery("#customer_invoice").val("发票类型: "+invoiceTypeName +"  发票抬头: "+invoice_title + invoice_content + " 开票内容: "+invoice_neirong );
-            }else{
-                jQuery("#customer_invoice").val("发票类型: "+invoiceTypeName + invoice_content );
+            if (invoiceType == 1) {
+                jQuery("#customer_invoice").val("发票类型: " + invoiceTypeName + "  发票抬头: " + invoice_title + invoice_content + " 开票内容: " + invoice_neirong);
+            } else {
+                jQuery("#customer_invoice").val("发票类型: " + invoiceTypeName + invoice_content);
             }
             jQuery('.spaninvoicetype').html(invoiceTypeName);
             jQuery('.spaninvoicetitle').html(invoice_title);
@@ -400,12 +450,12 @@
             jQuery('#checkoutInvoiceCommand').hide();
 
         }
-        jQuery(".invoicetaitou").change(function(){
+        jQuery(".invoicetaitou").change(function () {
             var invoice_title = jQuery('select.invoicetaitou option:selected').val();
-            if(invoice_title == '个人'){
-                jQuery("#invoicecontent").hide();
-            }else{
-                jQuery("#invoicecontent").show();
+            if (invoice_title == '个人') {
+                jQuery(".Jinvoicecxt").hide();
+            } else {
+                jQuery(".Jinvoicecxt").show();
             }
         });
     </script>
