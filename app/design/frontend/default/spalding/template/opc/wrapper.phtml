@@ -86,143 +86,155 @@ $theme = Mage::getDesign()->getTheme('frontend');
             <span>不需要发票</span>
             <span class="choBill">[修改]</span>
         </div>
-        <div class="checkoutSmallTitle" id="checkoutSmallTitle" style="display:none;">
-            发票类型：
-            <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio"
-                   value="1">普通发票
-            &nbsp;&nbsp;&nbsp;
-            <input id="chkCheckoutInvoiceTax" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio" value="2">增值税专用发票
-        </div>
-
-        <br/>
-
-        <div id="checkoutInvoiceNormal" class="checkoutWrapContent">
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    发票抬头：&nbsp;
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <select class="invoicetaitou">
-                        <option>个人</option>
-                        <option>公司</option>
-                    </select>
-                </div>
-
+        <div id="checkoutSmallTitle" style="display:none;">
+            <div class="checkoutSmallTitle">
+                发票类型：
+                <input id="chkCheckoutInvoiceNormal" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio"
+                       value="1">普通发票
+                &nbsp;&nbsp;&nbsp;
+                <input id="chkCheckoutInvoiceTax" name="chkCheckoutInvoice" class="checkoutInvoice" type="radio"
+                       value="2">增值税专用发票
             </div>
-            <div class="checkoutWrapContentItem clearfix Jinvoicecxt" style="display: none">
-                <div class="checkoutWrapContentItemLeft">
-                    公司名称：&nbsp;
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="invoicecontent" placeholder="请输入公司名称"><br>
-                </div>
-            </div>
-            <div class="checkoutWrapContentItem clearfix Jinvoicecxt" style="display: none">
-                <div class="checkoutWrapContentItemLeft">
-                    纳税人识别号：&nbsp;
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="shibiehao" placeholder="请输入纳税人识别号"><br>
-                </div>
-            </div>
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    发票内容：&nbsp;
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <select class="invoiceneirong">
-                        <option>明细</option>
-                    </select>
-                    <br>
-                </div>
-            </div>
-            <div class="checkoutWrapContentItemSave add_addr">
-                温馨提示：您所填的信息将被系统自动打印到发票上，请仔细核对所填发票信息！
-                <br/><br/>
-            </div>
+            <br>
 
-        </div>
-        <div id="checkoutInvoiceTax" class="checkoutWrapContent">
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    公司名称：
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="zengzhi_companyname" name="zengzhi_companyname"><br>
-                </div>
-            </div>
+            <div id="checkoutInvoiceNormal" class="checkoutWrapContent">
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        发票抬头：&nbsp;
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <select class="invoicetaitou">
+                            <option>个人</option>
+                            <option>公司</option>
+                        </select>
+                    </div>
 
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    纳税人识别号：
                 </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="zengzhi_shibiehao" name="zengzhi_shibiehao"><br>
+                <div class="checkoutWrapContentItem clearfix Jinvoicecxt" style="display: none">
+                    <div class="checkoutWrapContentItemLeft">
+                        公司名称：&nbsp;
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="invoicecontent" placeholder="请输入公司名称"><br>
+                    </div>
                 </div>
-            </div>
-
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    公司地址：
+                <div class="checkoutWrapContentItem clearfix Jinvoicecxt" style="display: none">
+                    <div class="checkoutWrapContentItemLeft">
+                        纳税人识别号：&nbsp;
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="shibiehao" placeholder="请输入纳税人识别号"><br>
+                    </div>
                 </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="zengzhi_companyaddress" name="zengzhi_companyaddress"><br>
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        发票内容：&nbsp;
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <select class="invoiceneirong" disabled="disabled">
+                            <option>明细</option>
+                        </select>
+                        <br>
+                    </div>
                 </div>
-            </div>
-
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    公司电话：
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="zengzhi_companyphone" name="zengzhi_companyphone"><br>
-                </div>
-            </div>
-
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    开户行名称：
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="zengzhi_bankname" name="zengzhi_bankname"><br>
-                </div>
-            </div>
-
-            <div class="checkoutWrapContentItem clearfix">
-                <div class="checkoutWrapContentItemLeft">
-                    开户行帐号：
-                </div>
-                <div class="checkoutWrapContentItemRight">
-                    <input type="text" class="regBoxInp" id="zengzhi_bankaccount" name="zengzhi_bankaccount"><br>
-                </div>
-            </div>
-
-            <div class="checkoutWrapContentItemSave add_addr">
-                完成请将以下加盖了公章的企业资质证书的彩色扫描件发送至customer.service@spaldingchina.com.cn；
-                <br/>
-                （1）营业执照副本（2）税务登记证副本（3）开户许可证（4）一般纳税人认定通知书
-                <br/><br/>
-            </div>
-
-        </div>
-
-        <div id="checkoutInvoiceCommand" class="checkoutWrapContent">
-
-            <div class="checkoutWrapContentItem clearfix">
                 <div class="checkoutWrapContentItemSave add_addr">
+                    温馨提示：您所填的信息将被系统自动打印到发票上，请仔细核对所填发票信息！
+                    <br/><br/>
+                </div>
 
-                    <a href="javascript:;" class="btn" muse_scanned="true" id="saveInvoice" onclick="saveInvoice()">
-                        <i class="add"></i>
-                        <span>保存发票信息</span>
-                    </a>
-                    <a href="javascript:;" onclick="doHideInvoiceForm();" class="btn btngrey" muse_scanned="true">
-                        <i class="add"></i>
-                        <span>暂不需要发票</span>
-                    </a>
+            </div>
+            <div id="checkoutInvoiceTax" class="checkoutWrapContent">
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        公司名称：
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="zengzhi_companyname" name="zengzhi_companyname"><br>
+                    </div>
+                </div>
+
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        纳税人识别号：
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="zengzhi_shibiehao" name="zengzhi_shibiehao"><br>
+                    </div>
+                </div>
+
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        公司地址：
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="zengzhi_companyaddress"
+                               name="zengzhi_companyaddress"><br>
+                    </div>
+                </div>
+
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        公司电话：
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="zengzhi_companyphone" name="zengzhi_companyphone"><br>
+                    </div>
+                </div>
+
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        开户行名称：
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="zengzhi_bankname" name="zengzhi_bankname"><br>
+                    </div>
+                </div>
+
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        开户行帐号：
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <input type="text" class="regBoxInp" id="zengzhi_bankaccount" name="zengzhi_bankaccount"><br>
+                    </div>
+                </div>
+
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemLeft">
+                        发票内容:
+                    </div>
+                    <div class="checkoutWrapContentItemRight">
+                        <select class="invoiceneirong" id="zengzhi_invoiceneirong" disabled="disabled">
+                            <option>明细</option>
+                        </select>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="checkoutWrapContentItemSave add_addr">
+                    完成请将以下加盖了公章的企业资质证书的彩色扫描件发送至customer.service@spaldingchina.com.cn；
+                    <br/>
+                    （1）营业执照副本（2）税务登记证副本（3）开户许可证（4）一般纳税人认定通知书
+                    <br/><br/>
                 </div>
             </div>
 
 
+            <div id="checkoutInvoiceCommand" class="checkoutWrapContent">
+                <div class="checkoutWrapContentItem clearfix">
+                    <div class="checkoutWrapContentItemSave add_addr">
+
+                        <a href="javascript:;" class="btn" muse_scanned="true" id="saveInvoice" onclick="saveInvoice()">
+                            <i class="add"></i>
+                            <span>保存发票信息</span>
+                        </a>
+                        <a href="javascript:;" onclick="doHideInvoiceForm();" class="btn btngrey" muse_scanned="true">
+                            <i class="add"></i>
+                            <span>暂不需要发票</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- 发票 e -->
@@ -359,7 +371,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
         // 初始为不需要发票，点击修改显示发票服务
         jQuery(".choBill").click(function () {
             jQuery(this).parent(".bill").hide();
-            jQuery(this).parent(".bill").siblings("#checkoutSmallTitle").show();
+            jQuery("#checkoutSmallTitle").show();
         });
         // 发票服务
         // 当选择了普通发票, 只显示普通发票的内容
@@ -381,14 +393,14 @@ $theme = Mage::getDesign()->getTheme('frontend');
 
         // 暂不需要发票按钮按下
         function doHideInvoiceForm() {
-            jQuery('#checkoutInvoiceNormal').hide();
-            jQuery('#checkoutInvoiceTax').hide();
-            jQuery('#checkoutInvoiceCommand').hide();
+//            jQuery('#checkoutInvoiceNormal').hide();
+//            jQuery('#checkoutInvoiceTax').hide();
+//            jQuery('#checkoutInvoiceCommand').hide();
 
             jQuery('.spaninvoicetype').html('无需发票');
             jQuery('.spaninvoicetitle').html('');
             jQuery('.spaninvoicecontent').html('');
-            jQuery('#checkoutSmallTitle input[type="radio"]').removeAttr('checked');
+//            jQuery('#checkoutSmallTitle input[type="radio"]').removeAttr('checked');
             jQuery("#checkoutSmallTitle").hide();
             jQuery(".bill").show();
         }
@@ -396,11 +408,14 @@ $theme = Mage::getDesign()->getTheme('frontend');
             //        var invoiceType = jQuery('input[type="radio"].invoicetaitou:checked').val();
             var invoiceType = jQuery("input[name='chkCheckoutInvoice']:checked").val();
             var invoiceTypeName = "普通发票";
-            var invoice_neirong = jQuery('select.invoiceneirong option:selected').val();
-            spaninvoicecontent = invoice_neirong;
+            var invoice_neirong = "";
             var invoice_content;
+            var spaninvoicecontent = "";
+            var invoice_title = "";
             if (invoiceType == 1) {//普通发票
-                var invoice_title = jQuery('select.invoicetaitou option:selected').val();
+                invoice_neirong = jQuery('select.invoiceneirong option:selected').val();
+                spaninvoicecontent = invoice_neirong;
+                invoice_title = jQuery('select.invoicetaitou option:selected').val();
                 if (invoice_title == "个人") {
                     invoice_content = '';
                 } else {
@@ -418,6 +433,8 @@ $theme = Mage::getDesign()->getTheme('frontend');
 
                 }
             } else {
+                invoice_neirong = jQuery('#zengzhi_invoiceneirong option:selected').val();
+                spaninvoicecontent = invoice_neirong;
                 invoiceTypeName = "增值税专用发票";
                 if (!jQuery("#zengzhi_companyname").val()) {
                     alert('公司名称不能为空');
@@ -427,20 +444,37 @@ $theme = Mage::getDesign()->getTheme('frontend');
                     alert('纳税人识别号不能为空');
                     return false;
                 }
+                if (!jQuery("#zengzhi_companyaddress").val()) {
+                    alert('公司地址不能为空');
+                    return false;
+                }
+                if (!jQuery("#zengzhi_companyphone").val()) {
+                    alert('公司电话不能为空');
+                    return false;
+                }
+                if (!jQuery("#zengzhi_bankname").val()) {
+                    alert('开户行名称不能为空');
+                    return false;
+                }
+                if (!jQuery("#zengzhi_bankaccount").val()) {
+                    alert('开户行账户不能为空');
+                    return false;
+                }
+
                 invoice_content = ""
-                    + "  公司名称: " + jQuery("#zengzhi_companyname").val()
-                    + "  纳税人识别号: " + jQuery("#zengzhi_shibiehao").val()
-                    + "  公司地址: " + jQuery("#zengzhi_companyaddress").val()
-                    + "  公司电话: " + jQuery("#zengzhi_companyphone").val()
-                    + "  开户行名称: " + jQuery("#zengzhi_bankname").val()
-                    + "  开户行帐号: " + jQuery("#zengzhi_bankaccount").val();
+                    + "  公司名称: " + jQuery("#zengzhi_companyname").val() + "\n"
+                    + "  纳税人识别号: " + jQuery("#zengzhi_shibiehao").val() + "\n"
+                    + "  公司地址: " + jQuery("#zengzhi_companyaddress").val() + "\n"
+                    + "  公司电话: " + jQuery("#zengzhi_companyphone").val() + "\n"
+                    + "  开户行名称: " + jQuery("#zengzhi_bankname").val() + "\n"
+                    + "  开户行帐号: " + jQuery("#zengzhi_bankaccount").val() + "\n";
                 spaninvoicecontent = invoice_content;
             }
 
             if (invoiceType == 1) {
                 jQuery("#customer_invoice").val("发票类型: " + invoiceTypeName + "  发票抬头: " + invoice_title + invoice_content + " 开票内容: " + invoice_neirong);
             } else {
-                jQuery("#customer_invoice").val("发票类型: " + invoiceTypeName + invoice_content);
+                jQuery("#customer_invoice").val("发票类型: " + invoiceTypeName + invoice_content + " 开票内容: " + invoice_neirong);
             }
             jQuery('.spaninvoicetype').html(invoiceTypeName);
             jQuery('.spaninvoicetitle').html(invoice_title);
