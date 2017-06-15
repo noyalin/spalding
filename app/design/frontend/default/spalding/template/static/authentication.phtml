@@ -330,7 +330,11 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                         var append = "<html><body><div>" + msg + "</div></body></html>";
                         var myJSON = jQuery(append).find("#decryString").text();
                         var data = jQuery.parseJSON(myJSON);
-                        if (!data || !data.detemVal || data.detemVal == 'F') {
+                        if (!data || !data.detemVal) {
+                            var messageShow = "<注意!!> 防伪码不存在或被多次查询，详细信息请拨打4000801876-防伪查询-假球投诉或建议, 进行查询。";
+                            jQuery('#alertValidRightNow>h1')[0].innerHTML = messageShow;
+                            jQuery('#alertValidRightNow').reveal(messageShow);
+                        }else if (data.detemVal == 'F') {
                             if (myJSON.indexOf("防偽碼正確") > 0) {
                                 var messageShow = "<注意!!> " + data.authCode + " 该商品验证码已超过规定查询次数，谨防假冒！！如有疑问请拨打咨询电话4000801876。";
                             } else {
