@@ -221,4 +221,9 @@ class Cobra_CustomClothes_Block_View extends Mage_Catalog_Block_Product_View
     }
 
 
+    public function getCustomerClothesAgree()
+    {
+        return Mage::getSingleton('core/session')->getCustomerClothesAgree();
+    }
+
 }

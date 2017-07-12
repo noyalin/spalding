@@ -74,6 +74,10 @@ class Cobra_CustomClothes_IndexController extends Mage_Core_Controller_Front_Act
     	echo "success";
     	exit;
     }
-    
+
+	public function agreeAction()
+	{
+		Mage::getSingleton('core/session')->setCustomerClothesAgree(1);
+	}
 
 }

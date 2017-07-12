@@ -60,6 +60,7 @@ class Devicom_Customer_AccountController extends Mage_Customer_AccountController
 
         Mage::getSingleton('core/session')->setCustomerId(null);
         Mage::getSingleton('core/session')->setCustomermadeAgree(null);
+        Mage::getSingleton('core/session')->setCustomerClothesAgree(null);
 
         Mage::log('logoutaAction $customerId=null');
     }

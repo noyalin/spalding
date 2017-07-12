@@ -27,7 +27,8 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
     
     public function saveCustomClothes($order)
     {
-    	
+		Mage::getSingleton('core/session')->setCustomerClothesAgree(null);
+
         Mage::log("saveCustomClothes before ".$order->getRealOrderId());
         
         $orderId = $order->getRealOrderId();
@@ -94,7 +95,7 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
         		
         		$tempInfoModel = Mage::getModel('customclothes/tempInfo');
         		$tempInfoModel->deleteByCustomerId($customerId);
-        		
+
         		Mage::log('saveCustomClothes------customerId=' . $customerId . ',order id=' . $orderId);
         		return;
         	} else {
