@@ -57,6 +57,7 @@ button{border:0;outline: none}
 .viewbox.pink{color: #fa97d8;}
 .viewbox.font1{font-family:"行楷";}
 .viewbox.font2{font-family:"圆体";}
+.viewbox.font3{font-family:"宋体";}
 .viewbox.font1 .textMadeC,
 .viewbox.font1 .textMadeD,
 .viewbox.font1 .textMadeE{
@@ -66,6 +67,11 @@ button{border:0;outline: none}
 .viewbox.font2 .textMadeD,
 .viewbox.font2 .textMadeE{
     font-family:"Pop";
+}
+.viewbox.font3 .textMadeC,
+.viewbox.font3 .textMadeD,
+.viewbox.font3 .textMadeE{
+    font-family:"Helvetica";
 }
 .viewMadebox{padding:84px 0 70px 0;}
 .viewMadebox .textMadeC,
