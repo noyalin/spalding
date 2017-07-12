@@ -37,9 +37,11 @@ class Cobra_CustomClothes_Model_CustomClothes
 // 	static $onlyCoat = 1;
 // 	static $onlyPants = 2;
 // 	static $suit = 3;
- 	static $font = array(1 => 'font1(汉仪楷体)',2 => 'font2(汉仪粗圆)',3 => 'font3(宋体)');
+ 	static $font = array(1 => 'font1',2 => 'font2',3 => 'font3');
+	static $fontStr = array(1 => '汉仪楷体',2 => '汉仪粗圆',3 => '宋体');
+
  	static $fontStyle = array(1 => '常规',2 => '曲线');
-	
+
  	static $fontStyleImageUrl = array(1 => 's',2 => 'c');
  	
 	static $attributeArray = array('M' => 98,'L' => 99, 'XL' => 100,
@@ -80,7 +82,7 @@ class Cobra_CustomClothes_Model_CustomClothes
 		$value = "\$color=".urlencode($mainData->color)."&";
 		$mainStr .= $value;
 		
-		$value = "\$font=".urlencode($this->getFont($mainData->font))."&";
+		$value = "\$font=".urlencode($this->getFontStr($mainData->font))."&";
 		$mainStr .= $value;
 		
 		$value = "\$font_color=".urlencode($mainData->fontColor)."&";
@@ -247,7 +249,11 @@ class Cobra_CustomClothes_Model_CustomClothes
 	public function getFont($font){
 		return self::$font[$font];
 	}
-	
+
+	public function getFontStr($font){
+		return self::$fontStr[$font];
+	}
+
 	public function getFontStyle($fontStyle){
 		return self::$fontStyle[$fontStyle];
 	}
