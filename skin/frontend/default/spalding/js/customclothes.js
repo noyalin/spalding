@@ -72,7 +72,7 @@ jQuery(function () {
             setTotal(mageAttr["double"]);
         })
         .on("click","#confirm2",function(){
-            var flag = checkTextYN("",".additemBox .player input",".additemBox .num input");
+            var flag = checkTextYN("team",".additemBox .player input",".additemBox .num input");
             if(flag){
                 saveData();
                 madeInitData();
@@ -184,16 +184,12 @@ function submitYP_CheckText(txtInputId) {
             }
         });
         if (!reg.test(txtInput.val())) {
-            jQuery(txtInputId).parents(".styleBox").addClass("active").siblings().removeClass("active");
-            jQuery(txtInputId).siblings(".error").html("不能输入特殊符号！");
-            jQuery(txtInputId).siblings("").show();
+
             txtInput.focus();
             return false;
         } else if (count.length > 0) {
-            jQuery(txtInputId).parents(".styleBox").addClass("active").siblings().removeClass("active");
             var tips = '"' + jQuery(txtInput).val() + '"包含"' + count[0] + '"敏感词！';
-            jQuery(txtInputId).siblings(".error").html(tips);
-            jQuery(txtInputId).siblings("").show();
+            checktips(txtInputId,tips);
             txtInput.focus();
             return false;
         } else {
@@ -203,47 +199,57 @@ function submitYP_CheckText(txtInputId) {
     return true;
 }
 function checkTextYN(obj1,obj2,obj3){
-    // 检查球队名称
-    if(!submitYP_CheckText(obj1)) {
-        return false;
+    if(obj1!="team"){
+        // 检查球队名称
+        if(!submitYP_CheckText(obj1)) {
+            return false;
+        }
     }
+
     // 检查球员名称
     if(!submitYP_CheckText(obj2)) {
         return false;
     }
-  /*  if (!checkinput(obj2, "球员名称不能为空")) {
+    if(!submitYP_CheckText(obj3)) {
         return false;
-    }*/
-    if (!checkinput(obj3, "球员号码不能为空")) {
+    }
+    var _val=jQuery(obj3).val();
+    if(_val=='0' || _val=='00'){
+        checktips(obj3,"球员号码不能为0");
         return false;
-    }else{
-        var _val=jQuery(obj3).val();
-        if(_val=='0' || _val=='00'){
-            alert("球员号码不能为0");
+    }
+    if(obj1!="team"){
+        if(!jQuery(obj1).val()&& !jQuery(obj2).val()&& !jQuery(obj3).val()){
+            checktips(obj3,"至少有一项不能为空");
+            jQuery(obj3).siblings(".tips").hide();
             return false;
         }
-/*        var fdStart = _val.indexOf("0");
-        if(fdStart == 0){
-            _val = _val.substring(1,2);
-            jQuery(obj3).val(_val);
-        }*/
-    }
+    }else{
+         if(!mageAttr.team){
+             if( !jQuery(obj2).val()&& !jQuery(obj3).val()){
+                 checktips(obj3,"至少有一项不能为空");
+                 return false;
+             }
+            }
+        }
     return true;
 }
-
-function checkinput(obj, msg){
-    if(!jQuery(obj).val()){
-        jQuery(obj).parents(".styleBox").addClass("active").siblings().removeClass("active");
-        jQuery(obj).siblings(".error").html(msg);
-        jQuery(obj).siblings("").show();
-        return false;
-    }
-
-    if(!submitYP_CheckText(obj)){
-        return false;
-    }
-    return true;
+function checktips(obj,msg){
+    jQuery(obj).parents(".styleBox").addClass("active").siblings().removeClass("active");
+    jQuery(obj).siblings(".error").html(msg);
+    jQuery(obj).siblings("").show();
 }
+//function checkinput(obj, msg){
+//    if(!jQuery(obj).val()){
+//        checktips
+//        return false;
+//    }
+//
+//    if(!submitYP_CheckText(obj)){
+//        return false;
+//    }
+//    return true;
+//}
 /*
 * 判断显示文字的个数
 * */

@@ -294,6 +294,7 @@
 <script type="text/javascript">
 	var teamFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getTeamFontRangeArray());?>;
 	var memberFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getMemberFontRangeArray());?>;
+
 	function setFontSize(obj,len,arr){
 		var fontSize;
 		jQuery.each(arr, function(i, n){

@@ -93,11 +93,13 @@ button{border:0;outline: none}
 .slideshow ul li .double{display:none;width:212px;display:inline-block;position: relative}
 .slideshow ul li  img{width:100%;}
 .slideshow ul li .double img{margin-bottom:-20px;}
-.slideshow .textMadeA{position:absolute;left:-15px;top:109px;width:260px;}
-.slideshow .textMadeC{position:absolute;left:14px;top:172px;width:202px;}
-.slideshow .textMadeB{position:absolute;left:-15px;top:109px;width:260px;}
-.slideshow .textMadeD{position:absolute;left:20px;top:172px;width:202px;}
+.slideshow .textMadeA{position:absolute;left:23px;top:109px;width:193px;}
+.slideshow .textMadeC{position:absolute;left:14px;top:157px;width:202px;}
+.slideshow .textMadeB{position:absolute;left:23px;top:109px;width:193px;}
+.slideshow .textMadeD{position:absolute;left:20px;top:157px;width:202px;}
 .slideshow .textMadeE{position:absolute;font-size: 48px;left:0px;position:absolute;top:289px;width:105px;}
+.slideshow .textMadeA .dom,
+.slideshow .textMadeB .dom{display:table;table-layout:fixed;width:100%}
 
 .message{text-align: center;color:#000;font-size:12px;}
 .message span{display:inline-block;margin:0 18px;}
@@ -308,6 +310,8 @@ button{border:0;outline: none}
     margin-top: 10px;
     text-align: center;
 }
+
+
 
 
 

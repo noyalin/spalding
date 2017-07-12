@@ -156,7 +156,7 @@
 			if( this.options.fitText )
 				this.$el.fitText();
 			
-			this.$letters	= this.$el.find('span').css('display', 'inline-block');
+			this.$letters	= this.$el.find('span').css('display', 'table-cell');
 		
 		},
 		_calc				: function() {

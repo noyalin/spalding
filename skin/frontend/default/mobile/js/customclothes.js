@@ -39,20 +39,21 @@
     }
     function checkTextYN(obj1,obj2,obj3){
         // 检查球队名称
-        if(!submitYP_CheckText(obj1)) {
-            return false;
+        if(obj1!="team"){
+            // 检查球队名称
+            if(!submitYP_CheckText(obj1)) {
+                return false;
+            }
         }
         // 检查球员名称
         if(!submitYP_CheckText(obj2)) {
             return false;
         }
-      /*  if (!checkinput(obj2, "球员名称不能为空")) {
-            return false;
-        }*/
+
         // 检查球员号码
-        if (!checkinput(obj3, "球员号码不能为空")) {
+        if(!submitYP_CheckText(obj3)) {
             return false;
-        }else{
+        }
             var _val=jQuery(obj3).val();
             var pattern = /^\d{1,2}$/;
             if(pattern.test(_val)){
@@ -61,28 +62,37 @@
                     return false;
                 }
             }
-            //var fdStart = _val.indexOf("0");
-            //if(fdStart == 0){
-            //    _val = _val.substring(1,2);
-            //    jQuery(obj3).val(_val);
-            //}
+        if(obj1!="team"){
+            if(!jQuery(obj1).val()&& !jQuery(obj2).val()&& !jQuery(obj3).val()){
+                tab(".swiper-slide:eq(4)");
+                tab(".tabCont:eq(4)");
+                alert("至少有一项不能为空");
+                return false;
+            }
+        }else{
+            if(!mageAttr.team){
+                if( !jQuery(obj2).val()&& !jQuery(obj3).val()){
+                    alert("至少有一项不能为空");
+                    return false;
+                }
+            }
         }
         return true;
     }
 
-    function checkinput(obj, msg){
-        if(!jQuery(obj).val()){
-            tab(".swiper-slide:eq(4)");
-            tab(".tabCont:eq(4)");
-            alert(msg);
-            return false;
-        }
-
-        if(!submitYP_CheckText(obj)){
-            return false;
-        }
-        return true;
-    }
+    //function checkinput(obj, msg){
+    //    if(!jQuery(obj).val()){
+    //        tab(".swiper-slide:eq(4)");
+    //        tab(".tabCont:eq(4)");
+    //        alert(msg);
+    //        return false;
+    //    }
+    //
+    //    if(!submitYP_CheckText(obj)){
+    //        return false;
+    //    }
+    //    return true;
+    //}
 
     function selectFont(){
         var color=jQuery(".fontcolor li.active").attr("data");
@@ -606,8 +616,7 @@ jQuery(function () {
     })
 
     jQuery("#confirm2").click(function(){
-        var flag = checkTextYN("",".additemBox .player input",".additemBox .num input");
-        console.log(flag);
+        var flag = checkTextYN("team",".additemBox .player input",".additemBox .num input");
         if(flag){
             saveData();
             madeInitData();
