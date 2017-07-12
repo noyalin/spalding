@@ -122,6 +122,14 @@ jQuery(function () {
         .on("click",".submitBox .cancelcustom",function(){
             deleteCustomOrder();
         });
+    jQuery(".rowsAgr").click(function(){
+        jQuery(this).parent().parent().parent(".rows").hide();
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#agree').val()
+        });
+    });
+    jQuery('.jScrollbar3').jScrollbar();
     jQuery("#scrollbar").perfectScrollbar({suppressScrollX: true});
     setColor();
 });
@@ -691,3 +699,5 @@ function addinpData(id){
         }
     })
 }
+
+//rows agree or refuse

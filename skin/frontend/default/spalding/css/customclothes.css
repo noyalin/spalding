@@ -311,6 +311,83 @@ button{border:0;outline: none}
     text-align: center;
 }
 
+/*popup*/
+.rows{
+    position:fixed;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    background:rgba(0,0,0,.9);
+    z-index:999999;
+}
+
+.rowsWrap{
+    position:absolute;
+    width:380px;
+    height:490px;
+    padding:20px;
+    left:50%;
+    top:50%;
+    margin-left:-205px;
+    margin-top:-260px;
+    background:url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/rowsBg.png) left top repeat-x #000;
+    border:1px solid #292929;
+}
+.rowsWrap h2.rowsTitle{
+    text-align: center;
+    color:#fff;
+    font-size: 20px;
+    font-weight: bold;
+    height:30px;
+    line-height: 30px;
+    margin:5px 0;
+}
+.rowsText{
+    height:370px;
+    overflow:auto;
+    overflow-x:hidden;
+    color:#fff;
+    font-size: 12px;
+    line-height: 1.6em;
+    padding:0 10px;
+}
+.rowsSub{
+    width:230px;
+    margin:20px auto 0;
+}
+
+.rowsSub span{
+    display: inline-block;
+    border-radius:3px;
+    height:30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    float:left;
+    cursor:pointer;
+}
+
+.rowsSub span.rowsAgr{
+    width:140px;
+    background:#f4a108;
+    color:#000;
+    margin-right:20px;
+}
+
+.rowsSub span.rowsRef{
+    width:70px;
+    background:#d3d3d3;
+    color:#999;
+}
+
+.rowsSub span input{
+    border:none;
+    background:none;
+    cursor:pointer;
+}
+
 
 
 

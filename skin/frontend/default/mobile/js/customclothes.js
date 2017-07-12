@@ -787,4 +787,11 @@ jQuery(function () {
     setColor();
     jQuery("#scrollbar").perfectScrollbar({suppressScrollX: true});
     jQuery("#scrollbar1").perfectScrollbar({suppressScrollX: true});
+    jQuery(".rowsAgr").click(function(){
+        jQuery(this).parent().parent().parent(".rows").hide();
+        jQuery.ajax({
+            type: 'POST',
+            url: jQuery('#agree').val()
+        });
+    });
 });

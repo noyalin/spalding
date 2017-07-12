@@ -1,397 +1,509 @@
 <?php //$this->initView(); ?>
 <?php
-	if(!Mage::getSingleton( 'customer/session')->isLoggedIn()){
-		Mage::getSingleton ('customer/session' )->setAfterAuthUrl(Mage::helper ('core/url' )->getCurrentUrl());
-		Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account' ));
-	}
-	
-	$_product = $this->getProduct();
-	$sku = $_product->getSku();
-	$_taxHelper = $this->helper('tax');
-	//$productImageHelper = Mage::helper('product');
-	
-	$pantsSku = $_product->getPantsSku();
-	//var_dump($_product->getPantsSku());exit;
-	
-	$pantsId = Mage::getModel('catalog/product')->getResource()->getIdBySku($pantsSku);
-	$productModel = Mage::getModel('catalog/product');
-	$pantsProduct = $productModel->load($pantsId);
-	$pantsPrice = number_format($pantsProduct->getPrice(), 2, '.', '');
-	$productId = $_product->getEntityId();
+if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+    Mage::getSingleton('customer/session')->setAfterAuthUrl(Mage::helper('core/url')->getCurrentUrl());
+    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account'));
+}
+
+$_product = $this->getProduct();
+$sku = $_product->getSku();
+$_taxHelper = $this->helper('tax');
+//$productImageHelper = Mage::helper('product');
+
+$pantsSku = $_product->getPantsSku();
+//var_dump($_product->getPantsSku());exit;
+
+$pantsId = Mage::getModel('catalog/product')->getResource()->getIdBySku($pantsSku);
+$productModel = Mage::getModel('catalog/product');
+$pantsProduct = $productModel->load($pantsId);
+$pantsPrice = number_format($pantsProduct->getPrice(), 2, '.', '');
+$productId = $_product->getEntityId();
 ?>
-<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/customclothes.css'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/customclothes.css'); ?>" type="text/css"/>
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/perfectscrollbar/perfect-scrollbar.css'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.css'); ?>" type="text/css" />
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/perfectscrollbar/jquery.mousewheel.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/perfectscrollbar/perfect-scrollbar.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.arctext.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/customclothes.js'); ?>"></script>
-<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="customclothes_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-	<!-- 法律条款 -->
-	<img id="customImageHidden" style="display:none;">
-	<?php if($this->getCustomerClothesAgree() == null): ?>
-		<div class="rows">
-			<div class="rowsWrap">
-				<h2 class="rowsTitle">篮球定制服务使用条款</h2>
-				<div class="rowsText jScrollbar3 clearfix">
-					<div class="jScrollbar_mask">
-						<div class="maskRulTop">
-							<p>请在使用篮球定制服务前仔细阅读本条款。</p>
-							<p>您（用户）对篮球定制服务的继续使用应被理解为您对本条款的接受。</p>
-							<p>斯伯丁有权不时修订本使用条款，并于网站公布之日生效。</p>
-							<p>如果您不同意本条款，请停止使用篮球定制服务。</p>
-						</div>
-						<style>
-							.maskRed{
-								margin-bottom:10px;
-							}
-							.maskRed h2{font-weight: bold;color: #cf0000;font-size: 12px;  }
-						</style>
-						<div class="maskRed">
-							<h2>由于是个性化定制商品，订单通过审核后将不再进行退换。</h2>
-							<h2>审核后的订单预计将在25个工作日左右生产完成并发货。</h2>
-							<h2>定制内容易磨损，建议将定制球作为观赏收藏使用。</h2>
-						</div>
-						<h3>1.	用户生成内容</h3>
-						<p>“用户生成内容”系指数字、字母、资料、信息、数据、评价、图片、文件、音乐、视频、设计、图表、声音和其他任何您和/或其他用户发布于本网站或以其他形式使其于本网站的内容，除非该内容由斯伯丁所有。</p>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jquery-ui.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scroll/jScrollbar.jquery.js'); ?>"></script>
+<input id="agree" type="hidden" value="<?php echo $this->getUrl('customclothes/index/agree'); ?>"/>
+<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post"
+      id="customclothes_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+    <!-- 法律条款 -->
+    <img id="customImageHidden" style="display:none;">
+    <?php if ($this->getCustomerClothesAgree() == null): ?>
+        <div class="rows">
+            <div class="rowsWrap">
+                <h2 class="rowsTitle">斯伯丁定制服务使用条款</h2>
 
-						<h3>2.	内容审查</h3>
-						<p>斯伯丁有权但无义务审查用户生成内容。 但斯伯丁不保证本网站无不准确的、欺诈的、攻击的、威胁的、诽谤的、非法的或其他不恰当的用户生成内容。即使斯伯丁选择审查用户生成内容，斯伯丁对任何用户生成内容或用户在本网站上任何活动不承担任何责任，斯伯丁对用户亦不承担任何形式明示或暗示的担保。</p>
-						<p>斯伯丁有权以任何原因拒绝发布、编辑或移除任何不合适的用户生成内容。</p>
+                <div class="rowsText jScrollbar3 clearfix">
+                    <div class="jScrollbar_mask">
+                        <div class="maskRulTop">
+                            <p>请在使用斯伯丁定制服务前仔细阅读本条款。</p>
 
-						<dl>
-							<dd>以下用户生成内容内将会被视为不合适：</dd>
-							<dt>含有淫秽、色情、赌博、迷信、恐怖、暴力的内容；</dt>
-							<dt>含有民族、种族、宗教、性别歧视的内容；</dt>
-							<dt>妨碍社会公共秩序或者违背社会良好风尚；</dt>
-							<dt>危害人身、财产安全，泄露个人隐私；</dt>
-							<dt>侵犯他人商标或知识产权的内容(包括但不限于数字、字母、单词、短语、名人的名字、职业运动队等) ；</dt>
-							<dt>其他斯伯丁认为不合适的内容。</dt>
-						</dl>
+                            <p>您（用户）对斯伯丁定制服务的继续使用应被理解为您对本条款的接受。</p>
 
-						<h3>3.	用户责任</h3>
-						<p>您对您的用户生成内容全权负责。请勿发布非法的、诽谤的、辱骂的、粗俗的、淫秽的、色情的、暴力的、欺诈的、恶意的、错误的、不妥当的、有害的、煽动的、骚扰的、恐吓的、威胁的、侵犯隐私的、侵犯知识产权的、侵犯商业秘密的、在性别、种族、文化或宗教方面具有歧视性的、将危害或可能危害他人安全的内容。</p>
+                            <p>斯伯丁有权不时修订本使用条款，并于网站公布之日生效。</p>
 
-						<h3>4.	赔偿</h3>
-						<p>您同意保证且补偿斯伯丁及其关联公司、董事、管理人员、董事、员工、代理人等免受所有诉讼、损失、责任、费用、损害，包括但不限于由于您的用户生成内容、您对内容的使用、或对本条款的违反或侵犯第三方权利所引起的损失及相关的律师费。</p>
+                            <p>如果您不同意本条款，请停止使用斯伯丁定制服务。</p>
+                        </div>
+                        <style>
+                            .maskRed {
+                                margin-bottom: 10px;
+                            }
 
-						<h3>5.	责任限制</h3>
-						<p>用户不得将定制篮球用于任何其他商业用途。斯伯丁不对任何由于参加斯伯丁篮球定制服务或任何用户生成内容而引起的间接的、特殊的、偶然的损害承担责任，包括任何利益损失或数据遗失，且斯伯丁的任何责任限额应以产品价值为限。</p>
+                            .maskRed h2 {
+                                font-weight: bold;
+                                color: #cf0000;
+                                font-size: 12px;
+                            }
+                        </style>
+                        <div class="maskRed">
+                            <h2>由于是个性化定制商品，订单通过审核后将不再进行退换。</h2>
 
-						<h3>6.	知识产权</h3>
-						<p>本网站（除用户生成内容外）全部知识产权均为斯伯丁或其许可人所有，包括但不限于著作权、商标权或专利权、网站文字、软件、脚本、代码、设计、图标、图片、声音、音乐、视频、应用、互动功能和所有其他内容。</p>
-						<p>您授予，并保证您有权授予斯伯丁免费的、永久的、不可撤销的、全球性的、可转让的以任何方式，为任何目的，包括商业目的、广告目的或其他目的而使用您用户生成内容的使用权，包括但不限于复制、修改、发行、展览、表演、信息网络传播、改编、汇编、翻译等。</p>
+                            <h2>审核后的订单预计将在25个工作日左右生产完成并发货。</h2>
 
-						<h3>7.	其他</h3>
-						<p>除非法律另有规定，您同意所有使用本网站或服务相关的诉讼（包括但不限于购买斯伯丁产品本身），均应提交上海市徐汇区有管辖的法院依照中华人民共和国法律解决。</p>
-					</div>
-					<div class="jScrollbar_draggable">
-						<a href="#" class="draggable"></a>
-						<span class="scrolBg"></span>
-					</div>
-				</div>
+                            <h2>定制内容易磨损，请爱惜使用。</h2>
 
-				<div class="rowsSub clearfix">
-					<span class="rowsAgr"><input type="button" value="我已阅读且同意"></span>
-					<span class="rowsRef" onclick="javascript:window.close();"><input type="button" value="不同意"></span>
-				</div>
-			</div>
-		</div>
-	<?php endif; ?>
+                        </div>
+                        <h3>1. 用户生成内容</h3>
 
-	<input name="mainData" id="mainData" type="hidden">
-	<input name="secondData" id="secondData" type="hidden">
-	<input value="<?php echo $pantsPrice;?>" id="pantsPrice" type="hidden">
-	<input value="<?php echo $productId;?>" id="productId" type="hidden">
-	<input name="deleteData" id="deleteData" type="hidden" value="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customclothes/index/delete">
-	<div class="checkoutMain">
-	    <div class="content-wrap">
-	        <div class="cusMadeShirt">
-	            <div class="viewbox red font1">
-	                <div class="viewMadebox">
-						<div class="slideshow">
-							<ul>
-								<?php
-								$imageSfrontUrl = "images/shirtmade/img/".$sku."/1-1.png";
-								$imageSbackUrl = "images/shirtmade/img/".$sku."/1-2.png";
-								$imageDfrontUrl= "images/shirtmade/img/".$sku."/2-1.png";
-								$imageDbackUrl= "images/shirtmade/img/".$sku."/2-2.png";
-								?>
-								<li class="active">
-									<div class="single">
-										<img src="<?php echo $this -> getSkinUrl($imageSfrontUrl);?>">
-										<div class="textMadeA"></div><div  class="textMadeC"></div>
-									</div>
-									<div class="double"><img src="<?php echo $this -> getSkinUrl($imageDfrontUrl);?>">
-										<div class="textMadeE"></div>
-									</div>
-								</li>
-								<li>
-									<div class="single">
-										<img src="<?php echo $this -> getSkinUrl($imageSbackUrl);?>">
-										<div class="textMadeB"></div><div  class="textMadeD"></div>
-									</div>
-									<div class="double"><img src="<?php echo $this -> getSkinUrl($imageDbackUrl);?>"></div>
-								</li>
-							</ul>
-							<a href="javascript:void(0);" class="aBtn prev active"></a>
-							<a href="javascript:void(0);"  class="aBtn next"></a>
-						</div>
-	                </div>
-	            </div>
-	            <div class="message"><!--<span class="service">斯伯丁定制退换货服务</span>--><span class="time">该产品定制将在4-6周内送货上门</span></div>
-	            <div class="cusMadeBox" id="cusMadeBox">
-	                <div class="madeBoxTitle">
-	                    <h1>篮球比赛精英系列</h1>
-	                    <h2>价格:￥<span><b><?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></b>元</span></h2>
-	                </div>
-	                <div class="madeBoxCont madeBoxCont1  active">
-	                    <div class="madeName">球衣</div>
-	                    <div class="styleBox active">
-	                        <h2 class="title">颜色尺码</h2>
-	                        <div class="cont">
-	                            <div class="madeColor">
-	                                <h4 class="title">选择颜色</h4>
-									<ul class="ullist">
-									<?php 
-										$productColorArray = Mage::getModel('customclothes/customClothes')->getProductColorArrayBySku($sku);
-										foreach ($productColorArray as $key => $value):
-									?>
-											<li data-productId="<?php echo $key;?>" sku="<?php echo $value['sku'];?>" color="<?php echo $value['color'];?>" <?php if($productId == $key):?> class="active" <?php endif;?>></li>
-									<?php 
-										endforeach;
-									?>
-									</ul>
-	                            </div>
-	                            <div class="madeSize">
-	                                <h4 class="title">选择尺码</h4>
-	                                <ul class="ullist">
-	                                	<li class="active" data-value="98" size="M">M</li>
-	                                	<li data-value="99" size="L">L</li>
-	                                	<li data-value="100" size="XL">XL</li>
-	                                	<li data-value="101" size="2XL">2XL</li>
-	                                	<li data-value="103" size="3XL">3XL</li>
-	                                	<li data-value="105" size="4XL">4XL</li>
-	                                </ul>
-	                            </div>
-	                        </div>
-	                     </div>
-	                    <div  class="styleBox">
-	                        <h2 class="title">字体样式</h2>
-	                        <div class="cont">
-	                            <div class="madeFont">
-	                                <h4 class="title">选择字体</h4>
-	                                <ul class="ullist"><li class="active  style1" data="1"></li><li class="style2"  data="2"></li><li class="style3"  data="3"></li></ul>
-	                            </div>
-	                            <div class="madeStyle">
-	                                <h4 class="title">选择样式</h4>
-	                                <ul class="ullist"><li  class="active style1" data="1"></li><li data="2" class="style2"></li></ul>
-	                            </div>
-	                            <div class="madeFontColor">
-	                                <h4 class="title">选择字体颜色</h4>
-	                                <ul class="ullist"><li class="red active"  color="红色"  data="red"></li><li  class="black" color="黑色" data="black"></li><li class="white" color="白色"  data="white" ></li><li class="gray"  color="灰色" data="gray"></li><li  class="deepBlue"  color="深蓝"  data="deepBlue"></li><li class="orange"  color="橙色" data="orange"></li><li class="yellow"  color="黄色" data="yellow"></li></ul>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div  class="styleBox">
-	                        <h2 class="title">个性签名</h2>
-	                        <div class="cont">
-	                            <div class="madeTeam pb20">
-	                                <p class="title"><label>球队名称</label></p>
-	                                <div class="madeInpBox">
-										<input type="text" name="team" autocomplete="off" onpaste="return false;" onkeydown="if(event.keyCode==13) return false;"  placeholder="请输入球队名称">
-										<b class="tips"></b>
-										<div class="error"></div>
-									</div>
-	                            </div>
-	                            <div class="madePlayer pb20">
-	                                <p class="title"><label>球员名称</label></p>
-	                                <div class="madeInpBox">
-										<input type="text" name="player"   autocomplete="off" onpaste="return false;"  onkeydown="if(event.keyCode==13) return false;" placeholder="请输入球员名称" >
-										<b class="tips"></b>
-										<div class="error"></div>
-									</div>
-	                            </div>
-	                            <div class="madeNum">
-	                                <p class="title"><label>球员号码</label></p>
-	                                <div class="madeInpBox">
-										<input type="text" name="num" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="仅限数字" maxlength="2" autocomplete="off" onpaste="return false;"  onkeydown="if(event.keyCode==13) return false;" >
-										<b class="tips"></b>
-										<div class="error"></div>
-									</div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="madeName">球裤</div>
-	                    <div  class="styleBox">
-	                        <h2 class="title">球裤添加</h2>
-	                        <div class="cont">
-	                            <div class="madeDouble">
-	                                <h4 class="title">是否添加球裤</h4>
-	                                <ul class="ullist"><li class="active">否</li><li>是</li></ul>
-	                            </div>
-	                            <div class="line"></div>
-	                            <div class="madeSize2">
-	                                <h4 class="title">选择尺码</h4>
-	                                <ul class="ullist">
-	                                	<li class="active" data-value="98" size="M">M</li>
-	                                	<li data-value="99" size="L">L</li>
-	                                	<li data-value="100" size="XL">XL</li>
-	                                	<li data-value="101" size="2XL">2XL</li>
-	                                	<li data-value="103" size="3XL">3XL</li>
-	                                	<li data-value="105" size="4XL">4XL</li>
-	                                </ul>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="madeBtn">
-	                        <button  type="button" id="next1">确定</button>
-	                    </div>
-	                </div>
-	                <div class="madeBoxCont madeBoxCont2">
-						<div class="oneBox">
-							<div class="madeNameTwo">个性定制<a href="javascript:void(0);" id="backSingle1">编辑</a></div>
-							<ul class="list-item">
-								<li class="color"><span></span>选择颜色</li>
-								<li class="size"><span></span>球衣尺码</li>
-								<li class="font"><span></span>选择字体</li>
-								<li class="style"><span></span>选择样式</li>
-								<li class="fontColor"><span></span>选择字体颜色</li>
-								<li class="size2"><span></span>球裤尺码</li>
-								<li class="team"><span></span>球队名称</li>
-								<li class="player"><span></span>球员名称</li>
-								<li class="num"><span></span>球员号码</li>
-							</ul>
-						</div>
-	                    <p class="addMoreBtn"><button  type="button" id="next2"></button></p>
-	                    <p class="submitBox">
-	                        <button  type="button" class="submit"></button>
-							<button type="button" class="cancelcustom"></button>
-	                    </p>
-	                </div>
-	                <div class="madeBoxCont madeBoxCont3">
-						<div class="maskbg"></div>
-						<div class="comfBox">
-							<p>是否删除定制？</p>
-							<div class="confBtn">
-								<button type="button" class="saveMadeY" id="saveYesId">是</button>
-								<button type="button" class="saveMadeN" id="saveNoId">否</button>
-							</div>
-						</div>
-	                    <div class="madeNamethree">添加多件</div>
-	                    <div class="totalbox">共 <b class="num"> 1 </b> 件&nbsp&nbsp&nbsp总价<b class="total"><?php echo $_taxHelper->getPrice($_product, $_product->getPrice())?></b>元</div>
-						<div class="madeitembox" id="scrollbar">
-							<div class="content" >
-								<table id="madeTable" class="madeTable">
-									<thead>
-										<th width="30%">球员名称</th><th>球员号码</th><th>尺码</th><th></th>
-									</thead>
-									<thead style="display:none">
-									<th width="30%">球员名称</th><th>球员号码</th><th>尺码</th><th>尺码</th><th></th>
-									</thead>
-									<tbody>
-									</tbody>
-								</table>
-							</div>
-	                    </div>
-	                    <div class="btnbox">
-	                        <div class="additemBox">
-	                            <div class="title title1">球<br>衣</div>
-	                            <div class="title title2">球<br>裤</div>
-	                            <a href="javascript:void(0);" class="close"></a>
-	                            <div class="madeInpBox">
-									<div class="player">
-										<input type="text"  autocomplete="off" onpaste="return false;"  onkeydown="if(event.keyCode==13) return false;"  placeholder="请输入球员名称">
-										<div class="error"></div>
-									</div>
-									<div class="num">
-										<input type="num"  onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="仅限数字" maxlength="2">
-										<div class="error"></div>
-									</div>
-								</div>
-	                            <ul class="ullist size"><li class="active">M</li><li>L</li><li>XL</li><li>2XL</li><li>3XL</li><li>4XL</li></ul>
-								<div class="line"></div>
-	                            <ul class="ullist size2"><li class="active">M</li><li>L</li><li>XL</li><li>2XL</li><li>3XL</li><li>4XL</li></ul>
-								<div class="line"></div>
-	                            <p class="confirm">
-	                                <button  type="button" id="confirm2">确认</button>
-	                            </p>
-	                        </div>
-	                        <a href="javascript:void(0);" class="addlist" id="addlist"></a>
-	                    </div>
-	                    <div class="madeBtn">
-	                        <button  type="button" id="confirm3">确定</button>
-	                    </div>
-	                </div>
-	                <div class="madeBoxCont madeBoxCont4">
-	                    <div class="oneBox">
-	                        <div class="madeNameTwo">个性定制<a href="javascript:void(0);" id="backSingle">编辑</a></div>
-	                        <ul class="list-item">
-	                            <li class="color"><span></span>选择颜色</li>
-	                            <li class="font"><span></span>选择字体</li>
-	                            <li class="style"><span></span>选择样式</li>
-	                            <li class="fontColor"><span></span>选择字体样式</li>
-	                            <li class="team"><span></span>球队名称</li>
-	                        </ul>
-	                    </div>
-	                    <div class="moreBox">
-	                        <div class="madeNameTwo">多件添加<span class="totalbox">共 <b class="num"> 8 </b> 件&nbsp&nbsp&nbsp总价<b class="total"> 704.00 </b>元</span><a href="javascript:void(0);" id="backmore">编辑</a></div>
-	                        <div  class="cplist">
-	                            <table>
-	                                <tbody>
-	                                </tbody>
-	                            </table>
-	                        </div>
-	                    </div>
-	                    <p class="submitBox">
-	                        <button type="button" class="submit"></button>
-							<button type="button" class="cancelcustom"></button>
-	                    </p>
-	                </div>
-	             </div>
-	        </div>
-	    </div>
-	</div>
+                        <p>
+                            用户生成内容”系指数字、字母、资料、信息、数据、评价、图片、文件、音乐、视频、设计、图表、声音和其他任何您和/或其他用户发布于本网站或以其他形式使其于本网站的内容，除非该内容由斯伯丁所有。</p>
+
+                        <h3>2. 内容审查</h3>
+
+                        <p>斯伯丁有权但无义务审查用户生成内容。
+                            但斯伯丁不保证本网站无不准确的、欺诈的、攻击的、威胁的、诽谤的、非法的或其他不恰当的用户生成内容。即使斯伯丁选择审查用户生成内容，斯伯丁对任何用户生成内容或用户在本网站上任何活动不承担任何责任，斯伯丁对用户亦不承担任何形式明示或暗示的担保。</p>
+
+                        <dl>
+                            <dd>以下用户生成内容内将会被视为不合适：</dd>
+                            <dt>含有淫秽、色情、赌博、迷信、恐怖、暴力的内容；</dt>
+                            <dt>含有民族、种族、宗教、性别歧视的内容；</dt>
+                            <dt>妨碍社会公共秩序或者违背社会良好风尚；</dt>
+                            <dt>危害人身、财产安全，泄露个人隐私；</dt>
+                            <dt>侵犯他人商标或知识产权的内容(包括但不限于数字、字母、单词、短语、名人的名字、职业运动队等) ；</dt>
+                            <dt>其他斯伯丁认为不合适的内容。</dt>
+                        </dl>
+
+                        <h3>3. 用户责任</h3>
+
+                        <p>
+                            您对您的用户生成内容全权负责。请勿发布非法的、诽谤的、辱骂的、粗俗的、淫秽的、色情的、暴力的、欺诈的、恶意的、错误的、不妥当的、有害的、煽动的、骚扰的、恐吓的、威胁的、侵犯隐私的、侵犯知识产权的、侵犯商业秘密的、在性别、种族、文化或宗教方面具有歧视性的、将危害或可能危害他人安全的内容。</p>
+
+                        <h3>4. 赔偿</h3>
+
+                        <p>
+                            您同意保证且补偿斯伯丁及其关联公司、董事、管理人员、董事、员工、代理人等免受所有诉讼、损失、责任、费用、损害，包括但不限于由于您的用户生成内容、您对内容的使用、或对本条款的违反或侵犯第三方权利所引起的损失及相关的律师费。</p>
+
+                        <h3>5. 责任限制</h3>
+
+                        <p>
+                            用户不得将斯伯丁定制产品用于任何其他商业用途。斯伯丁不对任何由于参加斯伯丁定制服务或任何用户生成内容而引起的间接的、特殊的、偶然的损害承担责任，包括任何利益损失或数据遗失，且斯伯丁的任何责任限额应以产品价值为限。</p>
+
+                        <h3>6. 知识产权</h3>
+
+                        <p>
+                            本网站（除用户生成内容外）全部知识产权均为斯伯丁或其许可人所有，包括但不限于著作权、商标权或专利权、网站文字、软件、脚本、代码、设计、图标、图片、声音、音乐、视频、应用、互动功能和所有其他内容。</p>
+
+                        <h3>7. 其他</h3>
+
+                        <p>除非法律另有规定，您同意所有使用本网站或服务相关的诉讼（包括但不限于购买斯伯丁产品本身），均应提交上海市徐汇区有管辖的法院依照中华人民共和国法律解决。</p>
+                    </div>
+                    <div class="jScrollbar_draggable">
+                        <a href="#" class="draggable"></a>
+                        <span class="scrolBg"></span>
+                    </div>
+                </div>
+
+                <div class="rowsSub clearfix">
+                    <span class="rowsAgr"><input type="button" value="我已阅读且同意"></span>
+                    <span class="rowsRef" onclick="javascript:window.location = '<?php echo $this->getUrl('custom-clothes.html') ?>';"><input type="button" value="不同意"></span>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <input name="mainData" id="mainData" type="hidden">
+    <input name="secondData" id="secondData" type="hidden">
+    <input value="<?php echo $pantsPrice; ?>" id="pantsPrice" type="hidden">
+    <input value="<?php echo $productId; ?>" id="productId" type="hidden">
+    <input name="deleteData" id="deleteData" type="hidden"
+           value="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customclothes/index/delete">
+
+    <div class="checkoutMain">
+        <div class="content-wrap">
+            <div class="cusMadeShirt">
+                <div class="viewbox red font1">
+                    <div class="viewMadebox">
+                        <div class="slideshow">
+                            <ul>
+                                <?php
+                                $imageSfrontUrl = "images/shirtmade/img/" . $sku . "/1-1.png";
+                                $imageSbackUrl = "images/shirtmade/img/" . $sku . "/1-2.png";
+                                $imageDfrontUrl = "images/shirtmade/img/" . $sku . "/2-1.png";
+                                $imageDbackUrl = "images/shirtmade/img/" . $sku . "/2-2.png";
+                                ?>
+                                <li class="active">
+                                    <div class="single">
+                                        <img src="<?php echo $this->getSkinUrl($imageSfrontUrl); ?>">
+
+                                        <div class="textMadeA"></div>
+                                        <div class="textMadeC"></div>
+                                    </div>
+                                    <div class="double"><img src="<?php echo $this->getSkinUrl($imageDfrontUrl); ?>">
+
+                                        <div class="textMadeE"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single">
+                                        <img src="<?php echo $this->getSkinUrl($imageSbackUrl); ?>">
+
+                                        <div class="textMadeB"></div>
+                                        <div class="textMadeD"></div>
+                                    </div>
+                                    <div class="double"><img src="<?php echo $this->getSkinUrl($imageDbackUrl); ?>">
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="javascript:void(0);" class="aBtn prev active"></a>
+                            <a href="javascript:void(0);" class="aBtn next"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="message"><!--<span class="service">斯伯丁定制退换货服务</span>--><span
+                        class="time">该产品定制将在4-6周内送货上门</span></div>
+                <div class="cusMadeBox" id="cusMadeBox">
+                    <div class="madeBoxTitle">
+                        <h1>篮球比赛精英系列</h1>
+
+                        <h2>
+                            价格:￥<span><b><?php echo $_taxHelper->getPrice($_product, $_product->getPrice()) ?></b>元</span>
+                        </h2>
+                    </div>
+                    <div class="madeBoxCont madeBoxCont1  active">
+                        <div class="madeName">球衣</div>
+                        <div class="styleBox active">
+                            <h2 class="title">颜色尺码</h2>
+
+                            <div class="cont">
+                                <div class="madeColor">
+                                    <h4 class="title">选择颜色</h4>
+                                    <ul class="ullist">
+                                        <?php
+                                        $productColorArray = Mage::getModel('customclothes/customClothes')->getProductColorArrayBySku($sku);
+                                        foreach ($productColorArray as $key => $value):
+                                            ?>
+                                            <li data-productId="<?php echo $key; ?>" sku="<?php echo $value['sku']; ?>"
+                                                color="<?php echo $value['color']; ?>" <?php if ($productId == $key): ?> class="active" <?php endif; ?>></li>
+                                            <?php
+                                        endforeach;
+                                        ?>
+                                    </ul>
+                                </div>
+                                <div class="madeSize">
+                                    <h4 class="title">选择尺码</h4>
+                                    <ul class="ullist">
+                                        <li class="active" data-value="98" size="M">M</li>
+                                        <li data-value="99" size="L">L</li>
+                                        <li data-value="100" size="XL">XL</li>
+                                        <li data-value="101" size="2XL">2XL</li>
+                                        <li data-value="103" size="3XL">3XL</li>
+                                        <li data-value="105" size="4XL">4XL</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="styleBox">
+                            <h2 class="title">字体样式</h2>
+
+                            <div class="cont">
+                                <div class="madeFont">
+                                    <h4 class="title">选择字体</h4>
+                                    <ul class="ullist">
+                                        <li class="active  style1" data="1"></li>
+                                        <li class="style2" data="2"></li>
+                                        <li class="style3" data="3"></li>
+                                    </ul>
+                                </div>
+                                <div class="madeStyle">
+                                    <h4 class="title">选择样式</h4>
+                                    <ul class="ullist">
+                                        <li class="active style1" data="1"></li>
+                                        <li data="2" class="style2"></li>
+                                    </ul>
+                                </div>
+                                <div class="madeFontColor">
+                                    <h4 class="title">选择字体颜色</h4>
+                                    <ul class="ullist">
+                                        <li class="red active" color="红色" data="red"></li>
+                                        <li class="black" color="黑色" data="black"></li>
+                                        <li class="white" color="白色" data="white"></li>
+                                        <li class="gray" color="灰色" data="gray"></li>
+                                        <li class="deepBlue" color="深蓝" data="deepBlue"></li>
+                                        <li class="orange" color="橙色" data="orange"></li>
+                                        <li class="yellow" color="黄色" data="yellow"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="styleBox">
+                            <h2 class="title">个性签名</h2>
+
+                            <div class="cont">
+                                <div class="madeTeam pb20">
+                                    <p class="title"><label>球队名称</label></p>
+
+                                    <div class="madeInpBox">
+                                        <input type="text" name="team" autocomplete="off" onpaste="return false;"
+                                               onkeydown="if(event.keyCode==13) return false;" placeholder="请输入球队名称">
+                                        <b class="tips"></b>
+
+                                        <div class="error"></div>
+                                    </div>
+                                </div>
+                                <div class="madePlayer pb20">
+                                    <p class="title"><label>球员名称</label></p>
+
+                                    <div class="madeInpBox">
+                                        <input type="text" name="player" autocomplete="off" onpaste="return false;"
+                                               onkeydown="if(event.keyCode==13) return false;" placeholder="请输入球员名称">
+                                        <b class="tips"></b>
+
+                                        <div class="error"></div>
+                                    </div>
+                                </div>
+                                <div class="madeNum">
+                                    <p class="title"><label>球员号码</label></p>
+
+                                    <div class="madeInpBox">
+                                        <input type="text" name="num" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                               onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')"
+                                               placeholder="仅限数字" maxlength="2" autocomplete="off"
+                                               onpaste="return false;" onkeydown="if(event.keyCode==13) return false;">
+                                        <b class="tips"></b>
+
+                                        <div class="error"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="madeName">球裤</div>
+                        <div class="styleBox">
+                            <h2 class="title">球裤添加</h2>
+
+                            <div class="cont">
+                                <div class="madeDouble">
+                                    <h4 class="title">是否添加球裤</h4>
+                                    <ul class="ullist">
+                                        <li class="active">否</li>
+                                        <li>是</li>
+                                    </ul>
+                                </div>
+                                <div class="line"></div>
+                                <div class="madeSize2">
+                                    <h4 class="title">选择尺码</h4>
+                                    <ul class="ullist">
+                                        <li class="active" data-value="98" size="M">M</li>
+                                        <li data-value="99" size="L">L</li>
+                                        <li data-value="100" size="XL">XL</li>
+                                        <li data-value="101" size="2XL">2XL</li>
+                                        <li data-value="103" size="3XL">3XL</li>
+                                        <li data-value="105" size="4XL">4XL</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="madeBtn">
+                            <button type="button" id="next1">确定</button>
+                        </div>
+                    </div>
+                    <div class="madeBoxCont madeBoxCont2">
+                        <div class="oneBox">
+                            <div class="madeNameTwo">个性定制<a href="javascript:void(0);" id="backSingle1">编辑</a></div>
+                            <ul class="list-item">
+                                <li class="color"><span></span>选择颜色</li>
+                                <li class="size"><span></span>球衣尺码</li>
+                                <li class="font"><span></span>选择字体</li>
+                                <li class="style"><span></span>选择样式</li>
+                                <li class="fontColor"><span></span>选择字体颜色</li>
+                                <li class="size2"><span></span>球裤尺码</li>
+                                <li class="team"><span></span>球队名称</li>
+                                <li class="player"><span></span>球员名称</li>
+                                <li class="num"><span></span>球员号码</li>
+                            </ul>
+                        </div>
+                        <p class="addMoreBtn">
+                            <button type="button" id="next2"></button>
+                        </p>
+                        <p class="submitBox">
+                            <button type="button" class="submit"></button>
+                            <button type="button" class="cancelcustom"></button>
+                        </p>
+                    </div>
+                    <div class="madeBoxCont madeBoxCont3">
+                        <div class="maskbg"></div>
+                        <div class="comfBox">
+                            <p>是否删除定制？</p>
+
+                            <div class="confBtn">
+                                <button type="button" class="saveMadeY" id="saveYesId">是</button>
+                                <button type="button" class="saveMadeN" id="saveNoId">否</button>
+                            </div>
+                        </div>
+                        <div class="madeNamethree">添加多件</div>
+                        <div class="totalbox">共 <b class="num"> 1 </b> 件&nbsp&nbsp&nbsp总价<b
+                                class="total"><?php echo $_taxHelper->getPrice($_product, $_product->getPrice()) ?></b>元
+                        </div>
+                        <div class="madeitembox" id="scrollbar">
+                            <div class="content">
+                                <table id="madeTable" class="madeTable">
+                                    <thead>
+                                    <th width="30%">球员名称</th>
+                                    <th>球员号码</th>
+                                    <th>尺码</th>
+                                    <th></th>
+                                    </thead>
+                                    <thead style="display:none">
+                                    <th width="30%">球员名称</th>
+                                    <th>球员号码</th>
+                                    <th>尺码</th>
+                                    <th>尺码</th>
+                                    <th></th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="btnbox">
+                            <div class="additemBox">
+                                <div class="title title1">球<br>衣</div>
+                                <div class="title title2">球<br>裤</div>
+                                <a href="javascript:void(0);" class="close"></a>
+
+                                <div class="madeInpBox">
+                                    <div class="player">
+                                        <input type="text" autocomplete="off" onpaste="return false;"
+                                               onkeydown="if(event.keyCode==13) return false;" placeholder="请输入球员名称">
+
+                                        <div class="error"></div>
+                                    </div>
+                                    <div class="num">
+                                        <input type="num" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                               onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')"
+                                               placeholder="仅限数字" maxlength="2">
+
+                                        <div class="error"></div>
+                                    </div>
+                                </div>
+                                <ul class="ullist size">
+                                    <li class="active">M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                    <li>2XL</li>
+                                    <li>3XL</li>
+                                    <li>4XL</li>
+                                </ul>
+                                <div class="line"></div>
+                                <ul class="ullist size2">
+                                    <li class="active">M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                    <li>2XL</li>
+                                    <li>3XL</li>
+                                    <li>4XL</li>
+                                </ul>
+                                <div class="line"></div>
+                                <p class="confirm">
+                                    <button type="button" id="confirm2">确认</button>
+                                </p>
+                            </div>
+                            <a href="javascript:void(0);" class="addlist" id="addlist"></a>
+                        </div>
+                        <div class="madeBtn">
+                            <button type="button" id="confirm3">确定</button>
+                        </div>
+                    </div>
+                    <div class="madeBoxCont madeBoxCont4">
+                        <div class="oneBox">
+                            <div class="madeNameTwo">个性定制<a href="javascript:void(0);" id="backSingle">编辑</a></div>
+                            <ul class="list-item">
+                                <li class="color"><span></span>选择颜色</li>
+                                <li class="font"><span></span>选择字体</li>
+                                <li class="style"><span></span>选择样式</li>
+                                <li class="fontColor"><span></span>选择字体样式</li>
+                                <li class="team"><span></span>球队名称</li>
+                            </ul>
+                        </div>
+                        <div class="moreBox">
+                            <div class="madeNameTwo">多件添加<span class="totalbox">共 <b class="num"> 8 </b> 件&nbsp&nbsp&nbsp总价<b
+                                        class="total"> 704.00 </b>元</span><a href="javascript:void(0);"
+                                                                             id="backmore">编辑</a></div>
+                            <div class="cplist">
+                                <table>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="submitBox">
+                            <button type="button" class="submit"></button>
+                            <button type="button" class="cancelcustom"></button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
-<div style="display:none" class="blacklist" id="blacklist"><?php echo Mage::getModel('core/variable')->loadByCode('blacklist')->getValue('html')?></div>
+<div style="display:none" class="blacklist"
+     id="blacklist"><?php echo Mage::getModel('core/variable')->loadByCode('blacklist')->getValue('html') ?></div>
 <!-- made loading -->
 <div class="madeLoading">
-	<div class="loadingBox" id="madeLoadingBox">
-		<h2 style="text-align: center"></h2>
-		<p style="text-align: center"></p>
-		<div class="loadingImg">
-			<img src="http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/madeLoading.gif" alt="loading...">
-		</div>
-	</div>
+    <div class="loadingBox" id="madeLoadingBox">
+        <h2 style="text-align: center"></h2>
+
+        <p style="text-align: center"></p>
+
+        <div class="loadingImg">
+            <img src="http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/madeLoading.gif"
+                 alt="loading...">
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
-	var teamFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getTeamFontRangeArray());?>;
-	var memberFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getMemberFontRangeArray());?>;
+    var teamFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getTeamFontRangeArray());?>;
+    var memberFontRange = <?php echo json_encode(Mage::getModel('customclothes/customClothes')->getMemberFontRangeArray());?>;
 
-	function setFontSize(obj,len,arr){
-		var fontSize;
-		jQuery.each(arr, function(i, n){
-			if(len>i){
-				fontSize=n;
-			}
-		})
-		jQuery(obj).css("fontSize",fontSize);
-	}
+    function setFontSize(obj, len, arr) {
+        var fontSize;
+        jQuery.each(arr, function (i, n) {
+            if (len > i) {
+                fontSize = n;
+            }
+        })
+        jQuery(obj).css("fontSize", fontSize);
+    }
     //页面刷新时初始化页面数据
-	jQuery(function (){
-		madeLoading("","数据加载中,请耐心等待...");
-		jQuery.ajax({
-			type: 'POST',
-			url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customclothes/index/all',		
-			dataType: 'json',
-     		success: function (res) {
-				mageAttr=res.mainData;
-				detailData=res.secondData;
-					previewData();
-     		},
-			complete:function(){
-				madeLoadingClose();
-			}
-		})
+    jQuery(function () {
+        madeLoading("", "数据加载中,请耐心等待...");
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>/customclothes/index/all',
+            dataType: 'json',
+            success: function (res) {
+                mageAttr = res.mainData;
+                detailData = res.secondData;
+                previewData();
+            },
+            complete: function () {
+                madeLoadingClose();
+            }
+        })
     });
 
 </script>
