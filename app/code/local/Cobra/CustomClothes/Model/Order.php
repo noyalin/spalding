@@ -223,19 +223,30 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
     	}
     	$resultRow[] = $this->renameOrderRow($this->chooseOrderRow($row));
     	$resultRow[] = $this->chooseOrderRow($mainData);
-    	$resultRow[0]['font_number_style'] = '数字字体样式';
-    	
-    	if($resultRow[1]['font_style'] == 1){
-    		$fontStyleShow = '汉仪楷体－简';
-    		$fontNumberStyleShow = 'Helvetica Neue';
+
+    	if($resultRow[1]['font'] == 1){
+			$fontStr = '汉仪楷体－简';
+    		$fontNumberStr = 'Helvetica Neue';
     	}
-    	if($resultRow[1]['font_style'] == 2){
-    		$fontStyleShow = '汉仪超粗圆体';
-    		$fontNumberStyleShow = 'Pop Warner';
+		else if($resultRow[1]['font'] == 2){
+			$fontStr = '汉仪超粗圆体';
+    		$fontNumberStr = 'Pop Warner';
     	}
+		else if($resultRow[1]['font'] == 3){
+			$fontStr = '宋体';
+			$fontNumberStr = 'Helvetica Neue';
+		}
+		$resultRow[1]['font'] = $fontStr." (".$fontNumberStr.")";
+
+		if($resultRow[1]['font_style'] == 1){
+			$fontStyleShow = '直线';
+		}
+		else if($resultRow[1]['font_style'] == 2){
+			$fontStyleShow = '曲线';
+		}
+
     	$resultRow[1]['font_style'] = $fontStyleShow;
-    	$resultRow[1]['font_number_style'] = $fontNumberStyleShow;
-    	
+
     	$orderFile = $dir . '/order.csv';
     	$fp = fopen($orderFile, 'w');
     	fwrite($fp, chr(0xEF).chr(0xBB).chr(0xBF)); // 添加 BOM
