@@ -62,8 +62,9 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
            'sortable'          => false,
            'type'              => 'options',
            'options'           => array(
-               1   => 'font1(楷体)',
-               2   => 'font2(圆体)',
+               1   => 'font1(汉仪楷体)',
+               2   => 'font2(汉仪粗圆)',
+               3   => 'font3(宋体)',
            ),
            'html_decorators'   => array('nobr')
         ));

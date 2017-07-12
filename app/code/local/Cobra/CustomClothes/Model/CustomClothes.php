@@ -37,7 +37,7 @@ class Cobra_CustomClothes_Model_CustomClothes
 // 	static $onlyCoat = 1;
 // 	static $onlyPants = 2;
 // 	static $suit = 3;
- 	static $font = array(1 => 'font1',2 => 'font2');
+ 	static $font = array(1 => 'font1(汉仪楷体)',2 => 'font2(汉仪粗圆)',3 => 'font3(宋体)');
  	static $fontStyle = array(1 => '常规',2 => '曲线');
 	
  	static $fontStyleImageUrl = array(1 => 's',2 => 'c');
