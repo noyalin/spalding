@@ -26,6 +26,78 @@
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.arctext.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/customclothes.js'); ?>"></script>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="customclothes_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+	<!-- 法律条款 -->
+	<img id="customImageHidden" style="display:none;">
+	<?php if($this->getCustomerClothesAgree() == null): ?>
+		<div class="rows">
+			<div class="rowsWrap">
+				<h2 class="rowsTitle">篮球定制服务使用条款</h2>
+				<div class="rowsText jScrollbar3 clearfix">
+					<div class="jScrollbar_mask">
+						<div class="maskRulTop">
+							<p>请在使用篮球定制服务前仔细阅读本条款。</p>
+							<p>您（用户）对篮球定制服务的继续使用应被理解为您对本条款的接受。</p>
+							<p>斯伯丁有权不时修订本使用条款，并于网站公布之日生效。</p>
+							<p>如果您不同意本条款，请停止使用篮球定制服务。</p>
+						</div>
+						<style>
+							.maskRed{
+								margin-bottom:10px;
+							}
+							.maskRed h2{font-weight: bold;color: #cf0000;font-size: 12px;  }
+						</style>
+						<div class="maskRed">
+							<h2>由于是个性化定制商品，订单通过审核后将不再进行退换。</h2>
+							<h2>审核后的订单预计将在25个工作日左右生产完成并发货。</h2>
+							<h2>定制内容易磨损，建议将定制球作为观赏收藏使用。</h2>
+						</div>
+						<h3>1.	用户生成内容</h3>
+						<p>“用户生成内容”系指数字、字母、资料、信息、数据、评价、图片、文件、音乐、视频、设计、图表、声音和其他任何您和/或其他用户发布于本网站或以其他形式使其于本网站的内容，除非该内容由斯伯丁所有。</p>
+
+						<h3>2.	内容审查</h3>
+						<p>斯伯丁有权但无义务审查用户生成内容。 但斯伯丁不保证本网站无不准确的、欺诈的、攻击的、威胁的、诽谤的、非法的或其他不恰当的用户生成内容。即使斯伯丁选择审查用户生成内容，斯伯丁对任何用户生成内容或用户在本网站上任何活动不承担任何责任，斯伯丁对用户亦不承担任何形式明示或暗示的担保。</p>
+						<p>斯伯丁有权以任何原因拒绝发布、编辑或移除任何不合适的用户生成内容。</p>
+
+						<dl>
+							<dd>以下用户生成内容内将会被视为不合适：</dd>
+							<dt>含有淫秽、色情、赌博、迷信、恐怖、暴力的内容；</dt>
+							<dt>含有民族、种族、宗教、性别歧视的内容；</dt>
+							<dt>妨碍社会公共秩序或者违背社会良好风尚；</dt>
+							<dt>危害人身、财产安全，泄露个人隐私；</dt>
+							<dt>侵犯他人商标或知识产权的内容(包括但不限于数字、字母、单词、短语、名人的名字、职业运动队等) ；</dt>
+							<dt>其他斯伯丁认为不合适的内容。</dt>
+						</dl>
+
+						<h3>3.	用户责任</h3>
+						<p>您对您的用户生成内容全权负责。请勿发布非法的、诽谤的、辱骂的、粗俗的、淫秽的、色情的、暴力的、欺诈的、恶意的、错误的、不妥当的、有害的、煽动的、骚扰的、恐吓的、威胁的、侵犯隐私的、侵犯知识产权的、侵犯商业秘密的、在性别、种族、文化或宗教方面具有歧视性的、将危害或可能危害他人安全的内容。</p>
+
+						<h3>4.	赔偿</h3>
+						<p>您同意保证且补偿斯伯丁及其关联公司、董事、管理人员、董事、员工、代理人等免受所有诉讼、损失、责任、费用、损害，包括但不限于由于您的用户生成内容、您对内容的使用、或对本条款的违反或侵犯第三方权利所引起的损失及相关的律师费。</p>
+
+						<h3>5.	责任限制</h3>
+						<p>用户不得将定制篮球用于任何其他商业用途。斯伯丁不对任何由于参加斯伯丁篮球定制服务或任何用户生成内容而引起的间接的、特殊的、偶然的损害承担责任，包括任何利益损失或数据遗失，且斯伯丁的任何责任限额应以产品价值为限。</p>
+
+						<h3>6.	知识产权</h3>
+						<p>本网站（除用户生成内容外）全部知识产权均为斯伯丁或其许可人所有，包括但不限于著作权、商标权或专利权、网站文字、软件、脚本、代码、设计、图标、图片、声音、音乐、视频、应用、互动功能和所有其他内容。</p>
+						<p>您授予，并保证您有权授予斯伯丁免费的、永久的、不可撤销的、全球性的、可转让的以任何方式，为任何目的，包括商业目的、广告目的或其他目的而使用您用户生成内容的使用权，包括但不限于复制、修改、发行、展览、表演、信息网络传播、改编、汇编、翻译等。</p>
+
+						<h3>7.	其他</h3>
+						<p>除非法律另有规定，您同意所有使用本网站或服务相关的诉讼（包括但不限于购买斯伯丁产品本身），均应提交上海市徐汇区有管辖的法院依照中华人民共和国法律解决。</p>
+					</div>
+					<div class="jScrollbar_draggable">
+						<a href="#" class="draggable"></a>
+						<span class="scrolBg"></span>
+					</div>
+				</div>
+
+				<div class="rowsSub clearfix">
+					<span class="rowsAgr"><input type="button" value="我已阅读且同意"></span>
+					<span class="rowsRef" onclick="javascript:window.close();"><input type="button" value="不同意"></span>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
+
 	<input name="mainData" id="mainData" type="hidden">
 	<input name="secondData" id="secondData" type="hidden">
 	<input value="<?php echo $pantsPrice;?>" id="pantsPrice" type="hidden">
