@@ -657,7 +657,7 @@ jQuery(function () {
         jQuery(".tipgif").show();
         setTimeout(function(){
             jQuery(".tipgif").hide();
-        },4000)
+        },2000)
     })
     /*切换定制内容*/
     jQuery(".swiper-container  .swiper-slide").click(function(){
@@ -793,6 +793,7 @@ jQuery(function () {
     jQuery("#scrollbar1").perfectScrollbar({suppressScrollX: true});
     jQuery(".rowsAgr").click(function(){
         jQuery(".JrowsWrap").hide();
+        jQuery(".content-wrapper").removeAttr("style");
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#agree').val()
