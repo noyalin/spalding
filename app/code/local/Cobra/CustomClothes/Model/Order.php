@@ -153,11 +153,14 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
     public function export($dir)
     {
     	$orderId = $this->getOrderId();
-    	
+		if (!mkdir($dir . "/" .$orderId)) {
+			Mage::log("mkdir error. ".$dir . "/" .$orderId);
+			return ;
+		}
     	$mainData = $this->getData();
     	$secondData = Mage::getModel('customclothes/orderInfo')->getDataByOrderId($orderId);
     	$data = array('mainData' => $mainData,'secondData' => $secondData);
-    	$this->exportOrderCsv($data, $dir);
+    	$this->exportOrderCsv($data, $dir . "/" .$orderId);
     	$this->setUpdateTime(time());
     	$this->setStatus(self::STATUS_EXPORT)->save();
     }
