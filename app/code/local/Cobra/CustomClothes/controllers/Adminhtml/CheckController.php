@@ -144,7 +144,7 @@ class Cobra_CustomClothes_Adminhtml_CheckController extends Mage_Adminhtml_Contr
                 return -3;
             }
 
-            $imagePrefix = $dir . "/" . $currentOrder->getSku() . "-" . $currentOrder->getOrderId() . "-" . $time;
+            $imagePrefix = $dir . "/" .$currentOrder->getOrderId() . "/" . $currentOrder->getSku() . "-" . $currentOrder->getOrderId() . "-" . $time;
 
             if (!$this->grabImage($resultImage, $imagePrefix . ".png")) {
             	$exportError = true;
