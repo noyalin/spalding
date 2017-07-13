@@ -43,10 +43,11 @@ class Cobra_CustomClothes_Model_CustomClothes
  	static $fontStyle = array(1 => '常规',2 => '曲线');
 
  	static $fontStyleImageUrl = array(1 => 's',2 => 'c');
- 	
-	static $attributeArray = array('M' => 98,'L' => 99, 'XL' => 100,
-								'2XL' => 101,'3XL' => 103, '4XL' => 105
-								);
+
+	static $attributeArray = array('M' => 124,'L' => 125, 'XL' => 122,
+		'2XL' => 128,'3XL' => 127, '4XL' => 126
+	);
+
 	static $attributeId = 2118;
 
 	static $supportProductSku = array(20039,20041);
@@ -103,18 +104,23 @@ class Cobra_CustomClothes_Model_CustomClothes
 		
 		//font_title
 		$fontTitle = $this->getImageUrl($mainData,$secondData[0] ,"team");
-		$value = "\$font_title=".$fontTitle."&";
-		$mainStr .= $value;
-		
+		if ($fontTitle) {
+			$value = "\$font_title=".$fontTitle."&";
+			$mainStr .= $value;
+		}
 		//font_name
-		$fontName = $this->getImageUrl($mainData,$secondData[0] ,"name");
-		$value = "\$font_name=".$fontName."&";
-		$mainStr .= $value;
+		$fontName = $this->getImageUrl($mainData, $secondData[0], "name");
+		if ($fontName) {
+			$value = "\$font_name=" . $fontName . "&";
+			$mainStr .= $value;
+		}
 		
 		//font_num_1
-		$fontNumber = $this->getImageUrl($mainData,$secondData[0] ,"num",'clothes');
-		$value = "\$font_num_1=".$fontNumber."&";
-		$mainStr .= $value;
+		$fontNumber = $this->getImageUrl($mainData, $secondData[0], "num", 'clothes');
+		if ($fontNumber) {
+			$value = "\$font_num_1=" . $fontNumber . "&";
+			$mainStr .= $value;
+		}
 		
 		//font_num_2
 		$value = "\$font_num_2=".$fontNumber."&";
@@ -139,8 +145,10 @@ class Cobra_CustomClothes_Model_CustomClothes
 			
 			//pants_num
 			$pantsNumber = $this->getImageUrl($mainData,$secondData[0] ,"num",'pants');
-			$value = "\$pants_num=".$pantsNumber."&";
-			$mainStr .= $value;
+			if ($pantsNumber) {
+				$value = "\$pants_num=" . $pantsNumber . "&";
+				$mainStr .= $value;
+			}
 			
 		}
 		$priceAll = ($clothesPrice + $pantsPrice) * count($secondData);
@@ -200,8 +208,8 @@ class Cobra_CustomClothes_Model_CustomClothes
 		$url.= "-".urlencode($style);
 		
 		//font_length
-		$lengthUrl = "";
-		if($titleType == 'team'){
+		$lengthUrl = "3";
+		if($titleType == 'team' && $mainData->team){
 			$length = mb_strlen(trim($mainData->team),'GB2312');
 			$teamFontRangeArray = $this->getTeamFontRangeArray();
 			$teamFontImageUrlArray = $this->getTeamFontImageUrl();
@@ -215,7 +223,7 @@ class Cobra_CustomClothes_Model_CustomClothes
 			$lengthUrl = $teamFontImageUrlArray[$range];
 		}
 		
-		if($titleType == 'name'){
+		if($titleType == 'name' && $firstData->player){
 			$length = mb_strlen(trim($firstData->player),'GB2312');
 			$memberFontRangeArray = $this->getMemberFontRangeArray();
 			$memberFontImageUrlArray = $this->getMemberFontImageUrl();
@@ -229,10 +237,14 @@ class Cobra_CustomClothes_Model_CustomClothes
 			$lengthUrl = $memberFontImageUrlArray[$range];
 		}
 		
-		if($titleType == 'num'){
+		if($titleType == 'num' && $firstData->num){
 			$lengthUrl = strlen(intval($firstData->num));
 		}
-		
+
+		if (!$lengthUrl) {
+			return null;
+		}
+
 		$url.= "-".urlencode($lengthUrl);
 		
 		if($type == 'clothes'){
@@ -419,6 +431,37 @@ class Cobra_CustomClothes_Model_CustomClothes
 		
 		return $returnArray;
 		
+	}
+
+	public function getProductSizeOption(){
+
+//		$returnArray = array();
+//		$returnArray[0]['value'] = "124";
+//		$returnArray[0]['size'] = "M";
+//		$returnArray[0]['sizeStr'] = "M";
+//
+//		$returnArray[1]['value'] = "125";
+//		$returnArray[1]['size'] = "L";
+//		$returnArray[1]['sizeStr'] = "L";
+//
+//		$returnArray[2]['value'] = "122";
+//		$returnArray[2]['size'] = "XL";
+//		$returnArray[2]['sizeStr'] = "XL";
+//
+//		$returnArray[3]['value'] = "128";
+//		$returnArray[3]['size'] = "2XL";
+//		$returnArray[3]['sizeStr'] = "2XL";
+//
+//		$returnArray[4]['value'] = "127";
+//		$returnArray[4]['size'] = "3XL";
+//		$returnArray[4]['sizeStr'] = "3XL";
+//
+//		$returnArray[5]['value'] = "126";
+//		$returnArray[5]['size'] = "4XL";
+//		$returnArray[5]['sizeStr'] = "4XL";
+
+		return self::$attributeArray;
+
 	}
 	
 	public function getTeamFontImageUrl(){

@@ -18,6 +18,7 @@ $productModel = Mage::getModel('catalog/product');
 $pantsProduct = $productModel->load($pantsId);
 $pantsPrice = number_format($pantsProduct->getPrice(), 2, '.', '');
 $productId = $_product->getEntityId();
+$productSizeOptionArray = Mage::getModel('customclothes/customClothes')->getProductSizeOption();
 ?>
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/customclothes.css'); ?>" type="text/css"/>
 <link rel="stylesheet" href="<?php echo $this->getSkinUrl('js/perfectscrollbar/perfect-scrollbar.css'); ?>" type="text/css" />
@@ -207,12 +208,19 @@ $productId = $_product->getEntityId();
                                 <div class="madeSize">
                                     <h4 class="title">选择尺码</h4>
                                     <ul class="ullist">
-                                        <li class="active" data-value="98" size="M">M</li>
-                                        <li data-value="99" size="L">L</li>
-                                        <li data-value="100" size="XL">XL</li>
-                                        <li data-value="101" size="2XL">2XL</li>
-                                        <li data-value="103" size="3XL">3XL</li>
-                                        <li data-value="105" size="4XL">4XL</li>
+                                        <?php
+                                        foreach ($productSizeOptionArray as $key => $value):
+                                            ?>
+                                            <li <?php if ($key == "M") { echo 'class="active"'; } ?> data-value="<?php echo $value; ?>" size="<?php echo $key; ?>"><?php echo $key; ?></li>
+                                            <?php
+                                        endforeach;
+                                        ?>
+<!--                                        <li class="active" data-value="98" size="M">M</li>-->
+<!--                                        <li data-value="99" size="L">L</li>-->
+<!--                                        <li data-value="100" size="XL">XL</li>-->
+<!--                                        <li data-value="101" size="2XL">2XL</li>-->
+<!--                                        <li data-value="103" size="3XL">3XL</li>-->
+<!--                                        <li data-value="105" size="4XL">4XL</li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -307,12 +315,19 @@ $productId = $_product->getEntityId();
                                 <div class="madeSize2">
                                     <h4 class="title">选择尺码</h4>
                                     <ul class="ullist">
-                                        <li class="active" data-value="98" size="M">M</li>
-                                        <li data-value="99" size="L">L</li>
-                                        <li data-value="100" size="XL">XL</li>
-                                        <li data-value="101" size="2XL">2XL</li>
-                                        <li data-value="103" size="3XL">3XL</li>
-                                        <li data-value="105" size="4XL">4XL</li>
+                                        <?php
+                                        foreach ($productSizeOptionArray as $key => $value):
+                                            ?>
+                                            <li <?php if ($key == "M") { echo 'class="active"'; } ?> data-value="<?php echo $value; ?>" size="<?php echo $key; ?>"><?php echo $key; ?></li>
+                                            <?php
+                                        endforeach;
+                                        ?>
+<!--                                        <li class="active" data-value="98" size="M">M</li>-->
+<!--                                        <li data-value="99" size="L">L</li>-->
+<!--                                        <li data-value="100" size="XL">XL</li>-->
+<!--                                        <li data-value="101" size="2XL">2XL</li>-->
+<!--                                        <li data-value="103" size="3XL">3XL</li>-->
+<!--                                        <li data-value="105" size="4XL">4XL</li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -401,21 +416,35 @@ $productId = $_product->getEntityId();
                                     </div>
                                 </div>
                                 <ul class="ullist size">
-                                    <li class="active">M</li>
-                                    <li>L</li>
-                                    <li>XL</li>
-                                    <li>2XL</li>
-                                    <li>3XL</li>
-                                    <li>4XL</li>
+                                    <?php
+                                    foreach ($productSizeOptionArray as $key => $value):
+                                        ?>
+                                        <li <?php if ($key == "M") { echo 'class="active"'; } ?> ><?php echo $key; ?></li>
+                                        <?php
+                                    endforeach;
+                                    ?>
+<!--                                    <li class="active">M</li>-->
+<!--                                    <li>L</li>-->
+<!--                                    <li>XL</li>-->
+<!--                                    <li>2XL</li>-->
+<!--                                    <li>3XL</li>-->
+<!--                                    <li>4XL</li>-->
                                 </ul>
                                 <div class="line"></div>
                                 <ul class="ullist size2">
-                                    <li class="active">M</li>
-                                    <li>L</li>
-                                    <li>XL</li>
-                                    <li>2XL</li>
-                                    <li>3XL</li>
-                                    <li>4XL</li>
+                                    <?php
+                                    foreach ($productSizeOptionArray as $key => $value):
+                                        ?>
+                                        <li <?php if ($key == "M") { echo 'class="active"'; } ?> ><?php echo $key; ?></li>
+                                        <?php
+                                    endforeach;
+                                    ?>
+<!--                                    <li class="active">M</li>-->
+<!--                                    <li>L</li>-->
+<!--                                    <li>XL</li>-->
+<!--                                    <li>2XL</li>-->
+<!--                                    <li>3XL</li>-->
+<!--                                    <li>4XL</li>-->
                                 </ul>
                                 <div class="line"></div>
                                 <p class="confirm">
@@ -440,8 +469,8 @@ $productId = $_product->getEntityId();
                             </ul>
                         </div>
                         <div class="moreBox">
-                            <div class="madeNameTwo">多件添加<span class="totalbox">共 <b class="num"> 8 </b> 件&nbsp&nbsp&nbsp总价<b
-                                        class="total"> 704.00 </b>元</span><a href="javascript:void(0);"
+                            <div class="madeNameTwo">多件添加<span class="totalbox">共 <b class="num"> 0 </b> 件&nbsp&nbsp&nbsp总价<b
+                                        class="total"> 0.00 </b>元</span><a href="javascript:void(0);"
                                                                              id="backmore">编辑</a></div>
                             <div class="cplist">
                                 <table>
