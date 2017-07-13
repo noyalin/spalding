@@ -127,6 +127,7 @@ button{border:0;outline: none}
 .cusMadeBox .styleBox .madeFont .ullist li:after{width:150px;}
 .cusMadeBox .styleBox .madeFont .ullist li.style1{background: url(../images/shirtmade/img_font1.png) no-repeat}
 .cusMadeBox .styleBox .madeFont .ullist li.style2{background: url(../images/shirtmade/img_font2.png) no-repeat}
+.cusMadeBox .styleBox .madeFont .ullist li.style3{background: url(../images/shirtmade/img_font3.png) no-repeat}
 .cusMadeBox .styleBox .madeStyle .ullist li{width:146px;height:38px;}
 .cusMadeBox .styleBox .madeStyle .ullist li:after{width:150px;}
 .cusMadeBox .styleBox .madeStyle .ullist li.style1{background: url(../images/shirtmade/style1.png) no-repeat}

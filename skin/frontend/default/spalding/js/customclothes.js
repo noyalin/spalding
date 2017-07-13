@@ -385,14 +385,16 @@ function showCarlist(){
     jQuery(".madeBoxCont4 .list-item li.style span").text(fontStyle);
     getColor(mageAttr["color"],".madeBoxCont4 .list-item li.color span");
     jQuery(".madeBoxCont4 .list-item li.fontColor span").text(mageAttr["fontColor"]);
-    jQuery(".madeBoxCont4 .list-item li.team span").text(mageAttr["team"]);
-    var html = "";
+    jQuery(".madeBoxCont4 .list-item li.team span").text(mageAttr["team"]?mageAttr["team"]:"");
+    var html = "", player , num ;
     jQuery(".madeBoxCont4 .moreBox table tbody").html("");
     jQuery.each(detailData,function(key,node){
+        player=node.player?node.player:"";
+        num=node.num?node.num:"";
         if(mageAttr["double"] == 0){
-            html += "<tr><td>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td></tr>";
+            html += "<tr><td>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td></tr>";
         }else{
-            html += "<tr><td>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td></tr>";
+            html += "<tr><td>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td></tr>";
         }
     })
     jQuery(".madeBoxCont4 .moreBox table tbody").append(html);

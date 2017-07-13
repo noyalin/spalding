@@ -216,7 +216,6 @@ function IsNum(obj) {
 * */
 function madeData(){
     var color=jQuery(".madeColor li.active").attr("data");
-    alert(color);
     var size=jQuery(".madeSize li.active").text();
     var font=jQuery(".madeFont li.active").attr("data");
     var style=jQuery(".madeStyle li.active").attr("data");
