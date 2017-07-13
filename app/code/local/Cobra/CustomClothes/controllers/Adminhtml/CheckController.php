@@ -107,7 +107,7 @@ class Cobra_CustomClothes_Adminhtml_CheckController extends Mage_Adminhtml_Contr
 
     private function export($infoIds)
     {
-    	
+
     	$orderModel = Mage::getModel('customclothes/order');
     	foreach ($infoIds as $key => $id){
     		$orderRow = $orderModel->load($id);
@@ -139,6 +139,11 @@ class Cobra_CustomClothes_Adminhtml_CheckController extends Mage_Adminhtml_Contr
                 continue;
             }
             $resultImage = $currentOrder->getResultImage();
+            if (!mkdir($dir . "/" .$currentOrder->getOrderId())) {
+                Mage::log("mkdir error. ".$dir . "/" .$currentOrder->getOrderId());
+                return -3;
+            }
+
             $imagePrefix = $dir . "/" . $currentOrder->getSku() . "-" . $currentOrder->getOrderId() . "-" . $time;
 
             if (!$this->grabImage($resultImage, $imagePrefix . ".png")) {
