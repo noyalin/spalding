@@ -208,7 +208,7 @@ class Cobra_CustomClothes_Model_CustomClothes
 		$url.= "-".urlencode($style);
 		
 		//font_length
-		$lengthUrl = "3";
+		$lengthUrl = "";
 		if($titleType == 'team' && $mainData->team){
 			$length = mb_strlen(trim($mainData->team),'GB2312');
 			$teamFontRangeArray = $this->getTeamFontRangeArray();
@@ -242,7 +242,7 @@ class Cobra_CustomClothes_Model_CustomClothes
 		}
 
 		if (!$lengthUrl) {
-			return null;
+			return "null";
 		}
 
 		$url.= "-".urlencode($lengthUrl);
