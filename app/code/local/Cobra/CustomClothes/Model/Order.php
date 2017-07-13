@@ -249,7 +249,7 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
     	$resultRow[1]['font_style'] = $fontStyleShow;
 
     	$orderFile = $dir . '/order.csv';
-    	$fp = fopen($orderFile, 'w');
+    	$fp = fopen($orderFile, 'a+');
     	fwrite($fp, chr(0xEF).chr(0xBB).chr(0xBF)); // 添加 BOM
     	foreach ($resultRow as $dataRow)
     	{
@@ -258,7 +258,7 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
     	fclose($fp);
     	
     	$orderInfoFile = $dir . '/orderInfo.csv';
-    	$fp = fopen($orderInfoFile, 'w');
+    	$fp = fopen($orderInfoFile, 'a+');
     	fwrite($fp, chr(0xEF).chr(0xBB).chr(0xBF)); // 添加 BOM
     	$secondData = $data['secondData'];
     	foreach ($secondData as $key => $dataRow){
