@@ -37,6 +37,18 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
             'html_decorators'   => array('nobr')
         ));
 
+        $this->addColumn('double', array(
+            'header'            => Mage::helper('customclothes')->__('套装'),
+            'align'             => 'right',
+            'width'             => '60px',
+            'index'             => 'double',
+            'options'           => array(
+                0   => '否',
+                1   => '是',
+            ),
+            'html_decorators'   => array('nobr')
+        ));
+
         $this->addColumn('create_time', array(
             'header'            => Mage::helper('customclothes')->__('订单时间'),
             'width'             => '150px',
@@ -119,7 +131,7 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
         $this->addColumn('order_count', array(
         	'header'            => Mage::helper('customclothes')->__('定制数量'),
         	'align'             => 'right',
-        	'width'             => '120px',
+        	'width'             => '60px',
         	'index'             => 'order_count',
         	'html_decorators'   => array('nobr')
         ));
