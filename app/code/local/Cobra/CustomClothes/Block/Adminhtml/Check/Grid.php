@@ -84,7 +84,7 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
        		'sortable'          => false,
        		'type'              => 'options',
        		'options'           => array(
-                1   => '直线',
+                1   => '常规',
                 2   => '曲线',
        		),
        		'html_decorators'   => array('nobr')

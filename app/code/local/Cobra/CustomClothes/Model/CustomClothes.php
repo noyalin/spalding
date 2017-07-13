@@ -120,11 +120,11 @@ class Cobra_CustomClothes_Model_CustomClothes
 		if ($fontNumber) {
 			$value = "\$font_num_1=" . $fontNumber . "&";
 			$mainStr .= $value;
+
+			//font_num_2
+			$value = "\$font_num_2=".$fontNumber."&";
+			$mainStr .= $value;
 		}
-		
-		//font_num_2
-		$value = "\$font_num_2=".$fontNumber."&";
-		$mainStr .= $value;
 		
 		//price
 		$pantsSku = '';

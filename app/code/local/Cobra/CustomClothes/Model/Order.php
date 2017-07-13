@@ -240,7 +240,7 @@ class Cobra_CustomClothes_Model_Order extends Mage_Core_Model_Abstract
 		$resultRow[1]['font'] = $fontStr." (".$fontNumberStr.")";
 
 		if($resultRow[1]['font_style'] == 1){
-			$fontStyleShow = '直线';
+			$fontStyleShow = '常规';
 		}
 		else if($resultRow[1]['font_style'] == 2){
 			$fontStyleShow = '曲线';
