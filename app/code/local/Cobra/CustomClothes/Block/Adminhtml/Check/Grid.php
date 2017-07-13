@@ -39,9 +39,11 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
 
         $this->addColumn('double', array(
             'header'            => Mage::helper('customclothes')->__('套装'),
-            'align'             => 'right',
+            'align'             => 'center',
             'width'             => '60px',
             'index'             => 'double',
+            'sortable'          => false,
+            'type'              => 'options',
             'options'           => array(
                 0   => '否',
                 1   => '是',
@@ -61,7 +63,7 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
 
         $this->addColumn('color', array(
         		'header'            => Mage::helper('customclothes')->__('颜色'),
-        		'align'             => 'right',
+        		'align'             => 'center',
         		'width'             => '120px',
         		'index'             => 'color',
         ));
@@ -83,7 +85,7 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
 
         $this->addColumn('font_color', array(
         		'header'            => Mage::helper('customclothes')->__('字体颜色'),
-        		'align'             => 'right',
+        		'align'             => 'center',
         		'width'             => '120px',
         		'index'             => 'font_color',
         ));
@@ -130,7 +132,7 @@ class Cobra_CustomClothes_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Bloc
         
         $this->addColumn('order_count', array(
         	'header'            => Mage::helper('customclothes')->__('定制数量'),
-        	'align'             => 'right',
+        	'align'             => 'center',
         	'width'             => '60px',
         	'index'             => 'order_count',
         	'html_decorators'   => array('nobr')
