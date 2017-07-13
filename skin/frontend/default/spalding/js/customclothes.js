@@ -367,13 +367,15 @@ function editRow(obj){
 }
 function showlistdata(){
     setSuit();
-    var html = "";
+    var html = "", player , num ;
     jQuery("#madeTable tbody").html("");
     jQuery.each(detailData,function(key,node){
+        player=node.player?node.player:"";
+        num=node.num?node.num:"";
         if(mageAttr["double"] == 0){
-            html += "<tr><td>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td><td><a href='#' class='edit' onclick=editRow(this)></a><a href='#'  class='delRow'></a></td></tr>";
+            html += "<tr><td>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td><td><a href='#' class='edit' onclick=editRow(this)></a><a href='#'  class='delRow'></a></td></tr>";
         }else{
-            html += "<tr><td>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td><td><a href='#' class='edit' onclick=editRow(this)></a><a href='#'  class='delRow'></a></td></tr>";
+            html += "<tr><td>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td><td><a href='#' class='edit' onclick=editRow(this)></a><a href='#'  class='delRow'></a></td></tr>";
         }
     })
     jQuery("#madeTable tbody").append(html);
@@ -575,10 +577,10 @@ function madeInitData(){
         jQuery(".madeFont li[data="+mageAttr['font']+"]").addClass("active").siblings().removeClass("active");
         jQuery(".madeStyle li[data="+mageAttr['style']+"]").addClass("active").siblings().removeClass("active");
         jQuery(".madeFontColor li[color="+mageAttr['fontColor']+"]").addClass("active").siblings().removeClass("active");
-        jQuery(".viewbox .textMadeC,.viewbox .textMadeD,.viewbox .textMadeE").text(detailData[0]["num"]);
-        jQuery(".madeTeam input").val(mageAttr['team']);
-        jQuery(".madePlayer input").val(detailData[0]['player']);
-        jQuery(".madeNum input").val(detailData[0]['num']);
+        jQuery(".viewbox .textMadeC,.viewbox .textMadeD,.viewbox .textMadeE").text(detailData[0]["num"]?detailData[0]["num"]:"");
+        jQuery(".madeTeam input").val(mageAttr['team']?mageAttr['team']:"");
+        jQuery(".madePlayer input").val(detailData[0]['player']?detailData[0]['player']:"");
+        jQuery(".madeNum input").val(detailData[0]['num']?detailData[0]['num']:"");
         jQuery(".madeDouble li").eq(mageAttr['double']).addClass("active").siblings().removeClass("active");
         jQuery(".madeSize2 li[size="+detailData[0]['size2']+"]").addClass("active").siblings().removeClass("active");
         selectFont();

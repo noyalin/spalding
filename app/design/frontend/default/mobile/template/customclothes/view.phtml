@@ -34,7 +34,7 @@
 	<!-- 法律条款 -->
 	<img id="customImageHidden" style="display:none;">
 	<?php if($this->getCustomerClothesAgree() == null): ?>
-		<div class="rowsWrap">
+		<div class="rowsWrap JrowsWrap">
 			<div class="rowsBox">
 				<h2 class="rowsTitle">斯伯丁定制服务使用条款</h2>
 				<div class="rowsText">
@@ -199,7 +199,7 @@
 								<?php
 								foreach ($productSizeOptionArray as $key => $value):
 									?>
-									<li <?php if ($key == "M") { echo 'class="active"'; } ?> data-value="<?php echo $value; ?>" size="<?php echo $key; ?>"><?php echo $key; ?></li>
+									<li <?php if ($key == "M") { echo 'class="active"'; } ?> data-value="<?php echo $value; ?>" size="<?php echo $key; ?>"><span><?php echo $key; ?></span></li>
 									<?php
 								endforeach;
 								?>

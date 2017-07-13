@@ -271,13 +271,15 @@
     function showCarlist(){
         setSuit();
         setTotal(mageAttr["double"]);
-        var html = "";
+        var html = "", player , num;
         jQuery(".cusmoreBox .madeitembox table tbody").html("");
         jQuery.each(detailData,function(key,node){
+            player=node.player?node.player:"";
+            num=node.num?node.num:"";
             if(mageAttr["double"] == 0){
-                html += "<tr><td>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td></tr>";
+                html += "<tr><td>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td></tr>";
             }else{
-                html += "<tr><td>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td></tr>";
+                html += "<tr><td>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td></tr>";
             }
         })
         jQuery(".cusmoreBox .madeitembox table tbody").append(html);
@@ -353,13 +355,15 @@
     }
     function showeditdata(){
         setSuit();
-        var html = "";
+        var html = "", player , num;
         jQuery(".editmoreBox .madeTable tbody").html("");
         jQuery.each(detailData,function(key,node){
+            player=node.player?node.player:"";
+            num=node.num?node.num:"";
             if(mageAttr["double"] == 0){
-                html += "<tr><td class='icon'>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td><td><a href='#'  class='delRow'></a></td></tr>";
+                html += "<tr><td class='icon'>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td><td><a href='#'  class='delRow'></a></td></tr>";
             }else{
-                html += "<tr><td class='icon'>"+node.player+"</td><td>"+node.num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td><td><a href='#'  class='delRow'></a></td></tr>";
+                html += "<tr><td class='icon'>"+player+"</td><td>"+num+"</td><td>"+node.size+"</td><td>"+node.size2+"</td><td><a href='#'  class='delRow'></a></td></tr>";
             }
         })
         jQuery(".editmoreBox .madeTable tbody").append(html);
@@ -482,10 +486,10 @@
             setSize2(size2txt);
             jQuery(".tabContslide .styleBox li:eq(0) b").attr("color",mageAttr['fontColor']);
             getColor(mageAttr['fontColor'],".tabContslide .styleBox li:eq(0) b");
-            jQuery(".viewbox .textMadeC,.viewbox .textMadeD,.viewbox .textMadeE").text(detailData[0]["num"]);
-            jQuery(".tabContslide .madeTeam input").val(mageAttr['team']);
-            jQuery(".tabContslide .madePlayer input").val(detailData[0]['player']);
-            jQuery(".tabContslide .madeNum input").val(detailData[0]['num']);
+            jQuery(".viewbox .textMadeC,.viewbox .textMadeD,.viewbox .textMadeE").text(detailData[0]["num"]?detailData[0]["num"]:"");
+            jQuery(".tabContslide .madeTeam input").val(mageAttr['team']?mageAttr['team']:"");
+            jQuery(".tabContslide .madePlayer input").val(detailData[0]['player']?detailData[0]['player']:"");
+            jQuery(".tabContslide .madeNum input").val(detailData[0]['num']?detailData[0]['num']:"");
             selectFont();
             showTxt(".tabContslide .madeTeam input",".viewbox .textMadeA",teamFontRange);
             showTxt(".tabContslide .madePlayer input",".viewbox .textMadeB",memberFontRange);
@@ -788,7 +792,7 @@ jQuery(function () {
     jQuery("#scrollbar").perfectScrollbar({suppressScrollX: true});
     jQuery("#scrollbar1").perfectScrollbar({suppressScrollX: true});
     jQuery(".rowsAgr").click(function(){
-        jQuery(this).parent().parent().parent(".rows").hide();
+        jQuery(".JrowsWrap").hide();
         jQuery.ajax({
             type: 'POST',
             url: jQuery('#agree').val()

@@ -629,6 +629,7 @@ button {
 .madeTable th,
 .madeTable td {
     line-height: 20px;
+    height:20px;
     padding: 10px 0;
     vertical-align: middle;
     text-align: center;
