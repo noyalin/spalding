@@ -52,6 +52,8 @@ $_imgUrl = null;
 		//定制球衣确认预留
 		elseif($_category && $_category->getUrlKey() == 'custom-clothes'):
 			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_made')->toHtml();
+        elseif($_category && $_category->getUrlKey() == 'trainingseries'):
+            echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_trainingseries')->toHtml();
 		else:
 			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner')->toHtml();
 		endif;
