@@ -2320,8 +2320,8 @@ ul.form-list li p{
 .lower_wrap .main .lower_list {
 	display: none;
 	background:#666;
-	height: 30px;
-	line-height: 30px;
+	height: 40px;
+	line-height: 40px;
 }
 
 .lower_wrap a {
@@ -2334,7 +2334,6 @@ ul.form-list li p{
 
 .lower_wrap ul li {
 	float: left;
-	line-height: 30px;
 	margin-left: 0px;
 }
 
