@@ -66,9 +66,9 @@ button {
 
 .cusMadeShirt .slideshow .textMadeA {
     position: absolute;
-    left: 0;
-    top:43px;
-    width: 100%;
+    left: 10px;
+    top:59px;
+    width: 118px;
     line-height: 40px;
 }
 .slideshow .textMadeA .dom,
@@ -84,9 +84,9 @@ button {
 
 .cusMadeShirt .slideshow .textMadeB {
     position: absolute;
-    left: 0;
-    top: 57px;
-    width: 100%;
+    left: 18px;
+    top: 59px;
+    width:106px;
 }
 
 .cusMadeShirt .slideshow .textMadeD {
