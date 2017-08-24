@@ -347,13 +347,18 @@ else:
                                 <div class="product-collateral-box-img">
                                     <img src='<?php echo $this->getSkinUrl("images/detailinfo/title3.jpg") ?>' alt="">
                                 </div>
-                                <?php for ($i = 1; $i <=$imgCount; $i++):?>
-                                    <div class="product-collateral-box-img">
-                                        <img
-                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
-                                            alt=""/>
-                                    </div>
-                                <?php endfor; ?>
+                            <div class="product-collateral-box-img">
+                                <img
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-3"?>"
+                                    alt=""/>
+                            </div>
+<!--                                --><?php //for ($i = 1; $i <=$imgCount; $i++):?>
+<!--                                    <div class="product-collateral-box-img">-->
+<!--                                        <img-->
+<!--                                            src="--><?php //echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?><!--/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/--><?php //echo $urlkey . "-".$i?><!--"-->
+<!--                                            alt=""/>-->
+<!--                                    </div>-->
+<!--                                --><?php //endfor; ?>
                                 <?php if($attributeSetName == 'apparel'){?>
                                     <!--服饰尺码表-->
                                     <?php
