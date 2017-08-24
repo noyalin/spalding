@@ -83,22 +83,13 @@ jQuery(document).ready(function () {
         return false
     });
     jQuery("#detailProductGallery div img").hover(function () {
-        originSrc = jQuery("#mainImage").attr("data-zoom-image");
-        smallSrc = jQuery(this).attr("src");
-        nStr = smallSrc.replace(".jpg",'');
-        aStr = nStr.split('-');
-        len = aStr.length;
-        r = aStr[len-1];
-        lastSmallSrc =  smallSrc.substring(smallSrc.length-2,smallSrc.length);
-        originSrcFirstPart = originSrc.substring(0,originSrc.length-6);
-        originSrcSecondPart = lastSmallSrc + '.jpg';
-        originSrcNew = originSrcFirstPart + originSrcSecondPart;
-        oldStr = jQuery(this).attr("src");
-        newstr = oldStr.replace(r+".jpg",r-3+".jpg");
+        var i=jQuery(this).attr("sku");
+        zoomSrc = jQuery("#mainImage").attr("data-zoom-image");
+        src = jQuery("#mainImage").attr("src");
+        newstr = src.substring(0, src.length - 1) + i;
         jQuery("#mainImage").attr("src", newstr);
-
-        dStr = oldStr.replace(r+".jpg",r-7+".jpg");
-        jQuery("#mainImage").attr("data-zoom-image", dStr   );
+        zoomSrc = zoomSrc.substring(0, zoomSrc.length - 1) + i;
+        jQuery("#mainImage").attr("data-zoom-image", zoomSrc);
     });
     var i = 0;
     imgSwap = [];

@@ -55,7 +55,7 @@ $_product = Mage::getModel('catalog/product')->load($_item->getProductId());
             }
             ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>">
 <!--                <img src="--><?php //echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?><!--" width="50" height="50" alt="--><?php //echo $this->htmlEscape($this->getProductName()) ?><!--" />-->
-                <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $_product->getSku()."/". $this->htmlEscape($_product->getUrlKey()) ?>-8.jpg" width="50" height="50" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
+                <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding50px?$50x50$&$image50=<?php echo  $this->htmlEscape($_product->getUrlKey()) ?>-1" width="50" height="50" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
 <!--                <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=--><?php //echo $_product->getUrlKey();  ?><!---1" width="50" height="50" alt="--><?php //echo $this->htmlEscape($this->getProductName()) ?><!--" />-->
             </a>
         <dd>

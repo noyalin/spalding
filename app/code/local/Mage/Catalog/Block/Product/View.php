@@ -307,4 +307,55 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
         }
         return $attrName;
     }
+
+    function getAttributeNameById($attributeName,$optionId){
+        if(!$optionId)
+            return null;
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', $attributeName);
+        $options = $attribute->getSource()->getAllOptions(true, true);
+        $selectedArr = array();
+        foreach($options as $key => $eachValue){
+            if($eachValue['value'] == $optionId){
+                return $eachValue['label'];
+            }
+        }
+        return null;
+    }
+
+    function getProductNormImageNameById($productNormId){
+        switch ($productNormId) {
+            case '9':
+                $size = 'size_seven';
+                break;
+            case '8':
+                $size = 'size_six';
+                break;
+            case '7':
+                $size = 'size_five';
+                break;
+            case '113':
+                $size = 'size_four';
+                break;
+            case '112':
+                $size = 'size_three';
+                break;
+            default:
+                $size = 'size_one';
+        }
+        return $size;
+    }
+
+    function getProductMaterialImageNameById($productMaterialId){
+        switch ($productMaterialId) {
+            case '21':
+                $material = 'texture_pu';
+                break;
+            case '20':
+                $material = 'texture_niupi';
+                break;
+            default:
+                $material = 'texture_xiangjiao';
+        }
+        return $material;
+    }
 }

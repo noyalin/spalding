@@ -65,15 +65,16 @@ $layer = Mage::getSingleton('catalog/layer');
 $_category = $layer->getCurrentCategory();
 $categoryUrlkey = $_category->getUrlKey();
 //定制球衣确认预留   $categoryUrlkey == 'custom-clothes' 这个判断需要删除 并且在后天将产品 is_custom 设置成1
-if($_product->getIsCustom() == 1):
+if ($_product->getIsCustom() == 1):
 //专属定制
     ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/'.$_product->getSku().'/zns_style_ball.css'); ?>">
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo $this->getSkinUrl('css/' . $_product->getSku() . '/zns_style_ball.css'); ?>">
     <?php
-    	echo $this->getChildHtml('custommade_view');
-   	elseif(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'clothes'):
-   		echo $this->getChildHtml('customclothes_view');
-	else:
+    echo $this->getChildHtml('custommade_view');
+elseif (Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'clothes'):
+    echo $this->getChildHtml('customclothes_view');
+else:
     ?>
     <div class="product-view">
         <div class="product-essential">
@@ -206,64 +207,184 @@ if($_product->getIsCustom() == 1):
             </div>
         </div>
         <!-- 产品详情 -->
-        <style>
-            .product-collateral-box-img img {
-                margin: 0 0 0 -60px;
-            }
-        </style>
         <div class="product-collateral">
-            <div class="productDetail_collTit">
-                <img src='<?php echo $this->getSkinUrl("images/productDetail_collateralTit.png") ?>' alt="">
-            </div>
             <?php
             $urlkey = $_product->getUrlKey();
             $sku = $_product->getSku();
-            $i = 0;
-            $arr = array("正面/FRONT", "反面/BACK", "侧面/SIDE");
-            //----------------------------------------------------------------------------STA
+            $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+            $productNorm = $configurableProduct->getProductNorm();
+            if($productNorm == 6){
+                $scen7 ='/is/image/sneakerhead/spalding_lqxq_small_';
+            }else {
+                $scen7 = '/is/image/sneakerhead/spalding_lqxq_big_';
+            }
+            $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
+            $attributeSetModel->load($_product->getAttributeSetId());
+            $attributeSetName = $attributeSetModel->getAttributeSetName();
             $imgCount = $_product->getImageCount();
-            for ($count = 0; $count < $imgCount; $count++) {
-                //----------------------------------------------------------------------------END
-                $des = $arr[$i];
-                $i++;
-                ?>
+            ?>
                 <div class="product-collateral-wrap">
                     <div class="product-collateral-box">
-                        <h2 class="product-collateral-box-nam"><?php echo $des; ?></h2>
-                        <?php if ($count == 0 && $sku == '74-582y'): ?>
+                    <?php if($_product->getDetailImages()){?>
+                        <?php $str = $_product->getDetailImages();
+                        $str=explode("\n", $str);
+                        $num = count($str);
+                        for($i=0;$i<$num;$i++){
+//                                        print_r($i);
+                            $src =trim($str[$i]);
+                            if ($src) {
+                                echo  '<div class="product-collateral-box-img"><img src='.$src.' alt=""></div>';
+                            }
+                        }
+                        ?>
+                    <?php }else{ ?>
+                        <?php if($attributeSetName == 'ball'||$attributeSetName == 'football'): ?>
+                            <!--产品信息-->
+                            <?php if($attributeSetName == 'ball'){?>
                             <div class="product-collateral-box-img">
                                 <img
-                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/74-582y/74-582-top1.jpg"
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                        . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
+                                        . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '篮球')
+                                        . '&$images=sneakerhead/'.$urlkey . '-1'?>"
                                     alt=""/>
                             </div>
+                            <?php }else{?>
+                                <div class="product-collateral-box-img">
+                                    <img
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/spalding_zqxq_info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                            . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
+                                            . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '足球')
+                                            . '&$images=sneakerhead/'.$urlkey . '-1'?>"
+                                        alt=""/>
+                                </div>
+                            <?php }?>
+
+                            <!--产品展示-->
+                            <div class="product-collateral-box-img">
+                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title2.jpg") ?>' alt="">
+                            </div>
+                            <?php for ($i = 1; $i <=$imgCount; $i++):?>
+                            <div class="product-collateral-box-img">
+                                <img
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spalding_1242_1030$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                    alt=""/>
+                            </div>
+                            <?php endfor; ?>
+                            <!--细节展示-->
+                            <div class="product-collateral-box-img">
+                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title3.jpg") ?>' alt="">
+                            </div>
+                            <?php for ($i = 1; $i <=$imgCount; $i++):?>
+                                <div class="product-collateral-box-img">
+                                    <img
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding_lqxq_detail<?php echo $i ?>?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                        alt=""/>
+                                </div>
+                            <?php endfor; ?>
+                            <?php if($attributeSetName == 'ball'){?>
+                                <!--篮球规格表-->
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/balltitle4.jpg") ?>' alt="">
+                                </div>
+                                <div class="product-collateral-box-img">
+                                    <img src="<?php echo $this->getSkinUrl('images/detailinfo/ball-size.jpg');?>" border="0">
+                                </div>
+                                <!--篮球保养-->
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/balltitle5.jpg") ?>' alt="">
+                                </div>
+                                <div class="product-collateral-box-img">
+                                    <img src="<?php echo $this->getSkinUrl('images/detailinfo/ball-maintain.jpg');?>" border="0">
+                                </div>
+                                <!--篮球结构知识-->
+                                <div class="product-collateral-box-img">
+                                    <img src="<?php echo $this->getSkinUrl('images/detailinfo/ball-structure.jpg');?>" border="0">
+                                </div>
+                            <?php }else{?>
+                                <!--足球规格表-->
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="">
+                                </div>
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-size.jpg") ?>' alt="">
+                                </div>
+                                <!--足球结构知识-->
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle5.jpg") ?>' alt="">
+                                </div>
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>' alt="">
+                                </div>
+                            <?php }?>
+                        <?php else:?>
+                                <!--产品信息-->
+    <!--                            <div class="product-collateral-box-img">-->
+    <!--                                <img-->
+    <!--                                    src="--><?php //echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/spalding_fsxq_info?$spalding_1242x900$&$size=TF系列&$number=74-716A&$texture='. urlencode($this->getAttributeNameById("product_material_others", $_product->getProductMaterial())) . '&$title=高科技LEGRCY&$images=sneakerhead/'. $urlkey . '-1'?><!--"-->
+    <!--                                    alt=""/>-->
+    <!--                            </div>-->
+                                <!--产品展示-->
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/title2.jpg") ?>' alt="">
+                                </div>
+                                <?php for ($i = 1; $i <=$imgCount; $i++):?>
+                                        <?php if($attributeSetName == 'apparel'){?>
+                                                <div class="product-collateral-box-img">
+                                                    <img
+                                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1030$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                                        alt=""/>
+                                                </div>
+                                        <?php } else { ?>{
+                                                    <div class="product-collateral-box-img">
+                                                        <img
+                                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spalding_1242_1030$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                                            alt=""/>
+                                                    </div>
+                                        <?php } ?>
+                                <?php endfor; ?>
+                                <!--细节展示-->
+                                <div class="product-collateral-box-img">
+                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/title3.jpg") ?>' alt="">
+                                </div>
+                                <?php for ($i = 1; $i <=$imgCount; $i++):?>
+                                    <div class="product-collateral-box-img">
+                                        <img
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                            alt=""/>
+                                    </div>
+                                <?php endfor; ?>
+                                <?php if($attributeSetName == 'apparel'){?>
+                                    <!--服饰尺码表-->
+                                    <?php
+                                    if (($size_table_id != null)) {
+                                        $size_table_url = $this->getSkinUrl("images/detailinfo/" . $size_table_id . ".jpg");
+                                        ?>
+                                        <div class="product-collateral-box-img">
+                                        <img src='<?php echo $size_table_url; ?>' alt="">
+                                            </div>
+                                        <?php
+                                    }
+                                    ?>
+    <!--                            <!--服饰保养-->
+                                    <div class="product-collateral-box-img">
+                                        <img src='<?php echo $this->getSkinUrl("images/detailinfo/fushi-maintain.jpg") ?>' alt="">
+                                    </div>
+                                <?php }?>
                         <?php endif; ?>
+                    <?php }?>
+                        <!--售后相关-->
                         <div class="product-collateral-box-img">
-                            <img
-                                src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/media/catalog/product/<?php echo $sku . "/" . $urlkey . "-" . ($i + 10) ?>.jpg"
-                                alt=""/>
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/title7.jpg") ?>' alt="">
+                        </div>
+                        <div class="product-collateral-box-img">
+                            <img src="<?php echo $this->getSkinUrl('images/detailinfo/service-1.jpg');?>" border="0">
+                        </div>
+                        <div class="product-collateral-box-img">
+                            <img src="<?php echo $this->getSkinUrl('images/detailinfo/service-2.jpg');?>" border="0">
                         </div>
                     </div>
                 </div>
-
-                <?php
-            }
-            ?>
-            <?php
-            if (($size_table_id != null)) {
-                $size_table_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') . "images/sizeTable/" . $size_table_id . ".png";
-                ?>
-                <center><img src='<?php echo $size_table_url; ?>' alt=""></center>
-                <?php
-            }
-            ?>
-            <?php
-            if (($product_attributeSetName != null) && $product_attributeSetName == 72) {
-                $view_bottom_url = Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html') . "images/sizeTable/view_bottom.png";
-                ?>
-                <center><img src='<?php echo $view_bottom_url ?>' alt=""></center>
-                <?php
-            }
-            ?>
         </div>
         <!-- 产品详情 e -->
         <?php echo $this->getChildHtml('upsell_products') ?>

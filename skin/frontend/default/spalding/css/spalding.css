@@ -1593,9 +1593,12 @@ h2.product-collateral-box-nam{
 }
 
 .product-collateral-box-img{
+	max-width:960px;
 	text-align: center;
 }
-
+.product-collateral-box-img img{
+	width:100%;
+}
 .productSaw{
 	padding:10px;
 	border:1px solid #6a6a6a;

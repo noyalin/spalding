@@ -109,9 +109,9 @@ $categoryUrlkey = $_category->getUrlKey();
                     $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
                     $productNorm = $configurableProduct->getProductNorm();
                     if($productNorm == 6){
-                        $scen7 = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image=';
+                        $scen7 = $domain.'/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image=';
                     }else{
-                        $scen7 = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$220x220$&$image=';
+                        $scen7 = $domain.'/is/image/sneakerhead/spalding220px?$220x220$&$image=';
                     }
                     ?>
                     <?php if ($i++%$_columnCount==0): ?>
@@ -119,7 +119,7 @@ $categoryUrlkey = $_category->getUrlKey();
                 <?php endif ?>
                     <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
-                            <img id="mainImage" width="220" height="220" src="<?php echo $domain."/media/catalog/product/". $skuConfig."/".$_product->getUrlKey();  ?>-4.jpg" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
+                            <img id="mainImage" width="220" height="220" src='<?php echo $scen7.$_product->getUrlKey();  ?>-1' alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
                         </a>
                         <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" target="_blank"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                         <h4>￥ <?php echo number_format($_product->getFinalPrice(), '2', '.', ','); ?></h4>
@@ -166,9 +166,9 @@ $categoryUrlkey = $_category->getUrlKey();
     $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
     $productNorm = $configurableProduct->getProductNorm();
     if($productNorm == 6){
-        $scen7 = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image=';
+        $scen7 = $domain.'/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image=';
     }else{
-        $scen7 = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding220px?$220x220$&$image=';
+        $scen7 = $domain.'/is/image/sneakerhead/spalding220px?$220x220$&$image=';
     }
     $shortDescription =  $_product->getShortDescription();
     if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
@@ -191,7 +191,7 @@ $categoryUrlkey = $_category->getUrlKey();
     <?php endif ?>
         <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
-                <img id="mainImage" width="220" height="220" src="<?php echo $domain."/media/catalog/product/". $skuConfig."/".$_product->getUrlKey();  ?>-4.jpg" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
+                <img id="mainImage" width="220" height="220" src='<?php echo $scen7.$_product->getUrlKey();  ?>-1' alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
             </a>
             <h2 class="product-name">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" target="_blank">
