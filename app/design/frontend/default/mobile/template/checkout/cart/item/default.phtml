@@ -48,7 +48,7 @@ $attributeSetModel->load($_product->getAttributeSetId());
 $attributeSetName = $attributeSetModel->getAttributeSetName();
 ?>
 <tr>
-	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $product_sku."/". $urlKey."-54.jpg" ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>"><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
+	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/cat-single?$185m$&$img=sneakerhead/'. $urlKey."-1" ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>"><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
 	<td class="item-info">
 	<h2>
 		<?php 

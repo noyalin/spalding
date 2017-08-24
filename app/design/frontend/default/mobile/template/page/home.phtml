@@ -149,7 +149,7 @@
                                 <div class="pic">
                                     <a href="<?php echo $_product->getProductUrl() ?>">
                                         <img
-                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $_product->getSku() . "/" . $_product->getUrlKey() . "-54.jpg" ?>"
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/cat-single?$185m$&$img=sneakerhead/'. $_product->getUrlKey() ."-1"  ?>"
                                             alt="<?php echo $_productNameStripped; ?>">
                                     </a>
                                 </div>

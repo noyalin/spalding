@@ -149,7 +149,7 @@ else:
                             <?php while ($i++ < $imageCount) : ?>
                                 <div class='slide'>
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('catalog_product_image_mobile')->getValue('html') ?><?php echo $sku . "/" . $urlkey . "-" . ($i + 60) ?>.jpg"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/xiangqingye_first?$spalding_1242$&$images=sneakerhead/'. $urlkey . "-" . $i ?>"
                                         alt=""/>
                                 </div>
                             <?php endwhile ?>
@@ -243,6 +243,19 @@ else:
                 ?>
                 <div class="product-collateral-wrap">
                     <div class="product-collateral-box">
+                     <?php if($_product->getDetailImages()){?>
+                        <?php $str = $_product->getDetailImages();
+                        $str=explode("\n", $str);
+                        $num = count($str);
+                        for($i=0;$i<$num;$i++){
+//                                        print_r($i);
+                            $src =trim($str[$i]);
+                            if ($src) {
+                                echo  '<div class="product-collateral-box-img"><img src='.$src.' alt=""></div>';
+                            }
+                        }
+                        ?>
+                    <?php }else{ ?>
                         <?php if ($attributeSetName == 'ball' || $attributeSetName == 'football'): ?>
                             <!--产品信息-->
                             <?php if ($attributeSetName == 'ball') { ?>
@@ -387,6 +400,7 @@ else:
                                 </div>
                             <?php } ?>
                         <?php endif; ?>
+                     <?php }?>
                         <!--售后相关-->
                         <div class="detailBoxNew detail-sn">
                             <img src='<?php echo $this->getSkinUrl("images/detailinfo/title7.jpg") ?>' alt="">

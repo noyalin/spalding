@@ -57,7 +57,7 @@ $stockStatus = '';
 <dl class="addToCartSize clearfix">
     <?php foreach($_attributes as $_attribute): ?>
     <?php $valueArr = $_attribute->getPrices();?>
-        <dt class="ms-fl"><label class="required"><?php echo $_attribute->getLabel() ?></label></dt>
+        <dt class="ms-fl"><label class="required"><?php echo $_attribute->getLabel() ?>：</label></dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last ms-fl"<?php }?>>
             <div class="input-box">
                 <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
@@ -133,7 +133,6 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
             ?>
         </div>
         </div>
-        <div class="clear"></div>
         <?php if (count($_productAvailableColorsCollection) > 5) : ?>
             <div id="detailAvailColorMore">
                 <?php
@@ -151,6 +150,5 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
                 <a href="">See more +</a>
             </div>
         <?php endif ?>
-        <div class="clear"></div>
     </div>
 <?php endif ?>

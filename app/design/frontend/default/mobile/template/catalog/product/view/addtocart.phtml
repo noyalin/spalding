@@ -27,8 +27,8 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
-    <div class="add-to-box clearfix">
-        <div class="add-to-cart clearfix">
+    <div class="add-to-box">
+        <div class="add-to-cart">
             <?php if(!$_product->isGrouped()): ?>
                 <!--        <label for="qty">--><?php //echo $this->__('Qty:') ?><!--</label>-->
 
