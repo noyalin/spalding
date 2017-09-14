@@ -418,7 +418,7 @@ button {
     background: #ebebeb;
     border-radius: 3px;
     font-size: 14px;
-    padding: 0 5px;
+    padding:10px 5px;
     width: 100%;
     box-sizing: border-box;
 }

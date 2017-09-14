@@ -180,10 +180,10 @@ $productSizeOptionArray = Mage::getModel('customclothes/customClothes')->getProd
                 <div class="cusMadeBox" id="cusMadeBox">
                     <div class="madeBoxTitle">
                         <h1>篮球比赛精英系列</h1>
-
                         <h2>
-                            价格:￥<span><b><?php echo $_taxHelper->getPrice($_product, $_product->getPrice()) ?></b>元</span>
+                            球衣单价:￥<span style="padding-right:10px"><b><?php echo $_taxHelper->getPrice($_product, $_product->getPrice()) ?></b>元</span>球裤单价:￥<span><b><?php echo$_taxHelper->getPrice($pantsProduct, $pantsProduct->getPrice())?></b>元</span>
                         </h2>
+                        <b class="tips">最终实付价格按照结算页面显示为准</b>
                     </div>
                     <div class="madeBoxCont madeBoxCont1  active">
                         <div class="madeName">球衣</div>

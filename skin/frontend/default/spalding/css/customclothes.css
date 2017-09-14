@@ -107,10 +107,11 @@ button{border:0;outline: none}
 .message span.time{background: url(../images/shirtmade/icon2.png) no-repeat left center;padding-left:31px;}
 .cusMadeBox{position:absolute;width:400px;min-height:600px;top:4px;right:11px;text-align: left;}
 .cusMadeBox .madeBoxCont1{background:#171717;border:1px solid #181818;border-top:2px solid #181818;border-radius:0 0 3px 3px;}
-.cusMadeBox .madeBoxTitle{height:87px;overflow: hidden;text-align:center;background: url(../images/shirtmade/title.jpg) no-repeat;}
+.cusMadeBox .madeBoxTitle{height:100px;overflow: hidden;text-align:center;background:#010101;}
 .cusMadeBox .madeBoxTitle h1{font-size:24px;line-height:26px;font-weight:bold;color:#fff;margin:20px 0 5px;}
-.cusMadeBox .madeBoxTitle h2{font-size:16px;color:#fdb905;}
-.cusMadeBox .madeBoxTitle h2 span{font-size:28px;font-weight:bold;font-family:import}
+.cusMadeBox .madeBoxTitle h2{font-size:13px;color:#fdb905;}
+.cusMadeBox .madeBoxTitle h2 span{font-size:20px;font-weight:bold;font-family:import}
+.cusMadeBox .madeBoxTitle b.tips{display:block;color:#fff;font-size:12px;font-weight:normal}
 .cusMadeBox .madeName{height:36px;line-height: 36px;padding-left:8px;font-size:16px;color:#abb0b4;background: #1a1a1a}
 .cusMadeBox .madeBoxCont{display:none;}
 .cusMadeBox .madeBoxCont.active{display:block}
