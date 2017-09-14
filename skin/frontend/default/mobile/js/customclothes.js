@@ -788,6 +788,9 @@ jQuery(function () {
     jQuery(".submitBox .cancelcustom").click(function(){
             deleteCustomOrder();
     })
+    jQuery("#cancelBtn").click(function(){
+        deleteCustomOrder();
+    })
     setColor();
     jQuery("#scrollbar").perfectScrollbar({suppressScrollX: true});
     jQuery("#scrollbar1").perfectScrollbar({suppressScrollX: true});

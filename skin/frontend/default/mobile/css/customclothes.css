@@ -521,7 +521,7 @@ button {
 .cusMadeBox .fontcolor ul {
     height: 120px;
 }
-
+.BtnBox,
 .saveBtn,
 .sureBtn {
     height:39px;
@@ -537,6 +537,21 @@ button {
 
 .sureBtn  button {
     background: url(../images/shirtmade/surebtn.png) no-repeat 50% 50%;
+    background-size: auto 16px;
+}
+
+.BtnBox .save{
+    width:50%;
+    height:100%;
+    border-right:1px solid #000;
+    background: url(../images/shirtmade/savebtn.png) no-repeat 50% 50%;
+    background-size: auto 16px;
+    box-sizing:border-box;
+}
+.BtnBox .cancel{
+    width:50%;
+    height:100%;
+    background: url(../images/shirtmade/canclebtn.png) no-repeat 50% 50%;
     background-size: auto 16px;
 }
 
