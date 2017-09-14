@@ -265,7 +265,7 @@ function showTxt(obj,obj2,attr) {
     var str = formatInputString(obj);
     var _txt = str.trim();
     var text=getMadeText(_txt,obj2,attr);
-    jQuery(obj).val(text);
+    jQuery(obj).innerText=text;
     return text;
 }
 
