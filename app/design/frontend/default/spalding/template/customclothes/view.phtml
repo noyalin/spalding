@@ -6,6 +6,7 @@ if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
 }
 
 $_product = $this->getProduct();
+$prdPrice = number_format($_product->getPrice(), 2, '.', '');
 $sku = $_product->getSku();
 $_taxHelper = $this->helper('tax');
 //$productImageHelper = Mage::helper('product');
@@ -129,6 +130,7 @@ $productSizeOptionArray = Mage::getModel('customclothes/customClothes')->getProd
 
     <input name="mainData" id="mainData" type="hidden">
     <input name="secondData" id="secondData" type="hidden">
+    <input value="<?php echo $prdPrice; ?>" id="prdPrice" type="hidden">
     <input value="<?php echo $pantsPrice; ?>" id="pantsPrice" type="hidden">
     <input value="<?php echo $productId; ?>" id="productId" type="hidden">
     <input name="deleteData" id="deleteData" type="hidden"

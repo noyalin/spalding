@@ -165,7 +165,7 @@ function madeLoadingClose(){
 function setTotal(double){
     var total="";
     var len = detailData.length;
-    var clothesTotal=jQuery(".madeBoxTitle h2 b").text();
+    var clothesTotal=jQuery("#prdPrice").val();
     var pantsTotal=jQuery("#pantsPrice").val();
     if(double==1){
         total = len*Math.round(clothesTotal*100+pantsTotal*100)/100;

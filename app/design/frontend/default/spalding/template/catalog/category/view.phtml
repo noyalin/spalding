@@ -47,11 +47,11 @@ $_imgUrl = null;
     }else if(isset($_GET['attribute_set_name']) && ($_GET['attribute_set_name'] == 69 || $_GET['attribute_set_name'] == 76) ){
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_stands')->toHtml();
     }else{
-		if($_category && $_category->getId() == 39):
+		if($_category && $_category->getUrlKey() == 'custom-made'):
 			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_made')->toHtml();
 		//定制球衣确认预留
 		elseif($_category && $_category->getUrlKey() == 'custom-clothes'):
-			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_made')->toHtml();
+			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_clothes')->toHtml();
         elseif($_category && $_category->getUrlKey() == 'trainingseries'):
             echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_trainingseries')->toHtml();
 		else:
