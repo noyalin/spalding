@@ -220,8 +220,8 @@
 						</div>
 						<div class="tabCont">
 							<ul class="style">
-								<li class="active" data="1"><span class="style1"><img src="<?php echo $this -> getSkinUrl('/images/shirtmade/style1.png')?>"/></span></li>
-								<li data="2"><span  class="style2"><img src="<?php echo $this -> getSkinUrl('/images/shirtmade/style2.png')?>"/></span></span></li>
+								<li class="active" data="1"><span class="style1"><img src="<?php echo $this -> getSkinUrl('images/shirtmade/style1.png')?>"/></span></li>
+								<li data="2"><span  class="style2"><img src="<?php echo $this -> getSkinUrl('images/shirtmade/style2.png')?>"/></span></span></li>
 							</ul>
 						</div>
 						<div class="tabCont">
@@ -259,7 +259,7 @@
 									<?php
 									foreach ($productSizeOptionArray as $key => $value):
 										?>
-										<li <?php if ($key == "M") { echo 'class="active"'; } ?> data-value="<?php echo $value; ?>" size="<?php echo $key; ?>"><?php echo $key; ?></li>
+										<li <?php if ($key == "M") { echo 'class="active"'; } ?> data-value="<?php echo $value; ?>" size="<?php echo $key; ?>"><span><?php echo $key; ?></span></li>
 										<?php
 									endforeach;
 									?>

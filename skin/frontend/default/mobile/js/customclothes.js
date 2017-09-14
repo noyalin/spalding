@@ -704,14 +704,14 @@ jQuery(function () {
         setImgsrc();
     })
     jQuery(".madeSize2 span").click(function(){
-        jQuery(".tabContslide .size2").show().addClass("slideInUp animated").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+        jQuery(".tabContslide .size2").show().addClass("slideInUp animated").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend", function(){
             jQuery(".tabContslide .size2").removeClass("slideInUp animated");
         });
     })
     jQuery(".tabContslide .size2 li").click(function(){
         var size2=jQuery(this).attr("size");
         setSize2(size2);
-        jQuery(".tabContslide .size2").addClass("slideOutDown animated").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+        jQuery(".tabContslide .size2").addClass("slideOutDown animated").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend", function(){
             jQuery(".tabContslide .size2").removeClass("slideOutDown animated").hide();
         });
     })
