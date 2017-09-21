@@ -480,10 +480,12 @@ section header {
 .home-wrapper .free-shipping {
     width: 100%;
     background: #1d1d1d;
+    height:40px;
     position: fixed;
     top: 50px;
     z-index: 100;
 }
+.home-wrapper .free-shipping img{max-width:100%;}
 .home-wrapper .hd {
     height: 40px;
 }
