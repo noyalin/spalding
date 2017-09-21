@@ -50,7 +50,7 @@
 
 
         <div class="home-wrapper">
-            <div class="free-shipping"></div>
+             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('free_shipping')->toHtml() ?>
             <div class="hd"></div>
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_banner')->toHtml() ?>
 

@@ -479,14 +479,11 @@ section header {
 
 .home-wrapper .free-shipping {
     width: 100%;
-    height: 40px;
-    background: #1d1d1d url("../images/freeshipping.jpg") no-repeat 50% 50%;
-    background-size: auto 50%;
+    background: #1d1d1d;
     position: fixed;
     top: 50px;
     z-index: 100;
 }
-
 .home-wrapper .hd {
     height: 40px;
 }
