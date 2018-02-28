@@ -355,8 +355,16 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
     {
         //Set everything else
         $product->setName($valueArr['name']);
-        $product->setDescription($valueArr['description']);
-        $product->setShortDescription($valueArr['shortDescription']);
+        if ($valueArr['description']) {
+            $product->setDescription($valueArr['description']);
+        } else {
+            $product->setDescription($valueArr['shortDescription']);
+        }
+        if ($valueArr['shortDescription']) {
+            $product->setShortDescription($valueArr['shortDescription']);
+        } else {
+            $product->setShortDescription($valueArr['description']);
+        }
         $product->setSku($valueArr['sku']);
         $product->setWeightSn($valueArr['weight']); // cannot define for configurable -- will be NULL
         $product->setIsOffline($valueArr['isOffline']);
