@@ -339,6 +339,12 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
             case '112':
                 $size = 'size_three';
                 break;
+            case '6':
+                $size = 'size_one';
+                break;
+            case '139':
+                $size = 'size_mini';
+                break;
             default:
                 $size = 'size_one';
         }
