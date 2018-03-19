@@ -560,6 +560,12 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
                 case '3#':
                     $size = 'size_three';
                     break;
+                case '1#':
+                    $size = 'size_one';
+                    break;
+                case 'mini':
+                    $size = 'size_mini';
+                    break;
                 default:
                     $size = 'size_one';
             }
