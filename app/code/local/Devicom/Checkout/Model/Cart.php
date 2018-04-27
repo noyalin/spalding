@@ -162,7 +162,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 		if ($product->getLimitQuantity() && $storage[$productId]['qty'] > $product->getLimitQuantity()) {
 		    $item->setQty($item->getQty());
 		    $productLimitQuantity = 1;
-		} elseif (!$product->getLimitQuantity() && $storage[$productId]['qty'] > 6) {
+		} elseif (!$product->getLimitQuantity() && $storage[$productId]['qty'] > 20) {
 		    $item->setQty($item->getQty());
 		    $productMaxQuantity = 1;
 		} else {
@@ -182,7 +182,7 @@ class Devicom_Checkout_Model_Cart extends Mage_Checkout_Model_Cart
 		    $storage[$productId]['notice'] = 1;
 		} elseif ($productMaxQuantity && $storage[$productId]['notice'] == 0) {
 		    $session->addNotice(
-			Mage::helper('checkout')->__('%s 每位顾客每件商品最多购买6件.', Mage::helper('core')->escapeHtml($product->getName()))
+			Mage::helper('checkout')->__('%s 每位顾客每件商品最多购买20件.', Mage::helper('core')->escapeHtml($product->getName()))
 		    );
 		    $storage[$productId]['notice'] = 1;
 		}

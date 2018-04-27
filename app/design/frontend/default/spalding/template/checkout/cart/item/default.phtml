@@ -225,6 +225,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                                 if ($res == false):?>
                                     <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" disabled="disabled"/>
                                 <?php else: ?>
+                                    <button class="reduce" type="submit" onclick="inputQty(<?php echo $_item->getId() ?>);" style="display:none;" >-</button>
                                     <button class="reduce" type="submit" onclick="redQtyone(<?php echo $_item->getId() ?>);">-</button>
                                     <input id="qtyPro_<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="text" maxlength="12" />
                                     <button class="add" type="submit" onclick="addQtyone(<?php echo $_item->getId() ?>);">+ </button>
@@ -342,6 +343,10 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
     function redQtyone(id){
         var qtyPro=$('qtyPro_'+id);
         qtyPro.value = parseInt(qtyPro.value)-1;
+    }
+    function inputQty(id){
+        var qtyPro=$('qtyPro_'+id);
+        qtyPro.value = parseInt(qtyPro.value);
     }
 </script>
 <style>
