@@ -196,31 +196,10 @@
             </div>
 
             <!-- 视频 -->
-            888
-            <!--<video class="media Jvideo1" id="Jvideo1" controls  width="100%">-->
             <video class="media Jvideo1" id="Jvideo1" controls poster="<?php echo $this->getSkinUrl('images/home/tv.jpg'); ?>" width="100%">
                 <source src="http://images.spalding.com.cn/images/home/mobile/index.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <script type="text/javascript">
-                jQuery(function () {
-                    jQuery('#Jvideo1').click(function () {
-                        alert('11')
-                        playVideo( "Jvideo1");
-                    });
-
-                    function playVideo(objId) {
-                        var videoAA = document.getElementById(objId);
-                        if (videoAA.paused) {
-                            videoAA.play();
-                            videoAA.controls=true;
-                        } else {
-                            videoAA.pause();
-                            videoAA.controls=false;
-                        }
-                    }
-                })
-            </script>
 
             <!--品牌故事 防伪验证-->
             <section class="section-wraper-16 clearfix">
