@@ -480,12 +480,16 @@ section header {
 .home-wrapper .free-shipping {
     width: 100%;
     background: #1d1d1d;
-    height:40px;
+    height: 40px;
     position: fixed;
     top: 50px;
     z-index: 100;
 }
-.home-wrapper .free-shipping img{max-width:100%;}
+
+.home-wrapper .free-shipping img {
+    max-width: 100%;
+}
+
 .home-wrapper .hd {
     height: 40px;
 }
@@ -2922,7 +2926,7 @@ Scrolling is automated IF there is an overflow of the width */
 }
 
 .detailSelectBtn button {
-    margin-top:20px;
+    margin-top: 20px;
     width: 100%;
     height: 50px;
     background: url("../images/produce-addtocart.jpg") left top no-repeat;
@@ -4663,12 +4667,15 @@ span.sale_kind {
     background: #fff;
     color: #333;
 }
-.product-options{
-    overflow:hidden;
+
+.product-options {
+    overflow: hidden;
 }
+
 .sale-num {
-    margin:10px 0 20px;
+    margin: 10px 0 20px;
 }
+
 #product-options-wrapper span.checked {
     background: url("../images/productDetail_kind.png") no-repeat scroll right bottom #FFFFFF;
     border: 1px solid #FBB605;
@@ -5988,6 +5995,44 @@ span.checkError {
     left: 50%;
     margin-top: -13px;
     background: #c8cbcc;
+}
+
+.series-product-box {
+    margin: 0;
+    background: #f0f0f0;
+    position: relative;
+}
+
+.series-product-box .big {
+    position: relative;
+}
+
+.series-product-box .big a {
+    display: block;
+}
+
+.series-product-box .double-product {
+    position: relative;
+}
+
+.series-product-box .double-product a {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.series-product-box .series-product {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.series-product-box .series-product a {
+    display: block;
+}
+
+.series-product-box img{
+    width: 100%;
 }
 
 .news-swipe {

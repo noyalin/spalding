@@ -50,82 +50,9 @@
 
 
         <div class="home-wrapper">
-             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('free_shipping')->toHtml() ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('free_shipping')->toHtml() ?>
             <div class="hd"></div>
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_banner')->toHtml() ?>
-
-            <!-- main category entrance banner -->
-            <!--<section class="banner-main-wrapper clearfix" style>
-		<div class="banner-sub">
-			<div class="banner-sub-img">
-				<a href="<?php /*echo Mage::getUrl(''); */ ?>products/baseketball-series.html?attribute_set_name=72"><img src="<?php /*echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); */ ?>images/home_ball.jpg"></a>
-			</div>
-		</div>
-
-		<div class="banner-sub">
-			<div class="banner-sub-img">
-				<a href="<?php /*echo Mage::getUrl(''); */ ?>catalogsearch/result/?q=包"><img src="<?php /*echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); */ ?>images/home_bag.jpg"></a>
-			</div>
-		</div>
-	</section>
-	<section class="banner-main-wrapper clearfix">
-		<div class="banner-sub">
-			<div class="banner-sub-img">
-				<a href="<?php /*echo Mage::getUrl(''); */ ?>catalogsearch/result/?q=背心%20裤%20针织%20短袖"><img src="<?php /*echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); */ ?>images/home_apparel.jpg"></a>
-			</div>
-		</div>
-
-		<div class="banner-sub">
-			<div class="banner-sub-img">
-				<a href="<?php /*echo Mage::getUrl(''); */ ?>products/accessories.html"><img src="<?php /*echo Mage::getModel('core/variable')->loadByCode('aliyun_mobile_image')->getValue('html'); */ ?>images/home_onesize.jpg"></a>
-			</div>
-		</div>
-	</section>-->
-            <section class="section-wraper-16 clearfix">
-                <div class="section-16-box ms-fl">
-                    <a href="<?php echo Mage::getUrl('store/index/confirm') ?>">
-                        <img src="<?php echo $this->getSkinUrl('images/section-2016-1.png') ?>" border="0">
-                    </a>
-                </div>
-                <div class="section-16-box ms-fr">
-                    <a href="
-                    <?php
-//                            echo Mage::getUrl('custompage/');
-                            echo Mage::getUrl('custom-made.html');
-                        ?>">
-                        <img src="<?php echo $this->getSkinUrl('images/section-2016-2.png') ?>" border="0">
-                    </a>
-                </div>
-            </section>
-            <!-- main category entrance banner -->
-
-            <div class="menu-kinds">
-                <div class="menu-kinds-box clearfix">
-                    <a href="<?php echo Mage::getUrl(''); ?>products/basketball.html">
-                        <img src="<?php echo $this->getSkinUrl('images/menu-kinds-1.png'); ?>" border="0">
-                    </a>
-                    <a href="<?php echo Mage::getUrl(''); ?>products/accessories.html">
-                        <img src="<?php echo $this->getSkinUrl('images/menu-kinds-2.png'); ?>" border="0">
-                    </a>
-                </div>
-                <div class="menu-kinds-box clearfix">
-                    <a href="<?php echo Mage::getUrl(''); ?>products/stands.html">
-                        <img src="<?php echo $this->getSkinUrl('images/menu-kinds-3.png'); ?>" border="0">
-                    </a>
-                    <a href="<?php echo Mage::getUrl(''); ?>products/apparel.html">
-                        <img src="<?php echo $this->getSkinUrl('images/menu-kinds-4.png'); ?>" border="0">
-                    </a>
-                </div>
-                <div class="menu-kinds-box clearfix">
-                    <a href="<?php echo Mage::getUrl(''); ?>products/trainingseries.html">
-                        <img src="<?php echo $this->getSkinUrl('images/menu-kinds-7.png'); ?>" border="0">
-                    </a>
-                    <a href="<?php echo Mage::getUrl(''); ?>products.html">
-                        <img src="<?php echo $this->getSkinUrl('images/menu-kinds-6.png'); ?>" border="0">
-                    </a>
-                </div>
-            </div>
-
             <!-- 推荐商品 -->
             <div class="prosTit">
                 <h2>推荐商品</h2>
@@ -142,40 +69,40 @@
                         $collection = $category->getProductCollection();
                         $index = 0;
                         foreach ($collection as $_productT):
-                            $index++;
-                            if ($index > 12) {
-                                break;
-                            }
-                            $_product = Mage::getModel('catalog/product')->load($_productT->getId());
-                            $_productNameStripped = $this->stripTags($_product->getName(), null, true);
-                            ?>
-                            <li>
-                                <div class="pic">
-                                    <a href="<?php echo $_product->getProductUrl() ?>">
-                                        <img
+                        $index++;
+                        if ($index > 12) {
+                        break;
+                        }
+                        $_product = Mage::getModel('catalog/product')->load($_productT->getId());
+                        $_productNameStripped = $this->stripTags($_product->getName(), null, true);
+                        ?>
+                        <li>
+                            <div class="pic">
+                                <a href="<?php echo $_product->getProductUrl() ?>">
+                                    <img
                                             src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/cat-single?$185m$&$img=sneakerhead/'. $_product->getUrlKey() ."-1"  ?>"
-                                            alt="<?php echo $_productNameStripped; ?>">
-                                    </a>
-                                </div>
-                                <div class="title">
-                                    <h3><?php echo $_product->getName() ?></h3>
+                                    alt="<?php echo $_productNameStripped; ?>">
+                                </a>
+                            </div>
+                            <div class="title">
+                                <h3><?php echo $_product->getName() ?></h3>
 
-                                    <p>
-                                        <?php
+                                <p>
+                                    <?php
                                         $msrp = number_format($_product->getMsrp(), '2', '.', ',');
-                                        $currentPrice = number_format($_product->getPrice(), '2', '.', ',');
-                                        if ($msrp != $currentPrice):
-                                            ?>
-                                            <span class="price-emp">
+                                    $currentPrice = number_format($_product->getPrice(), '2', '.', ',');
+                                    if ($msrp != $currentPrice):
+                                    ?>
+                                    <span class="price-emp">
 									￥<?php echo $msrp; ?>
 								</span>
-                                            <?php
+                                    <?php
                                         endif;
                                         ?>
-                                        <span class="price-now">￥<?php echo $currentPrice; ?></span>
-                                    </p>
-                                </div>
-                            </li>
+                                    <span class="price-now">￥<?php echo $currentPrice; ?></span>
+                                </p>
+                            </div>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -192,15 +119,137 @@
                 });
             </script>
 
+            <!-- 系列 -->
+            <div class="series-product-box clearfix">
+                <div class="series-product">
+                    <a href="<?php echo Mage::getUrl(''); ?>products/basketball/series/nba-classic.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/se1.jpg'); ?>" border="0">
+                    </a>
+                </div>
+                <div class="series-product">
+                    <a href="<?php echo Mage::getUrl(''); ?>products/basketball/series/trend.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/se2.jpg'); ?>" border="0">
+                    </a>
+                    <a href="<?php echo Mage::getUrl('products/basketball/series/tf.html'); ?>">
+                        <img src="<?php echo $this->getSkinUrl('images/home/se3.jpg'); ?>" border="0">
+                    </a>
+                </div>
+                <div class="big">
+                    <a href="<?php echo Mage::getUrl(''); ?>products/basketball/series/nba-classic.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/se4.jpg'); ?>" border="0">
+                    </a>
+                </div>
+                <div class="double-product">
+                    <a href="<?php echo Mage::getUrl(''); ?>products/basketball/series/highlight.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/se5.jpg'); ?>" border="0">
+                    </a>
+                    <a href="<?php echo Mage::getUrl(''); ?>products/basketball/series/digital-camo.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/se6.jpg'); ?>" border="0">
+                    </a>
+                </div>
+            </div>
+
+            <!-- 定制 -->
+            <div class="series-product-box">
+                <div class="big">
+                    <a href="<?php echo Mage::getUrl(''); ?>custom-made.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/dz.jpg'); ?>" border="0">
+                    </a>
+                </div>
+            </div>
+
+            <!-- main category entrance banner -->
+
+            <div class="menu-kinds" style="margin-top: 0">
+                <div class="menu-kinds-box clearfix">
+                    <a href="<?php echo Mage::getUrl('products/basketball.html'); ?>">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca1.jpg'); ?>" border="0">
+                    </a>
+                    <a href="<?php echo Mage::getUrl(''); ?>products/accessories.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca2.jpg'); ?>" border="0">
+                    </a>
+                </div>
+                <div class="menu-kinds-box clearfix">
+                    <a href="<?php echo Mage::getUrl(''); ?>products/stands.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca3.jpg'); ?>" border="0">
+                    </a>
+                    <a href="<?php echo Mage::getUrl(''); ?>products/apparel.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca4.jpg'); ?>" border="0">
+                    </a>
+                </div>
+                <div class="menu-kinds-box clearfix">
+                    <a href="<?php echo Mage::getUrl(''); ?>products/trainingseries.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca5.jpg'); ?>" border="0">
+                    </a>
+                    <a href="<?php echo Mage::getUrl(''); ?>products/football.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca6.jpg'); ?>" border="0">
+                    </a>
+                </div>
+                <div class="menu-kinds-box clearfix">
+                    <a href="<?php echo Mage::getUrl(''); ?>newproduct.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca7.jpg'); ?>" border="0">
+                    </a>
+                    <a href="<?php echo Mage::getUrl(''); ?>products.html">
+                        <img src="<?php echo $this->getSkinUrl('images/home/ca8.jpg'); ?>" border="0">
+                    </a>
+                </div>
+            </div>
+
+            <!-- 视频 -->
+            <video class="media Jvideo1" id="Jvideo1" poster="<?php echo $this->getSkinUrl('images/home/tv.jpg'); ?>"
+                   width="100%">
+                <source src="http://images.spalding.com.cn/images/home/mobile/index.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <script type="text/javascript">
+                jQuery(function () {
+                    var video1 = document.getElementById("Jvideo1");
+                    video1.pause();
+
+
+                    jQuery('.Jvideo1').click(function () {
+                        playVideo( "Jvideo1");
+                    });
+
+
+                    function playVideo(objId1) {
+                        var videoAA = document.getElementById(objId1);
+                        if (videoAA.paused) {
+                            videoAA.play();
+                        } else {
+                            videoAA.pause();
+                        }
+                    }
+                })
+            </script>
+
+            <!--品牌故事 防伪验证-->
+            <section class="section-wraper-16 clearfix">
+                <div class="section-16-box ms-fl">
+                    <a href="<?php echo Mage::getUrl('store/index/confirm') ?>">
+                        <img src="<?php echo $this->getSkinUrl('images/section-2016-1.png') ?>" border="0">
+                    </a>
+                </div>
+                <div class="section-16-box ms-fr">
+                    <a href="
+                    <?php
+//                            echo Mage::getUrl('custompage/');
+                            echo Mage::getUrl('custom-made.html');
+                        ?>">
+                        <img src="<?php echo $this->getSkinUrl('images/section-2016-2.png') ?>" border="0">
+                    </a>
+                </div>
+            </section>
+
             <!-- 新闻 -->
             <div id="news_box" class="box_swipe news-swipe">
                 <ul>
                     <?php
                     $blogPosts = Mage::getModel('blog/blog')->getCollection()
-                        ->setOrder('created_time', 'desc')
-                        ->setPageSize(3);
+                    ->setOrder('created_time', 'desc')
+                    ->setPageSize(3);
                     foreach ($blogPosts as $post) {
-                        echo $post->getMobileShortContent();
+                    echo $post->getMobileShortContent();
                     }
                     ?>
                 </ul>
