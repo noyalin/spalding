@@ -203,21 +203,18 @@
             </video>
             <script type="text/javascript">
                 jQuery(function () {
-                    var video1 = document.getElementById("Jvideo1");
-                    video1.pause();
-
-
                     jQuery('.Jvideo1').click(function () {
                         playVideo( "Jvideo1");
                     });
 
-
-                    function playVideo(objId1) {
-                        var videoAA = document.getElementById(objId1);
+                    function playVideo(objId) {
+                        var videoAA = document.getElementById(objId);
                         if (videoAA.paused) {
                             videoAA.play();
+                            videoAA.controls=true;
                         } else {
                             videoAA.pause();
+                            videoAA.controls=false;
                         }
                     }
                 })
