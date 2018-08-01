@@ -160,7 +160,7 @@
 
             <!-- main category entrance banner -->
 
-            <div class="menu-kinds" style="margin-top: 0">
+            <div class="menu-kinds" style="margin: 0">
                 <div class="menu-kinds-box clearfix">
                     <a href="<?php echo Mage::getUrl('products/basketball.html'); ?>">
                         <img src="<?php echo $this->getSkinUrl('images/home/ca1.jpg'); ?>" border="0">
@@ -195,6 +195,11 @@
                 </div>
             </div>
 
+            <!-- 空隙白条 -->
+            <div class="margin">
+                <img src="<?php echo $this->getSkinUrl('images/home/margin.jpg'); ?>" border="0" style="width: 100%;">
+            </div>
+
             <!-- 视频 -->
             <video class="media Jvideo1" id="Jvideo1" controls poster="<?php echo $this->getSkinUrl('images/home/tv.jpg'); ?>" width="100%">
                 <source src="http://images.spalding.com.cn/images/home/mobile/index.mp4" type="video/mp4">
@@ -202,19 +207,16 @@
             </video>
 
             <!--品牌故事 防伪验证-->
-            <section class="section-wraper-16 clearfix">
-                <div class="section-16-box ms-fl">
-                    <a href="<?php echo Mage::getUrl('store/index/confirm') ?>">
-                        <img src="<?php echo $this->getSkinUrl('images/section-2016-1.png') ?>" border="0">
+            <section class="section-wraper-16 clearfix" style="margin: 0;">
+                <div class="section-16-box percent50 ms-fl">
+                    <a href="<?php echo Mage::getUrl('sm_20180731') ?>">
+                        <img src="<?php echo $this->getSkinUrl('images/home/brand-story.jpg') ?>" border="0">
                     </a>
                 </div>
-                <div class="section-16-box ms-fr">
+                <div class="section-16-box percent50 ms-fr">
                     <a href="
-                    <?php
-//                            echo Mage::getUrl('custompage/');
-                            echo Mage::getUrl('custom-made.html');
-                        ?>">
-                        <img src="<?php echo $this->getSkinUrl('images/section-2016-2.png') ?>" border="0">
+                    <?php echo Mage::getUrl('store/index/confirm'); ?>">
+                        <img src="<?php echo $this->getSkinUrl('images/home/true.jpg') ?>" border="0">
                     </a>
                 </div>
             </section>

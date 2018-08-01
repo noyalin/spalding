@@ -5964,6 +5964,10 @@ span.checkError {
     width: 100%;
 }
 
+.section-wraper-16 div.percent50{
+    width: 50%;
+}
+
 .menu-kinds {
     margin: 10px 0;
     background: #f0f0f0;
