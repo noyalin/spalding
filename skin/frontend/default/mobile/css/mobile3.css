@@ -6110,11 +6110,15 @@ span.checkError {
 }
 
 .footer-top .footer-top-box img {
-    /*width:100%;*/
+    width: auto;
     vertical-align: middle;
     height: 16px;
     line-height: 16px;
     margin: 0 5px 0 15px;
+}
+
+.footer-icp span a img{
+    width: auto;
 }
 
 .footer-top:before {
