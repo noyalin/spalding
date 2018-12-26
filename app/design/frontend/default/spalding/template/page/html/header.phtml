@@ -27,6 +27,32 @@
 
 
     <div class="header">
+        <div class="header_nav_funs">
+            <div class="headerWrap clearfix">
+                <a href="<?php echo $this->getUrl('authentication', array('_secure'=>true)) ?>"><strong>防伪码验证</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds" target="_blank">授权经销商</a>
+                <?php
+                if(Mage::getSingleton('customer/session')->isLoggedIn()){
+                    $customerName = Mage::helper('customer')->getCustomerName();
+                    echo "欢迎 $customerName";
+
+                    ?>
+                    <a id="customerlogout" href="＃">注销</a>&nbsp;|&nbsp;
+                    <?php
+                }else{
+                    ?>
+                    <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
+                    <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
+                    <?php
+                }
+                ?>
+
+                <a id="customerAccount" href="＃">用户中心</a>&nbsp;|&nbsp;
+                <a id="customerOrderHistory" href="#">我的订单</a>
+                <a target="_blank" class="header_nav_online" href="http://wpa.qq.com/msgrd?v=3&uin=2404627413&site=qq&menu=yes">在线客服</a>
+                <?php echo $this->getChildHtml('cart_sidebar_top') ?>
+            </div>
+        </div>
         <div class="headerWrap clearfix">
             <?php
             $current_url = Mage::helper('core/url')->getCurrentUrl();
@@ -47,30 +73,7 @@
             ?>
 
             <div class="header_nav ms-fr">
-                <div class="header_nav_funs">
-                    <a href="<?php echo $this->getUrl('authentication', array('_secure'=>true)) ?>"><strong>防伪码验证</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds" target="_blank">授权经销商</a>
-                    <?php
-                    if(Mage::getSingleton('customer/session')->isLoggedIn()){
-                        $customerName = Mage::helper('customer')->getCustomerName();
-                        echo "欢迎 $customerName";
 
-                    ?>
-                        <a id="customerlogout" href="＃">注销</a>&nbsp;|&nbsp;
-                    <?php
-                    }else{
-                        ?>
-                        <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
-                        <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
-                    <?php
-                    }
-                    ?>
-
-                    <a id="customerAccount" href="＃">用户中心</a>&nbsp;|&nbsp;
-                    <a id="customerOrderHistory" href="#">我的订单</a>
-                    <a target="_blank" class="header_nav_online" href="http://wpa.qq.com/msgrd?v=3&uin=2404627413&site=qq&menu=yes">在线客服</a>
-                    <?php echo $this->getChildHtml('cart_sidebar_top') ?>
-                </div>
                 <?php
 
 
@@ -82,13 +85,14 @@
                                 <div class="main">
                                     <ul class="side_nav clearfix">
                                         <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl();?>" target="_blank">首页</a></li>
+                                        <li><a href="<?php echo $this->getUrl('custom-made.html') ?>" target="_blank">125周年</a></li>
                                         <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_blank">关于斯伯丁</a></li>
-                                        <li><a href="http://h5.spalding.com.cn/event/" target="_blank">篮球信徒</a></li>
                                         <li><a href="<?php echo $this->getUrl('products.html') ?>" target="_blank">斯伯丁商城</a></li>
                                         <li><a href="<?php echo $this->getUrl('tech') ?>" target="_blank">产品科技</a></li>
                                         <li><a href="<?php echo $this->getUrl('blog/cat/news') ?>" target="_blank">新闻与媒体</a></li>
                                         <li><a href="<?php echo $this->getUrl('custom-made.html') ?>" target="_blank">Spalding专属定制</a></li>
-<!--                                        <li><a href="--><?php //echo $this->getUrl('custompage') ?><!--" target="_blank">Spalding专属定制</a></li>-->
+                                        <li><a href="http://h5.spalding.com.cn/event/" target="_blank">篮球信徒</a></li>
+                                        <!--                                        <li><a href="--><?php //echo $this->getUrl('custompage') ?><!--" target="_blank">Spalding专属定制</a></li>-->
                                         <!--<li><a href="<?php /*echo $this->getUrl('custom-clothes.html') */?>" target="_blank">球衣定制</a></li>-->
                                     </ul>
                                 </div>
@@ -100,32 +104,118 @@
 
                                         </div>
                                     </div>
-                                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('meun_2')->toHtml() ?>
+<!--                                    --><?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('meun_2')->toHtml() ?>
                                     <div class="lower_list lower_02">
                                         <div class="text_a">
                                         </div>
                                     </div>
-                                    <div class="lower_list lower_03">
+                                    <div class="lower_list lower_03 spdlower" >
+                                        <div class="text_a spdhd df jcsa">
+                                            <div class="spdhdlt df">
+                                                <div class="spdfounder">
+                                                    <a href="{{store url=''}}spaldingcreator" target="_blank">SPALDING创始人</a>
+                                                </div>
+                                            </div>
+                                            <div class="spdhdct df">
+                                                <div class="brandhistory">
+                                                    <a href="{{store url=''}}sw_20160923" target="_blank">品牌历史</a>
+                                                </div>
+                                            </div>
+                                            <div class="spdhdrt df">
+                                                <div class="mstechnology">
+                                                    <a  href="{{store url=''}}science"  target="_blank">材料科技</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="spdft df jcsa">
+                                            <div class="spdftlt df">
+                                                <div class="btechnology">
+                                                    <a href="{{store url=''}}technology" target="_blank">品牌技术</a>
+                                                </div>
+                                            </div>
+                                            <div class="spdftct df">
+                                                <div class="par_partner">
+                                                    <a href="{{store url=''}}partner" target="_blank">合作伙伴</a>
+                                                </div>
+                                            </div>
+                                            <div class="spdftrt df">
+                                                <div class="contact_con">
+                                                    <a href="{{store url=''}}contactus" target="_blank">联系我们</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lower_list lower_04 shoplower">
                                         <div class="text_a">
-                                            <ul class="clearfix">
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1))  ?>" target="_blank">篮球系列</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1))?>" target="_blank">运动服饰</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=71'), 0, -1)) ?>" target="_blank">运动包</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=69'), 0, -1)) ?>" target="_blank">篮球配件</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=76'), 0, -1)) ?>" target="_blank">篮球架</a></li>
-                                                <li><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=114'), 0, -1)) ?>" target="_blank">足球</a></li>
-                                                <li><a href="<?php echo $this->getUrl('products/trainingseries.html')?>" target="_blank">训练器材</a></li>
-                                            </ul>
+                                            <div class="s_head df jcc aic">
+                                                <a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1))  ?>" target="_blank"  class="s_text">篮球系列</a>
+                                            </div>
+                                            <div class="s_body df jcsb">
+                                                <div class="lt">
+                                                    <div class="hd">
+                                                        <span class="s_text df jcc aic">使用场景</span>
+                                                    </div>
+                                                    <div class="by df jcsb">
+                                                        <div class="lt"></div>
+                                                        <div class="rt"></div>
+                                                    </div>
+                                                    <div class="ft df jcsb">
+                                                        <div class="lt"></div>
+                                                        <div class="ct"></div>
+                                                        <div class="rt"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="ct df jcsb">
+                                                    <div class="lt"></div>
+                                                    <div class="rt"></div>
+                                                </div>
+                                                <div class="rt">
+                                                    <div class="hd">
+                                                        <span class="s_text df jcc aic">使用场景</span>
+                                                    </div>
+                                                    <div class="by df jcsb">
+                                                        <div class="lt"></div>
+                                                        <div class="rt"></div>
+                                                    </div>
+                                                    <div class="ft df jcsb">
+                                                        <div class="lt"></div>
+                                                        <div class="ct"></div>
+                                                        <div class="rt"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="s_foot df jcsa">
+                                                <div class="ss_f">
+                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1))?>" target="_blank">运动服饰</a></div>
+                                                    <div class="ft"></div>
+                                                </div>
+                                                <div class="ss_fo">
+                                                    <div class="hd df jcc aic"><a href="<?php echo $this->getUrl('products/trainingseries.html')?>" target="_blank">训练器材</a></div>
+                                                    <div class="ft"></div>
+                                                </div>
+                                                <div class="ss_foo">
+                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=69'), 0, -1)) ?>" target="_blank">篮球配件</a></div>
+                                                    <div class="ft"></div>
+                                                </div>
+                                                <div class="ss_foot">
+                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=76'), 0, -1)) ?>" target="_blank">篮球架</a></div>
+                                                    <div class="ft"></div>
+                                                </div>
+                                                <div class="ss_footer">
+                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=114'), 0, -1)) ?>" target="_blank">足球</a></div>
+                                                    <div class="ft"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="lower_list lower_04">
+                                    <div class="lower_list lower_05">
                                         <div class="text_a">
                                             <ul class="clearfix"></ul>
                                         </div>
                                     </div>
 
-                                    <div class="lower_list lower_05">
+                                    <div class="lower_list lower_06">
                                         <div class="text_a">
                                             <ul></ul>
                                         </div>

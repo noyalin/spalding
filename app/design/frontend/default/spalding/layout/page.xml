@@ -70,6 +70,11 @@ Default layout, loads most of the pages
                 </action>
                 <action method="addItem">
                     <type>skin_css</type>
+                    <name>css/iconfont.css</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_css</type>
                     <name>css/new.css</name>
                     <params/>
                 </action>

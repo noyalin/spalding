@@ -34,55 +34,72 @@
 <head>
 <?php echo $this->getChildHtml('head') ?>
 </head>
-<body style="background:#000; margin-top:-15px;">
+<body style="margin-top:-15px;">
 <!-- 顶部 header s -->
 <?php echo $this->getChildHtml('header') ?>
 
-<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_banner')->toHtml() ?>
+<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_banner')->toHtml() ?>
 
-<div class="spalding_index_plate" style="height:300px; background:url(<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/spalding_index_plate.png' ?>) left bottom no-repeat; margin-bottom:0;z-index: 0">
-    <div class="spalding_plateWrap clearfix" style="padding-top:50px;">
-        <div class="plateBox plateBox_01">
-            <span class="plateBoxImg"><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20150625002.png' ?>" alt=""></span>
-            <a href="<?php echo $this->getUrl('products.html') ?>" class="plateBoxImgHover"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/plateBoxHover_1.png' ?>" alt="" /></a>
+
+<!--start DB-->
+<div class="spalding_index" id='spalding_index'>
+    <div class="spalding_index_slider" id="spalding_index_slider">
+        <ul id="ul">
+            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
+            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
+            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
+            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
+        </ul>
+        <ol></ol>
+        <div id="arr df jcsb">
+            <span class="iconfont icon-ico_leftarrow left"></span>
+            <span class="iconfont icon-youjiantou right"></span>
         </div>
-        <div class="plateBox plateBox_02">
-            <span class="plateBoxImg"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209005.png'   ?>" alt=""></span>
-            <a href="<?php echo $this->getUrl('tech') ?>" class="plateBoxImgHover"><img src="<?php echo Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/plateBoxHover_2.png' ?>" alt="" /></a>
+    </div>
+</div>
+<!--end-->
+
+
+<div  style="height:1270px;margin-bottom:0;">
+    <div class="spalding_plateWrap clearfix">
+        <div class="plateBox plateBox_01 df jcsb">
+            <div class="lt">
+                <img src="img/P1_ACG.jpg" alt="" >
+
+            </div>
+            <div class="rt">
+                <img src="img/P1_ACG.jpg" alt="" >
+
+            </div>
         </div>
-        <div class="plateBox plateBox_03">
-            <?php
-            $blogPosts = Mage::getModel('blog/blog')->getCollection()
-                ->setOrder('created_time', 'desc')
-                ->setPageSize(3);
-            ?>
-            <a href="<?php echo $this->getUrl('blog/cat/news') ?>" target="_blank" style="display:inline-block; width:200px;height:50px; margin-top:15px;"></a>
-            <ul style="margin-top:10px;">
-                <?php
-                foreach ($blogPosts as $post){
-                    $str = '<li><a href="blog/'.$post->getIdentifier().'" target="_blank">'.$post->getMetaDescription().'</a></li>';
-                    echo $str;
-                }
-                ?>
-            </ul>
+        <div class="plateBox plateBox_02 df jcsb">
+            <div class="lt">
+                <img src="img/P1_ACG.jpg" alt="" >
+
+            </div>
+            <div class="rt">
+                <img src="img/P1_ACG.jpg" alt="" >
+            </div>
         </div>
+
+
         <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="<?php echo $this->getUrl('authentication') ?>" target="_blank" ><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209007.png'?>" alt=""></a></div>
     </div>
 </div>
 
 <script type="text/javascript">
     jQuery(document).ready(function(){
-        jQuery(".kuzhan li").css("width",jQuery("body").width()+"px");
-        jQuery(".kuzhan li").css("cursor","pointer");
-        jQuery(".kuzhan ul").css("width","999999px");
-        var str = "";
-        for(i=0;i<jQuery(".fix_flash li").length;i++){
-            str += "<div class='kuzhan_sele' number="+i+" onclick='FIX_scroll(this)'></div>"
-        }
+//        jQuery(".kuzhan li").css("width",jQuery("body").width()+"px");
+//        jQuery(".kuzhan li").css("cursor","pointer");
+//        jQuery(".kuzhan ul").css("width","999999px");
+//        var str = "";
+//        for(i=0;i<jQuery(".fix_flash li").length;i++){
+//            str += "<div class='kuzhan_sele' number="+i+" onclick='FIX_scroll(this)'></div>"
+//        }
         //jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5+250+"px")
-        jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5-250+"px");
-        jQuery(".kuzhan_flash_s").html(str);
-        jQuery(".kuzhan_sele").eq(0).addClass("kuzhan_over")
+//        jQuery(".kuzhan_center").css("left",jQuery("body").width()*0.5-250+"px");
+//        jQuery(".kuzhan_flash_s").html(str);
+//        jQuery(".kuzhan_sele").eq(0).addClass("kuzhan_over")
 //        jQuery('.plateBox_tf').on("click",function(){
 //            jQuery(this).parents().find('#dialog').fadeIn();
 //        });
@@ -90,7 +107,7 @@
 //        jQuery('.closebutton').on("click",function(){
 //            jQuery(this).parent().parent().parent('#dialog').fadeOut();
 //        });
-        
+
         setInterval("ballMove()",1000);
 
         //判断滚动条位置 显示隐藏“验证”
@@ -107,17 +124,111 @@
             jQuery(".plateBox_tf").removeClass("plate_tf_fix");
         };
 
-        
 
-        
+
+
     })
 
     function ballMove(){
-        jQuery('.plateBox_tf img') .animate({marginTop:"-=20px"},1000).animate({marginTop:"+=20px"},1000).animate({marginLeft:"+=20px"},1000).animate({marginLeft:"-=20px"},1000)
+        jQuery('.plateBox_tf img') .animate({marginTop:"-=20px"},1000).animate({marginTop:"+=20px"},1000)
     };
 
 </script>
+<script>
+    var box = document.getElementById("spalding_index");
+    var ul = box.children[0].children[0];
+    var ol = box.children[0].children[1];
+    var ulLiArr = ul.children;
 
+
+    var newLi = ulLiArr[0].cloneNode(true);
+    ul.appendChild(newLi);
+
+    for(var i=0;i<ulLiArr.length-1;i++){
+        var newOlLi = document.createElement("li");
+        newOlLi.innerHTML = "";
+        ol.appendChild(newOlLi);
+    }
+
+    var olLiArr = ol.children;
+    ol.children[0].className = "current";
+
+    for(var i=0;i<olLiArr.length;i++){
+        olLiArr[i].index = i;
+        olLiArr[i].onmouseover = function () {
+            for(var j=0;j<olLiArr.length;j++){
+                olLiArr[j].className = "";
+            }
+            olLiArr[this.index].className = "current";
+            animate(ul,-this.index*ul.children[0].offsetWidth);
+            key = square = this.index;
+        }
+    }
+
+    var timer = null;
+    var key = 0;
+    var square = 0;
+    timer = setInterval(autoPlay,3000);
+
+    function autoPlay(){
+        key++;
+        square++;
+        if(key>olLiArr.length){
+            key=1;
+            ul.style.left = 0;
+        }
+        animate(ul,-key*ul.children[0].offsetWidth);
+
+
+        square = square>olLiArr.length-1?0:square;
+        for(var j=0;j<olLiArr.length;j++){
+            olLiArr[j].className = "";
+        }
+        olLiArr[square].className = "current";
+    }
+
+    box.onmouseover = function () {
+        clearInterval(timer);
+    }
+    box.onmouseout = function () {
+        timer = setInterval(autoPlay,3000);
+    }
+
+    var btnArr = box.children[0].children[2].children;
+    btnArr[0].onclick = function () {
+        key--;
+        square--;
+        if(key<0){
+            key=3;
+            ul.style.left = -4*ul.children[0].offsetWidth + "px";
+        }
+        animate(ul,-key*ul.children[0].offsetWidth);
+
+
+        square = square<0?olLiArr.length-1:square;
+        for(var j=0;j<olLiArr.length;j++){
+            olLiArr[j].className = "";
+        }
+        olLiArr[square].className = "current";
+    }
+    btnArr[1].onclick = function () {
+        autoPlay();
+    }
+
+    function animate(obj,target) {
+        clearInterval(obj.timer);
+        var speed = obj.offsetLeft < target ? 15 : -15;
+        obj.timer = setInterval(function() {
+            var result = target - obj.offsetLeft;
+            obj.style.left = obj.offsetLeft + speed  + "px";
+            if(Math.abs(result) <= 15) {
+                obj.style.left = target + "px";
+                clearInterval(obj.timer);
+            }
+        },10);
+    }
+
+</script>
 <!-- 顶部 header e -->
 <?php echo $this->getChildHtml('footer') ?>
 </body>
