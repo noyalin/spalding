@@ -116,53 +116,30 @@
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
 <script>
+
     jQuery(function(){
-//        jQuery('.header_nav_funs_ft .menu-wrap .item.spd_shop').mouseover(function(){
-//            jQuery(this).parents().find('.shoplower').slideDown();
-//        });
+
         var timer1 = null;
         jQuery(".header_nav_funs_ft .menu-wrap .item.aboutspd").hover(function(){
             clearTimeout(timer1);
             jQuery(".spdlower").slideDown();
-            jQuery(".spdlower").css("display","block")
         },function(){
             timer1 = setTimeout(function(){
-                jQuery(".spdlower").css("display","none");
+                jQuery(".spdlower").slideUp();
             },500)
 
         });
-//        jQuery(".header_nav_funs_ft .menu-wrap .item.aboutspd").hover(function(){
-//            clearTimeout(timer1);
-//            jQuery(".spdlower").css("display","block")
-//        },function(){
-//            timer1 = setTimeout(function(){
-//                jQuery(".spdlower").slideUp();
-//            },1000)
-//
-//        });
-
-//        jQuery('.header_nav_funs_ft .menu-wrap .item.spd_shop').mouseover(function(){
-//            jQuery(this).parents().find('.shoplower').slideDown();
-//        });
         var timer2 = null;
         jQuery(".header_nav_funs_ft .menu-wrap .item.spd_shop").hover(function(){
             clearTimeout(timer2);
             jQuery(".shoplower").slideDown();
-            jQuery(".shoplower").css("display","block")
+
         },function(){
             timer2 = setTimeout(function(){
-                jQuery(".shoplower").css("display","none");
+                jQuery(".shoplower").slideUp()
             },500)
 
         });
-//        jQuery(".header_nav_funs_ft .menu-wrap .item.spd_shop").hover(function(){
-//            clearTimeout(timer2);
-//            jQuery(".shoplower").css("display","block")
-//        },function(){
-//            timer2 = setTimeout(function(){
-//                jQuery(".shoplower").slideUp();
-//            },1000)
-//        });
 
 
         setTimeout(function(){
@@ -179,30 +156,32 @@
         jQuery(".searchBtn").hover(function(){
             clearTimeout(timer);
             jQuery(".dropDown_search").slideDown();
-            jQuery(".dropDown_search").css("display","block")
-        },function(){
+//            jQuery(".dropDown_search").css("display","block")
+        },function(e)
+        {
             timer = setTimeout(function(){
-                jQuery(".dropDown_search").css("display","none");
+                jQuery(".dropDown_search").slideUp();
             },500)
 
         });
-        jQuery(".dropDownWrap").hover(function(){
-            clearTimeout(timer);
-            jQuery(".dropDown_search").css("display","block")
-        },function(){
-            timer = setTimeout(function(){
-                jQuery(".dropDown_search").slideUp();
-            },1000)
-
-        });
+//        jQuery(".dropDownWrap").hover(function(){
+//            clearTimeout(timer);
+//            jQuery(".dropDown_search").css("display","block")
+//        },function(){
+//            timer = setTimeout(function(){
+//                jQuery(".dropDown_search").slideUp();
+//            },1000)
+//
+//        });
 
         //鼠标经过放大镜显示搜索模块 e
 
         jQuery('.dropDownBg').on("click",function(){
             jQuery(this).parent('.dropDown_search').slideUp();
         });
+
         jQuery('.dropClose').on("click",function(){
-            jQuery(this).parent('.dropDown_search').slideUp();
+            jQuery(".dropDown_search").slideUp();
         });
 
 

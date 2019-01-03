@@ -220,8 +220,11 @@
                             </div>
                             <div class="rt">
                                 <div class="hd df">
-                                    <div class="s_text df jcc aic">主要系列分类</div>
-                                    <a href="<?php echo $this->getUrl('products.html') ?>" target="_blank" style="margin: 9px 70px 10px -133px;"> <img src='<?php echo $this->getSkinUrl("images2019/more.png") ?>' alt=""></a>
+                                    <div class="s_text df jcc aic">主要系列分类
+                                        <a href="<?php echo $this->getUrl('products.html') ?>" target="_blank" style="height: 18px;"> <img src='<?php echo $this->getSkinUrl("images2019/more.png") ?>' alt="" style="margin-bottom: 10px;margin-left: 10px"></a>
+                                    </div>
+<!--                                    style="margin: -25px 69px -53px -116px;"-->
+
                                 </div>
 
                                 <div class="by df jcsb">
@@ -333,7 +336,116 @@
 
 
                 <!--            </div>-->
-                <span class="searchBtn" style="margin-left: 10px"><img src='<?php echo $this->getSkinUrl("images2019/icon-search.png") ?>' alt=""></span>
+                <span class="searchBtn" style="margin-left: 10px"><img src='<?php echo $this->getSkinUrl("images2019/icon-search.png") ?>' alt="">
+
+                  <div class="dropDown_search" id="dropDown_search">
+                      <div class="dropDownBg"></div>
+
+                      <div class="drophdft">
+                          <div class="drophd df jcc aic">
+                              <img src='<?php echo $this->getSkinUrl("images2019/logo.png") ?>' class="drophd-logo" alt="">
+                          </div>
+                          <div class="dropft  df jcsb">
+                              <!--               <div class="lt"><span class="df jcc aic">按条件搜索</span></div>-->
+                              <div class="lt">
+                                  <img src='<?php echo $this->getSkinUrl("images2019/search_conditional.png") ?>'  alt="" style="height: 21px;margin: 0 auto;margin: 0px 225px">
+                              </div>
+                              <div class="rt df">
+                                  <img src='<?php echo $this->getSkinUrl("images2019/search_product_name.png") ?>' alt="" style="height: 21px;margin: 0 auto">
+                                  <!--                   <span class="df jcc aic ">按产品名称/货号搜索</span>-->
+                                  <div class="dropClose df jcfe"><img src='<?php echo $this->getSkinUrl("images2019/20141209010.png") ?>' class="dropclose-img" alt=""></div>
+                              </div>
+                          </div>
+                      </div>
+
+
+
+                      <div class="dropDownWrap df jcsa">
+                          <div class="dropDownWrapLeft">
+                              <!--                <img style=" margin-left: 20px;" alt=""-->
+                              <!--                     src="--><?php //echo $this->getSkinUrl("images/search_conditemional.png") ?><!--">-->
+                              <div class="search_select_hd df jcsb">
+                                  <div class="search_select">
+                                      <p>使用场景</p>
+                                      <!--                    <p>篮球场地分类</p>-->
+                                      <div class="search_selectBox">
+                                          <div class="search_selected clearfix">
+                                              <span class="ms-fl">请选择</span>
+                                          </div>
+                                          <ul class="scarch_select_option">
+                                              <li value="10" param="product_side=">室内</li>
+                                              <li value="11" param="product_side=">室外</li>
+                                              <li value="12" param="product_side=">室内室外</li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                                  <div class="search_select">
+                                      <p>材质分类</p>
+                                      <div class="search_selectBox">
+                                          <div class="search_selected clearfix">
+                                              <span class="ms-fl">请选择</span>
+                                          </div>
+                                          <ul class="scarch_select_option">
+                                              <li value="20" param="product_material=">牛皮</li>
+                                              <li value="21" param="product_material=">PU</li>
+                                              <li value="22" param="product_material=">橡胶</li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="search_select">
+                                  <p>篮球型号</p>
+                                  <div class="search_selectBox s_box">
+                                      <div class="search_selected clearfix">
+                                          <span class="ms-fl please_choose">请选择</span>
+                                      </div>
+                                      <ul class="scarch_select_option s_option">
+                                          <li value="9" param="product_norm=">7号球(标准球)</li>
+                                          <li value="8" param="product_norm=">6号球(女子球)</li>
+                                          <li value="7" param="product_norm=">5号球(青少年球)</li>
+                                          <li value="112" param="product_norm=">3号球</li>
+                                          <li value="6" param="product_norm=">1号球</li>
+                                          <li value="139" param="product_norm=">Mini球</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                              <!--                <div class="search_select">-->
+                              <!--                    <p>篮球系列</p>-->
+                              <!--                    <div class="search_selectBox">-->
+                              <!--                        <div class="search_selected clearfix">-->
+                              <!--                            <span class="ms-fl">请选择</span>-->
+                              <!--                        </div>-->
+                              <!--                        <ul class="scarch_select_option">-->
+                              <!--                            <li value="13" param="product_catena=" class="selected">比赛用球</li>-->
+                              <!--                            <li value="14" param="product_catena=">经典篮球</li>-->
+                              <!--                            <li value="15" param="product_catena=">位置系列</li>-->
+                              <!--                            <li value="16" param="product_catena=">涂鸦系列</li>-->
+                              <!--                            <li value="17" param="product_catena=">队徽&签名系列</li>-->
+                              <!--                            <li value="18" param="product_catena=">Highlight系列</li>-->
+                              <!--                            <li value="19" param="product_catena=">Trend系列</li>-->
+                              <!--                            <li value="58" param="product_catena=">TF33系列</li>-->
+                              <!--                            <li value="75" param="product_catena=">NBA科技</li>-->
+                              <!--                            <li value="74" param="product_catena=">纪念球/观赏球</li>-->
+                              <!--                        </ul>-->
+                              <!--                    </div>-->
+                              <!--                </div>-->
+                              <div class="clear"></div>
+                          </div>
+                          <div class="dropDownLine"></div>
+                          <div class="dropDownWrapRig">
+                              <!--                <img style=" margin-left: 20px;" alt=""-->
+                              <!--                     src="--><?php //echo $this->getSkinUrl("images/search_product_name.png") ?><!--">-->
+                              <p>请输入一款产品的型号或产品名称:</p>
+                              <input type="text" class="scarchInp" id="inputSearchVal">
+                              <div class="df jcsb">
+                                  <a href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>products/accessories.html" target="_blank"><span>全部商品</span></a>
+                                  <button onclick=searchClick()>搜索</button>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                </span>
                 <?php
             }
             ?>
@@ -363,108 +475,6 @@
             }
         }
     </script>
-    <div class="dropDown_search" id="dropDown_search">
-        <div class="dropDownBg"></div>
 
-        <div class="drophdft">
-            <div class="drophd df jcc aic">
-                <img src='<?php echo $this->getSkinUrl("images2019/logo.png") ?>' class="drophd-logo" alt="">
-            </div>
-           <div class="dropft  df jcsb">
-               <div class="lt"><span class="df jcc aic">按条件搜索</span></div>
-               <div class="rt df">
-                   <span class="df jcc aic ">按产品名称/货号搜索</span>
-                   <div class="dropClose df jcfe"><img src='<?php echo $this->getSkinUrl("images2019/20141209010.png") ?>' class="dropclose-img" alt=""></div>
-               </div>
-           </div>
-        </div>
-
-
-
-        <div class="dropDownWrap df jcsa">
-            <div class="dropDownWrapLeft">
-<!--                <img style=" margin-left: 20px;" alt=""-->
-<!--                     src="--><?php //echo $this->getSkinUrl("images/search_conditemional.png") ?><!--">-->
-               <div class="search_select_hd df jcsb">
-                   <div class="search_select">
-                       <p>使用场景</p>
-                       <!--                    <p>篮球场地分类</p>-->
-                       <div class="search_selectBox">
-                           <div class="search_selected clearfix">
-                               <span class="ms-fl">请选择</span>
-                           </div>
-                           <ul class="scarch_select_option">
-                               <li value="10" param="product_side=">室内</li>
-                               <li value="11" param="product_side=">室外</li>
-                               <li value="12" param="product_side=">室内室外</li>
-                           </ul>
-                       </div>
-                   </div>
-                   <div class="search_select">
-                       <p>材质分类</p>
-                       <div class="search_selectBox">
-                           <div class="search_selected clearfix">
-                               <span class="ms-fl">请选择</span>
-                           </div>
-                           <ul class="scarch_select_option">
-                               <li value="20" param="product_material=">牛皮</li>
-                               <li value="21" param="product_material=">PU</li>
-                               <li value="22" param="product_material=">橡胶</li>
-                           </ul>
-                       </div>
-                   </div>
-               </div>
-                <div class="search_select">
-                    <p>篮球型号</p>
-                    <div class="search_selectBox s_box">
-                        <div class="search_selected clearfix">
-                            <span class="ms-fl please_choose">请选择</span>
-                        </div>
-                        <ul class="scarch_select_option s_option">
-                            <li value="9" param="product_norm=">7号球(标准球)</li>
-                            <li value="8" param="product_norm=">6号球(女子球)</li>
-                            <li value="7" param="product_norm=">5号球(青少年球)</li>
-                            <li value="112" param="product_norm=">3号球</li>
-                            <li value="6" param="product_norm=">1号球</li>
-                            <li value="139" param="product_norm=">Mini球</li>
-                        </ul>
-                    </div>
-                </div>
-<!--                <div class="search_select">-->
-<!--                    <p>篮球系列</p>-->
-<!--                    <div class="search_selectBox">-->
-<!--                        <div class="search_selected clearfix">-->
-<!--                            <span class="ms-fl">请选择</span>-->
-<!--                        </div>-->
-<!--                        <ul class="scarch_select_option">-->
-<!--                            <li value="13" param="product_catena=" class="selected">比赛用球</li>-->
-<!--                            <li value="14" param="product_catena=">经典篮球</li>-->
-<!--                            <li value="15" param="product_catena=">位置系列</li>-->
-<!--                            <li value="16" param="product_catena=">涂鸦系列</li>-->
-<!--                            <li value="17" param="product_catena=">队徽&签名系列</li>-->
-<!--                            <li value="18" param="product_catena=">Highlight系列</li>-->
-<!--                            <li value="19" param="product_catena=">Trend系列</li>-->
-<!--                            <li value="58" param="product_catena=">TF33系列</li>-->
-<!--                            <li value="75" param="product_catena=">NBA科技</li>-->
-<!--                            <li value="74" param="product_catena=">纪念球/观赏球</li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <div class="clear"></div>
-            </div>
-            <div class="dropDownLine"></div>
-            <div class="dropDownWrapRig">
-<!--                <img style=" margin-left: 20px;" alt=""-->
-<!--                     src="--><?php //echo $this->getSkinUrl("images/search_product_name.png") ?><!--">-->
-                <p>请输入一款产品的型号或产品名称:</p>
-                <input type="text" class="scarchInp" id="inputSearchVal">
-                <div class="df jcsb">
-                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>products/accessories.html" target="_blank"><span>全部商品</span></a>
-                    <button onclick=searchClick()>搜索</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </div>
 </div>
