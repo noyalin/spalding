@@ -32,58 +32,221 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
+
+ <script>
+     window.onload=function(){//页面加载完成后
+
+
+         slideLlx("slide");//参数为字符串是外层容器的id,可以多次调用
+
+         //方法
+         function slideLlx(slideID){
+             var slide=document.getElementById(slideID);//容器
+             var slideLis=slide.getElementsByTagName('li');
+             var conut=slideLis.length;//实际图片数量
+             if(conut<2){
+                 return false;//如果图片数量少于2就不开启轮播节约资源
+             }
+             var imgs=slide.getElementsByTagName("img");
+             var firstSrc=imgs[0].getAttribute("src");//第一张图的路径
+             var lastSrc=imgs[imgs.length-1].getAttribute("src");//最后一张图的路径
+             var offset=slide.clientWidth;//每次滚动的距离
+             var index=1;//当前是第一张图
+             var slideUl=slide.getElementsByTagName("ul")[0];//Ul
+             var Timer;//自动轮播定时器对象
+
+             //开头插入最后一张图
+             var firstLi=document.createElement("li");
+             var firstIMG=document.createElement("img");
+             firstIMG.setAttribute("src",lastSrc);
+             firstLi.appendChild(firstIMG);
+             slideUl.insertBefore(firstLi,slideUl.firstChild);//创建li并插入最后一张图的路径添加第一张图之前
+             slideUl.style.transform="translateX("+(-offset)+"px)";//UL滚动到第一张图的位置
+
+             //末尾插入第一张图
+             var lastLi=document.createElement("li");
+             var lastIMG=document.createElement("img");
+             lastIMG.setAttribute("src",firstSrc);
+             lastLi.appendChild(lastIMG);
+             slideUl.appendChild(lastLi);
+
+
+             //创建圆点控制按钮
+             var circle_btn=document.createElement("div");
+             circle_btn.setAttribute("class","circle_btn");
+             for(var i=0;i<conut;i++){ //创建等同于图片数的按钮
+                 var cbtn=document.createElement("button");
+                 circle_btn.appendChild(cbtn);
+             }
+             slide.appendChild(circle_btn);
+             //圆点绑定点击事件
+             var circles=Array.prototype.slice.call(circle_btn.getElementsByTagName("button"));
+             circles[0].setAttribute("class","active");//第一个圆点高亮
+             circles.forEach(function(e,i){
+                 e.onclick=function(){
+                     closeAutoSlide();
+                     openTransition();
+                     index=i+1;
+                     goslide();
+                     beActive(this);
+                 }
+             });
+
+             //创建上一个按钮,并且绑定点击事件
+
+             var btn_prev=slide.getElementsByClassName("prev_btn")[0];
+             btn_prev.onclick=function(){
+                 closeAutoSlide();
+                 openTransition();//开启过渡
+                 index--;
+                 goslide();
+                 if(index<1){
+                     index=conut;
+                     beActive(circles[index-1]);
+                     setTimeout(function(){
+                         closeTransition();
+                         goslide();
+                     },600)
+                 }else{
+                     beActive(circles[index-1]);
+                 }
+             }
+
+             //创建下一个按钮，并绑定点击事件
+             var btn_next=slide.getElementsByClassName("next_btn")[0];
+             btn_next.onclick=function(){
+                 openTransition();//开启过渡
+                 index++;
+                 goslide();
+                 if(index>conut){
+                     index=1;
+                     beActive(circles[index-1]);
+                     setTimeout(function(){
+                         closeTransition();
+                         goslide();
+                     },600)
+                 }else{
+                     beActive(circles[index-1]);
+                 }
+             }
+
+             //定时器自动轮播
+
+             openAutoSlide();//默认开启自动轮播
+             function openAutoSlide(){
+                 if(Timer){
+                     window.clearInterval(Timer);
+                 }
+                 Timer=setInterval(function(){
+                     beActive(circles[index-1]);
+                     btn_next.onclick();
+                 },3000)//轮播间隔时间
+             }
+             //暂停自动轮播,并且在6秒后再次开始轮播
+             function closeAutoSlide(){
+                 window.clearInterval(Timer);
+                 setTimeout(function(){
+                     openAutoSlide();
+                 },6000);//暂停后再次开始的时间
+             }
+             //用户操作时暂停自动
+             btn_next.onmousedown=function(){
+                 closeAutoSlide();
+             }
+             btn_prev.onmousedown=function(){
+                 closeAutoSlide();
+             }
+             //为圆点添加高亮，高亮效果可以去修改对应的css
+             function beActive(btn){
+                 circle_btn.getElementsByClassName("active")[0].setAttribute("class","");
+                 btn.setAttribute("class","active");
+             }
+             //打开过渡效果
+             function openTransition(){
+                 slideUl.style.transition="all .6s";//完成动画的时间为600毫秒如果更改这里请把上面的600也相应的修改
+             }
+             //关闭过渡效果
+             function closeTransition(){
+                 slideUl.style.transition="none";
+             }
+             //滚动到index相应的位置
+             function goslide(){
+                 slideUl.style.transform="translateX(-"+index*offset+"px)";
+             }
+
+
+
+             //响应式，根据浏览器窗口变化
+             slideUl.style.width=slideLis.length*100+"%";
+             var liWidth=100/slideLis.length+"%";
+             for(var i=0;i<slideLis.length;i++){
+                 slideLis[i].style.width=liWidth;
+             }
+             window.onresize=function(){
+                 closeTransition();//关闭动画
+                 offset=slide.clientWidth;
+                 goslide();//重置UL的位置
+             }
+         }
+
+     }
+
+
+ </script>
 <?php echo $this->getChildHtml('head') ?>
 </head>
 <body style="margin-top:-15px;">
 <!-- 顶部 header s -->
 <?php echo $this->getChildHtml('header') ?>
 
-<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_banner')->toHtml() ?>
 
 
 <!--start DB-->
-<div class="spalding_index" id='spalding_index'>
-    <div class="spalding_index_slider" id="spalding_index_slider">
-        <ul id="ul">
-            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
-            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
-            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
-            <li><img src="img/P3_AF1&AM.png" width="1889" height="900" /></li>
-        </ul>
-        <ol></ol>
-        <div id="arr df jcsb">
-            <span class="iconfont icon-ico_leftarrow left"></span>
-            <span class="iconfont icon-youjiantou right"></span>
-        </div>
-    </div>
-</div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_banner')->toHtml() ?>
+
+<!--<div id="slide" class="slide">-->
+<!--    <ul>-->
+<!--        <li> <img src='--><?php //echo $this->getSkinUrl("imagesoss/banner01.png") ?><!--'> </li>-->
+<!--        <li> <img src='--><?php //echo $this->getSkinUrl("imagesoss/banner01.png") ?><!--'> </li>-->
+<!--        <li> <img src='--><?php //echo $this->getSkinUrl("imagesoss/banner01.png") ?><!--'> </li>-->
+<!--        <li> <img src='--><?php //echo $this->getSkinUrl("imagesoss/banner01.png") ?><!--'> </li>-->
+<!--    </ul>-->
+<!--    <div>-->
+<!--        <span class="prev_btn"> < </span>-->
+<!--        <span class="next_btn"> > </span>-->
+<!--    </div>-->
+<!--</div>-->
 <!--end-->
 
-
-<div  style="height:1270px;margin-bottom:0;">
+<!--style="height:1382px;margin-bottom:0;"-->
+<div  class="spalding_index_plate" >
     <div class="spalding_plateWrap clearfix">
         <div class="plateBox plateBox_01 df jcsb">
             <div class="lt">
-                <img src="img/P1_ACG.jpg" alt="" >
-
+                <a href="<?php echo $this->getUrl('spaldingcreator') ?>"
+                   target="_blank" class="it"> <img src='<?php echo $this->getSkinUrl("images2019/spalding_online_stores.png") ?>' alt=""></a>
             </div>
             <div class="rt">
-                <img src="img/P1_ACG.jpg" alt="" >
+                <a href="<?php echo $this->getUrl('custompage') ?>" target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/spalding_customization.png") ?>' alt=""></a>
 
             </div>
         </div>
         <div class="plateBox plateBox_02 df jcsb">
             <div class="lt">
-                <img src="img/P1_ACG.jpg" alt="" >
-
+                <a href="<?php echo $this->getUrl('spaldingcreator') ?>"
+                   target="_blank" class="it"> <img src='<?php echo $this->getSkinUrl("images2019/about_spalding.png") ?>' alt="">
+                </a>
             </div>
             <div class="rt">
-                <img src="img/P1_ACG.jpg" alt="" >
+                <a href="<?php echo $this->getUrl('blog/cat/news') ?>" target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/new_press.png") ?>' alt=""></a>
             </div>
         </div>
 
+<!--        <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="--><?php //echo $this->getUrl('authentication') ?><!--" target="_blank" > <img src='--><?php //echo $this->getSkinUrl("images2019/20141209007.png") ?><!--' alt=""></a></div>-->
 
-        <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="<?php echo $this->getUrl('authentication') ?>" target="_blank" ><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141209007.png'?>" alt=""></a></div>
+        <!--------------------------------------------------------->
+        <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="<?php echo $this->getUrl('authentication') ?>" target="_blank" ><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141209007.png'?>" alt=""></a></div>
+       -->
     </div>
 </div>
 
@@ -114,7 +277,7 @@
         if(jQuery(window).width()<=1360){
             jQuery(".plateBox_tf").addClass("plate_tf_fix");
             jQuery(window).scroll(function () {
-                if(jQuery(window).scrollTop()<=150) {
+                if(jQuery(window).scrollTop()>=550 && jQuery(window).scrollTop()<= 2166) {
                     jQuery(".plateBox_tf").addClass("plate_tf_fix");
                 }else {
                     jQuery(".plateBox_tf").removeClass("plate_tf_fix");
@@ -134,101 +297,9 @@
     };
 
 </script>
-<script>
-    var box = document.getElementById("spalding_index");
-    var ul = box.children[0].children[0];
-    var ol = box.children[0].children[1];
-    var ulLiArr = ul.children;
 
 
-    var newLi = ulLiArr[0].cloneNode(true);
-    ul.appendChild(newLi);
 
-    for(var i=0;i<ulLiArr.length-1;i++){
-        var newOlLi = document.createElement("li");
-        newOlLi.innerHTML = "";
-        ol.appendChild(newOlLi);
-    }
-
-    var olLiArr = ol.children;
-    ol.children[0].className = "current";
-
-    for(var i=0;i<olLiArr.length;i++){
-        olLiArr[i].index = i;
-        olLiArr[i].onmouseover = function () {
-            for(var j=0;j<olLiArr.length;j++){
-                olLiArr[j].className = "";
-            }
-            olLiArr[this.index].className = "current";
-            animate(ul,-this.index*ul.children[0].offsetWidth);
-            key = square = this.index;
-        }
-    }
-
-    var timer = null;
-    var key = 0;
-    var square = 0;
-    timer = setInterval(autoPlay,3000);
-
-    function autoPlay(){
-        key++;
-        square++;
-        if(key>olLiArr.length){
-            key=1;
-            ul.style.left = 0;
-        }
-        animate(ul,-key*ul.children[0].offsetWidth);
-
-
-        square = square>olLiArr.length-1?0:square;
-        for(var j=0;j<olLiArr.length;j++){
-            olLiArr[j].className = "";
-        }
-        olLiArr[square].className = "current";
-    }
-
-    box.onmouseover = function () {
-        clearInterval(timer);
-    }
-    box.onmouseout = function () {
-        timer = setInterval(autoPlay,3000);
-    }
-
-    var btnArr = box.children[0].children[2].children;
-    btnArr[0].onclick = function () {
-        key--;
-        square--;
-        if(key<0){
-            key=3;
-            ul.style.left = -4*ul.children[0].offsetWidth + "px";
-        }
-        animate(ul,-key*ul.children[0].offsetWidth);
-
-
-        square = square<0?olLiArr.length-1:square;
-        for(var j=0;j<olLiArr.length;j++){
-            olLiArr[j].className = "";
-        }
-        olLiArr[square].className = "current";
-    }
-    btnArr[1].onclick = function () {
-        autoPlay();
-    }
-
-    function animate(obj,target) {
-        clearInterval(obj.timer);
-        var speed = obj.offsetLeft < target ? 15 : -15;
-        obj.timer = setInterval(function() {
-            var result = target - obj.offsetLeft;
-            obj.style.left = obj.offsetLeft + speed  + "px";
-            if(Math.abs(result) <= 15) {
-                obj.style.left = target + "px";
-                clearInterval(obj.timer);
-            }
-        },10);
-    }
-
-</script>
 <!-- 顶部 header e -->
 <?php echo $this->getChildHtml('footer') ?>
 </body>

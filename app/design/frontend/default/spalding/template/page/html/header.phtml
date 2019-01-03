@@ -5,16 +5,16 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
+ * that is bundled witemh this package in the file LICENSE_AFL.txt.
+ * item is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
+ * obtain item through the world-wide-web, please send an email
  * to license@magentocommerce.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * Do not editem or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
  * needs please refer to http://www.magentocommerce.com for more information.
  *
@@ -26,313 +26,445 @@
 ?>
 
 
-    <div class="header">
-        <div class="header_nav_funs">
-            <div class="headerWrap clearfix">
-                <a href="<?php echo $this->getUrl('authentication', array('_secure'=>true)) ?>"><strong>防伪码验证</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="<?php echo $this->getUrl('store/index/show/', array('_secure'=>true)) ?>" class="header_nav_shopAds" target="_blank">授权经销商</a>
+<div class="header">
+    <div class="header_nav_funs_hd df jcsa">
+        <div class="headerlt"></div>
+        <div class="headerrt">
+            <a href="<?php echo $this->getUrl('authentication', array('_secure' => true)) ?>"><strong>防伪码验证</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="<?php echo $this->getUrl('store/index/show/', array('_secure' => true)) ?>"
+               class="header_nav_shopAds" target="_blank">授权经销商</a>
+            <?php
+            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+                $customerName = Mage::helper('customer')->getCustomerName();
+                echo "欢迎 $customerName";
+
+                ?>
+                <a id="customerlogout" href="＃">注销</a>&nbsp;|&nbsp;
                 <?php
-                if(Mage::getSingleton('customer/session')->isLoggedIn()){
-                    $customerName = Mage::helper('customer')->getCustomerName();
-                    echo "欢迎 $customerName";
-
-                    ?>
-                    <a id="customerlogout" href="＃">注销</a>&nbsp;|&nbsp;
-                    <?php
-                }else{
-                    ?>
-                    <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
-                    <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
-                    <?php
-                }
+            } else {
                 ?>
-
-                <a id="customerAccount" href="＃">用户中心</a>&nbsp;|&nbsp;
-                <a id="customerOrderHistory" href="#">我的订单</a>
-                <a target="_blank" class="header_nav_online" href="http://wpa.qq.com/msgrd?v=3&uin=2404627413&site=qq&menu=yes">在线客服</a>
-                <?php echo $this->getChildHtml('cart_sidebar_top') ?>
-            </div>
-        </div>
-        <div class="headerWrap clearfix">
-            <?php
-            $current_url = Mage::helper('core/url')->getCurrentUrl();
-            if(!strstr($current_url,'customer/account/login/')){
-                ?>
-                <div class="header_logo">
-                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo" target="_blank">
-                        <?php if ($this->getIsHomePage()){
-                            echo "<img src='". Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141208001.jpg' ."'/>";
-                        }else{
-                            echo "<img src='".Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images/20141210001.jpg' ."'/>";
-                        }
-                        ?>
-                    </a>
-                </div>
-            <?php
+                <a href="<?php echo $this->getUrl('customer/account/', array('_secure' => true)) ?>">登录</a>&nbsp;|&nbsp;
+                <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure' => true)) ?>">注册</a>&nbsp;|&nbsp;
+                <?php
             }
             ?>
 
-            <div class="header_nav ms-fr">
-
-                <?php
-
-
-                if(!strstr($current_url,'customer/account/login/')){
-                    ?>
-                        <div class="header_nav_wrap_new menu_all">
-
-                            <div class="menu_wrap">
-                                <div class="main">
-                                    <ul class="side_nav clearfix">
-                                        <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl();?>" target="_blank">首页</a></li>
-                                        <li><a href="<?php echo $this->getUrl('custom-made.html') ?>" target="_blank">125周年</a></li>
-                                        <li><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_blank">关于斯伯丁</a></li>
-                                        <li><a href="<?php echo $this->getUrl('products.html') ?>" target="_blank">斯伯丁商城</a></li>
-                                        <li><a href="<?php echo $this->getUrl('tech') ?>" target="_blank">产品科技</a></li>
-                                        <li><a href="<?php echo $this->getUrl('blog/cat/news') ?>" target="_blank">新闻与媒体</a></li>
-                                        <li><a href="<?php echo $this->getUrl('custom-made.html') ?>" target="_blank">Spalding专属定制</a></li>
-                                        <li><a href="http://h5.spalding.com.cn/event/" target="_blank">篮球信徒</a></li>
-                                        <!--                                        <li><a href="--><?php //echo $this->getUrl('custompage') ?><!--" target="_blank">Spalding专属定制</a></li>-->
-                                        <!--<li><a href="<?php /*echo $this->getUrl('custom-clothes.html') */?>" target="_blank">球衣定制</a></li>-->
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="lower_wrap">
-                                <div class="main">
-                                    <div class="lower_list lower_01" style="display:block;">
-                                        <div class="text_a">
-
-                                        </div>
-                                    </div>
-<!--                                    --><?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('meun_2')->toHtml() ?>
-                                    <div class="lower_list lower_02">
-                                        <div class="text_a">
-                                        </div>
-                                    </div>
-                                    <div class="lower_list lower_03 spdlower" >
-                                        <div class="text_a spdhd df jcsa">
-                                            <div class="spdhdlt df">
-                                                <div class="spdfounder">
-                                                    <a href="{{store url=''}}spaldingcreator" target="_blank">SPALDING创始人</a>
-                                                </div>
-                                            </div>
-                                            <div class="spdhdct df">
-                                                <div class="brandhistory">
-                                                    <a href="{{store url=''}}sw_20160923" target="_blank">品牌历史</a>
-                                                </div>
-                                            </div>
-                                            <div class="spdhdrt df">
-                                                <div class="mstechnology">
-                                                    <a  href="{{store url=''}}science"  target="_blank">材料科技</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="spdft df jcsa">
-                                            <div class="spdftlt df">
-                                                <div class="btechnology">
-                                                    <a href="{{store url=''}}technology" target="_blank">品牌技术</a>
-                                                </div>
-                                            </div>
-                                            <div class="spdftct df">
-                                                <div class="par_partner">
-                                                    <a href="{{store url=''}}partner" target="_blank">合作伙伴</a>
-                                                </div>
-                                            </div>
-                                            <div class="spdftrt df">
-                                                <div class="contact_con">
-                                                    <a href="{{store url=''}}contactus" target="_blank">联系我们</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="lower_list lower_04 shoplower">
-                                        <div class="text_a">
-                                            <div class="s_head df jcc aic">
-                                                <a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1))  ?>" target="_blank"  class="s_text">篮球系列</a>
-                                            </div>
-                                            <div class="s_body df jcsb">
-                                                <div class="lt">
-                                                    <div class="hd">
-                                                        <span class="s_text df jcc aic">使用场景</span>
-                                                    </div>
-                                                    <div class="by df jcsb">
-                                                        <div class="lt"></div>
-                                                        <div class="rt"></div>
-                                                    </div>
-                                                    <div class="ft df jcsb">
-                                                        <div class="lt"></div>
-                                                        <div class="ct"></div>
-                                                        <div class="rt"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="ct df jcsb">
-                                                    <div class="lt"></div>
-                                                    <div class="rt"></div>
-                                                </div>
-                                                <div class="rt">
-                                                    <div class="hd">
-                                                        <span class="s_text df jcc aic">使用场景</span>
-                                                    </div>
-                                                    <div class="by df jcsb">
-                                                        <div class="lt"></div>
-                                                        <div class="rt"></div>
-                                                    </div>
-                                                    <div class="ft df jcsb">
-                                                        <div class="lt"></div>
-                                                        <div class="ct"></div>
-                                                        <div class="rt"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="s_foot df jcsa">
-                                                <div class="ss_f">
-                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1))?>" target="_blank">运动服饰</a></div>
-                                                    <div class="ft"></div>
-                                                </div>
-                                                <div class="ss_fo">
-                                                    <div class="hd df jcc aic"><a href="<?php echo $this->getUrl('products/trainingseries.html')?>" target="_blank">训练器材</a></div>
-                                                    <div class="ft"></div>
-                                                </div>
-                                                <div class="ss_foo">
-                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=69'), 0, -1)) ?>" target="_blank">篮球配件</a></div>
-                                                    <div class="ft"></div>
-                                                </div>
-                                                <div class="ss_foot">
-                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=76'), 0, -1)) ?>" target="_blank">篮球架</a></div>
-                                                    <div class="ft"></div>
-                                                </div>
-                                                <div class="ss_footer">
-                                                    <div class="hd df jcc aic"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=114'), 0, -1)) ?>" target="_blank">足球</a></div>
-                                                    <div class="ft"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="lower_list lower_05">
-                                        <div class="text_a">
-                                            <ul class="clearfix"></ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="lower_list lower_06">
-                                        <div class="text_a">
-                                            <ul></ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <span class="searchBtn"><img src='<?php echo $this->getSkinUrl("images/20141208001.png") ?>' alt=""></span>
-                <?php
-                }
-                ?>
-
-            </div>
+            <a id="customerAccount" href="＃">用户中心</a>&nbsp;|&nbsp;
+            <a id="customerOrderHistory" href="#">我的订单</a>
+            <a target="_blank" class="header_nav_online"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2404627413&siteme=qq&menu=yes">在线客服</a>
+            <?php echo $this->getChildHtml('cart_sidebar_top') ?>
         </div>
-        <script>
-            jQuery(function(){
+    </div>
 
-                jQuery('.scarch_select_option>li').click(function(){
-                   var args = jQuery(this).attr("param") + jQuery(this).val();
-                   window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>products.html?' + args);
-                });
-                //绑定回车按钮
-                jQuery(document).keydown(function(event){
-                    if(event.keyCode==13){
-                        searchClick();
+
+    <div class="header_nav_funs_ft df jcsa">
+
+        <?php
+        $current_url = Mage::helper('core/url')->getCurrentUrl();
+        if (!strstr($current_url, 'customer/account/login/')){
+        ?>
+
+        <div class="menu-wrap df jcc aic">
+
+            <div class="bg header_logo" style="margin-right: 10px">
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"  target="_blank">
+                    <?php if ($this->getIsHomePage()){
+                        echo "<img src='". Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141208001.png' ."'/>";
+                    }else{
+                        echo "<img src='".Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141208001.png' ."'/>";
                     }
-                });
-            });
-            function searchClick(){
-                var serachVal = jQuery("#inputSearchVal").val();
-                if(serachVal == ''){
-//                    window.open('<?php //echo Mage::helper('core/url')->getHomeUrl();?>//products.html/' );
-                }else{
-                    window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>catalogsearch/result/?q=' + jQuery("#inputSearchVal").val());
-                }
+                    ?>
+                </a>
+            </div>
+            <?php
             }
-            </script>
-        <div class="dropDown_search" id="dropDown_search">
-            <div class="dropDownBg"></div>
-            <div class="dropClose"><img src='<?php echo $this->getSkinUrl("images/20141209010.png") ?>' alt=""></div>
-            <div class="dropDownWrap clearfix">
-                <div class="dropDownWrapLeft ms-fl">
-                    <img style=" margin-left: 20px;" alt="" src="<?php echo $this->getSkinUrl("images/search_conditional.png")  ?>">
-                    <div class="search_select">
-                        <p>篮球场地分类</p>
-                        <div class="search_selectBox">
-                            <div class="search_selected clearfix">
-                                <span class="ms-fl">请选择</span>
-                            </div>
-                            <ul class="scarch_select_option">
-                                <li value="10" param="product_side=">室内</li>
-                                <li value="11" param="product_side=">室外</li>
-                                <li value="12" param="product_side=">室内室外</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="search_select">
-                        <p>篮球材质</p>
-                        <div class="search_selectBox">
-                            <div class="search_selected clearfix">
-                                <span class="ms-fl">请选择</span>
-                            </div>
-                            <ul class="scarch_select_option">
-                                <li value="20" param="product_material=">牛皮</li>
-                                <li value="21" param="product_material=">PU</li>
-                                <li value="22" param="product_material=">橡胶</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="search_select">
-                        <p>篮球型号</p>
-                        <div class="search_selectBox">
-                            <div class="search_selected clearfix">
-                                <span class="ms-fl">请选择</span>
-                            </div>
-                            <ul class="scarch_select_option">
-                                <li value="9" param="product_norm=">7号球(标准球)</li>
-                                <li value="8" param="product_norm=">6号球(女子球)</li>
-                                <li value="7" param="product_norm=">5号球(青少年球)</li>
-                                <li value="6" param="product_norm=">Mini球/1号球(纪念)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="search_select">
-                        <p>篮球系列</p>
-                        <div class="search_selectBox">
-                            <div class="search_selected clearfix">
-                                <span class="ms-fl">请选择</span>
-                            </div>
-                            <ul class="scarch_select_option">
-                                <li value="13" param="product_catena=" class="selected">比赛用球</li>
-                                <li value="14" param="product_catena=">经典篮球</li>
-                                <li value="15" param="product_catena=">位置系列</li>
-                                <li value="16" param="product_catena=">涂鸦系列</li>
-                                <li value="17" param="product_catena=">队徽&签名系列</li>
-                                <li value="18" param="product_catena=">Highlight系列</li>
-                                <li value="19" param="product_catena=">Trend系列</li>
-                                <li value="58" param="product_catena=">TF33系列</li>
-                                <li value="75" param="product_catena=">NBA科技</li>
-                                <li value="74" param="product_catena=">纪念球/观赏球</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
+            ?>
+            <!--            <div class="header_nav ms-fr">-->
+
+            <?php
+
+            if (!strstr($current_url, 'customer/account/login/')) {
+                ?>
+                <!--            <div class="header_nav_wrap_new df jcsb">-->
+                <div class="item"><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>" target="_blank" class="it">首页</a>
                 </div>
-                <div class="dropDownLine ms-fl"></div>
-                <div class="dropDownWrapRig ms-fl">
-                    <img style=" margin-left: 20px;" alt="" src="<?php echo $this->getSkinUrl("images/search_product_name.png")  ?>">
-                    <p>请输入一款产品的型号或产品名称:</p>
-                    <input type="text" class="scarchInp" id="inputSearchVal">
-                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl()?>products/accessories.html" target="_blank"><span>全部配件</span></a>
+                <div class="item anniversary"><a href="<?php echo $this->getUrl('custom-made.html') ?>"
+                                               target="_blank" class="it"></a></div>
+                <div class="item aboutspd"><a href="<?php echo $this->getUrl('spaldingcreator') ?>"
+                                            target="_blank" class="it">关于斯伯丁</a>
+
+
+<!--                    start DB-->
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('meun_2')->toHtml() ?>
+<!--                    <div class="spdlower">-->
+<!--                        <div class="spdhd df jcsa">-->
+<!--                            <div class="spdhdlt">-->
+<!--                                <a href="--><?php //echo $this->getUrl('spaldingcreator') ?><!--"-->
+<!--                                   target="_blank" > <img src='--><?php //echo $this->getSkinUrl("imagesoss/spdfounder.png") ?><!--' alt="">-->
+<!--                                   <div class="s_tset">SPALDING创始人</div></a>-->
+<!--                            </div>-->
+<!---->
+<!--                            <div class="spdhdct">-->
+<!--                                <a href="--><?php //echo $this->getUrl('brand_story') ?><!--"-->
+<!--                                   target="_blank"> <img src='--><?php //echo $this->getSkinUrl("imagesoss/brandhistory.png") ?><!--' alt="">-->
+<!--                                    <div class="s_tset">品牌历史</div></a>-->
+<!--                            </div>-->
+<!--                            <div class="spdhdrt">-->
+<!--                                <a href="--><?php //echo $this->getUrl('science') ?><!--"-->
+<!--                                   target="_blank"> <img src='--><?php //echo $this->getSkinUrl("imagesoss/mstechnology.png") ?><!--' alt="">-->
+<!--                                    <div class="s_tset">材料科技</div></a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="spdft df jcsa">-->
+<!---->
+<!--                            <div class="spdftlt">-->
+<!--                                <a href="--><?php //echo $this->getUrl('technology') ?><!--"-->
+<!--                                   target="_blank"> <img src='--><?php //echo $this->getSkinUrl("imagesoss/btechnology.png") ?><!--' alt="">-->
+<!--                                    <div class="s_tset">品牌技术</div></a>-->
+<!--                            </div>-->
+<!---->
+<!--                            <div class="spdftct">-->
+<!--                                <a href="--><?php //echo $this->getUrl('partner') ?><!--"-->
+<!--                                   target="_blank"> <img src='--><?php //echo $this->getSkinUrl("imagesoss/par_partner.png") ?><!--' alt="">-->
+<!--                                  <div class="s_tset">合作伙伴</div></a>-->
+<!--                            </div>-->
+<!--                            <div class="spdftrt">-->
+<!--                                <a href="--><?php //echo $this->getUrl('contactus') ?><!--"-->
+<!--                                   target="_blank"> <img src='--><?php //echo $this->getSkinUrl("imagesoss/contact_con.png") ?><!--' alt="">-->
+<!--                                  <div class="s_tset">联系我们</div></a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    end-->
+
+                </div>
+                <div class="item spd_shop"><a href="<?php echo $this->getUrl('products.html') ?>"
+                                            target="_blank" class="it">斯伯丁商城</a>
+                    <div class="shoplower">
+                        <div class="s_head df jcc aic">
+                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1)) ?>"
+                               target="_blank" class="s_text">篮球系列</a>
+                        </div>
+                        <div class="s_body df jcsb">
+                            <div class="lt">
+                                <div class="hd">
+                                    <span class="s_text df jcc aic">场地分类</span>
+                                </div>
+                                <div class="by df jcsb">
+                                    <div class="lt">
+                                        <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=72&product_side=10'), 0, -1)) ?>"
+                                           target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/indoorspecial.png") ?>' alt="">
+                                        <div class="testzhunyong">室内专用</div>
+                                        </a>
+                                    </div>
+                                    <div class="rt">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=72&product_side=12'), 0, -1)) ?>"
+                                               target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/in_out_use.png") ?>' alt="">
+                                                <div class="testzhunyong" style="width: 316px">室内外专用</div>
+                                            </a>
+                                    </div>
+                                </div>
+                                <div class="ft df jcsb">
+                                    <div class="lt">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=72&product_side=11'), 0, -1)) ?>"
+                                               target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/outdoor.png") ?>' alt="">
+                                                <div class="testzhunyong">室外专用</div>
+                                            </a>
+                                    </div>
+                                    <div class="ct">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_catena=103'), 0, -1)) ?>"
+                                               target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/adolescent.png") ?>' alt="">
+                                                <div class="testzhunyong">青少年用球</div>
+                                            </a>
+                                    </div>
+                                    <div class="rt">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_norm=8'), 0, -1)) ?>"
+                                               target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/womenball.png") ?>' alt="">
+                                                <div class="testzhunyong">女子用球</div>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="byct df jcsb">
+                                <div class="lt">
+                                    <div class="ii"><span class="df jcc aic">材质分类</span></div>
+                                    <div class="i"><a class="df jcc aic"  href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_material=20'), 0, -1)) ?>"
+                                                      target="_blank"><span style="height: 40px">牛皮篮球</span></a></div>
+                                    <div class="i"><a class="df jcc aic"  href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_material=21'), 0, -1)) ?>"
+                                                      target="_blank"><span style="height: 40px">PU篮球</span></a></div>
+                                    <div class="i"><a class="df jcc aic"  href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_material=22'), 0, -1)) ?>"
+                                                      target="_blank"><span style="height: 40px">橡胶篮球</span></a></div>
+                                </div>
+                                <div class="rt">
+                                    <div class="ii"><a class="df jcc aic">规格分类</a></div>
+                                    <div class="i df">
+                                        <div class="l"><a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_norm=9'), 0, -1)) ?>"
+                                                          target="_blank" class="df jcc aic">7#</a></div>
+                                        <div class="r"><a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_norm=8'), 0, -1)) ?>"
+                                                          target="_blank"  class="df jcc aic">6#</a></div>
+                                    </div>
+                                    <div class="i df">
+                                        <div class="l"><a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_norm=7'), 0, -1)) ?>"
+                                                          target="_blank"  class="df jcc aic">5#</a></div>
+                                        <div class="r"><a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_norm=112'), 0, -1)) ?>"
+                                                          target="_blank"  class="df jcc aic">3#</a></div>
+                                    </div>
+                                    <div class="i df">
+                                        <div class="l"><a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_norm=6'), 0, -1)) ?>"
+                                                          target="_blank"  class="df jcc aic">1#</a></div>
+                                        <div class="r"><a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_norm=139'), 0, -1)) ?>"
+                                                          target="_blank"  class="df jcc aic">MINI</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rt">
+                                <div class="hd df">
+                                    <div class="s_text df jcc aic">主要系列分类</div>
+                                    <a href="<?php echo $this->getUrl('products.html') ?>" target="_blank" style="margin: 9px 70px 10px -133px;"> <img src='<?php echo $this->getSkinUrl("images2019/more.png") ?>' alt=""></a>
+                                </div>
+
+                                <div class="by df jcsb">
+                                    <div class="lt">
+                                           <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_catena=100'), 0, -1)) ?>"
+                                              target="_blank">
+                                              <img src='<?php echo $this->getSkinUrl("images2019/NBAclassic.png") ?>' alt="">
+                                               <div class="testxilie">NBA经典系列</div>
+                                           </a>
+                                    </div>
+                                    <div class="ct">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_catena=96'), 0, -1)) ?>"
+                                               target="_blank">
+                                                <img src='<?php echo $this->getSkinUrl("images2019/officialball.png") ?>' alt="">
+                                                <div class="testxilie">NBA比赛系列</div>
+                                            </a>
+                                    </div>
+                                    <div class="rt">
+
+                                        <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=72&product_catena=18'), 0, -1)) ?>"
+                                               target="_blank">
+                                                <img src='<?php echo $this->getSkinUrl("images2019/HIGHLIGHT.png") ?>' alt="">
+                                                <div class="testxilie">HIGHLIGHT</div>
+                                            </a>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="ft df jcsb">
+                                    <div class="lt">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_catena=19'), 0, -1)) ?>"
+                                               target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/TREND.png") ?>' alt="">
+                                                <div class="testxilie">TREND系列</div>
+                                            </a>
+                                    </div>
+                                    <div class="ct">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_catena=99'), 0, -1)) ?>"
+                                               target="_blank">
+                                                <img src='<?php echo $this->getSkinUrl("images2019/TFs.png") ?>' alt="">
+                                                <div class="testxilie">FT-系列</div>
+                                            </a>
+                                    </div>
+                                    <div class="rt">
+                                            <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?product_catena=106'), 0, -1)) ?>"
+                                               target="_blank"> <img src='<?php echo $this->getSkinUrl("images2019/digital_camouflage.png") ?>' alt="">
+                                                <div class="testxilie">数码迷彩系列</div>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="s_foot df jcc jcsa">
+                            <div class="ss_f">
+                                <div class="hd df jcc aic"><a
+                                        href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1)) ?>"
+                                        target="_blank">
+                                        <div class="testss df jcc aic">运动服饰</div> <img src='<?php echo $this->getSkinUrl("images2019/sportswear.png") ?>' alt="">
+
+                                    </a></div>
+                                <div class="ft"></div>
+                            </div>
+                            <div class="ss_fo">
+                                <div class="hd df jcc aic"><a
+                                        href="<?php echo $this->getUrl('products/trainingseries.html') ?>"
+                                        target="_blank">
+                                        <div class="testss df jcc aic">训练器材</div>
+                                        <img src='<?php echo $this->getSkinUrl("images2019/sports_accessories.png") ?>' alt="">
+                                    </a></div>
+                                <div class="ft"></div>
+                            </div>
+                            <div class="ss_foo">
+                                <div class="hd df jcc aic"><a
+                                        href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=69'), 0, -1)) ?>"
+                                        target="_blank">
+                                        <div class="testss df jcc aic">篮球配件</div>
+                                        <img src='<?php echo $this->getSkinUrl("images2019/training_device.png") ?>' alt="">
+
+                                    </a></div>
+                                <div class="ft"></div>
+                            </div>
+                            <div class="ss_foot">
+                                <div class="hd df jcc aic"><a
+                                        href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=76'), 0, -1)) ?>"
+                                        target="_blank">
+                                        <div class="testss df jcc aic">篮球架</div>
+                                        <img src='<?php echo $this->getSkinUrl("images2019/basketball_stands.png") ?>' alt="">
+                                    </a></div>
+                                <div class="ft"></div>
+                            </div>
+                            <div class="ss_footer">
+                                <div class="hd df jcc aic"><a
+                                        href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=114'), 0, -1)) ?>"
+                                        target="_blank">
+                                        <div class="testss df jcc aic">足球</div>
+                                        <img src='<?php echo $this->getSkinUrl("images2019/football.png") ?>' alt="">
+                                    </a></div>
+                                <div class="ft"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item"><a href="<?php echo $this->getUrl('tech') ?>" target="_blank" class="it">产品科技</a></div>
+                <div class="item"><a href="<?php echo $this->getUrl('blog/cat/news') ?>" target="_blank" class="it">新闻与媒体</a></div>
+                <div class="item dingzhi"><a href="<?php echo $this->getUrl('custom-made.html') ?>" target="_blank" class="it">Spalding专属定制</a>
+                </div>
+                <div class="item"><a href="http://h5.spalding.com.cn/event/" target="_blank" class="it">篮球信徒</a></div>
+
+
+                <!--            </div>-->
+                <span class="searchBtn" style="margin-left: 10px"><img src='<?php echo $this->getSkinUrl("images2019/icon-search.png") ?>' alt=""></span>
+                <?php
+            }
+            ?>
+
+        </div>
+    </div>
+    <script>
+        jQuery(function () {
+
+            jQuery('.scarch_select_option>li').click(function () {
+                var args = jQuery(this).attr("param") + jQuery(this).val();
+                window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>products.html?' + args);
+            });
+            //绑定回车按钮
+            jQuery(document).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    searchClick();
+                }
+            });
+        });
+        function searchClick() {
+            var serachVal = jQuery("#inputSearchVal").val();
+            if (serachVal == '') {
+//                    window.open('<?php //echo Mage::helper('core/url')->getHomeUrl();?>//products.html/' );
+            } else {
+                window.open('<?php echo Mage::helper('core/url')->getHomeUrl();?>catalogsearch/result/?q=' + jQuery("#inputSearchVal").val());
+            }
+        }
+    </script>
+    <div class="dropDown_search" id="dropDown_search">
+        <div class="dropDownBg"></div>
+
+        <div class="drophdft">
+            <div class="drophd df jcc aic">
+                <img src='<?php echo $this->getSkinUrl("images2019/logo.png") ?>' class="drophd-logo" alt="">
+            </div>
+           <div class="dropft  df jcsb">
+               <div class="lt"><span class="df jcc aic">按条件搜索</span></div>
+               <div class="rt df">
+                   <span class="df jcc aic ">按产品名称/货号搜索</span>
+                   <div class="dropClose df jcfe"><img src='<?php echo $this->getSkinUrl("images2019/20141209010.png") ?>' class="dropclose-img" alt=""></div>
+               </div>
+           </div>
+        </div>
+
+
+
+        <div class="dropDownWrap df jcsa">
+            <div class="dropDownWrapLeft">
+<!--                <img style=" margin-left: 20px;" alt=""-->
+<!--                     src="--><?php //echo $this->getSkinUrl("images/search_conditemional.png") ?><!--">-->
+               <div class="search_select_hd df jcsb">
+                   <div class="search_select">
+                       <p>使用场景</p>
+                       <!--                    <p>篮球场地分类</p>-->
+                       <div class="search_selectBox">
+                           <div class="search_selected clearfix">
+                               <span class="ms-fl">请选择</span>
+                           </div>
+                           <ul class="scarch_select_option">
+                               <li value="10" param="product_side=">室内</li>
+                               <li value="11" param="product_side=">室外</li>
+                               <li value="12" param="product_side=">室内室外</li>
+                           </ul>
+                       </div>
+                   </div>
+                   <div class="search_select">
+                       <p>材质分类</p>
+                       <div class="search_selectBox">
+                           <div class="search_selected clearfix">
+                               <span class="ms-fl">请选择</span>
+                           </div>
+                           <ul class="scarch_select_option">
+                               <li value="20" param="product_material=">牛皮</li>
+                               <li value="21" param="product_material=">PU</li>
+                               <li value="22" param="product_material=">橡胶</li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+                <div class="search_select">
+                    <p>篮球型号</p>
+                    <div class="search_selectBox s_box">
+                        <div class="search_selected clearfix">
+                            <span class="ms-fl please_choose">请选择</span>
+                        </div>
+                        <ul class="scarch_select_option s_option">
+                            <li value="9" param="product_norm=">7号球(标准球)</li>
+                            <li value="8" param="product_norm=">6号球(女子球)</li>
+                            <li value="7" param="product_norm=">5号球(青少年球)</li>
+                            <li value="112" param="product_norm=">3号球</li>
+                            <li value="6" param="product_norm=">1号球</li>
+                            <li value="139" param="product_norm=">Mini球</li>
+                        </ul>
+                    </div>
+                </div>
+<!--                <div class="search_select">-->
+<!--                    <p>篮球系列</p>-->
+<!--                    <div class="search_selectBox">-->
+<!--                        <div class="search_selected clearfix">-->
+<!--                            <span class="ms-fl">请选择</span>-->
+<!--                        </div>-->
+<!--                        <ul class="scarch_select_option">-->
+<!--                            <li value="13" param="product_catena=" class="selected">比赛用球</li>-->
+<!--                            <li value="14" param="product_catena=">经典篮球</li>-->
+<!--                            <li value="15" param="product_catena=">位置系列</li>-->
+<!--                            <li value="16" param="product_catena=">涂鸦系列</li>-->
+<!--                            <li value="17" param="product_catena=">队徽&签名系列</li>-->
+<!--                            <li value="18" param="product_catena=">Highlight系列</li>-->
+<!--                            <li value="19" param="product_catena=">Trend系列</li>-->
+<!--                            <li value="58" param="product_catena=">TF33系列</li>-->
+<!--                            <li value="75" param="product_catena=">NBA科技</li>-->
+<!--                            <li value="74" param="product_catena=">纪念球/观赏球</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="clear"></div>
+            </div>
+            <div class="dropDownLine"></div>
+            <div class="dropDownWrapRig">
+<!--                <img style=" margin-left: 20px;" alt=""-->
+<!--                     src="--><?php //echo $this->getSkinUrl("images/search_product_name.png") ?><!--">-->
+                <p>请输入一款产品的型号或产品名称:</p>
+                <input type="text" class="scarchInp" id="inputSearchVal">
+                <div class="df jcsb">
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>products/accessories.html" target="_blank"><span>全部商品</span></a>
                     <button onclick=searchClick()>搜索</button>
                 </div>
             </div>
-
         </div>
+
     </div>
-    </div>
+</div>
+</div>

@@ -19,7 +19,8 @@
 	padding-top:14px;
 	padding-left:63px;
 
-	background:#333333;
+	background:#D4C89E;
+	/*background:#333333;*/
 
 	font-size: 20px;
 	font-weight: bold;
@@ -110,7 +111,7 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 .fareInfoTable tbody tr.last td{ border-bottom:none;}
 .fareInfoTable tbody a.expressName,.fareInfoTable tbody a.expressRange{ color:#39e1fa; font-size:14px; text-decoration:underline;}
 .fareInfoTable tbody a.expressRange{ color:#3264fa;}
-.step_radio{ display:inline; float:left; background:#333333; border:2px solid #E4E4E4; cursor:pointer; margin:0 30px 15px 0; position:relative;}
+.step_radio{ display:inline; float:left; background:#D4C89E; border:2px solid #E4E4E4; cursor:pointer; margin:0 30px 15px 0; position:relative;}
 .step_radio input{ display:none;}
 .step_radio label{ float:left; cursor:pointer;}
 .step_radio .ext{ margin-left:10px;}
@@ -137,7 +138,7 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 
 .btn{ background-position:0 -416px;}
 .btn:hover{ background-position:0 -448px;}
-.btn span{ background:#fdb905; color:#000; padding:9px 26px 8px 26px;font-size:14px;font-weight:bold;}
+.btn span{ background:#00275E; color:#d3c8a0; padding:9px 26px 8px 26px;font-size:14px;font-weight:bold;}
 .btn:hover span{ background-position:100% -448px;}
 .btn span{ border-radius:3px;}
 .btn{ margin-right:9px;}
@@ -153,7 +154,7 @@ input[type="text"] {
 .addr_step .step_main{ margin-right:10px; padding-bottom:10px;}
 .addr_step .step_radio{ color:#1c2738; margin-right:20px; padding:10px;}
 .addr_step .step_radio label{ display:block; float:none; width:240px; word-break:break-all; word-wrap:break-word;}
-.addr_step .step_radio .city_name{ display:block; font-size:14px; padding-bottom:5px;color:#fff;}
+.addr_step .step_radio .city_name{ display:block; font-size:14px; padding-bottom:5px;color:#847450;}
 .addr_step .step_radio .city_name em{ font-weight:bold; margin-left:.5em;}
 .addr_step .step_radio .name{ font-weight:normal; margin-left:.5em;}
 .addr_step .step_radio .name em{ font-weight:normal; margin-left:0;}
@@ -163,7 +164,7 @@ input[type="text"] {
 .btn span .adefault {
     color: #FDB905;
 }
-/* fdb905 */ .addr_step .step_radio .btn{ background:#c4c4c4; border-radius:3px; line-height:24px; margin-right:10px; text-shadow:none; font-size:13px; padding:5px 10px 5px 10px;color: #000;font-weight:normal;}
+/* fdb905 */ .addr_step .step_radio .btn{ background:#00275E; border-radius:3px; line-height:24px; margin-right:10px; text-shadow:none; font-size:13px; padding:5px 10px 5px 10px;color: #d3c8a0;font-weight:normal;}
 .addr_step .step_radio:hover .btn, .addr_step .step_radio.selected .btn{ color: #000;}
 
 .addr_step .step_radio .btn:hover{ background-color:#d9d9d9;}
