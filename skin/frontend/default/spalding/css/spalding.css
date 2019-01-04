@@ -703,8 +703,10 @@ ul.scarch_select_option li:hover{
     margin: 0px auto;
 }
 .footer .footerWrap{
-    width:1000px;
-    margin:32px auto;
+    width:1080px;
+    /*margin:32px auto;*/
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .footerWrap .shopCode{
