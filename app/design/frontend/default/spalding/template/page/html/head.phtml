@@ -156,8 +156,7 @@
         jQuery(".searchBtn").hover(function(){
             clearTimeout(timer);
             jQuery(".dropDown_search").slideDown();
-//            jQuery(".dropDown_search").css("display","block")
-        },function(e)
+        },function()
         {
             timer = setTimeout(function(){
                 jQuery(".dropDown_search").slideUp();
