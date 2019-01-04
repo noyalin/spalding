@@ -122,21 +122,21 @@
         var timer1 = null;
         jQuery(".header_nav_funs_ft .menu-wrap .item.aboutspd").hover(function(){
             clearTimeout(timer1);
-            jQuery(".spdlower").slideDown();
+            jQuery(".spdlower").css("display","block");
         },function(){
             timer1 = setTimeout(function(){
-                jQuery(".spdlower").slideUp();
+                jQuery(".spdlower").css("display","none");
             },500)
 
         });
         var timer2 = null;
         jQuery(".header_nav_funs_ft .menu-wrap .item.spd_shop").hover(function(){
             clearTimeout(timer2);
-            jQuery(".shoplower").slideDown();
+            jQuery(".shoplower").css("display","block")
 
         },function(){
             timer2 = setTimeout(function(){
-                jQuery(".shoplower").slideUp()
+                jQuery(".shoplower").css("display","none")
             },500)
 
         });
@@ -155,11 +155,11 @@
         var timer = null;	//定义用于清除setTimeout的变量
         jQuery(".searchBtn").hover(function(){
             clearTimeout(timer);
-            jQuery(".dropDown_search").slideDown();
+            jQuery(".dropDown_search").css("display","block")
         },function()
         {
             timer = setTimeout(function(){
-                jQuery(".dropDown_search").slideUp();
+                jQuery(".dropDown_search").css("display","none")
             },500)
 
         });
@@ -180,7 +180,7 @@
         });
 
         jQuery('.dropClose').on("click",function(){
-            jQuery(".dropDown_search").slideUp();
+            jQuery(".dropDown_search").css("display","none");
         });
 
 

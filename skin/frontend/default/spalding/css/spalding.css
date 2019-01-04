@@ -268,6 +268,7 @@ button{
     display: none;
     position: absolute;
     width:100%;
+    min-width: 1366px;
     height:526px;
     top: 92px;
     left: 0;
@@ -664,9 +665,9 @@ ul.scarch_select_option li:hover{
 }
 .plateBox_tf{
     position:absolute;
-    right:35px;
-    top:600px;
-
+    right:10px;
+    /*top:600px;*/
+    top: calc(100vh - 55%);
     z-index: 9;
     height:244px;
 }
@@ -2625,6 +2626,7 @@ ul.form-list li p{
 .spdlower{
     display: none;
     width: 100%;
+    min-width:1366px;
     position:absolute;
     margin: 0px auto;
     top:92px;
@@ -2684,6 +2686,7 @@ ul.form-list li p{
 .shoplower{
     display: none;
     width: 100%;
+    min-width: 1366px;
     position:absolute;
     margin: 0px auto;
     top:92px;
