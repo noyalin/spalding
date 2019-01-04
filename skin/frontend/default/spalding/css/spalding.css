@@ -665,9 +665,9 @@ ul.scarch_select_option li:hover{
 }
 .plateBox_tf{
     position:absolute;
-    right:10px;
+    right:62px;
     /*top:600px;*/
-    top: calc(100vh - 55%);
+    top: calc(100vh - 52%);
     z-index: 9;
     height:244px;
 }
@@ -2654,6 +2654,7 @@ ul.form-list li p{
     margin-top: -23px;
     margin-bottom: 33px;
     color: #847450;
+    font-size: 16px;
 }
 .spdhdct img{
     width:192px;
@@ -2697,7 +2698,7 @@ ul.form-list li p{
 }
 .shoplower .s_head{
     width: 1284px;
-    height: 33px;
+    height: 50px;
     /*margin: 0px calc((100% - 1400px)/2);*/
     /*border-bottom: 1px solid #D3D3D3;*/
     margin: 0 auto;
@@ -2722,12 +2723,13 @@ ul.form-list li p{
     margin-right: 10px;
 }
 .shoplower .s_body .lt .hd .s_text{
-    width: 100px;
-    height: 33px;
-    line-height:33px;
+    width: 150px;
+    height: 16px;
+    line-height: 16px;
     font-size: 18px;
     color: #847450;
     margin: 0 auto;
+    margin-bottom: 10px;
 }
 .shoplower .s_body .lt .by{
     width: 488px;
@@ -2768,40 +2770,43 @@ ul.form-list li p{
     background-color: #D4C89E;
     margin-top: -23px;
      color: #847450;
+     font-size: 16px;
 }
 .shoplower .s_body .byct{
     /*width: 380px;*/
-    height: 280px;
-    margin-top: 33px;
+    /*height: 280px;*/
+    margin-top: 26px;
     margin-bottom: 17px;
 }
 .shoplower .s_body .byct .lt{
     width: 128px;
-    height: 250px;
+    height: 251px;
     background-color:  #D4C89E;
     background-size: 128px 250px;
 }
 .shoplower .s_body .byct .lt .ii{
     color: #847450;
-    font-size: 22px;
+    font-size: 18px;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
 }
 .shoplower .s_body .byct .lt .i a{
     color: #847450;
-    font-size: 18px;
+    font-size: 16px;
     margin:0 auto;
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
 .shoplower .s_body .byct .rt{
     width: 128px;
-    height: 250px;
+    height: 251px;
     background-color:  #D4C89E;
     background-size: 128px 250px;
 }
 .shoplower .s_body .byct .rt .ii{
     color: #847450;
-    font-size: 22px;
+    font-size: 18px;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -2812,7 +2817,7 @@ ul.form-list li p{
 }
 .shoplower .s_body .byct .rt .i .r a{
     color: #847450;
-    font-size: 18px;
+    font-size: 16px;
     height: 40px;
 }
 .shoplower .s_body .byct .rt .i{
@@ -2826,7 +2831,7 @@ ul.form-list li p{
 .shoplower .s_body .byct .rt .i .l a{
     width: 64px;
     color: #847450;
-    font-size: 18px;
+    font-size: 16px;
     margin:0 auto;
     height: 40px;
 }
@@ -2840,12 +2845,13 @@ ul.form-list li p{
 }
 .shoplower .s_body .rt .hd .s_text{
     width: 190px;
-    height: 33px;
-    line-height:33px;
+    height: 16px;
+    line-height:16px;
     font-size: 18px;
     font-weight: 500;
     color: #847450;
     margin: 0 auto;
+    margin-bottom: 10px;
 }
 .shoplower .s_body .rt .by{
     width: 488px;
@@ -2865,6 +2871,7 @@ ul.form-list li p{
     background-color: #D4C89E;
     margin-top: -23px;
     color: #847450;
+    font-size: 16px;
 }
 .shoplower .s_body .rt .by .ct{
     width: 149px;
@@ -2961,6 +2968,7 @@ ul.form-list li p{
     /*height: 259px;*/
     /*margin: 0px calc((100% - 1300px)/2);*/
     margin: 0 auto;
+    margin-top: 10px;
 }
 .shoplower .s_foot .ss_f {
     width: 148px;

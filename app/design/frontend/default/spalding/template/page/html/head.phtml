@@ -126,7 +126,7 @@
         },function(){
             timer1 = setTimeout(function(){
                 jQuery(".spdlower").css("display","none");
-            },500)
+            })
 
         });
         var timer2 = null;
@@ -137,7 +137,7 @@
         },function(){
             timer2 = setTimeout(function(){
                 jQuery(".shoplower").css("display","none")
-            },500)
+            })
 
         });
 
@@ -160,9 +160,20 @@
         {
             timer = setTimeout(function(){
                 jQuery(".dropDown_search").css("display","none")
-            },500)
+            },100)
 
         });
+
+//        jQuery(".searchBtn").hover(function(){
+//            clearTimeout(timer);
+//            jQuery(".dropDown_search").css("display","block")
+//        },function()
+//        {
+//            timer = setTimeout(function(){
+//                jQuery(".dropDown_search").css("display","none")
+//            },500)
+//
+//        });
 //        jQuery(".dropDownWrap").hover(function(){
 //            clearTimeout(timer);
 //            jQuery(".dropDown_search").css("display","block")
