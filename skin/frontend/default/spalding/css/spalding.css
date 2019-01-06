@@ -343,8 +343,8 @@ button{
     font-size: 18px;
     font-weight: bold;
     color:#847450;
-    margin-top:3px;
-    margin-left:25px;
+    margin-top:10px;
+    /* margin-left:25px;*/
 }
 
 .dropDownWrap .dropDownWrapRig .scarchInp{
@@ -355,7 +355,7 @@ button{
     /*padding:5px 10px;*/
     width:579px;
     height: 35px;
-    margin-top:17px;
+    margin-top:10px;
     /*margin-left:25px;*/
     margin-bottom: 30px;
 }
