@@ -3522,38 +3522,38 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 
 
-.aboutNav{
-    text-align: center;
-    margin-bottom:80px;
-}
+/*.aboutNav{*/
+    /*text-align: center;*/
+    /*margin-bottom:80px;*/
+/*}*/
 
 
-.aboutNav a{
-    display: inline-block;
-    width:225px;
-    height:45px;
-    line-height: 45px;
-    font-size: 16px;
-    font-weight: bold;
-    color:#fff;
-    background: rgba(0,0,0,.5);
-    margin:0 5px;
-}
+/*.aboutNav a{*/
+    /*display: inline-block;*/
+    /*width:225px;*/
+    /*height:45px;*/
+    /*line-height: 45px;*/
+    /*font-size: 16px;*/
+    /*font-weight: bold;*/
+    /*color:#fff;*/
+    /*background: rgba(0,0,0,.5);*/
+    /*margin:0 5px;*/
+/*}*/
 
-.aboutNav a img{
-    line-height: 45px;
-    vertical-align: middle;
-    /*margin-top:13px;*/
-}
+/*.aboutNav a img{*/
+    /*line-height: 45px;*/
+    /*vertical-align: middle;*/
+    /*!*margin-top:13px;*!*/
+/*}*/
 
-.aboutNav a:hover{
-    background: rgba(0,0,0,.95);
-    color:#b6b6b6;
-}
-.aboutNav a.aboutNav_now{
-    background: #e8a902;
-    color:#000;
-}
+/*.aboutNav a:hover{*/
+    /*background: rgba(0,0,0,.95);*/
+    /*color:#b6b6b6;*/
+/*}*/
+/*.aboutNav a.aboutNav_now{*/
+    /*background: #e8a902;*/
+    /*color:#000;*/
+/*}*/
 
 
 .aboutUs_box{
@@ -3930,7 +3930,7 @@ ul.shopsList li span.shopsList_adrs{
     color:#847450;
     margin:15px 0;
     padding:10px;
-    background:#D4C89E;
+    background:#eeebe1;
 }
 .footerMainOth{
     margin-top:20px;
