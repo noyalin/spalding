@@ -3989,7 +3989,10 @@ ul.shopsList li span.shopsList_adrs{
     height:100%;
     left:0;
     top:0;
+    /*melone 2019.01.07去掉条款所在的背景颜色 设置透明度
     background:rgba(0,0,0,.9);
+    background: #555555;*/
+    /*melone end 2019.01.07去掉条款所在的背景颜色*/
     z-index:999999;
 }
 
@@ -4002,12 +4005,13 @@ ul.shopsList li span.shopsList_adrs{
     top:50%;
     margin-left:-205px;
     margin-top:-260px;
-    background:url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/rowsBg.png) left top repeat-x #000;
+    background:url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/2019-rowsBg.png) left top repeat-x #fff;
     border:1px solid #292929;
 }
 .rowsWrap h2.rowsTitle{
     text-align: center;
-    color:#fff;
+    /*color:#fff;*/
+    color:#84754e;
     font-size: 20px;
     font-weight: bold;
     height:30px;
@@ -4022,6 +4026,8 @@ ul.shopsList li span.shopsList_adrs{
     font-size: 12px;
     line-height: 1.6em;
     padding:0 10px;
+    /**/
+    /*background: #ffffff;*/
 }
 .rowsSub{
     width:230px;
@@ -4042,23 +4048,38 @@ ul.shopsList li span.shopsList_adrs{
 
 .rowsSub span.rowsAgr{
     width:140px;
-    background:#f4a108;
+    /*background:#f4a108;*/
+    background:#00275e;
     color:#000;
     margin-right:20px;
 }
 
 .rowsSub span.rowsRef{
     width:70px;
-    background:#d3d3d3;
+    /*background:#d3d3d3;*/
+    background:#d4c89e;
     color:#999;
 }
 
-.rowsSub span input{
+/**/
+.rowsSub .rowsAgr input{
     border:none;
     background:none;
     cursor:pointer;
+
+    color:#cac19a;
+
 }
 
+.rowsSub .rowsRef input{
+    border:none;
+    background:none;
+    cursor:pointer;
+
+    color:#ffffff;
+
+}
+/**/
 .cusMadeCen{
     position: absolute;
     width:400px;
@@ -4108,17 +4129,23 @@ ul.shopsList li span.shopsList_adrs{
     color:#fff;
     width:305px;
     height: 660px;
-    background:#030403;
+    /*background:#030403;*/
+    background:#d4c89e;
     border:1px solid #323232;
+    /*melone start 去掉边框*/
+    border-color: transparent;
+    /*melone end 去掉边框*/
     border-right:none;
     z-index: -1;
 }
 
 .madeBoxVal{
     height:80px;
-    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/step_1_valBg.jpg) left top no-repeat;
-
-    border-bottom:1px solid #323232;
+    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/step_1_valBg.png) left top no-repeat;
+    /*melone start 底部边框为0*/
+    /*border-bottom:1px solid #323232;*/
+    border-bottom:1px solid #fff;
+    /*melone end 底部边框为0*/
     text-align: center;
     overflow: hidden;
 }
@@ -4128,7 +4155,9 @@ ul.shopsList li span.shopsList_adrs{
     margin-top:20px;
     margin-bottom: 5px;
     font-family: import,arial, helvetica, sans-serif;
-    color: #847450;
+    /*melone start 字体变为咖啡色*/
+    color:#84744d;
+    /*melone end 字体变为咖啡色*/
 }
 .madeBoxVal h2{
     font-size: 20px;
@@ -4148,6 +4177,9 @@ ul.shopsList li span.shopsList_adrs{
     border-bottom:1px dashed #808080;
     margin-bottom:10px;
     padding-bottom: 10px;
+    /*melone start 字体变为咖啡色*/
+    color:#84744d;
+    /*melone end 字体变为咖啡色*/
 }
 
 .madeBoxCons>p{
@@ -4159,7 +4191,10 @@ ul.shopsList li span.shopsList_adrs{
 
 .madeBoxCons dl{
     font-size: 12px;
-    color:#808080;
+    /*melone start 修改字体颜色*/
+    /*color:#808080;*/
+    color:#d1c69c;
+    /*melone end 修改字体颜色*/
     margin-top:10px;
     margin-bottom:10px;
 }
@@ -4201,7 +4236,10 @@ ul.shopsList li span.shopsList_adrs{
 
 
 .madeFuns{
-    border-top:1px solid #808080;
+    /*melone start 上边框颜色修改为白色*/
+    /*border-top:1px solid #808080;*/
+    border-top:1px solid #fff;
+    /*melone end 上边框颜色修改为白色*/
     text-align: center;
     color:#1d1000;
 }
@@ -4209,26 +4247,39 @@ ul.shopsList li span.shopsList_adrs{
 .madeFuns button{
     display: inline-block;
     border:none;
-    background: #fdb905;
-    background: -webkit-linear-gradient(#fdb905, #f29d09); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(#fdb905, #f29d09); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(#fdb905, #f29d09); /* Firefox 3.6 - 15 */
-    background: linear-gradient(#fdb905, #f29d09); /* 标准的语法 */
+    /*melone start 修改背景颜色*/
+    /*background: #fdb905;*/
+    /*background: -webkit-linear-gradient(#fdb905, #f29d09); /* Safari 5.1 - 6.0 */
+    /*background: -o-linear-gradient(#fdb905, #f29d09); /* Opera 11.1 - 12.0 */
+    /*background: -moz-linear-gradient(#fdb905, #f29d09); /* Firefox 3.6 - 15 */
+    /*background: linear-gradient(#fdb905, #f29d09); /* 标准的语法 */
+    background: #00275e;
+    background: -webkit-linear-gradient(#00275e, #00275e); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#00275e, #00275e); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#00275e, #00275e); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#00275e, #00275e); /* 标准的语法 */
+    /*melone end 修改背景颜色*/
     width:265px;
     margin:0 20px;
     height:40px;
     line-height: 40px;
     font-weight: bold;
     font-size: 18px;
-    border-radius: 5px;
+    /*melone start 按钮形状的直角*/
+    /*border-radius: 5px;*/
+    /*melone end 按钮形状的直角*/
     margin-top:15px;
+    /*melone start 添加字体颜色*/
+    color:#bdb695;
+    /*melone end 添加字体颜色*/
 }
 
 .madeBotmSn{
     position: relative;
     margin:60px 0 20px;
     text-align: center;
-    color: #fff;
+    /*color: #fff;*/
+    color:#00275e;
 }
 
 .madeBotmSn h1{
@@ -4247,15 +4298,22 @@ ul.shopsList li span.shopsList_adrs{
     margin-left:-35px;
     padding:60px 0;
     border:1px solid #323232;
-    color:#fff;
+    /*melone start 去掉定制1和定制2的边框*/
+    border-color: transparent;
+    /*melone end 去掉定制1和定制2的边框*/
+    /*color:#fff;*/
+    color:#84744e;
     width:33px;
     height:70px;
-    background: #191a1c;
+    /*background: #191a1c;*/
+    background:#e3dab3;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     line-height: 22px;
     text-align: center;
     cursor: pointer;
+    /**/
+    font-weight: bold;
 }
 .madeP_1_btn{
     margin-top:20px;
@@ -4264,7 +4322,8 @@ ul.shopsList li span.shopsList_adrs{
     margin-top:210px;
 }
 .madeP_btn_now{
-    background: #847450;
+    /*background: #020303;*/
+    background: #d4c89e;
     border-right: none;
     width:34px;
 }
@@ -4342,18 +4401,30 @@ ul.shopsList li span.shopsList_adrs{
 
 
 .madeBoxCons p.madeTs{
-    color:#fff;
+    /*melone start 字体变为咖啡色并加粗*/
+    /*color:#fff;*/
+    color:#84744d;
+    font-weight: bold;
+    /*melone end 字体变为咖啡色并加粗*/
     text-align: center;
 }
 .madeBoxCons p.madeSn{
+    /*melone start 字体变为咖啡色并加粗*/
+    color:#84744d;
+    font-weight: bold;
+    /*melone end 字体变为咖啡色并加粗*/
     text-align: center;
 }
 dl.madeBoxFuns{
     font-size: 12px;
 }
 dl.madeBoxFuns dd.madeKindTit{
-    background:#dddee3;
-    color:#787878;
+    /*melone start 输入框背景变为白色*/
+    /*background:#dddee3;*/
+    background: #fff;
+    /*melone end 输入框背景变为白色*/
+    /*color:#787878;*/
+    color:#83734f;
     border:1px solid #303030 ;
     width:255px;
     height:45px;
@@ -4363,7 +4434,10 @@ dl.madeBoxFuns dd.madeKindTit{
     cursor: pointer;
 }
 dl.madeBoxFuns dd.madeNow{
-    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/madenow.png) 230px 20px no-repeat #dfdee4;
+    /*melone start 背景改为白色*/
+    /*background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/madenow.png) 230px 20px no-repeat #dfdee4;*/
+    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/madenow.png) 230px 20px no-repeat #fff;
+    /*melone end 背景改为白色*/
     font-size:14px;
     font-weight: bold;
 }
@@ -4378,7 +4452,10 @@ dl.madeBoxFuns dd.zz{
 }
 dl.madeBoxFuns dt{
     width:253px;
-    background: #201f1f;
+    /*melone start 修改背景颜色*/
+    /*background: #201f1f;*/
+    background: #84754e;
+    /*melone end 修改背景颜色*/
     padding:10px 0;
     border:1px solid #3f3f3f;
     border-top:none;
@@ -4431,18 +4508,26 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 .madeKindTexSpan span.size_kind {
     padding:2px 10px;
-    background: #222;
-    border:1px solid #B6B6B6;
-    color:#9b9b9b;
+    /*melone start 修改背景、边框以及字体颜色*/
+    /*background: #222;*/
+    /*border:1px solid #B6B6B6;*/
+    border:1px solid #c2b88d;
+    /*color:#9b9b9b;*/
+    color: #c2b88d;
+    /*melone end 修改背景、边框以及字体颜色*/
     cursor:pointer;
     font-size: 12px;
     margin-left:5px;
     border-radius: 3px;
 }
 .madeKindTexSpan span.size_kind.checked {
-    background: #161515;
-    border:1px solid #fcb805;
-    color:#fcb805;
+    /*melone start 修改背景、边框以及字体颜色*/
+    /*background: #161515;*/
+    /*border:1px solid #fcb805;*/
+    border:1px solid #fff;
+    /*color:#fcb805;*/
+    color:#fff;
+    /*melone end 修改背景、边框以及字体颜色*/
 }
 
 .madeKindTexSpan span.size_kind:hover{
@@ -4459,12 +4544,18 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 .madeSubmit button{
     border:none;
-    color:#bfbfbf;
+    /*melone start 修改字体颜色*/
+    /*color:#bfbfbf;*/
+    color:#aa9d74;
+    /*melone end 修改字体颜色*/
     text-align: center;
     width:208px;
     height:32px;
     line-height: 32px;
-    background:#2b292a;
+    /*melone start 修改背景颜色*/
+    /*background:#2b292a;*/
+    background:#84754e;
+    /*melone end 修改背景颜色*/
     display: block;
     opacity: .9;
     border-radius:15px;
@@ -4594,8 +4685,12 @@ dl.madeBoxFuns dt.zz_t_2{
     height: 100px;
     overflow: hidden;
     margin:30px auto;
-    background: #e6e6e6;
-    color:#000;
+    /*melone start 修改保存框的背景颜色与字体颜色*/
+    /*background: #e6e6e6;*/
+    background: #fff;
+    /*color:#000;*/
+    color:#84744d;
+    /*melone end 修改保存框的背景颜色与字体颜色*/
     font-size: 12px;
     text-align: center;
     border-radius: 4px;
@@ -4620,6 +4715,9 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .comfBox>p{
+    /*melone start 字体加粗*/
+    font-weight: bold;
+    /*melone end 字体加粗*/
     margin:20px 0 15px;
 }
 
@@ -4633,13 +4731,23 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .confBtn button.saveMadeY{
-    background: #f29d09;
+    /*melone start 修改“是”的背景、字体以及边框颜色*/
+    /*background: #f29d09;*/
+    background: #00275e;
+    color: #d4c89e;
+    border-color: transparent;
+    /*melone end 修改“是”的背景、字体以及边框颜色*/
 }
 
 .confBtn button.saveMadeN{
-    background: #eee;
-    color: #7c7c7c;
-    border-color:#cfcfcf;
+    /*melone start 修改“否”的背景、字体以及边框颜色*/
+    /*background: #eee;*/
+    background: #d4c89e;
+    /*color: #7c7c7c;*/
+    color: #fff;
+    /*border-color:#cfcfcf;*/
+    border-color: transparent;
+    /*melone end 修改“否”的背景、字体以及边框颜色*/
 }
 
 
@@ -4795,6 +4903,10 @@ dl.madeBoxFuns dt.zz_t_2{
     margin:0 10px;
     position: relative;
     font-size: 12px;
+    /*melone start 修改字体上下对齐*/
+    height:27px;
+    line-height: 27px;
+    /**/
 }
 
 .fontFamilySel{
@@ -4809,9 +4921,15 @@ dl.madeBoxFuns dt.zz_t_2{
     padding:0 5px;
     height:25px;
     line-height: 25px;
-    border:1px solid #fcb805;
+    /*melone start 修改输入框边框颜色*/
+    /*border:1px solid #fcb805;*/
+    border:1px solid #fff;
+    /*melone start 修改输入框边框颜色*/
     cursor: pointer;
-    color:#fcb805;
+    /*melone start 修改输入框内字体颜色*/
+    /*color:#fcb805;*/
+    color:#fff;
+    /*melone start 修改输入框内字体颜色*/
 }
 
 .fontFamilySel span.chosFam:before{
@@ -4821,7 +4939,10 @@ dl.madeBoxFuns dt.zz_t_2{
     right:10px;
     top:10px;
     border-width:6px;
-    border-color:#fcb805;
+    /*melone start 修改下拉小三角颜色*/
+    /*border-color:#fcb805;*/
+    border-color:#fff;
+    /*melone end 修改下拉小三角颜色*/
     border-left-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
@@ -4832,9 +4953,16 @@ dl.madeBoxFuns dt.zz_t_2{
     padding:0 5px;
     position: absolute;
     border-top:none;
-    background: rgba(101,101,101,.9);
+    /*melone start 修改下拉框背景颜色*/
+    /*background: rgba(101,101,101,.9);*/
+    background: #c8bc92;
+    opacity: 0.9;
+    /*melone end 修改下拉框背景颜色*/
     display:none;
-    color:#000;
+    /*melone start 修改下拉框字体颜色*/
+    /*color:#000;*/
+    color: #8f805b;
+    /*melone start 修改下拉框字体颜色*/
 
 }
 
@@ -4846,7 +4974,10 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .fontFamilySel ul li:hover{
-    color:#fcb805;
+    /*melone start 鼠标经过为白色*/
+    /*color:#fcb805;*/
+    color: #fff;
+    /*melone end 鼠标经过为白色*/
 }
 
 

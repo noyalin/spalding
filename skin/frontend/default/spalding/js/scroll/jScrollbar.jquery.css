@@ -16,6 +16,9 @@
 	margin:10px 0;
 	padding:0;
 	font-size:12px;
+	/*melone start 添加标题以下文字的颜色*/
+	color:#84754e;
+	/*melone end 添加标题以下文字的颜色*/
 }
 
 .jScrollbar3 .jScrollbar_mask dl{
@@ -25,11 +28,17 @@
 .jScrollbar3 .jScrollbar_mask dd{
 	font-size: 14px;
 	font-weight: bold;
+	/*melone start 添加标题下文字颜色*/
+	color:#83754e;
+	/*melone end 添加标题下文字颜色*/
 }
 
 .jScrollbar3 .jScrollbar_mask dt{
 	margin-left:20px;
 	text-indent:10px;
+	/*melone start 添加标题下文字颜色*/
+	color:#83754e;
+	/*melone end 添加标题下文字颜色*/
 }
 
 .jScrollbar3 .jScrollbar_mask dt:before{
@@ -37,7 +46,8 @@
 	position:absolute;
 	width:0;
 	height:0;
-	border:3px solid #fff;
+	/*border:3px solid #fff;*/
+	border:3px solid #83754e;
 	border-radius: 6px;
 	color:#fff;
 	left:15px;
@@ -46,10 +56,14 @@
 .jScrollbar3 .jScrollbar_mask h3{
 	font-size: 14px;
 	font-weight: bold;
+	/*melone start 添加标题颜色*/
+	color:#83754e;
+	/*melone end 添加标题颜色*/
 }
 .jScrollbar3 .jScrollbar_mask .maskRulTop{
 	margin-bottom:10px;
-	color:#f4a108;
+	/*color:#f4a108;*/
+	color:#83754e;
 }
 .jScrollbar3 .jScrollbar_mask .maskRulTop p{
 	margin:0;
@@ -66,7 +80,8 @@
 }
 .jScrollbar3 .jScrollbar_draggable a.draggable {
 	position:relative;
-	background-color:#f4a308;
+	/*background-color:#f4a308;*/
+	background-color:#84744e;
 	display:block;
 	height:10px;
 	width:10px;
@@ -81,7 +96,8 @@
 	left:3px;
 	z-index:0;
 	width:3px;
-	background:#323232;
+	/*background:#323232;*/
+	background:#d2c99e;
 	height:390px;
 	margin-top:-10px;
 }

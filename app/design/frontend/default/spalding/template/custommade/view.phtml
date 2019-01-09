@@ -51,7 +51,8 @@
 
                         .maskRed h2 {
                             font-weight: bold;
-                            color: #cf0000;
+                            /*color: #cf0000;*/
+                            color:#02275c;
                             font-size: 12px;
                         }
                     </style>
@@ -122,10 +123,12 @@
     <?php endif; ?>
     <!-- 定制背景 -->
     <div class="bodyBg_cusMade">
-        <img style="width:100%;" src="<?php echo $productImageHelper->getCustomMadeImage('cBg2.jpg');  ?>" alt="">
+        <!--melone start 修改图片 cBg2.jpg改成cBg2.png -->
+        <img style="width:100%;" src="<?php echo $productImageHelper->getCustomMadeImage('2019-cBg2.png');  ?>" alt="">
+        <!--melone end 修改图片 cBg2.jpg改成cBg2.png -->
     </div>
 
-    <!-- 定制主框架 -->
+    <!-- 定制主框架 -->_
     <!-- 第一步 开始定制 -->
     <div class="cusMadeCons madeStep_1" style="display:none;">
         <div class="cusMadeBox cusMadeCen">
@@ -158,8 +161,10 @@
     <!-- 第二步  定制参数-->
     <div class="cusMadeCons madeStep_2">
         <div class="cusRemind">
-            <div class="cusRemindBox remind_1"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/remind_1.png") ?>" alt=""></div>
-            <div class="cusRemindBox remind_2"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/remind_2.png") ?>" alt=""></div>
+        <!--melone start 修改图片 remind_1/2.png改成2019-remind_1/2.png -->
+            <div class="cusRemindBox remind_1"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/2019-remind_1.png") ?>" alt=""></div>
+            <div class="cusRemindBox remind_2"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/2019-remind_2.png") ?>" alt=""></div>
+        <!--melone start 修改图片 remind_1/2.png改成2019-remind_1/2.png -->
         </div>
         <?php echo $this->getChildHtml('custommade_view_options') ?>
     </div>
