@@ -16,14 +16,14 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     <div class="validate_type">
                         <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/code_01.png') . "'>"; ?>
                         <!--                        <h2 class=" ">新防伪码</h2>-->
-                        <img src='<?php echo $this->getSkinUrl("images2019/button-1.png") ?>' alt="" id="security_chip" class="security_chip">
+                        <img src='<?php echo $this->getSkinUrl("images2019/button-1.png") ?>' alt="" id="security_chip" class="security_chip" style="margin-top: 9px;">
                         <!--                        <img src='--><?php //echo $this->getSkinUrl("images2019/button-1.png") ?><!--' alt="" id="oldAuthenticationButton" class="validate_type_old">-->
                         <!--                        <button id="newAuthenticationButton" class="validate_type_new">新版验证</button>-->
                     </div>
-                    <div class="validate_type" style="margin-top: 37px;">
+                    <div class="validate_type" style="margin-top: 26px;">
                         <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/code_02.png') . "'>"; ?>
                         <!--                        <h2 class=" ">旧防伪码</h2>-->
-                        <img src='<?php echo $this->getSkinUrl("images2019/button-2.png") ?>' alt="" id="newAuthenticationButton" class="validate_type_new" style="margin-top: 12px">
+                        <img src='<?php echo $this->getSkinUrl("images2019/button-2.png") ?>' alt="" id="newAuthenticationButton" class="validate_type_new" style="margin-top: 19px;">
                         <!--                        <button id="oldAuthenticationButton" class="validate_type_old"-->
                         <!--                                data-reveal-id='alertOldValidation'>旧版验证-->
                         <!--                        </button>-->
@@ -40,25 +40,25 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images2019/authentication/icon.png') . "'>"; ?>
                     <form class="code_area position_re" name="valid_code_input">
                         <b class="position_re">防伪码:</b><input type="text" id="barCode" class="valid_check_code"
-                                                              maxlength="14" placeholder="请输入12或14位的防伪码">
+                                                              maxlength="14" placeholder="请输入12或14位的防伪码" style="margin-top: 44px">
                         <span id="barCodeMSG" style="opacity: 0;width:100%;height:28px;line-height:28px;padding:0;">必填</span>
                         <b class="position_re">验证码:</b><input type="text" id="verifyCode" class="verifyCode valid_code"
-                                                              maxlength="4" placeholder="请输入4位的验证码">
+                                                              maxlength="4" placeholder="请输入4位的验证码" >
                         <img src="<?php echo $this->getUrl('code_num.php', array('_secure' => true)) ?>" id="getCodeNum"
                              align="absmiddle">
                         <span id="verifyCodeMSG" style="opacity: 0;width:100%;height:28px;line-height:28px;padding:0;">必填</span>
 
                         <img src='<?php echo $this->getSkinUrl("images2019/authentication/immediately_verify.png") ?>' alt="" id="authenticationSubmitButton"  class="btn_valid position_re"
-                             data-reveal-id="alertValidRightNow" style="width: 178px;margin-top: 20px;">
+                             data-reveal-id="alertValidRightNow" style="width: 178px;margin-top: 22px;">
                     </form>
 
                     <!--                    <button id="authenticationSubmitButton" class="btn_valid position_re"-->
                     <!--                            data-reveal-id="alertValidRightNow">立即验证-->
                     <!--                    </button>-->
-                    <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 50px;" id="return">
+
                 </div>
             </div>
-
+            <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 16px;" id="return">
         </div>
     </div>
 
@@ -137,9 +137,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
                         <p class="sel_checkbox">
                             <span
-                                id="q_1_true"><?php echo "<img class='q_1_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
+                                id="q_1_true"><?php echo "<img class='q_1_true' src='" . $this->getSkinUrl('images2019/authentication/true.png') . "'>"; ?></span>是
                             <span
-                                id="q_1_false"><?php echo "<img class='q_1_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
+                                id="q_1_false"><?php echo "<img class='q_1_false' src='" . $this->getSkinUrl('images2019/authentication/true.png') . "'>"; ?></span>否
                             <b id="isQ1Selected" style="opacity: 0">必填</b>
                         </p>
 
@@ -147,13 +147,15 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
                         <p class="sel_checkbox">
                             <span
-                                id="q_2_true"><?php echo "<img class='q_2_true' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>是
+                                id="q_2_true"><?php echo "<img class='q_2_true' src='" . $this->getSkinUrl('images2019/authentication/true.png') . "'>"; ?></span>是
                             <span
-                                id="q_2_false"><?php echo "<img class='q_2_false' src='" . $this->getSkinUrl('images/authentication/true.png') . "'>"; ?></span>否
+                                id="q_2_false"><?php echo "<img class='q_2_false' src='" . $this->getSkinUrl('images2019/authentication/true.png') . "'>"; ?></span>否
                             <b id="isQ2Selected" style="opacity: 0">必填</b>
                         </p>
                     </div>
-                    <button id="authenticationCommitButton" class="btn_submit position_re">提交验证</button>
+<!--                    <button id="authenticationCommitButton" class="btn_submit position_re">提交验证</button>-->
+
+                    <img src='<?php echo $this->getSkinUrl("images2019/authentication/submit_button.png") ?>' alt="" id="authenticationCommitButton" class="btn_submit position_re" style="width: 178px;">
                 </div>
             </div>
         </div>
