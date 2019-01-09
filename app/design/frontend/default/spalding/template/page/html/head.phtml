@@ -78,12 +78,15 @@
             return (arr[0].trim() === cookie) ? arr[1] : prev;
         }, undefined);
     }
-
-    document.body.addEventListener('touchmove', function(event) {
-        if (!canMove) {
-            event.preventDefault();
-        }
-    }, false);
+//start
+    if(document.body){
+// end
+        document.body.addEventListener('touchmove', function(event) {
+            if (!canMove) {
+                event.preventDefault();
+            }
+        }, false);
+    }
 </script>
 
 

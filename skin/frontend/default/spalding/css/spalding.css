@@ -3598,7 +3598,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .aboutUs_box{
     width:100%;
     height: auto;
-    background: #fff;
+    background: #D4C89E;
+    /*background: #fff;*/
     margin-bottom:80px;
 }
 .aboutUs_box_cont{
@@ -3626,7 +3627,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .aboutUs_boxRig{
     width:50%;
     font-size: 12px;
-    background: #fff;
+    background: #D4C89E;
 }
 
 .aboutUs_boxRig .aboutUs_boxRig_tit{
@@ -3638,7 +3639,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 .aboutUs_boxRig p{
     margin:10px 15% 10px 5%;
-    color:#666;
+    color:#847450;
+    /*color:#666;*/
 }
 
 /*当屏幕宽度1200 至 1400时 s*/
