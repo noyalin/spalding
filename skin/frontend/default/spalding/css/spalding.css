@@ -3992,6 +3992,7 @@ ul.shopsList li span.shopsList_adrs{
     /*melone 2019.01.07去掉条款所在的背景颜色 设置透明度
     background:rgba(0,0,0,.9);
     background: #555555;*/
+    background:rgba(0,0,0,.6);
     /*melone end 2019.01.07去掉条款所在的背景颜色*/
     z-index:999999;
 }
@@ -4006,7 +4007,9 @@ ul.shopsList li span.shopsList_adrs{
     margin-left:-205px;
     margin-top:-260px;
     background:url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/2019-rowsBg.png) left top repeat-x #fff;
-    border:1px solid #292929;
+    /*melone start 去掉边框*/
+    /*border:1px solid #292929;*/
+    /*melone end 去掉边框*/
 }
 .rowsWrap h2.rowsTitle{
     text-align: center;
@@ -4014,8 +4017,13 @@ ul.shopsList li span.shopsList_adrs{
     color:#84754e;
     font-size: 20px;
     font-weight: bold;
-    height:30px;
-    line-height: 30px;
+    /*melone start 修改滚动时文字与上边框没有重叠*/
+    height:32px;
+    /*melone end 修改滚动时文字与上边框没有重叠*/
+    /*melone start 标题居中*/
+    /*line-height: 30px;*/
+    line-height: 15px;
+    /*melone end 标题居中*/
     margin:5px 0;
 }
 .rowsText{
@@ -4026,8 +4034,6 @@ ul.shopsList li span.shopsList_adrs{
     font-size: 12px;
     line-height: 1.6em;
     padding:0 10px;
-    /**/
-    /*background: #ffffff;*/
 }
 .rowsSub{
     width:230px;
@@ -4048,38 +4054,42 @@ ul.shopsList li span.shopsList_adrs{
 
 .rowsSub span.rowsAgr{
     width:140px;
+    /*melone start 修改同意按钮背景颜色*/
     /*background:#f4a108;*/
     background:#00275e;
+    /*melone end 修改同意按钮背景颜色*/
     color:#000;
     margin-right:20px;
 }
 
 .rowsSub span.rowsRef{
     width:70px;
+    /*melone start 修改不同意按钮背景颜色*/
     /*background:#d3d3d3;*/
     background:#d4c89e;
+    /*melone end 修改不同意按钮背景颜色*/
     color:#999;
 }
 
-/**/
+
 .rowsSub .rowsAgr input{
     border:none;
     background:none;
     cursor:pointer;
-
+    /*melone start 修改同意按钮字体颜色*/
     color:#cac19a;
-
+    /*melone end 修改同意按钮字体颜色*/
 }
 
 .rowsSub .rowsRef input{
     border:none;
     background:none;
     cursor:pointer;
-
+    /*melone start 修改不同意按钮字体颜色*/
     color:#ffffff;
-
+    /*melone end 修改不同意按钮字体颜色*/
 }
-/**/
+
 .cusMadeCen{
     position: absolute;
     width:400px;
@@ -4129,8 +4139,10 @@ ul.shopsList li span.shopsList_adrs{
     color:#fff;
     width:305px;
     height: 660px;
+    /*melone start 修改背景颜色*/
     /*background:#030403;*/
     background:#d4c89e;
+    /*melone end 修改背景颜色*/
     border:1px solid #323232;
     /*melone start 去掉边框*/
     border-color: transparent;
@@ -4544,10 +4556,10 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 .madeSubmit button{
     border:none;
-    /*melone start 修改字体颜色*/
+    /*melone start 修改暂存定制字体颜色*/
     /*color:#bfbfbf;*/
-    color:#aa9d74;
-    /*melone end 修改字体颜色*/
+    color:#fff;
+    /*melone end 修改暂存定制字体颜色*/
     text-align: center;
     width:208px;
     height:32px;
@@ -4563,7 +4575,9 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 .madeSubmit button:hover{
     opacity: 1;
-    color:#fff;
+    /*melone start 鼠标移动到暂存定制上习题的颜色*/
+    color:#d4c89e;
+    /*melone end 鼠标移动到暂存定制上习题的颜色*/
 }
 
 .madeSubmit button.submitY{
