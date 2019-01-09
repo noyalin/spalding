@@ -3435,7 +3435,7 @@ ul.newsListBox{
     position: relative;
     width:970px;
     height:390px;
-    background: url(../images/technoloies_ball.png) left top no-repeat;
+    background: url(../images2019/technoloies_ball.png) left top no-repeat;
 }
 
 ul.teyCloLis{
@@ -3460,13 +3460,14 @@ ul.teyCloLis li span.teyCloTex{
 }
 ul.teyCloLis li span.teyCloTex p{
     margin-top:40px;
+    color: #847450;
 }
 
 ul.teyCloLis li span.teyCloTex h2{
     text-align: center;
     font-size: 16px;
     font-weight: bold;
-    color:#ffb900;
+    color:#847450;
     margin-bottom:-40px;
     margin-top:40px;
 }
