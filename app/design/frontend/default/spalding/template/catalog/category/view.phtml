@@ -44,6 +44,12 @@ $_imgUrl = null;
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_furniture')->toHtml();
     }else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 71){
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_bag')->toHtml();
+    // 72 -> 篮球系列
+    }else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 72){
+        echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_ballseries')->toHtml();
+    // 114 -> 足球
+    }else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 114){
+        echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_football')->toHtml();
     // 69 -> 配件
     }else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 69){
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_accessory')->toHtml();
@@ -56,8 +62,10 @@ $_imgUrl = null;
 		//定制球衣确认预留
 		elseif($_category && $_category->getUrlKey() == 'custom-clothes'):
 			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_clothes')->toHtml();
+        // 训练器材
         elseif($_category && $_category->getUrlKey() == 'trainingseries'):
             echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_trainingseries')->toHtml();
+		//斯伯丁商城
 		else:
 			echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner')->toHtml();
 		endif;
