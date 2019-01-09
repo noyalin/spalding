@@ -1876,6 +1876,37 @@ h2.product-collateral-box-nam{
 }
 
 
+.pannel-hd{
+    width: 1204px;
+    margin: 0px auto 10px;
+}
+.instructions{
+    font-size: 22px;
+    color: #847450;
+    width: 269px;
+    height: 41px;
+    background-color: #D4C89E;
+}
+.item_lt .it_box{
+    width: 256px;
+    height: 185px;
+    background-color: #D4C89E;
+}
+.item_lt .it_box img{
+    height: 30px;
+}
+.item_lt .it_box .box_p{
+    margin-right: 20px;
+}
+.item_lt .it_box .box span{
+    font-size: 14px;
+    color: #847450;
+}
+.pannel-ft{
+    width: 1204px;
+    margin: 10px auto;
+}
+
 .cart {
     min-height: 500px;
 }
@@ -1887,6 +1918,14 @@ h2.product-collateral-box-nam{
     color:#fff;
     min-height: 500px;
 }
+.main-container22{
+    width:1204px;
+    /*padding:10px 20px;*/
+    margin:0 auto;
+    color:#847450;
+    min-height: 500px;
+}
+
 
 
 .block-content{
@@ -3182,9 +3221,9 @@ ul.form-list li p{
 .newsList ul li{
     width:300px;
     height:405px;
-    background: #2a2a2a;
+    background: #D4C89E;
     font-size: 12px;
-    color:#8b8b8b;
+    color:#8F7F59;
     margin-top:20px;
     overflow: hidden;
 }
@@ -3680,7 +3719,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 .boxLeft_contactUs{
     padding:0 13% 0 22%;
-    background: #333;
+    background: #D4C89E;
     height:100%;
     margin:50px 0 0;
 }
