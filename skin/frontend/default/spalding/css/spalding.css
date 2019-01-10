@@ -839,10 +839,12 @@ ul.scarch_select_option li:hover{
 
 .loginMain p{
     font-size: 12px;
+    color: #847450;
 }
 
 .loginMain p a{
-    color:#fff;
+    /*color:#fff;*/
+    color: #847450;
 }
 
 .loginMain p a:hover{
@@ -866,9 +868,11 @@ ul.scarch_select_option li:hover{
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color:#000;
+    color:#847450;
+    /*color:#000;*/
     border-radius: 4px;
-    background: #fdb905;
+    background: #00275E;
+    /*background: #fdb905;*/
 }
 
 .loginSub .loginSubNoAccount{
@@ -876,10 +880,12 @@ ul.scarch_select_option li:hover{
     height:40px;
     font-size: 12px;
     text-align: right;
+    color: #847450;
 }
 
 .loginSub .loginSubNoAccount a{
-    color:#fdb905;
+    color:#00275E;
+    /*color:#fdb905;*/
 }
 
 
@@ -955,8 +961,7 @@ ul.scarch_select_option li:hover{
 
 .bodyBg img{
     width:100%;
-    /*height:100%; height: calc(100vh - 362px);*/
-
+    height: 100vh;
 }
 
 .spaldingMain{
@@ -1318,14 +1323,18 @@ button.rulAgree{
     /*background: rgba(31,31,31,.8);*/
     background: #D4C89E;
     color:#fff;
+    /*height: calc(100vh - 428px);*/
 }
 .userContreMain_sp{
     width:970px;
     padding:0px 0px;
 
-    height: calc(100vh - 412px);
+    /*height: calc(100vh - 412px);*/
 }
 
+.shopping_cart_empty{
+    height: calc(100vh - 412px);
+}
 
 .spCarTop{
     width:950px;
@@ -1917,6 +1926,7 @@ h2.product-collateral-box-nam{
 
 .cart {
     min-height: 500px;
+    /*height: calc(100vh - 428px);*/
 }
 
 .main-container{
@@ -1925,7 +1935,7 @@ h2.product-collateral-box-nam{
     margin:0 auto;
     color:#fff;
     min-height: 500px;
-    background-color: #D4C89E;
+    /*background-color: #D4C89E;*/
 }
 .main-container22{
     width:1204px;
@@ -2538,10 +2548,12 @@ ul.form-list li p{
     height:35px;
     line-height: 35px;
     font-size: 14px;
-    color:#000;
+    color:#847450;
+    /*color:#000;*/
     border:none;
     border-radius: 3px;
-    background:#fdb905;
+    background:#00275E;
+    /*background:#fdb905;*/
 }
 
 .buttons-set p{
@@ -3097,7 +3109,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     position: absolute;
     width:320px;
     padding:10px;
-    background:#D4C89E;
+    background:#eeebe1;
     margin-top:0;
     text-align:left;
     margin-left:-255px;
@@ -3689,6 +3701,11 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     color:#847450;
     /*color:#666;*/
 }
+/*@media screen and (min-height: 1200px) and (max-height: 1400px) {*/
+    /*.bodyBg img{*/
+       /*min-height: 1200px;*/
+    /*}*/
+/*}*/
 
 /*当屏幕宽度1200 至 1400时 s*/
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
@@ -3866,7 +3883,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 
 .loginMainOut a{
-    color:#fff;
+    color:#847450;
 }
 .loginMainOut .loginOther{
     margin-top:20px;
@@ -3874,12 +3891,14 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     padding-bottom:0px;
     margin-bottom:0px;
     border-bottom:none;
+    color: #847450;
 }
 
 .loginOutWrap{
     width:350px;
     padding:30px 10px;
-    background:#1b1b1b;
+    background:#eeebe1;
+    /*background:#1b1b1b;*/
     position: relative;
 }
 

@@ -12,7 +12,7 @@
 	width:980px;
 	text-align:left;
 	margin: auto;
-	height: 1848px;
+	/*height: 1848px;*/
 	background-color: #D4C89E;
 }
 
@@ -171,7 +171,7 @@ input[type="text"] {
 .addr_step .step_radio:hover .btn, .addr_step .step_radio.selected .btn{ color: #000;}
 
 .addr_step .step_radio .btn:hover{ background-color:#d9d9d9;}
-.addr_step .step_radio:hover .btn:hover{ background-color:#fdb905;}
+.addr_step .step_radio:hover .btn:hover{ background-color:#847450;}
 .addr_step .step_radio span.set_def, .addr_step .step_radio span.set_def:hover,
 .addr_step .step_radio:hover span.set_def, .addr_step .step_radio:hover span.set_def:hover,
 .addr_step .step_radio.selected span.set_def, .addr_step .step_radio.selected span.set_def:hover{ background:none; color:#fdb905; cursor:default; display:inline;}
