@@ -60,8 +60,11 @@
             if('分类' == $this->__($_filter->getName()))
                 continue;
             $name = $_filter->getName();
-            $src =  $this->getSkinUrl("images/category/".$imageArr["$name"]);
-    ?>
+            ?><!-- melone start 修改图片 -->
+            <!--$src =  $this->getSkinUrl("images/category/".$imageArr["$name"]);-->
+            <?php    $src =  $this->getSkinUrl("images2019/category/".$imageArr["$name"]); ?>
+            <!-- melone end 修改图片 -->
+
         <li>
             <span class="label"><img src="<?php echo $src ?>"/></span>
 <!--            <span class="value">--><?php //echo $this->stripTags($_filter->getLabel()) ?><!--</span>-->

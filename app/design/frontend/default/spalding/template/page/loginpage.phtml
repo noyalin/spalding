@@ -6,9 +6,11 @@
     <?php echo $this->getChildHtml('head') ?>
 
 </head>
-<body style="background:#000; color:#fff;">
+<!-- melone start 修改背景、字体颜色 -->
+<body style="background:#fff; color:#83744d;">
+<!--melone end 修改背景、字体颜色 -->
 <div class="spaldingBg">
-    <div class="spaldingBgImg"><img src='<?php echo $this->getSkinUrl("images/20141209004.jpg") ?>'></div>
+    <div class="spaldingBgImg"><!--<img src='<?php echo $this->getSkinUrl("images/20141209004.jpg") ?>'>--></div>
 </div>
 <?php //echo $this->getChildHtml('header') ?>
 <div class="spaldingLogin">
@@ -28,8 +30,10 @@
 
             <!-- 登录主框架 -->
             <div class="loginMain">
-                <div class="login_backHome" style="background: url(<?php echo $this->getSkinUrl("images/20141209011.png") ?>) left center no-repeat;"><a href="<?php echo $this->getUrl('') ?>">返回首页</a></div>
-                <div class="loginWel"><img src='<?php echo $this->getSkinUrl("images/20141209012.png") ?>'></div>
+            <!-- melone start 修改images2019-->
+                <div class="login_backHome" style="background: url(<?php echo $this->getSkinUrl("images2019/20141209011.png") ?>) left center no-repeat;"><a href="<?php echo $this->getUrl('') ?>">返回首页</a></div>
+                <div class="loginWel"><img src='<?php echo $this->getSkinUrl("images2019/20141209012.png") ?>'></div>
+            <!-- melone end 修改images2019-->
                 <?php echo $this->getChildHtml('content') ?>
             </div>
 
