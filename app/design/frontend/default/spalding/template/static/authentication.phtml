@@ -59,6 +59,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                 </div>
             </div>
             <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 16px;" id="return">
+            <button id="cheshi">按钮</button>
         </div>
     </div>
 
@@ -74,41 +75,41 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     <div class="item_lt">
                         <div class="it_box df">
                             <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step1.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 20px;">
-                    <span>
-                    使用手机的NFC功能对准防伪芯片进行感应。Android手机先打开手机NFC功能，在手机【设置】|【设备连接】中开启NFC选项。iPhone7\8\8plus\X 需要下载并打开NFCTagInfo APP；iPhone XR以上已默认开启NFC功能。
-                </span>
-                            </div>
+<!--                            <div class="box_p" style="margin-top: 20px;">-->
+<!--                    <span>-->
+<!--                    使用手机的NFC功能对准防伪芯片进行感应。Android手机先打开手机NFC功能，在手机【设置】|【设备连接】中开启NFC选项。iPhone7\8\8plus\X 需要下载并打开NFCTagInfo APP；iPhone XR以上已默认开启NFC功能。-->
+<!--                </span>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="item_lt">
                         <div class="it_box df">
                             <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step2.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 50px;">
-                    <span>
-                   扫描后出现登录页面，输入手机号和验证码后点击“下一步”进入验证结果页面。
-                </span>
-                            </div>
+<!--                            <div class="box_p" style="margin-top: 50px;">-->
+<!--                    <span>-->
+<!--                   扫描后出现登录页面，输入手机号和验证码后点击“下一步”进入验证结果页面。-->
+<!--                </span>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="item_lt">
                         <div class="it_box df">
                             <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step3.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 50px;">
-                            <span>
-                              进入验证结果页面后，如果验证成功会显示通过验证 可以看到这颗球的图片、名称等产品信息。
-                            </span>
-                            </div>
+<!--                            <div class="box_p" style="margin-top: 50px;">-->
+<!--                            <span>-->
+<!--                              进入验证结果页面后，如果验证成功会显示通过验证 可以看到这颗球的图片、名称等产品信息。-->
+<!--                            </span>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="item_lt">
                         <div class="it_box df">
                             <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step4.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 50px;">
-                                <span>
-                                点击查看此产品，可以看到产品图片。
-                               </span>
-                            </div>
+<!--                            <div class="box_p" style="margin-top: 50px;">-->
+<!--                                <span>-->
+<!--                                点击查看此产品，可以看到产品图片。-->
+<!--                               </span>-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -340,6 +341,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     });
     jQuery('#return_1').on('click', function (e) {
         jQuery('.slide-group').animate({'top': '90px'});
+    });
+    jQuery('#cheshi').on('click', function (e) {
+        jQuery('.slide-group').animate({'top': '-2880px'});
     });
     jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
         jQuery('#alertContactUs')[0].style.display = 'block';

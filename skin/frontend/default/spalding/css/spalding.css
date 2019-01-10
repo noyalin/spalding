@@ -1904,21 +1904,21 @@ h2.product-collateral-box-nam{
     height: 41px;
     background-color: #D4C89E;
 }
-.item_lt .it_box{
-    width: 256px;
-    height: 185px;
-    background-color: #D4C89E;
-}
-.item_lt .it_box img{
-    height: 30px;
-}
-.item_lt .it_box .box_p{
-    margin-right: 20px;
-}
-.item_lt .it_box .box span{
-    font-size: 14px;
-    color: #847450;
-}
+/*.item_lt .it_box{*/
+    /*width: 256px;*/
+    /*height: 185px;*/
+    /*background-color: #D4C89E;*/
+/*}*/
+/*.item_lt .it_box img{*/
+    /*height: 30px;*/
+/*}*/
+/*.item_lt .it_box .box_p{*/
+    /*margin-right: 20px;*/
+/*}*/
+/*.item_lt .it_box .box span{*/
+    /*font-size: 14px;*/
+    /*color: #847450;*/
+/*}*/
 .pannel-ft{
     width: 1204px;
     margin: 10px auto;
