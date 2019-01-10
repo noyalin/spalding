@@ -1,136 +1,149 @@
-
 /******************************************************************************
 MY ACCOUNT
 /******************************************************************************/
-	/* My account log in */
-	#my-account-login-wrapper {
-		/*padding:0 20px;*/
-		margin:0 10px;
-		color:#222;
-	}
-#my-account-login-wrapper .validation-advice{
-	color:#cf0000;
-	margin-bottom:10px;
+/* My account log in */
+#my-account-login-wrapper {
+    /*padding:0 20px;*/
+    margin: 0 10px;
+    color: #847450;
 }
-	#my-account-wrapper .detail-back {
-		margin-bottom: 0 !important;
-	}
-	#my-account-wrapper h1{
-		font-weight:bold;
-		font-size:14px;
-		margin:50px 0 15px 0;
-		border-bottom:1px solid #ddd;
-		/*border-top:1px solid #282828;*/
-		background:url(../images/bg-title.png) repeat rgba(0,0,0,00);
-		letter-spacing:0.4px;
-		color:#222;
-		padding:15px;
-	}
-	.my-account-content{
-		padding:0 0 25px 0;
-		width:100%;
-	}
-	.my-account-content h2, .accountbenefits h2{
-		color:#222;
-		font-size:13px;
-		margin:0 0 3px 0;
-	}
-	.my-account-content table{
-		width:100%;
-		border-collapse:separate;
-	}
-	.my-account-content table td{
 
-	}
-	.my-account-content table td.infoLabel{
-		color:#222;
-		font-size:12px;
-		padding:12px 0 4px 0;
-		font-weight:bold;
-	}
-	.my-account-content table td.infoInput{
-		border-radius:5px;
-		/*background:#222;*/
-		overflow:hidden;
-		padding:8px 0;
-		text-align:center;
-		color:#222;
-		border:1px solid #ddd;
-	}
-	.my-account-content table input{
-		border:none;
-		background:none;
-		outline:none;
-		width:95%;
-		font-size:12px;
-		color:rgba(0,0,0,1.00);
-	}
-	.my-account-content table .validation-advice{
-		color:#222;
-		background:#A80000;
-		text-align:center;
-		padding:5px;
-		font-size:11px;
-		position:relative;
-		top:12px;
-		border-radius:0 0 5px 5px ;
-	}
-	.my-account-content table td.submit-btn{
-		padding:20px 0 0 0;
-	}
-	.my-account-content table button, .accountbenefits button{
-		border:none;
-		width:100%;
-		display:block;
-		float:none;
-		font-size:12px;
-		font-weight:bold;
-		padding:15px 0;
-		color:#222;
-		font-family:Arial;
-		background: rgb(239,190,83); /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(239,190,83,1) 0%, rgba(243,172,0,1) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,190,83,1)), color-stop(100%,rgba(243,172,0,1))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* IE10+ */
-		background: linear-gradient(to bottom, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efbe53', endColorstr='#f3ac00',GradientType=0 ); /* IE6-9 */
-		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
-		text-transform: uppercase;
+#my-account-login-wrapper .validation-advice {
+    color: #cf0000;
+    margin-bottom: 10px;
+}
 
+#my-account-wrapper .detail-back {
+    margin-bottom: 0 !important;
+}
 
-	}
-	td.submit-btn button.loginOut-login{
-		border:none;
-		width:100%;
-		display:block;
-		height:50px;
-		background:url(../images/login-submit.jpg) left top no-repeat;
-		background-size:100%;
-		box-shadow:none;
-	}
+#my-account-wrapper h1 {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 50px 0 15px 0;
+    border-bottom: 1px solid #847450;
+    /*border-top:1px solid #282828;*/
+    background: url(../images/bg-title.png) repeat rgba(0, 0, 0, 00);
+    letter-spacing: 0.4px;
+    color: #847450;
+    padding: 15px;
+}
 
-	.accountbenefits button.button{
-		border:none;
-		width:100%;
-		display:block;
-		height:50px;
-		background:url(../images/register-button.jpg) left top no-repeat;
-		background-size:100%;
-		box-shadow:none;
-	}
-.accountweixin button{
-    border:none;
-    width:100%;
-    display:block;
-    float:none;
-    border-radius:5px;
-    font-size:12px;
-    font-weight:bold;
-    padding:15px 0;
-    color:#222;
-    font-family:Arial;
+.my-account-content {
+    padding: 0 0 25px 0;
+    width: 100%;
+}
+
+.my-account-content h2, .accountbenefits h2 {
+    color: #847450;
+    font-size: 13px;
+    margin: 0 0 3px 0;
+}
+
+.my-account-content table {
+    width: 100%;
+    border-collapse: separate;
+}
+
+.my-account-content table td {
+
+}
+
+.my-account-content table td.infoLabel {
+    color: #847450;
+    font-size: 12px;
+    padding: 12px 0 4px 0;
+    font-weight: bold;
+}
+
+.my-account-content table td.infoInput {
+    border-radius: 5px;
+    /*background:#222;*/
+    overflow: hidden;
+    padding: 8px 0;
+    text-align: center;
+    color: #847450;
+    border: 1px solid #ddd;
+}
+
+.my-account-content table input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 95%;
+    font-size: 12px;
+    color: #847450;
+}
+
+.my-account-content table .validation-advice {
+    color: #847450;
+    background: #A80000;
+    text-align: center;
+    padding: 5px;
+    font-size: 11px;
+    position: relative;
+    top: 12px;
+    border-radius: 0 0 5px 5px;
+}
+
+.my-account-content table td.submit-btn {
+    padding: 20px 0 0 0;
+}
+
+.my-account-content table button, .accountbenefits button {
+    border: none;
+    width: 100%;
+    display: block;
+    float: none;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 15px 0;
+    color: #847450;
+    font-family: Arial;
+    background: rgb(239, 190, 83); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(239, 190, 83, 1)), color-stop(100%, rgba(243, 172, 0, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efbe53', endColorstr='#f3ac00', GradientType=0); /* IE6-9 */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+
+}
+
+td.submit-btn button.loginOut-login {
+    border: none;
+    width: 100%;
+    display: block;
+    height: 50px;
+    background: url(../images2019/login-submit.jpg) left top no-repeat;
+    background-size: 100%;
+    box-shadow: none;
+}
+
+.accountbenefits button.button {
+    border: none;
+    width: 100%;
+    display: block;
+    height: 50px;
+    background: url(../images2019/register-button.jpg) left top no-repeat;
+    background-size: 100%;
+    box-shadow: none;
+}
+
+.accountweixin button {
+    border: none;
+    width: 100%;
+    display: block;
+    float: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 15px 0;
+    color: #847450;
+    font-family: Arial;
     background: #04be02; /* Old browsers */
     /*background: -moz-linear-gradient(top, rgba(239,190,83,1) 0%, rgba(243,172,0,1) 100%); *//* FF3.6+ */
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,190,83,1)), color-stop(100%,rgba(243,172,0,1))); *//* Chrome,Safari4+ */
@@ -138,635 +151,825 @@ MY ACCOUNT
     /*background: -o-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); *//* Opera 11.10+ */
     /*background: -ms-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); *//* IE10+ */
     /*background: linear-gradient(to bottom, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); *//* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efbe53', endColorstr='#f3ac00',GradientType=0 ); /* IE6-9 */
-    box-shadow:1px 1px 1px rgba(0,0,0,0.5);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efbe53', endColorstr='#f3ac00', GradientType=0); /* IE6-9 */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
 }
-	.accountbenefits{
-		/*padding:20px 0 0 0;*/
-		border-top:1px solid #ddd;
-		text-align:left;
-		background:#f5f5f5;
-		padding:10px;
-	}
-	.accountbenefits h2{
-		margin:0 0 15px 0;
-	}
-	.accountbenefits button{
-		margin:0 0 25px 0;
-	}
-	.accountbenefits h3{
-		margin:0 0 3px 0;
-		font-size:12px;
-		color:#222;
-	}
-	.accountbenefits p{
-		margin:0 0 10px 0;
-		font-size:12px;
-		color:#222;
-	}
-	/* my account menu */
-	#my-account-menu{
-		margin:0 0 10px 0;
-		font-family:Arial,sans-serif;
-	}
-	#my-account-menu h1{
-		color:#222 !important;
-		font-size:13px !important;
-		font-weight:bold !important;
-		margin:0 !important;
-		border-bottom:1px solid #333 !important;
-		border-top:1px solid #282828 !important;
-		background:url(../images/bg-title.png) repeat rgba(0,0,0,00) !important;
-		letter-spacing:0.4px !important;
-		padding:15px !important;
-	}
-	#my-account-menu .ui-accordion-header a{
-		text-decoration:none;
-	}
-	#my-account-menu .ui-accordion-header a.headerToggle:before{
-		display:inline-block;
-		font-family:snicon;
-		content:'\e611';
-		font-size:10px;
-		color:#FFF;
-		right:25px;
-		position:absolute;
-	}
-	#my-account-menu .ui-accordion-header-active a.headerToggle:before{
-		display:inline-block;
-		font-family:snicon;
-		content:'\e612';
-		font-size:10px;
-		color:#FFF;
-	}
-	#my-account-menu ul.my-account-menu-item{
-		margin:0;
-		padding:0;
-	}
-	#my-account-menu ul.my-account-menu-item li{
-		list-style:none;
-		margin:0;
-		border-bottom:1px solid #282828;
-		background:rgba(0,0,0,0.15);
-	}
-	#my-account-menu ul.my-account-menu-item li a{
-		font-weight:bold;
-		text-decoration:none;
-		padding:15px 0 15px 10px;
-		display:block;
-		font-size:13px;
-	}
 
-	/* jQuery ui-accordion Override styles */
-	#my-account-menu .ui-accordion {background: #000000 !important;}
-	#my-account-menu .ui-accordion-header {outline: none !important;border: none !important; font-weight: bold; }
-	#my-account-menu .ui-accordion-content {background: none !important;outline: none !important;border: none !important; border-top: 1px solid rgba(0, 0, 0, 0.5) !important; overflow: hidden;}
-
-	/* my account pages pages */
-	.my-account-top{
-		background:rgba(0,0,0,0.4);
-		border-bottom:1px solid	rgba(0,0,0,1);
-		padding:12px 10px;
-		text-align:left;
-		width:auto;
-	}
-	.my-account-welcome{
-		color:#FFF;
-		font-weight:bold;
-		font-size:13px;
-		float:left;
-		padding:8px 0 0 0;
-	}
-	.my-account-logout{
-		float:right;
-		margin:0 0 0 0;
-	}
-	.my-account-logout a{
-		border:none;
-		display:block;
-		border-radius:4px;
-		background:rgba(102,102,102,1.00);
-		font-size:10px;
-		font-weight:bold;
-		width:auto;
-		padding:8px 12px;
-		color:#FFF;
-		text-decoration: none;
-	}
-	.my-account-logout a:hover, .my-account-logout a:active{
-		background:#F3AC00;
-	}
-	#my-account-all h1{
-		padding:15px 10px;
-		background:none;
-		color:#F3AC00;
-		font-size:14px;
-		position:relative;
-		margin:0;
-		border:none;
-	}
-	#my-account-profile-content, #my-account-info-content, #my-account-address-content, #my-account-orders-content, #my-account-review-content, #my-account-newsletter-content, #my-account-giftcard-content, #my-account-reward-content{
-		padding:10px;
-		overflow:hidden;
-	}
-
-
-	#my-account-all .logInInfoBox h2, #my-account-all .myAccountBox h2{
-		/*color:#F3AC00;*/
-		/*font-size:13px;*/
-		/*padding-left: 10px;*/
-	}
-
-	.orderInfo-content h2{
-		padding-top:50px;
-		color:#333;
-		font-size:14px;
-		border-bottom:1px solid #ddd;
-		padding-bottom:10px;
-	}
-	/* my profile page */
-	.myAccountBox{
-		margin:0 0 25px 0;
-	}
-	.myAccountBox table{
-		width:100%;
-		border-collapse:collapse;
-		margin: 15px 0 0;
-	}
-	.myAccountBox table td{
-		border:1px solid #3E3E3E;
-		padding:12px 2px;
-		font-size:11px;
-		text-align:center;
-		vertical-align:middle;
-	}
-
-	.myAccountBox table thead td{
-		background:#303030;
-		font-weight:bold;
-		color:#FFF;
-	}
-	.myAccountBox table tbody tr.tableBgEven td{
-
-	}
-	.myAccountBox table tbody tr.tableBgOdd td{
-
-	}
-	.myAccountBox table tfoot td{
-		background:#000;
-		text-align:right;
-		padding:12px 10px;
-	}
-
-.myAccountBox table.orderInfoTable td{
-	border:none;
-	text-align:left;
-	padding:0;
-	color:#333;
-	line-height: 1.8em;
-	padding-top:10px;
+.accountbenefits {
+    /*padding:20px 0 0 0;*/
+    border-top: 1px solid #ddd;
+    text-align: left;
+    background: #f5f5f5;
+    padding: 10px;
 }
 
-span.orderMsgTitle{
-	color:#666;
+.accountbenefits h2 {
+    margin: 0 0 15px 0;
 }
 
-.orderInfo-content h3{
-	font-size:14px;
-	color:#333;
-	margin:10px 0;
+.accountbenefits button {
+    margin: 0 0 25px 0;
 }
 
-.orderInfo-productHeader{
-	height:30px;
-	line-height:30px;
-	background:#000;
-	color:#fff;
-	font-size:12px;
-	font-weight:bold;
-	overflow: hidden;
-}
-.orderInfo-productHeader span{
-	display:inline-block;
-	width:50%;
-	text-indent:10px;
-	float:left;
+.accountbenefits h3 {
+    margin: 0 0 3px 0;
+    font-size: 12px;
+    color: #847450;
 }
 
-table.orderInfo-prouductList{
-	margin:0;
-	text-align:left;
-	border-collapse: collapse;
-	border:1px solid #ddd;
-	border-top:none;
-	border-bottom:none;
-}
-table.orderInfo-prouductList tr td{
-	text-align:left;
-	border:none;
-	border-bottom:1px solid #ddd;
-	vertical-align:top;
+.accountbenefits p {
+    margin: 0 0 10px 0;
+    font-size: 12px;
+    color: #847450;
 }
 
-table.orderInfo-prouductList tr td.productList-fun{
-	text-align:center;
-}
-table.orderInfo-prouductList tr td.productList-img{
-	width:28%;
-	padding:1%;
-}
-table.orderInfo-prouductList tr td.productList-img img{
-	width:100%;
-}
-table.orderInfo-prouductList tr td.productList-tex{
-	width:50%;
-}
-table.orderInfo-prouductList tr td.productList-fun{
-	width:20%;
+/* my account menu */
+#my-account-menu {
+    margin: 0 0 10px 0;
+    font-family: Arial, sans-serif;
 }
 
-table.orderInfo-prouductList tr td p{
-	margin-bottom:5px;
-}
-.orderTotalsBox{
-	margin:10px;
-	position:relative;
-}
-table.orderTotals{
-	font-size:12px;
-}
-table.orderTotals tr td{
-	border:none;
-	text-align:right;
-	height:30px;
-	line-height: 30px;
-	padding:0;
+#my-account-menu h1 {
+    color: #847450 !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+    border-bottom: 1px solid #333 !important;
+    border-top: 1px solid #282828 !important;
+    background: url(../images/bg-title.png) repeat rgba(0, 0, 0, 00) !important;
+    letter-spacing: 0.4px !important;
+    padding: 15px !important;
 }
 
-
-table.orderTotals tr td.a-right{
-	width:70%;
+#my-account-menu .ui-accordion-header a {
+    text-decoration: none;
 }
 
-table.orderTotals tr td strong{
-	font-size:14px;
-	color:#cf3a00;
-}
-	h1#my-account-address{
-		padding-bottom:10px;
-		border-bottom:1px solid #ddd;
-		color:#222;
-		font-size:14px;
-		font-weight:bold;
-		padding-top:60px;
-	}
-
-.myAccountBox-addressBook table td{
-	background:#f5f5f5;
-	border:1px solid #ddd;
-	color:#333;
-	padding:0;
-	text-align:left;
-
-	width:100%;
+#my-account-menu .ui-accordion-header a.headerToggle:before {
+    display: inline-block;
+    font-family: snicon;
+    content: '\e611';
+    font-size: 10px;
+    color: #FFF;
+    right: 25px;
+    position: absolute;
 }
 
-table.orderInfo-prouductList tfoot td{
-	text-align:right;
-	background:#fff;
-	font-size:16px;
-	font-weight:bold;
-	color:#fe5907;
+#my-account-menu .ui-accordion-header-active a.headerToggle:before {
+    display: inline-block;
+    font-family: snicon;
+    content: '\e612';
+    font-size: 10px;
+    color: #FFF;
+}
+
+#my-account-menu ul.my-account-menu-item {
+    margin: 0;
+    padding: 0;
+}
+
+#my-account-menu ul.my-account-menu-item li {
+    list-style: none;
+    margin: 0;
+    border-bottom: 1px solid #282828;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+#my-account-menu ul.my-account-menu-item li a {
+    font-weight: bold;
+    text-decoration: none;
+    padding: 15px 0 15px 10px;
+    display: block;
+    font-size: 13px;
+}
+
+/* jQuery ui-accordion Override styles */
+#my-account-menu .ui-accordion {
+    background: #000000 !important;
+}
+
+#my-account-menu .ui-accordion-header {
+    outline: none !important;
+    border: none !important;
+    font-weight: bold;
+}
+
+#my-account-menu .ui-accordion-content {
+    background: none !important;
+    outline: none !important;
+    border: none !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
+    overflow: hidden;
+}
+
+/* my account pages pages */
+.my-account-top {
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    padding: 12px 10px;
+    text-align: left;
+    width: auto;
+}
+
+.my-account-welcome {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 13px;
+    float: left;
+    padding: 8px 0 0 0;
+}
+
+.my-account-logout {
+    float: right;
+    margin: 0 0 0 0;
+}
+
+.my-account-logout a {
+    border: none;
+    display: block;
+    border-radius: 4px;
+    background: rgba(102, 102, 102, 1.00);
+    font-size: 10px;
+    font-weight: bold;
+    width: auto;
+    padding: 8px 12px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.my-account-logout a:hover, .my-account-logout a:active {
+    background: #F3AC00;
+}
+
+#my-account-all h1 {
+    padding: 15px 10px;
+    background: none;
+    color: #F3AC00;
+    font-size: 14px;
+    position: relative;
+    margin: 0;
+    border: none;
+}
+
+#my-account-profile-content, #my-account-info-content, #my-account-address-content, #my-account-orders-content, #my-account-review-content, #my-account-newsletter-content, #my-account-giftcard-content, #my-account-reward-content {
+    padding: 10px;
+    overflow: hidden;
+}
+
+#my-account-all .logInInfoBox h2, #my-account-all .myAccountBox h2 {
+    /*color:#F3AC00;*/
+    /*font-size:13px;*/
+    /*padding-left: 10px;*/
+}
+
+.orderInfo-content h2 {
+    padding-top: 50px;
+    color: #847450;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* my profile page */
+.myAccountBox {
+    margin: 0 0 25px 0;
+}
+
+.myAccountBox table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0 0;
+}
+
+.myAccountBox table td {
+    border: 1px solid #3E3E3E;
+    padding: 12px 2px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.myAccountBox table thead td {
+    background: #303030;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.myAccountBox table tbody tr.tableBgEven td {
 
 }
 
-.orderFuns button{
-	display:inline-block;
-	width:45%;
-	border:none;
-	color:#fff;
-	height:36px;
-	line-height:36px;
-	font-size:14px;
-	font-weight:bold;
-	text-align:center;
-}
-.orderFuns{
-	margin:10px 0;
-}
-.orderFuns button.orderPay{
-	background:#ff5b06;
-}
-.orderFuns button.orderCac{
-	background:#000;
-}
-.myAccountBox-addressBook h2{
-	font-size:14px;
-	color:#333;
-	font-weight:bold;
-}
-.addressFuns span{
-	display:inline-block;
-	width:50%;
-	float:left;
-	height:34px;
-	line-height:34px;
-	text-align:center;
-	border-top:1px solid #ddd;
-	margin-top:10px;
-}
-.addressFuns span.address-edit{
-	border-right:1px solid #ddd;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+.myAccountBox table tbody tr.tableBgOdd td {
+
 }
 
-.addressTit{
-	margin:10px;
+.myAccountBox table tfoot td {
+    background: #000;
+    text-align: right;
+    padding: 12px 10px;
 }
-.addressTit span{
-	display:inline-block;
+
+.myAccountBox table.orderInfoTable td {
+    border: none;
+    text-align: left;
+    padding: 0;
+    color: #847450;
+    line-height: 1.8em;
+    padding-top: 10px;
 }
-.addressTit span.addressTit-name{
-	font-size:14px;
-	color:#333;
-	font-weight:bold;
+
+span.orderMsgTitle {
+    color: #847450;
 }
-.addressTit span.addressTit-icon{
-	padding:2px 5px;
-	background:#333;
-	color:#fff;
-	font-size:12px;
+
+.orderInfo-content h3 {
+    font-size: 14px;
+    color: #847450;
+    margin: 10px 0;
 }
-.creatAddressBtn button.button{
-	background:url(../images/creatNewAddress.jpg) left top no-repeat;
-	background-size:100%;
-	height:50px;
-	width:100%;
-	border:none;
+
+.orderInfo-productHeader {
+    height: 30px;
+    line-height: 30px;
+    background: #d4c8a0;
+    color: #847450;
+    font-size: 12px;
+    font-weight: bold;
+    overflow: hidden;
 }
-.addressWrap{
-	font-size:12px;
-	line-height:1.5em;
-	margin:0 10px;
+
+.orderInfo-productHeader span {
+    display: inline-block;
+    width: 50%;
+    text-indent: 10px;
+    float: left;
 }
-	.rewardPoints tbody td{
-		font-weight:bold;
-		font-size:16px;
-	}
-	.rewardPoints td .yourPoints{
-		color:#97D324;
-	}
 
-	.myAccountBox tr.itemRow td {
-		font-size: 11px;
-		font-weight: normal;
-	}
+table.orderInfo-prouductList {
+    margin: 0;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-bottom: none;
+}
 
-	a.backBtn {
-		background: none !important;
-		border: none !important;
-		font-size: 12px !important;
-		font-weight: normal  !important;
-		text-decoration: underline;
+table.orderInfo-prouductList tr td {
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
 
-	}
-	.myAccountBox table.logInInfo td h3{
-		font-size:12px;
-		margin:10px 0 0 0;
-		font-weight:normal;
-		color:#666;
-	}
-	.myAccountBox table.logInInfo td p a{
-		margin:15px 0 0 0;
-		display:inline-block;
-	}
-	.myAccountBox table .rating-box{
-		margin:0 auto;
-	}
-	.logInInfoBox table td.infoCheck{
-		padding:20px 0;
-	}
-	.change-password{
-		margin:10px 0 0 0;
-	}
-	.logInInfoBox table .validation-advice{
-		color:#cf0000;
-		/*background:#A80000;*/
-		text-align:left;
-		padding:5px 10px;
-		font-size:11px;
-		position:relative;
-		/*top:10px;*/
-		border-radius:0 0 4px 4px ;
-	}
-	.logInInfoBox .logInInfoBtn button, .logInInfoBox table.logInInfoBtn button, .myAccountBox .myAccountBtn button, #my-account-giftcard-content .logInInfoBox .giftBtn button{
-		border:none;
-		width:100%;
-		display:inline-block;
-		border-radius:4px;
-		font-size:12px;
-		font-weight:bold;
-		padding:12px 0;
-		color:#FFF;
-		font-family:Arial;
-		background: rgb(239,190,83); /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(239,190,83,1) 0%, rgba(243,172,0,1) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,190,83,1)), color-stop(100%,rgba(243,172,0,1))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* IE10+ */
-		background: linear-gradient(to bottom, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efbe53', endColorstr='#f3ac00',GradientType=0 ); /* IE6-9 */
-		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
-		margin: 10px 0;
-	}
-	table.logInInfoBtn{
-		margin:30px 0 0 0;
-	}
-	table.logInInfoBtn td.submitBtn{
-		text-align:right;
-	}
-	.logInInfoBox p.required{
-		color:#A80000;
-		float:right;
-		font-size: 12px;
-		margin-top: 15px;
-	}
-	.myAccountBox .myAccountBtn{
-		margin:15px 0 0 0;
-	}
-	.logInInfoBox label.account-select {position:relative;}
-	.logInInfoBox label.account-select:after {
-		content:'\e607';
-		font-size:10px;
-		font-family:'snicon';
-		color:#555;
-		-webkit-transform:rotate(-90deg);
-		-moz-transform:rotate(-90deg);
-		-ms-transform:rotate(-90deg);
-		transform:rotate(-90deg);
-		right:15px;
-		top:0;
-		padding:0;
-		/*border-top:1px solid #999;*/
-		position:absolute;
-		pointer-events:none;
-		z-index:999;
-	}
-	.logInInfoBox label.account-select:before {
-		content:'';
-		right:6px;
-		top:0px;
-		width:20px;
-		height:20px;
-		background:#FFF;
-		position:absolute;
-		pointer-events:none;
-		display:block;
-	}
-	.myAccountBox .myAccountPager ul{
-		text-align:right;
-	}
-	.myAccountBox .myAccountPager ul li{
-		display:inline-block;
-	}
-	.myAccountBox .myAccountPager ul li a{
-		display:inline-block;
-		width:30px;
-		line-height:30px;
-		border:1px solid #555;
-		text-decoration:none;
-		background: rgba(59,59,59,1.00);
-		text-align:center;
-	}
-	.account-load-btn{
-		width:100%;
-		margin:50px auto;
-		max-width:900px;
-	}
-	.account-load-btn button{
-		border:none;
-		width:100%;
-		display:block;
-		margin:0 auto;
-		float:none;
-		border-radius:3px;
-		background:#5B5B5B;
-		font-size:11px;
-		font-weight:bold;
-		padding:15px 0;
-		color:#FFF;
-	}
-	.account-load-btn button:hover{
-		background:#F3AC00;
-		color:#FFF;
-		transition:all 0.2s ease;
-		-webkit-transition:all 0.2s ease;
-	}
-	/* account view my reviews */
-	.myAccountBox .myAccountReviewImg{
-		text-align:center;
-		margin:0 0 20px 0;
-		border-bottom:1px solid #333;
-	}
-	.myAccountBox .myAccountReviewRight{
-		text-align:center;
-		border-bottom:1px solid #333;
-		padding:0 0 15px 0;
-	}
-	.myAccountBox .myAccountReviewRight .avgRating h3{
-		font-size:12px;
-		margin:10px 0 5px 0;
-	}
-	.myAccountBox .myAccountReviewRight .avgRating .rating-box{
-		margin:0 auto 10px auto;
-	}
-	.myAccountBox .myAccountReviewRight .avgRating .rating table td{
-		padding:0;
-		background:none;
-		border:none;
-	}
-	/* account newsletter */
-	#my-account-newsletter-content .bottom-section-content{
-		padding:10px 0 30px 0;
-		border:none;
-	}
-	#my-account-newsletter-content .bottom-section-social{
-		margin:20px 0;
-	}
-	#my-account-newsletter-content .bottom-section-social li{
-		text-align:center;
-	}
+table.orderInfo-prouductList tr td.productList-fun {
+    text-align: center;
+}
 
-	/* account giftcard */
-	#my-account-giftcard-content .logInInfoBox .giftBtn{
-		padding:30px 0 0 0;
-	}
+table.orderInfo-prouductList tr td.productList-img {
+    width: 28%;
+    padding: 1%;
+}
 
-	/* Remove arrow when needed */
-	#label-for-region-id.empty:after,
-	#label-for-shipping-region-id.empty:after,
-	#label-for-billing-region-id.empty:after {content: '' !important;}
+table.orderInfo-prouductList tr td.productList-img img {
+    width: 100%;
+}
 
-	/* account newsletter */
-	#my-account-newsletter-content .bottom-section-content{
-		padding:10px 0 30px 0;
-		border:none;
-	}
-	#my-account-newsletter-content .bottom-section-social{
-		margin:20px 0;
-	}
-	#my-account-newsletter-content .bottom-section-social li{
-		text-align:center;
-	}
+table.orderInfo-prouductList tr td.productList-tex {
+    width: 50%;
+}
+
+table.orderInfo-prouductList tr td.productList-fun {
+    width: 20%;
+}
+
+table.orderInfo-prouductList tr td p {
+    margin-bottom: 5px;
+}
+
+.orderTotalsBox {
+    margin: 10px;
+    position: relative;
+}
+
+table.orderTotals {
+    font-size: 12px;
+}
+
+table.orderTotals tr td {
+    border: none;
+    text-align: right;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+}
+
+table.orderTotals tr td.a-right {
+    width: 70%;
+}
+
+table.orderTotals tr td strong {
+    font-size: 14px;
+    color: #cf3a00;
+}
+
+h1#my-account-address {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #847450;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 60px;
+}
+
+.myAccountBox-addressBook table td {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #847450;
+    padding: 0;
+    text-align: left;
+
+    width: 100%;
+}
+
+table.orderInfo-prouductList tfoot td {
+    text-align: right;
+    background: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fe5907;
+
+}
+
+.orderFuns button {
+    display: inline-block;
+    width: 45%;
+    border: none;
+    color: #d4c8a0;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.orderFuns {
+    margin: 10px 0;
+}
+
+.orderFuns button.orderPay {
+    background: #00285d;
+}
+
+.orderFuns button.orderCac {
+    background: #000;
+}
+
+.myAccountBox-addressBook h2 {
+    font-size: 14px;
+    color: #847450;
+    font-weight: bold;
+}
+
+.addressFuns span {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.addressFuns span.address-edit {
+    border-right: 1px solid #ddd;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.addressTit {
+    margin: 10px;
+}
+
+.addressTit span {
+    display: inline-block;
+}
+
+.addressTit span.addressTit-name {
+    font-size: 14px;
+    color: #847450;
+    font-weight: bold;
+}
+
+.addressTit span.addressTit-icon {
+    padding: 2px 5px;
+    background: #333;
+    color: #fff;
+    font-size: 12px;
+}
+
+.creatAddressBtn button.button {
+    background: url(../images/creatNewAddress.jpg) left top no-repeat;
+    background-size: 100%;
+    height: 50px;
+    width: 100%;
+    border: none;
+}
+
+.addressWrap {
+    font-size: 12px;
+    line-height: 1.5em;
+    margin: 0 10px;
+}
+
+.rewardPoints tbody td {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.rewardPoints td .yourPoints {
+    color: #97D324;
+}
+
+.myAccountBox tr.itemRow td {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+a.backBtn {
+    background: none !important;
+    border: none !important;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    text-decoration: underline;
+
+}
+
+.myAccountBox table.logInInfo td h3 {
+    font-size: 12px;
+    margin: 10px 0 0 0;
+    font-weight: normal;
+    color: #847450;
+}
+
+.myAccountBox table.logInInfo td p a {
+    margin: 15px 0 0 0;
+    display: inline-block;
+}
+
+.myAccountBox table .rating-box {
+    margin: 0 auto;
+}
+
+.logInInfoBox table td.infoCheck {
+    padding: 20px 0;
+}
+
+.change-password {
+    margin: 10px 0 0 0;
+}
+
+.logInInfoBox table .validation-advice {
+    color: #cf0000;
+    /*background:#A80000;*/
+    text-align: left;
+    padding: 5px 10px;
+    font-size: 11px;
+    position: relative;
+    /*top:10px;*/
+    border-radius: 0 0 4px 4px;
+}
+
+.logInInfoBox .logInInfoBtn button, .logInInfoBox table.logInInfoBtn button, .myAccountBox .myAccountBtn button, #my-account-giftcard-content .logInInfoBox .giftBtn button {
+    border: none;
+    width: 100%;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 0;
+    color: #FFF;
+    font-family: Arial;
+    background: rgb(239, 190, 83); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(239, 190, 83, 1)), color-stop(100%, rgba(243, 172, 0, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efbe53', endColorstr='#f3ac00', GradientType=0); /* IE6-9 */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    margin: 10px 0;
+}
+
+table.logInInfoBtn {
+    margin: 30px 0 0 0;
+}
+
+table.logInInfoBtn td.submitBtn {
+    text-align: right;
+}
+
+.logInInfoBox p.required {
+    color: #A80000;
+    float: right;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.myAccountBox .myAccountBtn {
+    margin: 15px 0 0 0;
+}
+
+.logInInfoBox label.account-select {
+    position: relative;
+}
+
+.logInInfoBox label.account-select:after {
+    content: '\e607';
+    font-size: 10px;
+    font-family: 'snicon';
+    color: #555;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    right: 15px;
+    top: 0;
+    padding: 0;
+    /*border-top:1px solid #999;*/
+    position: absolute;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.logInInfoBox label.account-select:before {
+    content: '';
+    right: 6px;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    background: #FFF;
+    position: absolute;
+    pointer-events: none;
+    display: block;
+}
+
+.myAccountBox .myAccountPager ul {
+    text-align: right;
+}
+
+.myAccountBox .myAccountPager ul li {
+    display: inline-block;
+}
+
+.myAccountBox .myAccountPager ul li a {
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    border: 1px solid #555;
+    text-decoration: none;
+    background: rgba(59, 59, 59, 1.00);
+    text-align: center;
+}
+
+.account-load-btn {
+    width: 100%;
+    margin: 50px auto;
+    max-width: 900px;
+}
+
+.account-load-btn button {
+    border: none;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    float: none;
+    border-radius: 3px;
+    background: #5B5B5B;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 15px 0;
+    color: #FFF;
+}
+
+.account-load-btn button:hover {
+    background: #F3AC00;
+    color: #FFF;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+/* account view my reviews */
+.myAccountBox .myAccountReviewImg {
+    text-align: center;
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.myAccountBox .myAccountReviewRight {
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding: 0 0 15px 0;
+}
+
+.myAccountBox .myAccountReviewRight .avgRating h3 {
+    font-size: 12px;
+    margin: 10px 0 5px 0;
+}
+
+.myAccountBox .myAccountReviewRight .avgRating .rating-box {
+    margin: 0 auto 10px auto;
+}
+
+.myAccountBox .myAccountReviewRight .avgRating .rating table td {
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+/* account newsletter */
+#my-account-newsletter-content .bottom-section-content {
+    padding: 10px 0 30px 0;
+    border: none;
+}
+
+#my-account-newsletter-content .bottom-section-social {
+    margin: 20px 0;
+}
+
+#my-account-newsletter-content .bottom-section-social li {
+    text-align: center;
+}
+
+/* account giftcard */
+#my-account-giftcard-content .logInInfoBox .giftBtn {
+    padding: 30px 0 0 0;
+}
+
+/* Remove arrow when needed */
+#label-for-region-id.empty:after,
+#label-for-shipping-region-id.empty:after,
+#label-for-billing-region-id.empty:after {
+    content: '' !important;
+}
+
+/* account newsletter */
+#my-account-newsletter-content .bottom-section-content {
+    padding: 10px 0 30px 0;
+    border: none;
+}
+
+#my-account-newsletter-content .bottom-section-social {
+    margin: 20px 0;
+}
+
+#my-account-newsletter-content .bottom-section-social li {
+    text-align: center;
+}
 
 /*******************************************************************************
 SHOPPING BAG/CHECKOUT
 /******************************************************************************/
 
-	.cart-content {
-		padding: 15px;
-	}
-	.cart-content a {
-		text-decoration:underline;
-	}
+.cart-content {
+    padding: 15px;
+}
 
-	.cart-update{
-		text-align:right;
-	}
-	button.btn-update{
-		background:none;
-		border:none;
-		text-decoration:underline;
-		color:#333;
-	}
-	/* page 2 steps */
-	#checkoutSteps {list-style:none; width:100%; min-width:320px;}
-	#checkoutSteps table{margin:0; padding:0; width:100%;}
-	#checkoutSteps table td p.required{padding:10px 0; color:#A80000;}
-	#checkoutSteps li{margin:0;}
-	#checkoutSteps .allow{cursor:pointer;}
-	#checkoutSteps .active{cursor:default;}
-	#checkoutSteps .step-title .number{display:block; float:left; width:45px; line-height:45px; background:#eee; text-align:center; vertical-align:middle; color:#222; font-weight:bold; font-size:16px; border-bottom:1px solid #ddd;border-top:1px solid #ddd; border-right:1px solid #ddd;}
-	#checkoutSteps .step-title h2{line-height:45px; background:#f5f5f5; font-weight:bold; font-size:13px; padding:0 0 0 10px; display:block; overflow:auto; text-transform:uppercase; color:#333; border-bottom:1px solid #ddd;border-top:1px solid #ddd;}
+.cart-content a {
+    text-decoration: underline;
+}
 
-	/* page 2 loader graphic */
-	#billing-please-wait, #payment-please-wait, #shipping-method-please-wait, #shipping-please-wait, #review-please-wait{color:#F3AC00; font-weight:bold; font-size:12px; margin:0 0 0 30px; text-shadow:none;}
+.cart-update {
+    text-align: right;
+}
 
-	/* page 2 step 1 */
-	#checkoutSteps h4{font-size:13px; color:#333; text-transform:uppercase; margin:0 0 5px 0; border-bottom:1px solid #ddd;}
-	#checkoutSteps #checkout-step-login{padding: 0 15px 30px; background:none;}
-	#checkoutSteps #checkout-step-login .col-1{width:100%; float:none; border-right:none; padding:0 0 25px 0; border-bottom:1px solid #333;}
-	#checkoutSteps #checkout-step-login .col2-set p{font-size:12px; color:#E0E0E0; margin:0 0 5px 0;}
-	#checkoutSteps #checkout-step-login .col2-set li{margin:0 0 20px 0;}
-	#checkoutSteps #checkout-step-login .col-1 tfoot td{text-align:right; vertical-align:bottom;}
-	#step1-login, #step1-register{width:100%;}
-	table#step1-register{margin:30px 0 0 0; font-size:12px;}
-	#checkoutSteps #checkout-step-login .col-1 td button, #paypal-review-wrap .paypal-review-order #review-buttons-container button{
-		/*text-align:center;
+button.btn-update {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: #847450;
+}
+
+/* page 2 steps */
+#checkoutSteps {
+    list-style: none;
+    width: 100%;
+    min-width: 320px;
+}
+
+#checkoutSteps table {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#checkoutSteps table td p.required {
+    padding: 10px 0;
+    color: #A80000;
+}
+
+#checkoutSteps li {
+    margin: 0;
+}
+
+#checkoutSteps .allow {
+    cursor: pointer;
+}
+
+#checkoutSteps .active {
+    cursor: default;
+}
+
+#checkoutSteps .step-title .number {
+    display: block;
+    float: left;
+    width: 45px;
+    line-height: 45px;
+    background: #d4c8a0;
+    text-align: center;
+    vertical-align: middle;
+    color: #847450;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid #d4c8a0;
+    border-top: 1px solid #d4c8a0;
+    border-right: 1px solid #d4c8a0;
+}
+
+#checkoutSteps .step-title h2 {
+    line-height: 45px;
+    background: #d4c8a0;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 0 0 0 10px;
+    display: block;
+    overflow: auto;
+    text-transform: uppercase;
+    color: #847450;
+    border-bottom: 1px solid #d4c8a0;
+    border-top: 1px solid #d4c8a0;
+}
+
+/* page 2 loader graphic */
+#billing-please-wait, #payment-please-wait, #shipping-method-please-wait, #shipping-please-wait, #review-please-wait {
+    color: #F3AC00;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0 0 0 30px;
+    text-shadow: none;
+}
+
+/* page 2 step 1 */
+#checkoutSteps h4 {
+    font-size: 13px;
+    color: #847450;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#checkoutSteps #checkout-step-login {
+    padding: 0 15px 30px;
+    background: none;
+}
+
+#checkoutSteps #checkout-step-login .col-1 {
+    width: 100%;
+    float: none;
+    border-right: none;
+    padding: 0 0 25px 0;
+    border-bottom: 1px solid #333;
+}
+
+#checkoutSteps #checkout-step-login .col2-set p {
+    font-size: 12px;
+    color: #E0E0E0;
+    margin: 0 0 5px 0;
+}
+
+#checkoutSteps #checkout-step-login .col2-set li {
+    margin: 0 0 20px 0;
+}
+
+#checkoutSteps #checkout-step-login .col-1 tfoot td {
+    text-align: right;
+    vertical-align: bottom;
+}
+
+#step1-login, #step1-register {
+    width: 100%;
+}
+
+table#step1-register {
+    margin: 30px 0 0 0;
+    font-size: 12px;
+}
+
+#checkoutSteps #checkout-step-login .col-1 td button, #paypal-review-wrap .paypal-review-order #review-buttons-container button {
+    /*text-align:center;
 		text-decoration:none;
 		border-radius:4px;
 		font-size:12px;
@@ -785,84 +988,168 @@ SHOPPING BAG/CHECKOUT
 		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
 		border:none;
 		margin:15px 0 0 0;*/
-	}
-	#step1-register tbody td{
-		padding:5px;
-		color:#333;
-		font-weight:bold;
-	}
-	#step1-register tfoot td, #step2-continue tfoot td, #step3-continue tfoot td, #step4-continue tfoot td, #step5-continue tfoot td, #step6-continue tfoot td{
-		text-align:right;
-	}
-	#checkoutSteps #checkout-step-login .col-2{width:100%; padding:0;}
-	table td.info-check-area{
-		width:100%;
-	}
-
-#onepage-guest-register-button{
-	border:none;
-	background:url("../images/register-button.jpg") left top no-repeat;
-	width:100%;
-	height:50px;
-	background-size:100%;
 }
-#onepage-customer-login-button{
-	border:none;
-	background:url("../images/login-submit.jpg") left top no-repeat;
-	width:100%;
-	height:50px;
-	background-size:100%;
+
+#step1-register tbody td {
+    padding: 5px;
+    color: #847450;
+    font-weight: bold;
 }
-#step1-login button.button{
-	border:none;
-	background:url("../images/login-submit.jpg") left top no-repeat;
-	width:100%;
-	height:50px;
-	background-size:100%;
-	margin-top:10px;
+
+#step1-register tfoot td, #step2-continue tfoot td, #step3-continue tfoot td, #step4-continue tfoot td, #step5-continue tfoot td, #step6-continue tfoot td {
+    text-align: right;
 }
-	#checkout-login-box {
-		display: none;
-		margin-top: 30px !important;
-	}
 
-	#billing-new-address-form{
-		color:#333;
-	}
+#checkoutSteps #checkout-step-login .col-2 {
+    width: 100%;
+    padding: 0;
+}
 
-	#checkout-step-billing button.button{
-		border:none;
-		background:url("../images/button-continue.jpg") left top no-repeat;
-		width:100%;
-		height:50px;
-		background-size:100%;
-	}
+table td.info-check-area {
+    width: 100%;
+}
 
-	/* page 2 step 2 */
-	table#step2-email, table#step2-ship-to{margin:20px 0 0 0;font-size:12px;}
-	table#step2-email tbody td, table#step2-ship-to tbody td{padding:5px;color:#333;font-weight:bold;vertical-align:middle;}
-	#checkoutSteps #checkout-step-billing{padding:20px 15px; background:none;}
-	#whatsThisToolTipLink {margin:0; font-weight:normal; color:#333; cursor:pointer; display:inline-block;}
-	#whatsThisToolTipLink:hover{text-decoration:underline;}
-	#paymentToolTip{margin:0; padding:10px; border:1px solid #3E3E3E; background:#1A1A1A; width:250px;}
-	#privacyToolTipLink{margin:0 0 0 10px; font-weight:normal; color:#333; cursor:pointer; display:inline-block;}
-	#privacyToolTipLink:hover{text-decoration:underline;}
-	#privacyToolTip{visibility:hidden; position:absolute; padding:10px; width:85%; border:1px solid #3E3E3E; margin:10px 0 0 -2px; background:#1A1A1A;}
-	#privacyToolTip h4{text-transform:none; margin:10px; font-weight:bold; font-size:12px;}
-	#privacyToolTip p{color:#CCC; font-size:12px; font-weight:normal; margin:10px; text-align:justify; line-height:13px;}
+#onepage-guest-register-button {
+    border: none;
+    background: url("../images2019/register-button.jpg") left top no-repeat;
+    width: 100%;
+    height: 50px;
+    background-size: 100%;
+}
 
-	/* page 2 step 3 */
-	#checkoutSteps #checkout-step-shipping{padding:20px 15px 30px 15px; background:none;}
-	table#step3-use-billing{margin:0;}
-	table#step3-use-billing tbody td{
-		padding:5px;
-		color:#FFF;
-		font-weight:bold;
-		vertical-align:middle;
-	}
-	table#step3-continue td.back-link, table#step4-continue td.back-link, table#step5-continue td.back-link, table#step6-continue td.back-link{text-align:left;}
-	#step3-continue td.back-link button, #step4-continue td.back-link button, #step5-continue td.back-link button, #step6-continue td.back-link button{
-		/*text-align:center;
+#onepage-customer-login-button {
+    border: none;
+    background: url("../images2019/login-submit.jpg") left top no-repeat;
+    width: 100%;
+    height: 50px;
+    background-size: 100%;
+}
+
+#step1-login button.button {
+    border: none;
+    background: url("../images2019/login-submit.jpg") left top no-repeat;
+    width: 100%;
+    height: 50px;
+    background-size: 100%;
+    margin-top: 10px;
+}
+
+#checkout-login-box {
+    display: none;
+    margin-top: 30px !important;
+}
+
+#billing-new-address-form {
+    color: #847450;
+}
+
+#checkout-step-billing button.button {
+    border: none;
+    background: url("../images/button-continue.jpg") left top no-repeat;
+    width: 100%;
+    height: 50px;
+    background-size: 100%;
+}
+
+/* page 2 step 2 */
+table#step2-email, table#step2-ship-to {
+    margin: 20px 0 0 0;
+    font-size: 12px;
+}
+
+table#step2-email tbody td, table#step2-ship-to tbody td {
+    padding: 5px;
+    color: #847450;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#checkoutSteps #checkout-step-billing {
+    padding: 20px 15px;
+    background: none;
+}
+
+#whatsThisToolTipLink {
+    margin: 0;
+    font-weight: normal;
+    color: #847450;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#whatsThisToolTipLink:hover {
+    text-decoration: underline;
+}
+
+#paymentToolTip {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #3E3E3E;
+    background: #1A1A1A;
+    width: 250px;
+}
+
+#privacyToolTipLink {
+    margin: 0 0 0 10px;
+    font-weight: normal;
+    color: #847450;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#privacyToolTipLink:hover {
+    text-decoration: underline;
+}
+
+#privacyToolTip {
+    visibility: hidden;
+    position: absolute;
+    padding: 10px;
+    width: 85%;
+    border: 1px solid #3E3E3E;
+    margin: 10px 0 0 -2px;
+    background: #1A1A1A;
+}
+
+#privacyToolTip h4 {
+    text-transform: none;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#privacyToolTip p {
+    color: #CCC;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 10px;
+    text-align: justify;
+    line-height: 13px;
+}
+
+/* page 2 step 3 */
+#checkoutSteps #checkout-step-shipping {
+    padding: 20px 15px 30px 15px;
+    background: none;
+}
+
+table#step3-use-billing {
+    margin: 0;
+}
+
+table#step3-use-billing tbody td {
+    padding: 5px;
+    color: #FFF;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+table#step3-continue td.back-link, table#step4-continue td.back-link, table#step5-continue td.back-link, table#step6-continue td.back-link {
+    text-align: left;
+}
+
+#step3-continue td.back-link button, #step4-continue td.back-link button, #step5-continue td.back-link button, #step6-continue td.back-link button {
+    /*text-align:center;
 		text-decoration:none;
 		border-radius:4px;
 		font-size:12px;
@@ -874,336 +1161,630 @@ SHOPPING BAG/CHECKOUT
 		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
 		border:none;
 		margin:15px 0 0 0;*/
-	}
-#step4-continue tfoot td{
-	width:50%;
 }
-#step4-continue tfoot td button{
-	width:90%;
-	height:40px;
-	color:#fff;
-	border:none;
-	background:#333;
-	font-size:14px;
+
+#step4-continue tfoot td {
+    width: 50%;
 }
-	table#step3-continue{margin:15px 0 0 0;}
-	#step6-continue tfoot td p {
-		text-align: center;
-		padding-top: 20px;
-	}
 
-	/* page 2 step 4 */
-	#checkoutSteps #checkout-step-shipping_method{padding:20px 15px 30px 15px; background:none;}
-	#checkoutSteps #checkout-shipping-method-load p{font-size:13px; color:#FFF; margin:0 0 10px 0; font-weight:bold;}
-	#checkoutSteps #checkout-shipping-method-load #step4-method td{vertical-align:middle;}
-	table#step4-method td{padding:5px;color:#333;font-weight:bold;vertical-align:middle;}
-	#checkoutSteps #checkout-shipping-method-load table td .priceFree{color:#F3AC00; text-transform:uppercase;}
-	table#step4-continue{margin:15px 0 0 0;}
-
-	/* page 2 step 5 */
-	#checkoutSteps #checkout-step-payment{padding:20px 15px 30px 15px; background:none;}
-	#checkoutSteps #checkout-payment-method-load{}
-	#checkoutSteps #checkout-payment-method-load .logInInfoBox table{margin:0 0 20px 0;}
-	table.step5-method td{
-		padding:5px;
-		color:#333;
-		font-weight:bold;
-		vertical-align:middle;
-		text-align:left;
-	}
-	.step5-redirect{margin:10px 0 15px; color:#F3AC00;}
-	#step5-continue{margin:15px 0 0 0;}
-
-	#checkoutSteps #checkout-step-payment #payment-tool-tip{margin:0; padding:10px; border:1px solid #3E3E3E; background:#1A1A1A; width:453px; visibility:hidden; position:absolute;}
-
-	/* page 2 step 6 */
-	#checkoutSteps #checkout-step-review{padding:20px 5px 30px 5px; background:none;}
-	#checkoutSteps #checkout-review-table{width:100%; border-spacing:0; border-collapse:collapse;}
-	#checkoutSteps #checkout-review-table td{padding:5px; line-height:20px; border:1px solid #3E3E3E; font-size:12px; color:#333; }
-	#checkoutSteps #checkout-review-table tr{}
-	#checkoutSteps #checkout-review-table thead{font-weight:bold; text-transform:uppercase;}
-	#checkoutSteps #checkout-review-table thead td{background:#313131; padding:10px; color:#fff;}
-
-	#checkoutSteps #checkout-review-table tbody td{background:none;}
-	#checkoutSteps #checkout-review-table tbody h3{color:#333; font-weight:bold; font-size:12px;}
-	#checkoutSteps #checkout-review-table tbody dl{line-height:20px;}
-	#checkoutSteps #checkout-review-table tbody dt{float:left; margin:0 5px 0 0;}
-	#checkoutSteps #checkout-review-table td.align-center{text-align:center;}
-	#checkoutSteps #checkout-review-table td.align-right{text-align:right;}
-	#checkoutSteps #checkout-review-table td.align-left{text-align:left;}
-	#checkoutSteps #checkout-review-table tfoot .subTotal{font-size:12px; color:#333;}
-	#checkoutSteps #checkout-review-table tfoot .grandTotal{font-size:14px; color:#F3AC00; font-weight:bold;}
-	#checkoutSteps #checkout-review-table tfoot .price{font-size:12px; color:#333;}
-	#checkoutSteps #checkout-review-table tfoot .grandPrice{font-size:14px; color:#F3AC00; font-weight:bold;}
-
-	table#step6-continue{margin:15px 0 0 0;}
-	table#step6-continue td.back-link{vertical-align:middle; text-align:left;}
-	#checkout-review-table a.btn-remove{float:left;}
-
-	#step6-continue tfoot td{
-		width:50%;
-	}
-#step6-continue tfoot td button{
-	width:90%;
-	height:35px;
-	line-height:35px;
-	font-size:14px;
-	font-weight:bold;
-	border:none;
-	background:#000;
-	color:#fff;
-	text-align:center;
+#step4-continue tfoot td button {
+    width: 90%;
+    height: 40px;
+    color: #d4c8a0;
+    border: none;
+    background: #00285d;
+    font-size: 14px;
 }
-	/* Paypal review order page */
-	#paypal-review-wrap{width:100%;}
-	#paypal-review-wrap .paypal-review-order{width:100%; margin:30px 0 0 0;}
 
-	.paypal-billing-add {display:none;}
-	#shipping_address_overlay{position:absolute; left: 0; width:100%; background: black; opacity:0;}
-
-	.paypal-review-order .logInInfoBox table {
-	    width: 97%;
-	}
-
-	#paypal-review-wrap h1{
-		font-weight:bold;
-		font-size:14px;
-		margin:0;
-		border-bottom:1px solid #333;
-		background:url(../images/bg-title.png) repeat rgba(0,0,0,00);
-		letter-spacing:0.4px;
-		color:#F3AC00;
-		padding:15px;
-	}
-	#paypal-review-wrap h2{
-		font-weight:bold;
-		font-size:13px;
-		margin:0;
-		background:none;
-		letter-spacing:0.4px;
-		color:#FFF;
-		padding:15px;
-	}
-	#paypal-review-wrap .paypal-review-order h2{line-height:45px; background:#252525; font-weight:bold; font-size:12px; padding:0 15px 0 15px; display:block; overflow:auto; text-transform:uppercase; color:#F3AC00;}
-	#paypal-review-wrap .paypal-review-order .info-set{margin:0; background:none; padding:5px 0 30px;}
-	#paypal-review-wrap .paypal-review-order .info-set .logInInfoBox{margin:0;}
-	table.paypal-review-check-box{margin:25px 0 0 0;}
-	table.paypal-review-check-box td{ padding:5px; color:#FFF; font-weight:bold;}
-	#paypal-review-wrap #shipping_method_update {color:#A80000; font-weight:bold; font-size:12px; margin:10px 0 0 0;}
-	.paypal-shipping-method{margin:20px 0 0 0;}
-
-	#paypal-review-wrap .paypal-review-order h2 a{color:#F3AC00; font-size:10px;text-decoration:underline;}
-
-	#paypal-review-wrap .paypal-review-order #paypal-review-table{width:100%; border-spacing:0; border-collapse:collapse;margin: 0 auto; width: 95%;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table td{padding:10px; line-height:20px; border:1px solid #3E3E3E; font-size:12px; color:#CCC; }
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tr{}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table thead{font-weight:bold; text-transform:uppercase;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table thead td{background:#313131; padding:10px; color:#FFF;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tbody td{background:none;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tbody h3{color:#FFF; font-weight:bold; font-size:12px;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tbody dl{line-height:20px;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tbody dt{float:left; margin:0 5px 0 0;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table td.align-center{text-align:center;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table td.align-right{text-align:right;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-tablee td.align-left{text-align:left;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .subTotal{font-size:14px; color:#FFF;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .grandTotal{font-size:15px; color:#F3AC00; font-weight:bold;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .price{font-size:14px; color:#FFF;}
-	#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .grandPrice{font-size:15px; color:#F3AC00; font-weight:bold;}
-
-	#paypal-review-wrap .paypal-review-order #review-buttons-container{padding:0 15px;}
-	#paypal-review-wrap #review-buttons-container td.back-link button{
-		text-align:center;
-		text-decoration:none;
-		border-radius:4px;
-		font-size:12px;
-		font-weight:bold;
-		padding:12px;
-		width:130px;
-		color:#FFF;
-		background:#555;
-		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
-		border:none;
-		margin:15px 0 0 0;
-	}
-	#pay-pal-place-order{width:100%;}
-	#pay-pal-place-order td.back-link{text-align:left;}
-	#pay-pal-place-order td{text-align:right;}
-
-
-
-#cart-wrapper{
-	padding-top:50px;
+table#step3-continue {
+    margin: 15px 0 0 0;
 }
-	#cart-wrapper h1{
-		font-weight:bold;
-		font-size:16px;
-		margin:0;
-		border-bottom:none;
-		border-top:none;
-		/*background:url(../images/bg-title.png) repeat rgba(0,0,0,00);*/
-		letter-spacing:0.4px;
-		color:#333;
-		padding:15px;
-	}
 
-	#cart-wrapper .cart-content{
-		padding:20px 15px 20px 15px;
-		color:#333;
-	}
-#cart-wrapper .newBox{
-	padding:15px 0;
-	text-align:center;
-	background:#f5f5f5;
-	border-top:1px solid #ddd;
-	border-bottom:1px solid #ddd;
-	font-size:14px;
-	color:#222;
-	margin-bottom:15px;
+#step6-continue tfoot td p {
+    text-align: center;
+    padding-top: 20px;
 }
-#cart-wrapper .cart-empty{
-	margin:0 15px;
-	color:#222;
-	font-size:14px;
-	padding-bottom:20px;
-	border-bottom:1px solid #ddd;
-	margin-bottom:200px;
-}
-#cart-wrapper .cart-empty span{
-	display:inline-block;
-}
-#cart-wrapper .cart-empty span a{
-	color:#f3c000;
-}
-.cart-box-full{
-	color:#fff;
-	font-size:14px;
-	padding:15px 0;
-	background:#000;
-	text-align:center;
-}
-#shopping-cart-table{
-		width:100%;
-		text-align:left;
-		margin:0 0 10px 0;
-	border:1px solid #ddd;
-	}
-	#shopping-cart-table tr{
-		/*border-bottom:1px solid #333;*/
-	}
-	#shopping-cart-table td{
-		vertical-align:middle;
-		background:rgba(233,233,233,0);
-	}
-	#shopping-cart-table td.item-image{
-		width:100px;
-		padding:15px 0;
-	}
-	#shopping-cart-table td.item-image img{
-		width:100px;
-	}
 
-	#shopping-cart-table td.item-info{
-		padding:15px 5px;
-	}
-	#shopping-cart-table td.item-info h2{
-		line-height:12px;
-	}
-	#shopping-cart-table td.item-info h2 a{
-		font-size:12px;
-		color:#333;
-		font-weight:bold;
-		text-decoration:none;
-	}
-	#shopping-cart-table td.item-info dl{
-		margin:10px 0 0 0;
-		font-size:12px;
-		line-height:17px;
-	}
-	#shopping-cart-table td.item-info dt{
-		float:left;
-		margin:0 5px 0 0;
-		font-weight:bold;
-	}
-	#shopping-cart-table td.item-info input{
-		border:none;
-		background:rgba(180,180,180,1.00);
-		text-align:center;
-		outline:none;
-	}
-	#shopping-cart-table td.item-funs{
-		padding:15px;
-		vertical-align: top;
-	}
-#shopping-cart-table td.item-funs>div{
-	margin-bottom:10px;
+/* page 2 step 4 */
+#checkoutSteps #checkout-step-shipping_method {
+    padding: 20px 15px 30px 15px;
+    background: none;
 }
-#shopping-cart-table td.item-funs>div.item-funs-nums input{
-	width:60%;
-	padding:3px 0;
-	text-indent:10px;
-}
-#shopping-cart-table td.item-funs>div.item-funs-price{
-	color:#ff5a05;
-	font-size:14px;
-}
-#shopping-cart-table td.item-funs>div.item-funs-price span.checkOutVm{
-	color:#666;
-}
-#shopping-cart-table td.item-funs>div.item-del a{
-	color:#fff;
-	text-decoration:none;
-	display:inline-block;
-	padding:3px 0;
-	background:#000;
-	width:100%;
-	text-align:center;
-}
-	#shopping-cart-table tfoot td{
-		padding:10px 0;
-		text-align:left;
-	}
-	#shopping-cart-table tfoot button{
-		border:none;
-		float:none;
-		border-radius:4px;
-		background:#5B5B5B;
-		font-weight:bold;
-		font-size:11px;
-		padding:8px 15px;
-		color:#FFF;
-	}
 
-	#shopping-cart-totals-table{
-		width:100%;
-		/*font-weight:bold;*/
-		color:#333;
-		font-size:13px;
-		background:#f5f5f5;
-	}
+#checkoutSteps #checkout-shipping-method-load p {
+    font-size: 13px;
+    color: #FFF;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
 
-	#shopping-cart-totals-table tfoot tr{
-		border-bottom:1px solid #333;
-	}
-	#shopping-cart-totals-table td{
-		padding:10px 0;
-		text-align:left;
-		text-indent:10px;
-	}
-	#shopping-cart-totals-table tfoot{
-		color:#333;
-		font-weight:bold;
-	}
-	#shopping-cart-checkout-types{
-		width:100%;
-		margin: 0 auto 15px auto
-	}
-	#shopping-cart-checkout-types td{
-		text-align:center;
-		padding:5px 0;
-	}
-	#shopping-cart-checkout-types td button{
-		/*text-align:center;
+#checkoutSteps #checkout-shipping-method-load #step4-method td {
+    vertical-align: middle;
+}
+
+table#step4-method td {
+    padding: 5px;
+    color: #847450;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#checkoutSteps #checkout-shipping-method-load table td .priceFree {
+    color: #F3AC00;
+    text-transform: uppercase;
+}
+
+table#step4-continue {
+    margin: 15px 0 0 0;
+}
+
+/* page 2 step 5 */
+#checkoutSteps #checkout-step-payment {
+    padding: 20px 15px 30px 15px;
+    background: none;
+}
+
+#checkoutSteps #checkout-payment-method-load {
+}
+
+#checkoutSteps #checkout-payment-method-load .logInInfoBox table {
+    margin: 0 0 20px 0;
+}
+
+table.step5-method td {
+    padding: 5px;
+    color: #847450;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.step5-redirect {
+    margin: 10px 0 15px;
+    color: #F3AC00;
+}
+
+#step5-continue {
+    margin: 15px 0 0 0;
+}
+
+#checkoutSteps #checkout-step-payment #payment-tool-tip {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #3E3E3E;
+    background: #1A1A1A;
+    width: 453px;
+    visibility: hidden;
+    position: absolute;
+}
+
+/* page 2 step 6 */
+#checkoutSteps #checkout-step-review {
+    padding: 20px 5px 30px 5px;
+    background: none;
+}
+
+#checkoutSteps #checkout-review-table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#checkoutSteps #checkout-review-table td {
+    padding: 5px;
+    line-height: 20px;
+    border: 1px solid #3E3E3E;
+    font-size: 12px;
+    color: #847450;
+}
+
+#checkoutSteps #checkout-review-table tr {
+}
+
+#checkoutSteps #checkout-review-table thead {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#checkoutSteps #checkout-review-table thead td {
+    background: #d4c8a0;
+    padding: 10px;
+    color: #847450;
+}
+
+#checkoutSteps #checkout-review-table tbody td {
+    background: none;
+}
+
+#checkoutSteps #checkout-review-table tbody h3 {
+    color: #847450;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#checkoutSteps #checkout-review-table tbody dl {
+    line-height: 20px;
+}
+
+#checkoutSteps #checkout-review-table tbody dt {
+    float: left;
+    margin: 0 5px 0 0;
+}
+
+#checkoutSteps #checkout-review-table td.align-center {
+    text-align: center;
+}
+
+#checkoutSteps #checkout-review-table td.align-right {
+    text-align: right;
+}
+
+#checkoutSteps #checkout-review-table td.align-left {
+    text-align: left;
+}
+
+#checkoutSteps #checkout-review-table tfoot .subTotal {
+    font-size: 12px;
+    color: #847450;
+}
+
+#checkoutSteps #checkout-review-table tfoot .grandTotal {
+    font-size: 14px;
+    color: #F3AC00;
+    font-weight: bold;
+}
+
+#checkoutSteps #checkout-review-table tfoot .price {
+    font-size: 12px;
+    color: #847450;
+}
+
+#checkoutSteps #checkout-review-table tfoot .grandPrice {
+    font-size: 14px;
+    color: #F3AC00;
+    font-weight: bold;
+}
+
+table#step6-continue {
+    margin: 15px 0 0 0;
+}
+
+table#step6-continue td.back-link {
+    vertical-align: middle;
+    text-align: left;
+}
+
+#checkout-review-table a.btn-remove {
+    float: left;
+}
+
+#step6-continue tfoot td {
+    width: 50%;
+}
+
+#step6-continue tfoot td button {
+    width: 90%;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background: #00285d;
+    color: #d4c8a0;
+    text-align: center;
+}
+
+/* Paypal review order page */
+#paypal-review-wrap {
+    width: 100%;
+}
+
+#paypal-review-wrap .paypal-review-order {
+    width: 100%;
+    margin: 30px 0 0 0;
+}
+
+.paypal-billing-add {
+    display: none;
+}
+
+#shipping_address_overlay {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: black;
+    opacity: 0;
+}
+
+.paypal-review-order .logInInfoBox table {
+    width: 97%;
+}
+
+#paypal-review-wrap h1 {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    border-bottom: 1px solid #333;
+    background: url(../images/bg-title.png) repeat rgba(0, 0, 0, 00);
+    letter-spacing: 0.4px;
+    color: #F3AC00;
+    padding: 15px;
+}
+
+#paypal-review-wrap h2 {
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+    background: none;
+    letter-spacing: 0.4px;
+    color: #FFF;
+    padding: 15px;
+}
+
+#paypal-review-wrap .paypal-review-order h2 {
+    line-height: 45px;
+    background: #252525;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0 15px 0 15px;
+    display: block;
+    overflow: auto;
+    text-transform: uppercase;
+    color: #F3AC00;
+}
+
+#paypal-review-wrap .paypal-review-order .info-set {
+    margin: 0;
+    background: none;
+    padding: 5px 0 30px;
+}
+
+#paypal-review-wrap .paypal-review-order .info-set .logInInfoBox {
+    margin: 0;
+}
+
+table.paypal-review-check-box {
+    margin: 25px 0 0 0;
+}
+
+table.paypal-review-check-box td {
+    padding: 5px;
+    color: #FFF;
+    font-weight: bold;
+}
+
+#paypal-review-wrap #shipping_method_update {
+    color: #A80000;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 10px 0 0 0;
+}
+
+.paypal-shipping-method {
+    margin: 20px 0 0 0;
+}
+
+#paypal-review-wrap .paypal-review-order h2 a {
+    color: #F3AC00;
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 95%;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table td {
+    padding: 10px;
+    line-height: 20px;
+    border: 1px solid #3E3E3E;
+    font-size: 12px;
+    color: #CCC;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tr {
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table thead {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table thead td {
+    background: #313131;
+    padding: 10px;
+    color: #FFF;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tbody td {
+    background: none;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tbody h3 {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tbody dl {
+    line-height: 20px;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tbody dt {
+    float: left;
+    margin: 0 5px 0 0;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table td.align-center {
+    text-align: center;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table td.align-right {
+    text-align: right;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-tablee td.align-left {
+    text-align: left;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .subTotal {
+    font-size: 14px;
+    color: #FFF;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .grandTotal {
+    font-size: 15px;
+    color: #F3AC00;
+    font-weight: bold;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .price {
+    font-size: 14px;
+    color: #FFF;
+}
+
+#paypal-review-wrap .paypal-review-order #paypal-review-table tfoot .grandPrice {
+    font-size: 15px;
+    color: #F3AC00;
+    font-weight: bold;
+}
+
+#paypal-review-wrap .paypal-review-order #review-buttons-container {
+    padding: 0 15px;
+}
+
+#paypal-review-wrap #review-buttons-container td.back-link button {
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px;
+    width: 130px;
+    color: #FFF;
+    background: #555;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    border: none;
+    margin: 15px 0 0 0;
+}
+
+#pay-pal-place-order {
+    width: 100%;
+}
+
+#pay-pal-place-order td.back-link {
+    text-align: left;
+}
+
+#pay-pal-place-order td {
+    text-align: right;
+}
+
+#cart-wrapper {
+    padding-top: 50px;
+}
+
+#cart-wrapper h1 {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+    border-bottom: none;
+    border-top: none;
+    /*background:url(../images/bg-title.png) repeat rgba(0,0,0,00);*/
+    letter-spacing: 0.4px;
+    color: #847450;
+    padding: 15px;
+}
+
+#cart-wrapper .cart-content {
+    padding: 20px 15px 20px 15px;
+    color: #847450;
+}
+
+#cart-wrapper .newBox {
+    padding: 15px 0;
+    text-align: center;
+    background: #d4c8a0;
+    border-top: 1px solid #847450;
+    border-bottom: 1px solid #847450;
+    font-size: 14px;
+    color: #847450;
+    margin-bottom: 15px;
+}
+
+#cart-wrapper .cart-empty {
+    margin: 0 15px;
+    color: #847450;
+    font-size: 14px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #847450;
+    margin-bottom: 200px;
+}
+
+#cart-wrapper .cart-empty span {
+    display: inline-block;
+}
+
+#cart-wrapper .cart-empty span a {
+    color: #f3c000;
+}
+
+.cart-box-full {
+    color: #847450;
+    font-size: 14px;
+    padding: 15px 0;
+    background: #d4c8a0;
+    text-align: center;
+}
+
+#shopping-cart-table {
+    width: 100%;
+    text-align: left;
+    margin: 0 0 10px 0;
+    border: 1px solid #d4c8a0;
+}
+
+#shopping-cart-table tr {
+    /*border-bottom:1px solid #333;*/
+}
+
+#shopping-cart-table td {
+    vertical-align: middle;
+    background: rgba(233, 233, 233, 0);
+}
+
+#shopping-cart-table td.item-image {
+    width: 100px;
+    padding: 15px 0;
+}
+
+#shopping-cart-table td.item-image img {
+    width: 100px;
+}
+
+#shopping-cart-table td.item-info {
+    padding: 15px 5px;
+}
+
+#shopping-cart-table td.item-info h2 {
+    line-height: 12px;
+}
+
+#shopping-cart-table td.item-info h2 a {
+    font-size: 12px;
+    color: #847450;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#shopping-cart-table td.item-info dl {
+    margin: 10px 0 0 0;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+#shopping-cart-table td.item-info dt {
+    float: left;
+    margin: 0 5px 0 0;
+    font-weight: bold;
+}
+
+#shopping-cart-table td.item-info input {
+    border: none;
+    background: rgba(180, 180, 180, 1.00);
+    text-align: center;
+    outline: none;
+}
+
+#shopping-cart-table td.item-funs {
+    padding: 15px;
+    vertical-align: top;
+}
+
+#shopping-cart-table td.item-funs > div {
+    margin-bottom: 10px;
+}
+
+#shopping-cart-table td.item-funs > div.item-funs-nums input {
+    width: 60%;
+    padding: 3px 0;
+    text-indent: 10px;
+}
+
+#shopping-cart-table td.item-funs > div.item-funs-price {
+    color: #ff5a05;
+    font-size: 14px;
+}
+
+#shopping-cart-table td.item-funs > div.item-funs-price span.checkOutVm {
+    color: #666;
+}
+
+#shopping-cart-table td.item-funs > div.item-del a {
+    color: #847450;
+    text-decoration: none;
+    display: inline-block;
+    padding: 3px 0;
+    background: #d4c8a0;
+    width: 100%;
+    text-align: center;
+}
+
+#shopping-cart-table tfoot td {
+    padding: 10px 0;
+    text-align: left;
+}
+
+#shopping-cart-table tfoot button {
+    border: none;
+    float: none;
+    border-radius: 4px;
+    background: #5B5B5B;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 8px 15px;
+    color: #FFF;
+}
+
+#shopping-cart-totals-table {
+    width: 100%;
+    /*font-weight:bold;*/
+    color: #847450;
+    font-size: 13px;
+    background: #d4c8a0;
+}
+
+#shopping-cart-totals-table tfoot tr {
+    border-bottom: 1px solid #333;
+}
+
+#shopping-cart-totals-table td {
+    padding: 10px 0;
+    text-align: left;
+    text-indent: 10px;
+}
+
+#shopping-cart-totals-table tfoot {
+    color: #847450;
+    font-weight: bold;
+}
+
+#shopping-cart-checkout-types {
+    width: 100%;
+    margin: 0 auto 15px auto
+}
+
+#shopping-cart-checkout-types td {
+    text-align: center;
+    padding: 5px 0;
+}
+
+#shopping-cart-checkout-types td button {
+    /*text-align:center;
 		text-decoration:none;
 		text-transform:uppercase;
 		border-radius:4px;
@@ -1225,13 +1806,14 @@ SHOPPING BAG/CHECKOUT
 		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
 		border:none;
 		margin:15px 0 5px 0;*/
-		width:100%;
-		height:50px;
-		background:url(../images/cart-next.jpg) left top no-repeat;
-		background-size:100%;
-		border:none;
-	}
-	/*#shopping-cart-checkout-types td button:before{
+    width: 100%;
+    height: 50px;
+    background: url(../images/cart-next.jpg) left top no-repeat;
+    background-size: 100%;
+    border: none;
+}
+
+/*#shopping-cart-checkout-types td button:before{
 		content: "\e614";
 		font-family: snicon;
 		padding-right: 10px;
@@ -1241,758 +1823,841 @@ SHOPPING BAG/CHECKOUT
 		top: 3px;
 	}*/
 
-	.shopping-cart-shipping-tax, .shopping-cart-shipping-calc{
-		width:100%;
-		margin-top: 0 !important;
-	}
-	.shopping-cart-shipping-calc td{
-		padding:5px;
-	}
-
-	.shopping-cart-shipping-calc td:nth-of-type(1){
-		width: 30px;
-		padding-left:30px;
-	}
-
-	.shopping-cart-shipping-tax td button, .shopping-cart-shipping-calc td button{
-		text-align:center;
-		text-decoration:none;
-		border-radius:4px;
-		font-size:12px;
-		font-weight:bold;
-		padding:8px 15px;
-		color:#FFF;
-		background:#5B5B5B;
-		border:none;
-		margin:20px 0 5px 0;
-	}
-
-	.backItem{
-		background:#444;
-		color:#e4e4e4;
-		/*margin:10px 0;*/
-		font-size:12px;
-		line-height: 1.6em;
-		padding:15px 0;
-	}
-	.backItemBox{
-		margin:15px;
-		padding-bottom:15px;
-		border-bottom:1px solid #e4e4e4;
-	}
-.backItemBox h3{
-	font-size:14px;
-	font-weight:bold;
-	margin-bottom:10px;
-}
-.backItemBox ul li{
-	list-style: inside none disc;
+.shopping-cart-shipping-tax, .shopping-cart-shipping-calc {
+    width: 100%;
+    margin-top: 0 !important;
 }
 
-.backItemBox p a{
-	color:#e4e4e4;
-	text-decoration:underline;
-}
-	.calculator{
-		color:#E0E0E0;
-		margin:15px 0 0 0;
-	}
-	.calculator h2{
-		color:#FFF;
-		font-size:13px;
-	}
-	#cart-wrapper .logInInfoBox{
-		margin:0;
-	}
-	table.form-horizontal{
-		width:100%;
-		margin:0 auto;
-		border-collapse:separate;
-		border-spacing:1px 0;
-	}
-	table.form-horizontal td{
-		vertical-align:middle;
-	}
-	table.form-horizontal td.form-horizontal-label{
-		padding:0 0 4px 0;
-		font-weight:bold;
-		color:#FFFFFF;
-	}
-	table.form-horizontal td.form-horizontal-input{
-		background:rgba(255,255,255,1.00);
-		border-radius:5px 0 0 5px;
-		padding:10px;
-		width: 80%;
-	}
-	table.form-horizontal td.form-horizontal-btn{
-		background:rgba(102,102,102,1);
-		text-align:left;
-		border-radius:0 5px 5px 0;
-		overflow:hidden;
-		padding:0 5px;
-		width: 100px;
-		max-width: 100px;
-	}
-	table.form-horizontal td.form-horizontal-btn:hover{
-		background:rgba(243,172,0,1);
-		cursor:pointer;
-		transition:all 0.2s ease-in-out;
-		-webkit-transition:all 0.2s ease-in-out;
-	}
-	table.form-horizontal td.form-horizontal-input input{
-		width:100%;
-		border-color:rgba(255,255,255,1.00);
-		border-top:rgba(255,255,255,1.00);
-		border-left:rgba(255,255,255,1.00);
-		outline:none;
-		background:none;
-		color:rgba(0,0,0,1.00);
-	}
-	table.form-horizontal td.form-horizontal-btn button{
-		width:100%;
-		background:none;
-		border:none;
-		color:rgba(255,255,255,1.00);
-		font-weight:bold;
-		font-size:10px;
-		display:block;
-		position:relative;
-		margin:0;
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
-		text-shadow:-1px -1px 0 rgba(0,0,0,0.4);
-	}
-	table.form-horizontal .validation-advice{
-		color:#FFF;
-		background:#A80000;
-		text-align:center;
-		padding:5px 10px;
-		width:100%;
-		font-size:11px;
-		position:relative;
-		top:10px;
-		left:-10px;
-		border-radius:0 0 0 5px ;
-	}
-
-	.couponTit{
-		font-size:14px;
-		color:#333;
-		font-weight:bold;
-	}
-	.cart-coupon span{
-		display:inline-block;
-		float:left;
-		height:40px;
-	}
-.cart-coupon span.couponInput{
-	width:64%;
-	margin-right:1%;
-}
-.cart-coupon span.couponSubmit{
-	width:35%;
-}
-.cart-coupon span.couponInput input{
-	border:1px solid #ddd;
-	color:#333;
-	text-indent:10px;
-	height:28px;
-	width:100%;
-	padding:0;
-}
-.cart-coupon span.couponSubmit button.button{
-	height:30px;
-	width:100%;
-	background:url(../images/cart-yhq.jpg) left top no-repeat;
-	background-size:100% 30px;
-	border:none;
-}
-.cart-coupon span.couponSubmit.couponCancel button.button{
-	background:url(../images/couCancel.png) left top no-repeat;
-	background-size:100% 30px;
-}
-	.discount{
-		margin:0 0 15px 0;
-	}
-	.giftcard .checkBalance{
-		margin:15px 0 0 0;
-	}
-	#cart-wrapper .step-content{
-		padding:20px 0;
-		color:#333;
-		/*margin:0 10px;*/
-	}
-
-	.cancelCoupon{
-		text-align:right;
-		margin-bottom:20px;
-	}
-.cancelCoupon button{
-	color:#333;
-	text-decoration:underline;
-	border:none;
-	background:none;
-}
-#cart-wrapper h1.step-title{
-	border-bottom:1px solid #ddd;
-}
-#cart-wrapper .step-content select{
-	color:#333;
-	width:100%;
-}
-#cart-wrapper .step-content input{
-	color:#333;
-	vertical-align:middle;
+.shopping-cart-shipping-calc td {
+    padding: 5px;
 }
 
-.bill-kinds-tax input{
-	margin-top:10px;
-	width:100%;
-	height:30px;
-	line-height:30px;
-	text-indent:10px;
-	border:1px solid #ddd;
+.shopping-cart-shipping-calc td:nth-of-type(1) {
+    width: 30px;
+    padding-left: 30px;
 }
 
-.bill-kinds-default{
-	width:100%;
-	position:relative;
-}
-.bill-kinds-default>div{
-
-}
-
-	.logInInfoBox .shopping-cart-shipping-tax label.account-select:after {
-		background: none repeat scroll 0 0 #FFFFFF;
-		height: 25px;
-		padding: 10px;
-		right: -10px !important;
-		top: -15px;
-	}
-
-	table.shopping-cart-shipping-calc.billing {
-		margin-top: 25px !important;
-		font-size: 12px !important;
-	}
-
-	#whatsThisToolTipLink {
-		background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-		padding-left: 20px;
-	}
-
-	#whatsThisToolTipLink a {
-		color: #FAC000;
-		text-decoration: underline;
-	}
-
-	label[for=p_method_paypal_express] a {
-		text-decoration: underline;
-	}
-	#payment_form_paypal_express li.form-alt {
-		color: #FAC000;
-		margin: 10px 0 10px 20px;
-	}
-
-	.checkout-onepage-payment-additional-giftcardaccount p.note {
-		padding: 20px;
-		line-height: 1.8;
-	}
-	.checkout-onepage-payment-additional-giftcardaccount p.note a{
-		text-decoration: underline;
-	}
-
-	#checkout-step-review a {
-		text-decoration: underline;
-	}
-
-	/* Guest Popup (success.phtml) */
-	.ui-dialog.accountCreation {
-		height: 90% !important;
-		margin: 0 auto !important;
-		overflow-y: scroll !important;
-		overflow-x: hidden !important;
-		padding-top: 10px;
-		top: 10px !important;
-		width: 90% !important;
-		z-index: 10001;
-	}
-
-	.ui-dialog-content.accountCreation p a{
-		color:#FAC000 !important;
-		text-decoration: underline;
-	}
-
-	.ui-dialog.accountCreation p.required, .rStar {
-		color: #A80000 !important;
-		font-size: 12px !important;
-	}
-
-	.logInInfoBox table.guestPopup td {
-		vertical-align: top;
-		width: 50%;
-	}
-	.logInInfoBox table.guestPopup td button.buttonLeft {
-		/*float: left;*/
-		text-align:center;
-		text-decoration:none;
-		border-radius:4px;
-		font-size:12px;
-		padding:10px;
-		font-family:Arial;
-		width:100%;
-		color:#FFF;
-		border:none;
-		background:#555;
-		box-shadow:1px 1px 1px rgba(0,0,0,0.5);
-	}
-	.logInInfoBox table.guestPopup td button.buttonRight {
-		/*float: left;*/
-		text-align:center;
-		text-transform:uppercase;
-		text-decoration:none;
-		border:none;
-		width:100% !important;
-		margin: 5px 0;
-		display:inline-block;
-		border-radius:4px;
-		font-size:12px;
-		font-weight:bold;
-		padding:10px 10px;
-		color:#FFF;
-		font-family:Arial;
-		background: rgb(239,190,83) !important; /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(239,190,83,1) 0%, rgba(243,172,0,1) 100%) !important; /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,190,83,1)), color-stop(100%,rgba(243,172,0,1))) !important; /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* IE10+ */
-		background: linear-gradient(to bottom, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efbe53', endColorstr='#f3ac00',GradientType=0 ) !important; /* IE6-9 */
-		box-shadow:1px 1px 1px rgba(0,0,0,0.5) !important;
-	}
-
-	#catalog-search-please-wait,
-	#account-please-wait,
-	#billing-please-wait,
-	#review-please-wait,
-	#shipping-method-please-wait,
-	#shipping-please-wait,
-	#payment-please-wait {
-		position:fixed;
-		width:32px;
-		height:32px;
-		margin: 0 auto 0 -20px !important;
-	}
-
-	/* checkout address mismatch dialog */
-	.mismatch a.tell-me-more-link {
-		color: #FCA000;
-		text-decoration:underline;
-		line-height: 30px;
-	}
-	.mismatch {
-		width: 90% !important;
-		overflow-y: auto;
-		overflow-x: hidden;
-		padding: 20px 0;
-	}
-	#mismatch {
-		padding: 0 20px !important;
-		width: auto;
-		height: auto;
-	}
-
-	.mismatch p, .mismatch div,
-	#mismatch {
-		font-size:14px !important;
-		font-weight: normal !important;
-		line-height:17px !important;
-		color: #FFF !important;
-		text-align: justify !important;
-	}
-
-	#tell-me-more-shipping {display:none;
-		transition:all 0.3s ease-in-out !important;
-		-webkit-transition:all 0.3s ease-in-out !important;
-	}
-	#tell-me-more-shipping.open {
-		display:block;
-		transition:all 0.3s ease-in-out !important;
-		-webkit-transition:all 0.3s ease-in-out !important;
-		margin-top: 20px !important;
-		overflow: hidden;
-	}
-
-	.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset {
-		float: none !important;
-		margin: 20px 0 !important;
-		padding: 0 !important;
-	}
-	.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset button.selected {
-		-webkit-box-shadow:0 0 10px 2px rgba(255, 255, 255, 1) !important;
-		-moz-box-shadow:0 0 10px 2px rgba(255, 255, 255, 1) !important;
-		box-shadow:0 0 10px 2px rgba(255, 255, 255, 1) !important;
-		box-shadow:0 0 10px 2px #FFF !important;
-		border: 1px solid #FFF !important;
-		background: rgb(239,190,83) !important; /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(239,190,83,1) 0%, rgba(243,172,0,1) 100%) !important; /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,190,83,1)), color-stop(100%,rgba(243,172,0,1))) !important; /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* IE10+ */
-		background: linear-gradient(to bottom, rgba(239,190,83,1) 0%,rgba(243,172,0,1) 100%) !important; /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efbe53', endColorstr='#f3ac00',GradientType=0 ) !important; /* IE6-9 */
-	}
-	.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset button {
-		border:none !important;
-		width:80% !important;
-		max-width:300px !important;
-		min-width: 200px !important;
-		display:block !important;
-		margin:10px auto !important;
-		float:none !important;
-		border-radius:4px !important;
-		font-size:12px !important;
-		font-weight:bold !important;
-		padding:10px 10px !important;
-		color:#FFF !important;
-		font-family:Arial !important;
-		background: rgb(122,122,122) !important; /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(122,122,122,1) 0%, rgba(102,102,102,1) 100%) !important; /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(122,122,122,1)), color-stop(100%,rgba(102,102,102,1))) !important; /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, rgba(122,122,122,1) 0%,rgba(102,102,102,1) 100%) !important; /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, rgba(122,122,122,1) 0%,rgba(102,102,102,1) 100%) !important; /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, rgba(122,122,122,1) 0%,rgba(102,102,102,1) 100%) !important; /* IE10+ */
-		background: linear-gradient(to bottom, rgba(122,122,122,1) 0%,rgba(102,102,102,1) 100%) !important; /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7a7a7a', endColorstr='#666666',GradientType=0 ) !important; /* IE6-9 */
-		box-shadow:1px 1px 1px rgba(0,0,0,0.5) !important;
-	}
-
-
-
-.registerTit{
-	/*margin:75px 0 10px;*/
-	padding-top:75px;
-	margin-bottom:10px;
+.shopping-cart-shipping-tax td button, .shopping-cart-shipping-calc td button {
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 15px;
+    color: #FFF;
+    background: #5B5B5B;
+    border: none;
+    margin: 20px 0 5px 0;
 }
 
-.registerTit h2{
-	font-size:16px;
-	color:#222;
-	font-weight:bold;
-}
-.registerTit p{
-	font-size:12px;
-	color:#333;
-}
-.registerTit h3{
-	text-align: center;
-	font-size:16px;
-	color:#222;
+.backItem {
+    background: #d4c8a0;
+    color: #847450;
+    /*margin:10px 0;*/
+    font-size: 12px;
+    line-height: 1.6em;
+    padding: 15px 0;
 }
 
-.registerBox label input{
-	width:100%;
-	padding:10px 0;
-	font-size:12px;
-	text-indent:10px;
-	color:#333;
-	margin-bottom:10px;
-	border:1px solid #ddd;
+.backItemBox {
+    margin: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #847450;
 }
 
-.registerOther{
-	margin-top:10px;
-	padding-top:10px;
-	border-top:1px solid #ddd;
-	font-size:12px;
-	color:#333;
+.backItemBox h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
-.registerOther .registerOther_box{
-	margin-bottom:15px;
+
+.backItemBox ul li {
+    list-style: inside none disc;
 }
-.registerOther .registerOther_box p{
-	font-size:14px;
-	color:#222;
-	margin-bottom:5px;
+
+.backItemBox p a {
+    color: #e4e4e4;
+    text-decoration: underline;
 }
-.registerOther .registerOther_box select{
-	width:33%;
-	float:left;
-	padding:5px 0;
-	margin-right:1px;
-	font-size:14px;
-	border:1px solid #ddd;
-	background: #fff;
-	color: #333;
+
+.calculator {
+    color: #E0E0E0;
+    margin: 15px 0 0 0;
+}
+
+.calculator h2 {
+    color: #FFF;
+    font-size: 13px;
+}
+
+#cart-wrapper .logInInfoBox {
+    margin: 0;
+}
+
+table.form-horizontal {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 1px 0;
+}
+
+table.form-horizontal td {
+    vertical-align: middle;
+}
+
+table.form-horizontal td.form-horizontal-label {
+    padding: 0 0 4px 0;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+table.form-horizontal td.form-horizontal-input {
+    background: rgba(255, 255, 255, 1.00);
+    border-radius: 5px 0 0 5px;
+    padding: 10px;
+    width: 80%;
+}
+
+table.form-horizontal td.form-horizontal-btn {
+    background: rgba(102, 102, 102, 1);
+    text-align: left;
+    border-radius: 0 5px 5px 0;
+    overflow: hidden;
+    padding: 0 5px;
+    width: 100px;
+    max-width: 100px;
+}
+
+table.form-horizontal td.form-horizontal-btn:hover {
+    background: rgba(243, 172, 0, 1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+}
+
+table.form-horizontal td.form-horizontal-input input {
+    width: 100%;
+    border-color: rgba(255, 255, 255, 1.00);
+    border-top: rgba(255, 255, 255, 1.00);
+    border-left: rgba(255, 255, 255, 1.00);
+    outline: none;
+    background: none;
+    color: rgba(0, 0, 0, 1.00);
+}
+
+table.form-horizontal td.form-horizontal-btn button {
+    width: 100%;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 1.00);
+    font-weight: bold;
+    font-size: 10px;
+    display: block;
+    position: relative;
+    margin: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+table.form-horizontal .validation-advice {
+    color: #FFF;
+    background: #A80000;
+    text-align: center;
+    padding: 5px 10px;
+    width: 100%;
+    font-size: 11px;
+    position: relative;
+    top: 10px;
+    left: -10px;
+    border-radius: 0 0 0 5px;
+}
+
+.couponTit {
+    font-size: 14px;
+    color: #847450;
+    font-weight: bold;
+}
+
+.cart-coupon span {
+    display: inline-block;
+    float: left;
+    height: 40px;
+}
+
+.cart-coupon span.couponInput {
+    width: 64%;
+    margin-right: 1%;
+}
+
+.cart-coupon span.couponSubmit {
+    width: 35%;
+}
+
+.cart-coupon span.couponInput input {
+    border: 1px solid #d4c8a0;
+    color: #847450;
+    text-indent: 10px;
+    height: 28px;
+    width: 100%;
+    padding: 0;
+}
+
+.cart-coupon span.couponSubmit button.button {
+    height: 30px;
+    width: 100%;
+    background: url(../images/cart-yhq.jpg) left top no-repeat;
+    background-size: 100% 30px;
+    border: none;
+}
+
+.cart-coupon span.couponSubmit.couponCancel button.button {
+    background: url(../images/couCancel.png) left top no-repeat;
+    background-size: 100% 30px;
+}
+
+.discount {
+    margin: 0 0 15px 0;
+}
+
+.giftcard .checkBalance {
+    margin: 15px 0 0 0;
+}
+
+#cart-wrapper .step-content {
+    padding: 20px 0;
+    color: #847450;
+    /*margin:0 10px;*/
+}
+
+.cancelCoupon {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.cancelCoupon button {
+    color: #847450;
+    text-decoration: underline;
+    border: none;
+    background: none;
+}
+
+#cart-wrapper h1.step-title {
+    border-bottom: 1px solid #ddd;
+}
+
+#cart-wrapper .step-content select {
+    color: #847450;
+    width: 100%;
+}
+
+#cart-wrapper .step-content input {
+    color: #847450;
+    vertical-align: middle;
+}
+
+.bill-kinds-tax input {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 10px;
+    border: 1px solid #ddd;
+}
+
+.bill-kinds-default {
+    width: 100%;
+    position: relative;
+}
+
+.bill-kinds-default > div {
 
 }
 
-.registerOther .registerOther_box label{
-	font-size:12px;
-	display:inline-block;
-	float:left;
-	width:20%;
+.logInInfoBox .shopping-cart-shipping-tax label.account-select:after {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 25px;
+    padding: 10px;
+    right: -10px !important;
+    top: -15px;
 }
 
-.registerOther .registerOther_box label input{
-	margin-right:5px;
-}
-.registerSubmit{
-	position:relative;
-}
-.registerSubmit span{
-	position:absolute;
-	width:100%;
-	height:50px;
-	z-index:2;
-	background: rgba(255,255,255,.7);
-}
-.registerSubmit span.greyNone{
-	display:none;
-}
-.registerSubmit button.button{
-	background:url(../images/register-button.jpg) left top no-repeat;
-	background-size:100% 100%;
-	border: none;
-	width: 100%;
-	min-height: 50px;
-	z-index:1;
-}
-.registerRules{
-	margin-bottom: 15px;
-}
-.registerRules label span{
-	display:inline-block;
-	float:left;
-	color:#666;
-}
-.registerRules label span.rulChe{
-	width:5%;
-}
-.registerRules label span.rulTex{
-	width:95%;
+table.shopping-cart-shipping-calc.billing {
+    margin-top: 25px !important;
+    font-size: 12px !important;
 }
 
-.loginButton button.login-submit{
-	background:url(../images/login-submit.jpg) left top no-repeat;
-	background-size:100%;
-	border: none;
-	width: 100%;
-	height: 50px;
+#whatsThisToolTipLink {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-left: 20px;
 }
 
-p.login-forgot{
-	text-align:right;
-	margin-bottom:15px;
-}
-p.login-forgot a{
-	color:#333;
-}
-.logBox-forPasw{
-	margin-top:15px;
-	padding-top:15px;
-	/*border-top:1px solid #ddd;*/
-	/*display:none;*/
-}
-.logBox-forPasw p{
-	color:#333;
-	margin:15px 0;
-	font-size:14px;
+#whatsThisToolTipLink a {
+    color: #FAC000;
+    text-decoration: underline;
 }
 
-.loginButton button.login-forgotPasw{
-	background:url(../images/login-sendmail.jpg) left top no-repeat;
-	background-size:100%;
-	border: none;
-	width: 100%;
-	height: 50px;
+label[for=p_method_paypal_express] a {
+    text-decoration: underline;
 }
 
-.accountBenefitsBox{
-
-	text-align:center;
-}
-.accountBenefitsBox h2{
-	font-size:16px;
-	color:#222;
-	font-weight:bold;
-	margin:10px 0;
-
+#payment_form_paypal_express li.form-alt {
+    color: #FAC000;
+    margin: 10px 0 10px 20px;
 }
 
-.accountBenefitsBox p{
-	font-size:12px;
-	color:#333;
-	line-height:1.6em;
-}
-.accountBenefitsBox button{
-	background:url(../images/login-create.jpg) left top no-repeat;
-	background-size:100%;
-	border: none;
-	width: 100%;
-	height: 50px;
-	border-radius:0;
+.checkout-onepage-payment-additional-giftcardaccount p.note {
+    padding: 20px;
+    line-height: 1.8;
 }
 
-.my-account{
-	color:#222;
+.checkout-onepage-payment-additional-giftcardaccount p.note a {
+    text-decoration: underline;
 }
 
-.customTit{
-	margin:55px 0 20px;
-	padding-bottom:10px;
-	border-bottom:1px solid #ddd;
-}
-.customTit h2{
-	font-size:14px;
-	color:#222;
-	font-weight:bold;
-}
-.customTit p{
-	font-size:12px;
-	color:#333;
-}
-.cusEditSubmit{
-	margin:15px 0 10px;
-}
-.cusEditSubmit button.button{
-	background:url(../images/customEdit-save.jpg) left top no-repeat;
-	background-size:100%;
-	border: none;
-	width: 100%;
-	height: 50px;
-}
-p.backCus{
-	text-align:right;
-	font-size:12px;
-}
-p.backCus a{
-	color:#333;
+#checkout-step-review a {
+    text-decoration: underline;
 }
 
-.accountPage{
-	/*margin:55px 0 20px;*/
-	position:relative;
-	font-size:14px;
-	line-height: 14px;
-	color:#333;
-	min-height:320px;
-	padding-top:50px;
-}
-.accountPage a{
-	color:#333;
-}
-.accountTit{
-	padding:15px 0;
-	border-bottom:1px solid #ddd;
-}
-.accountTit span.accountBox-go{
-	width:5%;
-	margin-right:5%;
-}
-.accountTit span.accountTit-name{
-	width:90%;
-	text-align: center;
-}
-.accountTit span img{
-	height:14px;
-}
-.accountBox{
-	width:100%;
-	position:relative;
-	padding:15px 0;
-	border-bottom:1px solid #ddd;
-	background:#f7f7f7;
-}
-.accountBox span{
-	display:block;
-	float:left;
-	height:15px;
-}
-.accountBox span.accountBox-icon{
-	width:10%;
-	margin-left:5%
-}
-.accountBox span.accountBox-name{
-	width:75%;
-}
-.accountBox span.accountBox-go{
-	width:5%;
-	margin-right:5%;
-}
-.accountBox span img{
-	height:14px;
+/* Guest Popup (success.phtml) */
+.ui-dialog.accountCreation {
+    height: 90% !important;
+    margin: 0 auto !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    padding-top: 10px;
+    top: 10px !important;
+    width: 90% !important;
+    z-index: 10001;
 }
 
-.historyNew{
-	margin:10px 0;
-	position:relative;
-}
-.historyNew table.historyTable{
-	border-collapse: collapse;
-	width:100%;
-	border:1px solid #ddd;
-	border-bottom:none;
-	font-size:12px;
-	color:#333;
-	margin:10px 0;
+.ui-dialog-content.accountCreation p a {
+    color: #FAC000 !important;
+    text-decoration: underline;
 }
 
-.historyNew table.historyTable tr td{
-	border-bottom:1px solid #ddd;
-	padding:0 10px;
-	height:30px;
-	line-height:30px;
-}
-.historyNew table.historyTable thead td{
-	background:#000;
-	color:#fff;
-}
-.historyNew table.historyTable tr td.borderNone{
-	border-bottom:none;
-	font-size:14px;
-	font-weight:bold;
-	height:40px;
-	line-height:40px;
-}
-.historyNew table.historyTable tr td.orderFuns{
-	text-align:center;
+.ui-dialog.accountCreation p.required, .rStar {
+    color: #A80000 !important;
+    font-size: 12px !important;
 }
 
-.historyNew table.historyTable tr td.orderState{
-	padding-bottom:15px;
-}
-.historyNew table.historyTable tr td.orderState span{
-	padding:3px 10px;
-	background:#cf3a00;
-	color:#fff;
+.logInInfoBox table.guestPopup td {
+    vertical-align: top;
+    width: 50%;
 }
 
-.historyNew table.historyTable tfoot:before{
-	position: absolute;
-	content: '';
-	height:30px;
-	width:1px;
-	background:#ddd;
-	left:50%;
+.logInInfoBox table.guestPopup td button.buttonLeft {
+    /*float: left;*/
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 10px;
+    font-family: Arial;
+    width: 100%;
+    color: #FFF;
+    border: none;
+    background: #555;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
-.historyNew table.historyTable tfoot.oneTd:before{
-	width:0;
-	height:0;
-}
-@media screen and (min-width:550px){
-		.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset {
-			margin: 0 auto !important;
-			text-align: center;
-			width: 500px !important;
-		}
-		.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset button {
-			display: inline-block !important;
-			height: 55px !important;
-			margin: 0 5px !important;
-			width: 220px !important;
-		}
-	}
 
-	/* My account reviews - override float */
-	.rating-box {float: none !important;}
+.logInInfoBox table.guestPopup td button.buttonRight {
+    /*float: left;*/
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    width: 100% !important;
+    margin: 5px 0;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 10px;
+    color: #FFF;
+    font-family: Arial;
+    background: rgb(239, 190, 83) !important; /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(239, 190, 83, 1)), color-stop(100%, rgba(243, 172, 0, 1))) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efbe53', endColorstr='#f3ac00', GradientType=0) !important; /* IE6-9 */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) !important;
+}
+
+#catalog-search-please-wait,
+#account-please-wait,
+#billing-please-wait,
+#review-please-wait,
+#shipping-method-please-wait,
+#shipping-please-wait,
+#payment-please-wait {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 0 -20px !important;
+}
+
+/* checkout address mismatch dialog */
+.mismatch a.tell-me-more-link {
+    color: #FCA000;
+    text-decoration: underline;
+    line-height: 30px;
+}
+
+.mismatch {
+    width: 90% !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 0;
+}
+
+#mismatch {
+    padding: 0 20px !important;
+    width: auto;
+    height: auto;
+}
+
+.mismatch p, .mismatch div,
+#mismatch {
+    font-size: 14px !important;
+    font-weight: normal !important;
+    line-height: 17px !important;
+    color: #FFF !important;
+    text-align: justify !important;
+}
+
+#tell-me-more-shipping {
+    display: none;
+    transition: all 0.3s ease-in-out !important;
+    -webkit-transition: all 0.3s ease-in-out !important;
+}
+
+#tell-me-more-shipping.open {
+    display: block;
+    transition: all 0.3s ease-in-out !important;
+    -webkit-transition: all 0.3s ease-in-out !important;
+    margin-top: 20px !important;
+    overflow: hidden;
+}
+
+.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: none !important;
+    margin: 20px 0 !important;
+    padding: 0 !important;
+}
+
+.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset button.selected {
+    -webkit-box-shadow: 0 0 10px 2px rgba(255, 255, 255, 1) !important;
+    -moz-box-shadow: 0 0 10px 2px rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 0 10px 2px #FFF !important;
+    border: 1px solid #FFF !important;
+    background: rgb(239, 190, 83) !important; /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(239, 190, 83, 1)), color-stop(100%, rgba(243, 172, 0, 1))) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efbe53', endColorstr='#f3ac00', GradientType=0) !important; /* IE6-9 */
+}
+
+.mismatch .ui-dialog-buttonpane .ui-dialog-buttonset button {
+    border: none !important;
+    width: 80% !important;
+    max-width: 300px !important;
+    min-width: 200px !important;
+    display: block !important;
+    margin: 10px auto !important;
+    float: none !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    padding: 10px 10px !important;
+    color: #FFF !important;
+    font-family: Arial !important;
+    background: rgb(122, 122, 122) !important; /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(122, 122, 122, 1) 0%, rgba(102, 102, 102, 1) 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(122, 122, 122, 1)), color-stop(100%, rgba(102, 102, 102, 1))) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(122, 122, 122, 1) 0%, rgba(102, 102, 102, 1) 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(122, 122, 122, 1) 0%, rgba(102, 102, 102, 1) 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(122, 122, 122, 1) 0%, rgba(102, 102, 102, 1) 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom, rgba(122, 122, 122, 1) 0%, rgba(102, 102, 102, 1) 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7a7a7a', endColorstr='#666666', GradientType=0) !important; /* IE6-9 */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) !important;
+}
+
+.registerTit {
+    /*margin:75px 0 10px;*/
+    padding-top: 75px;
+    margin-bottom: 10px;
+}
+
+.registerTit h2 {
+    font-size: 16px;
+    color: #847450;
+    font-weight: bold;
+}
+
+.registerTit p {
+    font-size: 12px;
+    color: #847450;
+}
+
+.registerTit h3 {
+    text-align: center;
+    font-size: 16px;
+    color: #847450;
+}
+
+.registerBox label input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 12px;
+    text-indent: 10px;
+    color: #847450;
+    margin-bottom: 10px;
+    border: 1px solid #847450;
+}
+
+.registerOther {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+    color: #847450;
+}
+
+.registerOther .registerOther_box {
+    margin-bottom: 15px;
+}
+
+.registerOther .registerOther_box p {
+    font-size: 14px;
+    color: #847450;
+    margin-bottom: 5px;
+}
+
+.registerOther .registerOther_box select {
+    width: 33%;
+    float: left;
+    padding: 5px 0;
+    margin-right: 1px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #333;
+
+}
+
+.registerOther .registerOther_box label {
+    font-size: 12px;
+    display: inline-block;
+    float: left;
+    width: 20%;
+}
+
+.registerOther .registerOther_box label input {
+    margin-right: 5px;
+}
+
+.registerSubmit {
+    position: relative;
+}
+
+.registerSubmit span {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    z-index: 2;
+    background: rgba(255, 255, 255, .7);
+}
+
+.registerSubmit span.greyNone {
+    display: none;
+}
+
+.registerSubmit button.button {
+    background: url(../images2019/register-button.jpg) left top no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    width: 100%;
+    min-height: 50px;
+    z-index: 1;
+}
+
+.registerRules {
+    margin-bottom: 15px;
+}
+
+.registerRules label span {
+    display: inline-block;
+    float: left;
+    color: #847450;
+}
+
+.registerRules label span.rulChe {
+    width: 5%;
+}
+
+.registerRules label span.rulTex {
+    width: 95%;
+}
+
+.loginButton button.login-submit {
+    background: url(../images2019/login-submit.jpg) left top no-repeat;
+    background-size: 100%;
+    border: none;
+    width: 100%;
+    height: 50px;
+}
+
+p.login-forgot {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+p.login-forgot a {
+    color: #847450;
+}
+
+.logBox-forPasw {
+    margin-top: 15px;
+    padding-top: 15px;
+    /*border-top:1px solid #ddd;*/
+    /*display:none;*/
+}
+
+.logBox-forPasw p {
+    color: #847450;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.loginButton button.login-forgotPasw {
+    background: url(../images/login-sendmail.jpg) left top no-repeat;
+    background-size: 100%;
+    border: none;
+    width: 100%;
+    height: 50px;
+}
+
+.accountBenefitsBox {
+
+    text-align: center;
+}
+
+.accountBenefitsBox h2 {
+    font-size: 16px;
+    color: #847450;
+    font-weight: bold;
+    margin: 10px 0;
+
+}
+
+.accountBenefitsBox p {
+    font-size: 12px;
+    color: #847450;
+    line-height: 1.6em;
+}
+
+.accountBenefitsBox button {
+    background: url(../images/login-create.jpg) left top no-repeat;
+    background-size: 100%;
+    border: none;
+    width: 100%;
+    height: 50px;
+    border-radius: 0;
+}
+
+.my-account {
+    color: #847450;
+}
+
+.customTit {
+    margin: 55px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #847450;
+}
+
+.customTit h2 {
+    font-size: 14px;
+    color: #847450;
+    font-weight: bold;
+}
+
+.customTit p {
+    font-size: 12px;
+    color: #847450;
+}
+
+.cusEditSubmit {
+    margin: 15px 0 10px;
+}
+
+.cusEditSubmit button.button {
+    background: url(../images/customEdit-save.jpg) left top no-repeat;
+    background-size: 100%;
+    border: none;
+    width: 100%;
+    height: 50px;
+}
+
+p.backCus {
+    text-align: right;
+    font-size: 12px;
+}
+
+p.backCus a {
+    color: #847450;
+}
+
+.accountPage {
+    /*margin:55px 0 20px;*/
+    position: relative;
+    font-size: 14px;
+    line-height: 14px;
+    color: #847450;
+    min-height: 320px;
+    padding-top: 50px;
+}
+
+.accountPage a {
+    color: #847450;
+}
+
+.accountTit {
+    padding: 15px 0;
+    border-bottom: 1px solid #847450;
+}
+
+.accountTit span.accountBox-go {
+    width: 5%;
+    margin-right: 5%;
+}
+
+.accountTit span.accountTit-name {
+    width: 90%;
+    text-align: center;
+}
+
+.accountTit span img {
+    height: 14px;
+}
+
+.accountBox {
+    width: 100%;
+    position: relative;
+    padding: 15px 0;
+    border-bottom: 1px solid #847450;
+    background: #d4c8a0;
+}
+
+.accountBox span {
+    display: block;
+    float: left;
+    height: 15px;
+}
+
+.accountBox span.accountBox-icon {
+    width: 10%;
+    margin-left: 5%
+}
+
+.accountBox span.accountBox-name {
+    width: 75%;
+}
+
+.accountBox span.accountBox-go {
+    width: 5%;
+    margin-right: 5%;
+}
+
+.accountBox span img {
+    height: 14px;
+}
+
+.historyNew {
+    margin: 10px 0;
+    position: relative;
+}
+
+.historyNew table.historyTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    font-size: 12px;
+    color: #847450;
+    margin: 10px 0;
+}
+
+.historyNew table.historyTable tr td {
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.historyNew table.historyTable thead td {
+    background: #d4c8a0;
+    color: #847450;
+}
+
+.historyNew table.historyTable tr td.borderNone {
+    border-bottom: none;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+}
+
+.historyNew table.historyTable tr td.orderFuns {
+    text-align: center;
+}
+
+.historyNew table.historyTable tr td.orderState {
+    padding-bottom: 15px;
+}
+
+.historyNew table.historyTable tr td.orderState span {
+    padding: 3px 10px;
+    background: #cf3a00;
+    color: #fff;
+}
+
+.historyNew table.historyTable tfoot:before {
+    position: absolute;
+    content: '';
+    height: 30px;
+    width: 1px;
+    background: #ddd;
+    left: 50%;
+}
+
+.historyNew table.historyTable tfoot.oneTd:before {
+    width: 0;
+    height: 0;
+}
+
+@media screen and (min-width: 550px) {
+    .mismatch .ui-dialog-buttonpane .ui-dialog-buttonset {
+        margin: 0 auto !important;
+        text-align: center;
+        width: 500px !important;
+    }
+
+    .mismatch .ui-dialog-buttonpane .ui-dialog-buttonset button {
+        display: inline-block !important;
+        height: 55px !important;
+        margin: 0 5px !important;
+        width: 220px !important;
+    }
+}
+
+/* My account reviews - override float */
+.rating-box {
+    float: none !important;
+}

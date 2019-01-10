@@ -479,7 +479,7 @@ section header {
 
 .home-wrapper .free-shipping {
     width: 100%;
-    background: #1d1d1d;
+    background: #d3c8a0;
     height: 40px;
     position: fixed;
     top: 50px;
@@ -525,7 +525,7 @@ section header {
     top: 0;
     left: 0;
     z-index: 9999;
-    border-bottom: 1px solid #313131;
+    border-bottom: 1px solid #fff;
     transition: all 0.6s ease;
     -webkit-transition: all 0.6s ease;
 }
@@ -544,14 +544,15 @@ section header {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 5px #000;
     border-bottom: 1px solid #313131;
-    background: rgb(50, 50, 50); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(50, 50, 50, 1)), color-stop(100%, rgba(37, 37, 37, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#323232', endColorstr='#252525', GradientType=0); /* IE6-9 */
+   /* background: rgb(50, 50, 50); !* Old browsers *!
+    background: -moz-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* FF3.6+ *!
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(50, 50, 50, 1)), color-stop(100%, rgba(37, 37, 37, 1))); !* Chrome,Safari4+ *!
+    background: -webkit-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* Chrome10+,Safari5.1+ *!
+    background: -o-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* Opera 11.10+ *!
+    background: -ms-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* IE10+ *!
+    background: linear-gradient(to bottom, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* W3C *!
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#323232', endColorstr='#252525', GradientType=0); !* IE6-9 *!*/
+    background: #fff;
 }
 
 /* Header icons defaults */
@@ -561,7 +562,7 @@ section header {
     width: 49px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    border-left: 1px solid #323232;
+    border-left: 1px solid #fff;
     text-align: center;
     text-decoration: none;
     height: 44px;
@@ -575,7 +576,7 @@ section header {
 .top-nav-wrapper a.active,
 .top-nav-wrapper a:active,
 .top-nav-wrapper a:hover {
-    background: rgba(0, 0, 0, 1.00);
+    background: #fff;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
 }
@@ -590,7 +591,7 @@ section header {
 
 .top-nav-wrapper.iphone a:before {
     padding: 5px 0 0;
-    font-size: 20px !important;
+    font-size: 27px !important;
     margin: 0;
 }
 
@@ -618,7 +619,7 @@ section header {
     content: '';
     width: 50px;
     height: 44px;
-    background: url(../images/cart.png) no-repeat 50% 50%;
+    background: url(../images2019/cart2019.jpg) no-repeat 50% 50%;
     background-size: auto 30px;
     position: absolute;
     left: 0;
@@ -657,7 +658,7 @@ section header {
     /*float:left;*/
     position: absolute;
     left: 50%;
-    margin-left: -15%;
+    margin-left: -18%;
     border: none !important;
     width: 30%;
     text-align: center;
@@ -753,7 +754,7 @@ section header {
 
 /* Search Bar */
 #search_bar {
-    background: rgba(0, 0, 0, 0.9);
+    background: #d4c8a0;
     min-width: 320px;
     width: 100%;
     height: 50px;
@@ -813,7 +814,7 @@ html.open, body.open {
 }
 
 #search_bar .search-input input::-webkit-input-placeholder {
-    color: #a9a9a9;
+    color: #847450;
     font-size: 14px;
     font-weight: bold;
 }
@@ -827,7 +828,7 @@ html.open, body.open {
 #search_bar input {
     width: 100%;
     height: 50px;
-    color: #a9a9a9;
+    color: #847450;
     font-family: Arial;
     padding: 0 10px;
     border: 0;
@@ -1015,9 +1016,9 @@ section.nav-btm input {
 
 /* Footer */
 footer {
-    background: #131313;
+    background: #d3c8a0;
     text-align: center;
-    color: #999;
+    color: #84754d;
     font-size: 11px !important;
     margin: 0;
     padding: 10px 0;
@@ -1145,7 +1146,7 @@ html {
 
 html, button, input, select, textarea {
     font-family: Arial, Pt Sans, sans-serif;
-    color: #333;
+    color: #847450;
 }
 
 body {
@@ -1170,7 +1171,7 @@ body {
    ========================================================================== */
 
 a, a:link, a:visited {
-    color: #333;
+    color: #847450;
 }
 
 a:hover {
@@ -1187,7 +1188,7 @@ a:hover, a:active {
 }
 
 .top-nav-wrapper a {
-    color: #fff;
+    color: #847450;
 }
 
 /* =============================================================================
@@ -1712,9 +1713,9 @@ header.global-header.detail-title {
     font-size: 14px;
     text-transform: uppercase;
     text-align: center !important;
-    padding: 12px 0;
+    padding: 18px 0;
     letter-spacing: 1px;
-    color: #333;
+    color: #847450;
     font-weight: bold;
 }
 
@@ -1779,7 +1780,7 @@ header.global-header .global-header-infs > div {
 h3.category-title {
     text-align: center;
     font-size: 18px;
-    color: #333;
+    color: #847450;
     font-weight: bold;
     margin-top: 20px;
 }
@@ -1787,7 +1788,7 @@ h3.category-title {
 .detail-site-map {
     font-size: 14px;
     margin-bottom: 20px;
-    background: #f5f5f5;
+    background: #d4c8a0;
     text-align: center;
 }
 
@@ -1812,7 +1813,7 @@ h3.category-title {
 
 .detail-site-map .search_total_count,
 .detail-site-map .catalog_total_count {
-    color: #666;
+    color: #847450;
     position: relative;
     top: 1px;
 }
@@ -1993,8 +1994,8 @@ h3.category-title {
 
 .category-filter {
     /*background:url("../images/bg-wood.jpg") repeat scroll 0 0 #121212;*/
-    background: #f5f5f5;
-    border-top: 1px solid rgba(40, 40, 40, 1);
+    background: #d4c8a0;
+    /*border-top: 1px solid rgba(40, 40, 40, 1);*/
     text-align: left;
     top: 50px;
     left: 0;
@@ -2086,7 +2087,7 @@ section#category-wrapper header h1 {
 }
 
 .multi-view-box h3 a {
-    color: #333;
+    color: #847450;
 }
 
 .multi-view-box a:hover {
@@ -2095,7 +2096,7 @@ section#category-wrapper header h1 {
 
 .multi-view-box p.cat-price {
     font-size: 16px;
-    color: #333;
+    color: #847450;
     font-weight: bold;
     margin: 0 auto 10px;
     max-width: 185px;
@@ -2351,7 +2352,7 @@ Scrolling is automated IF there is an overflow of the width */
 
 .iosSliderButtons .button {
     display: inline-block;
-    background: #c1c4c5;
+    background: #fff;
     width: 20px;
     height: 3px;
     margin: 2px;
@@ -2367,7 +2368,7 @@ Scrolling is automated IF there is an overflow of the width */
 .iosSliderButtons.small .selected,
 .iosSliderButtons .button:hover,
 .iosSliderButtons.small .button:hover {
-    background: #010101;
+    background: #847450;
 }
 
 .iosSliderButtons.moreStyles {
@@ -2517,7 +2518,7 @@ Scrolling is automated IF there is an overflow of the width */
 /*************************************/
 #detailAccordion h3 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    color: #333;
+    color: #847450;
     font-family: Arial, sans-serif;
     font-size: 14px;
     position: relative;
@@ -2602,7 +2603,7 @@ Scrolling is automated IF there is an overflow of the width */
     font-family: snicon;
     content: '\e611';
     font-size: 10px;
-    color: #FFF;
+    color: #847450;
     right: 25px;
     top: 15px;
     position: absolute;
@@ -2614,7 +2615,7 @@ Scrolling is automated IF there is an overflow of the width */
     font-family: snicon;
     content: '\e612';
     font-size: 10px;
-    color: #FFF;
+    color: #847450;
 }
 
 #detailTabDescriptionContent {
@@ -2850,7 +2851,7 @@ Scrolling is automated IF there is an overflow of the width */
 
 .detailCheckOutWrap {
     text-align: left;
-    color: #333;
+    color: #847450;
     margin: 10px;
 }
 
@@ -3584,7 +3585,7 @@ CUSTOMER SERVICE PAGES
     font-weight: bold;
     font-size: 13px;
     margin: 0 0 5px 0;
-    color: #333;
+    color: #847450;
 }
 
 .serviceTextWrap {
@@ -4411,7 +4412,7 @@ h3 a.headerToggle {
 }
 
 .logInInfoBox table td.infoLabel {
-    color: #222;
+    color: #847450;
     font-size: 12px;
     padding: 10px 0 4px 0;
     font-weight: bold;
@@ -4429,12 +4430,12 @@ h3 a.headerToggle {
 .logInInfoBox table td.infoInput input,
 .logInInfoBox table td.infoInput select {
     background: none;
-    color: #000;
+    color: #847450;
     font-size: 12px;
     outline: none;
     border: none;
     width: 98%;
-    border: 1px solid #ddd;
+    border: 1px solid #d4c8a0;
     padding: 8px 0;
 }
 
@@ -4469,7 +4470,7 @@ h3 a.headerToggle {
     content: '\e607';
     font-size: 10px;
     font-family: 'snicon';
-    color: #555;
+    color: #847450;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
@@ -4487,7 +4488,7 @@ h3 a.headerToggle {
     top: -5px;
     width: 40px;
     height: 25px;
-    background: #f8f8f8;
+    background:transparent;
     position: absolute;
     pointer-events: none;
     display: block;
@@ -4576,7 +4577,7 @@ h3 a.headerToggle {
     border-bottom: 1px solid #ddd;
     background: url(../images/bg-title.png) repeat rgba(0, 0, 0, 00);
     letter-spacing: 0.4px;
-    color: #333;
+    color: #847450;
     padding: 15px;
 }
 
@@ -4594,7 +4595,7 @@ h3 a.headerToggle {
 
 .confirmBox input {
     border: 1px solid #ddd;
-    color: #333;
+    color: #847450;
     height: 36px;
     line-height: 36px;
     text-indet: 10px;
@@ -4607,7 +4608,7 @@ h3 a.headerToggle {
 
 .confirm-content {
     margin-bottom: 10px;
-    color: #333;
+    color: #847450;
 }
 
 .confirmBox p {
@@ -4623,7 +4624,7 @@ h3 a.headerToggle {
     width: 100px;
     z-index: 99;
     right: 20px;
-    color: #333;
+    color: #847450;
     background: #ccc;
 }
 
@@ -4665,7 +4666,7 @@ span.sale_kind {
     padding: 3px 10px;
     border: 1px solid #fff;
     background: #fff;
-    color: #333;
+    color: #847450;
 }
 
 .product-options {
@@ -4717,15 +4718,13 @@ span.sale_kind {
 .add-to-cart a {
     display: inline-block;
     padding: 5px 8px;
-    background: #fff;
-    color: #333;
-    border: 1px solid #ccc;
-
+    background: #847450;
+    color: #d4c8a0;
 }
 
 .add-to-cart input.proNum {
     padding: 6px 3px;
-    color: #333;
+    color: #847450;
     width: 50px;
 }
 
@@ -5019,7 +5018,7 @@ dl.addToCartSize dt {
     background: #fff;
     border-radius: 4px;
     border: none;
-    color: #333;
+    color: #847450;
     text-indent: 5px;
 }
 
@@ -5430,13 +5429,13 @@ span.checkError {
     /*margin:5px;*/
     width: 20px;
     height: 3px;
-    background-color: #c1c4c5;
+    background-color: #d3c8a0;
     /*border-radius: 10px;*/
 
 }
 
 .box_swipe > ol > li.on {
-    background-color: #010101;
+    background-color: #847450;
 }
 
 /*
@@ -5579,7 +5578,7 @@ span.checkError {
     padding: 0 10px;
     border: 1px solid #999999;
     font-size: 14px;
-    color: #333333;
+    color: #847450333;
     background-color: #cccccc;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -5638,7 +5637,7 @@ span.checkError {
     line-height: 18px;
     text-align: center;
     color: #fff;
-    background-color: #333333;
+    background-color: #847450333;
 }
 
 .ui-com-bar span {
@@ -5657,8 +5656,8 @@ span.checkError {
     position: absolute;
     top: 0;
     left: -210px;
-    color: #fff;
-    background-color: #eaeaea;
+    color: #847450;
+    background-color: #d4c8a0;
     /* z-index: 99999999; */
 }
 
@@ -5678,7 +5677,7 @@ span.checkError {
 }
 
 .ui-menu-level-01 {
-    background-color: #000;
+    background-color: #d3c8a0;
 }
 
 .ui-menu-level-01 h3 {
@@ -5686,7 +5685,7 @@ span.checkError {
     line-height: 40px;
     position: relative;
     padding: 0 15px;
-    border-bottom: 1px dotted #fff;
+    border-bottom: 1px dotted #847450;
     font-weight: normal;
     font-size: 12px;
     font-family: "Microsoft YaHei", "SimHei", Arial, Helvetica, sans-serif, "黑体", "微软雅黑";
@@ -5711,11 +5710,11 @@ span.checkError {
 
 .ui-menu-level-02 h3.level02-title a.level02-title-a {
     width: 100%;
-    color: #fff;
+    color: #847450;
 }
 
 .ui-menu-level-01 h3 a.level02-title-a {
-    color: #fff;
+    color: #84754d;
     display: block;
 }
 
@@ -5726,7 +5725,7 @@ span.checkError {
 
 .ui-menu-link a {
     display: block;
-    color: #333;
+    color: #847450;
 }
 
 .ui-menu-link ul li {
@@ -5748,7 +5747,7 @@ span.checkError {
 }
 
 .ui-menu-line-store {
-    color: #333;
+    color: #847450;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
@@ -5756,7 +5755,7 @@ span.checkError {
 }
 
 .ui-menu-line-store a {
-    color: #333;
+    color: #847450;
 }
 
 .ui-menu-line-store img {
@@ -5767,7 +5766,7 @@ span.checkError {
 .ui-menu-link-line {
     width: 19%;
     height: 4px;
-    background-color: #000;
+    background-color: #847450;
     margin: 10px auto;
 }
 
@@ -5777,7 +5776,7 @@ span.checkError {
     top: 0;
     left: -210px;
     z-index: 2;
-    background-color: #000;
+    background-color: #d4c8a0;
     transition: 300ms;
     -webkit-transition: 300ms;
     -moz-transition: 300ms;
@@ -5794,7 +5793,7 @@ span.checkError {
 }
 
 .ui-menu-level-02 h3.level02-back-title {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #847450;
     text-indent: 5px;
 }
 
@@ -5810,7 +5809,7 @@ span.checkError {
 }
 
 .ui-menu-level-02 ul {
-    background-color: #000;
+    background-color: #d4c8a0;
 }
 
 .ui-menu-level-02 ul li:last-child {
@@ -5819,7 +5818,7 @@ span.checkError {
 
 .ui-menu-level-02 ul li a {
     width: 100%;
-    color: #fff;
+    color: #847450;
     padding: 0 10px;
     display: inline-block;
     position: relative;
@@ -5845,7 +5844,7 @@ span.checkError {
     top: 0;
     left: -210px;
     z-index: 3;
-    background-color: #000;
+    background-color: #d4c8a0;
     transition: 300ms;
     -webkit-transition: 300ms;
     -moz-transition: 300ms;
@@ -5862,7 +5861,7 @@ span.checkError {
 }
 
 .ui-menu-level-03 h3.level03-back-title {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #847450;
     cursor: pointer;
 }
 
@@ -5890,7 +5889,7 @@ span.checkError {
 
 .ui-menu-level-03 ul li {
     line-height: 40px;
-    border-bottom: 1px dotted #fff;
+    border-bottom: 1px dotted #847450;
 }
 
 .ui-form-list > ul {
@@ -6040,7 +6039,7 @@ span.checkError {
 }
 
 .news-swipe {
-    background: #1d1d1d;
+    background: #f3f3f3;
 }
 
 .news-swipe .news-swipe-box {
@@ -6049,7 +6048,7 @@ span.checkError {
 
 .news-swipe .news-swipe-box h3 {
     font-size: 12px;
-    color: #fff;
+    color: #84754d;
     font-weight: normal;
     margin-top: 15px;
 }
@@ -6063,7 +6062,7 @@ span.checkError {
 
 .news-swipe .news-swipe-box p {
     font-size: 12px;
-    color: #ccc;
+    color: #84754d;
     line-height: 2em;
     text-align: justify;
 }
@@ -6072,9 +6071,9 @@ span.checkError {
     font-size: 14px;
     display: inline-block;
     padding: 5px 15px;
-    border: 1px solid #fff;
+    border: 2px solid #84754d;
     margin-top: 15px;
-    color: #fff;
+    color: #968a6b;
 }
 
 .news-swipe .news-swipe-box h2 a {
@@ -6098,7 +6097,7 @@ span.checkError {
 
 .footer-top {
     position: relative;
-    background: #000;
+    background: #d3c8a0;
 }
 
 .footer-top .footer-top-box {
@@ -6108,7 +6107,7 @@ span.checkError {
 }
 
 .footer-top .footer-top-box a {
-    color: #fff;
+    color: #84754d;
     font-size: 12px;
     /*line-height:16px;*/
 }
@@ -6118,7 +6117,7 @@ span.checkError {
     vertical-align: middle;
     height: 16px;
     line-height: 16px;
-    margin: 0 5px 0 15px;
+    margin: 0 5px 0 20px;
 }
 
 .footer-icp span a img{
@@ -6141,15 +6140,15 @@ span.checkError {
 }
 
 .footer-infs .footer-infs-phone {
-    width: 34%;
+    width: 32.93%;
 }
 
 .footer-infs .footer-infs-wx {
-    width: 34%;
+    width: 35.27%;
 }
 
 .footer-infs .footer-infs-wb {
-    width: 32%;
+    width: 31.8%;
 }
 
 .footer-infs img {
@@ -6158,12 +6157,12 @@ span.checkError {
 
 .bottom-last {
     margin: 0;
-    background: #131313;
+    background: #d3c8a0;
 
 }
 
 .bottom-last .bottom-last-box {
-    margin: 0 15px;
+    margin: 0;
 }
 
 .bottom-last .bottom-last-box img {
@@ -6174,20 +6173,19 @@ span.checkError {
     margin: 15px 15px 0;
     text-align: center;
     font-size: 12px;
-    border-top: 1px solid #5e5f60;
-    border-bottom: 1px solid #5e5f60;
+    border-top: 1px solid #84754d;
     padding: 10px 0;
 }
 
 .bottom-last .bottom-last-box.bottom-last-links a {
-    color: #ebebeb;
+    color: #84754d;
     display: inline-block;
 }
 
 .bottom-last .bottom-last-box.bottom-last-links span {
     display: inline-block;
     margin: 0 10px;
-    color: #ebebeb;
+    color: #d3c8a0;
 }
 
 .bottom-last p {
@@ -6205,7 +6203,7 @@ span.checkError {
 .prosTit h2 {
     font-size: 20px;
     font-weight: bold;
-    color: #000;
+    color: #847450;
 }
 
 .picScroll-left {
@@ -6231,7 +6229,7 @@ span.checkError {
     height: 50px;
     left: 0;
     display: block;
-    background: url(../images/product-left.jpg) left top no-repeat;
+    background: url(../images2019/product-left.jpg) left top no-repeat;
     background-size: 100%;
     color: #000;
 }
@@ -6242,7 +6240,7 @@ span.checkError {
     height: 50px;
     right: 0;
     display: block;
-    background: url(../images/product-right.jpg) right top no-repeat;
+    background: url(../images2019/product-right.jpg) right top no-repeat;
     background-size: 100%;
     color: #000;
 }
@@ -6314,7 +6312,7 @@ span.checkError {
 .picScroll-left .bd ul li .title h3 {
     font-size: 12px;
     font-weight: bold;
-    color: #060606;
+    color: #847450;
 
 }
 
@@ -6324,18 +6322,18 @@ span.checkError {
 
 .picScroll-left .bd ul li .title p span.price-emp {
     font-size: 12px;
-    color: #4a4a4a;
+    color: #847450;
     text-decoration: line-through;
 }
 
 .picScroll-left .bd ul li .title p span.price-now {
     font-size: 14px;
-    color: #060606;
+    color: #847450;
 }
 
 ul.messages {
     z-index: 9999;
-    color: #fff;
+    color: #847450;
     padding: 15px 0;
     font-size: 14px;
     line-height: 1.5em;
@@ -6344,7 +6342,11 @@ ul.messages {
     top: 50px;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, .8);
+    background: #fff;
+}
+
+ul.messages .error-msg a {
+    text-decoration: underline;
 }
 
 .no-search {
@@ -6368,12 +6370,12 @@ ul.messages {
 .rules {
     margin: 0 10px;
     padding-bottom: 20px;
-    color: #333;
+    color: #847450;
 }
 
 .rules h1 {
     font-size: 16px;
-    color: #333;
+    color: #847450;
     font-weight: bold;
     text-align: center;
     border: none;
@@ -6385,7 +6387,7 @@ ul.messages {
     font-size: 12px;
     line-height: 1.6em;
     margin-bottom: 20px;
-    color: #222;
+    color: #847450;
 }
 
 .rules dl dd {
@@ -6397,7 +6399,7 @@ ul.messages {
 
 .rules dl dt {
     font-size: 12px;
-    color: #222;
+    color: #847450;
     line-height: 1.6em;
 }
 
@@ -6410,7 +6412,7 @@ ul.messages {
 
 .regSus h2 {
     font-size: 16px;
-    color: #333;
+    color: #847450;
     font-weight: bold;
 }
 
@@ -6435,12 +6437,12 @@ ul.messages {
     padding-bottom: 15px;
     border-bottom: 1px solid #ddd;
     font-size: 14px;
-    color: #333;
+    color: #847450;
 }
 
 .shops .shopsSlects {
     margin: 10px 0;
-    color: #333;
+    color: #847450;
 }
 
 .shops .shopsSlects select {
@@ -6504,7 +6506,7 @@ ul.messages {
 .mobile_news_box h3 {
     font-size: 14px;
     font-weight: bold;
-    color: #333;
+    color: #847450;
     text-align: center;
 }
 
@@ -6524,7 +6526,7 @@ ul.messages {
 .mobile_news_box p {
     font-size: 12px;
     line-height: 1.5em;
-    color: #333;
+    color: #847450;
     margin-bottom: 10px;
 }
 
@@ -6546,7 +6548,7 @@ ul.messages {
 .mobile_news_box dl dt {
     line-height: 1.5em;
     font-size: 12px;
-    color: #333;
+    color: #847450;
 }
 
 .mobile_news .newsArtsFun {
@@ -7198,7 +7200,7 @@ ul.messages {
 }
 
 .madeBoxCons .selectsize .madeTextInpBox input {
-    color: #333;
+    color: #847450;
     font-size: 12px;
     padding: 10px 0;
     width: 100%;
