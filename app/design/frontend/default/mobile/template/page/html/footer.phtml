@@ -42,7 +42,7 @@ $server_script_url = Mage::helper('core/url')->getCurrentUrl();
 <div class="footer-16">
 	<div class="footer-top clearfix">
 		<div class="footer-top-box ms-fl">
-			<img src="<?php echo $this->getSkinUrl('images/footer-login-icon.jpg');?>" border="0">
+			<img src="<?php echo $this->getSkinUrl('images2019/footer-login-icon.jpg');?>" border="0">
             <?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?>
 				<a href="<?php echo $this->getUrl('customer/account/'); ?>">我的账号 / </a>  
 				<a href="<?php echo $this->getUrl('customer/account/logout/'); ?>">退出</a>
@@ -51,24 +51,24 @@ $server_script_url = Mage::helper('core/url')->getCurrentUrl();
             <?php endif; ?>
 		</div>
 		<div class="footer-top-box ms-fr">
-			<img src="<?php echo $this->getSkinUrl('images/footer-shop-icon.jpg');?>" border="0">
+			<img src="<?php echo $this->getSkinUrl('images2019/footer-shop-icon.jpg');?>" border="0">
 			<a href="<?php echo Mage::getUrl('mobile_shop')?>">授权经销商查询</a>
 		</div>
 	</div>
 	<div class="footer-infs clearfix">
 		<div class="footer-infs-phone ms-fl">
-			<a href="tel:15546229782"><img src="<?php echo 'http://images.spalding.com.cn/skin/frontend/default/mobile/images/bottom-phone.jpg'?>" border="0"></a>
+			<a href="tel:15546229782"><img src="<?php echo $this->getSkinUrl('images2019/bottom-phone.jpg') ?>" border="0"></a>
 		</div>
 		<div class="footer-infs-wx ms-fl">
-			<img src="<?php echo 'http://images.spalding.com.cn/skin/frontend/default/mobile/images/bottom-wx.jpg' ?>" border="0">
+			<img src="<?php echo $this->getSkinUrl('images2019/bottom-wx.jpg') ?>" border="0">
 		</div>
 		<div class="footer-infs-wb ms-fl">
-			<img src="<?php echo 'http://images.spalding.com.cn/skin/frontend/default/mobile/images/bottom-wb.jpg' ?>" border="0">
+			<img src="<?php echo $this->getSkinUrl('images2019/bottom-wb.jpg') ?>" border="0">
 		</div>
 	</div>
 	<div class="bottom-last">
 		<div class="bottom-last-box bottom-last-logo">
-			<img src="<?php echo 'http://images.spalding.com.cn/skin/frontend/default/mobile/images/bottom-logos.jpg' ?>" border="0">
+			<img src="<?php echo $this->getSkinUrl('images2019/bottom-logo.jpg') ?>" border="0">
 		</div>
 		<div class="bottom-last-box bottom-last-links">
 			<a href="<?php echo Mage::getUrl('sales/order/history') ?>">订单管理</a>
@@ -85,7 +85,7 @@ $server_script_url = Mage::helper('core/url')->getCurrentUrl();
 <footer style="margin: 0 !important;">
     <p>Copyright© <?php /*echo date('Y');*/?> Spalding 中国 版权所有</p>
     <p class="footer-icp">备案编号：
-        <a href="http://www.miitbeian.gov.cn/" target="_blank" style="color:#999;">沪ICP备14046632号-1 </a>
+        <a href="http://www.miitbeian.gov.cn/" target="_blank" style="color:#84754d;">沪ICP备14046632号-1 </a>
         <script type="text/javascript">
             var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
             document.write(unescape("%3Cspan id='cnzz_stat_icon_1258600775'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258600775%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
