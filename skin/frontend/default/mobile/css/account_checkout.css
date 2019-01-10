@@ -565,13 +565,13 @@ table.orderInfo-prouductList tfoot td {
 
 .addressTit span.addressTit-icon {
     padding: 2px 5px;
-    background: #333;
-    color: #fff;
+    background: #00285d;
+    color: #d4c8a0;
     font-size: 12px;
 }
 
 .creatAddressBtn button.button {
-    background: url(../images/creatNewAddress.jpg) left top no-repeat;
+    background: url(../images2019/creatNewAddress.jpg) left top no-repeat;
     background-size: 100%;
     height: 50px;
     width: 100%;
@@ -1045,7 +1045,7 @@ table td.info-check-area {
 
 #checkout-step-billing button.button {
     border: none;
-    background: url("../images/button-continue.jpg") left top no-repeat;
+    background: url("../images2019/button-continue.jpg") left top no-repeat;
     width: 100%;
     height: 50px;
     background-size: 100%;
@@ -1808,7 +1808,7 @@ table.paypal-review-check-box td {
 		margin:15px 0 5px 0;*/
     width: 100%;
     height: 50px;
-    background: url(../images/cart-next.jpg) left top no-repeat;
+    background: url(../images2019/cart-next.jpg) left top no-repeat;
     background-size: 100%;
     border: none;
 }
@@ -2005,7 +2005,7 @@ table.form-horizontal .validation-advice {
 .cart-coupon span.couponSubmit button.button {
     height: 30px;
     width: 100%;
-    background: url(../images/cart-yhq.jpg) left top no-repeat;
+    background: url(../images2019/cart-yhq.jpg) left top no-repeat;
     background-size: 100% 30px;
     border: none;
 }
@@ -2319,7 +2319,7 @@ label[for=p_method_paypal_express] a {
     text-indent: 10px;
     color: #847450;
     margin-bottom: 10px;
-    border: 1px solid #847450;
+    border: 1px solid #d4c8a0;
 }
 
 .registerOther {
@@ -2437,7 +2437,7 @@ p.login-forgot a {
 }
 
 .loginButton button.login-forgotPasw {
-    background: url(../images/login-sendmail.jpg) left top no-repeat;
+    background: url(../images2019/login-sendmail.jpg) left top no-repeat;
     background-size: 100%;
     border: none;
     width: 100%;
@@ -2498,7 +2498,7 @@ p.login-forgot a {
 }
 
 .cusEditSubmit button.button {
-    background: url(../images/customEdit-save.jpg) left top no-repeat;
+    background: url(../images2019/customEdit-save.jpg) left top no-repeat;
     background-size: 100%;
     border: none;
     width: 100%;
