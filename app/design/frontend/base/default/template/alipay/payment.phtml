@@ -74,9 +74,9 @@ foreach ($_items as $_item){
 }
 ?>
 <style>
-    .payCustomPopUp{position:absolute; z-index:999999;background: rgba(0,0,0,.9);width:960px;height:400px;left:0; top:280px;overflow: hidden;}
+    .payCustomPopUp{position:absolute; z-index:999999;background: rgba(250,250,250,.9);width:960px;height:400px;left:0; top:280px;overflow: hidden;}
     .payPopUpCons{
-        color:#f4b201;
+        color:#847450;
         font-size: 16px;
         margin:80px 20px 50px;
     }
@@ -94,8 +94,8 @@ foreach ($_items as $_item){
         width:200px;
         height:40px;
         text-align: center;
-        background: #f4b201;
-        color:#000;
+        background: #00275E;
+        color:#D4C89E;
         line-height: 40px;
         font-size: 16px;
         font-weight: bold;
@@ -130,7 +130,7 @@ foreach ($_items as $_item){
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
         <?php if ($_flag): ?>
         <?php $customMsg = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId()) ?>
-        <div style="color:#f4b201;padding:10px;font-size:12px;border:1px solid #999;">
+        <div style="color:#847450;padding:10px;font-size:12px;border:1px solid #999;">
             定制一：
             <?php
                        	if($customMsg->getTypeP1() == 1):
@@ -156,7 +156,7 @@ foreach ($_items as $_item){
                     	endif;
                     ?>
         </div>
-         <div class="productsListRow" style="color:#f4b201;padding:10px;font-size:12px;border:1px solid #999;border-top:0;">
+         <div class="productsListRow" style="color:#847450;padding:10px;font-size:12px;border:1px solid #999;border-top:0;">
             定制二：
             <?php
                        	if($customMsg->getTypeP2() == 1):

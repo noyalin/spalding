@@ -70,7 +70,7 @@
         $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
         ?>
-        <div class="productsListRow" style="color:#f4b201;padding:18px;font-size:12px;">
+        <div class="productsListRow" style="color:#847450;padding:18px;font-size:12px;">
             定制一：<?php
             if($customMsg->getTypeP1() == 1):
                 $imagePath = $customMsg->getMsg2P1();
@@ -102,7 +102,7 @@
             endif;
             ?>
         </div>
-        <div class="productsListRow" style="color:#f4b201;padding:18px;font-size:12px;">
+        <div class="productsListRow" style="color:#847450;padding:18px;font-size:12px;">
             定制二：
             <?php
             if($customMsg->getTypeP2() == 1):
@@ -134,7 +134,7 @@
             endif;
             ?>
         </div>
-        <p style="padding-top:18px;font-size:12px;"><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
+        <p style="padding-top:18px;font-size:12px;color: #00275E;"><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
     <?php endif; ?>
     </div>
     
