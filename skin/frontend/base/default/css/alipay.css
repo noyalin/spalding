@@ -6,8 +6,9 @@
 /*public*/
 .red{color:#f4b201;}
 .gray{color:#969696;}
-.shortcut_wrapper a{color:#f4b201;text-decoration:none;}
-.shortcut_wrapper a:hover{color:#f4b201;text-decoration:underline;}
+/*color:#f4b201*/
+.shortcut_wrapper a{color:#00275E;text-decoration:none;}
+.shortcut_wrapper a:hover{color:#00275E;text-decoration:underline;}
 /*images*/
 .shortcut_bank_list h5 a,.shortcut_bank_list .btn a,.shortcut_bank .btn02 .icon,.shortcut_content .btn_next a{background-repeat:no-repeat;}
 /*clearfix*/
@@ -15,9 +16,9 @@
 .shortcut_bank_list h5,.shortcut_bank_list .bank,.shortcut_bank_table td p,.shortcut_bank_box{zoom:1;}
 
 /*shortcut_wrapper*/
-.shortcut_wrapper{width:100%;margin:0 auto;padding-top:55px; font-size: 14px;}
+.shortcut_wrapper{width:100%;margin:0 auto;padding-top:55px; font-size: 14px;background-color: #D4C89E;}
 /*.shortcut_wrapper .shortcut_price{width:100%;padding:0;color:#ffffff;}*/
-.shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;color:#fff;}
+.shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;color:#847450;}
 .shortcut_wrapper.shorturt_mobile .shortcut_price p{padding: 10px;margin: 0;color:#333;}
 /*.shortcut_wrapper .shortcut_price .price{color:#ffffff;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}*/
 .shortcut_wrapper .shortcut_price span{display:inline-block;padding-right:50px;}
@@ -65,8 +66,8 @@ margin: 0;}
 /*bottom_hint*/
 .bottom_hint{color:#646464;line-height:20px; margin:20px 10px;}
 .bottom_hint .title{margin:12px 0 -6px;font-weight:bold;}
-.bottom_hint p{padding:13px 0 7px;}
-.bottom_hint p .gray{display:block;}
+.bottom_hint p{padding:13px 0 7px;color: #847450;}
+.bottom_hint p .gray{display:block;color: #847450;}
 /*shortcut_bank_table*/
 .shortcut_content02 .shortcut_bank{margin:-15px 0 0;width:920px;overflow:hidden;padding-top:0;}
 .shortcut_content02 h4 span.now{background-color:#FDFBF8;}
@@ -366,7 +367,8 @@ z-index: 1;
 }
 
 a.paymentBtn{
-    background-color: #fd5419;
+    background-color: #00275E;
+    /*background-color: #fd5419;*/
     border:none;
     display: inline-block;
     font-size: 14px;
@@ -377,7 +379,7 @@ a.paymentBtn{
     vertical-align: middle;
     width: 159px;
     margin:20px 0 10px 130px;
-    color:#fff;
+    color:#847450;
     text-align:center;
     text-decoration:none;
 }

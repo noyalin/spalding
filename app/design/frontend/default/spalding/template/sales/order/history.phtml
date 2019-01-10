@@ -28,7 +28,7 @@
 <?php $_orders = $this->getOrders(); ?>
 <div class="page-title">
 <!--    <h1>--><?php //echo $this->__('My Orders') ?><!--</h1>-->
-    <img src="<?php echo $this->getSkinUrl('images/orderTop.png');  ?>" alt="">
+    <img src="<?php echo $this->getSkinUrl('images2019/orderTop.png');  ?>" alt="">
 </div>
 <?php echo $this->getPagerHtml(); ?>
 <div style="height:20px"></div>
@@ -96,7 +96,7 @@
                                     <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding102px?$102x102$&$image=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1" alt=""/>
 <!--        							<img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=--><?php //echo $_product->getUrlKey() ?><!---1" alt=""/>-->
 <!--        							<h3>斯伯丁NBA热火队队徽球</h3>-->
-        								<h3><a href="<?php echo $this->getUrl($_product->getUrlKey().'.html') ?>" ><?php echo $_item_title ?></a></h3>
+        								<h3><a href="<?php echo $this->getUrl($_product->getUrlKey().'.html') ?>"  style="color: #00275E"><?php echo $_item_title ?></a></h3>
                                     <?php if ($attributeSetName == "ball" || $attributeSetName == "customball"){?>
                                         <p>
 <!--                                            <span>产品材质：--><?php //echo $product_material;?><!--</span>-->

@@ -1216,7 +1216,8 @@ button.rulAgree{
 
 .pager{
     font-size: 12px;
-    color:#747472;
+    color:#847450;
+    /*color:#747472;*/
 }
 
 .pager .limiter span{
@@ -1238,6 +1239,10 @@ button.rulAgree{
 
 .pager .pages ol li.pageNow{
     color:#000;
+}
+
+.pageli a{
+    color: #00275E;
 }
 
 .img-over{
@@ -1318,6 +1323,7 @@ button.rulAgree{
     width:970px;
     padding:0px 0px;
 
+    height: calc(100vh - 412px);
 }
 
 
@@ -1419,7 +1425,8 @@ span.spCarTit_fun{
 .spListWrap dl dt .spListInfTop{
     padding-bottom:6px;
     margin-bottom:5px;
-    border-bottom:1px solid #4e4d4d;
+    border-bottom:1px solid #847450;
+    /*border-bottom:1px solid #4e4d4d;*/
 }
 .spListWrap dl dt .spListInfTop span{
     display: inline-block;
@@ -1489,7 +1496,8 @@ span.spCarTit_fun{
     width: 40px;
     line-height: 18px;
     font-size: 12px;
-    color: #b4b4b4;
+    color: #847450;
+    /*color: #b4b4b4;*/
     background: #D4C89E;
     /*background: #202020;*/
 }
@@ -1917,6 +1925,7 @@ h2.product-collateral-box-nam{
     margin:0 auto;
     color:#fff;
     min-height: 500px;
+    background-color: #D4C89E;
 }
 .main-container22{
     width:1204px;
@@ -1956,14 +1965,14 @@ h2.product-collateral-box-nam{
     color:#b6b6b6;
 }
 .block-content ul li.navi_li_account{
-    background:url(../images/AccountMgt_tit_w.png) 42px top no-repeat;
+    background:url(../images2019/AccountMgt_tit_w.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_account:hover{
     background:url(../images/AccountMgt_tit_g.png) 42px top no-repeat;
 }
 .block-content ul li.navi_li_account_edit{
-    background:url(../images/AccountPer_tit_w.png) 42px top no-repeat;
+    background:url(../images2019/AccountPer_tit_w.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_account_edit:hover{
@@ -1971,7 +1980,7 @@ h2.product-collateral-box-nam{
 }
 
 .block-content ul li.navi_li_address_book{
-    background:url(../images/AccountAdrs_tit_w.png) 42px top no-repeat;
+    background:url(../images2019/AccountAdrs_tit_w.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_address_book:hover{
@@ -1993,10 +2002,11 @@ h2.product-collateral-box-nam{
 .page-title{
     font-size: 18px;
     font-weight: bold;
-    color:#ffba00;
+    color:#847450;
     padding-bottom:4px;
     margin-bottom:10px;
-    border-bottom:5px solid #fff;
+    border-bottom:5px solid #847450;
+    /*border-bottom:5px solid #fff;*/
 }
 
 
@@ -2226,8 +2236,10 @@ ul.form-list li p{
 
 .order_data .order_data_tit{
     padding:2px 10px;
-    background:#333;
-    color:#fff;
+    /*background:#333;*/
+    background:#847450;
+    color:#D4C89E;
+    /*color:#fff;*/
     font-size: 12px;
     font-weight: bold;
 }
@@ -2274,7 +2286,8 @@ ul.form-list li p{
 }
 
 .order_data ul.order_data_list li{
-    border:1px solid #4d4d4d;
+    border:1px solid #847450;
+    /*border:1px solid #4d4d4d;*/
     font-size: 12px;
     margin-bottom:10px;
 }
@@ -2282,10 +2295,12 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li h2{
     padding:2px 15px;
-    background: rgba(51,51,51,.7);
+    background: #D4C89E;
+    /*background: rgba(51,51,51,.7);*/
     font-size: 12px;
     font-weight: normal;
-    color:#888;
+    color:#847450;
+    /*color:#888;*/
 }
 
 .order_data ul.order_data_list li h2>span{
@@ -2323,7 +2338,9 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li span.order_data_list_nam p{
     font-size: 12px;
-    color:#b6b6b6;
+    /*color:#b6b6b6;*/
+    color:#847450;
+
     width:210px;
     height:24px;
     line-height: 24px;
@@ -2333,16 +2350,22 @@ ul.form-list li p{
 .order_data ul.order_data_list li>span.order_data_list_nam p>span{
     display: inline-block;
     margin-right:10px;
+
+    color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_priceP{
     width:70px;
     line-height: 65px;
+
+    color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_num{
     width:50px;
     line-height: 65px;
+
+    color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_state{
@@ -2353,6 +2376,8 @@ ul.form-list li p{
 .order_data ul.order_data_list li>span.lisStat_lineHeight{
     line-height: 1.4em;
     margin-top:15px;
+
+    color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_ifts_list_state{
@@ -2363,6 +2388,8 @@ ul.form-list li p{
 .order_data ul.order_data_list li>span.order_data_list_priceO{
     width:70px;
     line-height: 65px;
+
+    color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_fun{
@@ -2372,12 +2399,13 @@ ul.form-list li p{
 .order_data ul.order_data_list li>span.order_data_list_fun>a{
     display: block;
     font-size: 12px;
-    color:#fff;
+    color:#00275E;
+    /*color:#fff;*/
 }
 
 
 .order_data ul.order_data_list li>span.order_data_list_fun>a.order_data_list_fun_che{
-    color:#ffba00;
+    color:#00275E;
 }
 
 .order-infs{
@@ -3060,18 +3088,21 @@ ul.form-list li p{
     font-size: 20px;
     color: #847450;
 }
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #D4C89E!important;
+    font-size: 12px;
+}
 /*下拉购物车*/
 #topCartContent{
     position: absolute;
     width:320px;
     padding:10px;
-    background:#333;
+    background:#D4C89E;
     margin-top:0;
     text-align:left;
     margin-left:-255px;
     z-index: 999;
     display: none;
-
 }
 
 #topCartContent span{
@@ -3082,7 +3113,7 @@ ul.form-list li p{
 #topCartContent h1{
     font-size: 16px;
     font-weight: bold;
-    color:#fff;
+    color:#847450;
 
 }
 
@@ -3093,12 +3124,12 @@ ul.form-list li p{
 #mini-cart li{
     padding-top:3px;
     margin-top:10px;
-    border-top:1px solid #ccc;
+    border-top:1px solid #847450;
 }
 #mini-cart li p.product-name a{
     display: block;
     float: left;
-    color:#fff;
+    color:#847450;
     font-size: 14px;
 }
 
@@ -3121,7 +3152,7 @@ ul.form-list li p{
 #mini-cart dl.product-detail dt {
     float: left;
     font-size:12px;
-    color:#fff;
+    color:#847450;
 }
 #mini-cart dl.product-detail dt.proPri{
     float: right;
@@ -3131,17 +3162,20 @@ ul.form-list li p{
 .subtotal{
     padding-top:5px;
     margin-top:10px;
-    border-top:1px solid #ccc;
+    border-top:1px solid #847450;
+    /*border-top:1px solid #ccc;*/
     font-size: 16px;
     font-weight: bold;
     color:#fdb905;
 }
 .subtotal span.label{
     float: left;
+    color: #00275E;
 }
 
 .subtotal span.price{
     float: right;
+    color: #00275E;
 }
 .actions{
     margin:15px 0 10px;
@@ -3150,8 +3184,8 @@ ul.form-list li p{
     width:100%;
     height:38px;
     line-height: 38px;
-    background: #fdb905;
-    color:#000;
+    background: #00275e;
+    color:#847450;
     font-size: 14px;
     font-weight: bold;
     text-align: center;
@@ -3863,7 +3897,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .shopListTitle{
     margin:0;
     padding-bottom:5px;
-    border-bottom:1px solid #b1b1b1;
+    border-bottom:1px solid #847450;
+    /*border-bottom:1px solid #b1b1b1;*/
 }
 .shopsSelect {
     margin:6px 0;
@@ -3873,8 +3908,10 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     line-height: 26px;
     border:1px solid #848484;
     font-size: 14px;
-    color:#ffb900;
-    background: #24221a;
+    color:#847450;
+    /*color:#ffb900;*/
+    background: #D4C89E;
+    /*background: #24221a;*/
     margin-left:20px;
     width:105px;
 }
@@ -3888,7 +3925,8 @@ ul.shopsList{
 ul.shopsList li{
     height:37px;
     line-height: 37px;
-    color:#b9b9b9;
+    color:#847450;
+    /*color:#b9b9b9;*/
 }
 
 

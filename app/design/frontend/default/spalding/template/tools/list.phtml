@@ -3,16 +3,17 @@ $provinceList = $this->getAllProvince();
 $defaultList = $this->getAllStore();
 ?>
 <!-- 主框架 s -->
-<div style="height:90px; z-index:-2; background:#000;"></div>
+<!--background:#000;-->
+<div style="height:90px; z-index:-2; "></div>
 <div class="newsWrap">
     <div class="newsWrapBg">
-        <div class="newsWrapBgTop"><img src="<?php  echo $this->getSkinUrl("images/news_bg.jpg") ?>" alt=""></div>
+<!--        <div class="newsWrapBgTop"><img src="--><?php // echo $this->getSkinUrl("images/news_bg.jpg") ?><!--" alt=""></div>-->
         <!-- <div class="newsWrapBgBot"><img src="../images/newsBackground_bottom.jpg" alt=""></div> -->
     </div>
     <div class="newsWrapBox">
-        <div class="newsWrapTit"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_title.png") ?>" alt=""></div>
+        <div class="newsWrapTit"><img src="<?php  echo $this->getSkinUrl("images2019/shopsAdrs_title.png") ?>" alt=""></div>
         <div class="shopsSelect clearfix">
-            <span class="ms-fl"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_selectTit.png") ?>" alt=""></span>
+            <span class="ms-fl"><img src="<?php  echo $this->getSkinUrl("images2019/shopsAdrs_selectTit.png") ?>" alt=""></span>
             	<span class="ms-fl">
             		<select name="province" id="pname">
                         <?php foreach($provinceList as $each):
@@ -26,7 +27,7 @@ $defaultList = $this->getAllStore();
                     </select>
             	</span>
         </div>
-        <div class="shopListTitle"><img src="<?php  echo $this->getSkinUrl("images/shopsAdrs_listTitle.png") ?>" alt=""></div>
+        <div class="shopListTitle"><img src="<?php  echo $this->getSkinUrl("images2019/shopsAdrs_listTitle.png") ?>" alt=""></div>
         <ul class="shopsList">
             <?php foreach($defaultList as $eachStore): ?>
             <li class="clearfix">
@@ -45,7 +46,7 @@ $defaultList = $this->getAllStore();
         $adrLi.each(function(){
             var adrLiInd = jQuery(this).index();
             if(adrLiInd%2==0){
-                jQuery(this).css("background","#282828");
+                jQuery(this).css("background","#D4C89E");
             }
         });
         jQuery('#pname').change(

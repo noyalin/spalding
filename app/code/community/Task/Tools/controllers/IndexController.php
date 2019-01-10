@@ -193,7 +193,7 @@ class Task_Tools_IndexController extends Mage_Core_Controller_Front_Action{
             $arr[] = $tmp;
             $background = '';
             if($key%2 == 0){
-                $background = 'style="background: none repeat scroll 0% 0% rgb(40, 40, 40);"';
+                $background = 'style="background: none repeat scroll 0% 0% rgb(212,200,158);"';
             }
             $str .= '
             <li class="clearfix" '.$background.'>
