@@ -56,9 +56,12 @@ $imageArr = array(
                     }
                     ?>
                 <?php if($_filter->getItemsCount() && ($_filter->getChildCount()>0) ):
-                        $name = $_filter->getName();
-                        $src =  $this->getSkinUrl("images/category/".$imageArr["$name"]);
-                ?>
+                        $name = $_filter->getName(); ?>
+                        <!--melone start 修改图片 -->
+                        <!--$src =  $this->getSkinUrl("images/category/".$imageArr["$name"]);-->
+                <?php        $src =  $this->getSkinUrl("images2019/category/".$imageArr["$name"]);?>
+                        <!--melone end 修改图片 -->
+
                     <dt><img src="<?php echo $src ?>"/></dt>
                     <dd><?php echo $_filter->getHtml() ?></dd>
                 <?php endif; ?>

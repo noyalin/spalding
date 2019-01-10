@@ -1,14 +1,14 @@
 /*COPYRIGHT(C)UCWEB 2013.*/
-/*Í¨ÓÃCSSÑùÊ½±í.*/
+/*Í¨ï¿½ï¿½CSSï¿½ï¿½Ê½ï¿½ï¿½.*/
 /*2013.05.24*/
 
 /** @NAME:CSS RESET
-		@TYPE:¹«¹²
-		@EXPLAIN:×é¼þÉè¶¨£¨Module Setting£ºms-£©
-						 Á£×ÓÉè¶¨£¨Granule Reset£ºgr-£©
+		@TYPE:ï¿½ï¿½ï¿½ï¿½
+		@EXPLAIN:ï¿½ï¿½ï¿½ï¿½è¶¨ï¿½ï¿½Module Settingï¿½ï¿½ms-ï¿½ï¿½
+						 ï¿½ï¿½ï¿½ï¿½ï¿½è¶¨ï¿½ï¿½Granule Resetï¿½ï¿½gr-ï¿½ï¿½
 	*/
 	
-/*Í¨ÓÃÈ«¾ÖÉè¶¨*/
+/*Í¨ï¿½ï¿½È«ï¿½ï¿½ï¿½è¶¨*/
 html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,label {margin:0;padding:0;}
 
@@ -28,30 +28,32 @@ iframe{display:block;}
 del {text-decoration:line-through;}
 ol,ul,li {list-style:none;}
 caption,th {text-align:left;}
-ins,a {text-decoration:none;}
+/*melone start æ·»åŠ é¢œè‰²*/
+ins,a {text-decoration:none;color: #83744d;}
+/*melone end æ·»åŠ é¢œè‰²*/
 
 q:before,q:after {content:'';}
 sub,sup {font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
 sup {top:-0.5em;}
 sub {bottom:-0.25em;}
 
-body{/*background:#fff;font-family:Arial,Helvetica,sans-serif;*/font-family:Arial,ËÎÌå,ºÚÌå;line-height:20px;}
-.en_ff{ font-family:Impact,Arial,"\5FAE\8F6F\96C5\9ED1",Î¢ÈíÑÅºÚ;}
-.cn_ff{font-family:Arial,Verdana, sans-serif , ËÎÌå,  "Microsoft Yahei",Î¢ÈíÑÅºÚ;}
-.tf{font-family:"\5FAE\8F6F\96C5\9ED1",Î¢ÈíÑÅºÚ,"Microsoft Yahei",ÑÅºÚ\9,Arial;}
+body{/*background:#fff;font-family:Arial,Helvetica,sans-serif;*/font-family:Arial,ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½;line-height:20px;}
+.en_ff{ font-family:Impact,Arial,"\5FAE\8F6F\96C5\9ED1",Î¢ï¿½ï¿½ï¿½Åºï¿½;}
+.cn_ff{font-family:Arial,Verdana, sans-serif , ï¿½ï¿½ï¿½ï¿½,  "Microsoft Yahei",Î¢ï¿½ï¿½ï¿½Åºï¿½;}
+.tf{font-family:"\5FAE\8F6F\96C5\9ED1",Î¢ï¿½ï¿½ï¿½Åºï¿½,"Microsoft Yahei",ï¿½Åºï¿½\9,Arial;}
 
 
-/*ÖØÉè HTML5 ±êÇ©*/
+/*ï¿½ï¿½ï¿½ï¿½ HTML5 ï¿½ï¿½Ç©*/
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
 audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
 
-/*×é¼þÉè¶¨-MODULE SETTING*/
-/**ÏÔÊ¾×´Ì¬**/
+/*ï¿½ï¿½ï¿½ï¿½è¶¨-MODULE SETTING*/
+/**ï¿½ï¿½Ê¾×´Ì¬**/
 .ms-none{display:none;}
 .ms-block{display:block;}
 .ms-inblock{display:inline-block;}	
 
-/**Çå³ý¸¡¶¯**/
+/**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**/
 .ms-cf:before, .ms-cf:after {content:"";display:table;}
 .ms-cf:after {clear:both;}
 .ms-cf {zoom:1;}
@@ -64,18 +66,18 @@ audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
 .clearfix { display: block; }
 
 /*
- * ÇåÀíÔªËØ
+ * ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
  * @class clear
- * @desc	ÇåÀí¸¡¶¯ÔªËØ,µ±¸¡¶¯»»ÐÐÊ±ºóÃæÔªËØ²»Ï£Íû¸¡¶¯£¬Ìí¼Ó´ËÊôÐÔ£¬·ÀÖ¹IE BUG
+ * @desc	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø²ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½Ö¹IE BUG
  */
 .clear{clear:both; height:0px; width:100%; font-size:1px; line-height:0px; visibility:hidden; overflow:hidden;}
 
 
-/**¸¡¶¯**/
+/**ï¿½ï¿½ï¿½ï¿½**/
 .ms-fl{float:left;}
 .ms-fr{float:right;}
 
-/**¶¨Î»**/
+/**ï¿½ï¿½Î»**/
 .ms-pa{position:absolute;}
 .ms-pr{position:relative;}
 .ms-pf{position:fixed!important;}
@@ -115,7 +117,7 @@ audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
 
 
 
-/* ±ß¾à */
+/* ï¿½ß¾ï¿½ */
 .mt10{margin-top:10px;}
 .mt20{margin-top:20px;}
 .mt30{margin-top:30px;}
@@ -141,12 +143,12 @@ audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
 .mr50{margin-right:50px;}
 
 
-/**ÎÄ±¾¶¨Î»**/
+/**ï¿½Ä±ï¿½ï¿½ï¿½Î»**/
 .ms-tl{text-align:left}
 .ms-tc{text-align:center}
 .ms-tr{text-align:right}
 
-/**ÎÄ±¾**/
+/**ï¿½Ä±ï¿½**/
 .f12{ font-size:12px;}
 .f13{ font-size:13px;}
 .f14{ font-size:14px;}
@@ -194,15 +196,15 @@ audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
 
 
 
-/**»»ÐÐ**/
+/**ï¿½ï¿½ï¿½ï¿½**/
 .ms-noWrap{white-space:nowrap;overflow:hidden;}
 .ms-wrap{overflow:hidden;word-wrap:break-word;word-break:break-all;}
 
-/**±ß¿ò**/
+/**ï¿½ß¿ï¿½**/
 .ms-noBor{border:none!important}
 
 
-/*Í¼Æ¬Ô²½Ç*/
+/*Í¼Æ¬Ô²ï¿½ï¿½*/
 .borderRadius_5{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
 .borderRadius_3{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
 
@@ -211,7 +213,7 @@ audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
 .bsha{box-shadow:0 1px 1px #ccc;}
 
 
-/*±³¾°É«*/
+/*ï¿½ï¿½ï¿½ï¿½É«*/
 .bc_999{background:#999;}
 .bc_333{background:#333;}
 .bc_666{background:#666;}
@@ -219,9 +221,9 @@ audio,canvas,video,span {display:inline-block;*display:inline;*zoom:1;}
 
 
 /*
-* ¶¨ÒåHÏµÁÐ±êÇ©
+* ï¿½ï¿½ï¿½ï¿½HÏµï¿½Ð±ï¿½Ç©
 * @overlay HN
-* @desc ¸²¸ÇHÏµÁÐ±êÇ©Ä¬ÈÏÊôÐÔ
+* @desc ï¿½ï¿½ï¿½ï¿½HÏµï¿½Ð±ï¿½Ç©Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 h1{ font-size:24px;}
 h2{ font-size:20px;}
@@ -232,10 +234,10 @@ h6{ font-size:12px;}
 
 
 /*
-* ¶¨Òå¼ä¾à,ÉÏÏÂ2¸öDIV¼ä¾à
-* @Pro Ê¹ÓÃDIVH¿ªÍ·.
-* @desc ÉÏÏÂDIVÓÐ¼ä¾àÊ±Ê¹ÓÃ,¾¡Á¿²»Ê¹ÓÃmargin/paddingÖµ,·ÀÖ¹²»Í¬ä¯ÀÀÆ÷³öÏÖBUG,
-*	 Ê¹ÓÃÏÂÃæÊôÐÔ¿É¼æÈÝ´ó¶àä¯ÀÀÆ÷.
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½DIVï¿½ï¿½ï¿½
+* @Pro Ê¹ï¿½ï¿½DIVHï¿½ï¿½Í·.
+* @desc ï¿½ï¿½ï¿½ï¿½DIVï¿½Ð¼ï¿½ï¿½Ê±Ê¹ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½margin/paddingÖµ,ï¿½ï¿½Ö¹ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BUG,
+*	 Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿É¼ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 */
 .DivH5,.DivH10,.DivH15,.DivH20,.DivH25,.DivH30,DivH1,.DivH40{width:100%;overflow:hidden;}
 .DivH1{ height:1px;}
@@ -248,7 +250,7 @@ h6{ font-size:12px;}
 .DivH40{height:40px;}
 
 /*
-*inputsÎÄ±¾¿ò
+*inputsï¿½Ä±ï¿½ï¿½ï¿½
 *textarea
 */
 .inputText_50{width:50px; padding:3px 5px; font-size:12px; color:#666; }
@@ -276,14 +278,14 @@ h6{ font-size:12px;}
 .textArea_600{width:600px; height:150px; max-width:600px; max-height:150px;font-size:12px; color:#666; padding:3px 5px;}
 
 
-/* ±¸×¢ */
-/*ÔÚÖÕ¼«Ò³ÃæÖÐµ÷ÓÃ¸ÃÍ¨ÓÃÑùÊ½Ê±,Ó¦¸Ã×¢ÒâÏÔÊ¾Ð§¹ûµÄ²»Í¬,ÒòÎªºóÌ¨ÉÏ´«ÐÅÏ¢Ê±±à¼­Æ÷ÀïÃæÑùÊ½²¢Ã»ÓÐµ÷ÓÃ±¾Ä¬ÈÏÑùÊ½±í.
+/* ï¿½ï¿½×¢ */
+/*ï¿½ï¿½ï¿½Õ¼ï¿½Ò³ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ã¸ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ê½Ê±,Ó¦ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ê¾Ð§ï¿½ï¿½ï¿½Ä²ï¿½Í¬,ï¿½ï¿½Îªï¿½ï¿½Ì¨ï¿½Ï´ï¿½ï¿½ï¿½Ï¢Ê±ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ã»ï¿½Ðµï¿½ï¿½Ã±ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½.
  *
- *ËùÒÔÔÚ±à¼­Æ÷ÖÐ±êÇ©»áÓÐÄ¬ÈÏµÄÊôÐÔ,ÓÃ»§ÔÚÌí¼ÓÐÅÏ¢Ê±,ÕâÐ©ÐÅÏ¢¶¼ÊÇ¸½´øÄ¬ÈÏÑùÊ½µÄ.
- *Èç¹ûÓÃÎÒÃÇÔÚÖÕ¼«Ò³ÃæÒ²µ÷ÓÃ±¾Ä¬ÈÏCSSÎÄ¼þµÄ»°,Ðí¶à±êÇ©Èç:p,td,li......±êÇ©Ä¬ÈÏÑùÊ½¶¼±»È¡Ïû,Òò´ËÏÔÊ¾Ð§²»Í¬.
+ *ï¿½ï¿½ï¿½ï¿½ï¿½Ú±à¼­ï¿½ï¿½ï¿½Ð±ï¿½Ç©ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ê±,ï¿½ï¿½Ð©ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½.
+ *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Ò³ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ã±ï¿½Ä¬ï¿½ï¿½CSSï¿½Ä¼ï¿½ï¿½Ä»ï¿½,ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½:p,td,li......ï¿½ï¿½Ç©Ä¬ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ð§ï¿½ï¿½Í¬.
  *
- *½â¾ö°ì·¨:
- *	ÔÚÖÕ¼«Ò³ÃæÏÔÊ¾ÄÚÈÝÇøÓò»¹Ô­ÕâÐ©±êÇ©µÄÄ¬ÈÏÊôÐÔ.
+ *ï¿½ï¿½ï¿½ï¿½ì·¨:
+ *	ï¿½ï¿½ï¿½Õ¼ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½Ð©ï¿½ï¿½Ç©ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
  *
  */
   

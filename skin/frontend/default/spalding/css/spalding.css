@@ -822,11 +822,16 @@ ul.scarch_select_option li:hover{
 
 .loginMain .login_backHome{
     font-size: 12px;
-    background: url(../images/20141209011.png) left center no-repeat;
+    /**/
+    background: url(../images2019/20141209011.png) left center no-repeat;
+    /**/
     text-indent: 20px;
 }
 .loginMain .login_backHome a{
-    color:#fff;
+    /*melone start 修改字体颜色*/
+    /*color:#fff;*/
+    color:#83744d;
+    /*melone start 修改字体颜色*/
 }
 
 .loginMain .login_backHome a:hover{
@@ -843,8 +848,10 @@ ul.scarch_select_option li:hover{
 }
 
 .loginMain p a{
+    /*melone start 修改字体颜色*/
     /*color:#fff;*/
-    color: #847450;
+    color:#83744d;
+    /*melone start 修改字体颜色*/
 }
 
 .loginMain p a:hover{
@@ -858,7 +865,12 @@ ul.scarch_select_option li:hover{
     padding:3px 5px;
     border-radius: 3px;
     font-size: 14px;
-    color:#666;
+    /**/
+    /*color:#666;*/
+    color: #83744d;
+    background: #d4c89e;
+    border:transparent;
+    /**/
 }
 
 .loginSub .loginSubBtn{
@@ -868,11 +880,15 @@ ul.scarch_select_option li:hover{
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color:#847450;
+    /*melone start 修改登录字体颜色*/
     /*color:#000;*/
+    color: #d4c89e;
+    /*melone end 修改登录字体颜色*/
     border-radius: 4px;
-    background: #00275E;
+    /*melone start 修改登录背景颜色*/
     /*background: #fdb905;*/
+    background: #03285c;
+    /*melone end 修改登录背景颜色*/
 }
 
 .loginSub .loginSubNoAccount{
@@ -912,7 +928,10 @@ ul.scarch_select_option li:hover{
     display: inline-block;
     height:16px;
     line-height: 16px;
-    margin-left:30px;
+    /*melone start 修改“联合支付”的边距*/
+    /*margin-left:30px;*/
+    margin-left:20px;
+    /*melone end 修改“联合支付”的边距*/
     font-family: "微软雅黑";
 }
 
@@ -949,6 +968,9 @@ ul.scarch_select_option li:hover{
     font-size: 12px;
     line-height: 1.4em;
     margin:40px 0 20px;
+    /**/
+    color: #83744d;
+    /**/
 }
 
 /*注册*/
@@ -1065,7 +1087,10 @@ button.rulAgree{
 
 
 .block-title img{
-    border-bottom:5px solid #333;
+    /**/
+    /*border-bottom:5px solid #333;*/
+    border-bottom:5px solid #83744d;
+    /**/
 }
 
 .block-content dl.narrow-by-list{
@@ -1089,14 +1114,20 @@ button.rulAgree{
 }
 
 .block-content dl.narrow-by-list dd ol li a{
-    color:#747472;
+    /*melone start 修改左边栏中字体的颜色*/
+    /*color:#747472;*/
+    color:#83744d;
+    /*melone end 修改左边栏中字体的颜色*/
     position: relative;
     z-index: 999;
 }
 
 
 .block-content dl.narrow-by-list dd ol li a:hover{
-    color:#333;
+    /*melone start 修改左边栏中悬停在字体上的颜色*/
+    /*color:#333;*/
+    color:#d4c89e;
+    /*melone end 修改左边栏中悬停在字体上的颜色*/
     font-size: 12px;
 }
 
@@ -1149,10 +1180,14 @@ button.rulAgree{
 }
 
 .products-grid li.item h2 a{
-    color:#333;
+    /*melone start 修改商品图片下的描述文字颜色*/
+    /*color:#333;*/
+    color: #83744d;
+    /*melone end 修改商品图片下的描述文字颜色*/
 }
 
 .products-grid li.item .divpric{
+    position:relative;
     position:relative;
     text-align:center;
 }
@@ -1167,7 +1202,10 @@ button.rulAgree{
 .products-grid li.item .divpric span.pricPro{
     font-size:16px;
     font-family:Arial;
-    color:#000;
+    /*melone start 修改商品图片下的价格颜色*/
+    /*color:#000;*/
+    color: #83744d;
+    /*melone end 修改商品图片下的价格颜色*/
     font-weight: bold;
 }
 .products-grid li.item h4{
@@ -1202,10 +1240,16 @@ button.rulAgree{
 }
 
 .sorter label{
-    color:#747472;
+    /*melone start 修改“排序方式”字体颜色*/
+    /*color:#747472;*/
+    color:#83744d;
+    /*melone end 修改“排序方式”字体颜色*/
 }
 .sorter select{
-    color:#333;
+    /*melone start 修改“排序方式”后面字体颜色*/
+    /*color:#333;*/
+    color: #83744d;
+    /*melone end 修改“排序方式”后面字体颜色*/
     padding:2px;
 }
 
@@ -5235,3 +5279,7 @@ dl.madeBoxFuns dt.zz_t_2{
         left:180px;
     }
 }
+
+/*.input-box {*/
+    /*color: red;*/
+/*}*/
