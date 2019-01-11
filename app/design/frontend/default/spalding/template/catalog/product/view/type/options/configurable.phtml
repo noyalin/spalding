@@ -115,7 +115,8 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
                         $availableColorPxNow =  '<img src='.$this->getSkinUrl("images/productDetail_kind.png").'  class="availableColorPxNow"/>';
                         $border = "";
                     }
-                    $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/spalding50px?$50x50$&$image50='. $this->htmlEscape($thisUrlkey)."-1";
+                    ?><!-- melone url加上2019- --><?php
+                    $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding50px?$50x50$&$image50='. $this->htmlEscape($thisUrlkey)."-1";
                     echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.
                         '<div style="height:50px;padding-left:4px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
                         </a>';
