@@ -328,10 +328,10 @@ input[type="text"] {
 	background:#00275E;
 }
 .productsListRow {
-	border-left:1px solid #484848;
-	border-right:1px solid #484848;
+	border-left:1px solid #847450;
+	border-right:1px solid #847450;
 
-	border-bottom:1px solid #484848;
+	border-bottom:1px solid #847450;
 	display:block;
 }
 .productsListCol {
@@ -399,12 +399,12 @@ input[type="text"] {
 
 .checkoutProductDiscountPrice {
     font-size: 14px;
-	color:#00275E;
+	/*color:#00275E;*/
 	/*color:#fdb905;*/
 }
 .checkoutProductPriceTotalPrice {
 	font-size: 14px;
-	color:#00275E;
+	/*color:#00275E;*/
 	/*color:#fdb905;*/
 }
 .checkoutPriceTotalText {

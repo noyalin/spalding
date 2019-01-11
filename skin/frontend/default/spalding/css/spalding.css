@@ -1970,7 +1970,7 @@ h2.product-collateral-box-nam{
 
 .cart {
     min-height: 500px;
-    /*height: calc(100vh - 428px);*/
+    height: calc(100vh - 400px);
 }
 
 .main-container{

@@ -278,12 +278,12 @@ $theme = Mage::getDesign()->getTheme('frontend');
         </div>
 
         <div class="checkoutBalance">
-            <div class="checkoutBalanceItem">
+            <div class="checkoutBalanceItem" style="color: #847450">
                 商品总金额:&nbsp;
                 <div class="checkoutProductPriceTotalPrice"><?php echo Mage::helper('opc')->getSubtotal() ?></div>
             </div>
             <?php //if (strpos(Mage::getSingleton('customer/session')->getCustomer()->getEmail(), '@voyageone.cn')):?>
-            <div class="checkoutBalanceItem">
+            <div class="checkoutBalanceItem" style="color: #847450">
                 优惠金额:&nbsp;
                 <div
                     class="checkoutProductDiscountPrice"><?php echo Mage::helper('opc')->getSubtotalOfDiscount() ?></div>
