@@ -71,7 +71,9 @@
             <div class="selected-label">
             <a data-qa="filter.gender.men" class="selected-facet facet  "><?php echo $this->stripTags($_filter->getLabel()) ?></a>
                 <a  class="btn-remove" href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>">
-                    <img src="<?php echo $this->getSkinUrl('images/remove.jpg')?>" alt=""/>
+                <!-- melone start 修改删除图片images->images2019 -->
+                    <img src="<?php echo $this->getSkinUrl('images2019/remove.jpg')?>" alt=""/>
+                <!-- melone end 修改删除图片images->images2019 -->
                 </a>
             </div>
             <?php

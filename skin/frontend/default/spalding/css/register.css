@@ -32,7 +32,7 @@ span.validation-error {
 #agree_terms{
     margin-right: 5px;
     float: left;
-
+    
 }
 .agree_terms{
     margin-right: 5px;
@@ -44,6 +44,10 @@ span.validation-error {
     padding: 0;
     width: auto;
     margin-top: -3px;
+}
+
+.terms a {
+    color: #02295c;
 }
 
 .validation-advice {
@@ -61,4 +65,7 @@ button.rulNotAgree {
     font-weight: bold;
     padding: 8px 10px;
     width: 100px;
+    /*melone start 添加未勾选“注册”字体颜色*/
+    color: #02295c;
+    /*melone end 添加未勾选“注册”字体颜色*/
 }

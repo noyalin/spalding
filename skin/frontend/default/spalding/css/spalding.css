@@ -991,7 +991,10 @@ ul.scarch_select_option li:hover{
     width:930px;
     padding:10px 20px;
     margin:0px auto 0;
-    color:#000;
+    /*melone start 修改字体颜色*/
+    /*color: #000;*/
+    color:#847450;
+    /*melone end 修改字体颜色*/
     background: #fff;
     min-height: calc(100vh - 412px);
 }
@@ -1001,8 +1004,12 @@ ul.scarch_select_option li:hover{
 
 div.regTit{
     padding:10px 20px;
-    background: #333333;
-    color:#fff;
+    /*melone start 修改背景和字体颜色*/
+    /*background: #333333;*/
+    background: #d3c8a0;
+    /*color:#fff;*/
+    color: #847450;
+    /*melone end 修改背景和字体颜色*/
     font-size: 20px;
     font-weight: bold;
 }
@@ -1016,11 +1023,17 @@ div.regTit span{
 div.regTit span a{
     font-size: 14px;
     font-weight: bold;
-    color:#fff;
+    /*melone start 修改“登录”的字体颜色*/
+    /*color:#fff;*/
+    color: #02295c;
+    /*melone end 修改“登录”的字体颜色*/
 }
 
 div.regTit span a:hover{
-    color:#b6b6b6;
+    /*melone start 修改“登录”悬停的字体颜色*/
+    /*color:#b6b6b6;*/
+    color: #847450;
+    /*melone end 修改“登录”悬停的字体颜色*/
 }
 
 .regBox{
@@ -1046,12 +1059,18 @@ div.regTit span a:hover{
     width:260px;
     height:26px;
     padding:2px 10px;
-    border:1px solid #ccc;
+    /*melone start 修改边框颜色*/
+    /*border:1px solid #ccc;*/
+    border:1px solid #d3c8a0;
+    /*melone end 修改边框颜色*/
     border-radius: 3px;
     color:#666;
 }
 .regBox span>span.regBoxWrapSn{
-    color:#999;
+    /*melone start 修改字体颜色*/
+    /*color:#999;*/
+    color: #847450;
+    /*melone end 修改字体颜色*/
 }
 
 .regRuls{
@@ -1060,9 +1079,15 @@ div.regTit span a:hover{
     min-height: 130px;
     max-height: 130px;
     padding:10px;
-    border:1px solid #ccc;
+    /*melone start 修改边框颜色*/
+    /*border:1px solid #ccc;*/
+    border:1px solid #d3c8a0;
+    /*melone end 修改边框颜色*/
     border-radius: 3px;
-    color:#4e4d4d;
+    /*melone start 修改字体颜色*/
+    /*color:#4e4d4d;*/
+    color: #847450;
+    /*melone end 修改字体颜色*/
     line-height: 1.5em;
     overflow: scroll;
     overflow-x:hidden;
@@ -1072,7 +1097,11 @@ button.rulAgree{
     padding:8px 10px;
     font-size: 14px;
     font-weight: bold;
-    background: #D3C8A0;
+    /*melone start 修改“注册”框的背景颜色*/
+    /*background: #D3C8A0;*/
+    background: #02295c;
+    color: #d3c8a0;
+    /*melone start 修改“注册”框的背景颜色*/
     border-radius: 3px;
     cursor:pointer;
     width: 100px;
@@ -1933,7 +1962,7 @@ h2.product-collateral-box-nam{
     height: auto;
 }
 .block-title-cus img{
-    border-bottom:5px solid #fff;
+    border-bottom:5px solid #ddd;
 }
 
 
@@ -5298,7 +5327,3 @@ dl.madeBoxFuns dt.zz_t_2{
         left:180px;
     }
 }
-
-/*.input-box {*/
-    /*color: red;*/
-/*}*/
