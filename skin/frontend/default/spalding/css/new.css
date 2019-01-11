@@ -2,10 +2,14 @@
   .block-content a{font-size: 12px;}
   .block-layered-nav{margin-left:-10px;}
   .currently ol li span.label{margin-left:20px;}
-  .currently .exp-left-nav-header{margin-left:20px;}
+  /*melone start 添加字体颜色*/
+  .currently .exp-left-nav-header{margin-left:20px;color: #83744d;}
+  /*melone end 添加字体颜色*/
     .selected-label{
   		padding-left:26px;
-        background: url(http://localhost/spalding/skin/frontend/default/spalding/images/catalogsearchBg.jpg) no-repeat left top;
+        /*melone start 去掉黑色背景*/
+        /*background: url(http://localhost/spalding/skin/frontend/default/spalding/images/catalogsearchBg.jpg) no-repeat left top;*/
+        /*melone end 去掉黑色背景*/
         z-index: 2000000000;
   		height:26px;
   		line-height:26px;

@@ -28,9 +28,9 @@ iframe{display:block;}
 del {text-decoration:line-through;}
 ol,ul,li {list-style:none;}
 caption,th {text-align:left;}
-/*melone start 添加颜色*/
-ins,a {text-decoration:none;color: #83744d;}
-/*melone end 添加颜色*/
+/*melone start 添加链接字体颜色与大小*/
+ins,a {text-decoration:none;color: #83744d;font-size: 12px;}
+/*melone end 添加链接字体颜色与大小*/
 
 q:before,q:after {content:'';}
 sub,sup {font-size:75%;line-height:0;position:relative;vertical-align:baseline;}

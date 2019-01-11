@@ -15,7 +15,9 @@
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
             <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
             <div class="regTit">
-                <span class="ms-fl"><img src="<?php echo $this->getSkinUrl("images/regTitle.png") ?>" alt=""></span>
+            <!-- melone start 修改图片 images->images2019 -->
+                <span class="ms-fl"><img src="<?php echo $this->getSkinUrl("images2019/regTitle.png") ?>" alt=""></span>
+            <!-- melone end 修改图片 images->images2019 -->
                 <span class="ms-fr">我已经注册了，现在就&nbsp;<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a></span>
                 <div class="clear"></div>
             </div>
