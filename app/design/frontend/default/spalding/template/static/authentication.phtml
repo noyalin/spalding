@@ -59,7 +59,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                 </div>
             </div>
             <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 16px;" id="return">
-            <button id="cheshi">按钮</button>
+            <button id="cheshi" style="width: 100px;height: 37px;">按钮</button>
         </div>
     </div>
 
@@ -189,7 +189,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     <a class="close-reveal-modal">×</a>
 </div>
 <div id="alertContactUs" class="reveal-modal large">
-    <h2>商品验证序列:<span id="valid_check_code">&nbsp;&nbsp;</span></h2>
+    <h2 style="color: #00275E;">商品验证序列:<span id="valid_check_code">&nbsp;&nbsp;</span></h2>
 
     <form action="">
         <ul>
@@ -343,7 +343,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         jQuery('.slide-group').animate({'top': '90px'});
     });
     jQuery('#cheshi').on('click', function (e) {
-        jQuery('.slide-group').animate({'top': '-2880px'});
+        jQuery('.slide-group').animate({'top': '-1920px'});
     });
     jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
         jQuery('#alertContactUs')[0].style.display = 'block';
@@ -663,3 +663,6 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         });
     });
 </script>
+
+<script>// 针对IE10if(/*@cc_on!@*/false){document.documentElement.className+=' ie'+document.documentMode;}// 针对IE11及非IE浏览器，// 因为IE11下document.documentMode为11，所以html标签上会加ie11样式类；// 而非IE浏览器的document.documentMode为undefined，所以html标签上会加ieundefined样式类。if(/*@cc_on!@*/true){document.documentElement.className+=' ie'+document.documentMode;}<script /><style>.ie10.testclass{color:red}.ie11.testclass{color:blue}.ieundefined.testclass{color:green}<style />
+

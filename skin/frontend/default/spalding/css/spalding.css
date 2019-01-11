@@ -1977,7 +1977,8 @@ h2.product-collateral-box-nam{
     width:930px;
     padding:10px 20px;
     margin:0 auto;
-    color:#fff;
+    color:#847450;
+    /*color:#fff;*/
     min-height: 500px;
     /*background-color: #D4C89E;*/
 }
@@ -2149,7 +2150,8 @@ h2.product-collateral-box-nam{
 
 
 .fieldset h2{
-    color:#fdb905;
+    color:#847450;
+    /*color:#fdb905;*/
     font-weight: bold;
     font-size: 12px;
     margin-bottom:10px;
@@ -2176,7 +2178,8 @@ ul.form-list li label{
     display: inline-block;
     width:80px;
     text-align: right;
-    color:#b6b6b6;
+    color:#847450;
+    /*color:#b6b6b6;*/
     margin-right:10px;
 }
 
@@ -2375,6 +2378,7 @@ ul.form-list li p{
     width:300px;
     text-align: left;
     margin-left:15px;
+    color: #847450;
 }
 
 .order_data ul.order_data_list li span.order_data_list_nam img{
@@ -2387,7 +2391,8 @@ ul.form-list li p{
 .order_data ul.order_data_list li span.order_data_list_nam h3{
     font-size: 12px;
     margin-top:5px;
-    color:#ffba00;
+    color:#00275E;
+    /*color:#ffba00;*/
 }
 
 .order_data ul.order_data_list li span.order_data_list_nam p{
@@ -2437,6 +2442,7 @@ ul.form-list li p{
 .order_data ul.order_data_list li>span.order_ifts_list_state{
     width:150px;
     line-height: 65px;
+    color: #00275E;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_priceO{
@@ -2468,7 +2474,8 @@ ul.form-list li p{
 }
 
 .order-infs p{
-    color:#fff;
+    color:#847450;
+    /*color:#fff;*/
     font-size: 12px;
     margin:15px 0;
 }
@@ -2481,7 +2488,8 @@ ul.form-list li p{
 
 .order-infs p span.order_infs_price{
     font-size: 20px;
-    color:#fdb905;
+    color:#00275E;
+    /*color:#fdb905;*/
 }
 
 .wxCD{
@@ -2504,7 +2512,8 @@ ul.form-list li p{
 .order_data h4{
     font-weight: bold;
     font-size: 14px;
-    color:#fdb905;
+    color:#00275E;
+    /*color:#fdb905;*/
     margin-bottom:15px;
 }
 
@@ -2513,7 +2522,8 @@ ul.form-list li p{
     margin-top:50px;
     font-size: 28px;
     font-weight: bold;
-    color:#fdb905;
+    color:#00275E;
+    /*color:#fdb905;*/
 }
 
 
@@ -3367,18 +3377,20 @@ ul.newsListBox{
 .newsArtsTit h2{
     font-size: 22px;
     font-weight: bold;
-    color:#fff;
+    color:#00275E;
+    /*color:#fff;*/
 }
 .newsArtsTit h3{
     font-size: 12px;
     font-weight: normal;
-    color:#9c9c9c;
+    color:#847450;
+    /*color:#9c9c9c;*/
     margin-top:10px;
 }
 
 .newsArtsWrap{
-    border:1px solid #353535;
-    background: #1e1e1e;
+    border:1px solid #D4C89E;
+    background: #D4C89E;
     font-size: 12px;
     color:#cbcbcb;
     margin-bottom:10px;
@@ -3396,6 +3408,7 @@ ul.newsListBox{
 .newsArtsWrap p{
     margin:10px 40px;
     text-indent: 24px;
+    color: #847450;
 }
 .newsArtsWrap ul{
     margin:10px 40px;
@@ -3416,6 +3429,7 @@ ul.newsListBox{
 .newsArtsFun{
     font-size: 12px;
     margin:20px 0;
+    color: #847450;
 }
 
 .newsArtsFun a{
@@ -3427,11 +3441,13 @@ ul.newsListBox{
 }
 
 .newsArtsFun .newsArtsNex a{
-    color:#cbcbcb;
+    /*color:#D4C89E;*/
+    /*color:#cbcbcb;*/
 }
 
 .newsArtsFun a:hover{
-    color:#fff;
+    color:#00275E;
+    /*color:#fff;*/
 }
 
 .shareBox{
@@ -3807,7 +3823,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     margin:20px 5% 10px ;
     font-size: 12px;
     font-weight: normal;
-    color:#333;
+    color:#847450;
+    /*color:#333;*/
 }
 
 .aboutUs_boxRig_cont{
@@ -3869,14 +3886,16 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     border:1px solid #eeebe1;
     height:26px;
     line-height: 26px;
-    color:#b6b6b6;
+    color:#847450;
+    /*color:#b6b6b6;*/
 }
 
 .contactForm span select{
     height: 26px;
     line-height: 26px;
     background: #eeebe1;
-    color:#b6b6b6;
+    color:#847450;
+    /*color:#b6b6b6;*/
     border:1px solid #eeebe1;
     font-size: 12px;
     width:100%;
@@ -3904,7 +3923,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     height: 32px;
     line-height: 32px;
     background: #00275E;
-    color: #847450;
+    color: #D4C89E;
     font-size: 16px;
     font-weight: bold;
     border:0;

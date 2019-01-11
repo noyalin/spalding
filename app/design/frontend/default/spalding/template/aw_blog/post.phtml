@@ -2,7 +2,11 @@
   $post = $this->getPost();
 ?>
 <div class="postContent">
-<?php
-  echo $post->getPostContent(); 
-?>
+  <div style="height: 90px; z-index: -2;">&nbsp;</div>
+  <div class="newsWrap">
+    <div class="newsWrapBg">
+      <div class="newsWrapBgTop"></div>
+    </div>
+    <?php echo $post->getPostContent();  ?>
+  </div>
 </div>
