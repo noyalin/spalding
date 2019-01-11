@@ -122,7 +122,9 @@ else:
                         <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
                     <?php endif; ?>
                     <div class="short-description">
-                        <img alt="" src="<?php echo $this->getSkinUrl("images/productDetail_des.png") ?>">
+                    <!-- melone start 修改图片 images->images2019 -->
+                        <img alt="" src="<?php echo $this->getSkinUrl("images2019/productDetail_des.png") ?>">
+                    <!-- melone start 修改图片 images->images2019 -->
                     </div>
                 </div>
 
@@ -214,9 +216,11 @@ else:
             $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
             $productNorm = $configurableProduct->getProductNorm();
             if($productNorm == 6){
-                $scen7 ='/is/image/sneakerhead/spalding_lqxq_small_';
+                // melone 修改url加上2019-
+                $scen7 ='/is/image/2019-sneakerhead/spalding_lqxq_small_';
             }else {
-                $scen7 = '/is/image/sneakerhead/spalding_lqxq_big_';
+                // melone 修改url加上2019-
+                $scen7 = '/is/image/sneakerhead/2019-spalding_lqxq_big_';
             }
             $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
             $attributeSetModel->load($_product->getAttributeSetId());
@@ -262,7 +266,8 @@ else:
 
                             <!--产品展示-->
                             <div class="product-collateral-box-img">
-                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title2.jpg") ?>' alt="">
+                            <!-- melone 修改图片-->
+                                <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">
                             </div>
                             <?php for ($i = 1; $i <=$imgCount; $i++):?>
                             <div class="product-collateral-box-img">
@@ -273,29 +278,35 @@ else:
                             <?php endfor; ?>
                             <!--细节展示-->
                             <div class="product-collateral-box-img">
-                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title3.jpg") ?>' alt="">
+                            <!-- melone 修改图片-->
+                                <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">
                             </div>
                             <?php for ($i = 1; $i <=$imgCount; $i++):?>
                                 <div class="product-collateral-box-img">
+                                <!-- melone url加上2019- -->
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding_lqxq_detail<?php echo $i ?>?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding_lqxq_detail<?php echo $i ?>?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                         alt=""/>
                                 </div>
                             <?php endfor; ?>
                             <?php if($attributeSetName == 'ball'){?>
                                 <!--篮球规格表-->
                                 <div class="product-collateral-box-img">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/balltitle4.jpg") ?>' alt="">
+                                <!-- melone 修改图片-->
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle4.jpg") ?>' alt="">
                                 </div>
                                 <div class="product-collateral-box-img">
-                                    <img src="<?php echo $this->getSkinUrl('images/detailinfo/ball-size.jpg');?>" border="0">
+                                <!-- melone 修改图片-->
+                                    <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-size.jpg');?>" border="0">
                                 </div>
                                 <!--篮球保养-->
                                 <div class="product-collateral-box-img">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/balltitle5.jpg") ?>' alt="">
+                                <!-- melone 修改图片-->
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle5.jpg") ?>' alt="">
                                 </div>
                                 <div class="product-collateral-box-img">
-                                    <img src="<?php echo $this->getSkinUrl('images/detailinfo/ball-maintain.jpg');?>" border="0">
+                                <!-- melone 修改图片-->
+                                    <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-maintain.jpg');?>" border="0">
                                 </div>
                                 <!--篮球结构知识-->
 <!--                                <div class="product-collateral-box-img">-->
@@ -326,7 +337,8 @@ else:
     <!--                            </div>-->
                                 <!--产品展示-->
                                 <div class="product-collateral-box-img">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/title2.jpg") ?>' alt="">
+                                <!-- melone 修改图片-->
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">
                                 </div>
                                 <?php for ($i = 1; $i <=$imgCount; $i++):?>
                                         <?php if($attributeSetName == 'apparel'){?>
@@ -345,7 +357,8 @@ else:
                                 <?php endfor; ?>
                                 <!--细节展示-->
                                 <div class="product-collateral-box-img">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/title3.jpg") ?>' alt="">
+                                <!-- melone 修改图片-->
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">
                                 </div>
                             <div class="product-collateral-box-img">
                                 <img
@@ -380,13 +393,16 @@ else:
                     <?php }?>
                         <!--售后相关-->
                         <div class="product-collateral-box-img">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/title7.jpg") ?>' alt="">
+                        <!-- melone 修改图片-->
+                            <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="">
                         </div>
                         <div class="product-collateral-box-img">
-                            <img src="<?php echo $this->getSkinUrl('images/detailinfo/service-1.jpg');?>" border="0">
+                        <!-- melone 修改图片-->
+                            <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-1.jpg');?>" border="0">
                         </div>
                         <div class="product-collateral-box-img">
-                            <img src="<?php echo $this->getSkinUrl('images/detailinfo/service-2.jpg');?>" border="0">
+                        <!-- melone 修改图片-->
+                            <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0">
                         </div>
                     </div>
                 </div>

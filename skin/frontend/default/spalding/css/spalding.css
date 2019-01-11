@@ -45,6 +45,13 @@ button{
     z-index: 999;
     margin-bottom: 10px;
 }
+
+/*melone start 添加超链接向右对齐*/
+.header_nav {
+    text-align: right;
+}
+/*melone end 添加超链接向右对齐*/
+
 .header_nav_funs_hd{
     position: relative;
     z-index: 99999;
@@ -1064,7 +1071,10 @@ div.regTit span a:hover{
     border:1px solid #d3c8a0;
     /*melone end 修改边框颜色*/
     border-radius: 3px;
-    color:#666;
+    /*melone start 修改输入框中字体颜色*/
+    /*color:#666;*/
+    color: #847450;
+    /*melone start 修改输入框中字体颜色*/
 }
 .regBox span>span.regBoxWrapSn{
     /*melone start 修改字体颜色*/
@@ -1797,7 +1807,9 @@ span.spCarTit_fun{
     font-size: 14px;
 }
 #product-options-wrapper span.checked {
-    background: url(../images/productDetail_kind.png) right bottom no-repeat #fff;
+    /*melone start 修改图片 images->images2019*/
+    background: url(../images2019/productDetail_kind.png) right bottom no-repeat #fff;
+    /*melone end 修改图片 images->images2019*/
     border:2px solid #00275E;
 }
 
@@ -1869,7 +1881,10 @@ span.spCarTit_fun{
     line-height: 35px;
     font-size: 14px;
     font-weight: bold;
-    color:#847450;
+    /*melone start 修改字体颜色*/
+    /*color:#847450;*/
+    color: #d3c8a0;
+    /*melone end 修改字体颜色*/
     background: #00275E;
     text-indent: 20px;
     text-align: center;
@@ -1926,9 +1941,15 @@ h2.product-collateral-box-nam{
 }
 .productSaw{
     padding:10px;
-    border:1px solid #6a6a6a;
+    /*melone start 修改边框颜色*/
+    /*border:1px solid #6a6a6a;*/
+    border:1px solid #83744d;
+    /*melone end 修改边框颜色*/
+
     border-top:none;
-    background: #222222;
+    /*melone start 修改背景颜色*/
+    /*background: #222222;*/
+    /*melone end 修改背景颜色*/
 }
 
 
@@ -1945,7 +1966,10 @@ h2.product-collateral-box-nam{
     display: block;
     text-align:center;
     font-size: 12px;
-    color:#b6b6b6;
+    /*melone start　修改字体颜色*/
+    /*color:#b6b6b6;*/
+    color: #83744d;
+    /*melone end　修改字体颜色*/
 }
 
 .productSaw ul li span.productSaw_img{
@@ -1960,9 +1984,15 @@ h2.product-collateral-box-nam{
 .col-left{
     width:180px;
     height: auto;
+    /*melone start 往下挪25px*/
+    margin-top: 25px;
+    /*melone end 往下挪25px*/
 }
 .block-title-cus img{
-    border-bottom:5px solid #ddd;
+    /*melone start 修改底部边框颜色*/
+    /*border-bottom:5px solid #ddd;*/
+    border-bottom:5px solid #847450;
+    /*melone end 修改底部边框颜色*/
 }
 
 
@@ -2072,7 +2102,8 @@ h2.product-collateral-box-nam{
 }
 
 .block-content ul li.navi_li_orders{
-    background:url(../images/AccountOrder_tit_w.png) 42px top no-repeat;
+    /*melone 修改图片地址*/
+    background:url(../images2019/AccountOrder_tit_w.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_orders:hover{
@@ -2091,13 +2122,16 @@ h2.product-collateral-box-nam{
     margin-bottom:10px;
     border-bottom:5px solid #847450;
     /*border-bottom:5px solid #fff;*/
+    margin-top: 25px;
 }
 
 
 
 
 .box-head{
-    color:#fdb905;
+    /*melone start 去掉字体颜色*/
+    /*color:#fdb905;*/
+    /*melone end 去掉字体颜色*/
     font-weight: bold;
     font-size: 12px;
     margin-bottom:10px;
@@ -2117,17 +2151,26 @@ h2.product-collateral-box-nam{
 }
 .box-title a{
     display: inline-block;
-    color:#fdb905;
+    /*melone start 修改字体颜色*/
+    /*color:#fdb905;*/
+    color: #02295c;
+    /*melone end 修改字体颜色*/
     font-size: 12px;
     margin-left:5px;
 }
 
-
-
+/*melone start 添加“联系信息、收货地址”居中*/
+.box-title {
+    margin-top: 15px;
+}
+/*melone end 添加“联系信息、收货地址”居中*/
 
 .box{
     padding:10px;
-    background: #333;
+    /*melone start 修改背景颜色*/
+    /*background: #333;*/
+    background: #d3c8a0;
+    /*melone end 修改背景颜色*/
 }
 .box-content{
     font-size: 12px;
@@ -2143,7 +2186,10 @@ h2.product-collateral-box-nam{
 
 
 .box-content p span.box-content-tit{
-    color:#b4b4b4;
+    /*melone start 修改字体颜色*/
+    /*color:#b4b4b4;*/
+    color: #847450;
+    /*melone start 修改字体颜色*/
 }
 
 .col-2{

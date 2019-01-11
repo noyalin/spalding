@@ -49,7 +49,7 @@
                     <div>
                         <a rel="productGallery [gallery]">
 <!--                            <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50=--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!-----><?php //echo $i ?><!--" alt=""/>-->
-                            <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding50px?$50x50$&$image50=<?php echo  $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>" alt=""  sku="<?php echo $i ?>"/>
+<!-- melone url加上2019- -->     <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding50px?$50x50$&$image50=<?php echo  $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>" alt=""  sku="<?php echo $i ?>"/>
                         </a>
                     </div>
                 <?php endwhile ?>
