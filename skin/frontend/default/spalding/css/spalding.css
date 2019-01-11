@@ -1135,6 +1135,8 @@ button.rulAgree{
 .block-content dl.narrow-by-list{
 
 }
+
+
 .block-content dl.narrow-by-list dt{
     font-size: 16px;
     font-weight: bold;
@@ -2064,6 +2066,7 @@ h2.product-collateral-box-nam{
     text-indent:20px;
 }
 
+
 .block-content ul li.current{
     color:#ffba00;
     background: url(../images/20141209008.png) left center no-repeat;
@@ -2076,7 +2079,7 @@ h2.product-collateral-box-nam{
 }
 
 .block-content ul li a:hover{
-    color:#b6b6b6;
+    color:red;
 }
 .block-content ul li.navi_li_account{
     background:url(../images2019/AccountMgt_tit_w.png) 42px top no-repeat;
@@ -4826,9 +4829,9 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 .madeSubmit button:hover{
     opacity: 1;
-    /*melone start 鼠标移动到暂存定制上习题的颜色*/
+    /*melone start 鼠标移动到暂存定制上字体的颜色*/
     color:#d4c89e;
-    /*melone end 鼠标移动到暂存定制上习题的颜色*/
+    /*melone end 鼠标移动到暂存定制上字体的颜色*/
 }
 
 .madeSubmit button.submitY{
