@@ -326,6 +326,7 @@ input[type="text"] {
 	color: #D4C89E;
 	/*background:#333333;*/
 	background:#00275E;
+	font-weight: bold;
 }
 .productsListRow {
 	border-left:1px solid #847450;
