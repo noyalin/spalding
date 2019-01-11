@@ -597,7 +597,7 @@ section header {
 
 .top-nav-wrapper a.menu:before {
     content: '';
-    width: 100%;
+    width: 50px;
     height: 44px;
     background: url(../images2019/menu.jpg) no-repeat 50% 50%;
     background-size: auto 30px;
@@ -605,7 +605,7 @@ section header {
 
 .top-nav-wrapper a.search:before {
     content: '';
-    width: 100%;
+    width: 50px;
     height: 44px;
     background: url(../images2019/search.jpg) no-repeat 50% 50%;
     background-size: auto 30px;
