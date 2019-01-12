@@ -341,7 +341,7 @@ $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku
     </h2>
         						<span class="order_data_list_nam 111 clearfix">
 <!--                                     <img src="--><?php //echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(75); ?><!--" />-->
-                                    <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding102px?$102x102$&$image=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1" alt=""/>
+                                    <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding102px?$102x102$&$image=<?php echo $this->htmlEscape($_product->getUrlKey()) ?>-1" alt=""/>
 <!--                                    <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=--><?php //echo $_product->getUrlKey() ?><!---1" alt=""/>-->
         							<h3 class="product-name"><?php echo $this->escapeHtml($_item->getName()) ?></h3>
                                     <?php if($_options = $this->getItemOptions()): ?>

@@ -525,7 +525,7 @@ class Shoe_Maker_Model_ConfigurableProduct extends Shoe_Maker_Model_IncrementalU
         $this->getImageVByUrl($urlProductList, $sku, $urlKey, 14);
 
         //my order image 66-996-66996y-1
-        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding102px?$102x102$&$image=' . $urlKey . '-1';
+        $urlProductList = 'http://s7d5.scene7.com/is/image/sneakerhead/2019-spalding102px?$102x102$&$image=' . $urlKey . '-1';
         $this->getImageVByUrl($urlProductList, $sku, $urlKey, 15);
 
         //detail page - view more other product
