@@ -49,6 +49,7 @@ button{
 /*melone start 添加超链接向右对齐*/
 .header_nav {
     text-align: right;
+    font-size: 12px;
 }
 /*melone end 添加超链接向右对齐*/
 
@@ -1940,6 +1941,9 @@ h2.product-collateral-box-nam{
 }
 .product-collateral-box-img img{
     width:100%;
+    /*melone start 去掉图片间的空隙*/
+    margin-bottom: -4px;
+    /*melone end 去掉图片间的空隙*/
 }
 .productSaw{
     padding:10px;
@@ -1978,13 +1982,19 @@ h2.product-collateral-box-nam{
     width:230px;
     height: 230px;
     padding:15px;
-    background: #323232;
+    /*melone start 修改背景颜色*/
+    /*background: #323232;*/
+    background: #D4C89E;
+    /*melone end 修改背景颜色*/
 }
 
 
 /*用户中心*/
 .col-left{
-    width:180px;
+    /*melone start 调整宽度*/
+    /*width:180px;*/
+    width: 210px;
+    /*melone end 调整宽度*/
     height: auto;
     /*melone start 往下挪25px*/
     margin-top: 25px;
@@ -1993,7 +2003,7 @@ h2.product-collateral-box-nam{
 .block-title-cus img{
     /*melone start 修改底部边框颜色*/
     /*border-bottom:5px solid #ddd;*/
-    border-bottom:5px solid #847450;
+    border-bottom:5px solid #02295c;
     /*melone end 修改底部边框颜色*/
 }
 
@@ -2082,26 +2092,32 @@ h2.product-collateral-box-nam{
     color:red;
 }
 .block-content ul li.navi_li_account{
+    /*melone 修改图片地址*/
     background:url(../images2019/AccountMgt_tit_w.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_account:hover{
-    background:url(../images/AccountMgt_tit_g.png) 42px top no-repeat;
+    /*melone修改鼠标悬停时的图片*/
+    background:url(../images2019/AccountMgt_tit_g.png) 42px top no-repeat;
 }
 .block-content ul li.navi_li_account_edit{
+    /*melone 修改图片地址*/
     background:url(../images2019/AccountPer_tit_w.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_account_edit:hover{
-    background:url(../images/AccountPer_tit_g.png) 42px top no-repeat;
+    /*melone 修改鼠标悬停时的图片*/
+    background:url(../images2019/AccountPer_tit_g.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_address_book{
+    /*melone 修改图片地址*/
     background:url(../images2019/AccountAdrs_tit_w.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_address_book:hover{
-    background:url(../images/AccountAdrs_tit_g.png) 42px top no-repeat;
+    /*melone 修改鼠标悬停时的图片*/
+    background:url(../images2019/AccountAdrs_tit_g.png) 42px top no-repeat;
 }
 
 .block-content ul li.navi_li_orders{
@@ -2110,7 +2126,8 @@ h2.product-collateral-box-nam{
 }
 
 .block-content ul li.navi_li_orders:hover{
-    background:url(../images/AccountOrder_tit_g.png) 42px top no-repeat;
+    /*melone 修改鼠标悬停时的图片*/
+    background:url(../images2019/AccountOrder_tit_g.png) 42px top no-repeat;
 }
 
 .col-main{
@@ -2123,7 +2140,9 @@ h2.product-collateral-box-nam{
     color:#847450;
     padding-bottom:4px;
     margin-bottom:10px;
-    border-bottom:5px solid #847450;
+    /*melone start 修改底部线颜色*/
+    border-bottom:5px solid #02295c;
+    /*melone start 修改底部线颜色*/
     /*border-bottom:5px solid #fff;*/
     margin-top: 25px;
 }
@@ -2138,14 +2157,18 @@ h2.product-collateral-box-nam{
     font-weight: bold;
     font-size: 12px;
     margin-bottom:10px;
-    margin-left:10px;
+    /*melone start 去掉左边距*/
+    /*margin-left:10px;*/
+    /*melone end 去掉左边距*/
 }
 
 
 
 .col2-set{
     margin-bottom:100px;
-    margin-left:30px;
+    /*melone start 去掉左边距*/
+    /*margin-left:30px;*/
+    /*melone end 去掉左边距*/
 }
 
 .box-title h3{
@@ -2170,10 +2193,11 @@ h2.product-collateral-box-nam{
 
 .box{
     padding:10px;
-    /*melone start 修改背景颜色*/
+    /*melone start 修改背景颜色，设置文本框为居中*/
     /*background: #333;*/
-    background: #d3c8a0;
-    /*melone end 修改背景颜色*/
+    background: #fff;
+    width: 490px;
+    /*melone end 修改背景颜色，设置文本框为居中*/
 }
 .box-content{
     font-size: 12px;
@@ -2267,7 +2291,10 @@ ul.form-list li input[type="text"]{
     height:28px;
     padding:0 5px;
     line-height: 28px;
-    color:#666;
+    /*melone start 修改字体颜色*/
+    /*color:#666;*/
+    color: #847450;
+    /*melone end 修改字体颜色*/
     border:0;
     border-radius:3px;
 }
@@ -2295,10 +2322,16 @@ ul.form-list li button{
     width:90px;
     height:30px;
     line-height: 30px;
-    background: #fdb905;
+    /*melone start 修改背景按钮颜色*/
+    /*background: #fdb905;*/
+    background: #02295c;
+    /*melone end 修改背景按钮颜色*/
     font-size: 14px;
     font-weight: bold;
-    color:#000;
+    /*melone start 修改按钮字体颜色*/
+    /*color:#000;*/
+    color:#d3c8a0;
+    /*melone start 修改按钮字体颜色*/
     text-align: center;
     border-radius:3px;
     border: none;
@@ -2319,23 +2352,40 @@ ul.form-list li p{
 
 
 .addresses-list .addresses-primary h2{
-    color:#fdb905;
+    /*melone start 修改字体颜色*/
+    /*color:#fdb905;*/
+    color: #02295c;
+    /*melone end 修改字体颜色*/
     font-weight: bold;
     font-size: 12px;
     margin-bottom:10px;
     margin-left:10px;
 }
 .addresses-list .addresses-primary ol{
-    margin-left:10px;
+    /*melone 去掉左边距*/
+    /*margin-left:10px;*/
+
 }
 .addresses-list .addresses-primary ol li{
-    width:650px;
+    /*melone start 修改文本框宽度*/
+    /*width:650px;*/
+    width: 680px;
+    /*melone end 修改文本框宽度*/
     height:37px;
     line-height: 37px;
-    padding:0 15px;
-    background: #333;
+    /*melone start 修改文本框位置*/
+    /*padding:0 15px;*/
+    padding: 0 10px;
+    /*melone end 修改文本框位置*/
+    /*melone start 修改背景颜色*/
+    /*background: #333;*/
+    background: #fff;
+    /*melone end 修改背景颜色*/
     font-size: 12px;
-    color:#b6b6b6;
+    /*melone start 修改字体颜色*/
+    /*color:#b6b6b6;*/
+    color: #847450;
+    /*melone end 修改字体颜色*/
     overflow: hidden;
     margin:5px 0;
 }
@@ -2363,11 +2413,16 @@ ul.form-list li p{
     text-align: center;
     border:none;
     border-radius: 3px;
-    background: #fdb905;
+    /*melone start 修改背景颜色*/
+    /*background: #fdb905;*/
+    background: #02295c;
+    /*melone end 修改背景颜色*/
     font-weight:bold;
-    color:#000;
+    /*melone start 修改字体颜色*/
+    /*color:#000;*/
+    color: #d3c8a0;
+    /*melone end 修改字体颜色*/
 }
-
 
 .order_data .order_data_tit{
     padding:2px 10px;

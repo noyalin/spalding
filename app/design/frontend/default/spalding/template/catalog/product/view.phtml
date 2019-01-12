@@ -217,10 +217,10 @@ else:
             $productNorm = $configurableProduct->getProductNorm();
             if($productNorm == 6){
                 // melone 修改url加上2019-
-                $scen7 ='/is/image/2019-sneakerhead/spalding_lqxq_small_';
+                $scen7 ='/is/image/sneakerhead/2019-spalding_';
             }else {
                 // melone 修改url加上2019-
-                $scen7 = '/is/image/sneakerhead/2019-spalding_lqxq_big_';
+                $scen7 = '/is/image/sneakerhead/2019-spalding_';
             }
             $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
             $attributeSetModel->load($_product->getAttributeSetId());
@@ -247,7 +247,7 @@ else:
                             <?php if($attributeSetName == 'ball'){?>
                             <div class="product-collateral-box-img">
                                 <img
-                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info_ball_big?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                         . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                         . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '篮球')
                                         . '&$images=sneakerhead/'.$urlkey . '-1'?>"
@@ -271,8 +271,9 @@ else:
                             </div>
                             <?php for ($i = 1; $i <=$imgCount; $i++):?>
                             <div class="product-collateral-box-img">
+                            <!-- melone 修改模板尺寸 -->
                                 <img
-                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spalding_1242_1030$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>_common?$spalding_1242_1136$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
                                     alt=""/>
                             </div>
                             <?php endfor; ?>
@@ -343,14 +344,16 @@ else:
                                 <?php for ($i = 1; $i <=$imgCount; $i++):?>
                                         <?php if($attributeSetName == 'apparel'){?>
                                                 <div class="product-collateral-box-img">
+                                                <!-- melone 修改模板尺寸 -->
                                                     <img
-                                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1030$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1136$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                                         alt=""/>
                                                 </div>
                                         <?php } else { ?>{
                                                     <div class="product-collateral-box-img">
+                                                    <!-- melone 修改模板尺寸 -->
                                                         <img
-                                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spalding_1242_1030$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>_common?$spalding_1242_1136$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
                                                             alt=""/>
                                                     </div>
                                         <?php } ?>
