@@ -1003,7 +1003,8 @@ ul.scarch_select_option li:hover{
     color:#847450;
     /*melone end 修改字体颜色*/
     background: #fff;
-    min-height: calc(100vh - 412px);
+    min-height: 540px;
+    /*min-height: calc(100vh - 412px);*/
 }
 .spaldingMain.spaldingMain_pay{
     background: none;
@@ -1135,8 +1136,6 @@ button.rulAgree{
 .block-content dl.narrow-by-list{
 
 }
-
-
 .block-content dl.narrow-by-list dt{
     font-size: 16px;
     font-weight: bold;
@@ -1408,17 +1407,15 @@ button.rulAgree{
     /*background: rgba(31,31,31,.8);*/
     background: #D4C89E;
     color:#fff;
-    /*height: calc(100vh - 428px);*/
 }
 .userContreMain_sp{
     width:970px;
     padding:0px 0px;
 
-    /*height: calc(100vh - 412px);*/
 }
 
 .shopping_cart_empty{
-    height: calc(100vh - 412px);
+    min-height: 540px;
 }
 
 .spCarTop{
@@ -1508,6 +1505,8 @@ span.spCarTit_fun{
     margin-bottom:10px;
     padding-bottom:10px;
     /*border-bottom:1px solid #c1c0c0;*/
+
+    margin-top: 20px;
 }
 .spListWrap dl dd{
     width:110px;
@@ -2030,8 +2029,8 @@ h2.product-collateral-box-nam{
 }
 
 .cart {
-    min-height: 500px;
-    height: calc(100vh - 400px);
+    min-height: 540px;
+    /*height: calc(100vh - 400px);*/
 }
 
 .main-container{
@@ -2066,7 +2065,6 @@ h2.product-collateral-box-nam{
     text-indent:20px;
 }
 
-
 .block-content ul li.current{
     color:#ffba00;
     background: url(../images/20141209008.png) left center no-repeat;
@@ -2079,7 +2077,7 @@ h2.product-collateral-box-nam{
 }
 
 .block-content ul li a:hover{
-    color:red;
+    color:#b6b6b6;
 }
 .block-content ul li.navi_li_account{
     background:url(../images2019/AccountMgt_tit_w.png) 42px top no-repeat;
@@ -2830,7 +2828,7 @@ ul.form-list li p{
 
 /*.lower_wrap ul li a:hover {*/
 /*color: #fff;*/
-/**/
+/*  */
 /*}*/
 
 
@@ -2855,10 +2853,35 @@ ul.form-list li p{
     /*height: 263px;*/
     margin: 0 auto;
     border-bottom: 1px solid #D3D3D3;
+    margin-top: 82px;
+}
+.spdhdlt{
+    height: 145px;
+    margin-bottom: 33px;
 }
 .spdhdlt img{
     width:192px;
-    margin-top: 82px;
+}
+.spdhdct img{
+    width:192px;
+}
+.spdhdrt img{
+    width:192px;
+}
+.spdft {
+    width: 1284px;
+    /*height: 313px;*/
+    margin: 0 auto;
+    margin-top: 33px;
+}
+.spdftlt img{
+    width:192px;
+}
+.spdftct img{
+    width:192px;
+}
+.spdftrt img{
+    width:192px;
 }
 .s_tset{
     width:192px;
@@ -2867,38 +2890,14 @@ ul.form-list li p{
     text-align: center;
     background-color: #D4C89E;
     margin-top: -24px;
-    margin-bottom: 33px;
+    /*margin-bottom: 33px;*/
     color: #847450;
     font-size: 16px;
 }
-.spdhdct img{
-    width:192px;
-    margin-top: 82px;
-}
-.spdhdrt img{
-    width:192px;
-    margin-top: 82px;
-}
-.spdft {
-    width: 1284px;
-    /*height: 313px;*/
-    margin: 0 auto;
-}
-.spdftlt img{
-    width:192px;
-    margin-top: 33px;
-}
-.spdftct img{
-    width:192px;
-    margin-top: 33px;
-}
-.spdftrt img{
-    width:192px;
-    margin-top: 33px;
-}
-.testmore{
-    margin:0 4px;
-}
+
+
+
+
 .shoplower{
     display: none;
     width: 100%;
@@ -2983,9 +2982,8 @@ ul.form-list li p{
     line-height: 34px;
     text-align: center;
     background-color: #D4C89E;
-    margin-top: -24px;
-     color: #847450;
-     font-size: 16px;
+    color: #847450;
+    font-size: 16px;
 }
 .shoplower .s_body .byct{
     /*width: 380px;*/
@@ -3988,7 +3986,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     border:1px solid #eeebe1;
     min-height: 105px;
     max-height: 105px;
-    color:#b6b6b6;
+    color:#847450;
+    /*color:#b6b6b6;*/
     font-size: 12px;
 }
 
@@ -4829,9 +4828,9 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 .madeSubmit button:hover{
     opacity: 1;
-    /*melone start 鼠标移动到暂存定制上字体的颜色*/
+    /*melone start 鼠标移动到暂存定制上习题的颜色*/
     color:#d4c89e;
-    /*melone end 鼠标移动到暂存定制上字体的颜色*/
+    /*melone end 鼠标移动到暂存定制上习题的颜色*/
 }
 
 .madeSubmit button.submitY{
