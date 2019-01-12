@@ -57,6 +57,10 @@ input:focus {
     border: none;
 }
 
+input::-webkit-input-placeholder {
+    color: #847450;
+}
+
 /*
  * 清理元素
  * @class clear
@@ -544,14 +548,14 @@ section header {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 5px #000;
     border-bottom: 1px solid #313131;
-   /* background: rgb(50, 50, 50); !* Old browsers *!
-    background: -moz-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* FF3.6+ *!
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(50, 50, 50, 1)), color-stop(100%, rgba(37, 37, 37, 1))); !* Chrome,Safari4+ *!
-    background: -webkit-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* Chrome10+,Safari5.1+ *!
-    background: -o-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* Opera 11.10+ *!
-    background: -ms-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* IE10+ *!
-    background: linear-gradient(to bottom, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* W3C *!
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#323232', endColorstr='#252525', GradientType=0); !* IE6-9 *!*/
+    /* background: rgb(50, 50, 50); !* Old browsers *!
+     background: -moz-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* FF3.6+ *!
+     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(50, 50, 50, 1)), color-stop(100%, rgba(37, 37, 37, 1))); !* Chrome,Safari4+ *!
+     background: -webkit-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* Chrome10+,Safari5.1+ *!
+     background: -o-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* Opera 11.10+ *!
+     background: -ms-linear-gradient(top, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* IE10+ *!
+     background: linear-gradient(to bottom, rgba(50, 50, 50, 1) 0%, rgba(37, 37, 37, 1) 100%); !* W3C *!
+     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#323232', endColorstr='#252525', GradientType=0); !* IE6-9 *!*/
     background: #fff;
 }
 
@@ -828,7 +832,7 @@ html.open, body.open {
 }
 
 #search_bar .search-input input::-moz-placeholder {
-    color: #a9a9a9;
+    color: #847450;
     font-size: 14px;
     font-weight: bold;
 }
@@ -1405,6 +1409,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 
 button[disabled], input[disabled] {
     cursor: default;
+    opacity: .7;
 }
 
 /*
@@ -4496,7 +4501,7 @@ h3 a.headerToggle {
     top: -5px;
     width: 40px;
     height: 25px;
-    background:transparent;
+    background: transparent;
     position: absolute;
     pointer-events: none;
     display: block;
@@ -5972,7 +5977,7 @@ span.checkError {
     width: 100%;
 }
 
-.section-wraper-16 div.percent50{
+.section-wraper-16 div.percent50 {
     width: 50%;
 }
 
@@ -6043,7 +6048,7 @@ span.checkError {
     display: block;
 }
 
-.series-product-box img{
+.series-product-box img {
     width: 100%;
 }
 
@@ -6129,7 +6134,7 @@ span.checkError {
     margin: 0 5px 0 20px;
 }
 
-.footer-icp span a img{
+.footer-icp span a img {
     width: auto;
 }
 
@@ -6816,7 +6821,7 @@ ul.messages .error-msg a {
 }
 
 .cusMadeCons {
-    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images/customMade/cBg2.jpg) no-repeat left top;
+    background: url(http://images.spalding.com.cn/skin/frontend/default/spalding/images2019/m_spaldingBG.jpg) no-repeat left top;
     background-size: cover;
 }
 
@@ -6991,8 +6996,7 @@ ul.messages .error-msg a {
 .cusMadeRig {
     margin: -25px auto 0;
     width: 298px;
-    background: #030403;
-    border: 1px solid #323232;
+    background: #d4c8a0;
     border-radius: 5px 5px 0 0;
     border-bottom: 0;
     position: relative;
@@ -7015,22 +7019,22 @@ ul.messages .error-msg a {
 }
 
 .cusMadebtn .madeP_1_btn {
-    background: url(../images/customMade/tab_01.png) no-repeat center center;
+    background: url(../images2019/tab_01.png) no-repeat center center;
     background-size: 100% 100%;
 }
 
 .cusMadebtn .madeP_2_btn {
-    background: url(../images/customMade/tab_02.png) no-repeat center center;
+    background: url(../images2019/tab_02.png) no-repeat center center;
     background-size: 100% 100%;
 }
 
 .cusMadebtn .madeP_1_btn.madeP_btn_now {
-    background: url(../images/customMade/tab_01_hov.jpg) no-repeat center center;
+    background: url(../images2019/tab_01_hov.png) no-repeat center center;
     background-size: 100% 100%;
 }
 
 .cusMadebtn .madeP_2_btn.madeP_btn_now {
-    background: url(../images/customMade/tab_02_hov.png) no-repeat center center;
+    background: url(../images2019/tab_02_hov.png) no-repeat center center;
     background-size: 100% 100%;
 }
 
@@ -7039,10 +7043,9 @@ ul.messages .error-msg a {
     width: 30%;
     height: 33px;
     line-height: 33px;
-    color: #525252;
+    color: #d4c8a0;
     text-align: center;
-    background: #282828;
-    border-top: 3px solid #434343;
+    background: #847450;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -7075,8 +7078,8 @@ ul.messages .error-msg a {
 }
 
 .madeBoxCons .madetitle span:nth-of-type(2) {
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
+    border-left: 1px solid #d4c8a0;
+    border-right: 1px solid #d4c8a0;
 }
 
 .madeBoxCons .madetitle span:last-of-type {
@@ -7084,9 +7087,8 @@ ul.messages .error-msg a {
 }
 
 .madeBoxCons .madetitle span.active {
-    color: #feb100;
-    background: #191919;
-    border-top: 3px solid #191919;
+    color: #fff;
+    background: #d4c8a0;
 }
 
 .madeBoxCons .madeinfobox {
@@ -7101,14 +7103,13 @@ ul.messages .error-msg a {
 
 .madeBoxCons .aBtn {
     width: 76px;
-    border: 1px solid #707070;
     border-radius: 3px;
     font-size: 12px;
     line-height: 1em;
     padding: 9px 0;
     text-align: center;
-    background: url(../images/customMade/btnbg.png) repeat-x;
-    color: #fff;
+    background: #fff;
+    color: #847450;
     display: inline-block;
 }
 
@@ -7128,7 +7129,7 @@ ul.messages .error-msg a {
 }
 
 .madeBoxCons .selectFontBox span.active {
-    border: 1px solid #cecece;
+    color: #d4c8a0;
 }
 
 .madeBoxCons .fontFamilySel span.chosFam {
@@ -7136,7 +7137,7 @@ ul.messages .error-msg a {
     font-size: 12px;
     line-height: 1em;
     padding: 9px 25px 9px 10px;
-    background: url(../images/customMade/btnbg.png) repeat-x;
+    background: #847450;
     border: 1px solid #707070;
     border-radius: 3px;
     color: #fff;
@@ -7161,9 +7162,9 @@ ul.messages .error-msg a {
     padding: 0 16px;
     position: absolute;
     border-top: none;
-    background: rgba(101, 101, 101, .9);
+    background: #948460;
     display: none;
-    color: #000;
+    color: #d4c8a0;
     top: 26px;
     left: 0;
 }
@@ -7171,7 +7172,7 @@ ul.messages .error-msg a {
 .madeBoxCons .fontFamilySel ul li {
     text-align: center;
     padding: 6px 0;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #d4c8a0;
 }
 
 .madeBoxCons .fontFamilySel ul li:last-child {
@@ -7217,12 +7218,16 @@ ul.messages .error-msg a {
     background: transparent;
 }
 
+.madeBoxCons .selectsize .madeTextInpBox input[disabled] {
+    color: #d3c7a1;
+}
+
 .madeBoxCons .selectsize .madeTextInpBox:nth-of-type(2) {
     margin-top: 5px;
 }
 
 .madeBoxCons .selectsize .smaSizeInp {
-    background: #242424;
+    /*background: #242424;*/
 }
 
 .madeBoxCons .selectsize .fontFamilySel ul {
@@ -7230,13 +7235,9 @@ ul.messages .error-msg a {
 }
 
 .madeFuns button {
-    color: #1d1000;
+    color: #d4c8a0;
     border: none;
-    background: #fdb905;
-    background: -webkit-linear-gradient(#fdb905, #f29d09); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(#fdb905, #f29d09); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(#fdb905, #f29d09); /* Firefox 3.6 - 15 */
-    background: linear-gradient(#fdb905, #f29d09); /* 标准的语法 */
+    background: #00285d;
     width: 100%;
     height: 40px;
     line-height: 40px;
@@ -7470,24 +7471,24 @@ dl.madeBoxFuns dt.zz_t_2 {
 
 .madeSubmit button.submitY {
     float: left;
-    background: url(../images/customMade/save.png);
+    background: url(../images2019/save.png);
     background-size: 100% 100%;
 }
 
 .madeSubmit button.submitY[disabled] {
-    background: url(../images/customMade/saveclick.png);
+    background: url(../images2019/save.png);
     background-size: 100% 100%;
 }
 
 .madeSubmit button.submitN {
     float: right;
-    background: url(../images/customMade/reset.png);
+    background: url(../images2019/reset.png);
     background-size: 100% 100%;
 
 }
 
 .madeSubmit button.submitN[disabled] {
-    background: url(../images/customMade/resetclick.png);
+    background: url(../images2019/reset.png);
     background-size: 100% 100%;
 }
 
@@ -7506,7 +7507,7 @@ dl.madeBoxFuns dt.zz_t_2 {
 .madeBoxVal {
     height: 32px;
     line-height: 32px;
-    background: #111213;
+    background: #d4c8a0;
     text-align: center;
     font-size: 14px;
     color: #eee;
@@ -7515,7 +7516,7 @@ dl.madeBoxFuns dt.zz_t_2 {
 }
 
 .madeBoxVal .font_yel {
-    color: #fbb806;
+    color: #847450;
     padding-left: 10px;
 }
 
@@ -7570,8 +7571,8 @@ dl.madeBoxFuns dt.zz_t_2 {
     width: 200px;
     height: 110px;
     overflow: hidden;
-    background: #e6e6e6;
-    color: #000;
+    background: #fff;
+    color: #847450;
     font-size: 12px;
     text-align: center;
     border-radius: 4px;
@@ -7591,21 +7592,22 @@ dl.madeBoxFuns dt.zz_t_2 {
     display: inline-block;
     width: 60px;
     height: 30px;
-    border: 1px solid #000;
+    border: 1px solid #847450;
     border-radius: 2px;
     cursor: pointer;
 }
 
 .confBtn button.saveMadeY,
 .confResBtn button.resY {
-    background: #f29d09;
+    background: #847450;
+    color: #d4c8a0;
 }
 
 .confBtn button.saveMadeN,
 .confResBtn button.resN {
-    background: #eee;
-    color: #7c7c7c;
-    border-color: #cfcfcf;
+    background: #fff;
+    color: #d4c8a0;
+    border-color: #847450;
 }
 
 .comfPop {
@@ -7623,7 +7625,7 @@ dl.madeBoxFuns dt.zz_t_2 {
     display: none;
     position: fixed;
     z-index: 99999;
-    background: rgba(0, 0, 0, .8);
+    background: #d4c8a04f;
     width: 100%;
     height: 100%;
     top: 0;
@@ -7638,10 +7640,9 @@ dl.madeBoxFuns dt.zz_t_2 {
     top: 50%;
     margin: -92px 0 0 -140px;
     background: #fff;
-    color: #000;
+    color: #847450;
     font-size: 12px;
     border-radius: 3px;
-    box-shadow: 0 1px 0 #000;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -7658,7 +7659,7 @@ dl.madeBoxFuns dt.zz_t_2 {
 
 .loadingBox p, .noTodoBox p {
     height: 50px;
-    color: #666;
+    color: #847450;
 }
 
 .loadingBox .loadingImg {
@@ -7792,3 +7793,28 @@ dl.madeBoxFuns dt.zz_t_2 {
     text-align: center;
 }
 
+.shorturt_mobile .payCustomPopUp {
+    background: #d4c8a0;
+    color: #847450;
+}
+
+.alipay-payment-pay .shortcut_wrapper {
+    background: #fff;
+}
+
+.alipay-payment-pay .shortcut_wrapper.shorturt_mobile .shortcut_price p, .alipay-payment-pay .payPopUpCons {
+    color: #847450;
+}
+
+.alipay-payment-pay .payPopUpConf {
+    background: #00285d;
+    color: #d4c8a0;
+}
+
+.alipay-payment-pay .payPopBack a, .alipay-payment-pay .bottom_hint {
+    color: #847450;
+}
+
+.alipay-payment-pay .red, .alipay-payment-pay .shortcut_wrapper a, .shortcut_wrapper a:hover {
+    color: #847450;
+}
