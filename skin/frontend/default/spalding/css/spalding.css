@@ -2914,14 +2914,28 @@ ul.form-list li p{
     margin-top: 82px;
 }
 .spdhdlt{
+    position: relative;
+    width: 192px;
     height: 145px;
     margin-bottom: 33px;
 }
 .spdhdlt img{
     width:192px;
 }
+.spdhdct{
+    position: relative;
+    width: 192px;
+    height: 145px;
+    margin-bottom: 33px;
+}
 .spdhdct img{
     width:192px;
+}
+.spdhdrt{
+    position: relative;
+    width: 192px;
+    height: 145px;
+    margin-bottom: 33px;
 }
 .spdhdrt img{
     width:192px;
@@ -2932,23 +2946,44 @@ ul.form-list li p{
     margin: 0 auto;
     margin-top: 33px;
 }
+.spdftlt{
+    position: relative;
+    width: 192px;
+    height: 145px;
+    margin-bottom: 33px;
+}
 .spdftlt img{
     width:192px;
 }
+.spdftct{
+    position: relative;
+    width: 192px;
+    height: 145px;
+    margin-bottom: 33px;
+}
 .spdftct img{
     width:192px;
+}
+.spdftrt{
+    position: relative;
+    width: 192px;
+    height: 145px;
+    margin-bottom: 33px;
 }
 .spdftrt img{
     width:192px;
 }
 .s_tset{
+    position: absolute;
+    top:109px;
+    left: 0;
     width:192px;
     height: 36px;
     line-height: 36px;
     text-align: center;
     background-color: #D4C89E;
-    margin-top: -24px;
-    /*margin-bottom: 33px;*/
+    /* margin-top: -24px;
+     margin-bottom: 33px;*/
     color: #847450;
     font-size: 16px;
 }
@@ -3009,40 +3044,36 @@ ul.form-list li p{
     margin-bottom: 10px;
 }
 .shoplower .s_body .lt .by .lt{
+    position: relative;
     width: 148px;
-    height: 89px;
+    height: 124px;
 }
 .shoplower .s_body .lt .by .rt{
+    position: relative;
     width: 316px;
-    height: 89px;
-    background-size: 316px 89px;
+    height: 124px;
 }
 .shoplower .s_body .lt .ft{
     width: 490px;
-    /*height:88px;*/
-    margin-top: 40px;
+    /*height:88px;
+    margin-top: 40px;*/
 }
 .shoplower .s_body .lt .ft .lt{
+    position: relative;
     width: 148px;
     height: 88px;
 }
 .shoplower .s_body .lt .ft .ct{
+    position: relative;
     width: 148px;
     height: 88px;
 }
 .shoplower .s_body .lt .ft .rt{
+    position: relative;
     width: 148px;
     height: 88px;
 }
- .testzhunyong{
-    width:148px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    background-color: #D4C89E;
-    color: #847450;
-    font-size: 16px;
-}
+
 .shoplower .s_body .byct{
     /*width: 380px;*/
     /*height: 280px;*/
@@ -3051,9 +3082,8 @@ ul.form-list li p{
 }
 .shoplower .s_body .byct .lt{
     width: 128px;
-    height: 251px;
+    height: 256px;
     background-color:  #D4C89E;
-    background-size: 128px 250px;
 }
 .shoplower .s_body .byct .lt .ii{
     color: #847450;
@@ -3071,9 +3101,8 @@ ul.form-list li p{
 }
 .shoplower .s_body .byct .rt{
     width: 128px;
-    height: 251px;
+    height: 256px;
     background-color:  #D4C89E;
-    background-size: 128px 250px;
 }
 .shoplower .s_body .byct .rt .ii{
     color: #847450;
@@ -3126,113 +3155,63 @@ ul.form-list li p{
 }
 .shoplower .s_body .rt .by{
     width: 488px;
-    height:88px;
+    height:122px;
     margin-bottom: 10px;
 }
 .shoplower .s_body .rt .by .lt{
+    position: relative;
     width: 148px;
-    height: 88px;
-    background-size: 148px 88px;
-}
-.testxilie{
-    width: 148px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    background-color: #D4C89E;
-    margin-top: -24px;
-    color: #847450;
-    font-size: 16px;
+    height: 122px;
 }
 .shoplower .s_body .rt .by .ct{
+    position: relative;
     width: 149px;
-    height: 88px;
-    background-size: 149px 88px;
-}
-.shoplower .s_body .rt .by .ct .officialball{
-    width: 149px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    background-color: #D4C89E;
-    margin-top: 88px;
-}
-.shoplower .s_body .rt .by .ct .officialball a{
-    font-size:16px;
-    color: #847450;
+    height: 122px;
 }
 .shoplower .s_body .rt .by .rt{
+    position: relative;
     width: 149px;
-    height: 88px;
-    background-size: 149px 88px;
-}
-.shoplower .s_body .rt .by .rt .HIGHLIGHTh{
-    width: 149px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    background-color: #D4C89E;
-    margin-top: 88px;
-}
-.shoplower .s_body .rt .by .rt .HIGHLIGHTh a{
-    font-size:16px;
-    color: #847450;
+    height: 122px;
 }
 .shoplower .s_body .rt .ft{
     width: 488px;
-    height:88px;
-    margin-top: 40px;
 }
+
 .shoplower .s_body .rt .ft .lt{
+    position: relative;
     width: 149px;
-    height: 88px;
-    background-size: 149px 88px;
-}
-.shoplower .s_body .rt .ft .lt .TRENDt{
-    width: 149px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    background-color: #D4C89E;
-    margin-top: 88px;
-}
-.shoplower .s_body .rt .ft .lt .TRENDt a{
-    font-size:16px;
-    color: #847450;
 }
 .shoplower .s_body .rt .ft .ct{
+    position: relative;
     width: 149px;
-    height: 88px;
-    background-size: 149px 88px;
-}
-.shoplower .s_body .rt .ft .ct .TFs{
-    width: 149px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    background-color: #D4C89E;
-    margin-top: 88px;
-}
-.shoplower .s_body .rt .ft .ct .TFs a{
-    font-size:16px;
-    color: #847450;
 }
 .shoplower .s_body .rt .ft .rt{
+    position: relative;
     width: 149px;
-    height: 88px;
-    background-size: 149px 88px;
 }
-.shoplower .s_body .rt .ft .rt .digitemal_camouflage{
-    width: 149px;
+
+
+.testzhunyong{
+    position: absolute;
+    top:88px;
+    width:148px;
     height: 34px;
     line-height: 34px;
     text-align: center;
     background-color: #D4C89E;
-    margin-top: 88px;
-}
-.shoplower .s_body .rt .ft .rt .digitemal_camouflage a{
-    font-size:16px;
     color: #847450;
+    font-size: 16px;
+}
+.testxilie{
+    position: absolute;
+    top:88px;
+    width: 148px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    background-color: #D4C89E;
+    color: #847450;
+    font-size: 16px;
 }
 .shoplower .s_foot{
     width: 1284px;
