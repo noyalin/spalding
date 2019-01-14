@@ -605,7 +605,7 @@ ul.scarch_select_option li:hover{
 
 /*视频start*/
 .playbtn{
-    /*background-image: url(../images2019/playBtn.png);*/
+    background-image: url(../images2019/playBtn.png);
     background-repeat: no-repeat;
     width: 143px;
     height: 143px;
@@ -613,8 +613,8 @@ ul.scarch_select_option li:hover{
     top: 1600px;
     left: calc(100%/2);
     margin: auto;
-    display: none;
-    z-index: 99999;
+    /*display: none;*/
+    /*z-index: 99999;*/
 }
 /*视频end*/
 
