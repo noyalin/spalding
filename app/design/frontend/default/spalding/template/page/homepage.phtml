@@ -219,6 +219,27 @@
 <!--end-->
 <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="<?php echo $this->getUrl('authentication') ?>" target="_blank" ><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141209007.png'?>" alt=""></a></div>
 
+
+
+<div class="video" style="margin-top: 20px;position: relative;top: 100px;">
+    <video src="http://spalding-video.oss-cn-hangzhou.aliyuncs.com/video/SPGTBST502H-NOSLATE 30s.mp4" id="video1" width="100%" id="video1" autoplay="autoplay" ></video>
+</div>
+<div class="playbtn" onclick="playpaused()"></div>
+<script>
+    var v = document.getElementById("video1");
+    v.addEventListener('ended', function () {
+        jQuery(".playbtn").css("display","block");
+    }, false);
+    function playpaused(){
+        if(v.paused){
+            v.play();
+            jQuery(".playbtn").css("display","none");
+        }else {
+            v.pause();
+        }
+    }
+</script>
+
 <!--style="height:1382px;margin-bottom:0;"-->
 <div  class="spalding_index_plate" >
     <div class="spalding_plateWrap clearfix">

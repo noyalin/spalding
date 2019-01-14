@@ -601,10 +601,24 @@ ul.scarch_select_option li:hover{
     background-color: #847450;
     border:1px solid #847450;
 }
-
 /*图END*/
 
+/*视频start*/
+.playbtn{
+    background-image: url(../images2019/playBtn.png);
+    background-repeat: no-repeat;
+    width: 143px;
+    height: 143px;
+    position: absolute;
+    top: 1600px;
+    left: calc(100%/2);
+    margin: auto;
+    display: none;
+}
+/*视频end*/
 
+
+/*大图片s*/
 .spalding_index_plate{
     overflow: hidden;
     position: relative;
@@ -615,7 +629,6 @@ ul.scarch_select_option li:hover{
     z-index: 1;
 
 }
-
 .spalding_index_plate .spalding_plateWrap{
     overflow: hidden;
     width:100%;
@@ -626,7 +639,6 @@ ul.scarch_select_option li:hover{
     /*float: left;*/
     /*margin-right: 15px;*/
 }
-
 .spalding_plateWrap .plateBox a.plateBoxImgHover{
     display: none;
 }
