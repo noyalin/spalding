@@ -1808,7 +1808,7 @@ span.spCarTit_fun{
 
 .sale-num span.sale_kind{
     padding:10px 10px;
-    background: url(../images/productDetail_kind.png) right bottom no-repeat #fff;
+    background: url(../images2019/productDetail_kind.png) right bottom no-repeat #fff;
     border:2px solid #fbb605;
     color:#000;
 }
@@ -1823,6 +1823,9 @@ span.spCarTit_fun{
     color:#000;
     cursor:pointer;
     font-size: 14px;
+    /*melone start 去掉边框颜色*/
+    border-color: transparent;
+    /*melone end 去掉边框颜色*/
 }
 #product-options-wrapper span.checked {
     /*melone start 修改图片 images->images2019*/
