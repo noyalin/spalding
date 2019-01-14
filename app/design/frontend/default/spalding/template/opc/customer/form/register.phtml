@@ -148,10 +148,12 @@
 				</div>
                 <div class="field" style="height: 15px;">
                     <div class="input-box">
-                        <input type="checkbox" name="agree_terms" id="agree_terms" value="1" checked="checked" class="checkbox required-entry" autocomplete="off">
+                    <!-- melone 修改checked属性为默认不勾选状态，将原来的“checked="checked"”删掉 -->
+                        <input type="checkbox" name="agree_terms" id="agree_terms" value="1" class="checkbox required-entry" autocomplete="off">
                         <label for="agree_terms" class="terms"><a href="#">我接受注册用户服务条款</a></label>
                     </div>
-                    <div style="display: none" id="advice-required-entry-agree_terms" class="validation-advice">勾选接受服务条款，即可继续注册。</div>
+                    <!-- melone 修改display:none改为display:block -->
+                    <div style="display: block" id="advice-required-entry-agree_terms" class="validation-advice">勾选接受服务条款，即可继续注册。</div>
                 </div>
                 <div class="field" style="padding-top: 20px;">
                     <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button" id="submitbutton">注册</button>

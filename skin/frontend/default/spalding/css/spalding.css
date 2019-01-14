@@ -2345,7 +2345,10 @@ ul.form-list li button{
 ul.form-list li p{
     font-size: 12px;
     margin-left:90px;
-    color:#b6b6b6;
+    /*melone start 修改字体颜色*/
+    /*color:#b6b6b6;*/
+    color: #847450;
+    /*melone start 修改字体颜色*/
 }
 
 .addresses-list{
