@@ -2138,7 +2138,8 @@ h2.product-collateral-box-nam{
 .page-title{
     font-size: 18px;
     font-weight: bold;
-    color:#847450;
+    color:#00275E;
+    /*color:#847450;*/
     padding-bottom:4px;
     margin-bottom:10px;
     /*melone start 修改底部线颜色*/
@@ -2146,6 +2147,7 @@ h2.product-collateral-box-nam{
     /*melone start 修改底部线颜色*/
     /*border-bottom:5px solid #fff;*/
     margin-top: 25px;
+    /*margin-top: 25px;*/
 }
 
 
