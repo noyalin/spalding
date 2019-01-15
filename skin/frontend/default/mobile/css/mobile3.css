@@ -7818,3 +7818,7 @@ dl.madeBoxFuns dt.zz_t_2 {
 .alipay-payment-pay .red, .alipay-payment-pay .shortcut_wrapper a, .shortcut_wrapper a:hover {
     color: #847450;
 }
+
+#slideGroup{
+    background: url(../images2019/fangweiBg.jpg) no-repeat center !important;
+}
