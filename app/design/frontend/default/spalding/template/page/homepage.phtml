@@ -222,37 +222,18 @@
 
 
 <div class="video" style="margin-top: 20px;position: relative;top: 100px;">
-    <video  id="video" width="100%" controls="controls" poster="<?php echo $this->getSkinUrl("images2019/thump.jpg") ?>">
+    <img src='<?php echo $this->getSkinUrl("images2019/thump.jpg") ?>' alt="" style="position: absolute;top: 0;left: 0;width: 1920px;height: 810px;z-index: 9999;" onclick="playshipin()" class="playbtn">
+    <video  id="video" width="100%" controls="controls">
         <source src="http://images.spalding.com.cn/video/SPGTBST502H-NOSLATE 30s.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
-<!--<div class="playbtn" onclick="playpaused()"></div>-->
 <script type="text/javascript">
-    require([
-        'jquery'
-    ], function($) {
+    function playshipin(){
+            jQuery(".playbtn").css("display","none");
         var video = document.getElementById("video");
-        var langIndex = 0;
-        $('.video').click(function() {
-            langIndex = $(this).index();
-            if(langIndex) {
-                video.load();
-                $(".video").removeAttr("controls");
-            }})
-    });
-//    setTimeout(function(){
-//        video.play();
-//    }, 1000);
-//    video.addEventListener('ended', function () {
-//        jQuery(".playbtn").css("display","block");
-//    }, false);
-//    function playpaused(){
-//        if(video.paused){
-//            video.play();
-//            jQuery(".playbtn").css("display","none");
-//        }
-//    }
+        video.play();
+    }
 </script>
 <!--style="height:1382px;margin-bottom:0;"-->
 <div  class="spalding_index_plate" >
