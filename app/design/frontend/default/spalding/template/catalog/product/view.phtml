@@ -255,9 +255,9 @@ else:
                             </div>
                             <?php }else{?>
                                 <div class="product-collateral-box-img">
-                                <!-- 足球 spalding_zqxq_info -> 2019-spalding_info_football -->
+                                <!-- 足球 spalding_zqxq_info -> 2019-spalding_zqxq_info -->
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding_info_football?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding_zqxq_info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                             . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                             . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '足球')
                                             . '&$images=sneakerhead/'.$urlkey . '-1'?>"
@@ -345,8 +345,9 @@ else:
                                         <?php if($attributeSetName == 'apparel'){?>
                                                 <div class="product-collateral-box-img">
                                                 <!-- melone 修改模板尺寸 -->
+                                                <!-- melone 修改服饰图片url spalding_fsxq_ -> 2019-spalding_fsxq_-->
                                                     <img
-                                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1136$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/2019-spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1136$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                                         alt=""/>
                                                 </div>
                                         <?php } else { ?>
@@ -376,9 +377,10 @@ else:
 <!--                                --><?php //endfor; ?>
                                 <?php if($attributeSetName == 'apparel'){?>
                                     <!--服饰尺码表-->
+                                    <!-- melone 修改服饰尺码表图片 images -> images2019-->
                                     <?php
                                     if (($size_table_id != null)) {
-                                        $size_table_url = $this->getSkinUrl("images/detailinfo/" . $size_table_id . ".jpg");
+                                        $size_table_url = $this->getSkinUrl("images2019/detailinfo/" . $size_table_id . ".jpg");
                                         ?>
                                         <div class="product-collateral-box-img">
                                         <img src='<?php echo $size_table_url; ?>' alt="">
