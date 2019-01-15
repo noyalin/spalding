@@ -222,28 +222,24 @@
 
 
 <div class="video" style="margin-top: 20px;position: relative;top: 100px;">
-    <video  src="http://spalding-video.oss-cn-hangzhou.aliyuncs.com/video/SPGTBST502H-NOSLATE 30s.mp4" id="video1" width="100%" id="video1" autoplay="autoplay" ></video>
+    <video  src="http://spalding-video.oss-cn-hangzhou.aliyuncs.com/video/SPGTBST502H-NOSLATE 30s.mp4" id="video" width="100%" autoplay="autoplay" ></video>
 </div>
 <div class="playbtn" onclick="playpaused()"></div>
-<!--<img src='--><?php //echo $this->getSkinUrl("images2019/playBtn.png") ?><!--' class="playbtn" onclick="playpaused()">-->
-<script>
-    var v = document.getElementById("video1");
+<script type="text/javascript">
+    var video = document.getElementById("video");
     setTimeout(function(){
-        v.play()
-    }, 100);
-    v.addEventListener('ended', function () {
+        video.play();
+    }, 1000);
+    video.addEventListener('ended', function () {
         jQuery(".playbtn").css("display","block");
     }, false);
     function playpaused(){
-        if(v.paused){
-            v.play();
+        if(video.paused){
+            video.play();
             jQuery(".playbtn").css("display","none");
-        }else {
-            v.pause();
         }
     }
 </script>
-
 <!--style="height:1382px;margin-bottom:0;"-->
 <div  class="spalding_index_plate" >
     <div class="spalding_plateWrap clearfix">
