@@ -219,22 +219,25 @@
 <!--end-->
 <div id="" class="plateBox plateBox_tf ms-fl" style=""><a href="<?php echo $this->getUrl('authentication') ?>" target="_blank" ><img src="<?php echo  Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141209007.png'?>" alt=""></a></div>
 
-
-
+<!--视频start-->
 <div class="video" style="margin-top: 20px;position: relative;top: 100px;">
-    <img src='<?php echo $this->getSkinUrl("images2019/thump.jpg") ?>' alt="" style="position: absolute;top: 0;left: 0;bottom:0;right:0;min-height: 200px;min-width: 1136px;width:100%;z-index: 99;" onclick="playshipin()" class="playbtn">
-        <video  id="video" width="100%" controls="controls">
+    <video  id="video" width="100%" autoplay="autoplay" onclick="playpaused()" poster="<?php echo $this->getSkinUrl("images2019/thump.jpg") ?>">
         <source src="http://images.spalding.com.cn/video/SPGTBST502H-NOSLATE 30s.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
-<script type="text/javascript">
-    function playshipin(){
-            jQuery(".playbtn").css("display","none");
-        var video = document.getElementById("video");
-        video.play();
+<script>
+    var v = document.getElementById("video");
+        v.play()
+    function playpaused(){
+        if(v.paused){
+            v.play();
+        }else {
+            v.pause();
+        }
     }
 </script>
+<!--视频end-->
 <!--style="height:1382px;margin-bottom:0;"-->
 <div  class="spalding_index_plate" >
     <div class="spalding_plateWrap clearfix">
