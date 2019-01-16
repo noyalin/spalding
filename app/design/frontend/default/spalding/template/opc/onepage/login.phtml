@@ -44,10 +44,12 @@ if ($isPersistantShoppingCartEnabled) {
                 <div class="loginOther">
                     联合登录：
                     <a title="使用QQ登录" class="qq" href="<?php echo $this->getUrl('sns/qq/login'); ?>">
-                        <img alt="" style="margin-right: 5px" src="<?php echo $this->getSkinUrl("images/20141209013.png");  ?>">QQ登录
+                    <!-- melone 修改images->images2019 -->
+                        <img alt="" style="margin-right: 5px" src="<?php echo $this->getSkinUrl("images2019/20141209013.png");  ?>">QQ登录
                     </a>
                     <a title="使用支付宝登录" class="alipay" href="<?php echo $this->getUrl('sns/alipay/login'); ?>">
-                        <img alt="" style="margin-right: 5px" src="<?php echo $this->getSkinUrl("images/20141209014.png");  ?>">支付宝登录
+                    <!-- melone 修改images->images2019 -->
+                        <img alt="" style="margin-right: 5px" src="<?php echo $this->getSkinUrl("images2019/20141209014.png");  ?>">支付宝登录
                     </a>
                 </div>
                 <input name="context" type="hidden" value="checkout" />

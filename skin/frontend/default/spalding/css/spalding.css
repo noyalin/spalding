@@ -786,6 +786,9 @@ ul.scarch_select_option li:hover{
     position: fixed;
     z-index: -1;
     top:0;
+    /*melone start 添加整个的背景图片*/
+    background: url("../images2019/BG.jpg") right center no-repeat;
+    /*melone end 添加整个的背景图片*/
 }
 
 .spaldingBg .spaldingBgImg{
@@ -796,7 +799,7 @@ ul.scarch_select_option li:hover{
 
 .spaldingBg .spaldingBgImg img{
     width: 100%;
-    height:100%;
+    height: 100%;
 }
 
 .spaldingLogin{
@@ -806,29 +809,43 @@ ul.scarch_select_option li:hover{
 .spaldingLogin .loginBox{
     width:1130px;
     margin:0 auto;
+    /*melone start 添加左侧logo图*/
+    background: url("../images2019/20141209004.png") left 212px no-repeat;
+    /*melone end 添加左侧logo图*/
 }
 .loginBox .loginBoxWrap{
-    width:270px;
+    /*melone start 修改宽度*/
+    /*width:270px;*/
+    width: 346px;
+    /*melone end 修改宽度*/
     float: right;
-    margin-right: 140px;
+    /*melone start 修改右边距*/
+    /*margin-right: 140px;*/
+    /*melone end 修改右边距*/
 }
 
 .loginMain{
-    margin-top:145px;
+    /*melone start 修改离顶部的距离*/
+    /*margin-top:145px;*/
+    margin-top:130px;
+    /*melone end 修改离顶部的距离*/
 }
 
 .loginMain .login_backHome{
+    height: 50px;
     font-size: 12px;
-    /**/
-    background: url(../images2019/20141209011.png) left center no-repeat;
-    /**/
     text-indent: 20px;
 }
+
 .loginMain .login_backHome a{
     /*melone start 修改字体颜色*/
     /*color:#fff;*/
-    color:#83744d;
+    color:#d3c8a0;
     /*melone start 修改字体颜色*/
+    /*melone start 修改字体和图标的相对位置*/
+    line-height: 80px;
+    margin-left: 38px;
+    /*melone end 修改字体和图标的相对位置*/
 }
 
 .loginMain .login_backHome a:hover{
@@ -836,12 +853,46 @@ ul.scarch_select_option li:hover{
 }
 
 .loginMain .loginWel{
-    margin:15px 0 25px;
+    height: 60px;
+    /*melone start 修改margin*/
+    /*margin:15px 0 25px;*/
+    /*melone end 修改margin*/
+    background: #02295c;
 }
+
+/*melone start 增加代码*/
+.loginMain .loginWel img{
+    margin: 5px 0 0 38px;
+}
+
+
+input::-webkit-input-placeholder{
+    color: #847450;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color: #847450;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color: #847450;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color: #847450;
+}
+
+
+#login-form{
+    height: 445px;
+    background: #d3c8a0;
+}
+/*melone end 增加代码*/
 
 .loginMain p{
     font-size: 12px;
     color: #847450;
+    /*melone start 居中*/
+    margin-left: 38px;
+    padding-top: 20px;
+    /*melone end 居中*/
 }
 
 .loginMain p a{
@@ -849,25 +900,35 @@ ul.scarch_select_option li:hover{
     /*color:#fff;*/
     color:#83744d;
     /*melone start 修改字体颜色*/
+    /*melone start 调整右边距*/
+    margin-right: 38px;
+    /*melone end 调整右边距*/
 }
 
 .loginMain p a:hover{
     color:#999;
 }
+
 .loginMain input{
-    margin-top:10px;
+    /*melone start 居中*/
+    /*margin-top:10px;*/
     margin-bottom:20px;
-    width:260px;
+    margin-left: 38px;
+    /*melone end 居中*/
+    /*melone start 调整输入框长度*/
+    /*width:260px;*/
+    width: 258px;
+    /*melone end 调整输入框长度*/
     height:20px;
     padding:3px 5px;
     border-radius: 3px;
     font-size: 14px;
-    /**/
+    /*melone start 设置输入框样式*/
     /*color:#666;*/
     color: #83744d;
     background: #d4c89e;
-    border:transparent;
-    /**/
+    border: 1px solid #83744d;
+    /*melone end 设置输入框样式*/
 }
 
 .loginSub .loginSubBtn{
@@ -886,6 +947,10 @@ ul.scarch_select_option li:hover{
     /*background: #fdb905;*/
     background: #03285c;
     /*melone end 修改登录背景颜色*/
+    /*melone start 居中*/
+    margin: 20px 0 0 38px;
+    /*melone end 居中*/
+
 }
 
 .loginSub .loginSubNoAccount{
@@ -894,18 +959,34 @@ ul.scarch_select_option li:hover{
     font-size: 12px;
     text-align: right;
     color: #847450;
+    /*melone start 调整距离*/
+    margin-top: 20px;
+    margin-left: 5px;
+    /*melone end 调整距离*/
 }
 
 .loginSub .loginSubNoAccount a{
-    color:#83744d;
+    color:#02295c;
     /*color:#fdb905;*/
+    /*melone start 调整右边距*/
+    margin-right: 8px;
+    /*melone end 调整右边距*/
 }
 
 
 .loginOther{
-    margin-top:20px;
+    /*melone start 设置底部边框长度*/
+    width: 270px;
+    /*melone end 设置底部边框长度*/
+    /*melone start 修改上边距*/
+    /*margin-top:20px;*/
+    margin-top: 25px;
+    /*melone end 修改上边距*/
     font-size: 12px;
     padding-bottom:5px;
+    /*melone start 居中*/
+    margin-left: 38px;
+    /*melone end 居中*/
     margin-bottom:20px;
     border-bottom:1px solid #999;
 }
@@ -965,9 +1046,6 @@ ul.scarch_select_option li:hover{
     font-size: 12px;
     line-height: 1.4em;
     margin:40px 0 20px;
-    /**/
-    color: #83744d;
-    /**/
 }
 
 /*注册*/
