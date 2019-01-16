@@ -232,9 +232,9 @@ else:
                 $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
                 $productNorm = $configurableProduct->getProductNorm();
                 if ($productNorm == 6) {
-                    $scen7 = '/is/image/sneakerhead/spalding_lqxq_small_';
+                    $scen7 = '/is/image/sneakerhead/2019-spalding_lqxq_small_';
                 } else {
-                    $scen7 = '/is/image/sneakerhead/spalding_lqxq_big_';
+                    $scen7 = '/is/image/sneakerhead/2019-spalding_lqxq_big_';
                 }
                 $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
                 $attributeSetModel->load($_product->getAttributeSetId());
@@ -270,7 +270,7 @@ else:
                             <?php } else { ?>
                                 <div class="detailBoxNew detail-sn">
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . '/is/image/sneakerhead/spalding_zqxq_info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . '/is/image/sneakerhead/2019-spalding_zqxq_info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                             . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                             . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '足球')
                                             . '&$images=sneakerhead/' . $urlkey . '-1' ?>"
@@ -280,67 +280,67 @@ else:
 
                             <!--产品展示-->
                             <div class="detailBoxNew detail-sn">
-                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title2.jpg") ?>' alt="">
+                                <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">
                             </div>
                             <?php for ($i = 1; $i <= $imgCount; $i++): ?>
                                 <div class="detailBoxNew detail-sn">
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1030$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
                                         alt=""/>
                                 </div>
                             <?php endfor; ?>
                             <!--细节展示-->
                             <div class="detailBoxNew detail-sn">
-                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title3.jpg") ?>' alt="">
+                                <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">
                             </div>
                             <?php for ($i = 1; $i <= $imgCount; $i++): ?>
                                 <div class="detailBoxNew detail-sn">
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding_lqxq_detail<?php echo $i ?>?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding_lqxq_detail<?php echo $i ?>?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
                                         alt=""/>
                                 </div>
                             <?php endfor; ?>
                             <?php if ($attributeSetName == 'ball') { ?>
                                 <!--篮球规格表-->
                                 <div class="detailBoxNew detail-sn">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/balltitle4.jpg") ?>'
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle4.jpg") ?>'
                                          alt="">
                                 </div>
                                 <div class="detailBoxNew detail-sn">
-                                    <img src="<?php echo $this->getSkinUrl('images/detailinfo/ball-size.jpg'); ?>"
+                                    <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-size.jpg'); ?>"
                                          border="0">
                                 </div>
                                 <!--篮球保养-->
                                 <div class="detailBoxNew detail-sn">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/balltitle5.jpg") ?>'
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle5.jpg") ?>'
                                          alt="">
                                 </div>
                                 <div class="detailBoxNew detail-sn">
-                                    <img src="<?php echo $this->getSkinUrl('images/detailinfo/ball-maintain.jpg'); ?>"
+                                    <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-maintain.jpg'); ?>"
                                          border="0">
                                 </div>
                                 <!--篮球结构知识-->
 <!--                                <div class="detailBoxNew detail-sn">-->
-<!--                                    <img src="--><?php //echo $this->getSkinUrl('images/detailinfo/ball-structure.jpg'); ?><!--"-->
+<!--                                    <img src="--><?php //echo $this->getSkinUrl('images2019/detailinfo/ball-structure.jpg'); ?><!--"-->
 <!--                                         border="0">-->
 <!--                                </div>-->
                             <?php } else { ?>
                                 <!--足球规格表-->
                                 <div class="detailBoxNew detail-sn">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>'
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/footerballtitle4.jpg") ?>'
                                          alt="">
                                 </div>
                                 <div class="detailBoxNew detail-sn">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-size.jpg") ?>'
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/footer-size.jpg") ?>'
                                          alt="">
                                 </div>
                                 <!--足球结构知识-->
                                 <div class="detailBoxNew detail-sn">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle5.jpg") ?>'
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/footerballtitle5.jpg") ?>'
                                          alt="">
                                 </div>
                                 <div class="detailBoxNew detail-sn">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>'
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/footer-structure.jpg") ?>'
                                          alt="">
                                 </div>
                             <?php } ?>
@@ -353,30 +353,30 @@ else:
                             <!--							</div>-->
                             <!--产品展示-->
                             <div class="detailBoxNew detail-sn">
-                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title2.jpg") ?>' alt="">
+                                <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">
                             </div>
                             <?php for ($i = 1; $i <= $imgCount; $i++): ?>
                                 <?php if ($attributeSetName == 'apparel') { ?>
                                     <div class="detailBoxNew detail-sn">
                                         <img
-                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1030$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1136$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
                                             alt=""/>
                                     </div>
                                 <?php } else { ?>{
                                     <div class="detailBoxNew detail-sn">
                                         <img
-                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1030$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
                                             alt=""/>
                                     </div>
                                 <?php } ?>
                             <?php endfor; ?>
                             <!--细节展示-->
                             <div class="detailBoxNew detail-sn">
-                                <img src='<?php echo $this->getSkinUrl("images/detailinfo/title3.jpg") ?>' alt="">
+                                <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">
                             </div>
                             <div class="detailBoxNew detail-sn">
                                 <img
-                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-3" ?>"
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-3" ?>"
                                     alt=""/>
                             </div>
                             <!--							--><?php //for ($i = 1; $i <=$imgCount; $i++):?>
@@ -385,7 +385,7 @@ else:
                                 <!--服饰尺码表-->
                                 <?php
                                 if (($size_table_id != null)) {
-                                    $size_table_url = $this->getSkinUrl("images/detailinfo/" . $size_table_id . ".jpg");
+                                    $size_table_url = $this->getSkinUrl("images2019/detailinfo/" . $size_table_id . ".jpg");
                                     ?>
                                     <div class="detailBoxNew detail-sn">
                                         <img src='<?php echo $size_table_url; ?>' alt="">
@@ -395,7 +395,7 @@ else:
                                 ?>
                                 <!--服饰保养-->
                                 <div class="detailBoxNew detail-sn">
-                                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/fushi-maintain.jpg") ?>'
+                                    <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/fushi-maintain.jpg") ?>'
                                          alt="">
                                 </div>
                             <?php } ?>
@@ -403,13 +403,13 @@ else:
                      <?php }?>
                         <!--售后相关-->
                         <div class="detailBoxNew detail-sn">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/title7.jpg") ?>' alt="">
+                            <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="">
                         </div>
                         <div class="detailBoxNew detail-sn">
-                            <img src="<?php echo $this->getSkinUrl('images/detailinfo/service-1.jpg'); ?>" border="0">
+                            <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-1.jpg'); ?>" border="0">
                         </div>
                         <div class="detailBoxNew detail-sn">
-                            <img src="<?php echo $this->getSkinUrl('images/detailinfo/service-2.jpg'); ?>" border="0">
+                            <img src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg'); ?>" border="0">
                         </div>
                     </div>
                 </div>

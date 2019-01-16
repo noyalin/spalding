@@ -123,7 +123,7 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
 //                    $thisSmallImage = $this->helper('catalog/image')->init($_product, 'small_image')->resize(50, 50);
 //                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding45px?$image45px='.$thisUrlkey.'-1';
 //                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$thisUrlkey.'-1';
-                    $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/spalding50px?$50x50$&$image50='. $this->htmlEscape($thisUrlkey).'-1';
+                    $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding50px?$50x50$&$image50='. $this->htmlEscape($thisUrlkey).'-1';
                     echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.
                         '<div style="height:50px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
                         </a>';
