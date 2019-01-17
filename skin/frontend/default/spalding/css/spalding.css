@@ -787,7 +787,7 @@ ul.scarch_select_option li:hover{
     z-index: -1;
     top:0;
     /*melone start 添加整个的背景图片*/
-    background: url("../images2019/BG.jpg") right center no-repeat;
+    background: url("../images2019/BG.jpg");
     /*melone end 添加整个的背景图片*/
 }
 
