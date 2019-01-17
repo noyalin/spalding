@@ -89,12 +89,9 @@
             if (!strstr($current_url, 'customer/account/login/')) {
                 ?>
                 <!--            <div class="header_nav_wrap_new df jcsb">-->
-                <div class="item"><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>" target="_blank" class="it">首页</a>
-                </div>
-                <div class="item anniversary"><a href="<?php echo $this->getUrl('custom-made.html') ?>"
-                                               target="_blank" class="it"></a></div>
-                <div class="item aboutspd"><a href="<?php echo $this->getUrl('spaldingcreator') ?>"
-                                            target="_blank" class="it">关于斯伯丁</a>
+                <div class="item"><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>" target="_blank" class="it">首页</a></div>
+                <div class="item anniversary"><a href="<?php echo $this->getUrl('anniversary') ?>" target="_blank" class="it"></a></div>
+                <div class="item aboutspd"><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_blank" class="it">关于斯伯丁</a>
 
 
 <!--                    start DB-->
@@ -141,8 +138,8 @@
 <!--                    end-->
 
                 </div>
-                <div class="item spd_shop"><a href="<?php echo $this->getUrl('products.html') ?>"
-                                            target="_blank" class="it">斯伯丁商城</a>
+
+                <div class="item spd_shop"><a href="<?php echo $this->getUrl('products.html') ?>" target="_blank" class="it">斯伯丁商城</a>
                     <div class="shoplower">
                         <div class="s_head df jcc aic">
                             <a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1)) ?>"
@@ -327,8 +324,7 @@
                 </div>
                 <div class="item"><a href="<?php echo $this->getUrl('tech') ?>" target="_blank" class="it">产品科技</a></div>
                 <div class="item"><a href="<?php echo $this->getUrl('blog/cat/news') ?>" target="_blank" class="it">新闻与媒体</a></div>
-                <div class="item dingzhi"><a href="<?php echo $this->getUrl('custom-made.html') ?>" target="_blank" class="it">Spalding专属定制</a>
-                </div>
+                <div class="item dingzhi"><a href="<?php echo $this->getUrl('custom-made.html') ?>" target="_blank" class="it">Spalding专属定制</a></div>
                 <div class="item"><a href="http://h5.spalding.com.cn/event/" target="_blank" class="it">篮球信徒</a></div>
 
 
