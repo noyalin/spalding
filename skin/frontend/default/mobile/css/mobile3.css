@@ -5319,7 +5319,7 @@ dl.addToCartSize dt {
 .confirmSn li {
     margin-bottom: 10px;
     position: relative;
-    color: #666;
+    color: #847450;
     font-size: 14px;
 }
 
@@ -5335,7 +5335,7 @@ dl.addToCartSize dt {
     margin-left: -26px;
     top: 0;
     margin-top: 2px;
-    border: 5px solid #3f3f3f;
+    border: 5px solid #d4c8a0;
     border-radius: 5px;
 }
 
@@ -5377,7 +5377,7 @@ dl.addToCartSize dt {
     margin: 0;
     height: 40px;
     line-height: 40px;
-    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(239, 190, 83, 1) 0%, rgba(243, 172, 0, 1) 100%) repeat scroll 0 0;
+    background: #00285d;
     border-radius: 5px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -7744,7 +7744,7 @@ dl.madeBoxFuns dt.zz_t_2 {
 .confirmSn {
     position: relative;
     padding-left: 20px;
-    border-left: 2px solid #3f3f3f;
+    border-left: 2px solid #d4c8a0;
     margin-top: 20px;
     margin-left: 5px;
 }
@@ -7768,12 +7768,12 @@ dl.madeBoxFuns dt.zz_t_2 {
     margin-left: -26px;
     top: 0;
     margin-top: 2px;
-    border: 5px solid #3f3f3f;
+    border: 5px solid #d4c8a0;
     border-radius: 5px;
 }
 
 .confirmSn li.conNow:before {
-    border-color: #ffb400;
+    border-color: #847450;
     border-width: 7px;
     border-radius: 7px;
     margin-left: -28px;
