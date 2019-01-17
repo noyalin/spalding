@@ -879,12 +879,21 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     color: #847450;
 }
 
-
+/*melone end 增加代码*/
 #login-form{
     height: 445px;
     background: #d3c8a0;
 }
-/*melone end 增加代码*/
+
+#login-form .input-box {
+    height: 60px;
+}
+
+.loginMain .validation-advice {
+    height: 20px;
+    font-size: 12px;
+    margin-left: 38px;
+}
 
 .loginMain p{
     font-size: 12px;
@@ -912,7 +921,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .loginMain input{
     /*melone start 居中*/
     /*margin-top:10px;*/
-    margin-bottom:20px;
+    margin-bottom:5px;
     margin-left: 38px;
     /*melone end 居中*/
     /*melone start 调整输入框长度*/
@@ -1056,9 +1065,18 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     z-index: -2;
 }
 
-.bodyBg img{
+/*melone start 添加忘记密码界面的背景图片*/
+.forgetBg {
+    position: fixed;
     width:100%;
     height: 100vh;
+    z-index: -2;
+    background: url("../images2019/BG.jpg");
+}
+/*melone end 添加忘记密码界面的背景图片*/
+
+.bodyBg img{
+    width:100%;
 }
 
 .spaldingMain{
@@ -1070,7 +1088,10 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     /*color: #000;*/
     color:#847450;
     /*melone end 修改字体颜色*/
-    background: #fff;
+    /*melone start 修改背景颜色*/
+    /*background: #fff;*/
+    background: #d3c8a0;
+    /*melone start 修改背景颜色*/
     min-height: 570px;
     /*min-height: calc(100vh - 412px);*/
 }
@@ -1150,6 +1171,9 @@ div.regTit span a:hover{
     /*color:#999;*/
     color: #847450;
     /*melone end 修改字体颜色*/
+    /*melone start 调整间距*/
+    line-height: 30px;
+    /*melone end 调整间距*/
 }
 
 .regRuls{
@@ -1160,7 +1184,7 @@ div.regTit span a:hover{
     padding:10px;
     /*melone start 修改边框颜色*/
     /*border:1px solid #ccc;*/
-    border:1px solid #d3c8a0;
+    border:1px solid #847450;
     /*melone end 修改边框颜色*/
     border-radius: 3px;
     /*melone start 修改字体颜色*/
@@ -2760,11 +2784,21 @@ ul.form-list li p{
 .col-main-forgetPasw{
     width:100%;
     margin:30px auto 0;
+    /*melone start 添加背景颜色*/
+    background:#d3c8a0;
+    /*melone end 添加背景颜色*/
 }
 .col-main-forgetPasw .page-title{
     border-bottom:none;
-    padding:10px 10px;
-    background:#333;
+    /*melone start 调整间距*/
+    /*padding:10px 10px;*/
+    padding-top: 20px;
+    padding-left: 30px;
+    /*melone end 调整间距*/
+    /*melone start 修改背景颜色*/
+    /*background:#333;*/
+    background:#d3c8a0;
+    /*melone end 修改背景颜色*/
     color:#fff;
 }
 
@@ -2784,7 +2818,10 @@ ul.form-list li p{
 
 .col-main-forgetPasw .fieldset label{
     display: inline-block;
-    color:#b6b6b6;
+    /*melone start 修改字体颜色*/
+    /*color:#b6b6b6;*/
+    color: #847450;
+    /*melone end 修改字体颜色*/
     font-size: 12px;
 }
 
@@ -2793,8 +2830,17 @@ ul.form-list li p{
     height:30px;
     line-height: 30px;
     font-size: 12px;
-    color:#666;
-    border:none;
+    /*melone start 修改字体颜色*/
+    /*color:#666;*/
+    color: #847450;
+    /*melone end 修改字体颜色*/
+    /*melone start 添加输入框背景颜色*/
+    background: #d3c8a0;
+    /*melone end 添加输入框背景颜色*/
+    /*melone start 添加输入框边框颜色*/
+    /*border:none;*/
+    border: 1px solid #847450;
+    /*melone end 添加输入框边框颜色*/
     border-radius: 3px;
     margin-left:20px;
     padding:0 10px;
@@ -2802,21 +2848,28 @@ ul.form-list li p{
 
 
 .buttons-set{
+    /*melone start 增加高度*/
+    height: 150px;
+    /*melone end 增加高度*/
     text-align: center;
     font-size: 12px;
-    margin:20px 0;
+    margin:40px 0;
 }
 
 .buttons-set button{
     width:80px;
     height:35px;
-    line-height: 35px;
+    /*melone start 居中*/
+    /*line-height: 35px;*/
+    /*melone end 居中*/
     font-size: 14px;
-    color:#847450;
+    /*melone start 修改字体颜色*/
+    color:#D4C89E;
+    /*melone end 修改字体颜色*/
     /*color:#000;*/
     border:none;
     border-radius: 3px;
-    background:#00275E;
+    background:#02295c;
     /*background:#fdb905;*/
 }
 
@@ -2825,7 +2878,10 @@ ul.form-list li p{
 }
 
 .buttons-set p span{
-    color:#fdb905;
+    /*melone start 修改字体颜色*/
+    /*color:#fdb905;*/
+    color: #02295c;
+    /*melone start 修改字体颜色*/
 }
 
 
@@ -5493,3 +5549,9 @@ dl.madeBoxFuns dt.zz_t_2{
     color: #847450;
 }
 /*melone start 添加选择框字体颜色*/
+
+/*melone start 增加代码，修改提示信息的背景颜色*/
+.success-msg {
+    background: #d3c8a0;
+}
+/*melone start 增加代码，修改提示信息的背景颜色*/
