@@ -1258,7 +1258,7 @@ button.rulAgree{
 .block-content dl.narrow-by-list dd ol li a:hover{
     /*melone start 修改左边栏中悬停在字体上的颜色*/
     /*color:#333;*/
-    color:#d4c89e;
+    color:#02295c;
     /*melone end 修改左边栏中悬停在字体上的颜色*/
     font-size: 12px;
 }
@@ -5468,8 +5468,8 @@ dl.madeBoxFuns dt.zz_t_2{
 
 
 .count-active-tit {
-    border-bottom: 5px solid #fff;
-    color: #ffba00;
+    border-bottom: 5px solid #00275E;
+    color: #00275E;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
