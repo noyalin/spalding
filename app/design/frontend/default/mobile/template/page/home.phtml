@@ -53,6 +53,17 @@
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('free_shipping')->toHtml() ?>
             <div class="hd"></div>
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_home_banner')->toHtml() ?>
+            <!-- 空隙白条 -->
+            <div class="margin">
+                <img src="<?php echo $this->getSkinUrl('images/home/margin.jpg'); ?>" border="0" style="width: 100%;">
+            </div>
+
+            <!-- 视频 -->
+            <video class="media Jvideo1" id="Jvideo1" controls poster="<?php echo $this->getSkinUrl('images/home/tv.jpg'); ?>" width="100%">
+                <source src="http://images.spalding.com.cn/images/home/mobile/index.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
             <!-- 推荐商品 -->
             <div class="prosTit">
                 <h2>推荐商品</h2>
@@ -194,16 +205,7 @@
                 </div>
             </div>
 
-            <!-- 空隙白条 -->
-            <div class="margin">
-                <img src="<?php echo $this->getSkinUrl('images/home/margin.jpg'); ?>" border="0" style="width: 100%;">
-            </div>
 
-            <!-- 视频 -->
-            <video class="media Jvideo1" id="Jvideo1" controls poster="<?php echo $this->getSkinUrl('images/home/tv.jpg'); ?>" width="100%">
-                <source src="http://images.spalding.com.cn/images/home/mobile/index.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
 
             <!--品牌故事 防伪验证-->
             <section class="section-wraper-16 clearfix" style="margin: 0;">
