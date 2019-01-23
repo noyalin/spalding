@@ -4208,7 +4208,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .loginOutWrap{
     width:350px;
     padding:30px 10px;
-    background:#eeebe1;
+    background:#d3c8a0;
+    /*background:#eeebe1;*/
     /*background:#1b1b1b;*/
     position: relative;
 }

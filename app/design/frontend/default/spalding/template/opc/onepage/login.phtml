@@ -20,21 +20,22 @@ if ($isPersistantShoppingCartEnabled) {
     <div class="loginOutWrap">
         <div class="closeLogin close"><img alt="" src="<?php echo $this->getSkinUrl("images2019/login_close.png");  ?>"></div>
         <div class="loginMain loginMainOut">
-            <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+<!--            id="login-form"-->
+            <form action="<?php echo $this->getPostActionUrl() ?>" method="post">
                 <?php echo $this->getBlockHtml('formkey'); ?>
                 <div style="font-size:14px;color: #847450">您尚未登录</div>
-                <div class="loginWel"><img alt="" src="<?php echo $this->getSkinUrl("images2019/login_title.png");  ?>"></div>
-                <p>用户名</p>
-                <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email loginInp" title="<?php echo $this->__('Email Address') ?>" />
-                <p class="clearfix">
+                <div class=""><img alt="" src="<?php echo $this->getSkinUrl("images2019/login_title.png");  ?>"></div>
+                <p style="margin-left: 0px;">用户名</p>
+                <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email loginInp" title="<?php echo $this->__('Email Address') ?>" style="width: 274px;margin-left: 0px;"/>
+                <p class="clearfix"  style="margin-left: 0px;">
                     <span class="ms-fl">密码</span>
-                    <span class="ms-fr"><a href="<?php echo $this->getForgotPasswordUrl() ?>">忘记密码</a></span>
+                    <span class="ms-fr"><a href="<?php echo $this->getForgotPasswordUrl() ?>" style="margin-right: 0px">忘记密码</a></span>
                 </p>
-                <input type="password" name="login[password]" class="input-text required-entry validate-password loginInp" id="pass" title="<?php echo $this->__('Password') ?>" />
+                <input type="password" name="login[password]" class="input-text required-entry validate-password loginInp" id="pass" title="<?php echo $this->__('Password') ?>"  style="width: 274px;margin-left: 0px;"/>
 
                 <div class="loginSub clearfix">
 <!--                    <div class="loginSubBtn ms-fl">-->
-                        <button type="sumbit" class="loginSubBtn ms-fl" style="border: 0px;"> <?php echo $this->__('Login') ?> </button>
+                        <button type="sumbit" class="loginSubBtn ms-fl" style="border: 0px;margin-top: 20px;"> <?php echo $this->__('Login') ?> </button>
 <!--                    </div>-->
                     <div class="loginSubNoAccount ms-fl"  >
                         <span>还没有SPALDING账号？</span>
