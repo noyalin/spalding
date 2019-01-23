@@ -177,7 +177,6 @@ button{
     line-height: 56px;
     min-width: 108px;
     background-position: center center;
-
 }
 .header_nav_funs_ft .menu-wrap .item:hover{
     background-color: #D4C89E;
@@ -191,7 +190,7 @@ button{
     background-image: url(../images2019/icon-125-white.png);
     background-repeat: no-repeat;
     background-position: center center;
-    padding: 0 1px 3px 1px;
+    /*padding: 0 1px 3px 1px;*/
 }
 .header_nav_funs_ft .menu-wrap .item.anniversary:hover a{
     background: none;
@@ -203,6 +202,22 @@ button{
     background-color: #D4C89E;
     color: #fff;
 }
+.header_nav_funs_ft .menu-wrap .item:hover .dingzhi{
+    background-image: url(../images2019/dingzhi-white.png);
+}
+
+
+.menu-wrap .item .dingzhi{
+    background: url(../images2019/dingzhi.png) left center no-repeat;
+    height: 56px;
+    line-height: 56px;
+    min-width: 39px;
+    background-position: center center;
+    position: relative;
+    z-index:999;
+    /*padding: 0 1px 3px 1px;*/
+}
+
 @media screen and (max-width: 1400px) {
     .menu-wrap .item .it{
         padding: 0 7px;
@@ -522,7 +537,7 @@ ul.scarch_select_option li:hover{
     overflow: hidden;
 }
 .slide ul{
-    width: 10000%;
+    width: 500%;
     list-style-type: none;
 }
 .next_btn{
@@ -576,7 +591,7 @@ ul.scarch_select_option li:hover{
 }
 .slide .circle_btn{
     position: absolute;
-    bottom: 15px;
+    bottom: 25px;
     text-align: center;
     left: 0;
     /*display: table;*/
