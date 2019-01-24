@@ -190,7 +190,6 @@ button{
     background-image: url(../images2019/icon-125-white.png);
     background-repeat: no-repeat;
     background-position: center center;
-    /*padding: 0 1px 3px 1px;*/
 }
 .header_nav_funs_ft .menu-wrap .item.anniversary:hover a{
     background: none;
@@ -215,7 +214,6 @@ button{
     background-position: center center;
     position: relative;
     z-index:999;
-    /*padding: 0 1px 3px 1px;*/
 }
 
 @media screen and (max-width: 1400px) {
