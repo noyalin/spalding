@@ -1603,7 +1603,7 @@ section#category-wrapper header h1{
 }
 .noItemPara p {
 	font-size: 14px;
-	color: white;
+	/*color: white;*/
 	margin: 0 auto;
 	padding: 5px;
 	text-align: center;
