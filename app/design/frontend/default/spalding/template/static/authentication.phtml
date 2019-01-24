@@ -59,7 +59,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                 </div>
             </div>
             <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 16px;" id="return">
-            <button id="cheshi" style="width: 100px;height: 37px;">按钮</button>
+<!--            <button id="cheshi" style="width: 100px;height: 37px;">按钮</button>-->
         </div>
     </div>
 
@@ -342,9 +342,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     jQuery('#return_1').on('click', function (e) {
         jQuery('.slide-group').animate({'top': '90px'});
     });
-    jQuery('#cheshi').on('click', function (e) {
-        jQuery('.slide-group').animate({'top': '-1920px'});
-    });
+//    jQuery('#cheshi').on('click', function (e) {
+//        jQuery('.slide-group').animate({'top': '-1920px'});
+//    });
     jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
         jQuery('#alertContactUs')[0].style.display = 'block';
         jQuery('#valid_check_code')[0].innerHTML = jQuery.trim(jQuery('#barCode').val());
