@@ -359,8 +359,17 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
             case '20':
                 $material = 'texture_niupi';
                 break;
-            default:
+            case '22':
                 $material = 'texture_xiangjiao';
+                break;
+            case '133':
+                $material = 'texture_tpu';
+                break;
+            case '135':
+                $material = 'texture_pvc';
+                break;
+            default:
+                $material = 'texture_default';
         }
         return $material;
     }
