@@ -37,7 +37,7 @@ window.onload=function (){
     function tab(){
         aLiBig[now].style.zIndex=nowZIndex++;
 
-        if (now % 8 == 0) {
+        if (now % 16 == 0) {
             clearInterval(timer);
         }
     }
@@ -46,7 +46,7 @@ window.onload=function (){
 
         aLiBig[now].style.zIndex=nowZIndex++;
 
-        if (now % 8 == 0) {
+        if (now % 16 == 0) {
             clearInterval(timer);
         }
     }
