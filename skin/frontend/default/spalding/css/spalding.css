@@ -1097,7 +1097,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .spaldingMain{
     position: relative;
     width:100%;
-    padding:10px 20px;
+    /*padding:10px 20px;*/
     margin:0px auto 0;
     /*melone start 修改字体颜色*/
     /*color: #000;*/
@@ -1116,7 +1116,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .detail_page_banner_block img{
     width: 1690px;
-    margin-left: -310px;
+    margin-left: -292px;
     margin-bottom: 30px;
 }
 
