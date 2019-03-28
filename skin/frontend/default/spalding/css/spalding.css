@@ -1094,7 +1094,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .spaldingMain{
     position: relative;
-    width:930px;
+    width:100%;
     padding:10px 20px;
     margin:0px auto 0;
     /*melone start 修改字体颜色*/
@@ -1102,8 +1102,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     color:#847450;
     /*melone end 修改字体颜色*/
     /*melone start 修改背景颜色*/
-    /*background: #fff;*/
-    background: #d3c8a0;
+    background: #fff;
+    /*background: #d3c8a0;*/
     /*melone start 修改背景颜色*/
     min-height: 570px;
     /*min-height: calc(100vh - 412px);*/
@@ -1112,6 +1112,23 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     background: none;
 }
 
+.detail_page_banner_block img{
+    width: 1690px;
+    margin-left: -310px;
+    margin-bottom: 30px;
+}
+
+.pagecount{
+    height: 25px;
+    line-height: 28px;
+    width: 40px;
+}
+.total-page{
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    display: flex;
+}
 div.regTit{
     padding:10px 20px;
     /*melone start 修改背景和字体颜色*/
@@ -1298,13 +1315,33 @@ button.rulAgree{
 }
 
 .col-main{
-    width:700px;
+    width:1200px;
 }
-
-
+.block.block-layered-nav.ms-fl{
+    /*margin-top: 558px;*/
+    margin-left: 80px;
+}
+@media screen and (min-width:1136px) and (max-width: 1920px)  {
+    .col-main{
+        width: 1200px;
+    }
+    .block.block-layered-nav.ms-fl{
+        margin-top: 558px;
+    }
+}
+/*文档宽度小于 1136 像素*/
+@media screen and (max-width:1136px){
+    .col-main{
+        width: 800px;
+    }
+    .block.block-layered-nav.ms-fl{
+        margin-top: 400px;
+    }
+}
 .category-products{
     margin-top:15px;
 }
+
 
 
 
@@ -1367,9 +1404,11 @@ button.rulAgree{
 }
 
 .proListFunLine{
-    width:700px;
+    width:100%;
+    /*width:1200px;*/
     height: 1px;
-    background: #000;
+    /*background: #000;*/
+    background: #d4c89e;
     margin:10px 0;
 }
 
@@ -2154,7 +2193,7 @@ h2.product-collateral-box-nam{
 }
 
 .main-container{
-    width:930px;
+    /*width:930px;*/
     padding:10px 20px;
     margin:0 auto;
     color:#847450;
