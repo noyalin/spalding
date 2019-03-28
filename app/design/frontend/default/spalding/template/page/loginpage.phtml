@@ -19,10 +19,13 @@
             <!-- 顶部链接 -->
             <div class="header_nav">
                 <div class="header_nav_funs header_nav_funs_login">
-                    <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;
-                    <a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;
-                    <a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">用户中心</a>&nbsp;|&nbsp;
-                    <a href="<?php echo $this->getUrl('sales/order/history/', array('_secure'=>true)) ?>">我的订单</a>
+
+                <!-- melone start 暂时去掉这几个字 -->
+                    <!--<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a>&nbsp;|&nbsp;-->
+                    <!--<a href="<?php echo $this->getUrl('customer/account/create/', array('_secure'=>true)) ?>">注册</a>&nbsp;|&nbsp;-->
+                    <!--<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">用户中心</a>&nbsp;|&nbsp;-->
+                    <!--<a href="<?php echo $this->getUrl('sales/order/history/', array('_secure'=>true)) ?>">我的订单</a>-->
+                <!-- melone end 暂时去掉这几个字 -->
                     <?php echo $this->getChildHtml('cart_sidebar_top') ?>
 <!--                    <span>购物车<i><img src='--><?php //echo $this->getSkinUrl("images/20141208003.png") ?><!--'></i></span>-->
                 </div>
@@ -41,9 +44,176 @@
         <div class="clear"></div>
         <div class="loginBottom">
             <p>欢迎访问斯伯丁中国！斯伯丁官方商城</p>
-            <p>©2014 SPALDING CHINA 备案编号：沪ICP备14046632号-1</p>
+            <p>©2014 SPALDING CHINA </p>
         </div>
     </div>
 </div>
+<!-- melone start 拷贝底部效果代码 -->
+<!-- 底部 bottom s -->
+<div class="footer">
+  <div class="foot df jcc aic">
+    <div class="top" id="top" style="position:absolute; bottom:130px; right:80px; z-index:99; color:#fff; cursor:pointer;"><img src="<?php echo $this->getSkinUrl('images2019/toTop.png') ?>" alt=""></div>
+    <div class="footerWrap clearfix df jcsb">
+
+        <div class="ms-fl">
+            <dl class="footerNav ms-fl">
+                <dd>产品</dd>
+                <dt class="foot-chanpin"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=72'), 0, -1))  ?>" target="_blank">篮球系列</a></dt>
+                <dt class="foot-chanpin"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=70'), 0, -1))?>" target="_blank">运动服饰</a></dt>
+                <dt class="foot-chanpin"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=71'), 0, -1)) ?>" target="_blank">运动包</a></dt>
+                <dt class="foot-chanpin"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=69'), 0, -1)) ?>" target="_blank">篮球配件</a></dt>
+                <dt class="foot-chanpin"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=76'), 0, -1)) ?>" target="_blank">篮球架</a></dt>
+                <dt class="foot-chanpin"><a href="<?php echo str_replace('/&___SID=','',substr($this->getUrl('products.html?attribute_set_name=114'), 0, -1)) ?>" target="_blank">足球</a></dt>
+                <dt class="foot-chanpin"><a href="<?php echo $this->getUrl('products/trainingseries.html')?>" target="_blank">训练器材</a></dt>
+            </dl>
+            <dl class="footerNav ms-fl">
+                <dd>关于我们</dd>
+                <dt><a href="<?php echo $this->getUrl('spaldingcreator') ?>" target="_blank">关于spalding</a></dt>
+
+                <dt><a href="<?php echo str_replace('/&___SID=', '', substr($this->getUrl('blog/cat/news/'), 0, -1)) ?>" target="_blank">公司新闻</a></dt>
+                <dt><a href="<?php echo $this->getUrl('partner') ?>" target="_blank">合作伙伴</a></dt>
+            </dl>
+            <dl class="footerNav ms-fl">
+                <dd>购物指南</dd>
+                <dt><a href="<?php echo $this->getUrl('footer_shopping') ?>" target="_blank">导购流程</a></dt>
+                <dt><a href="<?php echo $this->getUrl('maintenance') ?>" target="_blank">篮球保养</a></dt>
+                <dt><a href="<?php echo $this->getUrl('sizetable') ?>" target="_blank">篮球规格</a></dt>
+            </dl>
+            <dl class="footerNav ms-fl">
+                <dd>法律条款</dd>
+                <dt><a href="<?php echo $this->getUrl('law') ?>" target="_blank">法律声明</a></dt>
+                <dt><a href="<?php echo $this->getUrl('responsibility') ?>" target="_blank">免责声明</a></dt>
+                <dt><a href="<?php echo $this->getUrl('privacy') ?>" target="_blank">隐私条款</a></dt>
+            </dl>
+            <div class="clear"></div>
+
+        </div>
+        <div class="shopCode ms-fl">
+            <div class="shopCodeWrap ms-fl"><span>斯伯丁中国微信</span> <span><img src="<?php echo $this->getSkinUrl('images/20141208003.jpg') ?>"
+                                                                            alt=""/></span></div>
+            <div class="shopCodeWrap ms-fl"><span>斯伯丁中国微博</span> <span><img src="<?php echo $this->getSkinUrl('images/20141208004.jpg') ?>"
+                                                                            alt=""/></span></div>
+            <div class="clear">&nbsp;</div>
+
+            <h3>商城客服电话：15546229782</h3>
+            <p>商务垂询电话：021-61610547</p>
+            <p>customer.service@spalding.com.cn</p>
+
+            <p></p>
+        </div>
+        <div class="footerLogo ms-fl">
+            <div class="footerLogoBox footerLogo_01">
+                <span style="padding-left: 20px"><img src="<?php echo $this->getSkinUrl('images2019/20141209001.png') ?>" alt="" /></span>
+                <span><img src="<?php echo $this->getSkinUrl('images/20141209002.png') ?>" alt=""/></span>
+                <span><img src="<?php echo $this->getSkinUrl('images/20141209003.png') ?>" alt=""/></span>
+                <span><img src="<?php echo $this->getSkinUrl('images/20141209002.jpg') ?>" alt="" /></span>
+            </div>
+            <div class="footerLogoBox footerLogo_02">
+
+
+                <span><img src="<?php echo $this->getSkinUrl('images/logoBasketball.png') ?>" height="53" alt=""/></span>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div style="text-align:center; font-size:12px; color:#847450">
+            <p>备案编号：<a href="http://www.miitbeian.gov.cn/" target="_blank" style="color:#847450;">沪ICP备14046632号-1</a> Copyright ©<?php echo date('Y')?>-<?php echo (date('Y') + 1)?> Russell Brands, LLC All Rights Reserved. <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254012265'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254012265%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></p>
+        </div>
+    </div>
+<!--    <div class="  clearfix" style="color:#847450; line-height: 1.2em; margin:35px auto; margin-top:5px;font-size:12px;">-->
+<!--        <p></p>-->
+<!--    </div>-->
+</div>
+</div>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?7f42076b3c0e780d8abd91969d3fd871";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script>
+    // JavaScript Document
+    var aName_main = [
+        { "name": " - 首页", "subNav": [], "index": "0", "clsName": "on", "conName": ".side_nav" },
+        { "name": " - 关于斯伯丁", "subNav": [], "index": "1", "clsName": "on", "conName": ".side_nav" },
+        { "name": " - 斯伯丁商城", "subNav": [], "index": "3", "clsName": "on", "conName": ".side_nav" },
+        { "name": " - 产品科技", "subNav": [], "index": "4", "clsName": "on", "conName": ".side_nav" },
+        { "name": " - 新闻与媒体", "subNav": [], "index": "5", "clsName": "on", "conName": ".side_nav" },
+        { "name": " - Spalding专属定制", "subNav": [], "index": "6", "clsName": "on", "conName": ".side_nav" }
+    ];
+    var c_title = jQuery('TITLE').html();
+    function navGPS(navJson, titleStr) {
+        for (var i = 0; i < navJson.length; ) {
+            if (titleStr.indexOf(navJson[i].name) != -1) {
+                indexNum = navJson[i].index;
+                conName = navJson[i].conName;
+                clsNameStr = navJson[i].clsName == '' ? 'current' : navJson[i].clsName;
+                jQuery(conName).children('li').eq(indexNum).addClass(clsNameStr);
+                jQuery('.lower_wrap .main').children('.lower_list').eq(indexNum).css("display","block"); //二级菜单显示
+            }
+            i++;
+        }
+    }
+    navGPS(aName_main, c_title);
+
+
+    function loading(){
+        var html = '<div><img src="<?php echo $this->getSkinUrl(); ?>images/auth/ajax-loader-tr.gif"/></div>';
+        jQuery('#barcodeVerifyResult').html(html);
+    }
+    jQuery(function () {
+
+        var index = jQuery('.menu_wrap ul.side_nav>li').index(jQuery(".on"));
+
+        jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(index).slideDown();
+
+//导航效果
+        jQuery('.menu_wrap ul.side_nav>li').each(function (i) {
+
+            jQuery(this).hover(function () {
+                jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(i).addClass('on');
+                jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(i).slideDown();
+            });
+        });
+
+
+        //点击空白处 隐藏“验证”
+        jQuery(".dialogBg").click(function(){
+            jQuery(this).parents("#dialog").css("display","none");
+        });
+        jQuery('.closebutton').on("click",function(){
+            jQuery(this).parent().parent().parent('#dialog').fadeOut();
+        });
+
+//鼠标经过子菜单时，停止下拉动画，仅显示
+        jQuery('.lower_list').hover(function(){
+            jQuery(this).stop(false,true).css("display","block");
+        });
+        jQuery('#zhenweiyanzhengrukou').on("click",function(){
+            jQuery(this).parents().find('#dialog').fadeIn();
+        });
+
+        jQuery('.menu_all').hover(function () {
+        }, function () {
+            jQuery('.lower_wrap .main').children('.lower_list').stop(false,true).css("display","none").eq(indexNum).slideDown();
+            jQuery('.menu_wrap ul.side_nav>li').removeClass('on').eq(indexNum).addClass('on');
+        })
+
+//AJAX加载动画
+        if (jQuery('#loading').length > 0) {
+            jQuery("#loading").ajaxStart(function () {
+                jQuery(this).show();
+            });
+            jQuery("#loading").ajaxStop(function () {
+                jQuery(this).css("display","none");
+            });
+        }
+    });
+</script>
+<!-- 底部 bottom e -->
+<!-- melone end 拷贝底部效果代码 -->
 </body>
 </html>
