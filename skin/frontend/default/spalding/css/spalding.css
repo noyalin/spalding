@@ -1115,8 +1115,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 
 .detail_page_banner_block img{
-    width: 1690px;
-    margin-left: -292px;
+    width: 100%;
+    height: 100%;
     margin-bottom: 30px;
 }
 
@@ -1323,25 +1323,19 @@ button.rulAgree{
     /*margin-top: 558px;*/
     margin-left: 80px;
 }
-@media screen and (min-width:1136px) and (max-width: 1920px)  {
-    .col-main{
-        width: 1200px;
-    }
-    .block.block-layered-nav.ms-fl{
-        margin-top: 558px;
-    }
-}
+/*@media screen and (min-width:1136px) and (max-width: 1520px)  {*/
+    /*.col-main{*/
+        /*width: 1200px;*/
+    /*}*/
+/*}*/
 /*文档宽度小于 1136 像素*/
-@media screen and (max-width:1136px){
-    .col-main{
-        width: 800px;
-    }
-    .block.block-layered-nav.ms-fl{
-        margin-top: 400px;
-    }
-}
+/*@media screen and (max-width:1136px){*/
+    /*.col-main{*/
+        /*width: 800px;*/
+    /*}*/
+/*}*/
 .category-products{
-    margin-top:15px;
+    /*margin-top:15px;*/
 }
 
 
@@ -1869,10 +1863,10 @@ span.spCarTit_fun{
 
 /*产品详情*/
 .product-view{
-    width:970px;
+    /*width:970px;*/
     margin:0 auto;
     /*background: url(../images/productDetail_bg.jpg) left top repeat;*/
-    background-color: #D4C89E;
+    /*background-color: #D4C89E;*/
     padding:10px 0 30px;
     /*melone start 修改底部间距*/
     margin-bottom: 10px;
@@ -1880,21 +1874,26 @@ span.spCarTit_fun{
 }
 
 .product-essential{
-    padding:40px 20px 20px;
+    /*padding:40px 20px 20px;*/
+    padding:0px 20px 20px;
 }
 
-
-.product-img-box{
-    width:310px;
-    float: left;
-    margin-left:15px;
-}
+/*详情页 放大图*/
+/*.product-img-box{*/
+    /*width:310px;*/
+    /*float: left;*/
+    /*margin-left:15px;*/
+    /*background-color: #D4C89E;*/
+    /*padding: 20px;*/
+/*}*/
 
 
 .product-shop{
     width:470px;
     float: right;
     margin-right:20px;
+    background-color: #D4C89E;
+    padding: 20px;
 }
 
 
@@ -2026,7 +2025,8 @@ span.spCarTit_fun{
 
 /*产品参数*/
 .productArgs{
-    margin:10px 35px;
+    /*margin:10px 35px;*/
+    width: 510px;
 }
 
 .productArgs .productArgs_tit{
@@ -2064,7 +2064,8 @@ span.spCarTit_fun{
 
 /*产品介绍*/
 .product-collateral{
-    margin:40px 0;
+    /*margin:40px 0;*/
+    padding: 0px 71px;
 }
 
 .product-collateral-wrap{
@@ -2280,7 +2281,7 @@ h2.product-collateral-box-nam{
 }
 
 .col-main{
-    margin-top:30px;
+    /*margin-top:30px;*/
 }
 
 .page-title{
@@ -3620,6 +3621,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-bottom:20px;
 }
 .newsList ul li{
+    /*width:464px;*/
     width:300px;
     height:405px;
     background: #D4C89E;
