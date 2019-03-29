@@ -169,9 +169,9 @@ $categoryUrlkey = $_category->getUrlKey();
     $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
     $productNorm = $configurableProduct->getProductNorm();
     if($productNorm == 6){
-        $scen7 = $domain.'/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image=';
+        $scen7 = $domain.'/is/image/sneakerhead/PC-spalding220pxsmall?$220x220$&$image=';
     }else{
-        $scen7 = $domain.'/is/image/sneakerhead/spalding220px?$220x220$&$image=';
+        $scen7 = $domain.'/is/image/sneakerhead/PC-spalding220px?$220x220$&$image=';
     }
     $shortDescription =  $_product->getShortDescription();
     if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
