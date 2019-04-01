@@ -1343,7 +1343,8 @@ button.rulAgree{
 
 
 .products-grid li.item{
-    width:210px;
+    /*width:210px;*/
+    width:230px;
     min-height:290px;
     float: left;
     overflow: hidden;
@@ -1468,6 +1469,7 @@ button.rulAgree{
     float: left;
     margin:0 6px;
 }
+/*分页*/
 .products-grid  .item.last img{
     margin-top: -18px;
 }
@@ -1477,7 +1479,9 @@ button.rulAgree{
 .pager .pages ol li.pageNow{
     color:#000;
 }
+.item.first{
 
+}
 .pageli a{
     color: #00275E;
 }
@@ -1875,9 +1879,9 @@ span.spCarTit_fun{
     margin:0 auto;
     /*background: url(../images/productDetail_bg.jpg) left top repeat;*/
     /*background-color: #D4C89E;*/
-    padding:10px 0 30px;
+    padding:22px 0 30px;
     /*melone start 修改底部间距*/
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
     /*melone end 修改底部间距*/
 }
 
@@ -2033,11 +2037,10 @@ span.spCarTit_fun{
 
 /*产品参数*/
 .productArgs{
-    /*margin:10px 35px;*/
+    margin:10px 35px;
     /*width: 510px;*/
-    width: 100%;
+    width: 96%;
 }
-
 .productArgs .productArgs_tit{
     height: 35px;
     line-height: 35px;
@@ -2096,13 +2099,15 @@ h2.product-collateral-box-nam{
 }
 
 .product-collateral-box-img{
-    max-width:960px;
+    /*max-width:960px;*/
+    max-width:1140px;
     text-align: center;
+    margin-bottom: 10px;
 }
 .product-collateral-box-img img{
     width:100%;
     /*melone start 去掉图片间的空隙*/
-    margin-bottom: -4px;
+    /*margin-bottom: -4px;*/
     /*melone end 去掉图片间的空隙*/
 }
 
@@ -2110,7 +2115,8 @@ h2.product-collateral-box-nam{
     display: inline;
 }
 .product-collateral-box-img.box-image img{
-    width: 50%;
+    width: 49%;
+    margin: 5px 3px;
 }
 .productSaw{
     padding:10px;
