@@ -1467,7 +1467,12 @@ button.rulAgree{
     float: left;
     margin:0 6px;
 }
-
+.products-grid  .item.last img{
+    margin-top: -18px;
+}
+/*.products-grid  .item img{*/
+    /*margin-top: 2px;*/
+/*}*/
 .pager .pages ol li.pageNow{
     color:#000;
 }
