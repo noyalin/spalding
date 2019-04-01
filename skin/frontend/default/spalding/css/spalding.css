@@ -801,6 +801,7 @@ ul.scarch_select_option li:hover{
     top:0;
     /*melone start 去掉背景图 */
     /*background: url("../images2019/BG.jpg");*/
+    background: url("../images2019/20141209004-1.png");
     /*melone start 去掉背景图 */
 }
 
@@ -823,7 +824,7 @@ ul.scarch_select_option li:hover{
     width:1130px;
     margin:0 auto;
     /*melone start 添加左侧logo图*/
-    background: url("../images2019/20141209004.png") left 212px no-repeat;
+    /*background: url("../images2019/20141209004.png") left 212px no-repeat;*/
     /*melone end 添加左侧logo图*/
 }
 .loginBox .loginBoxWrap{
@@ -2033,7 +2034,8 @@ span.spCarTit_fun{
 /*产品参数*/
 .productArgs{
     /*margin:10px 35px;*/
-    width: 510px;
+    /*width: 510px;*/
+    width: 100%;
 }
 
 .productArgs .productArgs_tit{
@@ -2149,7 +2151,7 @@ h2.product-collateral-box-nam{
     padding:15px;
     /*melone start 修改背景颜色*/
     /*background: #323232;*/
-    background: #D4C89E;
+    /*background: #D4C89E;*/
     /*melone end 修改背景颜色*/
 }
 
