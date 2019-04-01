@@ -160,9 +160,10 @@ $categoryUrlkey = $_category->getUrlKey();
         <div class="category-products">
     <?php echo $this->getToolbarHtml() ?>
         <div class="proListFunLine"></div>
+
 <ul class="products-grid">
     <?php $_collectionSize = $_productCollection->count() ?>
-    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php $_columnCount = $this->getColumnCount()+2; ?>
     <?php $m=1; $i=0; foreach ($_productCollection as $_product):
     $shortDescription = '';
     $skuConfig = $_product->getSku();
@@ -193,6 +194,12 @@ $categoryUrlkey = $_category->getUrlKey();
         <!--<ul class="products-grid">-->
     <!--<?php endif ?>-->
         <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+
+        <?php if ($i%$_columnCount==0): ?>
+            <?php echo "<br />"  ?>
+        <?php endif ?>
+
+
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                 <img id="mainImage" width="220" height="220" src='<?php echo $scen7.$_product->getUrlKey();  ?>-1' alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
             </a>
@@ -202,7 +209,7 @@ $categoryUrlkey = $_category->getUrlKey();
                 </a>
             </h2>
             <div class="divpric">
-            <?php 
+            <?php
             	$msrp = number_format($_product->getMsrp(), '2', '.', ',');
             	$currentPrice = number_format($_product->getFinalPrice(), '2', '.', ',');
             	if($msrp != $currentPrice):
@@ -211,7 +218,7 @@ $categoryUrlkey = $_category->getUrlKey();
             		<em></em>
             		￥ <?php echo $msrp; ?>
             	</span>
-            <?php 
+            <?php
             	endif;
             ?>
             	<span class="pricPro">￥ <?php echo number_format($_product->getFinalPrice(), '2', '.', ','); ?></span>
