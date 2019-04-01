@@ -32,35 +32,35 @@
 
 ?>
 
-<div id="detailPixWrap">
-    <a rel="productGallery [gallery]" >
-        <img width="330" id="mainImage" data-zoom-image="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/bigball1200?$1200x1200$&$imagemoban=<?php echo $urlKey ?>-1"
-             src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding330px?$330x330$&$image330=<?php echo $urlKey ?>-1"
-             alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"/></a>
-    <div class="detailArrowPrev">
-        <a class="detailArrowPrevBtn" href="javascript:void(0)"></a>
-    </div>
-    <div class="detailImageReelWindow">
-        <div class="detailImageReel">
-            <div id="detailProductGallery">
-                <?php $imageCount = floor($_product->getImageCount()) ?>
-                <?php $i = 0 ?>
-                <?php while ($i++ < $imageCount) : ?>
-                    <div>
-                        <a rel="productGallery [gallery]">
-<!--                            <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50=--><?php //echo $this->htmlEscape($_product->getUrlKey()) ?><!-----><?php //echo $i ?><!--" alt=""/>-->
-<!-- melone url加上2019- -->     <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding50px?$50x50$&$image50=<?php echo  $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>" alt=""  sku="<?php echo $i ?>"/>
-                        </a>
-                    </div>
-                <?php endwhile ?>
-            </div>
-        </div>
-    </div>
-    <div class="detailArrowNext">
-        <a class="detailArrowNextBtn" href="javascript:void(0)"></a>
-    </div>
-    <div id="detailPixIconWrap"></div>
-</div>
+<!--<div id="detailPixWrap">-->
+    <!--<a rel="productGallery [gallery]" >-->
+        <!--<img width="330" id="mainImage" data-zoom-image="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/bigball1200?$1200x1200$&$imagemoban=<?php echo $urlKey ?>-1"-->
+             <!--src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/spalding330px?$330x330$&$image330=<?php echo $urlKey ?>-1"-->
+             <!--alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"/></a>-->
+    <!--<div class="detailArrowPrev">-->
+        <!--<a class="detailArrowPrevBtn" href="javascript:void(0)"></a>-->
+    <!--</div>-->
+    <!--<div class="detailImageReelWindow">-->
+        <!--<div class="detailImageReel">-->
+            <!--<div id="detailProductGallery">-->
+                <!--<?php $imageCount = floor($_product->getImageCount()) ?>-->
+                <!--<?php $i = 0 ?>-->
+                <!--<?php while ($i++ < $imageCount) : ?>-->
+                    <!--<div>-->
+                        <!--<a rel="productGallery [gallery]">-->
+<!--&lt;!&ndash;                            <img src="http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50=&ndash;&gt;<?php //echo $this->htmlEscape($_product->getUrlKey()) ?>&lt;!&ndash;-&ndash;&gt;<?php //echo $i ?>&lt;!&ndash;" alt=""/>&ndash;&gt;-->
+<!--&lt;!&ndash; melone url加上2019- &ndash;&gt;     <img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding50px?$50x50$&$image50=<?php echo  $this->htmlEscape($_product->getUrlKey()) ?>-<?php echo $i ?>" alt=""  sku="<?php echo $i ?>"/>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--<?php endwhile ?>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="detailArrowNext">-->
+        <!--<a class="detailArrowNextBtn" href="javascript:void(0)"></a>-->
+    <!--</div>-->
+    <!--<div id="detailPixIconWrap"></div>-->
+<!--</div>-->
 
 
 <?php if(!$_lightboxConfig['defaulzoom']): ?>
