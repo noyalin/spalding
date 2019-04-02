@@ -2135,7 +2135,7 @@ h2.product-collateral-box-nam{
 .product-collateral-box-img img{
     width:100%;
     /*melone start 去掉图片间的空隙*/
-    /*margin-bottom: -4px;*/
+    margin-bottom: -4px;
     /*melone end 去掉图片间的空隙*/
 }
 
@@ -2143,7 +2143,7 @@ h2.product-collateral-box-nam{
     display: inline;
 }
 .product-collateral-box-img.box-image img{
-    width: 49%;
+    width: 47%;
     margin: 5px 3px;
 }
 .productSaw{
