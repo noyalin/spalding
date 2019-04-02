@@ -161,9 +161,10 @@ $categoryUrlkey = $_category->getUrlKey();
     <?php echo $this->getToolbarHtml() ?>
         <div class="proListFunLine"></div>
 
-<ul class="products-grid">
+<ul class="products-grid" style="display: flex;flex-wrap: wrap;">
     <?php $_collectionSize = $_productCollection->count() ?>
-    <?php $_columnCount = $this->getColumnCount()+2; ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <!--<?php $_columnCount = $this->getColumnCount()+2; ?>-->
     <?php $m=1; $i=0; foreach ($_productCollection as $_product):
     $shortDescription = '';
     $skuConfig = $_product->getSku();
@@ -195,9 +196,9 @@ $categoryUrlkey = $_category->getUrlKey();
     <!--<?php endif ?>-->
         <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
 
-        <?php if ($i%$_columnCount==0): ?>
-            <?php echo "<br />"  ?>
-        <?php endif ?>
+        <!--<?php if ($i%$_columnCount==0): ?>-->
+            <!--<?php echo "<br />"  ?>-->
+        <!--<?php endif ?>-->
 
 
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">

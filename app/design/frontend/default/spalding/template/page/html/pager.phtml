@@ -80,8 +80,8 @@
       <!--<?php endfor; ?>-->
 <!--</div>-->
 <!--</ul>-->
-       <div>
-             <select  onchange="window.location=this.value" style="width: 45px;height: 28px;">
+       <div class="selectbox1">
+             <select  onchange="window.location=this.value" style="width: 80px;height: 50px;line-height:50px;margin-top:-20px;cursor: pointer">
                 <?php for ($i_page =1;$i_page<= $this->getLastPageNum();$i_page++): ?>
                     <option value="<?php echo $this->getPageUrl()?><?php echo "&$this->_pageVarName="?><?php echo $i_page ?>"<?php if($this->isPageCurrent($i_page)): ?> selected="selected"<?php endif ?>>
                 <?php echo $i_page ?>

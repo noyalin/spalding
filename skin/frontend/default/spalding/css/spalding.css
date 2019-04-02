@@ -50,6 +50,7 @@ button{
 .header_nav {
     text-align: right;
     font-size: 12px;
+    margin: 60px;
 }
 /*melone end 添加超链接向右对齐*/
 
@@ -802,6 +803,7 @@ ul.scarch_select_option li:hover{
     /*melone start 去掉背景图 */
     /*background: url("../images2019/BG.jpg");*/
     background: url("../images2019/20141209004-1.png");
+    background-size: 100% 100%;
     /*melone start 去掉背景图 */
 }
 
@@ -1121,13 +1123,41 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     margin-bottom: 53px;
 }
 
+
 .pagecount{
     height: 25px;
     line-height: 28px;
     width: 40px;
+    font-size: 15px;
+}
+
+/*.selectbox1 {*/
+    /*width: 80px;*/
+    /*display: inline-block;*/
+    /*overflow-x: hidden;*/
+    /*line-height: 50px;*/
+    /*font-size: 0;*/
+    /*border: 1px solid #dcdbdb;*/
+    /*vertical-align: middle;*/
+    /*margin-top: -10px;*/
+/*}*/
+/*.selectbox1 select {*/
+    /*cursor: pointer;*/
+    /*padding: 0 8px;*/
+    /*font-size: 12px;*/
+    /*background: none;*/
+    /*border: none;*/
+/*}*/
+.selectbox1 option{
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+    /*padding: 2px 0;*/
+    /*margin: 2px 0;*/
+    /*border-bottom: 1px solid #999;*/
+    font-size: 15px;
 }
 .total-page{
-    width: 50px;
+    width: 20px;
     height: 25px;
     line-height: 25px;
     display: flex;
@@ -1402,12 +1432,14 @@ button.rulAgree{
 }
 
 .proListFunLine{
-    width:100%;
+    /*width:100%;*/
     /*width:1200px;*/
     height: 1px;
     /*background: #000;*/
     background: #d4c89e;
-    margin:10px 0;
+    /*margin:10px 0;*/
+    margin: 10px 16px;
+    transform: translateX(-7px);
 }
 
 .proListLine{
@@ -1467,15 +1499,11 @@ button.rulAgree{
     height: 25px;
     line-height: 28px;
     float: left;
-    margin:0 6px;
+    margin:0 10px;
+    font-size: 15px;
 }
-/*分页*/
-.products-grid  .item.last img{
-    margin-top: -18px;
-}
-/*.products-grid  .item img{*/
-    /*margin-top: 2px;*/
-/*}*/
+
+
 .pager .pages ol li.pageNow{
     color:#000;
 }
