@@ -437,26 +437,6 @@ else:
                 }.bind(productAddToCartForm);
                 //]]>
                 </script>
-                   <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            $(".hideShowSpecification").click(function(){
-                                $(".hideShows").slideToggle("2000");
-                            });
-                        });
-                        $(document).ready(function(){
-                            $(".hideShowmaintenance").click(function(){
-                                $(".hideShowm").slideToggle("2000");
-                            });
-                        });
-
-                        $(document).ready(function(){
-                            $(".hideShowAsale").click(function(){
-                                $(".hideShowa").slideToggle("2000");
-                            });
-                        });
-                    </script>
-
         </div>
    </div>
         <?php echo $this->getChildHtml('upsell_products') ?>
