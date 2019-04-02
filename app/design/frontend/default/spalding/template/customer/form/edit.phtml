@@ -31,25 +31,30 @@
 <!-- melone end 修改图片 images->images2019 -->
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate" autocomplete="off" class="accounePreForm">
+<!-- melone 添加style="width: 700px;"-->
+<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate" autocomplete="off" class="accounePreForm" style="width: 700px;">
     <div class="fieldset">
         <?php echo $this->getBlockHtml('formkey')?>
         <h2 class="legend"><?php echo $this->__('Account Base Information') ?></h2>
         <ul class="form-list">
             <li class="fields clearfix">
-                <div class="field name-firstname">
-                    <label class="required ms-fl" for="firstname">姓名：</label>
-                    <div class="input-box">
+            <!-- melone 添加style="width: 28px;"-->
+                <div class="field name-firstname" style="height: 28px;">
+                    <span><label class="required ms-fl" for="firstname">姓名：</label>
+                    <!--<div class="input-box">-->
                         <input type="text" class="input-text required-entry" maxlength="255" title="收件人姓名" value="<?php echo $this->getCustomer()->getFirstname() ?>" name="firstname" id="firstname">
-                    </div>
-                </div>
-            </li>
-            <li>
-                <label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?>：</label>
-                <div class="input-box">
+                    <!--</div>--></span>
+                    <span><label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?>：</label>
                     <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+                    </span>
                 </div>
             </li>
+            <!--<li>-->
+                <!--<label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?>：</label>-->
+                <!--<div class="input-box">-->
+                    <!--<input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />-->
+                <!--</div>-->
+            <!--</li>-->
         <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
         <?php if ($_dob->isEnabled()): ?>
             <li><?php echo $_dob->setDate($this->getCustomer()->getDob())->toHtml() ?></li>
@@ -80,19 +85,26 @@
 
 <style type="text/css">
     ul.form-list li input[type="password"] {
-        border: 0 none;
+        /*melone start 修改边框样式*/
+        border: 1px solid #847450;
+
         border-radius: 3px 3px 3px 3px;
+        /*melone start 修改边框样式*/
         color: #666666;
         height: 28px;
         line-height: 28px;
         padding: 0 5px;
-        width: 260px;
+        /*melone start 修改边框长度*/
+        /*width: 260px;*/
+        width: 584px;
+        /*melone start 修改边框长度*/
     }
     .no-display {
         display: none;
     }
 </style>
-<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate_password" autocomplete="off" class="accounePreForm">
+<!-- melone 添加style="width: 700px;"-->
+<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="form-validate_password" autocomplete="off" class="accounePreForm" style="width: 700px;">
     <?php echo $this->getBlockHtml('formkey')?>
     <div class="fieldset">
         <h2 class="legend">设置新密码</h2>
@@ -107,13 +119,15 @@
             </li>
             <li class="fields clearfix">
                 <label class="required ms-fl" for="current_password">旧密码：</label>
-                <div class="input-box">
+                <div class="input-box" style="width:700px">
                     <!-- This is a dummy hidden field to trick firefox from auto filling the password -->
                     <input type="text" class="input-text no-display" name="dummy" id="dummy" />
-                    <input type="password" id="current_password" name="current_password" class="input-text required-entry validation-failed" title="Current Password">
+                    <!-- melone 添加style="width: 584xpx"-->
+                    <input type="password" id="current_password" name="current_password" class="input-text required-entry validation-failed" title="Current Password" style="width: 584px;">
                 </div>
             </li>
-            <li class="fields clearfix">
+            <!-- melone 添加style="width: 700px"-->
+            <li class="fields clearfix" style="width: 700px">
                 <div class="field">
                     <label class="required ms-fl" for="password">新密码：</label>
                     <div class="input-box ms-fl">
@@ -121,7 +135,8 @@
                     </div>
                 </div>
             </li>
-            <li class="userMail clearfix">
+            <!-- melone 添加style="width: 700px"-->
+            <li class="userMail clearfix" style="width: 700px">
                 <label class="required ms-fl"  for="confirmation" >确认新密码：</label>
                 <div class="input-box ms-fl">
                     <input type="password" title="<?php echo $this->__('Confirm New Password') ?>" class="input-text validate-cpassword required-entry" name="confirmation" id="confirmation" />
@@ -133,8 +148,8 @@
         </ul>
     </div>
 </form>
-
-<form class="accounePreForm" action="<?php echo $this->getUrl('customer/account/editPost') ?>" style="border-bottom: medium none;">
+<!-- melone 添加width: 700px;-->
+<form class="accounePreForm" action="<?php echo $this->getUrl('customer/account/editPost') ?>" style="border-bottom: medium none;width: 700px;">
     <div class="fieldset">
         <h2 class="legend">其他信息</h2>
     </div>
@@ -149,16 +164,18 @@
                 </select>
             </div>
         </li>
-        <li class="userMail clearfix">
+        <!-- melone 添加style="width: 700px"和style="width: 584px"-->
+        <li class="userMail clearfix" style="width: 700px">
             <label class="required ms-fl" for="">生日：</label>
             <div class="input-box ms-fl">
-                <input type="text" class="input-text required-entry" title="Email Address" value="" id="" name="">
+                <input type="text" class="input-text required-entry" title="Email Address" value="" id="" name="" style="width: 584px">
             </div>
         </li>
-        <li class="userMail clearfix">
+        <!-- melone 添加style="width: 700px"和style="width: 584px"-->
+        <li class="userMail clearfix" style="width: 700px">
             <label class="required ms-fl" for="">身份证：</label>
             <div class="input-box ms-fl">
-                <input type="text" class="input-text required-entry" title="Email Address" value="" id="" name="">
+                <input type="text" class="input-text required-entry" title="Email Address" value="" id="" name="" style="width: 584px">
             </div>
         </li>
         <li class="control clearfix">
