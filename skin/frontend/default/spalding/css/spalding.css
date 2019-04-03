@@ -2284,10 +2284,10 @@ h2.product-collateral-box-nam{
 
 
 .block-content{
+    margin-top:20px;
     /*melone start 修改左边距离*/
     /*margin-left: 90px;*/
     /*melone start 修改左边距离*/
-    margin-top:20px;
 }
 
 
@@ -2370,9 +2370,10 @@ h2.product-collateral-box-nam{
     border-bottom:5px solid #02295c;
     /*melone start 修改底部线颜色*/
     /*border-bottom:5px solid #fff;*/
-    margin-top: 25px;
+    /*melone start 修改上边距*/
+    margin-top: 55px;
     /*margin-top: 25px;*/
-
+    /*melone end 修改上边距*/
     /*melone start 修改底线长度 700px*/
     width: 700px;
     /*melone end 修改底线长度 700px*/
@@ -2542,7 +2543,7 @@ ul.form-list li label{
 
 ul.form-list li input[type="text"]{
     /*melone start 修改文本框长度*/
-    width:583px;
+    width:246px;
     /*melone end 修改文本框长度*/
     height:28px;
     padding:0 5px;
@@ -2578,7 +2579,11 @@ ul.form-list li.wide select{
 }
 ul.form-list li input[type="checkbox"]{
     vertical-align: middle;
-    margin-top:4px;
+    /*melone start 设置为居中*/
+    height: 28px;
+    line-height: 28px;
+    /*margin-top: 4px;*/
+    /*melone end 设置为居中*/
 }
 ul.form-list li button{
     width:90px;
@@ -2696,11 +2701,12 @@ ul.form-list li p{
 .order_data .order_data_tit{
     padding:2px 10px;
     /*background:#333;*/
-    background:#847450;
-    color:#D4C89E;
+    background:#D4C89E;
+    color:#847450;
     /*color:#fff;*/
     font-size: 12px;
     font-weight: bold;
+    width: 680px;
 }
 
 .order_data .order_data_tit span{
@@ -2741,7 +2747,9 @@ ul.form-list li p{
     width:80px;
 }
 .order_data ul.order_data_list{
-
+    /*melone start 修改长度*/
+    width: 700px;
+    /*melone end 修改长度*/
 }
 
 .order_data ul.order_data_list li{
@@ -2754,7 +2762,7 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li h2{
     padding:2px 15px;
-    background: #D4C89E;
+    /*background: #D4C89E;*/
     /*background: rgba(51,51,51,.7);*/
     font-size: 12px;
     font-weight: normal;
@@ -2772,7 +2780,7 @@ ul.form-list li p{
     float: left;
     text-align: center;
     margin-left:5px;
-    color:#ddd9d9;
+    color:#D4C89E;
 }
 
 
@@ -2793,7 +2801,10 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li span.order_data_list_nam h3{
     font-size: 12px;
-    margin-top:5px;
+    /*melone start 居中*/
+    /*margin-top:5px;*/
+    padding-top: 4px;
+    /*melone end 居中*/
     color:#00275E;
     /*color:#ffba00;*/
 }
@@ -2818,14 +2829,17 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li>span.order_data_list_priceP{
     width:70px;
-    line-height: 65px;
+    line-height: 48px;
 
     color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_num{
     width:50px;
-    line-height: 65px;
+    /*melone start 居中*/
+    line-height: 48px;
+    /*line-height: 65px;*/
+    /*melone start 居中*/
 
     color: #847450;
 }
@@ -2837,8 +2851,10 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li>span.lisStat_lineHeight{
     line-height: 1.4em;
-    margin-top:15px;
-
+    /*melone start 居中*/
+    /*margin-top:15px;*/
+    margin-top: 8px;
+    /*melone start 居中*/
     color: #847450;
 }
 
@@ -2850,13 +2866,19 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li>span.order_data_list_priceO{
     width:70px;
-    line-height: 65px;
+    /*melone start 居中*/
+    /*line-height: 65px;*/
+    line-height: 48px;
+    /*melone start 居中*/
 
     color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_fun{
     width:80px;
+    /*melone start 居中*/
+    padding-top: 4px;
+    /*melone end 居中*/
 }
 
 .order_data ul.order_data_list li>span.order_data_list_fun>a{
@@ -2864,6 +2886,9 @@ ul.form-list li p{
     font-size: 12px;
     color:#00275E;
     /*color:#fff;*/
+    /*melone start 右对齐*/
+    margin-left: 17px;
+    /*melone end 右对齐*/
 }
 
 
