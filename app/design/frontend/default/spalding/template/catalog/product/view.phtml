@@ -205,11 +205,11 @@ else:
                                     <?php } ?>
                                 <?php endfor; ?>
                                 <!--细节展示-->
-                                <div class="product-collateral-box-img">
+                                <div class="product-collateral-box-img  box-image">
                                 <!-- melone 修改图片   衣服的细节展示图片-->
                                     <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
                                 </div>
-                                <div class="product-collateral-box-img">
+                                <div class="product-collateral-box-img  box-image">
                                 <img
                                     src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-3"?>"
                                     alt=""/>
@@ -281,7 +281,11 @@ else:
 
             </form>
           <!-- 产品参数 -->
-               <div class="productArgs" style="margin: 0px;">
+
+
+
+               <?php if($attributeSetName == 'ball'||$attributeSetName == 'football'): ?>
+               <div class="productArgs" style="width: 498px;background-color: #D4C89E;padding: 16px;">
                     <div class="productArgs_tit">产品参数</div>
                     <div class="productArgs_box" id="productArgs_box">
                         <ul class="clearfix">
@@ -293,152 +297,228 @@ else:
                         </ul>
                     </div>
                 </div>
-
-            <?php if($attributeSetName == 'ball'||$attributeSetName == 'football'): ?>
-                <?php if($attributeSetName == 'ball'){?>
-                      <!--篮球规格表-->
-                      <div class="product-collateral-box-img">
-                      <!-- melone 修改图片-->
-                          <img class="hideShowSpecification" id="hideShowSpecification" src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px">
-                      </div>
-                      <div class="product-collateral-box-img">
-                      <!-- melone 修改图片-->
-                          <img class="hideShows" src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-size.jpg');?>" border="0"  style="display: none;">
-                      </div>
-                      <!--篮球保养-->
-                      <div class="product-collateral-box-img">
-                      <!-- melone 修改图片-->
-                          <img class="hideShowmaintenance" src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle5.jpg") ?>' alt=""  style="margin-top: 10px;margin-bottom: -15px">
-                      </div>
-                      <div class="product-collateral-box-img">
-                      <!-- melone 修改图片-->
-                          <img class="hideShowm"  src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-maintain.jpg');?>" border="0" style="display: none;">
-                      </div>
-                      <!--篮球结构知识-->
-                            <!-- <div class="product-collateral-box-img">-->
-                            <!-- <img src="--><?php //echo $this->getSkinUrl('images/detailinfo/ball-structure.jpg');?><!--" border="0">-->
-                            <!--</div>-->
-                <?php }else{?>
-                    <!--足球规格表-->
-                    <div class="product-collateral-box-img">
-                        <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="">
-                    </div>
-                    <div class="product-collateral-box-img">
-                        <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-size.jpg") ?>' alt="">
-                    </div>
-                    <!--足球结构知识-->
-                    <div class="product-collateral-box-img">
-                        <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle5.jpg") ?>' alt="">
-                    </div>
-                    <div class="product-collateral-box-img">
-                        <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>' alt="">
-                    </div>
-                <?php }?>
-            <?php else:?>
-               <!-- --><?php //for ($i = 1; $i <=$imgCount; $i++):?>
-               <!-- <div class="product-collateral-box-img">-->
-               <!-- <img-->
-               <!-- src="--><?php //echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?><!--/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/--><?php //echo $urlkey . "-".$i?><!--"-->
-               <!-- alt=""/>-->
-               <!-- </div>-->
-               <!-- --><?php //endfor; ?>
-                <?php if($attributeSetName == 'apparel'){?>
-                    <!--服饰尺码表-->
-                    <!-- melone 修改服饰尺码表图片   与下面的尺码一体的 images -> images2019-->
-                        <?php
-                        if (($size_table_id != null)) {
-                            $size_table_url = $this->getSkinUrl("images2019/detailinfo/" . $size_table_id . ".jpg");
-                            ?>
-                            <div class="product-collateral-box-img">
-                            <img src='<?php echo $size_table_url; ?>' alt="">
-                                </div>
-                        <?php
-                        }
-                        ?>
-                      <!--服饰保养-->
-                    <div class="product-collateral-box-img">
-                        <img src='<?php echo $this->getSkinUrl("images/detailinfo/fushi-maintain.jpg") ?>' alt="">
+                   <div id="distanceFixed" style="width: 530px">
+                    <?php if($attributeSetName == 'ball'){?>
+                          <!--篮球规格表-->
+                          <div class="product-collateral-box-img">
+                          <!-- melone 修改图片-->
+                              <img onclick="run1()" src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px">
+                          </div>
+                          <div class="product-collateral-box-img">
+                          <!-- melone 修改图片-->
+                              <img id="hideShows" src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-size.jpg');?>" border="0"  style="display: none;">
+                          </div>
+                          <!--篮球保养-->
+                          <div class="product-collateral-box-img">
+                          <!-- melone 修改图片-->
+                              <img onclick="run2()"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle5.jpg") ?>' alt=""  style="margin-top: 20px;margin-bottom: -15px">
+                          </div>
+                          <div class="product-collateral-box-img">
+                          <!-- melone 修改图片-->
+                              <img id="hideShowm"  src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-maintain.jpg');?>" border="0" style="display: none;">
+                          </div>
+                          <!--篮球结构知识-->
+                                <!-- <div class="product-collateral-box-img">-->
+                                <!-- <img src="--><?php //echo $this->getSkinUrl('images/detailinfo/ball-structure.jpg');?><!--" border="0">-->
+                                <!--</div>-->
+                    <?php }else{?>
+                        <!--足球规格表-->
+                        <div class="product-collateral-box-img">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px">
                         </div>
-                <?php }?>
-           <?php endif; ?>
+                        <div class="product-collateral-box-img">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-size.jpg") ?>' alt="">
+                        </div>
+                        <!--足球结构知识-->
+                        <div class="product-collateral-box-img">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px">
+                            <!--footerballtitle5-->
+                        </div>
+                        <div class="product-collateral-box-img">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>' alt="">
+                        </div>
+                    <?php }?>
+                     <!--售后相关-->
+                             <div class="product-collateral-box-img">
+                             <!-- melone 修改图片-->
+                                 <img onclick="run3()" src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
+                             </div>
+                             <div class="product-collateral-box-img">
+                             <!-- melone 修改图片-->
+                                 <img id="hideShowa" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-1.jpg');?>" border="0" style="display: none;">
+                             </div>
+                             <div class="product-collateral-box-img">
+                             <!-- melone 修改图片-->
+                                 <img class="hideShowa1" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0" style="margin-top: 20px">
+                             </div>
+                         <!--</div>-->
+                         <!--</div>-->
+                    </div>
+                <?php else:?>
 
-
+                       <!-- --><?php //for ($i = 1; $i <=$imgCount; $i++):?>
+                       <!-- <div class="product-collateral-box-img">-->
+                       <!-- <img-->
+                       <!-- src="--><?php //echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?><!--/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/--><?php //echo $urlkey . "-".$i?><!--"-->
+                       <!-- alt=""/>-->
+                       <!-- </div>-->
+                       <!-- --><?php //endfor; ?>
+                  <div id="apparelFixed" style="width: 530px;">
+                    <?php if($attributeSetName == 'apparel'){?>
+                        <!--服饰尺码表-->
+                        <!-- melone 修改服饰尺码表图片   与下面的尺码一体的 images -> images2019-->
+                    <?php
+                    if (($size_table_id != null)) {
+                        $size_table_url = $this->getSkinUrl("images2019/detailinfo/" . $size_table_id . ".jpg");
+                        ?>
+                        <div class="product-collateral-box-img">
+                        <img src='<?php echo $size_table_url; ?>' alt="" style="margin-top: 20px">
+                            </div>
+                    <?php
+                    }
+                    ?>
+                    <!--服饰保养-->
+                    <div class="product-collateral-box-img">
+                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/fushi-maintain.jpg") ?>' alt="">
+                    </div>
+                    <?php }?>
                     <!--售后相关-->
-                    <div class="product-collateral-box-img">
-                    <!-- melone 修改图片-->
-                        <img class="hideShowAsale" src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="" style="margin-top: 10px;margin-bottom: -15px;">
-                    </div>
-                    <div class="product-collateral-box-img">
-                    <!-- melone 修改图片-->
-                        <img class="hideShowa" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-1.jpg');?>" border="0" style="display: none;">
-                    </div>
-                    <div class="product-collateral-box-img">
-                    <!-- melone 修改图片-->
-                        <img class="hideShowa1" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0" style="margin-top: 10px">
-                    </div>
-                <!--</div>-->
-                <!--</div>-->
+                             <div class="product-collateral-box-img">
+                             <!-- melone 修改图片-->
+                                 <img onclick="run3()" src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
+                             </div>
+                             <div class="product-collateral-box-img">
+                             <!-- melone 修改图片-->
+                                 <img id="hideShowa" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-1.jpg');?>" border="0" style="display: none;">
+                             </div>
+                             <div class="product-collateral-box-img">
+                             <!-- melone 修改图片-->
+                                 <img class="hideShowa1" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0" style="margin-top: 20px">
+                             </div>
+                         <!--</div>-->
+                         <!--</div>-->
+             </div>
+              <?php endif; ?>
 
 
-                <script type="text/javascript">
-                //<![CDATA[
-                var productAddToCartForm = new VarienForm('product_addtocart_form');
-                productAddToCartForm.submit = function (button, url) {
+            <script type="text/javascript">
 
-                if (this.validator.validate()) {
-                var form = this.form;
-                var oldUrl = form.action;
-                var list = jQuery('input:radio[data-input="kinds"]:checked').val();
-                if (list == null) {
-                    alert("请选择尺码");
-                    return false;
-                }
+                window.onload=function(){
+                        var distanceFixed = document.getElementById("distanceFixed"),
+                            H = 0,
+                            Y = distanceFixed;
+                        while (Y) {
+                            H += Y.offsetTop;
+                            Y = Y.offsetParent;
+                        }
+                         var apparelFixed = document.getElementById("apparelFixed"),
+                            H1 = 0,
+                            Y1 = apparelFixed;
+                        while (Y1) {
+                            H1 += Y1.offsetTop;
+                            Y1 = Y1.offsetParent;
+                        }
 
-                if (url) {
-                    form.action = url;
-                }
-                var e = null;
-                try {
-                    this.form.submit();
-                } catch (e) {
-                }
-                this.form.action = oldUrl;
-                if (e) {
-                    throw e;
-                }
-
-                if (button && button != 'undefined') {
-                    button.disabled = true;
-                }
-                }
-                }.bind(productAddToCartForm);
-
-                productAddToCartForm.submitLight = function (button, url) {
-                if (this.validator) {
-                var nv = Validation.methods;
-                delete Validation.methods['required-entry'];
-                delete Validation.methods['validate-one-required'];
-                delete Validation.methods['validate-one-required-by-name'];
-                // Remove custom datetime validators
-                for (var methodName in Validation.methods) {
-                    if (methodName.match(/^validate-datetime-.*/i)) {
-                        delete Validation.methods[methodName];
-                    }
+                        window.onscroll = function()
+                        {
+                            var s = document.body.scrollTop || document.documentElement.scrollTop;
+                            if(s>H && s<2*H) {
+                                distanceFixed.style = "position:fixed;top:0;width:530px;"
+                            } else {
+                                distanceFixed.style = "position:relative;top:0;width:530px"
+                            }
+                             if(s>1/6*H1 && s<4/6*H1) {
+                                apparelFixed.style = "position:fixed;top:0;width:530px;"
+                            } else {
+                                apparelFixed.style = "position:relative;top:0;width:530px"
+                            }
+                        }
                 }
 
-                if (this.validator.validate()) {
-                    if (url) {
-                        this.form.action = url;
-                    }
-                    this.form.submit();
-                }
-                Object.extend(Validation.methods, nv);
-                }
-                }.bind(productAddToCartForm);
-                //]]>
-                </script>
-        </div>
-   </div>
+            </script>
+   <script type="text/javascript">
+         function run1(){
+             var imgId=document.getElementById("hideShows");
+             if(imgId.style.display=="block")
+                 imgId.style.display="none";
+             else
+                 imgId.style.display="block";
+         }
+         function run2(){
+             var imgId=document.getElementById("hideShowm");
+             if(imgId.style.display=="block")
+                 imgId.style.display="none";
+             else
+                 imgId.style.display="block";
+         }
+         function run3(){
+             var imgId=document.getElementById("hideShowa");
+             if(imgId.style.display=="block")
+                 imgId.style.display="none";
+             else
+                 imgId.style.display="block";
+         }
+     </script>
+
+     <script type="text/javascript">
+     //<![CDATA[
+     var productAddToCartForm = new VarienForm('product_addtocart_form');
+     productAddToCartForm.submit = function (button, url) {
+
+     if (this.validator.validate()) {
+     var form = this.form;
+     var oldUrl = form.action;
+     var list = jQuery('input:radio[data-input="kinds"]:checked').val();
+     if (list == null) {
+         alert("请选择尺码");
+         return false;
+     }
+
+     if (url) {
+         form.action = url;
+     }
+     var e = null;
+     try {
+         this.form.submit();
+     } catch (e) {
+     }
+     this.form.action = oldUrl;
+     if (e) {
+         throw e;
+     }
+
+     if (button && button != 'undefined') {
+         button.disabled = true;
+     }
+     }
+     }.bind(productAddToCartForm);
+
+     productAddToCartForm.submitLight = function (button, url) {
+     if (this.validator) {
+     var nv = Validation.methods;
+     delete Validation.methods['required-entry'];
+     delete Validation.methods['validate-one-required'];
+     delete Validation.methods['validate-one-required-by-name'];
+     // Remove custom datetime validators
+     for (var methodName in Validation.methods) {
+         if (methodName.match(/^validate-datetime-.*/i)) {
+             delete Validation.methods[methodName];
+         }
+     }
+
+     if (this.validator.validate()) {
+         if (url) {
+             this.form.action = url;
+         }
+         this.form.submit();
+     }
+     Object.extend(Validation.methods, nv);
+     }
+     }.bind(productAddToCartForm);
+     //]]>
+     </script>
+</div>
+</div>
         <?php echo $this->getChildHtml('upsell_products') ?>
     <?php
 endif;
