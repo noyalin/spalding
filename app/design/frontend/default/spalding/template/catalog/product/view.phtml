@@ -288,13 +288,13 @@ else:
                <?php if($attributeSetName == 'ball'||$attributeSetName == 'football'): ?>
                <div class="productArgs" style="width: 498px;background-color: #D4C89E;padding: 16px;">
                     <div class="productArgs_tit">产品参数</div>
-                    <div class="productArgs_box" id="productArgs_box">
+                    <div class="productArgs_box" id="productArgs_box"  style="display: flex;flex-wrap: wrap">
                         <ul class="clearfix">
-                            <li>货号：<?php echo $product_sku; ?></li>
-                            <li>篮球规格: <?php echo $product_norm; ?></li>
-                            <li>系列：<?php echo $product_catena; ?></li>
-                            <li>场地：<?php echo $product_side; ?></li>
-                            <li>材质：<?php echo $product_material; ?></li>
+                            <li style="width: 150px;">货号：<?php echo $product_sku; ?></li>
+                            <li style="width: 150px;">篮球规格: <?php echo $product_norm; ?></li>
+                            <li style="width: 150px;">系列：<?php echo $product_catena; ?></li>
+                            <li style="width: 150px;">场地：<?php echo $product_side; ?></li>
+                            <li style="width: 150px;">材质：<?php echo $product_material; ?></li>
                         </ul>
                     </div>
                 </div>
