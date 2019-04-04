@@ -1167,10 +1167,10 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     display: flex;
 }
 div.regTit{
-    padding:10px 20px;
+    padding:10px 20px 0px 20px;
     /*melone start 修改背景和字体颜色*/
     /*background: #333333;*/
-    background: #d3c8a0;
+    /*background: #d3c8a0;*/
     /*color:#fff;*/
     color: #847450;
     /*melone end 修改背景和字体颜色*/
@@ -1178,14 +1178,36 @@ div.regTit{
     font-weight: bold;
 }
 
+/*melone start 修改左边距*/
+div.regTit img{
+    margin-top: 30px;
+    margin-left: 100px;
+    border-bottom: 5px solid #02295c;
+    padding: 0 40px 10px 0;
+}
+
+.regTitRight{
+    margin-top: 55px;
+    margin-left: 270px;
+    padding-bottom:6px;
+    border-bottom: 5px solid #02295c;
+    width: 700px;
+}
+/*melone end 修改左边距*/
 
 div.regTit span{
-    font-size: 12px;
+    /*melone start 修改字体大小*/
+    /*font-size: 12px;*/
+    font-size: 13px;
+    /*melone end 修改字体大小*/
     font-weight: normal;
 }
 
 div.regTit span a{
-    font-size: 14px;
+    /*melone start 修改字体大小*/
+    /*font-size: 14px;*/
+    font-size: 16px;
+    /*melone end 修改字体大小*/
     font-weight: bold;
     /*melone start 修改“登录”的字体颜色*/
     /*color:#fff;*/
@@ -1201,7 +1223,11 @@ div.regTit span a:hover{
 }
 
 .regBox{
-    margin:20px 0 20px 60px;
+    /*melone start 修改边距*/
+    /*margin:20px 0 20px 60px;*/
+    margin:5px 0 0 550px;
+    width: 710px;
+    /*melone end 修改边距*/
 }
 
 .regBox span{
@@ -1210,17 +1236,31 @@ div.regTit span a:hover{
 }
 
 .regBox span.regBoxTit{
-    width:110px;
-    margin-right: 10px;
+    /*melone start 去掉右边距*/
+    /*width:110px;*/
+    /*margin-right: 10px;*/
+    /*melone end 去掉右边距*/
     height:30px;
     line-height: 30px;
 }
 
 .regBox span.regBoxWrap{
-    width:700px;
+    width:589px;
 }
+
+/*melone start 增加底线*/
+.regBoxSplit{
+    width: 700px;
+    border-bottom: 1px solid #d3c8a0;
+    margin: 37px 0 37px 553px;
+}
+/*melone end 增加底线*/
+
 .regBox span>input.regBoxInp{
-    width:260px;
+    /*melone start 修改宽度*/
+    /*width:260px;*/
+    width: 569px;
+    /*melone end 修改宽度*/
     height:26px;
     padding:2px 10px;
     /*melone start 修改边框颜色*/
@@ -1244,10 +1284,10 @@ div.regTit span a:hover{
 }
 
 .regRuls{
-    min-width: 480px;
-    max-width: 480px;
-    min-height: 130px;
-    max-height: 130px;
+    min-width: 569px;
+    max-width: 569px;
+    min-height: 210px;
+    max-height: 210px;
     padding:10px;
     /*melone start 修改边框颜色*/
     /*border:1px solid #ccc;*/

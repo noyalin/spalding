@@ -18,7 +18,7 @@
             <!-- melone start 修改图片 images->images2019 -->
                 <span class="ms-fl"><img src="<?php echo $this->getSkinUrl("images2019/regTitle.png") ?>" alt=""></span>
             <!-- melone end 修改图片 images->images2019 -->
-                <span class="ms-fr">我已经注册了，现在就&nbsp;<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a></span>
+                <span class="regTitRight ms-fl">我已经注册了，现在就&nbsp;<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a></span>
                 <div class="clear"></div>
             </div>
                     <label class="required">
@@ -29,12 +29,12 @@
                         </div>
                     </label>
 
-            <div style="padding-left: 180px;font-size:13px;">
+            <div style="padding-left: 553px;padding-bottom:5px;font-size:12px;">
                 <span>* 为必填项</span>
             </div>
             <div class="regBox clearfix">
-                <span class="regBoxTit ms-fl">电子邮件E-mail *</span>
-			<span class="regBoxWrap ms-fl emailspan">
+                <span class="regBoxTit ms-fl">&nbsp;&nbsp;&nbsp;&nbsp;电子邮件E-mail*：</span>
+			<span class="regBoxWrap emailspan">
                 <input type="text"  name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="regBoxInp input-text validate-email required-entry" />
                 <input type="hidden" id="form_key" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>">
 				<!--<span class="regBoxWrapSn emailspanhtml"></span>-->
@@ -56,25 +56,33 @@
 
 
                     <div class="regBox clearfix">
-                        <span class="regBoxTit ms-fl">设定登录密码 *</span>
-                        <span class="regBoxWrap ms-fl">
-                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="regBoxInp input-text required-entry validate-password" />
+                        <span class="regBoxTit ms-fl" style="margin-top: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设定登录密码*：</span>
+                        <span class="regBoxWrap">
+                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="regBoxInp input-text required-entry validate-password" style="width: 208px;margin-top: 15px;"/>
+                        </span>
+                        <span class="regBoxTit" style="margin-top: 15px;margin-left: 21px;">请再次输入密码*：</span>
+                        <span class="regBoxWrap">
+                        <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" style="width: 208px;margin-top: 15px;"/>
                         </span>
                     </div>
-                    <div class="regBox clearfix">
-                        <span class="regBoxTit ms-fl">请再次输入密码 *</span>
-                        <span class="regBoxWrap ms-fl">
-                            <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" />
-                        </span>
+                    <!--<div class="regBox clearfix">-->
+                        <!--<span class="regBoxTit ms-fl">请再次输入密码 *</span>-->
+                        <!--<span class="regBoxWrap ms-fl">-->
+                            <!--<input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" />-->
+                        <!--</span>-->
+                    <!--</div>-->
+
+                    <div class="regBoxSplit">
+
                     </div>
                 <?php echo $this->getChildHtml('persistent.remember.me'); ?>
             <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
 
 
             <div class="regBox clearfix">
-                <span class="regBoxTit ms-fl">服务条款</span>
+                <span class="regBoxTit ms-fl" style="margin-left: 53px">服务条款：</span>
 			<span class="regBoxWrap ms-fl">
-				<span class="regBoxWrapSn">请检查以上您输入的个人信息,并阅读以下服务条款。</span>
+				<span class="regBoxWrapSn" style="width: 290px;">请检查以上您输入的个人信息,并阅读以下服务条款。</span>
 				<div class="regRuls">
                     <p>一、特别提示</p>
                     <p>1.1.斯伯丁（中国）同意按照本协议的规定及其不定时发布的操作规则提供基于互联网的相关服务（以下称"网络服务"）。为获得网络服务，服务使用人（以下称"用户"）应当同意本协议的全部条款并按照页面上的提示完成全部的注册程序。
@@ -155,7 +163,7 @@
                     <!-- melone 修改display:none改为display:block -->
                     <div style="display: block" id="advice-required-entry-agree_terms" class="validation-advice">勾选接受服务条款，即可继续注册。</div>
                 </div>
-                <div class="field" style="padding-top: 20px;">
+                <div class="field" style="padding-top: 25px;">
                     <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button" id="submitbutton">注册</button>
                     <button type="button" title="<?php echo $this->__('注册') ?>" class="rulNotAgree button" id="disablesubmitbutton" style="display: none">注册</button>
                     <br>

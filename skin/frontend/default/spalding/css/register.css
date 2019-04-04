@@ -3,7 +3,10 @@ span.validation-passed {
     padding-right: 20px;
 }
 .regBox span.regBoxWrap {
-    width: 290px;
+    /*melone start 修改宽度*/
+    /*width: 290px;*/
+    width: 230px;
+    /*melone end 修改宽度*/
 }
 span.validation-error {
     background: url("../images/icon_error.gif") no-repeat scroll 100% 2px rgba(0, 0, 0, 0);
@@ -54,7 +57,7 @@ span.validation-error {
     clear: both;
     color: #d91a00 !important;
     font-size: 11px !important;
-    padding: 3px 0 0 !important;
+    padding: 0 0 0 !important;
 }
 button.rulNotAgree {
     background: none repeat scroll 0 0 #cccccc;
