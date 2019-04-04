@@ -349,8 +349,8 @@ else:
                              <div class="product-collateral-box-img" style="position: relative;">
                              <!-- melone 修改图片-->
                                   <img onclick="run3()" src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;cursor: pointer;">
-                                <!--  <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;cursor: pointer;">
-                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;display: none;cursor: pointer;">-->
+                                  <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;cursor: pointer;right:245px;">
+                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;display: none;cursor: pointer;right:245px;">
                              </div>
                              <div class="product-collateral-box-img">
                              <!-- melone 修改图片-->
@@ -395,8 +395,8 @@ else:
                              <div class="product-collateral-box-img" style="position: relative;">
                              <!-- melone 修改图片-->
                                   <img onclick="run3()" src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;cursor: pointer;">
-                                 <!-- <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;cursor: pointer;">
-                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;display: none;cursor: pointer;">-->
+                                  <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;cursor: pointer;right:245px;">
+                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 0px;width: 20px;height: 20px;display: none;cursor: pointer;right:245px;">
                              </div>
                              <div class="product-collateral-box-img">
                              <!-- melone 修改图片-->
@@ -487,19 +487,19 @@ else:
          }
          function run3(){
              var imgId=document.getElementById("hideShowa");
-             // var imgIdDown=document.getElementById("hideShowaDown");
-             // var imgIdUp=document.getElementById("hideShowaUp");
+             var imgIdDown=document.getElementById("hideShowaDown");
+             var imgIdUp=document.getElementById("hideShowaUp");
              if(imgId.style.display=="block")
                 {
                      imgId.style.display="none";
-                     // imgIdUp.style.display="block";
-                     // imgIdDown.style.display="none";
+                     imgIdUp.style.display="block";
+                     imgIdDown.style.display="none";
                 }
              else
                  {
                      imgId.style.display="block";
-                     // imgIdUp.style.display="block";
-                     // imgIdDown.style.display="none";
+                     imgIdDown.style.display="block";
+                     imgIdUp.style.display="none";
                  }
          }
      </script>
