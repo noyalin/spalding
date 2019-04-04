@@ -2150,7 +2150,7 @@ h2.product-collateral-box-nam{
     display: inline;
 }
 .product-collateral-box-img.box-image img{
-    width: 47%;
+    width: 49%;
     margin: 5px 3px;
 }
 .productSaw{
@@ -2286,7 +2286,7 @@ h2.product-collateral-box-nam{
 .block-content{
     margin-top:20px;
     /*melone start 修改左边距离*/
-    margin-left: 90px;
+    /*margin-left: 90px;*/
     /*melone start 修改左边距离*/
 }
 
