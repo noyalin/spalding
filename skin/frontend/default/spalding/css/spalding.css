@@ -902,7 +902,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     background: #d3c8a0;
 }
 
-#login-form .input-box {
+#login-form .input-box {.col-main-forgetPasw
     height: 60px;
 }
 
@@ -2417,10 +2417,11 @@ h2.product-collateral-box-nam{
     /*border-bottom:5px solid #fff;*/
     /*melone start 修改上边距*/
     margin-top: 55px;
+    width: 700px;
     /*margin-top: 25px;*/
     /*melone end 修改上边距*/
     /*melone start 修改底线长度 700px*/
-    width: 700px;
+    /*width: 700px;*/
     /*melone end 修改底线长度 700px*/
 }
 
@@ -2802,6 +2803,9 @@ ul.form-list li p{
     /*border:1px solid #4d4d4d;*/
     font-size: 12px;
     margin-bottom:10px;
+    /*melone start 修改高度*/
+    height: 100px;
+    /*melone end 修改高度*/
 }
 
 
@@ -2848,7 +2852,8 @@ ul.form-list li p{
     font-size: 12px;
     /*melone start 居中*/
     /*margin-top:5px;*/
-    padding-top: 4px;
+    padding-top: 5px;
+    width: 310px;
     /*melone end 居中*/
     color:#00275E;
     /*color:#ffba00;*/
@@ -2874,15 +2879,17 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li>span.order_data_list_priceP{
     width:70px;
-    line-height: 48px;
-
+    /*melone start 居中*/
+    line-height: 54px;
+    /*line-height: 65px;*/
+    /*melone start 居中*/
     color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_num{
     width:50px;
     /*melone start 居中*/
-    line-height: 48px;
+    line-height: 54px;
     /*line-height: 65px;*/
     /*melone start 居中*/
 
@@ -2898,14 +2905,18 @@ ul.form-list li p{
     line-height: 1.4em;
     /*melone start 居中*/
     /*margin-top:15px;*/
-    margin-top: 8px;
+    margin-top: 11px;
     /*melone start 居中*/
     color: #847450;
 }
 
 .order_data ul.order_data_list li>span.order_ifts_list_state{
     width:150px;
-    line-height: 65px;
+    /*melone start 居中*/
+    line-height: 54px;
+    /*line-height: 65px;*/
+    margin-left: 25px;
+    /*melone start 居中*/
     color: #00275E;
 }
 
@@ -2913,7 +2924,7 @@ ul.form-list li p{
     width:70px;
     /*melone start 居中*/
     /*line-height: 65px;*/
-    line-height: 48px;
+    line-height: 54px;
     /*melone start 居中*/
 
     color: #847450;
@@ -2922,7 +2933,7 @@ ul.form-list li p{
 .order_data ul.order_data_list li>span.order_data_list_fun{
     width:80px;
     /*melone start 居中*/
-    padding-top: 4px;
+    padding-top: 6px;
     /*melone end 居中*/
 }
 
@@ -2991,7 +3002,10 @@ ul.form-list li p{
 }
 
 .orderPrice{
+    /*melone start 修改边距*/
     text-align: right;
+    width: 700px;
+    /*melone end 修改边距*/
     margin-top:50px;
     font-size: 28px;
     font-weight: bold;
@@ -3023,21 +3037,22 @@ ul.form-list li p{
 .col-main-forgetPasw{
     width:100%;
     margin:30px auto 0;
-    /*melone start 添加背景颜色*/
-    background:#d3c8a0;
-    /*melone end 添加背景颜色*/
+    /*melone start 去掉背景颜色*/
+    /*background:#d3c8a0;*/
+    /*melone end 去掉背景颜色*/
 }
 .col-main-forgetPasw .page-title{
     border-bottom:none;
     /*melone start 调整间距*/
     /*padding:10px 10px;*/
     padding-top: 20px;
-    padding-left: 30px;
+    /*padding-left: 30px;*/
+    text-align: center;
     /*melone end 调整间距*/
-    /*melone start 修改背景颜色*/
+    /*melone start 去掉背景颜色*/
     /*background:#333;*/
-    background:#d3c8a0;
-    /*melone end 修改背景颜色*/
+    /*background:#d3c8a0;*/
+    /*melone end 去掉背景颜色*/
     color:#fff;
 }
 
@@ -3073,9 +3088,9 @@ ul.form-list li p{
     /*color:#666;*/
     color: #847450;
     /*melone end 修改字体颜色*/
-    /*melone start 添加输入框背景颜色*/
-    background: #d3c8a0;
-    /*melone end 添加输入框背景颜色*/
+    /*melone start 去掉输入框背景颜色*/
+    /*background: #d3c8a0;*/
+    /*melone end 去掉输入框背景颜色*/
     /*melone start 添加输入框边框颜色*/
     /*border:none;*/
     border: 1px solid #847450;
@@ -3090,7 +3105,11 @@ ul.form-list li p{
     /*melone start 增加高度*/
     height: 150px;
     /*melone end 增加高度*/
-    text-align: center;
+    /*melone start 调整边距*/
+    /*text-align: center;*/
+    width: 700px;
+    text-align: right;
+    /*melone end 调整边距*/
     font-size: 12px;
     margin:40px 0;
 }
@@ -4209,7 +4228,10 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     margin-bottom:80px;
 }
 .aboutUs_box_cont{
-    background: #D4C89E;
+    /*melone start 去掉背景颜色*/
+    /*background: #D4C89E;*/
+    background-color: #fff;
+    /*melone end 去掉背景颜色*/
 }
 .aboutUs_boxLeft{
     width:50%;
@@ -4233,7 +4255,10 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .aboutUs_boxRig{
     width:50%;
     font-size: 12px;
-    background: #D4C89E;
+    /*melone start 去掉背景颜色*/
+    /*background: #D4C89E;*/
+    background-color: #fff;
+    /*melone end 去掉背景颜色*/
 }
 
 .aboutUs_boxRig .aboutUs_boxRig_tit{
@@ -4333,7 +4358,9 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 .boxLeft_contactUs{
     padding:0 13% 0 22%;
-    background: #D4C89E;
+    /*melone start 去掉背景颜色*/
+    /*background: #D4C89E;*/
+    /*melone end 去掉背景颜色*/
     height:100%;
     margin:50px 0 0;
 }

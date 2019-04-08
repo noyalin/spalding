@@ -348,10 +348,10 @@ $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku
                                         <dl class="item-options">
                                             <dt><?php echo $this->escapeHtml(Mage::helper('core/string')->splitInjection($this->getSku())) ?></dt>
                                             <?php foreach ($_options as $_option) : ?>
-                                                <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
+                                                <span><?php echo $this->escapeHtml($_option['label']) ?>：</span>
                                                 <?php if (!$this->getPrintStatus()): ?>
                                                     <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                                                    <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>>
+                                                    <span<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>>
                                                         <?php echo $_formatedOptionValue['value'] ?>
                                                         <?php if (isset($_formatedOptionValue['full_view'])): ?>
                                                             <div class="truncated_full_value">
@@ -361,7 +361,7 @@ $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku
                                                                 </dl>
                                                             </div>
                                                         <?php endif; ?>
-                                                    </dd>
+                                                    </span>
                                                 <?php else: ?>
                                                     <dd>
                                                         <?php echo nl2br($this->escapeHtml( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) )) ?>
