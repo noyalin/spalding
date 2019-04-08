@@ -1630,7 +1630,7 @@ button.rulAgree{
     padding:10px 20px;
     margin:0px auto 0;
     /*background: rgba(31,31,31,.8);*/
-    background: #D4C89E;
+    /*background: #D4C89E;*/
     color:#fff;
 }
 .userContreMain_sp{
@@ -1648,7 +1648,7 @@ button.rulAgree{
     padding:10px;
     margin:0 auto;
     /*background: #1e1e1e;*/
-    background-color: #D4C89E;
+    /*background-color: #D4C89E;*/
     color:#fff;
 }
 
@@ -3646,7 +3646,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     position: absolute;
     width:320px;
     padding:10px;
-    background:#eeebe1;
+    background:#e7e5d9;
+    /*background:#eeebe1;*/
     margin-top:0;
     text-align:left;
     margin-left:-255px;
@@ -3657,6 +3658,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 #topCartContent span{
     background: none;
     margin-left:0;
+    margin-right: 20px;
 }
 
 #topCartContent h1{
@@ -3706,6 +3708,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 #mini-cart dl.product-detail dt.proPri{
     float: right;
     margin-top:42px;
+    /*margin-right: 20px;*/
 }
 
 .subtotal{
