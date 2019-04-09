@@ -3807,7 +3807,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsWrapBox{
     position: relative;
-    width:1600px;
+    width:1640px;
     /*width:970px;*/
     margin:0px auto;
     padding:20px 0 0;
@@ -3817,8 +3817,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .newsWrapTit{
     width:100%;
     text-align: center;
-    margin-bottom:26px;
-    margin-top:81px;
+    /*margin-bottom:26px;*/
+    /*margin-top:81px;*/
+    margin-bottom:55px;
+    margin-top:55px;
 }
 
 .newsList{
@@ -3848,7 +3850,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     /*margin:5px 20px 0px 20px;*/
     /*margin:30px 20px 5px 20px;*/
     text-align:center;
-    font-size: 14px;
+    font-size: 18px;
+    /*font-size: 14px;*/
     color:#847450;
     /*color:#fff;*/
     font-weight: bold;
@@ -3865,35 +3868,37 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     width: 780px;
     height: 115px;
     background: #f2f3f5;
+    display: flex;
 }
+
 .newsList ul li h3{
     color:#fff;
     /*color:#636363;*/
-    font-size: 12px;
+    /*font-size: 12px;*/
+    font-size: 14px;
     font-weight: normal;
     text-align:center;
 }
 
 .newsList ul li p{
+/*.newsList ul li .fth{*/
     /*margin:10px 20px;*/
     /*padding:10px 0;*/
     /*padding:10px 10px;*/
     padding: 20px 20px 25px;
     /*border-top:1px solid #666;*/
-    width: 500px;
-    height: 70px;
-    text-overflow:ellipsis;
-    /*white-space:nowrap;*/
-    overflow:hidden;
-    /*overflow: hidden;*/
-    /*text-overflow: ellipsis;*/
+    overflow : hidden;
+    text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    width: 500px;
+    height:55px;
 }
 
 ul.newsListBox{
-    margin:0 10px;
+    /*margin:0 10px;*/
+    margin:0 20px 47px;
 }
 
 
@@ -3926,7 +3931,7 @@ ul.newsListBox{
 }
 
 .newsArtsWrap{
-    border:1px solid #D4C89E;
+    /*border:1px solid #D4C89E;*/
     /*background: #D4C89E;*/
     font-size: 12px;
     color:#cbcbcb;
