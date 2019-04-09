@@ -21,7 +21,7 @@
 .shortcut_wrapper{width:100%;margin:0 auto;padding-top:55px; font-size: 14px;}
 /*.shortcut_wrapper .shortcut_price{width:100%;padding:0;color:#ffffff;}*/
 /*melone 修改左边距 本来是padding: 10px;*/
-.shortcut_wrapper .shortcut_price p{padding:10px 10px 10px 606px;margin: 0;color:#847450;}
+.shortcut_wrapper .shortcut_price p{padding:10px 0;margin-left: 606px;color:#847450;width:670px;}
 .shortcut_wrapper.shorturt_mobile .shortcut_price p{padding: 10px;margin: 0;color:#333;}
 /*.shortcut_wrapper .shortcut_price .price{color:#ffffff;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}*/
 .shortcut_wrapper .shortcut_price span{display:inline-block;padding-right:50px;}
@@ -68,7 +68,7 @@ margin: 0;}
 .shortcut_bank_list .bank .pic .icon{padding-left:2px;height:14px;width:27px;line-height:12px;line-height:14px\9;*line-height:16px;text-align:center;color:#fff;background-color:#f60;border-radius:2px;position:absolute;bottom:-1px;right:-1px;margin:0;overflow:hidden;}
 /*bottom_hint*/
 /*melone 修改margin  原本是margin:20px 10px;*/
-.bottom_hint{color:#646464;line-height:20px; margin:20px 10px 20px 606px;}
+.bottom_hint{color:#646464;line-height:20px; margin:20px 10px 20px 606px;width:700px;}
 .bottom_hint .title{margin:12px 0 -6px;font-weight:bold;}
 .bottom_hint p{padding:13px 0 7px;color: #847450;}
 .bottom_hint p .gray{display:block;color: #847450;}
@@ -382,7 +382,10 @@ a.paymentBtn{
     overflow: hidden;
     vertical-align: middle;
     width: 159px;
-    margin:20px 0 10px 130px;
+    /*melone start 修改边距*/
+    /*margin:20px 0 10px 130px;*/
+    margin:20px 0 10px 0;
+    /*melone end 修改边距*/
     color:#D4C89E;
     text-align:center;
     text-decoration:none;
@@ -428,7 +431,7 @@ a {
     padding:15px;
     color:#333;
     /*melone start 居中*/
-    margin: 0 auto;
+    margin-left: 606px;
     /*melone end 居中*/
 
 }
