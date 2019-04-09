@@ -118,7 +118,7 @@ else:
                             <!--产品信息-->
                             <?php if($attributeSetName == 'ball'){?>
                                  <div class="product-collateral-box-img">
-                                <img
+                                <img style="width: 99%"
                                     src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                         . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                         . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '篮球')
@@ -128,7 +128,7 @@ else:
                             <?php }else{?>
                                 <div class="product-collateral-box-img">
                                 <!-- 足球 spalding_zqxq_info -> 2019-spalding_zqxq_info -->
-                                    <img
+                                    <img style="width: 99%"
                                         src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding_zqxq_info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                             . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                             . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '足球')
@@ -269,7 +269,7 @@ else:
                 <?php endif; ?>
                 <div class="short-description">
                 <!-- melone start 修改图片 images->images2019 -->
-                    <img alt="" style="margin-left: 115px;" src="<?php echo $this->getSkinUrl("images2019/productDetail_des.png") ?>">
+                    <img alt="" style="margin-left: 53px;" src="<?php echo $this->getSkinUrl("images2019/productDetail_des.png") ?>">
                 <!-- melone start 修改图片 images->images2019 -->
                 </div>
                 </div>
@@ -286,7 +286,7 @@ else:
 
 
                <?php if($attributeSetName == 'ball'||$attributeSetName == 'football'): ?>
-               <div class="productArgs" style="width: 490px;background-color: #D4C89E;padding: 0px 20px 25px;">
+               <div class="productArgs" style="width: 368px;background-color: #D4C89E;padding: 0px 20px 25px;">
                     <div class="productArgs_tit">产品参数</div>
                     <div class="productArgs_box" id="productArgs_box"  >
                         <ul class="clearfix" style="display: flex;flex-wrap: wrap">
@@ -298,14 +298,14 @@ else:
                         </ul>
                     </div>
                 </div>
-                   <div id="distanceFixed" style="width: 530px;position: relative;">
+                   <div id="distanceFixed" style="width: 413px;position: relative;">
                     <?php if($attributeSetName == 'ball'){?>
                           <!--篮球规格表-->
                           <div class="product-collateral-box-img" style="position: relative;">
                           <!-- melone 修改图片-->
                                   <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
-                                  <img onclick="run1()" id="hideShowsUp"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:245px;">
-                                  <img onclick="run1()" id="hideShowsDown"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:245px;">
+                                  <img onclick="run1()" id="hideShowsUp"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:198px;">
+                                  <img onclick="run1()" id="hideShowsDown"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;">
                           </div>
                           <div class="product-collateral-box-img">
                           <!-- melone 修改图片-->
@@ -317,8 +317,8 @@ else:
                           <div class="product-collateral-box-img" style="position: relative;">
                           <!-- melone 修改图片-->
                                <img  src='<?php echo $this->getSkinUrl("images2019/detailinfo/balltitle5.jpg") ?>' alt=""  style="margin-top: 20px;margin-bottom: -15px;">
-                               <img onclick="run2()" id="hideShowmUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;cursor: pointer;right:245px;bottom:3px">
-                               <img onclick="run2()" id="hideShowmDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;display: none;cursor: pointer;right:245px;bottom:3px">
+                               <img onclick="run2()" id="hideShowmUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;cursor: pointer;right:198px;bottom:3px">
+                               <img onclick="run2()" id="hideShowmDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;bottom:3px">
                           </div>
                           <div class="product-collateral-box-img">
                           <!-- melone 修改图片-->
@@ -349,8 +349,8 @@ else:
                              <div class="product-collateral-box-img" style="position: relative;">
                              <!-- melone 修改图片-->
                                   <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
-                                  <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:245px;">
-                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:245px;">
+                                  <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:198px;">
+                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;">
                              </div>
                              <div class="product-collateral-box-img">
                              <!-- melone 修改图片-->
@@ -372,7 +372,7 @@ else:
                        <!-- alt=""/>-->
                        <!-- </div>-->
                        <!-- --><?php //endfor; ?>
-                  <div id="apparelFixed" style="width: 530px;">
+                  <div id="apparelFixed" style="width: 413px;">
                     <?php if($attributeSetName == 'apparel'){?>
                         <!--服饰尺码表-->
                         <!-- melone 修改服饰尺码表图片   与下面的尺码一体的 images -> images2019-->
@@ -395,8 +395,8 @@ else:
                              <div class="product-collateral-box-img" style="position: relative;">
                              <!-- melone 修改图片-->
                                   <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title7.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
-                                  <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:245px;">
-                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:245px;">
+                                  <img onclick="run3()" id="hideShowaUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:198px;">
+                                  <img onclick="run3()" id="hideShowaDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;">
                              </div>
                              <div class="product-collateral-box-img">
                              <!-- melone 修改图片-->
@@ -434,12 +434,12 @@ else:
                         {
                             var s = document.body.scrollTop || document.documentElement.scrollTop;
                             if(s>H && s<6/7*H) {
-                                distanceFixed.style = "position:fixed;top:0;width:530px;"
+                                distanceFixed.style = "position:fixed;top:0;width:413px;"
                             } else {
-                                distanceFixed.style = "position:relative;top:0;width:530px"
+                                distanceFixed.style = "position:relative;top:0;width:413px"
                             }
                              if(s>1/6*H1 && s<1/2*H1) {
-                                apparelFixed.style = "position:fixed;top:0;width:530px;"
+                                apparelFixed.style = "position:fixed;top:0;width:413px;"
                             } else {
                                 apparelFixed.style = ""
                             }

@@ -1319,7 +1319,7 @@ button.rulAgree{
 
 /*产品*/
 .block-layered-nav{
-    /*width:210px;*/
+    width:210px;
     z-index: 1;
     margin-right:79px;
 }
@@ -1328,7 +1328,7 @@ button.rulAgree{
 .block-title img{
     /*!**!*/
     /*!*border-bottom:5px solid #333;*!*/
-    /*border-bottom:5px solid #83744d;*/
+    border-bottom:5px solid #83744d;
     /*!**!*/
 }
 
@@ -1961,6 +1961,7 @@ span.spCarTit_fun{
 .product-essential{
     /*padding:40px 20px 20px;*/
     padding:0px 20px 20px;
+    margin-right: 70px;
 }
 
 /*详情页 放大图*/
@@ -1974,7 +1975,8 @@ span.spCarTit_fun{
 
 
 .product-shop{
-    width:490px;
+    width:368px;
+    /*width:490px;*/
     float: right;
     margin-right:50px;
     /*margin-right:20px;*/
@@ -2093,7 +2095,8 @@ span.spCarTit_fun{
     border: none;
 
     margin-top:30px;
-    margin-left: 55px;
+    margin-left: -6px;
+    /*margin-left: 55px;*/
     /*width:200px;*/
     /*height:45px;*/
     /*line-height: 45px;*/
@@ -2196,28 +2199,32 @@ h2.product-collateral-box-nam{
 }
 .product-collateral-box-img.box-image img{
     width: 49%;
-    margin: 5px 3px;
+    margin: 5px 5px;
 }
 .productSaw{
-    padding:10px;
+    /*padding:10px;*/
     /*melone start 修改边框颜色*/
-    /*border:1px solid #6a6a6a;*/
-    border:1px solid #83744d;
+    /*border:1px solid #83744d;*/
     /*melone end 修改边框颜色*/
 
     border-top:none;
     /*melone start 修改背景颜色*/
     /*background: #222222;*/
     /*melone end 修改背景颜色*/
+
+    background-color: #f2f3f7;
 }
 
 
 .productSaw ul li{
-    width:260px;
-    height:320px;
+    /*width:260px;*/
+    /*height:320px;*/
+    width:338px;
+    height:468px;
     float: left;
-    margin:10px 16px;
-    overflow: hidden;
+    /*margin:10px 16px;*/
+    /*overflow: hidden;*/
+    margin: 10px 25px;
 }
 
 
@@ -2232,9 +2239,14 @@ h2.product-collateral-box-nam{
 }
 
 .productSaw ul li span.productSaw_img{
-    width:230px;
-    height: 230px;
-    padding:15px;
+    /*width:230px;*/
+    /*height: 230px;*/
+    width:338px;
+    height: 338px;
+    /*padding:30px;*/
+    margin-top: 40px;
+    border: 1px solid red;
+    /*padding:15px;*/
     /*melone start 修改背景颜色*/
     /*background: #323232;*/
     /*background: #D4C89E;*/
@@ -3918,6 +3930,7 @@ ul.newsListBox{
 }
 .newsArtsTit h2{
     font-size: 22px;
+    line-height: 30px;
     font-weight: bold;
     color:#00275E;
     /*color:#fff;*/
