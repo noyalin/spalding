@@ -228,7 +228,8 @@ input[type="text"] {
 
 .checkoutWrapContent {
 	font-size:12px;
-	color:#847450;
+	color:#D4C89E;
+	/*color:#847450;*/
 	/*color:#b4b4b4;*/
 }
 .checkoutWrapContentItem input[type="text"] {

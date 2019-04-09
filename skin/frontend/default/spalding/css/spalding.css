@@ -3807,7 +3807,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsWrapBox{
     position: relative;
-    width:970px;
+    width:1600px;
+    /*width:970px;*/
     margin:0px auto;
     padding:20px 0 0;
     overflow: hidden;
@@ -3825,9 +3826,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .newsList ul li{
     /*width:464px;*/
-    width:300px;
-    height:405px;
-    background: #D4C89E;
+    /*width:300px;*/
+    width:780px;
+    height:666px;
+    /*height:405px;*/
+    /*background: #D4C89E;*/
     font-size: 12px;
     color:#8F7F59;
     margin-top:20px;
@@ -3837,28 +3840,56 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsList ul li img{
     width:100%;
+    height: 500px;
     vertical-align: top;
 }
 
 .newsList ul li h2{
-    margin:30px 20px 5px 20px;
+    /*margin:5px 20px 0px 20px;*/
+    /*margin:30px 20px 5px 20px;*/
     text-align:center;
     font-size: 14px;
-    color:#fff;
+    color:#847450;
+    /*color:#fff;*/
     font-weight: bold;
 }
-
+.Hyperlink{
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    justify-content: space-between;
+    background: #D4C89E;
+    padding: 0 20px;
+}
+.ftHyperlink{
+    width: 780px;
+    height: 115px;
+    background: #f2f3f5;
+}
 .newsList ul li h3{
-    color:#636363;
+    color:#fff;
+    /*color:#636363;*/
     font-size: 12px;
     font-weight: normal;
     text-align:center;
 }
 
 .newsList ul li p{
-    margin:10px 20px;
-    padding:10px 0;
-    border-top:1px solid #666;
+    /*margin:10px 20px;*/
+    /*padding:10px 0;*/
+    /*padding:10px 10px;*/
+    padding: 20px 20px 25px;
+    /*border-top:1px solid #666;*/
+    width: 500px;
+    height: 70px;
+    text-overflow:ellipsis;
+    /*white-space:nowrap;*/
+    overflow:hidden;
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 ul.newsListBox{
@@ -3896,7 +3927,7 @@ ul.newsListBox{
 
 .newsArtsWrap{
     border:1px solid #D4C89E;
-    background: #D4C89E;
+    /*background: #D4C89E;*/
     font-size: 12px;
     color:#cbcbcb;
     margin-bottom:10px;
@@ -3955,6 +3986,7 @@ ul.newsListBox{
     color:#00275E;
     /*color:#fff;*/
 }
+
 
 .shareBox{
     position:fixed;
