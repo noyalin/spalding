@@ -76,7 +76,7 @@ elseif (Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdc
     echo $this->getChildHtml('customclothes_view');
 else:
     ?>
-    <div class="product-view" style="display: flex;">
+    <div class="product-view" style="display: flex;position:relative;">
        <?php
           $urlkey = $_product->getUrlKey();
           $sku = $_product->getSku();
@@ -96,7 +96,7 @@ else:
         ?>
 
 
-         <!--产品详情 s 左边 -->
+          <!--产品详情 s 左边 -->
       <div class="product-collateral">
               <!--<div class="product-collateral-wrap">-->
                   <!--<div class="product-collateral-box">-->
@@ -218,13 +218,10 @@ else:
                     <?php endif; ?>
                     <?php }?>
        </div>
+          <!-- 产品详情 e -->
 
-
-
-<!-- 产品详情 e -->
-
-<!-- 右边 -->
-        <div class="product-essential">
+         <!-- 右边 -->
+        <div class="product-essential" style="position: relative;top: 0px;">
             <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
                 <?php echo $this->getBlockHtml('formkey') ?>
                 <!--<div class="no-display">-->
@@ -295,7 +292,7 @@ else:
                         </ul>
                     </div>
                 </div>
-                   <div id="distanceFixed" style="position: relative;width: 408px;">
+                   <div id="distanceFixed" style="width: 408px;">
                     <?php if($attributeSetName == 'ball'){?>
                           <!--篮球规格表-->
                           <div class="product-collateral-box-img" style="position: relative;width: 408px;">
@@ -304,7 +301,7 @@ else:
                                   <img onclick="run1()" id="hideShowsUp"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:198px;">
                                   <img onclick="run1()" id="hideShowsDown"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;">
                           </div>
-                          <div class="product-collateral-box-img" style="position: relative;width: 408px;">
+                          <div class="product-collateral-box-img" style="width: 408px;">
                           <!-- melone 修改图片-->
                               <img id="hideShows" src="<?php echo $this->getSkinUrl('images2019/detailinfo/ball-size.jpg');?>" border="0"  style="display: none;">
                           </div>
@@ -335,7 +332,7 @@ else:
                         </div>
                         <!--足球结构知识-->
                         <div class="product-collateral-box-img">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle5.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px">
                             <!--footerballtitle5-->
                         </div>
                         <div class="product-collateral-box-img">
@@ -409,57 +406,7 @@ else:
               <?php endif; ?>
 
 
-            <script type="text/javascript">
 
-                window.onload=function(){
-                        var imgId1=document.getElementById("hideShows");
-                        var imgId2=document.getElementById("hideShowm");
-                        var imgId3=document.getElementById("hideShowa");
-                        var distanceFixed = document.getElementById("distanceFixed"),
-                            H = 0,
-                            Y = distanceFixed;
-                        while (Y) {
-                            H += Y.offsetTop;
-                            Y = Y.offsetParent;
-                        }
-                         var apparelFixed = document.getElementById("apparelFixed"),
-                            H1 = 0,
-                            Y1 = apparelFixed;
-                        while (Y1) {
-                            H1 += Y1.offsetTop;
-                            Y1 = Y1.offsetParent;
-                        }
-
-                         window.onscroll = function()
-                        {
-                            var s = document.body.scrollTop || document.documentElement.scrollTop;
-                            if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H  && s<1.5*H){
-                                distanceFixed.style = "position:fixed;top:0;width:408px;"
-                            }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H  && s<3/2*H){
-                                 distanceFixed.style = "position:fixed;top:0;width:408px;"
-                            }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H && s<3/2*H){
-                                 distanceFixed.style = "position:fixed;top:0;width:408px;"
-                            }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H && s<1000) {
-                                distanceFixed.style = "position:fixed;top:0;width:408px;"
-                            } else {
-                                distanceFixed.style = "position:relative;width:408px"
-                            }
-
-                             if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H1  && s<1.5*H1){
-                                apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H1  && s<3/2*H1){
-                                 apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            }else if(imgId1.style.display=="none"  && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H1 && s<3/2*H1){
-                                 apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H1 && s<1.2*H1) {
-                                apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            } else {
-                                apparelFixed.style = "position:relative;width:408px"
-                            }
-                        }
-                }
-
-            </script>
    <script type="text/javascript">
              var imgId1=document.getElementById("hideShows");
              var imgIdDown1=document.getElementById("hideShowsDown");
@@ -606,6 +553,71 @@ else:
      //]]>
      </script>
 </div>
+       <script type="text/javascript">
+
+                window.onload=function(){
+                        var imgId1=document.getElementById("hideShows");
+                        var imgId2=document.getElementById("hideShowm");
+                        var imgId3=document.getElementById("hideShowa");
+                        var distanceFixed = document.getElementById("distanceFixed"),
+
+                            H = 0,
+                            Y = distanceFixed;
+                        while (Y) {
+                            H += Y.offsetTop;
+                            Y = Y.offsetParent;
+                        }
+
+                        //  var apparelFixed = document.getElementById("apparelFixed"),
+                        //     H1 = 0,
+                        //     Y1 = apparelFixed;
+                        // while (Y1) {
+                        //     H1 += Y1.offsetTop;
+                        //     Y1 = Y1.offsetParent;
+                        // }
+
+                         window.onscroll = function()
+                        {
+                            var s = document.body.scrollTop || document.documentElement.scrollTop;
+                            if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H){
+                                distanceFixed.style = "position:fixed;top:0;width:408px;"
+                                 if(s >1690){
+                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
+                                }
+                            }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H){
+                                 distanceFixed.style = "position:fixed;top:0;width:408px;"
+                                  if(s >1400){
+                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
+                                }
+                            }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H){
+                                 distanceFixed.style = "position:fixed;top:0;width:408px;"
+                                   if(s >1400){
+                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
+                                }
+                            }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H) {
+                                distanceFixed.style = "position:fixed;top:0px;width:408px;"
+                                if(s >1900){
+                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
+                                }
+                            } else{
+                                distanceFixed.style = "position:relative;width:408px"
+                            }
+
+                            //  if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H1  && s<1.5*H1){
+                            //     apparelFixed.style = "position:fixed;top:0;width:408px;"
+                            // }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H1  && s<3/2*H1){
+                            //      apparelFixed.style = "position:fixed;top:0;width:408px;"
+                            // }else if(imgId1.style.display=="none"  && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H1 && s<3/2*H1){
+                            //      apparelFixed.style = "position:fixed;top:0;width:408px;"
+                            // }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H1 && s<1.2*H1) {
+                            //     apparelFixed.style = "position:fixed;top:0;width:408px;"
+                            // } else {
+                            //     apparelFixed.style = "position:relative;width:408px"
+                            // }
+                        }
+                }
+
+            </script>
 </div>
         <?php echo $this->getChildHtml('upsell_products') ?>
     <?php
