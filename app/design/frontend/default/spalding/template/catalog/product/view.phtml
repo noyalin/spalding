@@ -118,7 +118,7 @@ else:
                             <!--产品信息-->
                             <?php if($attributeSetName == 'ball'){?>
                                  <div class="product-collateral-box-img">
-                                <img style="width: 99%"
+                                <img
                                     src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                         . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                         . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '篮球')
@@ -128,7 +128,7 @@ else:
                             <?php }else{?>
                                 <div class="product-collateral-box-img">
                                 <!-- 足球 spalding_zqxq_info -> 2019-spalding_zqxq_info -->
-                                    <img style="width: 99%"
+                                    <img
                                         src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding_zqxq_info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                             . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                             . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '足球')
