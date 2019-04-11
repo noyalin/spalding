@@ -4249,6 +4249,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 }
 .teyWrapChart img{
     width: 100%;
+    margin: 0 auto;
 }
 .navtab {
     position: absolute;
@@ -4294,6 +4295,24 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     }
     .navtab{
         margin-left: 240px;
+    }
+
+}
+@media screen and (min-width: 1000px) and (max-width: 1400px){
+    .teyWrapChart{
+        height: 2236px;
+    }
+    .navtab{
+        margin-left: 140px;
+    }
+
+}
+@media screen and (max-width: 1000px){
+    .teyWrapChart{
+        height: 2236px;
+    }
+    .navtab{
+        margin-left: 90px;
     }
 
 }
