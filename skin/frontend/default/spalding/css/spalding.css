@@ -2130,7 +2130,8 @@ span.spCarTit_fun{
 .productArgs .productArgs_tit{
     height: 35px;
     line-height: 35px;
-    font-size: 14px;
+    font-size: 18px;
+    /*font-size: 14px;*/
     font-weight: bold;
     /*melone start 修改字体颜色*/
     /*color:#847450;*/
@@ -2259,7 +2260,6 @@ h2.product-collateral-box-nam{
     height: 338px;
     /*padding:30px;*/
     margin-top: 40px;
-    border: 1px solid red;
     /*padding:15px;*/
     /*melone start 修改背景颜色*/
     /*background: #323232;*/
@@ -4235,9 +4235,6 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     border:none;
     margin:0 auto;
 }
-
-
-
 .teyWrapChart{
     position: relative;
     /* min-height: 2990px; */
@@ -4250,7 +4247,60 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     /* bottom: 195px; */
     top: 50px;
 }
+.teyWrapChart img{
+    width: 100%;
+}
+.navtab {
+    position: absolute;
+    min-width: 1136px;
+    top: 0;
+    margin-left: 400px;
+    height: 54px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+}
 
+@media screen and (min-width: 1832px) and (max-width: 1915px){
+    .teyWrapChart{
+        height: 3035px;
+    }
+}
+@media screen and (max-width: 1832px){
+    .teyWrapChart{
+        height: 2900px;
+    }
+
+}
+
+@media screen and (min-width: 1700px){
+    .navtab{
+        min-width: 1136px;
+    }
+}
+@media screen and (min-width: 1650px) and (max-width: 1700px){
+    .teyWrapChart{
+        height: 2817px;
+    }
+    .navtab{
+        margin-left: 300px;
+    }
+
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1600px){
+    .teyWrapChart{
+        height: 2740px;
+    }
+    .navtab{
+        margin-left: 240px;
+    }
+
+}
+/*联系我们*/
+.aboutTit{
+    text-align: center;
+}
 /*.aboutNav{*/
     /*text-align: center;*/
     /*margin-bottom:80px;*/
