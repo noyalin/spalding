@@ -378,10 +378,11 @@ $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $configSku
                                     <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
                                         <a href="#" id="order-item-gift-message-link-<?php echo $_item->getId() ?>" class="gift-message-link" onclick="return giftMessageToogle('<?php echo $_item->getId() ?>')"><?php echo $this->__('Gift Message') ?></a>
                                     <?php endif; ?>
-        							<p>
+                                    <!--melone 注释-->
+        							<!--<p>-->
 <!--                                        <span>产品材质：PU</span>-->
 <!--                                        <span>产品规格： 6号球</span>-->
-                                    </p>
+                                    <!--</p>-->
         						</span>
     <span class="order_data_list_num">
         <!-- 个数 s-->

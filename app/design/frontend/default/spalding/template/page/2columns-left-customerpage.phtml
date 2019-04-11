@@ -40,15 +40,18 @@
 </div>
         <?php echo $this->getChildHtml('header') ?>
         <div style="height:110px; z-index:-2;"></div>
-            <div class="main-container col2-left-layout">
+            <div class="main-container col2-left-layout" style="padding: 0px">
             <!-- melone 修改背景颜色 -->
-                <div class="main" style="background-color: #fff;padding-right: 40px;">
-                    <div class="col-main ms-fr">
+                <div class="main" style="background-color: #fff;display: flex;overflow: hidden;">
+                     <div class="col-left sidebar ms-fl" style="margin-left: 160px;">
+                    <!--<div class="col-left sidebar ms-fl">-->
+                    <?php echo $this->getChildHtml('left') ?>
+                    </div>
+
+                    <div class="col-main ms-fr" style="width: 700px;margin-left: 270px;">
                         <?php echo $this->getChildHtml('content') ?>
                     </div>
-                    <div class="col-left sidebar ms-fl">
-                        <?php echo $this->getChildHtml('left') ?>
-                    </div>
+
                     <div class="clear"></div>
                 </div>
             </div>
