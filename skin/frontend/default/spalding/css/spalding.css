@@ -4249,7 +4249,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 }
 .teyWrapChart img{
     width: 100%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 .navtab {
     position: absolute;
