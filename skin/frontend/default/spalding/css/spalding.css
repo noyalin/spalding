@@ -4241,26 +4241,16 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 .teyWrapChart{
     position: relative;
-    /*margin-bottom:90px;*/
-    height: 4570px;
+    /* min-height: 2990px; */
+    /* position: relative; */
+    /* margin-bottom: 90px; */
+    height: 3170px;
+    min-width: 1136px;
+    margin: 0 auto;
+    overflow: hidden;
+    /* bottom: 195px; */
+    top: 50px;
 }
-
-
-/*关于斯伯丁*/
-.aboutUs_top{
-    width:970px;
-    margin:0 auto;
-}
-
-
-.aboutTit{
-    width:100%;
-    text-align: center;
-    margin-bottom:45px;
-    margin-top:80px;
-}
-
-
 
 /*.aboutNav{*/
     /*text-align: center;*/
