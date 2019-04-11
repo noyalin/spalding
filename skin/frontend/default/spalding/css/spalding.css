@@ -2198,10 +2198,16 @@ h2.product-collateral-box-nam{
     margin-right: 16px;
 }
 .product-collateral-box-img.box-image img{
-    /*width: 48.7%;*/
-    /*margin: 5px 5px;*/
     margin-top: 16px;
 }
+@media screen and (max-width: 1911px) {
+    .product-collateral-box-img.box-image{
+        margin-right: 10px;
+        display: inline;
+    }
+}
+
+
 .productSaw{
     /*padding:10px;*/
     /*melone start 修改边框颜色*/
