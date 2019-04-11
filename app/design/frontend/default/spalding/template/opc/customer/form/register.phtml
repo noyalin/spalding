@@ -159,8 +159,7 @@
                     <br>
                     <p>您只有无条件接受同意以上所有服务条款，才能继续申请。</p>
 				</div>
-				<div class="regBox clearfix" style="margin-top: 15px;">
-                <div class="field" style="height: 15px;">
+                <div class="field" style="height: 15px;margin-top: 15px;margin-left: 523px;">
                     <div class="input-box">
                     <!-- melone 修改checked属性为默认不勾选状态，将原来的“checked="checked"”删掉 -->
                         <input type="checkbox" name="agree_terms" id="agree_terms" value="1" class="checkbox required-entry" autocomplete="off">
@@ -169,14 +168,14 @@
                     <!-- melone 修改display:none改为display:block -->
                     <div style="display: block" id="advice-required-entry-agree_terms" class="validation-advice">勾选接受服务条款，即可继续注册。</div>
                 </div>
-                <div class="field" style="padding-top: 25px;">
+                <div class="field" style="margin-top: 40px;margin-left: 523px;">
                     <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button" id="submitbutton">注册</button>
                     <button type="button" title="<?php echo $this->__('注册') ?>" class="rulNotAgree button" id="disablesubmitbutton" style="display: none">注册</button>
                     <br>
                 </div>
             <!--</div>-->
 			<!--</span>-->
-            </div>
+            <!--</div>-->
         <?php if ($isContextCheckout): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
