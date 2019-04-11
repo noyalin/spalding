@@ -87,7 +87,8 @@ else:
               $scen7 ='/is/image/sneakerhead/2019-spalding_lqxq_small_';
           }else {
               // melone 修改url加上2019-
-              $scen7 = '/is/image/sneakerhead/2019-spalding_lqxq_big_';
+              $scen7 = '/is/image/sneakerhead/PC-spalding_lqxq_big_';
+             // $scen7 = '/is/image/sneakerhead/2019-spalding_lqxq_big_';
           }
           $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
           $attributeSetModel->load($_product->getAttributeSetId());
@@ -119,7 +120,7 @@ else:
                             <?php if($attributeSetName == 'ball'){?>
                                  <div class="product-collateral-box-img">
                                 <img
-                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info?$spd-1140x700$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                         . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                         . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '篮球')
                                         . '&$images=sneakerhead/'.$urlkey . '-1'?>"
@@ -129,7 +130,7 @@ else:
                                 <div class="product-collateral-box-img">
                                 <!-- 足球 spalding_zqxq_info -> 2019-spalding_zqxq_info -->
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding_zqxq_info?$spalding_1242_1000$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/PC-spalding_lqxq_big_info?$spd-1140x700$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                             . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                             . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '足球')
                                             . '&$images=sneakerhead/'.$urlkey . '-1'?>"
@@ -150,7 +151,7 @@ else:
                                     <?php endif ?>
                                         <div class="product-collateral-box-img box-image">
                                             <img
-                                                src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
+                                                src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
                                                 alt=""/>
                                         </div>
                             <?php endfor; ?>
@@ -160,12 +161,15 @@ else:
                                   <!--细节图片展示s-->
                                 <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
                                  <!--细节图片展示e-->
+                                                                     <img
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_lqxq_detail<?php echo 1?>?$spd-562x700$&$images=sneakerhead/<?php echo $urlkey . '-1'?>"
+                                        alt=""/>
                             </div>
-                            <?php for ($i = 1; $i <=$imgCount; $i++):?>
+                            <?php for ($i = 2; $i <=$imgCount; $i++):?>
                                 <div class="product-collateral-box-img box-image">
                                 <!-- melone url改成2019-spalding_lqxq_detail -->
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/2019-spalding_lqxq_detail<?php echo $i ?>?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_lqxq_detail<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                         alt=""/>
                                 </div>
                             <?php endfor; ?>
@@ -581,23 +585,23 @@ else:
                             var s = document.body.scrollTop || document.documentElement.scrollTop;
                             if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H){
                                 distanceFixed.style = "position:fixed;top:0;width:408px;"
-                                 if(s >1290){
-                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
+                                 if(s >2650){
+                                     distanceFixed.style = "position:absolute;bottom: 55px;width:408px"
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H){
                                  distanceFixed.style = "position:fixed;top:0;width:408px;"
-                                  if(s >1400){
+                                  if(s >2400){
                                      distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H){
                                  distanceFixed.style = "position:fixed;top:0;width:408px;"
-                                   if(s >1400){
+                                   if(s >2400){
                                      distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H) {
                                 distanceFixed.style = "position:fixed;top:0px;width:408px;"
-                                if(s >1600){
-                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
+                                if(s >3000){
+                                     distanceFixed.style = "position:absolute;bottom: 40px;width:408px"
                                 }
                             } else{
                                 distanceFixed.style = "position:relative;width:408px"

@@ -1950,7 +1950,7 @@ span.spCarTit_fun{
     margin:0 auto;
     /*background: url(../images/productDetail_bg.jpg) left top repeat;*/
     /*background-color: #D4C89E;*/
-    padding:22px 0 38px;
+    padding:24px 0 38px;
     /*padding:22px 0 30px;*/
     /*melone start 修改底部间距*/
     /*margin-bottom: 10px;*/
@@ -2187,18 +2187,20 @@ h2.product-collateral-box-nam{
     margin-bottom: 10px;
 }
 .product-collateral-box-img img{
-    width:100%;
+    /*width:100%;*/
     /*melone start 去掉图片间的空隙*/
-    margin-bottom: -4px;
+    /*margin-bottom: -4px;*/
     /*melone end 去掉图片间的空隙*/
 }
 
 .product-collateral-box-img.box-image{
     display: inline;
+    margin-right: 16px;
 }
 .product-collateral-box-img.box-image img{
-    width: 48.7%;
-    margin: 5px 5px;
+    /*width: 48.7%;*/
+    /*margin: 5px 5px;*/
+    margin-top: 16px;
 }
 .productSaw{
     /*padding:10px;*/
