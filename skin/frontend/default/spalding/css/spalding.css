@@ -3861,7 +3861,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsList{
     margin-bottom:20px;
+    width: 1640px;
+    margin: 0 auto;
 }
+.bolgPages{
+    width:1640px;
+}
+
+
 .newsList ul li{
     /*width:464px;*/
     /*width:300px;*/
@@ -3945,7 +3952,20 @@ ul.newsListBox{
 .newsList ul li:hover h2{
     color:#000;
 }
-
+@media screen and (max-width: 1650px){
+    .newsList{
+        width: 1136px;
+    }
+    .bolgPages{
+        width:1136px;
+    }
+    .newsWrapBox{
+        width:1136px;
+    }
+    ul.newsListBox{
+        margin:0 184px 47px;
+    }
+}
 .newsArtsTit{
     width:100%;
     text-align: center;
