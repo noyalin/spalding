@@ -222,8 +222,9 @@ else:
                               <!--服饰、配件、篮球架产品展示图 e-->
                                <!---->
                               </div>
-                                 <?php for ($i = 1; $i <=$imgCount; $i++):?>
+
                                    <?php if($attributeSetName == 'apparel'){?>
+                                    <?php for ($i = 1; $i <=$imgCount; $i++):?>
                                         <?php if ($i > 2): ?>
                                         <?php echo "<br />"  ?>
                                         <?php endif ?>
@@ -235,9 +236,22 @@ else:
                                             src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_fsxq_display<?php echo $i ?>?$spd-562x700$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                             alt=""/>
                                         </div>
+                                    <?php endfor; ?>
+                                    <div class="product-collateral-box-img  box-image">
+                                    <img
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_fsxq_detail3?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-3"?>"
+                                        alt=""/>
+                                    </div>
+                                   <div class="product-collateral-box-img  box-image">
+                                    <img
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_fsxq_detail4?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-4"?>"
+                                        alt=""/>
+                                    </div>
+
                                    <?php } else { ?>
                                      <!--配件-->
-                                      <div class="product-collateral-box-img box-image">
+                                    <div class="product-collateral-box-img box-image">
+                                    <?php for ($i = 1; $i <=$imgCount; $i++):?>
                                     <?php if ($i == 1): ?>
                                     <img style="margin-top: -10px;margin-bottom: 26px"
                                         src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_pj_display<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
@@ -247,20 +261,17 @@ else:
                                         src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
                                         alt=""/>
                                     <?php endif ?>
+                                    <?php endfor; ?>
                                     </div>
                                     <?php } ?>
-                                <?php endfor; ?>
+
                                 <!--细节展示-->
                                 <div class="product-collateral-box-img  box-image">
                                 <!-- melone 修改图片   衣服的细节展示图片-->
                                     <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
                                     <!--spalding_fsxq_detail  PC-spalding_fsxq_detail3改为 spalding_1242_620 改为spd-1140x620-->
                                 </div>
-                               <!-- <div class="product-collateral-box-img  box-image">
-                                <img
-                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_fsxq_detail3?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-3"?>"
-                                    alt=""/>
-                                </div>-->
+
                     <?php endif; ?>
                     <?php }?>
        </div>
