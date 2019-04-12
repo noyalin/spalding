@@ -126,34 +126,67 @@ else:
                                         . '&$images=sneakerhead/'.$urlkey . '-1'?>"
                                     alt=""/>
                             </div>
+ <!--产品展示-->
+                            <div class="product-collateral-box-img">
+                            <!-- melone 修改图片-->
+                            <!--篮球产品展示图片 s-->
+                                <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">-->
+                            <!--蓝球的产品展示图片 e-->
+                            </div>
+                                <?php for ($i = 1; $i <=$imgCount; $i++):?>
+                                <?php if ($i > 2): ?>
+                                <?php echo "<br />"  ?>
+                                <?php endif ?>
+                                    <div class="product-collateral-box-img box-image">
+                                        <img
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
+                                            alt=""/>
+                                    </div>
+                                <?php endfor; ?>
+                                <!--细节展示-->
+                                <div class="product-collateral-box-img box-image">
+                                 <!--melone 修改图片-->
+                                      <!--细节图片展示s-->
+                                    <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
+                                     <!--细节图片展示e-->
+                                          <img
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_lqxq_detail<?php echo 1?>?$spd-562x700$&$images=sneakerhead/<?php echo $urlkey . '-1'?>"
+                                            alt=""/>
+                                </div>
+                                <?php for ($i = 2; $i <=$imgCount; $i++):?>
+                                    <div class="product-collateral-box-img box-image">
+                                    <!-- melone url改成2019-spalding_lqxq_detail -->
+                                        <img
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_lqxq_detail<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                            alt=""/>
+                                    </div>
+                                <?php endfor; ?>
                             <?php }else{?>
                                 <div class="product-collateral-box-img">
                                 <!-- 足球 spalding_zqxq_info -> 2019-spalding_zqxq_info -->
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/PC-spalding_lqxq_big_info?$spd-1140x700$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/PC-spalding_zqxq_info?$spd-1140x700$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                             . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                             . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '足球')
                                             . '&$images=sneakerhead/'.$urlkey . '-1'?>"
                                         alt=""/>
                                 </div>
-                            <?php }?>
-
-                            <!--产品展示-->
+   <!--产品展示-->
                             <div class="product-collateral-box-img">
                             <!-- melone 修改图片-->
-                            <!--篮球、训练器材、足球的产品展示图片 s-->
+                            <!--足球的产品展示图片 s-->
                                 <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">-->
-                            <!--蓝球、训练器材、足球的产品展示图片 e-->
+                            <!--足球的产品展示图片 e-->
                             </div>
                             <?php for ($i = 1; $i <=$imgCount; $i++):?>
-                                    <?php if ($i > 2): ?>
-                                    <?php echo "<br />"  ?>
-                                    <?php endif ?>
-                                        <div class="product-collateral-box-img box-image">
-                                            <img
-                                                src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
-                                                alt=""/>
-                                        </div>
+                            <?php if ($i > 2): ?>
+                            <?php echo "<br />"  ?>
+                            <?php endif ?>
+                                <div class="product-collateral-box-img box-image">
+                                    <img
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
+                                        alt=""/>
+                                </div>
                             <?php endfor; ?>
                             <!--细节展示-->
                             <div class="product-collateral-box-img box-image">
@@ -161,7 +194,7 @@ else:
                                   <!--细节图片展示s-->
                                 <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
                                  <!--细节图片展示e-->
-                                                                     <img
+                                      <img
                                         src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_lqxq_detail<?php echo 1?>?$spd-562x700$&$images=sneakerhead/<?php echo $urlkey . '-1'?>"
                                         alt=""/>
                             </div>
@@ -169,10 +202,11 @@ else:
                                 <div class="product-collateral-box-img box-image">
                                 <!-- melone url改成2019-spalding_lqxq_detail -->
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_lqxq_detail<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_zqxq_detail<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                         alt=""/>
                                 </div>
                             <?php endfor; ?>
+                            <?php }?>
                         <?php else:?>
                               <!--产品信息-->
                               <!--<div class="product-collateral-box-img">-->
@@ -204,11 +238,10 @@ else:
                                    <?php } else { ?>
                                      <!--配件-->
                                       <div class="product-collateral-box-img box-image">
-                                    <?php if ($i == 1 || $i == 2): ?>
+                                    <?php if ($i == 1): ?>
                                     <img style="margin-top: -10px;margin-bottom: 26px"
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_pj_display<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
                                         alt=""/>
-
                                     <?php else: ?>
                                     <img style="margin-top: -10px;"
                                         src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
@@ -223,11 +256,11 @@ else:
                                     <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
                                     <!--spalding_fsxq_detail  PC-spalding_fsxq_detail3改为 spalding_1242_620 改为spd-1140x620-->
                                 </div>
-                                <div class="product-collateral-box-img  box-image">
+                               <!-- <div class="product-collateral-box-img  box-image">
                                 <img
                                     src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_fsxq_detail3?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-3"?>"
                                     alt=""/>
-                                </div>
+                                </div>-->
                     <?php endif; ?>
                     <?php }?>
        </div>
@@ -338,18 +371,21 @@ else:
                     <?php }else{?>
                         <!--足球规格表-->
                         <div class="product-collateral-box-img"  style="position: relative;width: 408px;">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;cursor: pointer;width: 408px;">
+                            <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/footerballtitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
+                            <img onclick="run1()" id="hideShowsUp"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:198px;">
+                            <img onclick="run1()" id="hideShowsDown"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;">
                         </div>
                         <div class="product-collateral-box-img"  style="position: relative;width: 408px;">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-size.jpg") ?>' alt="" style="width: 408px;>
+                            <img id="hideShows" src='<?php echo $this->getSkinUrl("images2019/detailinfo/footer-size.jpg") ?>' alt="" style="display: none;">
                         </div>
                         <!--足球结构知识-->
                         <div class="product-collateral-box-img"  style="position: relative;width: 408px;">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle5.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
-                            <!--footerballtitle5-->
+                            <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/footerballtitle5.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
+                            <img onclick="run2()" id="hideShowmUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;cursor: pointer;right:198px;bottom:3px">
+                            <img onclick="run2()" id="hideShowmDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;bottom:3px">
                         </div>
                         <div class="product-collateral-box-img" style="position: relative;width: 408px;">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>' alt="" style="width: 408px;">
+                            <img id="hideShowm" src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>' alt="" style="display: none;">
                         </div>
                     <?php }?>
                      <!--售后相关-->
