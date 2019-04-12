@@ -76,7 +76,7 @@ elseif (Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdc
     echo $this->getChildHtml('customclothes_view');
 else:
     ?>
-    <div class="product-view" style="display: flex;position:relative;">
+    <div class="product-view" style="display: flex;position:relative;width: calc(100% - 2px);overflow: hidden;">
        <?php
           $urlkey = $_product->getUrlKey();
           $sku = $_product->getSku();

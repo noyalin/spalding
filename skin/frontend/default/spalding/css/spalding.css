@@ -2257,11 +2257,13 @@ h2.product-collateral-box-nam{
     /*margin:10px 35px;*/
     /*width: 510px;*/
     width: 1600px;
+
 }
 @media screen  and (max-width: 1620px){
     .productArgs{
-        width: 1410px;
-        margin: 0 auto;
+        width: calc(100% - 20px);
+        /*width: 1410px;*/
+        /*margin: 0 auto;*/
     }
     .productSaw ul li{
         margin: 10px 3px;
