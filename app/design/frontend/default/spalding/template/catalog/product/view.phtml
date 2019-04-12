@@ -195,16 +195,16 @@ else:
                                         <?php endif ?>
                                         <div class="product-collateral-box-img box-image">
                                         <!-- melone 修改模板尺寸 -->
-                                        <!-- melone 修改服饰图片url spalding_fsxq_ -> 2019-spalding_fsxq_-->
+                                        <!-- melone 修改服饰图片url spalding_fsxq_ -> 2019-spalding_fsxq_    2019-spalding_fsxq_改为PC-spalding_fsxq_      spalding_1242_1136改为spd-562x700-->
                                         <!--配件-->
                                         <img
-                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/2019-spalding_fsxq_display<?php echo $i ?>?$spalding_1242_1136$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
+                                            src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_fsxq_display<?php echo $i ?>?$spd-562x700$&$line=sneakerhead/line_fushi&$side=sneakerhead/fushi_icon_1&$color=\u40657 ?\u33394 ?&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                             alt=""/>
                                         </div>
                                    <?php } else { ?>
                                       <div class="product-collateral-box-img box-image">
                                                 <img
-                                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
+                                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7 ?>display<?php echo $i ?>?$spd-562x700$&$images=sneakerhead%2F<?php echo $urlkey . "-".$i?>"
                                                     alt=""/>
                                             </div>
                                     <?php } ?>
@@ -213,10 +213,11 @@ else:
                                 <div class="product-collateral-box-img  box-image">
                                 <!-- melone 修改图片   衣服的细节展示图片-->
                                     <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
+                                    <!--spalding_fsxq_detail  PC-spalding_fsxq_detail3改为 spalding_1242_620 改为spd-1140x620-->
                                 </div>
                                 <div class="product-collateral-box-img  box-image">
                                 <img
-                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/<?php echo $urlkey . "-3"?>"
+                                    src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?>/is/image/sneakerhead/PC-spalding_fsxq_detail3?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-3"?>"
                                     alt=""/>
                                 </div>
                     <?php endif; ?>
@@ -328,19 +329,19 @@ else:
                                 <!--</div>-->
                     <?php }else{?>
                         <!--足球规格表-->
-                        <div class="product-collateral-box-img">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;cursor: pointer;">
+                        <div class="product-collateral-box-img"  style="position: relative;width: 408px;">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle4.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;cursor: pointer;width: 408px;">
                         </div>
-                        <div class="product-collateral-box-img">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-size.jpg") ?>' alt="">
+                        <div class="product-collateral-box-img"  style="position: relative;width: 408px;">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-size.jpg") ?>' alt="" style="width: 408px;>
                         </div>
                         <!--足球结构知识-->
-                        <div class="product-collateral-box-img">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle5.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px">
+                        <div class="product-collateral-box-img"  style="position: relative;width: 408px;">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footerballtitle5.jpg") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
                             <!--footerballtitle5-->
                         </div>
-                        <div class="product-collateral-box-img">
-                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>' alt="">
+                        <div class="product-collateral-box-img" style="position: relative;width: 408px;">
+                            <img src='<?php echo $this->getSkinUrl("images/detailinfo/footer-structure.jpg") ?>' alt="" style="width: 408px;">
                         </div>
                     <?php }?>
                      <!--售后相关-->
@@ -363,32 +364,47 @@ else:
                     </div>
                 <?php else:?>
 
-                       <!-- --><?php //for ($i = 1; $i <=$imgCount; $i++):?>
+                       <!-- <?php //for ($i = 1; $i <=$imgCount; $i++):?>-->
                        <!-- <div class="product-collateral-box-img">-->
                        <!-- <img-->
                        <!-- src="--><?php //echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html')?><!--/is/image/sneakerhead/spalding_fsxq_detail?$spalding_1242_620$&$images=sneakerhead/--><?php //echo $urlkey . "-".$i?><!--"-->
                        <!-- alt=""/>-->
                        <!-- </div>-->
                        <!-- --><?php //endfor; ?>
-                  <div id="apparelFixed" style="width: 408px;">
-                    <?php if($attributeSetName == 'apparel'){?>
-                        <!--服饰尺码表-->
+                  <div id="apparelFixed" style="position:relative;width: 408px;">
+                    <!--<?php if($attributeSetName == 'apparel'){?>-->
+
                         <!-- melone 修改服饰尺码表图片   与下面的尺码一体的 images -> images2019-->
-                    <?php
-                    if (($size_table_id != null)) {
-                        $size_table_url = $this->getSkinUrl("images2019/detailinfo/" . $size_table_id . ".jpg");
-                        ?>
-                        <div class="product-collateral-box-img">
-                        <img src='<?php echo $size_table_url; ?>' alt="" style="margin-top: 20px">
-                            </div>
-                    <?php
-                    }
-                    ?>
+
+                    <!--<?php-->
+                    <!--if (($size_table_id != null)) {-->
+                        <!--$size_table_url = $this->getSkinUrl("images2019/detailinfo/" . $size_table_id . ".jpg");-->
+                        <!--?>-->
+                         <!--<div class="product-collateral-box-img">-->
+                        <!--img src='<?php echo $size_table_url; ?>' alt="" style="margin-top: 20px">-->
+                        <!--</div>-->
+                         <!--服饰尺码表-->
+                       <div class="product-collateral-box-img" style="position: relative;width: 408px;">
+                             <img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title-01-fscmb.png") ?>' alt="" style="margin-top: 20px;margin-bottom: -15px;">
+                             <img onclick="run1()" id="hideShowsUp"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;cursor: pointer;right:198px;">
+                             <img onclick="run1()" id="hideShowsDown"  src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;bottom: 3px;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;">
+                        </div>
+                        <div class="product-collateral-box-img" style="position: relative;width: 408px;">
+                            <img id="hideShows" src="<?php echo $this->getSkinUrl('images2019/detailinfo/img-01-fscmb.png');?>" border="0"  style="display: none;">
+                        </div>
+                    <!--<?php-->
+                    <!--}-->
+                    <!--?>-->
                     <!--服饰保养-->
-                    <div class="product-collateral-box-img">
-                    <img src='<?php echo $this->getSkinUrl("images/detailinfo/fushi-maintain.jpg") ?>' alt="">
-                    </div>
-                    <?php }?>
+                    <div class="product-collateral-box-img" style="position: relative;width: 408px;">
+                            <img  src='<?php echo $this->getSkinUrl("images2019/detailinfo/title-02-gyfzby.png") ?>' alt=""  style="margin-top: 20px;margin-bottom: -15px;">
+                            <img onclick="run2()" id="hideShowmUp" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-up.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;cursor: pointer;right:198px;bottom:3px">
+                            <img onclick="run2()" id="hideShowmDown" src='<?php echo $this->getSkinUrl("images2019/detailinfo/arrow-down.png") ?>' alt="" style="position: absolute;width: 20px;height: 20px;display: none;cursor: pointer;right:198px;bottom:3px">
+                     </div>
+                     <div class="product-collateral-box-img" style="position: relative;width: 408px;">
+                           <img id="hideShowm"  src="<?php echo $this->getSkinUrl('images2019/detailinfo/img-02-gyfzby.png');?>" border="0" style="display: none;">
+                     </div>
+                    <!--<?php }?>-->
                     <!--售后相关-->
                              <div class="product-collateral-box-img" style="position: relative;width: 408px;">
                              <!-- melone 修改图片-->

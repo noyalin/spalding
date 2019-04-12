@@ -2121,12 +2121,8 @@ span.spCarTit_fun{
 
 
 
-/*产品参数*/
-.productArgs{
-    /*margin:10px 35px;*/
-    /*width: 510px;*/
-    width: 96%;
-}
+
+
 .productArgs .productArgs_tit{
     height: 35px;
     line-height: 35px;
@@ -2169,7 +2165,19 @@ span.spCarTit_fun{
     /*padding: 0px 71px;*/
     padding: 0px 26px 0px 146px;
 }
-
+@media screen  and (max-width: 1755px){
+    .product-collateral{
+        padding: 0px;
+    }
+    .product-essential{
+        padding: 0 0 20px;
+        margin-right:0px;
+    }
+    .product-view{
+        width: 1610px;
+        min-width: 1000px;
+    }
+}
 .product-collateral-wrap{
     margin:20px 70px;
 }
@@ -2201,12 +2209,15 @@ h2.product-collateral-box-nam{
     /*melone end 去掉图片间的空隙*/
 }
 
+
 .product-collateral-box-img.box-image{
     display: inline;
     margin-right: 16px;
+
 }
 .product-collateral-box-img.box-image img{
     margin-top: 16px;
+    /*width: 48%;*/
 }
 @media screen and (max-width: 1911px) {
     .product-collateral-box-img.box-image{
@@ -2242,7 +2253,20 @@ h2.product-collateral-box-nam{
     margin: 10px 25px;
 }
 
-
+.productArgs{
+    /*margin:10px 35px;*/
+    /*width: 510px;*/
+    width: 1600px;
+}
+@media screen  and (max-width: 1620px){
+    .productArgs{
+        width: 1410px;
+        margin: 0 auto;
+    }
+    .productSaw ul li{
+        margin: 10px 3px;
+    }
+}
 .productSaw ul li span{
     display: block;
     text-align:center;
@@ -4357,6 +4381,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
         margin-right: 210px;
     }
 }
+
+
 /*联系我们*/
 .aboutTit{
     text-align: center;
