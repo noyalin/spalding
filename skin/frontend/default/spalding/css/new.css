@@ -1,6 +1,14 @@
   .block-content{padding-left:0px; font-size: 12px;}
   .block-content a{font-size: 12px;}
-  /*.block-layered-nav{margin-left:-10px;}*/
+  .block-layered-nav{
+      /*margin-left:-10px;*/
+      margin-left:-20px;
+  }
+  @media screen and (max-width: 1540px){
+      .block-layered-nav{
+          margin-left:0px;
+      }
+  }
 
   .currently ol li span.label{margin-left:20px;}
   /*melone start 添加字体颜色*/
