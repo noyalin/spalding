@@ -824,8 +824,9 @@ ul.scarch_select_option li:hover{
 
 .spaldingLogin .loginBox{
     /*width:1130px;*/
-    width:1650px;
-    margin:0 auto;
+    width: 1650px;
+    margin: 0 auto;
+    min-width: 1136px;
     background: url("../images2019/img-product.png") 115px center no-repeat;
     /*melone start 添加左侧logo图*/
     /*background: url("../images2019/20141209004.png") left 212px no-repeat;*/
