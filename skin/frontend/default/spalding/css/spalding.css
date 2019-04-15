@@ -2325,15 +2325,60 @@ h2.product-collateral-box-nam{
 /*!*melone end 调整整个界面边距*!*/
 
 .pannel-hd{
-    width: 1204px;
-    margin: 0px auto 10px;
+    width: 1506px;
+    margin: 0px auto 13px;
+    /*margin: 0px auto 10px;*/
+    min-width: 1136px;
 }
+.pannel-ft{
+    width: 1506px;
+    margin: 10px auto;
+    min-width: 1136px;
+}
+
+
 .instructions{
     font-size: 22px;
     color: #847450;
     width: 269px;
     height: 41px;
     background-color: #D4C89E;
+}
+@media screen and (min-width: 1300px) and (max-width: 1524px){
+    .pannel-hd{
+        width: 1200px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .pannel-ft{
+        width: 1200px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .content22  .pannel-ft img{
+        width: 280px;
+    }
+    .content22 .pannel-hd .item_lt .it_box img{
+        width: 280px;
+    }
+}
+@media screen and (max-width: 1300px){
+    .pannel-hd{
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .pannel-ft{
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .content22  .pannel-ft img{
+        width: 220px;
+    }
+    .content22 .pannel-hd .item_lt .it_box img{
+        width: 220px;
+    }
 }
 /*.item_lt .it_box{*/
     /*width: 256px;*/
@@ -2350,10 +2395,7 @@ h2.product-collateral-box-nam{
     /*font-size: 14px;*/
     /*color: #847450;*/
 /*}*/
-.pannel-ft{
-    width: 1204px;
-    margin: 10px auto;
-}
+
 
 .cart {
     min-height: 570px;
@@ -2370,8 +2412,9 @@ h2.product-collateral-box-nam{
     /*background-color: #D4C89E;*/
 }
 .main-container22{
-    width:1204px;
+    /*width:1204px;*/
     /*padding:10px 20px;*/
+    width: 1506px;
     margin:0 auto;
     color:#847450;
     min-height: 500px;
@@ -2473,8 +2516,28 @@ h2.product-collateral-box-nam{
 }
 
 
+#step22{
+    background: url(../images2019/authentication/bg2.png) center center no-repeat;
+}
+#step2{
+    background: url(../images2019/authentication/bg2.png) center center no-repeat;
+}
+#step2 .content{
 
+}
 
+.step2ball{
+    position: relative;
+    bottom: 916px;
+    /*width: 1663px;*/
+    height: 737px;
+}
+.step22img img{
+    display: flex;
+    margin: 0 auto;
+    padding-top: 65px;
+    padding-bottom: 51px;
+}
 .box-head{
     /*melone start 去掉字体颜色*/
     /*color:#fdb905;*/

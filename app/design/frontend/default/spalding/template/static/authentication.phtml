@@ -16,14 +16,14 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     <div class="validate_type">
                         <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/code_01.png') . "'>"; ?>
                         <!--                        <h2 class=" ">新防伪码</h2>-->
-                        <img src='<?php echo $this->getSkinUrl("images2019/button-1.png") ?>' alt="" id="security_chip" class="security_chip" style="margin-top: 9px;">
+                        <div><img src='<?php echo $this->getSkinUrl("images2019/button-1.png") ?>' alt="" id="security_chip" class="security_chip" style="margin-top: 9px;"></div>
                         <!--                        <img src='--><?php //echo $this->getSkinUrl("images2019/button-1.png") ?><!--' alt="" id="oldAuthenticationButton" class="validate_type_old">-->
                         <!--                        <button id="newAuthenticationButton" class="validate_type_new">新版验证</button>-->
                     </div>
                     <div class="validate_type" style="margin-top: 26px;">
                         <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/code_02.png') . "'>"; ?>
                         <!--                        <h2 class=" ">旧防伪码</h2>-->
-                        <img src='<?php echo $this->getSkinUrl("images2019/button-2.png") ?>' alt="" id="newAuthenticationButton" class="validate_type_new" style="margin-top: 19px;">
+                        <div><img src='<?php echo $this->getSkinUrl("images2019/button-2.png") ?>' alt="" id="newAuthenticationButton" class="validate_type_new" style="margin-top: 19px;"></div>
                         <!--                        <button id="oldAuthenticationButton" class="validate_type_old"-->
                         <!--                                data-reveal-id='alertOldValidation'>旧版验证-->
                         <!--                        </button>-->
@@ -34,7 +34,8 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     </div>
     <div id="step2" class="slide1 authen_step position_re">
         <div class="main-container container_step position_re">
-            <div class="content">
+        <img src='<?php echo $this->getSkinUrl("images2019/authentication/title.png") ?>' alt="" style="padding-top: 117px;" >
+        <div class="content">
                 <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images2019/authentication/box_02.png') . "'>"; ?>
                 <div class="content_detail position_re">
                     <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images2019/authentication/icon.png') . "'>"; ?>
@@ -57,24 +58,34 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                     <!--                    </button>-->
 
                 </div>
+
+
             </div>
-            <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 16px;" id="return">
-<!--            <button id="cheshi" style="width: 100px;height: 37px;">按钮</button>-->
+
+            <div class="step2ball df jcsb">
+                   <img src='<?php echo $this->getSkinUrl("images2019/authentication/ball-left.png") ?>' alt="" >
+                   <img src='<?php echo $this->getSkinUrl("images2019/authentication/ball-right.png") ?>' alt="" >
+            </div>
+
+            <div class="df jcc aic" style="position: relative;bottom: 750px;">
+            <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: -621px;" id="return">
+            </div>
+ <!--           <button id="cheshi" style="width: 100px;height: 37px;">按钮</button>-->
         </div>
     </div>
 
-
-    <div id="step22" class="authen_step position_re" style="height: 960px;top: 90px">
+<!--top: 90px;-->
+    <div id="step22" class="authen_step position_re" style="height: 1068px;">
         <div class="main-container22 container_step22 position_re">
-            <div class="content22" style="height: 960px">
-                <div style="margin-bottom:34px;margin-top: 32px;" class="df jcc aic">
+            <div class="content22" style="height: 1068px">
+               <!-- <div style="margin-bottom:34px;margin-top: 32px;" class="df jcc aic">
                     <span class="instructions df jcc aic">防伪芯片验证使用说明</span>
-                </div>
-
-                <div class="pannel-hd df jcsa">
-                    <div class="item_lt">
-                        <div class="it_box df">
-                            <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step1.png') . "'>"; ?>
+                </div>-->
+               <div class="step22img"> <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/title.png') . "'>"; ?></div>
+                <div class="pannel-hd df jcsb">
+                   <div class="item_lt">
+                       <div class="it_box df">
+                                <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step1.png') . "'>"; ?>
 <!--                            <div class="box_p" style="margin-top: 20px;">-->
 <!--                    <span>-->
 <!--                    使用手机的NFC功能对准防伪芯片进行感应。Android手机先打开手机NFC功能，在手机【设置】|【设备连接】中开启NFC选项。iPhone7\8\8plus\X 需要下载并打开NFCTagInfo APP；iPhone XR以上已默认开启NFC功能。-->
@@ -113,15 +124,15 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                         </div>
                     </div>
                 </div>
-                <div class="pannel-ft df jcsa">
+                <div class="pannel-ft df jcsb">
                     <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step1.png') . "'>"; ?>
                     <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step2.png') . "'>"; ?>
                     <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step3.png') . "'>"; ?>
                     <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step4.png') . "'>"; ?>
                 </div>
 
-                <div class="df jcc aic" style="width: 1204px">
-                    <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 30px;" id="return_1">
+                <div class="df jcc aic" style="width: 1506px">
+                    <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: 51px;" id="return_1">
                 </div>
             </div>
         </div>
@@ -326,13 +337,13 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     });
     jQuery('#newAuthenticationButton').on('click', function (e) {
         //	新版验证 只是调到下一步 不弹出modal框架
-        jQuery('.slide-group').animate({'top': '-960px'});
+        jQuery('.slide-group').animate({'top': '-1068px'});
         jQuery("#step2").css("display","block");
         jQuery("#step22").css("display","none");
     });
     jQuery('#security_chip').on('click', function (e) {
         //	新版验证 只是调到下一步 不弹出modal框架
-        jQuery('.slide-group').animate({'top': '-960px'});
+        jQuery('.slide-group').animate({'top': '-1068px'});
         jQuery("#step2").css("display","none");
         jQuery("#step22").css("display","block");
     });
