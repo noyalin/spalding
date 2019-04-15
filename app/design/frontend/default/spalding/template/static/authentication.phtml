@@ -500,7 +500,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         getCodeNumContact();
     });
     jQuery('#authenticationCommitButton').click(function () {
-        // 验证有没有选则，如果没有显示提示信息，如果选择了，跳转下一步
+        // 验证有没有选则，如果没有显示提示信息，如果选择了，跳转下一步 jQuery('.slide-group').animate({'top': '-2136px'});
         var q1TrueIsSelected = jQuery('.q_1_true')[0].style.display;
         var q1FalseIsSelected = jQuery('.q_1_false')[0].style.display;
         var q2TrueIsSelected = jQuery('.q_2_true')[0].style.display;
@@ -509,7 +509,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         if (q1TrueIsSelected == q1FalseIsSelected || q2TrueIsSelected == q2FalseIsSelected) {
             jQuery('#isQ1Selected')[0].style.opacity = q1TrueIsSelected == q1FalseIsSelected ? 1 : 0;
             jQuery('#isQ2Selected')[0].style.opacity = q2TrueIsSelected == q2FalseIsSelected ? 1 : 0;
-            jQuery('.slide-group').animate({'top': '-1920px'});
+            jQuery('.slide-group').animate({'top': '-2136px'});
         } else {
             jQuery('#isQ1Selected')[0].style.opacity = jQuery('#isQ2Selected')[0].style.opacity = 0;
             if (q1TrueIsSelected == q2TrueIsSelected && q2TrueIsSelected == 'inline') {
@@ -524,11 +524,13 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
             if (q1FalseIsSelected == q2FalseIsSelected && q2FalseIsSelected == 'inline') {
                 jQuery('#validResultContent')[0].innerHTML = '感谢您的耐心配合，请点击『联络我们』留下您的联络方式，我们将有专人协助您做进一步鉴定。'
             }
-            jQuery('.slide-group').animate({'top': '-2880px'});
+            jQuery('.slide-group').animate({'top': '-3204px'});
+           // jQuery('.slide-group').animate({'top': '-2880px'});
         }
     })
     jQuery('#reEditButton').click(function () {
-        jQuery('.slide-group').animate({'top': '-1920px'});
+        jQuery('.slide-group').animate({'top': '-2136px'});
+        //jQuery('.slide-group').animate({'top': '-1920px'});
     })
     jQuery.fn.reveal = function (options) {
 
