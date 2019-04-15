@@ -824,8 +824,9 @@ ul.scarch_select_option li:hover{
 
 .spaldingLogin .loginBox{
     /*width:1130px;*/
-    /*width:1650px;*/
+    width:1650px;
     margin:0 auto;
+    background: url("../images2019/img-product.png") 115px center no-repeat;
     /*melone start 添加左侧logo图*/
     /*background: url("../images2019/20141209004.png") left 212px no-repeat;*/
     /*melone end 添加左侧logo图*/
@@ -944,8 +945,9 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     /*melone start 调整输入框长度*/
     /*width:260px;*/
     width: 258px;
-    /*melone end 调整输入框长度*/
-    height:20px;
+    /*melone end 调整输入框长度
+    height:20px;*/
+    height:33px;
     padding:3px 5px;
     border-radius: 3px;
     font-size: 14px;
