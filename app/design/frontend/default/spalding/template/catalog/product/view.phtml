@@ -118,15 +118,15 @@ else:
                         <?php if($attributeSetName == 'ball'||$attributeSetName == 'football'): ?>
                             <!--产品信息-->
                             <?php if($attributeSetName == 'ball'){?>
-                                 <div class="product-collateral-box-img">
+                              <div class="product-collateral-box-img">
                                 <img
                                     src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').$scen7.'info?$spd-1140x700$&$location=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()))
                                         . '&$series=' . urlencode($this->getAttributeNameById("product_catena", $_product->getProductCatena())) . '&$number=%20' . strtoupper($_product->getSku()) . '&$size=' . $this->getProductNormImageNameById($_product->getProductNorm()) . '&$texture=' . $this->getProductMaterialImageNameById($_product->getProductMaterial())
                                         . '&$intro=' . urlencode($_product->getDescription()) . '&$title=' . urlencode($_product->getAbstract()) . '&$inorout=' . urlencode($this->getAttributeNameById("product_side", $_product->getProductSide()) . '篮球')
                                         . '&$images=sneakerhead/'.$urlkey . '-1'?>"
                                     alt=""/>
-                            </div>
- <!--产品展示-->
+                              </div>
+                            <!--产品展示-->
                             <div class="product-collateral-box-img">
                             <!-- melone 修改图片-->
                             <!--篮球产品展示图片 s-->

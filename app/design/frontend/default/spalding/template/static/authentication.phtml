@@ -39,9 +39,10 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                 <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images2019/authentication/box_02.png') . "'>"; ?>
                 <div class="content_detail position_re">
                     <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images2019/authentication/icon.png') . "'>"; ?>
-                    <form class="code_area position_re" name="valid_code_input">
+                    <form class="code_area position_re" name="valid_code_input" style="position:relative;z-index: 1;">
                         <b class="position_re">防伪码:</b><input type="text" id="barCode" class="valid_check_code"
                                                               maxlength="14" placeholder="请输入12或14位的防伪码" style="margin-top: 44px">
+                                                              <!--style="margin-top: 44px">-->
                         <span id="barCodeMSG" style="opacity: 0;width:100%;height:28px;line-height:28px;padding:0;">必填</span>
                         <b class="position_re">验证码:</b><input type="text" id="verifyCode" class="verifyCode valid_code"
                                                               maxlength="4" placeholder="请输入4位的验证码" >
@@ -59,7 +60,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
                 </div>
 
-
+<button id="cheshi" style="width: 100px;height: 37px;position: relative;bottom: 300px;z-index: 100;">按钮</button>
             </div>
 
             <div class="step2ball df jcsb">
@@ -69,8 +70,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
             <div class="df jcc aic" style="position: relative;bottom: 750px;">
             <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;margin-top: -621px;" id="return">
+
             </div>
- <!--           <button id="cheshi" style="width: 100px;height: 37px;">按钮</button>-->
+
         </div>
     </div>
 
@@ -353,9 +355,9 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     jQuery('#return_1').on('click', function (e) {
         jQuery('.slide-group').animate({'top': '90px'});
     });
-//    jQuery('#cheshi').on('click', function (e) {
-//        jQuery('.slide-group').animate({'top': '-1920px'});
-//    });
+   jQuery('#cheshi').on('click', function (e) {
+       jQuery('.slide-group').animate({'top': '-2136px'});
+   });
     jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
         jQuery('#alertContactUs')[0].style.display = 'block';
         jQuery('#valid_check_code')[0].innerHTML = jQuery.trim(jQuery('#barCode').val());
@@ -392,7 +394,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
             }
 
             // 页面停止跳转下一页
-            jQuery('.slide-group').animate({'top': '-960px'});
+            jQuery('.slide-group').animate({'top': '-1086px'});
         } else {
             jQuery('#barCodeMSG')[0].innerHTML = jQuery('#verifyCodeMSG')[0].innerHTML = '';
 

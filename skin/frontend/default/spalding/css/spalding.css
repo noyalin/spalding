@@ -2207,7 +2207,7 @@ h2.product-collateral-box-nam{
     /*melone start 去掉图片间的空隙*/
     /*margin-bottom: -4px;*/
     /*melone end 去掉图片间的空隙*/
-    max-width: 100%;
+
 }
 
 
@@ -2328,12 +2328,12 @@ h2.product-collateral-box-nam{
     width: 1506px;
     margin: 0px auto 13px;
     /*margin: 0px auto 10px;*/
-    min-width: 1136px;
+    min-width: 1366px;
 }
 .pannel-ft{
     width: 1506px;
     margin: 10px auto;
-    min-width: 1136px;
+    min-width: 1366px;
 }
 
 
@@ -2346,38 +2346,38 @@ h2.product-collateral-box-nam{
 }
 @media screen and (min-width: 1300px) and (max-width: 1524px){
     .pannel-hd{
-        width: 1200px;
+        width: 1000px;
         display: flex;
         justify-content: space-between;
     }
     .pannel-ft{
-        width: 1200px;
+        width: 1000px;
         display: flex;
         justify-content: space-between;
     }
     .content22  .pannel-ft img{
-        width: 280px;
+        width: 300px;
     }
     .content22 .pannel-hd .item_lt .it_box img{
-        width: 280px;
+        width: 300px;
     }
 }
 @media screen and (max-width: 1300px){
     .pannel-hd{
-        width: 1000px;
+        width: 800px;
         display: flex;
         justify-content: space-between;
     }
     .pannel-ft{
-        width: 1000px;
+        width: 800px;
         display: flex;
         justify-content: space-between;
     }
     .content22  .pannel-ft img{
-        width: 220px;
+        width: 250px;
     }
     .content22 .pannel-hd .item_lt .it_box img{
-        width: 220px;
+        width: 250px;
     }
 }
 /*.item_lt .it_box{*/
@@ -2529,7 +2529,8 @@ h2.product-collateral-box-nam{
 .step2ball{
     position: relative;
     bottom: 916px;
-    /*width: 1663px;*/
+    width: 1366px;
+    margin: 0 auto;
     height: 737px;
 }
 .step22img img{
