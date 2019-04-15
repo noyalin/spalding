@@ -1207,7 +1207,7 @@ div.regTit span{
 div.regTit span a{
     /*melone start 修改字体大小*/
     /*font-size: 14px;*/
-    font-size: 16px;
+    font-size: 22px;
     /*melone end 修改字体大小*/
     font-weight: bold;
     /*melone start 修改“登录”的字体颜色*/
@@ -2506,11 +2506,10 @@ h2.product-collateral-box-nam{
     margin-bottom:10px;
     /*melone start 修改底部线颜色*/
     border-bottom:5px solid #02295c;
-    /*melone start 修改底部线颜色*/
+    /*melone end 修改底部线颜色*/
     /*border-bottom:5px solid #fff;*/
     /*melone start 修改上边距*/
     margin-top: 54px;
-    width: 700px;
     /*margin-top: 25px;*/
     /*melone end 修改上边距*/
 }
@@ -2700,7 +2699,7 @@ ul.form-list li label{
 
 ul.form-list li input[type="text"]{
     /*melone start 修改文本框长度*/
-    width:246px;
+    width:583px;
     /*melone end 修改文本框长度*/
     height:28px;
     padding:0 5px;
@@ -2799,7 +2798,7 @@ ul.form-list li p{
 .addresses-list .addresses-primary ol li{
     /*melone start 修改文本框宽度*/
     /*width:650px;*/
-    width: 680px;
+    width: 678px;
     /*melone end 修改文本框宽度*/
     height:37px;
     line-height: 37px;
@@ -6099,7 +6098,7 @@ dl.madeBoxFuns dt.zz_t_2{
 /*melone start 添加选择框字体颜色*/
 .form-list .fields .input-box select{
     color: #847450;
-    width: 72px;
+    width: 172px;
     height: 28px;
     border-radius: 3px;
 }

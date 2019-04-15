@@ -37,15 +37,18 @@
         <?php echo $this->getBlockHtml('formkey')?>
         <h2 class="legend"><?php echo $this->__('Account Base Information') ?></h2>
         <ul class="form-list">
-            <li class="fields clearfix">
-            <!-- melone 添加style="width: 28px;"-->
+        <!-- melone 添加style="height: 30px;"-->
+            <li class="fields clearfix" style="height: 30px;">
+            <!-- melone 添加style="height: 28px;"-->
                 <div class="field name-firstname" style="height: 28px;">
                     <span><label class="required ms-fl" for="firstname">姓名：</label>
                     <!--<div class="input-box">-->
-                        <input type="text" class="input-text required-entry" maxlength="255" title="收件人姓名" value="<?php echo $this->getCustomer()->getFirstname() ?>" name="firstname" id="firstname">
+                    <!-- melone 添加style="width:246px;" -->
+                        <input type="text" class="input-text required-entry" maxlength="255" title="收件人姓名" value="<?php echo $this->getCustomer()->getFirstname() ?>" name="firstname" id="firstname" style="width:246px;">
                     <!--</div>--></span>
                     <span><label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?>：</label>
-                    <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+                    <!-- melone 添加style="width:246px;" -->
+                    <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" style="width:246px;"/>
                     </span>
                 </div>
             </li>
@@ -71,7 +74,8 @@
 <!--                <input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="--><?php //echo $this->__('Change Password') ?><!--"--><?php //if($this->getCustomer()->getChangePassword()==1): ?><!-- checked="checked"--><?php //endif; ?><!-- class="checkbox" /><label for="change_password">--><?php //echo $this->__('Change Password') ?><!--</label>-->
 <!--            </li>-->
 
-            <li class="control clearfix">
+            <!-- melone 添加style="height: 30px;"-->
+            <li class="control clearfix" style="height: 30px;">
                 <button type="submit" title="<?php echo $this->__('Save') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
             </li>
         </ul>
@@ -123,7 +127,7 @@
                     <!-- This is a dummy hidden field to trick firefox from auto filling the password -->
                     <input type="text" class="input-text no-display" name="dummy" id="dummy" />
                     <!-- melone 添加style="width: 584xpx"-->
-                    <input type="password" id="current_password" name="current_password" class="input-text required-entry validation-failed" title="Current Password" style="width: 584px;">
+                    <input type="password" id="current_password" name="current_password" class="input-text required-entry validation-failed" title="Current Password" style="width: 583px;">
                 </div>
             </li>
             <!-- melone 添加style="width: 700px"-->
