@@ -84,7 +84,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
     </div>
 
 <!--top: 90px;-->
-    <div id="step22" class="authen_step position_re" style="height: 1068px;">
+    <div id="step22" class="authen_step position_re" style="height: 1068px;;">
         <div class="main-container22 container_step22 position_re">
             <div class="content22" style="height: 1068px">
                <!-- <div style="margin-bottom:34px;margin-top: 32px;" class="df jcc aic">
@@ -358,10 +358,12 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         jQuery("#step22").css("display","block");
     });
     jQuery('#return').on('click', function (e) {
-        jQuery('.slide-group').animate({'top': '90px'});
+        jQuery('.slide-group').animate({'top': '0px'});
+        //jQuery('.slide-group').animate({'top': '90px'});
     });
     jQuery('#return_1').on('click', function (e) {
-        jQuery('.slide-group').animate({'top': '90px'});
+        jQuery('.slide-group').animate({'top': '0px'});
+        //jQuery('.slide-group').animate({'top': '90px'});
     });
    jQuery('#cheshi').on('click', function (e) {
        jQuery('.slide-group').animate({'top': '-2136px'});
