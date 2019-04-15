@@ -2167,8 +2167,10 @@ span.spCarTit_fun{
 }
 @media screen  and (max-width: 1755px){
     .product-collateral{
+        /*padding-right: 20px;*/
         padding: 0px;
     }
+
     .product-essential{
         padding: 0 0 20px;
         margin-right:0px;
@@ -2207,7 +2209,7 @@ h2.product-collateral-box-nam{
     /*melone start 去掉图片间的空隙*/
     /*margin-bottom: -4px;*/
     /*melone end 去掉图片间的空隙*/
-
+    max-width: 100%;
 }
 
 
@@ -2219,11 +2221,12 @@ h2.product-collateral-box-nam{
 .product-collateral-box-img.box-image img{
     margin-top: 16px;
     /*width: 48%;*/
-    /*max-width: 48%;*/
+    max-width: 48%;
 }
 @media screen and (max-width: 1911px) {
     .product-collateral-box-img.box-image{
-        margin-right: 10px;
+        margin-right: 22px;
+        /*margin-right: 10px;*/
         display: inline;
     }
 }
@@ -2514,15 +2517,14 @@ h2.product-collateral-box-nam{
     /*melone end 修改上边距*/
 }
 
-
+#step1{
+    background: url(../images2019/authentication/bg2.png) center center no-repeat;
+}
 #step22{
     background: url(../images2019/authentication/bg2.png) center center no-repeat;
 }
 #step2{
     background: url(../images2019/authentication/bg2.png) center center no-repeat;
-}
-#step2 .content{
-
 }
 
 .step2ball{

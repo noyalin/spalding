@@ -98,7 +98,7 @@ else:
 
 
           <!--产品详情 s 左边 -->
-      <div class="product-collateral">
+      <div class="product-collateral" id="product-collateral">
               <!--<div class="product-collateral-wrap">-->
                   <!--<div class="product-collateral-box">-->
                     <?php if($_product->getDetailImages()){?>
@@ -156,7 +156,7 @@ else:
                                 <?php for ($i = 2; $i <=$imgCount; $i++):?>
                                     <div class="product-collateral-box-img box-image">
                                     <!-- melone url改成2019-spalding_lqxq_detail -->
-                                        <img
+                                        <img  style="max-width: 100%;"
                                             src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_lqxq_detail<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
                                             alt=""/>
                                     </div>
@@ -629,7 +629,6 @@ else:
      </script>
 </div>
        <script type="text/javascript">
-
                 window.onload=function(){
                         var imgId1=document.getElementById("hideShows");
                         var imgId2=document.getElementById("hideShowm");
@@ -650,28 +649,34 @@ else:
                         //     H1 += Y1.offsetTop;
                         //     Y1 = Y1.offsetParent;
                         // }
-
+                        var productArgs = document.getElementById("productArgs"),
+                            H1 = 0,
+                            Y1 = productArgs;
+                        while (Y1) {
+                            H1 += Y1.offsetTop;
+                            Y1 = Y1.offsetParent;
+                        }
                          window.onscroll = function()
                         {
                             var s = document.body.scrollTop || document.documentElement.scrollTop;
                             if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H){
                                 distanceFixed.style = "position:fixed;top:0;width:408px;"
-                                 if(s >2650){
+                                 if(s >H1-1000){
                                      distanceFixed.style = "position:absolute;bottom: 55px;width:408px"
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H){
                                  distanceFixed.style = "position:fixed;top:0;width:408px;"
-                                  if(s >2400){
+                                  if(s >H1-1500){
                                      distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H){
                                  distanceFixed.style = "position:fixed;top:0;width:408px;"
-                                   if(s >2400){
+                                   if(s >H1-1500){
                                      distanceFixed.style = "position:absolute;bottom: 0px;width:408px"
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H) {
                                 distanceFixed.style = "position:fixed;top:0px;width:408px;"
-                                if(s >3000){
+                                if(s >H1-500){
                                      distanceFixed.style = "position:absolute;bottom: 40px;width:408px"
                                 }
                             } else{
