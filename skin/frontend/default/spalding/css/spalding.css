@@ -4139,6 +4139,12 @@ ul.newsListBox{
 .newsList ul li:hover h2{
     color:#000;
 }
+.newsList .ftHyperlink img{
+    width: 152px;
+    height: 38px;
+    margin-top: 36px;
+    margin-left: 70px;
+}
 @media screen and (max-width: 1650px){
     .newsList{
         width: 1360px;
@@ -4155,6 +4161,18 @@ ul.newsListBox{
     }
     .newsList ul li{
         width: 660px;
+    }
+    .newsList .ftHyperlink img{
+        width: 115px;
+        height: 38px;
+        margin-top: 36px;
+        margin-right: 10px;
+    }
+    .ftHyperlink{
+        width: 660px;
+    }
+    .newsList ul li p{
+        width: 423px;
     }
 }
 .newsArtsTit{
