@@ -4085,6 +4085,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     color:#847450;
     /*color:#fff;*/
     font-weight: bold;
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .Hyperlink{
     display: flex;
@@ -4149,7 +4153,6 @@ ul.newsListBox{
 @media screen and (min-width: 1377px) and (max-width: 1650px){
     .newsList{
         width: 1360px;
-
     }
     .bolgPages{
         width:1360px;
@@ -4174,6 +4177,9 @@ ul.newsListBox{
     }
     .newsList ul li p{
         width: 423px;
+    }
+    .newsList ul li h2{
+        width: 400px;
     }
 }
 @media screen and (max-width: 1377px){
@@ -4203,6 +4209,9 @@ ul.newsListBox{
     }
     .newsList ul li p{
         max-width: 295px;
+    }
+    .newsList ul li h2{
+        width: 300px;
     }
 }
 .newsArtsTit{
