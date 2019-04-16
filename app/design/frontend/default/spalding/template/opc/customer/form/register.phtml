@@ -14,23 +14,36 @@
         <div class="spaldingMain">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
             <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+            <!--<div class="regTit">-->
+            <!--&lt;!&ndash; melone start 修改图片 images->images2019 &ndash;&gt;-->
+                <!--<span class="ms-fl"><img src="<?php echo $this->getSkinUrl("images2019/regTitle.png") ?>" alt=""></span>-->
+            <!--&lt;!&ndash; melone end 修改图片 images->images2019 &ndash;&gt;-->
+                <!--<span class="regTitRight ms-fl">我已经注册了，现在就&nbsp;<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a></span>-->
+                <!--<div class="clear"></div>-->
+            <!--</div>-->
+
             <div class="regTit">
-            <!-- melone start 修改图片 images->images2019 -->
-                <span class="ms-fl"><img src="<?php echo $this->getSkinUrl("images2019/regTitle.png") ?>" alt=""></span>
-            <!-- melone end 修改图片 images->images2019 -->
-                <span class="regTitRight ms-fl">我已经注册了，现在就&nbsp;<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a></span>
+            <!--melone 在span外面包了一层div-->
+                <div class="regTitLeft ms-fl">
+                    <span class="regTitLeft ms-fl"><img src="<?php echo $this->getSkinUrl("images2019/regTitle.png") ?>" alt=""></span>
+                </div>
+                <!--melone 在span外面包了一层div-->
+                <div  style="width: 846px;margin: 0 auto;">
+                    <span class="regTitRight ms-fl">我已经注册了，现在就&nbsp;<a href="<?php echo $this->getUrl('customer/account/', array('_secure'=>true)) ?>">登录</a></span>
+                </div>
                 <div class="clear"></div>
             </div>
-                    <label class="required">
+<!--melone 在下划线以下整个部分外面包了一层div-->
+<div  style="width: 800px;margin: 0 auto;">
+            <label class="required">
                         <div class="regBox clearfix">
 			                <span class="regBoxWrap ms-fl">
                                     <input type="hidden" id="firstname" name="firstname" value="" title="收件人姓名" maxlength="255">
 			                </span>
                         </div>
                     </label>
-
             <div style="padding-bottom:5px;font-size:14px;">
-                <span style="margin-left: 523px;">* 为必填项</span>
+                <span>* 为必填项</span>
             </div>
             <div class="regBox clearfix">
                 <span class="regBoxTit ms-fl">电子邮件E-mail*：</span>
@@ -58,11 +71,11 @@
                     <div class="regBox clearfix">
                         <span class="regBoxTit ms-fl" style="margin-top: 15px;margin-left: 12px;">设定登录密码*：</span>
                         <span class="regBoxWrap">
-                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="regBoxInp input-text required-entry validate-password" style="width: 241px;margin-top: 15px;"/>
+                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="regBoxInp input-text required-entry validate-password" style="width: 250px;margin-top: 15px;"/>
                         </span>
                         <span class="regBoxTit" style="margin-top: 15px;margin-left: 53px;">请再次输入密码*：</span>
                         <span class="regBoxWrap">
-                        <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" style="width: 241px;margin-top: 15px;"/>
+                        <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="regBoxInp input-text required-entry validate-cpassword" style="width: 250px;margin-top: 15px;"/>
                         </span>
                     </div>
                     <!--<div class="regBox clearfix">-->
@@ -79,12 +92,12 @@
             <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
 
 
-            <div class="regBox clearfix" style="margin-left: 523px;">
+            <div class="regBox clearfix">
                 <span class="regBoxTit ms-fl">服务条款：</span>
 			<span class="regBoxWrap ms-fl" style="width: 350px;">
 				<span class="regBoxWrapSn">请检查以上您输入的个人信息,并阅读以下服务条款。</span>
 			</span>
-		</div>
+		    </div>
 			<!--<div class="regBox clearfix">-->
 				<div class="regRuls">
                     <p>一、特别提示</p>
@@ -159,7 +172,7 @@
                     <br>
                     <p>您只有无条件接受同意以上所有服务条款，才能继续申请。</p>
 				</div>
-                <div class="field" style="height: 15px;margin-top: 15px;margin-left: 523px;">
+                <div class="field" style="height: 15px;margin-top: 15px;">
                     <div class="input-box">
                     <!-- melone 修改checked属性为默认不勾选状态，将原来的“checked="checked"”删掉 -->
                         <input type="checkbox" name="agree_terms" id="agree_terms" value="1" class="checkbox required-entry" autocomplete="off">
@@ -168,19 +181,22 @@
                     <!-- melone 修改display:none改为display:block -->
                     <div style="display: block" id="advice-required-entry-agree_terms" class="validation-advice">勾选接受服务条款，即可继续注册。</div>
                 </div>
-                <div class="field" style="margin-top: 40px;margin-left: 523px;">
+                <div class="field" style="margin-top: 35px;">
                     <button type="submit" title="<?php echo $this->__('注册') ?>" class="rulAgree button" id="submitbutton">注册</button>
                     <button type="button" title="<?php echo $this->__('注册') ?>" class="rulNotAgree button" id="disablesubmitbutton" style="display: none">注册</button>
                     <br>
                 </div>
+            </div>
+            </div>
             <!--</div>-->
 			<!--</span>-->
             <!--</div>-->
         <?php if ($isContextCheckout): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
-        </div>
+
     </form>
+</div>
     <script type="text/javascript">
     //<![CDATA[
         var dataForm = new VarienForm('form-validate', true);
