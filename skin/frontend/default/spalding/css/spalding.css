@@ -4141,20 +4141,20 @@ ul.newsListBox{
 }
 @media screen and (max-width: 1650px){
     .newsList{
-        width: 1536px;
+        width: 1360px;
 
     }
     .bolgPages{
-        width:1536px;
+        width:1360px;
     }
     .newsWrapBox{
-        width:1536px;
+        width:1360px;
     }
     ul.newsListBox{
-        margin:0 4px 47px;
+        margin:0 10px 47px;
     }
     .newsList ul li{
-        width: 760px;
+        width: 660px;
     }
 }
 .newsArtsTit{
