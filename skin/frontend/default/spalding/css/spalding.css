@@ -795,16 +795,16 @@ ul.scarch_select_option li:hover{
 
 /*登录*/
 .spaldingBg{
-    width:100%;
-    height:100%;
-    position: fixed;
-    z-index: -1;
-    top:0;
-    /*melone start 去掉背景图 */
-    /*background: url("../images2019/BG.jpg");*/
-    background: url("../images2019/20141209004-1.png");
-    background-size: 100% 100%;
-    /*melone start 去掉背景图 */
+    /*width:100%;*/
+    /*height:100%;*/
+    /*position: fixed;*/
+    /*z-index: -1;*/
+    /*top:0;*/
+    /*!*melone start 去掉背景图 *!*/
+    /*!*background: url("../images2019/BG.jpg");*!*/
+    /*background: url("../images2019/20141209004-1.png");*/
+    /*background-size: 100% 100%;*/
+    /*!*melone start 去掉背景图 *!*/
 }
 
 .spaldingBg .spaldingBgImg{
@@ -820,6 +820,7 @@ ul.scarch_select_option li:hover{
 
 .spaldingLogin{
     position: relative;
+    top: 110px;
 }
 
 .spaldingLogin .loginBox{
@@ -848,8 +849,9 @@ ul.scarch_select_option li:hover{
 .loginMain{
     /*melone start 修改离顶部的距离*/
     /*margin-top:145px;*/
-    margin-top:130px;
+    /*margin-top:130px;*/
     /*melone end 修改离顶部的距离*/
+    /*min-height: 912px;*/
 }
 .required{
     font-size: 16px;
@@ -997,8 +999,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 
 .loginSub .loginSubNoAccount{
-    /*width: 230px;*/
-    width: 275px;
+    width: 230px;
     /*width: 150px;*/
     height:40px;
     font-size: 16px;
@@ -1108,6 +1109,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     width:100%;
     height: 100%;
     z-index: -2;
+    top: 90px;
 }
 
 /*melone start 添加忘记密码界面的背景图片*/
