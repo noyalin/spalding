@@ -831,8 +831,8 @@ ul.scarch_select_option li:hover{
     min-width: 1136px;
     background: url(../images2019/img-product.png) left 140px no-repeat;
     /* margin-left: -72px; */
-    position: relative;
-    z-index: 999999999;
+    /*position: relative;*/
+    /*z-index: 999999999;*/
     /* background: url(../images2019/20141209004.png) left 212px no-repeat; */
     /* background-size: 50%; */
 }
