@@ -1098,7 +1098,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     font-size: 12px;
     line-height: 1.4em;
     margin:40px 0px 20px;
-
+    position: absolute;
+    left: 140px;
     /*欢迎访问斯伯丁中国*/
     /*float: right;*/
 }
