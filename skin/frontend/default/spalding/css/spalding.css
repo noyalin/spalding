@@ -4145,7 +4145,8 @@ ul.newsListBox{
     margin-top: 36px;
     margin-left: 70px;
 }
-@media screen and (max-width: 1650px){
+
+@media screen and (min-width: 1377px) and (max-width: 1650px){
     .newsList{
         width: 1360px;
 
@@ -4173,6 +4174,35 @@ ul.newsListBox{
     }
     .newsList ul li p{
         width: 423px;
+    }
+}
+@media screen and (max-width: 1377px){
+    .newsList{
+        width: 1136px;
+    }
+    .bolgPages{
+        width:1136px;
+    }
+    .newsWrapBox{
+        width:1136px;
+    }
+    ul.newsListBox{
+        margin:0 10px 47px;
+    }
+    .newsList ul li{
+        width: 540px;
+    }
+    .newsList .ftHyperlink img{
+        width: 115px;
+        height: 38px;
+        margin-top: 36px;
+        margin-right: 10px;
+    }
+    .ftHyperlink{
+        width: 540px;
+    }
+    .newsList ul li p{
+        max-width: 380px;
     }
 }
 .newsArtsTit{
