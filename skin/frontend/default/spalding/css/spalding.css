@@ -823,9 +823,9 @@ ul.scarch_select_option li:hover{
 }
 
 .spaldingLogin .loginBox{
-    width: 1430px;
-   /* width: 1650px;*/
-    margin: 0 auto;
+    /*max-width: 1492px;*/
+    /*width: 1650px;*/
+    /*margin: 0 auto;*/
     min-width: 1136px;
     background: url("../images2019/img-product.png") 115px center no-repeat;
     /*melone start 添加左侧logo图*/
@@ -835,11 +835,13 @@ ul.scarch_select_option li:hover{
 .loginBox .loginBoxWrap{
     /*melone start 修改宽度*/
     /*width:270px;*/
-    width: 346px;
+    width: 433px;
+    /*width: 346px;*/
     /*melone end 修改宽度*/
     float: right;
     /*melone start 修改右边距*/
     /*margin-right: 140px;*/
+    margin-right: 202px;
     /*melone end 修改右边距*/
 }
 
@@ -849,9 +851,14 @@ ul.scarch_select_option li:hover{
     margin-top:130px;
     /*melone end 修改离顶部的距离*/
 }
-
+.required{
+    font-size: 16px;
+    margin-top: 17px;
+    margin-bottom: 7px;
+}
 .loginMain .login_backHome{
-    height: 50px;
+    height: 60px;
+    /*height: 50px;*/
     font-size: 12px;
     text-indent: 20px;
 }
@@ -865,6 +872,7 @@ ul.scarch_select_option li:hover{
     line-height: 80px;
     margin-left: 38px;
     /*melone end 修改字体和图标的相对位置*/
+    font-size: 16px;
 }
 
 .loginMain .login_backHome a:hover{
@@ -872,7 +880,8 @@ ul.scarch_select_option li:hover{
 }
 
 .loginMain .loginWel{
-    height: 60px;
+    /*height: 60px;*/
+    height: 70px;
     /*melone start 修改margin*/
     /*margin:15px 0 25px;*/
     /*melone end 修改margin*/
@@ -900,8 +909,10 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 /*melone end 增加代码*/
 #login-form{
-    height: 445px;
-    background: #d3c8a0;
+    height: 552px;
+    /*height: 445px;*/
+    background: #ffffff;
+    /*background: #d3c8a0;*/
 }
 
 #login-form .input-box {.col-main-forgetPasw
@@ -910,7 +921,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .loginMain .validation-advice {
     height: 20px;
-    font-size: 12px;
+    font-size: 16px;
+    /*font-size: 12px;*/
     margin-left: 38px;
 }
 
@@ -921,6 +933,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     margin-left: 38px;
     padding-top: 20px;
     /*melone end 居中*/
+    margin-bottom: 7px;
 }
 
 .loginMain p a{
@@ -945,7 +958,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     /*melone end 居中*/
     /*melone start 调整输入框长度*/
     /*width:260px;*/
-    width: 258px;
+    width: 339px;
+    /*width: 258px;*/
     /*melone end 调整输入框长度
     height:20px;*/
     height:33px;
@@ -955,7 +969,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     /*melone start 设置输入框样式*/
     /*color:#666;*/
     color: #83744d;
-    background: #d4c89e;
+    /*background: #d4c89e;*/
     border: 1px solid #83744d;
     /*melone end 设置输入框样式*/
 }
@@ -983,9 +997,12 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 
 .loginSub .loginSubNoAccount{
-    width: 150px;
+    /*width: 230px;*/
+    width: 275px;
+    /*width: 150px;*/
     height:40px;
-    font-size: 12px;
+    font-size: 16px;
+    /*font-size: 12px;*/
     text-align: right;
     color: #847450;
     /*melone start 调整距离*/
@@ -1005,19 +1022,22 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .loginOther{
     /*melone start 设置底部边框长度*/
-    width: 270px;
+    width: 333px;
+    /*width: 270px;*/
     /*melone end 设置底部边框长度*/
     /*melone start 修改上边距*/
     /*margin-top:20px;*/
     margin-top: 25px;
     /*melone end 修改上边距*/
-    font-size: 12px;
+    font-size: 16px;
+    /*font-size: 12px;*/
     padding-bottom:5px;
     /*melone start 居中*/
     margin-left: 38px;
     /*melone end 居中*/
     margin-bottom:20px;
-    border-bottom:1px solid #999;
+    /*border-bottom:1px solid #999;*/
+    border-bottom:1px solid #847450;
 }
 
 .loginOther span{
@@ -1063,8 +1083,10 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .loginCode{
     text-align: center;
-    font-size: 12px;
-    margin-top:30px;
+    font-size: 16px;
+    /*margin-top:30px;*/
+    margin-top: 35px;
+    margin-bottom: 46px;
 }
 
 .loginCode span{
@@ -2176,7 +2198,7 @@ span.spCarTit_fun{
 
     .product-essential{
         padding: 0 0 20px;
-        margin-right:0px;
+        margin-right:50px;
     }
     .product-view{
         width: 1610px;
@@ -2228,7 +2250,7 @@ h2.product-collateral-box-nam{
 }
 @media screen and (max-width: 1911px) {
     .product-collateral-box-img.box-image{
-        margin-right: 22px;
+        margin-right: 30px;
         /*margin-right: 10px;*/
         display: inline;
     }
@@ -4760,7 +4782,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .loginOutWrap{
     width:350px;
     padding:30px 10px;
-    background:#d3c8a0;
+    /*background:#d3c8a0;*/
+    background:#ffffff;
     /*background:#eeebe1;*/
     /*background:#1b1b1b;*/
     position: relative;

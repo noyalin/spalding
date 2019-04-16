@@ -63,8 +63,8 @@
     <div class="header_nav_funs_ft df jcsa">
 
         <?php
-        $current_url = Mage::helper('core/url')->getCurrentUrl();
-        if (!strstr($current_url, 'customer/account/login/')){
+        // $current_url = Mage::helper('core/url')->getCurrentUrl();
+        // if (!strstr($current_url, 'customer/account/login/')){
         ?>
 
         <div class="menu-wrap df aic">
@@ -74,19 +74,19 @@
                     <?php if ($this->getIsHomePage()){
                         echo "<img src='". Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141208001.png' ."'/>";
                     }else{
-                        echo "<img src='".Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141208001.png' ."'/>";
+                        echo "<img src='". Mage::getModel('core/variable')->loadByCode('aliyun_skin_images')->getValue('html').'images2019/20141208001.png' ."'/>";
                     }
                     ?>
                 </a>
             </div>
             <?php
-            }
+            // }
             ?>
             <!--            <div class="header_nav ms-fr">-->
 
             <?php
 
-            if (!strstr($current_url, 'customer/account/login/')) {
+            // if (!strstr($current_url, 'customer/account/login/')) {
                 ?>
                 <!--            <div class="header_nav_wrap_new df jcsb">-->
                 <div class="item"><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>" target="_blank" class="it">首页</a></div>
@@ -446,7 +446,7 @@
                   </div>
                 </span>
                 <?php
-            }
+            // }
             ?>
 
         </div>
