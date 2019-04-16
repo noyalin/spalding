@@ -826,9 +826,10 @@ ul.scarch_select_option li:hover{
 .spaldingLogin .loginBox{
     /*max-width: 1492px;*/
     /*width: 1650px;*/
+    max-width: 1824px;
     /*margin: 0 auto;*/
     min-width: 1136px;
-    background: url("../images2019/img-product.png") 115px 140px no-repeat;
+    background: url("../images2019/img-product.png") 209px 140px no-repeat;
     /*melone start 添加左侧logo图*/
     /*background: url("../images2019/20141209004.png") left 212px no-repeat;*/
     /*melone end 添加左侧logo图*/
@@ -1098,9 +1099,9 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .loginBottom{
     font-size: 12px;
     line-height: 1.4em;
-    margin:40px 0px 20px;
+    margin: 59px 0px 20px;
     position: absolute;
-    left: 140px;
+    left: 230px;
     /*欢迎访问斯伯丁中国*/
     /*float: right;*/
 }
