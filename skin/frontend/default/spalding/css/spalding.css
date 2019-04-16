@@ -2241,7 +2241,8 @@ h2.product-collateral-box-nam{
     margin-top: 16px;
     /*width: 48%;*/
     /*max-width: 49%;*/
-    max-width: 562px;
+    max-width: 549px;
+    /*max-width: 562px;*/
 }
 @media screen and (min-width: 1700px) and (max-width: 1913px){
     .product-collateral{
@@ -4140,16 +4141,19 @@ ul.newsListBox{
 }
 @media screen and (max-width: 1650px){
     .newsList{
-        width: 1136px;
+        width: 1536px;
     }
     .bolgPages{
-        width:1136px;
+        width:1536px;
     }
     .newsWrapBox{
-        width:1136px;
+        width:1536px;
     }
     ul.newsListBox{
-        margin:0 184px 47px;
+        margin:0 4px 47px;
+    }
+    .newsList ul li{
+        width: 760px;
     }
 }
 .newsArtsTit{
