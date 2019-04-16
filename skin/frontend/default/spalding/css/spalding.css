@@ -824,16 +824,17 @@ ul.scarch_select_option li:hover{
 }
 
 .spaldingLogin .loginBox{
-    /*max-width: 1492px;*/
-    /*width: 1650px;*/
-    max-width: 1824px;
-    /*margin: 0 auto;*/
+    /*max-width: 1492px; */
+    /* width: 1650px; */
+     max-width: 1366px;
+    margin: 0 auto;
     min-width: 1136px;
-    background: url("../images2019/img-product.png") 209px 140px no-repeat;
-    /*melone start 添加左侧logo图*/
-    /*background: url("../images2019/20141209004.png") left 212px no-repeat;*/
-    /*melone end 添加左侧logo图*/
-    /*background-size: 50%;*/
+    background: url(../images2019/img-product.png) left 140px no-repeat;
+    /* margin-left: -72px; */
+    position: relative;
+    z-index: 999999999;
+    /* background: url(../images2019/20141209004.png) left 212px no-repeat; */
+    /* background-size: 50%; */
 }
 .loginBox .loginBoxWrap{
     /*melone start 修改宽度*/
@@ -844,7 +845,7 @@ ul.scarch_select_option li:hover{
     float: right;
     /*melone start 修改右边距*/
     /*margin-right: 140px;*/
-    margin-right: 202px;
+    /*margin-right: 202px;*/
     /*melone end 修改右边距*/
 }
 
