@@ -200,7 +200,7 @@ else:
                                         alt=""/>
                             </div>
                             <?php for ($i = 2; $i <=$imgCount; $i++):?>
-                                <div class="product-collateral-box-img box-image">
+                                <div class="product-collateral-box-img">
                                 <!-- melone url改成2019-spalding_lqxq_detail -->
                                     <img
                                         src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') ?>/is/image/sneakerhead/PC-spalding_zqxq_detail<?php echo $i ?>?$spd-1140x620$&$images=sneakerhead/<?php echo $urlkey . "-".$i?>"
@@ -427,7 +427,7 @@ else:
                        <!-- alt=""/>-->
                        <!-- </div>-->
                        <!-- --><?php //endfor; ?>
-                  <div id="apparelFixed" style="position:relative;width: 408px;">
+                  <div id="distanceFixed" style="position:relative;width: 408px;">
                     <!--<?php if($attributeSetName == 'apparel'){?>-->
 
                         <!-- melone 修改服饰尺码表图片   与下面的尺码一体的 images -> images2019-->
@@ -643,13 +643,6 @@ else:
                             Y = Y.offsetParent;
                         }
 
-                        //  var apparelFixed = document.getElementById("apparelFixed"),
-                        //     H1 = 0,
-                        //     Y1 = apparelFixed;
-                        // while (Y1) {
-                        //     H1 += Y1.offsetTop;
-                        //     Y1 = Y1.offsetParent;
-                        // }
                         var productArgs = document.getElementById("productArgs"),
                             H1 = 0,
                             Y1 = productArgs;
@@ -683,18 +676,6 @@ else:
                             } else{
                                 distanceFixed.style = "position:relative;width:408px"
                             }
-
-                            //  if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H1  && s<1.5*H1){
-                            //     apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            // }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H1  && s<3/2*H1){
-                            //      apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            // }else if(imgId1.style.display=="none"  && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H1 && s<3/2*H1){
-                            //      apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            // }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H1 && s<1.2*H1) {
-                            //     apparelFixed.style = "position:fixed;top:0;width:408px;"
-                            // } else {
-                            //     apparelFixed.style = "position:relative;width:408px"
-                            // }
                         }
                 }
 
