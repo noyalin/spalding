@@ -926,7 +926,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 /*melone end 增加代码*/
 #login-form{
-    height: 552px;
+    height: 528px;
+    /*height: 552px;*/
     /*height: 445px;*/
     background: #ffffff;
     /*background: #d3c8a0;*/
