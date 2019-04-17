@@ -1117,7 +1117,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .loginBottom{
     font-size: 12px;
     line-height: 1.4em;
-    margin: 0px 0px 20px;
+    margin: 18px 0px 20px;
     position: absolute;
     left: 352px;
     /* float: right; */
