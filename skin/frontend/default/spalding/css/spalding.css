@@ -827,7 +827,7 @@ ul.scarch_select_option li:hover{
 .spaldingLogin .loginBox{
     /* max-width: 1492px; */
     /* width: 1650px; */
-    max-width: 1366px;
+    max-width: 1466px;
     margin: 0 auto;
     min-width: 1136px;
     background: url(../images2019/img-product.png) left 73px no-repeat;
@@ -837,10 +837,21 @@ ul.scarch_select_option li:hover{
     /* background: url(../images2019/20141209004.png) left 212px no-repeat; */
     /* background-size: 50%; */
 }
+@media screen and (max-width: 1680px){
+    .spaldingLogin .loginBox{
+        max-width: 1444px;
+    }
+}
+@media screen and (min-width: 1366px) and (max-width: 1440px){
+    .spaldingLogin .loginBox{
+        max-width: 1316px;
+    }
+}
 .loginBox .loginBoxWrap{
     /*melone start 修改宽度*/
     /*width:270px;*/
-    width: 433px;
+    width: 399px;
+    /*width: 433px;*/
     /*width: 346px;*/
     /*melone end 修改宽度*/
     float: right;
@@ -1103,7 +1114,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     line-height: 1.4em;
     margin: 0px 0px 20px;
     position: absolute;
-    left: 314px;
+    left: 352px;
     /* float: right; */
 }
 
@@ -2218,7 +2229,7 @@ h2.product-collateral-box-nam{
 
 .product-collateral-box-img{
     /*max-width:960px;*/
-    /*max-width:1140px;*/
+    max-width:1140px;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -2235,7 +2246,8 @@ h2.product-collateral-box-nam{
 .product-collateral-box-img.box-image{
     display: inline;
     /*margin-right: 14px;*/
-    margin-right: 16px;
+    margin-right: 13px;
+    /*margin-right: 16px;*/
 }
 .product-collateral-box-img.box-image img{
     margin-top: 16px;
