@@ -820,19 +820,20 @@ ul.scarch_select_option li:hover{
 
 .spaldingLogin{
     position: relative;
-    top: 110px;
+    top: 92px;
+    background: url(../images2019/20141209004-1.png) center 0px no-repeat;
 }
 
 .spaldingLogin .loginBox{
-    /*max-width: 1492px; */
+    /* max-width: 1492px; */
     /* width: 1650px; */
-     max-width: 1366px;
+    max-width: 1366px;
     margin: 0 auto;
     min-width: 1136px;
-    background: url(../images2019/img-product.png) left 140px no-repeat;
+    background: url(../images2019/img-product.png) left 73px no-repeat;
     /* margin-left: -72px; */
-    /*position: relative;*/
-    /*z-index: 999999999;*/
+    /* position: relative; */
+    /* z-index: 999999999; */
     /* background: url(../images2019/20141209004.png) left 212px no-repeat; */
     /* background-size: 50%; */
 }
@@ -1100,11 +1101,10 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .loginBottom{
     font-size: 12px;
     line-height: 1.4em;
-    margin: 59px 0px 20px;
+    margin: 0px 0px 20px;
     position: absolute;
-    left: 230px;
-    /*欢迎访问斯伯丁中国*/
-    /*float: right;*/
+    left: 314px;
+    /* float: right; */
 }
 
 /*注册*/
