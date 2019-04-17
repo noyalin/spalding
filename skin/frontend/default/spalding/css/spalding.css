@@ -819,9 +819,16 @@ ul.scarch_select_option li:hover{
 }
 
 .spaldingLogin{
+    /*!*position: relative;*!*/
+    /*background: url(../images2019/20141209004-1.png) center center no-repeat;*/
+    /*!*background-size: 100% 100%;*!*/
     position: relative;
-    background: url(../images2019/20141209004-1.png) center 0px no-repeat;
-    background-size: 100% 100%;
+    z-index: 0;
+}
+.spaldingLogin img{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
 }
 
 .spaldingLogin .loginBox{
