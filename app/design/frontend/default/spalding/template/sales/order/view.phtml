@@ -69,8 +69,8 @@
     $address = Mage :: getModel('sales/order_address')->load($_order->getBillingAddress()->getId());
     $oneLineAddress = $address->format('oneline');
     ?>
-     <div class="col-main" style="width: 700px;">
-        <div class="my-account" style="width: 700px;">
+     <div class="col-main" style="width: 900px;">
+        <div class="my-account" style="width: 900px;">
             <div class="page-title" style="margin-top: 60px;">订单详情</div>
             <div class="order-infs">
                 <p><span>编号：</span><?php echo $_order->getRealOrderId() ?></p>

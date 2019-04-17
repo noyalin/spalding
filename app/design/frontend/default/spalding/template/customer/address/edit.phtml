@@ -42,7 +42,7 @@
 <?php endif; ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate" onsubmit="return checkInput();">
-    <div class="fieldset" style="width: 700px">
+    <div class="fieldset" style="width: 900px">
         <?php echo $this->getBlockHtml('formkey')?>
         <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
         <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
@@ -142,7 +142,7 @@
             <li class="fields clearfix">
                 <div class="field">
                     <label class="required ms-fl" for="">设为默认<span>&nbsp;&nbsp;&nbsp;&nbsp;</span></label>
-                    <div class="input-box ms-fl">
+                    <div class="input-box ms-fl" style="height: 28px;line-height: 28px;">
                         <?php if($this->isDefaultBilling() || $this->getCustomerAddressCount() < 1 ): ?>
                             <input type="hidden" name="default_billing" value="1" />
                             <strong><?php echo $this->__('Default Billing Address') ?></strong>
