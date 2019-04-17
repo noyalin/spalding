@@ -2234,15 +2234,15 @@ h2.product-collateral-box-nam{
 
 .product-collateral-box-img.box-image{
     display: inline;
+    /*margin-right: 14px;*/
     margin-right: 16px;
-
 }
 .product-collateral-box-img.box-image img{
     margin-top: 16px;
     /*width: 48%;*/
     /*max-width: 49%;*/
-    max-width: 549px;
-    /*max-width: 562px;*/
+    /*max-width: 549px;*/
+    max-width: 562px;
 }
 @media screen and (min-width: 1700px) and (max-width: 1913px){
     .product-collateral{

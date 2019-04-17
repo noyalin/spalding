@@ -83,8 +83,8 @@ else:
           $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
           $productNorm = $configurableProduct->getProductNorm();
           if($productNorm == 6){
-              // melone 修改url加上2019-
-              $scen7 ='/is/image/sneakerhead/2019-spalding_lqxq_small_';
+              // melone 修改url加上  2019-PC-spalding_lqxq_small_改为PC-spalding_lqxq_small_
+              $scen7 ='/is/image/sneakerhead/PC-spalding_lqxq_small_';
           }else {
               // melone 修改url加上2019-
               $scen7 = '/is/image/sneakerhead/PC-spalding_lqxq_big_';
@@ -128,7 +128,7 @@ else:
                                     alt=""/>
                               </div>
                             <!--产品展示-->
-                            <div class="product-collateral-box-img">
+                            <div class="product-collateral-box-img box-img">
                             <!-- melone 修改图片-->
                             <!--篮球产品展示图片 s-->
                                 <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">-->
@@ -172,8 +172,8 @@ else:
                                             . '&$images=sneakerhead/'.$urlkey . '-1'?>"
                                         alt=""/>
                                 </div>
-   <!--产品展示-->
-                            <div class="product-collateral-box-img">
+                             <!--产品展示-->
+                            <div class="product-collateral-box-img box-img">
                             <!-- melone 修改图片-->
                             <!--足球的产品展示图片 s-->
                                 <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">-->
@@ -216,7 +216,7 @@ else:
                               <!--alt=""/>-->
                               <!--</div>-->
                               <!--产品展示-->
-                              <div class="product-collateral-box-img">
+                              <div class="product-collateral-box-img box-img">
                               <!-- melone 修改图片-->
                               <!--服饰、配件、篮球架产品展示图 s-->
                                   <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title2.jpg") ?>' alt="">-->
@@ -271,7 +271,7 @@ else:
                                     <?php } ?>
 
                                 <!--细节展示-->
-                                <div class="product-collateral-box-img  box-image">
+                                <div class="product-collateral-box-img box-img">
                                 <!-- melone 修改图片   衣服的细节展示图片-->
                                     <!--<img src='<?php echo $this->getSkinUrl("images2019/detailinfo/title3.jpg") ?>' alt="">-->
                                     <!--spalding_fsxq_detail  PC-spalding_fsxq_detail3改为 spalding_1242_620 改为spd-1140x620-->
