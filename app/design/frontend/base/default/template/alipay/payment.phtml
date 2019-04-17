@@ -130,8 +130,7 @@ foreach ($_items as $_item){
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
         <?php if ($_flag): ?>
         <?php $customMsg = Mage::getModel('custommade/info')->loadByIncrementId($_order->getRealOrderId()) ?>
-        <!--melone 添加margin: 0 605px;-->
-        <div style="color:#847450;padding:10px;font-size:12px;border:1px solid #999;margin: 0 605px;">
+        <div style="color:#847450;padding:10px;font-size:12px;border:1px solid #999;">
             定制一：
             <?php
                        	if($customMsg->getTypeP1() == 1):
@@ -157,8 +156,7 @@ foreach ($_items as $_item){
                     	endif;
                     ?>
         </div>
-        <!--melone 添加margin: 0 605px;-->
-         <div class="productsListRow" style="color:#847450;padding:10px;font-size:12px;border:1px solid #999;border-top:0;margin: 0 605px;">
+         <div class="productsListRow" style="color:#847450;padding:10px;font-size:12px;border:1px solid #999;border-top:0;">
             定制二：
             <?php
                        	if($customMsg->getTypeP2() == 1):
@@ -267,7 +265,8 @@ foreach ($_items as $_item){
         <div class="payPopBack"><a href="<?php echo $this->getUrl('sales/order/history/') ?>">暂不付款</a></div>
     </div>
         <?php endif; ?>
-    <div class="box">
+        <!--melone 添加width-->
+    <div class="box" style="width: 868px;">
         <p>点击选择银行<span style="color: #FD5419;"><strong>(信用卡或者网银)</strong></span>前往付款：</p>
 
         <ul>

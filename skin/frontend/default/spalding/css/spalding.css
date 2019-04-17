@@ -1230,7 +1230,7 @@ div.regTit{
 div.regTit img{
     margin-top: 30px;
     border-bottom: 5px solid #02295c;
-    padding: 0 40px 10px 0;
+    padding: 0 0 10px 0;
 }
 
 .regTitRight{
@@ -1238,7 +1238,7 @@ div.regTit img{
     /*margin-left: 220px;*/
     padding-bottom:6px;
     border-bottom: 5px solid #02295c;
-    width: 800px;
+    width: 900px;
 }
 /*melone end 修改左边距*/
 
@@ -1299,7 +1299,7 @@ div.regTit span a:hover{
 
 /*melone start 增加底线*/
 .regBoxSplit{
-    width: 800px;
+    width: 900px;
     border-bottom: 1px solid #d3c8a0;
     margin: 37px 0 37px 0;
 }
@@ -1308,7 +1308,7 @@ div.regTit span a:hover{
 .regBox span>input.regBoxInp{
     /*melone start 修改宽度*/
     /*width:260px;*/
-    width: 660px;
+    width: 760px;
     /*melone end 修改宽度*/
     height:26px;
     padding:2px 10px;
@@ -1333,8 +1333,8 @@ div.regTit span a:hover{
 }
 
 .regRuls{
-    min-width: 776px;
-    max-width: 776px;
+    min-width: 876px;
+    max-width: 876px;
     min-height: 240px;
     max-height: 240px;
     padding:10px;
@@ -2414,7 +2414,7 @@ h2.product-collateral-box-nam{
 .block-title-cus img{
 
     /*melone start 修改边距*/
-    padding: 0 40px 10px 0;
+    padding: 0 0 10px 0;
     margin-left: 2px;
     /*melone end 修改边距*/
 
@@ -2701,7 +2701,7 @@ h2.product-collateral-box-nam{
 
     /*melone start 添加边框 修改长度*/
     border: 1px solid #847450;
-    width: 658px;
+    width: 858px;
     /*melone end 添加边框 修改长度*/
 }
 .box-content{
@@ -2806,7 +2806,7 @@ ul.form-list li label{
 
 ul.form-list li input[type="text"]{
     /*melone start 修改文本框长度*/
-    width:583px;
+    width:783px;
     /*melone end 修改文本框长度*/
     height:28px;
     padding:0 5px;
@@ -2905,13 +2905,13 @@ ul.form-list li p{
 .addresses-list .addresses-primary ol li{
     /*melone start 修改文本框宽度*/
     /*width:650px;*/
-    width: 678px;
+    width: 870px;
     /*melone end 修改文本框宽度*/
     height:37px;
     line-height: 37px;
     /*melone start 修改文本框*/
     /*padding:0 15px;*/
-    padding: 0 10px;
+    padding: 0 14px;
     border: 1px solid #847450;
     /*melone end 修改文本框*/
     /*melone start 修改背景颜色*/
@@ -2969,7 +2969,7 @@ ul.form-list li p{
     /*color:#fff;*/
     font-size: 12px;
     font-weight: bold;
-    width: 680px;
+    width: 880px;
 }
 
 .order_data .order_data_tit span{
@@ -2981,41 +2981,41 @@ ul.form-list li p{
 
 
 .order_data .order_data_tit span.order_data_tit_nam{
-    width:300px;
+    /*width:300px;*/
     text-align: left;
 }
 
 .order_data .order_data_tit span.order_data_tit_priceP{
     /*width:70px;*/
-    width: 65px;
+    /*width: 65px;*/
 }
 
 
 .order_data .order_data_tit span.order_data_tit_num{
     /*width:50px;*/
-    width: 40px;
+    /*width: 40px;*/
 }
 
 .order_data .order_data_tit span.order_data_tit_state{
     /*width:80px;*/
-    width: 100px;
+    /*width: 100px;*/
 }
 
 .order_data .order_data_tit span.order_ifts_tit_state{
-    width:150px;
+    /*width:150px;*/
 }
 
 .order_data .order_data_tit span.order_data_tit_priceO{
     /*width:70px;*/
-    width: 65px;
+    /*width: 65px;*/
 }
 
 .order_data .order_data_tit span.order_data_tit_fun{
-    width:80px;
+    /*width:80px;*/
 }
 .order_data ul.order_data_list{
     /*melone start 修改长度*/
-    width: 700px;
+    width: 900px;
     /*melone end 修改长度*/
 }
 
@@ -3148,7 +3148,8 @@ ul.form-list li p{
 }
 
 .order_data ul.order_data_list li>span.order_data_list_fun{
-    width:80px;
+    /*width:80px;*/
+    width: 60px;
     /*height: 54px;*/
     margin-top: 15px;
 }
@@ -3227,7 +3228,7 @@ ul.form-list li p{
 .orderPrice{
     /*melone start 修改边距*/
     text-align: right;
-    width: 700px;
+    width: 900px;
     /*melone end 修改边距*/
     margin-top:50px;
     font-size: 28px;
@@ -3333,7 +3334,7 @@ ul.form-list li p{
     /*melone end 增加高度*/
     /*melone start 调整边距*/
     /*text-align: center;*/
-    width: 700px;
+    width: 900px;
     /*melone start 修改居中*/
     /*text-align: right;*/
     text-align: center;
