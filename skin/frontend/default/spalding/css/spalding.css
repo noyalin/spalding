@@ -1573,13 +1573,16 @@ button.rulAgree{
 }
 @media screen and (max-width: 1278px){
     .products-grid li.item{
-        margin:10px 5px;
+        margin:10px -1px;
     }
     .proListFunLine{
-        width: 939px;
+        width: 917px;
     }
     .toolbar.clearfix{
-        width: 938px;
+        width: 900px;
+    }
+    .block-layered-nav{
+        margin-right:40px;
     }
 }
 .sorter{
@@ -5074,7 +5077,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     font-size: 14px;
     color:#847450;
     /*color:#ffb900;*/
-    background: #D4C89E;
+    background: #eaecef;
+    /*background: #D4C89E;*/
     /*background: #24221a;*/
     margin-left:20px;
     width:105px;
