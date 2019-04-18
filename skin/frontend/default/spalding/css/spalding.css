@@ -824,6 +824,8 @@ ul.scarch_select_option li:hover{
     /*!*background-size: 100% 100%;*!*/
     position: relative;
     z-index: 0;
+    /*background-size: contain;*/
+    width: 100%;
 }
 .spaldingLogin img{
     /*width: 100%;*/
@@ -841,16 +843,6 @@ ul.scarch_select_option li:hover{
     /* margin-left: -72px; */
     /* background: url(../images2019/20141209004.png) left 212px no-repeat; */
     /* background-size: 50%; */
-}
-@media screen and (max-width: 1680px){
-    .spaldingLogin .loginBox{
-        max-width: 1444px;
-    }
-}
-@media screen and (min-width: 1366px) and (max-width: 1440px){
-    .spaldingLogin .loginBox{
-        max-width: 1316px;
-    }
 }
 .loginBox .loginBoxWrap{
     /*melone start 修改宽度*/
@@ -872,6 +864,7 @@ ul.scarch_select_option li:hover{
     /*margin-top:130px;*/
     /*melone end 修改离顶部的距离*/
     /*min-height: 912px;*/
+    min-height:737px;
 }
 .requiredemail{
     font-size: 16px;
@@ -1126,6 +1119,34 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     position: absolute;
     left: 290px;
     /* float: right; */
+}
+@media screen and (min-width: 1440px) and (max-width: 1606px){
+    .header_nav {
+        margin: 40px 74px;
+    }
+    .spaldingLogin {
+        background-size: contain;
+        width: 100%;
+    }
+    .loginMain{
+        min-height: 652px;
+    }
+}
+@media screen and  (max-width: 1366px){
+    .spaldingLogin {
+        background-size: contain;
+        width: 100%;
+        /*min-width: 1136px;*/
+    }
+    .header_nav {
+        margin: 6px 74px;
+    }
+    #login-form {
+        height: 535px;
+    }
+    .loginMain{
+        min-height: 832px;
+    }
 }
 
 /*注册*/
@@ -2020,7 +2041,8 @@ span.spCarTit_fun{
 .product-essential{
     /*padding:40px 20px 20px;*/
     padding:0px 20px 20px;
-    margin-right: 81px;
+    margin-right: 78px;
+    /*margin-right: 81px;*/
 }
 
 /*详情页 放大图*/
@@ -2243,7 +2265,9 @@ h2.product-collateral-box-nam{
     text-align: center;
     margin-bottom: 10px;
 }
-
+.product-collateral-box-img.box-img{
+    margin-bottom: 0px;
+}
 .product-collateral-box-img.box-img img{
     /*width:100%;*/
     /*melone start 去掉图片间的空隙*/
@@ -2257,7 +2281,8 @@ h2.product-collateral-box-nam{
     display: inline;
 }
 .product-collateral-box-img.box-image img{
-    margin-top: 16px;
+    margin-top: 12px;
+    /*margin-top: 16px;*/
     /*max-width: 49%;*/
     max-width: 562px;
     margin-right: 10px;
@@ -2289,6 +2314,7 @@ h2.product-collateral-box-nam{
         /*width: 788px;*/
     }
 }
+
 @media screen and (min-width: 1366px) and (max-width: 1700px){
     .product-collateral{
         margin-left: 55px;
@@ -2297,7 +2323,8 @@ h2.product-collateral-box-nam{
 
     .product-essential{
         padding: 0 0 20px;
-        margin-right:0px;
+        margin-right:3px;
+        /*margin-right:0px;*/
     }
     .product-view{
         width: 1610px;
@@ -2324,7 +2351,8 @@ h2.product-collateral-box-nam{
 
     .product-essential{
         padding: 0 0 20px;
-        margin-right:0px;
+        /*margin-right:0px;*/
+        margin-left: 17px;
     }
     .product-view{
         width: 1610px;
@@ -2372,17 +2400,30 @@ h2.product-collateral-box-nam{
 .productArgs{
     /*margin:10px 35px;*/
     /*width: 510px;*/
-    width: 1600px;
-
+    /*width: 1600px;*/
+    width: 1607px;
+}
+@media screen and (width: 1680px){
+    .productArgs{
+        width: 1553px;
+    }
 }
 @media screen  and (max-width: 1620px){
     .productArgs{
         width: calc(100% - 20px);
-        /*width: 1410px;*/
-        /*margin: 0 auto;*/
     }
     .productSaw ul li{
         margin: 10px 3px;
+    }
+}
+@media screen and (max-width: 1440px){
+    .productArgs {
+        width: calc(100% - 100px);
+    }
+}
+@media screen and (width: 1366px){
+    .productArgs {
+        width: calc(100% - 118px);
     }
 }
 .productSaw ul li span{
