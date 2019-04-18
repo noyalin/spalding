@@ -1134,7 +1134,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 @media screen and  (max-width: 1366px){
     .spaldingLogin {
-        background-size: contain;
+        /*background-size: contain;*/
         width: 100%;
         /*min-width: 1136px;*/
     }
