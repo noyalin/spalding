@@ -2566,13 +2566,55 @@ h2.product-collateral-box-nam{
     min-height: 570px;
     /*background-color: #D4C89E;*/
 }
+.main-container .content .auth-img{
+     max-width: 100%;
+     margin-top: 18px;
+ }
+.main-container .content22 .auth-img{
+    max-width: 100%;
+    display: block;
+    margin: 6px auto;
+}
+.auth-img{
+    position: relative;
+}
+.button-1{
+    position: absolute;
+    /*bottom: 8%;*/
+    right: 58.4%;
+}
+.button-2{
+    position: absolute;
+    /*bottom: 8%;*/
+    right: 33.5%;
+}
+.activeBarCode, .activeVerifyCode{
+    margin-left: 543px;
+}
+@media screen  and (max-width: 1366px){
+    .button-1 {
+        right: 61.4%;
+    }
+    .button-2 {
+        right: 27.3%;
+    }
+    .security_auth{
+        margin-top: 55px;
+    }
+    .activeBarCode, .activeVerifyCode{
+        margin-left: 249px;
+    }
+}
 .main-container22{
     /*width:1204px;*/
     /*padding:10px 20px;*/
-    width: 1506px;
-    margin:0 auto;
-    color:#847450;
-    min-height: 500px;
+    /*width: 1506px;*/
+    /*margin:0 auto;*/
+    /*color:#847450;*/
+    min-height: 746px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    color: #fff;
 }
 
 
@@ -2670,13 +2712,13 @@ h2.product-collateral-box-nam{
 }
 
 #step1{
-    background: url(../images2019/authentication/bg2.png) center center no-repeat;
+    background: url(../images201904/authentication/BG.png) center center no-repeat;
 }
 #step22{
-    background: url(../images2019/authentication/bg2.png) center center no-repeat;
+    background: url(../images201904/authentication/BG.png) center center no-repeat;
 }
 #step2{
-    background: url(../images2019/authentication/bg2.png) center center no-repeat;
+    background: url(../images201904/authentication/BG.png) center center no-repeat;
 }
 
 .step2ball{
