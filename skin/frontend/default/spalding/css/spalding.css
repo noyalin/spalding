@@ -1572,9 +1572,6 @@ button.rulAgree{
     background: #ccc;
 }
 @media screen and (max-width: 1278px){
-    .products-grid li.item{
-        margin:10px -1px;
-    }
     .proListFunLine{
         width: 917px;
     }
@@ -1583,6 +1580,22 @@ button.rulAgree{
     }
     .block-layered-nav{
         margin-right:40px;
+    }
+}
+@media screen and (max-width: 1230px){
+    .products-grid li.item{
+        margin:10px 4px;
+    }
+}
+@media screen and (max-width: 1190px){
+    .products-grid li.item{
+        margin:10px -1px;
+    }
+    .toolbar.clearfix {
+        width: 875px;
+    }
+    .proListFunLine {
+        width: 883px;
     }
 }
 .sorter{
