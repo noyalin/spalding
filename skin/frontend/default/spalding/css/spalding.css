@@ -1571,7 +1571,17 @@ button.rulAgree{
     width: 700px;
     background: #ccc;
 }
-
+@media screen and (max-width: 1278px){
+    .products-grid li.item{
+        margin:10px 5px;
+    }
+    .proListFunLine{
+        width: 939px;
+    }
+    .toolbar.clearfix{
+        width: 938px;
+    }
+}
 .sorter{
     font-size: 12px;
     /*margin-top: 6px;*/
@@ -2309,7 +2319,7 @@ h2.product-collateral-box-nam{
         max-width: 48%;
     }
     .product-collateral-box-img.box-img img{
-        max-width: 100%;
+        max-width: 98%;
         margin-right: 22px;
         /*width: 788px;*/
     }
@@ -2569,11 +2579,17 @@ h2.product-collateral-box-nam{
 .main-container .content .auth-img{
      max-width: 100%;
      margin-top: 18px;
+     width: 71.2%;
+     height: 100%;
+    vertical-align: middle;
  }
 .main-container .content22 .auth-img{
     max-width: 100%;
     display: block;
     margin: 6px auto;
+    width: 71.2%;
+    height: 100%;
+    vertical-align: middle;
 }
 .auth-img{
     position: relative;
@@ -2602,7 +2618,7 @@ h2.product-collateral-box-nam{
         margin-top: 55px;
     }
     .activeBarCode, .activeVerifyCode{
-        margin-left: 249px;
+        margin-left: 267px;
     }
 }
 .main-container22{
