@@ -2616,9 +2616,19 @@ h2.product-collateral-box-nam{
     margin: 0 auto;
     color: #fff;
 }
-
-
-
+/*防伪页 对号图*/
+.q_1_true{
+margin-bottom: -5px;
+}
+.q_1_false{
+    margin-bottom: -5px;
+}
+.q_2_true{
+    margin-bottom: -5px;
+}
+.q_2_false{
+    margin-bottom: -5px;
+}
 .block-content{
     margin-top:20px;
     /*melone start 修改左边距离*/
