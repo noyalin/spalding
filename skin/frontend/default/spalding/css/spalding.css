@@ -1155,39 +1155,9 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     .loginSub .loginSubNoAccount {
         width: 219px;
     }
-    /*.loginMain .login_backHome {*/
-        /*height: 40px;*/
-        /*background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 32px 10px no-repeat #00295c;*/
-    /*}*/
-    /*.loginMain .login_backHome a {*/
-        /*line-height: 40px;*/
-    /*}*/
-    /*.loginMain .loginWel {*/
-        /*height: 40px;*/
-        /*background: #02295c;*/
-    /*}*/
-    /*#login-form {*/
-        /*height: 480px;*/
-    /*}*/
-    /*.loginMain{*/
-        /*min-height: 575px;*/
-        /*margin-top: 20px;*/
-    /*}*/
-    /*.spaldingLogin .loginBox {*/
-        /*max-width: 1466px;*/
-    /*}*/
-
-
-    /*.loginOther {*/
-        /*width: 320px;*/
-        /*margin-top: 25px;*/
-    /*}*/
-    /*.loginCode {*/
-        /*margin-top: 18px;*/
-    /*}*/
-    /*.loginSub .loginSubNoAccount {*/
-        /*width: 219px;*/
-    /*}*/
+    .loginSub .loginSubNoAccount{
+        margin-left: 0px;
+    }
 }
 @media screen and  (max-width: 1366px){
     .loginMain .login_backHome {
@@ -1205,7 +1175,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
         height: 480px;
     }
     .loginMain{
-        min-height: 575px;
+        min-height: 572px;
         margin-top: 20px;
     }
     .spaldingLogin .loginBox {
