@@ -2595,9 +2595,9 @@ h2.product-collateral-box-nam{
 .main-container .content .auth-img{
      max-width: 100%;
      margin-top: 18px;
-     width: 71.2%;
+   /*  width: 71.2%;
      height: 100%;
-    vertical-align: middle;
+    vertical-align: middle;*/
  }
 .main-container .content22 .auth-img{
     max-width: 100%;
