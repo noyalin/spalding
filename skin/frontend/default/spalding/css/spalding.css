@@ -1158,6 +1158,9 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     .loginSub .loginSubNoAccount{
         margin-left: 0px;
     }
+    .loginOther {
+        width: 320px;
+    }
 }
 @media screen and  (max-width: 1366px){
     .loginMain .login_backHome {
