@@ -868,8 +868,9 @@ ul.scarch_select_option li:hover{
     /*melone end 修改离顶部的距离*/
     /*min-height: 912px;*/
 
-    min-height:737px;
-    /*margin-top: 100px;*/
+    min-height: 677px;
+    margin-top: 38px;
+    margin-bottom: 122px;
 }
 .requiredemail{
     font-size: 16px;
@@ -880,8 +881,9 @@ ul.scarch_select_option li:hover{
     height: 60px;
     /*height: 50px;*/
     font-size: 12px;
+    background: #00295c;
     text-indent: 20px;
-url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 38px 30px no-repeat #00295c;
+    url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 38px 30px no-repeat;
 }
 
 .loginMain .login_backHome a{
@@ -1121,15 +1123,16 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .loginBottom{
     font-size: 12px;
     line-height: 1.4em;
-    margin: 24px 0px 20px;
+    margin: 82px 0px 20px;
     position: absolute;
-    left: 290px;
+    left: 276px;
     /* float: right; */
 }
 @media screen and (max-width: 1440px){
     .loginMain{
-        min-height: 590px;
-        margin-top: 35px;
+        min-height: 567px;
+        margin-top: 33px;
+        margin-bottom: 25px;
     }
     #login-form {
         height: 485px;
@@ -1147,7 +1150,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     }
     .loginBox .loginBoxWrap {
     width: 371px;
-    margin-right: 191px;
+    margin-right: 164px;
     }
     .loginMain input {
     width: 310px;
@@ -1160,6 +1163,9 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     }
     .loginOther {
         width: 320px;
+    }
+    .loginBottom{
+        margin: -18px 0px 20px;
     }
 }
 @media screen and  (max-width: 1366px){
@@ -2782,7 +2788,7 @@ margin-bottom: -5px;
 .code_area input.valid_check_code{
     width: 638px;
     height: 50px;
-    /*font-size: 24px;*/
+    font-size: 18px;
 }
 .activeBarCode,.activeVerifyCode{
     opacity: 1!important;
@@ -3092,13 +3098,13 @@ margin-bottom: -5px;
     .code_area input.valid_check_code {
         width: 502px;
         height: 39px;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .code_area input.valid_code {
         width: 371px;
         height: 37px;
-        font-size: 14px;
+        font-size: 16px;
     }
     #getCodeNum{
         height: 37px;
