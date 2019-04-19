@@ -2938,13 +2938,13 @@ margin-bottom: -5px;
         right: 33.3%;
     }
     .slide1 {
-        height: 554px;
+        height:552px;
     }
     .main-container{
-        min-height: 525px;
+        min-height: 538px;
     }
     .main-container22{
-        min-height: 525px;
+        min-height: 538px;
     }
     .button12{
         bottom: 84px;
@@ -2983,14 +2983,6 @@ margin-bottom: -5px;
     #cheshi{
         top: -472px;
     }
-
-
-    /*.code_area b {
-        left: 58px;
-        color: #847450;
-        font-size: 13px;
-    }
-*/
     .return_img1 {
         bottom: 46px;
     }
@@ -3010,13 +3002,14 @@ margin-bottom: -5px;
         margin-left: 346px;
     }
     .slide1{
-        height:538px;
+        height:524px;
     }
+
     .main-container{
-        min-height: 495px;
+        min-height: 509px;
     }
     .main-container22{
-        min-height: 495px;
+        min-height: 509px;
     }
     .return_img1 {
         bottom: 46px;
@@ -3028,11 +3021,7 @@ margin-bottom: -5px;
         top: -410px;
     }
     .auth_box {
-        /*position: relative;
-        top: 0;
-        margin-top: -106px;
-        width: 51.9%;
-        max-width: 100%;*/
+
     }
     #step3 .content .content_detail{
         top: -247px;
