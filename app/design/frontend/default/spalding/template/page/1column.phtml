@@ -34,7 +34,15 @@
 <head>
     <?php echo $this->getChildHtml('head') ?>
 </head>
-<body>
+   <script>
+        //窗口大小变化时候，进行刷新页面操作，防止样式混乱
+        var x=window.innerWidth;
+        function resizeFresh(){
+            if(x!=window.innerWidth)
+                location.reload();
+        }
+    </script>
+<body onresize="resizeFresh()">
 <!--<div class="bodyBg"><img alt="" src="--><!--">   </div>-->
 <!--  <?php //echo $this->getSkinUrl("images2019/20141210002.jpg");  ?>  -->
 <div class="bodyBg forgetBg">
