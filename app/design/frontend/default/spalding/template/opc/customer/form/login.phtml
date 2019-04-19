@@ -44,76 +44,86 @@
     }
 ?>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
-    	<?php echo $this->getBlockHtml('formkey'); ?>
-<!--                    <ul class="form-list">--><!--                        <li>-->
-                            <!--<p><label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?><em>*</em></label></p>-->
-                            <p><label for="email" class="required ms-fl" style="font-size: 16px;margin-top: 17px;margin-bottom: 7px;margin-left: -12px;"><?php echo $this->__('Email Address') ?></label></p>
-                            <div class="input-box">
-                                <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="loginInp input-text required-entry validate-email" placeholder="用户名/E-Mail" title="<?php echo $this->__('Email Address') ?>" />
-                            </div>
-<!--                        </li>-->
-<!--                        <li>-->
-                            <p class="clearfix">
-                            <label for="pass" class="required " style="font-size: 16px;margin-top: 17px;margin-bottom: 7px;"><span class="ms-fl" style="margin-left: -12px;"><?php echo $this->__('Password') ?></span></label>
-                            <!--<label for="pass" class="required"><em>*</em><span class="ms-fl"><?php echo $this->__('Password') ?></span></label>-->
-                            <span class="ms-fr"><a href="<?php echo $this->getForgotPasswordUrl() ?>" style="font-size: 16px;">忘记密码</a></span>
-                            </p>
-                            <div class="input-box">
-                                <input type="password" name="login[password]" class="loginInp input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
-                            </div>
-<!--                        </li>-->
-                        <?php echo $this->getChildHtml('persistent.remember.me'); ?>
-<!--                    </ul>-->
+
+           <div class="loginsum">
+                     <!--<div class="login_backHome" style="background: url(<?php echo $this->getSkinUrl("images2019/20141209011.png") ?>) 38px 30px no-repeat #00295c;"><a href="<?php echo $this->getUrl('') ?>">返回首页</a></div>-->
+                     <div class="login_backHome") 38px 30px no-repeat #00295c;"><a href="<?php echo $this->getUrl('') ?>">返回首页</a></div>
+                     <div class="loginWel"><img src='<?php echo $this->getSkinUrl("images2019/20141209012.png") ?>'></div>
+                    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+                  <?php echo $this->getBlockHtml('formkey'); ?>
+                <!--                    <ul class="form-list">--><!--                        <li>-->
+                                    <!--<p><label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?><em>*</em></label></p>-->
+                                    <p><label for="email" class="required ms-fl" style="font-size: 16px;margin-top: 17px;margin-bottom: 7px;margin-left: -12px;"><?php echo $this->__('Email Address') ?></label></p>
+                                    <div class="input-box">
+                                        <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="loginInp input-text required-entry validate-email" placeholder="用户名/E-Mail" title="<?php echo $this->__('Email Address') ?>" />
+                                    </div>
+                <!--                        </li>-->
+                <!--                        <li>-->
+                    <p class="clearfix">
+                    <label for="pass" class="required " style="font-size: 16px;margin-top: 17px;margin-bottom: 7px;"><span class="ms-fl" style="margin-left: -12px;"><?php echo $this->__('Password') ?></span></label>
+                    <!--<label for="pass" class="required"><em>*</em><span class="ms-fl"><?php echo $this->__('Password') ?></span></label>-->
+                    <span class="ms-fr"><a href="<?php echo $this->getForgotPasswordUrl() ?>" style="font-size: 16px;">忘记密码</a></span>
+                    </p>
+                    <div class="input-box">
+                        <input type="password" name="login[password]" class="loginInp input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                    </div>
+                    <!--                        </li>-->
+                    <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+                    <!--                    </ul>-->
                     <div class="loginSub clearfix">
-                            <button type="submit" class="loginSubBtn ms-fl" title="<?php echo $this->__('Login') ?>" name="send" id="send2" style="border: 0;cursor: pointer"><span><span><?php echo $this->__('Login') ?></span></span></button>
-                        <div class="loginSubNoAccount ms-fl">
-                            <span>还没有SPALDING账号？</span>
-                            <span><a onclick="window.location='<?php echo $accountUrl ?>'" style="cursor: pointer">立即注册 >></a></span>
-                        </div>
+                        <button type="submit" class="loginSubBtn ms-fl" title="<?php echo $this->__('Login') ?>" name="send" id="send2" style="border: 0;cursor: pointer"><span><span><?php echo $this->__('Login') ?></span></span></button>
+                    <div class="loginSubNoAccount ms-fl">
+                        <span>还没有SPALDING账号？</span>
+                        <span><a onclick="window.location='<?php echo $accountUrl ?>'" style="cursor: pointer">立即注册 >></a></span>
+                    </div>
                     </div>
                     <div class="loginOther">
-                        联合登录：
+                    联合登录：
 
-                        <a  target="_blank" title="使用QQ登录" class="qq" href="<?php echo $this->getUrl('sns/qq/login'); ?>">
-                        <!-- melone 修改images->images2019 -->
-                            <img style="margin-right: 5px" src='<?php echo $this->getSkinUrl("images2019/20141209013.png") ?>'>QQ登录
-                        </a>
-                        <a  target="_blank" title="使用支付宝登录" class="alipay" href="<?php echo $this->getUrl('sns/alipay/login'); ?>">
-                        <!-- melone 修改images->images2019 -->
-                            <img style="margin-right: 5px" src='<?php echo $this->getSkinUrl("images2019/20141209014.png") ?>'>支付宝登录
-                        </a>
+                    <a  target="_blank" title="使用QQ登录" class="qq" href="<?php echo $this->getUrl('sns/qq/login'); ?>">
+                    <!-- melone 修改images->images2019 -->
+                        <img style="margin-right: 5px" src='<?php echo $this->getSkinUrl("images2019/20141209013.png") ?>'>QQ登录
+                    </a>
+                    <a  target="_blank" title="使用支付宝登录" class="alipay" href="<?php echo $this->getUrl('sns/alipay/login'); ?>">
+                    <!-- melone 修改images->images2019 -->
+                        <img style="margin-right: 5px" src='<?php echo $this->getSkinUrl("images2019/20141209014.png") ?>'>支付宝登录
+                    </a>
                     </div>
                     <div class="loginCode">
-		 				<span>
-		 					<img src='<?php echo $this->getSkinUrl("images/20141208003.jpg") ?>'>
-		 					<br>斯伯丁中国微信
-		 				</span>
-		 				<span>
-		 					<img src='<?php echo $this->getSkinUrl("images/20141208004.jpg") ?>'>
-		 					<br>斯伯丁中国微博
-		 				</span>
+                     <span>
+                         <img src='<?php echo $this->getSkinUrl("images/20141208003.jpg") ?>'>
+                         <br>斯伯丁中国微信
+                     </span>
+                     <span>
+                         <img src='<?php echo $this->getSkinUrl("images/20141208004.jpg") ?>'>
+                         <br>斯伯丁中国微博
+                     </span>
                     </div>
 
                     <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
-<!--                    <p class="required">--><?php //echo $this->__('* Required Fields') ?><!--</p>-->
-        <?php if ($isContextCheckout): ?>
-            <input name="context" type="hidden" value="checkout" />
-        <?php endif; ?>
-    </form>
-    <script type="text/javascript">
-    //<![CDATA[
-        var dataForm = new VarienForm('login-form', true);
-    //]]>
-    </script>
+                    <!--                    <p class="required">--><?php //echo $this->__('* Required Fields') ?><!--</p>-->
+                    <?php if ($isContextCheckout): ?>
+                        <input name="context" type="hidden" value="checkout" />
+                    <?php endif; ?>
+                    </form>
+               <div class="loginBottom">
+                    <p style="margin-left: 0px;padding-top: 0px;">欢迎访问斯伯丁中国！斯伯丁官方商城</p>
+                    <p style="margin-left: 0px;padding-top: 0px;">©2014 SPALDING CHINA </p>
+              </div>
+                    </div>
+<script type="text/javascript">
+//<![CDATA[
+var dataForm = new VarienForm('login-form', true);
+//]]>
+</script>
 <style>
-    .loginOther a:link{
-        /*melone start 修改字体颜色*/
-        /*color: #FFFFFF;*/
-        color: #83744d;
-        /*melone end 修改字体颜色*/
-    }
-    /*.loginOther span a:hover{*/
-        /*color: #fdb905;*/
-    /*}*/
+.loginOther a:link{
+/*melone start 修改字体颜色*/
+/*color: #FFFFFF;*/
+color: #83744d;
+/*melone end 修改字体颜色*/
+}
+/*.loginOther span a:hover{*/
+/*color: #fdb905;*/
+/*}*/
 </style>

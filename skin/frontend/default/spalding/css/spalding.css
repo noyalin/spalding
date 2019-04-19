@@ -822,16 +822,18 @@ ul.scarch_select_option li:hover{
 .spaldingLogin{
     /*!*position: relative;*!*/
     background: url(../images2019/20141209004-1.png) center center no-repeat;
-    /*!*background-size: 100% 100%;*!*/
+    background-size: 100%;
     position: relative;
     z-index: 0;
     /*background-size: contain;*/
     width: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+    height: 100%;
 }
 .spaldingLogin img{
     /*width: 100%;*/
     /*height: 100%;*/
-    /*max-width: 100%;*/
 }
 
 .spaldingLogin .loginBox{
@@ -865,7 +867,9 @@ ul.scarch_select_option li:hover{
     /*margin-top:130px;*/
     /*melone end 修改离顶部的距离*/
     /*min-height: 912px;*/
+
     min-height:737px;
+    /*margin-top: 100px;*/
 }
 .requiredemail{
     font-size: 16px;
@@ -877,6 +881,7 @@ ul.scarch_select_option li:hover{
     /*height: 50px;*/
     font-size: 12px;
     text-indent: 20px;
+url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 38px 30px no-repeat #00295c;
 }
 
 .loginMain .login_backHome a{
@@ -1121,32 +1126,107 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     left: 290px;
     /* float: right; */
 }
-@media screen and (min-width: 1440px) and (max-width: 1606px){
-    .header_nav {
-        margin: 40px 74px;
-    }
-    .spaldingLogin {
-        background-size: contain;
-        width: 100%;
-    }
+@media screen and (max-width: 1440px){
     .loginMain{
-        min-height: 652px;
-    }
-}
-@media screen and  (max-width: 1366px){
-    .spaldingLogin {
-        /*background-size: contain;*/
-        width: 100%;
-        /*min-width: 1136px;*/
-    }
-    .header_nav {
-        margin: 6px 74px;
+        min-height: 590px;
+        margin-top: 35px;
     }
     #login-form {
-        height: 535px;
+        height: 485px;
+    }
+    .loginMain .login_backHome {
+    height: 40px;
+    background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 32px 10px no-repeat #00295c;
+    }
+    .loginMain .login_backHome a {
+    line-height: 40px;
+    }
+    .loginMain .loginWel {
+    height: 40px;
+    background: #02295c;
+    }
+    .loginBox .loginBoxWrap {
+    width: 371px;
+    margin-right: 191px;
+    }
+    .loginMain input {
+    width: 310px;
+    }
+    .loginSub .loginSubNoAccount {
+        width: 219px;
+    }
+    /*.loginMain .login_backHome {*/
+        /*height: 40px;*/
+        /*background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 32px 10px no-repeat #00295c;*/
+    /*}*/
+    /*.loginMain .login_backHome a {*/
+        /*line-height: 40px;*/
+    /*}*/
+    /*.loginMain .loginWel {*/
+        /*height: 40px;*/
+        /*background: #02295c;*/
+    /*}*/
+    /*#login-form {*/
+        /*height: 480px;*/
+    /*}*/
+    /*.loginMain{*/
+        /*min-height: 575px;*/
+        /*margin-top: 20px;*/
+    /*}*/
+    /*.spaldingLogin .loginBox {*/
+        /*max-width: 1466px;*/
+    /*}*/
+
+
+    /*.loginOther {*/
+        /*width: 320px;*/
+        /*margin-top: 25px;*/
+    /*}*/
+    /*.loginCode {*/
+        /*margin-top: 18px;*/
+    /*}*/
+    /*.loginSub .loginSubNoAccount {*/
+        /*width: 219px;*/
+    /*}*/
+}
+@media screen and  (max-width: 1366px){
+    .loginMain .login_backHome {
+        height: 40px;
+        background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 32px 10px no-repeat #00295c;
+    }
+    .loginMain .login_backHome a {
+        line-height: 40px;
+    }
+    .loginMain .loginWel {
+        height: 40px;
+        background: #02295c;
+    }
+    #login-form {
+        height: 480px;
     }
     .loginMain{
-        min-height: 832px;
+        min-height: 575px;
+        margin-top: 20px;
+    }
+    .spaldingLogin .loginBox {
+        max-width: 1466px;
+    }
+    .loginBox .loginBoxWrap {
+        width: 371px;
+        margin-right: 191px;
+    }
+    .loginMain input {
+        width: 310px;
+    }
+    .loginOther {
+        width: 320px;
+        margin-top: 25px;
+    }
+    .loginCode {
+        margin-top: 18px;
+    }
+    .loginSub .loginSubNoAccount {
+        width: 219px;
     }
 }
 
@@ -2844,19 +2924,19 @@ margin-bottom: -5px;
     background: url(../images201904/authentication/img-auth-3.png) center center no-repeat;
 }*/
 
-.step2ball{
-    position: relative;
-    bottom: 906px;
-    width: 1366px;
-    margin: 0 auto;
-    height: 737px;
-}
-.step22img img{
-    display: flex;
-    margin: 0 auto;
-    padding-top: 65px;
-    padding-bottom: 51px;
-}
+/*.step2ball{*/
+    /*position: relative;*/
+    /*bottom: 906px;*/
+    /*width: 1366px;*/
+    /*margin: 0 auto;*/
+    /*height: 737px;*/
+/*}*/
+/*.step22img img{*/
+    /*display: flex;*/
+    /*margin: 0 auto;*/
+    /*padding-top: 65px;*/
+    /*padding-bottom: 51px;*/
+/*}*/
 .box-head{
     /*melone start 去掉字体颜色*/
     /*color:#fdb905;*/

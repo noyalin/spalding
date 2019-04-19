@@ -113,7 +113,7 @@
 
 <!--            <span class="order_data_list_priceP">--><?php //echo $_order->formatPrice($_order->getGrandTotal()) ?><!--</span>-->
             <!--melone 增加 style="margin-left: ;"-->
-            <span class="order_data_list_priceP" style="margin-left: 85px;"><?php echo $_item->getPrice() ?></span>
+            <span class="order_data_list_priceP" style="margin-left: 85px;"><?php echo number_format($_item->getPrice(), 2) ?></span>
             <span class="order_data_list_num" style="margin-left: 50px;"><?php echo $preitemcount;?></span>
             <span class="order_data_list_state lisStat_lineHeight" style="margin-left: 35px;"><?php echo $_order->getStatusLabel() ?></span>
             <span class="order_data_list_priceO" style="margin-left: 36px;"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></span>
