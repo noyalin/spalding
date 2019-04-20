@@ -658,27 +658,53 @@ else:
                         {
                             var s = document.body.scrollTop || document.documentElement.scrollTop;
                             if(imgId1.style.display=="block" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H){
-                                distanceFixed.style = "position:fixed;top:0;width:408px;";
+                                //distanceFixed.style = "position:fixed;top:0;width:408px;";
+                                jQuery(distanceFixed).css('position','fixed');
+                                jQuery(distanceFixed).css('top','0px');
+                                jQuery(distanceFixed).css('width','408px');
                                  if(s >H1-900){
-                                     distanceFixed.style = "position:absolute;bottom: 55px;width:408px";
+                                     //distanceFixed.style = "position:absolute;bottom: 55px;width:408px";
+                                      jQuery(distanceFixed).css('position','absolute');
+                                      jQuery(distanceFixed).css('bottom','55px');
+                                      jQuery(distanceFixed).css('width','408px');
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H){
-                                 distanceFixed.style = "position:fixed;top:0;width:408px;";
+                                // distanceFixed.style = "position:fixed;top:0;width:408px;";
+                                 jQuery(distanceFixed).css('position','fixed');
+                                jQuery(distanceFixed).css('top','0px');
+                                jQuery(distanceFixed).css('width','408px');
                                   if(s >H1-1500){
-                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px";
+                                     //distanceFixed.style = "position:absolute;bottom: 0px;width:408px";
+                                      jQuery(distanceFixed).css('position','absolute');
+                                      jQuery(distanceFixed).css('bottom','0px');
+                                      jQuery(distanceFixed).css('width','408px');
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H){
-                                 distanceFixed.style = "position:fixed;top:0;width:408px;";
+                                 //distanceFixed.style = "position:fixed;top:0;width:408px;";
+                                 jQuery(distanceFixed).css('position','fixed');
+                                 jQuery(distanceFixed).css('top','0px');
+                                 jQuery(distanceFixed).css('width','408px');
                                    if(s >H1-1500){
-                                     distanceFixed.style = "position:absolute;bottom: 0px;width:408px";
+                                     //distanceFixed.style = "position:absolute;bottom: 0px;width:408px";
+                                      jQuery(distanceFixed).css('position','absolute');
+                                      jQuery(distanceFixed).css('bottom','0px');
+                                      jQuery(distanceFixed).css('width','408px');
                                 }
                             }else if(imgId1.style.display=="none" && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H) {
-                                distanceFixed.style = "position:fixed;top:0px;width:408px;";
+                                // distanceFixed.style = "position:fixed;top:0px;width:408px;";
+                                jQuery(distanceFixed).css('position','fixed');
+                                jQuery(distanceFixed).css('top','0px');
+                                jQuery(distanceFixed).css('width','408px');
                                 if(s >H1-620){
-                                     distanceFixed.style = "position:absolute;bottom: 40px;width:408px;";
+                                     // distanceFixed.style = "position:absolute;bottom: 40px;width:408px;";
+                                jQuery(distanceFixed).css('position','absolute');
+                                jQuery(distanceFixed).css('bottom','40px');
+                                jQuery(distanceFixed).css('width','408px');
                                 }
                             } else{
-                                distanceFixed.style = "position:relative;width:408px;";
+                                //distanceFixed.style = "position:relative;width:408px;";
+                                jQuery(distanceFixed).css('position','relative');
+                                jQuery(distanceFixed).css('width','408px');
                             }
                         }
                 }
