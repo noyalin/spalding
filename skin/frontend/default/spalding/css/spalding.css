@@ -1124,10 +1124,19 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .loginBottom{
     font-size: 12px;
     line-height: 1.4em;
-    margin: 82px 0px 20px;
+    /*margin: 82px 0px 20px;*/
     position: absolute;
-    left: 276px;
+    margin: 39px 0px 20px;
+    left: -353px;
+    /*left: 276px;*/
     /* float: right; */
+}
+@media screen and  (max-width: 1870px){
+    .loginBottom{
+        left: 224px;
+        bottom: -12px;
+        margin: 0;
+    }
 }
 @media screen and  (max-width: 1520px){
     .loginCode{
@@ -2629,7 +2638,7 @@ div.slide-group{
 #return{
     position: relative;
     z-index: 1;
-    top: -353px;
+    top: -325px;
 }
 #cheshi{
     position: relative;
@@ -2936,13 +2945,21 @@ margin-bottom: -5px;
 .box-content p span{
     display: inline-block;
 }
-@media screen and (min-width: 1136px) and (max-width: 1870px){
+
+@media screen and (max-width: 1878px){
+    .button12 {
+        bottom: 111px;
+    }
+    #return {
+        top: -286px;
+    }
+}
+
+@media screen and (min-width: 1136px) and (max-width: 1770px){
     #step3 .content .content_detail{
         top: -230px;
     }
-    .security_auth{
-        margin-top: 3%;
-    }
+
     .code_area input.valid_check_code {
         width: 519px;
         height: 41px;
@@ -2954,15 +2971,65 @@ margin-bottom: -5px;
         font-size: 16px;
     }
     #return {
-        top: -391px;
+        top:-256px;
+    }
+    #cheshi {
+        top: -316px;
     }
     #validResultContent {
         width: 487px;
         margin-left: auto;
         margin-right: auto;
     }
-    .button12{
-        bottom: 76px;
+    .security_auth {
+        bottom: 333px;
+    }
+}
+@media screen and (min-width: 1136px) and (max-width: 1390px){
+    .security_auth {
+        bottom: 273px;
+    }
+    #return {
+        top: -236px;
+    }
+    #cheshi {
+        top: -294px;
+    }
+}
+@media screen and (max-width: 1136px){
+    #return {
+        top: -258px;
+    }
+    #cheshi {
+        top: -419px;
+    }
+    .code_area input.valid_check_code {
+        width: 445px;
+    }
+    .code_area input.valid_code {
+        width: 302px;
+    }
+    .security_auth {
+        bottom: 280px;
+    }
+    .activeBarCode, .activeVerifyCode {
+        margin-left: 284px;
+    }
+    #step3 .content .content_detail{
+        top: -211px;
+    }
+    #step4 .content .content_detail {
+        top: -129px;
+    }
+    .selection_area.position_re p{
+        width: 431px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #step4 h3 {
+        width: 494px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
