@@ -881,9 +881,8 @@ ul.scarch_select_option li:hover{
     height: 60px;
     /*height: 50px;*/
     font-size: 12px;
-    background: #00295c;
     text-indent: 20px;
-    url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 38px 30px no-repeat;
+    background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 38px 30px no-repeat #00295c;
 }
 
 .loginMain .login_backHome a{
