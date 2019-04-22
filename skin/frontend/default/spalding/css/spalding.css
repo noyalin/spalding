@@ -2669,6 +2669,7 @@ div.slide-group{
      /*width: 71.2%;*/
      height: 100%;
     vertical-align: middle;
+    min-width: 1300px;
  }
 .main-container22 .content22 .auth-img{
     max-width: 100%;
