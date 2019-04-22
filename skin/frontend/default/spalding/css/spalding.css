@@ -849,7 +849,7 @@ ul.scarch_select_option li:hover{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 10%;
+    right: 15%;
 }
 .loginBox .loginBoxWrap{
     /*melone start 修改宽度*/
@@ -2960,7 +2960,9 @@ margin-bottom: -5px;
     #step3 .content .content_detail{
         top: -230px;
     }
-
+    .button12 {
+        bottom: 87px;
+    }
     .code_area input.valid_check_code {
         width: 519px;
         height: 41px;
@@ -2972,10 +2974,10 @@ margin-bottom: -5px;
         font-size: 16px;
     }
     #return {
-        top:-256px;
+        top:-279px;
     }
     #cheshi {
-        top: -316px;
+        top: -350px;
     }
     #validResultContent {
         width: 487px;
@@ -2985,13 +2987,16 @@ margin-bottom: -5px;
     .security_auth {
         bottom: 333px;
     }
+    .return_img1 {
+        bottom: 36px;
+    }
 }
 @media screen and (min-width: 1136px) and (max-width: 1390px){
     .security_auth {
         bottom: 273px;
     }
     #return {
-        top: -236px;
+        top: -239px;
     }
     #cheshi {
         top: -294px;
@@ -3001,8 +3006,17 @@ margin-bottom: -5px;
     #return {
         top: -258px;
     }
+    .return_img1 {
+        bottom: 34px;
+    }
+    .button12 {
+        bottom: 87px;
+    }
+    .return_img1 {
+        bottom: 36px;
+    }
     #cheshi {
-        top: -419px;
+        top: -309px;
     }
     .code_area input.valid_check_code {
         width: 445px;
@@ -3011,7 +3025,7 @@ margin-bottom: -5px;
         width: 302px;
     }
     .security_auth {
-        bottom: 280px;
+        bottom: 294px;
     }
     .activeBarCode, .activeVerifyCode {
         margin-left: 284px;
