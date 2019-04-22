@@ -821,7 +821,7 @@ ul.scarch_select_option li:hover{
 
 .spaldingLogin{
     /*!*position: relative;*!*/
-    background: url(../images2019/20141209004-1.png) center center no-repeat;
+    /*background: url(../images2019/20141209004-1.png) center center no-repeat;*/
     background-size: 100%;
     position: relative;
     z-index: 0;
@@ -846,6 +846,10 @@ ul.scarch_select_option li:hover{
     /* margin-left: -72px; */
     /* background: url(../images2019/20141209004.png) left 212px no-repeat; */
     /* background-size: 50%; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
 }
 .loginBox .loginBoxWrap{
     /*melone start 修改宽度*/
@@ -868,9 +872,7 @@ ul.scarch_select_option li:hover{
     /*melone end 修改离顶部的距离*/
     /*min-height: 912px;*/
 
-    min-height: 677px;
-    margin-top: 38px;
-    margin-bottom: 122px;
+    /*min-height: 677px;*/
 }
 .requiredemail{
     font-size: 16px;
@@ -1127,84 +1129,33 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     left: 276px;
     /* float: right; */
 }
-@media screen and (max-width: 1440px){
-    .loginMain{
-        min-height: 567px;
-        margin-top: 33px;
-        margin-bottom: 25px;
+@media screen and  (max-width: 1520px){
+    .loginCode{
+         margin-top: 0;
+         margin-bottom: 0;
     }
-    #login-form {
-        height: 485px;
-    }
-    .loginMain .login_backHome {
-    height: 40px;
-    background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 32px 10px no-repeat #00295c;
-    }
-    .loginMain .login_backHome a {
-    line-height: 40px;
-    }
-    .loginMain .loginWel {
-    height: 40px;
-    background: #02295c;
-    }
-    .loginBox .loginBoxWrap {
-    width: 371px;
-    margin-right: 164px;
-    }
-    .loginMain input {
-    width: 310px;
-    }
-    .loginSub .loginSubNoAccount {
-        width: 219px;
-    }
-    .loginSub .loginSubNoAccount{
-        margin-left: 0px;
-    }
-    .loginOther {
-        width: 320px;
-    }
-    .loginBottom{
-        margin: -18px 0px 20px;
+    #login-form{
+        height: 450px;
     }
 }
-@media screen and  (max-width: 1366px){
-    .loginMain .login_backHome {
-        height: 40px;
-        background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 32px 10px no-repeat #00295c;
+@media screen and  (max-width: 1340px){
+    #login-form{
+        height: 400px;
     }
-    .loginMain .login_backHome a {
+    .loginMain .login_backHome{
+        height: 40px;
+    }
+    .loginMain .login_backHome a{
         line-height: 40px;
     }
-    .loginMain .loginWel {
-        height: 40px;
-        background: #02295c;
+    .loginMain .loginWel{
+        height: 45px;
     }
-    #login-form {
-        height: 480px;
+    .loginMain p{
+        padding-top: 2px;
     }
-    .loginMain{
-        min-height: 572px;
-        margin-top: 20px;
-    }
-    .spaldingLogin .loginBox {
-        max-width: 1466px;
-    }
-    .loginBox .loginBoxWrap {
-        width: 371px;
-        margin-right: 191px;
-    }
-    .loginMain input {
-        width: 310px;
-    }
-    .loginOther {
-        width: 320px;
-        margin-top: 25px;
-    }
-    .loginCode {
-        margin-top: 18px;
-    }
-    .loginSub .loginSubNoAccount {
-        width: 219px;
+    .loginMain .login_backHome{
+        background-position: 38px 12px;
     }
 }
 
@@ -2642,10 +2593,10 @@ h2.product-collateral-box-nam{
     /*height: calc(100vh - 400px);*/
 }
 .slide1 {
-    height:746px;
+    /*height:746px;*/
 }
 div.slide-group{
-   height: 2984px;
+   /*height: 2984px;*/
 }
 .security_auth{
     bottom: 438px;
@@ -2985,33 +2936,12 @@ margin-bottom: -5px;
 .box-content p span{
     display: inline-block;
 }
-@media screen  and (max-width: 1440px){
-    div.slide-group{
-        height: 2212px;
-    }
-    .button-1 {
-        right: 58.4%;
-    }
-    .button-2 {
-        right: 33.3%;
-    }
-    .slide1 {
-        height:552px;
-    }
-    .main-container{
-        min-height: 538px;
-    }
-    .main-container22{
-        min-height: 538px;
-    }
-    .button12{
-        bottom: 84px;
-    }
+@media screen and (min-width: 1136px) and (max-width: 1870px){
     #step3 .content .content_detail{
-        top: -252px;
+        top: -230px;
     }
-   .security_auth{
-        margin-top: 94px;
+    .security_auth{
+        margin-top: 3%;
     }
     .code_area input.valid_check_code {
         width: 519px;
@@ -3021,105 +2951,18 @@ margin-bottom: -5px;
     .code_area input.valid_code {
         width: 373px;
         height: 38px;
-        /*font-size: 20px;*/
         font-size: 16px;
     }
-    .activeBarCode, .activeVerifyCode{
-        margin-left: 372px;
-    }
-     #return {
-        top: -391px;
-    }
-
-     #validResultContent {
-         width: 487px;
-         margin-left: auto;
-         margin-right: auto;
-     }
-
-    #step4 .content .content_detail{
-        top: -170px;
-    }
-    #cheshi{
-        top: -472px;
-    }
-    .return_img1 {
-        bottom: 46px;
-    }
-}
-
-@media screen  and (max-width: 1366px){
-    .button-1 {
-        right: 58.4%;
-    }
-    .button-2 {
-        right: 32.3%;
-    }
-    .security_auth{
-        margin-top: 94px;
-    }
-    .activeBarCode, .activeVerifyCode{
-        margin-left: 346px;
-    }
-    .slide1{
-        height:524px;
-    }
-
-    .main-container{
-        min-height: 509px;
-    }
-    .main-container22{
-        min-height: 509px;
-    }
-    .return_img1 {
-        bottom: 46px;
-    }
-    div.slide-group{
-        height: 2036px;
-    }
     #return {
-        top: -386px;
-    }
-    .auth_box {
-
-    }
-    #step3 .content .content_detail{
-        top: -247px;
-    }
-    .button12{
-        bottom: 94px;
+        top: -391px;
     }
     #validResultContent {
         width: 487px;
         margin-left: auto;
         margin-right: auto;
     }
-    .code_area input.valid_check_code {
-        width: 502px;
-        height: 39px;
-        font-size: 16px;
-    }
-
-    .code_area input.valid_code {
-        width: 371px;
-        height: 37px;
-        font-size: 16px;
-    }
-    #getCodeNum{
-        height: 37px;
-        margin-bottom: 0.4%;
-    }
-    .code_area b {
-        left: 58px;
-        color: #847450;
-        font-size: 13px;
-    }
-    #step4 .content .content_detail{
-        top: -166px;
-    }
-
-    #cheshi{
-        top: -473px;
+    .button12{
+        bottom: 76px;
     }
 }
 
