@@ -44,7 +44,15 @@ $productImageHelper = Mage::helper('product');
     <script src="<?php echo $this->getSkinUrl('js/move.js'); ?>"></script>
 <?php endif; ?>
 </head>
-<body>
+<script>
+    //窗口大小变化时候，进行刷新页面操作，防止样式混乱
+    var x=window.innerWidth;
+    function resizeFre(){
+        if(x!=window.innerWidth)
+            location.reload();
+    }
+</script>
+<body onresize="resizeFre()">
 <?php if ($categoryUrlkey == 'custom-made')://专属定制 ?>
     <!-- <div class="bodyBg"><img src="<?php echo $productImageHelper->getCustomMadeImage('cBg.jpg');  ?>" alt=""></div> -->
     <script src="<?php echo $this->getSkinUrl('js/jQueryRotate.js'); ?>"></script>
