@@ -941,8 +941,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 
 #login-form .input-box {
-    /*height: 60px;*/
-    height: 90px;
+    height: 60px;
 }
 
 .loginMain .validation-advice {
@@ -1121,7 +1120,9 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .loginCode span{
     margin:0 5px;
 }
-
+#clearfixForgotPassword{
+    margin-top: 50px;
+}
 .loginBottom{
     font-size: 12px;
     line-height: 1.4em;
@@ -1147,16 +1148,25 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     #login-form{
         height: 450px;
     }
+    #clearfixForgotPassword{
+        margin-top: 40px;
+    }
+    .loginMain p {
+        padding-top: 3px;
+    }
+    .loginMain .validation-advice{
+        margin-left: 10px;
+    }
 }
 @media screen and  (max-width: 1340px){
     #login-form{
-        height: 400px;
+        height: 444px;
     }
     .loginMain .login_backHome{
-        height: 40px;
+        height: 41px;
     }
     .loginMain .login_backHome a{
-        line-height: 40px;
+        line-height: 41px;
     }
     .loginMain .loginWel{
         height: 45px;
@@ -1166,6 +1176,24 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     }
     .loginMain .login_backHome{
         background-position: 38px 12px;
+    }
+    .loginSub.clearfix {
+        margin-top: -8px;
+    }
+    #clearfixForgotPassword{
+        margin-top: 48px;
+    }
+    .loginOther {
+        margin-top: 14px;
+        padding-bottom: 4px;
+        margin-left: 38px;
+        margin-bottom: 17px;
+    }
+    .loginMain .validation-advice{
+        margin-left: 10px;
+    }
+    .loginBottom{
+        bottom:8px;
     }
 }
 

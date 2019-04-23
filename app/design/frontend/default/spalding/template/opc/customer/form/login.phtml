@@ -55,12 +55,12 @@
                 <!--                    <ul class="form-list">--><!--                        <li>-->
                                     <!--<p><label for="email" class="required ms-fl"><?php echo $this->__('Email Address') ?><em>*</em></label></p>-->
                                     <p><label for="email" class="required ms-fl" style="font-size: 16px;margin-top: 17px;margin-bottom: 7px;margin-left: -12px;"><?php echo $this->__('Email Address') ?></label></p>
-                                    <div class="input-box">
+                                    <div class="input-box" id="input-box-email">
                                         <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="loginInp input-text required-entry validate-email" placeholder="用户名/E-Mail" title="<?php echo $this->__('Email Address') ?>" />
                                     </div>
                 <!--                        </li>-->
                 <!--                        <li>-->
-                    <p class="clearfix">
+                    <p class="clearfix" id="clearfixForgotPassword">
                     <label for="pass" class="required " style="font-size: 16px;margin-top: 17px;margin-bottom: 7px;"><span class="ms-fl" style="margin-left: -12px;"><?php echo $this->__('Password') ?></span></label>
                     <!--<label for="pass" class="required"><em>*</em><span class="ms-fl"><?php echo $this->__('Password') ?></span></label>-->
                     <span class="ms-fr"><a href="<?php echo $this->getForgotPasswordUrl() ?>" style="font-size: 16px;">忘记密码</a></span>
