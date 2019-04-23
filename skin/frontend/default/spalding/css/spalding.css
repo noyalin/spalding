@@ -2319,7 +2319,7 @@ h2.product-collateral-box-nam{
     /*margin-bottom: -4px;*/
     /*melone end 去掉图片间的空隙*/
     /*max-width: 100%;*/
-    max-width: 1140px;
+    width: 1140px;
 }
 
 .product-collateral-box-img.box-image{
