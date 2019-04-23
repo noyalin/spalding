@@ -64,13 +64,13 @@ if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 70){
 }else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 76){
     echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_stands')->toHtml();
 }else{
-    if($_category && $_category->getUrlKey() == 'custom-made'):
+    if(stristr($_SERVER['REDIRECT_URL'], 'custom-made.html')):
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_made')->toHtml();
     //定制球衣确认预留
-    elseif($_category && $_category->getUrlKey() == 'custom-clothes'):
+    elseif(stristr($_SERVER['REDIRECT_URL'], 'custom-clothes.html')):
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_clothes')->toHtml();
     // 训练器材
-    elseif($_category && $_category->getUrlKey() == 'trainingseries'):
+    elseif(stristr($_SERVER['REDIRECT_URL'], 'trainingseries.html')):
         echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_trainingseries')->toHtml();
     //斯伯丁商城
     else:
