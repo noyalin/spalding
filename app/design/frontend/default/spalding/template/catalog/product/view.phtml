@@ -415,7 +415,7 @@ for($i=0;$i<$num;$i++){
          </div>
          <div class="product-collateral-box-img" style="position: relative;width: 408px;">
          <!-- melone 修改图片-->
-             <img class="hideShowa1" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0" style="margin-top: 20px">
+             <img class="hideShowa1" id="servicehide" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0" style="margin-top: 20px">
          </div>
      <!--</div>-->
      <!--</div>-->
@@ -477,7 +477,7 @@ for($i=0;$i<$num;$i++){
                          </div>
                          <div class="product-collateral-box-img" style="position: relative;width: 408px;">
                              <!-- melone 修改图片-->
-                                 <img class="hideShowa1" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0" style="margin-top: 20px">
+                                 <img id="servicehide" class="hideShowa1" src="<?php echo $this->getSkinUrl('images2019/detailinfo/service-2.jpg');?>" border="0" style="margin-top: 20px">
                              </div>
                          <!--</div>-->
                          <!--</div>-->
@@ -487,6 +487,7 @@ for($i=0;$i<$num;$i++){
 
 
     <script type="text/javascript">
+
     var imgId1=document.getElementById("hideShows");
     var imgIdDown1=document.getElementById("hideShowsDown");
     var imgIdUp1=document.getElementById("hideShowsUp");
@@ -634,8 +635,19 @@ Object.extend(Validation.methods, nv);
 </script>
 </div>
 <script type="text/javascript">
-       function resetH1Height(){
-        var imgId1=document.getElementById("hideShows");
+       // function resetH1Height(){
+       //  var productArgs = document.getElementById("productArgs"),
+       //        H1 = 0,
+       //        Y1 = productArgs;
+       //    while (Y1) {
+       //        H1 += Y1.offsetTop;
+       //        Y1 = Y1.offsetParent;
+       //    }
+       //  }
+
+  window.onload=function(){
+            // resetH1Height();
+          var imgId1=document.getElementById("hideShows");
           var imgId2=document.getElementById("hideShowm");
           var imgId3=document.getElementById("hideShowa");
           var distanceFixed = document.getElementById("distanceFixed"),
@@ -664,43 +676,36 @@ Object.extend(Validation.methods, nv);
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
                    if(s > (H1-900)){
-                       //distanceFixed.style = "position:absolute;bottom: 55px;width:408px";
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','55px');
                         jQuery(distanceFixed).css('width','408px');
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H ){
-                  // distanceFixed.style = "position:fixed;top:0;width:408px;";
                    jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
                     if(s > (H1-1500)){
-                       //distanceFixed.style = "position:absolute;bottom: 0px;width:408px";
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H ){
-                   //distanceFixed.style = "position:fixed;top:0;width:408px;";
                    jQuery(distanceFixed).css('position','fixed');
                    jQuery(distanceFixed).css('top','0px');
                    jQuery(distanceFixed).css('width','408px');
                      if(s > (H1-1500)){
-                       //distanceFixed.style = "position:absolute;bottom: 0px;width:408px";
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ) {
-                  // distanceFixed.style = "position:fixed;top:0px;width:408px;";
                   jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
                   if(s > (H1-620)){
-                       // distanceFixed.style = "position:absolute;bottom: 40px;width:408px;";
                   jQuery(distanceFixed).css('position','absolute');
                   jQuery(distanceFixed).css('top','auto');
                   jQuery(distanceFixed).css('bottom','40px');
@@ -727,24 +732,18 @@ Object.extend(Validation.methods, nv);
                         jQuery(distanceFixed).css('width','408px');
                      }
                   }else{
-                  //distanceFixed.style = "position:relative;width:408px;";
                   jQuery(distanceFixed).css('position','relative');
                   jQuery(distanceFixed).css('width','408px');
               }
-        }
-}
-  window.onload=function(){
-            resetH1Height();
-
 
   }
 
 
+}
 
-
-   jQuery(window).resize(function(){
-                resetH1Height();
-            });
+   // jQuery(window).resize(function(){
+   //              resetH1Height();
+   //          });
 </script>
 </div>
 <?php echo $this->getChildHtml('upsell_products') ?>
