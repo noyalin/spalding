@@ -635,18 +635,7 @@ Object.extend(Validation.methods, nv);
 </div>
 <script type="text/javascript">
        function resetH1Height(){
-        var productArgs = document.getElementById("productArgs"),
-              H1 = 0,
-              Y1 = productArgs;
-          while (Y1) {
-              H1 += Y1.offsetTop;
-              Y1 = Y1.offsetParent;
-          }
-        }
-
-  window.onload=function(){
-            resetH1Height();
-          var imgId1=document.getElementById("hideShows");
+        var imgId1=document.getElementById("hideShows");
           var imgId2=document.getElementById("hideShowm");
           var imgId3=document.getElementById("hideShowa");
           var distanceFixed = document.getElementById("distanceFixed"),
@@ -742,11 +731,16 @@ Object.extend(Validation.methods, nv);
                   jQuery(distanceFixed).css('position','relative');
                   jQuery(distanceFixed).css('width','408px');
               }
+        }
+}
+  window.onload=function(){
+            resetH1Height();
+
 
   }
 
 
-}
+
 
    jQuery(window).resize(function(){
                 resetH1Height();

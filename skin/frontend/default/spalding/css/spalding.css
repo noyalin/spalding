@@ -941,7 +941,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 
 #login-form .input-box {
-    height: 60px;
+    /*height: 60px;*/
+    height: 90px;
 }
 
 .loginMain .validation-advice {
