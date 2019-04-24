@@ -635,18 +635,7 @@ Object.extend(Validation.methods, nv);
 </script>
 </div>
 <script type="text/javascript">
-       // function resetH1Height(){
-       //  var productArgs = document.getElementById("productArgs"),
-       //        H1 = 0,
-       //        Y1 = productArgs;
-       //    while (Y1) {
-       //        H1 += Y1.offsetTop;
-       //        Y1 = Y1.offsetParent;
-       //    }
-       //  }
-
-  window.onload=function(){
-            // resetH1Height();
+       function resetH1Height(){
           var imgId1=document.getElementById("hideShows");
           var imgId2=document.getElementById("hideShowm");
           var imgId3=document.getElementById("hideShowa");
@@ -739,11 +728,16 @@ Object.extend(Validation.methods, nv);
   }
 
 
+        }
+
+  window.onload=function(){
+            resetH1Height();
+
 }
 
-   // jQuery(window).resize(function(){
-   //              resetH1Height();
-   //          });
+   jQuery(window).resize(function(){
+        resetH1Height();
+    });
 </script>
 </div>
 <?php echo $this->getChildHtml('upsell_products') ?>
