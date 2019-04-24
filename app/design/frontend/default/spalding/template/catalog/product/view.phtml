@@ -635,53 +635,34 @@ Object.extend(Validation.methods, nv);
 </script>
 </div>
 <script type="text/javascript">
+       var H1,Y1;
        function resetH1Height(){
-
-          var distanceFixed = document.getElementById("distanceFixed"),
-
-              H = 0,
-              Y = distanceFixed;
-          while (Y) {
-              H += Y.offsetTop;
-              Y = Y.offsetParent;
-          }
-        var productArgs = document.getElementById("productArgs"),
               H1 = 0,
               Y1 = productArgs;
           while (Y1) {
               H1 += Y1.offsetTop;
               Y1 = Y1.offsetParent;
           }
-           var fscmb1=document.getElementById("fscmb1");
-           var fscmb2=document.getElementById("fscmb2");
-
-
+          // console.log(H1)
         }
 
-  window.onload=function(){
-            resetH1Height();
+       window.onload=function(){
+             var productArgs = document.getElementById("productArgs");
+             resetH1Height();
              var imgId1=document.getElementById("hideShows");
              var imgId2=document.getElementById("hideShowm");
              var imgId3=document.getElementById("hideShowa");
              var distanceFixed = document.getElementById("distanceFixed"),
-
                   H = 0,
                   Y = distanceFixed;
               while (Y) {
                   H += Y.offsetTop;
                   Y = Y.offsetParent;
               }
-            var productArgs = document.getElementById("productArgs"),
-                  H1 = 0,
-                  Y1 = productArgs;
-              while (Y1) {
-                  H1 += Y1.offsetTop;
-                  Y1 = Y1.offsetParent;
-              }
                var fscmb1=document.getElementById("fscmb1");
                var fscmb2=document.getElementById("fscmb2");
 
- window.onscroll = function()
+          window.onscroll = function()
           {
               var s = document.body.scrollTop || document.documentElement.scrollTop;
               if(imgId1 && imgId1.style.display=="block" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ){
@@ -719,7 +700,9 @@ Object.extend(Validation.methods, nv);
                   jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
+                  console.info(s,H1-620,H1)
                   if(s > (H1-620)){
+
                   jQuery(distanceFixed).css('position','absolute');
                   jQuery(distanceFixed).css('top','auto');
                   jQuery(distanceFixed).css('bottom','40px');
@@ -751,8 +734,7 @@ Object.extend(Validation.methods, nv);
               }
 
   }
-
-}
+        }
 
    jQuery(window).resize(function(){
         resetH1Height();
