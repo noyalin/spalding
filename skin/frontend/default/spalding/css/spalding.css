@@ -1197,6 +1197,10 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     }
 }
 
+.messages .error-msg ul li span{
+    color: red;
+}
+
 /*注册*/
 .bodyBg{
     position: fixed;
