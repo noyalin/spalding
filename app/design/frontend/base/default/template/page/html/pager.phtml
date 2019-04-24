@@ -65,13 +65,19 @@
     <strong><?php echo $this->__('Page:') ?></strong>
    <div class="pagecount">页数</div>
    <div>
-         <select  onchange="window.location=this.value">
-<?php for ($i_page =1;$i_page<= $this->getLastPageNum();$i_page++): ?>
-    <option value="<?php echo $this->getPageUrl()?><?php echo "&$this->_pageVarName="?><?php echo $i_page ?>"<?php if($this->isPageCurrent($i_page)): ?> selected="selected"<?php endif ?>>
-<?php echo $i_page ?>
-    </option>
-<?php endfor; ?>
-</select>
+        <select  onchange="window.location=this.value" style="width: 80px;height: 50px;line-height:50px;margin-top:-20px;cursor: pointer">
+            <?php for ($i_page =1;$i_page<= $this->getLastPageNum();$i_page++): ?>
+                <option value="<?php echo $this->getPageUrl().'&'.$this->_pageVarName.'='.$i_page; ?>"
+            <?php
+                if ($this->isPageCurrent($i_page)) {
+                    echo 'selected="selected"';
+                }
+            ?>
+            >
+            <?php echo $i_page ?>
+                </option>
+            <?php endfor; ?>
+        </select>
 </div>
 
 <ol>

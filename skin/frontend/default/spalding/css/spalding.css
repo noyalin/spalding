@@ -1160,7 +1160,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 @media screen and  (max-width: 1340px){
     #login-form{
-        height: 444px;
+        height: 411px;
     }
     .loginMain .login_backHome{
         height: 41px;
@@ -3707,7 +3707,7 @@ ul.form-list li p{
     /*melone end 增加高度*/
     /*melone start 调整边距*/
     /*text-align: center;*/
-    width: 900px;
+    /*width: 900px;*/
     /*melone start 修改居中*/
     /*text-align: right;*/
     text-align: center;
