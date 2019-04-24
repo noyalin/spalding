@@ -1136,7 +1136,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 @media screen and  (max-width: 1870px){
     .loginBottom{
         left: 287px;
-        bottom: -13px;
+        bottom:0;
         margin: 0;
     }
 }
@@ -2993,7 +2993,7 @@ margin-bottom: -5px;
         bottom: 111px;
     }
     #return {
-        top: -286px;
+        top: -309px;
     }
 }
 
@@ -3037,10 +3037,13 @@ margin-bottom: -5px;
         bottom: 273px;
     }
     #return {
-        top: -239px;
+        top: -252px;
     }
     #cheshi {
-        top: -294px;
+        top: -309px;
+    }
+    #step4 .content .content_detail {
+        top: -147px;
     }
 }
 @media screen and (max-width: 1136px){
