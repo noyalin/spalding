@@ -2448,7 +2448,15 @@ h2.product-collateral-box-nam{
         margin-right: 22px;
     }
 }
-
+@media screen and (max-width: 1136px) {
+    .product-essential {
+        margin-left: 0px;
+    }
+    .product-collateral {
+        margin-left: 0px;
+        background-color: #FFFFFF;
+    }
+}
 .productSaw{
     /*padding:10px;*/
     /*melone start 修改边框颜色*/

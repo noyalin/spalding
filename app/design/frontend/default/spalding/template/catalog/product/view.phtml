@@ -670,66 +670,118 @@ Object.extend(Validation.methods, nv);
                   jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
+                   if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','-78px');
+                     jQuery(distanceFixed).css('z-index','-1');
+                    }
                    if(s > (H1-900)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','55px');
                         jQuery(distanceFixed).css('width','408px');
+                         if(document.body.clientWidth<=1136){
+                            jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('z-index','-1');
+                         }
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H ){
                    jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
+                   if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','-78px');
+                     jQuery(distanceFixed).css('z-index','-1');
+                    }
                     if(s > (H1-1500)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
+                         if(document.body.clientWidth<=1136){
+                            jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('z-index','-1');
+                         }
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H ){
                    jQuery(distanceFixed).css('position','fixed');
                    jQuery(distanceFixed).css('top','0px');
                    jQuery(distanceFixed).css('width','408px');
+                    if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','-78px');
+                     jQuery(distanceFixed).css('z-index','-1');
+                    }
                      if(s > (H1-1500)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
+                         if(document.body.clientWidth<=1136){
+                            jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('z-index','-1');
+                        }
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ) {
                   jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
+                  if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','-78px');
+                     jQuery(distanceFixed).css('z-index','-1');
+                    }
                   // console.info(s,H1-620,H1)
                   if(s > (H1-620)){
                   jQuery(distanceFixed).css('position','absolute');
                   jQuery(distanceFixed).css('top','auto');
                   jQuery(distanceFixed).css('bottom','40px');
                   jQuery(distanceFixed).css('width','408px');
+                  if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','40px');
+                    jQuery(distanceFixed).css('z-index','-1');
+                    }
                   }
               }else if(fscmb1 == null && fscmb2 == null && s>H  && !imgId1 && !imgId2 && imgId3.style.display=="none"){
                   jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
+                   if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','-78px');
+                     jQuery(distanceFixed).css('z-index','-1');
+                    }
                   if(s > (H1-300)){
                   jQuery(distanceFixed).css('position','absolute');
                   jQuery(distanceFixed).css('top','auto');
                   jQuery(distanceFixed).css('bottom','0px');
                   jQuery(distanceFixed).css('width','408px');
+                   if(document.body.clientWidth<=1136){
+                        jQuery(distanceFixed).css('right','40px');
+                        jQuery(distanceFixed).css('z-index','-1');
+                    }
                   }
               }else  if(fscmb1 == null && fscmb2 == null && s>H  && !imgId1 && !imgId2 && imgId3.style.display=="block"){
                    jQuery(distanceFixed).css('position','fixed');
                    jQuery(distanceFixed).css('top','0px');
                    jQuery(distanceFixed).css('width','408px');
+                    if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','-78px');
+                     jQuery(distanceFixed).css('z-index','-1');
+                    }
                      if(s > (H1-1000)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
+                         if(document.body.clientWidth<=1136){
+                            jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('z-index','-1');
+                         }
                      }
                   }else{
                   jQuery(distanceFixed).css('position','relative');
                   jQuery(distanceFixed).css('width','408px');
+                  if(document.body.clientWidth<=1136){
+                    jQuery(distanceFixed).css('right','0px');
+                    jQuery(distanceFixed).css('z-index','-1');
+                    }
               }
 
   }
