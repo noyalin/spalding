@@ -636,9 +636,7 @@ Object.extend(Validation.methods, nv);
 </div>
 <script type="text/javascript">
        function resetH1Height(){
-          var imgId1=document.getElementById("hideShows");
-          var imgId2=document.getElementById("hideShowm");
-          var imgId3=document.getElementById("hideShowa");
+
           var distanceFixed = document.getElementById("distanceFixed"),
 
               H = 0,
@@ -656,7 +654,34 @@ Object.extend(Validation.methods, nv);
           }
            var fscmb1=document.getElementById("fscmb1");
            var fscmb2=document.getElementById("fscmb2");
-           window.onscroll = function()
+
+
+        }
+
+  window.onload=function(){
+            resetH1Height();
+             var imgId1=document.getElementById("hideShows");
+             var imgId2=document.getElementById("hideShowm");
+             var imgId3=document.getElementById("hideShowa");
+             var distanceFixed = document.getElementById("distanceFixed"),
+
+                  H = 0,
+                  Y = distanceFixed;
+              while (Y) {
+                  H += Y.offsetTop;
+                  Y = Y.offsetParent;
+              }
+            var productArgs = document.getElementById("productArgs"),
+                  H1 = 0,
+                  Y1 = productArgs;
+              while (Y1) {
+                  H1 += Y1.offsetTop;
+                  Y1 = Y1.offsetParent;
+              }
+               var fscmb1=document.getElementById("fscmb1");
+               var fscmb2=document.getElementById("fscmb2");
+
+ window.onscroll = function()
           {
               var s = document.body.scrollTop || document.documentElement.scrollTop;
               if(imgId1 && imgId1.style.display=="block" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ){
@@ -726,12 +751,6 @@ Object.extend(Validation.methods, nv);
               }
 
   }
-
-
-        }
-
-  window.onload=function(){
-            resetH1Height();
 
 }
 
