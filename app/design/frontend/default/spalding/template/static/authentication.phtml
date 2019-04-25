@@ -78,7 +78,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                   <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;" id="return">
                 </div> class="auth-img"  margin-top: 108px; -->
                   <img  src='<?php echo $this->getSkinUrl("images201904/authentication/return.png") ?>' alt="" id="return" style="display: block;max-width: 100%;margin-left: auto;margin-right: auto;width: 6.51%;cursor: pointer;">
-                 <button id="cheshi" style="width: 5%;height: 25px;">按钮</button>
+                <!-- <button id="cheshi" style="width: 5%;height: 25px;">按钮</button>-->
              </div>
 
 
@@ -412,22 +412,22 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         jQuery("#step2").css("display","none");
         resetContainerHeight()
     });
-   jQuery('#cheshi').on('click', function (e) {
-       /*if(document.body.clientWidth<=1366){
-            jQuery('.slide-group').animate({'top': '-1048px'});
-           // jQuery('.slide-group').animate({'top': '-1032px'});
-        }else if(document.body.clientWidth<=1440){
-           jQuery('.slide-group').animate({'top': '-1106px'});
-        }else {
-            jQuery('.slide-group').animate({'top': '-1492px'});
-        }*/
-        cur_class = '#step3';
-        jQuery("#step1").css("display","none");
-        jQuery("#step22").css("display","none");
-        jQuery("#step2").css("display","none");
-         jQuery("#step3").css("display","block");
-        resetContainerHeight()
-   });
+   // jQuery('#cheshi').on('click', function (e) {
+   //     /*if(document.body.clientWidth<=1366){
+   //          jQuery('.slide-group').animate({'top': '-1048px'});
+   //         // jQuery('.slide-group').animate({'top': '-1032px'});
+   //      }else if(document.body.clientWidth<=1440){
+   //         jQuery('.slide-group').animate({'top': '-1106px'});
+   //      }else {
+   //          jQuery('.slide-group').animate({'top': '-1492px'});
+   //      }*/
+   //      cur_class = '#step3';
+   //      jQuery("#step1").css("display","none");
+   //      jQuery("#step22").css("display","none");
+   //      jQuery("#step2").css("display","none");
+   //       jQuery("#step3").css("display","block");
+   //      resetContainerHeight()
+   // });
     jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
         jQuery('#alertContactUs')[0].style.display = 'block';
         jQuery('#valid_check_code')[0].innerHTML = jQuery.trim(jQuery('#barCode').val());

@@ -4467,7 +4467,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsList ul li img{
     width:100%;
-    height: 500px;
+    /*height: 500px;*/
     vertical-align: top;
 }
 
