@@ -674,6 +674,13 @@ Object.extend(Validation.methods, nv);
              }
            }
            if(W<=700){
+             if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=600 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<704){
+                jQuery(distanceFixed).css('right','-10%');
+             }else {
+                 jQuery(distanceFixed).css('right','auto');
+             }
+           }
+           if(W>594 && W<=700){
              if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=125 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<344){
                 jQuery(distanceFixed).css('right','-40%');
              }else {
