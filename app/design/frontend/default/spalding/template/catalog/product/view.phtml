@@ -681,8 +681,10 @@ Object.extend(Validation.methods, nv);
              }
            }
            if(W>594 && W<=700){
-             if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=125 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<344){
+             if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=125 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<300){
                 jQuery(distanceFixed).css('right','-40%');
+             }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=300 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<=500){
+                jQuery(distanceFixed).css('right','-10%');
              }else {
                  jQuery(distanceFixed).css('right','auto');
              }
