@@ -3041,10 +3041,10 @@ margin-bottom: -5px;
 }
 @media screen and (min-width: 1136px) and (max-width: 1390px){
     .security_auth {
-        bottom: 273px;
+        bottom: 303px;
     }
     #return {
-        top: -252px;
+        top: -271px;
     }
     #cheshi {
         top: -309px;
