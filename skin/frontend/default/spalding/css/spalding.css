@@ -4560,6 +4560,7 @@ ul.newsListBox{
     }
     .newsList ul li{
         width: 660px;
+        height: 570px;
     }
     .newsList .ftHyperlink img{
         width: 115px;
@@ -4592,6 +4593,7 @@ ul.newsListBox{
     }
     .newsList ul li{
         width: 540px;
+        height: 510px;
     }
     .newsList .ftHyperlink img{
         width: 115px;
