@@ -649,7 +649,7 @@ Object.extend(Validation.methods, nv);
            W = jQuery(window).width();
            if(W<=950){
              if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=125 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<344){
-                jQuery(distanceFixed).css('right','-0%');
+                jQuery(distanceFixed).css('right','0%');
              }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=344 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<=390){
                 jQuery(distanceFixed).css('right','-25%');
              }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>309 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<567){
@@ -674,9 +674,11 @@ Object.extend(Validation.methods, nv);
              }
            }
            if(W<=700){
-             if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=600 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<704){
+             if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=473 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<538){
+                jQuery(distanceFixed).css('right','-50%');
+             }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=538 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<704){
                 jQuery(distanceFixed).css('right','-10%');
-             }else {
+             }else{
                  jQuery(distanceFixed).css('right','auto');
              }
            }
@@ -685,6 +687,8 @@ Object.extend(Validation.methods, nv);
                 jQuery(distanceFixed).css('right','-40%');
              }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=300 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<=500){
                 jQuery(distanceFixed).css('right','-10%');
+             }else  if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>500){
+                jQuery(distanceFixed).css('right','0%');
              }else {
                  jQuery(distanceFixed).css('right','auto');
              }
@@ -707,7 +711,9 @@ Object.extend(Validation.methods, nv);
                 jQuery(distanceFixed).css('right','-32%');
              }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=456 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<=615){
                 jQuery(distanceFixed).css('right','-20%');
-             }else {
+             }else  if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=615){
+                jQuery(distanceFixed).css('right','-10%');
+             }else{
                  jQuery(distanceFixed).css('right','auto');
              }
            }
