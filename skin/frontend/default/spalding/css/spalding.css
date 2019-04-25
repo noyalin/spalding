@@ -2450,7 +2450,7 @@ h2.product-collateral-box-nam{
 }
 @media screen and (max-width: 1136px) {
     .product-essential {
-        margin-left: 0px;
+        margin-left: -17px;
     }
     .product-collateral {
         margin-left: 49px;

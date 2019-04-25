@@ -635,7 +635,7 @@ Object.extend(Validation.methods, nv);
 </script>
 </div>
 <script type="text/javascript">
-       var H1,Y1;
+       var H1,Y1,W;
        function resetH1Height(){
               H1 = 0,
               Y1 = productArgs;
@@ -645,7 +645,22 @@ Object.extend(Validation.methods, nv);
           }
           // console.log(H1)
         }
-
+        function resetWidth(){
+           W = jQuery(window).width();
+           if(W<=1136){
+             if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=125 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<344){
+                jQuery(distanceFixed).css('right','-66%');
+             }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=344 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<=390){
+                jQuery(distanceFixed).css('right','-25%');
+             }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>309 && Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)<567){
+                jQuery(distanceFixed).css('right','-9%');
+             }else if(Math.max(document.body.scrollLeft,document.documentElement.scrollLeft)>=567){
+                jQuery(distanceFixed).css('right','7%');
+             }else {
+                 jQuery(distanceFixed).css('right','auto');
+             }
+           }
+        }
        window.onload=function(){
              var productArgs = document.getElementById("productArgs");
              resetH1Height();
@@ -674,13 +689,14 @@ Object.extend(Validation.methods, nv);
                    //  jQuery(distanceFixed).css('right','-78px');
                    //   jQuery(distanceFixed).css('z-index','-1');
                    //  }
+                   resetWidth();
                    if(s > (H1-900)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','55px');
                         jQuery(distanceFixed).css('width','408px');
                          // if(document.body.clientWidth<=1136){
-                         //    jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('right','auto');
                          // }
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="block" && imgId3.style.display=="none" && s>H ){
@@ -690,13 +706,14 @@ Object.extend(Validation.methods, nv);
                    // if(document.body.clientWidth<=1136){
                    //  jQuery(distanceFixed).css('right','-78px');
                    //  }
+                   resetWidth();
                     if(s > (H1-1500)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
                          // if(document.body.clientWidth<=1136){
-                         //    jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('right','auto');
                          // }
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="block" && s>H ){
@@ -706,30 +723,29 @@ Object.extend(Validation.methods, nv);
                     // if(document.body.clientWidth<=1136){
                     // jQuery(distanceFixed).css('right','-78px');
                     // }
+                    resetWidth();
                      if(s > (H1-1500)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
                         //  if(document.body.clientWidth<=1136){
-                        //     jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('right','auto');
                         // }
                   }
               }else if(imgId1 && imgId1.style.display=="none" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ) {
                   jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
                   jQuery(distanceFixed).css('width','408px');
-                  // if(document.body.clientWidth<=1136){
-                  //   jQuery(distanceFixed).css('right','-78px');
-                  //   }
                   // console.info(s,H1-620,H1)
+                  resetWidth();
                   if(s > (H1-620)){
                   jQuery(distanceFixed).css('position','absolute');
                   jQuery(distanceFixed).css('top','auto');
                   jQuery(distanceFixed).css('bottom','40px');
                   jQuery(distanceFixed).css('width','408px');
                   // if(document.body.clientWidth<=1136){
-                  //   jQuery(distanceFixed).css('right','40px');
+                    jQuery(distanceFixed).css('right','auto');
                   //   }
                   }
               }else if(fscmb1 == null && fscmb2 == null && s>H  && !imgId1 && !imgId2 && imgId3.style.display=="none"){
@@ -739,13 +755,14 @@ Object.extend(Validation.methods, nv);
                    // if(document.body.clientWidth<=1136){
                    //  jQuery(distanceFixed).css('right','-78px');
                    //  }
+                   resetWidth();
                   if(s > (H1-300)){
                   jQuery(distanceFixed).css('position','absolute');
                   jQuery(distanceFixed).css('top','auto');
                   jQuery(distanceFixed).css('bottom','0px');
                   jQuery(distanceFixed).css('width','408px');
                    // if(document.body.clientWidth<=1136){
-                   //      jQuery(distanceFixed).css('right','40px');
+                        jQuery(distanceFixed).css('right','auto');
                    //  }
                   }
               }else  if(fscmb1 == null && fscmb2 == null && s>H  && !imgId1 && !imgId2 && imgId3.style.display=="block"){
@@ -755,20 +772,21 @@ Object.extend(Validation.methods, nv);
                     // if(document.body.clientWidth<=1136){
                     // jQuery(distanceFixed).css('right','-78px');
                     // }
+                    resetWidth();
                      if(s > (H1-1000)){
                         jQuery(distanceFixed).css('position','absolute');
                          jQuery(distanceFixed).css('top','auto');
                         jQuery(distanceFixed).css('bottom','0px');
                         jQuery(distanceFixed).css('width','408px');
                          // if(document.body.clientWidth<=1136){
-                         //    jQuery(distanceFixed).css('right','40px');
+                            jQuery(distanceFixed).css('right','auto');
                          // }
                      }
                   }else{
                   jQuery(distanceFixed).css('position','relative');
                   jQuery(distanceFixed).css('width','408px');
                   // if(document.body.clientWidth<=1136){
-                  //   jQuery(distanceFixed).css('right','0px');
+                    jQuery(distanceFixed).css('right','auto');
                   //   }
               }
 
@@ -777,6 +795,7 @@ Object.extend(Validation.methods, nv);
 
    jQuery(window).resize(function(){
         resetH1Height();
+        resetWidth();
     });
 </script>
 </div>
