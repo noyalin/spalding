@@ -283,7 +283,7 @@ for($i=0;$i<$num;$i++){
 <!-- 产品详情 e -->
 
 <!-- 右边 -->
-<div class="product-essential" style="position: relative;top: 0px;">
+<div class="product-essential" id="product-essential" style="position: relative;top: 0px;">
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 <?php echo $this->getBlockHtml('formkey') ?>
 <!--<div class="no-display">-->
@@ -636,6 +636,8 @@ Object.extend(Validation.methods, nv);
 </div>
 <script type="text/javascript">
        var H1,Y1,W;
+       var left = window.getComputedStyle(document.getElementById("product-collateral")).height;
+       var right =  window.getComputedStyle(document.getElementById("product-essential")).height;
        function resetH1Height(){
               H1 = 0,
               Y1 = productArgs;
@@ -735,8 +737,9 @@ Object.extend(Validation.methods, nv);
                var fscmb2=document.getElementById("fscmb2");
 
           window.onscroll = function()
-          {
-              var s = document.body.scrollTop || document.documentElement.scrollTop;
+            {
+              if(left-100>right){
+                  var s = document.body.scrollTop || document.documentElement.scrollTop;
               if(imgId1 && imgId1.style.display=="block" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ){
                   //distanceFixed.style = "position:fixed;top:0;width:408px;";
                   jQuery(distanceFixed).css('position','fixed');
@@ -846,9 +849,10 @@ Object.extend(Validation.methods, nv);
                     jQuery(distanceFixed).css('right','auto');
                   //   }
               }
+              }
 
-  }
-        }
+            }
+       }
 
    jQuery(window).resize(function(){
         resetH1Height();
