@@ -636,8 +636,8 @@ Object.extend(Validation.methods, nv);
 </div>
 <script type="text/javascript">
        var H1,Y1,W;
-       var left = window.getComputedStyle(document.getElementById("product-collateral")).height;
-       var right =  window.getComputedStyle(document.getElementById("product-essential")).height;
+       var L = window.getComputedStyle(document.getElementById("product-collateral")).height;
+       var R =  window.getComputedStyle(document.getElementById("product-essential")).height;
        function resetH1Height(){
               H1 = 0,
               Y1 = productArgs;
@@ -738,9 +738,9 @@ Object.extend(Validation.methods, nv);
 
           window.onscroll = function()
             {
-              if(left-100>right){
-                  var s = document.body.scrollTop || document.documentElement.scrollTop;
-              if(imgId1 && imgId1.style.display=="block" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ){
+               var s = document.body.scrollTop || document.documentElement.scrollTop;
+              if(L != "809px" && L != "733px" && L != "1037px" && L != "651px"){
+                  if(imgId1 && imgId1.style.display=="block" && imgId2 && imgId2.style.display=="none" && imgId3.style.display=="none" && s>H ){
                   //distanceFixed.style = "position:fixed;top:0;width:408px;";
                   jQuery(distanceFixed).css('position','fixed');
                   jQuery(distanceFixed).css('top','0px');
@@ -850,7 +850,6 @@ Object.extend(Validation.methods, nv);
                   //   }
               }
               }
-
             }
        }
 
