@@ -6592,6 +6592,8 @@ ul.messages .error-msg a {
 #product-options-wrapper .validation-advice {
     position: absolute;
     color: #cf0000;
+    margin-top: -47px;
+    margin-left: -2px;
 }
 
 /*iphone4 ,5 */
