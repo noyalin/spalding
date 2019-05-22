@@ -2799,7 +2799,8 @@ Scrolling is automated IF there is an overflow of the width */
 /******************************************************************************/
 /* detail color style# */
 .detail-style-info {
-    padding: 20px 15px 10px 15px;
+    padding: 0px 15px 10px 15px;
+    /*padding: 20px 15px 10px 15px;*/
     font-size: 12px;
     text-align: center;
     color: #CCC;
@@ -4713,7 +4714,15 @@ span.sale_kind {
 .colorCons a {
     display: inline-block;
     position: relative;
-    margin-right: 5px;
+    /*margin-right: 5px;*/
+    /*margin-right: 20px;*/
+
+
+    /* margin-right: 5px; */
+    /* margin-right: 20px; */
+    margin-bottom: 10px;
+    padding: 0px 15px;
+
 }
 
 .colorCons a img.availableColorPxNow {
@@ -4725,7 +4734,9 @@ span.sale_kind {
 .add-to-cart {
     width: 50%;
     float: right;
-    margin-top: -30px;
+    /*margin-top: -30px;*/
+
+    margin-top: -57px;
 }
 
 .add-to-cart a {
