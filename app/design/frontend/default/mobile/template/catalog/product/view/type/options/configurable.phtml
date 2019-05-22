@@ -52,45 +52,6 @@ $sku = $_product->getSku();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 $stockStatus = '';
 ?>
-<?php if ($_product->isSaleable() && count($_attributes)):?>
-
-<dl class="addToCartSize clearfix">
-    <?php foreach($_attributes as $_attribute): ?>
-    <?php $valueArr = $_attribute->getPrices();?>
-        <dt class="ms-fl"><label class="required"><?php echo $_attribute->getLabel() ?>：</label></dt>
-        <dd<?php if ($_attribute->decoratedIsLast){?> class="last ms-fl"<?php }?>>
-            <div class="input-box">
-                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
-                    <option value="0"><?php echo $this->__('Choose an Option...') ?></option>
-                    <?php 
-                    	foreach($valueArr as $optionValue):
-                    ?>
-                    <option value="<?php echo $optionValue['value_index']?>"><?php echo $optionValue['label']; ?></option>
-                    <?php
-                    	endforeach;
-                    ?>
-                </select>
-              </div>
-        </dd>
-    <?php endforeach; ?>
-    </dl>
-    <script type="text/javascript">
-        var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
-    </script>
-
-    <!--    <div class="sale-num prodetail-box">-->
-    <!--        <span>篮球类型：</span>-->
-    <!--        --><?php //foreach($_attributes as $_attribute): ?>
-    <!--        <span class="sale_kind sale_kindChos">--><?php //echo $_attribute; ?><!--</span>-->
-    <!--        --><?php //endforeach; ?>
-    <!--    </div>-->
-
-
-
-
-
-    
-<?php endif;?>
 
 
 
@@ -104,11 +65,11 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
         <div class="proboxCons ms-fl">
         <div id="detailAvailColor" class="colorCons">
             <?php
-            $i = 0;
+           <!-- $i = 0;-->
 
             $pageUrlkey = $_product->getUrlKey();
             foreach ($_productAvailableColorsCollection as $productColor) {
-                if ($i++ < 5) {
+                <!--if ($i++ < 5) {-->
                     $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
                     $thisUrlkey = $_productColor->getUrlKey();
                     $eachSku = $_product->getSku();
@@ -123,32 +84,33 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
 //                    $thisSmallImage = $this->helper('catalog/image')->init($_product, 'small_image')->resize(50, 50);
 //                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding45px?$image45px='.$thisUrlkey.'-1';
 //                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$thisUrlkey.'-1';
-                    $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/2019-spalding50px?$50x50$&$image50='. $this->htmlEscape($thisUrlkey).'-1';
+<!--2019-spalding50px?$50x50$&$image50-->
+                    $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/spd-150x150?$150$&$image50='. $this->htmlEscape($thisUrlkey).'-1';
                     echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.
                         '<div style="height:50px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
                         </a>';
 //                    echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.'<img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="" width="50" height="50"/></a>';
-                }
+                <!--}-->
             }
             ?>
         </div>
         </div>
-        <?php if (count($_productAvailableColorsCollection) > 5) : ?>
-            <div id="detailAvailColorMore">
-                <?php
-                $i = 0;
-                foreach ($_productAvailableColorsCollection as $productColor) {
-                    if ($i++ >= 5) {
-                        $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
-                        echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" width="84" height="84"/></a>';
-                    }
-                }
-                ?>
-            </div>
-            <div class="clearfloats"></div>
-            <div id="detailReadMoreColors" class="detailReadMore">
-                <a href="">See more +</a>
-            </div>
-        <?php endif ?>
+        <!--<?php if (count($_productAvailableColorsCollection) > 5) : ?>-->
+            <!--<div id="detailAvailColorMore">-->
+                <!--<?php-->
+                <!--$i = 0;-->
+                <!--foreach ($_productAvailableColorsCollection as $productColor) {-->
+                    <!--if ($i++ >= 5) {-->
+                        <!--$_productColor = Mage::getModel('catalog/product')->load($productColor->getId());-->
+                        <!--echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" width="84" height="84"/></a>';-->
+                    <!--}-->
+                <!--}-->
+                <!--?>-->
+            <!--</div>-->
+            <!--<div class="clearfloats"></div>-->
+            <!--<div id="detailReadMoreColors" class="detailReadMore">-->
+                <!--<a href="">See more +</a>-->
+            <!--</div>-->
+        <!--<?php endif ?>-->
     </div>
 <?php endif ?>
