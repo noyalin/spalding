@@ -125,7 +125,7 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
 //                    $thisSmallImage = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding50px?$50x50$&$image50='.$thisUrlkey.'-1';
                     $thisSmallImage = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html').'/is/image/sneakerhead/spd-150x150?$150$&$image50='. $this->htmlEscape($thisUrlkey).'-1';
                     echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.
-                        '<div style=" '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
+                        '<div style="height:150px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
                         </a>';
                         <!--height:50px;-->
 //                    echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.'<img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="" width="50" height="50"/></a>';
