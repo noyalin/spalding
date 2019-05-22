@@ -103,13 +103,12 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
         <div class="proboxTit ms-fl">颜色：</div>
         <div class="proboxCons ms-fl">
         <div id="detailAvailColor" class="colorCons">
-            <!--$i = 0;-->
             <?php
-
+            $i = 0;
 
             $pageUrlkey = $_product->getUrlKey();
             foreach ($_productAvailableColorsCollection as $productColor) {
-                <!--if ($i++ < 5) {-->
+                if ($i++ < 5) {
                     $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
                     $thisUrlkey = $_productColor->getUrlKey();
                     $eachSku = $_product->getSku();
@@ -129,27 +128,27 @@ $_productAvailableColorsCollection = Mage::getResourceModel('catalog/product_col
                         '<div style="height:150px; '.$border.'"><img src="'.$thisSmallImage.'" alt="" /></div>
                         </a>';
 //                    echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx">'.$availableColorPxNow.'<img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" alt="" width="50" height="50"/></a>';
-                <!--}-->
+                }
             }
             ?>
         </div>
         </div>
-        <!--<?php if (count($_productAvailableColorsCollection) > 5) : ?>-->
-            <!--<div id="detailAvailColorMore">-->
-                <!--<?php-->
-                <!--$i = 0;-->
-                <!--foreach ($_productAvailableColorsCollection as $productColor) {-->
-                    <!--if ($i++ >= 5) {-->
-                        <!--$_productColor = Mage::getModel('catalog/product')->load($productColor->getId());-->
-                        <!--echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" width="84" height="84"/></a>';-->
-                    <!--}-->
-                <!--}-->
-                <!--?>-->
-            <!--</div>-->
-            <!--<div class="clearfloats"></div>-->
-            <!--<div id="detailReadMoreColors" class="detailReadMore">-->
-                <!--<a href="">See more +</a>-->
-            <!--</div>-->
-        <!--<?php endif ?>-->
+        <?php if (count($_productAvailableColorsCollection) > 5) : ?>
+            <div id="detailAvailColorMore">
+                <?php
+                $i = 0;
+                foreach ($_productAvailableColorsCollection as $productColor) {
+                    if ($i++ >= 5) {
+                        $_productColor = Mage::getModel('catalog/product')->load($productColor->getId());
+                        echo '<a href="' . $_productColor->getUrlPath() . '" class="availableColorPx"><img src="http://image.sneakerhead.com/is/image/sneakerhead/v3-detail-available?$v3-detail-available$&$layer_2_src=sneakerhead/' . $_productColor->getUrlKey() . '-1" width="84" height="84"/></a>';
+                    }
+                }
+                ?>
+            </div>
+            <div class="clearfloats"></div>
+            <div id="detailReadMoreColors" class="detailReadMore">
+                <a href="">See more +</a>
+            </div>
+        <?php endif ?>
     </div>
 <?php endif ?>
