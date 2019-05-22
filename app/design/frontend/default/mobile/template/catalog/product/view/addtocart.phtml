@@ -28,46 +28,6 @@
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
     <div class="add-to-box">
-        <?php if ($_product->isSaleable() && count($_attributes)):?>
-
-        <dl class="addToCartSize clearfix">
-        <?php foreach($_attributes as $_attribute): ?>
-        <?php $valueArr = $_attribute->getPrices();?>
-            <dt class="ms-fl"><label class="required"><?php echo $_attribute->getLabel() ?>：</label></dt>
-            <dd<?php if ($_attribute->decoratedIsLast){?> class="last ms-fl"<?php }?>>
-                <div class="input-box">
-                    <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
-                        <option value="0"><?php echo $this->__('Choose an Option...') ?></option>
-        <?php
-            foreach($valueArr as $optionValue):
-        ?>
-        <option value="<?php echo $optionValue['value_index']?>"><?php echo $optionValue['label']; ?></option>
-        <?php
-            endforeach;
-        ?>
-        </select>
-        </div>
-        </dd>
-        <?php endforeach; ?>
-        </dl>
-        <script type="text/javascript">
-            var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
-        </script>
-
-        <!--    <div class="sale-num prodetail-box">-->
-        <!--        <span>篮球类型：</span>-->
-        <!--        --><?php //foreach($_attributes as $_attribute): ?>
-        <!--        <span class="sale_kind sale_kindChos">--><?php //echo $_attribute; ?><!--</span>-->
-        <!--        --><?php //endforeach; ?>
-        <!--    </div>-->
-
-
-
-
-
-
-        <?php endif;?>
-
         <div class="add-to-cart">
             <?php if(!$_product->isGrouped()): ?>
                 <!--        <label for="qty">--><?php //echo $this->__('Qty:') ?><!--</label>-->
