@@ -2887,20 +2887,25 @@ margin-bottom: -5px;
 .page-title{
     font-size: 18px;
     font-weight: bold;
-    color:#00275E;
-    /*color:#847450;*/
+    /*color:#00275E;*/
+    color:#847450;
     /*padding-bottom:4px;*/
-    margin-bottom:10px;
+    margin-bottom:20px;
     /*melone start 修改底部线颜色*/
-    border-bottom:5px solid #02295c;
+    border-bottom:5px solid #847450;
+    /*border-bottom:5px solid #02295c;*/
     /*melone end 修改底部线颜色*/
     /*border-bottom:5px solid #fff;*/
     /*melone start 修改上边距*/
-    margin-top: 54px;
+    margin-top: 26px;
+    /*margin-top: 54px;*/
     /*margin-top: 25px;*/
     /*melone end 修改上边距*/
-}
 
+}
+.page-title h1{
+    margin-bottom: 10px;
+}
 /*#step1{
     background: url(../images201904/authentication/img-auth-1.png) center center no-repeat;
 }
