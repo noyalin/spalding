@@ -4764,6 +4764,7 @@ span.sale_kind {
 dl.addToCartSize {
     position: relative;
     width: 50%;
+    margin-top: 20px;
 }
 
 dl.addToCartSize dd select {
