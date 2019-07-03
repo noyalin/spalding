@@ -76,7 +76,6 @@ foreach ($_items as $_item){
         font-size: 13px;
         font-weight: bold;
         text-align: center;
-        width: 45%;
     }
     .payPopUpCons p{
         line-height: 2em;
@@ -99,7 +98,6 @@ foreach ($_items as $_item){
         font-size: 12px;
         text-align: center;
         padding-top: 5px;
-        width: 45%;
     }
     .payPopBack a{
         color:#fff;
@@ -116,7 +114,7 @@ foreach ($_items as $_item){
         });
     });
 </script>
-<div class="shortcut_wrapper shorturt_mobile">
+<div class="shortcut_wrapper shorturt_mobile" style="width: 100%;">
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
         <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
@@ -173,7 +171,7 @@ foreach ($_items as $_item){
                 endif;
                 ?>
             </div>
-            <p><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日</br>左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
+            <p style="width: 100%;"><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
         <?php endif; ?>
         
         <?php if ($isCustomClothes): ?>
@@ -236,7 +234,7 @@ foreach ($_items as $_item){
                     <p>2，审核后的订单预计将在25个工作日左右生产完成并发货。</p>
 <!--                    <p>3，定制内容易磨损，建议将定制球作为观赏收藏使用。</p>-->
                 </div>
-                <div style="width: 44%"><div class="payPopUpConf">确认</div></div>
+                <div class="payPopUpConf">确认</div>
                 <!--<div class="payPopUpConf">确认</div>-->
                 <div class="payPopBack"><a href="<?php echo $this->getUrl('sales/order/history/') ?>">暂不付款</a></div>
             </div>
