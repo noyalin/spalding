@@ -45,7 +45,7 @@ function isCustom() {
     var _custom_flag2 = jQuery("#custom_flag2").val();
     if (_custom_flag1 == "0" && _custom_flag2 == "0") {
         notTodo("提示", "请先进行定制，才可以加入购物车，为您带来的不便，还请谅解！");
-        return false;
+	    return false;
     } else {
         if (_custom_flag1 != "0" && _custom_flag2 != "0") {
             jQuery("#custom_num").val(jQuery("#double").val());
@@ -114,6 +114,7 @@ jQuery(function () {
             //点亮对应icon
             jQuery(".remind_1").css("opacity","1");
             jQuery(".remind_2").css("opacity","0");
+
             if (nowKind == 1) {
                 _now_2 = jQuery("#avatar").attr("src");
                 if (_init_2 == "") {
@@ -123,6 +124,13 @@ jQuery(function () {
                 _now_2 = jQuery(".madeTexWrap").find(".select_P2").html();
             } else if (nowKind == 3){
                 _now_2 = "";
+            } else if (nowKind == 4){
+	            _now_2 = jQuery('.madeEmbWrap_2 img').attr("src");
+                jQuery('.madeStepEmb').hide();
+	            jQuery('.madeEmbWrap_1').show();
+	            jQuery('.madeEmbWrap_2').hide();
+	            var img = jQuery('.madeEmbWrap_1').find('img').attr('src');
+	            if(!img) jQuery('.embImg').removeClass('active');
             }
             if(_init_2 == _now_2){
                 noChange(_PageBtn);
@@ -146,6 +154,13 @@ jQuery(function () {
                 _now_1 = jQuery(".madeTexWrap").find(".select_P1").html();
             } else if (nowKind == 3){
                 _now_1 = "";
+            } else if (nowKind == 4) {
+	            _now_1 = jQuery('.madeEmbWrap_1 img').attr("src");
+	            jQuery('.madeEmbWrap_1').hide();
+	            jQuery('.madeEmbWrap_2').show();
+
+	            var img = jQuery('.madeEmbWrap_2').find('img').attr('src');
+	            if(!img) jQuery('.embImg').removeClass('active');
             }
 
             if(_init_1 == _now_1){
@@ -185,6 +200,7 @@ jQuery(function () {
             jQuery(_PageBtn).parents().find(".madeStepNone").show();
             jQuery(_PageBtn).parents().find(".madeStepImg").hide();
             jQuery(_PageBtn).parents().find(".madeStepTex").hide();
+	        jQuery(_PageBtn).parents().find(".madeStepEmb").hide();
             //jQuery("#options_pos").val(1);
 
             // TODO
@@ -268,6 +284,7 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepTex").show();
         jQuery(this).parents().find(".madeStepImg").hide();
         jQuery(this).parents().find(".madeStepNone").hide();
+	    jQuery(this).parents().find(".madeStepEmb").hide();
         jQuery(".cusRemindBox").show();
         jQuery("#viewMadeFun").show();
     });
@@ -282,11 +299,74 @@ jQuery(function () {
         jQuery(this).parents().find(".madeStepNone").show();
         jQuery(this).parents().find(".madeStepTex").hide();
         jQuery(this).parents().find(".madeStepImg").hide();
+	    jQuery(this).parents().find(".madeStepEmb").hide();
         jQuery(".cusRemindBox").show();
         jQuery("#viewMadeFun").show();
     });
 
-    //设置字体
+	//选择队徽
+	jQuery(".madeKindTitEmb").click(function () {
+		jQuery(this).addClass("madeNow");
+		jQuery(this).siblings("dd").removeClass("madeNow");
+		jQuery(this).siblings("dt").slideUp();
+
+		//隐藏显示编辑
+		jQuery(this).parents().find(".madeStepEmb").show();
+		jQuery(this).parents().find(".madeStepTex").hide();
+		jQuery(this).parents().find(".madeStepImg").hide();
+		jQuery(this).parents().find(".madeStepNone").hide();
+		jQuery(".cusRemindBox").show();
+		jQuery("#viewMadeFun").show();
+	});
+
+	jQuery('.embBtn').click(function () {
+	    var ele = '';
+	    if(jQuery('.embCon-tab1').css('display') === 'block'){
+		    ele = jQuery(".embCon-tab1")
+        }else{
+		    ele = jQuery(".embCon-tab2")
+        }
+		ele.find('.first').toggle();
+		ele.find('.second').toggle();
+	});
+
+	jQuery('.embImg ').click(function () {
+		jQuery(this).siblings().removeClass("active");
+		jQuery(this).addClass("active");
+		if(jQuery('.embCon-tab1').css('display') === 'none') jQuery('.embCon-tab1').find('.embImg').removeClass('active');
+		if(jQuery('.embCon-tab2').css('display') === 'none') jQuery('.embCon-tab2').find('.embImg').removeClass('active');
+
+	    var imgUrl = jQuery(this).find('.embDefault').attr('src');
+	    var madeEmbWrap = '';
+	    if(isClickOne){
+		    madeEmbWrap = jQuery('.madeEmbWrap_1 img');
+		    jQuery('.madeEmbWrap_1').show();
+        } else {
+		    madeEmbWrap = jQuery('.madeEmbWrap_2 img');
+		    jQuery('.madeEmbWrap_2').show();
+        }
+		madeEmbWrap.attr('src', imgUrl)
+	});
+
+	jQuery('.embMonochrome').click(function () {
+		jQuery(this).siblings().removeClass("active");
+		jQuery(this).addClass("active");
+		jQuery('.embCon-tab1').css("display","block");
+		jQuery('.embCon-tab2').css("display","none");
+		jQuery('.embImg.first').css("display","block");
+		jQuery('.embImg.second').css("display","none");
+	});
+
+	jQuery('.embColour').click(function () {
+		jQuery(this).siblings().removeClass("active");
+		jQuery(this).addClass("active");
+		jQuery('.embCon-tab1').css("display","none");
+		jQuery('.embCon-tab2').css("display","block");
+		jQuery('.embImg.first').css("display","block");
+		jQuery('.embImg.second').css("display","none");
+	});
+
+	//设置字体
     // 小号
     jQuery(".madeBoxCons_p1 .setSize_40").click(function () {
         jQuery(this).parents().find(".madeTexWrap .select_P1").removeClass("size_40 size_60 size_80");
@@ -940,8 +1020,24 @@ jQuery(function () {
                     }
                 }
             }
+        } else if (_madeValue == 4) {
+            var type  = 0;
+            var img = '';
+	        if(subId == "submitYP1"){
+		        type = 1;
+		        img = jQuery('.madeEmbWrap_1').find('img').attr('src');
+            }else if(subId == "submitYP2"){
+		        type = 2;
+		        img = jQuery('.madeEmbWrap_2').find('img').attr('src');
+            }
+            if(!img){
+	            alert('队徽不能为空！');
+	            return;
+            }
+	        if(isHasEmbPic(type)) showComfBox(this);
         }
     });
+
     function submitYP_CheckText(txtInputId,madeId){
         var reg = new RegExp("^[(\u0000-\u00ff|\u4e00-\u9fa5|\uff00-\uffff)]+$","g");
         var txtInput = jQuery(txtInputId);
@@ -1036,6 +1132,12 @@ jQuery(function () {
         jQuery(thisObj).parent(".madeSubmit").siblings(".comfBox").show();
     }
 
+    function isHasEmbPic(type){
+        var madeEmbWrap = '.madeEmbWrap_'+ type;
+    	var img = jQuery(madeEmbWrap).find('img').attr('src');
+    	return img || '';
+    }
+
     jQuery(".saveMadeN").click(function () {
         jQuery(this).parent().parent(".comfBox").hide();
         jQuery(this).parent().parent(".comfBox").siblings(".madeSubmit").show();
@@ -1054,6 +1156,9 @@ jQuery(function () {
         var nowPageId = jQuery(".madeP_btn_now").attr("id");
 
         var _imgIntSrc = jQuery("#imgIntSrc").val();
+
+	    var isViewPage1Show = jQuery('.viewPage_P1').css('display') === 'block';
+        var isViewPage2Show = jQuery('.viewPage_P2').css('display') === 'block';
         if(nowPageId == "btn_page1"){
             pageData_init = jQuery(".select_N1").html();
             nowPageKind = jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal");
@@ -1066,6 +1171,8 @@ jQuery(function () {
                 pageData_now = jQuery(".madeTexWrap").find(".select_P1").html();
             }else if(nowPageKind == 3){
                 pageData_now = ""
+            }else if(nowPageKind == 4){
+	            pageData_now = ""
             }
         }else if(nowPageId == "btn_page2"){
             pageData_init = jQuery(".select_N2").html();
@@ -1079,24 +1186,24 @@ jQuery(function () {
                 pageData_now = jQuery(".madeTexWrap").find(".select_P2").html();
             }else if(nowPageKind == 3){
                 pageData_now = ""
+            }else if(nowPageKind == 4){
+	            pageData_now = "";
             }
         }
+
+        //队徽选了但没有保存的情况下，提示保存
+        var empImgEle = nowPageId == "btn_page1" ? jQuery('.madeEmbWrap_1') : jQuery('.madeEmbWrap_2');
+        var isChooseEmbImg = empImgEle.find('img').attr('src');
+        if(nowPageKind == 4 && isChooseEmbImg && ((nowPageId == "btn_page2" && !isViewPage2Show) || (nowPageId == "btn_page1" && !isViewPage1Show))){
+	        warnAlert(nowPageId, this);
+	        return
+        }
+
         if(pageData_init == pageData_now){
             SubView();
         }else{
-            if(nowPageId == "btn_page1"){
-                jQuery('#made_p1 .submitY').trigger("click");
-            /*    var _comfBox = jQuery(".madeBoxCons_p1").find(".comfBox");
-                jQuery(".madeBoxCons_p1").find(".madeBoxFuns").hide();
-                jQuery(".madeBoxCons_p1").find(".madeSubmit").hide();*/
-            }else if(nowPageId == "btn_page2"){
-                jQuery('#made_p2 .submitY').trigger("click");
-              /*  jQuery(".madeBoxCons_p2").find(".madeBoxFuns").hide();
-                jQuery(".madeBoxCons_p2").find(".madeSubmit").hide();
-                var _comfBox = jQuery(".madeBoxCons_p2").find(".comfBox");*/
-            }
-            jQuery(this).parents().find(".cusMadeRigZz").hide()
-          /*  _comfBox.show();*/
+	        //队徽以外选项选了但没有保存的情况下，提示保存
+	        warnAlert(nowPageId, this);
         }
 
     });
@@ -1105,6 +1212,15 @@ jQuery(function () {
         SubView();
     });
 });
+
+function warnAlert(nowPageId, self) {
+	if(nowPageId == "btn_page1"){
+		jQuery('#made_p1 .submitY').trigger("click");
+	}else if(nowPageId == "btn_page2"){
+		jQuery('#made_p2 .submitY').trigger("click");
+	}
+	jQuery(self).parents().find(".cusMadeRigZz").hide()
+}
 
 function SubView(){
     madeLoading("提交成功","拼命加载中，请耐心等待...");
@@ -1295,6 +1411,20 @@ function notTodo(tit,cons){
     _h2.text(tit);
     _p.text(cons);
 }
+
+//获取队徽图片名
+function getEmbPicName(type){
+	var madeEmbWrap = '.madeEmbWrap_'+ type;
+    var img =jQuery(madeEmbWrap).find('img').attr('src');
+    var name = '';
+    console.log('队徽img', img)
+	if(img){
+		var arr = img.split('imagesEmblem/');
+		name = arr[1].split('.')[0];
+	}
+	return name;
+}
+
 jQuery(function(){
     jQuery(".loadingTest").click(function(){
         madeLoading("提交成功","数据加载中，由于上传图片体积较大，请耐心等待...");

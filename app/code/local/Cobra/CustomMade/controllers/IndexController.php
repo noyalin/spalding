@@ -78,7 +78,7 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
 
         $pos = $params['position'];
         $type = $params['type'];
-        $content1 = null; 
+        $content1 = null;
         $content2 = null;
         $content3 = null;
         $content4 = null;
@@ -106,7 +106,9 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 }
                 Mage::log('completeAction P1 �� '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             } elseif ($type == 4) {
-            	$content1 = $params['text1'];;
+            	$content1 = $params['text1'];
+            } elseif ($type == 5) {
+                $content1 = $params['text1'];
             } else {
                 $type = 3;
             }
@@ -140,6 +142,8 @@ class Cobra_CustomMade_IndexController extends Mage_Core_Controller_Front_Action
                 Mage::log('completeAction P2 �� '.$content1.' | '.$content2.' | '.$content3.' | '.$content4);
             }elseif ($type == 4) {
             	$content1 = $params['text2'];;
+            }elseif ($type == 5) {
+                $content1 = $params['text2'];;
             }
             else {
                 $type = 3;

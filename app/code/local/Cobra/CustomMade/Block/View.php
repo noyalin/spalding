@@ -179,7 +179,7 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
     public function getP1Status()
     {
         $type_p1 = $this->session->getTypeP1();
-        if ($type_p1 == 1 || $type_p1 == 2) {
+        if ($type_p1 == 1 || $type_p1 == 2 || $type_p1 == 4) {
             return $type_p1;
         } else {
             return 0;
@@ -189,7 +189,7 @@ class Cobra_CustomMade_Block_View extends Mage_Catalog_Block_Product_View
     public function getP2Status()
     {
         $type_p2 = $this->session->getTypeP2();
-        if ($type_p2 == 1 || $type_p2 == 2) {
+        if ($type_p2 == 1 || $type_p2 == 2 || $type_p2 == 4) {
             return $type_p2;
         } else {
             return 0;

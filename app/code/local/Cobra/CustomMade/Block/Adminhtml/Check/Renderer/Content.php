@@ -4,6 +4,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
 {
     public function render(Varien_Object $row)
     {
+        $link = $row->getData(
         $link = $row->getData($this->getColumn()->getIndex());
         $html = null;
         $message = $this->getMessage($row);
@@ -12,7 +13,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
         }
         if(strpos($message, 'media/custommade') !== false){
         	$message = "浏览图片";
-        }      
+        }
         $content = $this->getColumn()->getContent();
         if ($content == 1) {
             $title = '预览图';
@@ -27,14 +28,15 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
             $html .= 'href="' . $link . '">';
             $html .= $message;
             $html .= '</a>';
-            return $html;
         }
+        return $html;
     }
 
     private function getMessage(Varien_Object $row)
     {
         $position = $this->getColumn()->getPosition();
         $content = $this->getColumn()->getContent();
+
         $message = null;
         if ($position == 1) {
             switch ($content) {
@@ -45,6 +47,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
                     $message = $row->getMsg2P1();
                     break;
                 default:
+                    $message = $row->getMsg1P1();
+                    break;
             }
         } else {
             switch ($content) {
@@ -54,7 +58,12 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
                 case 2:
                     $message = $row->getMsg2P2();
                     break;
+                case 4:
+                    $message = $row->getMsg1P2();
+                    break;
                 default:
+                    $message = $row->getMsg1P1();
+                    break;
             }
 
         }

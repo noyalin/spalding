@@ -73,22 +73,25 @@ window.onload=function (){
     };
 
     oBtnN.onclick = function(){
-        timer=setInterval(oBtnNext.onclick, 60);
+        // timer=setInterval(oBtnNext.onclick, 60);
+        jQuery('.big_pic').toggleClass('active');
 
-        oBtnN_top.style.display = "block";
-        setTimeout(function(){
-            oBtnN_top.style.display = "none";
-        },600);
+        // oBtnN_top.style.display = "block";
+        // setTimeout(function(){
+        //     oBtnN_top.style.display = "none";
+        // },600);
         // oBtnNext.onclick();
     };
 
     oBtnZ.onclick = function(){
-        timer=setInterval(oBtnPrev.onclick, 60);
-        
-        oBtnZ_top.style.display = "block";
-        setTimeout(function(){
-            oBtnZ_top.style.display = "none";
-        },600);
+        // timer=setInterval(oBtnPrev.onclick, 60);
+
+	    jQuery('.big_pic').toggleClass('active');
+
+        // oBtnZ_top.style.display = "block";
+        // setTimeout(function(){
+        //     oBtnZ_top.style.display = "none";
+        // },600);
         // oBtnPrev.onclick();
     };
 };

@@ -5270,6 +5270,10 @@ dl.madeBoxFuns dt.zz_t_2{
     margin-top:-84px;
 }
 
+.viewEmpImgWrap {
+    margin-top:-44px;
+}
+
 .viewTexWrap{
     top:95px;
     text-align: center;
@@ -5573,3 +5577,125 @@ dl.madeBoxFuns dt.zz_t_2{
     background: #d3c8a0;
 }
 /*melone start 增加代码，修改提示信息的背景颜色*/
+
+/*队徽*/
+.teamEmblem {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background: #d4c89e;
+    width: 300px;
+    padding: 44px 0 0 0;
+}
+
+@media screen and (max-width: 1300px) {
+    .teamEmblem {
+        width: 244px;
+    }
+}
+
+.embCon {
+    width: 256px;
+    margin: 0 auto;
+}
+
+.teamEmblem .embTit{
+    color: #84744d;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 11px;
+}
+
+.teamEmblem .embImg {
+    position: relative;
+    width: 112px;
+    height: 88px;
+    overflow: hidden;
+    float: left;
+    margin: 7px 6px;
+    cursor: pointer;
+}
+
+.teamEmblem .embImg.active .embDefault{
+    display: none;
+}
+
+.teamEmblem .embImg.active .embSelected{
+    display: block;
+}
+
+.teamEmblem .embImg.second {
+    display: none;
+}
+
+.teamEmblem .embSelected {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.teamEmblem .embImg:hover .embSelected {
+    display: block;
+}
+
+.teamEmblem .embImg:hover .embDefault {
+    display: none;
+}
+
+.teamEmblem .embBtn {
+    text-align: center;
+    margin-bottom: 6px;
+    position: relative;
+    top: -10px;
+}
+
+.teamEmblem .embBtn img{
+    vertical-align: bottom;
+    padding: 0 3px;
+    cursor: pointer;
+}
+
+.teamEmblem .embCon-tab2 {
+    display: none;
+}
+
+.teamEmblem .switchEmbTab {
+    position: relative;
+    top: 0;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.switchEmbTab span {
+    width: 49%;
+    height: 100%;
+    text-align: center;
+    color: #d4cb9d;
+    background-color: #85764c;
+    cursor: pointer;
+}
+
+.switchEmbTab span.active {
+    background-color: #00275e;
+}
+
+.embMonochrome {
+    float: left;
+}
+
+.embColour {
+    float: right;
+}
+
+.madeEmbWrap_1, .madeEmbWrap_2{
+    position: absolute;
+    width: 400px;
+    text-align: center;
+    top: 50%;
+    margin-top: -44px;
+    z-index: 2;
+}

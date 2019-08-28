@@ -1,5 +1,5 @@
 <?php $this->initView(); ?>
-<?php 
+<?php
 	$productImageHelper = Mage::helper('product');
 ?>
 <input id="complete" type="hidden" value="<?php echo $this->getUrl('custommade/index/complete'); ?>"/>
@@ -113,7 +113,7 @@
                     <span class="scrolBg"></span>
                 </div>
             </div>
-            
+
             <div class="rowsSub clearfix">
                 <span class="rowsAgr"><input type="button" value="我已阅读且同意"></span>
                 <span class="rowsRef" onclick="javascript:window.close();"><input type="button" value="不同意"></span>
@@ -128,7 +128,7 @@
         <!--melone end 修改图片 cBg2.jpg改成cBg2.png -->
     </div>
 
-    <!-- 定制主框架 -->_
+    <!-- 定制主框架 -->
     <!-- 第一步 开始定制 -->
     <div class="cusMadeCons madeStep_1" style="display:none;">
         <div class="cusMadeBox cusMadeCen">
@@ -168,7 +168,7 @@
         </div>
         <?php echo $this->getChildHtml('custommade_view_options') ?>
     </div>
-    
+
     <div class="madeBotmSn">
         <h1>定制专属篮球</h1>
 <!--        <p>斯伯丁74-604“掌控”系列的经典之作，销量之王，性价比之王，超强PU超耐磨，室内外通用，<br>恰到好处的粘度让你轻松“掌控”比赛！</p>-->
@@ -244,6 +244,14 @@
             var font = jQuery(".chosFam_p1").attr("data-family");
             var cutPos = getcutpos();
             var sku = jQuery('#sku').val();
+
+            if(nowKind == 4) {
+                text1 = getEmbPicName(1);
+                text3 = '';
+                font = '';
+                size = '';
+            }
+
             var datas = {
                 position: 1,
                 type: _madeValue,
@@ -269,6 +277,14 @@
             var font = jQuery(".chosFam_p2").attr("data-family");
             var cutPos = getcutpos();
             var sku = jQuery('#sku').val();
+
+            if(nowKind == 4) {
+                text2 = getEmbPicName(2);
+                text4 = '';
+                font = '';
+                size = '';
+            }
+
             var datas ={
                 position: 2,
                 type: _madeValue,
@@ -297,8 +313,10 @@
 
                 if(isClickOne){
                     jQuery(".madeTexWrap").find(".select_P1").html(jQuery(".select_N1").html());
+                    jQuery(".madeEmbWrap_1").find('img').attr('src', '');
                 }else{
                     jQuery(".madeTexWrap").find(".select_P2").html(jQuery(".select_N2").html());
+                    jQuery(".madeEmbWrap_2").find('img').attr('src', '');
                 }
                 if (dataObj != null) {
                     resetView(dataObj['type'], dataObj['content1'], dataObj['content2'], dataObj['content3'], dataObj['content4']);
@@ -578,6 +596,97 @@
             }
 
 
+        } else if (_dataType == 4) {
+        	//队徽
+        	 custom_flag.val("4");
+        	 _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitEmb").addClass("madeNow");
+
+        	  if(isClickOne){
+                _viewPage1.hide();
+                _viewPage1Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg.png');  ?>");
+            }else{
+                _viewPage2.hide();
+                _viewPage2Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg2.png');  ?>");
+            }
+            _bgZindx.css("z-index", "0");                               //重置P1背景z-index值
+
+            _comfBox.siblings(".madeBoxFuns").find("dt").hide();
+            _comfBox.siblings(".madeBoxFuns").find("dd").removeClass("madeNow");
+            _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitEmb").addClass("madeNow");
+
+            _comfBox.siblings(".madeSubmit").find(".zz").hide();
+
+            _comfBox.siblings(".madeSubmit").find(".submitY").attr("disabled", "disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitY").hide();
+            _comfBox.siblings(".madeSubmit").find(".submitN").removeAttr("disabled");
+            _comfBox.siblings(".madeSubmit").find(".submitN").show();
+            //_viewPage1.hide();
+            _comfBox.siblings(".madeBoxFuns").find(".zz_t").hide();
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInpBox").val("");
+
+             if(isClickOne){
+                jQuery("#textMade_P1").html("");
+                jQuery("#textMade_P3").html("");
+
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineTwo_p1 input").removeAttr("checked");
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineOne_p1 input").attr("checked","checked");
+            }else{
+                jQuery("#textMade_P2").html("");
+                jQuery("#textMade_P4").html("");
+
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineTwo_p2 input").removeAttr("checked");
+                _comfBox.siblings(".madeBoxFuns").find(".smalLine").find(".lineOne_p2 input").attr("checked","checked");
+            }
+
+             _comfBox.siblings(".madeBoxFuns").find(".setSize").removeClass("checked");
+            _comfBox.siblings(".madeBoxFuns").find(".setSize_60").addClass("checked");
+
+            if(isClickOne){
+                jQuery("#textMade_P1").removeClass("size_40 size_60 size_80 twoLine").addClass("size_60");
+            }else{
+                jQuery("#textMade_P2").removeClass("size_40 size_60 size_80 twoLine").addClass("size_60");
+            }
+
+            if(isClickOne){
+                _viewPage1.show();
+                _viewPage1Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg.png');  ?>");
+            }else{
+                _viewPage2.show();
+                _viewPage2Bg.attr("src", "<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg2.png');  ?>");
+            }
+
+            _bgZindx.css("z-index", "0");                                  //重置P1背景z-index值
+
+            var url ="<?php echo $this->getSkinUrl('imagesEmblem/'); ?>" + value1 +".png";
+            var _dataImg = jQuery("<img class='viewEmpImgWrap' src='' alt=''/>").attr("src", url);
+
+            _viewCons.empty();
+            _viewCons.append(_dataImg);
+
+            jQuery("#textMade_P3").hide();
+            jQuery("#textMade_P4").hide();
+
+            //重置后隐藏小字第二行相关内容
+            _comfBox.siblings(".madeBoxFuns").find(".smalLine").hide();
+
+
+            _comfBox.siblings(".madeBoxFuns").find(".madeTextInp").find(".smaSizeInp").hide();
+            _comfBox.siblings(".madeBoxFuns").find(".lineOne").css("color","#fcb805");
+            _comfBox.siblings(".madeBoxFuns").find(".lineTwo").css("color","#9b9b9b");
+
+            _comfBox.siblings(".madeBoxFuns").find(".lineOne").removeClass("labelNoc").addClass("labelCheck");
+            _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
+
+            //重置左侧队徽
+            jQuery('.madeStepEmb').hide();
+            jQuery('.embCon-tab1').show();
+            jQuery('.embCon-tab2').hide();
+            jQuery('.embImg').removeClass('active');
+            jQuery('.embImg .first').show();
+            jQuery('.embImg .second').hide();
+            jQuery('.switchEmbTab').find('span').removeClass('active');
+            jQuery('.embMonochrome').addClass('active');
+
         } else {    //定制空白
             custom_flag.val("0");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
@@ -642,7 +751,6 @@
 
             _comfBox.siblings(".madeBoxFuns").find(".lineOne").removeClass("labelNoc").addClass("labelCheck");
             _comfBox.siblings(".madeBoxFuns").find(".lineTwo").removeClass("labelCheck").addClass("labelNoc");
-
         }
 
         //重置
@@ -652,7 +760,7 @@
             jQuery(".select_N2").html(jQuery(".madeTexWrap").find(".select_P2").html());
         }
 
-        
+
     }
 
     //页面刷新时初始化页面数据

@@ -259,6 +259,8 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
         $exportFlag = false;
         $exportError = false;
 
+        //  下载图片
+        /*
         foreach ($infoIds as $infoId) {
             Mage::log("export id=".$infoId." Start");
             $subscriber = Mage::getModel('custommade/info')->load($infoId);
@@ -274,7 +276,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             	Mage::log("CustomMade end export return = －3");
             	return -3;
             }
-            
+
             $img_prefix = $dir . "/" .$subscriber->getOrderId()."/". $subscriber->getSku() . "-" . $subscriber->getOrderId() . "-" . $time;
             if ($subscriber->getSku() == '74-602yc-ID01' || $subscriber->getSku() == '74-602yc-ID02') {
                 if ($p1_preview_url) {
@@ -342,7 +344,7 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             $ret = -2;
         }
         else {
-
+*/
             $file = fopen($dir . "/" . $time . ".txt", "w");
             if (!$file) {
                 Mage::log("CustomMade end export return = －3");
@@ -375,16 +377,16 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
             readfile($zip_name);
 
             $ret = 1;
-        }
+//        }
 
         Mage::log("CustomMade end export return = ".$ret);
 
         return $ret;
     }
 
-    
+
     private function folderToZip($folder, &$zipFile, $subfolder = null) {
-    	
+
     	// we check if $folder has a slash at its end, if not, we append one
     	$folder .= end(str_split($folder)) == "/" ? "" : "/";
     	$subfolder .= end(str_split($subfolder)) == "/" ? "" : "/";
@@ -409,8 +411,8 @@ class Cobra_CustomMade_Adminhtml_CheckController extends Mage_Adminhtml_Controll
     	}
     	closedir($handle);
     }
-    
-    
+
+
     private function grabImage($url, $filename)
     {
         ob_start();

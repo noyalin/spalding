@@ -1,6 +1,6 @@
 <?php $this->initView(); ?>
 <?php $_product = $this->getProduct(); ?>
-<?php 
+<?php
 	$productImageHelper = Mage::helper('product');
 ?>
 <div class="cusMadeBox cusMadeCen">
@@ -17,9 +17,9 @@
         <div class="viewBack viewMade" id="exitView"><button type="button"><img src="<?php  echo $productImageHelper->getCustomMadeImage("viewMadeBack.png") ?>" alt=""></button></div>
 
 
-        
+
         <?php if ($this->getTypeP1() == 1 && $this->getTypeP2() == 1): ?>
-        
+
         <!-- 第一套 s -->
         <!-- 图片-图片 -->
         <ul class="big_pic">
@@ -48,19 +48,19 @@
                 </li>
 
             <?php endfor; ?>
-            
+
         </ul>
         <!-- 第一套 e -->
 
-        
+
         <?php elseif($this->getTypeP1() == 2 && $this->getTypeP2() == 2): ?>
         <!-- 第二套 s -->
         <!-- 文字-文字 -->
         <ul class="big_pic">
             <?php
             $_arrP1 = array(1,2,3,4,5,6,7,8,9,10,11,12,13,21,22,23,24,25,26,27,28,29,30,31,32);
-            $_arrP2 = array(13,14,15,16,17,18,19,20,21,22,23,24,25,26);
-            for ($_i = 1; $_i <= 32; $_i++): ?>
+            $_arrP2 = array(2,13,14,15,16,17,18,19,20,21,22,23,24,25,26);
+            for ($_i = 1; $_i <= 2; $_i++): ?>
 
                 <?php if($_i == 1): ?>
                     <li style="z-index:1;">
@@ -71,8 +71,8 @@
                 <!-- P1  -->
                 <?php if(in_array($_i, $_arrP1)): ?>
                     <?php if($this->getContent3P1() == 4): ?>
-                        <div class="textBox textBox_2 textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> "  <?php echo $this->getP1Font() ?> ><?php echo $this->getContent1P1() ?></div>
-                        <div class="textBox textBox_2 textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> towLine_view_1"  <?php echo $this->getP1Font() ?> ><?php echo $this->getContent2P1() ?></div>
+                        <div class="aa textBox textBox_2 textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> "  <?php echo $this->getP1Font() ?> ><?php echo $this->getContent1P1() ?></div>
+                        <div class="bb textBox textBox_2 textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> towLine_view_1"  <?php echo $this->getP1Font() ?> ><?php echo $this->getContent2P1() ?></div>
                     <?php else: ?>
                         <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> " <?php echo $this->getP1Font() ?> ><?php echo $this->getContent1P1() ?></div>
                     <?php endif; ?>
@@ -81,22 +81,29 @@
                 <!-- P2  -->
                 <?php if(in_array($_i, $_arrP2)): ?>
                     <?php if($this->getContent3P2() == 4): ?>
-                        <div class="textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent1P2() ?></div>
-                        <div class="textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?> towLine_view_2" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent2P2() ?></div>
+                        <div class="a textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent1P2() ?></div>
+                        <div class="b textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?> towLine_view_2" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent2P2() ?></div>
                     <?php else: ?>
-                        <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent1P2() ?></div>
+                        <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_17" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent1P2() ?></div>
                     <?php endif; ?>
                 <?php endif; ?>
 
-                    <div class="imgBox imgBall"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_n/".substr(strval($_i+100),1,3).".png") ?>" alt="" /></div>
-                </li>
+                    <div class="imgBox imgBall">
+                        <!--<img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_n/".substr(strval($_i+100),1,3).".png") ?>" alt="" />-->
+                        <?php if($_i == 1): ?>
+                            <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_n/01.png'); ?>" alt="">
+                        <?php else: ?>
+                            <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_n/17.png'); ?>" alt="">
+<?php endif; ?>
+</div>
+</li>
 
             <?php endfor; ?>
         </ul>
         <!-- 第二套 e -->
 
         <?php elseif($this->getTypeP1() == 1 && $this->getTypeP2() == 2): ?>
-        
+
         <!-- 第三套 s -->
         <!-- 图片-文字 -->
         <ul class="big_pic">
@@ -114,7 +121,7 @@
                 <!-- P1  -->
                 <?php if(in_array($_i, $_arrP1)): ?>
                     <div class="imgBox imgPag_1 imgPag_1_<?php echo $_i ?>"><img src="<?php echo $this->getContent1P1() ?>" alt="" /></div>
-                    
+
                 <?php endif; ?>
 
                 <!-- P2  -->
@@ -131,11 +138,11 @@
                 </li>
 
             <?php endfor; ?>
-            
+
         </ul>
         <!-- 第三套 e -->
 
-        
+
         <?php elseif($this->getTypeP1() == 2 && $this->getTypeP2() == 1): ?>
         <!-- 第四套 s -->
         <!-- 文字-图片 -->
@@ -170,11 +177,11 @@
                 </li>
 
             <?php endfor; ?>
-            
+
         </ul>
         <!-- 第四套 e -->
-        
-        
+
+
         <?php elseif($this->getTypeP1() == 1 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2)): ?>
         <!-- 第五套 s -->
         <!-- 图片-空 -->
@@ -199,21 +206,21 @@
                 </li>
 
             <?php endfor; ?>
-            
+
         </ul>
-    
+
 
         <!-- 第五套 e -->
-        
-        
-        <?php elseif($this->getTypeP1() == 2 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2)): ?>
+
+
+        <?php elseif($this->getTypeP1() == 2 && ($this->getTypeP2() != 1 && $this->getTypeP2() != 2 && $this->getTypeP2() != 4)): ?>
         <!-- 第六套 s -->
         <!-- 文字-空 -->
         <ul class="big_pic">
             <?php
             $_arrP1 = array(1,2,3,4,5,6,7,8,9,10,11,12,13,21,22,23,24,25,26,27,28,29,30,31,32);
 
-            for ($_i = 1; $_i <= 32; $_i++): ?>
+            for ($_i = 1; $_i <= 2; $_i++): ?>
 
                 <?php if($_i == 1): ?>
                     <li style="z-index:1;">
@@ -232,7 +239,14 @@
                 <?php endif; ?>
 
 
-                    <div class="imgBox imgBall"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_zk/".substr(strval($_i+100),1,3).".png") ?>" alt="" /></div>
+                    <div class="imgBox imgBall">
+                    <!--<img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_zk/".substr(strval($_i+100),1,3).".png") ?>" alt="" />-->
+                    <?php if($_i == 1): ?>
+                        <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_zk/01.png'); ?>" alt="">
+                    <?php else: ?>
+                        <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_zk/17.png'); ?>" alt="">
+                    <?php endif; ?>
+                    </div>
                 </li>
 
             <?php endfor; ?>
@@ -240,7 +254,7 @@
         </ul>
         <!-- 第六套 e -->
 
-        
+
         <?php elseif(($this->getTypeP1() != 1 && $this->getTypeP1() != 2) && $this->getTypeP2() == 1): ?>
         <!-- 第七套 s -->
         <!-- 空-图片 -->
@@ -265,22 +279,22 @@
                 </li>
 
             <?php endfor; ?>
-            
+
         </ul>
 
 
 
         <!-- 第七套 e -->
 
-        
-        <?php elseif(($this->getTypeP1() != 1 && $this->getTypeP1() != 2) && $this->getTypeP2() == 2): ?>
+
+        <?php elseif(($this->getTypeP1() != 1 && $this->getTypeP1() != 2 && $this->getTypeP1() != 4) && $this->getTypeP2() == 2): ?>
         <!-- 第八套 s -->
         <!-- 空-文字 -->
         <ul class="big_pic">
             <?php
 
-            $_arrP2 = array(13,14,15,16,17,18,19,20,21,22,23,24,25,26);
-            for ($_i = 1; $_i <= 32; $_i++): ?>
+            $_arrP2 = array(2,13,14,15,16,17,18,19,20,21,22,23,24,25,26);
+            for ($_i = 1; $_i <= 2; $_i++): ?>
 
                 <?php if($_i == 1): ?>
                     <li style="z-index:1;">
@@ -294,29 +308,32 @@
                         <div class="textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>"  <?php echo $this->getP2Font() ?>><?php echo $this->getContent1P2() ?></div>
                         <div class="textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?> towLine_view_2"  <?php echo $this->getP2Font() ?>><?php echo $this->getContent2P2() ?></div>
                     <?php else: ?>
-                        <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>"  <?php echo $this->getP2Font() ?>><?php echo $this->getContent1P2() ?></div>
+                        <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_17"  <?php echo $this->getP2Font() ?>><?php echo $this->getContent1P2() ?></div>
                     <?php endif; ?>
                 <?php endif; ?>
 
-                    <div class="imgBox imgBall"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_kz/".substr(strval($_i+100),1,3).".png") ?>" alt="" /></div>
-                </li>
+                    <div class="imgBox imgBall">
+                    <!--<img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_kz/".substr(strval($_i+100),1,3).".png") ?>" alt="" />-->
+                    <?php if($_i == 1): ?>
+                       <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_kz/01.png'); ?>" alt="">
+                    <?php else: ?>
+                        <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_kz/17.png'); ?>" alt="">
+                    <?php endif; ?>
+</div>
+</li>
 
             <?php endfor; ?>
         </ul>
-
-
-
         <!-- 第八套 e -->
-        
-        
-        <?php else: ?>
-        <!-- 第九套 s -->
-        <!-- 空-空 -->
+
+
+        <?php elseif(($this->getTypeP1() == 4 && $this->getTypeP2() != 4 && $this->getTypeP2() != 2)): ?>
+               <!-- 第十套 s -->
+               <!-- 队徽-空 -->
         <ul class="big_pic">
-            <?php
-            $_arrP1 = array();
-            $_arrP2 = array();
-            for ($_i = 1; $_i <= 32; $_i++): ?>
+                <?php
+
+                for ($_i = 1; $_i <= 2; $_i++): ?>
 
                 <?php if($_i == 1): ?>
                     <li style="z-index:1;">
@@ -324,8 +341,211 @@
                     <li>
                 <?php endif; ?>
 
-                    <div class="imgBox imgBall"><img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_kk/".substr(strval($_i+100),1,3).".png") ?>" alt="" /></div>
+                <!-- P1 -->
+                <?php if($this->getContent1P1() && $_i == 1): ?>
+                    <div class="imgBox embPreview">
+                    <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$this->getContent1P1().'.png'); ?>"  alt="">
+                    </div>
+                <?php endif; ?>
+
+                 <div class="imgBox imgBall">
+                <?php if($_i == 1): ?>
+                   <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_n/01.png'); ?>" alt="">
+                <?php else: ?>
+                    <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_kk/17.png'); ?>" alt="">
+                <?php endif; ?>
+                </div>
                 </li>
+
+                <?php endfor; ?>
+        </ul>
+        <!-- 第十套 e -->
+
+
+        <?php elseif(($this->getTypeP1() != 4 && $this->getTypeP1() != 2 && $this->getTypeP2() == 4)): ?>
+       <!-- 第十一套 s -->
+       <!-- 空-队徽 -->
+        <ul class="big_pic">
+            <?php
+
+            for ($_i = 1; $_i <= 2; $_i++): ?>
+
+            <?php if($_i == 1): ?>
+                <li style="z-index:1;">
+            <?php else: ?>
+                <li>
+            <?php endif; ?>
+
+            <!-- P2 -->
+            <?php if($this->getContent1P2() && $_i == 2): ?>
+                <div class="imgBox embPreview <?php echo $this->getTypeP1();?>">
+                <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$this->getContent1P2().'.png'); ?>"  alt="">
+                </div>
+            <?php endif; ?>
+
+             <div class="imgBox imgBall">
+            <?php if($_i == 1): ?>
+               <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_kk/01.png'); ?>" alt="">
+            <?php else: ?>
+                <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_kz/17.png'); ?>" alt="">
+            <?php endif; ?>
+            </div>
+            </li>
+
+            <?php endfor; ?>
+        </ul>
+        <!-- 第十一套 e -->
+
+        <?php elseif(($this->getTypeP1() == 4 && $this->getTypeP2() == 4)): ?>
+               <!-- 第十二套 s -->
+               <!-- 队徽-队徽 -->
+                <ul class="big_pic">
+                <?php
+
+                for ($_i = 1; $_i <= 2; $_i++): ?>
+
+                <?php if($_i == 1): ?>
+                    <li style="z-index:1;">
+                <?php else: ?>
+                    <li>
+                <?php endif; ?>
+
+                <!-- P1 P2 -->
+                <?php if($this->getContent1P1() && $_i == 1): ?>
+                    <div class="imgBox embPreview">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$this->getContent1P1().'.png'); ?>"  alt="">
+                     </div>
+                    <?php else: ?>
+                     <div class="imgBox embPreview">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$this->getContent1P2().'.png'); ?>"  alt="">
+                     </div>
+                    <?php endif; ?>
+
+                    <div class="imgBox imgBall">
+                    <?php if($_i == 1): ?>
+                       <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_zk/01.png'); ?>" alt="">
+                    <?php else: ?>
+                        <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_n/17.png'); ?>" alt="">
+                    <?php endif; ?>
+                    </div>
+                </li>
+
+                <?php endfor; ?>
+            </ul>
+        <!-- 第十二套 e -->
+
+        <?php elseif($this->getTypeP1() == 2 && $this->getTypeP2() == 4): ?>
+               <!-- 第十三套 s -->
+               <!-- 文字-队徽 -->
+            <ul class="big_pic">
+            <?php
+
+            for ($_i = 1; $_i <= 2; $_i++): ?>
+
+            <?php if($_i == 1): ?>
+                <li style="z-index:1;">
+            <?php else: ?>
+                <li>
+            <?php endif; ?>
+
+            <!-- P1  -->
+            <?php if($_i == 1): ?>
+            <?php if($this->getContent3P1() == 4): ?>
+                <div class="aa textBox textBox_2 textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> "  <?php echo $this->getP1Font() ?> ><?php echo $this->getContent1P1() ?></div>
+                <div class="bb textBox textBox_2 textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> towLine_view_1"  <?php echo $this->getP1Font() ?> ><?php echo $this->getContent2P1() ?></div>
+            <?php else: ?>
+                <div class="textBox textPag_1 <?php echo $this->getSizeClassP1() ?> textPag_1_<?php echo $_i ?> " <?php echo $this->getP1Font() ?> ><?php echo $this->getContent1P1() ?></div>
+            <?php endif; ?>
+            <?php endif; ?>
+
+            <!--P2 -->
+            <?php if($this->getContent1P2() && $_i ==2): ?>
+                <div class="imgBox embPreview">
+                    <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$this->getContent1P2().'.png'); ?>"  alt="">
+                 </div>
+            <?php endif; ?>
+
+            <div class="imgBox imgBall">
+            <?php if($_i == 1): ?>
+               <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_zk/01.png'); ?>" alt="">
+            <?php else: ?>
+                <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_n/17.png'); ?>" alt="">
+            <?php endif; ?>
+            </div>
+            </li>
+
+            <?php endfor; ?>
+        </ul>
+
+        <!-- 第十三套 e -->
+        <?php elseif($this->getTypeP1() == 4 && $this->getTypeP2() == 2): ?>
+               <!-- 第十四套 s -->
+               <!-- 队徽-文字-->
+            <ul class="big_pic">
+            <?php
+
+            for ($_i = 1; $_i <= 2; $_i++): ?>
+
+            <?php if($_i == 1): ?>
+                <li style="z-index:1;">
+            <?php else: ?>
+                <li>
+            <?php endif; ?>
+
+            <!--P2 -->
+            <?php if($_i ==1): ?>
+                <div class="imgBox embPreview">
+                    <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$this->getContent1P1().'.png'); ?>"  alt="">
+                 </div>
+            <?php endif; ?>
+
+            <!-- P2  -->
+            <?php if($_i == 2): ?>
+            <?php if($this->getContent3P2() == 4): ?>
+                <div class="a textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?>" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent1P2() ?></div>
+                <div class="b textBox textBox_2 textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_<?php echo $_i ?> towLine_view_2" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent2P2() ?></div>
+            <?php else: ?>
+                <div class="textBox textPag_2 <?php echo $this->getSizeClassP2() ?> textPag_2_17" <?php echo $this->getP2Font() ?> ><?php echo $this->getContent1P2() ?></div>
+            <?php endif; ?>
+            <?php endif; ?>
+
+            <div class="imgBox imgBall">
+            <?php if($_i == 1): ?>
+               <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_zk/01.png'); ?>" alt="">
+            <?php else: ?>
+                <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_n/17.png'); ?>" alt="">
+            <?php endif; ?>
+            </div>
+            </li>
+
+            <?php endfor; ?>
+            </ul>
+            <!-- 第十三套 e -->
+
+        <?php else: ?>
+        <!-- 第九套 s -->
+        <!-- 空-空 -->
+        <ul class="big_pic">
+            <?php
+            $_arrP1 = array();
+            $_arrP2 = array();
+            for ($_i = 1; $_i <= 2; $_i++): ?>
+
+                <?php if($_i == 1): ?>
+                    <li style="z-index:1;">
+                <?php else: ?>
+                    <li>
+                <?php endif; ?>
+
+                    <div class="imgBox imgBall">
+                    <!--<img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku()."/imgBall_kk/".substr(strval($_i+100),1,3).".png") ?>" alt="" />-->
+                    <?php if($_i == 1): ?>
+                       <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_kk/01.png'); ?>" alt="">
+                    <?php else: ?>
+                        <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/imgBall_kk/17.png'); ?>" alt="">
+<?php endif; ?>
+</div>
+</li>
             <?php endfor; ?>
         </ul>
 
