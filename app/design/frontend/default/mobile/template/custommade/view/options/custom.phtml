@@ -1,7 +1,7 @@
 <?php $this->initView(); ?>
 <?php $_product = $this->getProduct(); ?>
 
-<?php 
+<?php
 	$productImageHelper = Mage::helper('product');
 ?>
 <div class="madeBallBox">
@@ -90,6 +90,25 @@
                 <div class="select_P1 size_80"></div>
                 <div class="select_P2"></div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- 定制队徽 -->
+<div class="madeStepEmb" style="display:none;">
+    <div class="cusMadeBox cusMadeCen">
+        <div class="madeTex_ball">
+            <div class="select_P1">
+                <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg.png'); ?>" alt="">
+            </div>
+            <div class="select_P2" style="display: none;">
+                <img src="<?php echo $productImageHelper->getCustomMadeImage($_product->getSku().'/madeTexBg2.png'); ?>" alt="">
+            </div>
+        </div>
+        <div class="madeEmbWrap_1 madeEmbWrap">
+              <img src="" dataUrl="<?php echo $this->getSkinUrl('imagesEmblem/'); ?>" />
+        </div>
+        <div class="madeEmbWrap_2 madeEmbWrap">
+              <img src="" dataUrl="<?php echo $this->getSkinUrl('imagesEmblem/'); ?>" />
         </div>
     </div>
 </div>

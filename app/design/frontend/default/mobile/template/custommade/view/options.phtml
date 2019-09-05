@@ -14,10 +14,14 @@ $productImageHelper = Mage::helper('product');
 <div class="cusMadeBox cusMadeRig">
     <!-- p1 -->
     <div class="madeBoxCons madeBoxCons_p1" id="made_p1">
-        <div class="madetitle"><span class="active madefont">选字体</span><span class="madesize">选字号</span><span>保存设置</span><i class="disable"></i><i class="disable2"></i></div>
+        <div class="madetitle"><span class="active madefont">选定制项目</span><span class="madesize">选定制内容</span><span>保存设置</span><i class="disable"></i><i class="disable2"></i></div>
         <div class="madeinfobox  active">
             <div class="selectFontBox">
-                <div class="madeKindTitTex" dataVal="2"><span class="aBtn font1" data-family="3">字体一</span><span class="aBtn font2" data-family="4">字体二</span></div>
+                <div class="madeKindTitTex" dataVal="2">
+                    <span class="aBtn font1" data-family="3">字体一</span>
+                    <span class="aBtn font2" data-family="4">字体二</span>
+                </div>
+                <div class="madeKindTitEmb" dataVal='4'><span class="aBtn">定制NBA队徽</span></div>
                 <div class="madeKindTitNon madeNow" dataval="3"><span class="aBtn active">原始球皮</span></div>
             </div>
         </div>
@@ -37,79 +41,166 @@ $productImageHelper = Mage::helper('product');
                     <div class="madeTextInpBox smaSizeInp"><input type="text"  onkeydown='if(event.keyCode==13) return false;'  onpaste="return false;"  disabled="disabled" autocomplete="off"  placeholder="请输入内容"></div>
                 </div>
             </div>
-        </div>
-        <div class="madeinfobox">
-            <div class="madeSubmit">
-                <button type="button" class="submitY"></button>
-                <button type="button" class="submitN" disabled="disabled"></button>
-            </div>
-        </div>
-    </div>
-    <!-- p2 -->
-    <div class="madeBoxCons madeBoxCons_p2" id="made_p2" style="display:none;">
-        <div class="madetitle"><span class="active madefont">选字体</span><span class="madesize">选字号</span><span>保存设置</span><i class="disable"></i><i class="disable2"></i></div>
-        <div class="madeinfobox  active">
-            <div class="selectFontBox">
-                <div class="madeKindTitTex ms-fl" dataVal="2"><span class="aBtn font1" data-family="3">字体一</span><span class="aBtn font2" data-family="4">字体二</span></div>
-                <div class="madeKindTitNon ms-fl madeNow" dataval="3"><span class="aBtn active">原始球皮</span></div>
-            </div>
-        </div>
-        <div class="madeinfobox">
-            <div class="selectsize">
-                <div class="fontFamilySel">
-                    <span class="chosFam" size="3">大号</span>
-                    <ul class="fontSizeList">
-                        <li datas="size_80"  for="attribute2093" name="attribute2093" size="3">大号</li>
-                        <li datas="size_60"  for="attribute2092" name="attribute2092" size="2">中号</li>
-                        <li datas="size_40" for="attribute2091" name="attribute2091" size="1">小号单</li>
-                        <li datas="size_40 lineTwo" for="attribute2091" name="attribute2091" size="4">小号双</li>
-                    </ul>
+            <!--队徽-->
+            <div class="selectEmb">
+                <div class="tab"><div class="active emb_button1">单</br>色</div><div class="emb_button2">彩</br>色</div></div>
+                <div class="content_wrap">
+                    <div class="embCon-tab1">
+                    <?php
+                          $_arrEmb1 = array('lakers', 'warriors', 'rockets', 'blazers', 'celtics', 'spurs', 'bucks', 'heat', 'thunder', '76ers');
+                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-default.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-default.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                    <?php endfor; ?>
+                    </div>
+                    <div class="embCon-tab2">
+                    <?php
+                          $_arrEmb1 = array('lakers', 'warriors', 'rockets', 'blazers', 'celtics', 'spurs', 'bucks', 'heat', 'thunder', '76ers');
+                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-color.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-color.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                    <?php endfor; ?>
+                    </div>
                 </div>
-                <div class="madeTextInp clearfix">
-                    <div class="madeTextInpBox"><input type="text"  onkeydown='if(event.keyCode==13) return false;' onpaste="return false;"  autocomplete="off"  placeholder="请输入内容"></div>
-                    <div class="madeTextInpBox smaSizeInp"><input type="text"  onkeydown='if(event.keyCode==13) return false;'  onpaste="return false;" disabled="disabled" autocomplete="off"  placeholder="请输入内容"></div>
+
+                <div class="arrow_emb_prev arrow_emb">
+                    <img src="<?php echo $this->getSkinUrl('imagesEmblem/button-left.png'); ?>"  class="prev_emb" />
                 </div>
+
+                <div class="arrow_emb_next arrow_emb">
+                    <img src="<?php echo $this->getSkinUrl('imagesEmblem/button-right.png'); ?>"  class="next_emb" />
+                </div>
+
             </div>
         </div>
-        <div class="madeinfobox">
-            <div class="madeSubmit">
-                <button type="button" class="submitY"></button>
-                <button type="button" class="submitN" disabled="disabled"></button>
-            </div>
-        </div>
+<div class="madeinfobox">
+<div class="madeSubmit">
+<button type="button" class="submitY"></button>
+<button type="button" class="submitN" disabled="disabled"></button>
+</div>
+</div>
+</div>
+<!-- p2 -->
+<div class="madeBoxCons madeBoxCons_p2" id="made_p2" style="display:none;">
+<div class="madetitle"><span class="active madefont">选定制项目</span><span class="madesize">选定制内容</span><span>保存设置</span><i class="disable"></i><i class="disable2"></i></div>
+<div class="madeinfobox  active">
+<div class="selectFontBox">
+<div class="madeKindTitTex ms-fl" dataVal="2"><span class="aBtn font1" data-family="3">字体一</span><span class="aBtn font2" data-family="4">字体二</span></div>
+<div class="madeKindTitEmb ms-fl" dataVal='4'><span class="aBtn">定制NBA队徽</span></div>
+<div class="madeKindTitNon ms-fl madeNow" dataval="3"><span class="aBtn active">原始球皮</span></div>
+</div>
+</div>
+<div class="madeinfobox">
+    <div class="selectsize">
+    <div class="fontFamilySel">
+    <span class="chosFam" size="3">大号</span>
+    <ul class="fontSizeList">
+    <li datas="size_80"  for="attribute2093" name="attribute2093" size="3">大号</li>
+    <li datas="size_60"  for="attribute2092" name="attribute2092" size="2">中号</li>
+    <li datas="size_40" for="attribute2091" name="attribute2091" size="1">小号单</li>
+    <li datas="size_40 lineTwo" for="attribute2091" name="attribute2091" size="4">小号双</li>
+    </ul>
     </div>
+    <div class="madeTextInp clearfix">
+    <div class="madeTextInpBox"><input type="text"  onkeydown='if(event.keyCode==13) return false;' onpaste="return false;"  autocomplete="off"  placeholder="请输入内容"></div>
+    <div class="madeTextInpBox smaSizeInp"><input type="text"  onkeydown='if(event.keyCode==13) return false;'  onpaste="return false;" disabled="disabled" autocomplete="off"  placeholder="请输入内容"></div>
+    </div>
+    </div>
+    <!--队徽-->
+     <div class="selectEmb">
+                <div class="tab"><div class="active emb_button1">单</br>色</div><div class="emb_button2">彩</br>色</div></div>
+                <div class="content_wrap">
+                    <div class="embCon-tab1">
+                    <?php
+                          $_arrEmb1 = array('lakers', 'warriors', 'rockets', 'blazers', 'celtics', 'spurs', 'bucks', 'heat', 'thunder', '76ers');
+                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-default.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-default.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                    <?php endfor; ?>
+                    </div>
+                    <div class="embCon-tab2">
+                    <?php
+                          $_arrEmb1 = array('lakers', 'warriors', 'rockets', 'blazers', 'celtics', 'spurs', 'bucks', 'heat', 'thunder', '76ers');
+                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-color.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-1-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                           <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-color.png'); ?>"  class="embDefault" alt="">
+                               <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$_i.'-'.$_arrEmb1[$_i-1].'-2-selected.png'); ?>"  class="embSelected" alt="">
+                           </div>
+                    <?php endfor; ?>
+                    </div>
+                    </div>
+
+                    <div class="arrow_emb_prev arrow_emb">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/button-left.png'); ?>"  class="prev_emb" />
+                    </div>
+
+                    <div class="arrow_emb_next arrow_emb">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/button-right.png'); ?>"  class="next_emb" />
+                    </div>
+
+            </div>
+    </div>
+<div class="madeinfobox">
+<div class="madeSubmit">
+<button type="button" class="submitY"></button>
+<button type="button" class="submitN" disabled="disabled"></button>
+</div>
+</div>
+</div>
 </div>
 <div class="cusMadebtn">
-    <div id="btn_page1" class="madeP_btn madeP_1_btn  madeP_btn_now"></div>
-    <div id="btn_page2" class="madeP_btn madeP_2_btn"></div>
+<div id="btn_page1" class="madeP_btn madeP_1_btn  madeP_btn_now"></div>
+<div id="btn_page2" class="madeP_btn madeP_2_btn"></div>
 </div>
 <div class="comfPop">
-    <div class="comfBox">
-        <p>是否保存当前定制？</p>
-        <div class="confBtn">
-            <button type="button" class="saveMadeY">是</button>
-            <button type="button" class="saveMadeN">否</button>
-        </div>
-    </div>
-    <div class="comfResBox">
-        <p>确定重置定制？</p>
-        <div class="confResBtn">
-            <button type="button" class="resY">是</button>
-            <button type="button" class="resN">否</button>
-        </div>
-    </div>
+<div class="comfBox">
+<p>是否保存当前定制？</p>
+<div class="confBtn">
+<button type="button" class="saveMadeY">是</button>
+<button type="button" class="saveMadeN">否</button>
+</div>
+</div>
+<div class="comfResBox">
+<p>确定重置定制？</p>
+<div class="confResBtn">
+<button type="button" class="resY">是</button>
+<button type="button" class="resN">否</button>
+</div>
+</div>
 </div>
 
 <div style="display:none;">
-    <input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
-    <input type="hidden" name="related_product" id="related-products-field" value=""/>
-    <input type="hidden" name="super_attribute[<?php echo $this->getSizeId() ?>]" value="<?php echo $this->getSizeValue() ?>"/>
-    <input type="hidden" name="super_attribute[<?php echo $this->getCustomId() ?>]" id="custom_num" value=""/>
-    <input type="hidden" name="sku" id="sku"  value="<?php echo $_product->getSku() ?>"/>
-    <input type="hidden" id="single" value="<?php echo $this->getCustomValue()[1]; ?>"/>
-    <input type="hidden" id="double" value="<?php echo $this->getCustomValue()[0]; ?>"/>
-    <input type="hidden" name="sub_sku" id="sub_sku" value=""/>
-    <input type="hidden" name="font_len" id="font_len" value=""/>
+<input type="hidden" name="product" value="<?php echo $_product->getId() ?>"/>
+<input type="hidden" name="related_product" id="related-products-field" value=""/>
+<input type="hidden" name="super_attribute[<?php echo $this->getSizeId() ?>]" value="<?php echo $this->getSizeValue() ?>"/>
+<input type="hidden" name="super_attribute[<?php echo $this->getCustomId() ?>]" id="custom_num" value=""/>
+<input type="hidden" name="sku" id="sku"  value="<?php echo $_product->getSku() ?>"/>
+<input type="hidden" id="single" value="<?php echo $this->getCustomValue()[1]; ?>"/>
+<input type="hidden" id="double" value="<?php echo $this->getCustomValue()[0]; ?>"/>
+<input type="hidden" name="sub_sku" id="sub_sku" value=""/>
+<input type="hidden" name="font_len" id="font_len" value=""/>
 </div>
 <div class="madeFuns">
     <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){

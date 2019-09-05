@@ -319,15 +319,26 @@ jQuery(function () {
 		jQuery("#viewMadeFun").show();
 	});
 
-	jQuery('.embBtn').click(function () {
-	    var ele = '';
-	    if(jQuery('.embCon-tab1').css('display') === 'block'){
-		    ele = jQuery(".embCon-tab1")
-        }else{
-		    ele = jQuery(".embCon-tab2")
-        }
-		ele.find('.first').toggle();
-		ele.find('.second').toggle();
+	jQuery('.embBtn_prev').click(function () {
+		var ele = '';
+		if(jQuery('.embCon-tab1').css('display') === 'block'){
+			ele = jQuery(".embCon-tab1")
+		}else{
+			ele = jQuery(".embCon-tab2")
+		}
+		ele.find('.first').show();
+		ele.find('.second').hide()
+    });
+
+	jQuery('.embBtn_next').click(function () {
+		var ele = '';
+		if(jQuery('.embCon-tab1').css('display') === 'block'){
+			ele = jQuery(".embCon-tab1")
+		}else{
+			ele = jQuery(".embCon-tab2")
+		}
+		ele.find('.second').show();
+		ele.find('.first').hide()
 	});
 
 	jQuery('.embImg ').click(function () {
@@ -1417,7 +1428,6 @@ function getEmbPicName(type){
 	var madeEmbWrap = '.madeEmbWrap_'+ type;
     var img =jQuery(madeEmbWrap).find('img').attr('src');
     var name = '';
-    console.log('队徽img', img)
 	if(img){
 		var arr = img.split('imagesEmblem/');
 		name = arr[1].split('.')[0];

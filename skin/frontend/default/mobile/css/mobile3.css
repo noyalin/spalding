@@ -7102,11 +7102,11 @@ ul.messages .error-msg a {
 }
 
 .madeBoxCons .aBtn {
-    width: 76px;
+    /*width: 76px;*/
     border-radius: 3px;
     font-size: 12px;
     line-height: 1em;
-    padding: 9px 0;
+    padding: 9px 4px;
     text-align: center;
     background: #fff;
     color: #847450;
@@ -7119,7 +7119,8 @@ ul.messages .error-msg a {
 }
 
 .madeBoxCons .selectFontBox .madeKindTitNon,
-.madeBoxCons .selectFontBox .madeKindTitTex {
+.madeBoxCons .selectFontBox .madeKindTitTex,
+.madeBoxCons .selectFontBox .madeKindTitEmb {
     display: inline-block
 }
 
@@ -7232,6 +7233,101 @@ ul.messages .error-msg a {
 
 .madeBoxCons .selectsize .fontFamilySel ul {
     width: 40px;
+}
+
+.madeBoxCons .selectEmb {
+    padding-top: 7.5px;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+.madeBoxCons .selectEmb > div {
+    display: inline-block;
+}
+
+.madeBoxCons .selectEmb .tab {
+    margin-right: 20px;
+}
+
+.madeBoxCons .selectEmb .tab .active {
+    color: #ffffff;
+}
+
+.madeBoxCons .selectEmb .tab div:first-child {
+    margin-top: 9px;
+}
+
+.madeBoxCons .selectEmb .tab div:last-child {
+    margin-top: 18px;
+}
+
+.selectEmb .embImg {
+    position: relative;
+    width: 27%;
+    height: 33%;
+    overflow: hidden;
+    float: left;
+    margin-right: 22px;
+    cursor: pointer;
+}
+
+.selectEmb .embImg:nth-child(3n) {
+    margin-right: 0;
+}
+
+.selectEmb .embImg img{
+    width: 100%;
+}
+
+.selectEmb .embImg .embSelected{
+    display: none;
+}
+
+.selectEmb .embImg.active .embDefault{
+    display: none;
+}
+
+.selectEmb .embImg.active .embSelected{
+    display: block;
+}
+
+.selectEmb .content_wrap {
+    width: calc(100% - 30px);
+}
+
+.selectEmb .arrow_emb {
+    position: absolute;
+    top: 50%;
+    margin-top: 0px;
+}
+
+.selectEmb .arrow_emb_prev {
+    left: -37px;
+}
+
+.selectEmb .arrow_emb_next {
+    right: -37px;
+}
+
+.selectEmb .arrow_emb img {
+    width: 35px;
+}
+
+.selectEmb .embCon-tab1 {
+    display: block;
+}
+
+.selectEmb .embCon-tab2 {
+    display: none;
+}
+
+.selectEmb .embImg {
+    display: none;
+}
+
+.selectEmb .embImg.first {
+    display: block;
 }
 
 .madeFuns button {
@@ -7791,6 +7887,27 @@ dl.madeBoxFuns dt.zz_t_2 {
 .cusMadeCen .big_pic {
     margin: 10px auto;
     text-align: center;
+}
+
+.madeEmbWrap {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    margin-top: -47px;
+}
+
+.madeEmbWrap_2 {
+    margin-top: -44px;
+}
+
+.madeEmbWrap img {
+    width: 112px;
+    height: auto;
+}
+
+.madeEmbWrap img[src = ""]{
+    opacity:0;
 }
 
 .shorturt_mobile .payCustomPopUp {
