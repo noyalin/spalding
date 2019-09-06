@@ -362,6 +362,11 @@ function madeTabTex(obj, type) {
 			jQuery(".madeEmbWrap_2").show();
 			jQuery(".madeEmbWrap_1").hide();
 		}
+		jQuery('.embImg').hide();
+		jQuery('.embCon-tab1').show().find('.first').show();
+		jQuery('.embCon-tab2').hide();
+		jQuery('.emb_button1').addClass('active');
+		jQuery('.emb_button2').removeClass('active');
 	}
 
 }
@@ -614,6 +619,7 @@ function resetView(_dataType, value1, value2, value3, value4, position) {
 		jQuery(".madeBoxCons").eq(i).find(".submitN").removeAttr("disabled").siblings(".submitY").attr("disabled", "disabled");
 		jQuery(".madeBoxCons").eq(i).find(".madetitle .disable2").show();
 		jQuery(".madeBoxCons").eq(i).find(".madetitle .disable").hide();
+		jQuery(".embImg").removeClass('active');
 		var ele = i === 0 ? jQuery('.madeEmbWrap_1') : jQuery('.madeEmbWrap_2');
 
 		var url = ele.find('img').attr('dataUrl') + value1 + ".png";
@@ -666,15 +672,16 @@ function comfResh() {
 
 function inputCart() {
 	var i = setPageid() + 1;
-	var familyflag = jQuery("#made_p" + i).find(".madeKindTitTex").hasClass("madeNow");
+	var familyflag1 = jQuery("#made_p" + i).find(".madeKindTitTex").hasClass("madeNow");
+	var familyflag2 = jQuery("#made_p" + i).find(".madeKindTitEmb").hasClass("madeNow");
 	var saveflag = jQuery("#made_p" + i).find(".submitY").attr("disabled");
 	if (saveflag == "disabled") {
 		saveflag = true;
 	} else {
 		saveflag = false;
 	}
-	console.log(familyflag + "+" + saveflag)
-	if (familyflag != saveflag) {
+	console.log(familyflag1, familyflag2 + "+" + saveflag);
+	if ((familyflag1 || familyflag2) != saveflag) {
 		notTodo("提示", "定制条件已变更，请先保存定制，才可以加入购物车，为您带来的不便，还请谅解！");
 		return false;
 	} else {

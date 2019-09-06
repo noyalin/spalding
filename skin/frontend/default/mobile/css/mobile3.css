@@ -7114,7 +7114,7 @@ ul.messages .error-msg a {
 }
 
 .madeBoxCons .selectFontBox {
-    padding-top: 36px;
+    padding-top: 22.5px;
     text-align: center;
 }
 
@@ -7124,9 +7124,14 @@ ul.messages .error-msg a {
     display: inline-block
 }
 
+.madeBoxCons .selectFontBox .madeKindTitTex {
+    margin-bottom: 10px;
+}
+
 .madeBoxCons .selectFontBox span {
     display: inline-block;
     margin: 0 4px;
+    width: 82px;
 }
 
 .madeBoxCons .selectFontBox span.active {
