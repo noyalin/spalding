@@ -5271,16 +5271,13 @@ dl.madeBoxFuns dt.zz_t_2{
 }
 
 .viewEmpImgWrap {
-    margin-top:-44px;
+    margin-top:-56px;
 }
 
 .viewTexWrap{
     top:95px;
     text-align: center;
 }
-
-
-
 
 .madeLoading ,
 .notTodo{
@@ -5617,6 +5614,11 @@ dl.madeBoxFuns dt.zz_t_2{
     cursor: pointer;
 }
 
+.teamEmblem .embImg img{
+    width: 112px;
+    height: auto;
+}
+
 .teamEmblem .embImg.active .embDefault{
     display: none;
 }
@@ -5696,6 +5698,6 @@ dl.madeBoxFuns dt.zz_t_2{
     width: 400px;
     text-align: center;
     top: 50%;
-    margin-top: -44px;
+    margin-top: -67px;
     z-index: 2;
 }

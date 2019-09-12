@@ -46,7 +46,7 @@
                 数量
             </div>
         </div>
-        <?php 
+        <?php
         	$res = true;
         	$isCustomClothes = false;
         ?>
@@ -83,17 +83,21 @@
 
                 ?>
                 <a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
-                <?php
-                else:
-                if(trim($customMsg->getMsg4P1()) != ''):
-                    echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg);
-                endif;
-                if(trim($customMsg->getMsg3P1()) != ''):
-                    echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg).'， ';
-                endif;
-                if ($customMsg->getMsg3P1() == 4):
-                    echo '第一行：' . $customMsg->getMsg1P1();
-                    ?>
+            <?php
+            elseif ($customMsg->getTypeP1() == 4):
+                ?>
+                <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P1().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
+<?php
+else:
+    if(trim($customMsg->getMsg4P1()) != ''):
+        echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg);
+    endif;
+    if(trim($customMsg->getMsg3P1()) != ''):
+        echo '， ' . Mage::getModel('custommade/info')->getMsg4SizeResult($customMsg).'， ';
+    endif;
+    if ($customMsg->getMsg3P1() == 4):
+        echo '第一行：' . $customMsg->getMsg1P1();
+        ?>
                     <?php
                     echo '， 第二行：' . $customMsg->getMsg2P1();
                 else:
@@ -116,7 +120,11 @@
                 ?>
                 <a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
                 <?php
-                else:
+            elseif ($customMsg->getTypeP2() == 4):
+                ?>
+                <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P2().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
+<?php
+else:
                 if(trim($customMsg->getMsg4P2()) != ''):
                     echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg,2);
                 endif;
@@ -137,8 +145,8 @@
         <p style="padding-top:18px;font-size:12px;color: #00275E;"><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
     <?php endif; ?>
     </div>
-    
-    <?php if ($isCustomClothes): 
+
+    <?php if ($isCustomClothes):
         $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
         $dataRow = Mage::getModel('customclothes/temp')->loadByCustomerId($customerId);
    	?>
@@ -178,7 +186,7 @@
         </table>
         <p style="margin-left:100px;padding-top:18px;font-size:12px;"><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
     <?php endif; ?>
-    
+
     <!--
     <table class="opc-data-table" id="checkout-review-table">
         <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2; else: $colspan = $rowspan = 1; endif; ?>
@@ -223,7 +231,7 @@
 <?php echo $this->getChildHtml('opc.newsletters');?>
 <div id="checkout-review-submit">
     <?php echo $this->getChildHtml('agreements') ?>
-    <div class="buttons-set" id="review-buttons-container">        
+    <div class="buttons-set" id="review-buttons-container">
         <?php echo $this->getChildHtml('button') ?>
         <span class="please-wait" id="review-please-wait" style="display:none;">
             <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php echo $this->__('Submitting order information...') ?>

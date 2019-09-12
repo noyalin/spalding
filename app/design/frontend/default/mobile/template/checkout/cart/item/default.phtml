@@ -51,7 +51,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 	<td class="item-image"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/cat-single?$185m$&$img=sneakerhead/'. $urlKey."-1" ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>"><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
 	<td class="item-info">
 	<h2>
-		<?php 
+		<?php
        		if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
            		echo $this->escapeHtml($this->getProductName());
            	elseif ($this->hasProductUrl()):?>
@@ -112,6 +112,10 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                         		if($customMsg->getTypeP1() == 1):
                         	?>
                         	<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
+                            <?php
+                           elseif ($customMsg->getTypeP1() == 4):
+                           ?>
+                           <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P1().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
                         	<?php
 								else:
 							 		if(trim($customMsg->getMsg4P1()) != ''):
@@ -137,7 +141,11 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                         	if($customMsg->getTypeP2() == 1):
                         	?>
                         	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
-                        	 <?php
+                        <?php
+                           elseif ($customMsg->getTypeP2() == 4):
+                           ?>
+                           <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P2().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
+                        	<?php
 							else:
 								if(trim($customMsg->getMsg4P2()) != ''):
 									echo Mage::getModel('custommade/info')->getMsg4PositionResult($customMsg,2);
@@ -156,14 +164,14 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                         	endif;
                         ?>
                      	</dd>
-                    
+
               		<?php
                 		elseif($attributeSetName == 'customclothes'):
                 			$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
                 			$dataRow = Mage::getModel('customclothes/temp')->loadByCustomerId($customerId);
                 	?>
                 		<p><span><a target="_blank" href="<?php echo $dataRow->result_image;?>">定制浏览</a></span></p>
-                    
+
                     <?php endif; ?>
 
         </dl>
@@ -211,8 +219,8 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 			endif;
 			?>
 		</div>
-		
-		<?php 
+
+		<?php
 			if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
 
 			else:
@@ -221,15 +229,15 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 					$removeUrl = $this->getProductUrl();
 				endif;
 		?>
-		
+
 		<!--删除-->
 		<div class="item-del">
 			<a href="<?php echo $removeUrl;?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php //echo $this->__('Remove item')?>删除</a>
 		</div>
-		<?php 
+		<?php
 			endif;
 		?>
-	
+
 	</td>
 </tr>
 

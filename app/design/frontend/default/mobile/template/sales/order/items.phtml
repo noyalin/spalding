@@ -119,7 +119,11 @@
 						if($customMsg->getTypeP1() == 1):
 							?>
 							<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
-							<?php
+                        <?php
+                        elseif ($customMsg->getTypeP1() == 4):
+                        ?>
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P1().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
+						<?php
 						else:
 							if ($customMsg->getMsg3P1() == 4):
 								echo '第一行：' . $customMsg->getMsg1P1();
@@ -138,6 +142,10 @@
 						if($customMsg->getTypeP2() == 1):
 							?>
 							<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
+                            <?php
+                        elseif ($customMsg->getTypeP2() == 4):
+                            ?>
+                             <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P2().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
 							<?php
 						else:
 							if ($customMsg->getMsg3P2() == 4):
@@ -157,9 +165,9 @@
 		</td>
 	</tr>
 	<?php endif; ?>
-	
-	
-	<?php if ($isCustomClothes): 
+
+
+	<?php if ($isCustomClothes):
        // $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
         $dataRow = Mage::getModel('customclothes/order')->loadByIncrementId($_order->getRealOrderId());
    	?>
@@ -168,12 +176,12 @@
                 color:#fff;
                 width:700px;
                 font-size: 14px;
-                
+
             }
             .madeCens th, .madeCens td{
                 border:1px solid #666;
                 padding:5px;
-                
+
             }
             .madeCens th{
                 font-weight: bold;
@@ -196,10 +204,10 @@
 	            </tr>
 	        </table>
         </td>
-    </tr>    
+    </tr>
     <?php endif; ?>
-	
-	
+
+
     <?php endforeach; ?>
 	<tfoot>
 

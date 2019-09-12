@@ -74,7 +74,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
         <dt class="ms-fl">
         <div class="spListInfTop clearfix">
             <span class="spCarTit_name">
-            	<?php 
+            	<?php
             		if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
             			echo $this->escapeHtml($this->getProductName());
                  	elseif ($this->hasProductUrl()):?>
@@ -235,11 +235,11 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 
 						</span>
             <span class="spCarTit_fun">
-                <?php 
+                <?php
                 	if ($isVisibleProduct):
-                	
+
                 		if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'pants'):
-                	
+
                 		else:
                 			$removeUrl = $this->helper('wishlist')->getMoveFromCartUrl($_item->getId());
                 			if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product) && Mage::getModel('customclothes/customClothes')->getCustomClothesType($_product) == 'clothes'):
@@ -249,7 +249,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                	<a href="<?php echo $removeUrl; ?>" class="link-wishlist use-ajax">删除</a>
                	<?php
                 		endif;
-                	endif; 
+                	endif;
                 ?>
             </span>
         </div>
@@ -264,10 +264,14 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
                         ?>
                         <p>定制一：
-                        	<?php 
+                        	<?php
                         		if($customMsg->getTypeP1() == 1):
                         	?>
-                        	<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>	
+                        	<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
+                            <?php
+                            elseif ($customMsg->getTypeP1() == 4):
+                            ?>
+                            <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P1().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
                         	<?php
                         		else:
                                 if(trim($customMsg->getMsg4P1()) != ''):
@@ -283,14 +287,18 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 	                            <?php else: ?>
 	                                <?php echo $customMsg->getMsg1P1() ?>
 	                            <?php endif; ?>
-                            <?php 
+                            <?php
                             	endif;
                             ?>
                         </p><p>定制二：
-                        	<?php 
+                        	<?php
                         		if($customMsg->getTypeP2() == 1):
                         	?>
-                        	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>	
+                        	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
+                            <?php
+                            elseif ($customMsg->getTypeP2() == 4):
+                             ?>
+                            <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P2().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
                         	<?php
                         		else:
                                 if(trim($customMsg->getMsg4P2()) != ''):
@@ -306,7 +314,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                             	<?php else: ?>
                                 	<?php echo $customMsg->getMsg1P2() ?>
                             	<?php endif; ?>
-                        	<?php 
+                        	<?php
                         		endif;
                         	?>
                         </p>
@@ -321,7 +329,7 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
                 <?php
                 else:?>
                 <p>尺码： <?php echo $size;?></p>
-                <?php 
+                <?php
                 endif;
                 ?>
             </div>

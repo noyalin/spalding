@@ -82,7 +82,7 @@
         <span class="order_data_tit_state order_ifts_tit_state">订单状态</span>
     </div>
     <ul class="order_data_list">
-        <?php 
+        <?php
         	$_flag = false;
         	$isCustomClothes = false;
         ?>
@@ -96,13 +96,13 @@
             if ($_product->getIsCustom()): ?>
                 <?php $_flag = true; ?>
             <?php endif; ?>
-            
-            <?php 
+
+            <?php
             	if(Mage::getModel('customclothes/customClothes')->checkCustomClothesByProdcut($_product)):
             		$isCustomClothes = true;
             	endif;
             ?>
-            
+
             <tbody>
             <?php echo $this->getItemHtml($_item) ?>
             <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
@@ -129,12 +129,12 @@
                 /*color:#fff;*/
                 width:700px;
                 font-size: 14px;
-                
+
             }
             .madeCens th, .madeCens td{
                 border:1px solid #666;
                 padding:5px;
-                
+
             }
             .madeCens th{
                 font-weight: bold;
@@ -155,37 +155,45 @@
             </tr>
             <tr>
                 <td>
-                	<?php 
+                	<?php
                        	if($customMsg->getTypeP1() == 1):
                     ?>
-                   		<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>	
+                   		<a target="_blank" href="<?php echo $customMsg->getMsg3P1();?>">浏览图片</a>
+                    <?php
+                        elseif ($customMsg->getTypeP1() == 4):
+                        ?>
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P1().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
                     <?php
                         else:
 	                		if ($customMsg->getMsg3P1() == 4):
-                        		echo '第一行：' . $customMsg->getMsg1P1(); 
+                        		echo '第一行：' . $customMsg->getMsg1P1();
                     ?>
                     			<br />
-                        <?php 
+                        <?php
                         		echo '第二行：' . $customMsg->getMsg2P1();
-                    		else: 
+                    		else:
                         		echo $customMsg->getMsg1P1();
-                    		endif; 
+                    		endif;
                     	endif;
                     ?>
                 </td>
                 <td>
-                	<?php 
+                	<?php
                        	if($customMsg->getTypeP2() == 1):
                     ?>
-                    	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>	
+                    	<a target="_blank" href="<?php echo $customMsg->getMsg3P2();?>">浏览图片</a>
+                    <?php
+                        elseif ($customMsg->getTypeP2() == 4):
+                        ?>
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.$customMsg->getMsg1P2().'.png'); ?>" style="height: 50px;vertical-align: middle;" alt="">
                     <?php
                     	else:
                     		if ($customMsg->getMsg3P2() == 4):
                         		echo '第一行：' . $customMsg->getMsg1P2();
                      ?><br />
-                        	<?php 
+                        	<?php
                         		echo '第二行：' . $customMsg->getMsg2P2();
-                    		else: 
+                    		else:
                         		echo $customMsg->getMsg1P2();
                     		endif;
                        	endif;
@@ -195,9 +203,9 @@
         </table>
         <p class="madeCens"><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
     <?php endif; ?>
-    
-    
-    <?php if ($isCustomClothes): 
+
+
+    <?php if ($isCustomClothes):
        // $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
         $dataRow = Mage::getModel('customclothes/order')->loadByIncrementId($_order->getRealOrderId());
    	?>
@@ -207,12 +215,12 @@
                 /*color:#fff;*/
                 width:700px;
                 font-size: 14px;
-                
+
             }
             .madeCens th, .madeCens td{
                 border:1px solid #666;
                 padding:5px;
-                
+
             }
             .madeCens th{
                 font-weight: bold;
@@ -237,7 +245,7 @@
         </table>
         <p class="madeCens"><span>注：定制产品区别于普通产品，订单审核、生产约需25个工作日左右后发出，若时间周期有冲突的顾客，敬请见谅。</span></p>
     <?php endif; ?>
-    
+
     <div class="orderPrice">
         <?php echo $this->getChildHtml('order_totals') ?>
     </div>
