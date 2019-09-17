@@ -1,12 +1,13 @@
 <!-- 主框架 s -->
-<div style="height:90px; z-index:-2; background:#000;"></div>
+<!-- <div style="height:90px; z-index:-2; background:#000;"></div>-->
+<div style="height:90px; z-index:-2; background:#fff;"></div>
 <div class="newsWrap">
     <div class="newsWrapBg">
 <!--        <div class="newsWrapBgTop"><img src="--><?php //echo $this->getSkinUrl('images2019/20141210002.jpg'); ?><!--" alt=""></div>-->
     </div>
     <div class="newsWrapBox">
         <div class="newsWrapTit"><img src="<?php echo $this->getSkinUrl('images2019/newsList_title.png');?>" alt=""></div>
-        <div class="newsList clearfix">
+        <div class="newsList clearfix" style="">
 		<?php $posts = $this->getPosts(); ?>
 		<?php if (count($posts)): ?>
     		<?php foreach ($posts as $post): ?>
@@ -16,7 +17,8 @@
         </div>
     </div>
 </div>
-<div class="bolgPages" style="width:970px;margin:10px auto;position:relative;z-index:99999;">
+<!--<div class="bolgPages" style="width:970px;margin:13px auto;position:relative;z-index:99999;">-->
+<div class="bolgPages" style="margin:0px auto 35px;position:relative;z-index:99999;">
 	<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
 </div>
 

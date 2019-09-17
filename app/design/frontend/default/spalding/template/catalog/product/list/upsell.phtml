@@ -28,10 +28,11 @@
 $sku1 = "74-604y";
 $sku2 = "74-655y";
 $sku3 = "74-570y";
+$sku4 = "74-569y";
 $product1 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku1);
 $urlKey1 = $product1->getUrlKey();
-?><!-- melone 修改图片 sku220px%2D1改成2019-sku220px-1 --><?php
-$src1 = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/2019-sku220px-1?$220x220$&$image220px='. $urlKey1."-1";
+?><!-- melone 修改图片 sku220px%2D1改成2019-sku220px-1    2019-sku220px-1改为--PC-sku338px-1   220x220改为spd-338x338><?php
+$src1 = Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/PC-sku338px-1?$spd-338x338$&$image220px='. $urlKey1."-1";
 $title1 = $product1->getName();
 $price1 = $product1->getFinalPrice();
 $url1 = $this->getUrl($urlKey1.".html");
@@ -40,7 +41,7 @@ $product2 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku2);
 $urlKey2 = $product2->getUrlKey();
 ?><!-- melone 修改图片 sku220px%2D1改成2019-sku220px-1 --><?php
 $src2 = 'http://s7d5.scene7.com/is/image/sneakerhead/2019-sku220px-1?$220x220$&$image220px='.$product2->getUrlKey().'-1';
-$src2 =  Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/2019-sku220px-1?$220x220$&$image220px='. $urlKey2."-1";
+$src2 =  Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/PC-sku338px-1?$spd-338x338$&$image220px='. $urlKey2."-1";
 $title2 = $product2->getName();
 $price2 = $product2->getFinalPrice();
 $url2 = $this->getUrl($urlKey2.".html");
@@ -48,15 +49,23 @@ $url2 = $this->getUrl($urlKey2.".html");
 $product3 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku3);
 $urlKey3 = $product3->getUrlKey();
 ?><!-- melone 修改图片 sku220px%2D1改成2019-sku220px-1 --><?php
-$src3 =   Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/2019-sku220px-1?$220x220$&$image220px='. $urlKey3."-1";
+$src3 =   Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/PC-sku338px-1?$spd-338x338$&$image220px='. $urlKey3."-1";
 $title3 = $product3->getName();
 $price3 = $product3->getFinalPrice();
 $url3 = $this->getUrl($urlKey3.".html");
+
+$product4 = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku4);
+$urlKey4 = $product4->getUrlKey();
+?><!-- melone 修改图片 sku220px%2D1改成2019-sku220px-1 --><?php
+$src4 =   Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/PC-sku338px-1?$spd-338x338$&$image220px='. $urlKey4."-1";
+$title4 = $product4->getName();
+$price4 = $product4->getFinalPrice();
+$url4 = $this->getUrl($urlKey4.".html");
 ?>
-<div class="productArgs">
+<div class="productArgs" id="productArgs" style="margin: 0 auto;margin-bottom: 60px;overflow: hidden;">
     <div class="productArgs_tit">看了又看</div>
     <div class="productSaw">
-        <ul class="clearfix">
+        <ul class="clearfix" style="display: flex;justify-content: center;height: 468px;">
             <li>
                 <span class="productSaw_img"><a href="<?php echo $url1 ?>"><img src='<?php echo  $src1; ?>' alt=""></a></span>
 <!--                <span class="productSaw_kind">spalding</span>-->
@@ -74,6 +83,12 @@ $url3 = $this->getUrl($urlKey3.".html");
 <!--                <span class="productSaw_kind">spalding</span>-->
                 <span class="productSaw_nam"><a href="<?php echo $url3 ?>"><?php echo $title3; ?></a></span>
                 <span class="productSaw_price">￥<?php echo $price3;?></span>
+            </li>
+             <li>
+                <span class="productSaw_img"><a href="<?php echo $url4 ?>"><img src='<?php echo $src4 ?>' alt=""></a></span>
+<!--                <span class="productSaw_kind">spalding</span>-->
+                <span class="productSaw_nam"><a href="<?php echo $url4 ?>"><?php echo $title4; ?></a></span>
+                <span class="productSaw_price">￥<?php echo $price4;?></span>
             </li>
         </ul>
     </div>

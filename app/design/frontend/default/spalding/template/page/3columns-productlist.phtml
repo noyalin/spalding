@@ -35,35 +35,74 @@
 <?php echo $this->getChildHtml('head') ?>
 </head>
 <body>
-<div class="bodyBg">
-    <?php
-    echo "<img src='".$this->getSkinUrl('images2019/20141210002.jpg')."'>";
-    ?>
+<!--<div class="bodyBg">-->
+    <!--<?php-->
+    <!--echo "<img src='".$this->getSkinUrl('images2019/20141210002.jpg')."'>";-->
+    <!--?>-->
 </div>
 <?php echo $this->getChildHtml('header') ?>
 
-<div style="height:110px; z-index:-2;"></div>
-<!-- 主框架 s -->
-<div class="spaldingMain clearfix">
-<!-- 左侧导航 s -->
-<div class="block block-layered-nav ms-fl">
-    <div class="block-title">
-    <!-- melone start 修改图片 -->
-        <!--<img src="<?php echo $this->getSkinUrl('images/product_leftNav_topLogo.jpg') ?>" alt="">-->
-        <img src="<?php echo $this->getSkinUrl('images2019/product_leftNav_topLogo.png') ?>" alt="">
-    <!-- melone end 修改图片 -->
-    </div>
+<div style="height:92px; z-index:-2;"></div>
+<!--<div style="height:110px; z-index:-2;"></div>-->
 
-    <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+<div class="block detail_page_banner_block">
+<?php
+if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 70){
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_furniture')->toHtml();
+}else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 71){
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_bag')->toHtml();
+// 72 -> 篮球系列
+}else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 72){
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_ballseries')->toHtml();
+// 114 -> 足球
+}else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 114){
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_football')->toHtml();
+// 69 -> 配件
+}else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 69){
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_accessory')->toHtml();
+// 76 -> 篮板
+}else if(isset($_GET['attribute_set_name']) && $_GET['attribute_set_name'] == 76){
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_stands')->toHtml();
+}else{
+    if(stristr($_SERVER['REDIRECT_URL'], 'custom-made.html')):
+        echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_made')->toHtml();
+    //定制球衣确认预留
+    elseif(stristr($_SERVER['REDIRECT_URL'], 'custom-clothes.html')):
+        echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_custom_clothes')->toHtml();
+    // 训练器材
+    elseif(stristr($_SERVER['REDIRECT_URL'], 'trainingseries.html')):
+        echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner_trainingseries')->toHtml();
+    //斯伯丁商城
+    else:
+        echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail_page_banner')->toHtml();
+    endif;
+
+}
+?>
 </div>
+
+<!-- 主框架 s -->
+<div class="spaldingMain clearfix" style="display: flex;justify-content:center;">
+<!-- 左侧导航 s -->
+<div class="block block-layered-nav">
+<div class="block-title">
+<!-- melone start 修改图片 -->
+    <!--<img src="<?php echo $this->getSkinUrl('images/product_leftNav_topLogo.jpg') ?>" alt="">-->
+    <img src="<?php echo $this->getSkinUrl('images2019/product_leftNav_topLogo.png') ?>" alt="">
+<!-- melone end 修改图片 -->
+</div>
+
+<div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+</div>
+<!-- ms-fl-->
 <!-- 右侧 图片轮放 & 产品列表 s -->
 <!-- <div class="product_right ms-fl">
 
 
 </div> -->
-    <div class="col-main ms-fl">
-        <?php echo $this->getChildHtml('content') ?>
-    </div>
+<div class="col-main">
+<?php echo $this->getChildHtml('content') ?>
+</div>
 
 <!-- 右侧 图片轮放 & 产品列表 e -->
 

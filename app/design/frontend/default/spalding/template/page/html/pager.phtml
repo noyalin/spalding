@@ -38,7 +38,8 @@
     <?php endif ?>
 
     <?php if($this->getShowAmounts()): ?>
-    <p class="amount">
+    <!--melone 添加 style="padding-bottom: 20px;"-->
+    <p class="amount"  style="padding-bottom: 20px;">
         <?php if($this->getLastPageNum()>1): ?>
             <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
         <?php else: ?>
@@ -60,58 +61,114 @@
     </div>
     <?php endif ?>
 
-    <?php if($this->getLastPageNum()>1): ?>
-    <div class="pages">
+    <?php if($this->getLastPageNum()>=1): ?>
+    <div class="pages" style="display: flex;justify-items: center">
 <!--        <strong>--><?php //echo $this->__('Page:') ?><!--</strong>-->
-        <ol class="pageol">
+       <div class="pagecount">页数</div>
+<!--<?php-->
+<!--var_dump($this->getPageUrl()+);-->
+<!--// exit;-->
+<!--?>-->
+
+<!--<ul>-->
+<!--<div>-->
+      <!--<?php for ($i_page =1;$i_page<= $this->getLastPageNum();$i_page++): ?>-->
+    <!--<li>-->
+        <!--<a href="<?php echo $this->getSelectedPageUrl() ?>" value="<?php echo $i_page ?>"<?php if($this->isPageCurrent($i_page)): ?> selected="selected"<?php endif ?>>-->
+          <!--<?php echo $i_page ?>-->
+        <!--</a>-->
+    <!--</li>-->
+      <!--<?php endfor; ?>-->
+<!--</div>-->
+<!--</ul>-->
+       <div class="selectbox1">
+             <select  onchange="window.location=this.value" style="width: 80px;height: 50px;line-height:50px;margin-top:-20px;cursor: pointer">
+                <?php for ($i_page =1;$i_page<= $this->getLastPageNum();$i_page++): ?>
+                    <option value="<?php echo $this->getPageUrl().'&'.$this->_pageVarName.'='.$i_page; ?>"
+                        <?php
+                            if ($this->isPageCurrent($i_page)) {
+                                echo 'selected="selected"';
+                            }
+                        ?>
+                     >
+                <?php echo $i_page ?>
+                    </option>
+                <?php endfor; ?>
+             </select>
+        </div>
+
+<ol class="pageol">
+<!--<?php foreach ($this->getFramePages() as $_page): ?>-->
+ <!--<?php if ($this->isPageCurrent($_page)): ?>-->
+
+   <!--<li class="current pageli"><?php echo $_page ?></li>-->
+ <!--<?php else: ?>-->
+  <!--<li class="pageli"><a href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>-->
+ <!--<?php endif;?>-->
+<!--<?php endforeach;?>-->
+
+
+
+
+
+<li  class="pageli  total-page">
+    <div>/</div>
+                <?php echo $this->getLastPageNum() ?>
+                <!--<div>页</div>-->
+         </li>
         <?php if (!$this->isFirstPage()): ?>
-            <li  class="pageli">
+            <li  class="pageli" style="display: flex">
                 <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
                     <?php if(!$this->getAnchorTextForPrevious()): ?>
-                        <img src="<?php echo $this->getSkinUrl('images/pager_arrow_left.gif') ?>" alt="<?php echo $this->__('Previous') ?>" class="v-middle" />
+                        <img src="<?php echo $this->getSkinUrl('images2019/pager_arrow_left.png') ?>" alt="<?php echo $this->__('Previous') ?>" class="v-middle" style="margin-top: 4px"/>
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForPrevious() ?>
                     <?php endif;?>
                 </a>
             </li>
+        <?php else: ?>
+            <li  class="pageli">
+                    <?php if(!$this->getAnchorTextForPrevious()): ?>
+                        <img src="<?php echo $this->getSkinUrl('images2019/pager_arrow_left_disable.png') ?>" alt="<?php echo $this->__('Previous') ?>" class="v-middle" style="margin-top: 4px"/>
+                     <?php else: ?>
+                         <?php echo $this->getAnchorTextForPrevious() ?>
+                      <?php endif;?>
+            </li>
         <?php endif;?>
 
-        <?php if ($this->canShowFirst()): ?>
-            <li class="pageli"><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
-        <?php endif;?>
+        <!--<?php if ($this->canShowFirst()): ?>-->
+            <!--<li class="pageli"><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>-->
+        <!--<?php endif;?>-->
 
-        <?php if ($this->canShowPreviousJump()): ?>
-            <li class="pageli"><a class="previous_jump" title="" href="<?php echo $this->getPreviousJumpUrl() ?>">...</a></li>
-        <?php endif;?>
-
-        <?php foreach ($this->getFramePages() as $_page): ?>
-            <?php if ($this->isPageCurrent($_page)): ?>
-                <li class="current pageli"><?php echo $_page ?></li>
-            <?php else: ?>
-                <li class="pageli"><a href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
-            <?php endif;?>
-        <?php endforeach;?>
+        <!--<?php if ($this->canShowPreviousJump()): ?>-->
+            <!--<li class="pageli"><a class="previous_jump" title="" href="<?php echo $this->getPreviousJumpUrl() ?>">...</a></li>-->
+        <!--<?php endif;?>-->
 
 
-        <?php if ($this->canShowNextJump()): ?>
-            <li class="pageli"><a class="next_jump" title="" href="<?php echo $this->getNextJumpUrl() ?>">...</a></li>
-        <?php endif;?>
+        <!--<?php if ($this->canShowNextJump()): ?>-->
+            <!--<li class="pageli"><a class="next_jump" title="" href="<?php echo $this->getNextJumpUrl() ?>">...</a></li>-->
+        <!--<?php endif;?>-->
 
-        <?php if ($this->canShowLast()): ?>
-          <li class="pageli"><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a></li>
-        <?php endif;?>
+        <!--<?php if ($this->canShowLast()): ?>-->
+          <!--<li class="pageli"><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a></li>-->
+        <!--<?php endif;?>-->
 
         <?php if (!$this->isLastPage()): ?>
             <li class="pageli">
                 <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
                     <?php if(!$this->getAnchorTextForNext()): ?>
-                        <img src="<?php echo $this->getSkinUrl('images/pager_arrow_right.gif') ?>" alt="<?php echo $this->__('Next') ?>" class="v-middle" />
+                        <img src="<?php echo $this->getSkinUrl('images2019/pager_arrow_right.png') ?>" alt="<?php echo $this->__('Next') ?>" class="v-middle" style="margin-top: 4px"/>
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForNext() ?>
                     <?php endif;?>
                 </a>
             </li>
+        <?php else: ?>
+            <li class="pageli">
+                 <img src="<?php echo $this->getSkinUrl('images2019/pager_arrow_right_disable.png') ?>" style="margin-top: 4px"/>
+            </li>
         <?php endif;?>
+
         </ol>
 
     </div>

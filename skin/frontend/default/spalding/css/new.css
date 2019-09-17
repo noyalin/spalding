@@ -1,6 +1,15 @@
   .block-content{padding-left:0px; font-size: 12px;}
   .block-content a{font-size: 12px;}
-  .block-layered-nav{margin-left:-10px;}
+  .block-layered-nav{
+      /*margin-left:-10px;*/
+      margin-left:-20px;
+  }
+  @media screen and (max-width: 1540px){
+      .block-layered-nav{
+          margin-left:0px;
+      }
+  }
+
   .currently ol li span.label{margin-left:20px;}
   /*melone start 添加字体颜色*/
   .currently .exp-left-nav-header{margin-left:20px;color: #83744d;}
@@ -25,7 +34,6 @@
 .actions{margin-left:20px;}
     .narrow-by-list{margin-left:20px;}
     a.btn-remove{margin-left:20px;}
-    .block-title{margin: 1px 0 0 10px;}
 
 
 

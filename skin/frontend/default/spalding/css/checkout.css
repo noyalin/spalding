@@ -13,7 +13,7 @@
 	text-align:left;
 	margin: auto;
 	/*height: 1848px;*/
-	background-color: #D4C89E;
+	/*background-color: #D4C89E;*/
 }
 
 .checkoutTitleMain {
@@ -21,7 +21,7 @@
 	padding-top:14px;
 	padding-left:63px;
 
-	background:#D4C89E;
+	/*background:#D4C89E;*/
 	/*background:#333333;*/
 	color: #847450;
 	font-size: 20px;
@@ -114,7 +114,9 @@ background:-o-linear-gradient(top, #ffffe8 0%,#ffffd1 100%); background:-ms-line
 .fareInfoTable tbody tr.last td{ border-bottom:none;}
 .fareInfoTable tbody a.expressName,.fareInfoTable tbody a.expressRange{ color:#39e1fa; font-size:14px; text-decoration:underline;}
 .fareInfoTable tbody a.expressRange{ color:#3264fa;}
-.step_radio{ display:inline; float:left; background:#D4C89E; border:2px solid #E4E4E4; cursor:pointer; margin:0 30px 15px 0; position:relative;}
+/*background:#D4C89E;*/
+.step_radio{ display:inline; float:left; border:2px solid #E4E4E4; cursor:pointer; margin:0 30px 15px 0; position:relative;}
+/*.step_radio{ display:inline; float:left; background:#D4C89E; border:2px solid #E4E4E4; cursor:pointer; margin:0 30px 15px 0; position:relative;}*/
 .step_radio input{ display:none;}
 .step_radio label{ float:left; cursor:pointer;}
 .step_radio .ext{ margin-left:10px;}
@@ -226,7 +228,8 @@ input[type="text"] {
 
 .checkoutWrapContent {
 	font-size:12px;
-	color:#847450;
+	color:#D4C89E;
+	/*color:#847450;*/
 	/*color:#b4b4b4;*/
 }
 .checkoutWrapContentItem input[type="text"] {
@@ -247,7 +250,8 @@ input[type="text"] {
 .checkoutWrapContentItem {
 	display:block;
 	
-	padding:0px;
+	padding:15px;
+	/*padding:0px;*/
 	margin-bottom:9px;
 }
 .checkoutWrapContentItemLeft {

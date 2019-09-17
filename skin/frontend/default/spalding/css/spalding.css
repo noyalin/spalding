@@ -50,6 +50,7 @@ button{
 .header_nav {
     text-align: right;
     font-size: 12px;
+    margin: 100px 74px;
 }
 /*melone end 添加超链接向右对齐*/
 
@@ -270,7 +271,6 @@ button{
 .header_nav_wrap span{
     margin:0 50px;
     vertical-align: middle;
-
 }
 .header_nav_wrap_new span{
     /*margin:0 50px;*/
@@ -706,6 +706,7 @@ ul.scarch_select_option li:hover{
     background-color: #D4C89E;
     border: 2px solid #00275E;
     margin: 0px auto;
+    z-index: 1;
 }
 .foot{
     width:calc(100% - 6px);
@@ -795,14 +796,16 @@ ul.scarch_select_option li:hover{
 
 /*登录*/
 .spaldingBg{
-    width:100%;
-    height:100%;
-    position: fixed;
-    z-index: -1;
-    top:0;
-    /*melone start 添加整个的背景图片*/
-    background: url("../images2019/BG.jpg");
-    /*melone end 添加整个的背景图片*/
+    /*width:100%;*/
+    /*height:100%;*/
+    /*position: fixed;*/
+    /*z-index: -1;*/
+    /*top:0;*/
+    /*!*melone start 去掉背景图 *!*/
+    /*!*background: url("../images2019/BG.jpg");*!*/
+    /*background: url("../images2019/20141209004-1.png");*/
+    /*background-size: 100% 100%;*/
+    /*!*melone start 去掉背景图 *!*/
 }
 
 .spaldingBg .spaldingBgImg{
@@ -817,38 +820,71 @@ ul.scarch_select_option li:hover{
 }
 
 .spaldingLogin{
+    /*!*position: relative;*!*/
+    /*background: url(../images2019/20141209004-1.png) center center no-repeat;*/
+    background-size: 100%;
     position: relative;
+    z-index: 0;
+    /*background-size: contain;*/
+    width: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+    height: 100%;
+}
+.spaldingLogin img{
+    /*width: 100%;*/
+    /*height: 100%;*/
 }
 
 .spaldingLogin .loginBox{
-    width:1130px;
-    margin:0 auto;
-    /*melone start 添加左侧logo图*/
-    background: url("../images2019/20141209004.png") left 212px no-repeat;
-    /*melone end 添加左侧logo图*/
+    /* max-width: 1492px; */
+    /* width: 1650px; */
+    max-width: 1466px;
+    margin: 0 auto;
+    min-width: 1136px;
+    /*background: url(../images2019/img-product.png) left 73px no-repeat;*/
+    /* margin-left: -72px; */
+    /* background: url(../images2019/20141209004.png) left 212px no-repeat; */
+    /* background-size: 50%; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 11.4%;
 }
 .loginBox .loginBoxWrap{
     /*melone start 修改宽度*/
     /*width:270px;*/
-    width: 346px;
+    width: 399px;
+    /*width: 433px;*/
+    /*width: 346px;*/
     /*melone end 修改宽度*/
     float: right;
     /*melone start 修改右边距*/
     /*margin-right: 140px;*/
+    /*margin-right: 202px;*/
     /*melone end 修改右边距*/
 }
 
 .loginMain{
     /*melone start 修改离顶部的距离*/
     /*margin-top:145px;*/
-    margin-top:130px;
+    /*margin-top:130px;*/
     /*melone end 修改离顶部的距离*/
-}
+    /*min-height: 912px;*/
 
+    /*min-height: 677px;*/
+}
+.requiredemail{
+    font-size: 16px;
+    margin-top: 17px;
+    margin-bottom: 7px;
+}
 .loginMain .login_backHome{
-    height: 50px;
+    height: 60px;
+    /*height: 50px;*/
     font-size: 12px;
     text-indent: 20px;
+    background: url(http://localhost/spalding/skin/frontend/default/spalding/images2019/20141209011.png) 38px 30px no-repeat #00295c;
 }
 
 .loginMain .login_backHome a{
@@ -860,6 +896,7 @@ ul.scarch_select_option li:hover{
     line-height: 80px;
     margin-left: 38px;
     /*melone end 修改字体和图标的相对位置*/
+    font-size: 16px;
 }
 
 .loginMain .login_backHome a:hover{
@@ -867,7 +904,8 @@ ul.scarch_select_option li:hover{
 }
 
 .loginMain .loginWel{
-    height: 60px;
+    /*height: 60px;*/
+    height: 70px;
     /*melone start 修改margin*/
     /*margin:15px 0 25px;*/
     /*melone end 修改margin*/
@@ -895,8 +933,11 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 /*melone end 增加代码*/
 #login-form{
-    height: 445px;
-    background: #d3c8a0;
+    height: 528px;
+    /*height: 552px;*/
+    /*height: 445px;*/
+    background: #ffffff;
+    /*background: #d3c8a0;*/
 }
 
 #login-form .input-box {
@@ -905,8 +946,10 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .loginMain .validation-advice {
     height: 20px;
-    font-size: 12px;
-    margin-left: 38px;
+    font-size: 16px;
+    /*font-size: 12px;*/
+    /*margin-left: 38px;*/
+    margin-left: 26px;
 }
 
 .loginMain p{
@@ -916,6 +959,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     margin-left: 38px;
     padding-top: 20px;
     /*melone end 居中*/
+    margin-bottom: 7px;
 }
 
 .loginMain p a{
@@ -936,20 +980,23 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     /*melone start 居中*/
     /*margin-top:10px;*/
     margin-bottom:5px;
-    margin-left: 38px;
+    margin-left: 25px;
+    /*margin-left: 38px;*/
     /*melone end 居中*/
     /*melone start 调整输入框长度*/
     /*width:260px;*/
-    width: 258px;
-    /*melone end 调整输入框长度*/
-    height:20px;
+    width: 339px;
+    /*width: 258px;*/
+    /*melone end 调整输入框长度
+    height:20px;*/
+    height:33px;
     padding:3px 5px;
     border-radius: 3px;
     font-size: 14px;
     /*melone start 设置输入框样式*/
     /*color:#666;*/
     color: #83744d;
-    background: #d4c89e;
+    /*background: #d4c89e;*/
     border: 1px solid #83744d;
     /*melone end 设置输入框样式*/
 }
@@ -971,15 +1018,18 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     background: #03285c;
     /*melone end 修改登录背景颜色*/
     /*melone start 居中*/
-    margin: 20px 0 0 38px;
+    margin: 20px 0 0 26px;
+    /*margin: 20px 0 0 38px;*/
     /*melone end 居中*/
 
 }
 
 .loginSub .loginSubNoAccount{
-    width: 150px;
+    width: 230px;
+    /*width: 150px;*/
     height:40px;
-    font-size: 12px;
+    font-size: 16px;
+    /*font-size: 12px;*/
     text-align: right;
     color: #847450;
     /*melone start 调整距离*/
@@ -999,19 +1049,22 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .loginOther{
     /*melone start 设置底部边框长度*/
-    width: 270px;
+    width: 333px;
+    /*width: 270px;*/
     /*melone end 设置底部边框长度*/
     /*melone start 修改上边距*/
     /*margin-top:20px;*/
     margin-top: 25px;
     /*melone end 修改上边距*/
-    font-size: 12px;
+    font-size: 16px;
+    /*font-size: 12px;*/
     padding-bottom:5px;
     /*melone start 居中*/
     margin-left: 38px;
     /*melone end 居中*/
     margin-bottom:20px;
-    border-bottom:1px solid #999;
+    /*border-bottom:1px solid #999;*/
+    border-bottom:1px solid #847450;
 }
 
 .loginOther span{
@@ -1031,7 +1084,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     line-height: 16px;
     /*melone start 修改“联合支付”的边距*/
     /*margin-left:30px;*/
-    margin-left:20px;
+    margin-left: 24px;
+    /*margin-left:20px;*/
     /*melone end 修改“联合支付”的边距*/
     font-family: "微软雅黑";
 }
@@ -1057,36 +1111,116 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .loginCode{
     text-align: center;
-    font-size: 12px;
-    margin-top:30px;
+    font-size: 16px;
+    /*margin-top:30px;*/
+    margin-top: 35px;
+    margin-bottom: 46px;
 }
 
 .loginCode span{
     margin:0 5px;
 }
-
+#clearfixForgotPassword{
+    margin-top: 50px;
+}
 .loginBottom{
     font-size: 12px;
     line-height: 1.4em;
-    margin:40px 0 20px;
+    /*margin: 82px 0px 20px;*/
+    position: absolute;
+    margin: 39px 0px 20px;
+    left: -270px;
+    /*left: 276px;*/
+    /* float: right; */
+}
+@media screen and  (max-width: 1870px){
+    .loginBottom{
+        left: 287px;
+        bottom:0;
+        margin: 0;
+    }
+}
+@media screen and  (max-width: 1520px){
+    .loginCode{
+         margin-top: 0;
+         margin-bottom: 0;
+    }
+    #login-form{
+        height: 450px;
+    }
+    #clearfixForgotPassword{
+        margin-top: 40px;
+    }
+    .loginMain p {
+        padding-top: 3px;
+    }
+    .loginMain .validation-advice{
+        margin-left: 10px;
+    }
+}
+@media screen and  (max-width: 1340px){
+    #login-form{
+        height: 411px;
+    }
+    .loginMain .login_backHome{
+        height: 41px;
+    }
+    .loginMain .login_backHome a{
+        line-height: 41px;
+    }
+    .loginMain .loginWel{
+        height: 45px;
+    }
+    .loginMain p{
+        padding-top: 2px;
+    }
+    .loginMain .login_backHome{
+        background-position: 38px 12px;
+    }
+    .loginSub.clearfix {
+        margin-top: -8px;
+    }
+    #clearfixForgotPassword{
+        margin-top: 48px;
+    }
+    .loginOther {
+        margin-top: 14px;
+        padding-bottom: 4px;
+        margin-left: 38px;
+        margin-bottom: 17px;
+    }
+    .loginMain .validation-advice{
+        margin-left: 10px;
+    }
+    .loginBottom{
+        bottom:8px;
+    }
+}
+
+.messages .error-msg ul li span{
+    color: red;
 }
 
 /*注册*/
 .bodyBg{
     position: fixed;
     width:100%;
-    height: 100%;
+    height: 100vh;
+    /*height: 100%;*/
     z-index: -2;
+    top: 90px;
 }
 
 /*melone start 添加忘记密码界面的背景图片*/
-.forgetBg {
-    position: fixed;
-    width:100%;
-    height: 100vh;
-    z-index: -2;
-    background: url("../images2019/BG.jpg");
-}
+/*.forgetBg {*/
+    /*position: fixed;*/
+    /*width:100%;*/
+    /*height: 100vh;*/
+    /*z-index: -2;*/
+    /*!*melone start 去掉背景图*!*/
+    /*!*background: url("../images2019/BG.jpg");*!*/
+    /*!*melone end 去掉背景图*!*/
+/*}*/
 /*melone end 添加忘记密码界面的背景图片*/
 
 .bodyBg img{
@@ -1095,16 +1229,16 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 .spaldingMain{
     position: relative;
-    width:930px;
-    padding:10px 20px;
+    width:100%;
+    /*padding:10px 20px;*/
     margin:0px auto 0;
     /*melone start 修改字体颜色*/
     /*color: #000;*/
     color:#847450;
     /*melone end 修改字体颜色*/
     /*melone start 修改背景颜色*/
-    /*background: #fff;*/
-    background: #d3c8a0;
+    background: #fff;
+    /*background: #d3c8a0;*/
     /*melone start 修改背景颜色*/
     min-height: 570px;
     /*min-height: calc(100vh - 412px);*/
@@ -1113,26 +1247,94 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     background: none;
 }
 
+.detail_page_banner_block img{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 53px;
+}
+
+
+.pagecount{
+    height: 25px;
+    line-height: 28px;
+    width: 40px;
+    font-size: 15px;
+}
+
+/*.selectbox1 {*/
+    /*width: 80px;*/
+    /*display: inline-block;*/
+    /*overflow-x: hidden;*/
+    /*line-height: 50px;*/
+    /*font-size: 0;*/
+    /*border: 1px solid #dcdbdb;*/
+    /*vertical-align: middle;*/
+    /*margin-top: -10px;*/
+/*}*/
+/*.selectbox1 select {*/
+    /*cursor: pointer;*/
+    /*padding: 0 8px;*/
+    /*font-size: 12px;*/
+    /*background: none;*/
+    /*border: none;*/
+/*}*/
+.selectbox1 option{
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+    /*padding: 2px 0;*/
+    /*margin: 2px 0;*/
+    /*border-bottom: 1px solid #999;*/
+    font-size: 15px;
+}
+.total-page{
+    width: 20px;
+    height: 25px;
+    line-height: 25px;
+    display: flex;
+}
 div.regTit{
-    padding:10px 20px;
+    /*padding:10px 20px 0px 20px;*/
     /*melone start 修改背景和字体颜色*/
     /*background: #333333;*/
-    background: #d3c8a0;
+    /*background: #d3c8a0;*/
     /*color:#fff;*/
     color: #847450;
+    margin-left: 40px;
+    margin-top: 5px;
     /*melone end 修改背景和字体颜色*/
     font-size: 20px;
     font-weight: bold;
 }
 
+/*melone start 修改左边距*/
+div.regTit img{
+    margin-top: 30px;
+    border-bottom: 5px solid #02295c;
+    padding: 0 0 10px 0;
+}
+
+.regTitRight{
+    margin-top: 54px;
+    /*margin-left: 220px;*/
+    padding-bottom:6px;
+    border-bottom: 5px solid #02295c;
+    width: 900px;
+}
+/*melone end 修改左边距*/
 
 div.regTit span{
-    font-size: 12px;
+    /*melone start 修改字体大小*/
+    /*font-size: 12px;*/
+    font-size: 17px;
+    /*melone end 修改字体大小*/
     font-weight: normal;
 }
 
 div.regTit span a{
-    font-size: 14px;
+    /*melone start 修改字体大小*/
+    /*font-size: 14px;*/
+    font-size: 22px;
+    /*melone end 修改字体大小*/
     font-weight: bold;
     /*melone start 修改“登录”的字体颜色*/
     /*color:#fff;*/
@@ -1148,26 +1350,46 @@ div.regTit span a:hover{
 }
 
 .regBox{
-    margin:20px 0 20px 60px;
+    /*melone start 修改边距*/
+    /*margin:20px 0 20px 60px;*/
+    margin:5px 0 0 0;
+    /*melone end 修改边距*/
 }
 
 .regBox span{
     display:inline-block;
-    font-size: 12px;
+    /*melone start 修改字体*/
+    /*font-size: 12px;*/
+    font-size: 14px;
+    /*melone end 修改字体*/
 }
 
 .regBox span.regBoxTit{
-    width:110px;
-    margin-right: 10px;
+    /*melone start 去掉右边距*/
+    /*width:110px;*/
+    /*margin-right: 10px;*/
+    /*melone end 去掉右边距*/
     height:30px;
     line-height: 30px;
 }
 
 .regBox span.regBoxWrap{
-    width:700px;
+    width:589px;
 }
+
+/*melone start 增加底线*/
+.regBoxSplit{
+    width: 900px;
+    border-bottom: 1px solid #d3c8a0;
+    margin: 37px 0 37px 0;
+}
+/*melone end 增加底线*/
+
 .regBox span>input.regBoxInp{
-    width:260px;
+    /*melone start 修改宽度*/
+    /*width:260px;*/
+    width: 760px;
+    /*melone end 修改宽度*/
     height:26px;
     padding:2px 10px;
     /*melone start 修改边框颜色*/
@@ -1191,10 +1413,10 @@ div.regTit span a:hover{
 }
 
 .regRuls{
-    min-width: 480px;
-    max-width: 480px;
-    min-height: 130px;
-    max-height: 130px;
+    min-width: 876px;
+    max-width: 876px;
+    min-height: 240px;
+    max-height: 240px;
     padding:10px;
     /*melone start 修改边框颜色*/
     /*border:1px solid #ccc;*/
@@ -1208,6 +1430,10 @@ div.regTit span a:hover{
     line-height: 1.5em;
     overflow: scroll;
     overflow-x:hidden;
+    /*melone start 将法律条款这个div独立出来*/
+    /*margin-left: 523px;*/
+    font-size: 14px;
+    /*melone end 将法律条款这个div独立出来*/
 }
 button.rulAgree{
     border:0;
@@ -1228,15 +1454,13 @@ button.rulAgree{
 .block-layered-nav{
     width:210px;
     z-index: 1;
-    margin-right:20px;
+    margin-right:79px;
 }
 
 
 .block-title img{
-    /**/
-    /*border-bottom:5px solid #333;*/
+    /*!*border-bottom:5px solid #333;*!*/
     border-bottom:5px solid #83744d;
-    /**/
 }
 
 .block-content dl.narrow-by-list{
@@ -1299,18 +1523,33 @@ button.rulAgree{
 }
 
 .col-main{
-    width:700px;
+    width:1252px;
 }
-
-
+.block.block-layered-nav.ms-fl{
+    /*margin-top: 558px;*/
+    margin-left: 80px;
+}
+/*@media screen and (min-width:1136px) and (max-width: 1520px)  {*/
+    /*.col-main{*/
+        /*width: 1200px;*/
+    /*}*/
+/*}*/
+/*文档宽度小于 1136 像素*/
+/*@media screen and (max-width:1136px){*/
+    /*.col-main{*/
+        /*width: 800px;*/
+    /*}*/
+/*}*/
 .category-products{
-    margin-top:15px;
+    /*margin-top:15px;*/
 }
+
 
 
 
 .products-grid li.item{
-    width:210px;
+    /*width:210px;*/
+    width:230px;
     min-height:290px;
     float: left;
     overflow: hidden;
@@ -1368,10 +1607,14 @@ button.rulAgree{
 }
 
 .proListFunLine{
-    width:700px;
+    /*width:100%;*/
+    /*width:1200px;*/
     height: 1px;
-    background: #000;
-    margin:10px 0;
+    /*background: #000;*/
+    background: #d4c89e;
+    /*margin:10px 0;*/
+    margin: 10px 16px;
+    transform: translateX(-7px);
 }
 
 .proListLine{
@@ -1380,9 +1623,36 @@ button.rulAgree{
     width: 700px;
     background: #ccc;
 }
-
+@media screen and (max-width: 1278px){
+    .proListFunLine{
+        width: 917px;
+    }
+    .toolbar.clearfix{
+        width: 900px;
+    }
+    .block-layered-nav{
+        margin-right:40px;
+    }
+}
+@media screen and (max-width: 1230px){
+    .products-grid li.item{
+        margin:10px 4px;
+    }
+}
+@media screen and (max-width: 1190px){
+    .products-grid li.item{
+        margin:10px -1px;
+    }
+    .toolbar.clearfix {
+        width: 875px;
+    }
+    .proListFunLine {
+        width: 883px;
+    }
+}
 .sorter{
     font-size: 12px;
+    /*margin-top: 6px;*/
 }
 
 .sorter label{
@@ -1428,14 +1698,20 @@ button.rulAgree{
 }
 
 .pager .pages ol li{
+    height: 25px;
+    line-height: 28px;
     float: left;
-    margin:0 6px;
+    margin:0 10px;
+    font-size: 15px;
 }
+
 
 .pager .pages ol li.pageNow{
     color:#000;
 }
+.item.first{
 
+}
 .pageli a{
     color: #00275E;
 }
@@ -1511,7 +1787,7 @@ button.rulAgree{
     padding:10px 20px;
     margin:0px auto 0;
     /*background: rgba(31,31,31,.8);*/
-    background: #D4C89E;
+    /*background: #D4C89E;*/
     color:#fff;
 }
 .userContreMain_sp{
@@ -1529,7 +1805,7 @@ button.rulAgree{
     padding:10px;
     margin:0 auto;
     /*background: #1e1e1e;*/
-    background-color: #D4C89E;
+    /*background-color: #D4C89E;*/
     color:#fff;
 }
 
@@ -1829,39 +2105,50 @@ span.spCarTit_fun{
 
 /*产品详情*/
 .product-view{
-    width:970px;
+    /*width:970px;*/
     margin:0 auto;
     /*background: url(../images/productDetail_bg.jpg) left top repeat;*/
-    background-color: #D4C89E;
-    padding:10px 0 30px;
+    /*background-color: #D4C89E;*/
+    padding:24px 0 38px;
+    /*padding:22px 0 30px;*/
     /*melone start 修改底部间距*/
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
     /*melone end 修改底部间距*/
 }
 
 .product-essential{
-    padding:40px 20px 20px;
+    /*padding:40px 20px 20px;*/
+    padding:0px 20px 20px;
+    margin-right: 78px;
+    /*margin-right: 81px;*/
 }
 
-
-.product-img-box{
-    width:310px;
-    float: left;
-    margin-left:15px;
-}
+/*详情页 放大图*/
+/*.product-img-box{*/
+    /*width:310px;*/
+    /*float: left;*/
+    /*margin-left:15px;*/
+    /*background-color: #D4C89E;*/
+    /*padding: 20px;*/
+/*}*/
 
 
 .product-shop{
-    width:470px;
+    width:368px;
+    /*width:490px;*/
     float: right;
-    margin-right:20px;
+    margin-right:50px;
+    /*margin-right:20px;*/
+    background-color: #D4C89E;
+    padding: 20px;
 }
 
 
 
 .product-shop .product-name{
     padding-bottom:15px;
-    border-bottom:2px solid #808080;
+    border-bottom:2px solid #ffffff;
+    /*border-bottom:2px solid #808080;*/
 }
 
 
@@ -1967,6 +2254,8 @@ span.spCarTit_fun{
     border: none;
 
     margin-top:30px;
+    margin-left: -6px;
+    /*margin-left: 55px;*/
     /*width:200px;*/
     /*height:45px;*/
     /*line-height: 45px;*/
@@ -1979,20 +2268,19 @@ span.spCarTit_fun{
 
 
 .short-description{
-    margin-top:40px;
+    margin-top:20px;
+    /*margin-top:40px;*/
 }
 
 
 
-/*产品参数*/
-.productArgs{
-    margin:10px 35px;
-}
+
 
 .productArgs .productArgs_tit{
     height: 35px;
     line-height: 35px;
-    font-size: 14px;
+    font-size: 18px;
+    /*font-size: 14px;*/
     font-weight: bold;
     /*melone start 修改字体颜色*/
     /*color:#847450;*/
@@ -2012,19 +2300,23 @@ span.spCarTit_fun{
 
 
 .productArgs_box ul li{
-    width:280px;
+    /*width:280px;*/
+    /*width:220px;*/
     height:40px;
     line-height: 40px;
     float: left;
     font-size: 12px;
     color:#847450;
+    padding: 0 20px;
 }
 
 
 
 /*产品介绍*/
 .product-collateral{
-    margin:40px 0;
+    /*margin:40px 0;*/
+    /*padding: 0px 71px;*/
+    padding: 0px 26px 0px 146px;
 }
 
 .product-collateral-wrap{
@@ -2046,38 +2338,187 @@ h2.product-collateral-box-nam{
 }
 
 .product-collateral-box-img{
-    max-width:960px;
+    /*max-width:960px;*/
+    max-width:1140px;
     text-align: center;
+    margin-bottom: 10px;
 }
-.product-collateral-box-img img{
-    width:100%;
+.product-collateral-box-img.box-img{
+    margin-bottom: 0px;
+}
+.product-collateral-box-img.box-img img{
+    /*width:100%;*/
     /*melone start 去掉图片间的空隙*/
-    margin-bottom: -4px;
+    /*margin-bottom: -4px;*/
     /*melone end 去掉图片间的空隙*/
+    /*max-width: 100%;*/
+    width: 1140px;
+}
+
+.product-collateral-box-img.box-image{
+    display: inline;
+}
+.product-collateral-box-img.box-image img{
+    margin-top: 12px;
+    /*margin-top: 16px;*/
+    /*max-width: 49%;*/
+    max-width: 562px;
+    margin-right: 10px;
+}
+@media screen and (min-width: 1700px) and (max-width: 1913px){
+    .product-collateral{
+        margin-left: 115px;
+        padding: 0px;
+    }
+
+    .product-essential{
+        padding: 0 0 20px;
+        margin-right:0px;
+    }
+    .product-view{
+        width: 1610px;
+        min-width: 1000px;
+    }
+    .product-collateral-box-img.box-image{
+        margin-right: 8px;
+        display: inline;
+    }
+    .product-collateral-box-img.box-image img{
+        max-width: 48%;
+    }
+    .product-collateral-box-img.box-img img{
+        max-width: 98%;
+        margin-right: 22px;
+        /*width: 788px;*/
+    }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1700px){
+    .product-collateral{
+        margin-left: 55px;
+        padding: 0px;
+    }
+
+    .product-essential{
+        padding: 0 0 20px;
+        margin-right:3px;
+        /*margin-right:0px;*/
+    }
+    .product-view{
+        width: 1610px;
+        min-width: 1000px;
+    }
+    .product-collateral-box-img.box-image{
+        margin-right: 4px;
+        display: inline;
+    }
+    .product-collateral-box-img.box-image img{
+        max-width: 48%;
+    }
+    .product-collateral-box-img.box-img img{
+        max-width: 98%;
+        margin-right: 22px;
+        /*width: 788px;*/
+    }
+}
+@media screen  and (max-width: 1366px){
+    .product-collateral{
+        margin-left: 55px;
+        padding: 0px;
+    }
+
+    .product-essential{
+        padding: 0 0 20px;
+        /*margin-right:0px;*/
+        margin-left: 17px;
+    }
+    .product-view{
+        width: 1610px;
+        min-width: 1000px;
+    }
+    .product-collateral-box-img.box-image{
+        margin-right: -2px;
+        display: inline;
+    }
+    .product-collateral-box-img.box-image img{
+        max-width: 388px;
+    }
+    .product-collateral-box-img.box-img img{
+        width: 788px;
+        margin-right: 22px;
+    }
+}
+@media screen and (max-width: 1136px) {
+    .product-essential {
+        margin-left: -17px;
+    }
+    .product-collateral {
+        margin-left: 49px;
+        background-color: #FFFFFF;
+    }
+    .product-collateral-box-img.box-img img {
+        width: 605px;
+        margin-right: 22px;
+    }
+    .product-collateral-box-img.box-image img {
+        max-width: 296px;
+    }
 }
 .productSaw{
-    padding:10px;
+    /*padding:10px;*/
     /*melone start 修改边框颜色*/
-    /*border:1px solid #6a6a6a;*/
-    border:1px solid #83744d;
+    /*border:1px solid #83744d;*/
     /*melone end 修改边框颜色*/
 
     border-top:none;
     /*melone start 修改背景颜色*/
     /*background: #222222;*/
     /*melone end 修改背景颜色*/
+
+    background-color: #f2f3f7;
 }
 
 
 .productSaw ul li{
-    width:260px;
-    height:320px;
+    /*width:260px;*/
+    /*height:320px;*/
+    width:338px;
+    height:468px;
     float: left;
-    margin:10px 16px;
-    overflow: hidden;
+    /*margin:10px 16px;*/
+    /*overflow: hidden;*/
+    margin: 10px 25px;
 }
 
-
+.productArgs{
+    /*margin:10px 35px;*/
+    /*width: 510px;*/
+    /*width: 1600px;*/
+    width: 1607px;
+}
+@media screen and (width: 1680px){
+    .productArgs{
+        width: 1553px;
+    }
+}
+@media screen  and (max-width: 1620px){
+    .productArgs{
+        width: calc(100% - 20px);
+    }
+    .productSaw ul li{
+        margin: 10px 3px;
+    }
+}
+@media screen and (max-width: 1440px){
+    .productArgs {
+        width: calc(100% - 100px);
+    }
+}
+@media screen and (width: 1366px){
+    .productArgs {
+        width: calc(100% - 118px);
+    }
+}
 .productSaw ul li span{
     display: block;
     text-align:center;
@@ -2089,45 +2530,103 @@ h2.product-collateral-box-nam{
 }
 
 .productSaw ul li span.productSaw_img{
-    width:230px;
-    height: 230px;
-    padding:15px;
+    /*width:230px;*/
+    /*height: 230px;*/
+    width:338px;
+    height: 338px;
+    /*padding:30px;*/
+    margin-top: 40px;
+    /*padding:15px;*/
     /*melone start 修改背景颜色*/
     /*background: #323232;*/
-    background: #D4C89E;
+    /*background: #D4C89E;*/
     /*melone end 修改背景颜色*/
 }
 
 
 /*用户中心*/
 .col-left{
-    /*melone start 调整宽度*/
-    /*width:180px;*/
-    width: 210px;
-    /*melone end 调整宽度*/
+    width:180px;
     height: auto;
     /*melone start 往下挪25px*/
     margin-top: 25px;
     /*melone end 往下挪25px*/
 }
 .block-title-cus img{
+
+    /*melone start 修改边距*/
+    padding: 0 0 10px 0;
+    margin-left: 2px;
+    /*melone end 修改边距*/
+
     /*melone start 修改底部边框颜色*/
     /*border-bottom:5px solid #ddd;*/
     border-bottom:5px solid #02295c;
     /*melone end 修改底部边框颜色*/
+    /*padding-left: 40px;*/
 }
 
+/*!*melone start 调整整个界面边距*!*/
+/*.col2-left-layout{*/
+    /*width: 1823px;*/
+/*}*/
+/*!*melone end 调整整个界面边距*!*/
 
 .pannel-hd{
-    width: 1204px;
-    margin: 0px auto 10px;
+    width: 1506px;
+    margin: 0px auto 13px;
+    /*margin: 0px auto 10px;*/
+    min-width: 1366px;
 }
+.pannel-ft{
+    width: 1506px;
+    margin: 10px auto;
+    min-width: 1366px;
+}
+
+
 .instructions{
     font-size: 22px;
     color: #847450;
     width: 269px;
     height: 41px;
     background-color: #D4C89E;
+}
+@media screen and (min-width: 1300px) and (max-width: 1524px){
+    .pannel-hd{
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .pannel-ft{
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .content22  .pannel-ft img{
+        width: 300px;
+    }
+    .content22 .pannel-hd .item_lt .it_box img{
+        width: 300px;
+    }
+}
+@media screen and (max-width: 1300px){
+    .pannel-hd{
+        width: 800px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .pannel-ft{
+        width: 800px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .content22  .pannel-ft img{
+        width: 250px;
+    }
+    .content22 .pannel-hd .item_lt .it_box img{
+        width: 250px;
+    }
 }
 /*.item_lt .it_box{*/
     /*width: 256px;*/
@@ -2144,46 +2643,188 @@ h2.product-collateral-box-nam{
     /*font-size: 14px;*/
     /*color: #847450;*/
 /*}*/
-.pannel-ft{
-    width: 1204px;
-    margin: 10px auto;
-}
+
 
 .cart {
     min-height: 570px;
     /*height: calc(100vh - 400px);*/
 }
-
-.main-container{
-    width:930px;
-    padding:10px 20px;
-    margin:0 auto;
-    color:#847450;
-    /*color:#fff;*/
-    min-height: 570px;
-    /*background-color: #D4C89E;*/
+.slide1 {
+    /*height:746px;*/
 }
-.main-container22{
-    width:1204px;
+div.slide-group{
+   /*height: 2984px;*/
+}
+.security_auth{
+    bottom: 438px;
+}
+.auth_box {
+    position: relative;
+    top: 140px;
+    margin-top: -106px;
+    width: 51.9%;
+    max-width: 100%;
+}
+#step3 .content .content_detail{
+    padding: 22px 120px 0px 102px;
+    top: -352px;
+    /*top: -465px;*/
+}
+#validResultContent{
+    margin-bottom: 30px;
+}
+#step4 .content .content_detail {
+    top: -242px;
+    padding: 30px 107px 0 102px;
+}
+#step4 .content{
+    padding-top: 45px;
+}
+#step4 h3{
+    color: #D4C89E;
+}
+#return{
+    position: relative;
+    z-index: 1;
+    top: -325px;
+}
+#cheshi{
+    position: relative;
+    top: -459px;
+    z-index: 1;
+}
+.main-container{
+    /*width:930px;*/
+    padding:0px;
     /*padding:10px 20px;*/
     margin:0 auto;
     color:#847450;
-    min-height: 500px;
+    /*color:#fff;*/
+    /*min-height: 570px;*/
+    min-height: 725px;
+    /*background-color: #D4C89E;*/
+}
+.main-container22{
+    padding:0px;
+    margin:0 auto;
+    color:#847450;
+    min-height: 725px;
+}
+.main-container .content .auth-img{
+     max-width: 100%;
+    /* margin-top: 18px;*/
+     width: 100%;
+     /*width: 71.2%;*/
+     height: 100%;
+    vertical-align: middle;
+    min-width: 1300px;
+ }
+.main-container22 .content22 .auth-img{
+    max-width: 100%;
+    display: block;
+    margin: 0px auto;
+    /*width: 71.2%;*/
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.auth-img{
+    position: relative;
+    z-index: -1;
+}
+.button-1{
+    position: absolute;
+    /*bottom: 8%;*/
+    right: 58%;
+    /*right: 58.4%;*/
+    width: 9.53%;
+}
+#step2 .content .content_detail {
+    top: 0px;
+}
+.button-2{
+    position: absolute;
+    /*bottom: 8%;*/
+    right: 34%;
+    /*right: 33.5%;*/
+    width: 9.55%;
+}
+.return_img1{
+    bottom:55px;
+}
+.button12{
+    position:relative;
+    width: 100%;
+    height: 50px;
+    bottom: 121px;
+}
+.activeBarCode, .activeVerifyCode{
+    margin-left: 543px;
 }
 
-
-
+.main-container22{
+    /*width:1204px;*/
+    /*padding:10px 20px;*/
+    /*width: 1506px;*/
+    /*margin:0 auto;*/
+    /*color:#847450;*/
+    min-height: 746px;
+    padding: 0px 0px;
+    /*padding: 10px 20px;*/
+    margin: 0 auto;
+    color: #fff;
+}
+/*防伪页 对号图*/
+.q_1_true{
+margin-bottom: -5px;
+}
+.q_1_false{
+    margin-bottom: -5px;
+}
+.q_2_true{
+    margin-bottom: -5px;
+}
+.q_2_false{
+    margin-bottom: -5px;
+}
 .block-content{
     margin-top:20px;
+    /*melone start 修改左边距离*/
+    /*margin-left: 90px;*/
+    /*melone start 修改左边距离*/
 }
-
-
+.code_area input.valid_check_code{
+    width: 638px;
+    height: 50px;
+    font-size: 18px;
+}
+.activeBarCode,.activeVerifyCode{
+    opacity: 1!important;
+    color:#f60936;
+    text-align: left;
+    /* margin-left: 280px;
+   margin-left: 156px;
+   margin-left: 543px;*/
+    padding:4px 0;
+}
+.code_area input.valid_code{
+    width: 493px;
+    height: 44px;
+    font-size:20px;
+}
+.code_area b{
+    left:72px;
+    color:#847450;
+    font-size:18px;
+}
 .block-content ul li{
     font-size: 16px;
     font-weight: bold;
     height:30px;
     line-height: 30px;
-    text-indent:20px;
+    /*melone start 修改缩进*/
+    /*text-indent:20px;*/
+    /*melone end 修改缩进*/
 }
 
 .block-content ul li.current{
@@ -2202,65 +2843,92 @@ h2.product-collateral-box-nam{
 }
 .block-content ul li.navi_li_account{
     /*melone 修改图片地址*/
-    background:url(../images2019/AccountMgt_tit_w.png) 42px top no-repeat;
+    background:url(../images2019/AccountMgt_tit_w.png) 21px top no-repeat;
 }
 
 .block-content ul li.navi_li_account:hover{
     /*melone修改鼠标悬停时的图片*/
-    background:url(../images2019/AccountMgt_tit_g.png) 42px top no-repeat;
+    background:url(../images2019/AccountMgt_tit_g.png) 21px top no-repeat;
 }
 .block-content ul li.navi_li_account_edit{
     /*melone 修改图片地址*/
-    background:url(../images2019/AccountPer_tit_w.png) 42px top no-repeat;
+    background:url(../images2019/AccountPer_tit_w.png) 21px top no-repeat;
 }
 
 .block-content ul li.navi_li_account_edit:hover{
     /*melone 修改鼠标悬停时的图片*/
-    background:url(../images2019/AccountPer_tit_g.png) 42px top no-repeat;
+    background:url(../images2019/AccountPer_tit_g.png) 21px top no-repeat;
 }
 
 .block-content ul li.navi_li_address_book{
     /*melone 修改图片地址*/
-    background:url(../images2019/AccountAdrs_tit_w.png) 42px top no-repeat;
+    background:url(../images2019/AccountAdrs_tit_w.png) 21px top no-repeat;
 }
 
 .block-content ul li.navi_li_address_book:hover{
     /*melone 修改鼠标悬停时的图片*/
-    background:url(../images2019/AccountAdrs_tit_g.png) 42px top no-repeat;
+    background:url(../images2019/AccountAdrs_tit_g.png) 21px top no-repeat;
 }
 
 .block-content ul li.navi_li_orders{
     /*melone 修改图片地址*/
-    background:url(../images2019/AccountOrder_tit_w.png) 42px top no-repeat;
+    background:url(../images2019/AccountOrder_tit_w.png) 21px top no-repeat;
 }
 
 .block-content ul li.navi_li_orders:hover{
     /*melone 修改鼠标悬停时的图片*/
-    background:url(../images2019/AccountOrder_tit_g.png) 42px top no-repeat;
+    background:url(../images2019/AccountOrder_tit_g.png) 21px top no-repeat;
 }
 
 .col-main{
-    margin-top:30px;
+    /*margin-top:30px;*/
 }
 
 .page-title{
     font-size: 18px;
     font-weight: bold;
-    color:#00275E;
-    /*color:#847450;*/
-    padding-bottom:4px;
-    margin-bottom:10px;
+    /*color:#00275E;*/
+    color:#847450;
+    /*padding-bottom:4px;*/
+    margin-bottom:20px;
     /*melone start 修改底部线颜色*/
-    border-bottom:5px solid #02295c;
-    /*melone start 修改底部线颜色*/
+    border-bottom:5px solid #847450;
+    /*border-bottom:5px solid #02295c;*/
+    /*melone end 修改底部线颜色*/
     /*border-bottom:5px solid #fff;*/
-    margin-top: 25px;
+    /*melone start 修改上边距*/
+    margin-top: 26px;
+    /*margin-top: 54px;*/
     /*margin-top: 25px;*/
+    /*melone end 修改上边距*/
+
 }
+.page-title h1{
+    margin-bottom: 10px;
+}
+/*#step1{
+    background: url(../images201904/authentication/img-auth-1.png) center center no-repeat;
+}
+#step22{
+    background: url(../images201904/authentication/img-auth-2.png) center center no-repeat;
+}
+#step2{
+    background: url(../images201904/authentication/img-auth-3.png) center center no-repeat;
+}*/
 
-
-
-
+/*.step2ball{*/
+    /*position: relative;*/
+    /*bottom: 906px;*/
+    /*width: 1366px;*/
+    /*margin: 0 auto;*/
+    /*height: 737px;*/
+/*}*/
+/*.step22img img{*/
+    /*display: flex;*/
+    /*margin: 0 auto;*/
+    /*padding-top: 65px;*/
+    /*padding-bottom: 51px;*/
+/*}*/
 .box-head{
     /*melone start 去掉字体颜色*/
     /*color:#fdb905;*/
@@ -2271,12 +2939,18 @@ h2.product-collateral-box-nam{
     /*melone start 去掉左边距*/
     /*margin-left:10px;*/
     /*melone end 去掉左边距*/
+
+    /*melone start 修改上边距*/
+    padding-top: 10px;
+    /*melone end 修改上边距*/
 }
 
 
 
 .col2-set{
-    margin-bottom:100px;
+    /*melone start 修改边框之间的距离*/
+    margin-bottom:20px;
+    /*melone start 修改边框之间的距离*/
     /*melone start 去掉左边距*/
     /*margin-left:30px;*/
     /*melone end 去掉左边距*/
@@ -2298,30 +2972,137 @@ h2.product-collateral-box-nam{
 
 /*melone start 添加“联系信息、收货地址”居中*/
 .box-title {
-    margin-top: 15px;
+    /*margin-top: 15px;*/
 }
 /*melone end 添加“联系信息、收货地址”居中*/
 
 .box{
-    padding:10px;
+    padding:20px;
     /*melone start 修改背景颜色，设置文本框为居中*/
     /*background: #333;*/
     background: #fff;
     width: 490px;
     /*melone end 修改背景颜色，设置文本框为居中*/
+
+    /*melone start 添加边框 修改长度*/
+    border: 1px solid #847450;
+    width: 858px;
+    /*melone end 添加边框 修改长度*/
 }
 .box-content{
     font-size: 12px;
 }
 .box-content p{
-    margin:10px 0;
+    margin:10px 0 0 0;
 }
 
 .box-content p span{
     display: inline-block;
 }
 
+@media screen and (max-width: 1878px){
+    .button12 {
+        bottom: 111px;
+    }
+    #return {
+        top: -309px;
+    }
+}
 
+@media screen and (min-width: 1136px) and (max-width: 1770px){
+    #step3 .content .content_detail{
+        top: -230px;
+    }
+    .button12 {
+        bottom: 87px;
+    }
+    .code_area input.valid_check_code {
+        width: 519px;
+        height: 41px;
+        font-size: 16px;
+    }
+    .code_area input.valid_code {
+        width: 373px;
+        height: 38px;
+        font-size: 16px;
+    }
+    #return {
+        top:-279px;
+    }
+    #cheshi {
+        top: -350px;
+    }
+    #validResultContent {
+        width: 487px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .security_auth {
+        bottom: 333px;
+    }
+    .return_img1 {
+        bottom: 36px;
+    }
+}
+@media screen and (min-width: 1136px) and (max-width: 1390px){
+    .security_auth {
+        bottom: 303px;
+    }
+    #return {
+        top: -271px;
+    }
+    #cheshi {
+        top: -309px;
+    }
+    #step4 .content .content_detail {
+        top: -147px;
+    }
+}
+@media screen and (max-width: 1136px){
+    #return {
+        top: -258px;
+    }
+    .return_img1 {
+        bottom: 34px;
+    }
+    .button12 {
+        bottom: 87px;
+    }
+    .return_img1 {
+        bottom: 36px;
+    }
+    #cheshi {
+        top: -309px;
+    }
+    .code_area input.valid_check_code {
+        width: 445px;
+    }
+    .code_area input.valid_code {
+        width: 302px;
+    }
+    .security_auth {
+        bottom: 294px;
+    }
+    .activeBarCode, .activeVerifyCode {
+        margin-left: 284px;
+    }
+    #step3 .content .content_detail{
+        top: -211px;
+    }
+    #step4 .content .content_detail {
+        top: -129px;
+    }
+    .selection_area.position_re p{
+        width: 431px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #step4 h3 {
+        width: 494px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
 .box-content p span.box-content-tit{
     /*melone start 修改字体颜色*/
@@ -2368,19 +3149,28 @@ h2.product-collateral-box-nam{
     font-weight: bold;
     font-size: 12px;
     margin-bottom:10px;
-    margin-left:10px;
+    /*melone start 删除左边距*/
+    /*margin-left:10px;*/
+    /*melone end 删除左边距*/
 }
 
 
 .accounePreForm{
     border-bottom:1px solid #b6b6b6;
-    padding-bottom:50px;
-    margin-bottom:50px;
+    /*melone start 修改边距*/
+    /*padding-bottom:50px;*/
+    padding-bottom:25px;
+    /*margin-bottom:50px;*/
+    margin-bottom:35px;
+    /*melone start 修改边距*/
 }
 
 
 ul.form-list{
-    margin-left:40px;
+    /*melone start 修改左边距*/
+    /*margin-left:40px;*/
+    margin-left:30px;
+    /*melone start 修改左边距*/
     font-size: 12px;
 }
 ul.form-list li{
@@ -2389,16 +3179,22 @@ ul.form-list li{
 
 ul.form-list li label{
     display: inline-block;
-    width:80px;
+    width:75px;
     text-align: right;
     color:#847450;
     /*color:#b6b6b6;*/
-    margin-right:10px;
+    /*margin-right:10px;*/
+    /*melone start 垂直居中*/
+    line-height: 28px;
+    /*melone start 垂直居中*/
+    font-size: 12px;
 }
 
 
 ul.form-list li input[type="text"]{
-    width:260px;
+    /*melone start 修改文本框长度*/
+    width:783px;
+    /*melone end 修改文本框长度*/
     height:28px;
     padding:0 5px;
     line-height: 28px;
@@ -2406,7 +3202,9 @@ ul.form-list li input[type="text"]{
     /*color:#666;*/
     color: #847450;
     /*melone end 修改字体颜色*/
-    border:0;
+    /*melone start 修改边框样式*/
+    border:1px solid #847450;
+    /*melone start 修改边框样式*/
     border-radius:3px;
 }
 
@@ -2420,17 +3218,22 @@ ul.form-list li.street .streetArea{
 }
 
 ul.form-list li.wide select{
-    padding:4px 6px;
+    padding:2px 6px 4px 6px;
     font-size: 12px;
     /*melone start 修改选择框字体颜色*/
     /*color:#666;*/
     color: #847450;
+    border: 1px solid #847450;
     /*melone end 修改选择框字体颜色*/
     border-radius:3px;
 }
 ul.form-list li input[type="checkbox"]{
     vertical-align: middle;
-    margin-top:4px;
+    /*melone start 设置为居中*/
+    height: 28px;
+    line-height: 28px;
+    /*margin-top: 4px;*/
+    /*melone end 设置为居中*/
 }
 ul.form-list li button{
     width:90px;
@@ -2450,12 +3253,12 @@ ul.form-list li button{
     border-radius:3px;
     border: none;
     cursor:pointer;
-    margin-left:90px;
+    margin-left:75px;
 }
 
 ul.form-list li p{
     font-size: 12px;
-    margin-left:90px;
+    margin-left:75px;
     /*melone start 修改字体颜色*/
     /*color:#b6b6b6;*/
     color: #847450;
@@ -2475,8 +3278,11 @@ ul.form-list li p{
     /*melone end 修改字体颜色*/
     font-weight: bold;
     font-size: 12px;
-    margin-bottom:10px;
-    margin-left:10px;
+    /*melone start 修改边距*/
+    margin:  10px 0 5px 0;
+    /*margin-bottom:10px;*/
+    /*margin-left:10px;*/
+    /*melone end 修改边距*/
 }
 .addresses-list .addresses-primary ol{
     /*melone 去掉左边距*/
@@ -2486,14 +3292,15 @@ ul.form-list li p{
 .addresses-list .addresses-primary ol li{
     /*melone start 修改文本框宽度*/
     /*width:650px;*/
-    width: 680px;
+    width: 870px;
     /*melone end 修改文本框宽度*/
     height:37px;
     line-height: 37px;
-    /*melone start 修改文本框位置*/
+    /*melone start 修改文本框*/
     /*padding:0 15px;*/
-    padding: 0 10px;
-    /*melone end 修改文本框位置*/
+    padding: 0 14px;
+    border: 1px solid #847450;
+    /*melone end 修改文本框*/
     /*melone start 修改背景颜色*/
     /*background: #333;*/
     background: #fff;
@@ -2542,13 +3349,15 @@ ul.form-list li p{
 }
 
 .order_data .order_data_tit{
-    padding:2px 10px;
+    padding:2px 9px;
+    /*padding:2px 10px;*/
     /*background:#333;*/
-    background:#847450;
-    color:#D4C89E;
+    background:#D4C89E;
+    color:#847450;
     /*color:#fff;*/
     font-size: 12px;
     font-weight: bold;
+    width: 880px;
 }
 
 .order_data .order_data_tit span{
@@ -2560,36 +3369,42 @@ ul.form-list li p{
 
 
 .order_data .order_data_tit span.order_data_tit_nam{
-    width:300px;
+    /*width:300px;*/
     text-align: left;
 }
 
 .order_data .order_data_tit span.order_data_tit_priceP{
-    width:70px;
+    /*width:70px;*/
+    /*width: 65px;*/
 }
 
 
 .order_data .order_data_tit span.order_data_tit_num{
-    width:50px;
+    /*width:50px;*/
+    /*width: 40px;*/
 }
 
 .order_data .order_data_tit span.order_data_tit_state{
-    width:80px;
+    /*width:80px;*/
+    /*width: 100px;*/
 }
 
 .order_data .order_data_tit span.order_ifts_tit_state{
-    width:150px;
+    /*width:150px;*/
 }
 
 .order_data .order_data_tit span.order_data_tit_priceO{
-    width:70px;
+    /*width:70px;*/
+    /*width: 65px;*/
 }
 
 .order_data .order_data_tit span.order_data_tit_fun{
-    width:80px;
+    /*width:80px;*/
 }
 .order_data ul.order_data_list{
-
+    /*melone start 修改长度*/
+    width: 900px;
+    /*melone end 修改长度*/
 }
 
 .order_data ul.order_data_list li{
@@ -2602,7 +3417,7 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li h2{
     padding:2px 15px;
-    background: #D4C89E;
+    background: #eaecef;
     /*background: rgba(51,51,51,.7);*/
     font-size: 12px;
     font-weight: normal;
@@ -2620,7 +3435,7 @@ ul.form-list li p{
     float: left;
     text-align: center;
     margin-left:5px;
-    color:#ddd9d9;
+    color:#D4C89E;
 }
 
 
@@ -2641,7 +3456,12 @@ ul.form-list li p{
 
 .order_data ul.order_data_list li span.order_data_list_nam h3{
     font-size: 12px;
+    /*melone start 居中*/
     margin-top:5px;
+    /*padding-top: 5px;*/
+    /*padding-top: 10px;*/
+    width: 310px;
+    /*melone end 居中*/
     color:#00275E;
     /*color:#ffba00;*/
 }
@@ -2665,46 +3485,61 @@ ul.form-list li p{
 }
 
 .order_data ul.order_data_list li>span.order_data_list_priceP{
-    width:70px;
-    line-height: 65px;
-
+    /*width:70px;*/
+    width: 65px;
     color: #847450;
+    /*melone start 居中*/
+    line-height: 70px;
+    /*melone end 居中*/
 }
 
 .order_data ul.order_data_list li>span.order_data_list_num{
-    width:50px;
-    line-height: 65px;
-
+    /*width:50px;*/
+    width: 40px;
     color: #847450;
+    /*melone start 居中*/
+    line-height: 70px;
+    /*melone end 居中*/
 }
 
 .order_data ul.order_data_list li>span.order_data_list_state{
-    width:80px;
-    line-height: 65px;
+    /*width:80px;*/
+    width: 100px;
+    /*height: 54px;*/
 }
 
 .order_data ul.order_data_list li>span.lisStat_lineHeight{
     line-height: 1.4em;
-    margin-top:15px;
-
     color: #847450;
+    /*melone start 尽量居中*/
+    margin-top: 27px;
+    /*melone end 尽量居中*/
 }
 
 .order_data ul.order_data_list li>span.order_ifts_list_state{
     width:150px;
-    line-height: 65px;
+    /*melone start 居中*/
+    margin-left: 15px;
+    margin-top: 24px;
+    /*line-height: 70px;*/
+    /*melone start 居中*/
     color: #00275E;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_priceO{
-    width:70px;
-    line-height: 65px;
-
+    /*width:70px;*/
+    width: 65px;
     color: #847450;
+    /*melone start 居中*/
+    line-height: 70px;
+    /*melone end 居中*/
 }
 
 .order_data ul.order_data_list li>span.order_data_list_fun{
-    width:80px;
+    /*width:80px;*/
+    width: 60px;
+    /*height: 54px;*/
+    margin-top: 15px;
 }
 
 .order_data ul.order_data_list li>span.order_data_list_fun>a{
@@ -2714,6 +3549,16 @@ ul.form-list li p{
     /*color:#fff;*/
 }
 
+/*melone start 增加代码*/
+.order-additional{
+    width: 700px;
+    margin-top: 20px;
+}
+
+.order-about{
+    margin-top: 10px;
+}
+/*melone end 增加代码*/
 
 .order_data ul.order_data_list li>span.order_data_list_fun>a.order_data_list_fun_che{
     color:#00275E;
@@ -2769,7 +3614,10 @@ ul.form-list li p{
 }
 
 .orderPrice{
+    /*melone start 修改边距*/
     text-align: right;
+    width: 900px;
+    /*melone end 修改边距*/
     margin-top:50px;
     font-size: 28px;
     font-weight: bold;
@@ -2799,23 +3647,27 @@ ul.form-list li p{
 
 /*忘记密码*/
 .col-main-forgetPasw{
-    width:100%;
+    /*melone start 修改宽度*/
+    /*width:100%;*/
+    width: 700px;
+    /*melone end 修改宽度*/
     margin:30px auto 0;
-    /*melone start 添加背景颜色*/
-    background:#d3c8a0;
-    /*melone end 添加背景颜色*/
+    /*melone start 去掉背景颜色*/
+    /*background:#d3c8a0;*/
+    /*melone end 去掉背景颜色*/
 }
 .col-main-forgetPasw .page-title{
     border-bottom:none;
     /*melone start 调整间距*/
     /*padding:10px 10px;*/
     padding-top: 20px;
-    padding-left: 30px;
+    /*padding-left: 30px;*/
+    text-align: center;
     /*melone end 调整间距*/
-    /*melone start 修改背景颜色*/
+    /*melone start 去掉背景颜色*/
     /*background:#333;*/
-    background:#d3c8a0;
-    /*melone end 修改背景颜色*/
+    /*background:#d3c8a0;*/
+    /*melone end 去掉背景颜色*/
     color:#fff;
 }
 
@@ -2851,9 +3703,9 @@ ul.form-list li p{
     /*color:#666;*/
     color: #847450;
     /*melone end 修改字体颜色*/
-    /*melone start 添加输入框背景颜色*/
-    background: #d3c8a0;
-    /*melone end 添加输入框背景颜色*/
+    /*melone start 去掉输入框背景颜色*/
+    /*background: #d3c8a0;*/
+    /*melone end 去掉输入框背景颜色*/
     /*melone start 添加输入框边框颜色*/
     /*border:none;*/
     border: 1px solid #847450;
@@ -2868,7 +3720,14 @@ ul.form-list li p{
     /*melone start 增加高度*/
     height: 150px;
     /*melone end 增加高度*/
+    /*melone start 调整边距*/
+    /*text-align: center;*/
+    /*width: 900px;*/
+    /*melone start 修改居中*/
+    /*text-align: right;*/
     text-align: center;
+    /*melone end 修改居中*/
+    /*melone end 调整边距*/
     font-size: 12px;
     margin:40px 0;
 }
@@ -2892,6 +3751,9 @@ ul.form-list li p{
 
 .buttons-set p{
     margin-top:50px;
+    /*melone start 修改居中*/
+    text-align: center;
+    /*melone end 修改居中*/
 }
 
 .buttons-set p span{
@@ -2901,7 +3763,9 @@ ul.form-list li p{
     /*melone start 修改字体颜色*/
 }
 
-
+.buttons-set .back-link{
+    text-align: right;
+}
 
 /*菜单*/
 
@@ -3424,7 +4288,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     position: absolute;
     width:320px;
     padding:10px;
-    background:#eeebe1;
+    background:#e7e5d9;
+    /*background:#eeebe1;*/
     margin-top:0;
     text-align:left;
     margin-left:-255px;
@@ -3435,6 +4300,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 #topCartContent span{
     background: none;
     margin-left:0;
+    margin-right: 20px;
 }
 
 #topCartContent h1{
@@ -3484,6 +4350,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 #mini-cart dl.product-detail dt.proPri{
     float: right;
     margin-top:42px;
+    /*margin-right: 20px;*/
 }
 
 .subtotal{
@@ -3555,7 +4422,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .newsWrapBg img{
-    width:100%;
+    /*width:100%;*/
 }
 
 
@@ -3563,7 +4430,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsWrapBox{
     position: relative;
-    width:970px;
+    width:1640px;
+    /*width:970px;*/
     margin:0px auto;
     padding:20px 0 0;
     overflow: hidden;
@@ -3572,17 +4440,29 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .newsWrapTit{
     width:100%;
     text-align: center;
-    margin-bottom:26px;
-    margin-top:81px;
+    /*margin-bottom:26px;*/
+    /*margin-top:81px;*/
+    margin-bottom:55px;
+    margin-top:55px;
 }
 
 .newsList{
     margin-bottom:20px;
+    width: 1640px;
+    margin: 0 auto;
 }
+.bolgPages{
+    width:1640px;
+}
+
+
 .newsList ul li{
-    width:300px;
-    height:405px;
-    background: #D4C89E;
+    /*width:464px;*/
+    /*width:300px;*/
+    width:780px;
+    height:666px;
+    /*height:405px;*/
+    /*background: #D4C89E;*/
     font-size: 12px;
     color:#8F7F59;
     margin-top:20px;
@@ -3592,32 +4472,67 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsList ul li img{
     width:100%;
+    /*height: 500px;*/
     vertical-align: top;
 }
 
 .newsList ul li h2{
-    margin:30px 20px 5px 20px;
+    /*margin:5px 20px 0px 20px;*/
+    /*margin:30px 20px 5px 20px;*/
     text-align:center;
-    font-size: 14px;
-    color:#fff;
+    font-size: 18px;
+    /*font-size: 14px;*/
+    color:#847450;
+    /*color:#fff;*/
     font-weight: bold;
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.Hyperlink{
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    justify-content: space-between;
+    background: #D4C89E;
+    padding: 0 20px;
+}
+.ftHyperlink{
+    width: 780px;
+    height: 115px;
+    background: #f2f3f5;
+    display: flex;
 }
 
 .newsList ul li h3{
-    color:#636363;
-    font-size: 12px;
+    color:#fff;
+    /*color:#636363;*/
+    /*font-size: 12px;*/
+    font-size: 14px;
     font-weight: normal;
     text-align:center;
 }
 
 .newsList ul li p{
-    margin:10px 20px;
-    padding:10px 0;
-    border-top:1px solid #666;
+/*.newsList ul li .fth{*/
+    /*margin:10px 20px;*/
+    /*padding:10px 0;*/
+    /*padding:10px 10px;*/
+    padding: 20px 20px 25px;
+    /*border-top:1px solid #666;*/
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    width: 500px;
+    height:55px;
 }
 
 ul.newsListBox{
-    margin:0 10px;
+    /*margin:0 10px;*/
+    margin:0 20px 47px;
 }
 
 
@@ -3628,7 +4543,79 @@ ul.newsListBox{
 .newsList ul li:hover h2{
     color:#000;
 }
+.newsList .ftHyperlink img{
+    width: 152px;
+    height: 38px;
+    margin-top: 36px;
+    margin-left: 70px;
+}
 
+@media screen and (min-width: 1377px) and (max-width: 1650px){
+    .newsList{
+        width: 1360px;
+    }
+    .bolgPages{
+        width:1360px;
+    }
+    .newsWrapBox{
+        width:1360px;
+    }
+    ul.newsListBox{
+        margin:0 10px 47px;
+    }
+    .newsList ul li{
+        width: 660px;
+        height: 570px;
+    }
+    .newsList .ftHyperlink img{
+        width: 115px;
+        height: 38px;
+        margin-top: 36px;
+        margin-right: 10px;
+    }
+    .ftHyperlink{
+        width: 660px;
+    }
+    .newsList ul li p{
+        width: 423px;
+    }
+    .newsList ul li h2{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 1377px){
+    .newsList{
+        width: 1136px;
+    }
+    .bolgPages{
+        width:1136px;
+    }
+    .newsWrapBox{
+        width:1136px;
+    }
+    ul.newsListBox{
+        margin:0 10px 47px;
+    }
+    .newsList ul li{
+        width: 540px;
+        height: 510px;
+    }
+    .newsList .ftHyperlink img{
+        width: 115px;
+        height: 38px;
+        margin-top: 36px;
+        margin-right: 10px;
+    }
+    .ftHyperlink{
+        width: 540px;
+    }
+    .newsList ul li p{
+        max-width: 295px;
+    }
+    .newsList ul li h2{
+        width: 300px;
+    }
+}
 .newsArtsTit{
     width:100%;
     text-align: center;
@@ -3637,6 +4624,7 @@ ul.newsListBox{
 }
 .newsArtsTit h2{
     font-size: 22px;
+    line-height: 30px;
     font-weight: bold;
     color:#00275E;
     /*color:#fff;*/
@@ -3650,8 +4638,8 @@ ul.newsListBox{
 }
 
 .newsArtsWrap{
-    border:1px solid #D4C89E;
-    background: #D4C89E;
+    /*border:1px solid #D4C89E;*/
+    /*background: #D4C89E;*/
     font-size: 12px;
     color:#cbcbcb;
     margin-bottom:10px;
@@ -3916,31 +4904,29 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     border:none;
     margin:0 auto;
 }
-
-
-
 .teyWrapChart{
     position: relative;
-    margin-bottom:90px;
+    /* min-height: 2990px; */
+    /* position: relative; */
+    /* margin-bottom: 90px; */
+    /*height: 3170px;*/
+    min-width: 1136px;
+    margin: 0 auto;
+    overflow: hidden;
+    /* bottom: 195px; */
+    top: 50px;
+}
+.teyWrapChart img{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
-/*关于斯伯丁*/
-.aboutUs_top{
-    width:970px;
-    margin:0 auto;
-}
-
-
+/*联系我们*/
 .aboutTit{
-    width:100%;
     text-align: center;
-    margin-bottom:45px;
-    margin-top:80px;
 }
-
-
-
 /*.aboutNav{*/
     /*text-align: center;*/
     /*margin-bottom:80px;*/
@@ -3978,12 +4964,15 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .aboutUs_box{
     width:100%;
     height: auto;
-    background: #D4C89E;
+    /*background: #D4C89E;*/
     /*background: #fff;*/
     margin-bottom:80px;
 }
 .aboutUs_box_cont{
-    background: #D4C89E;
+    /*melone start 去掉背景颜色*/
+    /*background: #D4C89E;*/
+    background-color: #fff;
+    /*melone end 去掉背景颜色*/
 }
 .aboutUs_boxLeft{
     width:50%;
@@ -4007,12 +4996,18 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .aboutUs_boxRig{
     width:50%;
     font-size: 12px;
-    background: #D4C89E;
+    /*melone start 去掉背景颜色*/
+    /*background: #D4C89E;*/
+    background-color: #fff;
+    /*melone end 去掉背景颜色*/
 }
 
 .aboutUs_boxRig .aboutUs_boxRig_tit{
     margin-left:5%;
-    margin-top:70px;
+    /*melone start 修改上边距*/
+    /*margin-top:70px;*/
+    margin-top: 50px;
+    /*melone end 修改上边距*/
     margin-bottom:15px;
 }
 
@@ -4107,7 +5102,9 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 
 .boxLeft_contactUs{
     padding:0 13% 0 22%;
-    background: #D4C89E;
+    /*melone start 去掉背景颜色*/
+    /*background: #D4C89E;*/
+    /*melone end 去掉背景颜色*/
     height:100%;
     margin:50px 0 0;
 }
@@ -4143,8 +5140,11 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 }
 .contactForm span.contactFormInp .contactFormInpBox{
     width:100%;
-    background: #eeebe1;
-    border:1px solid #eeebe1;
+    /*melone start 修改背景及边框*/
+    /*background: #eeebe1;*/
+    /*border:1px solid #eeebe1;*/
+    border:1px solid #847450;
+    /*melone end 修改背景及边框*/
     height:26px;
     line-height: 26px;
     color:#847450;
@@ -4154,10 +5154,13 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .contactForm span select{
     height: 26px;
     line-height: 26px;
-    background: #eeebe1;
+    /*background: #eeebe1;*/
     color:#847450;
     /*color:#b6b6b6;*/
-    border:1px solid #eeebe1;
+    /*melone start 修改边框*/
+    /*border:1px solid #eeebe1;*/
+    border:1px solid #847450;
+    /*melone start 修改边框*/
     font-size: 12px;
     width:100%;
 }
@@ -4166,8 +5169,11 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .contactForm span textarea{
     min-width:100%;
     max-width:100%;
-    background: #eeebe1;
-    border:1px solid #eeebe1;
+    /*melone start 修改背景和边框*/
+    /*background: #eeebe1;*/
+    /*border:1px solid #eeebe1;*/
+    border:1px solid #847450;
+    /*melone start 修改背景和边框*/
     min-height: 105px;
     max-height: 105px;
     color:#847450;
@@ -4222,7 +5228,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
 .loginOutWrap{
     width:350px;
     padding:30px 10px;
-    background:#d3c8a0;
+    /*background:#d3c8a0;*/
+    background:#ffffff;
     /*background:#eeebe1;*/
     /*background:#1b1b1b;*/
     position: relative;
@@ -4255,7 +5262,8 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     font-size: 14px;
     color:#847450;
     /*color:#ffb900;*/
-    background: #D4C89E;
+    background: #eaecef;
+    /*background: #D4C89E;*/
     /*background: #24221a;*/
     margin-left:20px;
     width:105px;
@@ -5566,6 +6574,9 @@ dl.madeBoxFuns dt.zz_t_2{
 /*melone start 添加选择框字体颜色*/
 .form-list .fields .input-box select{
     color: #847450;
+    width: 172px;
+    height: 28px;
+    border-radius: 3px;
 }
 /*melone start 添加选择框字体颜色*/
 
@@ -5574,6 +6585,7 @@ dl.madeBoxFuns dt.zz_t_2{
     background: #d3c8a0;
 }
 /*melone start 增加代码，修改提示信息的背景颜色*/
+
 
 /*队徽*/
 .teamEmblem {

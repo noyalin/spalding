@@ -35,18 +35,23 @@
     <?php echo $this->getChildHtml('head') ?>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
-<div class="bodyBg"><img src="<?php echo $this->getSkinUrl("images2019/20141210002.jpg") ?>" alt=""></div>
+<div class="bodyBg">
+<!--<img src="<?php echo $this->getSkinUrl("images2019/20141210002.jpg") ?>" alt="">-->
+</div>
         <?php echo $this->getChildHtml('header') ?>
         <div style="height:110px; z-index:-2;"></div>
-            <div class="main-container col2-left-layout">
+            <div class="main-container col2-left-layout" style="padding: 0px">
             <!-- melone 修改背景颜色 -->
-                <div class="main" style="background-color: #d3c8a0;padding-right: 20px;">
-                    <div class="col-main ms-fr">
+                <div class="main" style="background-color: #fff;overflow: hidden;">
+                     <div class="col-left sidebar ms-fl" style="margin-left: 60px;">
+                    <!--<div class="col-left sidebar ms-fl">-->
+                    <?php echo $this->getChildHtml('left') ?>
+                    </div>
+
+                    <div class="col-main" style="width: 900px;margin: 0 auto;">
                         <?php echo $this->getChildHtml('content') ?>
                     </div>
-                    <div class="col-left sidebar ms-fl">
-                        <?php echo $this->getChildHtml('left') ?>
-                    </div>
+
                     <div class="clear"></div>
                 </div>
             </div>

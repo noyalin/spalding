@@ -2363,6 +2363,63 @@ label[for=p_method_paypal_express] a {
     margin-right: 5px;
 }
 
+
+/*melone start 增加服务条款样式*/
+
+.registerBox span{
+    display:inline-block;
+    font-size: 12px;
+}
+
+.registerBox span.registerBoxTit{
+    width:100%;
+    margin-right: 10px;
+    height:30px;
+    line-height: 30px;
+}
+
+.registerBox span.registerBoxWrap{
+    width:100%;
+}
+
+.registerBox span>input.registerBoxInp{
+    width:100%;
+    height:26px;
+    padding:2px 10px;
+    border:1px solid #d3c8a0;
+    border-radius: 3px;
+    color: #847450;
+}
+.registerBox span>span.registerBoxWrapSn{
+    color: #847450;
+    line-height: 30px;
+}
+
+.registerRuls{
+    /*min-width: 480px;*/
+    /*max-width: 480px;*/
+    min-height: 130px;
+    max-height: 130px;
+    padding:10px;
+    border:1px solid #847450;
+    border-radius: 3px;
+    color: #847450;
+    line-height: 1.5em;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+
+
+.registerBox span.registerBoxTit{
+    width:100%;
+    margin-right: 10px;
+    height:30px;
+    line-height: 30px;
+}
+
+/*melone end 增加服务条款样式*/
+
+
 .registerSubmit {
     position: relative;
 }
@@ -2389,7 +2446,10 @@ label[for=p_method_paypal_express] a {
 }
 
 .registerRules {
-    margin-bottom: 15px;
+    /*melone start 修改边距*/
+    /*margin-bottom: 15px;*/
+    margin: 15px 0;
+    /*melone end 修改边距*/
 }
 
 .registerRules label span {
@@ -2399,7 +2459,10 @@ label[for=p_method_paypal_express] a {
 }
 
 .registerRules label span.rulChe {
-    width: 5%;
+    /*melone start 修改勾选框大小*/
+    /*width: 5%;*/
+    width: 1%;
+    /*melone end 修改勾选框大小*/
 }
 
 .registerRules label span.rulTex {

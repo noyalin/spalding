@@ -53,6 +53,8 @@ $categoryUrlkey = $_category->getUrlKey();
     <?php $_iterator = 0; ?>
         <div class="proListFunLine"></div>
         <ol class="products-list" id="products-list">
+
+
             <?php foreach ($_productCollection as $_product): ?>
                 <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
                     <?php // Product Image ?>
@@ -158,17 +160,20 @@ $categoryUrlkey = $_category->getUrlKey();
         <div class="category-products">
     <?php echo $this->getToolbarHtml() ?>
         <div class="proListFunLine"></div>
+
+<ul class="products-grid" style="display: flex;flex-wrap: wrap;">
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
+    <!--<?php $_columnCount = $this->getColumnCount()+2; ?>-->
     <?php $m=1; $i=0; foreach ($_productCollection as $_product):
     $shortDescription = '';
     $skuConfig = $_product->getSku();
     $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
     $productNorm = $configurableProduct->getProductNorm();
     if($productNorm == 6){
-        $scen7 = $domain.'/is/image/sneakerhead/spalding220pxsmall?$220x220$&$image=';
+        $scen7 = $domain.'/is/image/sneakerhead/PC-spalding220pxsmall?$220x220$&$image=';
     }else{
-        $scen7 = $domain.'/is/image/sneakerhead/spalding220px?$220x220$&$image=';
+        $scen7 = $domain.'/is/image/sneakerhead/PC-spalding220px?$220x220$&$image=';
     }
     $shortDescription =  $_product->getShortDescription();
     if(strstr($shortDescription,"直径") && stristr($shortDescription,"mm")){
@@ -186,10 +191,16 @@ $categoryUrlkey = $_category->getUrlKey();
     }
 
     ?>
-    <?php if ($i++%$_columnCount==0): ?>
-        <ul class="products-grid">
-    <?php endif ?>
+    <!--<?php if ($i++%$_columnCount==0): ?>-->
+        <!--<ul class="products-grid">-->
+    <!--<?php endif ?>-->
         <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+
+        <!--<?php if ($i%$_columnCount==0): ?>-->
+            <!--<?php echo "<br />"  ?>-->
+        <!--<?php endif ?>-->
+
+
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                 <img id="mainImage" width="220" height="220" src='<?php echo $scen7.$_product->getUrlKey();  ?>-1' alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
             </a>
@@ -199,7 +210,7 @@ $categoryUrlkey = $_category->getUrlKey();
                 </a>
             </h2>
             <div class="divpric">
-            <?php 
+            <?php
             	$msrp = number_format($_product->getMsrp(), '2', '.', ',');
             	$currentPrice = number_format($_product->getFinalPrice(), '2', '.', ',');
             	if($msrp != $currentPrice):
@@ -208,7 +219,7 @@ $categoryUrlkey = $_category->getUrlKey();
             		<em></em>
             		￥ <?php echo $msrp; ?>
             	</span>
-            <?php 
+            <?php
             	endif;
             ?>
             	<span class="pricPro">￥ <?php echo number_format($_product->getFinalPrice(), '2', '.', ','); ?></span>
@@ -227,18 +238,19 @@ $categoryUrlkey = $_category->getUrlKey();
             <div class="sp"></div>
         </li>
 
-        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
-        <?php
-        if($_collectionSize >$_columnCount && $m != $_collectionSize/$_columnCount){
-            echo '<div class="proListLine"></div>';
-        }
-        $m++;
-        ?>
-        </ul>
+        <!--<?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>-->
+        <!--<?php-->
+        <!--if($_collectionSize >$_columnCount && $m != $_collectionSize/$_columnCount){-->
+            <!--echo '<div class="proListLine"></div>';-->
+        <!--}-->
+        <!--$m++;-->
+        <!--?>-->
+        <!--</ul>-->
 
-    <?php endif ?>
+    <!--<?php endif ?>-->
 
     <?php endforeach ?>
+           </ul>
         <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
     <?php endif; ?>
     </div>

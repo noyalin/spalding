@@ -44,6 +44,14 @@ $productImageHelper = Mage::helper('product');
     <script src="<?php echo $this->getSkinUrl('js/move.js'); ?>"></script>
 <?php endif; ?>
 </head>
+<!--<script>
+    //窗口大小变化时候，进行刷新页面操作，防止样式混乱
+    var x=window.innerWidth;
+    function resizeFre(){
+        if(x!=window.innerWidth)
+            location.reload();
+    }
+</script>  onresize="resizeFre()"-->
 <body>
 <?php if ($categoryUrlkey == 'custom-made')://专属定制 ?>
     <!-- <div class="bodyBg"><img src="<?php echo $productImageHelper->getCustomMadeImage('cBg.jpg');  ?>" alt=""></div> -->
@@ -52,7 +60,7 @@ $productImageHelper = Mage::helper('product');
     <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/load3D.js'); ?>"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/zns_style.css'); ?>">
 <?php else: ?>
-    <div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images2019/20141210002.jpg');  ?>" alt=""></div>
+    <!--<div class="bodyBg"><img src="<?php echo $this->getSkinUrl('images2019/20141210002.jpg');  ?>" alt=""></div>-->
 <?php endif ?>
 <?php echo $this->getChildHtml('header') ?>
 <div style="height:110px; z-index:-2;"></div>

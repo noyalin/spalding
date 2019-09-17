@@ -33,20 +33,26 @@
 ?>
 <?php if($this->getTitle()): ?>
     <div class="page-title">
-        <h1><?php echo $this->getTitle() ?></h1>
+    <!-- melone start 修改图片-->
+    <img src="<?php echo $this->getSkinUrl('images2019/adsTop.png');  ?>" alt="">
+    <!--<h1><?php echo $this->getTitle() ?></h1>-->
+<!-- melone end 修改图片-->
+
     </div>
 <?php endif; ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate" style="margin-left:10px;" onsubmit="return checkInput();">
-    <div class="fieldset">
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate" onsubmit="return checkInput();">
+    <div class="fieldset" style="width: 900px">
         <?php echo $this->getBlockHtml('formkey')?>
         <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
         <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
-        <h2 class="legend"><?php echo $this->getTitle() ?></h2>
+        <!--<h2 class="legend"><?php echo $this->getTitle() ?></h2>-->
+        <h2 class="legend">添加地址</h2>
         <ul class="form-list">
-            <li class="fields clearfix">
+        <!-- melone 添加style="height: 30px;"-->
+            <li class="fields clearfix" style="height: 30px;">
                 <div class="field name-firstname">
-                    <label class="required ms-fl" for="firstname">收货人姓名<em>*</em></label>
+                    <label class="required ms-fl" for="firstname">收货人姓名<span>*&nbsp;:&nbsp;</span></label>
                     <div class="input-box">
                         <input type="text" class="input-text required-entry" maxlength="255" title="收件人姓名" value="<?php echo $this->getAddress()->getFirstname() ?>" name="firstname" id="firstname">
                     </div>
@@ -58,12 +64,13 @@
 <!--                    <input type="text" name="company" id="company" title="--><?php //echo $this->__('Company') ?><!--" value="--><?php //echo $this->escapeHtml($this->getAddress()->getCompany()) ?><!--" class="input-text --><?php //echo $this->helper('customer/address')->getAttributeValidationClass('company') ?><!--" />-->
 <!--                </div>-->
 <!--            </li>-->
-            <li class="wide clearfix">
+            <!-- melone 添加style="height: 30px;"-->
+            <li class="wide clearfix" style="height: 30px;">
                 <table>
                     <tr>
-                        <td class="infoLabel"><label for="billing:region_id" class="required"><span class="rStar">*</span>所在地区</label></td>
+                        <td class="infoLabel"><label for="billing:region_id" class="required"><span class="rStar">所在地区<em>*&nbsp;:</em>&nbsp;</span></label></td>
                         <td class="infoInput">
-                            <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                            <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;width: 172px;">
                                 <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                             </select>
                             <script type="text/javascript">
@@ -71,12 +78,12 @@
                             </script>
                             <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
 
-                            <select id="city_id"  name="city_id" title="市" class="validate-select">
+                            <select id="city_id"  name="city_id" title="市" class="validate-select" style="width: 72px;">
                                 <option value="">请选择</option>
                             </select>
                             <input type="text" id="city" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity())  ?>"  style="display:none;"  />
 
-                            <select id="district_id"  name="district_id" title="区" class="validate-select">
+                            <select id="district_id"  name="district_id" title="区" class="validate-select" style="width: 72px">
                                 <option value="">请选择</option>
                             </select>
                             <input type="text" id="district" name="district" value="<?php echo $this->escapeHtml($this->getAddress()->getDistrict()) ?>"  style="display:none;" />
@@ -94,7 +101,7 @@
             <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
             <li class="street clearfix">
                 <div class="field">
-                    <label for="street_1" class="required ms-fl">街道地址<em>*</em></label>
+                    <label for="street_1" class="required ms-fl">街道地址<span>*&nbsp;:&nbsp;</span></label>
                     <div class="input-box ms-fl">
                         <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?>" />
                     </div>
@@ -110,7 +117,7 @@
             <?php endfor; ?>
             <li class="fields">
                 <div class="field">
-                    <label for="zip" class="required ms-fl">邮政编码<em>*</em></label>
+                    <label for="zip" class="required ms-fl">邮政编码<span>*&nbsp;:&nbsp;</span></label>
                     <div class="input-box">
                         <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
                     </div>
@@ -118,7 +125,7 @@
             </li>
             <li class="fields">
                 <div class="field">
-                    <label for="country" class="required ms-fl">国家<em>*</em></label>
+                    <label for="country" class="required ms-fl">国家<span>*&nbsp;:&nbsp;</span></label>
                     <div class="input-box">
                         <?php echo $this->getCountryHtmlSelect() ?>
                     </div>
@@ -126,7 +133,7 @@
             </li>
             <li class="fields">
                 <div class="field">
-                    <label for="telephone" class="required ms-fl">手机号码<em>*</em></label>
+                    <label for="telephone" class="required ms-fl">手机号码<span>*&nbsp;:&nbsp;</span></label>
                     <div class="input-box">
                         <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
                     </div>
@@ -134,8 +141,8 @@
             </li>
             <li class="fields clearfix">
                 <div class="field">
-                    <label class="required ms-fl" for="">设为默认</label>
-                    <div class="input-box ms-fl">
+                    <label class="required ms-fl" for="">设为默认<span>&nbsp;&nbsp;&nbsp;&nbsp;</span></label>
+                    <div class="input-box ms-fl" style="height: 28px;line-height: 28px;">
                         <?php if($this->isDefaultBilling() || $this->getCustomerAddressCount() < 1 ): ?>
                             <input type="hidden" name="default_billing" value="1" />
                             <strong><?php echo $this->__('Default Billing Address') ?></strong>

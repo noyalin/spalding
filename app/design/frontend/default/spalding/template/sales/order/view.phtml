@@ -69,9 +69,9 @@
     $address = Mage :: getModel('sales/order_address')->load($_order->getBillingAddress()->getId());
     $oneLineAddress = $address->format('oneline');
     ?>
-<!--     <div class="col-main ms-fr">
-        <div class="my-account"> -->
-            <div class="page-title" style="margin-top: 30px;">订单详情</div>
+     <div class="col-main" style="width: 900px;">
+        <div class="my-account" style="width: 900px;">
+            <div class="page-title" style="margin-top: 60px;">订单详情</div>
             <div class="order-infs">
                 <p><span>编号：</span><?php echo $_order->getRealOrderId() ?></p>
                 <p><span>订单状态：</span><?php echo $_order->getStatusLabel() ?></p>
@@ -80,8 +80,8 @@
                 <p><span>收货地址： </span><?php echo $oneLineAddress ?></p>
                 <!--            <p><span>顺丰单号：</span>1101353707</p>-->
             </div>
-<!--         </div>
-    </div> -->
+         </div>
+    </div>
 
 <!--    --><?php
 //        $activityId = '10000001';
