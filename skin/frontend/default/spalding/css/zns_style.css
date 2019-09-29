@@ -280,3 +280,10 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	position: absolute;
 }
 
+li .textPag_1.towLine_view_1{
+	margin-top:40px;
+}
+
+li .textPag_2.towLine_view_2{
+	margin-top:40px;
+}
