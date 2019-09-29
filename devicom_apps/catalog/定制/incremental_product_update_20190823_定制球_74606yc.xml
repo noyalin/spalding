@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root updateType="1">
+  <Configurable>
+    <Product>
+      <Id>5962</Id>
+      <Store>default</Store>
+      <Websites>base</Websites>
+      <CategoryIds>39</CategoryIds>
+      <AttributeSetName>customball</AttributeSetName>
+      <ShGender>One Size</ShGender>
+      <Name>74-606YC Name</Name>
+      <Description>74-606YC Description</Description>
+      <ShortDescription>74-606YC ShortDescription</ShortDescription>
+      <Sku>74-606yc</Sku>
+      <Weight>1.00</Weight>
+      <Status>1</Status>
+      <Abstract>74-606YC Abstract</Abstract>
+      <Msrp>999.00</Msrp>
+      <ColorSn>??</ColorSn>
+      <ShColorSn>橘色</ShColorSn>
+      <UrlKey>74-606y-74606yc</UrlKey>
+      <Price>999.000</Price>
+      <CreatedAt>08/19/2019</CreatedAt>
+      <Model>74606yc</Model>
+      <ImageCount>3</ImageCount>
+      <Brand>Spalding</Brand>
+      <IsNewArrival>1</IsNewArrival>
+      <IsOnSale>0</IsOnSale>
+      <PrimaryProductId>1</PrimaryProductId>
+      <FreeShippingTypeId>8000</FreeShippingTypeId>
+      <IsRewardEligible>1</IsRewardEligible>
+      <IsDiscountEligible>1</IsDiscountEligible>
+      <SalePrice>999.00</SalePrice>
+      <OrderLimitCount>0</OrderLimitCount>
+      <IsPhoneOrderOnly>0</IsPhoneOrderOnly>
+      <PhoneOrderOnlyMessage></PhoneOrderOnlyMessage>
+      <PrimaryCategoryId>39</PrimaryCategoryId>
+      <SEO_Title></SEO_Title>
+      <SEO_Description></SEO_Description>
+      <SEO_Keywords></SEO_Keywords>
+      <CNMagentoNorm>7#</CNMagentoNorm>
+      <CNMagentoSide>室内室外</CNMagentoSide>
+      <CNMagentoCatena>联名款</CNMagentoCatena>
+      <CNMagentoUse></CNMagentoUse>
+      <CNMagentoSizeLength></CNMagentoSizeLength>
+      <CNMagentoSizeWidth></CNMagentoSizeWidth>
+      <CNMagentoSizeHeigh></CNMagentoSizeHeigh>
+      <CNMagentoApparelType></CNMagentoApparelType>
+      <CNMagentoSizeTable></CNMagentoSizeTable>
+      <MaterialFabric>PU</MaterialFabric>
+    </Product>
+  </Configurable>
+</root>
