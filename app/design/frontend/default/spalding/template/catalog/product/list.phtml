@@ -101,11 +101,13 @@ $categoryUrlkey = $_category->getUrlKey();
         if (in_array($categoryUrlkey,array('custom-clothes','custom-made'))):
             //专属定制
             ?>
+
             <div class="category-products">
                 <?php echo $this->getToolbarHtml() ?>
                 <div class="proListFunLine"></div>
                 <?php $_collectionSize = $_productCollection->count() ?>
-                <?php $_columnCount = $this->getColumnCount(); ?>
+                <?php $_columnCount = 4 ?>
+                <!--<?php $_columnCount = $this->getColumnCount(); ?>-->
                 <?php $m=1; $i=0; foreach ($_productCollection as $_product):
                     $skuConfig = $_product->getSku();
                     $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $skuConfig);
@@ -116,10 +118,11 @@ $categoryUrlkey = $_category->getUrlKey();
                         $scen7 = $domain.'/is/image/sneakerhead/spalding220px?$220x220$&$image=';
                     }
                     ?>
-                    <?php if ($i++%$_columnCount==0): ?>
-                    <ul class="products-grid">
+                    <?php if ($i++%4==0): ?>
+                    <ul class="products-grid clearfix">
+
                 <?php endif ?>
-                    <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                    <li class="item<?php if(($i-1)%4==0): ?> first<?php elseif($i%4==0): ?> last<?php endif; ?>">
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                             <img id="mainImage" width="220" height="220" src='<?php echo $scen7.$_product->getUrlKey();  ?>-1' alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" onMouseOver="javascript:sku=1"/>
                         </a>
@@ -139,9 +142,9 @@ $categoryUrlkey = $_category->getUrlKey();
                         <div class="sp"></div>
                     </li>
 
-                    <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+                    <?php if ($i%4==0 || $i==$_collectionSize): ?>
                     <?php
-                    if($_collectionSize >$_columnCount && $m != $_collectionSize/$_columnCount){
+                    if($_collectionSize >$_columnCount && $m != $_collectionSize/4){
                         echo '<div class="proListLine"></div>';
                     }
                     $m++;
@@ -157,7 +160,7 @@ $categoryUrlkey = $_category->getUrlKey();
         else:
         ?>
 
-        <div class="category-products">
+        <div class="category-products">333
     <?php echo $this->getToolbarHtml() ?>
         <div class="proListFunLine"></div>
 

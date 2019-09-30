@@ -303,6 +303,7 @@ abstract class Mage_Eav_Model_Entity_Collection_Abstract extends Varien_Data_Col
         }
 
         if (is_numeric($attribute)) {
+            Mage::log("Chenli".$attribute);
             $attribute = $this->getEntity()->getAttribute($attribute)->getAttributeCode();
         } else if ($attribute instanceof Mage_Eav_Model_Entity_Attribute_Interface) {
             $attribute = $attribute->getAttributeCode();
