@@ -4430,8 +4430,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .newsWrapBox{
     position: relative;
-    width:1640px;
-    /*width:970px;*/
+    width:970px;
     margin:0px auto;
     padding:20px 0 0;
     overflow: hidden;
@@ -5262,7 +5261,7 @@ ul.teyCloLis li.teyColLisBox_7 span.teyCloImg{
     font-size: 14px;
     color:#847450;
     /*color:#ffb900;*/
-    background: #eaecef;
+    background: #D4C89E;
     /*background: #D4C89E;*/
     /*background: #24221a;*/
     margin-left:20px;
