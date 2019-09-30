@@ -690,6 +690,19 @@
         } else {    //定制空白
             custom_flag.val("0");
             _comfBox.siblings(".madeBoxFuns").find("dd.madeKindTitNon").addClass("madeNow");
+
+            //重置左侧队徽
+            jQuery('.madeStepEmb').hide();
+            jQuery('.embCon-tab1').show();
+            jQuery('.embCon-tab2').hide();
+            jQuery('.embImg').removeClass('active');
+            jQuery('.embImg .first').show();
+            jQuery('.embImg .second').hide();
+            jQuery('.switchEmbTab').find('span').removeClass('active');
+            jQuery('.embMonochrome').addClass('active');
+            jQuery(".madeEmbWrap_1").find('img').attr('src', '');
+            jQuery(".madeEmbWrap_2").find('img').attr('src', '');
+
             jQuery(".madeStepNone").show();
             if(isClickOne){
                 _viewPage1.hide();

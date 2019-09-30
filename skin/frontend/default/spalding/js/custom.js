@@ -126,17 +126,21 @@ jQuery(function () {
                 _now_2 = "";
             } else if (nowKind == 4){
 	            _now_2 = jQuery('.madeEmbWrap_2 img').attr("src");
-                jQuery('.madeStepEmb').hide();
-	            jQuery('.madeEmbWrap_1').show();
-	            jQuery('.madeEmbWrap_2').hide();
-	            var img = jQuery('.madeEmbWrap_1').find('img').attr('src');
-	            if(!img) jQuery('.embImg').removeClass('active');
+	            if(_init_2 == _now_2){
+		            jQuery('.madeStepEmb').hide();
+		            jQuery('.madeEmbWrap_1').show();
+		            jQuery('.madeEmbWrap_2').hide();
+		            var img = jQuery('.madeEmbWrap_1').find('img').attr('src');
+		            if(!img) jQuery('.embImg').removeClass('active');
+                }else {
+		            jQuery(".remind_1").css("opacity","0");
+		            jQuery(".remind_2").css("opacity","1");
+	            }
             }
             if(_init_2 == _now_2){
                 noChange(_PageBtn);
             }else{
                 isChange();
-
             }
         }else{                                                  //点击page 2按钮
             //alert(_pageBtnId);
@@ -156,11 +160,17 @@ jQuery(function () {
                 _now_1 = "";
             } else if (nowKind == 4) {
 	            _now_1 = jQuery('.madeEmbWrap_1 img').attr("src");
-	            jQuery('.madeEmbWrap_1').hide();
-	            jQuery('.madeEmbWrap_2').show();
 
-	            var img = jQuery('.madeEmbWrap_2').find('img').attr('src');
-	            if(!img) jQuery('.embImg').removeClass('active');
+	            if(_init_1 == _now_1) {
+		            jQuery('.madeEmbWrap_1').hide();
+		            jQuery('.madeEmbWrap_2').show();
+
+		            var img = jQuery('.madeEmbWrap_2').find('img').attr('src');
+		            if (!img) jQuery('.embImg').removeClass('active');
+	            }else {
+		            jQuery(".remind_1").css("opacity","1");
+		            jQuery(".remind_2").css("opacity","0");
+                }
             }
 
             if(_init_1 == _now_1){
