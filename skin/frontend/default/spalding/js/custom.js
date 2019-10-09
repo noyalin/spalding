@@ -591,8 +591,7 @@ function setFamily_1(_dataFamVal){
     }else if(_dataFamVal==3){
         jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","宋体");
         jQuery(".chosFam_p1").html("字体1");
-    }
-    else if(_dataFamVal==4){
+    }else if(_dataFamVal==4){
         jQuery("#textMade_P1,#textMade_P3,.viewPage_p1_wrap").css("font-family","楷体");
         jQuery(".chosFam_p1").html("字体2");
     }
@@ -1398,11 +1397,11 @@ function getTxtSize(position) {
 function getTxtCnt(position) {
     var size = getTxtSize(position);
     if (size == 1 || size == 4) {
-        return 16;
+        return 20;
     } else if (size == 2) {
-        return 10;
+        return 12;
     } else {
-        return 6;
+        return 8;
     }
 }
 

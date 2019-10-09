@@ -56,11 +56,11 @@ function selectfontSize(obj) {
 //判断长度
 function getTxtCnt(size) {
 	if (size == 1 || size == 4) {
-		return 16;
+		return 20;
 	} else if (size == 2) {
-		return 10;
+		return 12;
 	} else {
-		return 6;
+		return 8;
 	}
 }
 
