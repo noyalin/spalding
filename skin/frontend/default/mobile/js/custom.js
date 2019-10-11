@@ -852,7 +852,7 @@ jQuery(function () {
 	jQuery(".embImg").click(function () {
 		var isTab1 = jQuery('.embCon-tab1').css('display') === 'block';
 
-		jQuery(this).siblings().removeClass("active");
+		jQuery('.embImg').removeClass("active");
 		jQuery(this).addClass("active");
 		var imgUrl = jQuery(this).find('.embDefault').attr('src');
 		var madeEmbWrap = '';

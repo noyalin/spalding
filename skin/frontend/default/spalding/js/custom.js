@@ -236,8 +236,14 @@ jQuery(function () {
         function isChange(){
             //isClickOne true 按钮1 false按钮2
             if(isClickOne){
+	            //点亮对应icon
+	            jQuery(".remind_1").css("opacity","0");
+	            jQuery(".remind_2").css("opacity","1");
                 jQuery('#made_p2 .submitY').trigger("click");
             }else{
+	            //点亮对应icon
+	            jQuery(".remind_1").css("opacity","1");
+	            jQuery(".remind_2").css("opacity","0");
                 jQuery('#made_p1 .submitY').trigger("click");
             }
         }

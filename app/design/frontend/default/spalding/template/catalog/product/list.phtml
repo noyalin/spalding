@@ -144,8 +144,8 @@ $categoryUrlkey = $_category->getUrlKey();
 
                     <?php if ($i%4==0 || $i==$_collectionSize): ?>
                     <?php
-                    if($_collectionSize >$_columnCount && $m != $_collectionSize/4){
-                        echo '<div class="proListLine"></div>';
+                    if($_collectionSize > 4 && $i%4 == 0){
+                        echo '<div class="proListLine" style="width: 990px;"></div>';
                     }
                     $m++;
                     ?>
