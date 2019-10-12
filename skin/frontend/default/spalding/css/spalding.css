@@ -6118,6 +6118,7 @@ dl.madeBoxFuns dt.zz_t_2{
     background: none;
     border: none;
     cursor: pointer;
+    user-select: none;
 }
 
 .viewMade button:hover img{

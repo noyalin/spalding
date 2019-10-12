@@ -265,7 +265,9 @@ body { background: #666; } ul { padding: 0; margin: 0; } li { list-style: none; 
 	z-index:5;
 	text-align: center;
 	color:#000;
+	user-select: none;
 }
+
 .textBox.size_40{
 	top:190px;
 }
