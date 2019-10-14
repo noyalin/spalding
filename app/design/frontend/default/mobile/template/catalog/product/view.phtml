@@ -229,6 +229,11 @@ else:
 
                 $urlkey = $_product->getUrlKey();
                 $sku = $_product->getSku();
+                $urltmp = "";
+                if ($sku == '76-676y' || $sku == '76-676Y' ||
+                    $sku == '65-113y' || $sku == '65-113Y') {
+                    $urltmp = "&1314";
+                }
                 $configurableProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
                 $productNorm = $configurableProduct->getProductNorm();
                 if ($productNorm == 6) {
@@ -285,7 +290,7 @@ else:
                             <?php for ($i = 1; $i <= $imgCount; $i++): ?>
                                 <div class="detailBoxNew detail-sn">
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead/<?php echo $urlkey . "-" . $i . $urltmp ?>"
                                         alt=""/>
                                 </div>
                             <?php endfor; ?>
