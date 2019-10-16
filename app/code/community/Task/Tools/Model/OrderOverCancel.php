@@ -8,7 +8,7 @@ class Task_Tools_Model_OrderOverCancel extends Task_Tools_Model_Base{
     	
     	$resource = Mage::getSingleton('core/resource');
     	$readConnection = $resource->getConnection('core_read');
-    	$overTime = date('Y-m-d H:i:s',strtotime("-24 hours"));
+    	$overTime = date('Y-m-d H:i:s',strtotime("-4 hours"));
     	$orders = Mage::getModel('sales/order')->getCollection()
     	->addFieldToFilter('state', 'new')
     	->addFieldToFilter('status', 'alipay_wait_buyer_pay')
