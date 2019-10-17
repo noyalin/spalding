@@ -64,7 +64,7 @@
     <?php if($this->getLastPageNum()>=1): ?>
     <div class="pages" style="display: flex;justify-items: center">
 <!--        <strong>--><?php //echo $this->__('Page:') ?><!--</strong>-->
-       <div class="pagecount">页数1</div>
+       <div class="pagecount">页数</div>
 <!--<?php-->
 <!--var_dump($this->getPageUrl()+);-->
 <!--// exit;-->
@@ -82,7 +82,6 @@
 <!--</div>-->
 <!--</ul>-->
        <div class="selectbox1">
-       aaaa<?php echo $this->getLastPageNum(); ?>
              <select  onchange="window.location=this.value" style="width: 80px;height: 50px;line-height:50px;margin-top:-20px;cursor: pointer">
                 <?php for ($i_page =1;$i_page<= $this->getLastPageNum();$i_page++): ?>
 
