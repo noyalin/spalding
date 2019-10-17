@@ -82,9 +82,10 @@
 <!--</div>-->
 <!--</ul>-->
        <div class="selectbox1">
+       aaaa<?php echo $this->getLastPageNum(); ?>
              <select  onchange="window.location=this.value" style="width: 80px;height: 50px;line-height:50px;margin-top:-20px;cursor: pointer">
                 <?php for ($i_page =1;$i_page<= $this->getLastPageNum();$i_page++): ?>
-<?php echo $this->getLastPageNum(); ?>
+
     <option value="<?php echo $this->getPageUrl().'&'.$this->_pageVarName.'='.$i_page; ?>"
                         <?php
                             if ($this->isPageCurrent($i_page)) {
