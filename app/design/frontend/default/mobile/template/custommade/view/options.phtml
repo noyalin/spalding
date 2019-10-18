@@ -47,8 +47,8 @@ $productImageHelper = Mage::helper('product');
                 <div class="content_wrap">
                     <div class="embCon-tab1">
                     <?php
-                          $_arrEmb = array('湖人','勇士','火箭','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆','76人');
-                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                          $_arrEmb = array('湖人','勇士','76人','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆');
+                          for ($_i = 1; $_i <= count($_arrEmb); $_i++): ?>
                          <div class="embImgWrap">
                            <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
                                <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-单色.png'); ?>"  class="embDefault" alt="">
@@ -63,8 +63,8 @@ $productImageHelper = Mage::helper('product');
                     </div>
                     <div class="embCon-tab2">
                     <?php
-                          $_arrEmb = array('湖人','勇士','火箭','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆','76人');
-                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                          $_arrEmb = array('湖人','勇士','76人','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆');
+                           for ($_i = 1; $_i <= count($_arrEmb); $_i++): ?>
                           <div class="embImgWrap">
                                <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
                                    <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-彩色.png'); ?>"  class="embDefault" alt="">
@@ -129,8 +129,8 @@ $productImageHelper = Mage::helper('product');
                 <div class="content_wrap">
                     <div class="embCon-tab1">
                     <?php
-                          $_arrEmb = array('湖人','勇士','火箭','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆','76人');
-                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                          $_arrEmb = array('湖人','勇士','76人','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆');
+                          for ($_i = 1; $_i <= count($_arrEmb); $_i++): ?>
                        <div class="embImgWrap">
                            <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
                                <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-单色.png'); ?>"  class="embDefault" alt="">
@@ -145,8 +145,8 @@ $productImageHelper = Mage::helper('product');
                     </div>
                     <div class="embCon-tab2">
                     <?php
-                          $_arrEmb = array('湖人','勇士','火箭','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆','76人');
-                          for ($_i = 1; $_i <= 10; $_i++): ?>
+                          $_arrEmb = array('湖人','勇士','76人','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆');
+                          for ($_i = 1; $_i <= count($_arrEmb); $_i++): ?>
                             <div class="embImgWrap">
                                <div class="embImg <?php echo  $_i > 3 ? ($_i > 6 ? ($_i > 9 ? 'four' : 'third') : 'second') : 'first'; ?>">
                                    <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-彩色.png'); ?>"  class="embDefault" alt="">

@@ -816,11 +816,12 @@ jQuery(function () {
 	jQuery(".arrow_emb_prev").click(function () {
 		var isTab1 = jQuery('.embCon-tab1').css('display') === 'block';
 		var ele = isTab1 ? jQuery('.embCon-tab1') : jQuery('.embCon-tab2');
-		if (ele.find(".four").css('display') === 'block') {
-			jQuery(".embImg").hide();
-			ele.find(".third").show();
-			return
-		} else if (ele.find(".third").css('display') === 'block') {
+		// if (ele.find(".four").css('display') === 'block') {
+		// 	jQuery(".embImg").hide();
+		// 	ele.find(".third").show();
+		// 	return
+		// } else
+			if (ele.find(".third").css('display') === 'block') {
 			jQuery(".embImg").hide();
 			ele.find(".second").show();
 			return
@@ -842,11 +843,12 @@ jQuery(function () {
 			jQuery(".embImg").hide();
 			ele.find(".third").show();
 			return
-		} else if (ele.find(".third").css('display') === 'block') {
-			jQuery(".embImg").hide();
-			ele.find(".four").show();
-			return
 		}
+		// else if (ele.find(".third").css('display') === 'block') {
+		// 	jQuery(".embImg").hide();
+		// 	ele.find(".four").show();
+		// 	return
+		// }
 	});
 	//选择队徽
 	jQuery(".embImg").click(function () {
