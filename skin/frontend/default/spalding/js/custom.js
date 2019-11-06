@@ -28,6 +28,22 @@ function inputCart(){
     var _texIni1 = jQuery(".select_N1").html();
     var _imgIni1 = jQuery(".select_N1").attr("src");
 
+    //定制队徽新增判断
+	var nowPageId = jQuery(".madeP_btn_now").attr("id");
+	var isViewPage1Show = jQuery('.viewPage_P1').css('display') === 'block';
+	var isViewPage2Show = jQuery('.viewPage_P2').css('display') === 'block';
+	//队徽选了但没有保存的情况下，提示保存
+	var empImgEle = nowPageId == "btn_page1" ? jQuery('.madeEmbWrap_1') : jQuery('.madeEmbWrap_2');
+	var isChooseEmbImg = empImgEle.find('img').attr('src');
+	var nowPageKind = nowPageId == "btn_page1"
+        ? jQuery(".madeBoxCons_p1").find(".madeNow").attr("dataVal")
+        : jQuery(".madeBoxCons_p2").find(".madeNow").attr("dataVal");
+	if(nowPageKind == 4 && isChooseEmbImg && ((nowPageId == "btn_page2" && !isViewPage2Show) || (nowPageId == "btn_page1" && !isViewPage1Show))){
+		notTodo("提示","定制条件已变更，请先保存定制，才可以加入购物车，为您带来的不便，还请谅解！");
+		return false;
+	}
+
+    //定制文字判断
     if (_imgNow_2 == _imgIni2 && _texNow_2 == _texIni2 && _imgNow_1 == _imgIni1 && _texNow_1 == _texIni1) {
         //未改动
         return true;

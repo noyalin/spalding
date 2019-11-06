@@ -117,30 +117,30 @@
         <div class="embCon clearfix">
             <div class="embCon-tab1">
                 <?php
-                   $_arrEmb = array('湖人','勇士','76人','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆');
+                   $_arrEmb = array('lakers','warriors','76ers','blazers','celtics','spurs','bucks','heat','thunder');
                    for ($_i = 1; $_i <= count($_arrEmb); $_i++): ?>
                     <div class="embImg <?php echo  $_i > 5 ? 'second' : 'first';?>">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-单色.png'); ?>"  class="embDefault" alt="">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-蓝色.png'); ?>"  class="embSelected" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-black.png'); ?>"  class="embDefault" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-blue.png'); ?>"  class="embSelected" alt="">
                     </div>
                     <div class="embImg <?php echo  $_i > 5 ? 'second' : 'first'; ?>">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-单色.png'); ?>"  class="embDefault" alt="">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-蓝色.png'); ?>"  class="embSelected" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-black.png'); ?>"  class="embDefault" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-blue.png'); ?>"  class="embSelected" alt="">
                     </div>
                 <?php endfor; ?>
             </div>
 
             <div class="embCon-tab2">
                 <?php
-                    $_arrEmb = array('湖人','勇士','76人','开拓者','凯尔特人','马刺','雄鹿','热火','雷霆');
+                    $_arrEmb = array('lakers','warriors','76ers','blazers','celtics','spurs','bucks','heat','thunder');
                     for ($_i = 1; $_i <= count($_arrEmb); $_i++): ?>
                         <div class="embImg <?php echo  $_i > 5 ? 'second' : 'first'; ?>">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-彩色.png'); ?>"  class="embDefault" alt="">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-蓝色.png'); ?>"  class="embSelected" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-color.png'); ?>"  class="embDefault" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-1-blue.png'); ?>"  class="embSelected" alt="">
                     </div>
                     <div class="embImg <?php echo  $_i > 5 ? 'second' : 'first'; ?>">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-彩色.png'); ?>"  class="embDefault" alt="">
-                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-蓝色.png'); ?>"  class="embSelected" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-color.png'); ?>"  class="embDefault" alt="">
+                        <img src="<?php echo $this->getSkinUrl('imagesEmblem/'.sprintf('%02d', $_i).'-'.$_arrEmb[$_i-1].'-2-blue.png'); ?>"  class="embSelected" alt="">
                     </div>
                 <?php endfor; ?>
             </div>

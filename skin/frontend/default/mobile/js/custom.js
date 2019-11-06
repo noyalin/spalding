@@ -838,16 +838,13 @@ jQuery(function () {
 		if (ele.find(".first").css('display') === 'block') {
 			jQuery(".embImg").hide();
 			ele.find(".second").show();
-			return
 		} else if (ele.find(".second").css('display') === 'block') {
 			jQuery(".embImg").hide();
 			ele.find(".third").show();
-			return
 		}
 		// else if (ele.find(".third").css('display') === 'block') {
 		// 	jQuery(".embImg").hide();
 		// 	ele.find(".four").show();
-		// 	return
 		// }
 	});
 	//选择队徽
