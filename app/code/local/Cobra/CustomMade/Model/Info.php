@@ -290,7 +290,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
 
                 break;
             case 4:
-                $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-logo?$1980pxx544px$=&$logo=sneakerhead/'.$content1P2;
+                $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p1-logo?$1980pxx544px$=&$logo=sneakerhead/80pxx544px$=&$logo=sneakerhead/'.$content1P1;
                 break;
             default;
                 return $url;
