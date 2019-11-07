@@ -2774,6 +2774,12 @@ div.slide-group{
     margin: 0 auto;
     color: #fff;
 }
+/*防伪页 video*/
+.auth-video {
+    margin: 0 auto;
+    width: 1024px;
+}
+
 /*防伪页 对号图*/
 .q_1_true{
 margin-bottom: -5px;

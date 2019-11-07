@@ -2,9 +2,9 @@
 $homeUrl = Mage::helper('core/url')->getHomeUrl();
 ?>
 <input type="hidden" id="codeMessageReturn">
-<!--<div class="header_fix position_re"></div>-->
 
 <div class="slide-group position_re">
+    <!--防伪验证图片-->
     <div id="step1" class="slide1 authen_step position_re">
         <div class="main-container container_step position_re">
             <div class="content">
@@ -14,52 +14,30 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                <img class="security_chip button-1" id="security_chip" src='<?php echo $this->getSkinUrl("images201904/authentication/button-1.png") ?>' alt="" style="cursor: pointer;">
                <img class="validate_type_new button-2" id="newAuthenticationButton"  src='<?php echo $this->getSkinUrl("images201904/authentication/button-2.png") ?>' alt="" style="cursor: pointer;">
              </div>
-            <!--<div class="content" style="width: 1516px;margin: 0 auto;">-->
-               <!-- <img style="position:relative;top: 34px;z-index: 100;" src='<?php echo $this->getSkinUrl("images2019/authentication/titleauth.png") ?>'>
-               <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images2019/authentication/box_01.png') . "'>"; ?>
 
-                <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images2019/authentication/box.png') . "'>"; ?>
-                <div class="content_detail position_re">
-                    <span class="security_authentication_test">斯伯丁防伪验证系统</span>
-                                       ;<?php //echo "<img class='auth_title position_re' src='" . $this->getSkinUrl('images/authentication/font.png') . "'>"; ?>
-                    <h2>斯伯丁体育用品（中国）有限公司正式启用防伪芯片标签，请按您购买的防伪标签类型选取不同的验证方式   如您购买的是防伪芯片标签，则需要使用带有NFC功能的手机进行扫描</h2>
-
-                   <div style="color: #D4C89E;margin-bottom: 63px;">
-                    <div style="line-height: 30px;">斯伯丁体育用品（中国）有限公司正式启用防伪芯片标签，请按您购买的防伪标签类型选取不同的验证方式   </div>
-                    <div style="line-height: 30px;">如您购买的是防伪芯片标签，则需要使用带有NFC功能的手机进行扫描</div>
-                   </div>
-                    <div class="validate_type">
-                        <div style="margin-top: -40px;"><?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/code_01.png') . "'>"; ?></div>
-                                               <h2 class=" ">新防伪码</h2>
-                        <div><img src='<?php echo $this->getSkinUrl("images2019/button-1.png") ?>' alt="" id="security_chip" class="security_chip" style="margin-top: 20px;margin-right: 95px;"></div>
-                                               <img src='<?php //echo $this->getSkinUrl("images2019/button-1.png") ?>' alt="" id="oldAuthenticationButton" class="validate_type_old">
-                                             <button id="newAuthenticationButton" class="validate_type_new">新版验证</button>
-                    </div>
-                    <div class="validate_type" style="margin-top: 26px;">
-                        <div style="margin-top: 2px;"><?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/code_02.png') . "'>"; ?></div>
-                                                <h2 class=" ">旧防伪码</h2>
-                        <div><img src='<?php echo $this->getSkinUrl("images2019/button-2.png") ?>' alt="" id="newAuthenticationButton" class="validate_type_new" style="margin-top: 35px;margin-left: 85px;"></div>
-                                               <button id="oldAuthenticationButton" class="validate_type_old"
-                                                       data-reveal-id='alertOldValidation'>旧版验证
-                                                </button>
-                    </div>
-                </div>-->
             </div>
         </div>
+
+        <div class="auth-video">
+            <video class="media Jvideo" id="Jvideo"
+            poster="http://spalding-products.oss-cn-hangzhou.aliyuncs.com/video/video-image/video-auth.jpg" width="1024">
+                    <source src="http://spalding-products.oss-cn-hangzhou.aliyuncs.com/video/spalding_auth.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
+
+    <!--防伪验证码-->
     <div id="step2" class="slide1 authen_step position_re">
         <div class="main-container container_step position_re">
-        <!--<img src='<?php echo $this->getSkinUrl("images2019/authentication/title1.png") ?>' alt="" style="padding-top: 108px;" >-->
+
         <div class="content">
-               <!-- <img  class="auth_box" style="width:1000px;margin-top: 65px;" src='<?php echo $this->getSkinUrl("images2019/authentication/box_02.png") ?>'>-->
-<!--bottom: 235px;  -->
+
                 <img class="auth-img" id="img-three" style="" src='<?php echo $this->getSkinUrl("images201904/authentication/img-auth-3.png") ?>' alt="" >
                 <div class="content_detail position_re">
-                  <!--  <div style="margin-top: 200px;"><?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images2019/authentication/icon.png') . "'>"; ?></div>-->
                     <form class="security_auth code_area position_re" name="valid_code_input" style="position:relative;z-index: 1;">
                         <b class="position_re">防伪码:</b><input type="text" id="barCode" class="valid_check_code"
                                                               maxlength="14" placeholder="请输入12或14位的防伪码" style="margin-top: 2%">
-                                                              <!--style="margin-top: 44px;height:28px;"-->
                         <span id="barCodeMSG" style="opacity: 0;width:100%;height:32px;line-height:32px;padding:0;">必填</span>
                         <b class="position_re">验证码:</b><input type="text" id="verifyCode" class="verifyCode valid_code"
                                                               maxlength="4" placeholder="请输入4位的验证码" >
@@ -71,94 +49,20 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                              data-reveal-id="alertValidRightNow" style="max-width: 100%;position: relative;margin-left: auto;margin-right: auto;width: 12.343%;cursor: pointer;">
                     </form>
 
-                                       <!-- <button id="authenticationSubmitButton" class="btn_valid position_re"&ndash;&gt;
-                                                data-reveal-id="alertValidRightNow">立即验证
-                                        </button>-->
-               <!-- <div class="df jcc aic" style="position: relative;bottom: -146px;z-index: 10;">
-                  <img src='<?php echo $this->getSkinUrl("images2019/authentication/return.png") ?>' alt="" style="width: 98px;" id="return">
-                </div> class="auth-img"  margin-top: 108px; -->
                   <img  src='<?php echo $this->getSkinUrl("images201904/authentication/return.png") ?>' alt="" id="return" style="display: block;max-width: 100%;margin-left: auto;margin-right: auto;width: 6.51%;cursor: pointer;">
-                <!-- <button id="cheshi" style="width: 5%;height: 25px;">按钮</button>-->
+
              </div>
-
-
             </div>
-
-<!--            <div class="step2ball df jcsb">
-                   <img src='<?php echo $this->getSkinUrl("images2019/authentication/ball-left.png") ?>' alt="" >
-                   <img src='<?php echo $this->getSkinUrl("images2019/authentication/ball-right.png") ?>' alt="" >
-            </div>-->
-
-
-
         </div>
     </div>
 
-<!--top: 90px; style="height: 1068px;"-->
+    <!--防伪芯片证码-->
     <div id="step22" class="slide1 authen_step position_re">
         <div class="main-container22 container_step22 position_re">
-           <!-- <div class="content22" style="position:relative;top: 667px;">-->
-         <!--  bottom: 241px;-->
             <div class="content22" style="position:relative;">
              <img class="auth-img" id="img-two" src='<?php echo $this->getSkinUrl("images201904/authentication/img-auth-2.png") ?>' alt="" >
              <img class="return_img1" src='<?php echo $this->getSkinUrl("images201904/authentication/return.png") ?>' alt="" style="position: relative;width: 5.6%;vertical-align: middle;display: block;margin-left: auto;margin-right: auto;cursor: pointer;" id="return_1">
-    <!--margin-top: 12px;-->
-<!--          class="auth-img"        <div style="margin-bottom:34px;margin-top: 32px;" class="df jcc aic">
-                    <span class="instructions df jcc aic">防伪芯片验证使用说明</span>
-                </div>
-               <div class="step22img"> <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/title.png') . "'>"; ?></div>
-                <div class="pannel-hd df jcsb">
-                   <div class="item_lt">
-                       <div class="it_box df">
-                                <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step1.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 20px;">
-                    <span>
-                    使用手机的NFC功能对准防伪芯片进行感应。Android手机先打开手机NFC功能，在手机【设置】|【设备连接】中开启NFC选项。iPhone7\8\8plus\X 需要下载并打开NFCTagInfo APP；iPhone XR以上已默认开启NFC功能。
-                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item_lt">
-                        <div class="it_box df">
-                            <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step2.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 50px;">
-                    <span>
-                   扫描后出现登录页面，输入手机号和验证码后点击“下一步”进入验证结果页面。
-                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item_lt">
-                        <div class="it_box df">
-                            <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step3.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 50px;">
-                            <span>
-                              进入验证结果页面后，如果验证成功会显示通过验证 可以看到这颗球的图片、名称等产品信息。
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item_lt">
-                        <div class="it_box df">
-                            <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/button-step4.png') . "'>"; ?>
-                            <div class="box_p" style="margin-top: 50px;">
-                                <span>
-                                点击查看此产品，可以看到产品图片。
-                               </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pannel-ft df jcsb">
-                    <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step1.png') . "'>"; ?>
-                    <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step2.png') . "'>"; ?>
-                    <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step3.png') . "'>"; ?>
-                    <?php echo "<img class=' ' src='" . $this->getSkinUrl('images2019/authentication/img-step4.png') . "'>"; ?>
-                </div>
 
-                <div class="df jcc aic" style="width: 1506px">
-                    <img src='<?php echo $this->getSkinUrl("images2019/authentication/") ?>' alt="" style="width: 98px;margin-top: 51px;" id="return_1">
-                </div>-->
             </div>
         </div>
     </div>
@@ -169,7 +73,6 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                 <?php echo "<img class='auth_box' src='" . $this->getSkinUrl('images201904/authentication/box_03.png') . "'>"; ?>
                 <div class="content_detail position_re">
                     <?php echo "<img class='auth_logo position_re' src='" . $this->getSkinUrl('images/authentication/code.gif') . "'>"; ?>
-                   <!-- <img class="auth_logo position_re"  src='<?php echo $this->getSkinUrl("images/authentication/code.gif") ?>'>-->
                     <div class="selection_area position_re">
                         <p>您购买商品的防伪标签上，在转动不同角度观看方框内褐色部分内容时，能否看到如下图所示 “S”英文字母的隐藏效果？</p>
 
@@ -191,7 +94,6 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                             <b id="isQ2Selected" style="opacity: 0">必填</b>
                         </p>
                     </div>
-                    <!--<button id="authenticationCommitButton" class="btn_submit position_re">提交验证</button>-->
 
                     <img src='<?php echo $this->getSkinUrl("images201904/authentication/submit_button.png") ?>' alt="" id="authenticationCommitButton" class="btn_submit position_re" style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;width: 12.343%;">
                 </div>
