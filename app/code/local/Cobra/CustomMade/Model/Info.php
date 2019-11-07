@@ -115,7 +115,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         $orderId = $order->getRealOrderId();
         $customerId = $order->getCustomerId();
         $customMsg = Mage::getModel('custommade/temp')->loadByCustomerId($customerId);
-        
+
         $path = Mage::getBaseDir() . '/media/custommade/production/'.$orderId;
         if(file_exists($path)){
         	Mage::log('order path exists:'.$path);
@@ -125,7 +125,7 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
         if($customMsg){
         	if (!$customMsg->getId()) {
         		return;
-        	}	
+        	}
         }else{
         	return;
         }
@@ -204,15 +204,15 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     		$this->moveImage($customMsg,$oldPath,$path,$viewUrl,2);
     	}
     }
-    
+
     public function moveImage(&$customMsg,$oldPath,$newPath,$viewUrl,$switchPage){
     	if($switchPage == 1){
     		$imagePath = $customMsg->getMsg1P1();
     	}elseif($switchPage == 2){
     		$imagePath = $customMsg->getMsg1P2();
     	}
-    	//分别对应数据库中的  
-    	//第一面  effect => msg1_p1 show => msg2_p1 print => msg3_p1  
+    	//分别对应数据库中的
+    	//第一面  effect => msg1_p1 show => msg2_p1 print => msg3_p1
     	//第二面  effect => msg1_p2 show => msg2_p2 print => msg3_p2
      	$typeArray = array('effect','show','print','original');
     	$imageArray = explode('/', $imagePath);
@@ -244,9 +244,61 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
     		}
     	}
     }
-    
+
+    //定制文字type=2时：content1是文字1， content2是文字2（双行文字才会有），content3是字体类型1小、2中、3大、4小双， content4是字体3宋体4楷体，p5是预览图，p6是打印图
+    //定制队徽type=4时：content1是队徽名字，content5是预览图，content6是打印图
     public function createP1Url($typeP1, $content1P1, $content2P1, $content3P1, $content4P1, $imgType, $sku)
     {
+        $url = null;
+        switch ($typeP1) {
+            case 1:
+                if ($imgType == 'show') {
+                    $url = $content2P1;
+                } else {
+                    $url = $content3P1;
+                }
+                return $url;
+            case 2:
+                switch ($content4P1) {
+                    case 2:
+                        $font = '-arial';
+                        break;
+                    case 3:
+                        $font = '-heiti';
+                        break;
+                    case 4:
+                        $font = '-simkai';
+                        break;
+                    default:
+                }
+
+                if ($content3P1 == 1) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p1-small-one'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P1);
+                }
+                else if ($content3P1 == 2) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p1-middle'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P1);
+                }
+                else if ($content3P1 == 3) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p1-big'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P1);
+                }
+                else if ($content3P1 == 4) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p1-small-two'.$font.'?$1980pxx544px$'.'&$text1=' . urlencode($content1P1).'&$text2=' . urlencode($content2P1);
+                }
+                else {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p1-small-one'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P1);
+                }
+
+                break;
+            case 4:
+                $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-logo?$1980pxx544px$=&$logo=sneakerhead/'.$content1P2;
+                break;
+            default;
+                return $url;
+        }
+
+        return $url;
+
+    /*
         $url = null;
         switch ($typeP1) {
             case 1:
@@ -304,8 +356,11 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
             default:
         }
         return $url;
+        */
     }
 
+    //定制文字type=2时：p1是文字1， p2是文字2（双行文字才会有），p3是字体类型1小单、2中、3大、4小双， p4是字体3宋体4楷体，p5是预览图，p6是打印图
+    //定制队徽type=4时：p1是队徽名字，p5是预览图，p6是打印图
     public function createP2Url($typeP2, $content1P2, $content2P2, $content3P2, $content4P2, $imgType, $sku)
     {
         $url = null;
@@ -318,52 +373,43 @@ class Cobra_CustomMade_Model_Info extends Mage_Core_Model_Abstract
                 }
                 return $url;
             case 2:
-                if ($content4P2 == 3 || $content4P2 == 4) {
-                    if ($sku == '74-604yc') {
-                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-74-604-';
-                    } else {
-                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-74-602-';
-                    }
-                } else {
-                    if ($sku == '74-604yc') {
-                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/74-604-spalding-';
-                    } else {
-                        $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-';
-                    }
+                switch ($content4P2) {
+                    case 2:
+                        $font = '-arial';
+                        break;
+                    case 3:
+                        $font = '-heiti';
+                        break;
+                    case 4:
+                        $font = '-simkai';
+                        break;
+                    default:
                 }
+
+                if ($content3P2 == 1) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-small-one'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P2);
+                }
+                else if ($content3P2 == 2) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-middle'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P2);
+                }
+                else if ($content3P2 == 3) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-big'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P2);
+                }
+                else if ($content3P2 == 4) {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-small-two'.$font.'?$1980pxx544px$'.'&$text1=' . urlencode($content1P2).'&$text2=' . urlencode($content2P2);
+                }
+                else {
+                    $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-small-one'.$font.'?$1980pxx544px$'.'&$text=' . urlencode($content1P2);
+                }
+
+                break;
+            case 4:
+                $url = 'http://s7d5.scene7.com/is/image/sneakerhead/spalding-p2-logo?$1980pxx544px$=&$logo=sneakerhead/'.$content1P2;
                 break;
             default;
                 return $url;
         }
 
-        switch ($content4P2) {
-            case 2:
-                $imgType .= '-arial';
-                break;
-            case 3:
-                $imgType .= '-simsun';
-                break;
-            case 4:
-                $imgType .= '-simkai';
-                break;
-            default:
-        }
-
-        switch ($content3P2) {
-            case 1:
-                $url .= 'p2-small_one-' . $imgType . '?$1980pxx544px$&$textone=' . urlencode($content1P2);
-                break;
-            case 2:
-                $url .= 'p2-middle-' . $imgType . '?$1980pxx544px$&$text=' . urlencode($content1P2);
-                break;
-            case 3:
-                $url .= 'p2-big-' . $imgType . '?$1980pxx544px$&$text=' . urlencode($content1P2);
-                break;
-            case 4:
-                $url .= 'p2-small_two-' . $imgType . '?$1980pxx544px$&$texttwo=' . urlencode($content2P2) . '&$textone=' . urlencode($content1P2);
-                break;
-            default;
-        }
         return $url;
     }
 

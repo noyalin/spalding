@@ -57,8 +57,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
            'options'           => array(
                1   => '图片',
                2   => '文字',
-           	   4   => '定制图片',
-               5   => '定制队徽'
+           	   4   => '定制图片'
            ),
            'html_decorators'   => array('nobr')
        ));
@@ -98,8 +97,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('msg1_p1', array(
             'header'            => Mage::helper('custommade')->__('P1文字1'),
             'align'             => 'center',
-            'index'             => 'msg1_p1',
-            //'renderer'          => 'custommade/adminhtml_check_renderer_content',
+            'index'             => 'msg5_p1',
+            'renderer'          => 'custommade/adminhtml_check_renderer_content',
             'filter'            => false,
             'sortable'          => false,
             'position'          => 1,
@@ -110,8 +109,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('msg2_p1', array(
             'header'            => Mage::helper('custommade')->__('P1文字2'),
             'align'             => 'center',
-            'index'             => 'msg2_p1',
-            //'renderer'          => 'custommade/adminhtml_check_renderer_content',
+            'index'             => 'msg6_p1',
+            'renderer'          => 'custommade/adminhtml_check_renderer_content',
             'filter'            => false,
             'sortable'          => false,
             'position'          => 1,
@@ -129,8 +128,7 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
            'options'           => array(
                1   => '图片',
                2   => '文字',
-           	   4   => '定制图片',
-               5   => '定制队徽'
+           	   4   => '定制图片'
            ),
            'html_decorators'   => array('nobr')
        ));
@@ -170,8 +168,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('msg1_p2', array(
             'header'            => Mage::helper('custommade')->__('P2文字1'),
             'align'             => 'center',
-            'index'             => 'msg1_p2',
-            //'renderer'          => 'custommade/adminhtml_check_renderer_content',
+            'index'             => 'msg5_p2',
+            'renderer'          => 'custommade/adminhtml_check_renderer_content',
             'filter'            => false,
             'sortable'          => false,
             'position'          => 2,
@@ -182,8 +180,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('msg2_p2', array(
             'header'            => Mage::helper('custommade')->__('P2文字2'),
             'align'             => 'center',
-            'index'             => 'msg2_p2',
-            //'renderer'          => 'custommade/adminhtml_check_renderer_content',
+            'index'             => 'msg6_p2',
+            'renderer'          => 'custommade/adminhtml_check_renderer_content',
             'filter'            => false,
             'sortable'          => false,
             'position'          => 2,

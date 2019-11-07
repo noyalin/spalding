@@ -4,7 +4,8 @@ class Cobra_CustomMade_Block_Adminhtml_Check_Renderer_Content extends Mage_Admin
 {
     public function render(Varien_Object $row)
     {
-        $link = $row->getData(
+//return var_dump($row->getData());
+//exit;
         $link = $row->getData($this->getColumn()->getIndex());
         $html = null;
         $message = $this->getMessage($row);
