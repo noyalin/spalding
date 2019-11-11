@@ -1,6 +1,23 @@
 <?php
 $homeUrl = Mage::helper('core/url')->getHomeUrl();
 ?>
+<style>
+div.std.limit_height {
+    position: relative;
+    margin-top: -13px;
+    top: 0;
+}
+
+.auth-video {
+    width: 100%;
+    margin: -50px auto 30px auto;
+}
+
+.auth-video video {
+    width: 100%;
+    cursor: pointer;
+}
+</style>
 <input type="hidden" id="codeMessageReturn">
 
 <div class="slide-group position_re">
@@ -20,7 +37,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
         <div class="auth-video">
             <video class="media Jvideo" id="Jvideo"
-            poster="http://spalding-products.oss-cn-hangzhou.aliyuncs.com/video/video-image/video-auth.jpg" width="1024">
+            poster="http://spalding-products.oss-cn-hangzhou.aliyuncs.com/video/video-image/video-auth.jpg">
                     <source src="http://spalding-products.oss-cn-hangzhou.aliyuncs.com/video/spalding_auth.mp4" type="video/mp4">
                     Your browser does not support the video tag.
             </video>
@@ -265,14 +282,8 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         return false;
     });
     jQuery('#newAuthenticationButton').on('click', function (e) {
+    	jQuery('.std ').removeClass('limit_height');
         //	新版验证 只是调到下一步 不弹出modal框架
-        // if(document.body.clientWidth<=1366){
-        //   jQuery('.slide-group').animate({'top': '-524px'});
-        // }else if(document.body.clientWidth<=1440){
-        //    jQuery('.slide-group').animate({'top': '-553px'});
-        // }else {
-        //   jQuery('.slide-group').animate({'top': '-746px'});
-        // }
         cur_class = '#img-three';
         jQuery("#step2").css("display","block");
         jQuery("#step22").css("display","none");
@@ -281,14 +292,8 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         resetContainerHeight()
     });
     jQuery('#security_chip').on('click', function (e) {
+    	jQuery('.std ').removeClass('limit_height');
         //	新版验证 只是调到下一步 不弹出modal框架
-        // if(document.body.clientWidth<=1366){
-        //     jQuery('.slide-group').animate({'top': '-524px'});
-        // }else if(document.body.clientWidth<=1440){
-        //    jQuery('.slide-group').animate({'top': '-553px'});
-        // }else {
-        //     jQuery('.slide-group').animate({'top': '-746px'});
-        // }
         cur_class = '#img-two';
         jQuery("#step1").css("display","none");
         jQuery("#step22").css("display","block");
@@ -297,8 +302,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         resetContainerHeight()
     });
     jQuery('#return').on('click', function (e) {
-        // jQuery('.slide-group').animate({'top': '0px'});
-        //jQuery('.slide-group').animate({'top': '90px'});
+    	jQuery('.std ').addClass('limit_height');
         cur_class = '#img-first';
         jQuery("#step1").css("display","block");
         jQuery("#step22").css("display","none");
@@ -306,30 +310,14 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
         resetContainerHeight()
     });
     jQuery('#return_1').on('click', function (e) {
-        // jQuery('.slide-group').animate({'top': '0px'});
-        //jQuery('.slide-group').animate({'top': '90px'});
+    	jQuery('.std ').addClass('limit_height');
         cur_class = '#img-first';
         jQuery("#step1").css("display","block");
         jQuery("#step22").css("display","none");
         jQuery("#step2").css("display","none");
         resetContainerHeight()
     });
-   // jQuery('#cheshi').on('click', function (e) {
-   //     /*if(document.body.clientWidth<=1366){
-   //          jQuery('.slide-group').animate({'top': '-1048px'});
-   //         // jQuery('.slide-group').animate({'top': '-1032px'});
-   //      }else if(document.body.clientWidth<=1440){
-   //         jQuery('.slide-group').animate({'top': '-1106px'});
-   //      }else {
-   //          jQuery('.slide-group').animate({'top': '-1492px'});
-   //      }*/
-   //      cur_class = '#step3';
-   //      jQuery("#step1").css("display","none");
-   //      jQuery("#step22").css("display","none");
-   //      jQuery("#step2").css("display","none");
-   //       jQuery("#step3").css("display","block");
-   //      resetContainerHeight()
-   // });
+
     jQuery('#oldAuthenticationButton,#contactUsButton').on('click', function (e) {
         jQuery('#alertContactUs')[0].style.display = 'block';
         jQuery('#valid_check_code')[0].innerHTML = jQuery.trim(jQuery('#barCode').val());
@@ -364,15 +352,6 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
                 jQuery('#verifyCodeMSG').addClass('activeVerifyCode');
                 jQuery('.activeVerifyCode')[0].innerHTML = '请输入4位的验证码';
             }
-
-            // 页面停止跳转下一页
-           /* if(document.body.clientWidth<=1366){
-              jQuery('.slide-group').animate({'top': '-524px'});
-            }else if(document.body.clientWidth<=1440){
-              jQuery('.slide-group').animate({'top': '-553px'});
-            }else {
-              jQuery('.slide-group').animate({'top': '-746px'});
-            }*/
 
         } else {
             jQuery('#barCodeMSG')[0].innerHTML = jQuery('#verifyCodeMSG')[0].innerHTML = '';
@@ -481,13 +460,6 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
             jQuery('#isQ1Selected')[0].style.opacity = q1TrueIsSelected == q1FalseIsSelected ? 1 : 0;
             jQuery('#isQ2Selected')[0].style.opacity = q2TrueIsSelected == q2FalseIsSelected ? 1 : 0;
 
-            /*if(document.body.clientWidth<=1366){
-              jQuery('.slide-group').animate({'top': '-1048px'});
-            }else if(document.body.clientWidth<=1440){
-             jQuery('.slide-group').animate({'top': '-1106px'});
-           }else {
-              jQuery('.slide-group').animate({'top': '-1492px'});
-           }*/
         } else {
             jQuery('#isQ1Selected')[0].style.opacity = jQuery('#isQ2Selected')[0].style.opacity = 0;
             if (q1TrueIsSelected == q2TrueIsSelected && q2TrueIsSelected == 'inline') {
@@ -502,17 +474,7 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
             if (q1FalseIsSelected == q2FalseIsSelected && q2FalseIsSelected == 'inline') {
                 jQuery('#validResultContent')[0].innerHTML = '感谢您的耐心配合，请点击『联络我们』留下您的联络方式，我们将有专人协助您做进一步鉴定。'
             }
-           /* if(document.body.clientWidth<=1366){
-                //jQuery('.slide-group').animate({'top': '-1541px'});
-                 jQuery('.slide-group').animate({'top': '-1572px'});
-            }else  if(document.body.clientWidth<=1440){
-               jQuery('.slide-group').animate({'top': '-1659px'});
-            }else {
-                jQuery('.slide-group').animate({'top': '-2238px'});
-            }*/
 
-            //
-           // jQuery('.slide-group').animate({'top': '-2880px'});
         cur_class = '#step4';
         jQuery("#step1").css("display","none");
         jQuery("#step22").css("display","none");
@@ -683,8 +645,19 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
 
     function resetContainerHeight(){
         var img = jQuery(cur_class);
+
         jQuery('.main-container').css('minHeight', img.height() - 21)
-        // jQuery('.main-container').css('minHeight', img.height() - 15)
+
+        if(jQuery("#step1").css("display") === 'block') {
+        	 jQuery('.std').addClass('limit_height');
+        	 var video_h = jQuery('.auth-video').height();
+        	 var height = img.height() + video_h - 21;
+        	 jQuery('.std ').css('minHeight', height)
+        } else {
+        	 jQuery('.std').removeClass('limit_height');
+        	 jQuery('.std ').css('minHeight', img.height())
+        }
+
     }
     jQuery(function () {
         jQuery('.q_1_true, .q_1_false, .q_2_true, .q_2_false').hide();
@@ -705,13 +678,23 @@ $homeUrl = Mage::helper('core/url')->getHomeUrl();
             jQuery('.q_2_true').hide();
         });
 
-        // console.log('8888')
         resetContainerHeight();
     });
 
     jQuery(window).resize(function(){
         resetContainerHeight();
     });
+
+    //视频播放暂停
+    jQuery('#Jvideo').click(function() {
+      var video = document.getElementById('Jvideo');
+
+      if(video.paused){
+         video.play();
+      }else{
+          video.pause();
+       }
+    })
 </script>
 
 
