@@ -283,6 +283,9 @@ div.std.limit_height {
     });
     jQuery('#newAuthenticationButton').on('click', function (e) {
     	jQuery('.std ').removeClass('limit_height');
+    	var video = document.getElementById('Jvideo');
+        video.pause();
+
         //	新版验证 只是调到下一步 不弹出modal框架
         cur_class = '#img-three';
         jQuery("#step2").css("display","block");
@@ -293,6 +296,9 @@ div.std.limit_height {
     });
     jQuery('#security_chip').on('click', function (e) {
     	jQuery('.std ').removeClass('limit_height');
+    	var video = document.getElementById('Jvideo');
+        video.pause();
+
         //	新版验证 只是调到下一步 不弹出modal框架
         cur_class = '#img-two';
         jQuery("#step1").css("display","none");
@@ -693,7 +699,7 @@ div.std.limit_height {
          video.play();
       }else{
           video.pause();
-       }
+      }
     })
 </script>
 
