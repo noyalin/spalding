@@ -1,5 +1,6 @@
-function getByClass(oParent, sClass)
-{
+function getByClass(oParent, sClass) {
+    if (!oParent) return;
+
     var aEle=oParent.getElementsByTagName('*');
     var aResult=[];
 
@@ -15,7 +16,7 @@ function getByClass(oParent, sClass)
 }
 
 window.onload=function (){
-    var oDiv=document.getElementById('playimages');
+   /* var oDiv=document.getElementById('playimages');
 
     var oBtnPrev=getByClass(oDiv, 'prev')[0];
     var oBtnNext=getByClass(oDiv, 'next')[0];
@@ -71,10 +72,18 @@ window.onload=function (){
 
         tab();
     };
+*/
+    //预览箭头
+    jQuery('.next_z').click(function () {
+	    jQuery('.big_pic').toggleClass('active');
+    });
 
-    oBtnN.onclick = function(){
+    jQuery('.prev_n').click(function () {
+	    jQuery('.big_pic').toggleClass('active');
+    });
+
+   /* oBtnN.onclick = function(){
         // timer=setInterval(oBtnNext.onclick, 60);
-        jQuery('.big_pic').toggleClass('active');
 
         // oBtnN_top.style.display = "block";
         // setTimeout(function(){
@@ -86,12 +95,10 @@ window.onload=function (){
     oBtnZ.onclick = function(){
         // timer=setInterval(oBtnPrev.onclick, 60);
 
-	    jQuery('.big_pic').toggleClass('active');
-
         // oBtnZ_top.style.display = "block";
         // setTimeout(function(){
         //     oBtnZ_top.style.display = "none";
         // },600);
         // oBtnPrev.onclick();
-    };
+    };*/
 };
