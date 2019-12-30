@@ -577,7 +577,7 @@ class  Shoe_Sale_Model_OrderStatusUpdate extends Shoe_Sale_Model_UpdateBase{
                         $state = 'processing';
                     } else {
                         // Update state and status
-                        $status = 'partially_shipped';
+                        $status = 'shipped';
                         $state = 'processing';
                     }
                     $log_status = 'SHIPPED';

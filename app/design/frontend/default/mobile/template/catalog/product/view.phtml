@@ -39,6 +39,14 @@ $attributeSetName = $attributeSetModel->getAttributeSetName();
 $_currentCategory = Mage::Registry('current_category');
 $size_table_id = $_product->getSizeTable();//尺码表valueid
 
+$sku = $_product->getSku();
+
+$urltmp = "";
+if ($sku == '76-676y' || $sku == '76-676Y' ||
+    $sku == '65-113y' || $sku == '65-113Y') {
+    $urltmp = "&1314";
+}
+
 /* If navigated directly to product page, default category for back link */
 if (!$_currentCategory) {
     $_currentCategory = Mage::getModel('catalog/category')->load($_product->getDefaultCategory());
@@ -149,7 +157,7 @@ else:
                             <?php while ($i++ < $imageCount) : ?>
                                 <div class='slide'>
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/xiangqingye_first?$spalding_1242$&$images=sneakerhead/'. $urlkey . "-" . $i ?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') .'/is/image/sneakerhead/xiangqingye_first?$spalding_1242$&$images=sneakerhead/'. $urlkey . "-" . $i .$urltmp ?>"
                                         alt=""/>
                                 </div>
                             <?php endwhile ?>
@@ -285,7 +293,7 @@ else:
                             <?php for ($i = 1; $i <= $imgCount; $i++): ?>
                                 <div class="detailBoxNew detail-sn">
                                     <img
-                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead/<?php echo $urlkey . "-" . $i ?>"
+                                        src="<?php echo Mage::getModel('core/variable')->loadByCode('static_image_domain')->getValue('html') . $scen7 ?>display<?php echo $i ?>?$spalding_1242_1136$&$images=sneakerhead/<?php echo $urlkey . "-" . $i . $urltmp ?>"
                                         alt=""/>
                                 </div>
                             <?php endfor; ?>
